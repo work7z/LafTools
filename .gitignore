@@ -1,4 +1,5 @@
 pre_html_dir
+core/pkg/mode/**/*
 myproject
 nouse
 .DS_Store
@@ -10,7 +11,7 @@ time-consumer
 *.exe
 __debug_bin
 __debug_bin*
-.idea
+.ideadev
 target/
 runtime_api_set_dist
 system-node*
