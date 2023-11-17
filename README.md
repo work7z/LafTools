@@ -1,5 +1,14 @@
 # LafTools
-The next generation of a versatile toolbox designed for programmers.
+The next generation of an versatile toolbox designed for programmers, which is 
+- Fully Open Source 
+- Offline Capable  
+- Cross-Platform 
+
+Preview(English):
+![](https://github.com/work7z/LafTools/blob/dev/dev-source/img-preview-en.png?raw=true)
+
+Preview(简体中文):
+![](https://github.com/work7z/LafTools/blob/dev/dev-source/img-preview.png?raw=true)
 
 # Introduction 
 
@@ -35,10 +44,10 @@ Here’re some screenshots for you to preview how is this toolbox working.
 
 ## Cool! So is it a free software?
 
-Firstly, an open-source project does not mean it’s a free software. 
+Yes, you can follow the license but please notice an open-source software does not mean it’s a free service. 
 
-It’s a PAID software if you’re a regular user.
-It’s a FREE software if you’re a contributor.
+It’s a PAID service if you’re a regular user.
+It’s a FREE service if you’re a contributor.
 
 Nearly all commercial companies will adopt a closed source code strategy to ensure their trade secrets will not be theft from. 
 
