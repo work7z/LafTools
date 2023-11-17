@@ -1,0 +1,28 @@
+{
+  "InitialFormModel": {
+      "AlgorithmType": "MD5"
+  },
+  "TabOptions_#": [
+    {
+      "TabPaneType": "Toolbar",
+      "Options": [
+        {
+          "FormLabel": "@{Algorithm_Type}",
+          "FormType": "Select",
+          "FormProps": {
+            "StaticSelectList": [
+              {
+                "Label": "MD2",
+                "Prop": "MD2"
+              },
+              {
+                "Label": "MD5",
+                "Prop": "MD2"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

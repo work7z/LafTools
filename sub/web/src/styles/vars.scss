@@ -1,0 +1,173 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Sat, 18 Nov 2023
+// Author: CodeGen ToolBox <work7z@outlook.com>
+// Description: 
+// Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+@import '@blueprintjs/colors/lib/scss/colors';
+@import 'allotment/dist/style.css';
+
+#webpack-dev-server-client-overlay {
+  // display: none;
+}
+.pt-5 {
+  padding: 5px;
+}
+.pt-10 {
+  padding: 10px;
+}
+.compact-form {
+  .bp5-form-group {
+    margin-bottom: 5px;
+  }
+  .bp5-form-group label.bp5-label {
+    margin-bottom: 4px;
+  }
+  .bp5-form-group .bp5-control {
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+}
+.hp100 {
+  height: 100%;
+}
+.wp100 {
+  width: 100%;
+}
+.i-r {
+  text-align: right;
+}
+$tab-height-I-know: 24px;
+@mixin fn-mixin-hover-tab() {
+  &:hover {
+    text-decoration: none;
+    background-color: darken($appNavBgWhite, 10%);
+    .bp5-dark & {
+      background-color: lighten($appNavBgBlack, 10%);
+      &,
+      & * {
+        color: white;
+      }
+    }
+  }
+  &.active {
+    background-color: $turquoise3 !important;
+    color: white !important;
+    .gen-tabs-tab-close {
+      display: block;
+    }
+  }
+}
+.normaltext {
+  color: $gray5;
+  .bp5-dark & {
+    color: white !important;
+  }
+}
+
+// define class g-drag-wrap for when the element is dragging
+.g-drag-wrap {
+  border: 4px dashed #ccc;
+  box-sizing: border-box;
+  // background-color: $dark-gray1;
+  // opacity: 0.8;
+  // .bp5-dark & {
+  //   background-color: $dark-gray1;
+  //   opacity: 0.8;
+  // }
+}
+
+$appNavBgWhite: white;
+$appNavBgBlack: $dark-gray1;
+$statusbar-height: 28px;
+
+.text-right {
+  display: block;
+  text-align: right;
+}
+.bp5-multistep-dialog-right-panel {
+  display: flex;
+  flex-direction: column;
+  .bp5-dialog-body {
+    flex: 1;
+  }
+  .bp5-dialog-footer {
+  }
+}
+
+.marginauto {
+  margin: auto;
+}
+
+.bp5-bg-light {
+  background-color: $light-gray5;
+}
+
+.flex-parent {
+  display: flex;
+  flex-direction: column;
+  .flex-main-body {
+    flex: 1;
+  }
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+.mt-50 {
+  margin-top: 50px;
+}
+.ml-8 {
+  margin-left: 8px;
+}
+
+$navbar-height: 50px !default;
+$common-border-color: #656a71 !default;
+
+@mixin fn-border-type($property) {
+  border-#{$property}: 1px solid $gray5;
+  .bp5-dark & {
+    border-#{$property}: 1px solid $common-border-color;
+  }
+}
+@mixin fn-border-type-all() {
+  @include fn-border-type('left');
+  @include fn-border-type('right');
+  @include fn-border-type('top');
+  @include fn-border-type('bottom');
+}
+@mixin fn-make-bg-color-align() {
+  background-color: $appNavBgWhite;
+  .bp5-dark & {
+    background-color: $appNavBgBlack;
+  }
+}
+
+.btm-border {
+  @include fn-border-type('bottom');
+}
+
+.btm-top {
+  @include fn-border-type('top');
+}
+
+.w100 {
+  width: 100%;
+}
+.h100 {
+  height: 100%;
+}

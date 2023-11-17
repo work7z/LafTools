@@ -1,0 +1,98 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Sat, 18 Nov 2023
+// Author: CodeGen ToolBox <work7z@outlook.com>
+// Description: 
+// Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+@import "../../styles/vars.scss";
+@import "@blueprintjs/colors/lib/scss/colors";
+
+ul.app-nav-menu {
+  &,
+  & * {
+    color: rgb(28, 33, 39);
+  }
+}
+
+.bp5-dark ul.app-nav-menu {
+  a {
+    color: #f6f7f9;
+  }
+}
+
+ul.app-nav-menu {
+  margin: 0;
+  padding: 0;
+  & > * {
+    display: block;
+    font-size: 15px;
+    width: 100%;
+    $crt-line-height: 40px;
+    min-height: $crt-line-height;
+    line-height: $crt-line-height;
+    padding: 0;
+    padding-left: 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+      //   font-weight: bold;
+      background-color: darken($appNavBgWhite, 10%);
+      .bp5-dark & {
+        background-color: lighten($appNavBgBlack, 10%);
+        &,
+        & * {
+          color: white;
+        }
+      }
+    }
+    &.active-tool-item {
+      // background-color: $turquoise3 !important;
+background:      linear-gradient(0,#2f6dc3,#528bda);
+      color: white !important;
+      cursor: default;
+    }
+    &,
+    &:active,
+    &:visited {
+      outline: none;
+    }
+  }
+}
+
+.workbench-tool-wrapper {
+  height: 100%;
+  width: 100%;
+  .all-ext {
+    height: 100%;
+  }
+  .tool-part-L1-menu {
+    @extend .all-ext;
+    @include fn-border-type("right");
+    @include fn-make-bg-color-align();
+  }
+  .tool-part-L2-menu {
+    overflow: auto;
+    @extend .all-ext;
+    box-sizing: border-box;
+    @include fn-border-type("right");
+  }
+  .tool-part-content {
+    @extend .all-ext;
+  }
+}

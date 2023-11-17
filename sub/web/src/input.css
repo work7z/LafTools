@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+.icon-remark  svg {
+    @apply !fill-amber-300;
+}
+.icon-remark{
+    @apply hover:!bg-amber-200 !bg-opacity-60;
+}
