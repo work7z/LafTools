@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sat, 18 Nov 2023
 // Author: CodeGen ToolBox <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,9 @@
 @import '@blueprintjs/colors/lib/scss/colors';
 @import 'allotment/dist/style.css';
 
+// :focus {
+//   outline: none;
+// }
 #webpack-dev-server-client-overlay {
   // display: none;
 }
