@@ -156,7 +156,7 @@ export default () => {
                 : " dark:hover:bg-gray-600 "
             }  ${
               isCurrent
-                ? "  bg-white hover:bg-white dark:text-white dark:bg-gray-500 dark:hover:bg-gray-500 "
+                ? "  bg-white hover:bg-white dark:text-white dark:bg-gray-600 dark:hover:bg-gray-600 "
                 : ""
             }`}
           >

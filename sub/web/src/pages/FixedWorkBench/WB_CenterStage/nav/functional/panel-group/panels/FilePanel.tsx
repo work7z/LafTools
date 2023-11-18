@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Tue, 14 Nov 2023
+// Date: Sun, 12 Nov 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://codegen.cc
@@ -66,15 +66,15 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../nocycle";
+import { APPINFOJSON, delayFN } from "../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
-import gutils from "../../../utils/GlobalUtils";
-import { logutils } from "../../../utils/LogUtils";
+import gutils from "../../../../../../../utils/GlobalUtils";
+import { logutils } from "../../../../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../styles/routeMem";
-import statusSlice from "../../../slice/StatusSlice";
+import RouteMem from "../../../../../../../styles/routeMem";
+import statusSlice from "../../../../../../../slice/StatusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   withRouter,
@@ -85,15 +85,17 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-import URLUtils from "../../../utils/URLUtils";
-import TranslationUtils, { Dot } from "../../../utils/TranslationUtils";
+import URLUtils from "../../../../../../../utils/URLUtils";
+import TranslationUtils, {
+  Dot,
+} from "../../../../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
-import exportUtils from "../../../utils/ExportUtils";
+import exportUtils from "../../../../../../../utils/ExportUtils";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../../slice/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../../slice/SystemSlice";
+} from "../../../../../../../slice/ForgeSlice";
+import { ACTION_callRefreshAll } from "../../../../../../../slice/SystemSlice";
 import {
   ID_FILES,
   ID_HISTORY as ID_MANUAL,
@@ -103,32 +105,29 @@ import {
   URL_WORKBENCH_FILES,
   URL_WORKBENCH_MANUALS as URL_WORKBENCH_MANUAL,
   URL_WORKBENCH_NOTES,
-} from "../../../styles/path";
-import FixedWorkBenchTool from "../../FixedWorkBenchTool";
-import FixedWorkBenchFiles from "../../FixedWorkBenchFiles";
+} from "../../../../../../../styles/path";
+import FixedWorkBenchTool from "../../../../../../FixedWorkBenchTool";
+import FixedWorkBenchFiles from "../../../../../../FixedWorkBenchFiles";
 
-import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
-import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
+import FixedWorkBenchHistory from "../../../../../../FixedWorkBenchHistory";
+import FixedWorkBenchNotes from "../../../../../../FixedWorkBenchNotes";
 import { type } from "jquery";
-import apiSlice from "../../../slice/apiSlice";
+import apiSlice from "../../../../../../../slice/apiSlice";
 
-import RightCtrlForFunctionalMenu from "./Ctrl_Left_FunctionalMenu";
-import { MenuDropDownListItem } from "../definitions/WB_Types";
-import { SysTabPane } from "../components/SysTabPane";
+import FunctionalMenu_Panel from "..";
 
-export default (props: {
-  loading: boolean;
-  crtLeftNavId: string;
-  leftNavList: MenuDropDownListItem[];
-  children: any;
-}) => {
+export let InnerFilePanel = (): any => {
   return (
-    <SysTabPane
-      loading={props.loading}
-      crtLeftNavId={props.crtLeftNavId}
-      leftNavList={props.leftNavList}
-      rightCtrls={<RightCtrlForFunctionalMenu />}
-      children={props.children}
-    ></SysTabPane>
+    <FunctionalMenu_Panel
+      loading={false}
+      crtLeftNavId="all"
+      leftNavList={[
+        {
+          label: Dot("TyqvWY3", "Local File"),
+          value: "all",
+        },
+      ]}
+      children={<div>THIS IS LOCAL FILE</div>}
+    ></FunctionalMenu_Panel>
   );
 };

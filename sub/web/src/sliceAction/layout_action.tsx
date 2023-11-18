@@ -36,7 +36,7 @@ import { PayloadValueData } from "../styles/var";
 import FileUtils from "../utils/FileUtils";
 import AlertUtils from "../utils/AlertUtils";
 import layoutSlice from "../slice/LayoutSlice";
-import { REF_mainstage } from "../pages/FixedWorkBench/layout_ltr/MainStageCenter";
+import { REF_mainstage } from "../pages/FixedWorkBench/WB_CenterStage/sub/CenterFirstLayer";
 
 type MenuOpenCloseOper = {
   menuRecordKey: string;

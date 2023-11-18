@@ -115,8 +115,8 @@ import apiSlice from "../../../../../slice/apiSlice";
 import { SysTabPane } from "../../../components/SysTabPane";
 import { EachTabPanelProp, TabNavProp } from "../../../definitions/WB_Types";
 import { useLeftTabsList } from "../../../definitions/WB_Common";
-import GenTabs from "../../../components/GenTabs";
 import layoutSlice from "../../../../../slice/LayoutSlice";
+import GenTabs from "../../../components/GenTabs";
 
 export let FunctionalMenu = (props: TabNavProp) => {
   let leftTabs: EachTabPanelProp[] = useLeftTabsList();

@@ -114,8 +114,8 @@ import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
 
 import { EachTabPanelProp } from "./WB_Types";
-import { InnerToolPanel } from "../LeftInnerPanel/Biz_InnerPanel_Tool";
-import { InnerFilePanel } from "../LeftInnerPanel/Biz_InnerPanel_File";
+import { InnerToolPanel } from "../WB_CenterStage/nav/functional/panel-group/panels/ToolPanel";
+import { InnerFilePanel } from "../WB_CenterStage/nav/functional/panel-group/panels/FilePanel";
 import {
   useMergeParamWithWorkSpace,
   useMergeParameter,

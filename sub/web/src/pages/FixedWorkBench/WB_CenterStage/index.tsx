@@ -113,14 +113,14 @@ import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
 
 import { RefAlloProp, VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
-import { MainStage } from "../layout_ltr/MainStageCenter";
+import { MainStage } from "./sub/CenterFirstLayer";
 import { SidebarMenu } from "./nav/sidebar/Biz_SidebarMenu";
 import { FunctionalMenu } from "./nav/functional";
 import {
   FN_CLOSE_LTR_MENU,
   FN_SHOW_LTR_MENU,
   FN_TAB_ITEM_CLICKED_FN,
-} from "../LeftInnerPanel/Ctrl_Left_FunctionalMenu";
+} from "./nav/functional/panel-group/controls/FunctionalControls";
 
 export let WB_CenterStage = () => {
   let dis = exportUtils.dispatch();

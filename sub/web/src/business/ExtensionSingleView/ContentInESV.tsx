@@ -84,7 +84,7 @@ import AlertUtils from "../../utils/AlertUtils";
 import ToolSlice from "../../slice/toolSlice";
 import { ELEVATION_0 } from "@blueprintjs/core/lib/esm/common/classes";
 import GenEditor from "../../components/GenEditor";
-import GenTabs from "../../components/GenTabs";
+import GenTabs from "../../components/NouseGenTabs";
 import { Select, Switch } from "@blueprintjs/icons";
 import FormSelect from "../../components/FormSelect";
 import FormSwitch from "../../components/FormSwitch";

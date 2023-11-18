@@ -66,15 +66,15 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../nocycle";
+import { APPINFOJSON, delayFN } from "../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
-import gutils from "../../../utils/GlobalUtils";
-import { logutils } from "../../../utils/LogUtils";
+import gutils from "../../../../../../../utils/GlobalUtils";
+import { logutils } from "../../../../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../styles/routeMem";
-import statusSlice from "../../../slice/StatusSlice";
+import RouteMem from "../../../../../../../styles/routeMem";
+import statusSlice from "../../../../../../../slice/StatusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   withRouter,
@@ -85,15 +85,17 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-import URLUtils from "../../../utils/URLUtils";
-import TranslationUtils, { Dot } from "../../../utils/TranslationUtils";
+import URLUtils from "../../../../../../../utils/URLUtils";
+import TranslationUtils, {
+  Dot,
+} from "../../../../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
-import exportUtils from "../../../utils/ExportUtils";
+import exportUtils from "../../../../../../../utils/ExportUtils";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../../slice/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../../slice/SystemSlice";
+} from "../../../../../../../slice/ForgeSlice";
+import { ACTION_callRefreshAll } from "../../../../../../../slice/SystemSlice";
 import {
   ID_FILES,
   ID_HISTORY as ID_MANUAL,
@@ -103,25 +105,25 @@ import {
   URL_WORKBENCH_FILES,
   URL_WORKBENCH_MANUALS as URL_WORKBENCH_MANUAL,
   URL_WORKBENCH_NOTES,
-} from "../../../styles/path";
-import FixedWorkBenchTool from "../../FixedWorkBenchTool";
-import FixedWorkBenchFiles from "../../FixedWorkBenchFiles";
+} from "../../../../../../../styles/path";
+import FixedWorkBenchTool from "../../../../../../FixedWorkBenchTool";
+import FixedWorkBenchFiles from "../../../../../../FixedWorkBenchFiles";
 
-import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
-import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
+import FixedWorkBenchHistory from "../../../../../../FixedWorkBenchHistory";
+import FixedWorkBenchNotes from "../../../../../../FixedWorkBenchNotes";
 import { type } from "jquery";
-import apiSlice from "../../../slice/apiSlice";
+import apiSlice from "../../../../../../../slice/apiSlice";
 
-import RightCtrlForFunctionalMenu from "./Ctrl_Left_FunctionalMenu";
-import FunctionalMenu_Panel from "./FunctionalMenu_Panel";
+import RightCtrlForFunctionalMenu from "../controls/FunctionalControls";
+import FunctionalMenu_Panel from "..";
 import QueryUtils, {
   getAjaxValueRes as getAjaxValueRes,
-} from "../../../utils/QueryUtils";
+} from "../../../../../../../utils/QueryUtils";
 import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
-} from "../definitions/WB_Func";
-import ToolExtensionTree from "../left_tool/ToolExtensionTree";
+} from "../../../../../definitions/WB_Func";
+import ToolExtensionTree from "./ToolExtensionTree";
 
 export let InnerToolPanel = (): any => {
   const res_toolCategory = apiSlice.useGetToolCategoryQuery(
