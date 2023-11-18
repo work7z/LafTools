@@ -67,7 +67,6 @@ import {
   Regions,
 } from "@blueprintjs/table";
 import { APPINFOJSON, FN_GetDispatch, delayFN } from "../../../nocycle";
-import { SystemStatusBarItem } from "../../_trash/WorkBench/cpt/SystemStatusBar/index";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -107,13 +106,16 @@ import {
 } from "../../../styles/path";
 import FixedWorkBenchTool from "../../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../../FixedWorkBenchFiles";
-import WorkBenchNotes from "../../_trash/WorkBenchNotes";
+
 import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
 import { SysTabPane } from "../cpt/SysTabPane";
-import { VAL_CSS_MENU_TITLE_PANEL } from "../common/WB_Types";
+import {
+  SystemStatusBarItem,
+  VAL_CSS_MENU_TITLE_PANEL,
+} from "../common/WB_Types";
 import { useMergeParamWithWorkSpace, useSearchQuery } from "../common/WB_Func";
 import {
   FN_ACTION_CloseMenu_ltr,

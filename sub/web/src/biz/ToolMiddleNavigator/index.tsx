@@ -83,6 +83,7 @@ import { URL_WORKBENCH_TOOLS } from "../../styles/path";
 import URLUtils from "../../utils/URLUtils";
 import forgeSlice from "../../slice/ForgeSlice";
 import ExtHookUtils from "../../utils/ExtensionHookUtils";
+import { PassToolViewerProp } from "../../pages/FixedWorkBench/common/WB_Types";
 
 type PassProp = PassToolViewerProp;
 

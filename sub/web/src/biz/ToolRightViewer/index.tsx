@@ -73,6 +73,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import ExtensionSingleView from "../ExtensionSingleView";
+import { PassToolViewerProp } from "../../pages/FixedWorkBench/common/WB_Types";
 
 type PassProp = PassToolViewerProp;
 

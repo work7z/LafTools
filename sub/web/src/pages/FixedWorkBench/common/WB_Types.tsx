@@ -17,6 +17,7 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import { Intent } from "@blueprintjs/core";
 
 export type FnPureToolDefinition = {
   id: string;
@@ -31,6 +32,17 @@ export const fn_GetAllPureMenuArr = (): FnPureToolDefinition[] => {
   return [];
 };
 
+export type SystemStatusBarItem = {
+  // define a struct for status bar
+  text: string;
+  icon?: string;
+  onClick: () => void;
+  active: boolean;
+  disabled: boolean;
+  tooltip: string;
+  intent: Intent;
+  id: string;
+};
 export type RefAlloProp = {
   ref_p: any;
   ref_left: any;
