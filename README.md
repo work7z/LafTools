@@ -82,7 +82,7 @@ What you can do is to
 With full test coverage and efforts from the CodeGen community, we are firmly convinced that the software can grow faster and stronger. 
 
 
-##📝 A Letter to CodeGen ToolBox Users  
+## A Letter to CodeGen ToolBox Users  
 Greetings from the CodeGen ToolBox team. 
 
 In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.  
