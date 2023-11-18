@@ -111,9 +111,10 @@ import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
-import { SysTabPane } from "../components/SysTabPane";
+
 import RightCtrlForFunctionalMenu from "./Ctrl_Left_FunctionalMenu";
 import { MenuDropDownListItem } from "../common/WB_Types";
+import { SysTabPane } from "../components/SysTabPane";
 
 export default (props: {
   loading: boolean;

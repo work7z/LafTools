@@ -116,7 +116,7 @@ import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
-import { SysTabPane } from "../components/SysTabPane";
+
 import layoutSlice from "../../../slice/LayoutSlice";
 import {
   FN_ACTION_CloseMenu_ltr,

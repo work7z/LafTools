@@ -130,6 +130,7 @@ import GenCodeMirror from "../../../components/GenCodeMirror";
 export let InnerCenterView = () => {
   return (
     <div className="icv w-full h-full">
+      <div>this is content2</div>
       {/* <GenHorizontalTab tabs={[]}></GenHorizontalTab> */}
     </div>
   );

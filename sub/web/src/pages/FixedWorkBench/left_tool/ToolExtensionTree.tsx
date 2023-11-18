@@ -116,7 +116,6 @@ import apiSlice, {
   ExtensionInfo,
   ListExtForTheCategoryRes,
 } from "../../../slice/apiSlice";
-import { SysTabPane } from "../components/SysTabPane";
 import QueryUtils, {
   getAjaxValueRes as getAjaxValueRes,
 } from "../../../utils/QueryUtils";

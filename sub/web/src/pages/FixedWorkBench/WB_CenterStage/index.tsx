@@ -111,7 +111,7 @@ import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
-import { SysTabPane } from "../components/SysTabPane";
+
 import { RefAlloProp, VAL_CSS_TAB_TITLE_PANEL } from "../common/WB_Types";
 import { MainStage } from "../layout_ltr/MainStageCenter";
 import { SidebarMenu } from "./nav/sidebar/Biz_SidebarMenu";
