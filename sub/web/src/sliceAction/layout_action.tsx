@@ -25,7 +25,7 @@ import ExtHookUtils, { ExtQuickAllType } from "../utils/ExtensionHookUtils";
 import {
   ExtVMContext,
   PropExtSessionContext,
-} from "../biz/ExtensionSingleView";
+} from "../business/ExtensionSingleView";
 import CacheUtils from "../utils/CacheUtils";
 import AjaxUtils from "../utils/AjaxUtils";
 import _ from "lodash";

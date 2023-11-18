@@ -83,15 +83,15 @@ import forgeSlice from "../../slice/ForgeSlice";
 import AlertUtils from "../../utils/AlertUtils";
 import ToolSlice from "../../slice/toolSlice";
 import { ELEVATION_0 } from "@blueprintjs/core/lib/esm/common/classes";
-import GenEditor from "../../cpt/GenEditor";
-import GenTabs from "../../cpt/GenTabs";
+import GenEditor from "../../components/GenEditor";
+import GenTabs from "../../components/GenTabs";
 import { Select, Switch } from "@blueprintjs/icons";
-import FormSelect from "../../cpt/FormSelect";
-import FormSwitch from "../../cpt/FormSwitch";
+import FormSelect from "../../components/FormSelect";
+import FormSwitch from "../../components/FormSwitch";
 import ExtHookUtils, {
   PassExtQuickAllType,
 } from "../../utils/ExtensionHookUtils";
-import FormSyncGroup from "../../cpt/FormSyncGroup";
+import FormSyncGroup from "../../components/FormSyncGroup";
 import ExtSlice, {
   ACTION_processFileAction,
   ACTION_processTextAction,
@@ -102,7 +102,7 @@ import ExtSlice, {
   fn_call_convert_with_action as ACTION_fn_call_ext_for_action,
   fn_call_convert_with_action,
 } from "../../slice/ExtSlice";
-import Blink from "../../cpt/Blink";
+import Blink from "../../components/Blink";
 import BigTextSlice from "../../slice/BigTextSlice";
 import statusSlice, {
   ProcessLoadType,

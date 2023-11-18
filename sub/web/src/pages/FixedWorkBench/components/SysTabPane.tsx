@@ -112,7 +112,7 @@ import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
 import { SysTabPaneProp } from "../common/WB_Types";
-import Blink from "../../../cpt/Blink";
+import Blink from "../../../components/Blink";
 import { CSS_TEXT_ANCHOR_CSS } from "../../../styles/tw";
 
 export let SysTabPane = (props: {} & SysTabPaneProp) => {

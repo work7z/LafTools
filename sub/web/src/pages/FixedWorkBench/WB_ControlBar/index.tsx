@@ -111,7 +111,7 @@ import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
-import { SysTabPane } from "../cpt/SysTabPane";
+import { SysTabPane } from "../components/SysTabPane";
 import {
   SystemStatusBarItem,
   VAL_CSS_MENU_TITLE_PANEL,

@@ -26,7 +26,7 @@ import {
   AdminUserPassProp as LocalAdminUserPassProp,
   UserPassProp as LocalUserPassProp,
   UserPassCreateProp,
-} from "../biz/UserAskMultipleDialogs";
+} from "../business/UserAskMultipleDialogs";
 import gutils from "../utils/GlobalUtils";
 import { PayloadValueData } from "../styles/var";
 import { Dot } from "../utils/TranslationUtils";

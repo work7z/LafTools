@@ -23,7 +23,7 @@ import { ExtensionAction, ExtensionVM, ValueRes } from "./apiSlice";
 import {
   ExtVMContext,
   PropExtSessionContext,
-} from "../biz/ExtensionSingleView";
+} from "../business/ExtensionSingleView";
 import CacheUtils from "../utils/CacheUtils";
 import statusSlice from "./StatusSlice";
 import AjaxUtils from "../utils/AjaxUtils";

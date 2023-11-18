@@ -116,15 +116,15 @@ import apiSlice, {
   ExtensionInfo,
   ListExtForTheCategoryRes,
 } from "../../../slice/apiSlice";
-import { SysTabPane } from "../cpt/SysTabPane";
+import { SysTabPane } from "../components/SysTabPane";
 import QueryUtils, {
   getAjaxValueRes as getAjaxValueRes,
 } from "../../../utils/QueryUtils";
 import { useMergeParamWithWorkSpace, useSearchQuery } from "../common/WB_Func";
 import RouteUtils from "../../../utils/RouteUtils";
 import ToolSlice from "../../../slice/toolSlice";
-import MottoLine from "../../../cpt/MottoLine";
-import GenTree from "../../../cpt/GenTree";
+import MottoLine from "../../../components/MottoLine";
+import GenTree from "../../../components/GenTree";
 import { FnPureToolDefinition } from "../common/WB_Types";
 
 export default (props: {

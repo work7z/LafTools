@@ -110,8 +110,8 @@ import FixedWorkBenchHistory from "../../../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../../../slice/apiSlice";
-import { SysTabPane } from "../../../cpt/SysTabPane";
-import GenTabs from "../../../cpt/GenTabs";
+import { SysTabPane } from "../../../components/SysTabPane";
+import GenTabs from "../../../components/GenTabs";
 import { EachTabPanelProp, TabNavProp } from "../../../common/WB_Types";
 import { FN_ACTION_CloseMenu_ltr } from "../../../../../sliceAction/layout_action";
 import {

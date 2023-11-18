@@ -62,8 +62,8 @@ import {
   ACTION_getLangData,
   ACTION_initAllDataAtOnce,
 } from "../slice/SystemSlice";
-import LinkHref from "../cpt/LinkHref";
-import PasswordInput from "../cpt/PasswordInput";
+import LinkHref from "../components/LinkHref";
+import PasswordInput from "../components/PasswordInput";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   ACTION_createLocalAccount,
@@ -72,9 +72,9 @@ import {
 import AlertUtils from "../utils/AlertUtils";
 import { PutNewDialogReqProp, TOOL_PutNewDialog } from "../slice/DialogSlice";
 import ALL_NOCYCLE, { FN_GetDispatch } from "../nocycle";
-import { UserPassCreateProp } from "../biz/UserAskMultipleDialogs";
+import { UserPassCreateProp } from "../business/UserAskMultipleDialogs";
 import apiSlice from "../slice/apiSlice";
-import MutationResLabel from "../cpt/MutationResLabel";
+import MutationResLabel from "../components/MutationResLabel";
 
 export const FN_testDialogHere = () => {
   // FN_ForgotPassword();

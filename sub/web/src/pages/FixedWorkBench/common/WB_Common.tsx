@@ -112,7 +112,7 @@ import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
-import { SysTabPane } from "../cpt/SysTabPane";
+import { SysTabPane } from "../components/SysTabPane";
 import { EachTabPanelProp } from "./WB_Types";
 import { InnerToolPanel } from "../LeftInnerPanel/Biz_InnerPanel_Tool";
 import { InnerFilePanel } from "../LeftInnerPanel/Biz_InnerPanel_File";

@@ -121,8 +121,7 @@ import {
   FN_CLOSE_LTR_MENU,
   FN_SHOW_LTR_MENU,
 } from "../LeftInnerPanel/Ctrl_Left_FunctionalMenu";
-import GenCodeMirror from "../../../cpt/GenCodeMirror";
-import GenHorizontalTab from "../cpt/GenHorizontalTab";
+import GenCodeMirror from "../../../components/GenCodeMirror";
 
 {
   /* <GenCodeMirror></GenCodeMirror> */

@@ -63,8 +63,8 @@ import {
   ACTION_getLangData,
   ACTION_initAllDataAtOnce,
 } from "../../slice/SystemSlice";
-import LinkHref from "../../cpt/LinkHref";
-import PasswordInput from "../../cpt/PasswordInput";
+import LinkHref from "../../components/LinkHref";
+import PasswordInput from "../../components/PasswordInput";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   ACTION_createAdminAccount,
@@ -77,10 +77,10 @@ import {
 } from "../../slice/DialogSlice";
 import { FN_ForgotPassword, FN_ShowNewLocalAccount } from "../../styles/dialog";
 import apiSlice from "../../slice/apiSlice";
-import MutationResLabel from "../../cpt/MutationResLabel";
-import QueryResLabel from "../../cpt/QueryResLabel";
+import MutationResLabel from "../../components/MutationResLabel";
+import QueryResLabel from "../../components/QueryResLabel";
 import TokenUtils from "../../utils/TokenUtils";
-import FormSelect from "../../cpt/FormSelect";
+import FormSelect from "../../components/FormSelect";
 import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 

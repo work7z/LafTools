@@ -59,18 +59,18 @@ import {
   SectionCard,
 } from "@blueprintjs/core";
 import { Dot } from "../../utils/TranslationUtils";
-import Blink from "../../cpt/Blink";
+import Blink from "../../components/Blink";
 import gutils from "../../utils/GlobalUtils";
 import eUtils from "../../utils/ExportUtils";
-import AboutSoftware from "../../cpt/AboutSoftware";
+import AboutSoftware from "../../components/AboutSoftware";
 import systemSlice, {
   ACTION_callInitAllDataAtOnceFromInitSystemEnv,
   ACTION_initAllDataAtOnce,
 } from "../../slice/SystemSlice";
 import { useEffect } from "react";
 import { CLZ_SECOND_TEXT } from "../../styles/var";
-import ConfirmICON from "../../cpt/ConfirmICON";
-import UserAskMultipleDialogs from "../../biz/UserAskMultipleDialogs";
+import ConfirmICON from "../../components/ConfirmICON";
+import UserAskMultipleDialogs from "../../business/UserAskMultipleDialogs";
 import ConcurrencyUtils from "../../utils/ConcurrencyUtils";
 import { KEY_CONCURRENCY_SYSTEM_INIT } from "../../styles/concurrency";
 

@@ -111,8 +111,8 @@ import FixedWorkBenchHistory from "../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../slice/apiSlice";
-import { SysTabPane } from "./cpt/SysTabPane";
-import GenTabs from "./cpt/GenTabs";
+import { SysTabPane } from "./components/SysTabPane";
+import GenTabs from "./components/GenTabs";
 import { useLeftTabsList } from "./common/WB_Common";
 import {
   EachTabPanelProp,

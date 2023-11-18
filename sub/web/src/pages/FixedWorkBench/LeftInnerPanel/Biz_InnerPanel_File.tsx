@@ -111,7 +111,7 @@ import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
-import { SysTabPane } from "../cpt/SysTabPane";
+import { SysTabPane } from "../components/SysTabPane";
 import FunctionalMenu_Panel from "./FunctionalMenu_Panel";
 
 export let InnerFilePanel = (): any => {

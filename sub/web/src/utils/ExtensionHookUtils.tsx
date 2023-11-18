@@ -78,7 +78,7 @@ import {
   ExtVMContext,
   PropExtSessionContext,
   PropExtVMContext,
-} from "../biz/ExtensionSingleView";
+} from "../business/ExtensionSingleView";
 import { logutils } from "./LogUtils";
 import { FN_GetState } from "../nocycle";
 import BigTextSlice from "../slice/BigTextSlice";

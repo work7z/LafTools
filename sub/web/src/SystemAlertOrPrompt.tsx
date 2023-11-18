@@ -69,7 +69,7 @@ import $ from "jquery";
 import _ from "lodash";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";
 import InitSystemEnv from "./pages/InitSystemEnv";
-import UserAskMultipleDialogs from "./biz/UserAskMultipleDialogs";
+import UserAskMultipleDialogs from "./business/UserAskMultipleDialogs";
 import gutils from "./utils/GlobalUtils";
 import TranslationUtils, { Dot } from "./utils/TranslationUtils";
 import URLUtils from "./utils/URLUtils";

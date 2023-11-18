@@ -39,7 +39,7 @@ import {
 import Welcome from "./pages/Welcome";
 
 import RouteComponent from "./Route";
-import UserAskMultipleDialogs from "./biz/UserAskMultipleDialogs";
+import UserAskMultipleDialogs from "./business/UserAskMultipleDialogs";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";
 import InitSystemEnv from "./pages/InitSystemEnv";
 import SystemAlertOrPrompt from "./SystemAlertOrPrompt";
