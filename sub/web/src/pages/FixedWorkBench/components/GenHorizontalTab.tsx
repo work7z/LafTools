@@ -154,7 +154,11 @@ export default () => {
               isCurrent
                 ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] "
                 : " dark:hover:bg-gray-600 "
-            }  ${isCurrent ? "bg-white hover:bg-white " : ""}`}
+            }  ${
+              isCurrent
+                ? "  bg-white hover:bg-white dark:text-white dark:bg-gray-500 dark:hover:bg-gray-500 "
+                : ""
+            }`}
           >
             <Icon
               icon={tab.icon as any}
