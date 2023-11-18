@@ -12,7 +12,7 @@ Preview(简体中文):
 
 # Introduction 
 
-You may wonder why we are determined to develop this toolbox in your development if there are already numerous alternatives for those commonly used tools on online websites.
+You may wonder why we are determined to develop this toolbox if there are numerous alternatives for those commonly used tools on online websites.
 
 Indeed, most tools in our toolbox can be found on any online website and you also can collect them easily into your favorites in the browser, such as common encryption and decryption, translation tools, generating QR codes, etc…  
 
