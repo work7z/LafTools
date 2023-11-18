@@ -67,7 +67,7 @@ import {
   Regions,
 } from "@blueprintjs/table";
 import { APPINFOJSON, delayFN } from "../../nocycle";
-import { SystemStatusBarItem } from "../WorkBench/cpt/SystemStatusBar/index";
+import { SystemStatusBarItem } from "../_trash/WorkBench/cpt/SystemStatusBar/index";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -107,7 +107,7 @@ import {
 } from "../../styles/path";
 import FixedWorkBenchTool from "../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../FixedWorkBenchFiles";
-import WorkBenchNotes from "../WorkBenchNotes";
+import WorkBenchNotes from "../_trash/WorkBenchNotes";
 import FixedWorkBenchHistory from "../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../FixedWorkBenchNotes";
 import { type } from "jquery";
@@ -124,9 +124,9 @@ import {
   VAL_CSS_MENU_TITLE_PANEL,
   VAL_CSS_TAB_TITLE_PANEL,
 } from "./common/WB_Types";
-import { FixedWebNavFooter } from "./TopMiddleFoot/WB_Footer_StatusBar";
-import { FixedWebNavTop } from "./TopMiddleFoot/WB_Top_Navbar";
-import { FixedWebNavBody } from "./TopMiddleFoot/WB_Middle_MainStage";
+import { FixedWebNavFooter } from "./WB_StatusBar";
+import { FixedWebNavTop } from "./WB_MenuBar";
+import { FixedWebNavBody } from "./WB_CenterStage";
 import "./index.scss";
 
 export default () => {

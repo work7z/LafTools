@@ -63,7 +63,7 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 import Welcome from "./pages/Welcome";
-import WorkBench from "./pages/WorkBench";
+import WorkBench from "./pages/_trash/WorkBench";
 import Setup from "./pages/Setup";
 import $ from "jquery";
 import _ from "lodash";

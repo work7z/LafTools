@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Mon, 25 Sep 2023
+// Date: Tue, 26 Sep 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://codegen.cc
@@ -25,7 +25,6 @@ import {
   ProgressBar,
   AnchorButton,
   Tooltip,
-  Dialog,
   Drawer,
   Overlay,
   Alert,
@@ -37,6 +36,9 @@ import {
   HotkeysProvider,
   Intent,
   Position,
+  Dialog,
+  DialogBody,
+  DialogFooter,
   Toaster,
   Checkbox,
   NumericInput,
@@ -55,6 +57,7 @@ import {
   Card,
   Elevation,
   Button,
+  Divider,
 } from "@blueprintjs/core";
 import {
   ColumnHeaderCell,
@@ -65,8 +68,6 @@ import {
 } from "@blueprintjs/table";
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-import gutils from "../../utils/GlobalUtils";
-import { logutils } from "../../utils/LogUtils";
 import _ from "lodash";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
@@ -78,21 +79,35 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-import SystemBody from "./cpt/SystemBody";
-import SystemNav from "./cpt/SystemNav";
-import SystemStatusBar from "./cpt/SystemStatusBar";
+import exportUtils from "../../../../../utils/ExportUtils";
+import forgeSlice, {
+  ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
+} from "../../../../../slice/ForgeSlice";
+import { Dot } from "../../../../../utils/TranslationUtils";
+import gutils from "../../../../../utils/GlobalUtils";
+import systemSlice, {
+  ACTION_callRefreshAll,
+  ACTION_initAllDataAtOnce,
+} from "../../../../../slice/SystemSlice";
+import { BlueprintIcons_16 } from "@blueprintjs/icons/lib/esm/generated/16px/blueprint-icons-16";
+import statusSlice from "../../../../../slice/StatusSlice";
 import "./index.scss";
-import URLUtils from "../../utils/URLUtils";
-import { Dot } from "../../utils/TranslationUtils";
+import {
+  ID_FILES,
+  ID_HISTORY,
+  ID_NOTES,
+  ID_TOOLS,
+  URL_WORKBENCH_FILES,
+  URL_WORKBENCH_MANUALS,
+  URL_WORKBENCH_NOTES,
+  SUB_URL_WORKBENCH_TOOLS_CATEGORY,
+} from "../../../../../styles/path";
+import RouteMem from "../../../../../styles/routeMem";
+import { TOOL_PutNewDialog } from "../../../../../slice/DialogSlice";
+import ALL_NOCYCLE, { APPINFOJSON } from "../../../../../nocycle";
 
-const WorkBench = () => {
-  return (
-    <div className="workbench-wrapper flex-parent " style={{}}>
-      <SystemNav></SystemNav>
-      <SystemBody></SystemBody>
-      <SystemStatusBar></SystemStatusBar>
-    </div>
-  );
+const SystemNav = () => {
+  return <div></div>;
 };
 
-export default WorkBench;
+export default SystemNav;

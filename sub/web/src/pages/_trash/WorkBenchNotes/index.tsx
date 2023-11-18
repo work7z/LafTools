@@ -56,10 +56,10 @@ import {
   Elevation,
   Button,
 } from "@blueprintjs/core";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../../utils/TranslationUtils";
 
 interface PassProp {}
 
 export default (prop: PassProp) => {
-  return <div>{Dot("4jdGe", "Not yet supported.")} for Tools</div>;
+  return <div>{Dot("0JeOH", "Not yet supported.")} for Notes</div>;
 };

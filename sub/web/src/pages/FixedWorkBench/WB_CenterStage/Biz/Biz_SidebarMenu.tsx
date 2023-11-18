@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Tue, 14 Nov 2023
+// Date: Sun, 12 Nov 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://codegen.cc
@@ -66,8 +66,8 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, FN_GetDispatch, delayFN } from "../../../../nocycle";
-import { SystemStatusBarItem } from "../../../WorkBench/cpt/SystemStatusBar/index";
+import { APPINFOJSON, delayFN } from "../../../../nocycle";
+import { SystemStatusBarItem } from "../../../_trash/WorkBench/cpt/SystemStatusBar/index";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -107,45 +107,110 @@ import {
 } from "../../../../styles/path";
 import FixedWorkBenchTool from "../../../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../../../FixedWorkBenchFiles";
-import WorkBenchNotes from "../../../WorkBenchNotes";
+import WorkBenchNotes from "../../../_trash/WorkBenchNotes";
 import FixedWorkBenchHistory from "../../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../../slice/apiSlice";
 import { SysTabPane } from "../../cpt/SysTabPane";
-import { EachTabPanelProp, TabNavProp } from "../../common/WB_Types";
-import { useLeftTabsList } from "../../common/WB_Common";
 import GenTabs from "../../cpt/GenTabs";
-import layoutSlice from "../../../../slice/LayoutSlice";
+import { EachTabPanelProp, TabNavProp } from "../../common/WB_Types";
 import { FN_ACTION_CloseMenu_ltr } from "../../../../sliceAction/layout_action";
+import {
+  useMergeParamWithWorkSpace,
+  useSearchQuery,
+} from "../../common/WB_Func";
 
-export default () => {
+let RightPanelNoAvailablePanel = () => {
+  let dis = exportUtils.dispatch();
   return (
     <SysTabPane
-      crtLeftNavId="drawer"
+      crtLeftNavId="not_finished_yet"
       leftNavList={[
         {
-          label: Dot("dqTqyvWY", "Drawer Menu"),
-          value: "drawer",
+          label: Dot("qTqyvWdY", "Not finished yet"),
+          value: "not_finished_yet",
         },
       ]}
       rightCtrls={
         <Button
-          onClick={() => {
-            let dis = FN_GetDispatch();
-            dis(
-              FN_ACTION_CloseMenu_ltr({
-                menuRecordKey: "ttm",
-                menuKey: "bottom",
-              })
-            );
-          }}
           small
           minimal
           rightIcon="minus"
+          onClick={() => {
+            dis(
+              FN_ACTION_CloseMenu_ltr({
+                menuRecordKey: "ltr",
+                menuKey: "right",
+              })
+            );
+          }}
         ></Button>
       }
-      children={<div>{Dot("qpDBSW", "no available panel")}</div>}
+      children={
+        <div>{Dot("pDBSWq", "no available content for right panel")}</div>
+      }
     ></SysTabPane>
+  );
+};
+
+export let SidebarMenu = (props: TabNavProp): any => {
+  let dis = exportUtils.dispatch();
+  let mp_with_ws = useMergeParamWithWorkSpace();
+  let sq = useSearchQuery();
+  let rightMenu: EachTabPanelProp[] = useMemo(() => {
+    let tmparr: EachTabPanelProp[] = [
+      {
+        desc: Dot("pEk1qkk", "List all the opened tabs"),
+        icon: "grid-view",
+        id: "grid-view",
+        label: Dot("RNeBze0", "Opened Tabs"),
+      },
+      {
+        desc: Dot("dkkq12", "Configure your tool in this tab."),
+        icon: "cog",
+        id: "cog",
+        label: Dot("RNewBze0", "Tool Config"),
+      },
+      {
+        desc: Dot(
+          "dkkq12q",
+          "The calculated result will be shown in this panel."
+        ),
+        icon: "export",
+        id: "export",
+        label: Dot("RNewBzde0", "Result"),
+      },
+    ];
+    return tmparr.map((x) => {
+      return {
+        ...x,
+        pathname: mp_with_ws({ e: x.id }),
+        panel: x.panel || RightPanelNoAvailablePanel,
+      };
+    });
+  }, [_.values(sq)]);
+  let activeId = sq.e || _.get(rightMenu, "0.id");
+
+  let v = exportUtils.useSelector((v) => {
+    return {
+      // show
+      right_hide: v.layout.menuHide.right,
+    };
+  });
+
+  return (
+    <GenTabs
+      highlightIntent={"success"}
+      className={props.className}
+      showNavOrContent={props.showNavOrContent}
+      whichPart="right"
+      activeId={v.right_hide ? "" : activeId + ""}
+      onItemClicked={(a, b) => {
+        props.onItemClicked && props.onItemClicked(a, b);
+      }}
+      onActiveIdChange={(x) => 1}
+      tabs={rightMenu}
+    ></GenTabs>
   );
 };

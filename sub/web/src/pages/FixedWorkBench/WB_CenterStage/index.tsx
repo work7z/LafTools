@@ -67,7 +67,7 @@ import {
   Regions,
 } from "@blueprintjs/table";
 import { APPINFOJSON, FN_GetState, delayFN } from "../../../nocycle";
-import { SystemStatusBarItem } from "../../WorkBench/cpt/SystemStatusBar/index";
+import { SystemStatusBarItem } from "../../_trash/WorkBench/cpt/SystemStatusBar/index";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -107,7 +107,7 @@ import {
 } from "../../../styles/path";
 import FixedWorkBenchTool from "../../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../../FixedWorkBenchFiles";
-import WorkBenchNotes from "../../WorkBenchNotes";
+import WorkBenchNotes from "../../_trash/WorkBenchNotes";
 import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
@@ -115,8 +115,8 @@ import apiSlice from "../../../slice/apiSlice";
 import { SysTabPane } from "../cpt/SysTabPane";
 import { RefAlloProp, VAL_CSS_TAB_TITLE_PANEL } from "../common/WB_Types";
 import { MainStage } from "../layout_ltr/MainStageCenter";
-import { SidebarMenu } from "./middle/Biz_SidebarMenu";
-import { FunctionalMenu } from "./middle/Biz_FunctionalMenu";
+import { SidebarMenu } from "./Biz/Biz_SidebarMenu";
+import { FunctionalMenu } from "./Biz/Biz_FunctionalMenu";
 import {
   FN_CLOSE_LTR_MENU,
   FN_SHOW_LTR_MENU,

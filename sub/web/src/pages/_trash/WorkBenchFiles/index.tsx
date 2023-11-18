@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Tue, 3 Oct 2023
+// Date: Sun, 1 Oct 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://codegen.cc
@@ -18,17 +18,50 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Dot } from "../../utils/TranslationUtils";
+import localforage from "localforage";
+import {
+  Callout,
+  PanelStack,
+  ProgressBar,
+  AnchorButton,
+  Tooltip,
+  Dialog,
+  Drawer,
+  Overlay,
+  Alert,
+  RadioGroup,
+  MenuItem,
+  Radio,
+  ButtonGroup,
+  TextArea,
+  HotkeysProvider,
+  Intent,
+  Position,
+  Toaster,
+  Checkbox,
+  NumericInput,
+  FormGroup,
+  HTMLSelect,
+  ControlGroup,
+  InputGroup,
+  Navbar,
+  NavbarHeading,
+  NonIdealState,
+  NavbarDivider,
+  NavbarGroup,
+  Alignment,
+  Classes,
+  Icon,
+  Card,
+  Elevation,
+  Button,
+} from "@blueprintjs/core";
+import { Dot } from "../../../utils/TranslationUtils";
 
-export type FnPureToolDefinition = {
-  id: string;
-  label: string;
-};
-export interface PassToolViewerProp {
-  category: string | null | undefined;
-  findCurrentPureItem: FnPureToolDefinition | null | undefined;
-}
+interface PassProp {}
 
-export const fn_GetAllPureMenuArr = (): FnPureToolDefinition[] => {
-  return [];
+export default (prop: PassProp) => {
+  return (
+    <div>{Dot("U0CTE", "Not yet supported for this functionalites.")}</div>
+  );
 };

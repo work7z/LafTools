@@ -47,7 +47,7 @@ import TranslationUtils, { Dot } from "../../utils/TranslationUtils";
 import {
   FnPureToolDefinition,
   PassToolViewerProp,
-} from "../../pages/WorkBenchTool/tool_definitions";
+} from "../../pages/_trash/WorkBenchTool/tool_definitions";
 import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";

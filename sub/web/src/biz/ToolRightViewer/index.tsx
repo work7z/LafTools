@@ -65,7 +65,7 @@ import { Dot } from "../../utils/TranslationUtils";
 import {
   FnPureToolDefinition,
   PassToolViewerProp,
-} from "../../pages/WorkBenchTool/tool_definitions";
+} from "../../pages/_trash/WorkBenchTool/tool_definitions";
 import {
   withRouter,
   BrowserRouter as Router,

@@ -67,7 +67,7 @@ import {
   Regions,
 } from "@blueprintjs/table";
 import { APPINFOJSON, delayFN } from "../../../../nocycle";
-import { SystemStatusBarItem } from "../../../WorkBench/cpt/SystemStatusBar/index";
+import { SystemStatusBarItem } from "../../../_trash/WorkBench/cpt/SystemStatusBar/index";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -85,6 +85,7 @@ import {
   Link,
   useHistory,
   Redirect,
+  useLocation,
 } from "react-router-dom";
 import URLUtils from "../../../../utils/URLUtils";
 import TranslationUtils, { Dot } from "../../../../utils/TranslationUtils";
@@ -107,110 +108,79 @@ import {
 } from "../../../../styles/path";
 import FixedWorkBenchTool from "../../../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../../../FixedWorkBenchFiles";
-import WorkBenchNotes from "../../../WorkBenchNotes";
+import WorkBenchNotes from "../../../_trash/WorkBenchNotes";
 import FixedWorkBenchHistory from "../../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../../slice/apiSlice";
 import { SysTabPane } from "../../cpt/SysTabPane";
-import GenTabs from "../../cpt/GenTabs";
 import { EachTabPanelProp, TabNavProp } from "../../common/WB_Types";
-import { FN_ACTION_CloseMenu_ltr } from "../../../../sliceAction/layout_action";
-import {
-  useMergeParamWithWorkSpace,
-  useSearchQuery,
-} from "../../common/WB_Func";
+import { useLeftTabsList } from "../../common/WB_Common";
+import GenTabs from "../../cpt/GenTabs";
+import layoutSlice from "../../../../slice/LayoutSlice";
 
-let RightPanelNoAvailablePanel = () => {
-  let dis = exportUtils.dispatch();
-  return (
-    <SysTabPane
-      crtLeftNavId="not_finished_yet"
-      leftNavList={[
-        {
-          label: Dot("qTqyvWdY", "Not finished yet"),
-          value: "not_finished_yet",
-        },
-      ]}
-      rightCtrls={
-        <Button
-          small
-          minimal
-          rightIcon="minus"
-          onClick={() => {
-            dis(
-              FN_ACTION_CloseMenu_ltr({
-                menuRecordKey: "ltr",
-                menuKey: "right",
-              })
-            );
-          }}
-        ></Button>
-      }
-      children={
-        <div>{Dot("pDBSWq", "no available content for right panel")}</div>
-      }
-    ></SysTabPane>
-  );
-};
+export let FunctionalMenu = (props: TabNavProp) => {
+  let leftTabs: EachTabPanelProp[] = useLeftTabsList();
 
-export let SidebarMenu = (props: TabNavProp): any => {
   let dis = exportUtils.dispatch();
-  let mp_with_ws = useMergeParamWithWorkSpace();
-  let sq = useSearchQuery();
-  let rightMenu: EachTabPanelProp[] = useMemo(() => {
-    let tmparr: EachTabPanelProp[] = [
-      {
-        desc: Dot("pEk1qkk", "List all the opened tabs"),
-        icon: "grid-view",
-        id: "grid-view",
-        label: Dot("RNeBze0", "Opened Tabs"),
-      },
-      {
-        desc: Dot("dkkq12", "Configure your tool in this tab."),
-        icon: "cog",
-        id: "cog",
-        label: Dot("RNewBze0", "Tool Config"),
-      },
-      {
-        desc: Dot(
-          "dkkq12q",
-          "The calculated result will be shown in this panel."
-        ),
-        icon: "export",
-        id: "export",
-        label: Dot("RNewBzde0", "Result"),
-      },
-    ];
-    return tmparr.map((x) => {
-      return {
-        ...x,
-        pathname: mp_with_ws({ e: x.id }),
-        panel: x.panel || RightPanelNoAvailablePanel,
-      };
-    });
-  }, [_.values(sq)]);
-  let activeId = sq.e || _.get(rightMenu, "0.id");
+  let hist = useHistory();
+
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  // Get individual query parameters
+  const functionalID = query.get("f") || "tools";
+
+  let activeId = functionalID;
+  // React.useMemo(() => {
+  //   // let n = hist.location.pathname.split("/")[2];
+  //   // let findItemIdx = _.findIndex(leftTabs, (x2) => {
+  //   //   let n2 = (x2?.pathname + "").split("/")[2];
+  //   //   return n == n2;
+  //   // });
+  //   // let findItem = leftTabs[findItemIdx];
+  //   // let activeId2 = findItem?.id;
+  //   // return activeId2;
+  // }, [hist.location.pathname]);
+
+  let currentActiveMenu = _.find(leftTabs, (x) => {
+    return x.id == activeId;
+  });
+
+  URLUtils.useUpdateTitle(_.get(currentActiveMenu, "label"), [activeId]);
+
+  // let dis = exportUtils.dispatch();
 
   let v = exportUtils.useSelector((v) => {
     return {
       // show
-      right_hide: v.layout.menuHide.right,
+      left_hide: v.layout.menuHide.left,
     };
   });
 
   return (
     <GenTabs
-      highlightIntent={"success"}
+      highlightIntent={"primary"}
       className={props.className}
       showNavOrContent={props.showNavOrContent}
-      whichPart="right"
-      activeId={v.right_hide ? "" : activeId + ""}
-      onItemClicked={(a, b) => {
-        props.onItemClicked && props.onItemClicked(a, b);
+      whichPart="left"
+      activeId={v.left_hide ? "" : activeId}
+      onItemClicked={(x, b1) => {
+        if (props.showNavOrContent != "nav") {
+          alert("added a wrong placement");
+        }
+        props.onItemClicked && props.onItemClicked(x, b1);
       }}
-      onActiveIdChange={(x) => 1}
-      tabs={rightMenu}
+      onActiveIdChange={(x) => {
+        dis(statusSlice.actions.updatePlateId({ value: x.id }));
+        let finPathName = x.pathname;
+        if (RouteMem[x.id]) {
+          finPathName = RouteMem[x.id];
+        }
+        if (finPathName) {
+          hist.push(finPathName);
+        }
+      }}
+      tabs={leftTabs}
     ></GenTabs>
   );
 };

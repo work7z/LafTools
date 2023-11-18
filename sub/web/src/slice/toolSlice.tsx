@@ -30,7 +30,7 @@ import { Dispatch } from "react";
 import AjaxUtils from "../utils/AjaxUtils";
 import { logutils } from "../utils/LogUtils";
 import URLUtils from "../utils/URLUtils";
-import { FnPureToolDefinition } from "../pages/WorkBenchTool/tool_definitions";
+import { FnPureToolDefinition } from "../pages/_trash/WorkBenchTool/tool_definitions";
 import { TreeNodeInfo } from "@blueprintjs/core";
 import { TreeWrapInfo } from "../styles/var";
 import _ from "lodash";

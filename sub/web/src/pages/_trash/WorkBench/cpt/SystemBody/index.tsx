@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Sun, 1 Oct 2023
+// Date: Tue, 26 Sep 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://codegen.cc
@@ -56,12 +56,40 @@ import {
   Elevation,
   Button,
 } from "@blueprintjs/core";
-import { Dot } from "../../utils/TranslationUtils";
+import {
+  ColumnHeaderCell,
+  Cell,
+  Column,
+  Table,
+  Regions,
+} from "@blueprintjs/table";
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
+import _ from "lodash";
+import { useState, useContext, useCallback, useRef } from "react";
+import {
+  withRouter,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+  Redirect,
+} from "react-router-dom";
+import {
+  URL_WORKBENCH_FILES,
+  URL_WORKBENCH_MANUALS,
+  URL_WORKBENCH_NOTES,
+  SUB_URL_WORKBENCH_TOOLS_CATEGORY,
+} from "../../../../../styles/path";
+import WorkBenchTool from "../../../WorkBenchTool";
+import WorkBenchNotes from "../../../WorkBenchNotes";
+import WorkBenchFiles from "../../../WorkBenchFiles";
+import WorkBenchHistory from "../../../WorkBenchHistory";
+import "./index.scss";
 
-interface PassProp {}
-
-export default (prop: PassProp) => {
-  return (
-    <div>{Dot("U0CTE", "Not yet supported for this functionalites.")}</div>
-  );
+const SystemBody = () => {
+  return <div></div>;
 };
+
+export default SystemBody;

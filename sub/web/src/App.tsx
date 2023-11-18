@@ -37,7 +37,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Welcome from "./pages/Welcome";
-import WorkBench from "./pages/WorkBench";
+import WorkBench from "./pages/_trash/WorkBench";
 import RouteComponent from "./Route";
 import UserAskMultipleDialogs from "./biz/UserAskMultipleDialogs";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";

@@ -81,14 +81,14 @@ import {
   URL_WORKBENCH_MANUALS,
   URL_WORKBENCH_NOTES,
   SUB_URL_WORKBENCH_TOOLS_CATEGORY,
-} from "../../../../styles/path";
+} from "../../../../../styles/path";
 import WorkBenchTool from "../../../WorkBenchTool";
 import WorkBenchNotes from "../../../WorkBenchNotes";
 import WorkBenchFiles from "../../../WorkBenchFiles";
 import WorkBenchHistory from "../../../WorkBenchHistory";
 import "./index.scss";
-import { APPINFOJSON } from "../../../../nocycle";
-import { Dot } from "../../../../utils/TranslationUtils";
+import { APPINFOJSON } from "../../../../../nocycle";
+import { Dot } from "../../../../../utils/TranslationUtils";
 
 export type SystemStatusBarItem = {
   // define a struct for status bar

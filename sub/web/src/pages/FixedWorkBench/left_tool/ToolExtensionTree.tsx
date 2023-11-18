@@ -68,7 +68,7 @@ import {
   Regions,
 } from "@blueprintjs/table";
 import { APPINFOJSON, delayFN } from "../../../nocycle";
-import { SystemStatusBarItem } from "../../WorkBench/cpt/SystemStatusBar/index";
+import { SystemStatusBarItem } from "../../_trash/WorkBench/cpt/SystemStatusBar/index";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -109,7 +109,7 @@ import {
 } from "../../../styles/path";
 import FixedWorkBenchTool from "../../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../../FixedWorkBenchFiles";
-import WorkBenchNotes from "../../WorkBenchNotes";
+import WorkBenchNotes from "../../_trash/WorkBenchNotes";
 import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
@@ -126,7 +126,7 @@ import RouteUtils from "../../../utils/RouteUtils";
 import ToolSlice from "../../../slice/toolSlice";
 import MottoLine from "../../../cpt/MottoLine";
 import GenTree from "../../../cpt/GenTree";
-import { FnPureToolDefinition } from "../../WorkBenchTool/tool_definitions";
+import { FnPureToolDefinition } from "../../_trash/WorkBenchTool/tool_definitions";
 
 export default (props: {
   activeOne: FnPureToolDefinition | undefined;

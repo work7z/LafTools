@@ -72,7 +72,7 @@ import {
   FN_GetState,
   delayFN,
 } from "../../../nocycle";
-import { SystemStatusBarItem } from "../../WorkBench/cpt/SystemStatusBar/index";
+import { SystemStatusBarItem } from "../../_trash/WorkBench/cpt/SystemStatusBar/index";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -112,7 +112,7 @@ import {
 } from "../../../styles/path";
 import FixedWorkBenchTool from "../../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../../FixedWorkBenchFiles";
-import WorkBenchNotes from "../../WorkBenchNotes";
+import WorkBenchNotes from "../../_trash/WorkBenchNotes";
 import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";

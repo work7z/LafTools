@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Sun, 12 Nov 2023
+// Date: Tue, 14 Nov 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://codegen.cc
@@ -66,8 +66,8 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../../nocycle";
-import { SystemStatusBarItem } from "../../../WorkBench/cpt/SystemStatusBar/index";
+import { APPINFOJSON, FN_GetDispatch, delayFN } from "../../../../nocycle";
+import { SystemStatusBarItem } from "../../../_trash/WorkBench/cpt/SystemStatusBar/index";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -85,7 +85,6 @@ import {
   Link,
   useHistory,
   Redirect,
-  useLocation,
 } from "react-router-dom";
 import URLUtils from "../../../../utils/URLUtils";
 import TranslationUtils, { Dot } from "../../../../utils/TranslationUtils";
@@ -108,7 +107,7 @@ import {
 } from "../../../../styles/path";
 import FixedWorkBenchTool from "../../../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../../../FixedWorkBenchFiles";
-import WorkBenchNotes from "../../../WorkBenchNotes";
+import WorkBenchNotes from "../../../_trash/WorkBenchNotes";
 import FixedWorkBenchHistory from "../../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../../FixedWorkBenchNotes";
 import { type } from "jquery";
@@ -118,69 +117,35 @@ import { EachTabPanelProp, TabNavProp } from "../../common/WB_Types";
 import { useLeftTabsList } from "../../common/WB_Common";
 import GenTabs from "../../cpt/GenTabs";
 import layoutSlice from "../../../../slice/LayoutSlice";
+import { FN_ACTION_CloseMenu_ltr } from "../../../../sliceAction/layout_action";
 
-export let FunctionalMenu = (props: TabNavProp) => {
-  let leftTabs: EachTabPanelProp[] = useLeftTabsList();
-
-  let dis = exportUtils.dispatch();
-  let hist = useHistory();
-
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
-  // Get individual query parameters
-  const functionalID = query.get("f") || "tools";
-
-  let activeId = functionalID;
-  // React.useMemo(() => {
-  //   // let n = hist.location.pathname.split("/")[2];
-  //   // let findItemIdx = _.findIndex(leftTabs, (x2) => {
-  //   //   let n2 = (x2?.pathname + "").split("/")[2];
-  //   //   return n == n2;
-  //   // });
-  //   // let findItem = leftTabs[findItemIdx];
-  //   // let activeId2 = findItem?.id;
-  //   // return activeId2;
-  // }, [hist.location.pathname]);
-
-  let currentActiveMenu = _.find(leftTabs, (x) => {
-    return x.id == activeId;
-  });
-
-  URLUtils.useUpdateTitle(_.get(currentActiveMenu, "label"), [activeId]);
-
-  // let dis = exportUtils.dispatch();
-
-  let v = exportUtils.useSelector((v) => {
-    return {
-      // show
-      left_hide: v.layout.menuHide.left,
-    };
-  });
-
+export default () => {
   return (
-    <GenTabs
-      highlightIntent={"primary"}
-      className={props.className}
-      showNavOrContent={props.showNavOrContent}
-      whichPart="left"
-      activeId={v.left_hide ? "" : activeId}
-      onItemClicked={(x, b1) => {
-        if (props.showNavOrContent != "nav") {
-          alert("added a wrong placement");
-        }
-        props.onItemClicked && props.onItemClicked(x, b1);
-      }}
-      onActiveIdChange={(x) => {
-        dis(statusSlice.actions.updatePlateId({ value: x.id }));
-        let finPathName = x.pathname;
-        if (RouteMem[x.id]) {
-          finPathName = RouteMem[x.id];
-        }
-        if (finPathName) {
-          hist.push(finPathName);
-        }
-      }}
-      tabs={leftTabs}
-    ></GenTabs>
+    <SysTabPane
+      crtLeftNavId="drawer"
+      leftNavList={[
+        {
+          label: Dot("dqTqyvWY", "Drawer Menu"),
+          value: "drawer",
+        },
+      ]}
+      rightCtrls={
+        <Button
+          onClick={() => {
+            let dis = FN_GetDispatch();
+            dis(
+              FN_ACTION_CloseMenu_ltr({
+                menuRecordKey: "ttm",
+                menuKey: "bottom",
+              })
+            );
+          }}
+          small
+          minimal
+          rightIcon="minus"
+        ></Button>
+      }
+      children={<div>{Dot("qpDBSW", "no available panel")}</div>}
+    ></SysTabPane>
   );
 };

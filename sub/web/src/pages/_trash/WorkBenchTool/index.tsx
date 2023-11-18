@@ -56,7 +56,7 @@ import {
   Elevation,
   Button,
 } from "@blueprintjs/core";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../../utils/TranslationUtils";
 import "./index.scss";
 import _ from "lodash";
 import {
@@ -70,20 +70,20 @@ import {
 import {
   SUB_URL_WORKBENCH_TOOLS_CATEGORY,
   URL_WORKBENCH_TOOLS,
-} from "../../styles/path";
+} from "../../../styles/path";
 import { Link } from "react-router-dom";
-import gutils from "../../utils/GlobalUtils";
-import ToolMiddleNavigator from "../../biz/ToolMiddleNavigator";
-import { PayloadListData, ToolParamType } from "../../styles/var";
-import ToolRightViewer from "../../biz/ToolRightViewer";
+import gutils from "../../../utils/GlobalUtils";
+import ToolMiddleNavigator from "../../../biz/ToolMiddleNavigator";
+import { PayloadListData, ToolParamType } from "../../../styles/var";
+import ToolRightViewer from "../../../biz/ToolRightViewer";
 import { FnPureToolDefinition, PassToolViewerProp } from "./tool_definitions";
-import apiSlice from "../../slice/apiSlice";
-import QueryUtils from "../../utils/QueryUtils";
+import apiSlice from "../../../slice/apiSlice";
+import QueryUtils from "../../../utils/QueryUtils";
 import { useEffect } from "react";
-import exportUtils from "../../utils/ExportUtils";
-import NotYetOkie from "../../cpt/NotYetOkie";
-import URLUtils from "../../utils/URLUtils";
-import ToolLeftCatagory from "../../biz/ToolLeftCatagory";
+import exportUtils from "../../../utils/ExportUtils";
+import NotYetOkie from "../../../cpt/NotYetOkie";
+import URLUtils from "../../../utils/URLUtils";
+import ToolLeftCatagory from "../../../biz/ToolLeftCatagory";
 
 interface PassProp {}
 
