@@ -1,5 +1,5 @@
 # LafTools
-The next generation of an versatile toolbox designed for programmers, which is 
+The next generation of a versatile toolbox designed for programmers, which is 
 - Fully Open Source 
 - Offline Capable  
 - Cross-Platform 
@@ -38,13 +38,13 @@ If the answer to any of the above is Yes, then you should have a try with our to
 
 
 Example Preview:
-Here’re some screenshots for you to preview how is this toolbox working.
+Here are some screenshots for you to preview how this toolbox works.
 
 (TO BE CONTINUE)
 
 ## Cool! So is it a free software?
 
-Yes, you can follow the license but please notice an open-source software does not mean it’s a free service. 
+Yes, you can follow the license but please notice that open-source software does not mean it’s a free service. 
 
 It’s a PAID service if you’re a regular user.
 It’s a FREE service if you’re a contributor.
