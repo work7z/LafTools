@@ -60,7 +60,15 @@ npm run start
 ### Local Address  
 Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing!
 
-
+For instance: 
+```output
+-----------------------------------------------
+PLEASE ACCESS THE LINK BELOW IN BROWSER.
+请复制下方链接并在浏览器端打开(for zh_CN users)
+請復製下方鏈接並在瀏覽器端打開(for zh_HK users)
+http://127.0.0.1:35000/app/entry?t=e9056a52857f11ee8cc7186590df157b  
+-----------------------------------------------
+```
 
 
 
