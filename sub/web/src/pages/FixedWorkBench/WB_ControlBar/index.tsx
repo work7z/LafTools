@@ -114,13 +114,40 @@ import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
 import { SysTabPane } from "../cpt/SysTabPane";
 import { VAL_CSS_MENU_TITLE_PANEL } from "../common/WB_Types";
-import { SystemStatusBarItemElement } from "../TopMiddleFoot/foot/SystemStatusBarItemElement";
 import { useSearchQuery } from "../common/WB_Func";
 import {
   FN_ACTION_CloseMenu_ltr,
   FN_ACTION_OpenMenu_ltr,
   FN_ACTION_OpenMenu_ttm,
 } from "../../../sliceAction/layout_action";
+const SystemStatusBarItemElement = (props: SystemStatusBarItem) => {
+  let p_ws = useMergeParamWithWorkSpace();
+  return (
+    <Tooltip
+      content={props.tooltip}
+      position={Position.BOTTOM}
+      disabled={props.disabled}
+    >
+      <Link
+        to={p_ws({
+          b: props.id,
+        })}
+      >
+        <Button
+          minimal={true}
+          text={props.text}
+          small={true}
+          className="statusbar-item focus:outline-none"
+          icon={props.icon as any}
+          onClick={props.onClick}
+          active={props.active}
+          disabled={props.disabled}
+          intent={props.intent}
+        />
+      </Link>
+    </Tooltip>
+  );
+};
 
 export let WB_ControllerBar = () => {
   let sq = useSearchQuery();
