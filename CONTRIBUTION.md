@@ -15,12 +15,12 @@ To start developing, please check if you are familiar with the technologies we u
 
 We’re looking forward to your contribution.
 
-For F/E development:
+For Front-end development:
 - React
 - BluePrint.js
 - Tailwind.css
 
-For B/E development:
+For Back-end development:
 - Go
 - Node.js
 
@@ -33,6 +33,8 @@ To write our docs concisely, we will not elaborate every detail about those 3rd 
 
 
 ## Architecture 
+
+TODO: 
 
 Client (Web, Desktop, IDE Plugin)
 <interact with>
