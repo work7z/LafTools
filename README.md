@@ -39,8 +39,15 @@ Here are some screenshots for you to preview how this toolbox works.
 (TO BE CONTINUE)
 
 
-## Quick Start 
+# Getting Started   
 > If you're using Windows, please ensure below commands will be executed in git-bash, further detail please [read contribution.md at first](CONTRIBUTION.md)
+
+### Setup System Environ
+Note that you should set the system environment $CODEGEN_GO_ROOT in your bash. If you don't how to set it, you can just trigger below command when you just new a terminal. 
+```bash
+# Let's say if you clone this repo to /users/xxxx/we/laftools-repo, then you should set it as the value of CODEGEN_GO_ROOT   
+export CODEGEN_GO_ROOT=/users/xxxx/we/laftools-repo
+```
 
 ### Launch Go service
 We have configured the local development config for Go in the file .vscode/launch.json
@@ -52,12 +59,13 @@ We have configured the local development config for Go in the file .vscode/launc
 ```bash
 cd sub/web 
 # install deps
+npm i -g ts-node tsc typescript
 npm i -S -D --verbose 
 # start webpack service 
 npm run start 
 ```
 
-### Local Address  
+### Access Local Service  
 Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing!
 
 For instance: 
@@ -70,6 +78,8 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
+### Build  
+this part will be updated once MVP is released.
 
 
 ## 🙋 Cool! So is it a free software?
