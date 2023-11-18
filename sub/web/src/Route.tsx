@@ -76,7 +76,7 @@ let RouteComponent = () => {
   );
   return (
     <div
-      className={" " + (forgeObj.dark ? " bp5-dark " : " ")}
+      className={" " + (forgeObj.dark ? " bp5-dark dark " : " ")}
       key={forgeObj.lang}
     >
       {innerJSX}

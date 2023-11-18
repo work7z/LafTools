@@ -14,8 +14,13 @@ div,.fixed-wb-nav-menu{
 }
 
 .small-close-btn{
-    @apply w-3 h-3 rounded hover:bg-gray-200 hover:bg-opacity-80 hover:cursor-pointer !inline-flex items-center justify-center ;
+    @apply w-3 h-3 rounded hover:bg-gray-200 hover:bg-opacity-80 hover:cursor-pointer !inline-flex items-center justify-center dark:hover:bg-gray-400;
 }
+.small-close-btn.gen-active{
+    @apply hover:bg-gray-200 dark:hover:bg-gray-200;
+}
+
+
 
 .small-close-btn svg{
     @apply fill-gray-300 w-2

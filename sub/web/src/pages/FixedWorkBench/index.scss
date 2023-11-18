@@ -64,6 +64,10 @@ $sys-tab-h: $val-height-menu-foot * 1;
   // @include fn-bg-color($light-gray4, $dark-gray4);
   @include fn-bg-color(#e4eefb, #2b323d);
 }
+.using-edge-ui-bg {
+  @include edge-ui-bg();
+}
+
 .nav-same-menu {
   // @include edge-ui-bg();
 }

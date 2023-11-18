@@ -136,13 +136,13 @@ export default () => {
     { id: "tab2", label: "Tab 2", icon: "application" },
     { id: "tab3", label: "Tab 3", icon: "application" },
   ];
-  let commonBG = " bg-gray-100   ";
+  let commonBG = "  ";
   return (
     <div
       style={{
         height: VAL_CSS_TAB_TITLE_PANEL,
       }}
-      className={` flex space-x-0 h-full  w-full border-b-2 border-b-gray-300 ${commonBG} `}
+      className={` flex space-x-0 h-full   w-full border-b-2 border-b-gray-300 dark:border-b-gray-600  using-edge-ui-bg ${commonBG} `}
     >
       {tabs.map((tab) => {
         let isCurrent = activeTab === tab.id;
@@ -150,9 +150,11 @@ export default () => {
           <div
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`  hover:bg-gray-300 flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] last:border-r-gray-300 px-1  ${
-              isCurrent ? "border-b-light-blue-600 border-b-[3px] " : " "
-            }  ${isCurrent ? "bg-white hover:bg-white " : commonBG}`}
+            className={`  hover:bg-gray-300  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${
+              isCurrent
+                ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] "
+                : " dark:hover:bg-gray-600 "
+            }  ${isCurrent ? "bg-white hover:bg-white " : ""}`}
           >
             <Icon
               icon={tab.icon as any}
@@ -162,7 +164,12 @@ export default () => {
             ></Icon>
             <span>{tab.icon}</span>
             <span>{tab.label}</span>
-            <Icon icon="cross" className="small-close-btn ml-1  "></Icon>
+            <Icon
+              icon="cross"
+              className={
+                "small-close-btn ml-1  " + ` ${isCurrent ? "gen-active" : ""} `
+              }
+            ></Icon>
             {/* <XIcon className="h-5 w-5 text-gray-500" /> */}
           </div>
         );
