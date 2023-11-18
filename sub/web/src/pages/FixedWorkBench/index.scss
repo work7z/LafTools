@@ -90,6 +90,7 @@ $sys-tab-h: $val-height-menu-foot * 1;
   @include fn-border-type('bottom');
   height: $nav-menu-h;
   @include edge-ui-bg();
+  @include no-focus-outline();
 }
 
 .sys-tab-pane-wp {

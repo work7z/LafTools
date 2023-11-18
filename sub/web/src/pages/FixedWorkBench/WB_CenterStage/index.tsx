@@ -115,15 +115,15 @@ import apiSlice from "../../../slice/apiSlice";
 import { SysTabPane } from "../cpt/SysTabPane";
 import { RefAlloProp, VAL_CSS_TAB_TITLE_PANEL } from "../common/WB_Types";
 import { MainStage } from "../layout_ltr/MainStageCenter";
-import { SidebarMenu } from "./Biz/Biz_SidebarMenu";
-import { FunctionalMenu } from "./Biz/Biz_FunctionalMenu";
+import { SidebarMenu } from "./nav/sidebar/Biz_SidebarMenu";
+import { FunctionalMenu } from "./nav/functional";
 import {
   FN_CLOSE_LTR_MENU,
   FN_SHOW_LTR_MENU,
   FN_TAB_ITEM_CLICKED_FN,
 } from "../LeftInnerPanel/Ctrl_Left_FunctionalMenu";
 
-export let FixedWebNavBody = () => {
+export let WB_CenterStage = () => {
   let dis = exportUtils.dispatch();
 
   let ref_allo: { current: RefAlloProp } = useRef({

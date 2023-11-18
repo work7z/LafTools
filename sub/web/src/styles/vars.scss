@@ -147,6 +147,14 @@ $common-border-color: #656a71 !default;
     border-#{$property}: 1px solid $common-border-color;
   }
 }
+:focus {
+  // outline: none;
+}
+@mixin no-focus-outline() {
+  &:focus {
+    outline: none;
+  }
+}
 @mixin fn-border-type-all() {
   @include fn-border-type('left');
   @include fn-border-type('right');

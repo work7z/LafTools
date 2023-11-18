@@ -219,7 +219,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
           : undefined,
       }}
     >
-      <div>
+      <div className="focus:outline-none">
         {props.requiredPageIcon ? (
           <Tooltip
             content={Dot(

@@ -114,9 +114,9 @@ import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../common/WB_Types";
-import { FunctionalMenu } from "../WB_CenterStage/Biz/Biz_FunctionalMenu";
-import { SidebarMenu } from "../WB_CenterStage/Biz/Biz_SidebarMenu";
-import Biz_DrawerMenu from "../WB_CenterStage/Biz/Biz_DrawerMenu";
+import { FunctionalMenu } from "../WB_CenterStage/nav/functional";
+import { SidebarMenu } from "../WB_CenterStage/nav/sidebar/Biz_SidebarMenu";
+import Biz_DrawerMenu from "../WB_CenterStage/nav/control";
 import layoutSlice from "../../../slice/LayoutSlice";
 import {
   FN_CLOSE_LTR_MENU,

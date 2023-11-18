@@ -122,7 +122,7 @@ import {
   FN_ACTION_OpenMenu_ttm,
 } from "../../../sliceAction/layout_action";
 
-export let FixedWebNavFooter = () => {
+export let WB_ControllerBar = () => {
   let sq = useSearchQuery();
   if (sq.b == undefined) {
     sq.b = "overview";

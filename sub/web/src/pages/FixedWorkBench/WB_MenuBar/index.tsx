@@ -116,7 +116,7 @@ import { SysTabPane } from "../cpt/SysTabPane";
 import { FixedMenuItem, langList } from "../common/WB_Types";
 import { FixedMenuBar } from "./sub/InnerMenuBar";
 
-export let FixedWebNavTop = () => {
+export let WB_MenuBar = () => {
   let val_1 = exportUtils.useSelector((val) => ({
     dark: val.forge.DarkThemeMode,
   }));

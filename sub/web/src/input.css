@@ -9,6 +9,6 @@
 .icon-remark{
     @apply hover:!bg-amber-200 !bg-opacity-60;
 }
-/* .bp5-button{
+div,.fixed-wb-nav-menu{
     @apply focus:outline-none;
-} */
+}

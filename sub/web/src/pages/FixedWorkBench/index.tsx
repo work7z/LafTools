@@ -124,17 +124,17 @@ import {
   VAL_CSS_MENU_TITLE_PANEL,
   VAL_CSS_TAB_TITLE_PANEL,
 } from "./common/WB_Types";
-import { FixedWebNavFooter } from "./WB_StatusBar";
-import { FixedWebNavTop } from "./WB_MenuBar";
-import { FixedWebNavBody } from "./WB_CenterStage";
+import { WB_ControllerBar as WB_ControllBar } from "./WB_ControlBar";
+import { WB_MenuBar as WB_MenuBar } from "./WB_MenuBar";
+import { WB_CenterStage as WB_CenterStage } from "./WB_CenterStage";
 import "./index.scss";
 
 export default () => {
   return (
     <div className="fixed-wb-p " style={{}}>
-      <FixedWebNavTop />
-      <FixedWebNavBody />
-      <FixedWebNavFooter />
+      <WB_MenuBar />
+      <WB_CenterStage />
+      <WB_ControllBar />
     </div>
   );
 };

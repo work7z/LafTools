@@ -23,16 +23,15 @@ Have you ever met the below issues while using those online tools?
 - Upsetting Advertisements
 - Data Leakage Issue.
 
-If the answer to any of the above is Yes, then you should have a try with our toolbox, which has 
-- Open Source, No Malicious Logic.
-- Lightweight Runtime(6MB RAM only).
-- Full Platforms Support(Including ARMv8)
-- AI native support(ChatGPT alike)
-- Highly integrated with productive UI.
-- Non-stop new tools in the future.
-- It can also be used over the Web and Docker.
-- Extra helpers: Notes, Manual, etc...
-
+If the answer to any of the above is yes, then you should consider trying our toolbox. It offers the following features:
+- Fully open-source code with no malicious logic
+- Lightweight runtime (requires only 6MB of RAM)
+- Full platform support (including ARMv8)
+- Native AI support (similar to ChatGPT)
+- Highly integrated with a productive UI
+- Continuous addition of new tools in the future
+- Can be used over the web and with Docker
+- Extra helpers such as notes, manuals, etc...
 
 Example Preview:
 Here are some screenshots for you to preview how this toolbox works.
