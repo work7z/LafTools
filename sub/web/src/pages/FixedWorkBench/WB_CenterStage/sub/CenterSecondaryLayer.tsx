@@ -124,14 +124,11 @@ import {
 import GenCodeMirror from "../../../../components/GenCodeMirror";
 import GenHorizontalTab from "../../components/GenHorizontalTab";
 
-{
-  /* <GenCodeMirror></GenCodeMirror> */
-}
-
 export let InnerCenterView = () => {
   return (
     <div className="icv w-full h-full">
       <GenHorizontalTab></GenHorizontalTab>
+      <GenCodeMirror></GenCodeMirror>
     </div>
   );
 };

@@ -38,6 +38,32 @@ Here are some screenshots for you to preview how this toolbox works.
 
 (TO BE CONTINUE)
 
+
+## Quick Start 
+> If you're using Windows, please ensure below commands will be executed in git-bash, further detail please [read contribution.md at first](CONTRIBUTION.md)
+
+### Launch Go service
+We have configured the local development config for Go in the file .vscode/launch.json
+1. Enter Visual Studio Code    
+2. Click "Run and Debug" on your sidebar  
+3. Click Run button.
+
+### Launch Front-end project
+```bash
+cd sub/web 
+# install deps
+npm i -S -D --verbose 
+# start webpack service 
+npm run start 
+```
+
+### Local Address  
+Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing!
+
+
+
+
+
 ## 🙋 Cool! So is it a free software?
 
 Yes, you can follow the license but please notice that open-source software does not mean it’s a free service. 
