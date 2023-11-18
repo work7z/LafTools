@@ -90,7 +90,7 @@ In the midst of this cold winter, we are thrilled to announce that CodeGen ToolB
 Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.  
 
 Our decision to completely open our source code was driven by the following reasons::   
-- To invite security inspections 
+- to conduct a security reviews 
 - To demonstrate the void of malicious logic or backdoors  
 - To welcome contributions from the community 
 - To build a strong reputation and earn trust.  

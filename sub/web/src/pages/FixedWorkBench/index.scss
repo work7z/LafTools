@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sat, 18 Nov 2023
 // Author: CodeGen ToolBox <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -122,6 +122,7 @@ $sys-tab-h: $val-height-menu-foot * 1;
   @include edge-ui-bg();
   &.tab-mode-left {
     @include fn-border-type('right');
+    margin-top: -1px;
   }
   &.tab-mode-right {
     @include fn-border-type('left');
