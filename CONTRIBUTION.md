@@ -79,7 +79,7 @@ Once the Node worker completes the process, it will return the data to Go(servic
 To have a good software quality and strong international support, please follow the code styles as below:
 - Any label, text or message in front-end or back-end project that will be visible to users should be wrriten in English, and be wrapped by Dot function. (Learn more in i18n setup).
 - Any comment for your changes should also be written in English.  
-- 
+- Consider performance and extensibility in your code.
 
 
 

@@ -46,7 +46,8 @@ Here are some screenshots for you to preview how this toolbox works.
 
 Yes, you can follow the license but please notice that open-source software does not mean it’s a free service. 
 
-It’s a PAID service if you’re a regular user.
+It’s a PAID service if you’re a regular user.  
+
 It’s a FREE service if you’re a contributor.
 
 Nearly all commercial companies will adopt a closed source code strategy to ensure their trade secrets will not be theft from. 
@@ -112,10 +113,13 @@ LafTools Team
 
 
 ## CopyRights
-All source codes in this project are protected by the License and the copyright law in China.
+All source codes in this project are protected by the License and copyright law in China.
 
-You may not use any of these source codes for commercial usage unless you obtain admission from us, otherwise, we are afraid that your behavior is against the license and agreement, and then unfortunately we will be forced to take legal action.
+You are permitted to use this software, whether built by us or by yourself, for personal or commercial use. However, please note that you may not use any of these source codes for commercial purposes unless you obtain permission from us. Failure to comply with this could be considered a breach of the license and agreement, and we may be forced to take legal action.
 
-In addition, you can technically remove the activation logic in the source code, however, please do not spread your distribution which is broken with the activation logic, otherwise, it can also be considered a violation.
+Additionally, you should not technically remove the activation logic in the source code and distribute it online. This is not in line with our intentions.
 
-Thanks for your understanding!
+Thank you for your understanding!
+
+Nov 18th, 2023
+LafTools Team
