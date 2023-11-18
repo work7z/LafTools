@@ -115,8 +115,11 @@ import apiSlice from "../../../slice/apiSlice";
 import {
   SystemStatusBarItem,
   VAL_CSS_MENU_TITLE_PANEL,
-} from "../common/WB_Types";
-import { useMergeParamWithWorkSpace, useSearchQuery } from "../common/WB_Func";
+} from "../definitions/WB_Types";
+import {
+  useMergeParamWithWorkSpace,
+  useSearchQuery,
+} from "../definitions/WB_Func";
 import {
   FN_ACTION_CloseMenu_ltr,
   FN_ACTION_OpenMenu_ltr,

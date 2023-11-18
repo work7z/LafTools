@@ -112,7 +112,7 @@ import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
 
-import { FixedMenuItem, langList } from "../common/WB_Types";
+import { FixedMenuItem, langList } from "../definitions/WB_Types";
 import { FixedMenuBar } from "./sub/InnerMenuBar";
 
 export let WB_MenuBar = () => {

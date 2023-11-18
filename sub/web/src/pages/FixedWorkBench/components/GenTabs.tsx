@@ -115,8 +115,8 @@ import {
   EachTabPanelProp,
   PropGenTabs,
   VAL_CSS_TAB_TITLE_PANEL,
-} from "../common/WB_Types";
-import { NoAvailablePanel } from "../common/WB_Common";
+} from "../definitions/WB_Types";
+import { NoAvailablePanel } from "../definitions/WB_Common";
 
 export default (props: PropGenTabs) => {
   let jsx_inner_panel = <NoAvailablePanel />;

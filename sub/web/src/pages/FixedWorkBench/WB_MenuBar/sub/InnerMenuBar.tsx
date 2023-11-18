@@ -116,7 +116,7 @@ import {
   FixedMenuBarProp,
   FixedMenuItem,
   VAL_CSS_MENU_TITLE_PANEL,
-} from "../../common/WB_Types";
+} from "../../definitions/WB_Types";
 
 export let FixedMenuBar = (props: FixedMenuBarProp) => {
   let [activeId, onActiveId] = useState(null);

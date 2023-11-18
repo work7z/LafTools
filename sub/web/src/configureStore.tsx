@@ -87,5 +87,11 @@ export default function configureAppStore() {
   //     );
   //   }
 
+  let hot = module["hot"] as any;
+
+  if (hot) {
+    hot?.accept();
+  }
+
   return store;
 }

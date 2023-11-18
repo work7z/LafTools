@@ -113,7 +113,7 @@ import { type } from "jquery";
 import apiSlice from "../../slice/apiSlice";
 import { SysTabPane } from "./components/SysTabPane";
 import GenTabs from "./components/GenTabs";
-import { useLeftTabsList } from "./common/WB_Common";
+import { useLeftTabsList } from "./definitions/WB_Common";
 import {
   EachTabPanelProp,
   FixedMenuBarProp,
@@ -122,7 +122,7 @@ import {
   TabNavProp,
   VAL_CSS_MENU_TITLE_PANEL,
   VAL_CSS_TAB_TITLE_PANEL,
-} from "./common/WB_Types";
+} from "./definitions/WB_Types";
 import { WB_ControllerBar as WB_ControllBar } from "./WB_ControlBar";
 import { WB_MenuBar as WB_MenuBar } from "./WB_MenuBar";
 import { WB_CenterStage as WB_CenterStage } from "./WB_CenterStage";

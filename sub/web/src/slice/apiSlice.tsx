@@ -27,7 +27,7 @@ import gutils from "../utils/GlobalUtils";
 import { UserConfig } from "./userSlice";
 import { url } from "inspector";
 import { param } from "jquery";
-import { FnPureToolDefinition } from "../pages/FixedWorkBench/common/WB_Types";
+import { FnPureToolDefinition } from "../pages/FixedWorkBench/definitions/WB_Types";
 
 let createNotProhibitedResources = (build, resName) => {
   return build.query({

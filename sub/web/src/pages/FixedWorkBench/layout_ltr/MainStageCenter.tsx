@@ -112,7 +112,7 @@ import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
-import { VAL_CSS_TAB_TITLE_PANEL } from "../common/WB_Types";
+import { VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
 import { FunctionalMenu } from "../WB_CenterStage/nav/functional";
 import { SidebarMenu } from "../WB_CenterStage/nav/sidebar/Biz_SidebarMenu";
 import Biz_DrawerMenu from "../WB_CenterStage/nav/control";

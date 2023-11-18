@@ -119,12 +119,15 @@ import apiSlice, {
 import QueryUtils, {
   getAjaxValueRes as getAjaxValueRes,
 } from "../../../utils/QueryUtils";
-import { useMergeParamWithWorkSpace, useSearchQuery } from "../common/WB_Func";
+import {
+  useMergeParamWithWorkSpace,
+  useSearchQuery,
+} from "../definitions/WB_Func";
 import RouteUtils from "../../../utils/RouteUtils";
 import ToolSlice from "../../../slice/toolSlice";
 import MottoLine from "../../../components/MottoLine";
 import GenTree from "../../../components/GenTree";
-import { FnPureToolDefinition } from "../common/WB_Types";
+import { FnPureToolDefinition } from "../definitions/WB_Types";
 
 export default (props: {
   activeOne: FnPureToolDefinition | undefined;

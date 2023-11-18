@@ -113,8 +113,8 @@ import FixedWorkBenchNotes from "../../../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../../../slice/apiSlice";
 import { SysTabPane } from "../../../components/SysTabPane";
-import { EachTabPanelProp, TabNavProp } from "../../../common/WB_Types";
-import { useLeftTabsList } from "../../../common/WB_Common";
+import { EachTabPanelProp, TabNavProp } from "../../../definitions/WB_Types";
+import { useLeftTabsList } from "../../../definitions/WB_Common";
 import GenTabs from "../../../components/GenTabs";
 import layoutSlice from "../../../../../slice/LayoutSlice";
 

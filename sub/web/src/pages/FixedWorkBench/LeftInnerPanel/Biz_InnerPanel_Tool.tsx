@@ -117,7 +117,10 @@ import FunctionalMenu_Panel from "./FunctionalMenu_Panel";
 import QueryUtils, {
   getAjaxValueRes as getAjaxValueRes,
 } from "../../../utils/QueryUtils";
-import { useMergeParamWithWorkSpace, useSearchQuery } from "../common/WB_Func";
+import {
+  useMergeParamWithWorkSpace,
+  useSearchQuery,
+} from "../definitions/WB_Func";
 import ToolExtensionTree from "../left_tool/ToolExtensionTree";
 
 export let InnerToolPanel = (): any => {

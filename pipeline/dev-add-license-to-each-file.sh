@@ -51,6 +51,17 @@ ext=${file##*.}
 echo "file_type is $file_type"
 echo "file: -3 is ${ext}"
 
+# if the file contains example or Example, then continue
+if grep -q "example" "$file"; then
+    echo "skip the example content"
+    continue
+fi
+
+if grep -q "Example" "$file"; then
+    echo "skip the Example content"
+    continue
+fi
+
 # check if the file contains "Copyright", if yes then continue
 if grep -q "Copyright" "$file"; then
     echo "skip the Copyright content"

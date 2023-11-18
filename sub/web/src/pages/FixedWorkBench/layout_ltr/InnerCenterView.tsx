@@ -112,7 +112,7 @@ import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
 import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
-import { VAL_CSS_TAB_TITLE_PANEL } from "../common/WB_Types";
+import { VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
 import { FunctionalMenu } from "../WB_CenterStage/nav/functional";
 import { SidebarMenu } from "../WB_CenterStage/nav/sidebar/Biz_SidebarMenu";
 import Biz_DrawerMenu from "../WB_CenterStage/nav/control";
@@ -122,6 +122,7 @@ import {
   FN_SHOW_LTR_MENU,
 } from "../LeftInnerPanel/Ctrl_Left_FunctionalMenu";
 import GenCodeMirror from "../../../components/GenCodeMirror";
+import GenHorizontalTab from "../components/GenHorizontalTab";
 
 {
   /* <GenCodeMirror></GenCodeMirror> */
@@ -130,8 +131,7 @@ import GenCodeMirror from "../../../components/GenCodeMirror";
 export let InnerCenterView = () => {
   return (
     <div className="icv w-full h-full">
-      <div>this is content2</div>
-      {/* <GenHorizontalTab tabs={[]}></GenHorizontalTab> */}
+      <GenHorizontalTab></GenHorizontalTab>
     </div>
   );
 };

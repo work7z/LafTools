@@ -113,7 +113,7 @@ import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
 
 import RightCtrlForFunctionalMenu from "./Ctrl_Left_FunctionalMenu";
-import { MenuDropDownListItem } from "../common/WB_Types";
+import { MenuDropDownListItem } from "../definitions/WB_Types";
 import { SysTabPane } from "../components/SysTabPane";
 
 export default (props: {

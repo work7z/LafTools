@@ -115,20 +115,60 @@ import {
   EachTabPanelProp,
   PropGenTabs,
   VAL_CSS_TAB_TITLE_PANEL,
-} from "../common/WB_Types";
-import { NoAvailablePanel } from "../common/WB_Common";
+} from "../definitions/WB_Types";
+import { NoAvailablePanel } from "../definitions/WB_Common";
 
 type EachTab = {
   id: string;
   label: string;
-  closable?: boolean;
 };
 
 type PassProp = {
   //
-  tabs: EachTab;
+  tabs?: EachTab[];
 };
 
-export default (props: PassProp) => {
-  return <div>gen horizontal tab</div>;
+export default () => {
+  const [activeTab, setActiveTab] = useState("tab1");
+
+  const tabs = [
+    { id: "tab1", label: "Tab 1", icon: "database" },
+    { id: "tab2", label: "Tab 2", icon: "application" },
+    { id: "tab3", label: "Tab 3", icon: "application" },
+  ];
+  let commonBG = " bg-gray-100   ";
+  return (
+    <div
+      style={{
+        height: VAL_CSS_TAB_TITLE_PANEL,
+      }}
+      className={` flex space-x-0 h-full  w-full border-b-2 border-b-gray-300 ${commonBG} `}
+    >
+      {tabs.map((tab) => {
+        let isCurrent = activeTab === tab.id;
+        return (
+          <div
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`  hover:bg-gray-300 flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] last:border-r-gray-300 px-1  ${
+              isCurrent ? "border-b-light-blue-600 border-b-[3px] " : " "
+            }  ${isCurrent ? "bg-white hover:bg-white " : commonBG}`}
+          >
+            <Icon
+              icon={tab.icon as any}
+              className={`h-5 w-5 !inline-flex items-center justify-center ${
+                isCurrent ? "blue-svg" : "gray-svg"
+              }  `}
+            ></Icon>
+            <span>{tab.icon}</span>
+            <span>{tab.label}</span>
+            <Icon icon="cross" className="small-close-btn ml-1  "></Icon>
+            {/* <XIcon className="h-5 w-5 text-gray-500" /> */}
+          </div>
+        );
+      })}
+    </div>
+  );
 };
+
+// border-b-gray-300 border-b-[1px]

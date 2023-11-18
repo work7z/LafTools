@@ -12,3 +12,20 @@
 div,.fixed-wb-nav-menu{
     @apply focus:outline-none;
 }
+
+.small-close-btn{
+    @apply w-3 h-3 rounded hover:bg-gray-200 hover:bg-opacity-80 hover:cursor-pointer !inline-flex items-center justify-center ;
+}
+
+.small-close-btn svg{
+    @apply fill-gray-300 w-2
+}
+.blue-svg,.gray-svg{
+    @apply w-3 h-3 ml-1 mr-1 mt-[2px];
+}
+.blue-svg svg{
+    @apply !fill-light-blue-600;
+}
+.gray-svg svg{
+    @apply !fill-gray-500;
+}
