@@ -43,9 +43,9 @@ Here are some screenshots for you to preview how this toolbox works.
 > If you're using Windows, please ensure below commands will be executed in git-bash, further detail please [read contribution.md at first](CONTRIBUTION.md)
 
 ### Setup System Environment
-Note that you should set the several system environments in your bash. If you don't how to set it, you can just trigger below commands when you new a terminal. 
+Please note that you need to set several system environment variables in your bash. If you're unsure how to do this, you can simply execute the following commands each time you open a new terminal:  
 ```bash
-# Let's say if you clone this repo to /users/xxxx/we/laftools-repo, then you should set it as the value of CODEGEN_GO_ROOT   
+#  For instance, if you've cloned this repository to `/users/xxxx/we/laftools-repo`, then you should set this path as the value for `CODEGEN_GO_ROOT`:
 export CODEGEN_GO_ROOT=/users/xxxx/we/laftools-repo
 ```
 
