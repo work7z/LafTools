@@ -55,7 +55,7 @@ But since we are developing a toolbox product, which usually stands closer to yo
 
 Also, we believe the source codes we provided as trade secrets in our team will not be theft as it's being safeguarded by the license we have chosen from the first day on.
 
-## Okie, so how about the pricing?
+## Pricing or Contribution
 
 Based on our years of project experience, we truly understand that a promising project and cloud service relies on the financial support of our users and contributions from the community.
 
@@ -67,7 +67,7 @@ Pricing Table can be viewed in this Link.
 
 Of course, there’s another option instead of just paying the bill. 
 
-As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a half-yearly premium membership.
+As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.
 
 What you can do is to
 - Add Unit Test
@@ -76,6 +76,8 @@ What you can do is to
 - Solve Any App Issue  
 - Enhance Performance		
 - Technical Implementation
+
+[Read Contribution Docs](CONTRIBUTION.md)
 
 With full test coverage and efforts from the CodeGen community, we are firmly convinced that the software can grow faster and stronger. 
 

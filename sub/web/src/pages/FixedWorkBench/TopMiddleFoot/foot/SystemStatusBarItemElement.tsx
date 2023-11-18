@@ -137,7 +137,7 @@ export const SystemStatusBarItemElement = (props: SystemStatusBarItem) => {
           minimal={true}
           text={props.text}
           small={true}
-          className="statusbar-item"
+          className="statusbar-item focus:outline-none"
           icon={props.icon as any}
           onClick={props.onClick}
           active={props.active}
