@@ -126,7 +126,7 @@ import RouteUtils from "../../../utils/RouteUtils";
 import ToolSlice from "../../../slice/toolSlice";
 import MottoLine from "../../../cpt/MottoLine";
 import GenTree from "../../../cpt/GenTree";
-import { FnPureToolDefinition } from "../../_trash/WorkBenchTool/tool_definitions";
+import { FnPureToolDefinition } from "../common/WB_Types";
 
 export default (props: {
   activeOne: FnPureToolDefinition | undefined;

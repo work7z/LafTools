@@ -18,6 +18,19 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+export type FnPureToolDefinition = {
+  id: string;
+  label: string;
+};
+export interface PassToolViewerProp {
+  category: string | null | undefined;
+  findCurrentPureItem: FnPureToolDefinition | null | undefined;
+}
+
+export const fn_GetAllPureMenuArr = (): FnPureToolDefinition[] => {
+  return [];
+};
+
 export type RefAlloProp = {
   ref_p: any;
   ref_left: any;
