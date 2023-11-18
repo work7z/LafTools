@@ -2,8 +2,8 @@
 
 To start developing this project, please ensure that you have installed below SDK and software below first, and kindly pay attention to their version for fear of any incompatiblity.
 
-- Node v14.0.0+
-- Go 18.0.0+
+- Node v14.17.3 and later
+- Go 1.21.1 and later
 - Git Bash
 - Visual Studio Code
 
