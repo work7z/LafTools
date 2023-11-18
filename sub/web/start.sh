@@ -13,6 +13,6 @@ fi
 # enter current start script dir
 cd "$(dirname "$0")"
 
-./job-syncstatic.sh &
-./job-tailwind.sh &
-BROWSER=none node scripts/start.js
+source ./job-syncstatic.sh &
+BROWSER=none node scripts/start.js &
+source ./job-tailwind.sh 
