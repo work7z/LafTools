@@ -6,7 +6,7 @@
 rm -rf dev-dist
 mkdir -p dev-dist
 
-cd $CODEGEN_GO_ROOT
+cd $LAFTOOLS_ROOT
 
 destFile=dev-dist/dev-middleware.bin
 echo "building $destFile"

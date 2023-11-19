@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "sync this file"
+echo "[JOB] sync static files"
 while [ 1 -eq 1 ];do 
     src=$PWD/public/static/
     target=$PWD/build/static/

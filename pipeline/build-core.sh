@@ -4,7 +4,7 @@ cd $(dirname $0)
 
 source ./env.sh
 
-cd $CODEGEN_GO_ROOT
+cd $LAFTOOLS_ROOT
 
 echo 'deleting dist folder...'
 rm -rf dist/

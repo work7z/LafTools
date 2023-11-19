@@ -45,8 +45,8 @@ Here are some screenshots for you to preview how this toolbox works.
 ### Setup System Environment
 Please note that you need to set several system environment variables in your bash. If you're unsure how to do this, you can simply execute the following commands each time you open a new terminal:  
 ```bash
-#  For instance, if you've cloned this repository to `/users/xxxx/we/laftools-repo`, then you should set this path as the value for `CODEGEN_GO_ROOT`:
-export CODEGEN_GO_ROOT=/users/xxxx/we/laftools-repo
+#  For instance, if you've cloned this repository to `/users/xxxx/we/laftools-repo`, then you should set this path as the value for `LAFTOOLS_ROOT`:
+export LAFTOOLS_ROOT=/users/xxxx/we/laftools-repo
 ```
 
 ### Launch Go service

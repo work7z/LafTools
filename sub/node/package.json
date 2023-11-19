@@ -8,6 +8,6 @@
     "websocket": "^1.0.34"
   },
   "scripts": {
-    "build": "$CODEGEN_GO_ROOT/sub/node/pipeline/build-tsx.sh"
+    "build": "$LAFTOOLS_ROOT/sub/node/pipeline/build-tsx.sh"
   }
 }

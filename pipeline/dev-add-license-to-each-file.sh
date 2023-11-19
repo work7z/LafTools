@@ -13,8 +13,8 @@
 # fi
 
 
-# exit when codegen_go_root has no value
-if [[ "$CODEGEN_GO_ROOT" = "" ]]; then
+# exit when LAFTOOLS_ROOT has no value
+if [[ "$LAFTOOLS_ROOT" = "" ]]; then
     exit
 fi
 
@@ -113,6 +113,6 @@ done
 }
 
 
-addLicense "$CODEGEN_GO_ROOT" "go"
-addLicense "$CODEGEN_GO_ROOT/sub" "scss"
-addLicense "$CODEGEN_GO_ROOT/sub" "tsx"
+addLicense "$LAFTOOLS_ROOT" "go"
+addLicense "$LAFTOOLS_ROOT/sub" "scss"
+addLicense "$LAFTOOLS_ROOT/sub" "tsx"

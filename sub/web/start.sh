@@ -4,9 +4,9 @@ rm -rf ./build
 # kill sub process when exit
 trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 
-# if CODEGEN_GO_ROOT is not there then quit 
-if [ ! -d "$CODEGEN_GO_ROOT" ]; then
-  echo "CODEGEN_GO_ROOT is not set"
+# if LAFTOOLS_ROOT is not there then quit 
+if [ ! -d "$LAFTOOLS_ROOT" ]; then
+  echo "LAFTOOLS_ROOT is not set"
   exit 1
 fi
 
@@ -15,9 +15,11 @@ cd "$(dirname "$0")"
 
 source ./job-syncstatic.sh &
 
-source ./job-tailwind.sh &
+nohup ./job-tailwind.sh &
 
-BROWSER=none node scripts/start.js &
+# BROWSER=none node scripts/start.js &
 
 # wait until all sub process end
 wait
+
+sleep 1000000

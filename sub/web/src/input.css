@@ -17,6 +17,12 @@ div,.fixed-wb-nav-menu{
     @apply w-3 h-3 rounded hover:bg-gray-200 hover:bg-opacity-80 hover:cursor-pointer !inline-flex items-center justify-center dark:hover:bg-gray-400;
 }
 
+
+.small-close-btn{
+    @apply w-3 h-3 rounded hover:bg-gray-200 hover:bg-opacity-80 hover:cursor-pointer !inline-flex items-center justify-center dark:hover:bg-gray-400;
+}
+
+
 .test2{
     @apply hover:bg-gray-200 dark:hover:bg-gray-200 ;
 }

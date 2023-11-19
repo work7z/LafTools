@@ -1,5 +1,5 @@
 #!/bin/bash
-cd $CODEGEN_GO_ROOT
+cd $LAFTOOLS_ROOT
 # /usr/local/go/bin/go test -count=1 -timeout 30s -run ^TestSendReqToNodeProcessForPerformance$ codegen-go/core/cmd -v
 # /usr/local/go/bin/go test -count=1 -timeout 30s -run ^TestSendReqToNodeProcess$ codegen-go/core/cmd -v
 # /usr/local/go/bin/go test -count=1 -timeout 30s -run ^TestSimplePutAndGet$ codegen-go/core/cmd -v
