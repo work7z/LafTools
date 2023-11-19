@@ -5,7 +5,7 @@ rm -rf ./build
 trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 
 # if LAFTOOLS_ROOT is not there then quit 
-if [ ! -d "$LAFTOOLS_ROOT" ]; then
+if [[ "$LAFTOOLS_ROOT" = "" ]]; then
   echo "LAFTOOLS_ROOT is not set"
   exit 1
 fi

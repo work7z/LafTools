@@ -42,33 +42,44 @@ Here are some screenshots for you to preview how this toolbox works.
 # 🍀 Getting Started   
 > If you're using Windows, please ensure below commands will be executed in git-bash, further detail please [read contribution.md at first](CONTRIBUTION.md)
 
-### Setup System Environment
-Please note that you need to set several system environment variables in your bash. If you're unsure how to do this, you can simply execute the following commands each time you open a new terminal:  
+## IMPORTANT NOTES   
+LafTools is still under development, its dependencies or prerequisites may changed as needed.
+
+
+## Setup System Environment
+Note that you need to set system environment variables in your bash before developing or building. If you're unsure how to do this, you can simply execute the following commands each time you open a new terminal:
+
+
+### LAFTOOLS_ROOT
+if you've cloned this repository to `/users/jerry/projects/laftools-repo`, then you should set this path as the value for `LAFTOOLS_ROOT`
+
+### Examples:  
 ```bash
-#  For instance, if you've cloned this repository to `/users/xxxx/we/laftools-repo`, then you should set this path as the value for `LAFTOOLS_ROOT`:
-export LAFTOOLS_ROOT=/users/xxxx/we/laftools-repo
+export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-### Launch Go service
+## Launch Go service
 We have configured the local development config for Go in the file .vscode/launch.json
 1. Enter Visual Studio Code    
 2. Click "Run and Debug" on your sidebar  
 3. Click Run button.
 
-### Launch Front-end project
+## Launch Front-end project
 ```bash
+
 cd sub/web 
 # install deps
+npm i -g pnpm
 npm i -g ts-node tsc typescript
-npm i -S -D --verbose 
+pnpm install
 # start webpack service 
 npm run start 
 ```
 
-### Access Local Service  
+## Access Local Service  
 Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing!
 
-For instance: 
+Examples: 
 ```output
 -----------------------------------------------
 PLEASE ACCESS THE LINK BELOW IN BROWSER.
@@ -78,24 +89,17 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-### Build  
+## Build  
 this part will be updated once MVP is released.
 > if you encounter any issue when you are developing LafTools or building your binary, please contact us at any time. 
 
 
-## 🙋 Cool! So is it a free software?
+# 🙋 Is it a free software?
 
-Yes, you can follow the license but please notice that open-source software does not mean it’s a free service. 
+Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.
 
-It’s a PAID service if you’re a regular user.  
+Meanwhile, nearly all commercial companies will adopt a closed source code strategy to ensure their trade secrets will not be stolen. But since we are developing a toolbox product, which usually stands closer to your private data. For the sake of your private documents and to alleviate your worries while using this toolbox, we think it’s better to provide all source codes for you to review, and we welcome developers to contribute to this project.
 
-It’s a FREE service if you’re a contributor.
-
-Nearly all commercial companies will adopt a closed source code strategy to ensure their trade secrets will not be theft from. 
-
-But since we are developing a toolbox product, which usually stands closer to your private data. For the sake of your private documents and to solace your worries while using this toolbox,  we think it’s better to provide all source codes for you to review.
-
-Also, we believe the source codes we provided as trade secrets in our team will not be theft as it's being safeguarded by the license we have chosen from the first day on.
 
 ## 🎗 Pricing or Contribution
 

@@ -1,9 +1,11 @@
 ## Pre-requisites
 
-To start developing this project, please ensure that you have installed below SDK and software below first, and kindly pay attention to their version for fear of any incompatiblity.
+s
+Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
 
-- Node v14.17.3 and later
-- Go 1.21.1 and later
+
+- Node v20.9.0
+- Go 1.21.1
 - Git Bash
 - Visual Studio Code
 

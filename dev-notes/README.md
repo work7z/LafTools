@@ -10,6 +10,11 @@ https://craig.is/killing/mice
 https://github.com/naaive/orange
 zeal
 
+# check how to fix npm issue
+rimraf node_modules  
+npm cache clean --force 
+
+
 # versin
 v14.17.3
 go version go1.21.1 darwin/amd64
