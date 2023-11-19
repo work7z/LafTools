@@ -112,14 +112,14 @@ export default (props: PassProp): any => {
         <SectionCard>
           <p>
             {Dot(
-              "toolbox_wiki",
-              "A toolbox is a container designed to organize, transport, and safeguard an owner's tools. It is commonly used in various fields, such as trade, hobbies, and DIY projects, and its contents vary depending on the craft. In computing, the term toolbox refers to a collection of subroutines (or functions) and global variables that are used to implement missing functionality using capabilities available in the core software."
+              "X_HGx",
+              "LafTools is a versatile toolbox designed to meet various needs. It is fully open-source, ensuring transparency and security. Despite its lightweight runtime, it offers full platform support, including ARMv8, and native AI support similar to ChatGPT. LafTools is highly integrated with a productive UI and is continuously updated with new tools. It can be used over the web and with Docker, and provides additional resources such as notes and manuals. "
             )}
           </p>
           <p>
             {Dot(
-              "from_my_part",
-              "The preceding paragraph, cited from Wikipedia, explains what a toolbox is. As for the mission of LafTools, we aim to provide a versatile assistant for programmers to work efficiently, offering a comprehensive set of professional tools in the computer science domain. To ensure a seamless user experience, we prioritize using native technology to develop these tools, starting with version 2. Stay tuned for future updates and additional functionalities that will be added to LafTools."
+              "of_ox",
+              "All in all, LafTools is a one-stop solution for all your needs."
             )}
           </p>
         </SectionCard>

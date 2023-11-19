@@ -82,8 +82,11 @@ export default (props: BlinkProp): any => {
         textAlign: "center",
         padding: "10px 6px",
         margin: "0 auto",
+        whiteSpace: "pre-wrap",
+        width: "100%",
+        minWidth: "230px",
       }}
-      className="whitespace-break-spaces overflow-hidden bp5-text-muted bp5-text-small  h-full w-full   "
+      className="whitespace-break-spaces overflow-hidden bp5-text-muted bp5-text-small  h-full   "
       title={mottoLine}
       onDoubleClick={() => {
         mottoLineRes.refetch();

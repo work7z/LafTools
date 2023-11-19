@@ -268,7 +268,7 @@ export default (props: PassProp): any => {
   );
 
   let r = QueryUtils.validateResult(extsListQuery, {
-    label: Dot("CWohy", "Exts List by selected CategoryID"),
+    label: Dot("CWoqhy", "Exts List by selected CategoryID"),
   });
   if (!_.isNil(r)) {
     return r;

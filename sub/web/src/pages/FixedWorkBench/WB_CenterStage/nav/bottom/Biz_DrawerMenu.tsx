@@ -124,7 +124,7 @@ export default () => {
       crtLeftNavId="drawer"
       leftNavList={[
         {
-          label: Dot("dqTqyvWY", "Drawer Menu"),
+          label: Dot("dqqTqyvWY", "Drawer Menu"),
           value: "drawer",
         },
       ]}
@@ -144,7 +144,7 @@ export default () => {
           rightIcon="minus"
         ></Button>
       }
-      children={<div>{Dot("qpDBSW", "no available panel")}</div>}
+      children={<div>{Dot("qpDBSWe1", "no available panel")}</div>}
     ></SysTabPane>
   );
 };

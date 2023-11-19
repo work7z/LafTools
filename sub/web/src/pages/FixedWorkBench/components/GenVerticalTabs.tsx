@@ -194,7 +194,7 @@ export default (props: PropGenTabs) => {
               minimal={props.activeId != x.id}
               onClick={(e) => {
                 // if e is combined with ctrl, then do nothing
-                if (e.ctrlKey) {
+                if (e.ctrlKey || e.metaKey || e.shiftKey) {
                   return;
                 }
                 props.onItemClicked && props.onItemClicked(x, isCurrentActive);

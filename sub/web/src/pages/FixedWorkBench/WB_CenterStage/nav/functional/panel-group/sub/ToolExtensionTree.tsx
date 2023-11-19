@@ -316,7 +316,7 @@ export default (props: {
   // );
 
   let r = QueryUtils.validateResult(extsListQuery, {
-    label: Dot("CWohyd", "Exts List by selected CategoryID"),
+    label: Dot("CWohyqde", "Exts List by selected CategoryID"),
     // onlyErr: true,
   });
   if (!_.isNil(r)) {
