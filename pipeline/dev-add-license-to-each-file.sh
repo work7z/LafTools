@@ -49,7 +49,7 @@ echo "handling the file: $file"
 # get ext of file
 ext=${file##*.}
 echo "file_type is $file_type"
-echo "file: -3 is ${ext}"
+# echo "file: -3 is ${ext}"
 
 # if the file contains example or Example, then continue
 if grep -q "example" "$file"; then

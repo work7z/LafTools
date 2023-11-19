@@ -124,11 +124,24 @@ import {
 import GenCodeMirror from "../../../../components/GenCodeMirror";
 import GenHorizontalTab from "../../components/GenHorizontalTab";
 
+let EachFunctionPanel = () => {
+  let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
+  return (
+    <div
+      className="full-editor-p"
+      style={{
+        height: calcH,
+      }}
+    >
+      <GenCodeMirror></GenCodeMirror>
+    </div>
+  );
+};
 export let InnerCenterView = () => {
   return (
     <div className="icv w-full h-full">
       <GenHorizontalTab></GenHorizontalTab>
-      <GenCodeMirror></GenCodeMirror>
+      <EachFunctionPanel></EachFunctionPanel>
     </div>
   );
 };

@@ -99,6 +99,7 @@ export default (props: GenCodeMirrorProp) => {
       onChange={(val) => {
         onChange(val, true);
       }}
+      height="100%"
       value={code}
       theme={forgeObj.dark ? "dark" : "light"}
     />

@@ -11,7 +11,7 @@ if [[ "$LAFTOOLS_ROOT" = "" ]]; then
 fi
 
 # add license
-$LAFTOOLS_ROOT/pipeline/dev-add-license-to-each-file.sh & 
+$LAFTOOLS_ROOT/pipeline/dev-add-license-to-each-file.sh 
 
 
 
