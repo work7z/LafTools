@@ -192,7 +192,11 @@ export default (props: PropGenTabs) => {
               // intent={stObj.currentPlateId == x.id ? "primary" : "none"}
               intent={isCurrentActive ? (props.highlightIntent as any) : "none"}
               minimal={props.activeId != x.id}
-              onClick={() => {
+              onClick={(e) => {
+                // if e is combined with ctrl, then do nothing
+                if (e.ctrlKey) {
+                  return;
+                }
                 props.onItemClicked && props.onItemClicked(x, isCurrentActive);
                 setTimeout(() => {
                   onFocusCrt(true);

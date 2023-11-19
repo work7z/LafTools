@@ -112,7 +112,7 @@ import FixedWorkBenchNotes from "../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../slice/apiSlice";
 import { SysTabPane } from "./components/SysTabPane";
-import GenTabs from "./components/GenTabs";
+import GenTabs from "./components/GenVerticalTabs";
 import { useLeftTabsList } from "./definitions/WB_Common";
 import {
   EachTabPanelProp,

@@ -55,6 +55,7 @@ import {
   Card,
   Elevation,
   Button,
+  Popover,
 } from "@blueprintjs/core";
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
@@ -82,8 +83,8 @@ export default (props: BlinkProp): any => {
         padding: "10px 6px",
         margin: "0 auto",
       }}
-      className="whitespace-break-spaces bp5-text-muted bp5-text-small  h-full w-full   "
-      title={Dot("i-yRo", "Double click to refresh")}
+      className="whitespace-break-spaces overflow-hidden bp5-text-muted bp5-text-small  h-full w-full   "
+      title={mottoLine}
       onDoubleClick={() => {
         mottoLineRes.refetch();
       }}

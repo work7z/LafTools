@@ -114,7 +114,7 @@ import apiSlice from "../../../../../slice/apiSlice";
 import { SysTabPane } from "../../../components/SysTabPane";
 import { EachTabPanelProp, TabNavProp } from "../../../definitions/WB_Types";
 import { useLeftTabsList } from "../../../definitions/WB_Common";
-import GenTabs from "../../../components/GenTabs";
+import GenTabs from "../../../components/GenVerticalTabs";
 import layoutSlice from "../../../../../slice/LayoutSlice";
 import { FN_ACTION_CloseMenu_ltr } from "../../../../../sliceAction/layout_action";
 

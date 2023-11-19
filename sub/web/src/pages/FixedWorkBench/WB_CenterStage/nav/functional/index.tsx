@@ -116,7 +116,7 @@ import { SysTabPane } from "../../../components/SysTabPane";
 import { EachTabPanelProp, TabNavProp } from "../../../definitions/WB_Types";
 import { useLeftTabsList } from "../../../definitions/WB_Common";
 import layoutSlice from "../../../../../slice/LayoutSlice";
-import GenTabs from "../../../components/GenTabs";
+import GenTabs from "../../../components/GenVerticalTabs";
 
 export let FunctionalMenu = (props: TabNavProp) => {
   let leftTabs: EachTabPanelProp[] = useLeftTabsList();

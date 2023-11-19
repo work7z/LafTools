@@ -273,7 +273,7 @@ export let WB_MenuBar = () => {
             <Tooltip
               content={
                 Dot("LWaeFqd", "Switch to your preferred language") +
-                (TranslationUtils.CurrentLanguage == "en_US"
+                (TranslationUtils.CurrentLanguage != "en_US"
                   ? "(Language)"
                   : "")
               }
