@@ -21,12 +21,12 @@
 package api
 
 import (
-	"codegen-go/core/config"
-	"codegen-go/core/log"
-	"codegen-go/core/middleware"
-	"codegen-go/core/nocycle"
-	"codegen-go/core/ws"
 	"encoding/json"
+	"laftools-go/core/config"
+	"laftools-go/core/log"
+	"laftools-go/core/middleware"
+	"laftools-go/core/nocycle"
+	"laftools-go/core/ws"
 	"sync"
 
 	"github.com/gin-gonic/gin"

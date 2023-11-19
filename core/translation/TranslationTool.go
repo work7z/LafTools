@@ -21,11 +21,11 @@
 package translation
 
 import (
-	"codegen-go/core/gutils"
-	"codegen-go/core/log"
-	"codegen-go/core/nocycle"
+	"laftools-go/core/gutils"
+	"laftools-go/core/log"
+	"laftools-go/core/nocycle"
 
-	//"codegen-go/core/nocycle"
+	//"laftools-go/core/nocycle"
 	"path"
 	"strconv"
 	"strings"

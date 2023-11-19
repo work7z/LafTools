@@ -21,8 +21,8 @@
 package gutils
 
 import (
-	"codegen-go/core/env"
-	"codegen-go/core/nocycle"
+	"laftools-go/core/env"
+	"laftools-go/core/nocycle"
 	"os"
 	"path"
 )

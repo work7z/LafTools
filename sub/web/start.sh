@@ -15,11 +15,10 @@ cd "$(dirname "$0")"
 
 source ./job-syncstatic.sh &
 
-nohup ./job-tailwind.sh &
 
-# BROWSER=none node scripts/start.js &
+BROWSER=none node scripts/start.js &
+
+source ./job-tailwind.sh 
 
 # wait until all sub process end
 wait
-
-sleep 1000000

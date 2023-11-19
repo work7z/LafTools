@@ -20,7 +20,7 @@
 
 package ext
 
-import "codegen-go/core/context"
+import "laftools-go/core/context"
 
 func GetMottoList(ctx *context.WebContext) []func() string {
 	return []func() string{

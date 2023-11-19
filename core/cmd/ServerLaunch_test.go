@@ -21,13 +21,13 @@
 package cmd
 
 import (
-	"codegen-go/core/config"
-	"codegen-go/core/context"
-	"codegen-go/core/ext"
-	"codegen-go/core/gutils"
-	"codegen-go/core/log"
-	"codegen-go/core/middleware"
-	"codegen-go/core/nocycle"
+	"laftools-go/core/config"
+	"laftools-go/core/context"
+	"laftools-go/core/ext"
+	"laftools-go/core/gutils"
+	"laftools-go/core/log"
+	"laftools-go/core/middleware"
+	"laftools-go/core/nocycle"
 	"math/rand"
 	"net/http"
 	"os"
@@ -250,7 +250,7 @@ func TestSimpleRunNode(t *testing.T) {
 	// average need 90ms, so my current solution still win the time
 	for i := 0; i < 10; i++ {
 		startTime := time.Now()
-		cmd := exec.Command("node", (nocycle.CodeGenGoRoot+"/sub/node/build/direct-run-job.js"))
+		cmd := exec.Command("node", (nocycle.CodeGenGoRoot + "/sub/node/build/direct-run-job.js"))
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		if err := cmd.Run(); err != nil {

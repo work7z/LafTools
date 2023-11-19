@@ -21,9 +21,9 @@
 package api
 
 import (
-	"codegen-go/core/log"
 	"encoding/json"
 	"errors"
+	"laftools-go/core/log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

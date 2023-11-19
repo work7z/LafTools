@@ -21,7 +21,7 @@
 package menu
 
 import (
-	"codegen-go/core/log"
+	"laftools-go/core/log"
 	"testing"
 )
 

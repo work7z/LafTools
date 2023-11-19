@@ -21,10 +21,10 @@
 package ext
 
 import (
-	"codegen-go/core/context"
-	"codegen-go/core/form"
-	"codegen-go/core/log"
-	"codegen-go/core/middleware"
+	"laftools-go/core/context"
+	"laftools-go/core/form"
+	"laftools-go/core/log"
+	"laftools-go/core/middleware"
 	"strconv"
 	"sync/atomic"
 )

@@ -21,10 +21,10 @@
 package context
 
 import (
-	"codegen-go/core/nocycle"
-	"codegen-go/core/translation"
 	"encoding/json"
 	"errors"
+	"laftools-go/core/nocycle"
+	"laftools-go/core/translation"
 	"net/http"
 	"strings"
 

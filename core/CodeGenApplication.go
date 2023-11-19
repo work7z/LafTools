@@ -21,7 +21,7 @@
 package main
 
 import (
-	"codegen-go/core/cmd"
+	"laftools-go/core/cmd"
 )
 
 func main() {

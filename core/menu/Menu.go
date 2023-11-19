@@ -21,10 +21,10 @@
 package menu
 
 import (
-	"codegen-go/core/gutils"
-	"codegen-go/core/log"
 	"encoding/json"
 	"io/ioutil"
+	"laftools-go/core/gutils"
+	"laftools-go/core/log"
 	"path/filepath"
 )
 

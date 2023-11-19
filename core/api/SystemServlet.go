@@ -21,8 +21,8 @@
 package api
 
 import (
-	"codegen-go/core/context"
-	"codegen-go/core/log"
+	"laftools-go/core/context"
+	"laftools-go/core/log"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/protobuf/types/known/timestamppb"

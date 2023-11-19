@@ -21,8 +21,8 @@
 package ext
 
 import (
-	"codegen-go/core/context"
-	"codegen-go/core/form"
+	"laftools-go/core/context"
+	"laftools-go/core/form"
 )
 
 func FN_GetSHA224Form(ctx *context.WebContext) *form.ExtensionVM {

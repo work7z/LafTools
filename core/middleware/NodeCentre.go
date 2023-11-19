@@ -21,11 +21,11 @@
 package middleware
 
 import (
-	"codegen-go/core/log"
-	"codegen-go/core/nocycle"
 	"encoding/json"
 	"errors"
 	"io/ioutil"
+	"laftools-go/core/log"
+	"laftools-go/core/nocycle"
 	"os"
 	"os/exec"
 	"path"
@@ -373,7 +373,7 @@ func getModTime(filename string) (int64, error) {
 }
 
 func getBaseDirAboveConsumer() string {
-	return nocycle.MkdirFileWithStr(nocycle.CodeGenGoRoot+"/sub/node/time-consumer")
+	return nocycle.MkdirFileWithStr(nocycle.CodeGenGoRoot + "/sub/node/time-consumer")
 }
 
 func getConsumerDir() string {

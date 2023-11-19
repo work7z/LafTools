@@ -21,10 +21,6 @@
 package middleware
 
 import (
-	"codegen-go/core/codec"
-	"codegen-go/core/context"
-	"codegen-go/core/form"
-	"codegen-go/core/nocycle"
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
@@ -33,6 +29,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"laftools-go/core/codec"
+	"laftools-go/core/context"
+	"laftools-go/core/form"
+	"laftools-go/core/nocycle"
 	"log"
 	"os"
 
@@ -110,7 +110,7 @@ func RunCMD(cmd *cobra.Command, args []string) {
 
 func initTestDB() {
 	// mkdir nocycle.CodeGenGoRoot+"/tmp
-	nocycle.MkdirFile(nocycle.CodeGenGoRoot+"/tmp")
+	nocycle.MkdirFile(nocycle.CodeGenGoRoot + "/tmp")
 
 	db, err := sql.Open("sqlite3", nocycle.CodeGenGoRoot+"/tmp/test.db")
 	if err != nil {

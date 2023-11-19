@@ -21,9 +21,9 @@
 package ext
 
 import (
-	"codegen-go/core/context"
-	"codegen-go/core/form"
-	"codegen-go/core/middleware"
+	"laftools-go/core/context"
+	"laftools-go/core/form"
+	"laftools-go/core/middleware"
 	"testing"
 )
 

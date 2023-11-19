@@ -21,8 +21,8 @@
 package api
 
 import (
-	"codegen-go/core/translation"
 	"errors"
+	"laftools-go/core/translation"
 
 	"github.com/gin-gonic/gin"
 )

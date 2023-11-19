@@ -21,8 +21,8 @@
 package config
 
 import (
-	"codegen-go/core/gutils"
-	"codegen-go/core/nocycle"
+	"laftools-go/core/gutils"
+	"laftools-go/core/nocycle"
 )
 
 func SaveCurrentSystemInfo(systemInfo *SystemInfo) {

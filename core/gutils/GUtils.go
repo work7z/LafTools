@@ -21,10 +21,10 @@
 package gutils
 
 import (
-	"codegen-go/core/nocycle"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"laftools-go/core/nocycle"
 	"log"
 	"math/rand"
 	"os"
@@ -97,7 +97,7 @@ func GetFrontEndStaticDir() string {
 }
 func GetFrontEndRootAppDir() string {
 	if nocycle.IsDevMode() {
-		return (nocycle.CodeGenGoRoot+"/sub/web/build")
+		return (nocycle.CodeGenGoRoot + "/sub/web/build")
 	} else {
 		return "unknown_dir"
 	}

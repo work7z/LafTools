@@ -21,10 +21,10 @@
 package log
 
 import (
-	"codegen-go/core/gutils"
-	"codegen-go/core/nocycle"
 	"encoding/json"
 	"io/ioutil"
+	"laftools-go/core/gutils"
+	"laftools-go/core/nocycle"
 	"path"
 )
 

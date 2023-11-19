@@ -21,11 +21,11 @@
 package api
 
 import (
-	"codegen-go/core/config"
-	"codegen-go/core/context"
-	"codegen-go/core/gutils"
-	"codegen-go/core/nocycle"
 	"io"
+	"laftools-go/core/config"
+	"laftools-go/core/context"
+	"laftools-go/core/gutils"
+	"laftools-go/core/nocycle"
 	"net/http"
 	"os"
 	"path/filepath"

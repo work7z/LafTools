@@ -21,10 +21,10 @@
 package api
 
 import (
-	"codegen-go/core/config"
-	"codegen-go/core/context"
-	"codegen-go/core/log"
-	"codegen-go/core/url"
+	"laftools-go/core/config"
+	"laftools-go/core/context"
+	"laftools-go/core/log"
+	"laftools-go/core/url"
 	"strings"
 
 	"github.com/gin-gonic/gin"

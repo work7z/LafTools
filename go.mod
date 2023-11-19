@@ -1,4 +1,4 @@
-module codegen-go
+module laftools-go
 
 go 1.18
 

@@ -21,7 +21,7 @@
 package log
 
 import (
-	"codegen-go/core/env"
+	"laftools-go/core/env"
 	"os"
 
 	"github.com/sirupsen/logrus"
@@ -31,7 +31,7 @@ import (
 var InternalLog = logrus.New()
 
 func Ref() *logrus.Logger {
-	shouldOrNot := env.ENV_ShouldPrintLogAsJSON;
+	shouldOrNot := env.ENV_ShouldPrintLogAsJSON
 	if shouldOrNot {
 		// InternalLog.as JSON instead of the default ASCII formatter.
 		InternalLog.SetFormatter(&logrus.JSONFormatter{})

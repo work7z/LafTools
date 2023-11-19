@@ -22,7 +22,7 @@
 package gutils
 
 import (
-	"codegen-go/core/nocycle"
+	"laftools-go/core/nocycle"
 	"os"
 	"path/filepath"
 	"testing"
@@ -84,7 +84,6 @@ func TestGetFrontEndStaticDir(t *testing.T) {
 		t.Errorf("GetFrontEndStaticDir() = %v, want %v", dir, expectedDir)
 	}
 }
-
 
 func TestGetLangDir(t *testing.T) {
 	expectedDir := filepath.Join(GetResourceDir(), "lang")

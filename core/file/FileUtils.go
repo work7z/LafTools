@@ -20,7 +20,7 @@
 
 package file
 
-import "codegen-go/core/nocycle"
+import "laftools-go/core/nocycle"
 
 const LockExtension = ".lock"
 const MAX_CHECK_FILE_LONG = 20 * 1000 // 20 seconds

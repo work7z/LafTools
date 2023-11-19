@@ -21,10 +21,10 @@
 package config
 
 import (
-	"codegen-go/core/gutils"
-	"codegen-go/core/log"
-	"codegen-go/core/nocycle"
 	"encoding/json"
+	"laftools-go/core/gutils"
+	"laftools-go/core/log"
+	"laftools-go/core/nocycle"
 	"path"
 	"strings"
 	"time"

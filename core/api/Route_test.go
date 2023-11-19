@@ -21,7 +21,7 @@
 package api
 
 import (
-	"codegen-go/core/gutils"
+	"laftools-go/core/gutils"
 	"path"
 	"testing"
 

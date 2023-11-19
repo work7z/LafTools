@@ -21,7 +21,7 @@
 package api
 
 import (
-	"codegen-go/core/ws"
+	"laftools-go/core/ws"
 
 	"github.com/gin-gonic/gin"
 )
