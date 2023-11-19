@@ -179,9 +179,9 @@ func API_Node_Websocket(c *gin.Context) {
 		var anyAck = false
 		var shouldContinue = false
 		for {
-			middleware.Lck_WaitKVMap.Lock()
+			middleware.Lck_WaitResMap.Lock()
 			crtWaitRes := middleware.Ref_WaitResMap[uid]
-			middleware.Lck_WaitKVMap.Unlock()
+			middleware.Lck_WaitResMap.Unlock()
 			if crtWaitRes == nil {
 				log.Ref().Debug("skip nil map that might processed before")
 				shouldContinue = true
@@ -212,9 +212,6 @@ func API_Node_Websocket(c *gin.Context) {
 		if shouldContinue {
 			continue
 		}
-		log.Ref().Debug("before: Ref_WaitResMap <- ")
-
-		log.Ref().Debug("after: Ref_WaitResMap <- ")
 
 		// delete unhandled errors
 		middleware.Lock_tmp_NodeReqChan.Lock()

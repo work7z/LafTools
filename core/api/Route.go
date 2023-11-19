@@ -88,7 +88,7 @@ func ConfigSystemRouter(r *gin.Engine) {
 	About the routes:
 		- _visitor_can_ means the API can be accessible without token
 		- _admin_only_ means the API can only be accessible to for admin only
-		- Other APIs without any prefix means the API can be accessible to users, they're not visible for visitors
+		- Other APIs without any prefix means the API can be accessible only to users and be prohibited to unauthorized visitors.
 	*/
 	// user
 	doGET_(_visitor_can_("/user/one/getByToken"), API_VisitGetByToken)
@@ -128,5 +128,6 @@ func ConfigSystemRouter(r *gin.Engine) {
 	doGET_("/system/getOneMotto", API_VISIT_GetMotto)
 
 	// static folders
-	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/non-prohibited")), gutils.GetResourceNonProhibitedDir())
+	nonPDir := gutils.GetResourceNonProhibitedDir()
+	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/non-prohibited")), nonPDir)
 }

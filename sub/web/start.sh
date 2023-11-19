@@ -10,6 +10,11 @@ if [[ "$LAFTOOLS_ROOT" = "" ]]; then
   exit 1
 fi
 
+# add license
+$LAFTOOLS_ROOT/pipeline/dev-add-license-to-each-file.sh & 
+
+
+
 # enter current start script dir
 cd "$(dirname "$0")"
 

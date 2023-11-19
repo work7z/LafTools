@@ -70,6 +70,8 @@ We have configured the local development config for Go in the file .vscode/launc
 cd sub/web 
 # using pnpm instead of npm 
 npm i -g pnpm
+# install ts-node
+npm i -g ts-node@10.9.1
 # install project deps
 pnpm install
 # start webpack service 

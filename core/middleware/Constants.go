@@ -20,5 +20,3 @@
 
 package middleware
 
-var DEV_EXIT_SECONDS = "30"
-var DEV_WAKUP_TIMES int64 = 0

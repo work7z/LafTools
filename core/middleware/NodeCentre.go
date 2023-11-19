@@ -24,6 +24,7 @@ import (
 	"encoding/json"
 	"errors"
 	"io/ioutil"
+	"laftools-go/core/env"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
 	"os"
@@ -76,7 +77,7 @@ var Ref_Chan_NodeReq = make(chan *NodeReq)
 // var Ref_Chan_NodeRes = make(chan *NodeRes)
 
 var Ref_WaitResMap = make(map[string]chan *NodeRes)
-var Lck_WaitKVMap = &sync.Mutex{}
+var Lck_WaitResMap = &sync.Mutex{}
 var Ref_CloseResMap = make(map[string]chan int)
 var Lck_CloseKVMap = &sync.Mutex{}
 
@@ -91,9 +92,9 @@ func ReceiveNodeReq(uid string) (*NodeRes, error) {
 
 	var hasResReceived = false
 	for {
-		Lck_WaitKVMap.Lock()
+		Lck_WaitResMap.Lock()
 		crtWaitRef, hasWait := Ref_WaitResMap[uid]
-		Lck_WaitKVMap.Unlock()
+		Lck_WaitResMap.Unlock()
 		if !hasWait {
 			break
 		}
@@ -123,22 +124,24 @@ func ReceiveNodeReq(uid string) (*NodeRes, error) {
 		default:
 			// if there's no receiver to listen on it, then we can quit it can safely exit
 			Lck_CloseKVMap.Lock()
+			Lck_WaitResMap.Lock()
 			close(Ref_WaitResMap[uid])
 			delete(Ref_WaitResMap, uid)
 			shoudBreak = true
 			Lck_CloseKVMap.Unlock()
+			Lck_WaitResMap.Unlock()
 		}
 		if shoudBreak {
 			break
 		}
 	}
 
-	Lck_WaitKVMap.Lock()
+	Lck_WaitResMap.Lock()
 	if Ref_WaitResMap[uid] != nil {
 		close(Ref_WaitResMap[uid])
 		delete(Ref_WaitResMap, uid)
 	}
-	Lck_WaitKVMap.Unlock()
+	Lck_WaitResMap.Unlock()
 
 	log.Ref().Debug("finally reutrn with uid", uid)
 
@@ -211,10 +214,10 @@ func SendNodeReq(nodeReq *NodeReq) error {
 	}
 	log.Ref().Debug("Sending the file for " + nodeReq.Lang + " -> " + nodeReq.Id)
 
-	Lck_WaitKVMap.Lock()
+	Lck_WaitResMap.Lock()
 	uid := nodeReq.GetUID()
 	Ref_WaitResMap[uid] = make(chan *NodeRes)
-	Lck_WaitKVMap.Unlock()
+	Lck_WaitResMap.Unlock()
 
 	// actually, it's ok when we don't proactively close it.
 	Lck_CloseKVMap.Lock()
@@ -278,7 +281,7 @@ func checkNodeProcess(config NodeReq) error {
 				log.Ref().Debug("someone is waking me up, now I'm gonna rerun node.js now. ")
 			}
 			log.Ref().Debug("[checkNode] waken up")
-			DEV_WAKUP_TIMES++
+			env.DEV_WAKUP_TIMES++
 		}
 	}()
 
@@ -316,8 +319,7 @@ func runNodeJS() {
 	extArr := []string{}
 	var mainProgram string
 	if nocycle.IsDevMode() {
-		mainProgram = "npx"
-		extArr = append(extArr, "ts-node")
+		mainProgram = "ts-node"
 		extArr = append(extArr, "-T")
 		extArr = append(extArr, nocycle.CodeGenGoRoot+"/sub/node/src/ws-index.ts")
 		// mainProgram = "node"
@@ -329,7 +331,7 @@ func runNodeJS() {
 	}
 	autoExitSeconds := "120"
 	if nocycle.IsDevMode() {
-		autoExitSeconds = DEV_EXIT_SECONDS
+		autoExitSeconds = env.DEV_EXIT_SECONDS
 	}
 	extArr = append(extArr, "--autoExitSeconds="+(autoExitSeconds))
 	extArr = append(extArr, "--captureIn="+getConsumerDir())

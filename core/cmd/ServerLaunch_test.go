@@ -23,6 +23,7 @@ package cmd
 import (
 	"laftools-go/core/config"
 	"laftools-go/core/context"
+	"laftools-go/core/env"
 	"laftools-go/core/ext"
 	"laftools-go/core/gutils"
 	"laftools-go/core/log"
@@ -276,15 +277,15 @@ func GetRandomInt(min, max int) int {
 }
 
 func TestNodeMultipleRequest(t *testing.T) {
-	middleware.DEV_EXIT_SECONDS = "1"
+	env.DEV_EXIT_SECONDS = "1"
 	BasicTestNodeMultipleRequest(t)
 }
 func TestNodeMultipleRequest2(t *testing.T) {
-	middleware.DEV_EXIT_SECONDS = "5"
+	env.DEV_EXIT_SECONDS = "5"
 	BasicTestNodeMultipleRequest(t)
 }
 func TestNodeMultipleRequest3(t *testing.T) {
-	middleware.DEV_EXIT_SECONDS = "10"
+	env.DEV_EXIT_SECONDS = "10"
 	BasicTestNodeMultipleRequest(t)
 }
 
@@ -351,8 +352,8 @@ func BasicTestNodeMultipleRequest(t *testing.T) {
 	t.Log("** average time per request: ", GetAverage(allTimes))
 	t.Log("** totalTriggerTimes: ", totalTriggerTimes)
 	t.Log("** maxTimePerRequest: ", maxTimeDiffStr)
-	t.Log("** wakeup times: ", middleware.DEV_WAKUP_TIMES)
-	t.Log("** DEV_EXIT_SECONDS: ", middleware.DEV_EXIT_SECONDS)
+	t.Log("** wakeup times: ", env.DEV_WAKUP_TIMES)
+	t.Log("** DEV_EXIT_SECONDS: ", env.DEV_EXIT_SECONDS)
 
 }
 
@@ -397,15 +398,19 @@ func TestSimplePutAndGet(t *testing.T) {
 		endTime := time.Now()
 		t.Log("time cost:", endTime.Sub(startTime))
 
+		middleware.Lck_WaitResMap.Lock()
 		if len(middleware.Ref_WaitResMap) != 0 {
 			t.Error("not cleanup for wait kv map, during the loop")
 		}
+		middleware.Lck_WaitResMap.Unlock()
 
 	}
+	middleware.Lck_WaitResMap.Lock()
 	t.Log("Ref_WaitResMap ctn is ", len(middleware.Ref_WaitResMap))
 	if len(middleware.Ref_WaitResMap) != 0 {
 		t.Error("not cleanup for wait kv map")
 	}
+	middleware.Lck_WaitResMap.Unlock()
 }
 
 func TestSendReqToNodeProcessForPerformance(t *testing.T) {

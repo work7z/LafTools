@@ -156,7 +156,15 @@ export let SidebarMenu = (props: TabNavProp): any => {
   let dis = exportUtils.dispatch();
   let mp_with_ws = useMergeParamWithWorkSpace();
   let sq = useSearchQuery();
-  let rightMenu: EachTabPanelProp[] = useMemo(() => {
+  let fn_format_menu = (x) => {
+    return {
+      ...x,
+      pathname: mp_with_ws({ e: x.id }),
+      panel: x.panel || RightPanelNoAvailablePanel,
+    };
+  };
+  let val_memo_deps = _.values(sq);
+  let mainTabs: EachTabPanelProp[] = useMemo(() => {
     let tmparr: EachTabPanelProp[] = [
       {
         desc: Dot("pEk1qkk", "List all the opened tabs"),
@@ -180,15 +188,17 @@ export let SidebarMenu = (props: TabNavProp): any => {
         label: Dot("RNewBzde0", "Result"),
       },
     ];
-    return tmparr.map((x) => {
-      return {
-        ...x,
-        pathname: mp_with_ws({ e: x.id }),
-        panel: x.panel || RightPanelNoAvailablePanel,
-      };
-    });
-  }, [_.values(sq)]);
-  let activeId = sq.e || _.get(rightMenu, "0.id");
+    return tmparr.map(fn_format_menu);
+  }, [val_memo_deps]);
+
+  let extraTabs: EachTabPanelProp[] = useMemo(() => {
+    let tmparr: EachTabPanelProp[] = [
+      //
+    ];
+    return tmparr.map(fn_format_menu);
+  }, [val_memo_deps]);
+
+  let activeId = sq.e || _.get(mainTabs, "0.id");
 
   let v = exportUtils.useSelector((v) => {
     return {
@@ -208,7 +218,7 @@ export let SidebarMenu = (props: TabNavProp): any => {
         props.onItemClicked && props.onItemClicked(a, b);
       }}
       onActiveIdChange={(x) => 1}
-      tabs={rightMenu}
+      tabs={mainTabs}
     ></GenTabs>
   );
 };
