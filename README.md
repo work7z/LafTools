@@ -169,14 +169,5 @@ Nov 18th, 2023
 LafTools Team
 
 
-# © CopyRights
-All source codes in this project are protected by the License and copyright law in China.
-
-You are permitted to use this software, whether built by us or by yourself, for personal or commercial use. However, please note that you may not use any of these source codes for commercial purposes unless you obtain permission from us. Failure to comply with this could be considered a breach of the license and agreement, and we may be forced to take legal action.
-
-Additionally, you should not technically remove the activation logic in the source code and distribute it online. This is not in line with our intentions.
-
-Thank you for your understanding!
-
-Nov 18th, 2023
-LafTools Team
+# 🪪 License
+This project is protected under the GNU Affero General Public License. Please see the LICENSE file for more details.
