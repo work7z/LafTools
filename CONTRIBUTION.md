@@ -1,6 +1,6 @@
 ## Pre-requisites
 
-s
+
 Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
 
 
