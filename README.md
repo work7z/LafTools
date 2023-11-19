@@ -103,7 +103,7 @@ Yes, it is open-source software, and you can use it following the terms of the l
 Meanwhile, nearly all commercial companies will adopt a closed source code strategy to ensure their trade secrets will not be stolen. But since we are developing a toolbox product, which usually stands closer to your private data. For the sake of your private documents and to alleviate your worries while using this toolbox, we think it’s better to provide all source codes for you to review, and we welcome developers to contribute to this project.
 
 
-## 🎗 Pricing or Contribution
+# 🎗 Pricing or Contribution
 
 Based on our years of project experience, we truly understand that a promising project and cloud service relies on the financial support of our users and contributions from the community.
 
@@ -130,7 +130,7 @@ What you can do is to
 With full test coverage and efforts from the CodeGen community, we are firmly convinced that the software can grow faster and stronger. 
 
 
-## 🌠 Preview
+# 🌠 Preview
 
 Preview(English):
 ![](https://github.com/work7z/LafTools/blob/dev/dev-source/img-preview-en.png?raw=true)
@@ -140,7 +140,7 @@ Preview(简体中文):
 
 
 
-## A Letter to CodeGen ToolBox Users  
+# A Letter to CodeGen ToolBox Users  
 Greetings from the CodeGen ToolBox team. 
 
 In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.  
@@ -169,7 +169,7 @@ Nov 18th, 2023
 LafTools Team
 
 
-## © CopyRights
+# © CopyRights
 All source codes in this project are protected by the License and copyright law in China.
 
 You are permitted to use this software, whether built by us or by yourself, for personal or commercial use. However, please note that you may not use any of these source codes for commercial purposes unless you obtain permission from us. Failure to comply with this could be considered a breach of the license and agreement, and we may be forced to take legal action.
