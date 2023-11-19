@@ -62,15 +62,15 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 We have configured the local development config for Go in the file .vscode/launch.json
 1. Enter Visual Studio Code    
 2. Click "Run and Debug" on your sidebar  
-3. Click Run button.
+3. Click "Run" button.
 
 ## Launch Front-end project
 ```bash
 
 cd sub/web 
-# install deps
+# using pnpm instead of npm 
 npm i -g pnpm
-npm i -g ts-node tsc typescript
+# install project deps
 pnpm install
 # start webpack service 
 npm run start 

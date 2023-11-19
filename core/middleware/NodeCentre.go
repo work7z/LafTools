@@ -316,7 +316,8 @@ func runNodeJS() {
 	extArr := []string{}
 	var mainProgram string
 	if nocycle.IsDevMode() {
-		mainProgram = "ts-node"
+		mainProgram = "npx"
+		extArr = append(extArr, "ts-node")
 		extArr = append(extArr, "-T")
 		extArr = append(extArr, nocycle.CodeGenGoRoot+"/sub/node/src/ws-index.ts")
 		// mainProgram = "node"
