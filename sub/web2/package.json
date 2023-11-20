@@ -35,7 +35,7 @@
     "@types/zepto": "1.0.34",
     "@uiw/react-codemirror": "4.21.18",
     "allotment": "1.19.3",
-    "axios": "1.5.1",
+    "axios": "1.6.0",
     "babel-jest": "29.7.0",
     "babel-loader": "8.2.3",
     "babel-plugin-named-asset-import": "0.3.8",
