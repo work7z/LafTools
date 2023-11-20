@@ -89,7 +89,7 @@ var middlewareCmd = &cobra.Command{
 }
 
 func IsDevMode() bool {
-	return !nocycle.IsDebugMode
+	return !nocycle.IsDevMode
 }
 
 func init() {
@@ -97,7 +97,7 @@ func init() {
 	cobra.OnInitialize(initConfig)
 
 	// global root
-	rootCmd.PersistentFlags().BoolVar(&nocycle.IsDebugMode, "debug", true, "whether enable release mode or not")
+	rootCmd.PersistentFlags().BoolVar(&nocycle.IsDevMode, "debug", true, "whether enable release mode or not")
 
 	// init  run server
 	runServerCmd.PersistentFlags().StringVar(&nocycle.RefId, "codegen.refid", "YVwYb.json", "ref for port && status && information")

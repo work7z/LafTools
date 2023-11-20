@@ -290,7 +290,7 @@ func checkNodeProcess(config NodeReq) error {
 
 func cleanStuffBeforeNode() {
 	// clean stuff
-	if nocycle.IsDebugMode {
+	if nocycle.IsDevMode {
 		os.RemoveAll(getBaseDirAboveConsumer())
 	}
 	files, err := ioutil.ReadDir(getBaseDirAboveConsumer())

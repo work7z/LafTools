@@ -294,7 +294,7 @@ func BasicTestNodeMultipleRequest(t *testing.T) {
 
 	defer QUnlockServer(t)
 
-	nocycle.IsDebugMode = true
+	nocycle.IsDevMode = true
 
 	// call GetAllSubExtCategory until endTime - startTime > 20seconds.
 	// and check the result

@@ -21,5 +21,5 @@
 package nocycle
 
 func IsDevMode() bool {
-	return IsDebugMode
+	return IsDevMode
 }
