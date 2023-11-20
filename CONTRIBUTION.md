@@ -19,8 +19,9 @@ We’re looking forward to your contribution.
 
 For Front-end development:
 - React
+- TypeScript  
 - BluePrint.js
-- Tailwind.css
+- Tailwind.css  
 
 For Back-end development:
 - Go
