@@ -154,6 +154,10 @@ func LaunchCodeGenServer() {
 
 	port, err2 := GetAvailableTCPPortFrom(beginPort)
 
+	if port == env.ENV_DevPortStartFrom && !nocycle.IsDevMode {
+		panic("Please do not use " + strconv.Itoa(env.ENV_DevPortStartFrom) + " to launch the service, try other port.")
+	}
+
 	nocycle.HTTP_PORT_ONCE_SET = port
 	nocycle.ShouldNoErr(err2, "Unable to launch available port")
 

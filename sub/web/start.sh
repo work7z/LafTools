@@ -12,8 +12,13 @@ if [[ "$LAFTOOLS_ROOT" = "" ]]; then
 fi
 
 addLicnese(){
-  $LAFTOOLS_ROOT/pipeline/dev-add-license-to-each-file.sh 
-  echo "[Completed]"
+  # infinite loop 
+  while true; do
+    # if license header is not there then add it
+    $LAFTOOLS_ROOT/pipeline/dev-add-license-to-each-file.sh 
+    echo "[Completed]"
+    sleep 20
+  done
 }
 
 # add license
