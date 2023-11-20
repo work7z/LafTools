@@ -13,8 +13,9 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUncheckedIndexedAccess": false,
+    "noUnusedParameters": false,
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

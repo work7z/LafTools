@@ -86,7 +86,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import URLUtils from "../../../../utils/URLUtils";
-import TranslationUtils, { Dot } from "../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment, AllotmentHandle } from "allotment";
 import exportUtils from "../../../../utils/ExportUtils";
