@@ -146,7 +146,14 @@ func LaunchCodeGenServer() {
 		return
 	}
 
-	port, err2 := GetAvailableTCPPortFrom(35000)
+	// set begin port
+	beginPort := env.ENV_ProdPortStartFrom
+	if nocycle.IsDevMode {
+		beginPort = env.ENV_DevPortStartFrom
+	}
+
+	port, err2 := GetAvailableTCPPortFrom(beginPort)
+
 	nocycle.HTTP_PORT_ONCE_SET = port
 	nocycle.ShouldNoErr(err2, "Unable to launch available port")
 

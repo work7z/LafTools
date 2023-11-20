@@ -146,9 +146,8 @@ const gutils = {
   IsPortalMode(): boolean {
     return false;
   },
-  SetDevMode: (val: boolean = true) =>
-    localStorage.setItem(STR_DEV_MODE, val + ""),
-  IsDevMode: (): boolean => localStorage.getItem(STR_DEV_MODE) == "true",
+  // it's just a simple way to check if it's dev mode, do you have other ideas?
+  IsDevMode: (): boolean => location.href.indexOf(":35000") != -1,
 };
 
 export default gutils;
