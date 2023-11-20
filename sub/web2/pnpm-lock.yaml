@@ -177,8 +177,8 @@ dependencies:
     specifier: 2.4.5
     version: 2.4.5(webpack@5.64.4)
   moment:
-    specifier: 2.24.0
-    version: 2.24.0
+    specifier: 2.29.4
+    version: 2.29.4
   normalize.css:
     specifier: 8.0.1
     version: 8.0.1
@@ -8850,10 +8850,6 @@ packages:
     resolution: {integrity: sha512-72j3aNyuIsDxdF1i7CEgV2FfxM1r6aaqJyLB2vwb33mXYyoyLly+F1zbWqhA3/bVIoJ4szlUoMbUnVdid32NUQ==}
     dependencies:
       moment: 2.29.4
-    dev: false
-
-  /moment@2.24.0:
-    resolution: {integrity: sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==}
     dev: false
 
   /moment@2.29.4:
