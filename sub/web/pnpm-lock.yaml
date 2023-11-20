@@ -81,8 +81,8 @@ dependencies:
     specifier: 1.19.3
     version: 1.19.3(react-dom@18.2.0)(react@18.2.0)
   axios:
-    specifier: 1.5.1
-    version: 1.5.1
+    specifier: 1.6.0
+    version: 1.6.0
   babel-jest:
     specifier: 29.7.0
     version: 29.7.0(@babel/core@7.16.0)
@@ -3371,7 +3371,7 @@ packages:
     resolution: {integrity: sha512-KqQnQbdYE54D7oa/UmYVMZKq7CO4l8DEENzOKc4aBRwxCXSlJXGz83flFx5L7AWrOQnmuN3kVsRdt+GZPPjiVQ==}
     deprecated: This is a stub types definition for axios (https://github.com/mzabriskie/axios). axios provides its own type definitions, so you don't need @types/axios installed!
     dependencies:
-      axios: 1.5.1
+      axios: 1.6.0
     transitivePeerDependencies:
       - debug
     dev: true
@@ -4429,8 +4429,8 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /axios@1.5.1:
-    resolution: {integrity: sha512-Q28iYCWzNHjAm+yEAot5QaAMxhMghWLFVf7rRdwhUI+c2jix2DUXjAHXVi+s1ibs3mjPO/cCgbA++3BjD0vP/A==}
+  /axios@1.6.0:
+    resolution: {integrity: sha512-EZ1DYihju9pwVB+jg67ogm+Tmqc6JmhamRN6I4Zt8DfZu5lbcQGw3ozH9lFejSJgs/ibaef3A9PMXPLeefFGJg==}
     dependencies:
       follow-redirects: 1.15.3
       form-data: 4.0.0
