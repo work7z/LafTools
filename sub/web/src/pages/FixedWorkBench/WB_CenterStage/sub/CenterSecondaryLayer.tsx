@@ -123,25 +123,23 @@ import {
 } from "../nav/functional/panel-group/controls/FunctionalControls";
 import GenCodeMirror from "../../../../components/GenCodeMirror";
 import GenHorizontalTab from "../../components/GenHorizontalTab";
-
-let EachFunctionPanel = () => {
-  let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
-  return (
-    <div
-      className="full-editor-p"
-      style={{
-        height: calcH,
-      }}
-    >
-      <GenCodeMirror></GenCodeMirror>
-    </div>
-  );
+import ToolCenterView from "./center-view/ToolCenterView";
+import {
+  useMergeParamWithWorkSpace,
+  useSearchQuery,
+} from "../../definitions/WB_Func";
+import OtherCenterView from "./center-view/OtherCenterView";
+let mappings = {
+  tools: ToolCenterView,
 };
+
 export let InnerCenterView = () => {
+  let mp = useMergeParamWithWorkSpace();
+  let sq = useSearchQuery();
+  let TargetEle = mappings[sq.f + ""] || OtherCenterView;
   return (
-    <div className="icv w-full h-full">
-      <GenHorizontalTab></GenHorizontalTab>
-      <EachFunctionPanel></EachFunctionPanel>
+    <div className="w-full h-full">
+      <TargetEle />
     </div>
   );
 };
