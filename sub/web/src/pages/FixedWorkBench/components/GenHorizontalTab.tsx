@@ -72,9 +72,10 @@ import { useState, useContext, useCallback, useRef } from "react";
 import "allotment/dist/style.css";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
 
-type EachTab = {
+export type EachTab = {
   id: string;
   label: string;
+  icon: string;
 };
 
 type PassProp = {
@@ -85,7 +86,7 @@ type PassProp = {
 export default () => {
   const [activeTab, setActiveTab] = useState("tab1");
 
-  const tabs = [
+  const tabs: EachTab[] = [
     { id: "tab1", label: "Tab 312", icon: "database" },
     { id: "tab2", label: "Tab 2d12qw", icon: "application" },
     { id: "tab3", label: "Tab 3", icon: "application" },

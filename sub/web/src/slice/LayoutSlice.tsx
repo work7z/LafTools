@@ -24,32 +24,55 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import CacheUtils from "../utils/CacheUtils";
 import _, { initial } from "lodash";
 import { logutils } from "../utils/LogUtils";
+import { EachTab } from "../pages/FixedWorkBench/components/GenHorizontalTab";
 
 let preferredSizeForLeftRightMenu = 280; //0.13 * window.innerWidth;
 
-let fn_initialState = () => ({
+type LayoutState = {
   menuHide: {
-    left: false,
-    right: false,
-    bottom: false,
-  },
+    left: boolean;
+    right: boolean;
+    bottom: boolean;
+  };
   menuRecord: {
-    ltr: [],
-    ltr_old: [],
-    ttm: [],
-    ttm_old: [],
-  },
+    ltr: any[];
+    ltr_old: any[];
+    ttm: any[];
+    ttm_old: any[];
+  };
   menuSize: {
-    left: preferredSizeForLeftRightMenu,
-    middle: undefined,
-    right: preferredSizeForLeftRightMenu,
-    bottom: 300, //window.innerHeight * 0.28,
-  },
-});
+    left: number | undefined;
+    middle: number | undefined;
+    right: number | undefined;
+    bottom: number;
+  };
+  tools_EachTab: EachTab[];
+};
 
-let initialState = fn_initialState();
+let fn_initialState = (): LayoutState => {
+  return {
+    menuHide: {
+      left: false,
+      right: false,
+      bottom: false,
+    },
+    menuRecord: {
+      ltr: [],
+      ltr_old: [],
+      ttm: [],
+      ttm_old: [],
+    },
+    menuSize: {
+      left: preferredSizeForLeftRightMenu,
+      middle: undefined,
+      right: preferredSizeForLeftRightMenu,
+      bottom: 300, //window.innerHeight * 0.28,
+    },
+    tools_EachTab: [],
+  };
+};
 
-type LayoutState = typeof initialState;
+let initialState: LayoutState = fn_initialState();
 
 initialState = CacheUtils.getFromCache("layout", {
   ...initialState,
