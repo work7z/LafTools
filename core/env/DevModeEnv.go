@@ -20,7 +20,10 @@
 
 package env
 
-import "os"
+import (
+	"os"
+	"time"
+)
 
 // to start developing, update your own config in this file.
 // note that you shouldn't commit this file unless any value really need to be updated.
@@ -33,3 +36,5 @@ var ENV_ShouldPrintLogAsJSON = false
 // test stuff
 var DEV_EXIT_SECONDS = "30"
 var DEV_WAKUP_TIMES int64 = 0
+
+var DEV_PUBLIC_RELOAD_FREQUENCY = time.Millisecond * 20 // check frequency

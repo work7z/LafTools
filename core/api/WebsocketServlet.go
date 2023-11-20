@@ -23,6 +23,7 @@ package api
 import (
 	"encoding/json"
 	"laftools-go/core/config"
+	"laftools-go/core/env"
 	"laftools-go/core/log"
 	"laftools-go/core/middleware"
 	"laftools-go/core/nocycle"
@@ -254,7 +255,7 @@ func API_Hmr_Reload(c *gin.Context) {
 							return
 						}
 					}
-					time.Sleep(time.Second * 1)
+					time.Sleep(env.DEV_PUBLIC_RELOAD_FREQUENCY)
 				}
 			}()
 		}
