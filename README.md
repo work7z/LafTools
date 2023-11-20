@@ -100,7 +100,7 @@ this part will be updated once MVP is released.
 
 Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.
 
-Meanwhile, nearly all commercial companies will adopt a closed source code strategy to ensure their trade secrets will not be stolen. But since we are developing a toolbox product, which usually stands closer to your private data. For the sake of your private documents and to alleviate your worries while using this toolbox, we think it’s better to provide all source codes for you to review, and we welcome developers to contribute to this project.
+While we strive to provide as many services as possible for free, some features do require payment. This is because we incur costs for servers, maintenance, and other operational aspects that are essential to keep our services running smoothly and reliably. By charging for premium services, we can cover these costs and continue to offer high-quality, sustainable services. We appreciate your understanding and support.
 
 
 # 🎗 Pricing or Contribution
