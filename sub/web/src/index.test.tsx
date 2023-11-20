@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-//
-// Date: Fri, 13 Oct 2023
+// 
+// Date: Sat, 18 Nov 2023
 // Author: LafTools Team <work7z@outlook.com>
-// Description:
-// Copyright (C) 2023 - Present, https://codegen.cc
+// Description: 
+// Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -18,12 +18,3 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { render, screen } from "@testing-library/react";
-import App from "./SubApp";
-import { FinalRootApp } from "./main";
-
-// test("renders learn react link", () => {
-//   const { getByText } = render(<FinalRootApp />);
-//   const linkElement = getByText(/LafTools/i);
-//   expect(linkElement).toBeInTheDocument();
-// });

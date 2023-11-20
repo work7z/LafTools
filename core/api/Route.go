@@ -132,6 +132,9 @@ func ConfigSystemRouter(r *gin.Engine) {
 	doGET_("/ws/system", API_SYSTEM_WebSocket)
 	doGET_("/ws/node-rpc", API_Node_Websocket)
 	doGET_("/ws/post-job", API_PostJob_WebSocket)
+	if nocycle.IsDevMode {
+		doGET_("/ws/dev-hmr", API_Hmr_Reload)
+	}
 
 	// system
 	doGET_("/system/stats", API_SYSTEM_Stats)

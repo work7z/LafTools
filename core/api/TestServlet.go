@@ -38,7 +38,7 @@ func API_TEST_PingWithErrAPI(c *gin.Context) {
 var upGrader = ws.GetUpgrader()
 
 func API_TEST_PingWSAPI(c *gin.Context) {
-	//升级get请求为webSocket协议
+	// upgrade GET request to websocket protocol
 	ws, err := upGrader.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
 		return

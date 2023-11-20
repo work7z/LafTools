@@ -23,6 +23,7 @@ package nocycle
 import (
 	"encoding/json"
 	"io/ioutil"
+	"os"
 
 	"github.com/samber/lo"
 )
@@ -30,6 +31,14 @@ import (
 var UNIT_TEST_SERVER_MODE bool
 var HTTP_PORT_ONCE_SET int
 var NodeWSToken = GetRandomString(32)
+
+func GetFileLastModifiedTimestamp(filename string) (int64, error) {
+	m, err := os.Lstat(filename)
+	if err != nil {
+		return 0, err
+	}
+	return m.ModTime().Unix(), nil
+}
 
 func AssignJSONToObj(prevObj interface{}, returnValue interface{}) error {
 	str, er2 := json.Marshal(prevObj)

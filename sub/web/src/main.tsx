@@ -35,6 +35,7 @@ import URLUtils from "./utils/URLUtils";
 import InitUtils from "./utils/InitUtils";
 import ALL_NOCYCLE from "./nocycle";
 import exportUtils from "./utils/ExportUtils";
+import fn_tailwindcss from "./init/hmr-tailwindcss.tsx";
 
 ALL_NOCYCLE.store = store;
 
@@ -72,3 +73,6 @@ logutils.debug("rendered.");
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// init stuff
+fn_tailwindcss();

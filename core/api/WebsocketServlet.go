@@ -27,7 +27,9 @@ import (
 	"laftools-go/core/middleware"
 	"laftools-go/core/nocycle"
 	"laftools-go/core/ws"
+	"path"
 	"sync"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
@@ -107,7 +109,7 @@ func API_Node_getAllJobs(c *gin.Context) {
 var Lock_tmp_NodeWebsocket = &sync.Mutex{}
 
 func API_Node_Websocket(c *gin.Context) {
-	//升级get请求为webSocket协议
+	// upgrade GET request to websocket protocol
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
 		return
@@ -220,9 +222,49 @@ func API_Node_Websocket(c *gin.Context) {
 	}
 }
 
+type HmrReloadConfig struct {
+	Files []string
+}
+
+// post a job to Go/Node, then receive response from remote server
+func API_Hmr_Reload(c *gin.Context) {
+	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		return
+	}
+	configHmrFile := path.Join(nocycle.CodeGenGoRoot, "sub/web/src/init/hmr.json")
+	var reloadConfig *HmrReloadConfig = &HmrReloadConfig{}
+	if nocycle.IsFileExist(configHmrFile) {
+		// unmarshal from configHmrFile
+		str, _ := nocycle.ReadFileAsStr(configHmrFile)
+		json.Unmarshal([]byte(str), reloadConfig)
+		// check if each file is changed
+		for _, _eachFile := range reloadConfig.Files {
+			eachFile := path.Join(nocycle.CodeGenGoRoot, "sub/web/public", _eachFile)
+			// get last timestamp
+			// if changed, then send reload command to ws
+			lastTimestamp, _ := nocycle.GetFileLastModifiedTimestamp(eachFile)
+			go func() {
+				for {
+					crtTimestamp, _ := nocycle.GetFileLastModifiedTimestamp(eachFile)
+					if crtTimestamp != lastTimestamp {
+						lastTimestamp = crtTimestamp
+						err := ws.WriteJSON((DoValueRes("changed")))
+						if err != nil {
+							return
+						}
+					}
+					time.Sleep(time.Second * 1)
+				}
+			}()
+		}
+	}
+	select {}
+}
+
 // post a job to Go/Node, then receive response from remote server
 func API_PostJob_WebSocket(c *gin.Context) {
-	//升级get请求为webSocket协议
+	// upgrade GET request to websocket protocol
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
 		return
@@ -231,7 +273,7 @@ func API_PostJob_WebSocket(c *gin.Context) {
 }
 
 func API_SYSTEM_WebSocket(c *gin.Context) {
-	//升级get请求为webSocket协议
+	// upgrade GET request to websocket protocol
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
 		return

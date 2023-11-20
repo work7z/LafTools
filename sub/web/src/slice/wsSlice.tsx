@@ -123,7 +123,7 @@ export function P_ACTION_createSystemWS() {
   };
 }
 
-function connectToWebSocket({ subLink }): WebSocket {
+export function connectToWebSocket({ subLink }): WebSocket {
   const ws = new WebSocket(
     "ws://" +
       window.location.host +

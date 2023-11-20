@@ -44,9 +44,10 @@ div,.fixed-wb-nav-menu{
 }
 .blue-svg svg{
     /* @apply !fill-light-blue-600; */
-    /* @apply !fill-light-blue-600; */
-    @apply !fill-green-600;
+    @apply !fill-light-blue-600;
+    /* @apply !fill-green-600; */
 }
 .gray-svg svg{
     @apply !fill-gray-500;
+
 }
