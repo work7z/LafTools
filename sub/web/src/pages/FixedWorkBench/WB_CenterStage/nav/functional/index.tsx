@@ -130,16 +130,6 @@ export let FunctionalMenu = (props: TabNavProp) => {
   const functionalID = query.get("f") || "tools";
 
   let activeId = functionalID;
-  // React.useMemo(() => {
-  //   // let n = hist.location.pathname.split("/")[2];
-  //   // let findItemIdx = _.findIndex(leftTabs, (x2) => {
-  //   //   let n2 = (x2?.pathname + "").split("/")[2];
-  //   //   return n == n2;
-  //   // });
-  //   // let findItem = leftTabs[findItemIdx];
-  //   // let activeId2 = findItem?.id;
-  //   // return activeId2;
-  // }, [hist.location.pathname]);
 
   let currentActiveMenu = _.find(leftTabs, (x) => {
     return x.id == activeId;

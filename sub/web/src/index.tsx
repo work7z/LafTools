@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import { Provider, useDispatch } from "react-redux";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -62,9 +62,8 @@ export const FinalRootApp = () => {
   );
 };
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+let ele = document.getElementById("root") as HTMLElement;
+const root = createRoot(ele!);
 root.render(<FinalRootApp />);
 
 logutils.debug("rendered.");

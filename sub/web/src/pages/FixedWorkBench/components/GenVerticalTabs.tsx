@@ -128,7 +128,7 @@ export default (props: PropGenTabs) => {
   if (!_.isNil(activePanel)) {
     let ActiveJSXPanel = activePanel.panel;
     if (!_.isNil(ActiveJSXPanel)) {
-      jsx_inner_panel = <ActiveJSXPanel />;
+      jsx_inner_panel = <ActiveJSXPanel key="m01" />;
     }
   }
   const [refId, onRefId] = useState(_.uniqueId(""));
@@ -180,7 +180,7 @@ export default (props: PropGenTabs) => {
       }}
     >
       <div className="tab-title-panel-btn-group">
-        {props.tabs.map((x) => {
+        {props.tabs.map((x, d) => {
           let isCurrentActive = props.activeId == x.id;
           let innerBTN = (
             <Button
@@ -206,7 +206,7 @@ export default (props: PropGenTabs) => {
             ></Button>
           );
           return (
-            <Tooltip content={x.desc}>
+            <Tooltip content={x.desc} key={x.id + d}>
               {x.pathname ? (
                 <Link to={x.pathname + ""}>{innerBTN}</Link>
               ) : (

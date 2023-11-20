@@ -17,6 +17,7 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import { hot } from "react-hot-loader/root";
 
 import React, { useEffect } from "react";
 import "./App.css";
@@ -126,4 +127,5 @@ function App() {
   );
 }
 
+// export default hot(App);
 export default App;

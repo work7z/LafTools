@@ -245,6 +245,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
         {_.map(props.menus, (x) => {
           return (
             <Popover
+              key={x.id}
               hasBackdrop={false}
               transitionDuration={0}
               minimal

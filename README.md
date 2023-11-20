@@ -170,4 +170,5 @@ LafTools Team
 
 
 # 🪪 License
-This project is protected under the GNU Affero General Public License. Please see the LICENSE file for more details.
+This project is protected under the GNU Affero General Public License.    
+Please see the LICENSE file for more details.

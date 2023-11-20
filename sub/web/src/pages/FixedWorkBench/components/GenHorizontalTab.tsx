@@ -66,57 +66,11 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../nocycle";
 
-import React, { useEffect, useMemo } from "react";
-import ReactDOM from "react-dom";
-import gutils from "../../../utils/GlobalUtils";
-import { logutils } from "../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../styles/routeMem";
-import statusSlice from "../../../slice/StatusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
-import {
-  withRouter,
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  Redirect,
-} from "react-router-dom";
-import URLUtils from "../../../utils/URLUtils";
-import TranslationUtils, { Dot } from "../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
-import { Allotment } from "allotment";
-import exportUtils from "../../../utils/ExportUtils";
-import forgeSlice, {
-  ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../../slice/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../../slice/SystemSlice";
-import {
-  ID_FILES,
-  ID_HISTORY as ID_MANUAL,
-  ID_NOTES,
-  ID_TOOLS,
-  SUB_URL_WORKBENCH_TOOLS_CATEGORY,
-  URL_WORKBENCH_FILES,
-  URL_WORKBENCH_MANUALS as URL_WORKBENCH_MANUAL,
-  URL_WORKBENCH_NOTES,
-} from "../../../styles/path";
-import FixedWorkBenchTool from "../../FixedWorkBenchTool";
-import FixedWorkBenchFiles from "../../FixedWorkBenchFiles";
-
-import FixedWorkBenchHistory from "../../FixedWorkBenchHistory";
-import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
-import { type } from "jquery";
-import apiSlice from "../../../slice/apiSlice";
-import {
-  EachTabPanelProp,
-  PropGenTabs,
-  VAL_CSS_TAB_TITLE_PANEL,
-} from "../definitions/WB_Types";
-import { NoAvailablePanel } from "../definitions/WB_Common";
+import { VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
 
 type EachTab = {
   id: string;
@@ -132,7 +86,7 @@ export default () => {
   const [activeTab, setActiveTab] = useState("tab1");
 
   const tabs = [
-    { id: "tab1", label: "Tab 1", icon: "database" },
+    { id: "tab1", label: "Tab 1x", icon: "database" },
     { id: "tab2", label: "Tab 2", icon: "application" },
     { id: "tab3", label: "Tab 3", icon: "application" },
   ];
@@ -166,7 +120,6 @@ export default () => {
                 isCurrent ? "blue-svg" : "gray-svg"
               }  `}
             ></Icon>
-            <span>{tab.icon}</span>
             <span>{tab.label}</span>
             <Icon
               icon="cross"

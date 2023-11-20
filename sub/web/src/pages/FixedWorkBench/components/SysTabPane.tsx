@@ -217,8 +217,8 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
                   {props.leftNavList.map((x) => {
                     let menuItem = (
                       <MenuItem
-                        text={x.label}
                         key={x.value}
+                        text={x.label}
                         onClick={(e) => {
                           // e.stopPropagation();
                           //
@@ -230,6 +230,7 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
 
                     return x.pathname ? (
                       <Link
+                        key={x.label}
                         onClick={(e) => {
                           e.stopPropagation();
                         }}

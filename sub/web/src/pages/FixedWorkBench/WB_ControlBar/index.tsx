@@ -332,7 +332,7 @@ export let WB_ControllerBar = () => {
     >
       <div>
         {statusBarItemLeft.map((item) => {
-          return <SystemStatusBarItemElement {...item} />;
+          return <SystemStatusBarItemElement key={item.id} {...item} />;
         })}
       </div>
       <div>
@@ -351,7 +351,7 @@ export let WB_ControllerBar = () => {
           intent={"none"}
         />
         {statusBarItemRight.map((item) => {
-          return <SystemStatusBarItemElement {...item} />;
+          return <SystemStatusBarItemElement key={item.id} {...item} />;
         })}
       </div>
     </div>
