@@ -64,7 +64,7 @@
     "normalize.css": "8.0.1",
     "number-to-chinese-words": "1.0.20",
     "number-to-words": "1.2.4",
-    "postcss": "8.4.4",
+    "postcss": "8.4.31",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-loader": "6.2.1",
     "postcss-normalize": "10.0.1",
