@@ -1,0 +1,56 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Sat, 18 Nov 2023
+// Author: CodeGen ToolBox <work7z@outlook.com>
+// Description: 
+// Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+// import vars.scss
+@import "../../styles/vars.scss";
+@import "@blueprintjs/colors/lib/scss/colors";
+
+// write styles for gen-tabs-tab, it is a compact tab component, and contains a close button on the right side. also include active appreance
+
+.gen-tabs {
+  @include fn-border-type-all();
+  .gen-tabs-tab {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: $tab-height-I-know;
+    line-height: $tab-height-I-know;
+    font-size: 13px;
+
+    .gen-tabs-tab-title {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    transition: all 0.3s;
+    .gen-tabs-tab-close {
+      margin-left: 10px;
+      display: none;
+    }
+    @include fn-mixin-hover-tab();
+  }
+  .gen-tabs-tab-content {
+    @include fn-border-type("top");
+  }
+}
