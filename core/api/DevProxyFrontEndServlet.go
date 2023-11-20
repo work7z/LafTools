@@ -49,6 +49,6 @@ func getRemoteDataByGET(fullPath string) ([]byte, string, error) {
 		log.Ref().Error("Unable to read response for " + fullPath)
 		return nil, "", err
 	}
-	respType := resp.Request.Response.Header["Content-Type"]
-	return body, strings.Join(respType, ""), nil
+	respType := resp.Header.Get("Content-Type")
+	return body, respType, nil
 }

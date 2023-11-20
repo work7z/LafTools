@@ -61,7 +61,7 @@ func ConfigSystemRouter(r *gin.Engine) {
 
 	// setup for SPA
 	r.NoRoute(func(c *gin.Context) {
-		fullPath := c.FullPath()
+		fullPath := c.Request.RequestURI
 		isAppPreFix := strings.Index(fullPath, url.CONFIG_URL_APP_FRONT_END_APP_PREFIX) == 0
 		isStaticPrefix := strings.Index(fullPath, url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX) == 0
 		// if current env is dev mode, then we just proxy the request to the front-end server.
