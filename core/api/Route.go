@@ -69,10 +69,12 @@ func ConfigSystemRouter(r *gin.Engine) {
 			if isAppPreFix {
 				API_Proxy_To_FE(c, url.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
 				return
-			}
-			if isStaticPrefix {
+			} else if isStaticPrefix {
 				API_Proxy_To_FE(c, url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX)
 				return
+			} else {
+				// all other request go to the front-end server
+				API_Proxy_To_FE(c, "")
 			}
 		}
 		if isAppPreFix {
