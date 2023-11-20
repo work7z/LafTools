@@ -86,8 +86,8 @@ export default () => {
   const [activeTab, setActiveTab] = useState("tab1");
 
   const tabs = [
-    { id: "tab1", label: "Tab 1x", icon: "database" },
-    { id: "tab2", label: "Tab 2", icon: "application" },
+    { id: "tab1", label: "Tab 312", icon: "database" },
+    { id: "tab2", label: "Tab 2d12qw", icon: "application" },
     { id: "tab3", label: "Tab 3", icon: "application" },
   ];
   let commonBG = "  ";

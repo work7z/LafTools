@@ -83,6 +83,7 @@ import TokenUtils from "../../utils/TokenUtils";
 import FormSelect from "../../components/FormSelect";
 import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
+import URLUtils from "../../utils/URLUtils";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;
@@ -149,6 +150,8 @@ export default (props: PassProps) => {
     token: "",
     NeedAdminInit: true,
   });
+
+  URLUtils.useUpdateTitle(Dot("YOYTp", "Quick Setup"), []);
 
   const [loadLeftPage, onloadLeftPage] = useState("");
 

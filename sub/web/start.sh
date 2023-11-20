@@ -17,7 +17,7 @@ addLicnese(){
 }
 
 # add license
-# addLicnese &
+addLicnese &> /dev/null &
 
 
 # enter current start script dir
@@ -27,7 +27,7 @@ source ./job-syncstatic.sh &
 
 
 export FAST_REFRESH=true
-BROWSER=none node scripts/start.js &
+npm run dev &
 
 source ./job-tailwind.sh 
 

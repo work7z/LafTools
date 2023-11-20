@@ -80,18 +80,5 @@ export default function configureAppStore() {
     enhancers: [],
   });
 
-  // TODO: hotfix
-  //   if (process.env.NODE_ENV !== "production" && (module as any).hot) {
-  //     (module as any).hot.accept("./reducers", () =>
-  //       store.replaceReducer(rootReducer)
-  //     );
-  //   }
-
-  let hot = module["hot"] as any;
-
-  if (hot) {
-    hot?.accept();
-  }
-
   return store;
 }

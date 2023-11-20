@@ -19,8 +19,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { render, screen } from "@testing-library/react";
-import App from "./App";
-import { FinalRootApp } from ".";
+import App from "./SubApp";
+import { FinalRootApp } from "./main";
 
 // test("renders learn react link", () => {
 //   const { getByText } = render(<FinalRootApp />);
