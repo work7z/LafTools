@@ -172,7 +172,7 @@ var lock_cacheMapForRes = &sync.Mutex{}
 
 func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue interface{}) (*NodeRes, error) {
 	uid := nodeReq.GetUID()
-	if shouldCacheRes && !nocycle.IsDevMode() {
+	if shouldCacheRes && !nocycle.IsDevMode {
 		prev := cacheMapForRes[uid]
 		if prev != nil {
 			return prev, nil
@@ -318,7 +318,7 @@ func runNodeJS() {
 	var cmd *exec.Cmd
 	extArr := []string{}
 	var mainProgram string
-	if nocycle.IsDevMode() {
+	if nocycle.IsDevMode {
 		mainProgram = "ts-node"
 		extArr = append(extArr, "-T")
 		extArr = append(extArr, nocycle.CodeGenGoRoot+"/sub/node/src/ws-index.ts")
@@ -330,7 +330,7 @@ func runNodeJS() {
 		panic("not yet supported")
 	}
 	autoExitSeconds := "120"
-	if nocycle.IsDevMode() {
+	if nocycle.IsDevMode {
 		autoExitSeconds = env.DEV_EXIT_SECONDS
 	}
 	extArr = append(extArr, "--autoExitSeconds="+(autoExitSeconds))

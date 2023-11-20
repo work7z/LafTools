@@ -20,6 +20,3 @@
 
 package nocycle
 
-func IsDevMode() bool {
-	return IsDevMode
-}

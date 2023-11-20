@@ -194,7 +194,7 @@ export default (props) => {
   const o1 = exportUtils.useSelector((val) => ({
     dialogIncrement: val.dialog.dialogIncrement,
   }));
-  if (gutils.IsDevMode()) {
+  if (gutils.IsDevMode) {
     FN_testDialogHere();
   }
   return (

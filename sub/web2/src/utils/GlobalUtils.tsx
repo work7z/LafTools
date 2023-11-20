@@ -82,7 +82,7 @@ const gutils = {
     return `/static/${subPath}`;
   },
   ExposureIt(key: string, value: any, devVisibleOnly?: boolean) {
-    if (devVisibleOnly === true && !gutils.IsDevMode()) {
+    if (devVisibleOnly === true && !gutils.IsDevMode) {
       return;
     }
     _.set(window, key, value);

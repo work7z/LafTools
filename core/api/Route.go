@@ -49,17 +49,33 @@ func ConfigSystemRouter(r *gin.Engine) {
 	})
 
 	// app and static
-	if nocycle.IsDevMode() {
-		r.Static(url.CONFIG_URL_APP_FRONT_END_APP_PREFIX, gutils.GetFrontEndRootAppDir())
-		r.Static(url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX, gutils.GetFrontEndStaticDir())
+	if nocycle.IsDevMode {
+		// do nothing, this part will move to r.NoRoute part below.
 	} else {
 		log.Ref().Fatal("Not yet supported this app and static")
+		feAppDir := gutils.GetFrontEndRootAppDir()
+		feStaticDir := gutils.GetFrontEndStaticDir()
+		r.Static(url.CONFIG_URL_APP_FRONT_END_APP_PREFIX, feAppDir)
+		r.Static(url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX, feStaticDir)
 	}
 
 	// setup for SPA
 	r.NoRoute(func(c *gin.Context) {
 		fullPath := c.FullPath()
-		if strings.Index(fullPath, url.CONFIG_URL_APP_FRONT_END_APP_PREFIX) == 0 {
+		isAppPreFix := strings.Index(fullPath, url.CONFIG_URL_APP_FRONT_END_APP_PREFIX) == 0
+		isStaticPrefix := strings.Index(fullPath, url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX) == 0
+		// if current env is dev mode, then we just proxy the request to the front-end server.
+		if nocycle.IsDevMode {
+			if isAppPreFix {
+				API_Proxy_To_FE(c, url.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
+				return
+			}
+			if isStaticPrefix {
+				API_Proxy_To_FE(c, url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX)
+				return
+			}
+		}
+		if isAppPreFix {
 			c.File(path.Join(gutils.GetFrontEndRootAppDir(), "index.html"))
 		}
 	})
@@ -80,10 +96,6 @@ func ConfigSystemRouter(r *gin.Engine) {
 		url.CONFIG_URL_VISIT_URLS = append(url.CONFIG_URL_VISIT_URLS, path)
 		return path
 	}
-	// _admin_only_ := func(path string) string {
-	// 	url.CONFIG_URL_ADMIN_URLS = append(url.CONFIG_URL_ADMIN_URLS, path)
-	// 	return path
-	// }
 	/**
 	About the routes:
 		- _visitor_can_ means the API can be accessible without token
@@ -103,10 +115,6 @@ func ConfigSystemRouter(r *gin.Engine) {
 	doPOST("/user/local/pw/reset", API_USER_ResetPasswordByOldPassword)
 	doGET_("/user/local/key/get", API_USER_GetAnyKeyByUserId)
 	doPOST("/user/local/key/set", API_USER_SetAnyKeyByUserId)
-
-	// admin
-	// TODO:
-	// doPOST(_admin_only_("/user/local/pw/reset"), ResetPasswordByAdmin)
 
 	// extension
 	doGET_("/tool/exts/listCategory", ListCategory)
@@ -129,9 +137,14 @@ func ConfigSystemRouter(r *gin.Engine) {
 
 	// static folders
 	nonPDir := gutils.GetResourceNonProhibitedDir()
-	if nocycle.IsDevMode() {
+	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/non-prohibited")), nonPDir)
 
-	}else{
-		r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/non-prohibited")), nonPDir)
-	}
+	// temporary unused code
+	// admin
+	// _admin_only_ := func(path string) string {
+	// 	url.CONFIG_URL_ADMIN_URLS = append(url.CONFIG_URL_ADMIN_URLS, path)
+	// 	return path
+	// }
+	// TODO: add password reset logic
+	// doPOST(_admin_only_("/user/local/pw/reset"), ResetPasswordByAdmin)
 }

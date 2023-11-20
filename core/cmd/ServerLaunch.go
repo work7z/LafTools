@@ -88,10 +88,6 @@ var middlewareCmd = &cobra.Command{
 	Run:   middleware.RunCMD,
 }
 
-func IsDevMode() bool {
-	return !nocycle.IsDevMode
-}
-
 func init() {
 
 	cobra.OnInitialize(initConfig)
@@ -137,7 +133,7 @@ func LaunchCodeGenServer() {
 		}
 	}()
 	log.Ref().Info("Service is launching...")
-	if IsDevMode() {
+	if nocycle.IsDevMode {
 		gin.SetMode(gin.DebugMode)
 	} else {
 		gin.SetMode(gin.ReleaseMode)
@@ -174,7 +170,7 @@ func LaunchCodeGenServer() {
 	println("" + fullURL + "  ")
 	println("-----------------------------------------------")
 	println("")
-	if !nocycle.IsDevMode() {
+	if !nocycle.IsDevMode {
 		gutils.OpenInBrowser(fullURL)
 	}
 

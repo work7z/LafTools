@@ -65,7 +65,7 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 		ack = true
 	} else if lang == LANG_ZH_CN || lang == LANG_ZH_HK {
 		translationConfigObj := tmp_keyMap[lang]
-		if translationConfigObj == nil || nocycle.IsDevMode() {
+		if translationConfigObj == nil || nocycle.IsDevMode {
 			var err2 error = nil
 			translationConfigObj, err2 = nocycle.ReadJSONFile(path.Join(gutils.GetLangDir(), lang+".json"))
 			if err2 != nil {

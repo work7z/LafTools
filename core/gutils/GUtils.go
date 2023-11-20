@@ -96,7 +96,7 @@ func GetFrontEndStaticDir() string {
 	return path.Join(GetFrontEndRootAppDir(), "static")
 }
 func GetFrontEndRootAppDir() string {
-	if nocycle.IsDevMode() {
+	if nocycle.IsDevMode {
 		return (nocycle.CodeGenGoRoot + "/sub/web/build")
 	} else {
 		return "unknown_dir"
