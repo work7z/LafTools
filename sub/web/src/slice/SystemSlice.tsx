@@ -47,7 +47,7 @@ import AjaxUtils from "../utils/AjaxUtils";
 import forgeSlice from "./ForgeSlice";
 import AlertUtils from "../utils/AlertUtils";
 import { logutils } from "../utils/LogUtils";
-import ALL_NOCYCLE from "../nocycle";
+import ALL_NOCYCLE, { IsDevMode } from "../nocycle";
 import _ from "lodash";
 import ConcurrencyUtils from "../utils/ConcurrencyUtils";
 import { KEY_CONCURRENCY_SYSTEM_INIT } from "../styles/concurrency";
@@ -192,6 +192,7 @@ let __load_language_map: { [key: string]: boolean } = {};
 export const ACTION_getLangData = (): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
     let currentLanguage = ALL_NOCYCLE.store?.getState().forge.Language;
+    // TODO: more languages support
     if (
       currentLanguage != LANG_ZH_CN &&
       currentLanguage != LANG_ZH_HK &&
@@ -208,7 +209,7 @@ export const ACTION_getLangData = (): any => {
       dispatch(forgeSlice.actions.updateLanguage({ lang: currentLanguage }));
     }
     if (currentLanguage != LANG_EN_US) {
-      if (!_.isEmpty(LANG_INIT_BEFORE_MAP[currentLanguage])) {
+      if (!_.isEmpty(LANG_INIT_BEFORE_MAP[currentLanguage]) && !IsDevMode()) {
         // do nothing
       } else {
         let e = await AjaxUtils.DoStaticRequest({

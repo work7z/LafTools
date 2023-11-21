@@ -227,12 +227,20 @@ type HmrReloadConfig struct {
 	Files []string
 }
 
+// set a lock for hmr ws
+var HmrReloadConfigLocker = &sync.Mutex{}
+
 // post a job to Go/Node, then receive response from remote server
 func API_Hmr_Reload(c *gin.Context) {
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
 		return
 	}
+	defer func() {
+		// do nothing, just recover
+		recover()
+	}()
+	var shouldReturn = false
 	configHmrFile := path.Join(nocycle.CodeGenGoRoot, "sub/web/src/init/hmr.json")
 	var reloadConfig *HmrReloadConfig = &HmrReloadConfig{}
 	if nocycle.IsFileExist(configHmrFile) {
@@ -252,6 +260,7 @@ func API_Hmr_Reload(c *gin.Context) {
 						lastTimestamp = crtTimestamp
 						err := ws.WriteJSON((DoValueRes("changed")))
 						if err != nil {
+							shouldReturn = true
 							return
 						}
 					}
@@ -260,7 +269,16 @@ func API_Hmr_Reload(c *gin.Context) {
 			}()
 		}
 	}
-	select {}
+	for {
+		select {
+		// sleep 1 seconds and check
+		case <-time.After(time.Second * 1):
+
+		}
+		if shouldReturn {
+			return
+		}
+	}
 }
 
 // post a job to Go/Node, then receive response from remote server

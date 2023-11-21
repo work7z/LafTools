@@ -20,6 +20,7 @@
 
 import _ from "lodash";
 import { Dot } from "./TranslationUtils";
+import ALL_NOCYCLE, { IsDevMode } from "../nocycle";
 
 const STR_DEV_MODE = "DEV_MODE";
 
@@ -147,10 +148,7 @@ const gutils = {
     return false;
   },
   // it's just a simple way to check if it's dev mode, do you have other ideas?
-  IsDevMode: (): boolean =>
-    // emmm.. hard code not cool, would u refine it?
-    location.href.indexOf("127.0.0.1:35000") != -1 ||
-    location.href.indexOf("localhost:35000") != -1,
+  IsDevMode: IsDevMode,
 };
 
 export default gutils;

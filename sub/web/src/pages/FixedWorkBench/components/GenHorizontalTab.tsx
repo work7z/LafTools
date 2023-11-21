@@ -71,6 +71,7 @@ import _ from "lodash";
 import { useState, useContext, useCallback, useRef } from "react";
 import "allotment/dist/style.css";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
+import { Dot } from "../../../utils/TranslationUtils";
 
 export type EachTab = {
   id: string;
@@ -163,19 +164,23 @@ export default () => {
             {
               small: true,
               icon: "chevron-down",
+              tooltip: Dot("R12bq", "List tabs that are not shown"),
             },
             {
               small: true,
               icon: "more",
+              tooltip: Dot("G9QVo", "Manage Tabs"),
             },
           ].map((x) => {
             return (
-              <Button
-                {...(x as any)}
-                minimal
-                className=" h-[28px] w-[28px] "
-                key={x.icon}
-              ></Button>
+              <Tooltip content={x.tooltip} placement="bottom">
+                <Button
+                  {...(x as any)}
+                  minimal
+                  className=" h-[28px] w-[28px] "
+                  key={x.icon}
+                ></Button>
+              </Tooltip>
             );
           })}
         </ButtonGroup>

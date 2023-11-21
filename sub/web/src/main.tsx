@@ -35,7 +35,7 @@ import URLUtils from "./utils/URLUtils";
 import InitUtils from "./utils/InitUtils";
 import ALL_NOCYCLE from "./nocycle";
 import exportUtils from "./utils/ExportUtils";
-import fn_tailwindcss from "./init/hmr-tailwindcss.tsx";
+import fn_tailwindcss from "./init/hmr-reload-resources.tsx";
 
 ALL_NOCYCLE.store = store;
 

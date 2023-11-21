@@ -27,8 +27,9 @@
   src: url('/static/font/JetBrainsMonoNL-Regular.ttf');
 }
 
-.cm-editor,
-.cm-editor * {
+// .cm-editor,
+// .cm-editor *
+.cm-line {
   font-family: 'MyCustomFont', fallback-fonts !important;
 }
 

@@ -62,7 +62,7 @@ function formatResultWithReplacer(val = "", ...args) {
   }
   for (let index in args) {
     let tval = args[index];
-    val = val.replaceAll("{" + index + "}", tval);
+    val = (val + "").replaceAll("{" + index + "}", tval);
   }
   return val;
 }
