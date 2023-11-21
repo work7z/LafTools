@@ -21,6 +21,17 @@
 @import '@blueprintjs/colors/lib/scss/colors';
 @import 'allotment/dist/style.css';
 
+@font-face {
+  font-family: 'MyCustomFont';
+  // src: url('/static/font/JetBrainsMono-Regular.woff2') format('woff2');
+  src: url('/static/font/JetBrainsMonoNL-Regular.ttf');
+}
+
+.cm-editor,
+.cm-editor * {
+  font-family: 'MyCustomFont', fallback-fonts !important;
+}
+
 // :focus {
 //   outline: none;
 // }
