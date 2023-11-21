@@ -51,13 +51,16 @@ ext=${file##*.}
 echo "file_type is $file_type"
 # echo "file: -3 is ${ext}"
 
+# get full path of file
+file_path=$(cd `dirname $file`; pwd)/`basename $file`
+
 # if the file contains example or Example, then continue
-if grep -q "example" "$file"; then
+if grep -q "example" "$file_path"; then
     echo "skip the example content"
     continue
 fi
 
-if grep -q "Example" "$file"; then
+if grep -q "Example" "$file_path"; then
     echo "skip the Example content"
     continue
 fi

@@ -59,6 +59,7 @@ import {
   Menu,
   MenuDivider,
 } from "@blueprintjs/core";
+import $ from "jquery";
 import {
   ColumnHeaderCell,
   Cell,
@@ -68,7 +69,13 @@ import {
 } from "@blueprintjs/table";
 
 import _ from "lodash";
-import { useState, useContext, useCallback, useRef } from "react";
+import React, {
+  useState,
+  useContext,
+  useCallback,
+  useRef,
+  useMemo,
+} from "react";
 import "allotment/dist/style.css";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
 import { Dot } from "../../../utils/TranslationUtils";
@@ -86,7 +93,7 @@ type PassProp = {
 
 export default () => {
   const [activeTab, setActiveTab] = useState("tab1");
-
+  //
   const tabs: EachTab[] = [];
   // mock data for tabs
   let [moveLeftDistance, onMoveLeftDistance] = useState(0);
@@ -98,11 +105,102 @@ export default () => {
     });
   }
   let commonBG = " using-edge-ui-bg ";
+  let fn_handleClickEachTab = (tab: EachTab) => () => {
+    setActiveTab(tab.id);
+  };
+  let [eleId_tab] = useState(_.uniqueId(""));
+  let fn_format_each_tab = (verticalMode = false) => {
+    return (tab) => {
+      let isCurrent = activeTab === tab.id;
+      return (
+        <div
+          key={tab.id}
+          onClick={fn_handleClickEachTab(tab)}
+          style={{}}
+          data-ACTIVE={isCurrent ? "t" : "f"}
+          data-TABID={tab.id}
+          className={` each-tab  hover:bg-gray-300  whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${
+            isCurrent
+              ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] bg-white hover:bg-white dark:text-white dark:bg-gray-600 dark:hover:bg-gray-600  "
+              : " dark:hover:bg-gray-600 "
+          } ${
+            verticalMode && isCurrent
+              ? ` border-t-light-blue-600 border-t-[3px] `
+              : ""
+          }`}
+        >
+          <Icon
+            icon={tab.icon as any}
+            className={`h-5 w-5 !inline-flex items-center justify-center ${
+              isCurrent ? "blue-svg" : "gray-svg"
+            }  `}
+          ></Icon>
+          <span>{tab.label}</span>
+          <Icon
+            icon="cross"
+            className={
+              "small-close-btn ml-1  " + ` ${isCurrent ? "gen-active" : ""} `
+            }
+          ></Icon>
+          {/* <XIcon className="h-5 w-5 text-gray-500" /> */}
+        </div>
+      );
+    };
+  };
+  let PanelThatNotShown = useMemo(() => {
+    return ({ fn_format_each_tab }) => {
+      let allHiddenTabs = useMemo(() => {
+        let parentELE = $("#" + eleId_tab);
+        let parentRect = parentELE[0].getBoundingClientRect();
+        let allSubTabs = parentELE.find(".each-tab");
+        // check all tabs that are not shown (meaning that it not visible in the width and height of parent element eleId_tab)
+        let allHiddenTabs = allSubTabs.filter((i, each) => {
+          let childRect = each.getBoundingClientRect();
+          let isCrt = $(each).data("active") == "t";
+          // check if childRect.x + childRect.width, and childRect.y + childRect.height inside parentRect
+          let isInsideX =
+            childRect.x + childRect.width > parentRect.x &&
+            childRect.x < parentRect.x + parentRect.width;
+          return !isInsideX && !isCrt;
+        });
+        return allHiddenTabs;
+      }, []);
+      // record current scroll position
+      let [scrollPosition, setScrollPosition] = useState(0);
+      // TODO: add search bar here
+      return (
+        <div
+          className={`${commonBG} scroll overflow-auto `}
+          style={{
+            overflow: "auto",
+            maxHeight: "300px",
+            // minWidth: "300px",
+          }}
+          ref={(e) => {}}
+          onScroll={(x) => {}}
+        >
+          {/*
+          <InputGroup
+            placeholder={Dot("hhOT3", "Search by Name")}
+            small
+            autoFocus
+          ></InputGroup> */}
+          {allHiddenTabs.map((idx, x) => {
+            // get current tab by $(x).data("tabid")
+            let tabId = $(x).data("tabid");
+            let currentTab = tabs.find((x) => x.id == tabId);
+            return <div key={idx}>{fn_format_each_tab(true)(currentTab)}</div>;
+          })}
+        </div>
+      );
+    };
+  }, []);
   return (
     <div
       style={{
         height: VAL_CSS_TAB_TITLE_PANEL,
       }}
+      id={eleId_tab}
       className={`w-full h-full relative border-b-2    border-b-gray-300 dark:border-b-gray-600  ${commonBG} `}
     >
       <div
@@ -122,41 +220,7 @@ export default () => {
           // onMoveLeftDistance(newMoveLeftDistance);
         }}
       >
-        {tabs.map((tab) => {
-          let isCurrent = activeTab === tab.id;
-          return (
-            <div
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              style={{}}
-              className={`  hover:bg-gray-300  whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${
-                isCurrent
-                  ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] "
-                  : " dark:hover:bg-gray-600 "
-              }  ${
-                isCurrent
-                  ? "  bg-white hover:bg-white dark:text-white dark:bg-gray-600 dark:hover:bg-gray-600 "
-                  : ""
-              }`}
-            >
-              <Icon
-                icon={tab.icon as any}
-                className={`h-5 w-5 !inline-flex items-center justify-center ${
-                  isCurrent ? "blue-svg" : "gray-svg"
-                }  `}
-              ></Icon>
-              <span>{tab.label}</span>
-              <Icon
-                icon="cross"
-                className={
-                  "small-close-btn ml-1  " +
-                  ` ${isCurrent ? "gen-active" : ""} `
-                }
-              ></Icon>
-              {/* <XIcon className="h-5 w-5 text-gray-500" /> */}
-            </div>
-          );
-        })}
+        {tabs.map(fn_format_each_tab(false))}
       </div>
       <div className={` absolute  right-0 top-0 h-full px-2 pr-1 ${commonBG}`}>
         <ButtonGroup>
@@ -165,22 +229,58 @@ export default () => {
               small: true,
               icon: "chevron-down",
               tooltip: Dot("R12bq", "List tabs that are not shown"),
+              panel: (
+                <PanelThatNotShown fn_format_each_tab={fn_format_each_tab} />
+              ),
             },
             {
               small: true,
               icon: "more",
               tooltip: Dot("G9QVo", "Manage Tabs"),
+              panel: (
+                <div>
+                  <Menu small>
+                    {/* <MenuItem icon="add" text="Add Tab" /> */}
+                    {/* <MenuItem icon="edit" text="Edit Tab" /> */}
+                    {/* <MenuItem icon="trash" text="Delete Tab" /> */}
+                    <MenuItem
+                      // icon="menu-closed"
+                      text={Dot("ZrbuC", "Close Tab")}
+                    />
+                    <MenuItem
+                      // icon="collapse-all"
+                      text={Dot("ZrbduC", "Close All Tabs")}
+                    />
+                    {/* <MenuDivider /> */}
+                    {/* <MenuItem icon="import" text="Import" /> */}
+                    {/* <MenuItem icon="export" text="Export" /> */}
+                    {/* <MenuDivider /> */}
+                    {/* <MenuItem
+                      // icon="cog"
+                      text={Dot("lpKAz", "Settings")}
+                      disabled
+                    /> */}
+                  </Menu>
+                </div>
+              ),
             },
           ].map((x) => {
             return (
-              <Tooltip content={x.tooltip} placement="bottom">
-                <Button
-                  {...(x as any)}
-                  minimal
-                  className=" h-[28px] w-[28px] "
-                  key={x.icon}
-                ></Button>
-              </Tooltip>
+              <Popover
+                key={x.icon}
+                placement="bottom-end"
+                minimal
+                content={x.panel}
+              >
+                <Tooltip content={x.tooltip} placement="bottom">
+                  <Button
+                    {...(x as any)}
+                    minimal
+                    className=" h-[28px] w-[28px] "
+                    key={x.icon}
+                  ></Button>
+                </Tooltip>
+              </Popover>
             );
           })}
         </ButtonGroup>
