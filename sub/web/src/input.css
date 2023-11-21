@@ -43,7 +43,7 @@ div,.fixed-wb-nav-menu{
     @apply w-3 h-3 ml-1 mr-1 mt-[2px];
 }
 .blue-svg svg{
-    @apply !fill-light-blue-600;
+    @apply !fill-light-blue-600 dark:!fill-light-blue-300;
 }
 .gray-svg svg{
     @apply !fill-gray-500;

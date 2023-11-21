@@ -72,9 +72,15 @@ function App() {
     let rootClzForDark: string = CLZ_ROOT_DARK;
     let rootClzForLight: string = CLZ_ROOT_LIGHT;
     if (isDark) {
-      $("body,html").addClass(rootClzForDark).removeClass(rootClzForLight);
+      $("body,html")
+        .addClass(rootClzForDark)
+        .addClass("dark")
+        .removeClass(rootClzForLight);
     } else {
-      $("body,html").removeClass(rootClzForDark).addClass(rootClzForLight);
+      $("body,html")
+        .removeClass(rootClzForDark)
+        .removeClass("dark")
+        .addClass(rootClzForLight);
     }
   }, [forgeObj.dark]);
 
