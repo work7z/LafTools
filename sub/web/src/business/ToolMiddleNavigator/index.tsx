@@ -295,68 +295,6 @@ export default (props: PassProp): any => {
           ></NonIdealState>
         ) : (
           ""
-          /**
-             <GenTree
-            onClick={(node) => {
-              if (node?.hasCaret) return;
-              let childId = node?.id;
-              goWithChildId(childId);
-            }}
-            formatEachNode={(x) => {
-              if (!x.hasCaret) {
-                let hasRemarkThisOne =
-                  _.find(favoritesList, (xx) => {
-                    return _.toString(xx.Id + "") === x.id;
-                  }) != null;
-                return {
-                  ...x,
-                  secondaryLabel: (
-                    <ButtonGroup>
-                      <Button
-                        small
-                        minimal
-                        icon={hasRemarkThisOne ? "star" : "star-empty"}
-                        onClick={(e) => {
-                          gutils.stopE(e);
-                          if (hasRemarkThisOne) {
-                            dis(
-                              forgeSlice.actions.removeExtensionIdFromTool_RemarkExtIds(
-                                { extId: x.id + "" }
-                              )
-                            );
-                          } else {
-                            dis(
-                              forgeSlice.actions.addExtensionIdIntoTool_RemarkExtIds(
-                                { extId: x.id + "" }
-                              )
-                            );
-                          }
-                          onUpdateMemStatus(updateMemStatus + 1);
-                        }}
-                      />
-                      <AnchorButton
-                        href={RouteUtils.getCompleteURL(
-                          `${URL_WORKBENCH_TOOLS}/${currentCategoryId}/${x.id}`
-                        )}
-                        target="_blank"
-                        small
-                        minimal
-                        icon="share"
-                      />
-                    </ButtonGroup>
-                  ),
-                };
-              } else {
-                return x;
-              }
-            }}
-            needShowCountChildren={true}
-            info={treeInfo}
-            onChange={(new_nodes) => {
-              dis(ToolSlice.actions.updateSubCategoryTreeInfo(new_nodes));
-            }}
-          />
-             */
         )}
       </div>
       <div className="btm-top">

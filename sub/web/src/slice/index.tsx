@@ -31,8 +31,10 @@ import ExtSlice from "./ExtSlice";
 import wsSlice from "./wsSlice";
 import BigTextSlice from "./BigTextSlice";
 import layoutSlice from "./LayoutSlice";
+import WorkspaceSlice from "./workspaceSlice";
 
 export default {
+  workspace: WorkspaceSlice.reducer,
   layout: layoutSlice.reducer,
   bigtext: BigTextSlice.reducer,
   ws: wsSlice.reducer,
