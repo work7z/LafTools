@@ -102,18 +102,7 @@ Yes, it is open-source software, and you can use it following the terms of the l
 
 While we strive to provide as many services as possible for free, some features do require payment. This is because we incur costs for servers, maintenance, and other operational aspects that are essential to keep our services running smoothly and reliably. By charging for premium services, we can cover these costs and continue to offer high-quality, sustainable services. We appreciate your understanding and support.
 
-
-# 🎗 Pricing or Contribution
-
-Based on our years of project experience, we truly understand that a promising project and cloud service relies on the financial support of our users and contributions from the community.
-
-Without a proper profit model, this project will not be sustainable and surely have no stability or quality unless we place numerous advertisements, and even steal private data from users, which is not what we want.
-
-Thus, we decided to provide a reasonable plan to sustain this project, whose pricing would not be expensive but just related to the overhead of the project.   
-
-Pricing Table can be viewed in this Link.
-
-Of course, there’s another option instead of just paying the bill. 
+Wait, actually there’s another option instead of just paying the bill. 
 
 As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.
 
@@ -127,7 +116,7 @@ What you can do is to
 
 [Read Contribution Docs](CONTRIBUTION.md)
 
-With full test coverage and efforts from the CodeGen community, we are firmly convinced that the software can grow faster and stronger. 
+With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger. 
 
 
 # 🌠 Preview
