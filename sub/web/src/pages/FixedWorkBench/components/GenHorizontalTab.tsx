@@ -86,52 +86,100 @@ type PassProp = {
 export default () => {
   const [activeTab, setActiveTab] = useState("tab1");
 
-  const tabs: EachTab[] = [
-    { id: "tab1", label: "Tab 312", icon: "database" },
-    { id: "tab2", label: "Tab 2d12qw", icon: "application" },
-    { id: "tab3", label: "Tab 3", icon: "application" },
-  ];
-  let commonBG = "  ";
+  const tabs: EachTab[] = [];
+  // mock data for tabs
+  let [moveLeftDistance, onMoveLeftDistance] = useState(0);
+  for (let i = 0; i < 100; i++) {
+    tabs.push({
+      id: "tab" + i,
+      label: "tab" + i + "-" + moveLeftDistance,
+      icon: "database",
+    });
+  }
+  let commonBG = " using-edge-ui-bg ";
   return (
     <div
       style={{
         height: VAL_CSS_TAB_TITLE_PANEL,
       }}
-      className={` flex space-x-0 h-full   w-full border-b-2 border-b-gray-300 dark:border-b-gray-600  using-edge-ui-bg ${commonBG} `}
+      className={`w-full h-full relative border-b-2    border-b-gray-300 dark:border-b-gray-600  ${commonBG} `}
     >
-      {tabs.map((tab) => {
-        let isCurrent = activeTab === tab.id;
-        return (
-          <div
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`  hover:bg-gray-300  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${
-              isCurrent
-                ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] "
-                : " dark:hover:bg-gray-600 "
-            }  ${
-              isCurrent
-                ? "  bg-white hover:bg-white dark:text-white dark:bg-gray-600 dark:hover:bg-gray-600 "
-                : ""
-            }`}
-          >
-            <Icon
-              icon={tab.icon as any}
-              className={`h-5 w-5 !inline-flex items-center justify-center ${
-                isCurrent ? "blue-svg" : "gray-svg"
-              }  `}
-            ></Icon>
-            <span>{tab.label}</span>
-            <Icon
-              icon="cross"
-              className={
-                "small-close-btn ml-1  " + ` ${isCurrent ? "gen-active" : ""} `
-              }
-            ></Icon>
-            {/* <XIcon className="h-5 w-5 text-gray-500" /> */}
-          </div>
-        );
-      })}
+      <div
+        className={` flex space-x-0 h-full   w-full  `}
+        style={{
+          overflowX: "auto",
+          scrollbarWidth: "none" /* For Firefox */,
+          msOverflowStyle: "none" /* For Internet Explorer and Edge */,
+        }}
+        // on mouse scroll
+        onWheel={(e) => {
+          // e.preventDefault();
+          // let newMoveLeftDistance = moveLeftDistance + e.deltaY;
+          // if (newMoveLeftDistance < 0) {
+          //   newMoveLeftDistance = 0;
+          // }
+          // onMoveLeftDistance(newMoveLeftDistance);
+        }}
+      >
+        {tabs.map((tab) => {
+          let isCurrent = activeTab === tab.id;
+          return (
+            <div
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              style={{}}
+              className={`  hover:bg-gray-300  whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${
+                isCurrent
+                  ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] "
+                  : " dark:hover:bg-gray-600 "
+              }  ${
+                isCurrent
+                  ? "  bg-white hover:bg-white dark:text-white dark:bg-gray-600 dark:hover:bg-gray-600 "
+                  : ""
+              }`}
+            >
+              <Icon
+                icon={tab.icon as any}
+                className={`h-5 w-5 !inline-flex items-center justify-center ${
+                  isCurrent ? "blue-svg" : "gray-svg"
+                }  `}
+              ></Icon>
+              <span>{tab.label}</span>
+              <Icon
+                icon="cross"
+                className={
+                  "small-close-btn ml-1  " +
+                  ` ${isCurrent ? "gen-active" : ""} `
+                }
+              ></Icon>
+              {/* <XIcon className="h-5 w-5 text-gray-500" /> */}
+            </div>
+          );
+        })}
+      </div>
+      <div className={` absolute  right-0 top-0 h-full px-2 pr-1 ${commonBG}`}>
+        <ButtonGroup>
+          {[
+            {
+              small: true,
+              icon: "chevron-down",
+            },
+            {
+              small: true,
+              icon: "more",
+            },
+          ].map((x) => {
+            return (
+              <Button
+                {...(x as any)}
+                minimal
+                className=" h-[28px] w-[28px] "
+                key={x.icon}
+              ></Button>
+            );
+          })}
+        </ButtonGroup>
+      </div>
     </div>
   );
 };
