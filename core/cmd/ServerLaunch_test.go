@@ -205,7 +205,6 @@ func TestSimpleRunNode(t *testing.T) {
 		}
 		endTime := time.Now()
 		t.Log("time cost:", endTime.Sub(startTime))
-
 	}
 }
 

@@ -168,7 +168,17 @@ export default (props: PassProp) => {
         contents={nodes}
         onNodeDoubleClick={(node) => {
           let e = node;
-          if (node.hasCaret) {
+          if (false && node.hasCaret) {
+          }
+          if (!_.isNil(node)) {
+            props.onDoubleClick && props.onDoubleClick(node as TreeNodeInfo);
+          }
+        }}
+        onNodeClick={(e, e2, e3) => {
+          // update info.selected according to e.isSelected
+          let new_info = { ...info };
+          let node = e;
+          if (e.hasCaret) {
             // if e.hasCaret, then toggle if its value in info.expanded
             let new_info = { ...info };
             if (_.includes(info.expanded, node.id.toString())) {
@@ -188,16 +198,6 @@ export default (props: PassProp) => {
             if (!_.isNil(e)) {
               props.onClick && props.onClick(e as TreeNodeInfo);
             }
-          }
-          if (!_.isNil(node)) {
-            props.onDoubleClick && props.onDoubleClick(node as TreeNodeInfo);
-          }
-        }}
-        onNodeClick={(e, e2, e3) => {
-          // update info.selected according to e.isSelected
-          let new_info = { ...info };
-          let node = e;
-          if (false && e.hasCaret) {
           } else {
             if (!e.isSelected) {
               new_info = {
