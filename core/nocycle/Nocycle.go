@@ -65,6 +65,15 @@ func WriteStrIntoFile(filename string, content string) error {
 	return WriteBytesIntoFile(filename, []byte(content))
 }
 
+// write a function for WriteStrIntoFile
+func WriteObjIntoFile(filename string, content interface{}) error {
+	a, err := json.Marshal(content)
+	if err != nil {
+		return err
+	}
+	return WriteBytesIntoFile(filename, []byte(a))
+}
+
 func WriteBytesIntoFile(filename string, content []byte) error {
 	return ioutil.WriteFile(filename, content, 0644)
 }

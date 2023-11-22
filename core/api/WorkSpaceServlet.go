@@ -44,6 +44,51 @@ type WorkSpaceStruct struct {
 func API_WorkSpace_List_By_User(c *gin.Context) {
 	wc := context.NewWC(c)
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
+	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	// anyway, if no error then users will get his/her workspace as normal
+	OKLa(c, DoValueRes(workspaceRes))
+}
+
+func API_Workspace_Add_By_User(c *gin.Context) {
+	wc := context.NewWC(c)
+	var newSpace = &EachWorkSpace{}
+	c.BindJSON(newSpace)
+	// label and path cannot be empty
+	if newSpace.Label == "" || newSpace.Path == "" {
+		ErrLa2(c, wc.Dot("bAkuz", "label and path cannot be empty"))
+		return
+	}
+	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
+	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	// if workspaceRes.WorkSpaces already have that same path, then error
+	for _, each := range workspaceRes.WorkSpaces {
+		if each.Path == newSpace.Path {
+			ErrLa2(c, wc.Dot("RBgEN", "already have that path"))
+			return
+		}
+	}
+	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, *newSpace)
+	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
+	OKLa(c, DoValueRes("OK"))
+}
+
+func API_Workspace_Delete_By_User(c *gin.Context) {
+	wc := context.NewWC(c)
+	// label and path cannot be empty
+	var newSpace = &EachWorkSpace{}
+	c.BindJSON(newSpace)
+	if newSpace.Path == "" {
+		ErrLa2(c, wc.Dot("XQELf", "label and path cannot be empty"))
+		return
+	}
+	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
+	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, *newSpace)
+	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
+	OKLa(c, DoValueRes("OK"))
+}
+
+func getWorkspaceStruct(workspaceConfigFile string) *WorkSpaceStruct {
 	var workspaceRes *WorkSpaceStruct = &WorkSpaceStruct{
 		WorkSpaces: []EachWorkSpace{},
 	}
@@ -51,21 +96,12 @@ func API_WorkSpace_List_By_User(c *gin.Context) {
 	if e == nil {
 		e2 := json.Unmarshal(s, workspaceRes)
 		if e2 != nil {
-			// ok
+
 		} else {
 			log.Ref().Error(e2)
 		}
 	} else {
 		log.Ref().Error(e)
 	}
-	// anyway, if no error then users will get his/her workspace as normal
-	OKLa(c, DoValueRes(workspaceRes))
-}
-
-func API_Workspace_Add_By_User(c *gin.Context) {
-	OKLa(c, DoValueRes("add by user"))
-}
-
-func API_Workspace_Delete_By_User(c *gin.Context) {
-	OKLa(c, DoValueRes("delete by user"))
+	return workspaceRes
 }
