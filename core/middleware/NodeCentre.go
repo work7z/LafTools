@@ -38,14 +38,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// var IsNodeProcessOn = false
+// TODO: not only does support Node, but also the other languages like Python, Java, C#, C++, etc.
 
 type NodeReq struct {
-	Id          string
-	Lang        string
-	Type        string
-	InputValue  interface{}
-	CallbackURL string // optional, if require the node feedback then please provide this link
+	Id         string
+	Lang       string
+	Type       string
+	InputValue interface{}
 }
 
 type NodeRes struct {
@@ -81,7 +80,7 @@ var Lck_WaitResMap = &sync.Mutex{}
 var Ref_CloseResMap = make(map[string]chan int)
 var Lck_CloseKVMap = &sync.Mutex{}
 
-func ReceiveNodeReq(uid string) (*NodeRes, error) {
+func receiveNodeReq(uid string) (*NodeRes, error) {
 	if nocycle.HTTP_PORT_ONCE_SET == 0 {
 		log.Ref().Panic("Http port has not been setup, please firstly launch the server at first.")
 	}
@@ -156,6 +155,7 @@ func ReceiveNodeReq(uid string) (*NodeRes, error) {
 var randomSubConsumer string = nocycle.GetRandomString(5)
 var randomFileName string = nocycle.GetRandomString(10)
 var idx = 0
+var IsNodeReceiveAckNow = false
 
 var Unfinished_NodeReqChan = make(map[string]*NodeReq)
 var Lock_tmp_NodeReqChan = &sync.Mutex{}
@@ -171,6 +171,11 @@ var cacheMapForRes = map[string]*NodeRes{}
 var lock_cacheMapForRes = &sync.Mutex{}
 
 func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue interface{}) (*NodeRes, error) {
+	// ensure Id,Lang,Type is required in nodeReq, if no then return error
+	if nodeReq.Id == "" || nodeReq.Lang == "" || nodeReq.Type == "" {
+		return nil, errors.New("Id,Lang,Type are required in nodeReq")
+	}
+
 	uid := nodeReq.GetUID()
 	if shouldCacheRes && !nocycle.IsDevMode {
 		prev := cacheMapForRes[uid]
@@ -178,11 +183,19 @@ func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue
 			return prev, nil
 		}
 	}
-	err := SendNodeReq(nodeReq)
+
+	checkNodeProcess(*nodeReq)
+
+	if !IsNodeReceiveAckNow {
+		// if the node is not running, then we should run it directly until the node service is available
+		// node startup time + websocket establish time may take more than 1s, hence we'd better do it directly
+		return directlyCallNodeProcess(nodeReq)
+	}
+	err := sendNodeReq(nodeReq)
 	if err != nil {
 		return nil, err
 	}
-	r, e := ReceiveNodeReq(uid)
+	r, e := receiveNodeReq(uid)
 	if shouldCacheRes {
 		lock_cacheMapForRes.Lock()
 		defer lock_cacheMapForRes.Unlock()
@@ -198,15 +211,9 @@ func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue
 	return r, e
 }
 
-func SendNodeReq(nodeReq *NodeReq) error {
-
-	// ensure Id,Lang,Type is required in nodeReq, if no then return error
-	if nodeReq.Id == "" || nodeReq.Lang == "" || nodeReq.Type == "" {
-		return errors.New("Id,Lang,Type are required in nodeReq")
-	}
+func sendNodeReq(nodeReq *NodeReq) error {
 
 	idx++
-	checkNodeProcess(*nodeReq)
 
 	// if Id is empty, then throw error
 	if nodeReq.Id == "" {
@@ -259,6 +266,35 @@ var Wait_NodeReadyWS = make(chan int)
 var init_checkNodeProcessBefore bool = false
 var atomicInt *int64 = new(int64)
 
+func directlyCallNodeProcess(config *NodeReq) (*NodeRes, error) {
+	var cmd *exec.Cmd
+	var extArr = getBasicExtArrForNodeJS()
+	var mainProgram string = getMainProgramForNodeJS()
+	extArr = append(extArr, "--mode=direct-call")
+	newIdx := atomic.AddInt64(atomicInt, 1)
+	var tmpFilePath = path.Join(getConsumerDir(), "tmp-dc-"+strconv.Itoa(int(newIdx))+".json")
+	// write nodeReq into tmpFilePath
+	err := nocycle.WriteObjIntoFile(tmpFilePath, &config)
+	if err != nil {
+		return nil, err
+	}
+	// Example:
+	// ts-node -T /Users/jerrylai/mincontent/PersonalProjects/laftools-go/sub/node/src/ws-index.ts --mode=direct-call --direct-call-config=/Users/jerrylai/mincontent/PersonalProjects/laftools-go/sub/node/time-consumer/c-ZEITN/tmp-dc-1.json
+	extArr = append(extArr, "--direct-call-config="+tmpFilePath)
+	cmd = exec.Command(mainProgram, extArr...)
+	// get all output in cmd as a string, and convert it as NodeRes struct, note that return error if any
+	out, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	var a NodeRes
+	err = json.Unmarshal(out, &a)
+	if err != nil {
+		return nil, err
+	}
+	return &a, nil
+}
+
 func checkNodeProcess(config NodeReq) error {
 	lock_checkNodeProcessLock.Lock()
 	defer lock_checkNodeProcessLock.Unlock()
@@ -275,6 +311,7 @@ func checkNodeProcess(config NodeReq) error {
 		cleanStuffBeforeNode()
 		for {
 			runNodeJS()
+			IsNodeReceiveAckNow = false
 			log.Ref().Debug("[checkNode] sleeping")
 			select {
 			case Chan_NewReqForNodeLooper <- 1:
@@ -313,22 +350,31 @@ func cleanStuffBeforeNode() {
 	}
 }
 
+func getMainProgramForNodeJS() string {
+	if nocycle.IsDevMode {
+		return "ts-node"
+	} else {
+		return "node"
+	}
+}
+
+func getBasicExtArrForNodeJS() []string {
+	extArr := []string{}
+	if nocycle.IsDevMode {
+		extArr = append(extArr, "-T")
+		extArr = append(extArr, nocycle.LafToolsGoRoot+"/sub/node/src/ws-index.ts")
+	} else {
+		// TODO: add production config
+		panic("not yet supported")
+	}
+	return extArr
+}
+
 func runNodeJS() {
 	log.Ref().Info("Launching Node Process for index.ts...")
 	var cmd *exec.Cmd
-	extArr := []string{}
-	var mainProgram string
-	if nocycle.IsDevMode {
-		mainProgram = "ts-node"
-		extArr = append(extArr, "-T")
-		extArr = append(extArr, nocycle.CodeGenGoRoot+"/sub/node/src/ws-index.ts")
-		// mainProgram = "node"
-		// extArr = append(extArr, nocycle.CodeGenGoRoot+"/sub/node/build/ws-index.js")
-	} else {
-		// TODO:
-		mainProgram = "node"
-		panic("not yet supported")
-	}
+	var extArr = getBasicExtArrForNodeJS()
+	var mainProgram string = getMainProgramForNodeJS()
 	autoExitSeconds := "120"
 	if nocycle.IsDevMode {
 		autoExitSeconds = env.DEV_EXIT_SECONDS
@@ -349,7 +395,7 @@ func runNodeJS() {
 	} else {
 		err2 := ioutil.WriteFile(tmpInputConfigFile, configB, 0644)
 		if err2 != nil {
-			log.Ref().Error("tmpInputConfigFie err2 is ", runNodeJS)
+			log.Ref().Error("tmpInputConfigFie err2 is ", err2)
 			return
 		}
 	}
@@ -376,7 +422,7 @@ func getModTime(filename string) (int64, error) {
 }
 
 func getBaseDirAboveConsumer() string {
-	return nocycle.MkdirFileWithStr(nocycle.CodeGenGoRoot + "/sub/node/time-consumer")
+	return nocycle.MkdirFileWithStr(nocycle.LafToolsGoRoot + "/sub/node/time-consumer")
 }
 
 func getConsumerDir() string {

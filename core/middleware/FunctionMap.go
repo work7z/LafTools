@@ -110,9 +110,9 @@ func RunCMD(cmd *cobra.Command, args []string) {
 
 func initTestDB() {
 	// mkdir nocycle.CodeGenGoRoot+"/tmp
-	nocycle.MkdirFile(nocycle.CodeGenGoRoot + "/tmp")
+	nocycle.MkdirFile(nocycle.LafToolsGoRoot + "/tmp")
 
-	db, err := sql.Open("sqlite3", nocycle.CodeGenGoRoot+"/tmp/test.db")
+	db, err := sql.Open("sqlite3", nocycle.LafToolsGoRoot+"/tmp/test.db")
 	if err != nil {
 		log.Fatal(err)
 	}

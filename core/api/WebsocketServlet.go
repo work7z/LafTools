@@ -143,6 +143,9 @@ func API_Node_Websocket(c *gin.Context) {
 		isQuit = true
 	}()
 
+	// this part is to notify node requests that node worker is available to be called
+	middleware.IsNodeReceiveAckNow = true
+
 	// when websocket is ready, send all unfinished node req to it
 	middleware.Lock_tmp_NodeReqChan.Lock()
 	for _, v := range middleware.Unfinished_NodeReqChan {
@@ -241,7 +244,7 @@ func API_Hmr_Reload(c *gin.Context) {
 		recover()
 	}()
 	var shouldReturn = false
-	configHmrFile := path.Join(nocycle.CodeGenGoRoot, "sub/web/src/init/hmr.json")
+	configHmrFile := path.Join(nocycle.LafToolsGoRoot, "sub/web/src/init/hmr.json")
 	var reloadConfig *HmrReloadConfig = &HmrReloadConfig{}
 	if nocycle.IsFileExist(configHmrFile) {
 		// unmarshal from configHmrFile
@@ -249,7 +252,7 @@ func API_Hmr_Reload(c *gin.Context) {
 		json.Unmarshal([]byte(str), reloadConfig)
 		// check if each file is changed
 		for _, _eachFile := range reloadConfig.Files {
-			eachFile := path.Join(nocycle.CodeGenGoRoot, "sub/web/public", _eachFile)
+			eachFile := path.Join(nocycle.LafToolsGoRoot, "sub/web/public", _eachFile)
 			// get last timestamp
 			// if changed, then send reload command to ws
 			lastTimestamp, _ := nocycle.GetFileLastModifiedTimestamp(eachFile)

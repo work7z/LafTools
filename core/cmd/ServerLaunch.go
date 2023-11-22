@@ -97,7 +97,7 @@ func init() {
 
 	// init  run server
 	runServerCmd.PersistentFlags().StringVar(&nocycle.RefId, "codegen.refid", "YVwYb.json", "ref for port && status && information")
-	runServerCmd.PersistentFlags().StringVar(&nocycle.CodeGenGoRoot, "codegen.root", env.ENV_DefaultCodeGenRoot, "system root path")
+	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsGoRoot, "codegen.root", env.ENV_DefaultCodeGenRoot, "system root path")
 	runServerCmd.PersistentFlags().StringVar(&nocycle.CodeGenAppConfigDir, "codegen.appconfigdir", env.ENV_defaultAppConfigDir, "config home path")
 
 	// init middleware

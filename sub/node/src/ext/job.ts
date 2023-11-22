@@ -23,6 +23,14 @@ const JobDefinition: { [key: string]: JobProcesser } = {
   getMenuItems: async function (req: NodeReq): Promise<NodeRes<any> | null> {
     return null;
   },
+  test: async function (req: NodeReq): Promise<NodeRes<any> | null> {
+    return {
+      Type: req.Type,
+      Id: req.Id,
+      Lang: req.Lang,
+      OutputValue: "ackthis_is_testack",
+    };
+  },
   helloWorld: async function (req: NodeReq): Promise<NodeRes<any> | null> {
     let Dot = Dot_fn(req.Lang);
     return {

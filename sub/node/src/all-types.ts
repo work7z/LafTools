@@ -3,7 +3,6 @@ export type NodeReq = {
   Id: string;
   Type: string;
   InputValue: any;
-  CallbackURL: string;
 };
 
 export type NodeRes<T extends any> = {

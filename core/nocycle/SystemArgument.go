@@ -24,8 +24,8 @@ import "os"
 
 var (
 	RefId               string        // for port information, if it's empty, then I will tell you in the home directory
-	IsDevMode         bool   = true // by default, it's true
+	IsDevMode           bool   = true // by default, it's true
 	SystemUserLanguage  string = "en_US"
-	CodeGenGoRoot       string = os.Getenv("LAFTOOLS_ROOT")
+	LafToolsGoRoot      string = os.Getenv("LAFTOOLS_ROOT")
 	CodeGenAppConfigDir string = os.Getenv("CODEGEN_APP_DIR")
 )
