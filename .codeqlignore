@@ -1,0 +1,4 @@
+# .codeqlignore
+
+# ignore prettier
+sub/node/src/lib/prettier

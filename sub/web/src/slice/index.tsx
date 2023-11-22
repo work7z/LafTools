@@ -32,8 +32,10 @@ import wsSlice from "./wsSlice";
 import BigTextSlice from "./BigTextSlice";
 import layoutSlice from "./LayoutSlice";
 import WorkspaceSlice from "./workspaceSlice";
+import PreWorkSpaceSlice from "./preWorkSpace";
 
 export default {
+  preWorkspace: PreWorkSpaceSlice.reducer,
   workspace: WorkspaceSlice.reducer,
   layout: layoutSlice.reducer,
   bigtext: BigTextSlice.reducer,

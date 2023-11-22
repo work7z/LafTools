@@ -128,7 +128,12 @@ func ConfigSystemRouter(r *gin.Engine) {
 	doPOST("/os/temp/file/upload", API_TEMP_FILE_UPLOAD)
 	doGET_("/os/temp/file/read", API_TEMP_FILE_READ)
 
-	// ws(note that ws has separate auth logic)
+	// workspace
+	doGET_("/workspace/users/list", API_WorkSpace_List_By_User)
+	doPOST("/workspace/users/add", API_Workspace_Add_By_User)
+	doPOST("/workspace/users/delete", API_Workspace_Delete_By_User)
+
+	// ws(websocket, note that ws has particular auth logic in servlet)
 	doGET_("/ws/system", API_SYSTEM_WebSocket)
 	doGET_("/ws/node-rpc", API_Node_Websocket)
 	doGET_("/ws/post-job", API_PostJob_WebSocket)

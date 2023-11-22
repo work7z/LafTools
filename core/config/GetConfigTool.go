@@ -108,7 +108,7 @@ func GetItemByToken(userConfig UserConfigMap, token string) (*UserConfig, bool) 
 
 // /////////////////////////////
 func WriteUserAnyKeyFromFile(userId string, key string, item_str string) error {
-	file := getUserAnyKeyFile(userId, key)
+	file := GetUserAnyKeyFile(userId, key)
 	var item interface{}
 	err := json.Unmarshal([]byte(item_str), &item)
 	if err != nil {
@@ -122,7 +122,7 @@ func WriteUserAnyKeyFromFile(userId string, key string, item_str string) error {
 }
 
 func ReadUserAnyKeyFromFile(userId string, key string) (string, error) {
-	file := getUserAnyKeyFile(userId, key)
+	file := GetUserAnyKeyFile(userId, key)
 	if nocycle.IsFileNonExist(file) {
 		return "", nil
 	}
@@ -167,17 +167,20 @@ func getMapByFile[T any](userConfigFile string, res T) (T, error) {
 	return res, nil
 }
 
-func getUserAnyKeyFile(userId string, key string) string {
-	userMyFolder := getTargetUserOwnFolder(userId)
+func GetUserAnyKeyFile(userId string, key string) string {
+	userMyFolder := GetTargetUserOwnFolder(userId)
 	return (path.Join(userMyFolder, key+".json"))
 }
-func getUserForgeFile(userId string) string {
-	userMyFolder := getTargetUserOwnFolder(userId)
+func GetUserForgeFile(userId string) string {
+	userMyFolder := GetTargetUserOwnFolder(userId)
 	finalFolder := nocycle.MkdirFileWithStr(path.Join(userMyFolder, "forge"))
 	return (path.Join(finalFolder, "forge.json"))
 }
+func GetUserWorkSpaceConfigFile(userId string) string {
+	return GetUserAnyKeyFile(userId, "workspace-config")
+}
 
-func getTargetUserOwnFolder(userId string) string {
+func GetTargetUserOwnFolder(userId string) string {
 	userMyFolder := nocycle.MkdirFileWithStr(path.Join(gutils.GetAppHomeConfigDirectory(), "users", userId))
 	return userMyFolder
 }

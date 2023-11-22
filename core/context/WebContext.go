@@ -23,6 +23,7 @@ package context
 import (
 	"encoding/json"
 	"errors"
+	"laftools-go/core/config"
 	"laftools-go/core/nocycle"
 	"laftools-go/core/translation"
 	"net/http"
@@ -127,6 +128,14 @@ func (wc *WebContext) GetUserLanguage() string {
 func (wc *WebContext) GetHeaderClientToken() string {
 	token := strings.TrimSpace(wc.GetHeaderValue(nocycle.HEADER_LOCAL_USER_TOKEN))
 	return token
+}
+
+func (wc *WebContext) GetUserOwnConfigFolder() string {
+	userId := wc.GetUserID()
+	return config.GetTargetUserOwnFolder(userId)
+}
+func (wc *WebContext) GetUserWorkSpaceConfigFile() string {
+	return config.GetUserWorkSpaceConfigFile(wc.GetUserID())
 }
 
 func (wc *WebContext) Dot(id string, enText string, arg ...interface{}) string {
