@@ -19,6 +19,15 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { Intent } from "@blueprintjs/core";
 
+export type EachWorkSpace = {
+  Label: string;
+  Path: string;
+};
+
+export type WorkSpaceStruct = {
+  WorkSpaces: EachWorkSpace[];
+};
+
 export type FnPureToolDefinition = {
   id: string;
   label: string;

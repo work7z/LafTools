@@ -27,7 +27,11 @@ import gutils from "../utils/GlobalUtils";
 import { UserConfig } from "./userSlice";
 import { url } from "inspector";
 import { param } from "jquery";
-import { FnPureToolDefinition } from "../pages/FixedWorkBench/definitions/WB_Types";
+import {
+  EachWorkSpace,
+  FnPureToolDefinition,
+  WorkSpaceStruct,
+} from "../pages/FixedWorkBench/definitions/WB_Types";
 
 let createNotProhibitedResources = (build, resName) => {
   return build.query({
@@ -58,6 +62,38 @@ export const apiSlice = createApi({
     },
   }),
   endpoints: (build) => ({
+    // workspace
+    getWorkspaceListByUserId: build.query<
+      PayloadValueData<WorkSpaceStruct>,
+      any
+    >({
+      query: () => "/workspace/users/list",
+    }),
+    addWorkspaceForEachUser: build.mutation<
+      PayloadValueData<any>,
+      EachWorkSpace
+    >({
+      query: (arg) => {
+        return {
+          method: "POST",
+          url: "/workspace/users/add",
+          body: arg,
+        };
+      },
+    }),
+    deleteTheWorkspaceForEachUser: build.mutation<
+      PayloadValueData<any>,
+      EachWorkSpace
+    >({
+      query: (arg) => {
+        return {
+          method: "POST",
+          url: "/workspace/users/delete",
+          body: arg,
+        };
+      },
+    }),
+
     // static
     getToolCategory: build.query<PayloadListData<FnPureToolDefinition>, any>({
       query: () => "/tool/exts/listCategory",

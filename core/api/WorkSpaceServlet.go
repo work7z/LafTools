@@ -25,6 +25,7 @@ import (
 	"laftools-go/core/context"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
+	"sync"
 
 	"github.com/gin-gonic/gin"
 )
@@ -41,7 +42,13 @@ type WorkSpaceStruct struct {
 	WorkSpaces []EachWorkSpace
 }
 
+// lock for workspace
+// TODO: we use multiple instance to lock each user's workspace config file separately.
+var workspaceLock = &sync.Mutex{}
+
 func API_WorkSpace_List_By_User(c *gin.Context) {
+	workspaceLock.Lock()
+	defer workspaceLock.Unlock()
 	wc := context.NewWC(c)
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
 	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
@@ -50,6 +57,8 @@ func API_WorkSpace_List_By_User(c *gin.Context) {
 }
 
 func API_Workspace_Add_By_User(c *gin.Context) {
+	workspaceLock.Lock()
+	defer workspaceLock.Unlock()
 	wc := context.NewWC(c)
 	var newSpace = &EachWorkSpace{}
 	c.BindJSON(newSpace)
@@ -73,17 +82,26 @@ func API_Workspace_Add_By_User(c *gin.Context) {
 }
 
 func API_Workspace_Delete_By_User(c *gin.Context) {
+	workspaceLock.Lock()
+	defer workspaceLock.Unlock()
 	wc := context.NewWC(c)
 	// label and path cannot be empty
 	var newSpace = &EachWorkSpace{}
 	c.BindJSON(newSpace)
 	if newSpace.Path == "" {
-		ErrLa2(c, wc.Dot("XQELf", "label and path cannot be empty"))
+		ErrLa2(c, wc.Dot("XQELf", "path cannot be empty"))
 		return
 	}
+	// using path to delete
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
 	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
-	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, *newSpace)
+	var newWorkSpaces []EachWorkSpace
+	for _, each := range workspaceRes.WorkSpaces {
+		if each.Path != newSpace.Path {
+			newWorkSpaces = append(newWorkSpaces, each)
+		}
+	}
+	workspaceRes.WorkSpaces = newWorkSpaces
 	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 	OKLa(c, DoValueRes("OK"))
 }
