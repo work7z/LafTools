@@ -191,7 +191,7 @@ func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue
 	var r *NodeRes
 
 	// if false && !IsNodeReceiveAckNow {
-	if !IsNodeReceiveAckNow {
+	if false && !IsNodeReceiveAckNow {
 		// TODO: consider directly execute command when the node worker is unavailable(but for now, I think it's worse than just waiting for node worker)
 		go func() {
 			select {
