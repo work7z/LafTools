@@ -85,6 +85,7 @@ export default (props: BlinkProp): any => {
         whiteSpace: "pre-wrap",
         width: "100%",
         minWidth: "230px",
+        fontSize: "11px",
       }}
       className="whitespace-break-spaces overflow-hidden bp5-text-muted bp5-text-small  h-full   "
       title={mottoLine}

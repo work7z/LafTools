@@ -186,7 +186,7 @@ func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue
 		}
 	}
 
-	checkNodeProcess(*nodeReq)
+	StartupNodeProcess()
 
 	var r *NodeRes
 
@@ -333,7 +333,7 @@ func directlyCallNodeProcess(config *NodeReq) (*NodeRes, error) {
 	return &a, nil
 }
 
-func checkNodeProcess(config NodeReq) error {
+func StartupNodeProcess() error {
 	lock_checkNodeProcessLock.Lock()
 	defer lock_checkNodeProcessLock.Unlock()
 	if nocycle.HTTP_PORT_ONCE_SET == 0 {
@@ -412,7 +412,7 @@ func getBasicExtArrForNodeJS() []string {
 }
 
 func runNodeJS() {
-	log.Ref().Info("Launching Node Process for index.ts...")
+	log.Ref().Debug("Launching Node Process for index.ts...")
 	var cmd *exec.Cmd
 	var extArr = getBasicExtArrForNodeJS()
 	var mainProgram string = getMainProgramForNodeJS()

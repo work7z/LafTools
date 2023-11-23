@@ -119,6 +119,9 @@ func API_Node_Websocket(c *gin.Context) {
 	defer ws.Close()
 	// write hello for ws
 
+	Lock_tmp_NodeWebsocket.Lock()
+	defer Lock_tmp_NodeWebsocket.Unlock()
+
 	if !VerifyWSRequest(c) {
 		ws.WriteJSON(DoValueResForWS(99, "INVALID_TOKEN", map[string]interface{}{
 			"errors": "INVALID_TOKEN",
@@ -126,8 +129,7 @@ func API_Node_Websocket(c *gin.Context) {
 		return
 	}
 
-	Lock_tmp_NodeWebsocket.Lock()
-	defer Lock_tmp_NodeWebsocket.Unlock()
+	var crtLockForWS = &sync.Mutex{}
 
 	// select {
 	// case middleware.Wait_NodeReadyWS <- 1:
@@ -149,7 +151,9 @@ func API_Node_Websocket(c *gin.Context) {
 	// when websocket is ready, send all unfinished node req to it
 	middleware.Lock_tmp_NodeReqChan.Lock()
 	for _, v := range middleware.Unfinished_NodeReqChan {
+		crtLockForWS.Lock()
 		ws.WriteJSON(DoValueResForWS(0, "node_req", v))
+		crtLockForWS.Unlock()
 	}
 	middleware.Lock_tmp_NodeReqChan.Unlock()
 
@@ -165,7 +169,9 @@ func API_Node_Websocket(c *gin.Context) {
 			}
 			// when got new node req, then send it to ws
 			c := <-middleware.Ref_Chan_NodeReq
+			crtLockForWS.Lock()
 			ws.WriteJSON(DoValueResForWS(0, "node_req", c))
+			crtLockForWS.Unlock()
 		}
 	}()
 
@@ -244,6 +250,7 @@ func API_Hmr_Reload(c *gin.Context) {
 		recover()
 	}()
 	var shouldReturn = false
+	var crtLockForWS = &sync.Mutex{}
 	configHmrFile := path.Join(nocycle.LafToolsGoRoot, "sub/web/src/init/hmr.json")
 	var reloadConfig *HmrReloadConfig = &HmrReloadConfig{}
 	if nocycle.IsFileExist(configHmrFile) {
@@ -261,7 +268,9 @@ func API_Hmr_Reload(c *gin.Context) {
 					crtTimestamp, _ := nocycle.GetFileLastModifiedTimestamp(eachFile)
 					if crtTimestamp != lastTimestamp {
 						lastTimestamp = crtTimestamp
+						crtLockForWS.Lock()
 						err := ws.WriteJSON((DoValueRes("changed")))
+						crtLockForWS.Unlock()
 						if err != nil {
 							shouldReturn = true
 							return

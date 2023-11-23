@@ -92,6 +92,9 @@ func GetMottoList(ctx *context.WebContext) []func() string {
 			return ctx.Dot("a7062", "Innovation is the spark that ignites progress. -Robyn M. D’Angelo")
 		},
 		func() string {
+			return ctx.Dot("yCsTC", "Premature optimization is the root of all evil.")
+		},
+		func() string {
 			return ctx.Dot("4d389", "Innovation is a way of life for the successful entrepreneur. -John Rampton")
 		},
 		func() string {

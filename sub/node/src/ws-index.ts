@@ -104,10 +104,10 @@ if (mode == "direct-call") {
   let checkAutoExit = async function () {
     while (true) {
       await sleep(1000);
-      console.log("checking job time", ackJobTime);
+      // console.log("checking job time", ackJobTime);
       if (ackJobTime != null) {
         let diff = Date.now() - ackJobTime.getTime();
-        console.log("diff seconds", diff, autoExitSeconds! * 1000);
+        // console.log("diff seconds", diff, autoExitSeconds! * 1000);
         if (diff > autoExitSeconds! * 1000) {
           // TODO: current make node worker never quit unless we find a way to reduce its startup time.
           // console.log("quit the program");

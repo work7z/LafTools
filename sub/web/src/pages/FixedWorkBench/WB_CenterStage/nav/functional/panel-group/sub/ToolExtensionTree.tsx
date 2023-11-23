@@ -328,7 +328,7 @@ export default (props: {
       <NonIdealState
         className="whitespace-break-spaces"
         icon="array-string"
-        title={Dot("cuRCqb", "Category not found.")}
+        title={Dot("cuRCqb", "Category doesn't exist")}
       ></NonIdealState>
     );
   }
@@ -338,10 +338,7 @@ export default (props: {
         {_.isEmpty(extsListQuery.data?.payload?.list) ? (
           <NonIdealState
             icon="array"
-            title={Dot(
-              "qUabeqwR",
-              "There's no available tools for this category."
-            )}
+            title={Dot("q12beqwR", "No Available Tools")}
           ></NonIdealState>
         ) : (
           <GenTree
