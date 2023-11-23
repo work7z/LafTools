@@ -103,34 +103,35 @@ func GetOneExtUnderSpecificCategory(c *gin.Context) {
 }
 
 func ListSubCategory(c *gin.Context) {
-	categoryId := c.Query("categoryId")
-	wc := context.WebContext{GinContext: c}
-	if categoryId == "" {
-		ErrLa2(c, wc.Dot("1322", "Category ID is required"))
-		return
-	}
-	subExtCategory, err := ext.GetAllSubExtCategory(&wc)
-	if err != nil {
-		ErrLa(c, err)
-		return
-	}
-	isAll := categoryId == "all"
-	filteredArr := make([]ext.ListExtForTheCategoryRes, 0)
-	for _, item := range *subExtCategory {
-		if isAll || item.CategoryId == categoryId {
-			// collect item.Children.Info as an array, and assign it to Info
-			c := make([]form.ExtensionInfo, 0)
-			for _, child := range item.Children {
-				c = append(c, *child.Info)
-			}
-			filteredArr = append(filteredArr, ext.ListExtForTheCategoryRes{
-				Id:             item.Id,
-				Label:          item.Label,
-				Icon:           item.Icon,
-				ChildrenAsInfo: c,
-			})
-		}
-	}
+	// categoryId := c.Query("categoryId")
+	// wc := context.WebContext{GinContext: c}
+	// if categoryId == "" {
+	// 	ErrLa2(c, wc.Dot("1322", "Category ID is required"))
+	// 	return
+	// }
+	// subExtCategory, err := ext.GetAllSubExtCategory(&wc)
+	// if err != nil {
+	// 	ErrLa(c, err)
+	// 	return
+	// }
+	// isAll := categoryId == "all"
+	// filteredArr := make([]ext.ListExtForTheCategoryRes, 0)
+	// for _, item := range *subExtCategory {
+	// 	if isAll || item.CategoryId == categoryId {
+	// 		// collect item.Children.Info as an array, and assign it to Info
+	// 		c := make([]form.ExtensionInfo, 0)
+	// 		for _, child := range item.Children {
+	// 			c = append(c, *child.Info)
+	// 		}
+	// 		filteredArr = append(filteredArr, ext.ListExtForTheCategoryRes{
+	// 			Id:             item.Id,
+	// 			Label:          item.Label,
+	// 			Icon:           item.Icon,
+	// 			ChildrenAsInfo: c,
+	// 		})
+	// 	}
+	// }
+	filteredArr := make([]string, 0)
 	OKLa(c, DoListRes(filteredArr))
 }
 

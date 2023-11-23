@@ -21,10 +21,14 @@
 package ext
 
 import (
+	"encoding/json"
+	"fmt"
 	"laftools-go/core/context"
 	"laftools-go/core/form"
-	"laftools-go/core/log"
+	"laftools-go/core/gutils"
 	"laftools-go/core/middleware"
+	"laftools-go/core/nocycle"
+	"path"
 	"strconv"
 	"sync/atomic"
 )
@@ -37,31 +41,34 @@ type SubExtCategory struct {
 	Children   []form.ExtensionVM
 }
 
-type CategoryDefinition struct {
-	Id    string `json:"id"`
-	Label string `json:"label"`
+type TranslatePassArg = []string
+
+type ToolCategory struct {
+	Id            string           `json:"id"`
+	Label         TranslatePassArg `json:"label"`
+	SubCategories []ToolSubCategory
 }
 
-type ListExtForTheCategoryRes struct {
-	CategoryId     string
-	Id             string
-	Label          string
-	Icon           string
-	ChildrenAsInfo []form.ExtensionInfo
+type ToolSubCategory struct {
+	Id            string
+	Label         TranslatePassArg
+	Icon          string
+	ChildrenIdSet []string
 }
 
-func GetAllCategory(ctx *context.WebContext) (*[]CategoryDefinition, error) {
-	var returnValue *[]CategoryDefinition = &[]CategoryDefinition{}
-	crtLang := ctx.GetUserLanguage()
-	a, er := middleware.BIO_SendReqToNodeProcess(&middleware.NodeReq{
-		Id:   "listCategory" + GetAtomicInt(),
-		Lang: crtLang,
-		Type: "Job_ListCategory",
-	}, true, returnValue)
+func GetAllCategory(ctx *context.WebContext) (*[]ToolCategory, error) {
+	var categoryFile = path.Join(gutils.GetResourceNonProhibitedDir(), "purejs", "category.json")
+	var returnValue *[]ToolCategory = &[]ToolCategory{}
+	// read file and unmarhsla it to returnValue
+	b, er := nocycle.ReadFileAsStrWithNoTrim(categoryFile)
 	if er != nil {
 		return nil, er
 	}
-	return a.OutputValue.(*[]CategoryDefinition), nil
+	er = json.Unmarshal([]byte(b), returnValue)
+	if er != nil {
+		return nil, er
+	}
+	return returnValue, nil
 }
 
 var Ref_AtomicInt int64 = 0
@@ -71,21 +78,33 @@ func GetAtomicInt() string {
 }
 
 // write a function that return SubExtCategory array
-func GetAllSubExtCategory(ctx *context.WebContext) (*[]SubExtCategory, error) {
-	var returnValue *[]SubExtCategory = &[]SubExtCategory{}
-	crtLang := ctx.GetUserLanguage()
-	id := "listSubCategory-" + GetAtomicInt()
-	a, er := middleware.BIO_SendReqToNodeProcess(&middleware.NodeReq{
-		Id:   id,
-		Lang: crtLang,
-		Type: "Job_ListSubCategoryAndFunctions",
-	}, true, returnValue)
-	if er != nil {
-		return nil, er
+func GetAllSubExtCategory(ctx *context.WebContext) (*[]ToolSubCategory, error) {
+	allCategory, err := GetAllCategory(ctx)
+	if err != nil {
+		return nil, err
 	}
-	log.Ref().Debug("got GetAllSubExtCategory, ", a, " and id ->", id)
-	// return a as *[]SubExtCategory by force cast
-	return a.OutputValue.(*[]SubExtCategory), nil
+	var arr []ToolSubCategory = []ToolSubCategory{}
+	for _, category := range *allCategory {
+		for _, subCategory := range category.SubCategories {
+			arr = append(arr, subCategory)
+		}
+	}
+	return &arr, nil
+
+	// var returnValue *[]SubExtCategory = &[]SubExtCategory{}
+	// crtLang := ctx.GetUserLanguage()
+	// id := "listSubCategory-" + GetAtomicInt()
+	// a, er := middleware.BIO_SendReqToNodeProcess(&middleware.NodeReq{
+	// 	Id:   id,
+	// 	Lang: crtLang,
+	// 	Type: "Job_ListSubCategoryAndFunctions",
+	// }, true, returnValue)
+	// if er != nil {
+	// 	return nil, er
+	// }
+	// log.Ref().Debug("got GetAllSubExtCategory, ", a, " and id ->", id)
+	// // return a as *[]SubExtCategory by force cast
+	// return a.OutputValue.(*[]SubExtCategory), nil
 }
 
 // return all form.ExtensionVM from functions whose begin with FN_
@@ -94,8 +113,9 @@ func GetAllExtVM(ctx *context.WebContext) []form.ExtensionVM {
 	allExtVM := make([]form.ExtensionVM, 0)
 	b, _ := GetAllSubExtCategory(ctx)
 	for _, subExtCategory := range *b {
-		for _, extVM := range subExtCategory.Children {
-			allExtVM = append(allExtVM, extVM)
+		for _, extVM := range subExtCategory.ChildrenIdSet {
+			fmt.Println(extVM)
+			// allExtVM = append(allExtVM, extVM)
 		}
 	}
 	return allExtVM

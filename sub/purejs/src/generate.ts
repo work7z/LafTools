@@ -18,7 +18,7 @@ console.log(getCategoryTS);
 console.log(extsMap);
 
 // write getCategoryTS into ./build/category.json
-let categoryJson = JSON.stringify(getCategoryTS);
+let categoryJson = JSON.stringify(getCategoryTS.default);
 let categoryJsonPath = path.join(__dirname, "..", "build", "category.json");
 fs.writeFileSync(categoryJsonPath, categoryJson);
 
@@ -33,7 +33,7 @@ let extsMapKeys = Object.keys(extsMap);
 for (let i = 0; i < extsMapKeys.length; i++) {
   let ext = extsMapKeys[i];
   let extInfo = extsMap[ext];
-  let extInfoJson = JSON.stringify(extInfo);
+  let extInfoJson = JSON.stringify(extInfo.default);
   // mkdir -p ../build/exts/${ext} if not exists
   let extInfoJsonDir = path.join(__dirname, "..", "build", "exts", ext);
   if (!fs.existsSync(extInfoJsonDir)) {

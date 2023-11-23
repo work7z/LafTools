@@ -42,6 +42,8 @@ import (
 
 // TODO: not only does support Node, but also the other languages like Python, Java, C#, C++, etc.
 
+// TODO: will remove these go files about node worker because it has terrible performance and horrible memory usage
+
 type NodeReq struct {
 	Id         string
 	Lang       string
@@ -173,69 +175,70 @@ var cacheMapForRes = map[string]*NodeRes{}
 var lock_cacheMapForRes = &sync.Mutex{}
 
 func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue interface{}) (*NodeRes, error) {
-	// ensure Id,Lang,Type is required in nodeReq, if no then return error
-	if nodeReq.Id == "" || nodeReq.Lang == "" || nodeReq.Type == "" {
-		return nil, errors.New("Id,Lang,Type are required in nodeReq")
-	}
+	// // ensure Id,Lang,Type is required in nodeReq, if no then return error
+	// if nodeReq.Id == "" || nodeReq.Lang == "" || nodeReq.Type == "" {
+	// 	return nil, errors.New("Id,Lang,Type are required in nodeReq")
+	// }
 
-	uid := nodeReq.GetUID()
-	if shouldCacheRes && !nocycle.IsDevMode {
-		prev := cacheMapForRes[uid]
-		if prev != nil {
-			return prev, nil
-		}
-	}
+	// uid := nodeReq.GetUID()
+	// if shouldCacheRes && !nocycle.IsDevMode {
+	// 	prev := cacheMapForRes[uid]
+	// 	if prev != nil {
+	// 		return prev, nil
+	// 	}
+	// }
 
-	StartupNodeProcess()
+	// StartupNodeProcess()
 
-	var r *NodeRes
+	// var r *NodeRes
 
+	// // if false && !IsNodeReceiveAckNow {
 	// if false && !IsNodeReceiveAckNow {
-	if false && !IsNodeReceiveAckNow {
-		// TODO: consider directly execute command when the node worker is unavailable(but for now, I think it's worse than just waiting for node worker)
-		go func() {
-			select {
-			case _ = <-Chan_NewReqForNodeLooper:
-				log.Ref().Debug("wake up a service in receive")
-			case <-time.After(time.Second):
-				log.Ref().Debug("the node worker should be initializing not sleeping")
-			}
-		}()
+	// 	// TODO: consider directly execute command when the node worker is unavailable(but for now, I think it's worse than just waiting for node worker)
+	// 	go func() {
+	// 		select {
+	// 		case _ = <-Chan_NewReqForNodeLooper:
+	// 			log.Ref().Debug("wake up a service in receive")
+	// 		case <-time.After(time.Second):
+	// 			log.Ref().Debug("the node worker should be initializing not sleeping")
+	// 		}
+	// 	}()
 
-		log.Ref().Debug("using directly call mode")
-		// if the node is not running, then we should run it directly until the node service is available
-		// node startup time + websocket establish time may take more than 1s, hence we'd better do it directly
-		t_r, err3 := directlyCallNodeProcess(nodeReq)
-		r = t_r
-		if err3 != nil {
-			return nil, err3
-		}
-	} else {
-		log.Ref().Debug("using service call mode")
-		// otherwise, send it to node req
-		err := sendNodeReq(nodeReq)
-		if err != nil {
-			return nil, err
-		}
-		t_r, e := receiveNodeReq(uid)
-		r = t_r
-		if e != nil {
-			return nil, e
-		}
-	}
-	if shouldCacheRes {
-		lock_cacheMapForRes.Lock()
-		defer lock_cacheMapForRes.Unlock()
-		// convert a.OutputValue as jsonstr
-		jsonStr := r.OutputValue
-		e := nocycle.AssignJSONToObj(jsonStr, returnValue)
-		if e != nil {
-			return nil, e
-		}
-		r.OutputValue = returnValue
-		cacheMapForRes[uid] = r
-	}
-	return r, nil
+	// 	log.Ref().Debug("using directly call mode")
+	// 	// if the node is not running, then we should run it directly until the node service is available
+	// 	// node startup time + websocket establish time may take more than 1s, hence we'd better do it directly
+	// 	t_r, err3 := directlyCallNodeProcess(nodeReq)
+	// 	r = t_r
+	// 	if err3 != nil {
+	// 		return nil, err3
+	// 	}
+	// } else {
+	// 	log.Ref().Debug("using service call mode")
+	// 	// otherwise, send it to node req
+	// 	err := sendNodeReq(nodeReq)
+	// 	if err != nil {
+	// 		return nil, err
+	// 	}
+	// 	t_r, e := receiveNodeReq(uid)
+	// 	r = t_r
+	// 	if e != nil {
+	// 		return nil, e
+	// 	}
+	// }
+	// if shouldCacheRes {
+	// 	lock_cacheMapForRes.Lock()
+	// 	defer lock_cacheMapForRes.Unlock()
+	// 	// convert a.OutputValue as jsonstr
+	// 	jsonStr := r.OutputValue
+	// 	e := nocycle.AssignJSONToObj(jsonStr, returnValue)
+	// 	if e != nil {
+	// 		return nil, e
+	// 	}
+	// 	r.OutputValue = returnValue
+	// 	cacheMapForRes[uid] = r
+	// }
+	// return r, nil
+	return nil, nil
 }
 
 func sendNodeReq(nodeReq *NodeReq) error {
