@@ -2,8 +2,6 @@ var websocket = require("websocket");
 import fs from "fs";
 import { NodeReq, NodeRes } from "./all-types";
 import JobDefinition from "./ext/job";
-import { exit } from "process";
-var path = require("path");
 // command: node ./ws-index.ts --autoExitSeconds=10 --input-config-file=/users/ksdkfqw/rrqw
 var inputConfigFile: string = "";
 var autoExitSeconds: number = 20;

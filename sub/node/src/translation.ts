@@ -1,5 +1,4 @@
 let LANG_EN_US = "en_US";
-let language = LANG_EN_US;
 import zh_CN from "./lang/zh_CN.json";
 import zh_HK from "./lang/zh_HK.json";
 // process.argv.forEach((val, index) => {

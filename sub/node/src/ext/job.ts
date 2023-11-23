@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { exit } from "process";
-let chokidar = require("chokidar");
+
 import {
   CategoryDefinition,
   JobProcesser,
