@@ -52,7 +52,8 @@ Server Side Node
 
 To make sure all tools are supported on all UI clients (Web, Desktop, IDE, mobile, etc…), it is recommended that we implement the logic of tools on the server side, not the client side.
 
-For instance, if you want to convert a base64 text into plain text, we should always do the conversion on the server side although there’s a quicker way to do it in the browser directly, which takes user experiences and tool compatibility into consideration.
+For instance, if you want to convert a base64 text into plain text, we should always do the conversion on the Go server side although there’s a quicker way to do it in the browser directly, which takes user experiences and tool compatibility into consideration.  
+
 
 ### Node Module Design
 
