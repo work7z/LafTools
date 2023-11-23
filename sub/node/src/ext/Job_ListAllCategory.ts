@@ -1,4 +1,4 @@
-import { CategoryDefinition, NodeReq, NodeRes } from "../all-types";
+import type { CategoryDefinition, NodeReq, NodeRes } from "../all-types";
 import { Dot_fn } from "../translation";
 
 export default async function (
