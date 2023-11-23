@@ -7,11 +7,11 @@ import type {
 import { Dot } from "../utils/translation";
 
 let value: ToolCategory[] = [
-  {
-    Id: "all", // should have no all in this field
-    Label: ["cPS6q", "All Tools"],
-    SubCategories: [],
-  },
+  // {
+  //   Id: "all", // should have no all in this field
+  //   Label: ["cPS6q", "All Tools"],
+  //   SubCategories: [],
+  // },
   {
     Id: "codec",
     Label: ["m0105", "Codec"],
