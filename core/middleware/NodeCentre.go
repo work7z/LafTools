@@ -21,8 +21,10 @@
 package middleware
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"laftools-go/core/env"
 	"laftools-go/core/log"
@@ -186,16 +188,30 @@ func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue
 
 	checkNodeProcess(*nodeReq)
 
+	var r *NodeRes
+
 	if !IsNodeReceiveAckNow {
+		log.Ref().Debug("using directly call mode")
 		// if the node is not running, then we should run it directly until the node service is available
 		// node startup time + websocket establish time may take more than 1s, hence we'd better do it directly
-		return directlyCallNodeProcess(nodeReq)
+		t_r, err3 := directlyCallNodeProcess(nodeReq)
+		r = t_r
+		if err3 != nil {
+			return nil, err3
+		}
+	} else {
+		log.Ref().Debug("using service call mode")
+		// otherwise, send it to node req
+		err := sendNodeReq(nodeReq)
+		if err != nil {
+			return nil, err
+		}
+		t_r, e := receiveNodeReq(uid)
+		r = t_r
+		if e != nil {
+			return nil, e
+		}
 	}
-	err := sendNodeReq(nodeReq)
-	if err != nil {
-		return nil, err
-	}
-	r, e := receiveNodeReq(uid)
 	if shouldCacheRes {
 		lock_cacheMapForRes.Lock()
 		defer lock_cacheMapForRes.Unlock()
@@ -208,7 +224,7 @@ func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue
 		r.OutputValue = returnValue
 		cacheMapForRes[uid] = r
 	}
-	return r, e
+	return r, nil
 }
 
 func sendNodeReq(nodeReq *NodeReq) error {
@@ -283,13 +299,25 @@ func directlyCallNodeProcess(config *NodeReq) (*NodeRes, error) {
 	extArr = append(extArr, "--direct-call-config="+tmpFilePath)
 	cmd = exec.Command(mainProgram, extArr...)
 	// get all output in cmd as a string, and convert it as NodeRes struct, note that return error if any
-	out, err := cmd.Output()
+	log.Ref().Debug("cmd is ", cmd)
+	var out bytes.Buffer
+	var stderr bytes.Buffer
+	cmd.Stdout = &out
+	cmd.Stderr = &stderr
+
+	err = cmd.Run()
 	if err != nil {
+		errValue := fmt.Sprint(err) + ": " + stderr.String()
+		log.Ref().Debug("could not execute cmd.output", errValue, " and output is ", out)
 		return nil, err
+
 	}
+	outStr := out.String()
 	var a NodeRes
-	err = json.Unmarshal(out, &a)
+	// string to byte
+	err = json.Unmarshal([]byte(outStr), &a)
 	if err != nil {
+		log.Ref().Debug("could not unmarhsal cmd.output", err)
 		return nil, err
 	}
 	return &a, nil
@@ -327,9 +355,6 @@ func checkNodeProcess(config NodeReq) error {
 
 func cleanStuffBeforeNode() {
 	// clean stuff
-	if nocycle.IsDevMode {
-		os.RemoveAll(getBaseDirAboveConsumer())
-	}
 	files, err := ioutil.ReadDir(getBaseDirAboveConsumer())
 	if err != nil {
 		log.Ref().Warn(err)

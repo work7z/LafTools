@@ -64,14 +64,14 @@ if (mode == "direct-call") {
   // NO OUTPUT END:
 } else {
   // using websocket to launch
-  console.log("* Arg_inputConfigFile", inputConfigFile);
-  console.log("* Arg_autoExitSeconds", autoExitSeconds);
+  // console.log("* Arg_inputConfigFile", inputConfigFile);
+  // console.log("* Arg_autoExitSeconds", autoExitSeconds);
 
   // parse inputConfigFile as InputConfigFile
   let inputConfigFileContent = fs.readFileSync(inputConfigFile, "utf8");
   let inputConfigFileJson: InputConfigFile = JSON.parse(inputConfigFileContent);
 
-  console.log("* Arg_inputContent", inputConfigFileJson);
+  // console.log("* Arg_inputContent", inputConfigFileJson);
 
   // delete inputConfigFile
   fs.unlinkSync(inputConfigFile);

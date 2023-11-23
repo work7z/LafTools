@@ -118,8 +118,10 @@ func QTestServerEnvLaunch(t *testing.T) func() {
 }
 func QUnlockServer(t *testing.T) {
 	// Create a context with a timeout
-	Srv.Shutdown(nil)
-	lock_Service.Unlock()
+	if Srv != nil {
+		Srv.Shutdown(nil)
+		lock_Service.Unlock()
+	}
 }
 
 // write test cases to verify the returns of GetAllExtVM, make sure the Actions in each item has uniq id, at the same time, Info.Id should also be uniq
@@ -222,11 +224,11 @@ func GetRandomInt(min, max int) int {
 }
 
 func TestNodeMultipleRequest(t *testing.T) {
-	env.DEV_EXIT_SECONDS = "1"
+	env.DEV_EXIT_SECONDS = "5"
 	BasicTestNodeMultipleRequest(t)
 }
 func TestNodeMultipleRequest2(t *testing.T) {
-	env.DEV_EXIT_SECONDS = "5"
+	env.DEV_EXIT_SECONDS = "1"
 	BasicTestNodeMultipleRequest(t)
 }
 func TestNodeMultipleRequest3(t *testing.T) {
@@ -264,6 +266,7 @@ func BasicTestNodeMultipleRequest(t *testing.T) {
 					OverwriteUserLang: GetRandomLang(),
 				})
 				if e != nil {
+					t.Log("Err-from-ext: ", e)
 					t.Error(e)
 					return
 				}
@@ -306,6 +309,9 @@ func GetAverage(arr []int64) string {
 	var total int64 = 0
 	for _, v := range arr {
 		total += v
+	}
+	if len(arr) == 0 {
+		return "len_is_0"
 	}
 	return strconv.FormatInt(total/int64(len(arr)), 10) + "ms"
 }
