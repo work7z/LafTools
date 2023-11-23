@@ -3,7 +3,7 @@ import type {
   NodeReq,
   NodeRes,
   FlushIdValuePair,
-} from "../all-types";
+} from "../types/all-types";
 import { Dot } from "../utils/translation";
 
 let value: ToolCategory[] = [

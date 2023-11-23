@@ -1,4 +1,4 @@
-import { ExtensionInfo, ExtensionVM } from "../../../all-types";
+import { ExtensionInfo, ExtensionVM } from "../../../types/all-types";
 
 let v: ExtensionVM = {
   Layout: "form",
