@@ -190,7 +190,9 @@ func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue
 
 	var r *NodeRes
 
+	// if false && !IsNodeReceiveAckNow {
 	if !IsNodeReceiveAckNow {
+		// TODO: consider directly execute command when the node worker is unavailable(but for now, I think it's worse than just waiting for node worker)
 		go func() {
 			select {
 			case _ = <-Chan_NewReqForNodeLooper:
@@ -319,7 +321,6 @@ func directlyCallNodeProcess(config *NodeReq) (*NodeRes, error) {
 		errValue := fmt.Sprint(err) + ": " + stderr.String()
 		log.Ref().Debug("could not execute cmd.output", errValue, " and output is ", out)
 		return nil, err
-
 	}
 	outStr := out.String()
 	var a NodeRes
@@ -395,8 +396,14 @@ func getMainProgramForNodeJS() string {
 func getBasicExtArrForNodeJS() []string {
 	extArr := []string{}
 	if nocycle.IsDevMode {
-		extArr = append(extArr, "-T")
-		extArr = append(extArr, nocycle.LafToolsGoRoot+"/sub/node/src/ws-index.ts")
+		var devFile string
+		if env.DEV_USING_TSX_FOR_REAL_OUTPUT {
+			extArr = append(extArr, "-T")
+			devFile = nocycle.LafToolsGoRoot + "/sub/node/src/ws-index.ts"
+		} else {
+			devFile = nocycle.LafToolsGoRoot + "/sub/node/build/ws-index.js"
+		}
+		extArr = append(extArr, devFile)
 	} else {
 		// TODO: add production config
 		panic("not yet supported")

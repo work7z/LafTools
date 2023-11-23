@@ -91,10 +91,14 @@ func TestGetAllSubExtCategory(t *testing.T) {
 func TestGetAllCategory(t *testing.T) {
 	QTestServerEnvLaunch(t)
 
+	st := time.Now()
+
 	defer QUnlockServer(t)
 	a, e := ext.GetAllSubExtCategory(&context.WebContext{
 		OverwriteUserLang: "zh_CN",
 	})
+	passBy := st.Sub(time.Now())
+	t.Log("elapsed: ", passBy)
 	if e != nil {
 		t.Error(e)
 		return

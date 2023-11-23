@@ -21,11 +21,16 @@
 package middleware
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
+	"laftools-go/core/nocycle"
 	"os"
+	"os/exec"
 	"reflect"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -136,4 +141,30 @@ func TestDirectlyCallNodeProcess(t *testing.T) {
 	if !reflect.DeepEqual(res, expected) {
 		t.Errorf("unexpected result, got %+v, want %+v", res, expected)
 	}
+}
+
+func TestExecute(t *testing.T) {
+	startTime := time.Now()
+	cmd := exec.Command(
+		"ts-node",
+		"-T",
+		nocycle.LafToolsGoRoot+"/sub/node/src/ws-index.ts",
+		"--mode=direct-call",
+		"--direct-call-config="+nocycle.LafToolsGoRoot+"/test/time-consumer/c-XJHDM/tmp-dc-1.json",
+	)
+
+	var out bytes.Buffer
+	var stderr bytes.Buffer
+	cmd.Stdout = &out
+	cmd.Stderr = &stderr
+
+	err := cmd.Run()
+	if err != nil {
+		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
+		return
+	}
+	outputStr := out.String()
+	fmt.Println("Result: " + outputStr)
+	bbstr := startTime.Sub(time.Now()).String()
+	t.Log("end time:", bbstr)
 }

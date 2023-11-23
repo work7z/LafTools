@@ -109,8 +109,9 @@ if (mode == "direct-call") {
         let diff = Date.now() - ackJobTime.getTime();
         console.log("diff seconds", diff, autoExitSeconds! * 1000);
         if (diff > autoExitSeconds! * 1000) {
-          console.log("quit the program");
-          exit(0);
+          // TODO: current make node worker never quit unless we find a way to reduce its startup time.
+          // console.log("quit the program");
+          // exit(0);
         }
       }
     }

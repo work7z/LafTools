@@ -40,5 +40,6 @@ var ENV_ShouldPrintLogAsJSON = false
 // var DEV_EXIT_SECONDS = "30"
 var DEV_EXIT_SECONDS = "5"
 var DEV_WAKUP_TIMES int64 = 0
+var DEV_USING_TSX_FOR_REAL_OUTPUT = false // for ws-index, true will use ts directly, otherwise will use js
 
 var DEV_PUBLIC_RELOAD_FREQUENCY = time.Millisecond * 20 // check frequency
