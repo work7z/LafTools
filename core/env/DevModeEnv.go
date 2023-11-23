@@ -37,7 +37,8 @@ var ENV_defaultAppConfigDir = path.Join(homeDir, ENV_AppDirName)
 var ENV_ShouldPrintLogAsJSON = false
 
 // test stuff
-var DEV_EXIT_SECONDS = "30"
+// var DEV_EXIT_SECONDS = "30"
+var DEV_EXIT_SECONDS = "5"
 var DEV_WAKUP_TIMES int64 = 0
 
 var DEV_PUBLIC_RELOAD_FREQUENCY = time.Millisecond * 20 // check frequency

@@ -191,6 +191,15 @@ func BIO_SendReqToNodeProcess(nodeReq *NodeReq, shouldCacheRes bool, returnValue
 	var r *NodeRes
 
 	if !IsNodeReceiveAckNow {
+		go func() {
+			select {
+			case _ = <-Chan_NewReqForNodeLooper:
+				log.Ref().Debug("wake up a service in receive")
+			case <-time.After(time.Second):
+				log.Ref().Debug("the node worker should be initializing not sleeping")
+			}
+		}()
+
 		log.Ref().Debug("using directly call mode")
 		// if the node is not running, then we should run it directly until the node service is available
 		// node startup time + websocket establish time may take more than 1s, hence we'd better do it directly
