@@ -142,7 +142,15 @@ export let InnerToolPanel = (): any => {
     }
   );
   let activeOne = _.find(categoryList, (x) => x.Id == fc);
-
+  // categoryList = [
+  //   {
+  //     Id: "all",
+  //     LabelByInit: Dot("41z4c", "All Tools"),
+  //     Label: [""],
+  //     SubCategories: [],
+  //   },
+  //   ...categoryList,
+  // ];
   let m_ws = useMergeParamWithWorkSpace();
   return (
     <FunctionalMenu_Panel
@@ -151,7 +159,7 @@ export let InnerToolPanel = (): any => {
       leftNavList={
         _.map(categoryList, (x) => {
           return {
-            label: x.LabelByInit,
+            label: x.LabelByInit + "",
             value: x.Id,
             pathname: m_ws({
               fc: x.Id,

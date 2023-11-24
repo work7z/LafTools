@@ -30,8 +30,8 @@ export type WorkSpaceStruct = {
 };
 
 export type FnPureToolDefinition = ToolCategory & {
-  // Id: string;
-  // LabelByInit: string;
+  Id: string;
+  LabelByInit: string;
   // sdfsdf: ToolSubCategory[];
 };
 export interface PassToolViewerProp {
