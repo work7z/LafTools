@@ -68,7 +68,7 @@ type ToolSubCategory struct {
 	Label             translation.TranslatePassArg
 	LabelByInit       string
 	Icon              string
-	ChildrenSetByInit []ToolChildrenSetByInit
+	ChildrenSetByInit []*ToolChildrenSetByInit
 }
 
 func getPureJSFolder() string {

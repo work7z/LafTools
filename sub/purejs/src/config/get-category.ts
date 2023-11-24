@@ -20,7 +20,16 @@ let value: ToolCategory[] = [
         Id: "codec.Digest_Algorithm",
         Label: ["y_BN6", "Digest Algorithm"],
         Icon: "segmented-control",
-        ChildrenIdSet: ["md5", "sha1", "sha256", "sha512"],
+        ChildrenIdSet: [
+          "md2",
+          "md4",
+          "md5",
+          "sha1",
+          "sha224",
+          "sha256",
+          "sha384",
+          "sha512",
+        ],
       },
       {
         Id: "codec.Encode_and_Decode",
