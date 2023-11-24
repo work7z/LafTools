@@ -23,10 +23,11 @@ package form
 import "laftools-go/core/translation"
 
 type ExtensionInfo struct {
-	Id          string
-	Label       translation.TranslatePassArg
-	LabelByInit string
-	Description string
+	Id                string
+	Label             translation.TranslatePassArg
+	LabelByInit       string
+	Description       translation.TranslatePassArg
+	DescriptionByInit string
 }
 type ValueReq struct {
 	InputText      string
@@ -49,10 +50,12 @@ type ExtensionFuncMap = map[string]*ValueHandler
 type FormModel = map[string]any
 
 type ExtensionAction struct {
-	Tooltip      string
-	Id           string
-	Label        string
-	CallFuncList []string
+	Tooltip       translation.TranslatePassArg
+	TooltipByInit string
+	Id            string
+	Label         translation.TranslatePassArg
+	LabelByInit   string
+	CallFuncList  []string
 }
 
 type ExtensionVM struct {

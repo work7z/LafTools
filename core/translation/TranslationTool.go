@@ -24,6 +24,7 @@ import (
 	"laftools-go/core/gutils"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
+	"sync"
 
 	//"laftools-go/core/nocycle"
 	"path"
@@ -58,6 +59,9 @@ func TraFromWeb(lang string) *TraObject {
 var tmp_keyMap map[string]map[string]string = map[string]map[string]string{}
 
 func LoadFromDir(pathname string) error {
+	lock.Lock()
+	defer lock.Unlock()
+
 	// TODO: in the future, we will provide more languages instead of hard code
 	// read all zh_CN.json and zh_HK.json in this directory and load them into tmp_keyMap(not replace but patch)
 	// if the key is already exist, then skip it
@@ -101,8 +105,13 @@ func LoadFromDir(pathname string) error {
 	return nil
 }
 
+// lock for tmp_keyMap lock
+var lock = &sync.Mutex{}
+
 // SKIP_DOT
 func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
+	lock.Lock()
+	defer lock.Unlock()
 	lang := t.lang
 	var newText = id
 	var ack bool = false
@@ -157,7 +166,7 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 			log.Ref().Debug("replace text: "+replaceText+", idxVal ", idxVal)
 			newText = strings.ReplaceAll(newText, replaceText, idxVal2)
 		}
-		log.Ref().Debug("Dot: ", id+" -> ", newText)
+		// log.Ref().Debug("Dot: ", id+" -> ", newText)
 	}
 	return newText
 
