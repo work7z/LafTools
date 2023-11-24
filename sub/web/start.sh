@@ -21,6 +21,15 @@ addLicnese(){
   done
 }
 
+syncFiles(){
+ while true; do 
+  cp $LAFTOOLS_ROOT/sub/purejs/src/all-types.ts $LAFTOOLS_ROOT/sub/web/src/pages/FixedWorkBench/definitions/all-types.ts
+  sleep 4;
+ done 
+}
+
+syncFiles &> /dev/null & 
+
 # add license
 addLicnese &> /dev/null &
 

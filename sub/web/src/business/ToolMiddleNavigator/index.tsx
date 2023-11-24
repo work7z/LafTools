@@ -89,7 +89,7 @@ type PassProp = PassToolViewerProp;
 
 export default (props: PassProp): any => {
   let dis = exportUtils.dispatch();
-  let currentCategoryId = props?.findCurrentPureItem?.id;
+  let currentCategoryId = props?.findCurrentPureItem?.Id;
   const [updateMemStatus, onUpdateMemStatus] = useState(0);
 
   let extsListQuery = apiSlice.useGetToolCategoryExtsListQuery(
@@ -261,7 +261,7 @@ export default (props: PassProp): any => {
   gutils.ExposureIt("activeExt", activeExt, true);
 
   URLUtils.useUpdateTitle(
-    [activeExt?.label as string, activeOne?.label]
+    [activeExt?.label as string, activeOne?.LabelByInit]
       .filter((x) => !_.isNil(x))
       .join(" - "),
     [toolParam.category + "", toolParam.extId + ""]

@@ -89,14 +89,14 @@ export default (props: PassProp): any => {
   return (
     <ul className="app-nav-menu">
       {allPureMenuArr.map((x, d, n) => {
-        let isActive = toolParam.category == x.id;
+        let isActive = toolParam.category == x.Id;
         return (
           <Link
-            to={URL_WORKBENCH_TOOLS + "/" + x.id}
+            to={URL_WORKBENCH_TOOLS + "/" + x.Id}
             className={isActive ? "active-tool-item" : ""}
-            key={x.id}
+            key={x.Id}
           >
-            {x.label}
+            {x.LabelByInit}
           </Link>
         );
       })}

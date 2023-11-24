@@ -41,9 +41,11 @@ type SubExtCategory struct {
 }
 
 type ToolChildrenSetByInit struct {
-	Id          string
-	Label       translation.TranslatePassArg
-	LabelByInit string
+	Id                string
+	Label             translation.TranslatePassArg
+	LabelByInit       string
+	Description       translation.TranslatePassArg
+	DescriptionByInit string
 }
 
 type ToolCategory struct {
@@ -51,6 +53,14 @@ type ToolCategory struct {
 	Label         translation.TranslatePassArg
 	LabelByInit   string
 	SubCategories []*ToolSubCategory
+}
+
+type ListExtForTheCategoryRes struct {
+	CategoryId     string
+	Id             string
+	Label          string
+	Icon           string
+	ChildrenAsInfo []form.ExtensionInfo
 }
 
 type ToolSubCategory struct {
@@ -89,6 +99,8 @@ func GetExtById(wc *context.WebContext, extId string) (*form.ExtensionVM, error)
 	returnValue.Info.DescriptionByInit = wc.DotWithoutScan(returnValue.Info.Description...)
 	returnValue.Info.Description = nil
 
+	// TODO: enhance those ByInit logic with smarter logic
+
 	// also handle for returnValue.Actions
 	for _, action := range *returnValue.Actions {
 		action.LabelByInit = wc.DotWithoutScan(action.Label...)
@@ -124,6 +136,8 @@ func GetAllCategory(wc *context.WebContext) ([]*ToolCategory, error) {
 			for _, childrenSetByInit := range subCategory.ChildrenSetByInit {
 				childrenSetByInit.LabelByInit = wc.DotWithoutScan(childrenSetByInit.Label...)
 				childrenSetByInit.Label = nil
+				childrenSetByInit.DescriptionByInit = wc.DotWithoutScan(childrenSetByInit.Description...)
+				childrenSetByInit.Description = nil
 			}
 		}
 	}

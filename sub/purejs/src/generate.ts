@@ -40,6 +40,7 @@ dftCategory = dftCategory.map((x) => {
           return {
             Id: crtObj?.Info?.Id,
             Label: crtObj?.Info?.Label,
+            Description: crtObj?.Info?.Description,
           } as ToolChildrenSetByInit;
         }).filter((x) => x),
       } as ToolSubCategory;

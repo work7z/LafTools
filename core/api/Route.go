@@ -120,6 +120,7 @@ func ConfigSystemRouter(r *gin.Engine) {
 
 	// extension
 	doGET_("/tool/exts/listCategory", ListCategory)
+	doGET_("/tool/exts/listSubCategory", ListSubCategory)
 	doGET_("/tool/exts/getExtDetail", GetOneExtUnderSpecificCategory)
 	doPOST("/tool/exts/convertText", DoActionForConvertingText)
 

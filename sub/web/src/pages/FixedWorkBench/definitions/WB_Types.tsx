@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { Intent } from "@blueprintjs/core";
+import { ToolCategory, ToolSubCategory } from "./all-types";
 
 export type EachWorkSpace = {
   Label: string;
@@ -28,9 +29,10 @@ export type WorkSpaceStruct = {
   WorkSpaces: EachWorkSpace[];
 };
 
-export type FnPureToolDefinition = {
-  id: string;
-  label: string;
+export type FnPureToolDefinition = ToolCategory & {
+  // Id: string;
+  // LabelByInit: string;
+  // sdfsdf: ToolSubCategory[];
 };
 export interface PassToolViewerProp {
   category: string | null | undefined;

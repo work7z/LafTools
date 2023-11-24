@@ -105,3 +105,47 @@ func ListCategory(c *gin.Context) {
 	}
 	OKLa(c, DoListRes(b))
 }
+
+func ListSubCategory(c *gin.Context) {
+	categoryId := c.Query("categoryId")
+	wc := context.WebContext{GinContext: c}
+	if categoryId == "" {
+		ErrLa2(c, wc.Dot("1322", "Category ID is required"))
+		return
+	}
+	allCategory, err := ext.GetAllCategory(&wc)
+	if err != nil {
+		ErrLa(c, err)
+		return
+	}
+	if err != nil {
+		ErrLa(c, err)
+		return
+	}
+	isAll := categoryId == "all"
+	filteredArr := make([]ext.ListExtForTheCategoryRes, 0)
+	for _, cate := range allCategory {
+		if isAll || cate.Id == categoryId {
+			// collect item.Children.Info as an array, and assign it to Info
+			for _, subCate := range cate.SubCategories {
+				c := make([]form.ExtensionInfo, 0)
+				for _, tcsbi := range subCate.ChildrenSetByInit {
+					c = append(c, form.ExtensionInfo{
+						Id:                tcsbi.Id,
+						LabelByInit:       tcsbi.LabelByInit,
+						DescriptionByInit: tcsbi.DescriptionByInit,
+					})
+				}
+				filteredArr = append(filteredArr, ext.ListExtForTheCategoryRes{
+					Id:             subCate.Id,
+					Label:          subCate.LabelByInit,
+					Icon:           subCate.Icon,
+					CategoryId:     cate.Id,
+					ChildrenAsInfo: c,
+				})
+
+			}
+		}
+	}
+	OKLa(c, DoListRes(filteredArr))
+}
