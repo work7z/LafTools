@@ -28,6 +28,7 @@ import (
 	"laftools-go/core/log"
 	"laftools-go/core/middleware"
 	"laftools-go/core/nocycle"
+	"laftools-go/core/translation"
 	"path"
 )
 
@@ -39,22 +40,23 @@ type SubExtCategory struct {
 	Children   []form.ExtensionVM
 }
 
-type TranslatePassArg = []string
-
 type ToolChildrenSetByInit struct {
-	Id    string
-	Label TranslatePassArg
+	Id          string
+	Label       translation.TranslatePassArg
+	LabelByInit string
 }
 
 type ToolCategory struct {
-	Id            string           `json:"id"`
-	Label         TranslatePassArg `json:"label"`
+	Id            string
+	Label         translation.TranslatePassArg
+	LabelByInit   string
 	SubCategories []ToolSubCategory
 }
 
 type ToolSubCategory struct {
 	Id                string
-	Label             TranslatePassArg
+	Label             translation.TranslatePassArg
+	LabelByInit       string
 	Icon              string
 	ChildrenSetByInit []ToolChildrenSetByInit
 }
@@ -63,7 +65,12 @@ func getPureJSFolder() string {
 	return path.Join(gutils.GetResourceNonProhibitedDir(), "purejs")
 }
 
-func GetExtById(extId string) (*form.ExtensionVM, error) {
+func initBeforeReadPureJS() {
+	translation.LoadFromDir(path.Join(getPureJSFolder(), "lang"))
+}
+
+func GetExtById(wc *context.WebContext, extId string) (*form.ExtensionVM, error) {
+	initBeforeReadPureJS()
 	var indexJSONFile = path.Join(getPureJSFolder(), "exts", extId, "index.json")
 	returnValue := &form.ExtensionVM{}
 	// read file and unmarhsla it to returnValue
@@ -75,10 +82,14 @@ func GetExtById(extId string) (*form.ExtensionVM, error) {
 	if er != nil {
 		return nil, er
 	}
+	// make Label as LabelByInit for returnValue
+	returnValue.Info.LabelByInit = wc.DotWithoutScan(returnValue.Info.Label...)
+	returnValue.Info.Label = nil
 	return returnValue, nil
 }
 
-func GetAllCategory() (*[]ToolCategory, error) {
+func GetAllCategory(wc *context.WebContext) (*[]ToolCategory, error) {
+	initBeforeReadPureJS()
 	var categoryFile = path.Join(getPureJSFolder(), "category.json")
 	var returnValue *[]ToolCategory = &[]ToolCategory{}
 	// read file and unmarhsla it to returnValue
@@ -90,6 +101,19 @@ func GetAllCategory() (*[]ToolCategory, error) {
 	if er != nil {
 		return nil, er
 	}
+	// for each returnValue, translate its value into LabelByInit
+	for _, category := range *returnValue {
+		category.LabelByInit = wc.DotWithoutScan(category.Label...)
+		category.Label = nil
+		for _, subCategory := range category.SubCategories {
+			subCategory.LabelByInit = wc.DotWithoutScan(subCategory.Label...)
+			subCategory.Label = nil
+			for _, childrenSetByInit := range subCategory.ChildrenSetByInit {
+				childrenSetByInit.LabelByInit = wc.DotWithoutScan(childrenSetByInit.Label...)
+				childrenSetByInit.Label = nil
+			}
+		}
+	}
 	return returnValue, nil
 }
 
@@ -97,7 +121,7 @@ var Ref_AtomicInt int64 = 0
 
 // write a function that return SubExtCategory array
 func GetAllSubExtCategory(ctx *context.WebContext) (*[]ToolSubCategory, error) {
-	allCategory, err := GetAllCategory()
+	allCategory, err := GetAllCategory(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -116,7 +140,7 @@ func GetAllExtVM(ctx *context.WebContext) []form.ExtensionVM {
 	for _, subExtCategory := range *b {
 		for _, extVM := range subExtCategory.ChildrenSetByInit {
 			id := extVM.Id
-			extVM, err := GetExtById(id)
+			extVM, err := GetExtById(ctx, id)
 			if err != nil {
 				log.Ref().Warn("got err", err)
 			} else {

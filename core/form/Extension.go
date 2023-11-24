@@ -20,9 +20,12 @@
 
 package form
 
+import "laftools-go/core/translation"
+
 type ExtensionInfo struct {
 	Id          string
-	Label       string
+	Label       translation.TranslatePassArg
+	LabelByInit string
 	Description string
 }
 type ValueReq struct {

@@ -88,7 +88,7 @@ func GetOneExtUnderSpecificCategory(c *gin.Context) {
 		ErrLa2(c, wc.Dot("eIXF4", "Extension ID is required"))
 		return
 	}
-	item, err2 := ext.GetExtById(extId)
+	item, err2 := ext.GetExtById(&wc, extId)
 	if err2 != nil {
 		ErrLa(c, err2)
 		return
@@ -97,8 +97,8 @@ func GetOneExtUnderSpecificCategory(c *gin.Context) {
 }
 
 func ListCategory(c *gin.Context) {
-	// wc := context.WebContext{GinContext: c}
-	b, e := ext.GetAllCategory()
+	wc := context.WebContext{GinContext: c}
+	b, e := ext.GetAllCategory(&wc)
 	if e != nil {
 		ErrLa(c, e)
 		return

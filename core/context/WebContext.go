@@ -137,6 +137,9 @@ func (wc *WebContext) GetUserOwnConfigFolder() string {
 func (wc *WebContext) GetUserWorkSpaceConfigFile() string {
 	return config.GetUserWorkSpaceConfigFile(wc.GetUserID())
 }
+func (wc *WebContext) DotWithoutScan(arg ...string) string {
+	return wc.Dot(arg[0], arg[1], arg[2:])
+}
 
 func (wc *WebContext) Dot(id string, enText string, arg ...interface{}) string {
 	userlang := wc.GetUserLanguage()

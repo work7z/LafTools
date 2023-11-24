@@ -41,6 +41,8 @@ type TraObject struct {
 	lang string
 }
 
+type TranslatePassArg = []string
+
 func TraSystemOnly() *TraObject {
 	return &TraObject{
 		lang: "en_US",
@@ -54,6 +56,50 @@ func TraFromWeb(lang string) *TraObject {
 }
 
 var tmp_keyMap map[string]map[string]string = map[string]map[string]string{}
+
+func LoadFromDir(pathname string) error {
+	// TODO: in the future, we will provide more languages instead of hard code
+	// read all zh_CN.json and zh_HK.json in this directory and load them into tmp_keyMap(not replace but patch)
+	// if the key is already exist, then skip it
+	// if the key is not exist, then add it
+	// if the key is exist but the value is empty, then replace it
+	// if the key is exist but the value is not empty, then skip it
+	// if the key is not exist, then add it
+	var err error = nil
+
+	type LangIterator struct {
+		lang string
+	}
+	var list = []LangIterator{
+		{
+			lang: LANG_ZH_CN,
+		},
+		{
+			lang: LANG_ZH_HK,
+		},
+	}
+	for _, langIterator := range list {
+		tmpLangObj, err := nocycle.ReadJSONFile(path.Join(pathname, langIterator.lang+".json"))
+		if err != nil {
+			log.Ref().Fatal("LoadFromDir: ", err.Error())
+			return err
+		}
+
+		// append tmpZH_CN into tmp_keyMap
+		for key, value := range tmpLangObj {
+			if _, has := tmp_keyMap[langIterator.lang]; !has {
+				tmp_keyMap[langIterator.lang] = map[string]string{}
+			}
+			tmp_keyMap[langIterator.lang][key] = value
+		}
+
+	}
+	if err != nil {
+		log.Ref().Fatal("LoadFromDir: ", err.Error())
+		return err
+	}
+	return nil
+}
 
 // SKIP_DOT
 func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
@@ -71,8 +117,15 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 			if err2 != nil {
 				log.Ref().Fatal("No available text for the id " + id)
 			} else {
-				tmp_keyMap[lang] = translationConfigObj
+				// merge translationConfigObj into tmp_keyMap[lang]
+				for key, value := range translationConfigObj {
+					if _, has := tmp_keyMap[lang]; !has {
+						tmp_keyMap[lang] = map[string]string{}
+					}
+					tmp_keyMap[lang][key] = value
+				}
 			}
+			translationConfigObj = tmp_keyMap[lang]
 		}
 		value, has := translationConfigObj[id]
 		if has {
@@ -84,7 +137,7 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 			}
 		} else {
 			log.Ref().Warning("No available text for the id " + id)
-			newText = enUS
+			return enUS + "[UNTRANSLATED]"
 		}
 	} else {
 		log.Ref().Fatal("Unknown lang ", lang)
