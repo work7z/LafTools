@@ -117,8 +117,8 @@ export default () => {
           key={tab.id}
           onClick={fn_handleClickEachTab(tab)}
           style={{}}
-          data-ACTIVE={isCurrent ? "t" : "f"}
-          data-TABID={tab.id}
+          data-active={isCurrent ? "t" : "f"}
+          data-tabid={tab.id}
           className={` each-tab  hover:bg-gray-300  whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${
             isCurrent
               ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] bg-white hover:bg-white dark:text-white dark:bg-gray-500  dark:hover:bg-gray-500  "

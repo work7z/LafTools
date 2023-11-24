@@ -60,7 +60,7 @@ type ListExtForTheCategoryRes struct {
 	Id             string
 	Label          string
 	Icon           string
-	ChildrenAsInfo []form.ExtensionInfo
+	ChildrenAsInfo []form.ExtensionInfoForWeb
 }
 
 type ToolSubCategory struct {

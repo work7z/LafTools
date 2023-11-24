@@ -128,12 +128,12 @@ func ListSubCategory(c *gin.Context) {
 		if isAll || cate.Id == categoryId {
 			// collect item.Children.Info as an array, and assign it to Info
 			for _, subCate := range cate.SubCategories {
-				c := make([]form.ExtensionInfo, 0)
+				c := make([]form.ExtensionInfoForWeb, 0)
 				for _, tcsbi := range subCate.ChildrenSetByInit {
-					c = append(c, form.ExtensionInfo{
-						Id:                tcsbi.Id,
-						LabelByInit:       tcsbi.LabelByInit,
-						DescriptionByInit: tcsbi.DescriptionByInit,
+					c = append(c, form.ExtensionInfoForWeb{
+						Id:          tcsbi.Id,
+						Label:       tcsbi.LabelByInit,
+						Description: tcsbi.DescriptionByInit,
 					})
 				}
 				filteredArr = append(filteredArr, ext.ListExtForTheCategoryRes{

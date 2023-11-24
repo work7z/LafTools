@@ -22,6 +22,12 @@ package form
 
 import "laftools-go/core/translation"
 
+type ExtensionInfoForWeb struct {
+	Id          string
+	Label       string
+	Description string
+}
+
 type ExtensionInfo struct {
 	Id                string
 	Label             translation.TranslatePassArg
