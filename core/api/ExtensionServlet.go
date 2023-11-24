@@ -21,14 +21,12 @@
 package api
 
 import (
-	"errors"
 	"laftools-go/core/context"
 	"laftools-go/core/ext"
 	"laftools-go/core/form"
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/samber/lo"
 )
 
 // write a function GetExtDetail for retrieving the detail of an extension by extId query
@@ -71,14 +69,15 @@ func DoActionForConvertingText(c *gin.Context) {
 }
 
 func extraConvertAction(wc context.WebContext, actionId string) (*form.ExtensionAction, error) {
-	allExtActionsMap := ext.GetAllExtActionsWithKeyValuePair(&wc)
-	// find item in allExtActions
-	item, found := allExtActionsMap[actionId]
-	if !found {
-		return nil, errors.New(wc.Dot("KqTYC", "Action Not Found"))
-	} else {
-		return &item, nil
-	}
+	// allExtActionsMap := ext.GetAllExtActionsWithKeyValuePair(&wc)
+	// // find item in allExtActions
+	// item, found := allExtActionsMap[actionId]
+	// if !found {
+	// 	return nil, errors.New(wc.Dot("KqTYC", "Action Not Found"))
+	// } else {
+	// 	return &item, nil
+	// }
+	return nil, nil
 }
 
 // write a function GetOneExtUnderSpecificCategory for retrieving the detail of an extension by extId query
@@ -89,55 +88,17 @@ func GetOneExtUnderSpecificCategory(c *gin.Context) {
 		ErrLa2(c, wc.Dot("eIXF4", "Extension ID is required"))
 		return
 	}
-	allExtVM := ext.GetAllExtVM(&wc)
-	// find item in allExtVM by extId
-	item, found := lo.Find(allExtVM, func(item form.ExtensionVM) bool {
-		return item.Info.Id == extId
-	})
-	if !found {
-		ErrLa2(c, wc.Dot("Sao_s", "Extension Not Found"))
+	item, err2 := ext.GetExtById(extId)
+	if err2 != nil {
+		ErrLa(c, err2)
 		return
-	} else {
-		OKLa(c, DoValueRes(item))
 	}
-}
-
-func ListSubCategory(c *gin.Context) {
-	// categoryId := c.Query("categoryId")
-	// wc := context.WebContext{GinContext: c}
-	// if categoryId == "" {
-	// 	ErrLa2(c, wc.Dot("1322", "Category ID is required"))
-	// 	return
-	// }
-	// subExtCategory, err := ext.GetAllSubExtCategory(&wc)
-	// if err != nil {
-	// 	ErrLa(c, err)
-	// 	return
-	// }
-	// isAll := categoryId == "all"
-	// filteredArr := make([]ext.ListExtForTheCategoryRes, 0)
-	// for _, item := range *subExtCategory {
-	// 	if isAll || item.CategoryId == categoryId {
-	// 		// collect item.Children.Info as an array, and assign it to Info
-	// 		c := make([]form.ExtensionInfo, 0)
-	// 		for _, child := range item.Children {
-	// 			c = append(c, *child.Info)
-	// 		}
-	// 		filteredArr = append(filteredArr, ext.ListExtForTheCategoryRes{
-	// 			Id:             item.Id,
-	// 			Label:          item.Label,
-	// 			Icon:           item.Icon,
-	// 			ChildrenAsInfo: c,
-	// 		})
-	// 	}
-	// }
-	filteredArr := make([]string, 0)
-	OKLa(c, DoListRes(filteredArr))
+	OKLa(c, DoValueRes(item))
 }
 
 func ListCategory(c *gin.Context) {
-	wc := context.WebContext{GinContext: c}
-	b, e := ext.GetAllCategory(&wc)
+	// wc := context.WebContext{GinContext: c}
+	b, e := ext.GetAllCategory()
 	if e != nil {
 		ErrLa(c, e)
 		return

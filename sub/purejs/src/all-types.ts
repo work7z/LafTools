@@ -25,11 +25,17 @@ export type ToolCategory = {
   SubCategories: ToolSubCategory[];
 };
 
+export type ToolChildrenSetByInit = {
+  Id?: string;
+  Label?: TranslatePassArg;
+};
+
 export type ToolSubCategory = {
   Id: string;
   Label: TranslatePassArg;
   Icon: string;
   ChildrenIdSet: string[]; // collect id only
+  ChildrenSetByInit?: ToolChildrenSetByInit[]; // this field is provided by program
 };
 
 export type ExtensionInfo = {

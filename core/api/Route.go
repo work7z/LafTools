@@ -120,7 +120,6 @@ func ConfigSystemRouter(r *gin.Engine) {
 
 	// extension
 	doGET_("/tool/exts/listCategory", ListCategory)
-	doGET_("/tool/exts/listSubCategory", ListSubCategory)
 	doGET_("/tool/exts/getExtDetail", GetOneExtUnderSpecificCategory)
 	doPOST("/tool/exts/convertText", DoActionForConvertingText)
 
@@ -148,7 +147,6 @@ func ConfigSystemRouter(r *gin.Engine) {
 	// static folders
 	nonPDir := gutils.GetResourceNonProhibitedDir()
 	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/non-prohibited")), nonPDir)
-
 
 	// temporary unused code
 	// admin

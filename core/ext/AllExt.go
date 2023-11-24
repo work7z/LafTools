@@ -22,15 +22,13 @@ package ext
 
 import (
 	"encoding/json"
-	"fmt"
 	"laftools-go/core/context"
 	"laftools-go/core/form"
 	"laftools-go/core/gutils"
+	"laftools-go/core/log"
 	"laftools-go/core/middleware"
 	"laftools-go/core/nocycle"
 	"path"
-	"strconv"
-	"sync/atomic"
 )
 
 type SubExtCategory struct {
@@ -43,6 +41,11 @@ type SubExtCategory struct {
 
 type TranslatePassArg = []string
 
+type ToolChildrenSetByInit struct {
+	Id    string
+	Label TranslatePassArg
+}
+
 type ToolCategory struct {
 	Id            string           `json:"id"`
 	Label         TranslatePassArg `json:"label"`
@@ -50,14 +53,33 @@ type ToolCategory struct {
 }
 
 type ToolSubCategory struct {
-	Id            string
-	Label         TranslatePassArg
-	Icon          string
-	ChildrenIdSet []string
+	Id                string
+	Label             TranslatePassArg
+	Icon              string
+	ChildrenSetByInit []ToolChildrenSetByInit
 }
 
-func GetAllCategory(ctx *context.WebContext) (*[]ToolCategory, error) {
-	var categoryFile = path.Join(gutils.GetResourceNonProhibitedDir(), "purejs", "category.json")
+func getPureJSFolder() string {
+	return path.Join(gutils.GetResourceNonProhibitedDir(), "purejs")
+}
+
+func GetExtById(extId string) (*form.ExtensionVM, error) {
+	var indexJSONFile = path.Join(getPureJSFolder(), "exts", extId, "index.json")
+	returnValue := &form.ExtensionVM{}
+	// read file and unmarhsla it to returnValue
+	b, er := nocycle.ReadFileAsStrWithNoTrim(indexJSONFile)
+	if er != nil {
+		return nil, er
+	}
+	er = json.Unmarshal([]byte(b), returnValue)
+	if er != nil {
+		return nil, er
+	}
+	return returnValue, nil
+}
+
+func GetAllCategory() (*[]ToolCategory, error) {
+	var categoryFile = path.Join(getPureJSFolder(), "category.json")
 	var returnValue *[]ToolCategory = &[]ToolCategory{}
 	// read file and unmarhsla it to returnValue
 	b, er := nocycle.ReadFileAsStrWithNoTrim(categoryFile)
@@ -73,38 +95,17 @@ func GetAllCategory(ctx *context.WebContext) (*[]ToolCategory, error) {
 
 var Ref_AtomicInt int64 = 0
 
-func GetAtomicInt() string {
-	return strconv.FormatInt(atomic.AddInt64(&Ref_AtomicInt, 1), 10)
-}
-
 // write a function that return SubExtCategory array
 func GetAllSubExtCategory(ctx *context.WebContext) (*[]ToolSubCategory, error) {
-	allCategory, err := GetAllCategory(ctx)
+	allCategory, err := GetAllCategory()
 	if err != nil {
 		return nil, err
 	}
 	var arr []ToolSubCategory = []ToolSubCategory{}
 	for _, category := range *allCategory {
-		for _, subCategory := range category.SubCategories {
-			arr = append(arr, subCategory)
-		}
+		arr = append(arr, category.SubCategories...)
 	}
 	return &arr, nil
-
-	// var returnValue *[]SubExtCategory = &[]SubExtCategory{}
-	// crtLang := ctx.GetUserLanguage()
-	// id := "listSubCategory-" + GetAtomicInt()
-	// a, er := middleware.BIO_SendReqToNodeProcess(&middleware.NodeReq{
-	// 	Id:   id,
-	// 	Lang: crtLang,
-	// 	Type: "Job_ListSubCategoryAndFunctions",
-	// }, true, returnValue)
-	// if er != nil {
-	// 	return nil, er
-	// }
-	// log.Ref().Debug("got GetAllSubExtCategory, ", a, " and id ->", id)
-	// // return a as *[]SubExtCategory by force cast
-	// return a.OutputValue.(*[]SubExtCategory), nil
 }
 
 // return all form.ExtensionVM from functions whose begin with FN_
@@ -113,9 +114,14 @@ func GetAllExtVM(ctx *context.WebContext) []form.ExtensionVM {
 	allExtVM := make([]form.ExtensionVM, 0)
 	b, _ := GetAllSubExtCategory(ctx)
 	for _, subExtCategory := range *b {
-		for _, extVM := range subExtCategory.ChildrenIdSet {
-			fmt.Println(extVM)
-			// allExtVM = append(allExtVM, extVM)
+		for _, extVM := range subExtCategory.ChildrenSetByInit {
+			id := extVM.Id
+			extVM, err := GetExtById(id)
+			if err != nil {
+				log.Ref().Warn("got err", err)
+			} else {
+				allExtVM = append(allExtVM, *extVM)
+			}
 		}
 	}
 	return allExtVM
