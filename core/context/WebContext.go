@@ -138,6 +138,12 @@ func (wc *WebContext) GetUserWorkSpaceConfigFile() string {
 	return config.GetUserWorkSpaceConfigFile(wc.GetUserID())
 }
 func (wc *WebContext) DotWithoutScan(arg ...string) string {
+	if len(arg) == 0 {
+		return ""
+	}
+	if len(arg) == 1 {
+		return arg[0]
+	}
 	if len(arg) <= 2 {
 		return wc.Dot(arg[0], arg[1])
 	} else {
