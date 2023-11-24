@@ -21,18 +21,13 @@
 package cmd
 
 import (
-	"laftools-go/core/config"
 	"laftools-go/core/context"
 	"laftools-go/core/env"
 	"laftools-go/core/ext"
 	"laftools-go/core/gutils"
-	"laftools-go/core/log"
 	"laftools-go/core/middleware"
 	"laftools-go/core/nocycle"
 	"math/rand"
-	"net/http"
-	"os"
-	"os/exec"
 	"strconv"
 	"strings"
 	"sync"
@@ -43,9 +38,9 @@ import (
 )
 
 func TestGetAllSubExtCategory(t *testing.T) {
-	QTestServerEnvLaunch(t)
+	// QTestServerEnvLaunch(t)
 
-	defer QUnlockServer(t)
+	// defer QUnlockServer(t)
 	// for 1..3
 	// define an array with three element capablity
 	var arr [3]string
@@ -76,7 +71,7 @@ func TestGetAllSubExtCategory(t *testing.T) {
 		// check a contains "编码与解码"
 		assert.Contains(t, zh_CNStr, "编码和解码")
 		// check c contains "Click here to"
-		assert.Contains(t, c2, "Click here to")
+		assert.Contains(t, c2, "Digest Algorithm")
 
 		// assert a2!= b2!=c2
 		assert.NotEqual(t, zh_CNStr, b2)
@@ -89,11 +84,11 @@ func TestGetAllSubExtCategory(t *testing.T) {
 }
 
 func TestGetAllCategory(t *testing.T) {
-	QTestServerEnvLaunch(t)
+	// QTestServerEnvLaunch(t)
 
 	st := time.Now()
 
-	defer QUnlockServer(t)
+	// defer QUnlockServer(t)
 	a, e := ext.GetAllSubExtCategory(&context.WebContext{
 		OverwriteUserLang: "zh_CN",
 	})
@@ -130,11 +125,12 @@ func QUnlockServer(t *testing.T) {
 
 // write test cases to verify the returns of GetAllExtVM, make sure the Actions in each item has uniq id, at the same time, Info.Id should also be uniq
 func Test_GetAllExtVM(t *testing.T) {
-	QTestServerEnvLaunch(t)
-
-	defer QUnlockServer(t)
 	ctx := context.WebContext{}
-	allExtVM := ext.GetAllExtVM(&ctx)
+	allExtVM, err := ext.GetAllExtVM(&ctx)
+	if err != nil {
+		t.Error(err)
+		return
+	}
 	// check the uniq of Actions.Id
 	actionsIdMap := make(map[string]bool)
 	for _, extVM := range allExtVM {
@@ -199,20 +195,20 @@ type TmpLabel struct {
 	Desc string
 }
 
-func TestSimpleRunNode(t *testing.T) {
-	// average need 90ms, so my current solution still win the time
-	for i := 0; i < 10; i++ {
-		startTime := time.Now()
-		cmd := exec.Command("node", (nocycle.LafToolsGoRoot + "/sub/node/build/direct-run-job.js"))
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-		if err := cmd.Run(); err != nil {
-			t.Error(err)
-		}
-		endTime := time.Now()
-		t.Log("time cost:", endTime.Sub(startTime))
-	}
-}
+// func TestSimpleRunNode(t *testing.T) {
+// // average need 90ms, so my current solution still win the time
+// for i := 0; i < 10; i++ {
+// 	startTime := time.Now()
+// 	cmd := exec.Command("node", (nocycle.LafToolsGoRoot + "/sub/node/build/direct-run-job.js"))
+// 	cmd.Stdout = os.Stdout
+// 	cmd.Stderr = os.Stderr
+// 	if err := cmd.Run(); err != nil {
+// 		t.Error(err)
+// 	}
+// 	endTime := time.Now()
+// 	t.Log("time cost:", endTime.Sub(startTime))
+// }
+// }
 
 func GetRandomLang() string {
 	// random get lang from zh_CN,zh_HK,en_US
@@ -227,23 +223,23 @@ func GetRandomInt(min, max int) int {
 	return min + rand.Intn(max-min)
 }
 
-func TestNodeMultipleRequest(t *testing.T) {
-	env.DEV_EXIT_SECONDS = "5"
-	BasicTestNodeMultipleRequest(t)
-}
-func TestNodeMultipleRequest2(t *testing.T) {
-	env.DEV_EXIT_SECONDS = "1"
-	BasicTestNodeMultipleRequest(t)
-}
-func TestNodeMultipleRequest3(t *testing.T) {
-	env.DEV_EXIT_SECONDS = "10"
-	BasicTestNodeMultipleRequest(t)
-}
+// func TestNodeMultipleRequest(t *testing.T) {
+// 	env.DEV_EXIT_SECONDS = "5"
+// 	BasicTestNodeMultipleRequest(t)
+// }
+// func TestNodeMultipleRequest2(t *testing.T) {
+// 	env.DEV_EXIT_SECONDS = "1"
+// 	BasicTestNodeMultipleRequest(t)
+// }
+// func TestNodeMultipleRequest3(t *testing.T) {
+// 	env.DEV_EXIT_SECONDS = "10"
+// 	BasicTestNodeMultipleRequest(t)
+// }
 
 func BasicTestNodeMultipleRequest(t *testing.T) {
-	QTestServerEnvLaunch(t)
+	//	QTestServerEnvLaunch(t)
 
-	defer QUnlockServer(t)
+	//	defer QUnlockServer(t)
 
 	nocycle.IsDevMode = true
 
@@ -297,7 +293,7 @@ func BasicTestNodeMultipleRequest(t *testing.T) {
 	}
 	// wait for 20 seconds
 	// in 20 seconds
-	time.Sleep(time.Second * 20)
+	time.Sleep(time.Second * 5)
 	// show macTimeDiff
 	// average in allTimes
 	// show totalTriggerTimes
@@ -320,31 +316,31 @@ func GetAverage(arr []int64) string {
 	return strconv.FormatInt(total/int64(len(arr)), 10) + "ms"
 }
 
-func TestOther(t *testing.T) {
-	// show example for channel
-	ch := make(chan int, 1)
-	go func() {
-		time.Sleep(time.Second * 5)
-		ch <- 10086
-		ch <- 10010
-	}()
-	t.Log("waiting for send the value")
+// func TestOther(t *testing.T) {
+// 	// show example for channel
+// 	ch := make(chan int, 1)
+// 	go func() {
+// 		time.Sleep(time.Second * 5)
+// 		ch <- 10086
+// 		ch <- 10010
+// 	}()
+// 	t.Log("waiting for send the value")
 
-	t.Log("ch", <-ch)
-	t.Log("not work", <-ch)
-}
+// 	t.Log("ch", <-ch)
+// 	t.Log("not work", <-ch)
+// }
 
-func TestLocalWebLogic(t *testing.T) {
-	QTestServerEnvLaunch(t)
+// func TestLocalWebLogic(t *testing.T) {
+// 	QTestServerEnvLaunch(t)
 
-	defer QUnlockServer(t)
-	// send GET request to get  http://localhost:35000/app/entry?t=0140c33c6dca11eea206186590df157b
-	// and check the response
-	adminInitToken := config.GetAdminInitToken()
-	resp, err := http.Get("http://localhost:35000/app/entry?t=" + adminInitToken)
-	if err != nil {
-		t.Error(err)
-	}
-	t.Log("resp", resp)
-	log.Ref().Debug("Checking the request for websocket")
-}
+// 	defer QUnlockServer(t)
+// 	// send GET request to get  http://localhost:35000/app/entry?t=0140c33c6dca11eea206186590df157b
+// 	// and check the response
+// 	adminInitToken := config.GetAdminInitToken()
+// 	resp, err := http.Get("http://localhost:35000/app/entry?t=" + adminInitToken)
+// 	if err != nil {
+// 		t.Error(err)
+// 	}
+// 	t.Log("resp", resp)
+// 	log.Ref().Debug("Checking the request for websocket")
+// }

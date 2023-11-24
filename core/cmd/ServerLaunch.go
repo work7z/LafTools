@@ -195,9 +195,9 @@ func LaunchCodeGenServer() {
 			nocycle.ShouldNoErr(err, "Unable to launch the service")
 		}
 	}()
-	go func() {
-		middleware.StartupNodeProcess()
-	}()
+	// go func() {
+	// 	middleware.StartupNodeProcess()
+	// }()
 }
 
 type RefStatus struct {

@@ -1,5 +1,5 @@
 import type {
-  ToolCategory,
+  ToolCategory as ToolCategory,
   NodeReq,
   NodeRes,
   FlushIdValuePair,

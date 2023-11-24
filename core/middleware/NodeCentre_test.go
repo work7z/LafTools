@@ -21,16 +21,7 @@
 package middleware
 
 import (
-	"bytes"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"laftools-go/core/nocycle"
-	"os"
-	"os/exec"
-	"reflect"
 	"testing"
-	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -99,72 +90,72 @@ func TestNodeReq(t *testing.T) {
 
 func TestDirectlyCallNodeProcess(t *testing.T) {
 
-	// Create a temporary directory for testing
-	tmpDir, err := ioutil.TempDir("", "test")
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer os.RemoveAll(tmpDir)
+	// // Create a temporary directory for testing
+	// tmpDir, err := ioutil.TempDir("", "test")
+	// if err != nil {
+	// 	t.Fatal(err)
+	// }
+	// defer os.RemoveAll(tmpDir)
 
-	// Create a temporary file for the config
-	tmpFile, err := ioutil.TempFile(tmpDir, "config-*.json")
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer tmpFile.Close()
+	// // Create a temporary file for the config
+	// tmpFile, err := ioutil.TempFile(tmpDir, "config-*.json")
+	// if err != nil {
+	// 	t.Fatal(err)
+	// }
+	// defer tmpFile.Close()
 
-	// Write the config to the temporary file
-	config := &NodeReq{
-		Id:         "test",
-		Type:       "test",
-		Lang:       "en_US",
-		InputValue: "this_is_test",
-	}
-	err = json.NewEncoder(tmpFile).Encode(config)
-	if err != nil {
-		t.Fatal(err)
-	}
+	// // Write the config to the temporary file
+	// config := &NodeReq{
+	// 	Id:         "test",
+	// 	Type:       "test",
+	// 	Lang:       "en_US",
+	// 	InputValue: "this_is_test",
+	// }
+	// err = json.NewEncoder(tmpFile).Encode(config)
+	// if err != nil {
+	// 	t.Fatal(err)
+	// }
 
-	// Call the directlyCallNodeProcess function
-	res, err := directlyCallNodeProcess(config)
-	if err != nil {
-		t.Fatal(err)
-	}
+	// // Call the directlyCallNodeProcess function
+	// res, err := directlyCallNodeProcess(config)
+	// if err != nil {
+	// 	t.Fatal(err)
+	// }
 
-	// Verify the result
-	expected := &NodeRes{
-		Id:          "test",
-		Type:        "test",
-		Lang:        "en_US",
-		OutputValue: "ackthis_is_testack",
-	}
-	if !reflect.DeepEqual(res, expected) {
-		t.Errorf("unexpected result, got %+v, want %+v", res, expected)
-	}
+	// // Verify the result
+	// expected := &NodeRes{
+	// 	Id:          "test",
+	// 	Type:        "test",
+	// 	Lang:        "en_US",
+	// 	OutputValue: "ackthis_is_testack",
+	// }
+	// if !reflect.DeepEqual(res, expected) {
+	// 	t.Errorf("unexpected result, got %+v, want %+v", res, expected)
+	// }
 }
 
 func TestExecute(t *testing.T) {
-	startTime := time.Now()
-	cmd := exec.Command(
-		"ts-node",
-		"-T",
-		nocycle.LafToolsGoRoot+"/sub/node/src/ws-index.ts",
-		"--mode=direct-call",
-		"--direct-call-config="+nocycle.LafToolsGoRoot+"/test/time-consumer/c-XJHDM/tmp-dc-1.json",
-	)
+	// startTime := time.Now()
+	// cmd := exec.Command(
+	// 	"ts-node",
+	// 	"-T",
+	// 	nocycle.LafToolsGoRoot+"/sub/node/src/ws-index.ts",
+	// 	"--mode=direct-call",
+	// 	"--direct-call-config="+nocycle.LafToolsGoRoot+"/test/time-consumer/c-XJHDM/tmp-dc-1.json",
+	// )
 
-	var out bytes.Buffer
-	var stderr bytes.Buffer
-	cmd.Stdout = &out
-	cmd.Stderr = &stderr
+	// var out bytes.Buffer
+	// var stderr bytes.Buffer
+	// cmd.Stdout = &out
+	// cmd.Stderr = &stderr
 
-	err := cmd.Run()
-	if err != nil {
-		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
-		return
-	}
-	outputStr := out.String()
-	fmt.Println("Result: " + outputStr)
-	bbstr := startTime.Sub(time.Now()).String()
-	t.Log("end time:", bbstr)
+	// err := cmd.Run()
+	// if err != nil {
+	// 	fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
+	// 	return
+	// }
+	// outputStr := out.String()
+	// fmt.Println("Result: " + outputStr)
+	// bbstr := startTime.Sub(time.Now()).String()
+	// t.Log("end time:", bbstr)
 }

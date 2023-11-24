@@ -16,6 +16,7 @@ rm -rf build && mkdir build
 # buildWithModule build/commonjs commonjs
 # buildWithModule build/amd amd 
 npm run gen
+cp -a ./src/lang build/lang/
 
 targetDir=$LAFTOOLS_ROOT/resources/non-prohibited/purejs
 rm -rf $targetDir

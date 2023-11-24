@@ -141,7 +141,7 @@ export let InnerToolPanel = (): any => {
       refetchOnMountOrArgChange: true,
     }
   );
-  let activeOne = _.find(categoryList, (x) => x.id == fc);
+  let activeOne = _.find(categoryList, (x) => x.Id == fc);
 
   let m_ws = useMergeParamWithWorkSpace();
   return (
@@ -151,10 +151,10 @@ export let InnerToolPanel = (): any => {
       leftNavList={
         _.map(categoryList, (x) => {
           return {
-            label: x.label,
-            value: x.id,
+            label: x.LabelByInit,
+            value: x.Id,
             pathname: m_ws({
-              fc: x.id,
+              fc: x.Id,
             }),
           };
         }) || []
