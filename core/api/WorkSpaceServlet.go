@@ -22,6 +22,7 @@ package api
 
 import (
 	"encoding/json"
+	"errors"
 	"laftools-go/core/context"
 	"laftools-go/core/gutils"
 	"laftools-go/core/log"
@@ -65,9 +66,20 @@ func API_Workspace_Add_By_User(c *gin.Context) {
 	var newSpace = &EachWorkSpace{}
 	c.BindJSON(newSpace)
 	// label and path cannot be empty
-	if newSpace.Label == "" || newSpace.Path == "" {
-		ErrLa2(c, wc.Dot("bAkuz", "label and path cannot be empty"))
+	// if workspaceRes.WorkSpaces already have that same path, then error
+	// make sure no duplicate id
+	// if newSpace.Id exist, then replace
+	err := addNewWorkspace(newSpace, c, wc)
+	if err != nil {
+		ErrLa(c, err)
 		return
+	}
+	OKLa(c, DoValueRes("OK"))
+}
+
+func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebContext) error {
+	if newSpace.Label == "" || newSpace.Path == "" {
+		return errors.New(wc.Dot("bAkuz", "label and path cannot be empty"))
 	}
 
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
@@ -75,18 +87,16 @@ func API_Workspace_Add_By_User(c *gin.Context) {
 
 	newSpace.Id = gutils.ShortUUID()
 
-	// if workspaceRes.WorkSpaces already have that same path, then error
 	for _, each := range workspaceRes.WorkSpaces {
 		if each.Path == newSpace.Path {
-			ErrLa2(c, wc.Dot("RBgEN", "already have that path"))
-			return
+			return errors.New(wc.Dot("RBgEN", "the file path exists already"))
 		}
 	}
-	// make sure no duplicate id
+
 	for {
 		dup := false
 		for _, each := range workspaceRes.WorkSpaces {
-			// if newSpace.Id exist, then replace
+
 			if each.Id == newSpace.Id {
 				dup = true
 				break
@@ -100,31 +110,36 @@ func API_Workspace_Add_By_User(c *gin.Context) {
 	}
 	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, *newSpace)
 	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
-	OKLa(c, DoValueRes("OK"))
+	return nil
 }
 
-func API_Workspace_Delete_By_User(c *gin.Context) {
+// deleteWorkspaceByID deletes a workspace by its ID.
+func deleteWorkspaceByID(wc *context.WebContext, workspaceIDOrPath string) {
 	workspaceLock.Lock()
 	defer workspaceLock.Unlock()
-	wc := context.NewWC(c)
 	// label and path cannot be empty
-	var newSpace = &EachWorkSpace{}
-	c.BindJSON(newSpace)
-	if newSpace.Id == "" {
-		ErrLa2(c, wc.Dot("XQELf", "id cannot be empty"))
-		return
-	}
-	// using id to delete
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
 	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
 	var newWorkSpaces []EachWorkSpace
 	for _, each := range workspaceRes.WorkSpaces {
-		if each.Id != newSpace.Id {
+		if each.Id != workspaceIDOrPath && each.Path != workspaceIDOrPath {
 			newWorkSpaces = append(newWorkSpaces, each)
 		}
 	}
 	workspaceRes.WorkSpaces = newWorkSpaces
 	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
+}
+
+// API_Workspace_Delete_By_User is the handler for deleting a workspace by user.
+func API_Workspace_Delete_By_User(c *gin.Context) {
+	var newSpace EachWorkSpace
+	c.BindJSON(&newSpace)
+	wc := context.NewWC(c)
+	if newSpace.Id == "" {
+		ErrLa2(c, wc.Dot("XQELf", "id cannot be empty"))
+		return
+	}
+	deleteWorkspaceByID(&wc, newSpace.Id)
 	OKLa(c, DoValueRes("OK"))
 }
 

@@ -38,6 +38,7 @@ type WebContext struct {
 	config            *WebContextConfig
 	GinContext        *gin.Context
 	OverwriteUserLang string
+	OverwriteUserId   string
 	JsonMode          bool
 }
 
@@ -65,7 +66,7 @@ type WebContextConfig struct {
 }
 
 func (wc *WebContext) GetHeaderValue(key string) string {
-	if wc.GinContext == nil {
+	if wc.GinContext == nil && wc.config != nil && wc.config.HTTPHeaders != nil {
 		// find key in wc.config.HTTPHeaders in case-insensitive mode
 		key = strings.ToLower(key)
 		for k, v := range wc.config.HTTPHeaders {
@@ -105,6 +106,9 @@ func NewWCFromJSON(c_json string) (*WebContext, error) {
 }
 
 func (wc *WebContext) GetUserID() string {
+	if wc.OverwriteUserId != "" {
+		return wc.OverwriteUserId
+	}
 	return wc.GetHeaderValue(nocycle.HEADER_LOCAL_USER_ID)
 }
 
