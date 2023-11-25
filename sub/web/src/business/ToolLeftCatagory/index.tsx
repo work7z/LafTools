@@ -69,7 +69,7 @@ import exportUtils from "../../utils/ExportUtils";
 import apiSlice from "../../slice/apiSlice";
 import { URL_WORKBENCH_TOOLS } from "../../styles/path";
 import { Link } from "react-router-dom";
-import URLUtils from "../../utils/URLUtils";
+import PageUtils from "../../utils/PageUtils";
 import { FnPureToolDefinition } from "../../pages/FixedWorkBench/definitions/WB_Types";
 
 type PassProp = {

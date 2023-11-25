@@ -22,7 +22,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import RouteUtils from "../utils/RouteUtils";
-import URLUtils from "../utils/URLUtils";
+import PageUtils from "../utils/PageUtils";
 import { FN_GetDispatch } from "../nocycle";
 import AlertUtils from "../utils/AlertUtils";
 import { Dot } from "../utils/TranslationUtils";

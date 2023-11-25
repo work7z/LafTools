@@ -75,7 +75,7 @@ import exportUtils from "../../utils/ExportUtils";
 import apiSlice, { ExtensionVM } from "../../slice/apiSlice";
 import { URL_WORKBENCH_TOOLS } from "../../styles/path";
 import { Link } from "react-router-dom";
-import URLUtils from "../../utils/URLUtils";
+import PageUtils from "../../utils/PageUtils";
 import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 import "./index.scss";

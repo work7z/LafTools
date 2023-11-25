@@ -29,7 +29,7 @@ import {
 import { Dispatch } from "react";
 import AjaxUtils from "../utils/AjaxUtils";
 import { logutils } from "../utils/LogUtils";
-import URLUtils from "../utils/URLUtils";
+import PageUtils from "../utils/PageUtils";
 import { TreeNodeInfo } from "@blueprintjs/core";
 import { TreeWrapInfo } from "../styles/var";
 import _ from "lodash";

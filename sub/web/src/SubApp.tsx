@@ -43,7 +43,7 @@ import UserAskMultipleDialogs from "./business/UserAskMultipleDialogs";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";
 import InitSystemEnv from "./pages/InitSystemEnv";
 import SystemAlertOrPrompt from "./SystemAlertOrPrompt";
-import URLUtils from "./utils/URLUtils";
+import PageUtils from "./utils/PageUtils";
 import AuthHookUtils from "./utils/AuthHookUtils";
 import InitUtils from "./utils/InitUtils";
 import _ from "lodash";
@@ -105,7 +105,7 @@ function App() {
 
   return (
     <HotkeysProvider>
-      <Router basename={URLUtils.GetRoutePath("")}>
+      <Router basename={PageUtils.GetRoutePath("")}>
         <HotkeysTarget2 hotkeys={hotkeys}>
           {({ handleKeyDown, handleKeyUp }) => {
             return (

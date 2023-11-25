@@ -72,7 +72,7 @@ import InitSystemEnv from "./pages/InitSystemEnv";
 import UserAskMultipleDialogs from "./business/UserAskMultipleDialogs";
 import gutils from "./utils/GlobalUtils";
 import TranslationUtils, { Dot } from "./utils/TranslationUtils";
-import URLUtils from "./utils/URLUtils";
+import PageUtils from "./utils/PageUtils";
 import { URL_WORKBENCH } from "./styles/path";
 import RouteUtils from "./utils/RouteUtils";
 import InitRouteHistory from "./InitRouteHistory";

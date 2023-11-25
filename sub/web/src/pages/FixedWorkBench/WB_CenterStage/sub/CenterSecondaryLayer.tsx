@@ -85,7 +85,7 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-import URLUtils from "../../../../utils/URLUtils";
+import PageUtils from "../../../../utils/PageUtils";
 import "allotment/dist/style.css";
 import { Allotment, AllotmentHandle } from "allotment";
 import exportUtils from "../../../../utils/ExportUtils";

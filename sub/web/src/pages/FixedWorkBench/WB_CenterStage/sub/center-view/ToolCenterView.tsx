@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Tue, 21 Nov 2023
 // Author: LafTools Team <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -85,7 +85,7 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-import URLUtils from "../../../../../utils/URLUtils";
+import PageUtils from "../../../../../utils/PageUtils";
 import TranslationUtils, { Dot } from "../../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment, AllotmentHandle } from "allotment";

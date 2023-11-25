@@ -47,7 +47,7 @@ import InitSystemEnv from "./pages/InitSystemEnv";
 import UserAskMultipleDialogs from "./business/UserAskMultipleDialogs";
 import gutils from "./utils/GlobalUtils";
 import TranslationUtils from "./utils/TranslationUtils";
-import URLUtils from "./utils/URLUtils";
+import PageUtils from "./utils/PageUtils";
 import { URL_ENTRY, URL_WORKBENCH } from "./styles/path";
 import RouteUtils from "./utils/RouteUtils";
 import InitRouteHistory from "./InitRouteHistory";
@@ -57,7 +57,7 @@ import Entry from "./pages/Entry";
 gutils.ExposureIt("$", $);
 gutils.ExposureIt("gutils", gutils);
 gutils.ExposureIt("TranslationUtils", TranslationUtils);
-gutils.ExposureIt("URLUtils", URLUtils);
+gutils.ExposureIt("URLUtils", PageUtils);
 
 let RouteComponent = () => {
   let forgeObj = exportUtils.useSelector((val) => ({

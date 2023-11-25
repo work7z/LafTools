@@ -80,7 +80,7 @@ import ToolSlice from "../../slice/toolSlice";
 import { logutils } from "../../utils/LogUtils";
 import RouteUtils from "../../utils/RouteUtils";
 import { URL_WORKBENCH_TOOLS } from "../../styles/path";
-import URLUtils from "../../utils/URLUtils";
+import PageUtils from "../../utils/PageUtils";
 import forgeSlice from "../../slice/ForgeSlice";
 import ExtHookUtils from "../../utils/ExtensionHookUtils";
 import { PassToolViewerProp } from "../../pages/FixedWorkBench/definitions/WB_Types";
@@ -260,7 +260,7 @@ export default (props: PassProp): any => {
 
   gutils.ExposureIt("activeExt", activeExt, true);
 
-  URLUtils.useUpdateTitle(
+  PageUtils.useUpdateTitle(
     [activeExt?.label as string, activeOne?.LabelByInit]
       .filter((x) => !_.isNil(x))
       .join(" - "),

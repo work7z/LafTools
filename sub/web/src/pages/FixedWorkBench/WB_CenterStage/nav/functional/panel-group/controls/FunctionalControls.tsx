@@ -90,7 +90,7 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-import URLUtils from "../../../../../../../utils/URLUtils";
+import PageUtils from "../../../../../../../utils/PageUtils";
 import TranslationUtils, {
   Dot,
 } from "../../../../../../../utils/TranslationUtils";

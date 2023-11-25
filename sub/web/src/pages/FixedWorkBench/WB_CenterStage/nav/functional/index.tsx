@@ -86,7 +86,7 @@ import {
   Redirect,
   useLocation,
 } from "react-router-dom";
-import URLUtils from "../../../../../utils/URLUtils";
+import PageUtils from "../../../../../utils/PageUtils";
 import TranslationUtils, { Dot } from "../../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
@@ -135,7 +135,7 @@ export let FunctionalMenu = (props: TabNavProp) => {
     return x.id == activeId;
   });
 
-  URLUtils.useUpdateTitle(_.get(currentActiveMenu, "label"), [activeId]);
+  PageUtils.useUpdateTitle(_.get(currentActiveMenu, "label"), [activeId]);
 
   // let dis = exportUtils.dispatch();
 

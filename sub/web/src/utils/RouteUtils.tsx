@@ -22,11 +22,11 @@ import _ from "lodash";
 import gutils from "./GlobalUtils";
 import staticDevJson from "../static/dev.json";
 import { useHistory, useParams } from "react-router";
-import URLUtils from "./URLUtils";
+import PageUtils from "./PageUtils";
 
 const RouteUtils = {
   getCompleteURL(str: string) {
-    return URLUtils.GetRoutePath(str);
+    return PageUtils.GetRoutePath(str);
   },
   hist_ref: null,
   useHistory: useHistory,

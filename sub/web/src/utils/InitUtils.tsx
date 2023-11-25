@@ -21,7 +21,7 @@
 import _ from "lodash";
 import gutils from "./GlobalUtils";
 import staticDevJson from "../static/dev.json";
-import URLUtils from "./URLUtils";
+import PageUtils from "./PageUtils";
 import { P_ACTION_readForgeFromServerViaAPI } from "../slice/ForgeSlice";
 import { P_ACTION_createSystemWS } from "../slice/wsSlice";
 

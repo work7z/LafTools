@@ -31,7 +31,7 @@ import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "./system.scss";
 
 import { logutils } from "./utils/LogUtils";
-import URLUtils from "./utils/URLUtils";
+import PageUtils from "./utils/PageUtils.tsx";
 import InitUtils from "./utils/InitUtils";
 import ALL_NOCYCLE from "./nocycle";
 import exportUtils from "./utils/ExportUtils";

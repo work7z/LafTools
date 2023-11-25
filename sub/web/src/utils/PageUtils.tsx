@@ -46,7 +46,7 @@ const VAL_REQUEST_OBJ: Request = {
   Token: "",
   BaseCtxAPI: "",
 };
-const URLUtils = {
+const PageUtils = {
   useUpdateTitle(title, eff: string[]) {
     useEffect(() => {
       let suffix = Dot("5srFq", "LafTools") + `(${APPINFOJSON.version})`;
@@ -62,7 +62,7 @@ const URLUtils = {
     }, [title + TranslationUtils.CurrentLanguage, ...eff]);
   },
   GetRoutePath(subPath: string): string {
-    return URLUtils.route_base + subPath;
+    return PageUtils.route_base + subPath;
   },
   route_base: "/app",
   UpdateRequestObj: (newRequestObj: Request) => {
@@ -75,4 +75,4 @@ const URLUtils = {
   },
 };
 
-export default URLUtils;
+export default PageUtils;
