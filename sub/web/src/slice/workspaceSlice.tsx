@@ -28,11 +28,11 @@ import _ from "lodash";
 // note that this slice should not be used unless the user got an valid workspace.
 
 type GeneralTabBasicTab = {
-  tools_tabIdx?: number;
-  tools_tabs?: EachTab[];
-  tools_selected?: string[];
-  tools_expanded?: string[];
-  tools_favourites?: string[];
+  tabIndex?: number;
+  tabs?: EachTab[];
+  selected?: string[];
+  expanded?: string[];
+  favourites?: string[];
 };
 
 type ToolWSPState = {} & GeneralTabBasicTab;
@@ -43,13 +43,24 @@ type CurrentWorkspaceState = {
 
 const initialState: CurrentWorkspaceState = {
   tools: {
-    tools_tabIdx: 0,
-    tools_tabs: [],
-    tools_selected: [],
-    tools_expanded: [],
-    tools_favourites: [],
+    tabIndex: 0,
+    tabs: [],
+    selected: [],
+    expanded: [],
+    favourites: [],
   },
 };
+
+// write a function that shadowlly merge and only merge when target value is undefined||null
+// this function is used to merge the state with the payload.
+export function MergeShadowly<T>(target: T, source: T) {
+  for (const key in source) {
+    if (target[key] === undefined || target[key] === null) {
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
 
 const WorkspaceSlice = createSlice({
   name: "workspace",
@@ -57,7 +68,10 @@ const WorkspaceSlice = createSlice({
   reducers: {
     // update tools
     updateTools: (state, action: PayloadAction<ToolWSPState>) => {
-      state.tools = _.merge(state, action.payload);
+      _.forEach(action.payload, (x, d, n) => {
+        state.tools[d] = x;
+      });
+      // state.tools.expanded = action.payload.expanded;
     },
   },
 });

@@ -130,6 +130,7 @@ import ToolSlice from "../../../../../../../slice/toolSlice";
 import MottoLine from "../../../../../../../components/MottoLine";
 import GenTree from "../../../../../../../components/GenTree";
 import { FnPureToolDefinition } from "../../../../../definitions/WB_Types";
+import WorkspaceSlice from "../../../../../../../slice/workspaceSlice";
 
 export default (props: {
   activeOne: FnPureToolDefinition | undefined;
@@ -178,6 +179,14 @@ export default (props: {
     }
   }, [extsListQuery.status]);
 
+  let workspaceDataForTree = exportUtils.useSelector((v) => {
+    return {
+      expanded: v.workspace.tools.expanded,
+      selected: v.workspace.tools.selected,
+      favourites: v.workspace.tools.favourites,
+    };
+  });
+
   let favoritesList: ExtensionInfo[] = useMemo(() => {
     let list = extsListQuery.data?.payload?.list;
     let existSet = new Set();
@@ -186,9 +195,12 @@ export default (props: {
     if (!_.isNil(list)) {
       _.forEach(list, (x) => {
         return _.forEach(x.ChildrenAsInfo, (xx) => {
-          let isThatFoundable = _.findIndex(Tool_RemarkExtIds, (xxx) => {
-            return xxx === xx.Id;
-          });
+          let isThatFoundable = _.findIndex(
+            workspaceDataForTree.favourites,
+            (xxx) => {
+              return xxx === xx.Id;
+            }
+          );
           if (isThatFoundable != -1) {
             if (existSet.has(xx.Id)) return;
             tmp.push(xx);
@@ -202,6 +214,7 @@ export default (props: {
     updateMemStatus,
     extsListQuery.status,
     Tool_RemarkExtIds.join("-"),
+    workspaceDataForTree.favourites,
     treeInfo.updateId,
     _.size(treeInfo.nodes),
   ]);
@@ -281,11 +294,11 @@ export default (props: {
       let findObj: TreeNodeInfo | null = null;
       if (treeInfo == null) return null;
       if (treeInfo.nodes == null) return null;
-      logutils.info(
-        "check all nodes",
-        treeInfo.nodes + ", findObj is",
-        findObj
-      );
+      // logutils.info(
+      //   "check all nodes",
+      //   treeInfo.nodes + ", findObj is",
+      //   findObj
+      // );
       _.find(treeInfo.nodes, (x) => {
         logutils.info("check node", x);
         _.find(x.childNodes, (xx) => {
@@ -308,16 +321,8 @@ export default (props: {
   gutils.ExposureIt("activeExt", activeExt, true);
   let activeOne = props.activeOne;
 
-  // URLUtils.useUpdateTitle(
-  //   [activeExt?.label as string, activeOne?.label]
-  //     .filter((x) => !_.isNil(x))
-  //     .join(" - "),
-  //   [toolParam.category + "", toolParam.extId + ""]
-  // );
-
   let r = QueryUtils.validateResult(extsListQuery, {
     label: Dot("CWohyqde", "Tools"),
-    // onlyErr: true,
   });
   if (!_.isNil(r)) {
     return r;
@@ -356,15 +361,6 @@ export default (props: {
                   }) != null;
                 return {
                   ...x,
-                  // label: (
-                  //   <Popover
-                  //     interactionKind="hover"
-                  //     placement="right"
-                  //     content={<div>this is content</div>}
-                  //   >
-                  //     {x.label}
-                  //   </Popover>
-                  // ),
                   secondaryLabel: (
                     <ButtonGroup>
                       <Tooltip
@@ -419,33 +415,6 @@ export default (props: {
                           }}
                         />
                       </Tooltip>
-
-                      {/* <Tooltip content={Dot("lipsdPs", "Extra Operations")}>
-                        <Popover
-                          interactionKind="click"
-                          content={<div>this is extra menu</div>}
-                        >
-                          <Button
-                            small
-                            minimal
-                            icon={"menu"}
-                            intent="none"
-                            onClick={(e) => {
-                              //
-                            }}
-                          />
-                        </Popover>
-                      </Tooltip> */}
-
-                      {/* <AnchorButton
-                        href={RouteUtils.getCompleteURL(
-                          `${URL_WORKBENCH_TOOLS}/${currentCategoryId}/${x.id}`
-                        )}
-                        target="_blank"
-                        small
-                        minimal
-                        icon="share"
-                      /> */}
                     </ButtonGroup>
                   ),
                 };
@@ -457,6 +426,23 @@ export default (props: {
             info={treeInfo}
             onChange={(new_nodes) => {
               dis(ToolSlice.actions.updateSubCategoryTreeInfo(new_nodes));
+            }}
+            expanded={workspaceDataForTree.expanded || []}
+            selected={workspaceDataForTree.selected || []}
+            onExpandedChange={(value) => {
+              // debugger;
+              dis(
+                WorkspaceSlice.actions.updateTools({
+                  expanded: value,
+                })
+              );
+            }}
+            onSelectedChange={(value) => {
+              dis(
+                WorkspaceSlice.actions.updateTools({
+                  selected: value,
+                })
+              );
             }}
           />
         )}

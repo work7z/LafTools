@@ -77,6 +77,10 @@ import { TreeWrapInfo } from "../../styles/var";
 let { cloneDeep } = _;
 
 type PassProp = {
+  expanded: string[];
+  selected: string[];
+  onExpandedChange: (newVal: string[]) => any;
+  onSelectedChange: (newVal: string[]) => any;
   cacheId: string;
   needShowCountChildren?: boolean;
   formatEachNode?: (node: TreeNodeInfo) => TreeNodeInfo;
@@ -101,7 +105,7 @@ export default (props: PassProp) => {
   let hasSearchText = !gutils.empty(searchText);
 
   let nodes: TreeNodeInfo[] = useMemo(() => {
-    // recursively format tmp_nodes to nodes, so that we can use it in Tree, note that isExpanded is true when it's in info.expanded and isSeleced is true when it's in info.selected
+    // recursively format tmp_nodes to nodes, so that we can use it in Tree, note that isExpanded is true when it's in props.expanded and isSeleced is true when it's in props.selected
     let formatEachNodeItem = (nodeList: TreeNodeInfo[]): TreeNodeInfo[] => {
       return _.map(nodeList, (x) => {
         let hasCaret = !_.isNil(x.hasCaret)
@@ -116,8 +120,8 @@ export default (props: PassProp) => {
               : x.label,
           isExpanded: hasSearchText
             ? true
-            : _.includes(info.expanded, x.id.toString()),
-          isSelected: _.includes(info.selected, x.id.toString()),
+            : _.includes(props.expanded, x.id.toString()),
+          isSelected: _.includes(props.selected, x.id.toString()),
           childNodes: formatEachNodeItem(x.childNodes || []),
           // secondaryLabel: <Button minimal={true} icon="star-empty" />,
           hasCaret,
@@ -148,7 +152,7 @@ export default (props: PassProp) => {
       return fin.filter((x) => !_.isEmpty(x.childNodes));
     }
     return fin;
-  }, [info.nodes, info.updateId, searchText]);
+  }, [info.nodes, props.expanded, props.selected, info.updateId, searchText]);
 
   return (
     <div>
@@ -175,35 +179,28 @@ export default (props: PassProp) => {
           }
         }}
         onNodeClick={(e, e2, e3) => {
-          // update info.selected according to e.isSelected
+          // update props.selected according to e.isSelected
           let new_info = { ...info };
           let node = e;
           if (e.hasCaret) {
-            // if e.hasCaret, then toggle if its value in info.expanded
-            let new_info = { ...info };
-            if (_.includes(info.expanded, node.id.toString())) {
-              new_info = {
-                ...info,
-                expanded: _.filter(info.expanded, (x) => {
+            // if e.hasCaret, then toggle if its value in props.expanded
+            if (_.includes(props.expanded, node.id.toString())) {
+              props.onExpandedChange(
+                _.filter(props.expanded, (x) => {
                   return x != node.id;
-                }),
-              };
+                })
+              );
             } else {
-              new_info = {
-                ...info,
-                expanded: _.uniq([...(info.expanded || []), node.id]) as any,
-              };
+              props.onExpandedChange(
+                _.uniq([...(props.expanded || []), node.id]) as any
+              );
             }
-            props.onChange(new_info);
             if (!_.isNil(e)) {
               props.onClick && props.onClick(e as TreeNodeInfo);
             }
           } else {
             if (!e.isSelected) {
-              new_info = {
-                ...info,
-                selected: [node.id.toString()],
-              };
+              props.onSelectedChange([node.id.toString()]);
             }
           }
           props.onChange(new_info);
@@ -212,114 +209,19 @@ export default (props: PassProp) => {
           }
         }}
         onNodeCollapse={(obj) => {
-          let new_info = {
-            ...info,
-            expanded: _.filter(info.expanded, (x) => {
+          // props.onChange(new_info);
+          props.onExpandedChange(
+            _.filter(props.expanded, (x) => {
               return x != obj.id;
-            }),
-          };
-          props.onChange(new_info);
+            })
+          );
         }}
         onNodeExpand={(obj) => {
-          let new_info = {
-            ...info,
-            expanded: _.uniq([...(info.expanded || []), obj.id]) as any,
-          };
-          props.onChange(new_info);
+          let fin = _.uniq([...(props.expanded || []), obj.id]) as string[];
+          props.onExpandedChange(fin);
         }}
         className={Classes.ELEVATION_0}
       />
     </div>
   );
 };
-
-/**
-[
-    {
-      id: 0,
-      hasCaret: true,
-      icon: "folder-close",
-      label: (
-        <ContextMenu {...contentSizing} content={<div>Hello there!</div>}>
-          Folder 0
-        </ContextMenu>
-      ),
-    },
-    {
-      id: 1,
-      icon: "folder-close",
-      isExpanded: true,
-      label: (
-        <ContextMenu {...contentSizing} content={<div>Hello there!</div>}>
-          <Tooltip content="I'm a folder <3" placement="right">
-            Folder 1
-          </Tooltip>
-        </ContextMenu>
-      ),
-      childNodes: [
-        {
-          id: 2,
-          icon: "document",
-          label: "Item 0",
-          secondaryLabel: (
-            <Tooltip content="An eye!">
-              <Icon icon="eye-open" />
-            </Tooltip>
-          ),
-        },
-        {
-          id: 3,
-          icon: (
-            <Icon
-              icon="tag"
-              intent={Intent.PRIMARY}
-              className={Classes.TREE_NODE_ICON}
-            />
-          ),
-          label:
-            "Organic meditation gluten-free, sriracha VHS drinking vinegar beard man.",
-        },
-        {
-          id: 4,
-          hasCaret: true,
-          icon: "folder-close",
-          label: (
-            <ContextMenu {...contentSizing} content={<div>Hello there!</div>}>
-              <Tooltip content="foo" placement="right">
-                Folder 2
-              </Tooltip>
-            </ContextMenu>
-          ),
-          childNodes: [
-            { id: 5, label: "No-Icon Item" },
-            { id: 6, icon: "tag", label: "Item 1" },
-            {
-              id: 7,
-              hasCaret: true,
-              icon: "folder-close",
-              label: (
-                <ContextMenu
-                  {...contentSizing}
-                  content={<div>Hello there!</div>}
-                >
-                  Folder 3
-                </ContextMenu>
-              ),
-              childNodes: [
-                { id: 8, icon: "document", label: "Item 0" },
-                { id: 9, icon: "tag", label: "Item 1" },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: 2,
-      hasCaret: true,
-      icon: "folder-close",
-      label: "Super secret files",
-      disabled: true,
-    },
-  ];
- */
