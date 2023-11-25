@@ -9,6 +9,7 @@ import { Dot } from "../utils/translation";
 let value: ToolCategory[] = [
   {
     Id: "all", // should have no all in this field
+    // Label: ["M6MrW", "Good"],
     Label: ["cPS6q", "All Tools"],
     SubCategories: [],
   },

@@ -386,15 +386,25 @@ export default (props: {
                             gutils.stopE(e);
                             if (hasRemarkThisOne) {
                               dis(
-                                forgeSlice.actions.removeExtensionIdFromTool_RemarkExtIds(
-                                  { extId: x.id + "" }
-                                )
+                                WorkspaceSlice.actions.updateTools({
+                                  favourites: _.filter(
+                                    workspaceDataForTree.favourites,
+                                    (xx) => {
+                                      return xx != x.id;
+                                    }
+                                  ),
+                                })
                               );
                             } else {
                               dis(
-                                forgeSlice.actions.addExtensionIdIntoTool_RemarkExtIds(
-                                  { extId: x.id + "" }
-                                )
+                                WorkspaceSlice.actions.updateTools({
+                                  favourites:
+                                    _.uniq([
+                                      ...(workspaceDataForTree.favourites ||
+                                        []),
+                                      x.id,
+                                    ]) || [],
+                                })
                               );
                             }
                             onUpdateMemStatus(updateMemStatus + 1);
