@@ -115,7 +115,11 @@ import apiSlice from "../../../slice/apiSlice";
 import { FixedMenuItem, langList } from "../definitions/WB_Types";
 import { FixedMenuBar } from "./sub/InnerMenuBar";
 
-export let WB_MenuBar = () => {
+type PassProp = {
+  leftPart?: JSX.Element;
+};
+
+export let WB_MenuBar = (props: PassProp) => {
   let val_1 = exportUtils.useSelector((val) => ({
     dark: val.forge.DarkThemeMode,
   }));
@@ -207,6 +211,7 @@ export let WB_MenuBar = () => {
   return (
     <FixedMenuBar
       requiredPageIcon
+      leftPart={props.leftPart}
       menus={menus}
       rightShownContent={
         <div>

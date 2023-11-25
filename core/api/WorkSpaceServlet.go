@@ -49,6 +49,23 @@ type WorkSpaceStruct struct {
 // TODO: we use multiple instance to lock each user's workspace config file separately.
 var workspaceLock = &sync.Mutex{}
 
+func API_WorkSpace_GetOne_By_User(c *gin.Context) {
+
+	wc := context.NewWC(c)
+	workspaceId := c.Query("Id")
+	if workspaceId == "" {
+		ErrLa2(c, wc.Dot("eWfrs", "Id is required"))
+	}
+	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
+	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	for _, each := range workspaceRes.WorkSpaces {
+		if each.Id == workspaceId || each.Path == workspaceId {
+			OKLa(c, DoValueRes(each))
+			return
+		}
+	}
+	OKLa(c, DoValueRes(EachWorkSpace{}))
+}
 func API_WorkSpace_List_By_User(c *gin.Context) {
 	workspaceLock.Lock()
 	defer workspaceLock.Unlock()

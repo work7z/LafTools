@@ -63,6 +63,17 @@ export const apiSlice = createApi({
   }),
   endpoints: (build) => ({
     // workspace
+    getWorkspaceOneByIdAndUserId: build.query<
+      PayloadValueData<EachWorkSpace>,
+      { Id: string }
+    >({
+      query: (obj) => {
+        return {
+          url: "/workspace/users/one",
+          params: obj,
+        };
+      },
+    }),
     getWorkspaceListByUserId: build.query<
       PayloadValueData<WorkSpaceStruct>,
       any

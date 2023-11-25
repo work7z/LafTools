@@ -107,7 +107,8 @@ $tab-height-I-know: 24px;
 }
 
 $appNavBgWhite: white;
-$appNavBgBlack: $dark-gray1;
+// $appNavBgBlack: $dark-gray1;
+$appNavBgBlack: #111418;
 $statusbar-height: 28px;
 
 .text-right {
@@ -178,6 +179,9 @@ $common-border-color: #656a71 !default;
   .bp5-dark & {
     background-color: $appNavBgBlack;
   }
+}
+.common-bg-color-align {
+  @include fn-make-bg-color-align();
 }
 
 .btm-border {

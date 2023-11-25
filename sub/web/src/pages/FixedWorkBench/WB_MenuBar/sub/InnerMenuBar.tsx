@@ -242,41 +242,43 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
           ""
         )}
 
-        {_.map(props.menus, (x) => {
-          return (
-            <Popover
-              key={x.id}
-              hasBackdrop={false}
-              transitionDuration={0}
-              minimal
-              interactionKind={
-                hasClickAnyButton ? "hover-target" : "click-target"
-              }
-              isOpen={currentButton == x.id}
-              placement="bottom-start"
-              content={
-                <RegularMenu
-                  clzName="nav-same-menu"
-                  childrenNodes={x.children || []}
-                ></RegularMenu>
-              }
-            >
-              <Button
-                small
-                onClick={() => {
-                  goToMenuItem(x.id);
-                }}
-                onMouseEnter={() => {
-                  if (hasClickAnyButton) {
-                    goToMenuItem(x.id);
+        {props.leftPart
+          ? props.leftPart
+          : _.map(props.menus, (x) => {
+              return (
+                <Popover
+                  key={x.id}
+                  hasBackdrop={false}
+                  transitionDuration={0}
+                  minimal
+                  interactionKind={
+                    hasClickAnyButton ? "hover-target" : "click-target"
                   }
-                }}
-                minimal
-                text={Dot("CPW5r", x.label || Dot("6yOXx", "Unknown Name"))}
-              ></Button>
-            </Popover>
-          );
-        })}
+                  isOpen={currentButton == x.id}
+                  placement="bottom-start"
+                  content={
+                    <RegularMenu
+                      clzName="nav-same-menu"
+                      childrenNodes={x.children || []}
+                    ></RegularMenu>
+                  }
+                >
+                  <Button
+                    small
+                    onClick={() => {
+                      goToMenuItem(x.id);
+                    }}
+                    onMouseEnter={() => {
+                      if (hasClickAnyButton) {
+                        goToMenuItem(x.id);
+                      }
+                    }}
+                    minimal
+                    text={Dot("CPW5r", x.label || Dot("6yOXx", "Unknown Name"))}
+                  ></Button>
+                </Popover>
+              );
+            })}
       </div>
       <div>{props.rightShownContent}</div>
     </div>

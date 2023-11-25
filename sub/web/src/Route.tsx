@@ -53,6 +53,7 @@ import RouteUtils from "./utils/RouteUtils";
 import InitRouteHistory from "./InitRouteHistory";
 import SystemAlertOrPrompt from "./SystemAlertOrPrompt";
 import Entry from "./pages/Entry";
+import FixedPreWorkBench from "./pages/FixedPreWorkBench";
 
 gutils.ExposureIt("$", $);
 gutils.ExposureIt("gutils", gutils);
@@ -70,8 +71,11 @@ let RouteComponent = () => {
   // + "/:workspaceId"
   let innerJSX = (
     <Switch>
-      <Route path={URL_WORKBENCH} component={WorkBench}></Route>
-      {/* <Route path={URL_WORKBENCH} component={WorkBench}></Route> */}
+      <Route
+        path={URL_WORKBENCH + "/:workspaceId"}
+        component={WorkBench}
+      ></Route>
+      <Route path={URL_WORKBENCH} component={FixedPreWorkBench}></Route>
       <Route path={URL_ENTRY} component={Entry}></Route>
       <Redirect path="*" to={URL_WORKBENCH}></Redirect>
     </Switch>

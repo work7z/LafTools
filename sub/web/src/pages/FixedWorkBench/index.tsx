@@ -84,6 +84,7 @@ import {
   Link,
   useHistory,
   Redirect,
+  useParams,
 } from "react-router-dom";
 import PageUtils from "../../utils/PageUtils";
 import TranslationUtils, { Dot } from "../../utils/TranslationUtils";
@@ -127,8 +128,51 @@ import { WB_ControllerBar as WB_ControllBar } from "./WB_ControlBar";
 import { WB_MenuBar as WB_MenuBar } from "./WB_MenuBar";
 import { WB_CenterStage as WB_CenterStage } from "./WB_CenterStage";
 import "./index.scss";
+import QueryUtils from "../../utils/QueryUtils";
+import AlertUtils from "../../utils/AlertUtils";
 
 export default () => {
+  const { workspaceId = "default" } = useParams() as any;
+  gutils.ExposureIt("workspaceId", workspaceId, true);
+  // validate if workspaceId exist in system
+  // workspaceId
+  let idQueryRes = apiSlice.useGetWorkspaceOneByIdAndUserIdQuery(
+    {
+      Id: workspaceId + "OK",
+    },
+    {
+      refetchOnMountOrArgChange: true,
+    }
+  );
+  let res = QueryUtils.validateResult(idQueryRes, {
+    label: Dot("JfFHw", "Get Workspace Info Request"),
+    onlyErr: true,
+  });
+  let hist = useHistory();
+  const [available, onAvaialble] = useState(false);
+  if (res) {
+    return res;
+  }
+  useEffect(() => {
+    let Id = idQueryRes.data?.payload?.value?.Id;
+    if (Id == "") {
+      AlertUtils.win_alert({
+        id: "Un77m",
+        msg: Dot(
+          "0gywa",
+          "Workspace not found, you will be redirected to workspace index page."
+        ),
+        fn() {},
+      });
+      onAvaialble(false);
+      hist.replace("/workbench");
+    } else {
+      onAvaialble(true);
+    }
+  }, [idQueryRes.status]);
+  if (!available) {
+    return "";
+  }
   return (
     <div className="fixed-wb-p " style={{}}>
       <WB_MenuBar />

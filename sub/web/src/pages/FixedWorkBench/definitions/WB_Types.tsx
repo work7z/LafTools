@@ -131,6 +131,7 @@ export type FixedMenuItem = {
 };
 
 export type FixedMenuBarProp = {
+  leftPart?: JSX.Element;
   menus: FixedMenuItem[];
   requiredPageIcon?: boolean;
   rightShownContent?: string | JSX.Element;

@@ -129,6 +129,7 @@ func ConfigSystemRouter(r *gin.Engine) {
 	doGET_("/os/temp/file/read", API_TEMP_FILE_READ)
 
 	// workspace
+	doGET_("/workspace/users/one", API_WorkSpace_GetOne_By_User)
 	doGET_("/workspace/users/list", API_WorkSpace_List_By_User)
 	doPOST("/workspace/users/add", API_Workspace_Add_By_User)
 	doPOST("/workspace/users/delete", API_Workspace_Delete_By_User)

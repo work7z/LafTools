@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sat, 25 Nov 2023
 // Author: LafTools Team <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -59,63 +59,30 @@ import {
   Menu,
   MenuDivider,
 } from "@blueprintjs/core";
-import {
-  ColumnHeaderCell,
-  Cell,
-  Column,
-  Table,
-  Regions,
-} from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../nocycle";
-
-import React, { useEffect, useMemo } from "react";
-import ReactDOM from "react-dom";
-import gutils from "../../utils/GlobalUtils";
-import { logutils } from "../../utils/LogUtils";
-import _ from "lodash";
-import RouteMem from "../../styles/routeMem";
-import statusSlice from "../../slice/StatusSlice";
-import { useState, useContext, useCallback, useRef } from "react";
-import {
-  withRouter,
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  Redirect,
-} from "react-router-dom";
-import PageUtils from "../../utils/PageUtils";
-import TranslationUtils, { Dot } from "../../utils/TranslationUtils";
-import "allotment/dist/style.css";
-import { Allotment } from "allotment";
-import exportUtils from "../../utils/ExportUtils";
-import forgeSlice, {
-  ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../slice/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../slice/SystemSlice";
-import {
-  ID_FILES,
-  ID_HISTORY as ID_MANUAL,
-  ID_NOTES,
-  ID_TOOLS,
-  SUB_URL_WORKBENCH_TOOLS_CATEGORY,
-  URL_WORKBENCH_FILES,
-  URL_WORKBENCH_MANUALS as URL_WORKBENCH_MANUAL,
-  URL_WORKBENCH_NOTES,
-} from "../../styles/path";
-import FixedWorkBenchTool from "../FixedWorkBenchTool";
-import FixedWorkBenchFiles from "../FixedWorkBenchFiles";
-
-import FixedWorkBenchHistory from "../FixedWorkBenchHistory";
-import FixedWorkBenchNotes from "../FixedWorkBenchNotes";
-import { type } from "jquery";
-import apiSlice from "../../slice/apiSlice";
+import { WB_MenuBar } from "../FixedWorkBench/WB_MenuBar";
+import { Dot } from "../../utils/TranslationUtils";
+import MainPreSetup from "./MainPreSetup";
 
 export default () => {
   return (
     <div className="fixed-wb-p " style={{}}>
-      <div>this is pre workbench</div>
+      <WB_MenuBar
+        leftPart={
+          <div
+            className="inline-flex h-full absolute left-[50%]"
+            style={{
+              transform: "translateX(-50%)",
+            }}
+          >
+            {Dot(
+              "HP_1e",
+              "Welcome to {0} - Empowering Your Creativity",
+              "LafTools"
+            )}
+          </div>
+        }
+      />
+      <MainPreSetup></MainPreSetup>
     </div>
   );
 };
