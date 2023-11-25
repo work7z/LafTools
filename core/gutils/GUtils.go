@@ -44,6 +44,11 @@ func UUID() string {
 	a, _ := uuid.NewUUID()
 	return strings.ReplaceAll(string(a.String()), "-", "")
 }
+
+// short uuid
+func ShortUUID() string {
+	return UUID()[0:8]
+}
 func WriteIntoFileAtomic(file string, str string) error {
 	e := atomic.WriteFile(file, strings.NewReader(str))
 	return e

@@ -67,9 +67,11 @@ let RouteComponent = () => {
   // once trigger only
   const hist = useHistory();
   InitRouteHistory(hist);
+  // + "/:workspaceId"
   let innerJSX = (
     <Switch>
       <Route path={URL_WORKBENCH} component={WorkBench}></Route>
+      {/* <Route path={URL_WORKBENCH} component={WorkBench}></Route> */}
       <Route path={URL_ENTRY} component={Entry}></Route>
       <Redirect path="*" to={URL_WORKBENCH}></Redirect>
     </Switch>

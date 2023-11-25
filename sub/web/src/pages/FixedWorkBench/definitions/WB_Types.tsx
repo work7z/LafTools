@@ -22,6 +22,7 @@ import { ToolCategory, ToolSubCategory } from "./all-types";
 
 export type EachWorkSpace = {
   Label: string;
+  Id: string;
   Path: string;
 };
 

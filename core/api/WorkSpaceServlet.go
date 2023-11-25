@@ -23,6 +23,7 @@ package api
 import (
 	"encoding/json"
 	"laftools-go/core/context"
+	"laftools-go/core/gutils"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
 	"sync"
@@ -35,6 +36,7 @@ type WorkSpaceListByUserForm struct {
 }
 
 type EachWorkSpace struct {
+	Id    string
 	Label string
 	Path  string
 }
@@ -67,13 +69,33 @@ func API_Workspace_Add_By_User(c *gin.Context) {
 		ErrLa2(c, wc.Dot("bAkuz", "label and path cannot be empty"))
 		return
 	}
+
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
 	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+
+	newSpace.Id = gutils.ShortUUID()
+
 	// if workspaceRes.WorkSpaces already have that same path, then error
 	for _, each := range workspaceRes.WorkSpaces {
 		if each.Path == newSpace.Path {
 			ErrLa2(c, wc.Dot("RBgEN", "already have that path"))
 			return
+		}
+	}
+	// make sure no duplicate id
+	for {
+		dup := false
+		for _, each := range workspaceRes.WorkSpaces {
+			// if newSpace.Id exist, then replace
+			if each.Id == newSpace.Id {
+				dup = true
+				break
+			}
+		}
+		if !dup {
+			break
+		} else {
+			newSpace.Id = gutils.ShortUUID()
 		}
 	}
 	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, *newSpace)
@@ -88,16 +110,16 @@ func API_Workspace_Delete_By_User(c *gin.Context) {
 	// label and path cannot be empty
 	var newSpace = &EachWorkSpace{}
 	c.BindJSON(newSpace)
-	if newSpace.Path == "" {
-		ErrLa2(c, wc.Dot("XQELf", "path cannot be empty"))
+	if newSpace.Id == "" {
+		ErrLa2(c, wc.Dot("XQELf", "id cannot be empty"))
 		return
 	}
-	// using path to delete
+	// using id to delete
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
 	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
 	var newWorkSpaces []EachWorkSpace
 	for _, each := range workspaceRes.WorkSpaces {
-		if each.Path != newSpace.Path {
+		if each.Id != newSpace.Id {
 			newWorkSpaces = append(newWorkSpaces, each)
 		}
 	}
