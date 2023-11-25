@@ -53,10 +53,15 @@ func API_WorkSpace_List_By_User(c *gin.Context) {
 	workspaceLock.Lock()
 	defer workspaceLock.Unlock()
 	wc := context.NewWC(c)
-	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
-	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	workspaceRes := getWorkspaceList(&wc)
 	// anyway, if no error then users will get his/her workspace as normal
 	OKLa(c, DoValueRes(workspaceRes))
+}
+
+func getWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
+	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
+	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	return workspaceRes
 }
 
 func API_Workspace_Add_By_User(c *gin.Context) {
@@ -113,7 +118,7 @@ func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebCont
 	return nil
 }
 
-// deleteWorkspaceByID deletes a workspace by its ID.
+// DeleteWorkspaceByID deletes a workspace by its ID.
 func deleteWorkspaceByID(wc *context.WebContext, workspaceIDOrPath string) {
 	workspaceLock.Lock()
 	defer workspaceLock.Unlock()
