@@ -166,12 +166,12 @@ export let SidebarMenu = (props: TabNavProp): any => {
   let val_memo_deps = _.values(sq);
   let mainTabs: EachTabPanelProp[] = useMemo(() => {
     let tmparr: EachTabPanelProp[] = [
-      {
-        desc: Dot("pEk1qkk", "List all the opened tabs"),
-        icon: "grid-view",
-        id: "grid-view",
-        label: Dot("RNeBze0", "Opened Tabs"),
-      },
+      // {
+      //   desc: Dot("pEk1qkk", "List all the opened tabs"),
+      //   icon: "grid-view",
+      //   id: "grid-view",
+      //   label: Dot("RNeBze0", "Opened Tabs"),
+      // },
       {
         desc: Dot("dkkq12", "Configure your tool in this tab."),
         icon: "cog",

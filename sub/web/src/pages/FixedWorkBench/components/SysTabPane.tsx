@@ -58,6 +58,7 @@ import {
   Popover,
   Menu,
   MenuDivider,
+  Spinner,
 } from "@blueprintjs/core";
 import {
   ColumnHeaderCell,
@@ -215,6 +216,7 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
               content={
                 <Menu>
                   {props.leftNavList.map((x) => {
+                    let isCrt = x.value == activeId;
                     let menuItem = (
                       <MenuItem
                         key={x.value}
@@ -223,7 +225,7 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
                           // e.stopPropagation();
                           //
                         }}
-                        intent={x.value == activeId ? "primary" : "none"}
+                        intent={isCrt ? "primary" : "none"}
                       />
                     );
                     // tailwindcss remove anchor style
