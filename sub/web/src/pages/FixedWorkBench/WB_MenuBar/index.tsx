@@ -131,6 +131,7 @@ export let WB_MenuBar = (props: PassProp) => {
       currentPlateId: val.status.nav.currentPlateId,
     };
   });
+  let hist = useHistory();
   let dis = exportUtils.dispatch();
 
   let menus: FixedMenuItem[] = [
@@ -183,6 +184,9 @@ export let WB_MenuBar = (props: PassProp) => {
         {
           id: "SFnhx",
           label: Dot("aCkOP", "Exit"),
+          onClick: () => {
+            hist.push("/workbench");
+          },
         },
       ],
     },
@@ -297,16 +301,19 @@ export let WB_MenuBar = (props: PassProp) => {
               />
             </Tooltip>
           </Popover>
-          <Tooltip content={Dot("LqWaFd", "System Settings")} position="bottom">
+          <Tooltip
+            content={Dot("Ma5mv", "Toggle the visibility of toolbar tabs")}
+            position="bottom"
+          >
             <Button
               className={Classes.MINIMAL}
               small={true}
               intent={"none"}
-              title={Dot(`RhqzcdD`, `System Settings`)}
+              // title={Dot(`YPPPL`, `Toggle the visibility of toolbars tabs`)}
               // text={APPINFOJSON.version}
-              icon={"cog"}
+              icon={"multi-select"}
               onClick={() => {
-                dis(forgeSlice.actions.updateDarkMode({ isDark: !val_1.dark }));
+                //
               }}
             />
           </Tooltip>
@@ -318,9 +325,22 @@ export let WB_MenuBar = (props: PassProp) => {
               className={Classes.MINIMAL}
               small={true}
               intent={true ? "primary" : "none"}
-              title={Dot(`ZAKaFq`, `My Cloud Account`)}
+              // title={Dot(`ZAKaFq`, `My Cloud Account`)}
               icon={"cloud"}
               onClick={() => {}}
+            />
+          </Tooltip>
+          <Tooltip content={Dot("LqWaFd", "System Settings")} position="bottom">
+            <Button
+              className={Classes.MINIMAL}
+              small={true}
+              intent={"none"}
+              // title={Dot(`RhqzcdD`, `System Settings`)}
+              // text={APPINFOJSON.version}
+              icon={"cog"}
+              onClick={() => {
+                dis(forgeSlice.actions.updateDarkMode({ isDark: !val_1.dark }));
+              }}
             />
           </Tooltip>
         </div>

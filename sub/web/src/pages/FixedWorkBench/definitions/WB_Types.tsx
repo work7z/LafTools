@@ -123,6 +123,7 @@ export let langList = [
 export type FixedMenuItem = {
   id: string;
   label?: string;
+  onClick?: () => any;
   icon?: string;
   spliter?: boolean;
   disable?: boolean;

@@ -176,7 +176,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
           <MenuItem
             icon={(x.icon || undefined) as any}
             onClick={() => {
-              //
+              x.onClick && x.onClick();
             }}
             text={x.label}
           >

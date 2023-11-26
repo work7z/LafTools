@@ -64,6 +64,7 @@ import { Dot } from "../../utils/TranslationUtils";
 import MainPreSetup from "./MainPreSetup";
 
 export default () => {
+  // TODO: add a image background that is pretty cool cool da
   return (
     <div className="fixed-wb-p " style={{}}>
       <WB_MenuBar
@@ -74,11 +75,8 @@ export default () => {
               transform: "translateX(-50%)",
             }}
           >
-            {Dot(
-              "HP_1e",
-              "Welcome to {0} - Empowering Your Creativity",
-              "LafTools"
-            )}
+            {/* - Empowering Your Creativity */}
+            {Dot("nJAX6", "Welcome to {0}", "LafTools")}
           </div>
         }
       />

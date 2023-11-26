@@ -66,6 +66,44 @@ import {
 } from "../../FixedWorkBench/definitions/WB_Types";
 import { Dot } from "../../../utils/TranslationUtils";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
+  let [hover, setHover] = useState(false);
+  let x = props.item;
+  return (
+    <Tooltip
+      className="block w-full"
+      content={Dot("mWXeh", "Workspace ID: {0}", x.Id)}
+      placement="right"
+    >
+      <Link
+        onMouseEnter={() => {
+          setHover(true);
+        }}
+        onMouseLeave={() => {
+          setHover(false);
+        }}
+        className="mt-1 w-full relative hover:text-black p-2  px-3 flex no-underline hover:no-underline text-black hover:bg-blue-200 hover:bg-opacity-20"
+        to={"/workbench/" + x.Id}
+        style={{
+          flexDirection: "column",
+        }}
+      >
+        <div className="">{x.Label}</div>
+        <div className="text-stone-400">{x.Path}</div>
+        <div
+          className={
+            "align-end absolute right-[5px] top-[27%]  " +
+            (false && !hover ? " hidden " : "")
+          }
+        >
+          <Button icon="cog" small intent="none" minimal></Button>
+        </div>
+      </Link>
+    </Tooltip>
+  );
+};
 
 export default () => {
   // here we provide setup list UI, that first row is a input field, second row is manage controls(New, Refresh), remain part is a list that includes all workspace
@@ -83,7 +121,7 @@ export default () => {
   ];
   let entryJSX = (
     <div
-      className="flex flex-col self-start mt-10  w-[500px] using-edge-ui-bg border-gray-300  border-[1px] shadow-lg shadow-gray-300 rounded self-start px-2 py-2"
+      className="flex flex-col  mt-10  w-[500px] using-edge-ui-bg border-gray-300  border-[1px] shadow-lg shadow-gray-300 rounded self-start px-2 py-2"
       style={{
         minHeight: "400px",
       }}
@@ -97,28 +135,38 @@ export default () => {
           className="flex flex-row items-center bg-transparent border-b border-gray-400 focus:outline-none focus:border-blue-500"
           type="text"
           small
-          placeholder="Search"
+          placeholder={Dot("SMD13", "Filter Workspaces")}
           rightElement={
             <ButtonGroup>
-              <Button
-                className="mr-2"
-                icon="add"
-                text={Dot("ImUmf", "New")}
-                intent={Intent.PRIMARY}
-                small
-                onClick={() => {
-                  // open a dialog to create a new workspace
-                }}
-              />
-              <Button
-                icon="refresh"
-                text={Dot("5dF7o", "Refresh")}
-                small
-                intent={Intent.SUCCESS}
-                onClick={() => {
-                  // refresh workspace list
-                }}
-              />
+              <Tooltip
+                placement="bottom"
+                content={Dot("adpgq", "Create new workspace")}
+              >
+                <Button
+                  className="mr-2"
+                  icon="add"
+                  text={Dot("ImUmf", "New")}
+                  intent={Intent.PRIMARY}
+                  small
+                  onClick={() => {
+                    // open a dialog to create a new workspace
+                  }}
+                />
+              </Tooltip>
+              <Tooltip
+                placement="bottom"
+                content={Dot("dV5Eq", "Refresh workspace list")}
+              >
+                <Button
+                  icon="refresh"
+                  text={Dot("5dF7o", "Refresh")}
+                  small
+                  intent={Intent.SUCCESS}
+                  onClick={() => {
+                    // refresh workspace list
+                  }}
+                />
+              </Tooltip>
             </ButtonGroup>
           }
         />
@@ -126,19 +174,7 @@ export default () => {
       <div className="mt-2">
         <div>
           {allWorkspaces.map((x) => {
-            return (
-              <Link
-                key={x.Id}
-                className="mb-2 flex no-underline hover:no-underline text-black hover:bg-cyan-500-100 hover:bg-opacity-20"
-                to={"/workbench/" + x.Id}
-                style={{
-                  flexDirection: "column",
-                }}
-              >
-                <div className="">{x.Label}</div>
-                <div className="text-stone-400">{x.Path}</div>
-              </Link>
-            );
+            return <WorkSpaceListItem key={x.Id} item={x} />;
           })}
         </div>
       </div>
