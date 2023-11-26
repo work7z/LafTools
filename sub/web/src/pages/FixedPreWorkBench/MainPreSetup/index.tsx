@@ -84,7 +84,7 @@ let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
         onMouseLeave={() => {
           setHover(false);
         }}
-        className="mt-1 w-full relative hover:text-black p-2  px-3 flex no-underline hover:no-underline text-black hover:bg-blue-200 hover:bg-opacity-20"
+        className="mt-1 w-full relative hover:text-black p-2 rounded  px-3 flex no-underline hover:no-underline text-black hover:bg-blue-200 hover:bg-opacity-20"
         to={"/workbench/" + x.Id}
         style={{
           flexDirection: "column",
@@ -132,7 +132,7 @@ export default () => {
       <div>
         <InputGroup
           leftIcon="search"
-          className="flex flex-row items-center bg-transparent border-b border-gray-400 focus:outline-none focus:border-blue-500"
+          className="flex flex-row items-center bg-transparent border-b  focus:outline-none focus:border-blue-500"
           type="text"
           small
           placeholder={Dot("SMD13", "Filter Workspaces")}
