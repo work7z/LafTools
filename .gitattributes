@@ -2,3 +2,4 @@
 
 # Ignore all files in the 'prettier' directory for language statistics
 sub/node/src/lib/prettier/* linguist-detectable=false
+resources/non-prohibited/purejs linguist-detectable=false
