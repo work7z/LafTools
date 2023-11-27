@@ -121,7 +121,7 @@ export default () => {
   ];
   let entryJSX = (
     <div
-      className="flex flex-col  mt-10  w-[500px] using-edge-ui-bg border-gray-300  border-[1px] shadow-lg shadow-gray-300 rounded self-start px-2 py-2"
+      className="flex flex-col  mt-10  w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-gray-300 dark:shadow-gray-600 rounded self-start px-2 py-2"
       style={{
         minHeight: "400px",
       }}
