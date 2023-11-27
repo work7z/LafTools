@@ -11,9 +11,18 @@ Before you start developing this project, please ensure that you have the follow
 
 Before modifying the source code, you should read the below sections to learn the architecture and technical details.
 
+## VSCode Extensions for Dev  
+If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+
+1. Prettier - Code formatter
+2. TODO Highlight
+3. React
+4. Go
+5. Golang Tools  
+
 ## Technologies
 
-To start developing, please check if you are familiar with the technologies we used.  No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes is done properly. 
+To start developing, please check if you are familiar with the technologies we use.  No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly. 
 
 We’re looking forward to your contribution.
 
@@ -32,7 +41,7 @@ For desktop/client development:
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate every detail about those 3rd library here, kindly read the source code for further detail.
+To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
 
 
 ## Architecture 
