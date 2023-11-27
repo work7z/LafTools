@@ -40,10 +40,12 @@ Here are some screenshots for you to preview how this toolbox works.
 
 
 # 🍀 Getting Started   
-> If you're using Windows, please ensure below commands will be executed in git-bash, further detail please [read contribution.md at first](CONTRIBUTION.md)
+> If you're using Windows, please ensure below commands will be executed in git-bash, further detail  and [CONTRIBUTION](CONTRIBUTION.md) at first. 
 
 ## IMPORTANT NOTES   
-LafTools is still under development, its dependencies or prerequisites may changed as needed.
+LafTools is still under development, its dependencies or prerequisites may changed as needed.    
+
+**For any issue, please read [Common Env Issues](dev/notes/common/issues.md) firstly, if there's no solution can solve it then raise an issue to us at any time, thanks!**
 
 
 ## Setup System Environment
@@ -114,7 +116,7 @@ What you can do is to
 - Enhance Performance		
 - Technical Implementation
 
-[Read Contribution Docs](CONTRIBUTION.md)
+Read [Contribution](CONTRIBUTION.md) Docs  
 
 With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger. 
 
