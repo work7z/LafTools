@@ -17,8 +17,18 @@ If you are going to develop this project, here are some awesome extensions for y
 1. Prettier - Code formatter
 2. TODO Highlight
 3. React
-4. Go
+4. Go 
 5. Golang Tools  
+
+## VSCode Config for Dev && Build   
+If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.     
+
+1. Set your terminal execution path as Git Bash
+
+2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}. Note that you should always use slash for path separators in the env value even if you're using Windows, such as /c/users/xxx/laf-tools-project.
+
+
+
 
 ## Technologies
 
