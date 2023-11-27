@@ -122,10 +122,10 @@ With full test coverage and efforts from the LafTools community, we are firmly c
 # 🌠 Preview
 
 Preview(English):
-![](https://github.com/work7z/LafTools/blob/dev/dev-source/img-preview-en.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/dev/source/img-preview-en.png?raw=true)
 
 Preview(简体中文):
-![](https://github.com/work7z/LafTools/blob/dev/dev-source/img-preview.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/dev/source/img-preview.png?raw=true)
 
 
 
