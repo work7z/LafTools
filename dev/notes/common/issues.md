@@ -1,15 +1,28 @@
 
 # NPM issue  
-## Error: The specified module could not be found.  
+### Error: The specified module could not be found.  
 
 It's a common issue in Windows OS, please install the runtime which can be found in dev/source/VC_redist.x64.exe  
 
+### cannot download deps   
+Before downloading deps, make sure all previous node_modules has been removed from your devices.     
 
-# network connectivity issues in China  
-In China, it's probably facing some connectivity issue while downloading deps, this section includes common cases in China.  
+**If you're currently located in China, then please use cnpm instead of npm for a better network env.** 
 
-## git cannot push/pull   
+
+# Network Issue in China  
+In China, it's probably having some connectivity issue while downloading deps, this section includes common cases in China.  
+
+
+### git cannot push/pull   
 setup your proxy for Git, like below:  
 ```bash
 git config --global http.proxy http://127.0.0.1:7890
 ```  
+
+### cannot download dlv and other Go deps  
+
+```bash
+export HTTP_PROXY=http://127.0.0.1:7890
+export HTTPS_PROXY=http://127.0.0.1:7890
+```
