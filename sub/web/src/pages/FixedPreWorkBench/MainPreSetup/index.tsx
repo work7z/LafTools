@@ -66,11 +66,13 @@ import {
 } from "../../FixedWorkBench/definitions/WB_Types";
 import { Dot } from "../../../utils/TranslationUtils";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import _ from "lodash";
 
 let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
   let [hover, setHover] = useState(false);
   let x = props.item;
+  let [viewContent, setViewContent] = useState(false);
   return (
     <Tooltip
       className="block w-full"
@@ -95,10 +97,79 @@ let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
         <div
           className={
             "align-end absolute right-[5px] top-[27%]  " +
-            (false && !hover ? " hidden " : "")
+            (!hover ? " hidden " : "")
           }
         >
-          <Button icon="cog" small intent="none" minimal></Button>
+          <Popover
+            isOpen={viewContent}
+            usePortal={false}
+            onClosing={() => {
+              setViewContent(false);
+            }}
+            onOpening={() => {
+              //
+            }}
+            interactionKind="click"
+            placement="left"
+            minimal
+            content={
+              <Menu
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                {[
+                  {
+                    label: Dot("NMLOn", "Open Workspace"),
+                    intent: "none",
+                    icon: "file",
+                    onClick: () => {
+                      //
+                    },
+                  },
+                  {
+                    label: Dot("NMLOn", "Copy FilePath"),
+                    intent: "none",
+                    icon: "copy",
+                    onClick: () => {
+                      //
+                    },
+                  },
+                  {
+                    label: Dot("asElV", "Remove"),
+                    intent: "danger",
+                    icon: "trash",
+                    onClick: () => {
+                      //
+                    },
+                  },
+                ].map((x) => {
+                  return (
+                    <MenuItem
+                      intent={x.intent as any}
+                      icon={x.icon as any}
+                      onClick={() => {
+                        x.onClick && x.onClick();
+                        //
+                      }}
+                      text={x.label}
+                    ></MenuItem>
+                  );
+                })}
+              </Menu>
+            }
+          >
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                setViewContent(!viewContent);
+              }}
+              icon="cog"
+              small
+              intent="none"
+              minimal
+            ></Button>
+          </Popover>{" "}
         </div>
       </Link>
     </Tooltip>
@@ -119,6 +190,19 @@ export default () => {
       Path: "/users/jerrylai/.mincontent/1kd/dkk3",
     },
   ];
+
+  let [filterText, onFilterText] = useState("");
+
+  let finalFilteredWorkspace = useMemo(() => {
+    let lowFilterText = _.toLower(filterText);
+    return _.filter(allWorkspaces, (x) => {
+      return (
+        (_.toLower(x.Label + "") + _.toLower(x.Path)).indexOf(lowFilterText) !=
+        -1
+      );
+    });
+  }, [filterText]);
+
   let entryJSX = (
     <div
       className="flex flex-col  mt-10  w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-gray-300 dark:shadow-gray-600 rounded self-start px-2 py-2"
@@ -135,6 +219,10 @@ export default () => {
           className="flex flex-row items-center bg-transparent border-b  focus:outline-none focus:border-blue-500"
           type="text"
           small
+          value={filterText}
+          onChange={(e) => {
+            onFilterText(e.target.value);
+          }}
           placeholder={Dot("SMD13", "Filter Workspaces")}
           rightElement={
             <ButtonGroup>
@@ -173,7 +261,7 @@ export default () => {
       </div>
       <div className="mt-2">
         <div>
-          {allWorkspaces.map((x) => {
+          {finalFilteredWorkspace.map((x) => {
             return <WorkSpaceListItem key={x.Id} item={x} />;
           })}
         </div>
@@ -183,12 +271,15 @@ export default () => {
 
   return (
     <div
-      className=" common-bg-color-align flex justify-center content-start align-top "
+      className=" common-bg-color-align flex justify-center relative content-start align-top "
       style={{
         height: `calc(100vh - ${VAL_CSS_MENU_TITLE_PANEL}px)`,
       }}
     >
-      {entryJSX}
+      <div>
+        <div className="z-0 absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-light-blue-100 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-60 pattern-size-8"></div>
+      </div>
+      <div className="z-10">{entryJSX}</div>
     </div>
   );
 };
