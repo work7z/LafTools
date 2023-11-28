@@ -188,9 +188,9 @@ let scan = async () => {
       fs.mkdirSync(tmpTranslateDir)      
     }
     fs.writeFileSync(path.join(tmpTranslateDir,'raw.json'),waitTranslateObjStr)
-    fs.writeFileSync(path.join(tmpTranslateDir, 'config.json'), {
+    fs.writeFileSync(path.join(tmpTranslateDir, 'config.json'), JSON.stringify({
       id: eachItem.id
-    })
+    }))
 
     // let md5ForTranslate = md5(JSON.stringify(waitTranslateObj))
     // console.log('* md5: ',md5ForTranslate)

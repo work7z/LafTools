@@ -45,7 +45,7 @@ func main() {
 	log.Ref().Debug(rawMap)
 	id := configMap["id"]
 	cacheDir := nocycle.MkdirFileWithStr(path.Join(translateResultDir, "cache", id))
-	langList := []string{"zh-CN", "zh-HK"}
+	langList := []string{"zh-HK", "zh-TW", "zh-CN"}
 	for _, eachLang := range langList {
 		// for each rawMap
 		for k, v := range rawMap {
@@ -56,7 +56,8 @@ func main() {
 			// write md5 file
 			// write translate result to file
 			md5Str := fmt.Sprintf("%x", md5.Sum([]byte(k+v)))
-			md5FilePath := nocycle.MkdirFileWithStr(path.Join(cacheDir, eachLang, md5Str))
+			nocycle.MkdirFileWithStr(path.Join(cacheDir, eachLang))
+			md5FilePath := (path.Join(cacheDir, eachLang, md5Str))
 			var resultForCurrentLang string
 			if nocycle.IsFileExist(md5FilePath) {
 				result2, err2 := nocycle.ReadFileAsStr(md5FilePath)
@@ -70,7 +71,7 @@ func main() {
 				log.InternalLog.Panic("err", err)
 			}
 			fmt.Println(resultForCurrentLang)
-
+			nocycle.WriteStrIntoFile(md5FilePath, resultForCurrentLang)
 		}
 
 	}
