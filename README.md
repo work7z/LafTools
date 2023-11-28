@@ -61,7 +61,15 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
 ## Launch Go service
-We have configured the local development config for Go in the file .vscode/launch.json
+
+To run Go service in terminal, you can execute below command: 
+
+```shell
+go run ./core/CodeGenApplication.go  
+```
+
+
+To debug Go service, we have configured it in VSCode, you can just follow below steps:  
 1. Enter Visual Studio Code    
 2. Click "Run and Debug" on your sidebar  
 3. Click "Run" button.
