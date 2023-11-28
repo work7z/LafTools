@@ -1,7 +1,7 @@
 console.log("start scanning it");
-let path = require('path')
-let fs = require('fs')
-var md5 = require('md5');
+let path = require("path");
+let fs = require("fs");
+var md5 = require("md5");
 
 function sub_exp(idx) {
   return "((?<![\\\\])['\"`])((?:.(?!(?<![\\\\])\\1))*.?)\\" + idx;
@@ -13,9 +13,9 @@ let commonText = new RegExp(
 
 // get env LAFTOOLS_ROOT
 let baseDIR = process.env.LAFTOOLS_ROOT;
-// sleep 
+// sleep
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 function readFileAsJSONMap(file) {
   return JSON.parse(file);
@@ -24,64 +24,71 @@ function getFile(file) {
   let obj = {
     file,
     text: () => {
-      return (fs.readFileSync(file, { encoding: 'utf-8' }).toString())
+      return fs.readFileSync(file, { encoding: "utf-8" }).toString();
     },
-    lastModified: () => { 
-      return fs.statSync(file).mtimeMs.toString()
+    lastModified: () => {
+      return fs.statSync(file).mtimeMs.toString();
     },
-    jsonmap: () => { 
-      return readFileAsJSONMap(obj.text())
+    jsonmap: () => {
+      return readFileAsJSONMap(obj.text());
     },
-  }
+  };
   return obj;
 }
 let webDIR = `${baseDIR}/sub/web`;
 let nodeDIR = `${baseDIR}/sub/node`;
 let overwrittenFile = `${webDIR}/overwrriten/id-overwrite.json`;
+// let statusFile = `${webDIR}/overwrriten/status.json`;
 let overloadMap = readFileAsJSONMap(getFile(overwrittenFile).text()); // replace with appropriate function
+
+let previousModifiedType = {};
 
 let searchItems = [
   {
-      type: "go",
-      prefix: ".Dot(",
-      target: `${baseDIR}/resources/lang`,
-      pattern: commonText,
-      dir: `${baseDIR}/core`
+    id:"brl",
+    type: "go",
+    prefix: ".Dot(",
+    target: `${baseDIR}/resources/lang`,
+    pattern: commonText,
+    dir: `${baseDIR}/core`,
   },
   {
-      type: "ts",
-      prefix: "Dot(",
-      pattern: commonText,
-      target: `${webDIR}/public/static/lang`,
-      dir: `${webDIR}/src`
+    id:"bprl",
+    type: "ts",
+    prefix: "Dot(",
+    pattern: commonText,
+    target: `${webDIR}/public/static/lang`,
+    dir: `${webDIR}/src`,
   },
   {
-      type: "ts",
-      prefix: "Dot(",
-      pattern: commonText,
-      target: "/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal/public/static/lang",
-      dir: "/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal/src"
+    id:"portal-l",
+    type: "ts",
+    prefix: "Dot(",
+    pattern: commonText,
+    target:
+      "/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal/public/static/lang",
+    dir: "/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal/src",
   },
   {
-      type: "ts",
-      prefix: "Dot(",
-      pattern: commonText,
-      target: `${nodeDIR}/src/lang`,
-      dir: `${nodeDIR}/src`
+    type: "ts",
+    id:"portal-sl",
+    prefix: "Dot(",
+    pattern: commonText,
+    target: `${nodeDIR}/src/lang`,
+    dir: `${nodeDIR}/src`,
   },
   {
-      type: "ts",
-      prefix: "Dot(",
-      pattern: commonText,
-      target: "/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/resources/lang2",
-      dir: "/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/java/com"
-  }
+    type: "ts",
+    id:"denote-pal-2",
+    prefix: "Dot(",
+    pattern: commonText,
+    target:
+      "/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/resources/lang2",
+    dir: "/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/java/com",
+  },
 ];
 
-
-
 let scan = async () => {
-
   let allKEYMAP = {};
 
   for (let eachItem of searchItems) {
@@ -89,10 +96,15 @@ let scan = async () => {
     let dir = getFile(eachItem.dir); // replace with appropriate function
     let crtMap_zhCN = {};
     let crtMap_zhHK = {};
-    let idOverwriteJSONFile = getFile(`${webDIR}/overwrriten/id-overwrite.json`); // replace with appropriate function
-    let enUSOverwriteJSONFile = getFile(`${webDIR}/overwrriten/enUS-overwrite.json`); // replace with appropriate function
-    let enUSMap = readFileAsJSONMap(enUSOverwriteJSONFile.text()); // replace with appropriate function 
-    let lastModifiedForIdOverwriteJSONFile = idOverwriteJSONFile.lastModified() + enUSOverwriteJSONFile.lastModified() + '' + dir.lastModified()
+    let idOverwriteJSONFile = getFile(
+      `${webDIR}/overwrriten/id-overwrite.json`
+    ); // replace with appropriate function
+    let enUSOverwriteJSONFile = getFile(
+      `${webDIR}/overwrriten/enUS-overwrite.json`
+    ); // replace with appropriate function
+    let enUSMap = readFileAsJSONMap(enUSOverwriteJSONFile.text()); // replace with appropriate function
+    let lastModifiedForIdOverwriteJSONFile =
+      idOverwriteJSONFile.lastModified() + enUSOverwriteJSONFile.lastModified();
 
     // iterate all files for dir.file, recursively
     let iterateFiles = (dir, done) => {
@@ -127,7 +139,28 @@ let scan = async () => {
         }
       });
     });
-    let waitTranslateObj = {}
+
+    // sort allFiles by name
+    allFiles.sort((a, b) => {
+      return a.localeCompare(b);
+    });
+
+    for (let eachFile of allFiles) {
+      let file = getFile(eachFile); // replace with appropriate function
+      // console.log('file:',eachFile)
+      lastModifiedForIdOverwriteJSONFile += file.lastModified();
+    }
+
+    let md5TypeForLastModified = md5(lastModifiedForIdOverwriteJSONFile);
+    if (previousModifiedType[eachItem.target] == md5TypeForLastModified) {
+      console.log("skipped translating due to same md5 file");
+      continue;
+    } else {
+      console.log("continue to translate ");
+      previousModifiedType[eachItem.target] = md5TypeForLastModified;
+    }
+
+    let waitTranslateObj = {};
     // iterate all files
     for (let eachFile of allFiles) {
       let file = getFile(eachFile); // replace with appropriate function
@@ -136,7 +169,7 @@ let scan = async () => {
       while ((match = eachItem.pattern.exec(text))) {
         let key = match[2];
         let value = match[4];
-        console.log('key is '+key, ', value is ',value)
+        // console.log('key is '+key, ', value is ',value)
         if (value) {
           waitTranslateObj[key] = value;
           // crtMap_zhCN[key] = value;
@@ -146,15 +179,36 @@ let scan = async () => {
         text = text.substring(match.index + match[0].length);
       }
     }
-    
+
+    let waitTranslateObjStr = JSON.stringify(waitTranslateObj);
+    console.log(waitTranslateObj);
+
+    let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
+    if (!fs.existsSync(tmpTranslateDir)) {
+      fs.mkdirSync(tmpTranslateDir)      
+    }
+    fs.writeFileSync(path.join(tmpTranslateDir,'raw.json'),waitTranslateObjStr)
+    fs.writeFileSync(path.join(tmpTranslateDir, 'config.json'), {
+      id: eachItem.id
+    })
+
+    // let md5ForTranslate = md5(JSON.stringify(waitTranslateObj))
+    // console.log('* md5: ',md5ForTranslate)
+    // console.log('* dir', eachItem.target)
+    // if (previousModifiedType[eachItem.target] == md5ForTranslate) {
+    //   console.log("skipped translating due to same md5 file")
+    //   continue;
+    // } else {
+    //   console.log("continue to translate ")
+    //   previousModifiedType[eachItem.target] = md5ForTranslate
+    // }
   }
-      
-  await sleep(2000)
 
-  setTimeout(scan, 0)
-}
+  console.log("------------------------------");
 
+  await sleep(2000);
 
-setTimeout(scan, 0)
+  setTimeout(scan, 0);
+};
 
-
+setTimeout(scan, 0);

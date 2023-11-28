@@ -4,7 +4,7 @@ core/pkg/mode/**/*
 myproject
 nouse
 .DS_Store
-
+tmp-translate-result
 time-consumer
 
 
