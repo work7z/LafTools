@@ -127,7 +127,7 @@ import GenHorizontalTab from "../../../components/GenHorizontalTab";
 export default () => {
   return (
     <div className="icv w-full h-full">
-      <div>this is other center view</div>
+      <div>this is other center view 2</div>
     </div>
   );
 };

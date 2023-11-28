@@ -19,6 +19,8 @@ If you are going to develop this project, here are some awesome extensions for y
 3. React
 4. Go 
 5. Golang Tools  
+6. Tailwind CSS IntelliSense  
+
 
 ## VSCode Config for Dev && Build   
 If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.     

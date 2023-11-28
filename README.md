@@ -45,7 +45,7 @@ Here are some screenshots for you to preview how this toolbox works.
 ## IMPORTANT NOTES   
 LafTools is still under development, its dependencies or prerequisites may changed as needed.    
 
-**For any issue, please read [Common Env Issues](dev/notes/common/issues.md) firstly, if there's no solution can solve it then raise an issue to us at any time, thanks!**
+**For any issue, in particular to developers in China mainland, please read [Common Env Issues](dev/notes/common/issues.md) firstly, if there's no solution can solve it then raise an issue to us at any time, thanks!**
 
 
 ## Setup System Environment
@@ -65,7 +65,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 To run Go service in terminal, you can execute below command: 
 
 ```shell
-go run ./core/CodeGenApplication.go  
+go run ./core/CodeGenApplication.go server
 ```
 
 

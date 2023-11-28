@@ -174,7 +174,9 @@ export default () => {
     return "";
   }
   return (
-    <div className="fixed-wb-p " style={{}}>
+    <div className="fixed-wb-p " style={{
+        overflow:'hidden'
+    }}>
       <WB_MenuBar />
       <WB_CenterStage />
       <WB_ControllBar />

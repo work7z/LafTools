@@ -10,8 +10,8 @@ Before downloading deps, make sure all previous node_modules has been removed fr
 **If you're currently located in China, then please use cnpm instead of npm for a better network env.** 
 
 
-# Network Issue in China  
-In China, it's probably having some connectivity issue while downloading deps, this section includes common cases in China.  
+# For Developers in China Mainland  
+In China mainland, it's probably having some connectivity issue while downloading deps, this section includes common cases in China.  
 
 
 ### git cannot push/pull   
@@ -25,4 +25,5 @@ git config --global http.proxy http://127.0.0.1:7890
 ```bash
 export HTTP_PROXY=http://127.0.0.1:7890
 export HTTPS_PROXY=http://127.0.0.1:7890
+go env -w  GOPROXY=https://goproxy.cn,direct
 ```

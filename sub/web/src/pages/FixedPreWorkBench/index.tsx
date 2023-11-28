@@ -64,9 +64,11 @@ import { Dot } from "../../utils/TranslationUtils";
 import MainPreSetup from "./MainPreSetup";
 
 export default () => {
-  // TODO: add a image background that is pretty cool cool da
+  
   return (
-    <div className="fixed-wb-p " style={{}}>
+    <div className="fixed-wb-p  3 " style={{
+      overflow: 'hidden'
+    }}>
       <WB_MenuBar
         leftPart={
           <div
