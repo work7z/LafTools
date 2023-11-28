@@ -20,20 +20,9 @@
 
 export const URL_WORKBENCH = "/workbench";
 export const URL_ENTRY = "/entry";
+export const URL_WORKBENCH_WORKSPACE = URL_WORKBENCH;
 
 export const ID_TOOLS = "tools";
 export const ID_FILES = "files";
 export const ID_NOTES = "notes";
 export const ID_HISTORY = "history";
-
-export const URL_WORKBENCH_WORKSPACE = URL_WORKBENCH ;
-
-// main urls
-export const URL_WORKBENCH_TOOLS = URL_WORKBENCH + "/tools";
-export const URL_WORKBENCH_FILES = URL_WORKBENCH + "/files";
-export const URL_WORKBENCH_NOTES = URL_WORKBENCH + "/notes";
-export const URL_WORKBENCH_MANUALS = URL_WORKBENCH + "/manuals";
-
-// sub urls
-export const SUB_URL_WORKBENCH_TOOLS_CATEGORY =
-  URL_WORKBENCH_TOOLS + "/:category?/:extId?";

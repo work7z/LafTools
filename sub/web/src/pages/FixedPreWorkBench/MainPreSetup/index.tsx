@@ -68,6 +68,8 @@ import { Dot } from "../../../utils/TranslationUtils";
 import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
 import _ from "lodash";
+import gutils from "../../../utils/GlobalUtils";
+import AlertUtils from "../../../utils/AlertUtils";
 
 let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
   let [hover, setHover] = useState(false);
@@ -85,6 +87,7 @@ let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
         }}
         onMouseLeave={() => {
           setHover(false);
+          setViewContent(false);
         }}
         className="mt-1 w-full relative hover:text-black p-2 rounded  px-3 flex no-underline hover:no-underline text-black hover:bg-blue-200 hover:bg-opacity-20"
         to={"/workbench/" + x.Id}
@@ -120,9 +123,9 @@ let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
               >
                 {[
                   {
-                    label: Dot("NMLOn", "Open Workspace"),
+                    label: Dot("NMLOn1", "Open Workspace"),
                     intent: "none",
-                    icon: "file",
+                    icon: "folder-open",
                     onClick: () => {
                       //
                     },
@@ -130,9 +133,10 @@ let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
                   {
                     label: Dot("NMLOn", "Copy FilePath"),
                     intent: "none",
-                    icon: "copy",
+                    icon: "duplicate",
                     onClick: () => {
-                      //
+                      gutils.copy(x.Path, true);
+                      AlertUtils.popCopyOK();
                     },
                   },
                   {
@@ -277,7 +281,7 @@ export default () => {
       }}
     >
       <div>
-        <div className="z-0 absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-light-blue-100 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-60 pattern-size-8"></div>
+        <div className="z-0 absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-gray-100 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-60 pattern-size-8"></div>
       </div>
       <div className="z-10">{entryJSX}</div>
     </div>

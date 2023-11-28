@@ -48,17 +48,7 @@ import UserAskMultipleDialogs from "./business/UserAskMultipleDialogs";
 import gutils from "./utils/GlobalUtils";
 import TranslationUtils from "./utils/TranslationUtils";
 import PageUtils from "./utils/PageUtils";
-import {
-  ID_FILES,
-  ID_HISTORY,
-  ID_NOTES,
-  ID_TOOLS,
-  URL_WORKBENCH,
-  URL_WORKBENCH_FILES,
-  URL_WORKBENCH_MANUALS,
-  URL_WORKBENCH_NOTES,
-  URL_WORKBENCH_TOOLS,
-} from "./styles/path";
+import { ID_FILES, ID_HISTORY, ID_NOTES, ID_TOOLS } from "./styles/path";
 import RouteMem from "./styles/routeMem";
 
 let InitRouteHistory = _.once((hist) => {

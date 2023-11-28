@@ -41,6 +41,9 @@ export let useSearchQuery = (): {
         obj[k] = v;
       }
     });
+  _.defaultsDeep(obj, {
+    f: "tools",
+  });
   return obj as any;
 };
 
@@ -58,8 +61,8 @@ export let useMergeParameter = (): any => {
 export let useMergeParamWithWorkSpace = (): any => {
   let mergeP = useMergeParameter();
   const { workspaceId = "default" } = useParams() as any;
-  
+
   return (obj) => {
-    return URL_WORKBENCH_WORKSPACE+'/'+workspaceId + "?" + mergeP(obj);
+    return URL_WORKBENCH_WORKSPACE + "/" + workspaceId + "?" + mergeP(obj);
   };
 };

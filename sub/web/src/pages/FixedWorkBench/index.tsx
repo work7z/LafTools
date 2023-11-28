@@ -100,10 +100,6 @@ import {
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
-  SUB_URL_WORKBENCH_TOOLS_CATEGORY,
-  URL_WORKBENCH_FILES,
-  URL_WORKBENCH_MANUALS as URL_WORKBENCH_MANUAL,
-  URL_WORKBENCH_NOTES,
 } from "../../styles/path";
 import FixedWorkBenchTool from "../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../FixedWorkBenchFiles";
@@ -174,9 +170,12 @@ export default () => {
     return "";
   }
   return (
-    <div className="fixed-wb-p " style={{
-        overflow:'hidden'
-    }}>
+    <div
+      className="fixed-wb-p "
+      style={{
+        overflow: "hidden",
+      }}
+    >
       <WB_MenuBar />
       <WB_CenterStage />
       <WB_ControllBar />

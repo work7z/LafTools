@@ -76,6 +76,12 @@ const AlertUtils = {
       message: additionalMsgLabel ? `[${additionalMsgLabel}]` : "" + msg,
     });
   },
+  popCopyOK() {
+    AlertUtils.popMsg("success", {
+      icon: "duplicate",
+      message: Dot("ip2g1", "Copied"),
+    });
+  },
   popMsg(intent: Intent, config: ToastProps) {
     config.intent = intent;
     rootInst.show(config);

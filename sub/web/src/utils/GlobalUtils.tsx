@@ -35,12 +35,14 @@ function uuid(str = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx") {
 }
 
 const gutils = {
-  copy(ctn: string) {
+  copy(ctn: string, showMsg?: boolean) {
     var obj = document.getElementById("uniqueiptele") as any;
     if (obj) {
       obj.value = ctn;
       obj.select();
       document.execCommand("Copy");
+      if (showMsg) {
+      }
     }
   },
   ConvertStrToNumberOrZero(val: string | null): number {

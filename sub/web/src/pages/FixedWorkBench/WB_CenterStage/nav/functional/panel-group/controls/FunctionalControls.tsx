@@ -106,10 +106,6 @@ import {
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
-  SUB_URL_WORKBENCH_TOOLS_CATEGORY,
-  URL_WORKBENCH_FILES,
-  URL_WORKBENCH_MANUALS as URL_WORKBENCH_MANUAL,
-  URL_WORKBENCH_NOTES,
 } from "../../../../../../../styles/path";
 import FixedWorkBenchTool from "../../../../../../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../../../../../../FixedWorkBenchFiles";
