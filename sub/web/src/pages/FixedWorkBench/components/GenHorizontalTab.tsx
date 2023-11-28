@@ -222,9 +222,21 @@ export default () => {
       >
         {tabs.map(fn_format_each_tab(false))}
       </div>
-      <div className={` absolute  right-0 top-0 h-full px-2 pr-1 ${commonBG}`}>
+      <div className={` absolute  right-0 top-0 h-full px-2  common-border-left pr-1 ${commonBG}`} style={{
+        // paddingLeft: '0'
+      }}>
         <ButtonGroup>
           {[
+            {
+              small: true,
+              icon: 'chevron-left',
+              tooltip: Dot("sdfk1","Scroll tabs to left"),
+            },
+            {
+              small: true,
+              icon: 'chevron-right',
+              tooltip: Dot("sdfk13","Scroll tabs to right")
+            },
             {
               small: true,
               icon: "chevron-down",
