@@ -1,5 +1,7 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
+github.com/bas24/googletranslatefree v0.0.0-20231117033553-f5859fe54d30 h1:dvq7NKKclmPTAaB4iPRo5L4EBSxCIlVI1nxCRqX8fVA=
+github.com/bas24/googletranslatefree v0.0.0-20231117033553-f5859fe54d30/go.mod h1:ntTdGCe6WzFmHjox8vK2FZ2KLyh0IFxw43B6XCg0zf4=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=
 github.com/bytedance/sonic v1.10.0-rc/go.mod h1:ElCzW+ufi8qKqNW0FY314xriJhyJhuoJ3gFZdAHF7NM=
 github.com/bytedance/sonic v1.10.1 h1:7a1wuFXL1cMy7a3f7/VFcEtriuXQnUBhtoVfOZiaysc=

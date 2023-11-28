@@ -20,7 +20,13 @@ If you are going to develop this project, here are some awesome extensions for y
 4. Go 
 5. Golang Tools  
 6. Tailwind CSS IntelliSense  
-
+7. Nano ID generator
+8. HTML CSS Support  
+9. Go To Method  
+10. go snippets  
+11. Go Outliner  
+12. Go Asm  
+13. Go Doc  
 
 ## VSCode Config for Dev && Build   
 If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.     
@@ -112,6 +118,20 @@ To have a good software quality and strong international support, please follow 
 - Any comment for your changes should also be written in English.  
 - Consider performance and extensibility in your code.
 
+## About i18n Config   
+Please ensure all text is written in English, for instance:  
+```Typescript
+// first argument: uniq id  
+// second argument: main string(English)  
+// third argument: replace target for {0}  
+// forth argument: replace target for {1}
+let str: string = Dot("leVsK","This is {0} project, I like {1}","good","LafTools")  
+
+// eventually, it will print out like   
+
+// This is good project, I like LafTools
+console.log(str)
+```
 
 
 ## Next Chapter

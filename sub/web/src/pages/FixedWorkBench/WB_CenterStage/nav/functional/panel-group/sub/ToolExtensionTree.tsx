@@ -394,12 +394,10 @@ export default (props: {
                             } else {
                               dis(
                                 WorkspaceSlice.actions.updateTools({
-                                  favourites:
-                                    _.uniq([
-                                      ...(workspaceDataForTree.favourites ||
-                                        []),
-                                      x.id,
-                                    ]) || [],
+                                  favourites: (_.uniq([
+                                    ...(workspaceDataForTree.favourites || []),
+                                    x.id,
+                                  ]) || []) as any,
                                 })
                               );
                             }

@@ -22,6 +22,7 @@ require (
 )
 
 require (
+	github.com/bas24/googletranslatefree v0.0.0-20231117033553-f5859fe54d30
 	github.com/bytedance/sonic v1.10.1 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20230717121745-296ad89f973d // indirect

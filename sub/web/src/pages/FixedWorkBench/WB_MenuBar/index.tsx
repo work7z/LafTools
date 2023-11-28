@@ -320,7 +320,7 @@ export let WB_MenuBar = (props: PassProp) => {
             <Button
               className={Classes.MINIMAL}
               small={true}
-              intent={true ? "primary" : "none"}
+              intent={false ? "primary" : "warning"}
               // title={Dot(`ZAKaFq`, `My Cloud Account`)}
               icon={"cloud"}
               onClick={() => {}}
