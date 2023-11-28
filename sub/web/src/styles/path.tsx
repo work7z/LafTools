@@ -26,7 +26,7 @@ export const ID_FILES = "files";
 export const ID_NOTES = "notes";
 export const ID_HISTORY = "history";
 
-export const URL_WORKBENCH_WORKSPACE = URL_WORKBENCH + "/gen/";
+export const URL_WORKBENCH_WORKSPACE = URL_WORKBENCH ;
 
 // main urls
 export const URL_WORKBENCH_TOOLS = URL_WORKBENCH + "/tools";

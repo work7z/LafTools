@@ -24,6 +24,7 @@ import QueryUtils from "../../../utils/QueryUtils";
 import qs from "querystring";
 import _ from "lodash";
 import { URL_WORKBENCH_WORKSPACE } from "../../../styles/path";
+import { useParams } from "react-router-dom";
 
 export let useSearchQuery = (): {
   fc: string;
@@ -56,7 +57,9 @@ export let useMergeParameter = (): any => {
 
 export let useMergeParamWithWorkSpace = (): any => {
   let mergeP = useMergeParameter();
+  const { workspaceId = "default" } = useParams() as any;
+  
   return (obj) => {
-    return URL_WORKBENCH_WORKSPACE + "?" + mergeP(obj);
+    return URL_WORKBENCH_WORKSPACE+'/'+workspaceId + "?" + mergeP(obj);
   };
 };

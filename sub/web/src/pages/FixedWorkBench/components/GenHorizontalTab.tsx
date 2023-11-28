@@ -116,7 +116,8 @@ export default () => {
         <div
           key={tab.id}
           onClick={fn_handleClickEachTab(tab)}
-          style={{}}
+          style={{
+          }}
           data-active={isCurrent ? "t" : "f"}
           data-tabid={tab.id}
           className={` each-tab  hover:bg-gray-300  whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${
@@ -170,9 +171,8 @@ export default () => {
       // TODO: add search bar here
       return (
         <div
-          className={`${commonBG} scroll overflow-auto `}
+          className={`${commonBG} scroll overflow-y-auto overflow-x-hidden `}
           style={{
-            overflow: "auto",
             maxHeight: "300px",
             // minWidth: "300px",
           }}
@@ -206,7 +206,7 @@ export default () => {
       <div
         className={` flex space-x-0 h-full   w-full  `}
         style={{
-          overflowX: "auto",
+          overflowX: "hidden",
           scrollbarWidth: "none" /* For Firefox */,
           msOverflowStyle: "none" /* For Internet Explorer and Edge */,
         }}
