@@ -32,7 +32,7 @@ yarn-error.log*
 
 
 sub/web/scan.sh
-sub/web/overwrriten/duplicate.json
+dev/lang/overwrriten/duplicate.json
 time-consumer
 *.bin
 *.exe

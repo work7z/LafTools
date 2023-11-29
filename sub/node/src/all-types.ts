@@ -4,7 +4,7 @@ export type NodeReq = {
   Type: string;
   InputValue: any;
 };
-
+//
 export type NodeRes<T extends any> = {
   Id: string;
   Lang: string;

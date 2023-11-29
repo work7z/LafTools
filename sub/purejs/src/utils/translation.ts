@@ -47,17 +47,20 @@ function formatResultWithReplacer(val = "", ...args) {
 //   return finResult;
 // };
 
-export const Dot = (id: string, enText: string, ...args: any[]): string => {
-  if (language == LANG_EN_US) {
-    // do nothing
-  } else {
-    let langmap = LangMap;
-    let o = langmap[language as any] as LangDefinition;
-    let preText = o[id];
-    if (preText != null && preText != undefined) {
-      enText = preText;
-    }
-  }
-  let finResult = formatResultWithReplacer(enText, ...args);
-  return finResult;
+export const Dot = (...args: string[]): string[] => {
+  return [...args];
 };
+// export const Dot = (id: string, enText: string, ...args: any[]): string => {
+//   if (language == LANG_EN_US) {
+//     // do nothing
+//   } else {
+//     let langmap = LangMap;
+//     let o = langmap[language as any] as LangDefinition;
+//     let preText = o[id];
+//     if (preText != null && preText != undefined) {
+//       enText = preText;
+//     }
+//   }
+//   let finResult = formatResultWithReplacer(enText, ...args);
+//   return finResult;
+// };

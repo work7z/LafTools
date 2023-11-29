@@ -36,6 +36,17 @@ func main() {
 			id = eachArg[5:]
 		}
 	}
+	// zhCN
+	zhCNOverwrittenFile := path.Join(LAFTOOLS_ROOT, "dev", "lang", "overwrriten", "zh-CN-overwrite.json")
+	zhCNOverwrittenFileContent, err := nocycle.ReadFileAsStr(zhCNOverwrittenFile)
+	if err != nil {
+		log.InternalLog.Panic("err", err)
+		return
+	}
+	zhCNOverwrittenMap := make(map[string]string)
+	json.Unmarshal([]byte(zhCNOverwrittenFileContent), &zhCNOverwrittenMap)
+	fmt.Println(zhCNOverwrittenMap)
+	// normal flow
 	fmt.Println("id is ", id)
 	// current dirname
 	log.InternalLog.SetFormatter(&logrus.TextFormatter{})
@@ -92,7 +103,15 @@ func main() {
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools", "LafTools工具箱")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, " LafTools工具箱 ", "LafTools工具箱")
 
-			// TODO: if enUS-overwrite.json exist this key, then use the defined value
+			// TODO: if zh-CN-overwrite.json exist this key, then use the defined value
+
+			if strings.Index(eachLang, "zh") == 0 {
+				v = strings.Trim(v, " ")
+				if val, ok := zhCNOverwrittenMap[v]; ok {
+					resultForCurrentLang = val
+				}
+			}
+
 			crtResultMap[k] = resultForCurrentLang
 		}
 		// write crtResultMap to file
