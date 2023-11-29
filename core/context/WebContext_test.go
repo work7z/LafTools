@@ -68,9 +68,9 @@ func TestWebContext(t *testing.T) {
 			afterStr := obj.Dot("6ouVD", "Wild Women (Don't Have the Blues)")
 			assert.Equal(t, before_str, afterStr)
 			if lang == "zh_CN" {
-				assert.Equal(t, "《狂野的女人》(别有忧郁)", afterStr)
+				assert.Equal(t, "狂野的女人（不要忧郁）", afterStr)
 			} else if lang == "zh_HK" {
-				assert.Equal(t, "《狂野的女人》(別有憂鬱)", afterStr)
+				assert.Equal(t, "狂野的女人（不要憂鬱）", afterStr)
 			} else {
 				assert.Equal(t, "Wild Women (Don't Have the Blues)", afterStr)
 			}

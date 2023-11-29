@@ -79,7 +79,7 @@ func TestDot(t *testing.T) {
 				enUS: "Test Example like {0}",
 				arg:  []interface{}{"CodeGen"},
 			},
-			want: "类似于CodeGen的测试示例",
+			want: "测试示例如 CodeGen",
 		},
 		// TODO: add more test cases here
 		//{
