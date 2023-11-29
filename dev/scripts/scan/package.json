@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "md5": "^2.3.0"
+    "md5": "^2.3.0",
+    "shelljs": "^0.8.5"
   }
 }

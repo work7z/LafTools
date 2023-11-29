@@ -58,7 +58,7 @@ $sys-tab-h: $val-height-menu-foot * 1;
 }
 
 @mixin edge-ui-bg() {
-  @include fn-bg-color($light-gray5, $dark-gray5);
+  @include fn-bg-color($light-gray5, $dark-gray2);
 }
 @mixin edge-ui-bg-active() {
   // @include fn-bg-color($light-gray4, $dark-gray4);

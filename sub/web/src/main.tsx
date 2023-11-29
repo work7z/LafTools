@@ -36,6 +36,7 @@ import InitUtils from "./utils/InitUtils";
 import ALL_NOCYCLE from "./nocycle";
 import exportUtils from "./utils/ExportUtils";
 import fn_tailwindcss from "./init/hmr-reload-resources.tsx";
+import forgeSlice from "./slice/ForgeSlice.tsx";
 
 ALL_NOCYCLE.store = store;
 
@@ -52,6 +53,34 @@ const WrapApp = () => {
     };
   });
   let constructedKey = `${m1.LangIncrement}`;
+
+  // listen system light/dark mode changes
+
+  useEffect(() => {
+    let matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function handleColorScheme(e) {
+      let isDarkMode = e.matches;
+      dis(
+        forgeSlice.actions.updateDarkMode({
+          isDark: isDarkMode ? true : false,
+        })
+      );
+
+      // if (e.matches) {
+      //   console.log("Dark mode is enabled");
+      // } else {
+      //   console.log("Light mode is enabled");
+      // }
+    }
+
+    // Call the function once to handle the current color scheme
+    // handleColorScheme(matchMedia);
+
+    // Listen for changes
+    matchMedia.addListener(handleColorScheme);
+  }, []);
+
   return <SubApp key={constructedKey} />;
 };
 

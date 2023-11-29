@@ -1,6 +1,8 @@
 console.log("start scanning it");
 let path = require("path");
 let fs = require("fs");
+let sh = require('shelljs')
+
 var md5 = require("md5");
 
 function sub_exp(idx) {
@@ -87,6 +89,10 @@ let searchItems = [
     dir: "/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/java/com",
   },
 ];
+
+let toJSON = (obj) => {
+  return JSON.stringify(obj, null, 4);
+}
 
 let scan = async () => {
   let allKEYMAP = {};
@@ -180,28 +186,41 @@ let scan = async () => {
       }
     }
 
-    let waitTranslateObjStr = JSON.stringify(waitTranslateObj);
+    let waitTranslateObjStr = toJSON(waitTranslateObj);
     console.log(waitTranslateObj);
 
     let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
     if (!fs.existsSync(tmpTranslateDir)) {
       fs.mkdirSync(tmpTranslateDir)      
     }
-    fs.writeFileSync(path.join(tmpTranslateDir,'raw.json'),waitTranslateObjStr)
-    fs.writeFileSync(path.join(tmpTranslateDir, 'config.json'), JSON.stringify({
+    fs.writeFileSync(path.join(tmpTranslateDir,`raw-${eachItem.id}.json`),waitTranslateObjStr)
+    fs.writeFileSync(path.join(tmpTranslateDir, `config-${eachItem.id}.json`), toJSON({
       id: eachItem.id
     }))
 
-    // let md5ForTranslate = md5(JSON.stringify(waitTranslateObj))
-    // console.log('* md5: ',md5ForTranslate)
-    // console.log('* dir', eachItem.target)
-    // if (previousModifiedType[eachItem.target] == md5ForTranslate) {
-    //   console.log("skipped translating due to same md5 file")
-    //   continue;
-    // } else {
-    //   console.log("continue to translate ")
-    //   previousModifiedType[eachItem.target] = md5ForTranslate
-    // }
+    // execute a command 
+    let cmd = `go run ./translate-tools/bulktranslate.go --id=${eachItem.id} `
+    console.log('cmd is ', cmd)
+    console.log(sh.exec(cmd))
+
+    ['zh-HK', 'zh-CN'].forEach(eachLang => {
+      let outputLang =eachLang.replace('-',"_")
+      let resultFile = path.join(__dirname, `tmp-translate-result/result-${eachItem.id}-${eachLang}.json`)
+      if (fs.existsSync(resultFile)) {
+        let resultJSON = getFile(resultFile).jsonmap()
+        if (eachLang == 'zh-CN') {
+          resultJSON = {
+            ...resultJSON,
+            ...getFile(overwrittenFile).jsonmap()
+          }            
+        }
+        fs.writeFileSync(path.join(eachItem.target, `${outputLang}.json`), toJSON(resultJSON))
+      } else {
+        console.log('file not exists: ',resultFile)
+        process.exit(-1)
+      }
+    })
+
   }
 
   console.log("------------------------------");

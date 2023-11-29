@@ -8,7 +8,7 @@ import (
 	"laftools-go/core/nocycle"
 	"os"
 	"path"
-	"time"
+	"strings"
 
 	"github.com/dlclark/regexp2"
 
@@ -27,13 +27,22 @@ type TranslateConfig struct {
 }
 
 func main() {
+	// get argument xxx from --id=xxx
+	// go run ./translate-tools/bulktranslate.go --id=wl
+	id := ""
+	processArgs := os.Args[1:]
+	for _, eachArg := range processArgs {
+		if eachArg[:5] == "--id=" {
+			id = eachArg[5:]
+		}
+	}
+	fmt.Println("id is ", id)
 	// current dirname
-	log.Ref().Debug("OK")
 	log.InternalLog.SetFormatter(&logrus.TextFormatter{})
 	translateResultDir := getTranslateResultDir()
 	// get raw.json in translateResultDir
-	rawJsonPath := path.Join(translateResultDir, "raw.json")
-	configJsonPath := path.Join(translateResultDir, "config.json")
+	rawJsonPath := path.Join(translateResultDir, "raw-"+id+".json")
+	configJsonPath := path.Join(translateResultDir, "config-"+id+".json")
 	// unmarshal rawJsonPath as map[string]string
 	// key: "en" value: "text"
 	rawMap := make(map[string]string)
@@ -43,10 +52,11 @@ func main() {
 	json.Unmarshal(rawJSONPathStr, &rawMap)
 	json.Unmarshal(configJSONPathStr, &configMap)
 	log.Ref().Debug(rawMap)
-	id := configMap["id"]
 	cacheDir := nocycle.MkdirFileWithStr(path.Join(translateResultDir, "cache", id))
-	langList := []string{"zh-HK", "zh-TW", "zh-CN"}
+	// "zh-TW"
+	langList := []string{"zh-HK", "zh-CN"}
 	for _, eachLang := range langList {
+		crtResultMap := make(map[string]string)
 		// for each rawMap
 		for k, v := range rawMap {
 			fmt.Println("k: ", k+" -> v:", v)
@@ -59,22 +69,38 @@ func main() {
 			nocycle.MkdirFileWithStr(path.Join(cacheDir, eachLang))
 			md5FilePath := (path.Join(cacheDir, eachLang, md5Str))
 			var resultForCurrentLang string
+			fmt.Println("md5FilePath: ", md5FilePath)
 			if nocycle.IsFileExist(md5FilePath) {
+				fmt.Println("result existed already")
 				result2, err2 := nocycle.ReadFileAsStr(md5FilePath)
 				if err2 != nil {
 					log.InternalLog.Panic("err", err2)
 				}
 				resultForCurrentLang = result2
+			} else {
+				fmt.Println("new text received")
+				resultForCurrentLang2, err2 := translateNow(v, eachLang)
+				if err2 != nil {
+					log.InternalLog.Panic("err", err2)
+				}
+				resultForCurrentLang = resultForCurrentLang2
+				fmt.Println(resultForCurrentLang)
+				nocycle.WriteStrIntoFile(md5FilePath, resultForCurrentLang)
 			}
-			resultForCurrentLang, err := translateNow(v, eachLang)
-			if err != nil {
-				log.InternalLog.Panic("err", err)
-			}
-			fmt.Println(resultForCurrentLang)
-			nocycle.WriteStrIntoFile(md5FilePath, resultForCurrentLang)
-		}
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "拉夫工具", "LafTools")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Laf Tools", "LafTools")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools", "LafTools工具箱")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, " LafTools工具箱 ", "LafTools工具箱")
 
+			// TODO: if enUS-overwrite.json exist this key, then use the defined value
+			crtResultMap[k] = resultForCurrentLang
+		}
+		// write crtResultMap to file
+		crtResultMapJson, _ := json.MarshalIndent(crtResultMap, "", "    ")
+		crtResultMapJsonPath := path.Join(translateResultDir, "result-"+id+"-"+eachLang+".json")
+		nocycle.WriteBytesIntoFile(crtResultMapJsonPath, crtResultMapJson)
 	}
+	fmt.Println("Done.")
 }
 
 func getTranslateResultDir() string {
@@ -84,7 +110,7 @@ func getTranslateResultDir() string {
 }
 
 func translateNow(text, targetLang string) (string, error) {
-	time.Sleep(1 * time.Second)
+	// time.Sleep(1 * time.Second)
 	return gt.Translate(text, "en", targetLang)
 }
 
