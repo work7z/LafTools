@@ -29,7 +29,13 @@ In China mainland, it's probably having some connectivity issue while downloadin
 
 Let's say that 127.0.0.1:7890 is your proxy server.
 
-> (If you don't have a proxy server, it's also fine as you can use mirrors for China developers, but I wouldn't list how to setup them particularly due to my limited energy and that regulation in my region, sorry.)
+> If you don't have a proxy server, it's also fine as you can use mirrors for China developers, but I wouldn't list how to setup them particularly due to my limited energy and that regulation in the region where I'm living, sorry.
+
+## Install Cygwin
+
+```bash
+https://mirrors.tuna.tsinghua.edu.cn/help/cygwin/
+```
 
 ## Git Proxy
 

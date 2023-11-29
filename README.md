@@ -1,4 +1,3 @@
-
 <p align="center">
 <img width="100" src="https://github.com/work7z/LafTools/blob/dev/sub/web/public/static/icon.png?raw=true"></img>
 <br>
@@ -7,15 +6,16 @@
 <br><br>
 </p>
 
-# 💡 Introduction 
+# 💡 Introduction
 
 You may wonder why we are determined to develop this toolbox if there are numerous alternatives exist for those commonly used tools on online websites.
 
-Indeed, most tools in our toolbox can be found on any online website and you also can collect them easily into your favorites in the browser, such as common encryption and decryption, translation tools, generating QR codes, etc…  
+Indeed, most tools in our toolbox can be found on any online website and you also can collect them easily into your favorites in the browser, such as common encryption and decryption, translation tools, generating QR codes, etc…
 
-However, it’s not the simplest and quickest approach to access these conversion tools, in other words, not the most comfortable and efficient way. 
+However, it’s not the simplest and quickest approach to access these conversion tools, in other words, not the most comfortable and efficient way.
 
 Have you ever met the below issues while using those online tools?
+
 - No Offline Accessibility.
 - No Global Dark Theme.
 - No Productive UI style.
@@ -24,6 +24,7 @@ Have you ever met the below issues while using those online tools?
 - Data Leakage Issue.
 
 If the answer to any of the above is yes, then you should consider trying our toolbox. It offers the following features:
+
 - Fully open-source code with no malicious logic
 - Lightweight runtime (requires only 6MB of RAM)
 - Full platform support (including ARMv8)
@@ -38,83 +39,89 @@ Here are some screenshots for you to preview how this toolbox works.
 
 (TO BE CONTINUE)
 
+# 🍀 Getting Started
 
-# 🍀 Getting Started   
-> If you're using Windows, please ensure below commands will be executed in git-bash, further detail  and [CONTRIBUTION](CONTRIBUTION.md) at first. 
+> If you're using Windows, please ensure below commands will be executed in git-bash, further detail and [CONTRIBUTION](CONTRIBUTION.md) at first.
 
-## IMPORTANT NOTES   
-LafTools is still under development, its dependencies or prerequisites may changed as needed.    
+## IMPORTANT NOTES
+
+LafTools is still under development, its dependencies or prerequisites may changed as needed.
 
 **For any issue, in particular to developers in China mainland, please read [Common Env Issues](dev/notes/common/issues.md) firstly, if there's no solution can solve it then raise an issue to us at any time, thanks!**
 
-
 ## Setup System Environment
+
 Note that you need to set system environment variables in your bash before developing or building. If you're unsure how to do this, you can simply execute the following commands each time you open a new terminal:
 
-
 ### LAFTOOLS_ROOT
+
 if you've cloned this repository to `/users/jerry/projects/laftools-repo`, then you should set this path as the value for `LAFTOOLS_ROOT`
 
-### Examples:  
+### Examples:
+
 ```bash
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
 ## Launch Go service
 
-To run Go service in terminal, you can execute below command: 
+To run Go service in terminal, you can execute below command:
 
 ```shell
 go run ./core/CodeGenApplication.go server
 ```
 
+To debug Go service, we have configured it in VSCode, you can just follow below steps:
 
-To debug Go service, we have configured it in VSCode, you can just follow below steps:  
-1. Enter Visual Studio Code    
-2. Click "Run and Debug" on your sidebar  
+1. Enter Visual Studio Code
+2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
 ## Launch Front-end project
 
 **Web Part**:
+
 ```bash
-cd sub/web 
-# using pnpm instead of npm 
+cd sub/web
+# using pnpm instead of npm
 npm i -g pnpm
 # install ts-node
 npm i -g ts-node@10.9.1
 # install project deps
 pnpm install
-# start webpack service 
-npm run start 
+# start webpack service
+npm run start
 ```
 
 **Scan Part**:
+
 ```bash
 cd dev/scripts/scan
 npm i -g pnpm # can skip if it's installed
-pnpm install   
+pnpm install
 npm run scan # start scanning files to provide translate service
 ```
 
+## Access Local Service
 
-## Access Local Service  
 Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing!
 
-Examples: 
+Examples:
+
 ```output
 -----------------------------------------------
 PLEASE ACCESS THE LINK BELOW IN BROWSER.
 请复制下方链接并在浏览器端打开(for zh_CN users)
 請復製下方鏈接並在瀏覽器端打開(for zh_HK users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}  
+http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## Build  
-this part will be updated once MVP is released.
-> if you encounter any issue when you are developing LafTools or building your binary, please contact us at any time. 
+## Build
 
+this part will be updated once MVP is released.
+
+> if you encounter any issue when you are developing LafTools or building your binary, please contact us at any time.
 
 # 🙋 Is it a free software?
 
@@ -122,22 +129,22 @@ Yes, it is open-source software, and you can use it following the terms of the l
 
 While we strive to provide as many services as possible for free, some features do require payment. This is because we incur costs for servers, maintenance, and other operational aspects that are essential to keep our services running smoothly and reliably. By charging for premium services, we can cover these costs and continue to offer high-quality, sustainable services. We appreciate your understanding and support.
 
-Wait, actually there’s another option instead of just paying the bill. 
+Wait, actually there’s another option instead of just paying the bill.
 
 As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.
 
 What you can do is to
+
 - Add Unit Test
 - Add New Tools
 - Enhance Exist Tools
-- Solve Any App Issue  
-- Enhance Performance		
+- Solve Any App Issue
+- Enhance Performance
 - Technical Implementation
 
-Read [Contribution](CONTRIBUTION.md) Docs  
+Read [Contribution](CONTRIBUTION.md) Docs
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger. 
-
+With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
 
 # 🌠 Preview
 
@@ -147,24 +154,25 @@ Preview(English):
 Preview(简体中文):
 ![](https://github.com/work7z/LafTools/blob/dev/dev/source/img-preview.png?raw=true)
 
+# A Letter to CodeGen ToolBox Users
 
+Greetings from the CodeGen ToolBox team.
 
-# A Letter to CodeGen ToolBox Users  
-Greetings from the CodeGen ToolBox team. 
+In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.  
+Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.  
+Our decision to completely open our source code was driven by the following reasons::
 
-Our decision to completely open our source code was driven by the following reasons::   
-- To conduct a security reviews 
-- To demonstrate the void of malicious logic or backdoors  
-- To welcome contributions from the community 
-- To build a strong reputation and earn trust.  
+- To conduct a security reviews
+- To demonstrate the void of malicious logic or backdoors
+- To welcome contributions from the community
+- To build a strong reputation and earn trust.
 
 We understand your concerns about potential hacking attempts to bypass the activation logic of the software. Indeed, we acknowledge this as a potential issue. However, we have realized that LafTools should thrive by selling services, not just software licenses.
 
-We'd like to remind you below things: 
+We'd like to remind you below things:
+
 - Download our software from the official Github repository or our official website.
 - Report any security issues you detect.
 - Do not hesitate to submit your proposals for UI, tools, development, or any other aspects.
@@ -173,12 +181,10 @@ Lastly, we would like to express our gratitude for your time in reading this sec
 
 Thank you!
 
-
 Nov 18th, 2023
 LafTools Team
 
-
 # 🪪 License
-This project is protected under the GNU Affero General Public License.    
-Please see the LICENSE file for more details.
 
+This project is protected under the GNU Affero General Public License.  
+Please see the LICENSE file for more details.
