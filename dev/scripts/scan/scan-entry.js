@@ -106,19 +106,14 @@ let toJSON = (obj) => {
   return JSON.stringify(obj, null, 4);
 };
 
-let scan = async (eachItem) => {
-  let allKEYMAP = {};
-
+let scan = async (eachRunItem) => {
   let langarr = ["zh-HK", "zh-CN"];
 
   for (let eachLang of langarr) {
     let outputLang = eachLang.replace("-", "_");
-    let outputLangFile = path.join(eachItem.target, `${outputLang}.json`);
+    let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
-    let usedKeyMap = {};
-    let dir = getFile(eachItem.dir); // replace with appropriate function
-    let crtMap_zhCN = {};
-    let crtMap_zhHK = {};
+    let dir = getFile(eachRunItem.dir); // replace with appropriate function
     let idOverwriteJSONFile = getFile(`${overwrittenDir}/id-overwrite.json`); // replace with appropriate function
     let zhCNOverwriteJSONFile = getFile(
       `${overwrittenDir}/zh-CN-overwrite.json`
@@ -186,7 +181,7 @@ let scan = async (eachItem) => {
         }
       }
     }
-    let keyidx = eachItem.id + eachLang;
+    let keyidx = eachRunItem.id + eachLang;
     let thatFileMD5 =
       md5TypeForLastModified == 0
         ? ""
@@ -195,7 +190,7 @@ let scan = async (eachItem) => {
       console.log("skipped translating due to same md5 file");
       continue;
     } else {
-      console.log("continue to translate " + eachItem.dir);
+      console.log("continue to translate " + eachRunItem.dir);
       previousModifiedType[keyidx] = thatFileMD5;
     }
     console.log(thatFileMD5);
@@ -209,7 +204,7 @@ let scan = async (eachItem) => {
       let file = getFile(eachFile); // replace with appropriate function
       let text = file.text();
       let match;
-      while ((match = eachItem.pattern.exec(text))) {
+      while ((match = eachRunItem.pattern.exec(text))) {
         let key = match[2];
         let value = match[4];
         // console.log('key is '+key, ', value is ',value)
@@ -238,39 +233,28 @@ let scan = async (eachItem) => {
       fs.mkdirSync(tmpTranslateDir);
     }
     fs.writeFileSync(
-      path.join(tmpTranslateDir, `raw-${eachItem.id}.json`),
+      path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
       waitTranslateObjStr
     );
     fs.writeFileSync(
-      path.join(tmpTranslateDir, `config-${eachItem.id}.json`),
+      path.join(tmpTranslateDir, `config-${eachRunItem.id}-${eachLang}.json`),
       toJSON({
-        id: eachItem.id,
+        id: eachRunItem.id,
       })
     );
 
     // execute a command
-    let cmd = `go run ./translate-tools/bulktranslate.go --id=${eachItem.id} --output=${outputLangFile} `;
+    let cmd = `go run ./translate-tools/bulktranslate.go --id=${eachRunItem.id} --lg=${eachLang} --output=${outputLangFile} `;
     console.log("cmd is ", cmd);
     sh.exec(cmd);
     // console.log();
 
     let resultFile = path.join(
       __dirname,
-      `tmp-translate-result/result-${eachItem.id}-${eachLang}.json`
+      `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`
     );
     if (fs.existsSync(resultFile)) {
       let resultJSON = getFile(resultFile).jsonmap();
-      if (eachLang == "zh-CN") {
-        // resultJSON = {
-        //   ...resultJSON,
-        //   ...getFile(overwrittenFile).jsonmap(),
-        // };
-      } else {
-        // resultJSON = {
-        //   ...resultJSON,
-        //   ...(getFile(overwrittenFile).jsonmap(), ),
-        // };
-      }
       _.forEach(overwrritenMap, (x, d, n) => {
         if (resultJSON[d]) {
           resultJSON[d] = x;
@@ -279,7 +263,11 @@ let scan = async (eachItem) => {
 
       if (eachLang != "zh-CN") {
         resultJSON = _.mapValues(resultJSON, (x, d, n) => {
-          return cnchars.toTraditionalChar(x);
+          return _.chain(x)
+            .split("")
+            .map((xx) => cnchars.toTraditionalChar(xx))
+            .join("")
+            .value();
         });
       }
       fs.writeFileSync(outputLangFile, toJSON(resultJSON));
@@ -294,7 +282,7 @@ let scan = async (eachItem) => {
   await sleep(3000);
 
   setTimeout(() => {
-    scan(eachItem);
+    scan(eachRunItem);
   }, 0);
 };
 

@@ -64,11 +64,13 @@ import { Dot } from "../../utils/TranslationUtils";
 import MainPreSetup from "./MainPreSetup";
 
 export default () => {
-  
   return (
-    <div className="fixed-wb-p  3 " style={{
-      overflow: 'hidden'
-    }}>
+    <div
+      className="fixed-wb-p  3 "
+      style={{
+        overflow: "hidden",
+      }}
+    >
       <WB_MenuBar
         leftPart={
           <div
@@ -78,7 +80,7 @@ export default () => {
             }}
           >
             {/* - Empowering Your Creativity */}
-            {Dot("nJAX6", "Welcome to {0}", "LafTools")}
+            {Dot("nJAX6", "Welcome to {0}", Dot("CVUl0", "LafTools"))}
           </div>
         }
       />

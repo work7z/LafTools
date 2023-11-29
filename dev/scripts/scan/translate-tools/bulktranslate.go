@@ -32,7 +32,11 @@ func main() {
 	id := ""
 	outputJSONFile := ""
 	processArgs := os.Args[1:]
+	eachLang := ""
 	for _, eachArg := range processArgs {
+		if eachArg[:5] == "--lg=" {
+			eachLang = eachArg[5:]
+		}
 		if eachArg[:5] == "--id=" {
 			id = eachArg[5:]
 		}
@@ -61,8 +65,8 @@ func main() {
 	log.InternalLog.SetFormatter(&logrus.TextFormatter{})
 	translateResultDir := getTranslateResultDir()
 	// get raw.json in translateResultDir
-	rawJsonPath := path.Join(translateResultDir, "raw-"+id+".json")
-	configJsonPath := path.Join(translateResultDir, "config-"+id+".json")
+	rawJsonPath := path.Join(translateResultDir, "raw-"+id+"-"+eachLang+".json")
+	configJsonPath := path.Join(translateResultDir, "config-"+id+"-"+eachLang+".json")
 	// unmarshal rawJsonPath as map[string]string
 	// key: "en" value: "text"
 	rawMap := make(map[string]string)
