@@ -287,7 +287,9 @@ let scan = async (eachRunItem) => {
 };
 
 for (let eachItem of searchItems) {
-  setTimeout(() => {
-    scan(eachItem);
-  }, 0);
+  if (fs.existsSync(eachItem.target)) {
+    setTimeout(() => {
+      scan(eachItem);
+    }, 0);
+  }
 }

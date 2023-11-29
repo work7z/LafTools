@@ -56,7 +56,7 @@ func GetMottoList(ctx *context.WebContext) []func() string {
 			return ctx.Dot("58c03", "Innovation is a key factor in the success of any business. -Ravi Venkatesan")
 		},
 		func() string {
-			return ctx.Dot("79f2d", "Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program. – Linus Torvalds")
+				return ctx.Dot("79f2d", "Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program. – Linus Torvalds")
 		},
 		func() string {
 			return ctx.Dot("9412b", "First, solve the problem. Then, write the code. – John Johnson")
