@@ -93,7 +93,8 @@ npm run start
 ```bash
 cd dev/scripts/scan
 npm i -g pnpm # can skip if it's installed
-pnpm install 
+pnpm install   
+npm run scan # start scanning files to provide translate service
 ```
 
 
