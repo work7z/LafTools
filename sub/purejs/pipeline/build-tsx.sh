@@ -16,11 +16,12 @@ rm -rf build && mkdir build
 # buildWithModule build/commonjs commonjs
 # buildWithModule build/amd amd 
 npm run gen
-cp -a ./src/lang build/lang/
+rm -rf build/lang
+cp -a ./src/lang/ build/lang/
 
 targetDir=$LAFTOOLS_ROOT/resources/non-prohibited/purejs
-rm -rf $targetDir
+# rm -rf $targetDir
 mkdir -p $targetDir 
-cp -a ./build/ $targetDir
+rsync -av --delete ./build/ $targetDir
 
 echo "[I] $(date) Completed"
