@@ -75,8 +75,9 @@ To debug Go service, we have configured it in VSCode, you can just follow below 
 3. Click "Run" button.
 
 ## Launch Front-end project
-```bash
 
+**Web Part**:
+```bash
 cd sub/web 
 # using pnpm instead of npm 
 npm i -g pnpm
@@ -87,6 +88,14 @@ pnpm install
 # start webpack service 
 npm run start 
 ```
+
+**Scan Part**:
+```bash
+cd dev/scripts/scan
+npm i -g pnpm # can skip if it's installed
+pnpm install 
+```
+
 
 ## Access Local Service  
 Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing!

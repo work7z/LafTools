@@ -1,6 +1,5 @@
 ## Pre-requisites
 
-
 Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
 
 
@@ -10,6 +9,9 @@ Before you start developing this project, please ensure that you have the follow
 - Visual Studio Code
 
 Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+
+## How to launch project?  
+To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project. 
 
 ## VSCode Extensions for Dev  
 If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.

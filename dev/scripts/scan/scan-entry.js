@@ -106,189 +106,186 @@ let toJSON = (obj) => {
   return JSON.stringify(obj, null, 4);
 };
 
-let scan = async () => {
+let scan = async (eachItem) => {
   let allKEYMAP = {};
 
-  for (let eachItem of searchItems) {
-    let langarr = ["zh-HK", "zh-CN"];
+  let langarr = ["zh-HK", "zh-CN"];
 
-    for (let eachLang of langarr) {
-      let outputLang = eachLang.replace("-", "_");
-      let outputLangFile = path.join(eachItem.target, `${outputLang}.json`);
+  for (let eachLang of langarr) {
+    let outputLang = eachLang.replace("-", "_");
+    let outputLangFile = path.join(eachItem.target, `${outputLang}.json`);
 
-      let usedKeyMap = {};
-      let dir = getFile(eachItem.dir); // replace with appropriate function
-      let crtMap_zhCN = {};
-      let crtMap_zhHK = {};
-      let idOverwriteJSONFile = getFile(`${overwrittenDir}/id-overwrite.json`); // replace with appropriate function
-      let zhCNOverwriteJSONFile = getFile(
-        `${overwrittenDir}/zh-CN-overwrite.json`
-      ); // replace with appropriate function
-      let zhONJsonMap = zhCNOverwriteJSONFile.jsonmap();
-      let enUSMap = readFileAsJSONMap(zhCNOverwriteJSONFile.text()); // replace with appropriate function
-      let lastModifiedForIdOverwriteJSONFile =
-        idOverwriteJSONFile.lastModified() +
-        zhCNOverwriteJSONFile.lastModified();
+    let usedKeyMap = {};
+    let dir = getFile(eachItem.dir); // replace with appropriate function
+    let crtMap_zhCN = {};
+    let crtMap_zhHK = {};
+    let idOverwriteJSONFile = getFile(`${overwrittenDir}/id-overwrite.json`); // replace with appropriate function
+    let zhCNOverwriteJSONFile = getFile(
+      `${overwrittenDir}/zh-CN-overwrite.json`
+    ); // replace with appropriate function
+    let zhONJsonMap = zhCNOverwriteJSONFile.jsonmap();
+    let enUSMap = readFileAsJSONMap(zhCNOverwriteJSONFile.text()); // replace with appropriate function
+    let lastModifiedForIdOverwriteJSONFile =
+      idOverwriteJSONFile.lastModified() + zhCNOverwriteJSONFile.lastModified();
 
-      // iterate all files for dir.file, recursively
-      let iterateFiles = (dir, done) => {
-        let results = [];
-        fs.readdir(dir, function (err, list) {
-          if (err) return done(err);
-          var pending = list.length;
-          if (!pending) return done(null, results);
-          list.forEach(function (file) {
-            file = path.resolve(dir, file);
-            fs.stat(file, function (err, stat) {
-              if (stat && stat.isDirectory()) {
-                iterateFiles(file, function (err, res) {
-                  results = results.concat(res);
-                  if (!--pending) done(null, results);
-                });
-              } else {
-                results.push(file);
+    // iterate all files for dir.file, recursively
+    let iterateFiles = (dir, done) => {
+      let results = [];
+      fs.readdir(dir, function (err, list) {
+        if (err) return done(err);
+        var pending = list.length;
+        if (!pending) return done(null, results);
+        list.forEach(function (file) {
+          file = path.resolve(dir, file);
+          fs.stat(file, function (err, stat) {
+            if (stat && stat.isDirectory()) {
+              iterateFiles(file, function (err, res) {
+                results = results.concat(res);
                 if (!--pending) done(null, results);
-              }
-            });
-          });
-        });
-      };
-      // get all files
-      let allFiles = await new Promise((resolve, reject) => {
-        iterateFiles(dir.file, (err, results) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(results);
-          }
-        });
-      });
-
-      // sort allFiles by name
-      allFiles.sort((a, b) => {
-        return a.localeCompare(b);
-      });
-      let md5TypeForLastModified = 0;
-      let lastFile = null;
-      for (let eachFile of allFiles) {
-        eachFile += "";
-        let file = getFile(eachFile); // replace with appropriate function
-        // console.log('file:',eachFile)
-        if (
-          // !(eachFile + "").endsWith(".json") &&
-          (eachFile + "").endsWith("go") ||
-          (eachFile + "").endsWith("ts") ||
-          (eachFile + "").endsWith("tsx")
-          // true
-        ) {
-          // lastModifiedForIdOverwriteJSONFile += file.lastModified();
-          if (md5TypeForLastModified < file.lastModified()) {
-            md5TypeForLastModified = file.lastModified();
-            lastFile = file.file;
-          }
-        }
-      }
-      let keyidx = eachItem.id + eachLang;
-      let thatFileMD5 =
-        md5TypeForLastModified == 0
-          ? ""
-          : md5(getFile(lastFile).text()) + lastModifiedForIdOverwriteJSONFile;
-      if (previousModifiedType[keyidx] == thatFileMD5) {
-        console.log("skipped translating due to same md5 file");
-        continue;
-      } else {
-        console.log("continue to translate " + eachItem.dir);
-        previousModifiedType[keyidx] = thatFileMD5;
-      }
-      console.log(thatFileMD5);
-      console.log(lastFile);
-
-      let anyDuplicateSet = {};
-
-      let waitTranslateObj = {};
-      // iterate all files
-      for (let eachFile of allFiles) {
-        let file = getFile(eachFile); // replace with appropriate function
-        let text = file.text();
-        let match;
-        while ((match = eachItem.pattern.exec(text))) {
-          let key = match[2];
-          let value = match[4];
-          // console.log('key is '+key, ', value is ',value)
-          if (value) {
-            if (!_.isNil(waitTranslateObj[key])) {
-              sh.exec(
-                'say "detected duplicate item, will sleep for a while and re-check it again"'
-              );
-              console.log("duplicate id: ", key);
-              await sleep(10000);
+              });
+            } else {
+              results.push(file);
+              if (!--pending) done(null, results);
             }
-            waitTranslateObj[key] = value;
-            // crtMap_zhCN[key] = value;
-            // crtMap_zhHK[key] = value;
-          }
-          // substring
-          text = text.substring(match.index + match[0].length);
-        }
-      }
-
-      let waitTranslateObjStr = toJSON(waitTranslateObj);
-      // console.log(waitTranslateObj);
-
-      let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
-      if (!fs.existsSync(tmpTranslateDir)) {
-        fs.mkdirSync(tmpTranslateDir);
-      }
-      fs.writeFileSync(
-        path.join(tmpTranslateDir, `raw-${eachItem.id}.json`),
-        waitTranslateObjStr
-      );
-      fs.writeFileSync(
-        path.join(tmpTranslateDir, `config-${eachItem.id}.json`),
-        toJSON({
-          id: eachItem.id,
-        })
-      );
-
-      // execute a command
-      let cmd = `go run ./translate-tools/bulktranslate.go --id=${eachItem.id} --output=${outputLangFile} `;
-      console.log("cmd is ", cmd);
-      sh.exec(cmd);
-      // console.log();
-
-      let resultFile = path.join(
-        __dirname,
-        `tmp-translate-result/result-${eachItem.id}-${eachLang}.json`
-      );
-      if (fs.existsSync(resultFile)) {
-        let resultJSON = getFile(resultFile).jsonmap();
-        if (eachLang == "zh-CN") {
-          // resultJSON = {
-          //   ...resultJSON,
-          //   ...getFile(overwrittenFile).jsonmap(),
-          // };
-        } else {
-          // resultJSON = {
-          //   ...resultJSON,
-          //   ...(getFile(overwrittenFile).jsonmap(), ),
-          // };
-        }
-        _.forEach(overwrritenMap, (x, d, n) => {
-          if (resultJSON[d]) {
-            resultJSON[d] = x;
-          }
-        });
-
-        if (eachLang != "zh-CN") {
-          resultJSON = _.mapValues(resultJSON, (x, d, n) => {
-            return cnchars.toTraditionalChar(x);
           });
+        });
+      });
+    };
+    // get all files
+    let allFiles = await new Promise((resolve, reject) => {
+      iterateFiles(dir.file, (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
         }
-        fs.writeFileSync(outputLangFile, toJSON(resultJSON));
-      } else {
-        console.log("file not exists: ", resultFile);
-        process.exit(-1);
+      });
+    });
+
+    // sort allFiles by name
+    allFiles.sort((a, b) => {
+      return a.localeCompare(b);
+    });
+    let md5TypeForLastModified = 0;
+    let lastFile = null;
+    for (let eachFile of allFiles) {
+      eachFile += "";
+      let file = getFile(eachFile); // replace with appropriate function
+      // console.log('file:',eachFile)
+      if (
+        // !(eachFile + "").endsWith(".json") &&
+        (eachFile + "").endsWith("go") ||
+        (eachFile + "").endsWith("ts") ||
+        (eachFile + "").endsWith("tsx")
+        // true
+      ) {
+        // lastModifiedForIdOverwriteJSONFile += file.lastModified();
+        if (md5TypeForLastModified < file.lastModified()) {
+          md5TypeForLastModified = file.lastModified();
+          lastFile = file.file;
+        }
       }
+    }
+    let keyidx = eachItem.id + eachLang;
+    let thatFileMD5 =
+      md5TypeForLastModified == 0
+        ? ""
+        : md5(getFile(lastFile).text()) + lastModifiedForIdOverwriteJSONFile;
+    if (previousModifiedType[keyidx] == thatFileMD5) {
+      console.log("skipped translating due to same md5 file");
+      continue;
+    } else {
+      console.log("continue to translate " + eachItem.dir);
+      previousModifiedType[keyidx] = thatFileMD5;
+    }
+    console.log(thatFileMD5);
+    console.log(lastFile);
+
+    let anyDuplicateSet = {};
+
+    let waitTranslateObj = {};
+    // iterate all files
+    for (let eachFile of allFiles) {
+      let file = getFile(eachFile); // replace with appropriate function
+      let text = file.text();
+      let match;
+      while ((match = eachItem.pattern.exec(text))) {
+        let key = match[2];
+        let value = match[4];
+        // console.log('key is '+key, ', value is ',value)
+        if (value) {
+          if (!_.isNil(waitTranslateObj[key])) {
+            sh.exec(
+              'say "detected duplicate item, will sleep for a while and re-check it again"'
+            );
+            console.log("duplicate id: ", key);
+            await sleep(10000);
+          }
+          waitTranslateObj[key] = value;
+          // crtMap_zhCN[key] = value;
+          // crtMap_zhHK[key] = value;
+        }
+        // substring
+        text = text.substring(match.index + match[0].length);
+      }
+    }
+
+    let waitTranslateObjStr = toJSON(waitTranslateObj);
+    // console.log(waitTranslateObj);
+
+    let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
+    if (!fs.existsSync(tmpTranslateDir)) {
+      fs.mkdirSync(tmpTranslateDir);
+    }
+    fs.writeFileSync(
+      path.join(tmpTranslateDir, `raw-${eachItem.id}.json`),
+      waitTranslateObjStr
+    );
+    fs.writeFileSync(
+      path.join(tmpTranslateDir, `config-${eachItem.id}.json`),
+      toJSON({
+        id: eachItem.id,
+      })
+    );
+
+    // execute a command
+    let cmd = `go run ./translate-tools/bulktranslate.go --id=${eachItem.id} --output=${outputLangFile} `;
+    console.log("cmd is ", cmd);
+    sh.exec(cmd);
+    // console.log();
+
+    let resultFile = path.join(
+      __dirname,
+      `tmp-translate-result/result-${eachItem.id}-${eachLang}.json`
+    );
+    if (fs.existsSync(resultFile)) {
+      let resultJSON = getFile(resultFile).jsonmap();
+      if (eachLang == "zh-CN") {
+        // resultJSON = {
+        //   ...resultJSON,
+        //   ...getFile(overwrittenFile).jsonmap(),
+        // };
+      } else {
+        // resultJSON = {
+        //   ...resultJSON,
+        //   ...(getFile(overwrittenFile).jsonmap(), ),
+        // };
+      }
+      _.forEach(overwrritenMap, (x, d, n) => {
+        if (resultJSON[d]) {
+          resultJSON[d] = x;
+        }
+      });
+
+      if (eachLang != "zh-CN") {
+        resultJSON = _.mapValues(resultJSON, (x, d, n) => {
+          return cnchars.toTraditionalChar(x);
+        });
+      }
+      fs.writeFileSync(outputLangFile, toJSON(resultJSON));
+    } else {
+      console.log("file not exists: ", resultFile);
+      process.exit(-1);
     }
   }
 
@@ -296,7 +293,13 @@ let scan = async () => {
 
   await sleep(3000);
 
-  setTimeout(scan, 0);
+  setTimeout(() => {
+    scan(eachItem);
+  }, 0);
 };
 
-setTimeout(scan, 0);
+for (let eachItem of searchItems) {
+  setTimeout(() => {
+    scan(eachItem);
+  }, 0);
+}

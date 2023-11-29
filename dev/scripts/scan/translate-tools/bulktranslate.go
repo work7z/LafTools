@@ -108,12 +108,15 @@ func main() {
 				resultForCurrentLang = resultForCurrentLang2
 				fmt.Println(resultForCurrentLang)
 				nocycle.WriteStrIntoFile(md5FilePath, resultForCurrentLang)
-				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "拉夫工具", "LafTools")
-				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Laf Tools", "LafTools")
 				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools", "LafTools工具箱")
 				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, " LafTools工具箱 ", "LafTools工具箱")
 			}
-
+			// TODO: oragnize below part as separtate json
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "拉夫工具", "LafTools")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Laf Tools", "LafTools")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Tools ", "LafTools")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "工作空间", "工作区")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools工具箱 ", "LafTools工具箱")
 			if strings.Index(eachLang, "zh") == 0 {
 				v = strings.Trim(v, " ")
 				if val, ok := zhCNOverwrittenMap[v]; ok {

@@ -288,7 +288,9 @@ export let WB_ControllerBar = () => {
     // show items for version, messages, windows
     {
       text: `${Dot("2Ocbey", "Version")}: ${APPINFOJSON.version}(${
-        isActivated ? Dot("fmYNwD", "Activated") : Dot("sEplqO", "Unactivated")
+        isActivated
+          ? Dot("ipOSQE", "Pro Edition")
+          : Dot("QhdpH", "Community Edition")
       })`,
       onClick: () => {},
       active: false,
