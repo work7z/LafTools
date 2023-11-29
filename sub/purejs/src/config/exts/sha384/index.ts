@@ -1,5 +1,11 @@
 import { ExtensionInfo, ExtensionVM } from "../../../all-types";
 import { Dot } from "../../../utils/translation";
+Dot("e6SA-", "Additional Logic");
+Dot("aJcwm", "Thanks to my friend");
+Dot(
+  "MNAP3o",
+  "Skipped translating this software due to other files are not translated yet."
+);
 let v: ExtensionVM = {
   Layout: "form",
   Actions: [

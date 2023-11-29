@@ -176,10 +176,10 @@ let scan = async () => {
         // console.log('file:',eachFile)
         if (
           // !(eachFile + "").endsWith(".json") &&
-          // (eachFile + "").endsWith("go") ||
-          // (eachFile + "").endsWith("ts") ||
-          // (eachFile + "").endsWith("tsx")
-          true
+          (eachFile + "").endsWith("go") ||
+          (eachFile + "").endsWith("ts") ||
+          (eachFile + "").endsWith("tsx")
+          // true
         ) {
           // lastModifiedForIdOverwriteJSONFile += file.lastModified();
           if (md5TypeForLastModified < file.lastModified()) {
@@ -188,17 +188,22 @@ let scan = async () => {
           }
         }
       }
+      let keyidx = eachItem.id + eachLang;
       let thatFileMD5 =
-        md5TypeForLastModified == 0 ? "" : md5(getFile(lastFile).text());
-      if (previousModifiedType[eachItem.id] == thatFileMD5) {
+        md5TypeForLastModified == 0
+          ? ""
+          : md5(getFile(lastFile).text()) + lastModifiedForIdOverwriteJSONFile;
+      if (previousModifiedType[keyidx] == thatFileMD5) {
         console.log("skipped translating due to same md5 file");
         continue;
       } else {
         console.log("continue to translate " + eachItem.dir);
-        previousModifiedType[eachItem.id] = thatFileMD5;
+        previousModifiedType[keyidx] = thatFileMD5;
       }
       console.log(thatFileMD5);
       console.log(lastFile);
+
+      let anyDuplicateSet = {};
 
       let waitTranslateObj = {};
       // iterate all files
@@ -211,6 +216,13 @@ let scan = async () => {
           let value = match[4];
           // console.log('key is '+key, ', value is ',value)
           if (value) {
+            if (!_.isNil(waitTranslateObj[key])) {
+              sh.exec(
+                'say "detected duplicate item, will sleep for a while and re-check it again"'
+              );
+              console.log("duplicate id: ", key);
+              await sleep(10000);
+            }
             waitTranslateObj[key] = value;
             // crtMap_zhCN[key] = value;
             // crtMap_zhHK[key] = value;
@@ -239,9 +251,10 @@ let scan = async () => {
       );
 
       // execute a command
-      let cmd = `go run ./translate-tools/bulktranslate.go --id=${eachItem.id} `;
+      let cmd = `go run ./translate-tools/bulktranslate.go --id=${eachItem.id} --output=${outputLangFile} `;
       console.log("cmd is ", cmd);
-      console.log(sh.exec(cmd));
+      sh.exec(cmd);
+      // console.log();
 
       let resultFile = path.join(
         __dirname,

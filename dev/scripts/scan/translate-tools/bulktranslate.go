@@ -30,11 +30,20 @@ func main() {
 	// get argument xxx from --id=xxx
 	// go run ./translate-tools/bulktranslate.go --id=wl
 	id := ""
+	outputJSONFile := ""
 	processArgs := os.Args[1:]
 	for _, eachArg := range processArgs {
 		if eachArg[:5] == "--id=" {
 			id = eachArg[5:]
 		}
+		if eachArg[:8] == "--output" {
+			outputJSONFile = eachArg[9:]
+		}
+	}
+	outputJSONMap := make(map[string]string)
+	if nocycle.IsFileExist(outputJSONFile) {
+		outputJSONMapStr, _ := nocycle.ReadFileAsStr(outputJSONFile)
+		json.Unmarshal([]byte(outputJSONMapStr), &outputJSONMap)
 	}
 	// zhCN
 	zhCNOverwrittenFile := path.Join(LAFTOOLS_ROOT, "dev", "lang", "overwrriten", "zh-CN-overwrite.json")
@@ -81,7 +90,9 @@ func main() {
 			md5FilePath := (path.Join(cacheDir, eachLang, md5Str))
 			var resultForCurrentLang string
 			fmt.Println("md5FilePath: ", md5FilePath)
-			if nocycle.IsFileExist(md5FilePath) {
+			if val, ok := outputJSONMap[k]; ok {
+				resultForCurrentLang = val
+			} else if nocycle.IsFileExist(md5FilePath) {
 				fmt.Println("result existed already")
 				result2, err2 := nocycle.ReadFileAsStr(md5FilePath)
 				if err2 != nil {
@@ -97,13 +108,11 @@ func main() {
 				resultForCurrentLang = resultForCurrentLang2
 				fmt.Println(resultForCurrentLang)
 				nocycle.WriteStrIntoFile(md5FilePath, resultForCurrentLang)
+				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "拉夫工具", "LafTools")
+				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Laf Tools", "LafTools")
+				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools", "LafTools工具箱")
+				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, " LafTools工具箱 ", "LafTools工具箱")
 			}
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "拉夫工具", "LafTools")
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Laf Tools", "LafTools")
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools", "LafTools工具箱")
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, " LafTools工具箱 ", "LafTools工具箱")
-
-			// TODO: if zh-CN-overwrite.json exist this key, then use the defined value
 
 			if strings.Index(eachLang, "zh") == 0 {
 				v = strings.Trim(v, " ")

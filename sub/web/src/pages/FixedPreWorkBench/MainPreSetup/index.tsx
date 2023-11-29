@@ -72,6 +72,9 @@ import gutils from "../../../utils/GlobalUtils";
 import AlertUtils from "../../../utils/AlertUtils";
 
 let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
+  Dot("ph5jH", "Handling this part");
+  Dot("SdGcT", "Other part");
+
   let [hover, setHover] = useState(false);
   let x = props.item;
   let [viewContent, setViewContent] = useState(false);
