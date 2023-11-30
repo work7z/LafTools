@@ -82,6 +82,18 @@ const AlertUtils = {
       message: Dot("ip2g1", "Copied"),
     });
   },
+  popRefresh() {
+    AlertUtils.popMsg("success", {
+      icon: "refresh",
+      message: Dot("WXo6D", "Refreshed"),
+    });
+  },
+  popCreated() {
+    AlertUtils.popMsg("success", {
+      icon: "add" as any,
+      message: Dot("24vLI", "Created"),
+    });
+  },
   popMsg(intent: Intent, config: ToastProps) {
     config.intent = intent;
     rootInst.show(config);

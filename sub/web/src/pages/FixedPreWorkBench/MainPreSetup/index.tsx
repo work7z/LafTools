@@ -71,6 +71,8 @@ import _ from "lodash";
 import gutils from "../../../utils/GlobalUtils";
 import AlertUtils from "../../../utils/AlertUtils";
 import DesktopUtils from "../../../utils/DesktopUtils";
+import apiSlice from "../../../slice/apiSlice";
+import AjaxUtils from "../../../utils/AjaxUtils";
 
 let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
   Dot("ph5jH", "Handling this part");
@@ -187,6 +189,10 @@ let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
 
 export default () => {
   // here we provide setup list UI, that first row is a input field, second row is manage controls(New, Refresh), remain part is a list that includes all workspace
+
+  // let [] = apiSlice.useAddWorkspaceForEachUserMutation({});
+  let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({});
+
   let allWorkspaces: EachWorkSpace[] = [
     {
       Id: "default",
@@ -246,6 +252,49 @@ export default () => {
                   intent={Intent.PRIMARY}
                   small
                   onClick={() => {
+                    AlertUtils.win_prompt({
+                      id: "U57tO",
+                      msg: Dot(
+                        "zjDJk",
+                        "Please provide the workspace directory path"
+                      ),
+                      fn: async function (yesOrNo, obj) {
+                        if (yesOrNo) {
+                          let iptIfHave = obj?.iptIfHave;
+                          // verify iptIfHave
+                          if (_.isEmpty(iptIfHave)) {
+                            AlertUtils.popError([
+                              Dot("1Npez", "Please provide the path"),
+                            ] as any);
+                            return;
+                          }
+                          iptIfHave = _.trim(iptIfHave + "");
+                          let isLinux = iptIfHave.startsWith("/");
+                          let r = await AjaxUtils.DoLocalRequestWithNoThrow({
+                            isPOST: true,
+                            url: "/workspace/users/add",
+                            data: {
+                              Id: gutils.uuid(),
+                              Label: _.split(
+                                iptIfHave,
+                                isLinux ? "/" : "\\"
+                              ).pop(),
+                              Path: iptIfHave,
+                            },
+                          });
+                          if (r?.error) {
+                            AlertUtils.popError(r?.error);
+                            return false;
+                          } else {
+                            AlertUtils.popCreated();
+                          }
+                        } else {
+                          AlertUtils.popError([
+                            Dot("ICefi", "Cancelled"),
+                          ] as any);
+                        }
+                      },
+                    });
                     // open a dialog to create a new workspace
                   }}
                 />
@@ -261,6 +310,8 @@ export default () => {
                   intent={Intent.SUCCESS}
                   onClick={() => {
                     // refresh workspace list
+                    workspaceListRes.refetch();
+                    AlertUtils.popRefresh();
                   }}
                 />
               </Tooltip>

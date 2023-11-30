@@ -56,7 +56,11 @@ type BasicMsg = {
 };
 export type ConfirmType = BasicMsg & {};
 export type AlertType = BasicMsg & {};
-export type PrompType = BasicMsg & {};
+export type PrompType = BasicMsg & {
+  textProps?: any;
+  noCancel?: number;
+  textFieldDefaultValue?: string;
+};
 type StatusState = {
   nav: {
     currentPlateId: string;

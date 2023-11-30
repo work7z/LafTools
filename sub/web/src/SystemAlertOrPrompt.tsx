@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import testReducer, { pong, testSliceActions } from "./slice/testSlice";
@@ -80,6 +80,65 @@ import { DialogStoreMap } from "./slice/DialogSlice";
 import { Z_INDEX_CONFIRM, Z_INDEX_DIALOG } from "./styles/config";
 import { FN_testDialogHere } from "./styles/dialog";
 import AlertUtils from "./utils/AlertUtils";
+import { PrompType } from "./slice/StatusSlice";
+
+let EachPrompt = (props: { x: PrompType }): any => {
+  let { x } = props;
+  let [val, onVal] = useState<string | undefined>(
+    props.x.textFieldDefaultValue
+  );
+  return (
+    <Alert
+      key={x.id}
+      style={{ zIndex: Z_INDEX_CONFIRM }}
+      cancelButtonText={Dot("IaSyO", "Cancel")}
+      confirmButtonText={Dot("n1jA9", "Confirm")}
+      intent={Intent.PRIMARY}
+      icon="paragraph"
+      isOpen={true}
+      loading={false}
+      onConfirm={async (e) => {
+        if (x.fn) {
+          let r = await x.fn(true, {
+            iptIfHave: val + "",
+          });
+          if (!r) {
+            return;
+          }
+          AlertUtils.deletePromptList(x.id);
+        } else {
+          AlertUtils.deletePromptList(x.id);
+        }
+      }}
+      onCancel={() => {
+        x.fn && x.fn(false);
+        AlertUtils.deletePromptList(x.id);
+      }}
+      onClose={() => {
+        // AlertUtils.deletePromptList(x.id);
+      }}
+      canEscapeKeyCancel={true}
+    >
+      <h3 style={{ marginBottom: "10px" }}>{x.msg}</h3>
+      <p>
+        <InputGroup
+          {...(x.textProps || {})}
+          style={{ width: "100%" }}
+          value={val}
+          onChange={(e) => {
+            onVal(e.target.value);
+          }}
+          fill={true}
+          defaultValue={x.textFieldDefaultValue}
+          placeholder={Dot(
+            "tEkR3",
+            "Input your value according to the prompt message"
+          )}
+        />
+      </p>
+    </Alert>
+  );
+};
 
 const OtherChoose = (prop) => {
   const dis = exportUtils.dispatch();
@@ -140,50 +199,7 @@ const OtherChoose = (prop) => {
         );
       })}
       {o1.prompt.map((x) => {
-        return (
-          <Alert
-            key={x.id}
-            style={{ zIndex: Z_INDEX_CONFIRM }}
-            cancelButtonText={Dot("IaSyO", "Cancel")}
-            confirmButtonText={Dot("n1jA9", "Confirm")}
-            intent={Intent.PRIMARY}
-            icon="paragraph"
-            isOpen={true}
-            loading={false}
-            onConfirm={() => {
-              x.fn &&
-                x.fn(true, {
-                  iptIfHave: _.toString(
-                    $("tmp_input_" + x.id)
-                      .find("input")
-                      .val()
-                  ),
-                });
-              AlertUtils.deletePromptList(x.id);
-            }}
-            onCancel={() => {
-              x.fn && x.fn(false);
-              AlertUtils.deletePromptList(x.id);
-            }}
-            onClose={() => {
-              AlertUtils.deletePromptList(x.id);
-            }}
-            canEscapeKeyCancel={true}
-          >
-            <h3 style={{ marginBottom: "10px" }}>{x.msg}</h3>
-            <p>
-              <InputGroup
-                style={{ width: "100%" }}
-                id={"tmp_input_" + x.id}
-                fill={true}
-                placeholder={Dot(
-                  "tEkR3",
-                  "Input your value according to the prompt message"
-                )}
-              />
-            </p>
-          </Alert>
-        );
+        return <EachPrompt x={x} />;
       })}
     </div>
   );
@@ -194,7 +210,7 @@ export default (props) => {
   const o1 = exportUtils.useSelector((val) => ({
     dialogIncrement: val.dialog.dialogIncrement,
   }));
-  if (gutils.IsDevMode) {
+  if (gutils.IsDevMode()) {
     FN_testDialogHere();
   }
   return (
