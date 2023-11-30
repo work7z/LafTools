@@ -191,7 +191,7 @@ export default () => {
     {
       Id: "default",
       Label: "testdir",
-      Path: "/users/jerrylai/testdir",
+      Path: "/users/jerrylai/",
     },
     {
       Id: "mkdi310",

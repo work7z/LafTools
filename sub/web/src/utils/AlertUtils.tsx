@@ -71,7 +71,7 @@ const AlertUtils = {
     ALL_NOCYCLE.store?.dispatch(systemSlice.actions.addNewMessageItem(obj));
   },
   popError(e: Error, additionalMsgLabel?: string) {
-    let msg = gutils.getErrMsg(e);
+    let msg = _.isArray(e) ? _.join(e, "\n") : gutils.getErrMsg(e);
     AlertUtils.popMsg("danger", {
       message: additionalMsgLabel ? `[${additionalMsgLabel}]` : "" + msg,
     });

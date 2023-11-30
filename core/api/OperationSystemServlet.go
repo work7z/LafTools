@@ -79,13 +79,13 @@ func API_TEMP_FILE_READ(c *gin.Context) {
 }
 
 type OsOpenForm struct {
-	dir string `json:"dir"`
+	Dir string `json:"dir"`
 }
 
 func API_OS_OPENDIR(c *gin.Context) {
 	var openForm = &OsOpenForm{}
 	c.BindJSON(openForm)
-	err := nocycle.OpenDir(openForm.dir)
+	err := nocycle.OpenDir(openForm.Dir)
 	if err != nil {
 		ErrLa(c, err)
 	} else {
