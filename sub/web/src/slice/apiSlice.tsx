@@ -104,6 +104,15 @@ export const apiSlice = createApi({
         };
       },
     }),
+    // openDirOnLocal: build.mutation<PayloadValueData<any>, { dir: string }>({
+    //   query: (arg) => {
+    //     return {
+    //       method: "POST",
+    //       url: "/os/opendir",
+    //       body: arg,
+    //     };
+    //   },
+    // }),
 
     // static
     getToolCategory: build.query<PayloadListData<FnPureToolDefinition>, any>({

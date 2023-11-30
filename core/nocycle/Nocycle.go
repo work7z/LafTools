@@ -22,8 +22,12 @@ package nocycle
 
 import (
 	"encoding/json"
+	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
+	"runtime"
 
 	"github.com/samber/lo"
 )
@@ -31,6 +35,34 @@ import (
 var UNIT_TEST_SERVER_MODE bool
 var HTTP_PORT_ONCE_SET int
 var NodeWSToken = GetRandomString(32)
+
+func OpenDir(dir string) error {
+
+	if !IsFileExist(dir) {
+		return errors.New("unable to find the directory")
+	}
+
+	var cmd *exec.Cmd
+
+	switch runtime.GOOS {
+	case "windows":
+		cmd = exec.Command("explorer", dir)
+	case "darwin":
+		cmd = exec.Command("open", dir)
+	case "linux":
+		cmd = exec.Command("xdg-open", dir)
+	default:
+		return fmt.Errorf("unsupported platform")
+	}
+
+	err := cmd.Start()
+	if err != nil {
+		fmt.Println("Failed to open directory:", err)
+		return err
+	}
+
+	return nil
+}
 
 func GetFileLastModifiedTimestamp(filename string) (int64, error) {
 	m, err := os.Lstat(filename)

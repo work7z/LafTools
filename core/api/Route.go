@@ -127,6 +127,7 @@ func ConfigSystemRouter(r *gin.Engine) {
 	// os
 	doPOST("/os/temp/file/upload", API_TEMP_FILE_UPLOAD)
 	doGET_("/os/temp/file/read", API_TEMP_FILE_READ)
+	doPOST("/os/openDir", API_OS_OPENDIR)
 
 	// workspace
 	doGET_("/workspace/users/one", API_WorkSpace_GetOne_By_User)

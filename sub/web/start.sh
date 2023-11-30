@@ -4,6 +4,7 @@ rm -rf ./build
 # kill sub process when exit
 trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 
+#  ps aux | grep laftools | awk '{print $2}' | kill -9 {}
 
 # if LAFTOOLS_ROOT is not there then quit 
 if [[ "$LAFTOOLS_ROOT" = "" ]]; then

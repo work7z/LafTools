@@ -78,6 +78,21 @@ func API_TEMP_FILE_READ(c *gin.Context) {
 	}))
 }
 
+type OsOpenForm struct {
+	dir string `json:"dir"`
+}
+
+func API_OS_OPENDIR(c *gin.Context) {
+	var openForm = &OsOpenForm{}
+	c.BindJSON(openForm)
+	err := nocycle.OpenDir(openForm.dir)
+	if err != nil {
+		ErrLa(c, err)
+	} else {
+		OKLa(c, DoValueRes(1))
+	}
+}
+
 // complete a function API_TEMP_FILE_UPLOAD, which will be used in core/api/Route.go, and saving the uploaded file to the directory core/config/ConfigPath.go:GetAppTempUploadDir()
 func API_TEMP_FILE_UPLOAD(c *gin.Context) {
 	// Check if the request method is POST

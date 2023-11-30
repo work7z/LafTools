@@ -213,7 +213,7 @@ export const ACTION_getLangData = (): any => {
         // do nothing
       } else {
         let e = await AjaxUtils.DoStaticRequest({
-          url: "/lang/" + currentLanguage + ".json",
+          url: "/lang/" + currentLanguage + ".json?t=" + Date.now(),
         });
         logutils.debug("e.data", e.data);
         dispatch(

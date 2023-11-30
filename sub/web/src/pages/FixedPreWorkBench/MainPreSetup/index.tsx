@@ -70,6 +70,7 @@ import { useMemo, useState } from "react";
 import _ from "lodash";
 import gutils from "../../../utils/GlobalUtils";
 import AlertUtils from "../../../utils/AlertUtils";
+import DesktopUtils from "../../../utils/DesktopUtils";
 
 let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
   Dot("ph5jH", "Handling this part");
@@ -131,6 +132,7 @@ let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
                     icon: "folder-open",
                     onClick: () => {
                       //
+                      DesktopUtils.openDir(x.Path);
                     },
                   },
                   {

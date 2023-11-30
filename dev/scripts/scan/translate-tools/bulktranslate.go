@@ -121,6 +121,7 @@ func main() {
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Tools ", "LafTools")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "工作空间", "工作区")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools工具箱 ", "LafTools工具箱")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "CodeGen ToolBox", "CodeGen工具箱")
 			if strings.Index(eachLang, "zh") == 0 {
 				v = strings.Trim(v, " ")
 				if val, ok := zhCNOverwrittenMap[v]; ok {
