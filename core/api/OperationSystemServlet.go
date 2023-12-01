@@ -82,6 +82,18 @@ type OsOpenForm struct {
 	Dir string `json:"dir"`
 }
 
+func API_File_ExistOrNot(c *gin.Context) {
+	var openForm = &OsOpenForm{}
+	c.BindJSON(openForm)
+	OKLa(c, DoValueRes(nocycle.IsFileExist(openForm.Dir)))
+}
+
+func API_File_Mkdir(c *gin.Context) {
+	var openForm = &OsOpenForm{}
+	c.BindJSON(openForm)
+	OKLa(c, DoValueRes(nocycle.MkdirFileWithStr(openForm.Dir)))
+}
+
 func API_OS_OPENDIR(c *gin.Context) {
 	var openForm = &OsOpenForm{}
 	c.BindJSON(openForm)

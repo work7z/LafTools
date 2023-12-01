@@ -97,7 +97,6 @@ try {
   }
   // initialState.menuHide = _.mapValues(initialState.menuHide, (x) => false);
 } catch (e) {
-  debugger;
   logutils.error("err while initialzing the layout", e);
   initialState = fn_initialState();
 }

@@ -136,7 +136,6 @@ export default (props: PropGenTabs) => {
     let fn = (e) => {
       let target = e.target;
       let isInside = false;
-      // debugger;
       while (target) {
         try {
           if (

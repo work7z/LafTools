@@ -434,7 +434,6 @@ export default (props: {
             expanded={workspaceDataForTree.expanded || []}
             selected={workspaceDataForTree.selected || []}
             onExpandedChange={(value) => {
-              // debugger;
               dis(
                 WorkspaceSlice.actions.updateTools({
                   expanded: value,

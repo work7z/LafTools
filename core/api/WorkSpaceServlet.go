@@ -27,6 +27,7 @@ import (
 	"laftools-go/core/gutils"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
+	"strings"
 	"sync"
 
 	"github.com/gin-gonic/gin"
@@ -100,8 +101,13 @@ func API_Workspace_Add_By_User(c *gin.Context) {
 }
 
 func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebContext) error {
-	if newSpace.Label == "" || newSpace.Path == "" {
-		return errors.New(wc.Dot("bAkuz", "label and path cannot be empty"))
+	newSpace.Path = strings.Trim(newSpace.Path, "")
+	if newSpace.Path == "" {
+		return errors.New(wc.Dot("IWLGS", "path cannot be empty"))
+	}
+	// check if Path exist
+	if nocycle.IsFileNonExist(newSpace.Path) {
+		return errors.New(wc.Dot("WXi6O", "Path does not exist, please check if your input is correct"))
 	}
 
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
@@ -111,14 +117,13 @@ func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebCont
 
 	for _, each := range workspaceRes.WorkSpaces {
 		if each.Path == newSpace.Path {
-			return errors.New(wc.Dot("RBgEN", "the file path exists already"))
+			return errors.New(wc.Dot("7jymU", "the file path is used by other workspace"))
 		}
 	}
 
 	for {
 		dup := false
 		for _, each := range workspaceRes.WorkSpaces {
-
 			if each.Id == newSpace.Id {
 				dup = true
 				break

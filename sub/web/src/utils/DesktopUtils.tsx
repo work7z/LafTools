@@ -22,9 +22,72 @@ import { FN_GetDispatch } from "../nocycle";
 import apiSlice from "../slice/apiSlice";
 import AjaxUtils from "./AjaxUtils";
 import AlertUtils from "./AlertUtils";
+import QueryUtils, { getAjaxValueRes } from "./QueryUtils";
 import { Dot } from "./TranslationUtils";
 
 export default {
+  checkExistAndAskAndMkdir: async function (dir: string) {
+    let r = await AjaxUtils.DoLocalRequestWithNoThrow({
+      isPOST: true,
+      url: "/os/fileExist",
+      data: {
+        Dir: dir,
+      },
+    });
+    if (r.error) {
+      AlertUtils.popError(r.error);
+      return false;
+    }
+    let exist = getAjaxValueRes<any>(r) as boolean;
+    if (!exist) {
+      let createOrNot = await new Promise((r, e) => {
+        AlertUtils.win_confirm({
+          id: "Lt0-a",
+          msg: Dot(
+            "Ahrjc",
+            "The directory does not exist, do you want to create it?"
+          ),
+          fn(yesOrNo, obj) {
+            r(yesOrNo);
+          },
+        });
+      });
+      if (!createOrNot) {
+        AlertUtils.popCancelled();
+        return;
+      }
+      if (createOrNot) {
+        await this.mkdirFile(dir);
+      }
+    }
+    return true;
+  },
+  mkdirFile: async function (dir: string) {
+    let r = await AjaxUtils.DoLocalRequestWithNoThrow({
+      isPOST: true,
+      url: "/os/mkdirDir",
+      data: {
+        Dir: dir,
+      },
+    });
+    if (r.error) {
+      AlertUtils.popError(r.error);
+    }
+  },
+  existFile: async function (dir: string): Promise<boolean> {
+    let r = await AjaxUtils.DoLocalRequestWithNoThrow({
+      isPOST: true,
+      url: "/os/fileExist",
+      data: {
+        Dir: dir,
+      },
+    });
+    if (r.error) {
+      AlertUtils.popError(r.error);
+      return false;
+    }
+    return getAjaxValueRes<any>(r) as boolean;
+  },
   openDir: async function (dir: string) {
     AlertUtils.popMsg("success", {
       message: Dot(

@@ -22,6 +22,8 @@ cp -a ./src/lang/ build/lang/
 targetDir=$LAFTOOLS_ROOT/resources/non-prohibited/purejs
 # rm -rf $targetDir
 mkdir -p $targetDir 
+
+cp -a ./build/ $targetDir
 rsync -av --delete ./build/ $targetDir
 
 echo "[I] $(date) Completed"

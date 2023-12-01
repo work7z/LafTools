@@ -94,6 +94,11 @@ const AlertUtils = {
       message: Dot("24vLI", "Created"),
     });
   },
+  popCancelled() {
+    AlertUtils.popMsg("danger", {
+      message: Dot("ff02c", "Cancelled"),
+    });
+  },
   popMsg(intent: Intent, config: ToastProps) {
     config.intent = intent;
     rootInst.show(config);

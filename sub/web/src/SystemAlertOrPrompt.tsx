@@ -187,7 +187,7 @@ const OtherChoose = (prop) => {
             }}
             onCancel={() => {
               AlertUtils.deleteConfirmList(x.id);
-              x.fn && x.fn(true);
+              x.fn && x.fn(false);
             }}
             onClose={() => {
               AlertUtils.deleteConfirmList(x.id);

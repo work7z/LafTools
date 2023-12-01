@@ -100,7 +100,6 @@ import {
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
-  
 } from "../../../styles/path";
 import FixedWorkBenchTool from "../../FixedWorkBenchTool";
 import FixedWorkBenchFiles from "../../FixedWorkBenchFiles";
@@ -156,7 +155,6 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
     let fn = (e) => {
       let target = e.target;
       let isInside = false;
-      // debugger;
       while (target) {
         try {
           if (

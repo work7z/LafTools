@@ -252,8 +252,9 @@ export default () => {
                   intent={Intent.PRIMARY}
                   small
                   onClick={() => {
+                    let idForWin = "U57tO";
                     AlertUtils.win_prompt({
-                      id: "U57tO",
+                      id: idForWin,
                       msg: Dot(
                         "zjDJk",
                         "Please provide the workspace directory path"
@@ -270,6 +271,9 @@ export default () => {
                           }
                           iptIfHave = _.trim(iptIfHave + "");
                           let isLinux = iptIfHave.startsWith("/");
+                          await DesktopUtils.checkExistAndAskAndMkdir(
+                            iptIfHave
+                          );
                           let r = await AjaxUtils.DoLocalRequestWithNoThrow({
                             isPOST: true,
                             url: "/workspace/users/add",
@@ -287,6 +291,7 @@ export default () => {
                             return false;
                           } else {
                             AlertUtils.popCreated();
+                            AlertUtils.deletePromptList(idForWin);
                           }
                         } else {
                           AlertUtils.popError([
