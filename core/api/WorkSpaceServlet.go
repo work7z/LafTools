@@ -24,7 +24,6 @@ import (
 	"encoding/json"
 	"errors"
 	"laftools-go/core/context"
-	"laftools-go/core/gutils"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
 	"strings"
@@ -105,6 +104,9 @@ func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebCont
 	if newSpace.Path == "" {
 		return errors.New(wc.Dot("IWLGS", "path cannot be empty"))
 	}
+	if newSpace.Id == "" {
+		return errors.New(wc.Dot("rj39U", "Id is required"))
+	}
 	// check if Path exist
 	if nocycle.IsFileNonExist(newSpace.Path) {
 		return errors.New(wc.Dot("WXi6O", "Path does not exist, please check if your input is correct"))
@@ -113,28 +115,16 @@ func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebCont
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
 	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
 
-	newSpace.Id = gutils.ShortUUID()
-
 	for _, each := range workspaceRes.WorkSpaces {
 		if each.Path == newSpace.Path {
+			log.Ref().Debug("each.Path: ", each.Path)
 			return errors.New(wc.Dot("7jymU", "the file path is used by other workspace"))
+		}
+		if each.Id == newSpace.Id {
+			return errors.New(wc.Dot("cPzXD", "the id is used by other workspace, check id -> ", each.Id))
 		}
 	}
 
-	for {
-		dup := false
-		for _, each := range workspaceRes.WorkSpaces {
-			if each.Id == newSpace.Id {
-				dup = true
-				break
-			}
-		}
-		if !dup {
-			break
-		} else {
-			newSpace.Id = gutils.ShortUUID()
-		}
-	}
 	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, *newSpace)
 	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 	return nil
@@ -154,6 +144,7 @@ func deleteWorkspaceByID(wc *context.WebContext, workspaceIDOrPath string) {
 		}
 	}
 	workspaceRes.WorkSpaces = newWorkSpaces
+	log.Ref().Debug("all", workspaceRes)
 	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 }
 

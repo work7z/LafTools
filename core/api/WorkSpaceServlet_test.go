@@ -31,6 +31,7 @@ import (
 )
 
 func TestAddNewWorkspace(t *testing.T) {
+	nocycle.MkdirFileWithStr("/home")
 	// Create a mock context and web context
 	c := &gin.Context{}
 	wc := context.WebContext{
@@ -40,12 +41,14 @@ func TestAddNewWorkspace(t *testing.T) {
 
 	// Create a new workspace
 	newSpace := &EachWorkSpace{
+		Id:    "SGPSI",
 		Label: "Test Workspace",
-		Path:  "/path/to/workspace",
+		Path:  "/home",
 	}
 
 	// Call the function
-	deleteWorkspaceByID(&wc, "/path/to/workspace")
+	deleteWorkspaceByID(&wc, newSpace.Path)
+	deleteWorkspaceByID(&wc, newSpace.Id)
 
 	err := addNewWorkspace(newSpace, c, wc)
 
@@ -61,7 +64,7 @@ func TestAddNewWorkspace(t *testing.T) {
 	err = addNewWorkspace(newSpace, c, wc)
 
 	// Assert that an error is returned
-	expectedErr := errors.New(wc.Dot("pNO9x", "the file path exists already"))
+	expectedErr := errors.New(wc.Dot("2nKgN", "the file path is used by other workspace"))
 	assert.EqualError(t, err, expectedErr.Error())
 }
 func TestDeleteWorkspaceByID(t *testing.T) {
