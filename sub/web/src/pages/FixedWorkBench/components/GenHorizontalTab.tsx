@@ -97,7 +97,7 @@ export default () => {
   const tabs: EachTab[] = [];
   // mock data for tabs
   let [moveLeftDistance, onMoveLeftDistance] = useState(0);
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 12; i++) {
     tabs.push({
       id: "tab" + i,
       label: "tab" + i + "-" + moveLeftDistance,
@@ -208,7 +208,7 @@ export default () => {
   let [crtTranslateX, onCrtTranslateX] = useState<number>(0);
   let [p_width, onPWidth] = useState(0);
   let [subP_width, onSubPWidth] = useState(0);
-  let moveStep = 80;
+  let moveStep = 100;
   let allSubChildrenWidth = useMemo(() => {
     var totalWidth = 0;
     $("#" + eleId_subTab)
@@ -225,8 +225,11 @@ export default () => {
   let isItReachedToRightLimit = useMemo(() => {
     let $controlBar = $("#" + eleId_controlBar);
     if ($controlBar.length != 0) {
-      let ctlX = $controlBar[0].getBoundingClientRect().x;
-
+      // let ctlX = $controlBar[0].getBoundingClientRect().x;
+      let isItGreaterThanLimits =
+        Math.abs(crtTranslateX) + subP_width - moveStep > allSubChildrenWidth;
+      // debugger;
+      return isItGreaterThanLimits;
       // let $subLastTab = $("#" + eleId_subTab + "-last");
       // if ($subLastTab.length != 0) {
       // let rect2 = $subLastTab[0].getBoundingClientRect();
@@ -254,8 +257,12 @@ export default () => {
       <div
         className={` flex space-x-0 h-full   w-full  `}
         style={{
-          overflowX: "hidden",
-          transform: "translateX(" + crtTranslateX + "px)",
+          // overflowX: "visible",
+          overflow: "visible",
+          // overflowY: "hidden",
+          // transform: "translateX(" + crtTranslateX + "px)",
+          position: "absolute",
+          left: crtTranslateX + "px",
         }}
         id={eleId_subTab}
         ref={(e) => {
