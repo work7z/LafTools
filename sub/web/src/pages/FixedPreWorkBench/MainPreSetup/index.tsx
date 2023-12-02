@@ -73,6 +73,7 @@ import AlertUtils from "../../../utils/AlertUtils";
 import DesktopUtils from "../../../utils/DesktopUtils";
 import apiSlice from "../../../slice/apiSlice";
 import AjaxUtils from "../../../utils/AjaxUtils";
+import QueryUtils from "../../../utils/QueryUtils";
 
 let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
   Dot("ph5jH", "Handling this part");
@@ -133,7 +134,6 @@ let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
                     intent: "none",
                     icon: "folder-open",
                     onClick: () => {
-                      //
                       DesktopUtils.openDir(x.Path);
                     },
                   },
@@ -192,7 +192,11 @@ export default () => {
 
   // let [] = apiSlice.useAddWorkspaceForEachUserMutation({});
   let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({});
-  let allWorkspaces: EachWorkSpace[] = [];
+  let r = QueryUtils.validateResult(workspaceListRes, {
+    label: Dot("RjCO3", "Workspace List"),
+  });
+  let allWorkspaces: EachWorkSpace[] =
+    workspaceListRes.data?.payload?.value?.WorkSpaces || [];
 
   let [filterText, onFilterText] = useState("");
 
@@ -208,7 +212,7 @@ export default () => {
 
   let entryJSX = (
     <div
-      className="flex flex-col  mt-10  w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-gray-300 dark:shadow-gray-900 rounded self-start px-2 py-2"
+      className="flex flex-col  mt-10 overflow-auto h-[500px] w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-gray-300 dark:shadow-gray-900 rounded self-start px-2 py-2"
       style={{
         minHeight: "400px",
       }}
@@ -270,10 +274,10 @@ export default () => {
                             url: "/workspace/users/add",
                             data: {
                               Id: gutils.uuid(),
-                              Label: _.split(
-                                iptIfHave,
-                                isLinux ? "/" : "\\"
-                              ).pop(),
+                              // Label: _.split(
+                              //   iptIfHave,
+                              //   isLinux ? "/" : "\\"
+                              // ).pop(),
                               Path: iptIfHave,
                             },
                           });
@@ -315,6 +319,7 @@ export default () => {
           }
         />
       </div>
+      {r}
       <div className="mt-2">
         {_.size(finalFilteredWorkspace) == 0 ? (
           <div className="w-full h-full text-center center">

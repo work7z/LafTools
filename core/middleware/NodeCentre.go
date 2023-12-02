@@ -402,9 +402,9 @@ func getBasicExtArrForNodeJS() []string {
 		var devFile string
 		if env.DEV_USING_TSX_FOR_REAL_OUTPUT {
 			extArr = append(extArr, "-T")
-			devFile = nocycle.LafToolsGoRoot + "/sub/node/src/ws-index.ts"
+			devFile = nocycle.LafToolsAppBaseDir + "/sub/node/src/ws-index.ts"
 		} else {
-			devFile = nocycle.LafToolsGoRoot + "/sub/node/build/ws-index.js"
+			devFile = nocycle.LafToolsAppBaseDir + "/sub/node/build/ws-index.js"
 		}
 		extArr = append(extArr, devFile)
 	} else {
@@ -466,7 +466,7 @@ func getModTime(filename string) (int64, error) {
 }
 
 func getBaseDirAboveConsumer() string {
-	return nocycle.MkdirFileWithStr(nocycle.LafToolsGoRoot + "/sub/node/time-consumer")
+	return nocycle.MkdirFileWithStr(nocycle.LafToolsAppBaseDir + "/sub/node/time-consumer")
 }
 
 func getConsumerDir() string {

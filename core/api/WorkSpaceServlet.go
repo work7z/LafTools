@@ -26,6 +26,7 @@ import (
 	"laftools-go/core/context"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
+	"path"
 	"strings"
 	"sync"
 
@@ -50,7 +51,6 @@ type WorkSpaceStruct struct {
 var workspaceLock = &sync.Mutex{}
 
 func API_WorkSpace_GetOne_By_User(c *gin.Context) {
-
 	wc := context.NewWC(c)
 	workspaceId := c.Query("Id")
 	if workspaceId == "" {
@@ -75,9 +75,32 @@ func API_WorkSpace_List_By_User(c *gin.Context) {
 	OKLa(c, DoValueRes(workspaceRes))
 }
 
+var WS_DEFAULT_ID = "default"
+
 func getWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
 	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	hasDefault := false
+	for _, item := range workspaceRes.WorkSpaces {
+		if item.Id == WS_DEFAULT_ID {
+			hasDefault = true
+		}
+	}
+	if !hasDefault {
+		defaultPath := path.Join(nocycle.LafToolsHomeConfigDir)
+		addNewWorkspace(&EachWorkSpace{
+			Id:   WS_DEFAULT_ID,
+			Path: defaultPath,
+		}, wc.GinContext, *wc)
+		workspaceRes = getWorkspaceStruct(workspaceConfigFile)
+	}
+	for _, item := range workspaceRes.WorkSpaces {
+		// iterate workspaceRes, and take the last one of its Path according to current platform if Label is nil or empty, then assign it to Label
+		_, file := path.Split(item.Path)
+		if item.Label == "" {
+			item.Label = file
+		}
+	}
 	return workspaceRes
 }
 

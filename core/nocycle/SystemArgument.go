@@ -23,9 +23,9 @@ package nocycle
 import "os"
 
 var (
-	RefId               string        // for port information, if it's empty, then I will tell you in the home directory
-	IsDevMode           bool   = true // by default, it's true
-	SystemUserLanguage  string = "en_US"
-	LafToolsGoRoot      string = os.Getenv("LAFTOOLS_ROOT")
-	CodeGenAppConfigDir string = os.Getenv("CODEGEN_APP_DIR")
+	RefId                 string        // for port information, if it's empty, then I will tell you in the home directory
+	IsDevMode             bool   = true // by default, it's true
+	SystemUserLanguage    string = "en_US"
+	LafToolsAppBaseDir    string = os.Getenv("LAFTOOLS_ROOT")
+	LafToolsHomeConfigDir string = os.Getenv("CODEGEN_APP_DIR")
 )

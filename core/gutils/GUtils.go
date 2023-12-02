@@ -102,7 +102,7 @@ func GetFrontEndStaticDir() string {
 }
 func GetFrontEndRootAppDir() string {
 	if nocycle.IsDevMode {
-		return (nocycle.LafToolsGoRoot + "/sub/web/build")
+		return (nocycle.LafToolsAppBaseDir + "/sub/web/build")
 	} else {
 		return "unknown_dir"
 	}
@@ -114,10 +114,10 @@ func GetResourceDir() string {
 	return GetSelfExecutionDir() + "/resources"
 }
 func GetSelfExecutionDir() string {
-	if nocycle.LafToolsGoRoot == "" {
+	if nocycle.LafToolsAppBaseDir == "" {
 		logrus.Fatal("CodeGen Root is empty, note that it's not proper setup.")
 	}
-	return nocycle.LafToolsGoRoot
+	return nocycle.LafToolsAppBaseDir
 }
 
 func OpenInBrowser(url string) {

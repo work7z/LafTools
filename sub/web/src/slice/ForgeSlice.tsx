@@ -234,7 +234,7 @@ export const P_ACTION_readForgeFromServerViaAPI = async () => {
   } else {
     ALL_NOCYCLE.store?.dispatch(
       forgeSlice.actions.updateStateComingFromServer({
-        serverForgeStr: QueryUtils.getValueRes(r)?.StateStr,
+        serverForgeStr: QueryUtils.getDoAjaxValueRes(r)?.StateStr,
       })
     );
     RemarkUtils.saveKeyInLS(RemarkUtils.KEY_GET_FORGE_BEFORE);

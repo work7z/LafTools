@@ -75,7 +75,7 @@ export let getAjaxValueRes = function <A extends { [key: string]: any }>(r): A {
 };
 
 const QueryUtils = {
-  getValueRes: getAjaxValueRes,
+  getDoAjaxValueRes: getAjaxValueRes,
   validateResult: (
     res_toolCategory: TypedUseQueryHookResult<any, any, any>,
     options: { label: string; onlyErr?: boolean }

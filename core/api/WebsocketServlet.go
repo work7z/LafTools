@@ -251,7 +251,7 @@ func API_Hmr_Reload(c *gin.Context) {
 	}()
 	var shouldReturn = false
 	var crtLockForWS = &sync.Mutex{}
-	configHmrFile := path.Join(nocycle.LafToolsGoRoot, "sub/web/src/init/hmr.json")
+	configHmrFile := path.Join(nocycle.LafToolsAppBaseDir, "sub/web/src/init/hmr.json")
 	var reloadConfig *HmrReloadConfig = &HmrReloadConfig{}
 	if nocycle.IsFileExist(configHmrFile) {
 		// unmarshal from configHmrFile
@@ -259,7 +259,7 @@ func API_Hmr_Reload(c *gin.Context) {
 		json.Unmarshal([]byte(str), reloadConfig)
 		// check if each file is changed
 		for _, _eachFile := range reloadConfig.Files {
-			eachFile := path.Join(nocycle.LafToolsGoRoot, "sub/web/public", _eachFile)
+			eachFile := path.Join(nocycle.LafToolsAppBaseDir, "sub/web/public", _eachFile)
 			// get last timestamp
 			// if changed, then send reload command to ws
 			lastTimestamp, _ := nocycle.GetFileLastModifiedTimestamp(eachFile)

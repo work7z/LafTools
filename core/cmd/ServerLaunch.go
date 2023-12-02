@@ -95,10 +95,10 @@ func init() {
 	// global root
 	rootCmd.PersistentFlags().BoolVar(&nocycle.IsDevMode, "debug", true, "whether enable release mode or not")
 
-	// init  run server
-	runServerCmd.PersistentFlags().StringVar(&nocycle.RefId, "codegen.refid", "YVwYb.json", "ref for port && status && information")
-	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsGoRoot, "codegen.root", env.ENV_DefaultCodeGenRoot, "system root path")
-	runServerCmd.PersistentFlags().StringVar(&nocycle.CodeGenAppConfigDir, "codegen.appconfigdir", env.ENV_defaultAppConfigDir, "config home path")
+	// init run server
+	runServerCmd.PersistentFlags().StringVar(&nocycle.RefId, "laf-tools.refid", "YVwYb.json", "ref for port && status && information")
+	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsAppBaseDir, "laf-tools.root", env.ENV_DefaultLafToolsRoot, "system root path")
+	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsHomeConfigDir, "laf-tools.appconfigdir", env.ENV_defaultAppConfigDir, "config home path")
 
 	// init middleware
 	middleware.InitCMD(middlewareCmd)
@@ -209,7 +209,7 @@ type RefStatus struct {
 }
 
 func GetRefDir() string {
-	refDir := nocycle.MkdirFileWithStr(path.Join(nocycle.CodeGenAppConfigDir, "ref"))
+	refDir := nocycle.MkdirFileWithStr(path.Join(nocycle.LafToolsHomeConfigDir, "ref"))
 	return refDir
 }
 

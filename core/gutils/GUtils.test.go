@@ -102,7 +102,7 @@ func TestGetResourceDir(t *testing.T) {
 }
 
 func TestGetSelfExecutionDir(t *testing.T) {
-	expectedDir := nocycle.LafToolsGoRoot
+	expectedDir := nocycle.LafToolsAppBaseDir
 	dir := GetSelfExecutionDir()
 	if dir != expectedDir {
 		t.Errorf("GetSelfExecutionDir() = %v, want %v", dir, expectedDir)
