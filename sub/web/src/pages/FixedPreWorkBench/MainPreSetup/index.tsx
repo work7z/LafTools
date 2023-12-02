@@ -202,13 +202,16 @@ export default () => {
 
   let finalFilteredWorkspace = useMemo(() => {
     let lowFilterText = _.toLower(filterText);
+    if (_.trim(lowFilterText)) {
+      return allWorkspaces;
+    }
     return _.filter(allWorkspaces, (x) => {
       return (
         (_.toLower(x.Label + "") + _.toLower(x.Path)).indexOf(lowFilterText) !=
         -1
       );
     });
-  }, [filterText]);
+  }, [filterText, allWorkspaces]);
 
   let entryJSX = (
     <div

@@ -179,6 +179,9 @@ func GetUserForgeFile(userId string) string {
 func GetUserWorkSpaceConfigFile(userId string) string {
 	return GetUserAnyKeyFile(userId, "workspace-config")
 }
+func GetDefaultWorkSpaceDir(userId string) string {
+	return nocycle.MkdirFileWithStr(GetUserAnyKeyFile(userId, "workspace-default"))
+}
 
 func GetTargetUserOwnFolder(userId string) string {
 	userMyFolder := nocycle.MkdirFileWithStr(path.Join(gutils.GetAppHomeConfigDirectory(), "users", userId))

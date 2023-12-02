@@ -134,7 +134,7 @@ export default () => {
   // workspaceId
   let idQueryRes = apiSlice.useGetWorkspaceOneByIdAndUserIdQuery(
     {
-      Id: workspaceId + "OK",
+      Id: workspaceId,
     },
     {
       refetchOnMountOrArgChange: true,

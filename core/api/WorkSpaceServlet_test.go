@@ -89,7 +89,7 @@ func TestDeleteWorkspaceByID(t *testing.T) {
 	// Add workspaces to the configuration file
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
 	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
-	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, *workspaceToDelete, *workspaceToKeep)
+	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, workspaceToDelete, workspaceToKeep)
 	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 
 	// Call the function to delete the workspace

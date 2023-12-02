@@ -67,7 +67,7 @@ export default () => {
   const history = useHistory();
   useEffect(() => {
     setTimeout(() => {
-      history.push("/workbench/tools");
+      history.push("/workbench");
     }, 1000);
   }, []);
 

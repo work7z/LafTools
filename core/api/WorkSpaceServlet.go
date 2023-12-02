@@ -23,6 +23,7 @@ package api
 import (
 	"encoding/json"
 	"errors"
+	"laftools-go/core/config"
 	"laftools-go/core/context"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
@@ -43,7 +44,7 @@ type EachWorkSpace struct {
 	Path  string
 }
 type WorkSpaceStruct struct {
-	WorkSpaces []EachWorkSpace
+	WorkSpaces []*EachWorkSpace
 }
 
 // lock for workspace
@@ -87,7 +88,7 @@ func getWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
 		}
 	}
 	if !hasDefault {
-		defaultPath := path.Join(nocycle.LafToolsHomeConfigDir)
+		defaultPath := config.GetDefaultWorkSpaceDir(wc.GetUserID())
 		addNewWorkspace(&EachWorkSpace{
 			Id:   WS_DEFAULT_ID,
 			Path: defaultPath,
@@ -97,9 +98,10 @@ func getWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
 	for _, item := range workspaceRes.WorkSpaces {
 		// iterate workspaceRes, and take the last one of its Path according to current platform if Label is nil or empty, then assign it to Label
 		_, file := path.Split(item.Path)
-		if item.Label == "" {
-			item.Label = file
+		if strings.Trim(item.Label, "") == "" {
+			(item).Label = file
 		}
+		// item.Label = "n"
 	}
 	return workspaceRes
 }
@@ -148,7 +150,7 @@ func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebCont
 		}
 	}
 
-	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, *newSpace)
+	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, newSpace)
 	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 	return nil
 }
@@ -160,7 +162,7 @@ func deleteWorkspaceByID(wc *context.WebContext, workspaceIDOrPath string) {
 	// label and path cannot be empty
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
 	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
-	var newWorkSpaces []EachWorkSpace
+	var newWorkSpaces []*EachWorkSpace
 	for _, each := range workspaceRes.WorkSpaces {
 		if each.Id != workspaceIDOrPath && each.Path != workspaceIDOrPath {
 			newWorkSpaces = append(newWorkSpaces, each)
@@ -186,7 +188,7 @@ func API_Workspace_Delete_By_User(c *gin.Context) {
 
 func getWorkspaceStruct(workspaceConfigFile string) *WorkSpaceStruct {
 	var workspaceRes *WorkSpaceStruct = &WorkSpaceStruct{
-		WorkSpaces: []EachWorkSpace{},
+		WorkSpaces: []*EachWorkSpace{},
 	}
 	s, e := nocycle.ReadFileAsBytes(workspaceConfigFile)
 	if e == nil {
