@@ -109,18 +109,26 @@ export default () => {
     setActiveTab(tab.id);
   };
   let [eleId_tab] = useState(_.uniqueId(""));
+  let [eleId_subTab] = useState(_.uniqueId(""));
+  let [eleId_controlBar] = useState(_.uniqueId(""));
   let fn_format_each_tab = (verticalMode = false) => {
-    return (tab) => {
+    return (tab, tabIdx, tabList) => {
       let isCurrent = activeTab === tab.id;
       return (
         <div
           key={tab.id}
           onClick={fn_handleClickEachTab(tab)}
-          style={{
-          }}
+          style={{}}
           data-active={isCurrent ? "t" : "f"}
           data-tabid={tab.id}
-          className={` each-tab  hover:bg-gray-300  whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${
+          {...(!verticalMode && tabIdx == _.size(tabList) - 1
+            ? {
+                id: eleId_subTab + "-last",
+              }
+            : {})}
+          className={` ${
+            verticalMode ? "" : " h-each-tab "
+          } each-tab  hover:bg-gray-300  whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${
             isCurrent
               ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] bg-white hover:bg-white dark:text-white dark:bg-gray-500  dark:hover:bg-gray-500  "
               : " dark:hover:bg-gray-600 "
@@ -189,26 +197,70 @@ export default () => {
             // get current tab by $(x).data("tabid")
             let tabId = $(x).data("tabid");
             let currentTab = tabs.find((x) => x.id == tabId);
-            return <div key={idx}>{fn_format_each_tab(true)(currentTab)}</div>;
+            return (
+              <div key={idx}>{fn_format_each_tab(true, idx)(currentTab)}</div>
+            );
           })}
         </div>
       );
     };
   }, []);
+  let [crtTranslateX, onCrtTranslateX] = useState<number>(0);
+  let [p_width, onPWidth] = useState(0);
+  let [subP_width, onSubPWidth] = useState(0);
+  let moveStep = 80;
+  let allSubChildrenWidth = useMemo(() => {
+    var totalWidth = 0;
+    $("#" + eleId_subTab)
+      .children()
+      .each(function (idx, ele) {
+        if (ele) {
+          totalWidth += ele.getBoundingClientRect().width;
+        }
+      });
+    return totalWidth;
+  }, [p_width, subP_width, eleId_subTab, eleId_tab]);
+  let shouldShowLeftRight = p_width > 0 && p_width < allSubChildrenWidth;
+
+  let isItReachedToRightLimit = useMemo(() => {
+    let $controlBar = $("#" + eleId_controlBar);
+    if ($controlBar.length != 0) {
+      let ctlX = $controlBar[0].getBoundingClientRect().x;
+
+      // let $subLastTab = $("#" + eleId_subTab + "-last");
+      // if ($subLastTab.length != 0) {
+      // let rect2 = $subLastTab[0].getBoundingClientRect();
+      // let lastTabX = rect2.x + rect2.width;
+      // debugger;
+      // return lastTabX > ctlX;
+      // }
+    } else {
+      return false;
+    }
+  }, [allSubChildrenWidth, shouldShowLeftRight, crtTranslateX]);
+
   return (
     <div
       style={{
         height: VAL_CSS_TAB_TITLE_PANEL,
       }}
       id={eleId_tab}
+      ref={(e) => {
+        let rect = e?.getBoundingClientRect();
+        rect && onPWidth(rect?.width);
+      }}
       className={`w-full h-full relative border-b-2    border-b-gray-300 dark:border-b-gray-600  ${commonBG} `}
     >
       <div
         className={` flex space-x-0 h-full   w-full  `}
         style={{
           overflowX: "hidden",
-          scrollbarWidth: "none" /* For Firefox */,
-          msOverflowStyle: "none" /* For Internet Explorer and Edge */,
+          transform: "translateX(" + crtTranslateX + "px)",
+        }}
+        id={eleId_subTab}
+        ref={(e) => {
+          let rect = e?.getBoundingClientRect();
+          rect && onSubPWidth(rect?.width);
         }}
         // on mouse scroll
         onWheel={(e) => {
@@ -222,21 +274,39 @@ export default () => {
       >
         {tabs.map(fn_format_each_tab(false))}
       </div>
-      <div className={` absolute  right-0 top-0 h-full px-2  common-border-left pr-1 ${commonBG}`} style={{
-        // paddingLeft: '0'
-      }}>
+      <div
+        id={eleId_controlBar}
+        className={` absolute  right-0 top-0 h-full px-2  common-border-left pr-1 ${commonBG}`}
+        style={
+          {
+            // paddingLeft: '0'
+          }
+        }
+      >
         <ButtonGroup>
           {[
-            {
-              small: true,
-              icon: 'chevron-left',
-              tooltip: Dot("sdfk1","Scroll tabs to left"),
-            },
-            {
-              small: true,
-              icon: 'chevron-right',
-              tooltip: Dot("sdfk13","Scroll tabs to right")
-            },
+            ...(shouldShowLeftRight
+              ? [
+                  {
+                    small: true,
+                    icon: "chevron-left",
+                    tooltip: Dot("sdfk1", "Scroll tabs to left"),
+                    disabled: crtTranslateX == 0,
+                    onClick: () => {
+                      onCrtTranslateX(crtTranslateX + moveStep);
+                    },
+                  },
+                  {
+                    small: true,
+                    icon: "chevron-right",
+                    disabled: isItReachedToRightLimit,
+                    tooltip: Dot("sdfk13", "Scroll tabs to right"),
+                    onClick: () => {
+                      onCrtTranslateX(crtTranslateX - moveStep);
+                    },
+                  },
+                ]
+              : []),
             {
               small: true,
               icon: "chevron-down",
@@ -287,6 +357,7 @@ export default () => {
                 <Tooltip content={x.tooltip} placement="bottom">
                   <Button
                     {...(x as any)}
+                    disabled={x.disabled}
                     minimal
                     className=" h-[28px] w-[28px] "
                     key={x.icon}

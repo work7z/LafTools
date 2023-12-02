@@ -67,7 +67,7 @@ import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";
 import apiSlice from "../../slice/apiSlice";
-import { URL_WORKBENCH_TOOLS } from "../../styles/path";
+
 import { Link } from "react-router-dom";
 import PageUtils from "../../utils/PageUtils";
 import { FnPureToolDefinition } from "../../pages/FixedWorkBench/definitions/WB_Types";

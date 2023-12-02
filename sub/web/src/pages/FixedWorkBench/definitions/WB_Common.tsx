@@ -150,13 +150,6 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
         label: Dot("YrVqdd683", "Manuals"),
       },
       {
-        desc: Dot("Ttrqqet", "Write and Save your thoughts here!"),
-        // pathname: URL_WORKBENCH_NOTES,
-        icon: "git-repo",
-        id: ID_NOTES,
-        label: Dot("VEfeqZG", "Notes"),
-      },
-      {
         desc: Dot(
           "qWw3eTH",
           "This part helps to maintain files on your local disk or cloud disk."
@@ -166,6 +159,13 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
         panel: InnerFilePanel,
         id: ID_FILES,
         label: Dot("znVRwq", "Files"),
+      },
+      {
+        desc: Dot("Ttrqqet", "Write and Save your thoughts here!"),
+        // pathname: URL_WORKBENCH_NOTES,
+        icon: "git-repo",
+        id: ID_NOTES,
+        label: Dot("VEfeqZG", "Notes"),
       },
 
       // write item for manuals

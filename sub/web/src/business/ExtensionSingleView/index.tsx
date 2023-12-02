@@ -49,7 +49,7 @@ import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";
 import apiSlice, { ExtensionVM } from "../../slice/apiSlice";
-import { URL_WORKBENCH_TOOLS } from "../../styles/path";
+
 import { Link } from "react-router-dom";
 import PageUtils from "../../utils/PageUtils";
 import AuthHookUtils from "../../utils/AuthHookUtils";
