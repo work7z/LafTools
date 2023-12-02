@@ -97,7 +97,7 @@ export default () => {
   const tabs: EachTab[] = [];
   // mock data for tabs
   let [moveLeftDistance, onMoveLeftDistance] = useState(0);
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 3; i++) {
     tabs.push({
       id: "tab" + i,
       label: "tab" + i + "-" + moveLeftDistance,
@@ -283,7 +283,9 @@ export default () => {
       </div>
       <div
         id={eleId_controlBar}
-        className={` absolute  right-0 top-0 h-full px-2  common-border-left pr-1 ${commonBG}`}
+        className={` absolute  right-0 top-0 h-full ${
+          shouldShowLeftRight ? "px-2 pr-1" : "px-0"
+        } common-border-left  ${commonBG}`}
         style={
           {
             // paddingLeft: '0'
@@ -312,16 +314,19 @@ export default () => {
                       onCrtTranslateX(crtTranslateX - moveStep);
                     },
                   },
+                  {
+                    small: true,
+                    icon: "chevron-down",
+                    tooltip: Dot("R12bq", "List tabs that are not shown"),
+                    panel: (
+                      <PanelThatNotShown
+                        fn_format_each_tab={fn_format_each_tab}
+                      />
+                    ),
+                  },
                 ]
               : []),
-            {
-              small: true,
-              icon: "chevron-down",
-              tooltip: Dot("R12bq", "List tabs that are not shown"),
-              panel: (
-                <PanelThatNotShown fn_format_each_tab={fn_format_each_tab} />
-              ),
-            },
+
             {
               small: true,
               icon: "more",
