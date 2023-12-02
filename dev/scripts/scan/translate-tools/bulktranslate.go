@@ -78,64 +78,63 @@ func main() {
 	log.Ref().Debug(rawMap)
 	cacheDir := nocycle.MkdirFileWithStr(path.Join(translateResultDir, "cache", id))
 	// "zh-TW"
-	langList := []string{"zh-HK", "zh-CN"}
-	for _, eachLang := range langList {
-		crtResultMap := make(map[string]string)
-		// for each rawMap
-		for k, v := range rawMap {
-			fmt.Println("k: ", k+" -> v:", v)
-			// get md5 for k+v
-			// if md5 file exists, skip
-			// if md5 file not exists, translate
-			// write md5 file
-			// write translate result to file
-			md5Str := fmt.Sprintf("%x", md5.Sum([]byte(k+v)))
-			nocycle.MkdirFileWithStr(path.Join(cacheDir, eachLang))
-			md5FilePath := (path.Join(cacheDir, eachLang, md5Str))
-			var resultForCurrentLang string
-			fmt.Println("md5FilePath: ", md5FilePath)
-			if val, ok := outputJSONMap[k]; ok {
-				resultForCurrentLang = val
-			} else if nocycle.IsFileExist(md5FilePath) {
-				fmt.Println("result existed already")
-				result2, err2 := nocycle.ReadFileAsStr(md5FilePath)
-				if err2 != nil {
-					log.InternalLog.Panic("err", err2)
-				}
-				resultForCurrentLang = result2
-			} else {
-				fmt.Println("new text received")
-				resultForCurrentLang2, err2 := translateNow(v, eachLang)
-				if err2 != nil {
-					log.InternalLog.Panic("err", err2)
-				}
-				resultForCurrentLang = resultForCurrentLang2
-				fmt.Println(resultForCurrentLang)
-				nocycle.WriteStrIntoFile(md5FilePath, resultForCurrentLang)
-				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools", "LafTools工具箱")
-				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, " LafTools工具箱 ", "LafTools工具箱")
+	crtResultMap := make(map[string]string)
+	// for each rawMap
+	for k, v := range rawMap {
+		fmt.Println("k: ", k+" -> v:", v)
+		// get md5 for k+v
+		// if md5 file exists, skip
+		// if md5 file not exists, translate
+		// write md5 file
+		// write translate result to file
+		md5Str := fmt.Sprintf("%x", md5.Sum([]byte(k+v)))
+		nocycle.MkdirFileWithStr(path.Join(cacheDir, eachLang))
+		md5FilePath := (path.Join(cacheDir, eachLang, md5Str))
+		var resultForCurrentLang string
+		fmt.Println("md5FilePath: ", md5FilePath)
+		if val, ok := outputJSONMap[k]; ok {
+			resultForCurrentLang = val
+		} else if nocycle.IsFileExist(md5FilePath) {
+			fmt.Println("result existed already")
+			result2, err2 := nocycle.ReadFileAsStr(md5FilePath)
+			if err2 != nil {
+				log.InternalLog.Panic("err", err2)
 			}
-			// TODO: oragnize below part as separtate json
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "拉夫工具", "LafTools")
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Laf Tools", "LafTools")
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Tools ", "LafTools")
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "工作空间", "工作区")
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools工具箱 ", "LafTools工具箱")
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "CodeGen ToolBox", "CodeGen工具箱")
-			if strings.Index(eachLang, "zh") == 0 {
-				v = strings.Trim(v, " ")
-				if val, ok := zhCNOverwrittenMap[v]; ok {
-					resultForCurrentLang = val
-				}
+			resultForCurrentLang = result2
+		} else {
+			fmt.Println("new text received")
+			resultForCurrentLang2, err2 := translateNow(v, eachLang)
+			if err2 != nil {
+				log.InternalLog.Panic("err", err2)
 			}
-
-			crtResultMap[k] = resultForCurrentLang
+			resultForCurrentLang = resultForCurrentLang2
+			fmt.Println(resultForCurrentLang)
+			nocycle.WriteStrIntoFile(md5FilePath, resultForCurrentLang)
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools", "LafTools工具箱")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, " LafTools工具箱 ", "LafTools工具箱")
 		}
-		// write crtResultMap to file
-		crtResultMapJson, _ := json.MarshalIndent(crtResultMap, "", "    ")
-		crtResultMapJsonPath := path.Join(translateResultDir, "result-"+id+"-"+eachLang+".json")
-		nocycle.WriteBytesIntoFile(crtResultMapJsonPath, crtResultMapJson)
+		// TODO: oragnize below part as separtate json
+		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "拉夫工具", "LafTools")
+		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Laf Tools", "LafTools")
+		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Tools ", "LafTools")
+		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "工作空间", "工作区")
+		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools工具箱 ", "LafTools工具箱")
+		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "CodeGen ToolBox", "CodeGen工具箱")
+		if strings.Index(eachLang, "zh") == 0 {
+			v = strings.Trim(v, " ")
+			if val, ok := zhCNOverwrittenMap[v]; ok {
+				resultForCurrentLang = val
+			}
+		}
+
+		crtResultMap[k] = resultForCurrentLang
 	}
+	// write crtResultMap to file
+	crtResultMapJson, _ := json.MarshalIndent(crtResultMap, "", "    ")
+	crtResultMapJsonPath := path.Join(translateResultDir, "result-"+id+"-"+eachLang+".json")
+
+	nocycle.WriteBytesIntoFile(crtResultMapJsonPath, crtResultMapJson)
+
 	fmt.Println("Done.")
 }
 

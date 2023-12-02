@@ -192,19 +192,7 @@ export default () => {
 
   // let [] = apiSlice.useAddWorkspaceForEachUserMutation({});
   let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({});
-
-  let allWorkspaces: EachWorkSpace[] = [
-    {
-      Id: "default",
-      Label: "testdir",
-      Path: "/users/jerrylai/",
-    },
-    {
-      Id: "mkdi310",
-      Label: "dkk3",
-      Path: "/users/jerrylai/.mincontent/1kd/dkk3",
-    },
-  ];
+  let allWorkspaces: EachWorkSpace[] = [];
 
   let [filterText, onFilterText] = useState("");
 
@@ -271,9 +259,12 @@ export default () => {
                           }
                           iptIfHave = _.trim(iptIfHave + "");
                           let isLinux = iptIfHave.startsWith("/");
-                          await DesktopUtils.checkExistAndAskAndMkdir(
+                          let t1 = await DesktopUtils.checkExistAndAskAndMkdir(
                             iptIfHave
                           );
+                          if (!t1) {
+                            return;
+                          }
                           let r = await AjaxUtils.DoLocalRequestWithNoThrow({
                             isPOST: true,
                             url: "/workspace/users/add",
@@ -325,6 +316,13 @@ export default () => {
         />
       </div>
       <div className="mt-2">
+        {_.size(finalFilteredWorkspace) == 0 ? (
+          <div className="w-full h-full text-center center">
+            {Dot("9zCSc", "No available workspaces")}
+          </div>
+        ) : (
+          ""
+        )}
         <div>
           {finalFilteredWorkspace.map((x) => {
             return <WorkSpaceListItem key={x.Id} item={x} />;

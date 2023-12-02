@@ -26,7 +26,7 @@ import QueryUtils, { getAjaxValueRes } from "./QueryUtils";
 import { Dot } from "./TranslationUtils";
 
 export default {
-  checkExistAndAskAndMkdir: async function (dir: string) {
+  checkExistAndAskAndMkdir: async function (dir: string): Promise<boolean> {
     let r = await AjaxUtils.DoLocalRequestWithNoThrow({
       isPOST: true,
       url: "/os/fileExist",
@@ -52,9 +52,10 @@ export default {
           },
         });
       });
+      // debugger;
       if (!createOrNot) {
         AlertUtils.popCancelled();
-        return;
+        return false;
       }
       if (createOrNot) {
         await this.mkdirFile(dir);

@@ -106,10 +106,8 @@ let toJSON = (obj) => {
   return JSON.stringify(obj, null, 4);
 };
 
-let scan = async (eachRunItem) => {
-  let langarr = ["zh-HK", "zh-CN"];
-
-  for (let eachLang of langarr) {
+let scan = async (eachRunItem, eachLang) => {
+  while (true) {
     let outputLang = eachLang.replace("-", "_");
     let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
@@ -188,6 +186,7 @@ let scan = async (eachRunItem) => {
         : md5(getFile(lastFile).text()) + lastModifiedForIdOverwriteJSONFile;
     if (previousModifiedType[keyidx] == thatFileMD5) {
       console.log("skipped translating due to same md5 file");
+      sleep(1000);
       continue;
     } else {
       console.log("continue to translate " + eachRunItem.dir);
@@ -275,21 +274,21 @@ let scan = async (eachRunItem) => {
       console.log("file not exists: ", resultFile);
       process.exit(-1);
     }
+
+    console.log("------------------------------");
+
+    await sleep(3000);
   }
-
-  console.log("------------------------------");
-
-  await sleep(3000);
-
-  setTimeout(() => {
-    scan(eachRunItem);
-  }, 0);
 };
+
+let langarr = ["zh-HK", "zh-CN"];
 
 for (let eachItem of searchItems) {
   if (fs.existsSync(eachItem.target)) {
-    setTimeout(() => {
-      scan(eachItem);
-    }, 0);
+    for (let eachLang of langarr) {
+      setTimeout(() => {
+        scan(eachItem, eachLang);
+      }, 0);
+    }
   }
 }
