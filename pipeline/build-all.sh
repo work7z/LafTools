@@ -3,12 +3,13 @@
 
 
 cd $(dirname $0)/..
+
 distDir=./dist
 set -e
 source ./pipeline/env.sh
 
 echo "[I] $(date) Working..."
-
+echo "[I] PWD: $(pwd)"
 echo "[I] Removing dist dir: $distDir"
 [ -d $distDir ] && rm -rf $distDir  
 mkdir -p $distDir
@@ -40,12 +41,13 @@ build-core(){
         cp -a $osPatchDir/* $platformDistDir
     fi
 
-    echo "[I] copying resources..."
+    echo "[I] copying resources and web..."
 
     cp -a ./dist/resources $platformDistDir
+    cp -a ./dist/web $platformDistDir
 
-    cp -a ./os-scipt/$osScriptFile/* $platformDistDir
-    cp -a ./os-scipt/$osScriptFile/root/* $platformDistDir
+    cp -a ./os-script/$osScriptFile/* $platformDistDir
+    cp -a ./os-script/root/* $platformDistDir
 
     echo "[I] built"
     echo "--------- CORE DONE ---------"
@@ -61,32 +63,39 @@ build-fe(){
     echo "[I] building fe"
     (
         cd ./sub/web
-        npm run build
-        cp -a ./dist/ $LAFTOOLS_ROOT/dist/resources/web
+        # npm run build
+        cp -a ./dist/ $LAFTOOLS_ROOT/dist/web
     )
     echo "[I] built fe"
 }
 
 build-be(){
     # golang core
-    build-core linux-x64 amd64 "core/CodeGenApplication_unix.go" linux
-    build-core linux-arm64 arm64 "core/CodeGenApplication_unix.go" linux
+    # build-core linux-x64 amd64 "core/CodeGenApplication_unix.go" linux
+    # build-core linux-arm64 arm64 "core/CodeGenApplication_unix.go" linux
     build-core darwin-x64 amd64 "core/CodeGenApplication_unix.go" darwin
-    build-core darwin-arm64 arm64 "core/CodeGenApplication_unix.go" darwin
-    build-core windows-x64 amd64 "core/CodeGenApplication_windows.go" windows
-    build-core windows-arm64 arm64 "core/CodeGenApplication_windows.go" windows
+    # build-core darwin-arm64 arm64 "core/CodeGenApplication_unix.go" darwin
+    # build-core windows-x64 amd64 "core/CodeGenApplication_windows.go" windows
+    # build-core windows-arm64 arm64 "core/CodeGenApplication_windows.go" windows
 }
 
 clean-stuff(){
     echo "[I] executing chmod if needed.."
     find ./dist -iname "*.bin" -exec chmod 755 {} \;
+    find ./dist -iname "*.sh" -exec chmod 755 {} \;
+    find ./dist -iname "*.command" -exec chmod 755 {} \;
     find ./dist -iname "ph" -exec rm -f {} \;
+}
+test-run(){
+    cd $LAFTOOLS_ROOT/dist/os/darwin-x64
+    ./run.command
 }
 
 build-res
 build-fe 
 build-be
 clean-stuff
+test-run
 
 
 echo "[I] $(date) Done."

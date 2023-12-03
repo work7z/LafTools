@@ -22,7 +22,6 @@ package api
 
 import (
 	"laftools-go/core/gutils"
-	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
 	"laftools-go/core/url"
 	"path"
@@ -52,11 +51,11 @@ func ConfigSystemRouter(r *gin.Engine) {
 	if nocycle.IsDevMode {
 		// do nothing, this part will move to r.NoRoute part below.
 	} else {
-		log.Ref().Fatal("Not yet supported this app and static")
 		feAppDir := gutils.GetFrontEndRootAppDir()
 		feStaticDir := gutils.GetFrontEndStaticDir()
 		r.Static(url.CONFIG_URL_APP_FRONT_END_APP_PREFIX, feAppDir)
 		r.Static(url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX, feStaticDir)
+		r.Static(url.CONFIG_URL_APP_FRONT_END_ASSETS_PREFIX, path.Join(feStaticDir, "assets"))
 	}
 
 	// setup for SPA

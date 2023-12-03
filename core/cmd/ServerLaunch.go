@@ -96,9 +96,10 @@ func init() {
 	rootCmd.PersistentFlags().BoolVar(&nocycle.IsDevMode, "debug", true, "whether enable release mode or not")
 
 	// init run server
-	runServerCmd.PersistentFlags().StringVar(&nocycle.RefId, "laf-tools.refid", "YVwYb.json", "ref for port && status && information")
-	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsAppBaseDir, "laf-tools.root", env.ENV_DefaultLafToolsRoot, "system root path")
-	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsHomeConfigDir, "laf-tools.appconfigdir", env.ENV_defaultAppConfigDir, "config home path")
+	runServerCmd.PersistentFlags().StringVar(&nocycle.RefId, "ref-id", "dkzhZ.json", "stats report")
+	runServerCmd.PersistentFlags().IntVar(&env.ENV_ProdPortStartFrom, "port", -1, "port")
+	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsAppBaseDir, "root", env.ENV_DefaultLafToolsRoot, "system root path")
+	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsHomeConfigDir, "home", env.ENV_defaultAppConfigDir, "config home path")
 
 	// init middleware
 	middleware.InitCMD(middlewareCmd)
@@ -147,11 +148,14 @@ func LaunchCodeGenServer() {
 	}
 
 	// set begin port
-	beginPort := env.ENV_ProdPortStartFrom
+	beginPort := 0
 	if nocycle.IsDevMode {
 		beginPort = env.ENV_DevPortStartFrom
+	} else {
+		beginPort = env.ENV_ProdPortStartFrom
 	}
 
+	// if this port is unavailable, then use higher one
 	port, err2 := GetAvailableTCPPortFrom(beginPort)
 
 	if port == env.ENV_DevPortStartFrom && !nocycle.IsDevMode {

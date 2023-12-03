@@ -105,16 +105,16 @@ func GetFrontEndStaticDir() string {
 }
 func GetFrontEndRootAppDir() string {
 	if nocycle.IsDevMode {
-		return (nocycle.LafToolsAppBaseDir + "/sub/web/build")
+		return path.Join(nocycle.LafToolsAppBaseDir, "/sub/web/build")
 	} else {
-		return "unknown_dir"
+		return path.Join(nocycle.LafToolsAppBaseDir, "web")
 	}
 }
 func GetLangDir() string {
 	return path.Join(GetResourceDir(), "lang")
 }
 func GetResourceDir() string {
-	return GetSelfExecutionDir() + "/resources"
+	return path.Join(GetSelfExecutionDir(), "resources")
 }
 func GetSelfExecutionDir() string {
 	if nocycle.LafToolsAppBaseDir == "" {
