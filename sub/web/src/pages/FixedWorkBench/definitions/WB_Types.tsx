@@ -24,6 +24,7 @@ export type EachWorkSpace = {
   Label: string;
   Id: string;
   Path: string;
+  ShowPath: string;
 };
 
 export type WorkSpaceStruct = {

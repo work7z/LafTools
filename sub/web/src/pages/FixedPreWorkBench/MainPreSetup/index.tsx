@@ -75,7 +75,7 @@ import apiSlice from "../../../slice/apiSlice";
 import AjaxUtils from "../../../utils/AjaxUtils";
 import QueryUtils from "../../../utils/QueryUtils";
 
-let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
+let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
   Dot("ph5jH", "Handling this part");
   Dot("SdGcT", "Other part");
 
@@ -103,7 +103,7 @@ let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
         }}
       >
         <div className="">{x.Label}</div>
-        <div className="text-stone-400">{x.Path}</div>
+        <div className="text-stone-400">{x.ShowPath}</div>
         <div
           className={
             "align-end absolute right-[5px] top-[27%]  " +
@@ -151,7 +151,20 @@ let WorkSpaceListItem = (props: { item: EachWorkSpace }) => {
                     intent: "danger",
                     icon: "trash",
                     onClick: () => {
-                      //
+                      AjaxUtils.DoLocalRequestWithNoThrow({
+                        isPOST: true,
+                        url: "/workspace/users/delete",
+                        data: {
+                          Id: x.Id,
+                        },
+                      }).then((x) => {
+                        props.refetch && props.refetch();
+                        if (x?.error) {
+                          AlertUtils.popError(x?.error);
+                        } else {
+                          AlertUtils.popCopyOK();
+                        }
+                      });
                     },
                   },
                 ].map((x) => {
@@ -333,7 +346,13 @@ export default () => {
         )}
         <div>
           {finalFilteredWorkspace.map((x) => {
-            return <WorkSpaceListItem key={x.Id} item={x} />;
+            return (
+              <WorkSpaceListItem
+                refetch={workspaceListRes.refetch}
+                key={x.Id}
+                item={x}
+              />
+            );
           })}
         </div>
       </div>

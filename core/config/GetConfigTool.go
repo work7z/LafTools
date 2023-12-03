@@ -180,7 +180,7 @@ func GetUserWorkSpaceConfigFile(userId string) string {
 	return GetUserAnyKeyFile(userId, "workspace-config")
 }
 func GetDefaultWorkSpaceDir(userId string) string {
-	return nocycle.MkdirFileWithStr(GetUserAnyKeyFile(userId, "workspace-default"))
+	return nocycle.MkdirFileWithStr(path.Join(gutils.GetAppHomeConfigDirectory(), userId, "workspace", "default"))
 }
 
 func GetTargetUserOwnFolder(userId string) string {

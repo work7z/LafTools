@@ -82,6 +82,11 @@ const AlertUtils = {
       message: Dot("ip2g1", "Copied"),
     });
   },
+  popOK() {
+    AlertUtils.popMsg("success", {
+      message: Dot("mihc3", "Completed this operation"),
+    });
+  },
   popRefresh() {
     AlertUtils.popMsg("success", {
       icon: "refresh",

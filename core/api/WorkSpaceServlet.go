@@ -25,6 +25,7 @@ import (
 	"errors"
 	"laftools-go/core/config"
 	"laftools-go/core/context"
+	"laftools-go/core/gutils"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
 	"path"
@@ -39,9 +40,10 @@ type WorkSpaceListByUserForm struct {
 }
 
 type EachWorkSpace struct {
-	Id    string
-	Label string
-	Path  string
+	Id       string
+	Label    string
+	Path     string
+	ShowPath string
 }
 type WorkSpaceStruct struct {
 	WorkSpaces []*EachWorkSpace
@@ -97,11 +99,12 @@ func getWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
 	}
 	for _, item := range workspaceRes.WorkSpaces {
 		// iterate workspaceRes, and take the last one of its Path according to current platform if Label is nil or empty, then assign it to Label
-		_, file := path.Split(item.Path)
+		dir, file := path.Split(item.Path)
 		if strings.Trim(item.Label, "") == "" {
 			(item).Label = file
 		}
-		// item.Label = "n"
+		item.ShowPath = dir
+		item.ShowPath = strings.ReplaceAll(item.ShowPath, gutils.GetUserHomeDir(), "~")
 	}
 	return workspaceRes
 }
