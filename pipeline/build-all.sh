@@ -23,11 +23,12 @@ build-core(){
     platformDistDir=./dist/os/$platformName/
     echo "--------- CORE BEGIN ---------"
     echo "[I] building be core"
-
+    osScriptFile=$argGOOS
     if [ $platformName == "windows-x64" ] || [ $platformName == "windows-arm64" ]; then
         platformExt=exe
+        osScriptFile=windows
     fi
-
+    
     [ -d $platformDistDir ] && rm -rf $platformDistDir
 
     mkdir -p $platformDistDir
