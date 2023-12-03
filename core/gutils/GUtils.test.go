@@ -70,7 +70,7 @@ func TestGetResourceFormDir(t *testing.T) {
 }
 
 func TestGetResourceNonProhibitedDir(t *testing.T) {
-	expectedDir := filepath.Join(GetResourceDir(), "non-prohibited")
+	expectedDir := filepath.Join(GetResourceDir(), "public")
 	dir := GetResourceNonProhibitedDir()
 	if dir != expectedDir {
 		t.Errorf("GetResourceNonProhibitedDir() = %v, want %v", dir, expectedDir)

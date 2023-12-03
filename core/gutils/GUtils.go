@@ -69,7 +69,7 @@ func GetResourceFormDir() string {
 	return path.Join(GetResourceDir(), "form")
 }
 func GetResourceNonProhibitedDir() string {
-	return path.Join(GetResourceDir(), "non-prohibited")
+	return path.Join(GetResourceDir(), "public")
 }
 func CleanHistoricalFilesByHour(dir string, hour int) {
 	CleanHistoricalFilesByMinute(dir, hour*60)

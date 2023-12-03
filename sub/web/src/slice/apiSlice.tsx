@@ -35,7 +35,7 @@ import {
 
 let createNotProhibitedResources = (build, resName) => {
   return build.query({
-    query: () => `/res/non-prohibited/${resName}`,
+    query: () => `/res/public/${resName}`,
   });
 };
 

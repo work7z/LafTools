@@ -19,7 +19,7 @@ npm run gen
 rm -rf build/lang
 cp -a ./src/lang/ build/lang/
 
-targetDir=$LAFTOOLS_ROOT/resources/non-prohibited/purejs
+targetDir=$LAFTOOLS_ROOT/resources/public/purejs
 # rm -rf $targetDir
 mkdir -p $targetDir 
 

@@ -151,7 +151,7 @@ func ConfigSystemRouter(r *gin.Engine) {
 
 	// static folders
 	nonPDir := gutils.GetResourceNonProhibitedDir()
-	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/non-prohibited")), nonPDir)
+	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/public")), nonPDir)
 
 	// temporary unused code
 	// admin

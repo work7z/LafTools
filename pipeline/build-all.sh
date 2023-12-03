@@ -62,6 +62,7 @@ build-fe(){
     (
         cd ./sub/web
         npm run build
+        cp -a ./dist/ $LAFTOOLS_ROOT/dist/resources/web
     )
     echo "[I] built fe"
 }

@@ -5,4 +5,4 @@ sub/node/src/lib/prettier/* linguist-detectable=false
 sub/node/src/lib/prettier/doc.js linguist-detectable=false
 frontend/wailsjs/runtime/runtime.js linguist-detectable=false
 sub/node/src/lib/prettier/third-party.js linguist-detectable=false
-resources/non-prohibited/purejs linguist-detectable=false
+resources/public/purejs linguist-detectable=false
