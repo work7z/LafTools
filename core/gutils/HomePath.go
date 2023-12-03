@@ -36,18 +36,21 @@ func GetUserHomeDir() string {
 }
 
 func GetAppHomeConfigDirectory() string {
-	return nocycle.MkdirFileWithStr(path.Join(GetAppHomePath(), "config"))
-}
-func GetAppHomeGlobalDataDirectory() string {
-	return nocycle.MkdirFileWithStr(path.Join(GetAppHomePath(), "data"))
+	return nocycle.MkdirFileWithStr(path.Join(GetAppHomeDirectory(), "config"))
 }
 func GetAppHomeTempDirectory() string {
-	return nocycle.MkdirFileWithStr(path.Join(GetAppHomePath(), "temp"))
+	return nocycle.MkdirFileWithStr(path.Join(GetAppHomeDirectory(), "temp"))
 }
 
-func GetAppHomePath() string {
-	pathname := path.Join(GetUserHomeDir(), env.ENV_AppDirName)
+func GetAppHomeDirectory() string {
+	pathname := path.Join(GetUserHomeDir(), env.ENV_AppHomeDirName)
 	e := nocycle.MkdirFile(pathname)
-	nocycle.ShouldNoErr(e, "~/"+env.ENV_AppDirName+" cannot be created")
+	nocycle.ShouldNoErr(e, "~/"+env.ENV_AppHomeDirName+" cannot be created")
+	return pathname
+}
+func GetAppDataDirectory() string {
+	pathname := path.Join(GetUserHomeDir(), env.ENV_AppHomeDirName)
+	e := nocycle.MkdirFile(pathname)
+	nocycle.ShouldNoErr(e, "~/"+env.ENV_AppHomeDirName+" cannot be created")
 	return pathname
 }

@@ -32,7 +32,7 @@ var homeDir, _ = os.UserHomeDir()
 // note that you shouldn't commit this file unless any value really need to be updated.
 
 var ENV_DefaultLafToolsRoot = os.Getenv("LAFTOOLS_ROOT")
-var ENV_defaultAppConfigDir = path.Join(homeDir, ENV_AppDirName)
+var ENV_defaultAppConfigDir = path.Join(homeDir, ENV_AppHomeDirName)
 
 var ENV_ShouldPrintLogAsJSON = false
 

@@ -47,7 +47,7 @@ func PublishLogToExternalLog(item GlobalLogType) {
 	instGlobalLogCollector.List = append(instGlobalLogCollector.List, item)
 	a, err := json.Marshal(instGlobalLogCollector)
 	if err == nil {
-		filepath := path.Join(gutils.GetAppHomePath(), "publish-to-external.json")
+		filepath := path.Join(gutils.GetAppHomeDirectory(), "publish-to-external.json")
 		err2 := ioutil.WriteFile(filepath, a, 0755)
 		if err2 != nil {
 			InternalLog.Warnf("Publish-log-pid.json unable to access")
