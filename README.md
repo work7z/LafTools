@@ -86,7 +86,7 @@ cd sub/web
 # using pnpm instead of npm
 npm i -g pnpm
 # install ts-node
-npm i -g ts-node@10.9.1
+npm i -g typescript
 # install project deps
 pnpm install
 # start webpack service

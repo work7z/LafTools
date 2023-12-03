@@ -26,7 +26,6 @@ build-core(){
     osScriptFile=$argGOOS
     if [ $platformName == "windows-x64" ] || [ $platformName == "windows-arm64" ]; then
         platformExt=exe
-        osScriptFile=windows
     fi
     
     [ -d $platformDistDir ] && rm -rf $platformDistDir
@@ -45,8 +44,8 @@ build-core(){
 
     cp -a ./dist/resources $platformDistDir
 
-    echo "[I] executing chmod if needed.."
-    find $platformDistDir -iname "*.bin" -exec chmod 755 {} \;
+    cp -a ./os-scipt/$osScriptFile/* $platformDistDir
+    cp -a ./os-scipt/$osScriptFile/root/* $platformDistDir
 
     echo "[I] built"
     echo "--------- CORE DONE ---------"
@@ -78,10 +77,16 @@ build-be(){
     build-core windows-arm64 arm64 "core/CodeGenApplication_windows.go" windows
 }
 
+clean-stuff(){
+    echo "[I] executing chmod if needed.."
+    find ./dist -iname "*.bin" -exec chmod 755 {} \;
+    find ./dist -iname "ph" -exec rm -f {} \;
+}
+
 build-res
 build-fe 
 build-be
-
+clean-stuff
 
 
 echo "[I] $(date) Done."
