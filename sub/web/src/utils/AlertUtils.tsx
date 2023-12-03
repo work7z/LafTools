@@ -120,6 +120,16 @@ const AlertUtils = {
     let dis = FN_GetDispatch();
     dis(statusSlice.actions.updateConfirmList(o));
   },
+  // promise for win_confirm
+  win_confirm_promise(o: ConfirmType): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      o.fn = (isOK) => {
+        resolve(isOK);
+      };
+      let dis = FN_GetDispatch();
+      dis(statusSlice.actions.updateConfirmList(o));
+    });
+  },
   // add deleteById for separately alert, prompt, confirm
   // delete alertList
   deleteAlertList(id: string) {

@@ -38,6 +38,9 @@ func GetUserHomeDir() string {
 func GetAppHomeConfigDirectory() string {
 	return nocycle.MkdirFileWithStr(path.Join(GetAppHomePath(), "config"))
 }
+func GetAppHomeGlobalDataDirectory() string {
+	return nocycle.MkdirFileWithStr(path.Join(GetAppHomePath(), "data"))
+}
 func GetAppHomeTempDirectory() string {
 	return nocycle.MkdirFileWithStr(path.Join(GetAppHomePath(), "temp"))
 }

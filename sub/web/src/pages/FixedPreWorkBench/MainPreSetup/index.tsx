@@ -150,7 +150,17 @@ let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
                     label: Dot("asElV", "Remove"),
                     intent: "danger",
                     icon: "trash",
-                    onClick: () => {
+                    onClick: async () => {
+                      let confirmed = await AlertUtils.win_confirm_promise({
+                        id: "oLBBG",
+                        msg: Dot(
+                          "ZAGva",
+                          "Are you sure to delete this workspace?"
+                        ),
+                      });
+                      if (!confirmed) {
+                        return;
+                      }
                       AjaxUtils.DoLocalRequestWithNoThrow({
                         isPOST: true,
                         url: "/workspace/users/delete",
@@ -162,7 +172,7 @@ let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
                         if (x?.error) {
                           AlertUtils.popError(x?.error);
                         } else {
-                          AlertUtils.popCopyOK();
+                          AlertUtils.popOK();
                         }
                       });
                     },
