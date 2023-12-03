@@ -67,7 +67,7 @@ let extsMapKeys = Object.keys(extsMap);
 for (let i = 0; i < extsMapKeys.length; i++) {
   let ext = extsMapKeys[i];
   let extInfo = extsMap[ext];
-  let extInfoJson = JSON.stringify(extInfo.default);
+  let extInfoJson = JSON.stringify(extInfo.default, null, 2);
   // mkdir -p ../build/exts/${ext} if not exists
   let extInfoJsonDir = path.join(__dirname, "..", "build", "exts", ext);
   if (!fs.existsSync(extInfoJsonDir)) {
