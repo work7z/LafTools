@@ -108,176 +108,182 @@ let toJSON = (obj) => {
 
 let scan = async (eachRunItem, eachLang) => {
   while (true) {
-    let outputLang = eachLang.replace("-", "_");
-    let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
+    try {
+      let outputLang = eachLang.replace("-", "_");
+      let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
-    let dir = getFile(eachRunItem.dir); // replace with appropriate function
-    let idOverwriteJSONFile = getFile(`${overwrittenDir}/id-overwrite.json`); // replace with appropriate function
-    let zhCNOverwriteJSONFile = getFile(
-      `${overwrittenDir}/zh-CN-overwrite.json`
-    ); // replace with appropriate function
-    let zhONJsonMap = zhCNOverwriteJSONFile.jsonmap();
-    let enUSMap = readFileAsJSONMap(zhCNOverwriteJSONFile.text()); // replace with appropriate function
-    let lastModifiedForIdOverwriteJSONFile =
-      idOverwriteJSONFile.lastModified() + zhCNOverwriteJSONFile.lastModified();
+      let dir = getFile(eachRunItem.dir); // replace with appropriate function
+      let idOverwriteJSONFile = getFile(`${overwrittenDir}/id-overwrite.json`); // replace with appropriate function
+      let zhCNOverwriteJSONFile = getFile(
+        `${overwrittenDir}/zh-CN-overwrite.json`
+      ); // replace with appropriate function
+      let zhONJsonMap = zhCNOverwriteJSONFile.jsonmap();
+      let enUSMap = readFileAsJSONMap(zhCNOverwriteJSONFile.text()); // replace with appropriate function
+      let lastModifiedForIdOverwriteJSONFile =
+        idOverwriteJSONFile.lastModified() +
+        zhCNOverwriteJSONFile.lastModified();
 
-    // iterate all files for dir.file, recursively
-    let iterateFiles = (dir, done) => {
-      let results = [];
-      fs.readdir(dir, function (err, list) {
-        if (err) return done(err);
-        var pending = list.length;
-        if (!pending) return done(null, results);
-        list.forEach(function (file) {
-          file = path.resolve(dir, file);
-          fs.stat(file, function (err, stat) {
-            if (stat && stat.isDirectory()) {
-              iterateFiles(file, function (err, res) {
-                results = results.concat(res);
+      // iterate all files for dir.file, recursively
+      let iterateFiles = (dir, done) => {
+        let results = [];
+        fs.readdir(dir, function (err, list) {
+          if (err) return done(err);
+          var pending = list.length;
+          if (!pending) return done(null, results);
+          list.forEach(function (file) {
+            file = path.resolve(dir, file);
+            fs.stat(file, function (err, stat) {
+              if (stat && stat.isDirectory()) {
+                iterateFiles(file, function (err, res) {
+                  results = results.concat(res);
+                  if (!--pending) done(null, results);
+                });
+              } else {
+                results.push(file);
                 if (!--pending) done(null, results);
-              });
-            } else {
-              results.push(file);
-              if (!--pending) done(null, results);
-            }
+              }
+            });
           });
         });
-      });
-    };
-    // get all files
-    let allFiles = await new Promise((resolve, reject) => {
-      iterateFiles(dir.file, (err, results) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(results);
-        }
-      });
-    });
-
-    // sort allFiles by name
-    allFiles.sort((a, b) => {
-      return a.localeCompare(b);
-    });
-    let md5TypeForLastModified = 0;
-    let lastFile = null;
-    for (let eachFile of allFiles) {
-      eachFile += "";
-      let file = getFile(eachFile); // replace with appropriate function
-      // console.log('file:',eachFile)
-      if (
-        // !(eachFile + "").endsWith(".json") &&
-        (eachFile + "").endsWith("go") ||
-        (eachFile + "").endsWith("ts") ||
-        (eachFile + "").endsWith("tsx")
-        // true
-      ) {
-        // lastModifiedForIdOverwriteJSONFile += file.lastModified();
-        if (md5TypeForLastModified < file.lastModified()) {
-          md5TypeForLastModified = file.lastModified();
-          lastFile = file.file;
-        }
-      }
-    }
-    let keyidx = eachRunItem.id + eachLang;
-    let thatFileMD5 =
-      md5TypeForLastModified == 0
-        ? ""
-        : md5(getFile(lastFile).text()) + lastModifiedForIdOverwriteJSONFile;
-    if (previousModifiedType[keyidx] == thatFileMD5) {
-      console.log("skipped translating due to same md5 file");
-      sleep(1000);
-      continue;
-    } else {
-      console.log("continue to translate " + eachRunItem.dir);
-      previousModifiedType[keyidx] = thatFileMD5;
-    }
-    console.log(thatFileMD5);
-    console.log(lastFile);
-
-    let anyDuplicateSet = {};
-
-    let waitTranslateObj = {};
-    // iterate all files
-    for (let eachFile of allFiles) {
-      let file = getFile(eachFile); // replace with appropriate function
-      let text = file.text();
-      let match;
-      while ((match = eachRunItem.pattern.exec(text))) {
-        let key = match[2];
-        let value = match[4];
-        // console.log('key is '+key, ', value is ',value)
-        if (value) {
-          if (!_.isNil(waitTranslateObj[key])) {
-            // sh.exec(
-            //   'say "detected duplicate item, will sleep for a while and re-check it again"'
-            // );
-            // console.log("duplicate id: ", key);
-            // await sleep(10000);
+      };
+      // get all files
+      let allFiles = await new Promise((resolve, reject) => {
+        iterateFiles(dir.file, (err, results) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(results);
           }
-          waitTranslateObj[key] = value;
-          // crtMap_zhCN[key] = value;
-          // crtMap_zhHK[key] = value;
-        }
-        // substring
-        text = text.substring(match.index + match[0].length);
-      }
-    }
-
-    let waitTranslateObjStr = toJSON(waitTranslateObj);
-    // console.log(waitTranslateObj);
-
-    let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
-    if (!fs.existsSync(tmpTranslateDir)) {
-      fs.mkdirSync(tmpTranslateDir);
-    }
-    fs.writeFileSync(
-      path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
-      waitTranslateObjStr
-    );
-    fs.writeFileSync(
-      path.join(tmpTranslateDir, `config-${eachRunItem.id}-${eachLang}.json`),
-      toJSON({
-        id: eachRunItem.id,
-      })
-    );
-
-    // execute a command
-    let cmd = `go run ./translate-tools/bulktranslate.go --id=${eachRunItem.id} --lg=${eachLang} --output=${outputLangFile} `;
-    console.log("cmd is ", cmd);
-    sh.exec(cmd);
-    // console.log();
-
-    let resultFile = path.join(
-      __dirname,
-      `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`
-    );
-    if (fs.existsSync(resultFile)) {
-      let resultJSON = getFile(resultFile).jsonmap();
-      _.forEach(overwrritenMap, (x, d, n) => {
-        if (resultJSON[d]) {
-          resultJSON[d] = x;
-        }
+        });
       });
 
-      if (eachLang != "zh-CN") {
-        resultJSON = _.mapValues(resultJSON, (x, d, n) => {
-          return _.chain(x)
-            .split("")
-            .map((xx) => cnchars.toTraditionalChar(xx))
-            .join("")
-            .value();
-        });
+      // sort allFiles by name
+      allFiles.sort((a, b) => {
+        return a.localeCompare(b);
+      });
+      let md5TypeForLastModified = 0;
+      let lastFile = null;
+      for (let eachFile of allFiles) {
+        eachFile += "";
+        let file = getFile(eachFile); // replace with appropriate function
+        // console.log('file:',eachFile)
+        if (
+          // !(eachFile + "").endsWith(".json") &&
+          (eachFile + "").endsWith("go") ||
+          (eachFile + "").endsWith("ts") ||
+          (eachFile + "").endsWith("tsx")
+          // true
+        ) {
+          // lastModifiedForIdOverwriteJSONFile += file.lastModified();
+          if (md5TypeForLastModified < file.lastModified()) {
+            md5TypeForLastModified = file.lastModified();
+            lastFile = file.file;
+          }
+        }
       }
-      fs.writeFileSync(outputLangFile, toJSON(resultJSON));
-    } else {
-      console.log("file not exists: ", resultFile);
-      process.exit(-1);
+      let keyidx = eachRunItem.id + eachLang;
+      let thatFileMD5 =
+        md5TypeForLastModified == 0
+          ? ""
+          : md5(getFile(lastFile).text()) + lastModifiedForIdOverwriteJSONFile;
+      if (previousModifiedType[keyidx] == thatFileMD5) {
+        // console.log("skipped translating due to same md5 file");
+        // sleep(1000);
+        continue;
+      } else {
+        console.log("continue to translate " + eachRunItem.dir);
+        previousModifiedType[keyidx] = thatFileMD5;
+      }
+      console.log(thatFileMD5);
+      console.log(lastFile);
+
+      let anyDuplicateSet = {};
+
+      let waitTranslateObj = {};
+      // iterate all files
+      for (let eachFile of allFiles) {
+        let file = getFile(eachFile); // replace with appropriate function
+        let text = file.text();
+        let match;
+        while ((match = eachRunItem.pattern.exec(text))) {
+          let key = match[2];
+          let value = match[4];
+          // console.log('key is '+key, ', value is ',value)
+          if (value) {
+            if (!_.isNil(waitTranslateObj[key])) {
+              // sh.exec(
+              //   'say "detected duplicate item, will sleep for a while and re-check it again"'
+              // );
+              // console.log("duplicate id: ", key);
+              // await sleep(10000);
+            }
+            waitTranslateObj[key] = value;
+            // crtMap_zhCN[key] = value;
+            // crtMap_zhHK[key] = value;
+          }
+          // substring
+          text = text.substring(match.index + match[0].length);
+        }
+      }
+
+      let waitTranslateObjStr = toJSON(waitTranslateObj);
+      // console.log(waitTranslateObj);
+
+      let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
+      if (!fs.existsSync(tmpTranslateDir)) {
+        fs.mkdirSync(tmpTranslateDir);
+      }
+      fs.writeFileSync(
+        path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
+        waitTranslateObjStr
+      );
+      fs.writeFileSync(
+        path.join(tmpTranslateDir, `config-${eachRunItem.id}-${eachLang}.json`),
+        toJSON({
+          id: eachRunItem.id,
+        })
+      );
+
+      // execute a command
+      let cmd = `go run ./translate-tools/bulktranslate.go --id=${eachRunItem.id} --lg=${eachLang} --output=${outputLangFile} `;
+      console.log("cmd is ", cmd);
+      sh.exec(cmd);
+      // console.log();
+
+      let resultFile = path.join(
+        __dirname,
+        `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`
+      );
+      if (fs.existsSync(resultFile)) {
+        let resultJSON = getFile(resultFile).jsonmap();
+        _.forEach(overwrritenMap, (x, d, n) => {
+          if (resultJSON[d]) {
+            resultJSON[d] = x;
+          }
+        });
+
+        if (eachLang != "zh-CN") {
+          resultJSON = _.mapValues(resultJSON, (x, d, n) => {
+            return _.chain(x)
+              .split("")
+              .map((xx) => cnchars.toTraditionalChar(xx))
+              .join("")
+              .value();
+          });
+        }
+        fs.writeFileSync(outputLangFile, toJSON(resultJSON));
+      } else {
+        console.log("file not exists: ", resultFile);
+        process.exit(-1);
+      }
+
+      console.log("------------------------------");
+
+      await sleep(3000);
+    } catch (e) {
+      console.log("err", e);
+      await sleep(3000);
     }
-
-    console.log("------------------------------");
-
-    await sleep(3000);
   }
 };
 
