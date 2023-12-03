@@ -55,7 +55,7 @@ func ConfigSystemRouter(r *gin.Engine) {
 		feStaticDir := gutils.GetFrontEndStaticDir()
 		r.Static(url.CONFIG_URL_APP_FRONT_END_APP_PREFIX, feAppDir)
 		r.Static(url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX, feStaticDir)
-		r.Static(url.CONFIG_URL_APP_FRONT_END_ASSETS_PREFIX, path.Join(feStaticDir, "assets"))
+		r.Static(url.CONFIG_URL_APP_FRONT_END_ASSETS_PREFIX, path.Join(feAppDir, "assets"))
 	}
 
 	// setup for SPA

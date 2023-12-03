@@ -37,6 +37,7 @@ func Fn_GetAllowURLDefinitions() []string {
 	filesList := []string{
 		CONFIG_URL_APP_FRONT_END_APP_PREFIX,
 		CONFIG_URL_APP_FRONT_END_STATIC_PREFIX,
+		CONFIG_URL_APP_FRONT_END_ASSETS_PREFIX,
 		"/ws/", // websocket has own auth logic, no need to be checked here
 	}
 	// append CONFIG_URL_ADMIN_URLS and CONFIG_URL_ADMIN_URLS into filesList
