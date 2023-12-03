@@ -14,8 +14,6 @@ echo "[I] Removing dist dir: $distDir"
 mkdir -p $distDir
 
 build-core(){
-    echo "--------- CORE BEGIN ---------"
-    echo "[I] building be core"
     platformName=$1
     platformArch=$2
     platformGoFile=$3
@@ -23,6 +21,8 @@ build-core(){
     argGOOS=$4
     osPatchDir=./os-patch/$platformName
     platformDistDir=./dist/os/$platformName/
+    echo "--------- CORE BEGIN ---------"
+    echo "[I] building be core"
 
     if [ $platformName == "windows-x64" ] || [ $platformName == "windows-arm64" ]; then
         platformExt=exe
@@ -31,7 +31,7 @@ build-core(){
     [ -d $platformDistDir ] && rm -rf $platformDistDir
 
     mkdir -p $platformDistDir
-    echo "[I] building $platformName"
+    echo "[I] building [$platformName]"
     GOOS=$argGOOS GOARCH=$platformArch go build -o $platformDistDir/core.$platformExt core/CodeGenApplication.go $platformGoFile
 
     echo "[I] copying os-patch..."
