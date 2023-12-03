@@ -334,7 +334,16 @@ export let WB_ControllerBar = () => {
         })}
       </div>
       <div>
-        <SystemStatusBarItemElement
+        <Tooltip content={Dot("1JOFP", "View My Workspaces")}>
+          <Button
+            className={Classes.MINIMAL}
+            small={true}
+            intent={"none"}
+            // icon="floppy-disk"
+            text={"laf-tools"}
+          ></Button>
+        </Tooltip>
+        {/* <SystemStatusBarItemElement
           onClick={() => {
             //
           }}
@@ -347,7 +356,7 @@ export let WB_ControllerBar = () => {
           disabled={false}
           tooltip={Dot("ib135dq", "Your Status Message will be displayed here")}
           intent={"none"}
-        />
+        /> */}
         {statusBarItemRight.map((item) => {
           return <SystemStatusBarItemElement key={item.id} {...item} />;
         })}

@@ -49,7 +49,7 @@ func GetAppHomeDirectory() string {
 	return pathname
 }
 func GetAppDataDirectory() string {
-	pathname := path.Join(GetUserHomeDir(), env.ENV_AppHomeDirName)
+	pathname := path.Join(GetUserHomeDir(), env.ENV_AppDataDirName)
 	e := nocycle.MkdirFile(pathname)
 	nocycle.ShouldNoErr(e, "~/"+env.ENV_AppHomeDirName+" cannot be created")
 	return pathname

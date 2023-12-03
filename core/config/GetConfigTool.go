@@ -183,7 +183,7 @@ func shortenUserId(userId string) string {
 	return userId[0:8]
 }
 func GetDefaultWorkSpaceDir(userId string) string {
-	return nocycle.MkdirFileWithStr(path.Join(gutils.GetAppDataDirectory(), shortenUserId(userId), "workspace-default"))
+	return nocycle.MkdirFileWithStr(path.Join(gutils.GetAppDataDirectory(), shortenUserId(userId), "workspace", "laf-tools"))
 }
 
 func GetTargetUserOwnFolder(userId string) string {

@@ -210,6 +210,16 @@ let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
   );
 };
 
+export let useWorkSpaceListGet = (): EachWorkSpace[] => {
+  let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({});
+  let r = QueryUtils.validateResult(workspaceListRes, {
+    label: Dot("RjCO3", "Workspace List"),
+  });
+  let allWorkspaces: EachWorkSpace[] =
+    workspaceListRes.data?.payload?.value?.WorkSpaces || [];
+  return allWorkspaces;
+};
+
 export default () => {
   // here we provide setup list UI, that first row is a input field, second row is manage controls(New, Refresh), remain part is a list that includes all workspace
 
@@ -218,8 +228,7 @@ export default () => {
   let r = QueryUtils.validateResult(workspaceListRes, {
     label: Dot("RjCO3", "Workspace List"),
   });
-  let allWorkspaces: EachWorkSpace[] =
-    workspaceListRes.data?.payload?.value?.WorkSpaces || [];
+  let allWorkspaces: EachWorkSpace[] = useWorkSpaceListGet();
 
   let [filterText, onFilterText] = useState("");
 
@@ -314,6 +323,7 @@ export default () => {
                             AlertUtils.popCreated();
                             AlertUtils.deletePromptList(idForWin);
                           }
+                          workspaceListRes.refetch();
                         } else {
                           AlertUtils.popError([
                             Dot("ICefi", "Cancelled"),
