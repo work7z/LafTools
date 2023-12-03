@@ -100,6 +100,7 @@ func CleanHistoricalFilesBySecond(dir string, second int) {
 		}
 	}
 }
+
 func GetFrontEndStaticDir() string {
 	return path.Join(GetFrontEndRootAppDir(), "static")
 }

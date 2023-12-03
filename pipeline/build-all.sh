@@ -63,7 +63,7 @@ build-fe(){
     echo "[I] building fe"
     (
         cd ./sub/web
-        # npm run build
+        npm run build
         cp -a ./dist/ $LAFTOOLS_ROOT/dist/web
     )
     echo "[I] built fe"
@@ -71,12 +71,12 @@ build-fe(){
 
 build-be(){
     # golang core
-    # build-core linux-x64 amd64 "core/CodeGenApplication_unix.go" linux
-    # build-core linux-arm64 arm64 "core/CodeGenApplication_unix.go" linux
+    build-core linux-x64 amd64 "core/CodeGenApplication_unix.go" linux
+    build-core linux-arm64 arm64 "core/CodeGenApplication_unix.go" linux
     build-core darwin-x64 amd64 "core/CodeGenApplication_unix.go" darwin
-    # build-core darwin-arm64 arm64 "core/CodeGenApplication_unix.go" darwin
-    # build-core windows-x64 amd64 "core/CodeGenApplication_windows.go" windows
-    # build-core windows-arm64 arm64 "core/CodeGenApplication_windows.go" windows
+    build-core darwin-arm64 arm64 "core/CodeGenApplication_unix.go" darwin
+    build-core windows-x64 amd64 "core/CodeGenApplication_windows.go" windows
+    build-core windows-arm64 arm64 "core/CodeGenApplication_windows.go" windows
 }
 
 clean-stuff(){

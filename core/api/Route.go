@@ -76,7 +76,7 @@ func ConfigSystemRouter(r *gin.Engine) {
 				API_Proxy_To_FE(c, "")
 			}
 		}
-		if isAppPreFix {
+		if isAppPreFix || isStaticPrefix {
 			c.File(path.Join(gutils.GetFrontEndRootAppDir(), "index.html"))
 		}
 	})
