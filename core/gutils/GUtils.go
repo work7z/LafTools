@@ -49,6 +49,9 @@ func UUID() string {
 func ShortUUID() string {
 	return UUID()[0:8]
 }
+func ShortShortUUID() string {
+	return UUID()[0:5]
+}
 func WriteIntoFileAtomic(file string, str string) error {
 	e := atomic.WriteFile(file, strings.NewReader(str))
 	return e

@@ -209,11 +209,11 @@ let scan = async (eachRunItem, eachLang) => {
         // console.log('key is '+key, ', value is ',value)
         if (value) {
           if (!_.isNil(waitTranslateObj[key])) {
-            sh.exec(
-              'say "detected duplicate item, will sleep for a while and re-check it again"'
-            );
-            console.log("duplicate id: ", key);
-            await sleep(10000);
+            // sh.exec(
+            //   'say "detected duplicate item, will sleep for a while and re-check it again"'
+            // );
+            // console.log("duplicate id: ", key);
+            // await sleep(10000);
           }
           waitTranslateObj[key] = value;
           // crtMap_zhCN[key] = value;

@@ -121,6 +121,10 @@ import {
   FN_ACTION_OpenMenu_ltr,
   FN_ACTION_OpenMenu_ttm,
 } from "../../../sliceAction/layout_action";
+import {
+  useReadCurrentWorkspaceId,
+  useReadCurrentWorkspaceItem,
+} from "../../../common/workspace-utils";
 
 const SystemStatusBarItemElement = (props: SystemStatusBarItem) => {
   let p_ws = useMergeParamWithWorkSpace();
@@ -152,6 +156,7 @@ const SystemStatusBarItemElement = (props: SystemStatusBarItem) => {
 };
 
 export let WB_ControllerBar = () => {
+  let workspaceLabel = useReadCurrentWorkspaceItem();
   let sq = useSearchQuery();
   if (sq.b == undefined) {
     sq.b = "overview";
@@ -340,7 +345,7 @@ export let WB_ControllerBar = () => {
             small={true}
             intent={"none"}
             // icon="floppy-disk"
-            text={"laf-tools"}
+            text={workspaceLabel?.Label}
           ></Button>
         </Tooltip>
         {/* <SystemStatusBarItemElement

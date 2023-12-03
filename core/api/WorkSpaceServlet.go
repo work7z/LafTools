@@ -132,9 +132,10 @@ func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebCont
 	if newSpace.Path == "" {
 		return errors.New(wc.Dot("IWLGS", "path cannot be empty"))
 	}
-	if newSpace.Id == "" {
-		return errors.New(wc.Dot("rj39U", "Id is required"))
-	}
+	newSpace.Id = gutils.ShortShortUUID()
+	// if newSpace.Id == "" {
+	// 	return errors.New(wc.Dot("rj39U", "Id is required"))
+	// }
 	// check if Path exist
 	if nocycle.IsFileNonExist(newSpace.Path) {
 		return errors.New(wc.Dot("WXi6O", "Path does not exist, please check if your input is correct"))

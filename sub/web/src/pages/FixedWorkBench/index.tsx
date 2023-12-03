@@ -149,9 +149,9 @@ export default () => {
   if (res) {
     return res;
   }
+  let WorkspaceId = idQueryRes.data?.payload?.value?.Id;
   useEffect(() => {
-    let Id = idQueryRes.data?.payload?.value?.Id;
-    if (Id == "" && workspaceId !== "default") {
+    if (WorkspaceId == "" && workspaceId !== "default") {
       AlertUtils.win_alert({
         id: "Un77m",
         msg: Dot(

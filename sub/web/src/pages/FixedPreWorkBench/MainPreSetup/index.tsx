@@ -74,6 +74,7 @@ import DesktopUtils from "../../../utils/DesktopUtils";
 import apiSlice from "../../../slice/apiSlice";
 import AjaxUtils from "../../../utils/AjaxUtils";
 import QueryUtils from "../../../utils/QueryUtils";
+import { useWorkSpaceListGet } from "../../../common/workspace-utils";
 
 let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
   Dot("ph5jH", "Handling this part");
@@ -153,10 +154,16 @@ let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
                     onClick: async () => {
                       let confirmed = await AlertUtils.win_confirm_promise({
                         id: "oLBBG",
-                        msg: Dot(
-                          "ZAGva",
-                          "Are you sure to delete this workspace?"
-                        ),
+                        msg:
+                          Dot(
+                            "ZAGva",
+                            "Are you sure to delete this workspace?"
+                          ) +
+                          " " +
+                          Dot(
+                            "HjvV3",
+                            "We will not delete its files on the disk, just remove this record from the list."
+                          ),
                       });
                       if (!confirmed) {
                         return;
@@ -210,20 +217,7 @@ let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
   );
 };
 
-export let useWorkSpaceListGet = (): EachWorkSpace[] => {
-  let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({});
-  let r = QueryUtils.validateResult(workspaceListRes, {
-    label: Dot("RjCO3", "Workspace List"),
-  });
-  let allWorkspaces: EachWorkSpace[] =
-    workspaceListRes.data?.payload?.value?.WorkSpaces || [];
-  return allWorkspaces;
-};
-
 export default () => {
-  // here we provide setup list UI, that first row is a input field, second row is manage controls(New, Refresh), remain part is a list that includes all workspace
-
-  // let [] = apiSlice.useAddWorkspaceForEachUserMutation({});
   let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({});
   let r = QueryUtils.validateResult(workspaceListRes, {
     label: Dot("RjCO3", "Workspace List"),
@@ -308,7 +302,7 @@ export default () => {
                             isPOST: true,
                             url: "/workspace/users/add",
                             data: {
-                              Id: gutils.uuid(),
+                              // Id: gutils.uuid(),
                               // Label: _.split(
                               //   iptIfHave,
                               //   isLinux ? "/" : "\\"
