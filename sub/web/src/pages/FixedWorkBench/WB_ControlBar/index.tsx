@@ -205,6 +205,7 @@ export let WB_ControllerBar = () => {
       intent: Intent.NONE,
       id: "dictionary",
     },
+
     /*
     {
       text: Dot("BShq3M", "Problems"),
@@ -233,19 +234,31 @@ export let WB_ControllerBar = () => {
 
 
 */
+    /**
 
-    {
-      text: Dot("wsWcXd", "Notifications"),
-      icon: "notifications",
+{
+  text: Dot("wsWcXd", "Notifications"),
+  icon: "notifications",
+  onClick: () => {},
+  active: false,
+  disabled: false,
+  tooltip: Dot(
+    "39dsCt",
+    "You would receive latest notification from app services if have."
+  ),
+  intent: Intent.NONE,
+  id: "notifications",
+},
+ 
+ */ {
+      text: Dot("0PgZ_", "Translation"),
+      icon: "paragraph",
       onClick: () => {},
       active: false,
       disabled: false,
-      tooltip: Dot(
-        "39dsCt",
-        "You would receive latest notification from app services if have."
-      ),
+      tooltip: Dot("c0eCw", "Translate your text into any language you want."),
       intent: Intent.NONE,
-      id: "notifications",
+      id: "translate",
     },
     // when the user click any menu, then
     {
