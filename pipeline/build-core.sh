@@ -39,7 +39,6 @@ buildCoreForPlatform(){
     cp -a ./dist/resources ./dist/$platformName/ 
 
     find dist -iname "*.bin" -exec chmod 755 {} \;
-
 }
 
 compactResource

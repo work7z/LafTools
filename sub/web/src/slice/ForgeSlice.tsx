@@ -61,7 +61,7 @@ let newInitialState = (): ForgeState => {
     UsingSmartEditor: false,
     UpdatePageId: gutils.uuid(),
     DarkThemeMode: false,
-    Language: gutils.IsDevMode ? "zh_CN" : gutils.GetUserActualClientLang(),
+    Language: gutils.IsDevMode() ? "zh_CN" : gutils.GetUserActualClientLang(),
     HasUserSelectedOption: false,
     VerForgeForm: VER_FORGE_FORM,
     Tool_RemarkExtIds: [],

@@ -143,7 +143,7 @@ export default (props: PassProp): any => {
   let hist = RouteUtils.useHistory();
   let goWithChildId = (childId) => {
     if (!_.isNil(childId)) {
-      hist.push(`${URL_WORKBENCH_TOOLS}/${currentCategoryId}/${childId}`);
+      hist.push(`${"nouse"}/${currentCategoryId}/${childId}`);
       dis(ToolSlice.actions.updateSubCategoryForSelected([childId]));
     }
   };

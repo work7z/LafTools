@@ -6,6 +6,7 @@ nouse
 .DS_Store
 tmp-translate-result
 time-consumer
+dist
 
 
 # dependencies
@@ -43,9 +44,6 @@ target/
 runtime_api_set_dist
 system-node*
 runtime_api_set_dist/*
-cross-platform
-cross-platform/**/*
-cross-platform/*
 dev-toolkit
 dev-toolkit/**/*
 node_modules

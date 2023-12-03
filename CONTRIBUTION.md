@@ -16,6 +16,12 @@ Before modifying the source code, you should read the below sections to learn th
 
 To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
 
+## How to build project?  
+We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:  
+```bash 
+./pipeline/build-all.sh
+```
+
 ## VSCode Extensions for Dev
 
 If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.

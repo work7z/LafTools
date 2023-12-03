@@ -119,7 +119,12 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 
 ## Build
 
-this part will be updated once MVP is released.
+```bash 
+cd pipeline
+./build-all.sh
+```
+
+Note that this app is still under development, kindly stay tuned for when will it release, thanks a lots!
 
 > if you encounter any issue when you are developing LafTools or building your binary, please contact us at any time.
 

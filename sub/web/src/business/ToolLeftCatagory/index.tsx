@@ -92,7 +92,7 @@ export default (props: PassProp): any => {
         let isActive = toolParam.category == x.Id;
         return (
           <Link
-            to={URL_WORKBENCH_TOOLS + "/" + x.Id}
+            to={"nouse" + "/" + x.Id}
             className={isActive ? "active-tool-item" : ""}
             key={x.Id}
           >
