@@ -228,15 +228,16 @@ export default () => {
 
   let finalFilteredWorkspace = useMemo(() => {
     let lowFilterText = _.toLower(filterText);
-    if (_.trim(lowFilterText)) {
+    if (_.trim(lowFilterText) == "") {
       return allWorkspaces;
     }
-    return _.filter(allWorkspaces, (x) => {
+    let finarr = _.filter(allWorkspaces, (x) => {
       return (
         (_.toLower(x.Label + "") + _.toLower(x.Path)).indexOf(lowFilterText) !=
         -1
       );
     });
+    return finarr;
   }, [filterText, allWorkspaces]);
 
   let entryJSX = (
