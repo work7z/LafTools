@@ -10,6 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      LAFTOOLS_ROOT: /home/runner/work/LafTools/LafTools
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
