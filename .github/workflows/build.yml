@@ -29,6 +29,11 @@ jobs:
 
     - name: Run build script
       run: |
+        npm i -g pnpm 
+        npm i -g typescript
+        cd ./sub/web
+        pnpm install
+        cd ../../
         cd ./pipeline
         chmod +x ./build-all.sh
         ./build-all.sh
