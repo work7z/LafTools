@@ -54,6 +54,8 @@ import InitRouteHistory from "./InitRouteHistory";
 import SystemAlertOrPrompt from "./SystemAlertOrPrompt";
 import Entry from "./pages/Entry";
 import FixedPreWorkBench from "./pages/FixedPreWorkBench";
+import ALL_NOCYCLE from "./nocycle";
+import { useReadCurrentWorkspaceId } from "./common/workspace-utils";
 
 gutils.ExposureIt("$", $);
 gutils.ExposureIt("gutils", gutils);
@@ -61,6 +63,9 @@ gutils.ExposureIt("TranslationUtils", TranslationUtils);
 gutils.ExposureIt("URLUtils", PageUtils);
 
 let RouteComponent = () => {
+  let workspaceId = useReadCurrentWorkspaceId();
+  ALL_NOCYCLE.workspaceId = workspaceId;
+
   let forgeObj = exportUtils.useSelector((val) => ({
     dark: val.forge.DarkThemeMode,
     lang: val.forge.Language,

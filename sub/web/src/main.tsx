@@ -37,7 +37,10 @@ import ALL_NOCYCLE from "./nocycle";
 import exportUtils from "./utils/ExportUtils";
 import fn_tailwindcss from "./init/hmr-reload-resources.tsx";
 import forgeSlice from "./slice/ForgeSlice.tsx";
-import { useReadCurrentWorkspaceItem } from "./common/workspace-utils.tsx";
+import {
+  useReadCurrentWorkspaceId,
+  useReadCurrentWorkspaceItem,
+} from "./common/workspace-utils.tsx";
 import {
   withRouter,
   BrowserRouter as Router,
@@ -94,12 +97,9 @@ const WrapApp = () => {
 };
 
 export const FinalRootApp = () => {
-  let item = useReadCurrentWorkspaceItem();
   return (
     <Provider store={store}>
-      <Router basename={PageUtils.GetRoutePath("")}>
-        <WrapApp />
-      </Router>
+      <WrapApp />
     </Provider>
   );
 };

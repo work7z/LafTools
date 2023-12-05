@@ -268,7 +268,7 @@ export const ACTION_initAllDataAtOnce = (): any => {
         })
       );
       await ACTION_getSystemPreferences()(dispatch);
-      await SyncStateUtils.retrieveAllIDsFromServer();
+      await SyncStateUtils.retrieveAllIDsFromServer(true);
       dispatch(
         systemSlice.actions.UpdateProcessText({
           value: Dot("_trqL", "Retrieving data for system resources..."),

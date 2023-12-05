@@ -109,7 +109,9 @@ const ExtSlice = createSlice({
   name: "ext",
   initialState,
   reducers: {
-    ...SyncStateUtils.getSyncStateReducers(),
+    ...SyncStateUtils.getSyncStateReducers("ext", {
+      RunOnEnterWorkBench: true,
+    }),
     updateExtStatusMapPart: (
       state: ExtensionState,
       action: PayloadAction<{

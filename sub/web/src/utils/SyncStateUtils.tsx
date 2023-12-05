@@ -23,21 +23,32 @@ import { FN_GetState } from "../nocycle";
 import AjaxUtils from "./AjaxUtils";
 import _, { DebouncedFunc } from "lodash";
 
+type SyncDefinition = {
+  RunOnInit?: boolean;
+  RunOnEnterWorkBench?: boolean;
+};
+let syncReducerDefinitions: { [key: string]: SyncDefinition } = {};
 let syncedReducerNames: string[] = [];
 let syncedReducerNameFnMap: { [key: string]: DebouncedFunc<any> } = {};
 let SyncStateUtils = {
-  SetSyncedReducerNames(val: string[]) {
+  rootObj: null,
+  setSyncedReducerNames(val: string[]) {
     syncedReducerNames = val;
   },
-  getSyncStateReducers() {
+  getSyncStateReducers(sliceName: string, syncDefinition: SyncDefinition) {
+    syncReducerDefinitions[sliceName] = syncDefinition;
     return {
       replaceWithLatestState(state, action: PayloadAction<{ newState: any }>) {
         return state;
       },
     };
   },
-  retrieveAllIDsFromServer: async function () {
+  retrieveAllIDsFromServer: async function (initMode: boolean) {
     for (let eachReducerName of syncedReducerNames) {
+      let def = syncReducerDefinitions[eachReducerName];
+      if (def && !def.RunOnInit && initMode) {
+        continue;
+      }
       await SyncStateUtils.retrieveIDFromServer(eachReducerName);
     }
   },
@@ -45,6 +56,9 @@ let SyncStateUtils = {
     let val = await AjaxUtils.DoLocalRequestWithNoThrow({
       url: "/sync/reducer/get?name=" + eachReducerName,
     });
+    if (val.response) {
+      //
+    }
   },
   notifyChanges(state, action_type: string) {
     // check if action_type starts with any one of the syncedReducerNames

@@ -56,7 +56,8 @@ _.forEach(rootObj, (x: any, d, n) => {
   }
 });
 
-SyncStateUtils.SetSyncedReducerNames(syncedReducerNames);
+SyncStateUtils.setSyncedReducerNames(syncedReducerNames);
+SyncStateUtils.rootObj = rootObj as any;
 
 const alwaysHappyMiddleware =
   (storeAPI) => (next) => (action: PayloadAction) => {
@@ -75,12 +76,6 @@ const alwaysHappyMiddleware =
     }
     let state = storeAPI.getState();
     SyncStateUtils.notifyChanges(state, action.type);
-    // _.forEach(CACHE_REQUIRE_ITEMS, (sliceName) => {
-    //   if (_.startsWith(action.type, sliceName)) {
-    //     let state = storeAPI.getState();
-    //     tmpCacheUpdateFn[sliceName](state[sliceName]);
-    //   }
-    // });
     return originalResult;
   };
 

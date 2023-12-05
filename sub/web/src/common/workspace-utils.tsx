@@ -28,7 +28,6 @@ import ALL_NOCYCLE from "../nocycle";
 
 export let useReadCurrentWorkspaceId = (): string => {
   const { workspaceId = "" } = useParams() as any;
-  ALL_NOCYCLE.workspaceId = workspaceId;
   return workspaceId;
 };
 

@@ -67,7 +67,9 @@ const WorkspaceSlice = createSlice({
   name: "workspace",
   initialState,
   reducers: {
-    ...SyncStateUtils.getSyncStateReducers(),
+    ...SyncStateUtils.getSyncStateReducers("workspace", {
+      RunOnEnterWorkBench: true,
+    }),
     // update tools
     updateTools: (state, action: PayloadAction<ToolWSPState>) => {
       _.forEach(action.payload, (x, d, n) => {
