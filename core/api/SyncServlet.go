@@ -39,9 +39,7 @@ func API_Sync_Reducer_Get(c *gin.Context) {
 	crtKey := reducerName + wc.GetUserID() + wc.GetWorkspaceID()
 	reducer := tmpReducerValueMap[crtKey]
 	if reducer == nil {
-		c.JSON(404, gin.H{
-			"error": "Reducer not found",
-		})
+		ErrLa2(c, "Reducer not found")
 		return
 	}
 	// get state
