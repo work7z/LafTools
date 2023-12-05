@@ -106,7 +106,7 @@ const layoutSlice = createSlice({
   name: "layout",
   initialState,
   reducers: {
-    ...SyncStateUtils.useSyncStateReducers(),
+    ...SyncStateUtils.getSyncStateReducers(),
     // write slice for updating menuRecord
     updateMenuRecord(
       state: LayoutState,

@@ -152,6 +152,10 @@ func ConfigSystemRouter(r *gin.Engine) {
 	nonPDir := gutils.GetResourceNonProhibitedDir()
 	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/public")), nonPDir)
 
+	// sync
+	doGET_("/sync/reducer/get", API_Sync_Reducer_Get)
+	doPOST("/sync/reducer/save", API_Sync_Reducer_Save)
+
 	// temporary unused code
 	// admin
 	// _admin_only_ := func(path string) string {

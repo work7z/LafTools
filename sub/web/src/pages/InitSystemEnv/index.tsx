@@ -124,7 +124,7 @@ const InitSystemEnv = () => {
             </li>
           </ul>
           <p>
-            <b>{Dot(`process_detail`, "Message")}: </b>
+            <b>{Dot(`Z3rhY`, "Message")}: </b>
             <span className={CLZ_SECOND_TEXT}>
               {sysObj.HasError ? sysObj.ProgressError : sysObj.ProgressText}
             </span>
@@ -141,7 +141,7 @@ const InitSystemEnv = () => {
               className="full"
               fill
               intent="danger"
-              text={Dot("VSZS_", "Click to re-trigger")}
+              text={Dot("VSZ", "Click to re-trigger")}
               onClick={() => {
                 dis(ACTION_callInitAllDataAtOnceFromInitSystemEnv());
               }}

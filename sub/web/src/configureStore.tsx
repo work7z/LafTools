@@ -49,6 +49,14 @@ const rootReducer = _.mapValues(rootObj, (x, d, n) => {
   return x.reducer;
 }) as any;
 
+let syncedReducerNames: string[] = [];
+_.forEach(rootObj, (x: any, d, n) => {
+  if (x?.actions?.replaceWithLatestState) {
+    syncedReducerNames.push(d);
+  }
+});
+SyncStateUtils.syncedReducerNames = syncedReducerNames;
+
 const alwaysHappyMiddleware =
   (storeAPI) => (next) => (action: PayloadAction) => {
     const originalResult = next(action);
@@ -65,7 +73,7 @@ const alwaysHappyMiddleware =
       saveIntoForge2(forge);
     }
     let state = storeAPI.getState();
-    // SyncStateUtils.notifyChanges(sliceName, state);
+    SyncStateUtils.notifyChanges(state, action.type);
     // _.forEach(CACHE_REQUIRE_ITEMS, (sliceName) => {
     //   if (_.startsWith(action.type, sliceName)) {
     //     let state = storeAPI.getState();

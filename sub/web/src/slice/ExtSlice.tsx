@@ -109,7 +109,7 @@ const ExtSlice = createSlice({
   name: "ext",
   initialState,
   reducers: {
-    ...SyncStateUtils.useSyncStateReducers(),
+    ...SyncStateUtils.getSyncStateReducers(),
     updateExtStatusMapPart: (
       state: ExtensionState,
       action: PayloadAction<{

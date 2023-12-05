@@ -52,6 +52,7 @@ import _ from "lodash";
 import ConcurrencyUtils from "../utils/ConcurrencyUtils";
 import { KEY_CONCURRENCY_SYSTEM_INIT } from "../styles/concurrency";
 import { Intent } from "@blueprintjs/core";
+import SyncStateUtils from "../utils/SyncStateUtils";
 
 export type MessagePackItem = {
   Title: string;
@@ -267,7 +268,7 @@ export const ACTION_initAllDataAtOnce = (): any => {
         })
       );
       await ACTION_getSystemPreferences()(dispatch);
-      throw new Error("not working");
+      await SyncStateUtils.retrieveDataFromServer();
       dispatch(
         systemSlice.actions.UpdateProcessText({
           value: Dot("_trqL", "Retrieving data for system resources..."),

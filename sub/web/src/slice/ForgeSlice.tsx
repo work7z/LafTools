@@ -121,7 +121,6 @@ const forgeSlice = createSlice({
   name: "forge",
   initialState,
   reducers: {
-    ...SyncStateUtils.useSyncStateReducers(),
     updateStateComingFromServer(
       state,
       action: PayloadAction<{ serverForgeStr: string }>
