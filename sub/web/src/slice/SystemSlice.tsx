@@ -247,6 +247,7 @@ export const ACTION_initAllDataAtOnce = (): any => {
       logutils.debug("HasInitSystemEnv already there");
       return;
     }
+
     try {
       dispatch(
         systemSlice.actions.UpdateProcessText({
@@ -266,6 +267,7 @@ export const ACTION_initAllDataAtOnce = (): any => {
         })
       );
       await ACTION_getSystemPreferences()(dispatch);
+      throw new Error("not working");
       dispatch(
         systemSlice.actions.UpdateProcessText({
           value: Dot("_trqL", "Retrieving data for system resources..."),

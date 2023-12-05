@@ -23,6 +23,7 @@ import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { EachTab } from "../pages/FixedWorkBench/components/GenHorizontalTab";
 import _ from "lodash";
+import SyncStateUtils from "../utils/SyncStateUtils";
 
 // workspace slice, will be used to store and display the selected workspace.
 // note that this slice should not be used unless the user got an valid workspace.
@@ -66,6 +67,7 @@ const WorkspaceSlice = createSlice({
   name: "workspace",
   initialState,
   reducers: {
+    ...SyncStateUtils.useSyncStateReducers(),
     // update tools
     updateTools: (state, action: PayloadAction<ToolWSPState>) => {
       _.forEach(action.payload, (x, d, n) => {

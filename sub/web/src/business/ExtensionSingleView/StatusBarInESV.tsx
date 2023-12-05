@@ -86,11 +86,7 @@ export type StatusBarInESVProp = {
 let StatusBarInESV = (props: StatusBarInESVProp) => {
   let { extensionVM, extId } = props;
 
-  let { Tool_RemarkExtIds } = exportUtils.useSelector((v) => {
-    return {
-      Tool_RemarkExtIds: v.forge.Tool_RemarkExtIds,
-    };
-  });
+  let Tool_RemarkExtIds = [];
   let dis = exportUtils.dispatch();
 
   // has favourite this

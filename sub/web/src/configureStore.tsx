@@ -26,7 +26,7 @@ import {
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
 import { listenerMiddleware } from "./listenerMiddleware";
-import rootReducer from "./slice";
+import rootObj from "./slice";
 import thunk from "redux-thunk";
 import apiSlice from "./slice/apiSlice";
 import nocycle from "./nocycle";
@@ -35,13 +35,19 @@ import { logutils } from "./utils/LogUtils";
 import { saveIntoForge2 } from "./slice/ForgeSlice";
 import { CACHE_REQUIRE_ITEMS } from "./styles/config";
 import CacheUtils from "./utils/CacheUtils";
+import SyncStateUtils from "./utils/SyncStateUtils";
 
-let tmpCacheUpdateFn = {};
-_.forEach(CACHE_REQUIRE_ITEMS, (sliceName) => {
-  tmpCacheUpdateFn[sliceName] = _.debounce((newState) => {
-    CacheUtils.saveIntoCache(sliceName, newState);
-  }, 1000);
-});
+// depreciated, do not use this one.
+// just use SyncStateUtils
+// let tmpCacheUpdateFn = {};
+// _.forEach(CACHE_REQUIRE_ITEMS, (sliceName) => {
+//   tmpCacheUpdateFn[sliceName] = _.debounce((newState) => {
+//     CacheUtils.saveIntoCache(sliceName, newState);
+//   }, 1000);
+// });
+const rootReducer = _.mapValues(rootObj, (x, d, n) => {
+  return x.reducer;
+}) as any;
 
 const alwaysHappyMiddleware =
   (storeAPI) => (next) => (action: PayloadAction) => {
@@ -58,14 +64,22 @@ const alwaysHappyMiddleware =
       logutils.debug("saved forge");
       saveIntoForge2(forge);
     }
-    _.forEach(CACHE_REQUIRE_ITEMS, (sliceName) => {
-      if (_.startsWith(action.type, sliceName)) {
-        let state = storeAPI.getState();
-        tmpCacheUpdateFn[sliceName](state[sliceName]);
-      }
-    });
+    let state = storeAPI.getState();
+    // SyncStateUtils.notifyChanges(sliceName, state);
+    // _.forEach(CACHE_REQUIRE_ITEMS, (sliceName) => {
+    //   if (_.startsWith(action.type, sliceName)) {
+    //     let state = storeAPI.getState();
+    //     tmpCacheUpdateFn[sliceName](state[sliceName]);
+    //   }
+    // });
     return originalResult;
   };
+
+// _.forEach(rootObj, (x: any, d, n) => {
+// x["actions"];
+// SyncStateUtils.
+// });
+_.set(window, "rootReducerObj", rootObj);
 
 export default function configureAppStore() {
   const store = configureStore({

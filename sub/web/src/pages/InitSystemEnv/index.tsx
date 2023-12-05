@@ -84,10 +84,14 @@ const InitSystemEnv = () => {
   }));
   const dis = eUtils.dispatch();
 
-  useEffect(() => {
+  let run_init = () => {
     ConcurrencyUtils.initFunc(KEY_CONCURRENCY_SYSTEM_INIT, () => {
       dis(ACTION_callInitAllDataAtOnceFromInitSystemEnv());
     });
+  };
+
+  useEffect(() => {
+    run_init();
   }, [1]);
 
   return (
@@ -120,13 +124,32 @@ const InitSystemEnv = () => {
             </li>
           </ul>
           <p>
-            <b>{Dot(`process_detail`, "Progress")}: </b>
+            <b>{Dot(`process_detail`, "Message")}: </b>
             <span className={CLZ_SECOND_TEXT}>
               {sysObj.HasError ? sysObj.ProgressError : sysObj.ProgressText}
             </span>
           </p>
-          <ProgressBar intent={sysObj.HasError ? "danger" : "none"} />
+          {!sysObj.HasError ? (
+            <ProgressBar intent={sysObj.HasError ? "danger" : "none"} />
+          ) : (
+            <p>{Dot("QzlA3", "An Error Occurred")}</p>
+          )}
         </div>
+        {sysObj.HasError ? (
+          <p className="center align-right">
+            <Button
+              className="full"
+              fill
+              intent="danger"
+              text={Dot("VSZS_", "Click to re-trigger")}
+              onClick={() => {
+                dis(ACTION_callInitAllDataAtOnceFromInitSystemEnv());
+              }}
+            ></Button>
+          </p>
+        ) : (
+          ""
+        )}
         <div className="mt-20">
           <AboutSoftware />
         </div>

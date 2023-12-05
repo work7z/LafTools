@@ -27,7 +27,7 @@ import { Dot } from "./TranslationUtils";
 let hookStatusMap: { [key: string]: () => void | null } = {};
 
 const ConcurrencyUtils = {
-  initFunc: (key: string, fn: () => void) => {
+  initFunc: async (key: string, fn: () => void) => {
     let st = hookStatusMap[key];
     if (_.isNil(st)) {
       let cachedFn = _.once(fn);

@@ -43,6 +43,7 @@ import ALL_NOCYCLE from "../nocycle";
 import AlertUtils from "../utils/AlertUtils";
 import { RemarkUtils } from "../utils/RemarkUtils";
 import QueryUtils from "../utils/QueryUtils";
+import SyncStateUtils from "../utils/SyncStateUtils";
 
 // never DO deep LEVEL here
 interface ForgeState {
@@ -52,7 +53,6 @@ interface ForgeState {
   Language: string;
   HasUserSelectedOption: boolean;
   VerForgeForm: string;
-  Tool_RemarkExtIds: string[];
 }
 
 const KEY_PERSIST_INTO_LOCAL = "KEY_PERSIST_INTO_LOCAL";
@@ -64,8 +64,6 @@ let newInitialState = (): ForgeState => {
     Language: gutils.IsDevMode() ? "zh_CN" : gutils.GetUserActualClientLang(),
     HasUserSelectedOption: false,
     VerForgeForm: VER_FORGE_FORM,
-    Tool_RemarkExtIds: [],
-    // Ext_
   };
 };
 let initialState: ForgeState = newInitialState();
@@ -123,6 +121,7 @@ const forgeSlice = createSlice({
   name: "forge",
   initialState,
   reducers: {
+    ...SyncStateUtils.useSyncStateReducers(),
     updateStateComingFromServer(
       state,
       action: PayloadAction<{ serverForgeStr: string }>
@@ -164,30 +163,13 @@ const forgeSlice = createSlice({
       state,
       action: PayloadAction<{ extId: string }>
     ) {
-      if (_.isNil(state.Tool_RemarkExtIds)) {
-        state.Tool_RemarkExtIds = [];
-      }
-      // add extId in Tool_RemarkExtIds if not exist
-      if (state.Tool_RemarkExtIds.indexOf(action.payload.extId) === -1) {
-        state.Tool_RemarkExtIds = [
-          ...state.Tool_RemarkExtIds,
-          action.payload.extId,
-        ];
-      }
+      return state;
     },
-    // remove extId in Tool_RemarkExtIds if exist
     removeExtensionIdFromTool_RemarkExtIds(
       state,
       action: PayloadAction<{ extId: string }>
     ) {
-      if (_.isNil(state.Tool_RemarkExtIds)) {
-        state.Tool_RemarkExtIds = [];
-      }
-      state.Tool_RemarkExtIds = [
-        ..._.filter(state.Tool_RemarkExtIds, (v) => {
-          return v !== action.payload.extId;
-        }),
-      ];
+      return state;
     },
   },
 });

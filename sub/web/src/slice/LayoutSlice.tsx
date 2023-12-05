@@ -25,6 +25,7 @@ import CacheUtils from "../utils/CacheUtils";
 import _, { initial } from "lodash";
 import { logutils } from "../utils/LogUtils";
 import { EachTab } from "../pages/FixedWorkBench/components/GenHorizontalTab";
+import SyncStateUtils from "../utils/SyncStateUtils";
 
 let preferredSizeForLeftRightMenu = 280; //0.13 * window.innerWidth;
 
@@ -105,6 +106,7 @@ const layoutSlice = createSlice({
   name: "layout",
   initialState,
   reducers: {
+    ...SyncStateUtils.useSyncStateReducers(),
     // write slice for updating menuRecord
     updateMenuRecord(
       state: LayoutState,

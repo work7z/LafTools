@@ -33,6 +33,7 @@ import { Dot } from "../utils/TranslationUtils";
 import gutils from "../utils/GlobalUtils";
 import { FN_GetState } from "../nocycle";
 import { PayloadValueData } from "../styles/var";
+import SyncStateUtils from "../utils/SyncStateUtils";
 // import FileUtils from "../utils/FileUtils";
 // import AlertUtils from "../utils/AlertUtils";
 
@@ -108,6 +109,7 @@ const ExtSlice = createSlice({
   name: "ext",
   initialState,
   reducers: {
+    ...SyncStateUtils.useSyncStateReducers(),
     updateExtStatusMapPart: (
       state: ExtensionState,
       action: PayloadAction<{
