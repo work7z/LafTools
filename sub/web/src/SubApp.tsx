@@ -105,29 +105,27 @@ function App() {
 
   return (
     <HotkeysProvider>
-      <Router basename={PageUtils.GetRoutePath("")}>
-        <HotkeysTarget2 hotkeys={hotkeys}>
-          {({ handleKeyDown, handleKeyUp }) => {
-            return (
-              <div
-                // draggable
-                // onDrop={(e) => {
-                //   e.preventDefault();
-                // }}
-                // onDragOver={(e) => {
-                //   e.preventDefault();
-                // }}
-                onKeyDown={handleKeyDown}
-                onKeyUp={handleKeyUp}
-                style={{ width: "100%", height: "100%" }}
-              >
-                {innerJSX}
-                <SystemAlertOrPrompt></SystemAlertOrPrompt>
-              </div>
-            );
-          }}
-        </HotkeysTarget2>
-      </Router>
+      <HotkeysTarget2 hotkeys={hotkeys}>
+        {({ handleKeyDown, handleKeyUp }) => {
+          return (
+            <div
+              // draggable
+              // onDrop={(e) => {
+              //   e.preventDefault();
+              // }}
+              // onDragOver={(e) => {
+              //   e.preventDefault();
+              // }}
+              onKeyDown={handleKeyDown}
+              onKeyUp={handleKeyUp}
+              style={{ width: "100%", height: "100%" }}
+            >
+              {innerJSX}
+              <SystemAlertOrPrompt></SystemAlertOrPrompt>
+            </div>
+          );
+        }}
+      </HotkeysTarget2>
     </HotkeysProvider>
   );
 }

@@ -111,6 +111,9 @@ func (wc *WebContext) GetUserID() string {
 	}
 	return wc.GetHeaderValue(nocycle.HEADER_LOCAL_USER_ID)
 }
+func (wc *WebContext) GetWorkspaceID() string {
+	return wc.GetHeaderValue(nocycle.HEADER_LOCAL_WORKSPACE_ID)
+}
 
 func (wc *WebContext) GetUserLanguage() string {
 	if wc.OverwriteUserLang != "" {

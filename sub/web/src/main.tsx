@@ -37,7 +37,16 @@ import ALL_NOCYCLE from "./nocycle";
 import exportUtils from "./utils/ExportUtils";
 import fn_tailwindcss from "./init/hmr-reload-resources.tsx";
 import forgeSlice from "./slice/ForgeSlice.tsx";
-
+import { useReadCurrentWorkspaceItem } from "./common/workspace-utils.tsx";
+import {
+  withRouter,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+  Redirect,
+} from "react-router-dom";
 ALL_NOCYCLE.store = store;
 
 logutils.debug("Lanuch the page...");
@@ -85,9 +94,12 @@ const WrapApp = () => {
 };
 
 export const FinalRootApp = () => {
+  let item = useReadCurrentWorkspaceItem();
   return (
     <Provider store={store}>
-      <WrapApp />
+      <Router basename={PageUtils.GetRoutePath("")}>
+        <WrapApp />
+      </Router>
     </Provider>
   );
 };

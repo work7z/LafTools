@@ -22,11 +22,14 @@ import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
 import { RootState } from "./store";
 import appinfoJSON from "./app-info.json";
 import { Dispatch } from "react";
+import _ from "lodash";
 
 interface NoCycle {
   store?: ToolkitStore<RootState>;
+  workspaceId?: string | undefined;
 }
 let ALL_NOCYCLE: NoCycle = {};
+_.set(window, "ALL_NOCYCLE", ALL_NOCYCLE);
 export type RootState2 = RootState;
 export const APPINFOJSON = appinfoJSON;
 

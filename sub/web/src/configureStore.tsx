@@ -55,7 +55,8 @@ _.forEach(rootObj, (x: any, d, n) => {
     syncedReducerNames.push(d);
   }
 });
-SyncStateUtils.syncedReducerNames = syncedReducerNames;
+
+SyncStateUtils.SetSyncedReducerNames(syncedReducerNames);
 
 const alwaysHappyMiddleware =
   (storeAPI) => (next) => (action: PayloadAction) => {

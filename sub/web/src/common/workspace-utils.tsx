@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 3 Dec 2023
 // Author: LafTools Team <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,9 +24,11 @@ import { EachWorkSpace } from "../pages/FixedWorkBench/definitions/WB_Types";
 import apiSlice from "../slice/apiSlice";
 import QueryUtils from "../utils/QueryUtils";
 import { Dot } from "../utils/TranslationUtils";
+import ALL_NOCYCLE from "../nocycle";
 
 export let useReadCurrentWorkspaceId = (): string => {
-  const { workspaceId = "default" } = useParams() as any;
+  const { workspaceId = "" } = useParams() as any;
+  ALL_NOCYCLE.workspaceId = workspaceId;
   return workspaceId;
 };
 

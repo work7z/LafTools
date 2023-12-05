@@ -26,7 +26,9 @@ import _, { DebouncedFunc } from "lodash";
 let syncedReducerNames: string[] = [];
 let syncedReducerNameFnMap: { [key: string]: DebouncedFunc<any> } = {};
 let SyncStateUtils = {
-  syncedReducerNames,
+  SetSyncedReducerNames(val: string[]) {
+    syncedReducerNames = val;
+  },
   getSyncStateReducers() {
     return {
       replaceWithLatestState(state, action: PayloadAction<{ newState: any }>) {
@@ -34,30 +36,41 @@ let SyncStateUtils = {
       },
     };
   },
-  retrieveDataFromServer() {},
+  retrieveAllIDsFromServer: async function () {
+    for (let eachReducerName of syncedReducerNames) {
+      await SyncStateUtils.retrieveIDFromServer(eachReducerName);
+    }
+  },
+  retrieveIDFromServer: async (eachReducerName: string) => {
+    let val = await AjaxUtils.DoLocalRequestWithNoThrow({
+      url: "/sync/reducer/get?name=" + eachReducerName,
+    });
+  },
   notifyChanges(state, action_type: string) {
     // check if action_type starts with any one of the syncedReducerNames
     // if so, then dispatch replaceWithLatestState
-    let found = false;
     if (action_type.indexOf("replaceWithLatestState") != -1) {
-      return false;
+      return;
     }
     if (_.isEmpty(syncedReducerNameFnMap)) {
-      _.forEach(syncedReducerNames, (x) => {
-        syncedReducerNameFnMap[x] = _.throttle(async (newState) => {
-          let r = (await AjaxUtils.DoLocalRequestWithNoThrow({
-            url: "/sync/reducer/save?name=" + x,
-            isPOST: true,
-            data: newState,
-          })) as any;
-        }, 800);
+      _.forEach(syncedReducerNames, (eachReducerName) => {
+        syncedReducerNameFnMap[eachReducerName] = _.throttle(
+          async (newState) => {
+            let r = (await AjaxUtils.DoLocalRequestWithNoThrow({
+              url: "/sync/reducer/save?name=" + eachReducerName,
+              isPOST: true,
+              data: newState,
+            })) as any;
+          },
+          800
+        );
       });
     }
-    _.forEach(SyncStateUtils.syncedReducerNames, (x) => {
-      if (action_type.startsWith(x)) {
-        found = true;
-        let crtReducerObj = state[x];
-        syncedReducerNameFnMap[x](crtReducerObj);
+    _.forEach(syncedReducerNames, (eachReducerName) => {
+      if (action_type.startsWith(eachReducerName)) {
+        let crtReducerObj = state[eachReducerName];
+        syncedReducerNameFnMap[eachReducerName] &&
+          syncedReducerNameFnMap[eachReducerName](crtReducerObj);
       }
     });
     //
