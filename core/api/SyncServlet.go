@@ -56,13 +56,6 @@ func API_Sync_Reducer_Save(c *gin.Context) {
 	reducerName := c.Param("name")
 	wc := context.NewWC(c)
 	crtKey := reducerName + wc.GetUserID() + wc.GetWorkspaceID()
-	reducer := tmpReducerValueMap[crtKey]
-	if reducer == nil {
-		c.JSON(404, gin.H{
-			"error": "Reducer not found",
-		})
-		return
-	}
 	// get state
 	var state interface{}
 	if err := c.BindJSON(&state); err != nil {
@@ -70,6 +63,6 @@ func API_Sync_Reducer_Save(c *gin.Context) {
 		return
 	}
 	// save state
-	tmpReducerValueMap[reducerName] = state
+	tmpReducerValueMap[crtKey] = state
 	OKLa(c, DoValueRes("saved"))
 }

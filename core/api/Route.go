@@ -148,13 +148,13 @@ func ConfigSystemRouter(r *gin.Engine) {
 	doGET_("/system/stats", API_SYSTEM_Stats)
 	doGET_("/system/getOneMotto", API_VISIT_GetMotto)
 
-	// static folders
-	nonPDir := gutils.GetResourceNonProhibitedDir()
-	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/public")), nonPDir)
-
 	// sync
 	doGET_("/sync/reducer/get", API_Sync_Reducer_Get)
 	doPOST("/sync/reducer/save", API_Sync_Reducer_Save)
+
+	// static folders
+	nonPDir := gutils.GetResourceNonProhibitedDir()
+	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/public")), nonPDir)
 
 	// temporary unused code
 	// admin
