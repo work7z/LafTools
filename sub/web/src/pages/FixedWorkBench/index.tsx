@@ -126,6 +126,7 @@ import { WB_CenterStage as WB_CenterStage } from "./WB_CenterStage";
 import "./index.scss";
 import QueryUtils from "../../utils/QueryUtils";
 import AlertUtils from "../../utils/AlertUtils";
+import Blink from "../../components/Blink";
 
 export default () => {
   const { workspaceId = "default" } = useParams() as any;
@@ -168,8 +169,8 @@ export default () => {
   }
   if (!available) {
     return (
-      <p className="bg-red w-full h-full align-center justify-center">
-        {Dot("oBz8D", "Loading...")}
+      <p  className="p-10  w-full h-full align-center justify-center">
+        {Dot("oBz8D", "Loading")} <Blink min={3} max={10} ></Blink>
       </p>
     );
   }

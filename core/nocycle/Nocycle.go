@@ -27,7 +27,9 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"runtime"
+	"strings"
 
 	"github.com/samber/lo"
 )
@@ -36,7 +38,30 @@ var UNIT_TEST_SERVER_MODE bool
 var HTTP_PORT_ONCE_SET int
 var NodeWSToken = GetRandomString(32)
 
+func NormalizeDir(dir string) string {
+	if dir == "" {
+		return ""
+	}
+	if dir[0] == '/' {
+		return dir[1:]
+	}
+	// replace all / in path if it's window os
+	if runtime.GOOS == "windows" {
+		dir = strings.ReplaceAll(dir, "/", "\\")
+	}
+	// get correct text upper/lower case of dir
+	// Evaluate symlinks to get the correct case on case-sensitive file systems
+	dir, err := filepath.EvalSymlinks(dir)
+	if err != nil {
+		// ignore it
+	}
+
+	return dir
+}
+
 func OpenDir(dir string) error {
+
+	dir = NormalizeDir(dir)
 
 	if !IsFileExist(dir) {
 		return errors.New("unable to find the directory")

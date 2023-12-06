@@ -28,7 +28,7 @@ import (
 	"laftools-go/core/gutils"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
-	"path"
+	"path/filepath"
 	"strings"
 	"sync"
 
@@ -99,7 +99,8 @@ func getWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
 	}
 	for _, item := range workspaceRes.WorkSpaces {
 		// iterate workspaceRes, and take the last one of its Path according to current platform if Label is nil or empty, then assign it to Label
-		dir, file := path.Split(item.Path)
+		item.Path = nocycle.NormalizeDir(item.Path)
+		dir, file := filepath.Split(item.Path)
 		if strings.Trim(item.Label, "") == "" {
 			(item).Label = file
 		}
@@ -119,6 +120,7 @@ func API_Workspace_Add_By_User(c *gin.Context) {
 	// if workspaceRes.WorkSpaces already have that same path, then error
 	// make sure no duplicate id
 	// if newSpace.Id exist, then replace
+	newSpace.Path = nocycle.NormalizeDir(newSpace.Path)
 	err := addNewWorkspace(newSpace, c, wc)
 	if err != nil {
 		ErrLa(c, err)
