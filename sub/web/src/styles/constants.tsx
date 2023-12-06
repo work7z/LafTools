@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-export const LafTools_HOME = "https://LafTools.cc";
+export const LafTools_HOME = "https://laf-tools.com";
 export const LafTools_DOC_HOME = `${LafTools_HOME}/documentation/view?id=welcome`;
 export const SQ = "'";
 export const DQ = '"';

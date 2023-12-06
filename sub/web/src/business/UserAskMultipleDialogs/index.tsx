@@ -698,12 +698,12 @@ const ConfirmPanel: React.FC<ConfirmPanelProps> = (props) => (
         </li>
         <li>
           {Dot("oNg3f", "Official Website")}:{" "}
-          <LinkHref link="https://LafTools.cc" />
+          <LinkHref link="https://laf-tools.com" />
         </li>
         <li>
           {Dot("f5bLC", "Documentation")}:
           <LinkHref
-            link="https://LafTools.cc/documentation/view?id=welcome"
+            link="https://laf-tools.com/documentation/view?id=welcome"
             label={Dot("OSHOI", "Welcome Page")}
           />
         </li>

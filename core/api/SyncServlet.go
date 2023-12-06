@@ -21,7 +21,11 @@
 package api
 
 import (
+	"encoding/json"
+	"laftools-go/core/config"
 	"laftools-go/core/context"
+	"laftools-go/core/log"
+	"laftools-go/core/nocycle"
 	"sync"
 
 	"github.com/gin-gonic/gin"
@@ -63,4 +67,29 @@ func API_Sync_Reducer_Save(c *gin.Context) {
 	// save state
 	tmpReducerValueMap[crtKey] = state
 	OKLa(c, DoValueRes("saved"))
+}
+
+func init() {
+	reducerSyncFile := config.GetCurrentReducerSyncFile()
+	if nocycle.IsFileExist(reducerSyncFile) {
+		str, err := nocycle.ReadFileAsStr(reducerSyncFile)
+		if err != nil {
+			log.Ref().Warn("unable to read reducer sync file: ", err)
+		} else {
+			// rename reducer sync file as *.bak
+			nocycle.RenameFile(reducerSyncFile, reducerSyncFile+".bak"+nocycle.GetRandomString(8))
+			// unmarhsla str to tmpReducerValueMap
+			err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
+			if err2 != nil {
+				log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
+			}
+		}
+	}
+	go func() {
+		// every 3 seconds, write tmpReducerValueMap to reducerSyncFile
+		for {
+			nocycle.WriteFileAsStr(reducerSyncFile, nocycle.ToJson(tmpReducerValueMap))
+			nocycle.Sleep(3000)
+		}
+	}()
 }

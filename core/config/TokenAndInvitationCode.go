@@ -67,6 +67,10 @@ func GetCurrentSystemInfoFile() string {
 	return path.Join(gutils.GetAppHomeConfigDirectory(), "system-info.json")
 }
 
+func GetCurrentReducerSyncFile() string {
+	return path.Join(gutils.GetAppHomeConfigDirectory(), "sync-config.json")
+}
+
 func GetAdminInitTokenFile() string {
 	return path.Join(gutils.GetAppHomeConfigDirectory(), "access-token.txt")
 }

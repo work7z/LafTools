@@ -30,6 +30,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"time"
 
 	"github.com/samber/lo"
 )
@@ -37,6 +38,31 @@ import (
 var UNIT_TEST_SERVER_MODE bool
 var HTTP_PORT_ONCE_SET int
 var NodeWSToken = GetRandomString(32)
+
+func RenameFile(oldPath string, newPath string) error {
+	return os.Rename(oldPath, newPath)
+}
+func WriteFileAsStr(filename string, content string) error {
+	// firstly write to bak, then rename it to filename
+	bakFile := filename + ".bak"
+	err := ioutil.WriteFile(bakFile, []byte(content), 0644)
+	if err != nil {
+		return err
+	}
+	return RenameFile(bakFile, filename)
+}
+
+func ToJson(obj interface{}) string {
+	a, err := json.Marshal(obj)
+	if err != nil {
+		return ""
+	}
+	return string(a)
+}
+
+func Sleep(ms int) {
+	time.Sleep(time.Duration(ms) * time.Millisecond)
+}
 
 func NormalizeDir(dir string) string {
 	if dir == "" {

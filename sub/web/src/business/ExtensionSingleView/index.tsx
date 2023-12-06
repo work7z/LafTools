@@ -179,7 +179,7 @@ let Footer = () => {
             Guangdong ICP No. 16114169-7
           </a> */}
             {/* <a
-            href="https://LafTools.cc/"
+            href="https://laf-tools.com/"
             target="_blank"
             rel="nofollow"
             style={{}}
