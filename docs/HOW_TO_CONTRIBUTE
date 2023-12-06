@@ -1,0 +1,12 @@
+## Project Structure  
+- `core`  -> Go service   
+- `dev`-> dev stuff  
+- `os-script` -> startup scripts in the root dir of software, like startup. Command, startup.sh and startup.bat  
+- `pipeline` -> dev or build scripts 
+- `resources` ->  required parts of software  
+- `rt-lib` -> runtime library(optional for lite version)  
+- `sub` -> including sub systems, such as web-ui, purejs, etc..  
+
+## Architecture  
+We will use Go + Web-UI to develop this project.
+
