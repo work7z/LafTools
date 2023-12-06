@@ -75,32 +75,32 @@ let fn_initialState = (): LayoutState => {
 
 let initialState: LayoutState = fn_initialState();
 
-initialState = CacheUtils.getFromCache("layout", {
-  ...initialState,
-}) as LayoutState;
+// initialState = CacheUtils.getFromCache("layout", {
+//   ...initialState,
+// }) as LayoutState;
 
-try {
-  if (!_.isEmpty(initialState.menuRecord.ltr)) {
-    // let arr = !_.isEmpty(initialState.menuRecord.ltr_old)
-    //   ? initialState.menuRecord.ltr_old
-    //   : initialState.menuRecord.ltr;
-    let arr = initialState.menuRecord.ltr;
-    initialState.menuSize.left = arr[0];
-    initialState.menuSize.middle = arr[1];
-    initialState.menuSize.right = arr[2];
-  }
-  if (!_.isEmpty(initialState.menuRecord.ttm)) {
-    // let arr = !_.isEmpty(initialState.menuRecord.ttm_old)
-    //   ? initialState.menuRecord.ttm_old
-    //   : initialState.menuRecord.ttm;
-    let arr = initialState.menuRecord.ttm;
-    initialState.menuSize.bottom = arr[1];
-  }
-  // initialState.menuHide = _.mapValues(initialState.menuHide, (x) => false);
-} catch (e) {
-  logutils.error("err while initialzing the layout", e);
-  initialState = fn_initialState();
-}
+// try {
+//   if (!_.isEmpty(initialState.menuRecord.ltr)) {
+//     // let arr = !_.isEmpty(initialState.menuRecord.ltr_old)
+//     //   ? initialState.menuRecord.ltr_old
+//     //   : initialState.menuRecord.ltr;
+//     let arr = initialState.menuRecord.ltr;
+//     initialState.menuSize.left = arr[0];
+//     initialState.menuSize.middle = arr[1];
+//     initialState.menuSize.right = arr[2];
+//   }
+//   if (!_.isEmpty(initialState.menuRecord.ttm)) {
+//     // let arr = !_.isEmpty(initialState.menuRecord.ttm_old)
+//     //   ? initialState.menuRecord.ttm_old
+//     //   : initialState.menuRecord.ttm;
+//     let arr = initialState.menuRecord.ttm;
+//     initialState.menuSize.bottom = arr[1];
+//   }
+//   // initialState.menuHide = _.mapValues(initialState.menuHide, (x) => false);
+// } catch (e) {
+//   logutils.error("err while initialzing the layout", e);
+//   initialState = fn_initialState();
+// }
 
 const layoutSlice = createSlice({
   name: "layout",

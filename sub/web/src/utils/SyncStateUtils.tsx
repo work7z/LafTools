@@ -30,6 +30,7 @@ type SyncDefinition = {
 let syncReducerDefinitions: { [key: string]: SyncDefinition } = {};
 let syncedReducerNames: string[] = [];
 let syncedReducerNameFnMap: { [key: string]: DebouncedFunc<any> } = {};
+let syncedAlreadyMap: { [key: string]: boolean } = {};
 let SyncStateUtils = {
   rootObj: null,
   setSyncedReducerNames(val: string[]) {
@@ -45,13 +46,19 @@ let SyncStateUtils = {
       },
     };
   },
-  retrieveAllIDsFromServer: async function (initMode: boolean) {
+  retrieveAllIDsFromServer: async function (
+    checkFN: (i: SyncDefinition) => boolean
+  ) {
     for (let eachReducerName of syncedReducerNames) {
       let def = syncReducerDefinitions[eachReducerName];
-      if (def && !def.RunOnInit && initMode) {
+      if (syncedAlreadyMap[eachReducerName]) {  
+        continue;
+      }
+      if (def && !checkFN(def)) {
         continue;
       }
       await SyncStateUtils.retrieveIDFromServer(eachReducerName);
+      syncedAlreadyMap[eachReducerName] = true;
     }
   },
   retrieveIDFromServer: async (eachReducerName: string) => {

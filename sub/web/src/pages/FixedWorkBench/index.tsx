@@ -66,7 +66,7 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../nocycle";
+import ALL_NOCYCLE, { APPINFOJSON, delayFN } from "../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -127,6 +127,8 @@ import "./index.scss";
 import QueryUtils from "../../utils/QueryUtils";
 import AlertUtils from "../../utils/AlertUtils";
 import Blink from "../../components/Blink";
+import SyncStateUtils from "../../utils/SyncStateUtils";
+import { useReadCurrentWorkspaceId } from "../../common/workspace-utils";
 
 export default () => {
   const { workspaceId = "default" } = useParams() as any;
@@ -147,9 +149,10 @@ export default () => {
   });
   let hist = useHistory();
   const [available, onAvaialble] = useState(false);
-  let WorkspaceId = idQueryRes.data?.payload?.value?.Id;
-  useEffect(() => {
-    if (WorkspaceId == "" && workspaceId !== "default") {
+  let FetchedWorkspaceId = idQueryRes.data?.payload?.value?.Id;
+  useEffect( () => {
+   (async ()=>{
+     if (FetchedWorkspaceId == "" && workspaceId !== "default") {
       AlertUtils.win_alert({
         id: "Un77m",
         msg: Dot(
@@ -161,9 +164,14 @@ export default () => {
       onAvaialble(false);
       hist.replace("/workbench");
     } else {
+      ALL_NOCYCLE.workspaceId = workspaceId
+      await SyncStateUtils.retrieveAllIDsFromServer((item)=>{
+        return item.RunOnEnterWorkBench === true;
+      })
       onAvaialble(true);
     }
-  }, [idQueryRes.status]);
+   })()
+  }, [idQueryRes.status, FetchedWorkspaceId]);
   if (res) {
     return res;
   }
