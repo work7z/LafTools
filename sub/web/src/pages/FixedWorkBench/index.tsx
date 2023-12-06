@@ -146,9 +146,6 @@ export default () => {
   });
   let hist = useHistory();
   const [available, onAvaialble] = useState(false);
-  if (res) {
-    return res;
-  }
   let WorkspaceId = idQueryRes.data?.payload?.value?.Id;
   useEffect(() => {
     if (WorkspaceId == "" && workspaceId !== "default") {
@@ -166,8 +163,15 @@ export default () => {
       onAvaialble(true);
     }
   }, [idQueryRes.status]);
-  if (!available) {
-    return "";
+  if (res) {
+    return res;
+  }
+  if (true || !available) {
+    return (
+      <p className="bg-red w-full h-full align-center justify-center">
+        {Dot("oBz8D", "Loading...")}
+      </p>
+    );
   }
   return (
     <div
