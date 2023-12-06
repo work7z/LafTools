@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { PayloadAction } from "@reduxjs/toolkit";
-import { FN_GetState } from "../nocycle";
+import { FN_GetDispatch, FN_GetState, getAjaxValueRes } from "../nocycle";
 import AjaxUtils from "./AjaxUtils";
 import _, { DebouncedFunc } from "lodash";
 
@@ -39,7 +39,9 @@ let SyncStateUtils = {
     syncReducerDefinitions[sliceName] = syncDefinition;
     return {
       replaceWithLatestState(state, action: PayloadAction<{ newState: any }>) {
-        return state;
+        let newState = action.payload.newState;
+        _.defaultsDeep(newState, state);
+        return newState;
       },
     };
   },
@@ -57,7 +59,19 @@ let SyncStateUtils = {
       url: "/sync/reducer/get?name=" + eachReducerName,
     });
     if (val.response) {
-      //
+      let innerValue = getAjaxValueRes(val);
+      if (innerValue) {
+        let t =
+          SyncStateUtils.rootObj &&
+          (SyncStateUtils.rootObj[eachReducerName] as any);
+        let replaceWithLatestState = _.get(
+          t,
+          "actions.replaceWithLatestState"
+        ) as any;
+        if (replaceWithLatestState) {
+          FN_GetDispatch()(replaceWithLatestState({ newState: innerValue }));
+        }
+      }
     }
   },
   notifyChanges(state, action_type: string) {

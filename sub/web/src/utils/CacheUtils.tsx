@@ -21,7 +21,7 @@
 import gutils from "./GlobalUtils";
 import _ from "lodash";
 
-let cacheID = "vry2p";
+let cacheID = "cacheID_";
 export default {
   getFromCache: (sliceName, dftValue): any => {
     try {

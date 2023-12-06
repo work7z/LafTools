@@ -34,7 +34,7 @@ func API_Sync_Reducer_Get(c *gin.Context) {
 	lock.Lock()
 	defer lock.Unlock()
 	// get reducer
-	reducerName := c.Param("name")
+	reducerName := c.Query("name")
 	wc := context.NewWC(c)
 	crtKey := reducerName + wc.GetUserID() + wc.GetWorkspaceID()
 	reducer := tmpReducerValueMap[crtKey]
@@ -51,7 +51,7 @@ func API_Sync_Reducer_Save(c *gin.Context) {
 	defer lock.Unlock()
 
 	// get reducer
-	reducerName := c.Param("name")
+	reducerName := c.Query("name")
 	wc := context.NewWC(c)
 	crtKey := reducerName + wc.GetUserID() + wc.GetWorkspaceID()
 	// get state

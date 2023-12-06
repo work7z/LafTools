@@ -148,11 +148,12 @@ export default (props: {
     extId: "", // TODO: patch extId
   };
 
-  let { Tool_RemarkExtIds } = exportUtils.useSelector((v) => {
-    return {
-      Tool_RemarkExtIds: v.forge.Tool_RemarkExtIds,
-    };
-  });
+  // let { Tool_RemarkExtIds } = exportUtils.useSelector((v) => {
+  //   return {
+  //     Tool_RemarkExtIds: v.forge.Tool_RemarkExtIds,
+  //   };
+  // });
+  let Tool_RemarkExtIds = [];
   let treeInfo = exportUtils.useSelector((x) => x.tool.subCategoryTreeInfo);
   let hist = RouteUtils.useHistory();
   let goWithChildId = (childId) => {

@@ -39,7 +39,7 @@ import TranslationUtils, { Dot } from "../utils/TranslationUtils";
 import { VER_FORGE_FORM } from "../styles/config";
 import AjaxUtils from "../utils/AjaxUtils";
 import exportUtils from "../utils/ExportUtils";
-import ALL_NOCYCLE from "../nocycle";
+import ALL_NOCYCLE, { getStrIntoCache, saveStrIntoCache } from "../nocycle";
 import AlertUtils from "../utils/AlertUtils";
 import { RemarkUtils } from "../utils/RemarkUtils";
 import QueryUtils from "../utils/QueryUtils";
@@ -60,7 +60,7 @@ let newInitialState = (): ForgeState => {
   return {
     UsingSmartEditor: false,
     UpdatePageId: gutils.uuid(),
-    DarkThemeMode: false,
+    DarkThemeMode: getStrIntoCache("dark-mode") === "true",
     Language: gutils.IsDevMode() ? "zh_CN" : gutils.GetUserActualClientLang(),
     HasUserSelectedOption: false,
     VerForgeForm: VER_FORGE_FORM,
@@ -68,14 +68,14 @@ let newInitialState = (): ForgeState => {
 };
 let initialState: ForgeState = newInitialState();
 
-let preLocalStr = localStorage.getItem(KEY_PERSIST_INTO_LOCAL);
-if (!_.isEmpty(preLocalStr)) {
-  let p = gutils.safeparse(preLocalStr);
-  if (!_.isEmpty(p)) {
-    initialState = p as ForgeState;
-  }
-}
-_.defaultsDeep(initialState, newInitialState());
+// let preLocalStr = localStorage.getItem(KEY_PERSIST_INTO_LOCAL);
+// if (!_.isEmpty(preLocalStr)) {
+//   let p = gutils.safeparse(preLocalStr);
+//   if (!_.isEmpty(p)) {
+//     initialState = p as ForgeState;
+//   }
+// }
+// _.defaultsDeep(initialState, newInitialState());
 
 if (
   initialState.Language != null &&
@@ -157,6 +157,7 @@ const forgeSlice = createSlice({
     },
     updateDarkMode(state, action: PayloadAction<{ isDark: boolean }>) {
       state.DarkThemeMode = action.payload.isDark;
+      saveStrIntoCache("dark-mode", action.payload.isDark + "");
     },
     updateLanguage(state, action: PayloadAction<{ lang: string }>) {
       state.Language = action.payload.lang;

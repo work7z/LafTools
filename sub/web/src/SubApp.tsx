@@ -95,10 +95,10 @@ function App() {
       InitUtils.InitAllWithDOMAfterLoginIn(dis);
     }
   }, [isUserSignInNow, isEnvNotInit]);
-  if (isUserSignInNow) {
-    innerJSX = <UserAskMultipleDialogs />;
-  } else if (isEnvNotInit) {
+  if (isEnvNotInit) {
     innerJSX = <InitSystemEnv key="init-system-env" />;
+  } else if (isUserSignInNow) {
+    innerJSX = <UserAskMultipleDialogs />;
   } else {
     innerJSX = <RouteComponent></RouteComponent>;
   }

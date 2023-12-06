@@ -24,6 +24,18 @@ import appinfoJSON from "./app-info.json";
 import { Dispatch } from "react";
 import _ from "lodash";
 
+export let getAjaxValueRes = function <A extends { [key: string]: any }>(r): A {
+  return r.response?.data?.payload?.value;
+};
+
+let pkey = "txsyl";
+export let saveStrIntoCache = function (key: string, value: string) {
+  localStorage.setItem(pkey + key, value);
+};
+export let getStrIntoCache = function (key: string): string | null {
+  return localStorage.getItem(pkey + key);
+};
+
 interface NoCycle {
   store?: ToolkitStore<RootState>;
   workspaceId?: string | undefined;

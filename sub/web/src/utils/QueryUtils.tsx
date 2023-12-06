@@ -69,13 +69,11 @@ import _ from "lodash";
 import { Dot } from "./TranslationUtils";
 import gutils from "./GlobalUtils";
 import AlertUtils from "./AlertUtils";
+import { getAjaxValueRes as getAjaxValueResInner } from "../nocycle";
 
-export let getAjaxValueRes = function <A extends { [key: string]: any }>(r): A {
-  return r.response?.data?.payload?.value;
-};
-
+export let getAjaxValueRes = getAjaxValueResInner;
 const QueryUtils = {
-  getDoAjaxValueRes: getAjaxValueRes,
+  getDoAjaxValueRes: getAjaxValueResInner,
   validateResult: (
     res_toolCategory: TypedUseQueryHookResult<any, any, any>,
     options: { label: string; onlyErr?: boolean }
