@@ -166,7 +166,7 @@ export default () => {
   if (res) {
     return res;
   }
-  if (true || !available) {
+  if (!available) {
     return (
       <p className="bg-red w-full h-full align-center justify-center">
         {Dot("oBz8D", "Loading...")}
