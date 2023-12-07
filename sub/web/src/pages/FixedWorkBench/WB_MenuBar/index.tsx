@@ -173,15 +173,17 @@ export let WB_MenuBar = (props: PassProp) => {
         {
           id: "file-new-file",
           label: Dot("F4uS2", "New File"),
+          disabled: true,
+        },
+        {
+          id: "file-new-window",
+          label: Dot("qF4uS23", "New Window"),
+          link: location.href,
         },
         // {
-        //   id: "file-new-window",
-        //   name: Dot("qF4uS23", "New Window"),
+        //   id: "file-new-workspace",
+        //   label: Dot("qF4uS2", "Create Workspace"),
         // },
-        {
-          id: "file-new-workspace",
-          label: Dot("qF4uS2", "Create Workspace"),
-        },
         {
           id: "gJf4R",
           spliter: true,
@@ -189,10 +191,12 @@ export let WB_MenuBar = (props: PassProp) => {
         {
           id: "file-open-file",
           label: Dot("pJoOz", "Open File"),
+          disabled: true,
         },
         {
           id: "file-open-workspace",
           label: Dot("1NTgQ", "Open Workspace"),
+          disabled: true,
         },
         {
           id: "g7dVE",
@@ -201,10 +205,12 @@ export let WB_MenuBar = (props: PassProp) => {
             {
               label: Dot("Opcty", "Files"),
               id: "XSxYm",
+              disabled: true,
             },
             {
               label: Dot("zN2ES", "Workspaces"),
               id: "65-Xk",
+              disabled: true,
             },
           ],
         },
@@ -224,7 +230,15 @@ export let WB_MenuBar = (props: PassProp) => {
     {
       id: "edit",
       label: Dot("wQdYoz", "Edit"),
-      disabled: true,
+      children: [
+        {
+          id: "rZfcx",
+          label: Dot("kOi5A", "Print Page"),
+          onClick: () => {
+            window.print();
+          },
+        },
+      ],
     },
     {
       id: "view",
@@ -255,7 +269,7 @@ export let WB_MenuBar = (props: PassProp) => {
     },
     {
       id: "workspace",
-      label: Dot("qqwYqwe", "Workspace"),
+      label: Dot("qqwYqwe", "Workspaces"),
       children: workspaceList,
     },
     {
