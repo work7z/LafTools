@@ -119,7 +119,7 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 
 ## Build
 
-```bash 
+```bash
 cd pipeline
 ./build-all.sh
 ```
@@ -159,7 +159,7 @@ Preview(English):
 Preview(简体中文):
 ![](https://github.com/work7z/LafTools/blob/dev/dev/source/img-preview.png?raw=true)
 
-# A Letter to CodeGen ToolBox Users
+# ✉️ A Letter to CodeGen ToolBox Users
 
 Greetings from the CodeGen ToolBox team.
 
