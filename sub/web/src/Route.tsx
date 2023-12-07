@@ -66,12 +66,14 @@ let RouteComponent = () => {
   let workspaceId = useReadCurrentWorkspaceId();
   ALL_NOCYCLE.workspaceId = workspaceId;
 
+  let hist = useHistory();
+  ALL_NOCYCLE.history = hist;
+
   let forgeObj = exportUtils.useSelector((val) => ({
     dark: val.forge.DarkThemeMode,
     lang: val.forge.Language,
   }));
   // once trigger only
-  const hist = useHistory();
   InitRouteHistory(hist);
   // + "/:workspaceId"
   let innerJSX = (

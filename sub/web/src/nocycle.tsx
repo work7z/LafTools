@@ -23,6 +23,7 @@ import { RootState } from "./store";
 import appinfoJSON from "./app-info.json";
 import { Dispatch } from "react";
 import _ from "lodash";
+import { useHistory } from "react-router-dom";
 
 export let getAjaxValueRes = function <A extends { [key: string]: any }>(r): A {
   return r.response?.data?.payload?.value;
@@ -39,6 +40,7 @@ export let getStrIntoCache = function (key: string): string | null {
 interface NoCycle {
   store?: ToolkitStore<RootState>;
   workspaceId?: string | undefined;
+  history?: ReturnType<typeof useHistory>;
 }
 let ALL_NOCYCLE: NoCycle = {};
 _.set(window, "ALL_NOCYCLE", ALL_NOCYCLE);

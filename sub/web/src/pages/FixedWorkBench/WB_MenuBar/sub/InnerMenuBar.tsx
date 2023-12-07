@@ -169,6 +169,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
         }
         return (
           <MenuItem
+            intent={(x.intent || "none") as any}
             icon={(x.icon || undefined) as any}
             onClick={() => {
               x.onClick && x.onClick();

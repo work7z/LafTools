@@ -46,3 +46,7 @@ export let useWorkSpaceListGet = (): EachWorkSpace[] => {
     workspaceListRes.data?.payload?.value?.WorkSpaces || [];
   return allWorkspaces;
 };
+
+export let pushToWorkSpace = (workspaceId: string) => {
+  ALL_NOCYCLE.history && ALL_NOCYCLE.history.push("/workspace/" + workspaceId);
+};

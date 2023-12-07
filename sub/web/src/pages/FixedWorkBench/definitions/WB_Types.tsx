@@ -123,6 +123,7 @@ export let langList = [
 ];
 export type FixedMenuItem = {
   id: string;
+  intent?: string;
   label?: string;
   onClick?: () => any;
   icon?: string;

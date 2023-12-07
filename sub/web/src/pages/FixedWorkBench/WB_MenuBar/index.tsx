@@ -110,6 +110,11 @@ import apiSlice from "../../../slice/apiSlice";
 
 import { FixedMenuItem, langList } from "../definitions/WB_Types";
 import { FixedMenuBar } from "./sub/InnerMenuBar";
+import {
+  pushToWorkSpace,
+  useReadCurrentWorkspaceId,
+  useWorkSpaceListGet,
+} from "../../../common/workspace-utils";
 
 type PassProp = {
   leftPart?: JSX.Element;
@@ -129,6 +134,20 @@ export let WB_MenuBar = (props: PassProp) => {
   });
   let hist = useHistory();
   let dis = exportUtils.dispatch();
+
+  let workspaceList: FixedMenuItem[] = [];
+  let allWorkspacesList = useWorkSpaceListGet() || [];
+  let crtWorkspaceId = useReadCurrentWorkspaceId();
+  _.forEach(allWorkspacesList, (x, d, n) => {
+    workspaceList.push({
+      id: x.Id,
+      label: x.Label,
+      intent: crtWorkspaceId == x.Id ? "primary" : "none",
+      onClick: () => {
+        pushToWorkSpace(x.Id);
+      },
+    });
+  });
 
   let menus: FixedMenuItem[] = [
     {
@@ -201,6 +220,7 @@ export let WB_MenuBar = (props: PassProp) => {
     {
       id: "workspace",
       label: Dot("qqwYqwe", "Workspace"),
+      children: workspaceList,
     },
     {
       id: "help",
