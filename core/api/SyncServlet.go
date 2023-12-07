@@ -32,12 +32,12 @@ import (
 )
 
 var tmpReducerValueMap map[string]interface{} = make(map[string]interface{})
-var lock = &sync.Mutex{}
+var lockAPI = &sync.Mutex{}
 var updateIdx = 0
 
 func API_Sync_Reducer_Get(c *gin.Context) {
-	lock.Lock()
-	defer lock.Unlock()
+	lockAPI.Lock()
+	defer lockAPI.Unlock()
 	// get reducer
 	reducerName := c.Query("name")
 	wc := context.NewWC(c)
@@ -52,8 +52,8 @@ func API_Sync_Reducer_Get(c *gin.Context) {
 }
 
 func API_Sync_Reducer_Save(c *gin.Context) {
-	lock.Lock()
-	defer lock.Unlock()
+	lockAPI.Lock()
+	defer lockAPI.Unlock()
 
 	// get reducer
 	reducerName := c.Query("name")
@@ -92,31 +92,26 @@ func init() {
 	go func() {
 		// every 3 seconds, write tmpReducerValueMap to reducerSyncFile
 		for {
-			if last_updateIdx == updateIdx {
-				nocycle.Sleep(3000)
-				continue
+			nocycle.Sleep(3000)
+			if last_updateIdx != updateIdx {
+				last_updateIdx = updateIdx
+				lockAPI.Lock()
+				nocycle.WriteFileAsStr(reducerSyncFile, nocycle.ToJson(tmpReducerValueMap))
+				lockAPI.Unlock()
 			}
-			last_updateIdx = updateIdx
-			nocycle.WriteFileAsStr(reducerSyncFile, nocycle.ToJson(tmpReducerValueMap))
-		}
-	}()
-	go func() {
-		for {
-			if last_modifiedFile == nocycle.GetFileLastModified(reducerSyncFile) {
-				nocycle.Sleep(3000)
-				continue
-			}
-			last_modifiedFile = nocycle.GetFileLastModified(reducerSyncFile)
-			str, err := nocycle.ReadFileAsStr(reducerSyncFile)
-			if err != nil {
-				log.Ref().Warn("unable to read reducer sync file: ", err)
-			} else {
-				// unmarhsla str to tmpReducerValueMap
-				lock.Lock()
-				err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
-				lock.Unlock()
-				if err2 != nil {
-					log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
+			if last_modifiedFile != nocycle.GetFileLastModified(reducerSyncFile) {
+				last_modifiedFile = nocycle.GetFileLastModified(reducerSyncFile)
+				str, err := nocycle.ReadFileAsStr(reducerSyncFile)
+				if err != nil {
+					log.Ref().Warn("unable to read reducer sync file: ", err)
+				} else {
+					// unmarhsla str to tmpReducerValueMap
+					lockAPI.Lock()
+					err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
+					lockAPI.Unlock()
+					if err2 != nil {
+						log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
+					}
 				}
 			}
 		}
