@@ -47,6 +47,7 @@ import PageUtils from "./utils/PageUtils";
 import AuthHookUtils from "./utils/AuthHookUtils";
 import InitUtils from "./utils/InitUtils";
 import _ from "lodash";
+import { IsDevMode, getIconPngFile } from "./nocycle";
 
 function App() {
   let hotkeys = [
@@ -95,6 +96,13 @@ function App() {
       InitUtils.InitAllWithDOMAfterLoginIn(dis);
     }
   }, [isUserSignInNow, isEnvNotInit]);
+
+  useEffect(() => {
+    if (IsDevMode()) {
+      $(".icon-ele").attr("href", "/static/" + getIconPngFile());
+    }
+  }, []);
+
   if (isEnvNotInit) {
     innerJSX = <InitSystemEnv key="init-system-env" />;
   } else if (isUserSignInNow) {

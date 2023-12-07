@@ -76,20 +76,4 @@ export default () => {
       {Dot("OrCt5", "Redirecting to the workbench...")}
     </div>
   );
-  // return (
-  //   <div className="entry">
-  //     <div className="entry__body">
-  //       <div className="entry__icon">
-  //         <img src={gutils.getStaticPath("/icon.png")} />
-  //       </div>
-  //       <div className="entry__title">
-  //         {Dot("iDsRh", "Preparing for your LafTools")}
-  //       </div>
-  //       <div className="entry__subtitle">Please wait for a moment</div>
-  //       <div className="entry__progress">
-  //         <ProgressBar intent={Intent.PRIMARY} />
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 };

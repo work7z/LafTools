@@ -66,7 +66,7 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../../nocycle";
+import { APPINFOJSON, delayFN, getIconPngFile } from "../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -233,7 +233,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
                 top: "0",
                 left: "0",
               }}
-              src={gutils.getStaticPath("/icon.png")}
+              src={gutils.getStaticPath("/" + getIconPngFile())}
             />
           </Tooltip>
         ) : (

@@ -29,6 +29,10 @@ export let getAjaxValueRes = function <A extends { [key: string]: any }>(r): A {
   return r.response?.data?.payload?.value;
 };
 
+export let getIconPngFile = (): string => {
+  return IsDevMode() ? "icon-dev.png" : "icon.png";
+};
+
 let pkey = "txsyl";
 export let saveStrIntoCache = function (key: string, value: string) {
   localStorage.setItem(pkey + key, value);
