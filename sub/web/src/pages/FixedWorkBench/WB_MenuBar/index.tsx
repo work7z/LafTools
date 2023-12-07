@@ -241,6 +241,38 @@ export let WB_MenuBar = (props: PassProp) => {
     {
       id: "help",
       label: Dot("qqqwYoz", "Help"),
+      children: [
+        {
+          id: "help.website",
+          label: Dot("WPrTW", "Official Website"),
+          link: "https://laf-tools.com",
+        },
+        {
+          id: "help.github",
+          label: Dot("mSFei", "Source Code on GitHub"),
+          link: "https://github.com/work7z/LafTools",
+        },
+        {
+          id: "qPR4G",
+          spliter: true,
+        },
+        {
+          id: "help.reportIssue",
+          label: Dot("VOsZc", "Report Issue"),
+          link: "https://github.com/work7z/LafTools/issues",
+        },
+        {
+          id: "lxIYP",
+          spliter: true,
+        },
+        {
+          id: "help.about",
+          label: Dot("Z2QTU", "About"),
+          onClick: () => {
+            hist.push("/about");
+          },
+        },
+      ],
     },
   ];
 

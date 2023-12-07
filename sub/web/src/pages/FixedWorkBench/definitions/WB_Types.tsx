@@ -130,6 +130,7 @@ export type FixedMenuItem = {
   spliter?: boolean;
   disabled?: boolean;
   tooltip?: string;
+  link?: string;
   children?: FixedMenuItem[];
 };
 

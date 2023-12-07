@@ -176,6 +176,8 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
               x.onClick && x.onClick();
             }}
             text={x.label}
+            href={x.link}
+            target="_blank"
           >
             {!_.isEmpty(x.children) ? fn_formatChildren(x.children) : null}
           </MenuItem>
@@ -242,6 +244,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
           ? props.leftPart
           : _.map(props.menus, (x) => {
               let isOpen = currentButton == x.id;
+              let BTag = x.link ? AnchorButton : Button;
               return (
                 <Popover
                   key={x.id}
@@ -260,7 +263,9 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
                     ></RegularMenu>
                   }
                 >
-                  <Button
+                  <BTag
+                    target={x.link ? "_blank" : undefined}
+                    href={x.link}
                     small
                     onClick={() => {
                       if (currentButton && isOpen) {
@@ -277,7 +282,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
                     disabled={x.disabled}
                     minimal
                     text={Dot("CPW5r", x.label || Dot("6yOXx", "Unknown Name"))}
-                  ></Button>
+                  ></BTag>
                 </Popover>
               );
             })}
