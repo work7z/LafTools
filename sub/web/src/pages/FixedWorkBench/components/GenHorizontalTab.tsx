@@ -91,19 +91,13 @@ type PassProp = {
   tabs?: EachTab[];
 };
 
-export default () => {
+export default (props: PassProp) => {
   const [activeTab, setActiveTab] = useState("tab1");
   //
-  const tabs: EachTab[] = [];
+  const tabs: EachTab[] = props.tabs || [];
   // mock data for tabs
   let [moveLeftDistance, onMoveLeftDistance] = useState(0);
-  for (let i = 0; i < 3; i++) {
-    tabs.push({
-      id: "tab" + i,
-      label: "tab" + i + "-" + moveLeftDistance,
-      icon: "database",
-    });
-  }
+
   let commonBG = " using-edge-ui-bg ";
   let fn_handleClickEachTab = (tab: EachTab) => () => {
     setActiveTab(tab.id);

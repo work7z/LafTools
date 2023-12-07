@@ -122,6 +122,11 @@ import GenHorizontalTab from "../../../components/GenHorizontalTab";
 
 let EachFunctionPanel = () => {
   let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
+  let s = exportUtils.useSelector((v) => {
+    return {
+      tabs: v.workspace.tools.tabs,
+    };
+  });
   return (
     <div
       className="full-editor-p"
@@ -134,6 +139,50 @@ let EachFunctionPanel = () => {
   );
 };
 export default () => {
+  let s = exportUtils.useSelector((v) => {
+    return {
+      tabs: v.workspace.tools.tabs,
+    };
+  });
+  if (s.tabs.length === 0) {
+    let helpers: {
+      label: string;
+      subLabel?: string;
+    }[] = [
+      {
+        label: Dot("QM2Ob", "Recent Tools"),
+        subLabel: "Ctrl + E",
+      },
+      {
+        label: Dot("pKHRT", "Go to Tools"),
+        subLabel: Dot("HyIC_", "Slash Key (/)"),
+      },
+      {
+        label: Dot("h3hSL", "List HotKeys"),
+        subLabel: Dot("ofs6b", "Query Key(?)"),
+      },
+      {
+        label: Dot("psZoP", "Drop files here to process them"),
+      },
+    ];
+    return (
+      <div className="bg-slate-100 p-5 dark:bg-black  w-full p-0 m-0 h-full">
+        <h1 className="m-0 mb-3">{Dot("dDGrH", "LafTools Navigator")}</h1>
+        <ul className="list">
+          {/* <div>{Dot("FOyHW", "Search Everywhere")}</div> */}
+          {/* <div>{Dot("uwqGE", "Go to Tools")}</div> */}
+          {helpers.map((x) => {
+            return (
+              <li className="flex mb-3">
+                <div className="mr-2">{x.label}</div>
+                <div className="text-gray-500">{x.subLabel}</div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  }
   return (
     <div className="icv w-full h-full">
       <GenHorizontalTab></GenHorizontalTab>
