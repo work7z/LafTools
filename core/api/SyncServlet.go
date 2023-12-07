@@ -33,6 +33,7 @@ import (
 
 var tmpReducerValueMap map[string]interface{} = make(map[string]interface{})
 var lock = &sync.Mutex{}
+var updateIdx = 0
 
 func API_Sync_Reducer_Get(c *gin.Context) {
 	lock.Lock()
@@ -64,12 +65,15 @@ func API_Sync_Reducer_Save(c *gin.Context) {
 		ErrLa(c, err)
 		return
 	}
+	updateIdx++
 	// save state
 	tmpReducerValueMap[crtKey] = state
 	OKLa(c, DoValueRes("saved"))
 }
 
 func init() {
+	last_updateIdx := 0
+	last_modifiedFile := 0
 	reducerSyncFile := config.GetCurrentReducerSyncFile()
 	if nocycle.IsFileExist(reducerSyncFile) {
 		str, err := nocycle.ReadFileAsStr(reducerSyncFile)
@@ -88,8 +92,33 @@ func init() {
 	go func() {
 		// every 3 seconds, write tmpReducerValueMap to reducerSyncFile
 		for {
+			if last_updateIdx == updateIdx {
+				nocycle.Sleep(3000)
+				continue
+			}
+			last_updateIdx = updateIdx
 			nocycle.WriteFileAsStr(reducerSyncFile, nocycle.ToJson(tmpReducerValueMap))
-			nocycle.Sleep(3000)
+		}
+	}()
+	go func() {
+		for {
+			if last_modifiedFile == nocycle.GetFileLastModified(reducerSyncFile) {
+				nocycle.Sleep(3000)
+				continue
+			}
+			last_modifiedFile = nocycle.GetFileLastModified(reducerSyncFile)
+			str, err := nocycle.ReadFileAsStr(reducerSyncFile)
+			if err != nil {
+				log.Ref().Warn("unable to read reducer sync file: ", err)
+			} else {
+				// unmarhsla str to tmpReducerValueMap
+				lock.Lock()
+				err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
+				lock.Unlock()
+				if err2 != nil {
+					log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
+				}
+			}
 		}
 	}()
 }

@@ -52,6 +52,14 @@ func WriteFileAsStr(filename string, content string) error {
 	return RenameFile(bakFile, filename)
 }
 
+func GetFileLastModified(filename string) int {
+	m, err := os.Lstat(filename)
+	if err != nil {
+		return 0
+	}
+	return int(m.ModTime().Unix())
+}
+
 func ToJson(obj interface{}) string {
 	a, err := json.Marshal(obj)
 	if err != nil {
