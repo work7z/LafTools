@@ -128,7 +128,7 @@ export type FixedMenuItem = {
   onClick?: () => any;
   icon?: string;
   spliter?: boolean;
-  disable?: boolean;
+  disabled?: boolean;
   tooltip?: string;
   children?: FixedMenuItem[];
 };

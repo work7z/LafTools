@@ -25,6 +25,8 @@ import apiSlice from "../slice/apiSlice";
 import QueryUtils from "../utils/QueryUtils";
 import { Dot } from "../utils/TranslationUtils";
 import ALL_NOCYCLE from "../nocycle";
+import { URL_PREFIX_LOCAL } from "../styles/config";
+import AlertUtils from "../utils/AlertUtils";
 
 export let useReadCurrentWorkspaceId = (): string => {
   const { workspaceId = "" } = useParams() as any;
@@ -48,5 +50,7 @@ export let useWorkSpaceListGet = (): EachWorkSpace[] => {
 };
 
 export let pushToWorkSpace = (workspaceId: string) => {
-  ALL_NOCYCLE.history && ALL_NOCYCLE.history.push("/workspace/" + workspaceId);
+  AlertUtils.popOK(Dot("Z7ALO", "Switched to the selected workspace"));
+  ALL_NOCYCLE.history &&
+    ALL_NOCYCLE.history.replace("/workbench/" + workspaceId);
 };

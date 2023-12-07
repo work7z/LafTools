@@ -82,9 +82,9 @@ const AlertUtils = {
       message: Dot("ip2g1", "Copied"),
     });
   },
-  popOK() {
+  popOK(msg?: string) {
     AlertUtils.popMsg("success", {
-      message: Dot("mihc3", "Completed this operation"),
+      message: msg || Dot("mihc3", "Completed this operation"),
     });
   },
   popRefresh() {

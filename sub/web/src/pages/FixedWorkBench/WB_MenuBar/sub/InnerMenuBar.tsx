@@ -169,6 +169,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
         }
         return (
           <MenuItem
+            disabled={x.disabled}
             intent={(x.intent || "none") as any}
             icon={(x.icon || undefined) as any}
             onClick={() => {
@@ -199,7 +200,6 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
     );
   };
 
-  let handleClick = () => 1;
   return (
     <div
       id={refId}
@@ -241,6 +241,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
         {props.leftPart
           ? props.leftPart
           : _.map(props.menus, (x) => {
+              let isOpen = currentButton == x.id;
               return (
                 <Popover
                   key={x.id}
@@ -250,7 +251,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
                   interactionKind={
                     hasClickAnyButton ? "hover-target" : "click-target"
                   }
-                  isOpen={currentButton == x.id}
+                  isOpen={isOpen}
                   placement="bottom-start"
                   content={
                     <RegularMenu
@@ -262,13 +263,18 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
                   <Button
                     small
                     onClick={() => {
-                      goToMenuItem(x.id);
+                      if (currentButton && isOpen) {
+                        goToMenuItem(null);
+                      } else {
+                        goToMenuItem(x.id);
+                      }
                     }}
                     onMouseEnter={() => {
                       if (hasClickAnyButton) {
                         goToMenuItem(x.id);
                       }
                     }}
+                    disabled={x.disabled}
                     minimal
                     text={Dot("CPW5r", x.label || Dot("6yOXx", "Unknown Name"))}
                   ></Button>

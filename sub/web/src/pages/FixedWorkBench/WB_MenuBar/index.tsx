@@ -208,14 +208,30 @@ export let WB_MenuBar = (props: PassProp) => {
     {
       id: "edit",
       label: Dot("wQdYoz", "Edit"),
+      disabled: true,
     },
     {
       id: "view",
       label: Dot("wQdqwYoz", "View"),
+      children: [
+        {
+          id: "view.full",
+          label: Dot("CwAUd", "Toggle FullScreen Mode"),
+          onClick: () => {
+            // full screen or not
+          },
+        },
+      ],
     },
     {
       id: "tabs",
       label: Dot("qqwYoz", "Tabs"),
+      children: [
+        {
+          id: "tab.closeAll",
+          label: Dot("xbz0B", "Close All Tabs"),
+        },
+      ],
     },
     {
       id: "workspace",
@@ -313,6 +329,9 @@ export let WB_MenuBar = (props: PassProp) => {
                 //   Dot("TBPqy7", "Language") +
                 //   ` (${TranslationUtils.CurrentLanguage})`
                 // }
+                onClick={() => {
+                  //
+                }}
                 icon={"globe"}
               />
             </Tooltip>
