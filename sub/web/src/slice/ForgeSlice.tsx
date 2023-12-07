@@ -53,6 +53,7 @@ interface ForgeState {
   Language: string;
   HasUserSelectedOption: boolean;
   VerForgeForm: string;
+  FullScreenOrNot?: boolean;
 }
 
 const KEY_PERSIST_INTO_LOCAL = "KEY_PERSIST_INTO_LOCAL";
@@ -64,6 +65,7 @@ let newInitialState = (): ForgeState => {
     Language: gutils.IsDevMode() ? "zh_CN" : gutils.GetUserActualClientLang(),
     HasUserSelectedOption: false,
     VerForgeForm: VER_FORGE_FORM,
+    FullScreenOrNot: false,
   };
 };
 let initialState: ForgeState = newInitialState();

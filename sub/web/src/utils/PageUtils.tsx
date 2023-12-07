@@ -73,6 +73,16 @@ const PageUtils = {
       VAL_REQUEST_OBJ.Host
     }:${VAL_REQUEST_OBJ.Port}${VAL_REQUEST_OBJ.BaseCtxAPI}`;
   },
+  isFullScreen: (): boolean => {
+    return document.fullscreenElement != null;
+  },
+  toggleFullScreen: () => {
+    if (PageUtils.isFullScreen()) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
+    }
+  },
 };
 
 export default PageUtils;

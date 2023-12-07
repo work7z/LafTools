@@ -66,7 +66,7 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../nocycle";
+import { APPINFOJSON, delayFN, getIconPngFile } from "../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -115,9 +115,25 @@ import {
   useReadCurrentWorkspaceId,
   useWorkSpaceListGet,
 } from "../../../common/workspace-utils";
+import AlertUtils from "../../../utils/AlertUtils";
 
 type PassProp = {
   leftPart?: JSX.Element;
+};
+
+let AboutThisSoftware = () => {
+  return (
+    <div className="center flex flex-col  m-auto w-full self-center">
+      <img style={{ width: "120px" }} src={"/static/" + getIconPngFile()}></img>
+      <p className="mt-2">LafTools - {APPINFOJSON.version}</p>
+      <p>
+        {Dot("hRFxV", "For more information, please visit our website")} -&gt;
+        <a href="https://laf-tools.com" target="_blank">
+          laf-tools.com
+        </a>
+      </p>
+    </div>
+  );
 };
 
 export let WB_MenuBar = (props: PassProp) => {
@@ -216,9 +232,13 @@ export let WB_MenuBar = (props: PassProp) => {
       children: [
         {
           id: "view.full",
-          label: Dot("CwAUd", "Toggle FullScreen Mode"),
+          // label: !PageUtils.isFullScreen()
+          //   ? Dot("lRHDQ", "Exit Full Screen Mode")
+          //   : Dot("M7jct", "Enter Full Screen Mode"),
+          label: Dot("2S5ap", "Toggle Full Screen Mode"),
           onClick: () => {
-            // full screen or not
+            // page show full screen or not
+            PageUtils.toggleFullScreen();
           },
         },
       ],
@@ -266,10 +286,18 @@ export let WB_MenuBar = (props: PassProp) => {
           spliter: true,
         },
         {
+          id: "help.condition",
+          label: Dot("VeY9K", "Terms of Use"),
+          link: "https://codegen.cc/main/license/main",
+        },
+        {
           id: "help.about",
           label: Dot("Z2QTU", "About"),
           onClick: () => {
-            hist.push("/about");
+            AlertUtils.win_alert({
+              id: "0kcZT",
+              msg: <AboutThisSoftware />,
+            });
           },
         },
       ],

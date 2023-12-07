@@ -46,7 +46,7 @@ export function fn_new_ProcessLoadType(): ProcessLoadType {
 type BasicMsg = {
   id: string;
   intent?: Intent;
-  msg: string;
+  msg: string | JSX.Element;
   fn?: (
     yesOrNo: boolean,
     obj?: {
