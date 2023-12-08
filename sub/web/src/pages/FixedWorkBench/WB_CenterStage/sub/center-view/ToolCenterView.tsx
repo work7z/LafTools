@@ -119,6 +119,7 @@ import {
 } from "../../nav/functional/panel-group/controls/FunctionalControls";
 import GenCodeMirror from "../../../../../components/GenCodeMirror";
 import GenHorizontalTab from "../../../components/GenHorizontalTab";
+import WorkspaceSlice from "../../../../../slice/workspaceSlice";
 
 let EachFunctionPanel = () => {
   let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
@@ -191,14 +192,33 @@ export default () => {
   let s = exportUtils.useSelector((v) => {
     return {
       tabs: v.workspace.tools.tabs,
+      tabIdx: v.workspace.tools.tabIndex,
     };
   });
+  let dis = exportUtils.dispatch();
   if (s.tabs.length === 0) {
     return <EmptyToolMarks></EmptyToolMarks>;
   }
   return (
     <div className="icv w-full h-full">
-      <GenHorizontalTab></GenHorizontalTab>
+      <GenHorizontalTab
+        activeTab={s.tabIdx}
+        setNewTabs={() => {
+          dis(
+            WorkspaceSlice.actions.updateTools({
+              tabs: [],
+            })
+          );
+        }}
+        setActiveTab={(newVal) => {
+          dis(
+            WorkspaceSlice.actions.updateTools({
+              tabIndex: newVal,
+            })
+          );
+        }}
+        tabs={s.tabs}
+      ></GenHorizontalTab>
       <EachFunctionPanel></EachFunctionPanel>
     </div>
   );

@@ -138,15 +138,7 @@ export let InnerToolPanel = (): any => {
     }
   );
   let activeOne = _.find(categoryList, (x) => x.Id == fc);
-  // categoryList = [
-  //   {
-  //     Id: "all",
-  //     LabelByInit: Dot("41z4c", "All Tools"),
-  //     Label: [""],
-  //     SubCategories: [],
-  //   },
-  //   ...categoryList,
-  // ];
+
   let m_ws = useMergeParamWithWorkSpace();
   return (
     <FunctionalMenu_Panel

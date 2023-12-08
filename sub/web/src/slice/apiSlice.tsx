@@ -40,6 +40,7 @@ let createNotProhibitedResources = (build, resName) => {
 };
 
 export const apiSlice = createApi({
+  reducerPath: "api",
   baseQuery: fetchBaseQuery({
     // Fill in your own server starting URL here
     baseUrl: URL_PREFIX_LOCAL,

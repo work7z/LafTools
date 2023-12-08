@@ -33,8 +33,10 @@ import BigTextSlice from "./BigTextSlice";
 import layoutSlice from "./LayoutSlice";
 import WorkspaceSlice from "./workspaceSlice";
 import PreWorkSpaceSlice from "./preWorkSpace";
+import onlineAPISlice from "./onlineAPISlice";
 
 export default {
+  online: onlineAPISlice.reducer,
   preWorkspace: PreWorkSpaceSlice,
   workspace: WorkspaceSlice,
   layout: layoutSlice,

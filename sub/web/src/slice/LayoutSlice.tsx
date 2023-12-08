@@ -55,7 +55,7 @@ let fn_initialState = (): LayoutState => {
     menuHide: {
       left: false,
       right: false,
-      bottom: false,
+      bottom: true,
     },
     menuRecord: {
       ltr: [],

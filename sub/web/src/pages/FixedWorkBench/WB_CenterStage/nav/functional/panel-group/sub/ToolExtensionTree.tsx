@@ -133,27 +133,17 @@ export default (props: {
   let sq = useSearchQuery();
   const [updateMemStatus, onUpdateMemStatus] = useState(0);
   let fc = sq.fc || "all";
-  let currentCategoryId = fc;
   let extsListQuery = apiSlice.useGetToolCategoryExtsListQuery(
     { categoryId: fc },
     {
       refetchOnMountOrArgChange: false,
     }
   );
-  //   let list_extsListQuery: ListExtForTheCategoryRes[] =
-  //     extsListQuery.data?.payload?.list || [];
   let dis = exportUtils.dispatch();
   let toolParam = {
     category: fc,
     extId: "", // TODO: patch extId
   };
-
-  // let { Tool_RemarkExtIds } = exportUtils.useSelector((v) => {
-  //   return {
-  //     Tool_RemarkExtIds: v.forge.Tool_RemarkExtIds,
-  //   };
-  // });
-  let Tool_RemarkExtIds = [];
   let treeInfo = exportUtils.useSelector((x) => x.tool.subCategoryTreeInfo);
   let hist = RouteUtils.useHistory();
   let goWithChildId = (childId) => {
@@ -209,7 +199,6 @@ export default (props: {
   }, [
     updateMemStatus,
     extsListQuery.status,
-    Tool_RemarkExtIds.join("-"),
     workspaceDataForTree.favourites,
     treeInfo.updateId,
     _.size(treeInfo.nodes),
@@ -348,6 +337,19 @@ export default (props: {
               if (node?.hasCaret) return;
               let childId = node?.id;
               goWithChildId(childId);
+              dis(
+                WorkspaceSlice.actions.pushTabsForTools({
+                  newTab: {
+                    id: _.toString(childId) || "Unknown Id",
+                    label: _.toString(node?.label) || "Unknown Label",
+                    icon: "application",
+                    // pathname: m_ws({
+                    //   fc: fc,
+                    //   extId: childId,
+                    // }),
+                  },
+                })
+              );
             }}
             formatEachNode={(x) => {
               if (!x.hasCaret) {

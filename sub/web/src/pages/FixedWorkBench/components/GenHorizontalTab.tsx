@@ -87,31 +87,33 @@ export type EachTab = {
 };
 
 type PassProp = {
-  //
   tabs?: EachTab[];
+  activeTab?: number;
+  setActiveTab?: (newIdx: number) => any;
+  setNewTabs?: (newArr: EachTab[]) => any;
 };
 
 export default (props: PassProp) => {
-  const [activeTab, setActiveTab] = useState("tab1");
-  //
+  let { activeTab, setActiveTab } = props;
   const tabs: EachTab[] = props.tabs || [];
+
   // mock data for tabs
   let [moveLeftDistance, onMoveLeftDistance] = useState(0);
 
   let commonBG = " using-edge-ui-bg ";
-  let fn_handleClickEachTab = (tab: EachTab) => () => {
-    setActiveTab(tab.id);
+  let fn_handleClickEachTab = (tab: EachTab, tabIdx: number) => () => {
+    setActiveTab && setActiveTab(tabIdx);
   };
   let [eleId_tab] = useState(_.uniqueId(""));
   let [eleId_subTab] = useState(_.uniqueId(""));
   let [eleId_controlBar] = useState(_.uniqueId(""));
   let fn_format_each_tab = (verticalMode = false) => {
     return (tab, tabIdx, tabList) => {
-      let isCurrent = activeTab === tab.id;
+      let isCurrent = activeTab === tabIdx;
       return (
         <div
           key={tab.id}
-          onClick={fn_handleClickEachTab(tab)}
+          onClick={fn_handleClickEachTab(tab, tabIdx)}
           style={{}}
           data-active={isCurrent ? "t" : "f"}
           data-tabid={tab.id}
@@ -202,7 +204,7 @@ export default (props: PassProp) => {
   let [crtTranslateX, onCrtTranslateX] = useState<number>(0);
   let [p_width, onPWidth] = useState(0);
   let [subP_width, onSubPWidth] = useState(0);
-  let moveStep = 100;
+  let moveStep = 120;
   let allSubChildrenWidth = useMemo(() => {
     var totalWidth = 0;
     $("#" + eleId_subTab)
@@ -213,7 +215,7 @@ export default (props: PassProp) => {
         }
       });
     return totalWidth;
-  }, [p_width, subP_width, eleId_subTab, eleId_tab]);
+  }, [p_width, subP_width, eleId_subTab, eleId_tab, _.size(tabs), activeTab]);
   let shouldShowLeftRight = p_width > 0 && p_width < allSubChildrenWidth;
 
   let isItReachedToRightLimit = useMemo(() => {
@@ -234,7 +236,13 @@ export default (props: PassProp) => {
     } else {
       return false;
     }
-  }, [allSubChildrenWidth, shouldShowLeftRight, crtTranslateX]);
+  }, [
+    allSubChildrenWidth,
+    _.size(tabs),
+    activeTab,
+    shouldShowLeftRight,
+    crtTranslateX,
+  ]);
 
   return (
     <div
@@ -334,10 +342,19 @@ export default (props: PassProp) => {
                     <MenuItem
                       // icon="menu-closed"
                       text={Dot("ZrbuC", "Close Tab")}
+                      onClick={() => {
+                        let newTabs = _.filter(tabs, (x, idx) => {
+                          return idx != activeTab;
+                        });
+                        props.setNewTabs && props.setNewTabs(newTabs);
+                      }}
                     />
                     <MenuItem
                       // icon="collapse-all"
                       text={Dot("ZrbduC", "Close All Tabs")}
+                      onClick={() => {
+                        props.setNewTabs && props.setNewTabs([]);
+                      }}
                     />
                     {/* <MenuDivider /> */}
                     {/* <MenuItem icon="import" text="Import" /> */}
