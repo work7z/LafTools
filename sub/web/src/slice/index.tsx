@@ -36,7 +36,7 @@ import PreWorkSpaceSlice from "./preWorkSpace";
 import onlineAPISlice from "./onlineAPISlice";
 
 export default {
-  online: onlineAPISlice.reducer,
+  online: onlineAPISlice,
   preWorkspace: PreWorkSpaceSlice,
   workspace: WorkspaceSlice,
   layout: layoutSlice,
