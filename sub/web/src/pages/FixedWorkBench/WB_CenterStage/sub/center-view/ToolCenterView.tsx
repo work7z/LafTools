@@ -138,6 +138,55 @@ let EachFunctionPanel = () => {
     </div>
   );
 };
+
+let EmptyToolMarks = () => {
+  let helpers: {
+    label: string;
+    subLabel?: string;
+  }[] = [
+    {
+      label: Dot("QM2Ob", "Recent Tools"),
+      subLabel: "Ctrl + E",
+    },
+    {
+      label: Dot("pKHRT", "Go to Tools"),
+      subLabel: Dot("HyIC_", "Slash Key (/)"),
+    },
+    {
+      label: Dot("F0CCF", "HotKeys List"),
+      subLabel: Dot("PpCHA", "Question Key(?)"),
+    },
+    {
+      label: Dot("psZoP", "Drop files here to process them"),
+      subLabel: Dot("mBgF1", "Mouse Action"),
+    },
+  ];
+  return (
+    <div className="bg-slate-100 relative p-5 dark:bg-black  w-full p-0 m-0 h-full">
+      <h1 className="m-0 mb-3">{Dot("dDGrH", "LafTools Navigator")}</h1>
+      <ul className="list">
+        {/* <div>{Dot("FOyHW", "Search Everywhere")}</div> */}
+        {/* <div>{Dot("uwqGE", "Go to Tools")}</div> */}
+        {helpers.map((x) => {
+          return (
+            <li className="flex mb-3">
+              <div className="mr-2">{x.label}</div>
+              <div className="text-gray-500">{x.subLabel}</div>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="absolute bottom-2 right-1 text-gray-600 dark:text-gray-400">
+        <div>
+          {Dot(
+            "pqs7y3",
+            "Kindly consider registering this webpage as a Progressive Web App (PWA) to take advantage of comprehensive keymap support."
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 export default () => {
   let s = exportUtils.useSelector((v) => {
     return {
@@ -145,43 +194,7 @@ export default () => {
     };
   });
   if (s.tabs.length === 0) {
-    let helpers: {
-      label: string;
-      subLabel?: string;
-    }[] = [
-      {
-        label: Dot("QM2Ob", "Recent Tools"),
-        subLabel: "Ctrl + E",
-      },
-      {
-        label: Dot("pKHRT", "Go to Tools"),
-        subLabel: Dot("HyIC_", "Slash Key (/)"),
-      },
-      {
-        label: Dot("h3hSL", "List HotKeys"),
-        subLabel: Dot("ofs6b", "Query Key(?)"),
-      },
-      {
-        label: Dot("psZoP", "Drop files here to process them"),
-      },
-    ];
-    return (
-      <div className="bg-slate-100 p-5 dark:bg-black  w-full p-0 m-0 h-full">
-        <h1 className="m-0 mb-3">{Dot("dDGrH", "LafTools Navigator")}</h1>
-        <ul className="list">
-          {/* <div>{Dot("FOyHW", "Search Everywhere")}</div> */}
-          {/* <div>{Dot("uwqGE", "Go to Tools")}</div> */}
-          {helpers.map((x) => {
-            return (
-              <li className="flex mb-3">
-                <div className="mr-2">{x.label}</div>
-                <div className="text-gray-500">{x.subLabel}</div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    );
+    return <EmptyToolMarks></EmptyToolMarks>;
   }
   return (
     <div className="icv w-full h-full">
