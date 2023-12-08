@@ -84,7 +84,6 @@ import AlertUtils from "../../utils/AlertUtils";
 import ToolSlice from "../../slice/toolSlice";
 import { ELEVATION_0 } from "@blueprintjs/core/lib/esm/common/classes";
 import GenEditor from "../../components/GenEditor";
-import GenTabs from "../../components/NouseGenTabs";
 import { Select, Switch } from "@blueprintjs/icons";
 import FormSelect from "../../components/FormSelect";
 import FormSwitch from "../../components/FormSwitch";
@@ -545,95 +544,96 @@ let ConfigControlPanel = (props: HeightProp & PassExtQuickAllType) => {
   let realtimeAction = quickALL.fromExtData("realtimeAction") as string;
   let realtimeDebounce = quickALL.fromExtData("realtimeDebounce") as string;
   return (
-    <GenTabs
-      height={props.height}
-      tabs={[
-        {
-          id: "config",
-          title: Dot("sojBI", "Conversion"),
-          panel: (
-            <div className="pt-5 compact-form">
-              <FormSyncGroup
-                formGroupProp={{
-                  label: Dot("uCEe8", "Realtime Conversion"),
-                }}
-                tooltip={Dot(
-                  "KH10M",
-                  "If you want to input and see the output in the realtime mode, then you can turn it on."
-                )}
-              >
-                <FormSwitch
-                  value={quickALL.fromExtData("usingRealtimeMode")}
-                  onChange={(e) => {
-                    quickALL.toExtData("usingRealtimeMode", e);
-                  }}
-                ></FormSwitch>
-              </FormSyncGroup>
-              {quickALL.fromExtData("usingRealtimeMode") ? (
-                <FormSyncGroup
-                  formGroupProp={{
-                    label: Dot("pHZDB", "Realtime Action"),
-                  }}
-                  tooltip={Dot(
-                    "ja21j",
-                    "If the realtime mode is enabled, please select the action you would like to use it to convert, it should be the first one by default"
-                  )}
-                >
-                  <FormSelect
-                    onChange={(e) => {
-                      quickALL.toExtData("realtimeAction", e);
-                    }}
-                    list={_.map(
-                      _.filter(
-                        extVM.inst?.Actions,
-                        (x) => !_.endsWith(x.Id, ".file")
-                      ),
-                      (x) => {
-                        return {
-                          label: x.Label,
-                          value: x.Id,
-                        };
-                      }
-                    )}
-                    value={realtimeAction}
-                  ></FormSelect>
-                </FormSyncGroup>
-              ) : (
-                ""
-              )}
-              {quickALL.fromExtData("usingRealtimeMode") ? (
-                <FormSyncGroup
-                  formGroupProp={{
-                    label: Dot("DadYp", "Realtime Debounce") + `(ms)`,
-                  }}
-                  tooltip={Dot(
-                    "rtJ0_",
-                    "The debounce option can be useful for improving performance and reducing unnecessary function calls during real-time operations. For example, setting the debounce time to 200ms means that your input will be processed by the debounce control 200ms after the last input change."
-                  )}
-                >
-                  <InputGroup
-                    onChange={(e) => {
-                      quickALL.toExtData("realtimeDebounce", e.target.value);
-                    }}
-                    value={realtimeDebounce}
-                    type="number"
-                  ></InputGroup>
-                </FormSyncGroup>
-              ) : (
-                ""
-              )}
-            </div>
-          ),
-        },
-      ]}
-      selectedTabId={tabId}
-      onTabChange={(id) => {
-        setTabId(id);
-      }}
-      onTabClose={(id) => {
-        console.log(id);
-      }}
-    ></GenTabs>
+    <div></div>
+    // <GenTabs
+    //   height={props.height}
+    //   tabs={[
+    //     {
+    //       id: "config",
+    //       title: Dot("sojBI", "Conversion"),
+    //       panel: (
+    //         <div className="pt-5 compact-form">
+    //           <FormSyncGroup
+    //             formGroupProp={{
+    //               label: Dot("uCEe8", "Realtime Conversion"),
+    //             }}
+    //             tooltip={Dot(
+    //               "KH10M",
+    //               "If you want to input and see the output in the realtime mode, then you can turn it on."
+    //             )}
+    //           >
+    //             <FormSwitch
+    //               value={quickALL.fromExtData("usingRealtimeMode")}
+    //               onChange={(e) => {
+    //                 quickALL.toExtData("usingRealtimeMode", e);
+    //               }}
+    //             ></FormSwitch>
+    //           </FormSyncGroup>
+    //           {quickALL.fromExtData("usingRealtimeMode") ? (
+    //             <FormSyncGroup
+    //               formGroupProp={{
+    //                 label: Dot("pHZDB", "Realtime Action"),
+    //               }}
+    //               tooltip={Dot(
+    //                 "ja21j",
+    //                 "If the realtime mode is enabled, please select the action you would like to use it to convert, it should be the first one by default"
+    //               )}
+    //             >
+    //               <FormSelect
+    //                 onChange={(e) => {
+    //                   quickALL.toExtData("realtimeAction", e);
+    //                 }}
+    //                 list={_.map(
+    //                   _.filter(
+    //                     extVM.inst?.Actions,
+    //                     (x) => !_.endsWith(x.Id, ".file")
+    //                   ),
+    //                   (x) => {
+    //                     return {
+    //                       label: x.Label,
+    //                       value: x.Id,
+    //                     };
+    //                   }
+    //                 )}
+    //                 value={realtimeAction}
+    //               ></FormSelect>
+    //             </FormSyncGroup>
+    //           ) : (
+    //             ""
+    //           )}
+    //           {quickALL.fromExtData("usingRealtimeMode") ? (
+    //             <FormSyncGroup
+    //               formGroupProp={{
+    //                 label: Dot("DadYp", "Realtime Debounce") + `(ms)`,
+    //               }}
+    //               tooltip={Dot(
+    //                 "rtJ0_",
+    //                 "The debounce option can be useful for improving performance and reducing unnecessary function calls during real-time operations. For example, setting the debounce time to 200ms means that your input will be processed by the debounce control 200ms after the last input change."
+    //               )}
+    //             >
+    //               <InputGroup
+    //                 onChange={(e) => {
+    //                   quickALL.toExtData("realtimeDebounce", e.target.value);
+    //                 }}
+    //                 value={realtimeDebounce}
+    //                 type="number"
+    //               ></InputGroup>
+    //             </FormSyncGroup>
+    //           ) : (
+    //             ""
+    //           )}
+    //         </div>
+    //       ),
+    //     },
+    //   ]}
+    //   selectedTabId={tabId}
+    //   onTabChange={(id) => {
+    //     setTabId(id);
+    //   }}
+    //   onTabClose={(id) => {
+    //     console.log(id);
+    //   }}
+    // ></GenTabs>
   );
 };
 export default ContentInESV;
