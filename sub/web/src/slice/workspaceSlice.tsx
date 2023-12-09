@@ -99,9 +99,9 @@ const WorkspaceSlice = createSlice({
         newTabs: EachTab[];
       }>
     ) => {
+      debugger;
       let o = state[action.payload.keyName];
       o.tabs = action.payload.newTabs;
-      // check if o.tabId is out of bound
       if (_.findIndex(o.tabs, (x) => x.id === o.tabId) === -1) {
         o.tabId = _.last(o.tabs)!.id;
       }

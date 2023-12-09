@@ -198,7 +198,7 @@ let EmptyToolMarks = () => {
             }}
             text={Dot(
               "pqs7y3",
-              "Kindly consider registering this webpage as a Progressive Web App (PWA) to take advantage of comprehensive keymap support."
+              "Kindly consider registering this webpage as a PWA to have full keymap support."
             )}
           ></ClosableText>
         </div>

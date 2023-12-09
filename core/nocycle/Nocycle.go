@@ -76,9 +76,9 @@ func NormalizeDir(dir string) string {
 	if dir == "" {
 		return ""
 	}
-	if dir[0] == '/' {
-		return dir[1:]
-	}
+	// if dir[0] == '/' {
+	// 	return dir[1:]
+	// }
 	// replace all / in path if it's window os
 	if runtime.GOOS == "windows" {
 		dir = strings.ReplaceAll(dir, "/", "\\")

@@ -96,8 +96,9 @@ npm run fe-web &
 npm run fe-css &
 npm run fe-scan &
 
-# If you prefer not to use the '&' symbol for background execution, you can alternatively run these commands in separate terminal instances. Otherwise, you'd better run above commands for fear of any misunderstanding.
 ```
+
+Note that if you prefer not to use the '&' symbol for background execution, you can alternatively run these commands in separate terminal instances. Otherwise, you'd better run above commands for fear of any misunderstanding.
 
 **Scan Part**:
 
@@ -202,7 +203,7 @@ Please see the LICENSE file for more details.
 
 # 🎷 Inspiration
 
-This project was primarily inspired by the following virtuosos and vocalists:
+This project is primarily inspired by the following musicians:
 
 - Joe Pass
 - Khalil Fong (方大同)
