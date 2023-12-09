@@ -54,6 +54,7 @@ interface ForgeState {
   HasUserSelectedOption: boolean;
   VerForgeForm: string;
   FullScreenOrNot?: boolean;
+  closePWAReminder?: boolean;
 }
 
 const KEY_PERSIST_INTO_LOCAL = "KEY_PERSIST_INTO_LOCAL";
@@ -66,6 +67,7 @@ let newInitialState = (): ForgeState => {
     HasUserSelectedOption: false,
     VerForgeForm: VER_FORGE_FORM,
     FullScreenOrNot: false,
+    closePWAReminder: false,
   };
 };
 let initialState: ForgeState = newInitialState();
@@ -126,6 +128,14 @@ const forgeSlice = createSlice({
     ...SyncStateUtils.getSyncStateReducers("forge", {
       RunOnInit: true,
     }),
+    updateFieldNameValue(
+      state,
+      action: PayloadAction<Partial<{ [K in keyof ForgeState]: any }>>
+    ) {
+      _.forEach(action.payload, (x, d, n) => {
+        state[d] = x;
+      });
+    },
     updateStateComingFromServer(
       state,
       action: PayloadAction<{ serverForgeStr: string }>

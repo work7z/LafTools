@@ -66,7 +66,7 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../../../nocycle";
+import { APPINFOJSON, FN_GetDispatch, delayFN } from "../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -120,6 +120,7 @@ import {
 import GenCodeMirror from "../../../../../components/GenCodeMirror";
 import GenHorizontalTab from "../../../components/GenHorizontalTab";
 import WorkspaceSlice from "../../../../../slice/workspaceSlice";
+import { ClosableText } from "../../../../../components/ClosableText";
 
 let EachFunctionPanel = () => {
   let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
@@ -162,6 +163,11 @@ let EmptyToolMarks = () => {
       subLabel: Dot("mBgF1", "Mouse Action"),
     },
   ];
+  let s = exportUtils.useSelector((v) => {
+    return {
+      close: v.forge.closePWAReminder,
+    };
+  });
   return (
     <div className="bg-slate-100 relative p-5 dark:bg-black  w-full p-0 m-0 h-full">
       <h1 className="m-0 mb-3">{Dot("dDGrH", "LafTools Navigator")}</h1>
@@ -179,10 +185,20 @@ let EmptyToolMarks = () => {
       </ul>
       <div className="absolute bottom-2 right-1 text-gray-600 dark:text-gray-400">
         <div>
-          {Dot(
-            "pqs7y3",
-            "Kindly consider registering this webpage as a Progressive Web App (PWA) to take advantage of comprehensive keymap support."
-          )}
+          <ClosableText
+            isClose={s.close}
+            onClose={() => {
+              FN_GetDispatch()(
+                forgeSlice.actions.updateFieldNameValue({
+                  closePWAReminder: true,
+                })
+              );
+            }}
+            text={Dot(
+              "pqs7y3",
+              "Kindly consider registering this webpage as a Progressive Web App (PWA) to take advantage of comprehensive keymap support."
+            )}
+          ></ClosableText>
         </div>
       </div>
     </div>
@@ -196,7 +212,7 @@ export default () => {
     };
   });
   let dis = exportUtils.dispatch();
-  if (s.tabs.length === 0) {
+  if (s.tabs && s.tabs.length === 0) {
     return <EmptyToolMarks></EmptyToolMarks>;
   }
   return (

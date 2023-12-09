@@ -37,17 +37,10 @@ import { CACHE_REQUIRE_ITEMS } from "./styles/config";
 import CacheUtils from "./utils/CacheUtils";
 import SyncStateUtils from "./utils/SyncStateUtils";
 
-// depreciated, do not use this one.
-// just use SyncStateUtils
-// let tmpCacheUpdateFn = {};
-// _.forEach(CACHE_REQUIRE_ITEMS, (sliceName) => {
-//   tmpCacheUpdateFn[sliceName] = _.debounce((newState) => {
-//     CacheUtils.saveIntoCache(sliceName, newState);
-//   }, 1000);
-// });
+type RootObjType = typeof rootObj;
 const rootReducer = _.mapValues(rootObj, (x, d, n) => {
   return x.reducer;
-}) as any;
+}) as { [K in keyof RootObjType]: RootObjType[K]["reducer"] };
 
 let syncedReducerNames: string[] = [];
 _.forEach(rootObj, (x: any, d, n) => {

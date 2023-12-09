@@ -73,7 +73,7 @@ func API_Sync_Reducer_Save(c *gin.Context) {
 
 func init() {
 	last_updateIdx := 0
-	last_modifiedFile := 0
+	// last_modifiedFile := 0
 	reducerSyncFile := config.GetCurrentReducerSyncFile()
 	if nocycle.IsFileExist(reducerSyncFile) {
 		str, err := nocycle.ReadFileAsStr(reducerSyncFile)
@@ -97,23 +97,24 @@ func init() {
 				last_updateIdx = updateIdx
 				lockAPI.Lock()
 				nocycle.WriteFileAsStr(reducerSyncFile, nocycle.ToJson(tmpReducerValueMap))
+				// last_modifiedFile = nocycle.GetFileLastModified(reducerSyncFile)
 				lockAPI.Unlock()
 			}
-			if last_modifiedFile != nocycle.GetFileLastModified(reducerSyncFile) {
-				last_modifiedFile = nocycle.GetFileLastModified(reducerSyncFile)
-				str, err := nocycle.ReadFileAsStr(reducerSyncFile)
-				if err != nil {
-					log.Ref().Warn("unable to read reducer sync file: ", err)
-				} else {
-					// unmarhsla str to tmpReducerValueMap
-					lockAPI.Lock()
-					err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
-					lockAPI.Unlock()
-					if err2 != nil {
-						log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
-					}
-				}
-			}
+			// if last_modifiedFile != nocycle.GetFileLastModified(reducerSyncFile) {
+			// 	last_modifiedFile = nocycle.GetFileLastModified(reducerSyncFile)
+			// 	str, err := nocycle.ReadFileAsStr(reducerSyncFile)
+			// 	if err != nil {
+			// 		log.Ref().Warn("unable to read reducer sync file: ", err)
+			// 	} else {
+			// 		// unmarhsla str to tmpReducerValueMap
+			// 		lockAPI.Lock()
+			// 		err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
+			// 		lockAPI.Unlock()
+			// 		if err2 != nil {
+			// 			log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
+			// 		}
+			// 	}
+			// }
 		}
 	}()
 }

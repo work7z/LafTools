@@ -85,9 +85,7 @@ const InitSystemEnv = () => {
   const dis = eUtils.dispatch();
 
   let run_init = () => {
-    ConcurrencyUtils.initFunc(KEY_CONCURRENCY_SYSTEM_INIT, () => {
-      dis(ACTION_callInitAllDataAtOnceFromInitSystemEnv());
-    });
+    dis(ACTION_callInitAllDataAtOnceFromInitSystemEnv());
   };
 
   useEffect(() => {
