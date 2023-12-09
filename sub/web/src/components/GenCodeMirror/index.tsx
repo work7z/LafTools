@@ -77,7 +77,13 @@ import "./index.scss";
 import DragElement from "../DragElement";
 import CodeMirror from "@uiw/react-codemirror";
 import exportUtils from "../../utils/ExportUtils";
+// import { darcula } from "@uiw/codemirror-theme-darcula";
+// import { aura } from "@uiw/codemirror-theme-aura";
+// import { github } from "@uiw/codemirror-theme-github";
+import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
+import { javascript } from "@codemirror/lang-javascript";
 
+// import darcula from "@uiw/codemirror-theme-darcula";
 type GenCodeMirrorProp = {
   value: string;
 };
@@ -98,9 +104,15 @@ export default (props: GenCodeMirrorProp) => {
       onChange={(val) => {
         onChange(val, true);
       }}
+      minHeight="100%"
+      style={{
+        height: "100%",
+      }}
       height="100%"
       value={value}
-      theme={forgeObj.dark ? "dark" : "light"}
+      extensions={[javascript({ jsx: true })]}
+      theme={forgeObj.dark ? githubDark : githubLight}
+      // theme={"dark"}
     />
   );
 };

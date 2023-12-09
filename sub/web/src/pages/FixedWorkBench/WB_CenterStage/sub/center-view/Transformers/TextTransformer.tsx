@@ -105,7 +105,7 @@ export default (props: PassProps) => {
         style={{
           height: bodyHeight,
         }}
-        className="w-full"
+        className="w-full overflow-auto"
       >
         <GenCodeMirror
           value={"this is test data for " + sessionId}

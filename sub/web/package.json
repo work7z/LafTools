@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@babel/core": "7.16.0",
+    "@babel/runtime": "^7.23.5",
     "@blueprintjs/colors": "^5.0.6",
     "@blueprintjs/core": "5.3.0",
     "@blueprintjs/datetime": "5.0.10",
@@ -34,6 +35,10 @@
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "@types/zepto": "1.0.34",
+    "@uiw/codemirror-theme-aura": "^4.21.21",
+    "@uiw/codemirror-theme-darcula": "^4.21.21",
+    "@uiw/codemirror-theme-github": "^4.21.21",
+    "@uiw/codemirror-themes": "^4.21.21",
     "@uiw/react-codemirror": "4.21.18",
     "allotment": "1.19.3",
     "axios": "1.6.0",
