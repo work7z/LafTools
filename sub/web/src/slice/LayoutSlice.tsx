@@ -108,6 +108,8 @@ const layoutSlice = createSlice({
   reducers: {
     ...SyncStateUtils.getSyncStateReducers("layout", {
       RunOnEnterWorkBench: true,
+      RequireUserId: true,
+      RequireWorkspaceId: true,
     }),
     // write slice for updating menuRecord
     updateMenuRecord(

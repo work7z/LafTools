@@ -70,6 +70,8 @@ const WorkspaceSlice = createSlice({
   reducers: {
     ...SyncStateUtils.getSyncStateReducers("workspace", {
       RunOnEnterWorkBench: true,
+      RequireUserId: true,
+      RequireWorkspaceId: true,
     }),
     pushTabs: (
       state,
@@ -99,11 +101,13 @@ const WorkspaceSlice = createSlice({
         newTabs: EachTab[];
       }>
     ) => {
-      debugger;
       let o = state[action.payload.keyName];
       o.tabs = action.payload.newTabs;
       if (_.findIndex(o.tabs, (x) => x.id === o.tabId) === -1) {
-        o.tabId = _.last(o.tabs)!.id;
+        let lastItem = _.last(o.tabs);
+        if (lastItem) {
+          o.tabId = lastItem!.id;
+        }
       }
     },
     // update tools

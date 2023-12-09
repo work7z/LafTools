@@ -22,6 +22,7 @@ package api
 
 import (
 	"encoding/json"
+	"errors"
 	"laftools-go/core/config"
 	"laftools-go/core/context"
 	"laftools-go/core/log"
@@ -35,13 +36,41 @@ var tmpReducerValueMap map[string]interface{} = make(map[string]interface{})
 var lockAPI = &sync.Mutex{}
 var updateIdx = 0
 
+func contactKeyByReq(c *gin.Context) (string, error) {
+	wc := context.NewWC(c)
+	reducerName := c.Query("name")
+	if reducerName == "" {
+		return "", errors.New(wc.Dot("DSXi7", "Reducer name is empty"))
+	}
+	finalKey := reducerName
+	userId := wc.GetUserID()
+	workspaceId := wc.GetWorkspaceID()
+	RequireWorkspaceId := c.Query("RequireWorkspaceId") == "true"
+	RequireUserId := c.Query("RequireUserId") == "true"
+	if RequireUserId && userId == "" {
+		return "", errors.New(wc.Dot("q5_aE", "UserID is empty"))
+	}
+	if RequireWorkspaceId && workspaceId == "" {
+		return "", errors.New(wc.Dot("ubU3g", "WorkspaceID is empty"))
+	}
+	if RequireUserId {
+		finalKey = finalKey + userId
+	}
+	if RequireWorkspaceId {
+		finalKey = finalKey + workspaceId
+	}
+	return finalKey, nil
+}
+
 func API_Sync_Reducer_Get(c *gin.Context) {
 	lockAPI.Lock()
 	defer lockAPI.Unlock()
 	// get reducer
-	reducerName := c.Query("name")
-	wc := context.NewWC(c)
-	crtKey := reducerName + wc.GetUserID() + wc.GetWorkspaceID()
+	crtKey, err := contactKeyByReq(c)
+	if err != nil {
+		ErrLa2(c, err.Error())
+		return
+	}
 	reducer := tmpReducerValueMap[crtKey]
 	if reducer == nil {
 		ErrLa2(c, "Reducer not found")
@@ -54,11 +83,12 @@ func API_Sync_Reducer_Get(c *gin.Context) {
 func API_Sync_Reducer_Save(c *gin.Context) {
 	lockAPI.Lock()
 	defer lockAPI.Unlock()
-
 	// get reducer
-	reducerName := c.Query("name")
-	wc := context.NewWC(c)
-	crtKey := reducerName + wc.GetUserID() + wc.GetWorkspaceID()
+	crtKey, err := contactKeyByReq(c)
+	if err != nil {
+		ErrLa2(c, err.Error())
+		return
+	}
 	// get state
 	var state interface{}
 	if err := c.BindJSON(&state); err != nil {

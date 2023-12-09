@@ -27,12 +27,16 @@ import ALL_NOCYCLE, {
 } from "../nocycle";
 import AjaxUtils from "./AjaxUtils";
 import _, { DebouncedFunc } from "lodash";
+import Qs from "query-string";
+
 import AlertUtils from "./AlertUtils";
 window["_"] = _;
 
 type SyncDefinition = {
   RunOnInit?: boolean;
   RunOnEnterWorkBench?: boolean;
+  RequireUserId: boolean;
+  RequireWorkspaceId: boolean;
 };
 let syncReducerDefinitions: { [key: string]: SyncDefinition } = {};
 let syncedReducerNames: string[] = [];
@@ -93,8 +97,13 @@ let SyncStateUtils = {
     }
   },
   retrieveIDFromServer: async (eachReducerName: string) => {
+    let def = syncReducerDefinitions[eachReducerName];
+    let queryStr = {
+      name: eachReducerName,
+      ...def,
+    };
     let val = await AjaxUtils.DoLocalRequestWithNoThrow({
-      url: "/sync/reducer/get?name=" + eachReducerName,
+      url: "/sync/reducer/get?" + Qs.stringify(queryStr),
     });
     if (val.error) {
       // if (IsDevMode()) {
@@ -138,11 +147,19 @@ let SyncStateUtils = {
       _.forEach(syncedReducerNames, (eachReducerName) => {
         syncedReducerNameFnMap[eachReducerName] = _.throttle(
           async (newState) => {
+            let def = syncReducerDefinitions[eachReducerName];
+            let obj = {
+              name: eachReducerName,
+              ...def,
+            };
             let r = (await AjaxUtils.DoLocalRequestWithNoThrow({
-              url: "/sync/reducer/save?name=" + eachReducerName,
+              url: "/sync/reducer/save?" + Qs.stringify(obj),
               isPOST: true,
               data: newState,
             })) as any;
+            if (r.error) {
+              AlertUtils.popError(r.error);
+            }
           },
           800
         );

@@ -111,6 +111,8 @@ const ExtSlice = createSlice({
   reducers: {
     ...SyncStateUtils.getSyncStateReducers("ext", {
       RunOnEnterWorkBench: true,
+      RequireUserId: true,
+      RequireWorkspaceId: true,
     }),
     updateExtStatusMapPart: (
       state: ExtensionState,
