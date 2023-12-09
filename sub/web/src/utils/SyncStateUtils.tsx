@@ -51,7 +51,7 @@ let SyncStateUtils = {
   ) {
     for (let eachReducerName of syncedReducerNames) {
       let def = syncReducerDefinitions[eachReducerName];
-      if (syncedAlreadyMap[eachReducerName]) {  
+      if (syncedAlreadyMap[eachReducerName]) {
         continue;
       }
       if (def && !checkFN(def)) {

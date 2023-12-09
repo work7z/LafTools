@@ -195,11 +195,6 @@ Thank you!
 Nov 18th, 2023
 LafTools Team
 
-# 🪪 License
-
-This project is protected under the GNU Affero General Public License.  
-Please see the LICENSE file for more details.
-
 # 🎷 Inspiration
 
 This project was primarily inspired by the following virtuosos and vocalists:
@@ -211,7 +206,13 @@ This project was primarily inspired by the following virtuosos and vocalists:
 - Frédéric Chopin
 - David Tao (陶喆)
 - Jacky Cheung (張學友)
+- Oscar Peterson
 
 Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
 
 Thank you.
+
+# 🪪 License
+
+This project is protected under the GNU Affero General Public License.  
+Please see the LICENSE file for more details.
