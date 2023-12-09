@@ -19,9 +19,16 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { PayloadAction } from "@reduxjs/toolkit";
-import { FN_GetDispatch, FN_GetState, getAjaxValueRes } from "../nocycle";
+import ALL_NOCYCLE, {
+  FN_GetDispatch,
+  FN_GetState,
+  IsDevMode,
+  defaultsDeepNoArr,
+  getAjaxValueRes,
+} from "../nocycle";
 import AjaxUtils from "./AjaxUtils";
 import _, { DebouncedFunc } from "lodash";
+import AlertUtils from "./AlertUtils";
 
 type SyncDefinition = {
   RunOnInit?: boolean;
@@ -31,17 +38,25 @@ let syncReducerDefinitions: { [key: string]: SyncDefinition } = {};
 let syncedReducerNames: string[] = [];
 let syncedReducerNameFnMap: { [key: string]: DebouncedFunc<any> } = {};
 let syncedAlreadyMap: { [key: string]: boolean } = {};
+// let originalInitialState: any = {};
 let SyncStateUtils = {
   rootObj: null,
-  setSyncedReducerNames(val: string[]) {
+  setSyncedReducerNames(val: string[], st: any) {
     syncedReducerNames = val;
+    // _.forEach(syncedReducerNames, (eachReducerName) => {
+    //   originalInitialState[eachReducerName] = _.cloneDeep(st[eachReducerName]);
+    // });
   },
   getSyncStateReducers(sliceName: string, syncDefinition: SyncDefinition) {
     syncReducerDefinitions[sliceName] = syncDefinition;
     return {
       replaceWithLatestState(state, action: PayloadAction<{ newState: any }>) {
         let newState = action.payload.newState;
-        _.defaultsDeep(newState, state);
+        // _.defaultsDeep(newState, state);
+        // defaultsDeepNoArr(newState, state);
+        if (sliceName == "workspace") {
+          debugger;
+        }
         return newState;
       },
     };
@@ -65,20 +80,37 @@ let SyncStateUtils = {
     let val = await AjaxUtils.DoLocalRequestWithNoThrow({
       url: "/sync/reducer/get?name=" + eachReducerName,
     });
+    if (val.error) {
+      // if (IsDevMode()) {
+      //   AlertUtils.popError(val.error);
+      // }
+    }
+    let replaceState: any = null;
     if (val.response) {
       let innerValue = getAjaxValueRes(val);
       if (innerValue) {
-        let t =
-          SyncStateUtils.rootObj &&
-          (SyncStateUtils.rootObj[eachReducerName] as any);
-        let replaceWithLatestState = _.get(
-          t,
-          "actions.replaceWithLatestState"
-        ) as any;
-        if (replaceWithLatestState) {
-          FN_GetDispatch()(replaceWithLatestState({ newState: innerValue }));
-        }
+        replaceState = innerValue;
       }
+    }
+    if (replaceState == null) {
+      debugger;
+      let fn = _.get(SyncStateUtils.rootObj, [
+        eachReducerName,
+        "getInitialState",
+      ]) as any;
+      if (fn) {
+        replaceState = fn();
+      }
+    }
+    let t =
+      SyncStateUtils.rootObj &&
+      (SyncStateUtils.rootObj[eachReducerName] as any);
+    let replaceWithLatestState = _.get(
+      t,
+      "actions.replaceWithLatestState"
+    ) as any;
+    if (replaceWithLatestState) {
+      FN_GetDispatch()(replaceWithLatestState({ newState: replaceState }));
     }
   },
   notifyChanges(state, action_type: string) {

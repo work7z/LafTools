@@ -28,7 +28,40 @@ import { useHistory } from "react-router-dom";
 export let getAjaxValueRes = function <A extends { [key: string]: any }>(r): A {
   return r.response?.data?.payload?.value;
 };
+function isObject(item) {
+  return typeof item === "object" && !Array.isArray(item) && item !== null;
+}
 
+export function defaultsDeepNoArr(target, defaults) {
+  for (let key in defaults) {
+    if (defaults.hasOwnProperty(key)) {
+      if (target[key] === undefined || target[key] === null) {
+        target[key] = defaults[key];
+      } else if (isObject(target[key]) && isObject(defaults[key])) {
+        defaultsDeepNoArr(target[key], defaults[key]);
+      }
+    }
+  }
+  return target;
+}
+export let copy = function (ctn: string, showMsg?: boolean) {
+  var obj = document.getElementById("uniqueiptele") as any;
+  if (obj) {
+    obj.value = ctn;
+    obj.select();
+    document.execCommand("Copy");
+    if (showMsg) {
+    }
+  }
+};
+
+export let getErrMsg = function (_e): string {
+  let e = _e as Error;
+  if (_.isNil(e)) {
+    return "Unknown Error";
+  }
+  return e.message;
+};
 export let getIconPngFile = (): string => {
   return IsDevMode() ? "icon-dev.png" : "icon.png";
 };

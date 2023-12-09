@@ -182,13 +182,12 @@ export default () => {
   }, [FetchedWorkspaceId]);
   // setup
   useEffect(() => {
-    if (FetchedWorkspaceId != "") {
-      (async () => {
-        await setupWorkspaceData();
-        onAvaialble(true);
-      })();
-    }
-  }, [FetchedWorkspaceId, workspaceId]);
+    (async () => {
+      debugger;
+      await setupWorkspaceData();
+      onAvaialble(true);
+    })();
+  }, [workspaceId]);
   if (res) {
     return res;
   }

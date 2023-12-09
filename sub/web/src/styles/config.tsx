@@ -18,9 +18,6 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import ExtSlice from "../slice/ExtSlice";
-import layoutSlice from "../slice/LayoutSlice";
-
 // version
 export const VER_FORGE_FORM = "v2023.10.05";
 
@@ -29,7 +26,6 @@ export const URL_PREFIX_STATIC = "/static";
 export const URL_PREFIX_LOCAL = "/api";
 
 // CacheUtils need to be saved is
-export const CACHE_REQUIRE_ITEMS = [ExtSlice.name, layoutSlice.name];
 
 // zIndex
 export const Z_INDEX_DIALOG = 9990;

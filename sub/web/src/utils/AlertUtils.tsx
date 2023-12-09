@@ -18,13 +18,10 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { logutils } from "./LogUtils";
-
 import _ from "lodash";
 import { Dot } from "./TranslationUtils";
 import { Position, Toaster, ToastProps, Intent } from "@blueprintjs/core";
-import gutils from "./GlobalUtils";
-import ALL_NOCYCLE, { FN_GetDispatch } from "../nocycle";
+import ALL_NOCYCLE, { FN_GetDispatch, copy, getErrMsg } from "../nocycle";
 import systemSlice, { MessagePackItem } from "../slice/SystemSlice";
 import statusSlice, {
   AlertType,
@@ -39,7 +36,7 @@ let rootInst = Toaster.create({
 const AlertUtils = {
   // copyWithAlertCopied
   copyWithAlertCopied(ctn: string) {
-    gutils.copy(ctn);
+    copy(ctn);
     AlertUtils.popMsg(Intent.SUCCESS, {
       icon: "endorsed",
       message: Dot("1Tuab", "Copied"),
@@ -71,7 +68,7 @@ const AlertUtils = {
     ALL_NOCYCLE.store?.dispatch(systemSlice.actions.addNewMessageItem(obj));
   },
   popError(e: Error, additionalMsgLabel?: string) {
-    let msg = _.isArray(e) ? _.join(e, "\n") : gutils.getErrMsg(e);
+    let msg = _.isArray(e) ? _.join(e, "\n") : getErrMsg(e);
     AlertUtils.popMsg("danger", {
       message: additionalMsgLabel ? `[${additionalMsgLabel}]` : "" + msg,
     });

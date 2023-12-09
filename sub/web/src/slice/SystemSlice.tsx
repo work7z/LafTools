@@ -181,7 +181,7 @@ const systemSlice = createSlice({
       b[action.payload.lang] = nextValue;
       TranslationUtils.LangMap = b;
       if (IsDevMode() && !_.isEqual(prevValue, nextValue)) {
-        LangRefreshCount++;
+        // LangRefreshCount++;
       }
       state.LangIncrement = `${action.payload.lang}${_.size(
         _.keys(nextValue)

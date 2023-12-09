@@ -33,7 +33,6 @@ import nocycle from "./nocycle";
 import _ from "lodash";
 import { logutils } from "./utils/LogUtils";
 import { saveIntoForge2 } from "./slice/ForgeSlice";
-import { CACHE_REQUIRE_ITEMS } from "./styles/config";
 import CacheUtils from "./utils/CacheUtils";
 import SyncStateUtils from "./utils/SyncStateUtils";
 
@@ -49,7 +48,7 @@ _.forEach(rootObj, (x: any, d, n) => {
   }
 });
 
-SyncStateUtils.setSyncedReducerNames(syncedReducerNames);
+SyncStateUtils.setSyncedReducerNames(syncedReducerNames, rootObj);
 SyncStateUtils.rootObj = rootObj as any;
 
 const alwaysHappyMiddleware =

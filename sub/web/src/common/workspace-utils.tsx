@@ -35,12 +35,22 @@ export let useReadCurrentWorkspaceId = (): string => {
 };
 
 export let getWorkspaceIdFromPath = (): string => {
+  try {
+    let { workspaceId = "" } = useParams() as any;
+    if (workspaceId != "") {
+      return workspaceId;
+    }
+  } catch (e) {
+    console.log(e);
+  }
   let reg = /workbench\/(\w+)/g;
   let arr = reg.exec(location.href);
   if (!arr) {
     return "";
   }
-  return arr[1];
+  let finalId = arr[1];
+  ALL_NOCYCLE.workspaceId = finalId;
+  return finalId;
 };
 
 export let useReadCurrentWorkspaceItem = (): EachWorkSpace | undefined => {
@@ -60,7 +70,7 @@ export let useWorkSpaceListGet = (): EachWorkSpace[] => {
 };
 
 export let setupWorkspaceData = async () => {
-  ALL_NOCYCLE.workspaceId = getWorkspaceIdFromPath();
+  // debugger;
   await SyncStateUtils.retrieveAllIDsFromServer((item) => {
     return item.RunOnEnterWorkBench === true;
   });

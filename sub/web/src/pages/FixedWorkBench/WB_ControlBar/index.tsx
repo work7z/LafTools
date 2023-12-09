@@ -125,6 +125,7 @@ import {
   useReadCurrentWorkspaceId,
   useReadCurrentWorkspaceItem,
 } from "../../../common/workspace-utils";
+import DesktopUtils from "../../../utils/DesktopUtils";
 
 const SystemStatusBarItemElement = (props: SystemStatusBarItem) => {
   let p_ws = useMergeParamWithWorkSpace();
@@ -156,7 +157,7 @@ const SystemStatusBarItemElement = (props: SystemStatusBarItem) => {
 };
 
 export let WB_ControllerBar = () => {
-  let workspaceLabel = useReadCurrentWorkspaceItem();
+  let workspaceObj = useReadCurrentWorkspaceItem();
   let sq = useSearchQuery();
   if (sq.b == undefined) {
     sq.b = "overview";
@@ -352,13 +353,18 @@ export let WB_ControllerBar = () => {
         })}
       </div>
       <div>
-        <Tooltip content={Dot("1JOFP", "View My Workspaces")}>
+        <Tooltip content={Dot("1JOFP", "Open My Workspace")}>
           <Button
             className={Classes.MINIMAL}
             small={true}
             intent={"none"}
             // icon="floppy-disk"
-            text={workspaceLabel?.Label}
+            text={workspaceObj?.Label}
+            onClick={() => {
+              workspaceObj &&
+                workspaceObj.Path &&
+                DesktopUtils.openDir(workspaceObj.Path);
+            }}
           ></Button>
         </Tooltip>
         {/* <SystemStatusBarItemElement

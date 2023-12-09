@@ -20,7 +20,7 @@
 
 import _ from "lodash";
 import { Dot } from "./TranslationUtils";
-import ALL_NOCYCLE, { IsDevMode } from "../nocycle";
+import ALL_NOCYCLE, { IsDevMode, copy, getErrMsg } from "../nocycle";
 
 const STR_DEV_MODE = "DEV_MODE";
 
@@ -35,16 +35,7 @@ function uuid(str = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx") {
 }
 
 const gutils = {
-  copy(ctn: string, showMsg?: boolean) {
-    var obj = document.getElementById("uniqueiptele") as any;
-    if (obj) {
-      obj.value = ctn;
-      obj.select();
-      document.execCommand("Copy");
-      if (showMsg) {
-      }
-    }
-  },
+  copy: copy,
   ConvertStrToNumberOrZero(val: string | null): number {
     if (_.isNil(val)) {
       return 0;
@@ -139,13 +130,7 @@ const gutils = {
     let r = `[${e.response?.status}] ${finMsg}`;
     return r;
   },
-  getErrMsg(_e): string {
-    let e = _e as Error;
-    if (_.isNil(e)) {
-      return Dot("YpsgR", "Unknown Error");
-    }
-    return e.message;
-  },
+  getErrMsg: getErrMsg,
   IsPortalMode(): boolean {
     return false;
   },
