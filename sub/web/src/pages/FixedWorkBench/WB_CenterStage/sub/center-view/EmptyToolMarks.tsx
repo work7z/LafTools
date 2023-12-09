@@ -1,23 +1,3 @@
-// LafTools - The Leading All-In-One ToolBox for Programmers.
-//
-// Date: Tue, 21 Nov 2023
-// Author: LafTools Team <work7z@outlook.com>
-// Description:
-// Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Affero General Public License as
-// published by the Free Software Foundation, either version 3 of the
-// License, or (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Affero General Public License for more details.
-//
-// You should have received a copy of the GNU Affero General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 import localforage from "localforage";
 import {
   Callout,
@@ -130,57 +110,67 @@ import {
   useMergeParameter,
 } from "../../../definitions/WB_Func";
 import ToolInnerImplView from "./ToolInnerImplView";
-import EmptyToolMarks from "./EmptyToolMarks";
 
 export default () => {
+  let helpers: {
+    label: string;
+    subLabel?: string;
+  }[] = [
+    {
+      label: Dot("QM2Ob", "Recent Tools"),
+      subLabel: "Ctrl + E",
+    },
+    {
+      label: Dot("pKHRT", "Go to Tools"),
+      subLabel: Dot("HyIC_", "Slash Key (/)"),
+    },
+    {
+      label: Dot("F0CCF", "HotKeys List"),
+      subLabel: Dot("PpCHA", "Question Key(?)"),
+    },
+    {
+      label: Dot("psZoP", "Drop files here to process them"),
+      subLabel: Dot("mBgF1", "Mouse Action"),
+    },
+  ];
   let s = exportUtils.useSelector((v) => {
     return {
-      tabs: v.workspace.tools.tabs,
-      tabId: v.workspace.tools.tabId,
+      close: v.forge.closePWAReminder,
     };
   });
-  let dis = exportUtils.dispatch();
-  let mp = useMergeParameter();
-  let activeTab = _.find(s.tabs, (x) => x.id === s.tabId);
-
-  PageUtils.useUpdateTitle(activeTab?.pageTitle || "", [
-    activeTab?.pageTitle + "",
-    s.tabId + "",
-  ]);
-  let hist = useHistory();
-  if (s.tabs && s.tabs.length === 0) {
-    return <EmptyToolMarks></EmptyToolMarks>;
-  }
-  // let activeTab = mp && mp.tid ? mp.tid : _.get(s.tabs, "0.id");
   return (
-    <div className="icv w-full h-full">
-      <GenHorizontalTab
-        activeTab={activeTab?.id + ""}
-        setNewTabs={(newtabs: EachTab[]) => {
-          dis(
-            WorkspaceSlice.actions.updateNewTabs({
-              keyName: "tools",
-              newTabs: newtabs,
-            })
+    <div className="bg-slate-100 relative p-5 dark:bg-black  w-full p-0 m-0 h-full">
+      <h1 className="m-0 mb-3">{Dot("dDGrH", "LafTools Navigator")}</h1>
+      <ul className="list">
+        {/* <div>{Dot("FOyHW", "Search Everywhere")}</div> */}
+        {/* <div>{Dot("uwqGE", "Go to Tools")}</div> */}
+        {helpers.map((x) => {
+          return (
+            <li className="flex mb-3">
+              <div className="mr-2">{x.label}</div>
+              <div className="text-gray-500">{x.subLabel}</div>
+            </li>
           );
-        }}
-        setActiveTab={(newVal) => {
-          dis(
-            WorkspaceSlice.actions.updateTools({
-              tabId: newVal,
-            })
-          );
-          // hist.push(
-          //   hist.location.pathname +
-          //     "?" +
-          //     mp({
-          //       tid: newVal,
-          //     })
-          // );
-        }}
-        tabs={s.tabs}
-      ></GenHorizontalTab>
-      <ToolInnerImplView></ToolInnerImplView>
+        })}
+      </ul>
+      <div className="absolute bottom-2 right-1 text-gray-600 dark:text-gray-400">
+        <div>
+          <ClosableText
+            isClose={s.close}
+            onClose={() => {
+              FN_GetDispatch()(
+                forgeSlice.actions.updateFieldNameValue({
+                  closePWAReminder: true,
+                })
+              );
+            }}
+            text={Dot(
+              "pqs7y3",
+              "Kindly consider registering this webpage as a PWA to have full keymap support."
+            )}
+          ></ClosableText>
+        </div>
+      </div>
     </div>
   );
 };

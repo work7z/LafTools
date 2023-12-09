@@ -164,5 +164,5 @@ For sure, there's also a FAQ link for your reference.
 
 Lastly, we appreciate that you want to contribute to this project. Should you had any issues or bewilderments, feel free to contact us via Github issue at any time.
 
-Thanks and Regards,
+Thanks and Regards,   
 Laftools Team

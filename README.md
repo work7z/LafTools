@@ -193,7 +193,7 @@ Lastly, we would like to express our gratitude for your time in reading this sec
 
 Thank you.
 
-Nov 18th, 2023
+Nov 18th, 2023   
 LafTools Team
 
 # 🎷 Inspiration
