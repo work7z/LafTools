@@ -138,7 +138,7 @@ import {
 } from "../../common/workspace-utils";
 
 export default () => {
-  const { workspaceId = "default" } = useParams() as any;
+  const workspaceId = getWorkspaceIdFromPath();
   gutils.ExposureIt("workspaceId", workspaceId, true);
   // validate if workspaceId exist in system
   // workspaceId
@@ -186,7 +186,7 @@ export default () => {
         onAvaialble(true);
       }
     })();
-  }, [idQueryRes.status, FetchedWorkspaceId]);
+  }, [idQueryRes.status, FetchedWorkspaceId, available, workspaceId]);
   if (res) {
     return res;
   }

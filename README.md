@@ -199,3 +199,19 @@ LafTools Team
 
 This project is protected under the GNU Affero General Public License.  
 Please see the LICENSE file for more details.
+
+# 🎷 Inspiration
+
+This project was primarily inspired by the following virtuosos and vocalists:
+
+- Joe Pass
+- Khalil Fong (方大同)
+- Chet Atkins
+- Tommy Emmanuel
+- Frédéric Chopin
+- David Tao (陶喆)
+- Jacky Cheung (張學友)
+
+Specifically, the performance of "Satin Doll" by the virtuoso Joe Pass in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
+
+Thank you.
