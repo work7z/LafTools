@@ -103,7 +103,7 @@ export default (props: PassProp): any => {
   let toolParam = useParams() as ToolParamType;
   let { Tool_RemarkExtIds } = exportUtils.useSelector((v) => {
     return {
-      Tool_RemarkExtIds: v.forge.Tool_RemarkExtIds,
+      Tool_RemarkExtIds: [], // v.forge.Tool_RemarkExtIds,
     };
   });
   let treeInfo = exportUtils.useSelector((x) => x.tool.subCategoryTreeInfo);
