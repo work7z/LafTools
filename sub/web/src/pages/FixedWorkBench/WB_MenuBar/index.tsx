@@ -162,6 +162,11 @@ export let WB_MenuBar = (props: PassProp) => {
       link: "/workbench/" + x.Id,
       routerLinkType: true,
       // onClick: () => {
+      // AlertUtils.popOK(
+      //   Dot("-GJ_72", "Switched to the selected workspace {0}", x.Label)
+      // );
+      // },
+      // onClick: () => {
       //   pushToWorkSpace(x.Id);
       // },
     });
