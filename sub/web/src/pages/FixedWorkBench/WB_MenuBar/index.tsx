@@ -269,6 +269,10 @@ export let WB_MenuBar = (props: PassProp) => {
       label: Dot("qqwYoz", "Tabs"),
       children: [
         {
+          id: "tab.closeCur",
+          label: Dot("xbz0B2", "Close Tab"),
+        },
+        {
           id: "tab.closeAll",
           label: Dot("xbz0B", "Close All Tabs"),
         },
