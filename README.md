@@ -212,6 +212,6 @@ This project was primarily inspired by the following virtuosos and vocalists:
 - David Tao (陶喆)
 - Jacky Cheung (張學友)
 
-Specifically, the performance of "Satin Doll" by the virtuoso Joe Pass in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
+Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
 
 Thank you.
