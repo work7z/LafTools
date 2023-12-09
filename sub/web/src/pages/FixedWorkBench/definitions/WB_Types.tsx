@@ -105,6 +105,7 @@ export type EachTabPanelProp = {
 export type PropGenTabsPanel = {};
 
 export const VAL_CSS_TAB_TITLE_PANEL = 30;
+export const VAL_CSS_CONTROL_PANEL = 34;
 export const VAL_CSS_MENU_TITLE_PANEL = 30;
 
 export let langList = [

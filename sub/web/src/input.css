@@ -9,6 +9,19 @@
 .icon-remark{
     @apply hover:!bg-amber-200 !bg-opacity-60;
 }
+.btn-yellow  svg {
+    /* @apply !fill-amber-300; */
+}
+.btn-purple{
+    @apply !bg-purple-700 hover:!bg-purple-900 ;
+}
+
+.btn-cyan{
+    /* @apply !text-white !bg-green-700 hover:!bg-purple-900 ; */
+
+}
+
+
 div,.fixed-wb-nav-menu{
     @apply focus:outline-none;
 }
