@@ -102,11 +102,20 @@ const WorkspaceSlice = createSlice({
       }>
     ) => {
       let o = state[action.payload.keyName];
+      let prevIndex = _.findIndex(o.tabs, (x) => x.id === o.tabId);
       o.tabs = action.payload.newTabs;
       if (_.findIndex(o.tabs, (x) => x.id === o.tabId) === -1) {
-        let lastItem = _.last(o.tabs);
-        if (lastItem) {
-          o.tabId = lastItem!.id;
+        let finalTabId: string | null = null;
+        if (prevIndex != -1 && prevIndex < o.tabs.length) {
+          finalTabId = o.tabs[prevIndex].id;
+        } else {
+          let lastItem = _.last(o.tabs);
+          if (lastItem) {
+            finalTabId = lastItem!.id;
+          }
+        }
+        if (finalTabId) {
+          o.tabId = finalTabId;
         }
       }
     },
