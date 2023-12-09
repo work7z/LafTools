@@ -86,6 +86,7 @@ interface SystemState {
   MessageObjectKVMap: {};
   ClientWidth: number;
   ClientHeight: number;
+  IsWorkBenchPageAvailable: boolean;
 }
 
 let newSysInitStatus = (): InitStatus => {
@@ -106,12 +107,17 @@ const initialState: SystemState = {
   MessageObjectKVMap: {},
   ClientWidth: window["innerWidth"],
   ClientHeight: window["innerHeight"],
+  IsWorkBenchPageAvailable: false,
 };
 
 const systemSlice = createSlice({
   name: "system",
   initialState,
   reducers: {
+    // update IsWorkBenchPageAvailable
+    updateIsWorkBenchPageAvailable: (state, action: PayloadAction<boolean>) => {
+      state.IsWorkBenchPageAvailable = action.payload;
+    },
     updateClientWidthHeight: (
       state,
       action: PayloadAction<{

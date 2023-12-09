@@ -66,7 +66,11 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import ALL_NOCYCLE, { APPINFOJSON, delayFN } from "../../nocycle";
+import ALL_NOCYCLE, {
+  APPINFOJSON,
+  FN_GetDispatch,
+  delayFN,
+} from "../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -94,7 +98,7 @@ import exportUtils from "../../utils/ExportUtils";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
 } from "../../slice/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../slice/SystemSlice";
+import systemSlice, { ACTION_callRefreshAll } from "../../slice/SystemSlice";
 import {
   ID_FILES,
   ID_HISTORY as ID_MANUAL,
@@ -151,7 +155,15 @@ export default () => {
     onlyErr: true,
   });
   let hist = useHistory();
-  const [available, onAvaialble] = useState(false);
+  // const [available, onAvaialble] = useState(false);
+  let available = exportUtils.useSelector((val) => {
+    return {
+      available: val.system.IsWorkBenchPageAvailable,
+    };
+  }).available;
+  let onAvaialble = (a: boolean) => {
+    FN_GetDispatch()(systemSlice.actions.updateIsWorkBenchPageAvailable(a));
+  };
   let FetchedWorkspaceId = idQueryRes.data?.payload?.value?.Id;
   useEffect(() => {
     (async () => {

@@ -24,9 +24,10 @@ import { EachWorkSpace } from "../pages/FixedWorkBench/definitions/WB_Types";
 import apiSlice from "../slice/apiSlice";
 import QueryUtils from "../utils/QueryUtils";
 import { Dot } from "../utils/TranslationUtils";
-import ALL_NOCYCLE from "../nocycle";
+import ALL_NOCYCLE, { FN_GetDispatch } from "../nocycle";
 import { URL_PREFIX_LOCAL } from "../styles/config";
 import AlertUtils from "../utils/AlertUtils";
+import systemSlice from "../slice/SystemSlice";
 
 export let useReadCurrentWorkspaceId = (): string => {
   return getWorkspaceIdFromPath();
@@ -61,4 +62,7 @@ export let pushToWorkSpace = (workspaceId: string) => {
   AlertUtils.popOK(Dot("Z7ALO", "Switched to the selected workspace"));
   ALL_NOCYCLE.history &&
     ALL_NOCYCLE.history.replace("/workbench/" + workspaceId);
+  setTimeout(() => {
+    FN_GetDispatch()(systemSlice.actions.updateIsWorkBenchPageAvailable(false));
+  }, 0);
 };
