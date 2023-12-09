@@ -89,8 +89,14 @@ npm i -g pnpm
 npm i -g typescript
 # install project deps
 pnpm install
+
+
 # start webpack service
-npm run start
+npm run fe-web &
+npm run fe-css &
+npm run fe-scan &
+
+# If you prefer not to use the '&' symbol for background execution, you can alternatively run these commands in separate terminal instances. Otherwise, you'd better run above commands for fear of any misunderstanding.
 ```
 
 **Scan Part**:

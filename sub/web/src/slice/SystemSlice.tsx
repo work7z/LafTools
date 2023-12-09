@@ -92,6 +92,8 @@ let newSysInitStatus = (): InitStatus => {
   };
 };
 
+let LangRefreshCount = 0;
+
 const initialState: SystemState = {
   RefreshID: 0,
   PageDataInitedMap: {},
@@ -150,14 +152,20 @@ const systemSlice = createSlice({
       action: PayloadAction<{ lang: string; value: LangDefinition }>
     ) => {
       let b = newLangMap();
-      let pvalue = action.payload.value;
-      b[action.payload.lang] = pvalue;
+      let nextValue = action.payload.value;
+      let prevValue = b[action.payload.lang];
+      b[action.payload.lang] = nextValue;
       TranslationUtils.LangMap = b;
-      state.LangIncrement = `${action.payload.lang}${_.size(_.keys(pvalue))}`;
+      if (IsDevMode() && !_.isEqual(prevValue, nextValue)) {
+        LangRefreshCount++;
+      }
+      state.LangIncrement = `${action.payload.lang}${_.size(
+        _.keys(nextValue)
+      )}${LangRefreshCount}`;
       if (action.payload.lang == "zh_CN") {
-        localStorage.setItem(KEY_LANG_PACK_ZH_CN, JSON.stringify(pvalue));
+        localStorage.setItem(KEY_LANG_PACK_ZH_CN, JSON.stringify(nextValue));
       } else if (action.payload.lang == "zh_HK") {
-        localStorage.setItem(KEY_LANG_PACK_ZH_HK, JSON.stringify(pvalue));
+        localStorage.setItem(KEY_LANG_PACK_ZH_HK, JSON.stringify(nextValue));
       }
       LANG_INIT_BEFORE_MAP[action.payload.lang] = true;
     },
@@ -268,7 +276,7 @@ export const ACTION_initAllDataAtOnce = (): any => {
         })
       );
       await ACTION_getSystemPreferences()(dispatch);
-      await SyncStateUtils.retrieveAllIDsFromServer((item)=>{
+      await SyncStateUtils.retrieveAllIDsFromServer((item) => {
         return item.RunOnInit === true;
       });
       dispatch(
