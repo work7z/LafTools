@@ -73,7 +73,6 @@ import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
 import gutils from "../../../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../../../utils/LogUtils";
-import _ from "lodash";
 import RouteMem from "../../../../../../../styles/routeMem";
 import statusSlice from "../../../../../../../slice/StatusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
@@ -93,6 +92,7 @@ import TranslationUtils, {
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
 import exportUtils from "../../../../../../../utils/ExportUtils";
+import _ from "lodash";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
 } from "../../../../../../../slice/ForgeSlice";
@@ -337,13 +337,26 @@ export default (props: {
               if (node?.hasCaret) return;
               let childId = node?.id;
               goWithChildId(childId);
+              let parentIcon: string | null = null;
+              _.every(treeInfo.nodes, (x: TreeNodeInfo) => {
+                if (!x.childNodes || x.icon == "star") {
+                  return true;
+                }
+                for (let item of x.childNodes) {
+                  if (item.id == childId) {
+                    parentIcon = x.icon + "";
+                    return false;
+                  }
+                }
+                return true;
+              });
               dis(
                 WorkspaceSlice.actions.pushTabs({
                   keyName: "tools",
                   newTab: {
                     id: _.toString(childId) || "Unknown Id",
                     label: _.toString(node?.label) || "Unknown Label",
-                    icon: "application",
+                    icon: (parentIcon || "application") as any,
                     // pathname: m_ws({
                     //   fc: fc,
                     //   extId: childId,

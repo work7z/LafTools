@@ -129,8 +129,12 @@ let EachFunctionPanel = () => {
   let s = exportUtils.useSelector((v) => {
     return {
       tabs: v.workspace.tools.tabs,
+      tabId: v.workspace.tools.tabId,
     };
   });
+
+  let finalPanel = <div>{Dot("qG5BY", "Not yet defined.")}</div>;
+
   return (
     <div
       className="full-editor-p"
@@ -138,7 +142,7 @@ let EachFunctionPanel = () => {
         height: calcH,
       }}
     >
-      <GenCodeMirror></GenCodeMirror>
+      {finalPanel}
     </div>
   );
 };

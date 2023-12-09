@@ -241,8 +241,7 @@ export default (props: PassProp) => {
     if ($controlBar.length != 0) {
       // let ctlX = $controlBar[0].getBoundingClientRect().x;
       let isItGreaterThanLimits =
-        Math.abs(crtTranslateX) + subP_width - moveStep >
-        allSubChildrenWidth * 0.8;
+        Math.abs(crtTranslateX) + subP_width - moveStep > allSubChildrenWidth;
       return isItGreaterThanLimits;
       // let $subLastTab = $("#" + eleId_subTab + "-last");
       // if ($subLastTab.length != 0) {

@@ -78,10 +78,8 @@ import DragElement from "../DragElement";
 import CodeMirror from "@uiw/react-codemirror";
 import exportUtils from "../../utils/ExportUtils";
 
-const code = "const a = 0;";
-
 type GenCodeMirrorProp = {
-  //
+  value: string;
 };
 
 export default (props: GenCodeMirrorProp) => {
@@ -89,7 +87,8 @@ export default (props: GenCodeMirrorProp) => {
     dark: val.forge.DarkThemeMode,
   }));
 
-  const [value, setValue] = React.useState("console.log('hello world!');");
+  const value = "console.log('hello world!');" + props.value;
+  let setValue = (val: string) => {};
   const onChange = React.useCallback((val, viewUpdate) => {
     console.log("val:", val);
     setValue(val);
@@ -100,7 +99,7 @@ export default (props: GenCodeMirrorProp) => {
         onChange(val, true);
       }}
       height="100%"
-      value={code}
+      value={value}
       theme={forgeObj.dark ? "dark" : "light"}
     />
   );
