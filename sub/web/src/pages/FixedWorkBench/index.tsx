@@ -183,7 +183,6 @@ export default () => {
   // setup
   useEffect(() => {
     (async () => {
-      debugger;
       await setupWorkspaceData();
       onAvaialble(true);
     })();

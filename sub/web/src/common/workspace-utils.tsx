@@ -70,7 +70,6 @@ export let useWorkSpaceListGet = (): EachWorkSpace[] => {
 };
 
 export let setupWorkspaceData = async () => {
-  // debugger;
   await SyncStateUtils.retrieveAllIDsFromServer((item) => {
     return item.RunOnEnterWorkBench === true;
   });

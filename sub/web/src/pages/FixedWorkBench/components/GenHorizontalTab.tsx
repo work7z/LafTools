@@ -242,13 +242,11 @@ export default (props: PassProp) => {
       // let ctlX = $controlBar[0].getBoundingClientRect().x;
       let isItGreaterThanLimits =
         Math.abs(crtTranslateX) + subP_width - moveStep > allSubChildrenWidth;
-      // debugger;
       return isItGreaterThanLimits;
       // let $subLastTab = $("#" + eleId_subTab + "-last");
       // if ($subLastTab.length != 0) {
       // let rect2 = $subLastTab[0].getBoundingClientRect();
       // let lastTabX = rect2.x + rect2.width;
-      // debugger;
       // return lastTabX > ctlX;
       // }
     } else {

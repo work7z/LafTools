@@ -52,7 +52,6 @@ export default {
           },
         });
       });
-      // debugger;
       if (!createOrNot) {
         AlertUtils.popCancelled();
         return false;

@@ -72,7 +72,6 @@ let SyncStateUtils = {
         let src = { ...state };
         newState = _.mergeWith(obj, src, checkDefaultsDeep);
         if (sliceName == "workspace") {
-          debugger;
         }
         return newState;
       },
@@ -110,7 +109,6 @@ let SyncStateUtils = {
       }
     }
     if (replaceState == null) {
-      debugger;
       let fn = _.get(SyncStateUtils.rootObj, [
         eachReducerName,
         "getInitialState",
