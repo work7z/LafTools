@@ -134,6 +134,7 @@ import Blink from "../../components/Blink";
 import SyncStateUtils from "../../utils/SyncStateUtils";
 import {
   getWorkspaceIdFromPath,
+  setupWorkspaceData,
   useReadCurrentWorkspaceId,
 } from "../../common/workspace-utils";
 
@@ -166,27 +167,28 @@ export default () => {
   };
   let FetchedWorkspaceId = idQueryRes.data?.payload?.value?.Id;
   useEffect(() => {
-    (async () => {
-      if (FetchedWorkspaceId == "" && workspaceId !== "default") {
-        AlertUtils.win_alert({
-          id: "Un77m",
-          msg: Dot(
-            "0gywa",
-            "Workspace not found, you will be redirected to workspace index page."
-          ),
-          fn() {},
-        });
-        onAvaialble(false);
-        hist.replace("/workbench");
-      } else {
-        ALL_NOCYCLE.workspaceId = getWorkspaceIdFromPath();
-        await SyncStateUtils.retrieveAllIDsFromServer((item) => {
-          return item.RunOnEnterWorkBench === true;
-        });
+    if (FetchedWorkspaceId == "") {
+      AlertUtils.win_alert({
+        id: "Un77m",
+        msg: Dot(
+          "0gywa",
+          "Workspace not found, you will be redirected to workspace index page."
+        ),
+        fn() {},
+      });
+      onAvaialble(false);
+      hist.replace("/workbench");
+    }
+  }, [FetchedWorkspaceId]);
+  // setup
+  useEffect(() => {
+    if (FetchedWorkspaceId != "") {
+      (async () => {
+        await setupWorkspaceData();
         onAvaialble(true);
-      }
-    })();
-  }, [idQueryRes.status, FetchedWorkspaceId, available, workspaceId]);
+      })();
+    }
+  }, [FetchedWorkspaceId, workspaceId]);
   if (res) {
     return res;
   }

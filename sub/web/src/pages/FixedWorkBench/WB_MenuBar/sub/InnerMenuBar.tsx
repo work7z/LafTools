@@ -113,6 +113,7 @@ import {
   FixedMenuItem,
   VAL_CSS_MENU_TITLE_PANEL,
 } from "../../definitions/WB_Types";
+import { CSS_TEXT_ANCHOR_CSS } from "../../../../styles/tw";
 
 export let FixedMenuBar = (props: FixedMenuBarProp) => {
   let [activeId, onActiveId] = useState(null);
@@ -167,7 +168,7 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
         if (x.spliter) {
           return <MenuDivider />;
         }
-        return (
+        let body = (
           <MenuItem
             disabled={x.disabled}
             intent={(x.intent || "none") as any}
@@ -182,6 +183,14 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
             {!_.isEmpty(x.children) ? fn_formatChildren(x.children) : null}
           </MenuItem>
         );
+        if (x.routerLinkType) {
+          return (
+            <Link className={"" + CSS_TEXT_ANCHOR_CSS} to={x.link + ""}>
+              {body}
+            </Link>
+          );
+        }
+        return body;
       });
     };
     return (
@@ -244,7 +253,37 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
           ? props.leftPart
           : _.map(props.menus, (x) => {
               let isOpen = currentButton == x.id;
-              let BTag = x.link ? AnchorButton : Button;
+              let BTag = x.routerLinkType
+                ? Button
+                : x.link
+                ? AnchorButton
+                : Button;
+              let innerBTag = (
+                <BTag
+                  // target={x.link && !x.routerLinkType ? "_blank" : undefined}
+                  href={x.link}
+                  small
+                  onClick={() => {
+                    if (x.routerLinkType) return;
+                    if (currentButton && isOpen) {
+                      goToMenuItem(null);
+                    } else {
+                      goToMenuItem(x.id);
+                    }
+                  }}
+                  onMouseEnter={() => {
+                    if (hasClickAnyButton) {
+                      goToMenuItem(x.id);
+                    }
+                  }}
+                  disabled={x.disabled}
+                  minimal
+                  text={Dot("CPW5r", x.label || Dot("6yOXx", "Unknown Name"))}
+                ></BTag>
+              );
+              // if (x.routerLinkType) {
+              //   debugger;
+              // }
               return (
                 <Popover
                   key={x.id}
@@ -263,26 +302,11 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
                     ></RegularMenu>
                   }
                 >
-                  <BTag
-                    target={x.link ? "_blank" : undefined}
-                    href={x.link}
-                    small
-                    onClick={() => {
-                      if (currentButton && isOpen) {
-                        goToMenuItem(null);
-                      } else {
-                        goToMenuItem(x.id);
-                      }
-                    }}
-                    onMouseEnter={() => {
-                      if (hasClickAnyButton) {
-                        goToMenuItem(x.id);
-                      }
-                    }}
-                    disabled={x.disabled}
-                    minimal
-                    text={Dot("CPW5r", x.label || Dot("6yOXx", "Unknown Name"))}
-                  ></BTag>
+                  {x.routerLinkType ? (
+                    <Link to={x.link + ""}>{innerBTag}</Link>
+                  ) : (
+                    innerBTag
+                  )}
                 </Popover>
               );
             })}

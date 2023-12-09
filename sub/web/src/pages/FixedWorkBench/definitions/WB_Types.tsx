@@ -131,6 +131,7 @@ export type FixedMenuItem = {
   disabled?: boolean;
   tooltip?: string;
   link?: string;
+  routerLinkType?: boolean;
   children?: FixedMenuItem[];
 };
 

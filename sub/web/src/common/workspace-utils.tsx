@@ -28,6 +28,7 @@ import ALL_NOCYCLE, { FN_GetDispatch } from "../nocycle";
 import { URL_PREFIX_LOCAL } from "../styles/config";
 import AlertUtils from "../utils/AlertUtils";
 import systemSlice from "../slice/SystemSlice";
+import SyncStateUtils from "../utils/SyncStateUtils";
 
 export let useReadCurrentWorkspaceId = (): string => {
   return getWorkspaceIdFromPath();
@@ -58,11 +59,19 @@ export let useWorkSpaceListGet = (): EachWorkSpace[] => {
   return allWorkspaces;
 };
 
+export let setupWorkspaceData = async () => {
+  ALL_NOCYCLE.workspaceId = getWorkspaceIdFromPath();
+  await SyncStateUtils.retrieveAllIDsFromServer((item) => {
+    return item.RunOnEnterWorkBench === true;
+  });
+};
+
 export let pushToWorkSpace = (workspaceId: string) => {
   AlertUtils.popOK(Dot("Z7ALO", "Switched to the selected workspace"));
   ALL_NOCYCLE.history &&
     ALL_NOCYCLE.history.replace("/workbench/" + workspaceId);
   setTimeout(() => {
+    setupWorkspaceData();
     FN_GetDispatch()(systemSlice.actions.updateIsWorkBenchPageAvailable(false));
   }, 0);
 };

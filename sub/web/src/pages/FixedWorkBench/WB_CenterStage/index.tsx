@@ -127,7 +127,6 @@ export let WB_CenterStage = () => {
     latest_size: [],
   } as RefAlloProp);
 
-  // TODO: snap to specific width/height
   return (
     <div className="fixed-wb-nav-body">
       <div className="fixed-wb-nav-body-centre w-full flex">

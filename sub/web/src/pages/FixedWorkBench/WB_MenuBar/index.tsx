@@ -159,9 +159,11 @@ export let WB_MenuBar = (props: PassProp) => {
       id: x.Id,
       label: x.Label,
       intent: crtWorkspaceId == x.Id ? "primary" : "none",
-      onClick: () => {
-        pushToWorkSpace(x.Id);
-      },
+      link: "/workbench/" + x.Id,
+      routerLinkType: true,
+      // onClick: () => {
+      //   pushToWorkSpace(x.Id);
+      // },
     });
   });
 
