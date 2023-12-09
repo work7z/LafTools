@@ -26,12 +26,14 @@ import _ from "lodash";
 import { URL_WORKBENCH_WORKSPACE } from "../../../styles/path";
 import { useParams } from "react-router-dom";
 
-export let useSearchQuery = (): {
+type PageQueryType = {
   fc: string;
   f?: string;
   e?: string;
   b?: string;
-} => {
+  tid?: string; // tool tab id
+};
+export let useSearchQuery = (): PageQueryType => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   let obj = {};
@@ -52,7 +54,7 @@ export let useMergeParameter = (): any => {
   let searchQ = useSearchQuery();
   // convert searchQ to object
   // merge with obj
-  return (obj) => {
+  return (obj: Partial<PageQueryType>) => {
     let mergeIt = _.merge(searchQ, obj);
     return qs.stringify(mergeIt);
   };

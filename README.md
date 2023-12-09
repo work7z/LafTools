@@ -154,7 +154,7 @@ What you can do is to
 - Enhance Performance
 - Technical Implementation
 
-Read [Contribution](CONTRIBUTION.md) Docs
+Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
 With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
 
@@ -191,7 +191,7 @@ We'd like to remind you below things:
 
 Lastly, we would like to express our gratitude for your time in reading this section.
 
-Thank you!
+Thank you.
 
 Nov 18th, 2023
 LafTools Team
@@ -205,14 +205,18 @@ This project is primarily inspired by the following musicians:
 - Chet Atkins
 - Tommy Emmanuel
 - Frédéric Chopin
+- Oscar Peterson
+- Jay Chou (周杰倫) 
 - Stefanie Sun (孫燕姿)
 - David Tao (陶喆)
 - Jacky Cheung (張學友)
-- Oscar Peterson
 
 Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
 
 Thank you.
+
+Mar. 20th, 2021  
+Ryan Laf   
 
 
 # 🪪 License

@@ -338,6 +338,7 @@ export default (props: {
               let childId = node?.id;
               goWithChildId(childId);
               let parentIcon: string | null = null;
+              let parentLabel: string | null = null;
               _.every(treeInfo.nodes, (x: TreeNodeInfo) => {
                 if (!x.childNodes || x.icon == "star") {
                   return true;
@@ -345,6 +346,7 @@ export default (props: {
                 for (let item of x.childNodes) {
                   if (item.id == childId) {
                     parentIcon = x.icon + "";
+                    parentLabel = x.label + "";
                     return false;
                   }
                 }
@@ -355,7 +357,10 @@ export default (props: {
                   keyName: "tools",
                   newTab: {
                     id: _.toString(childId) || "Unknown Id",
-                    label: _.toString(node?.label) || "Unknown Label",
+                    label:
+                      parentLabel + " - " + _.toString(node?.label) ||
+                      "Unknown Label",
+                    pageTitle: `${_.toString(node?.label)}`,
                     icon: (parentIcon || "application") as any,
                     // pathname: m_ws({
                     //   fc: fc,

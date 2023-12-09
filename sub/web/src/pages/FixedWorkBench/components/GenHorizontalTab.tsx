@@ -59,6 +59,8 @@ import {
   Menu,
   MenuDivider,
 } from "@blueprintjs/core";
+import { Link } from "react-router-dom";
+
 import $ from "jquery";
 import {
   ColumnHeaderCell,
@@ -71,6 +73,7 @@ import {
 import _ from "lodash";
 import React, {
   useState,
+  useEffect,
   useContext,
   useCallback,
   useRef,
@@ -80,16 +83,19 @@ import "allotment/dist/style.css";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
 import { Dot } from "../../../utils/TranslationUtils";
 import exportUtils from "../../../utils/ExportUtils";
+import { CSS_TEXT_ANCHOR_CSS } from "../../../styles/tw";
 
 export type EachTab = {
   id: string;
   label: string;
+  pageTitle?: string;
   icon: string;
 };
 
 type PassProp = {
   tabs?: EachTab[];
   activeTab?: string | null;
+  formatAsAnchor?: (tab: EachTab) => string;
   setActiveTab?: (newIdx: string) => any;
   setNewTabs?: (newArr: EachTab[]) => any;
 };
@@ -111,7 +117,7 @@ export default (props: PassProp) => {
   let fn_format_each_tab = (verticalMode = false) => {
     return (tab: EachTab, tabIdx, tabList) => {
       let isCurrent = activeTab === tab.id;
-      return (
+      let output = (
         <div
           key={tab.id}
           onClick={fn_handleClickEachTab(tab, tabIdx)}
@@ -137,9 +143,12 @@ export default (props: PassProp) => {
         >
           <Icon
             icon={tab.icon as any}
-            className={`h-5 w-5 !inline-flex items-center justify-center ${
+            className={`h-5 w-5  !inline-flex items-center justify-center ${
               isCurrent ? "blue-svg" : "gray-svg"
             }  `}
+            style={{
+              marginRight: "5px",
+            }}
           ></Icon>
           <span>{tab.label}</span>
           <Icon
@@ -158,6 +167,17 @@ export default (props: PassProp) => {
           ></Icon>
           {/* <XIcon className="h-5 w-5 text-gray-500" /> */}
         </div>
+      );
+      if (!props.formatAsAnchor) {
+        return output;
+      }
+      return (
+        <Link
+          className={CSS_TEXT_ANCHOR_CSS + " hover:text-current"}
+          to={props.formatAsAnchor(tab)}
+        >
+          {output}
+        </Link>
       );
     };
   };
@@ -212,6 +232,15 @@ export default (props: PassProp) => {
     };
   }, []);
   let [crtTranslateX, onCrtTranslateX] = useState<number>(0);
+  useEffect(() => {
+    let a = () => {
+      onCrtTranslateX(0);
+    };
+    document.addEventListener("resize", a);
+    return () => {
+      document.removeEventListener("resize", a);
+    };
+  }, []);
   let [p_width, onPWidth] = useState(0);
   let [subP_width, onSubPWidth] = useState(0);
   let moveStep = 120;
@@ -241,7 +270,8 @@ export default (props: PassProp) => {
     if ($controlBar.length != 0) {
       // let ctlX = $controlBar[0].getBoundingClientRect().x;
       let isItGreaterThanLimits =
-        Math.abs(crtTranslateX) + subP_width - moveStep > allSubChildrenWidth;
+        Math.abs(crtTranslateX) + subP_width - moveStep >
+        allSubChildrenWidth + moveStep / 2;
       return isItGreaterThanLimits;
       // let $subLastTab = $("#" + eleId_subTab + "-last");
       // if ($subLastTab.length != 0) {

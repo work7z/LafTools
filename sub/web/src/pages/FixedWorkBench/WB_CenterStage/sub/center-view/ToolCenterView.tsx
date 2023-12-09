@@ -123,6 +123,12 @@ import GenHorizontalTab, {
 } from "../../../components/GenHorizontalTab";
 import WorkspaceSlice from "../../../../../slice/workspaceSlice";
 import { ClosableText } from "../../../../../components/ClosableText";
+import TextTransformer from "./TextTransformer";
+import { CommonPassProp } from "./transformer_types";
+import {
+  useMergeParamWithWorkSpace,
+  useMergeParameter,
+} from "../../../definitions/WB_Func";
 
 let EachFunctionPanel = () => {
   let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
@@ -133,7 +139,15 @@ let EachFunctionPanel = () => {
     };
   });
 
+  let sessionId = s.tabId + "s1";
   let finalPanel = <div>{Dot("qG5BY", "Not yet defined.")}</div>;
+  let commonPassProp: CommonPassProp = {
+    sessionId,
+  };
+
+  if (true) {
+    finalPanel = <TextTransformer {...commonPassProp}></TextTransformer>;
+  }
 
   return (
     <div
@@ -218,13 +232,22 @@ export default () => {
     };
   });
   let dis = exportUtils.dispatch();
+  let mp = useMergeParameter();
+  let activeTab = _.find(s.tabs, (x) => x.id === s.tabId);
+
+  PageUtils.useUpdateTitle(activeTab?.pageTitle || "", [
+    activeTab?.pageTitle + "",
+    s.tabId + "",
+  ]);
+  let hist = useHistory();
   if (s.tabs && s.tabs.length === 0) {
     return <EmptyToolMarks></EmptyToolMarks>;
   }
+  // let activeTab = mp && mp.tid ? mp.tid : _.get(s.tabs, "0.id");
   return (
     <div className="icv w-full h-full">
       <GenHorizontalTab
-        activeTab={s.tabId}
+        activeTab={activeTab?.id + ""}
         setNewTabs={(newtabs: EachTab[]) => {
           dis(
             WorkspaceSlice.actions.updateNewTabs({
@@ -239,6 +262,13 @@ export default () => {
               tabId: newVal,
             })
           );
+          // hist.push(
+          //   hist.location.pathname +
+          //     "?" +
+          //     mp({
+          //       tid: newVal,
+          //     })
+          // );
         }}
         tabs={s.tabs}
       ></GenHorizontalTab>
