@@ -241,7 +241,8 @@ export default (props: PassProp) => {
     if ($controlBar.length != 0) {
       // let ctlX = $controlBar[0].getBoundingClientRect().x;
       let isItGreaterThanLimits =
-        Math.abs(crtTranslateX) + subP_width - moveStep > allSubChildrenWidth;
+        Math.abs(crtTranslateX) + subP_width - moveStep >
+        allSubChildrenWidth * 0.8;
       return isItGreaterThanLimits;
       // let $subLastTab = $("#" + eleId_subTab + "-last");
       // if ($subLastTab.length != 0) {
@@ -260,6 +261,12 @@ export default (props: PassProp) => {
     crtTranslateX,
     ...resizeFactors,
   ]);
+  let closeCurTab = () => {
+    let newTabs = _.filter(tabs, (x, idx) => {
+      return x.id != activeTab;
+    });
+    props.setNewTabs && props.setNewTabs(newTabs);
+  };
 
   return (
     <div
@@ -359,12 +366,7 @@ export default (props: PassProp) => {
                     <MenuItem
                       // icon="menu-closed"
                       text={Dot("ZrbuC", "Close Tab")}
-                      onClick={() => {
-                        let newTabs = _.filter(tabs, (x, idx) => {
-                          return x.id != activeTab;
-                        });
-                        props.setNewTabs && props.setNewTabs(newTabs);
-                      }}
+                      onClick={closeCurTab}
                     />
                     <MenuItem
                       // icon="collapse-all"

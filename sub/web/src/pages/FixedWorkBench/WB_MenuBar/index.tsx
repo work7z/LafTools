@@ -66,7 +66,11 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN, getIconPngFile } from "../../../nocycle";
+import ALL_NOCYCLE, {
+  APPINFOJSON,
+  delayFN,
+  getIconPngFile,
+} from "../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -271,10 +275,12 @@ export let WB_MenuBar = (props: PassProp) => {
         {
           id: "tab.closeCur",
           label: Dot("xbz0B2", "Close Tab"),
+          onClick: ALL_NOCYCLE.Fn_LastCloseTab,
         },
         {
           id: "tab.closeAll",
           label: Dot("xbz0B", "Close All Tabs"),
+          onClick: ALL_NOCYCLE.Fn_LastCloseAllTab,
         },
       ],
     },

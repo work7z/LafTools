@@ -76,6 +76,8 @@ interface NoCycle {
   store?: ToolkitStore<RootState>;
   workspaceId?: string | undefined;
   history?: ReturnType<typeof useHistory>;
+  Fn_LastCloseTab?: () => any;
+  Fn_LastCloseAllTab?: () => any;
 }
 let ALL_NOCYCLE: NoCycle = {};
 _.set(window, "ALL_NOCYCLE", ALL_NOCYCLE);
