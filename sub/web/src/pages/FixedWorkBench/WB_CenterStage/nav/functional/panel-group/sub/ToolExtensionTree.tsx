@@ -338,7 +338,8 @@ export default (props: {
               let childId = node?.id;
               goWithChildId(childId);
               dis(
-                WorkspaceSlice.actions.pushTabsForTools({
+                WorkspaceSlice.actions.pushTabs({
+                  keyName: "tools",
                   newTab: {
                     id: _.toString(childId) || "Unknown Id",
                     label: _.toString(node?.label) || "Unknown Label",

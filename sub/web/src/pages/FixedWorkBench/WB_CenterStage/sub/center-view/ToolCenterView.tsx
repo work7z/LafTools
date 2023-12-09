@@ -118,7 +118,9 @@ import {
   FN_SHOW_LTR_MENU,
 } from "../../nav/functional/panel-group/controls/FunctionalControls";
 import GenCodeMirror from "../../../../../components/GenCodeMirror";
-import GenHorizontalTab from "../../../components/GenHorizontalTab";
+import GenHorizontalTab, {
+  EachTab,
+} from "../../../components/GenHorizontalTab";
 import WorkspaceSlice from "../../../../../slice/workspaceSlice";
 import { ClosableText } from "../../../../../components/ClosableText";
 
@@ -208,7 +210,7 @@ export default () => {
   let s = exportUtils.useSelector((v) => {
     return {
       tabs: v.workspace.tools.tabs,
-      tabIdx: v.workspace.tools.tabIndex,
+      tabId: v.workspace.tools.tabId,
     };
   });
   let dis = exportUtils.dispatch();
@@ -218,18 +220,19 @@ export default () => {
   return (
     <div className="icv w-full h-full">
       <GenHorizontalTab
-        activeTab={s.tabIdx}
-        setNewTabs={() => {
+        activeTab={s.tabId}
+        setNewTabs={(newtabs: EachTab[]) => {
           dis(
-            WorkspaceSlice.actions.updateTools({
-              tabs: [],
+            WorkspaceSlice.actions.updateNewTabs({
+              keyName: "tools",
+              newTabs: newtabs,
             })
           );
         }}
         setActiveTab={(newVal) => {
           dis(
             WorkspaceSlice.actions.updateTools({
-              tabIndex: newVal,
+              tabId: newVal,
             })
           );
         }}

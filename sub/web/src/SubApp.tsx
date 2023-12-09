@@ -48,6 +48,7 @@ import AuthHookUtils from "./utils/AuthHookUtils";
 import InitUtils from "./utils/InitUtils";
 import _ from "lodash";
 import { IsDevMode, getIconPngFile } from "./nocycle";
+import systemSlice from "./slice/SystemSlice";
 
 function App() {
   let hotkeys = [
@@ -101,6 +102,22 @@ function App() {
     if (IsDevMode()) {
       $(".icon-ele").attr("href", "/static/" + getIconPngFile());
     }
+  }, []);
+
+  // add window resize listneer in useEffect
+  useEffect(() => {
+    let fn = () => {
+      dis(
+        systemSlice.actions.updateClientWidthHeight({
+          ClientWidth: window.innerWidth,
+          ClientHeight: window.innerHeight,
+        })
+      );
+    };
+    let a = window.addEventListener("resize", fn);
+    return () => {
+      window.removeEventListener("resize", fn);
+    };
   }, []);
 
   if (isEnvNotInit) {

@@ -31,6 +31,11 @@ const exportUtils = {
   refresh_v2: () => {
     return { refetchOnMountOrArgChange: true };
   },
+  resize_factors: (): number[] => {
+    return exportUtils.useSelector((val) => {
+      return [val.system.ClientWidth, val.system.ClientHeight];
+    });
+  },
   dispatch: useDispatch,
   useDispatch: useDispatch,
   useSelector<T>(callBack: (val: RootState) => T, n?: any): T {

@@ -84,6 +84,8 @@ interface SystemState {
   SysInitStatus: InitStatus;
   LangIncrement: string;
   MessageObjectKVMap: {};
+  ClientWidth: number;
+  ClientHeight: number;
 }
 
 let newSysInitStatus = (): InitStatus => {
@@ -102,12 +104,28 @@ const initialState: SystemState = {
   SysInitStatus: newSysInitStatus(),
   LangIncrement: "d",
   MessageObjectKVMap: {},
+  ClientWidth: window["innerWidth"],
+  ClientHeight: window["innerHeight"],
 };
 
 const systemSlice = createSlice({
   name: "system",
   initialState,
   reducers: {
+    updateClientWidthHeight: (
+      state,
+      action: PayloadAction<{
+        ClientWidth?: number;
+        ClientHeight?: number;
+      }>
+    ) => {
+      if (!_.isNil(action.payload.ClientWidth)) {
+        state.ClientWidth = action.payload.ClientWidth;
+      }
+      if (!_.isNil(action.payload.ClientHeight)) {
+        state.ClientHeight = action.payload.ClientHeight;
+      }
+    },
     addNewMessageItem: (
       state,
       action: PayloadAction<{ msgId: string; msgItem: MessagePackItem }>

@@ -29,8 +29,16 @@ import { URL_PREFIX_LOCAL } from "../styles/config";
 import AlertUtils from "../utils/AlertUtils";
 
 export let useReadCurrentWorkspaceId = (): string => {
-  const { workspaceId = "" } = useParams() as any;
-  return workspaceId;
+  return getWorkspaceIdFromPath();
+};
+
+export let getWorkspaceIdFromPath = (): string => {
+  let reg = /workbench\/(\w+)/g;
+  let arr = reg.exec(location.href);
+  if (!arr) {
+    return "";
+  }
+  return arr[1];
 };
 
 export let useReadCurrentWorkspaceItem = (): EachWorkSpace | undefined => {

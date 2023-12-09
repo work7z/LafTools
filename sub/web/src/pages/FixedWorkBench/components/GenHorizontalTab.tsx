@@ -79,6 +79,7 @@ import React, {
 import "allotment/dist/style.css";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
 import { Dot } from "../../../utils/TranslationUtils";
+import exportUtils from "../../../utils/ExportUtils";
 
 export type EachTab = {
   id: string;
@@ -88,8 +89,8 @@ export type EachTab = {
 
 type PassProp = {
   tabs?: EachTab[];
-  activeTab?: number;
-  setActiveTab?: (newIdx: number) => any;
+  activeTab?: string | null;
+  setActiveTab?: (newIdx: string) => any;
   setNewTabs?: (newArr: EachTab[]) => any;
 };
 
@@ -102,14 +103,14 @@ export default (props: PassProp) => {
 
   let commonBG = " using-edge-ui-bg ";
   let fn_handleClickEachTab = (tab: EachTab, tabIdx: number) => () => {
-    setActiveTab && setActiveTab(tabIdx);
+    setActiveTab && setActiveTab(tab.id);
   };
   let [eleId_tab] = useState(_.uniqueId(""));
   let [eleId_subTab] = useState(_.uniqueId(""));
   let [eleId_controlBar] = useState(_.uniqueId(""));
   let fn_format_each_tab = (verticalMode = false) => {
-    return (tab, tabIdx, tabList) => {
-      let isCurrent = activeTab === tabIdx;
+    return (tab: EachTab, tabIdx, tabList) => {
+      let isCurrent = activeTab === tab.id;
       return (
         <div
           key={tab.id}
@@ -146,12 +147,21 @@ export default (props: PassProp) => {
             className={
               "small-close-btn ml-1  " + ` ${isCurrent ? "gen-active" : ""} `
             }
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              let newTabs = _.filter(tabs, (x, idx) => {
+                return idx != tabIdx;
+              });
+              props.setNewTabs && props.setNewTabs(newTabs);
+            }}
           ></Icon>
           {/* <XIcon className="h-5 w-5 text-gray-500" /> */}
         </div>
       );
     };
   };
+  let resizeFactors = exportUtils.resize_factors();
   let PanelThatNotShown = useMemo(() => {
     return ({ fn_format_each_tab }) => {
       let allHiddenTabs = useMemo(() => {
@@ -215,7 +225,15 @@ export default (props: PassProp) => {
         }
       });
     return totalWidth;
-  }, [p_width, subP_width, eleId_subTab, eleId_tab, _.size(tabs), activeTab]);
+  }, [
+    p_width,
+    subP_width,
+    eleId_subTab,
+    eleId_tab,
+    _.size(tabs),
+    activeTab,
+    ...resizeFactors,
+  ]);
   let shouldShowLeftRight = p_width > 0 && p_width < allSubChildrenWidth;
 
   let isItReachedToRightLimit = useMemo(() => {
@@ -242,6 +260,7 @@ export default (props: PassProp) => {
     activeTab,
     shouldShowLeftRight,
     crtTranslateX,
+    ...resizeFactors,
   ]);
 
   return (
@@ -344,7 +363,7 @@ export default (props: PassProp) => {
                       text={Dot("ZrbuC", "Close Tab")}
                       onClick={() => {
                         let newTabs = _.filter(tabs, (x, idx) => {
-                          return idx != activeTab;
+                          return x.id != activeTab;
                         });
                         props.setNewTabs && props.setNewTabs(newTabs);
                       }}

@@ -30,11 +30,11 @@ import { stat } from "fs";
 // note that this slice should not be used unless the user got an valid workspace.
 
 type GeneralTabBasicTab = {
-  tabIndex?: number;
-  tabs?: EachTab[];
-  selected?: string[];
-  expanded?: string[];
-  favourites?: string[];
+  tabId: string | null;
+  tabs: EachTab[];
+  selected: string[];
+  expanded: string[];
+  favourites: string[];
 };
 
 type ToolWSPState = {} & GeneralTabBasicTab;
@@ -45,7 +45,7 @@ type CurrentWorkspaceState = {
 
 const initialState: CurrentWorkspaceState = {
   tools: {
-    tabIndex: 0,
+    tabId: null,
     tabs: [],
     selected: [],
     expanded: [],
@@ -71,23 +71,46 @@ const WorkspaceSlice = createSlice({
     ...SyncStateUtils.getSyncStateReducers("workspace", {
       RunOnEnterWorkBench: true,
     }),
-    pushTabsForTools: (
+    pushTabs: (
       state,
       action: PayloadAction<{
+        keyName: keyof CurrentWorkspaceState;
         newTab: EachTab;
       }>
     ) => {
-      if (state.tools.tabs) {
-        state.tools.tabs.push(action.payload.newTab);
-        state.tools.tabIndex = _.size(state.tools.tabs) - 1;
+      // if newTab is in tabs, then do not push it into array, meanwhile, set its id as tabId
+      if (state[action.payload.keyName] && state[action.payload.keyName].tabs) {
+        let tabId = action.payload.newTab.id;
+        let tab = _.find(state[action.payload.keyName].tabs, (x) => {
+          return x.id === tabId;
+        });
+        if (tab) {
+          state[action.payload.keyName].tabId = tabId;
+        } else {
+          state[action.payload.keyName].tabs.push(action.payload.newTab);
+          state[action.payload.keyName].tabId = tabId;
+        }
+      }
+    },
+    updateNewTabs: (
+      state,
+      action: PayloadAction<{
+        keyName: keyof CurrentWorkspaceState;
+        newTabs: EachTab[];
+      }>
+    ) => {
+      let o = state[action.payload.keyName];
+      o.tabs = action.payload.newTabs;
+      // check if o.tabId is out of bound
+      if (_.findIndex(o.tabs, (x) => x.id === o.tabId) === -1) {
+        o.tabId = _.last(o.tabs)!.id;
       }
     },
     // update tools
-    updateTools: (state, action: PayloadAction<ToolWSPState>) => {
+    updateTools: (state, action: PayloadAction<Partial<ToolWSPState>>) => {
       _.forEach(action.payload, (x, d, n) => {
         state.tools[d] = x;
       });
-      // state.tools.expanded = action.payload.expanded;
     },
   },
 });

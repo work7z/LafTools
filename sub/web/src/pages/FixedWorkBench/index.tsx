@@ -128,7 +128,10 @@ import QueryUtils from "../../utils/QueryUtils";
 import AlertUtils from "../../utils/AlertUtils";
 import Blink from "../../components/Blink";
 import SyncStateUtils from "../../utils/SyncStateUtils";
-import { useReadCurrentWorkspaceId } from "../../common/workspace-utils";
+import {
+  getWorkspaceIdFromPath,
+  useReadCurrentWorkspaceId,
+} from "../../common/workspace-utils";
 
 export default () => {
   const { workspaceId = "default" } = useParams() as any;
@@ -150,35 +153,35 @@ export default () => {
   let hist = useHistory();
   const [available, onAvaialble] = useState(false);
   let FetchedWorkspaceId = idQueryRes.data?.payload?.value?.Id;
-  useEffect( () => {
-   (async ()=>{
-     if (FetchedWorkspaceId == "" && workspaceId !== "default") {
-      AlertUtils.win_alert({
-        id: "Un77m",
-        msg: Dot(
-          "0gywa",
-          "Workspace not found, you will be redirected to workspace index page."
-        ),
-        fn() {},
-      });
-      onAvaialble(false);
-      hist.replace("/workbench");
-    } else {
-      ALL_NOCYCLE.workspaceId = workspaceId
-      await SyncStateUtils.retrieveAllIDsFromServer((item)=>{
-        return item.RunOnEnterWorkBench === true;
-      })
-      onAvaialble(true);
-    }
-   })()
+  useEffect(() => {
+    (async () => {
+      if (FetchedWorkspaceId == "" && workspaceId !== "default") {
+        AlertUtils.win_alert({
+          id: "Un77m",
+          msg: Dot(
+            "0gywa",
+            "Workspace not found, you will be redirected to workspace index page."
+          ),
+          fn() {},
+        });
+        onAvaialble(false);
+        hist.replace("/workbench");
+      } else {
+        ALL_NOCYCLE.workspaceId = getWorkspaceIdFromPath();
+        await SyncStateUtils.retrieveAllIDsFromServer((item) => {
+          return item.RunOnEnterWorkBench === true;
+        });
+        onAvaialble(true);
+      }
+    })();
   }, [idQueryRes.status, FetchedWorkspaceId]);
   if (res) {
     return res;
   }
   if (!available) {
     return (
-      <p  className="p-10  w-full h-full align-center justify-center">
-        {Dot("oBz8D", "Loading")} <Blink min={3} max={10} ></Blink>
+      <p className="p-10  w-full h-full align-center justify-center">
+        {Dot("oBz8D", "Loading")} <Blink min={3} max={10}></Blink>
       </p>
     );
   }
