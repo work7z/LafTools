@@ -23,12 +23,12 @@ import ALL_NOCYCLE, {
   FN_GetDispatch,
   FN_GetState,
   IsDevMode,
-  defaultsDeepNoArr,
   getAjaxValueRes,
 } from "../nocycle";
 import AjaxUtils from "./AjaxUtils";
 import _, { DebouncedFunc } from "lodash";
 import AlertUtils from "./AlertUtils";
+window["_"] = _;
 
 type SyncDefinition = {
   RunOnInit?: boolean;
@@ -53,7 +53,24 @@ let SyncStateUtils = {
       replaceWithLatestState(state, action: PayloadAction<{ newState: any }>) {
         let newState = action.payload.newState;
         // _.defaultsDeep(newState, state);
-        // defaultsDeepNoArr(newState, state);
+        function checkDefaultsDeep(
+          value: any,
+          srcValue: any,
+          key: string,
+          object: any,
+          source: any
+        ) {
+          if (_.isNil(value)) {
+            return srcValue;
+          }
+          if (_.isArray(value) || _.isArray(srcValue)) {
+            return value;
+          }
+          return value;
+        }
+        let obj = { ...newState };
+        let src = { ...state };
+        newState = _.mergeWith(obj, src, checkDefaultsDeep);
         if (sliceName == "workspace") {
           debugger;
         }

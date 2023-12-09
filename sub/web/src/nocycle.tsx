@@ -32,18 +32,16 @@ function isObject(item) {
   return typeof item === "object" && !Array.isArray(item) && item !== null;
 }
 
-export function defaultsDeepNoArr(target, defaults) {
-  for (let key in defaults) {
-    if (defaults.hasOwnProperty(key)) {
-      if (target[key] === undefined || target[key] === null) {
-        target[key] = defaults[key];
-      } else if (isObject(target[key]) && isObject(defaults[key])) {
-        defaultsDeepNoArr(target[key], defaults[key]);
-      }
-    }
-  }
-  return target;
-}
+// export function defaultsDeepNoArr(target, defaults) {
+//   for (let key in defaults) {
+//     if (target[key] === undefined || target[key] === null) {
+//       target[key] = defaults[key];
+//     } else if (isObject(target[key]) && isObject(defaults[key])) {
+//       defaultsDeepNoArr(target[key], defaults[key]);
+//     }
+//   }
+//   return target;
+// }
 export let copy = function (ctn: string, showMsg?: boolean) {
   var obj = document.getElementById("uniqueiptele") as any;
   if (obj) {
