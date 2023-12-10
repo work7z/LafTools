@@ -177,11 +177,11 @@ export let SidebarMenu = (props: TabNavProp): any => {
       {
         desc: Dot(
           "dkkq12q",
-          "Set a workflow to combine multiple tools together."
+          "Manage your workflows to combine multiple tools together."
         ),
-        icon: "flows",
+        icon: "new-layers",
         id: "flows",
-        label: Dot("Sd1Nbd", "Workflow"),
+        label: Dot("1bd", "Workflow"),
       },
     ];
     return tmparr.map(fn_format_menu);
