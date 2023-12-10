@@ -67,7 +67,7 @@ export default (props: PassProps) => {
     },
     {
       icon: "cog",
-      title: Dot("Fy27", "Configure Transformer"),
+      title: Dot("Fy217", "Configure Text Transformer"),
     },
   ];
   let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
