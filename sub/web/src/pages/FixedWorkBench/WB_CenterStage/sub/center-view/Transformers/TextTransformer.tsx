@@ -29,6 +29,10 @@ import { Dot } from "../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../nocycle";
 import BigTextSlice from "../../../../../../slice/BigTextSlice";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../sliceAction/bigtext_action";
+import { findLastIndex } from "lodash";
+import { useState } from "react";
+import AjaxUtils from "../../../../../../utils/AjaxUtils";
+import AlertUtils from "../../../../../../utils/AlertUtils";
 
 let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -37,6 +41,7 @@ type PassProps = CommonPassProp & {};
 
 let TextTransformerControl = (props: CommonPassProp) => {
   let { inputBigTextId } = props;
+  let [loadExample, onLoadExample] = useState(false);
   let leftActions: ButtonProps[] = [
     {
       text: Dot("g4lqi", "Get MD2 Hash"),
@@ -47,17 +52,36 @@ let TextTransformerControl = (props: CommonPassProp) => {
       text: Dot("2bqHk", "Load from File"),
       intent: "none",
       title: Dot("NNfJo", "Load Data from File"),
+      onClick: () => {
+        //
+      },
     },
     {
       text: Dot("IWUH5", "Show Example"),
       intent: "none",
       className: "",
       title: Dot("NNd1o", "Use Example for Testing"),
-      onClick: () => {
-        let val = "hello, world";
-        FN_GetDispatch()(
-          FN_SetTextValueFromOutSideByBigTextId(inputBigTextId, val)
-        );
+      loading: loadExample,
+      onClick: async () => {
+        try {
+          onLoadExample(true);
+          let r = await AjaxUtils.DoStaticRequest({
+            url: "/example/javascript-s.txt",
+          });
+          if (r.status != 200) {
+            throw new Error(Dot("vU17B", "Unable to send the request"));
+          }
+          let val = r.data;
+          FN_GetDispatch()(
+            FN_SetTextValueFromOutSideByBigTextId(inputBigTextId, val)
+          );
+          AlertUtils.popOK(Dot("gsHQM", "Loaded example data successfully"));
+        } catch (e) {
+          console.log(e);
+          AlertUtils.popError(e as any);
+        } finally {
+          onLoadExample(false);
+        }
       },
     },
   ];
