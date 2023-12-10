@@ -234,6 +234,7 @@ export default (props: PassProp) => {
   let [crtTranslateX, onCrtTranslateX] = useState<number>(0);
   useEffect(() => {
     let a = () => {
+      debugger;
       onCrtTranslateX(0);
     };
     document.addEventListener("resize", a);

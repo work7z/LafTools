@@ -59,7 +59,8 @@ export default (props: PassProps) => {
       title: Dot("2JyFN", "Copy Result to Clipboard"),
     },
     {
-      icon: "export",
+      // icon: "export",
+      icon: "download",
       intent: "success" as any,
       className: "btn-purple",
       text: Dot("o52xW", "Export"),
@@ -87,7 +88,7 @@ export default (props: PassProps) => {
     };
   };
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full relative">
       <div
         className="w-full using-edge-ui-bg flex  border-b-[1px] dark:border-gray-600 px-1  flex-column items-center justify-between"
         style={{
@@ -110,6 +111,9 @@ export default (props: PassProps) => {
         <GenCodeMirror
           value={"this is test data for " + sessionId}
         ></GenCodeMirror>
+      </div>
+      <div className="absolute bottom-0 right-0">
+        <div>this is card options</div>
       </div>
     </div>
   );

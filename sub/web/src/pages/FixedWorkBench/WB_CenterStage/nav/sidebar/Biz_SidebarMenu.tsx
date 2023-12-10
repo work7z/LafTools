@@ -177,11 +177,11 @@ export let SidebarMenu = (props: TabNavProp): any => {
       {
         desc: Dot(
           "dkkq12q",
-          "The calculated result will be shown in this panel."
+          "Set a workflow to combine multiple tools together."
         ),
-        icon: "export",
-        id: "export",
-        label: Dot("RNewBzde0", "Result"),
+        icon: "flows",
+        id: "flows",
+        label: Dot("Sd1Nbd", "Workflow"),
       },
     ];
     return tmparr.map(fn_format_menu);

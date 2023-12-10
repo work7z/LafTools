@@ -56,7 +56,7 @@ func GetMottoList(ctx *context.WebContext) []func() string {
 			return ctx.Dot("58c03", "Innovation is a key factor in the success of any business. -Ravi Venkatesan")
 		},
 		func() string {
-				return ctx.Dot("79f2d", "Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program. – Linus Torvalds")
+			return ctx.Dot("79f2d", "Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program. – Linus Torvalds")
 		},
 		func() string {
 			return ctx.Dot("9412b", "First, solve the problem. Then, write the code. – John Johnson")
@@ -320,7 +320,10 @@ func GetMottoList(ctx *context.WebContext) []func() string {
 			return ctx.Dot("c7cfc", "A good test is one that has a high probability of breaking the code if there is a problem - Michael Bolton")
 		},
 		func() string {
-			return ctx.Dot("66ef1", "Good code is its own best documentation.  As you’re about to add a comment, ask yourself, ‘How can I improve the code so that this comment isn’t needed? ’ - Steve McConnell 5.  Testing can only prove the presence of bugs, not their absence - Edsger Dijkstra")
+			return ctx.Dot("66ef1", "Good code is its own best documentation.  As you’re about to add a comment, ask yourself, ‘How can I improve the code so that this comment isn’t needed? ’ - Steve McConnell")
+		},
+		func() string {
+			return ctx.Dot("nh1W-", "Testing can only prove the presence of bugs, not their absence - Edsger Dijkstra")
 		},
 		func() string { return ctx.Dot("7e19d", "Confusion is part of programming. ― Felienne Hermans") },
 		func() string {
