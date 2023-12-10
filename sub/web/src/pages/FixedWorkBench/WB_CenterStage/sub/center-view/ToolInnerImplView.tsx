@@ -144,6 +144,8 @@ export default () => {
   let finalPanel = <div>{Dot("qG5BY", "Not yet defined.")}</div>;
   let commonPassProp: CommonPassProp = {
     sessionId,
+    inputBigTextId: s.tabId + "-i",
+    outputBigTextId: s.tabId + "-o",
   };
 
   if (true) {

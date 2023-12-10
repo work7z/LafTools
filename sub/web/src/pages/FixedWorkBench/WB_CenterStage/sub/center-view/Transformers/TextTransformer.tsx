@@ -59,7 +59,7 @@ export default (props: PassProps) => {
       title: Dot("2JyFN", "Copy Result to Clipboard"),
     },
     {
-      icon: "download",
+      icon: "export",
       intent: "success" as any,
       className: "btn-purple",
       text: Dot("o52xW", "Export"),
