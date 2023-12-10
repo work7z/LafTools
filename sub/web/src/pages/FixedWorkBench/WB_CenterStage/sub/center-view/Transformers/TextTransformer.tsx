@@ -28,15 +28,15 @@ import { CommonPassProp } from "../transformer_types";
 import { Dot } from "../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../nocycle";
 import BigTextSlice from "../../../../../../slice/BigTextSlice";
+import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../sliceAction/bigtext_action";
+
+let controlBarHeight = VAL_CSS_CONTROL_PANEL;
+let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
 
 type PassProps = CommonPassProp & {};
 
-export default (props: PassProps) => {
-  let sessionId = props.sessionId;
-  let controlBarHeight = VAL_CSS_CONTROL_PANEL;
-  let bodyHeight = `calc(100% - ${controlBarHeight}px)`;
-  let inputBigTextId = props.inputBigTextId;
-  let outputBigTextId = props.outputBigTextId;
+let TextTransformerControl = (props: CommonPassProp) => {
+  let { inputBigTextId } = props;
   let leftActions: ButtonProps[] = [
     {
       text: Dot("g4lqi", "Get MD2 Hash"),
@@ -54,11 +54,9 @@ export default (props: PassProps) => {
       className: "",
       title: Dot("NNd1o", "Use Example for Testing"),
       onClick: () => {
+        let val = "hello, world";
         FN_GetDispatch()(
-          BigTextSlice.actions.updatebigtext({
-            key: inputBigTextId,
-            value: "hello, world",
-          })
+          FN_SetTextValueFromOutSideByBigTextId(inputBigTextId, val)
         );
       },
     },
@@ -83,37 +81,52 @@ export default (props: PassProps) => {
       title: Dot("Fy217", "Configure Text Transformer"),
     },
   ];
-  let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
-  let fn_format_button = (pmt: string) => {
-    return (x: ButtonProps) => {
-      return (
-        <Tooltip placement={pmt as any} content={x.title}>
-          <Button
-            {...x}
-            title={""}
-            small
-            intent={x.intent}
-            text={x.text}
-          ></Button>
-        </Tooltip>
-      );
-    };
+  return (
+    <div
+      className="w-full using-edge-ui-bg flex  border-b-[1px] dark:border-gray-600 px-1  flex-column items-center justify-between"
+      style={{
+        height: controlBarHeight,
+      }}
+    >
+      <div className={controlClz}>
+        {leftActions.map(fn_format_button("bottom-start"))}
+      </div>
+      <div className={controlClz}>
+        {rightActions.map(fn_format_button("bottom-end"))}
+      </div>
+    </div>
+  );
+};
+
+export let fn_format_button = (pmt: string) => {
+  return (x: ButtonProps) => {
+    return (
+      <Tooltip placement={pmt as any} content={x.title}>
+        <Button
+          {...x}
+          title={""}
+          small
+          intent={x.intent}
+          text={x.text}
+        ></Button>
+      </Tooltip>
+    );
+  };
+};
+export default (props: PassProps) => {
+  let sessionId = props.sessionId;
+  let bodyHeight = `calc(100% - ${controlBarHeight}px)`;
+  let inputBigTextId = props.inputBigTextId;
+  let outputBigTextId = props.outputBigTextId;
+
+  let commonPassProp: CommonPassProp = {
+    sessionId,
+    inputBigTextId,
+    outputBigTextId,
   };
   return (
     <div className="w-full h-full relative">
-      <div
-        className="w-full using-edge-ui-bg flex  border-b-[1px] dark:border-gray-600 px-1  flex-column items-center justify-between"
-        style={{
-          height: controlBarHeight,
-        }}
-      >
-        <div className={controlClz}>
-          {leftActions.map(fn_format_button("bottom-start"))}
-        </div>
-        <div className={controlClz}>
-          {rightActions.map(fn_format_button("bottom-end"))}
-        </div>
-      </div>
+      <TextTransformerControl {...commonPassProp}></TextTransformerControl>
       <div
         style={{
           height: bodyHeight,

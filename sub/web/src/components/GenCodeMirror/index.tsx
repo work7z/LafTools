@@ -96,22 +96,25 @@ export default (props: GenCodeMirrorProp) => {
     dark: val.forge.DarkThemeMode,
   }));
   let bigTextId = props.bigTextId;
-  let verObj = exportUtils.useSelector((val) => {
-    let ver: number = val.bigtext.textKVStatusMap[bigTextId]?.outsideUpdateVer;
-    if (_.isNil(ver)) {
-      ver = 0;
-    }
-    return {
-      ver: 0,
-    };
-  });
-  let bt = exportUtils.useCachedSelector(
+  // let verObj = exportUtils.useSelector((val) => {
+  //   let ver: number = val.bigtext.textKVStatusMap[bigTextId]?.outsideUpdateVer;
+  //   if (_.isNil(ver)) {
+  //     ver = 0;
+  //   }
+  //   return {
+  //     ver: 0,
+  //   };
+  // });
+  let bt = exportUtils.useSelector(
     (val) => {
+      let m = val.bigtext.textKVStatusMap[bigTextId];
       return {
-        bigText: val.bigtext.textKVMap[bigTextId] || "",
+        // bigText: val.bigtext.textKVMap[bigTextId] || "",
+        bigText: m?.value || "",
+        ver: m?.outsideUpdateVer,
       };
-    },
-    [verObj.ver]
+    }
+    // [verObj.ver]
   );
   let value: string = bt.bigText;
   let setValue = (val: string) => {
@@ -127,8 +130,10 @@ export default (props: GenCodeMirrorProp) => {
     console.log("val:", val);
     setValue(val);
   }, []);
+  console.log("rendering", value, bt.ver);
   return (
     <CodeMirror
+      key={bt.ver}
       onChange={(val) => {
         onChange(val, true);
       }}
