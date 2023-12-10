@@ -30,7 +30,7 @@ import { FN_GetDispatch } from "../../../../../../nocycle";
 import BigTextSlice from "../../../../../../slice/BigTextSlice";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../sliceAction/bigtext_action";
 import { findLastIndex } from "lodash";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AjaxUtils from "../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../components/SysTabPane";
@@ -152,6 +152,7 @@ let TextTransformerOutput = (props: CommonPassProp) => {
         CSS_TW_LAYOUT_BORDER +
         " border-r-0  " +
         ""
+        // (isCollapsed ? " border-b-0 " : "")
       }
       style={{
         ...(isCollapsed
