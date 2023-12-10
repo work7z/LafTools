@@ -35,9 +35,9 @@ export default (props: PassProps) => {
   let bodyHeight = `calc(100% - ${controlBarHeight}px)`;
   let leftActions: ButtonProps[] = [
     {
-      text: Dot("g4li", "Get Text MD2"),
+      text: Dot("g4lqi", "Get MD2 Hash"),
       intent: "primary",
-      title: Dot("ZpBpf", "Convert Data as to"),
+      title: Dot("Zpqqpf", "Encrypt the data with MD2"),
     },
     {
       text: Dot("2bqHk", "Load from File"),
@@ -48,7 +48,7 @@ export default (props: PassProps) => {
       text: Dot("IWUH5", "Show Example"),
       intent: "none",
       className: "",
-      title: Dot("NN1o", "Load Data from File"),
+      title: Dot("NNd1o", "Use Example for Testing"),
     },
   ];
   let rightActions: ButtonProps[] = [

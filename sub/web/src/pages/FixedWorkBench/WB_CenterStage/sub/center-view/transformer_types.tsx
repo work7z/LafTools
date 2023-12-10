@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sat, 9 Dec 2023
 // Author: LafTools Team <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -19,5 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 export type CommonPassProp = {
+  inputBigTextId: string;
+  outputBigTextId: string;
   sessionId: string;
 };
