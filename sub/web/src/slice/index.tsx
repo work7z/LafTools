@@ -34,6 +34,7 @@ import layoutSlice from "./LayoutSlice";
 import WorkspaceSlice from "./workspaceSlice";
 import PreWorkSpaceSlice from "./preWorkSpace";
 import onlineAPISlice from "./onlineAPISlice";
+import RuntimeStatusSlice from "./RuntimeStatusSlice";
 
 export default {
   online: onlineAPISlice,
@@ -45,6 +46,7 @@ export default {
   ext: ExtSlice,
   user: UserSlice,
   status: statusSlice,
+  runtimeStatus: RuntimeStatusSlice,
   api: apiSlice,
   system: systemSlice,
   test: testSlice,

@@ -73,6 +73,7 @@ import { UseQueryHookResult } from "@reduxjs/toolkit/dist/query/react/buildHooks
 import { ContextMenu, Tree, TreeNodeInfo } from "@blueprintjs/core";
 import { Example, ExampleProps } from "@blueprintjs/docs-theme";
 import { TreeWrapInfo } from "../../styles/var";
+import MottoLine from "../MottoLine";
 
 let { cloneDeep } = _;
 
@@ -155,11 +156,11 @@ export default (props: PassProp) => {
   }, [info.nodes, props.expanded, props.selected, info.updateId, searchText]);
 
   return (
-    <div>
+    <div className="h-full ">
       <div className="pt-10">
         <InputGroup
           leftIcon="search"
-          placeholder={Dot("5XnE1", "Search Extensions by Keyword")}
+          placeholder={Dot("5XdnE1", "Search Tools by Keyword")}
           type="search"
           small={true}
           value={searchText}
@@ -168,60 +169,81 @@ export default (props: PassProp) => {
           }}
         ></InputGroup>
       </div>
-      <Tree
-        contents={nodes}
-        onNodeDoubleClick={(node) => {
-          let e = node;
-          if (false && node.hasCaret) {
-          }
-          if (!_.isNil(node)) {
-            props.onDoubleClick && props.onDoubleClick(node as TreeNodeInfo);
-          }
+      <div
+        style={{
+          height: `calc(100% - 46px)`,
+          marginTop: "1px",
+          overflowY: "auto",
+          display: "flex",
+          flexDirection: "column",
         }}
-        onNodeClick={(e, e2, e3) => {
-          // update props.selected according to e.isSelected
-          let new_info = { ...info };
-          let node = e;
-          if (e.hasCaret) {
-            // if e.hasCaret, then toggle if its value in props.expanded
-            if (_.includes(props.expanded, node.id.toString())) {
+        className="relative btm-top"
+      >
+        <div
+          style={{
+            flexGrow: 1,
+          }}
+        >
+          <Tree
+            contents={nodes}
+            onNodeDoubleClick={(node) => {
+              let e = node;
+              if (false && node.hasCaret) {
+              }
+              if (!_.isNil(node)) {
+                props.onDoubleClick &&
+                  props.onDoubleClick(node as TreeNodeInfo);
+              }
+            }}
+            onNodeClick={(e, e2, e3) => {
+              // update props.selected according to e.isSelected
+              let new_info = { ...info };
+              let node = e;
+              if (e.hasCaret) {
+                // if e.hasCaret, then toggle if its value in props.expanded
+                if (_.includes(props.expanded, node.id.toString())) {
+                  props.onExpandedChange(
+                    _.filter(props.expanded, (x) => {
+                      return x != node.id;
+                    })
+                  );
+                } else {
+                  props.onExpandedChange(
+                    _.uniq([...(props.expanded || []), node.id]) as any
+                  );
+                }
+                if (!_.isNil(e)) {
+                  props.onClick && props.onClick(e as TreeNodeInfo);
+                }
+              } else {
+                if (!e.isSelected) {
+                  props.onSelectedChange([node.id.toString()]);
+                }
+              }
+              props.onChange(new_info);
+              if (!_.isNil(e)) {
+                props.onClick && props.onClick(e as TreeNodeInfo);
+              }
+            }}
+            onNodeCollapse={(obj) => {
+              // props.onChange(new_info);
               props.onExpandedChange(
                 _.filter(props.expanded, (x) => {
-                  return x != node.id;
+                  return x != obj.id;
                 })
               );
-            } else {
-              props.onExpandedChange(
-                _.uniq([...(props.expanded || []), node.id]) as any
-              );
-            }
-            if (!_.isNil(e)) {
-              props.onClick && props.onClick(e as TreeNodeInfo);
-            }
-          } else {
-            if (!e.isSelected) {
-              props.onSelectedChange([node.id.toString()]);
-            }
-          }
-          props.onChange(new_info);
-          if (!_.isNil(e)) {
-            props.onClick && props.onClick(e as TreeNodeInfo);
-          }
-        }}
-        onNodeCollapse={(obj) => {
-          // props.onChange(new_info);
-          props.onExpandedChange(
-            _.filter(props.expanded, (x) => {
-              return x != obj.id;
-            })
-          );
-        }}
-        onNodeExpand={(obj) => {
-          let fin = _.uniq([...(props.expanded || []), obj.id]) as string[];
-          props.onExpandedChange(fin);
-        }}
-        className={Classes.ELEVATION_0}
-      />
+            }}
+            onNodeExpand={(obj) => {
+              let fin = _.uniq([...(props.expanded || []), obj.id]) as string[];
+              props.onExpandedChange(fin);
+            }}
+            className={Classes.ELEVATION_0}
+          />
+        </div>
+        <div className="btm-top">
+          <MottoLine />
+        </div>
+      </div>
     </div>
   );
 };

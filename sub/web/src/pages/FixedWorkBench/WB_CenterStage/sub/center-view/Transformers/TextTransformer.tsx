@@ -178,13 +178,17 @@ let TextTransformerOutput = (props: CommonPassProp) => {
             }}
             small
             minimal
-            rightIcon={isCollapsed ? "chevron-up" : "chevron-down"}
+            rightIcon={!isCollapsed ? "chevron-up" : "chevron-down"}
           ></Button>
         }
         children={
-          <div className="w-full h-full overflow-auto">
-            <GenCodeMirror bigTextId={props.outputBigTextId}></GenCodeMirror>
-          </div>
+          isCollapsed ? (
+            <span></span>
+          ) : (
+            <div className="w-full h-full overflow-auto">
+              <GenCodeMirror bigTextId={props.outputBigTextId}></GenCodeMirror>
+            </div>
+          )
         }
       ></SysTabPane>
     </div>

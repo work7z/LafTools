@@ -75,19 +75,40 @@ export default (props: BlinkProp): any => {
       refetchOnMountOrArgChange: true,
     }
   );
-  let mottoLine = mottoLineRes?.data?.payload?.value;
+  let mottoLine: string | any = mottoLineRes?.data?.payload?.value;
+  if (mottoLine) {
+    mottoLine = mottoLine.replace("--", "-");
+    mottoLine = mottoLine.replace("——", "-");
+    let idx = mottoLine.indexOf("-");
+    if (idx != -1) {
+      mottoLine = (
+        <span>
+          <div
+            style={{
+              textAlign: "left",
+            }}
+          >
+            "{mottoLine.substring(0, idx).trim()}"
+          </div>
+          <div className="mt-1" style={{ textAlign: "right" }}>
+            -- {mottoLine.substring(idx + 2).trim()}
+          </div>
+        </span>
+      );
+    }
+  }
   return (
     <div
       style={{
         textAlign: "center",
-        padding: "10px 6px",
+        // padding: "10px 6px",
         margin: "0 auto",
-        whiteSpace: "pre-wrap",
+        whiteSpace: "break-spaces",
         width: "100%",
         minWidth: "230px",
         fontSize: "11px",
       }}
-      className="whitespace-break-spaces overflow-hidden bp5-text-muted bp5-text-small  h-full   "
+      className="py-2 px-2 whitespace-break-spaces overflow-hidden bp5-text-muted bp5-text-small  h-full   "
       title={mottoLine}
       onDoubleClick={() => {
         mottoLineRes.refetch();

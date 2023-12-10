@@ -324,7 +324,7 @@ export default (props: {
   }
   return (
     <div className=" select-none w100 h100 flex-parent whitespace-break-spaces overflow-auto">
-      <div className="flex-main-body">
+      <div className="flex-main-body h-full">
         {_.isEmpty(extsListQuery.data?.payload?.list) ? (
           <NonIdealState
             icon="array"
@@ -470,9 +470,6 @@ export default (props: {
             }}
           />
         )}
-      </div>
-      <div className="btm-top">
-        <MottoLine />
       </div>
     </div>
   );
