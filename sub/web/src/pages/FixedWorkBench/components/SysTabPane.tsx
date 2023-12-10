@@ -144,7 +144,7 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
             : "")
         }
         minimal
-        icon={crtObject?.icon as any}
+        icon={(crtObject?.icon + "") as any}
         text={crtObjLabel}
         rightIcon={hasMultipleList ? "caret-down" : undefined}
       ></Button>

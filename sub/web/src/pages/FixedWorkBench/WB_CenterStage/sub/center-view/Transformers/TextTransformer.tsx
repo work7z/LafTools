@@ -146,8 +146,17 @@ let TextTransformerOutput = (props: CommonPassProp) => {
       className={
         "absolute bottom-0 right-0 w-[38.2%] h-[38.2%] " +
         CSS_TW_LAYOUT_BORDER +
-        " border-r-0"
+        " border-r-0  " +
+        ""
       }
+      style={{
+        ...(isCollapsed
+          ? {
+              height: VAL_CSS_TAB_TITLE_PANEL,
+            }
+          : {}),
+        transition: "all 0.3s",
+      }}
     >
       <SysTabPane
         crtLeftNavId={props.sessionId + "output"}
