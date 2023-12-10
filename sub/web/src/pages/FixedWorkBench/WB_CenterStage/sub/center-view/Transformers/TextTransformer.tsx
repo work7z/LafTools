@@ -177,7 +177,11 @@ let TextTransformerOutput = (props: CommonPassProp) => {
             rightIcon={isCollapsed ? "chevron-up" : "chevron-down"}
           ></Button>
         }
-        children={<div>{Dot("qpDBSWe1", "no available panel")}</div>}
+        children={
+          <div className="w-full h-full overflow-auto">
+            <GenCodeMirror bigTextId={props.outputBigTextId}></GenCodeMirror>
+          </div>
+        }
       ></SysTabPane>
     </div>
   );
@@ -203,10 +207,7 @@ export default (props: PassProps) => {
         }}
         className="w-full overflow-auto"
       >
-        <GenCodeMirror
-          bigTextId={inputBigTextId}
-          // value={"this is test data for " + sessionId}
-        ></GenCodeMirror>
+        <GenCodeMirror bigTextId={inputBigTextId}></GenCodeMirror>
       </div>
       <TextTransformerOutput {...commonPassProp}></TextTransformerOutput>
     </div>
