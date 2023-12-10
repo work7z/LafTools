@@ -24,6 +24,64 @@ import "laftools-go/core/context"
 
 func GetMottoList(ctx *context.WebContext) []func() string {
 	return []func() string{
+		func() string {
+			return ctx.Dot("f3152", "Pure mathematics is, in its way, the poetry of logical ideas. -Albert Einstein")
+		},
+		func() string {
+			return ctx.Dot("f3153", "Mathematics is the queen of the sciences. -Carl Friedrich Gauss")
+		},
+		func() string {
+			return ctx.Dot("f3154", "The book of nature is written in the language of mathematics. -Galileo Galilei")
+		},
+		func() string {
+			return ctx.Dot("f3155", "Mathematics is the door and key to the sciences. -Roger Bacon")
+		},
+		func() string { return ctx.Dot("f3156", "Mathematics is the music of reason. -James Joseph Sylvester") },
+		func() string {
+			return ctx.Dot("f3157", "Mathematics knows no races or geographic boundaries. -David Hilbert")
+		},
+		func() string {
+			return ctx.Dot("f3158", "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding. -William Paul Thurston")
+		},
+		func() string {
+			return ctx.Dot("f3159", "Mathematics is a game played according to certain simple rules with meaningless marks on paper. -David Hilbert")
+		},
+		func() string {
+			return ctx.Dot("f3160", "Mathematics is the supreme judge; from its decisions there is no appeal. -Tobias Dantzig")
+		},
+		func() string {
+			return ctx.Dot("f3161", "In mathematics the art of proposing a question must be held of higher value than solving it. -Georg Cantor")
+		},
+		func() string {
+			return ctx.Dot("f3162", "Mathematics is a place where you can do things which you can't do in the real world. -Marcus du Sautoy")
+		},
+		func() string {
+			return ctx.Dot("f3163", "The advancement and perfection of mathematics are intimately connected with the prosperity of the state. -Napoleon Bonaparte")
+		},
+		func() string {
+			return ctx.Dot("f3164", "The essence of mathematics lies in its freedom. -Georg Cantor")
+		},
+		func() string {
+			return ctx.Dot("f3165", "Mathematics is the science of what is clear by itself. -Carl Jacobi")
+		},
+		func() string {
+			return ctx.Dot("f3166", "Mathematics, rightly viewed, possesses not only truth, but supreme beauty. -Bertrand Russell")
+		},
+		func() string {
+			return ctx.Dot("f3167", "Mathematics is the tool specially suited for dealing with abstract concepts of any kind. -P. Dirac")
+		},
+		func() string {
+			return ctx.Dot("f3168", "Mathematics reveals its secrets only to those who approach it with pure love, for its own beauty. -Archimedes")
+		},
+		func() string {
+			return ctx.Dot("f3169", "Mathematics is the most beautiful and most powerful creation of the human spirit. -Stefan Banach")
+		},
+		func() string {
+			return ctx.Dot("f3170", "The mathematician does not study pure mathematics because it is useful; he studies it because he delights in it and he delights in it because it is beautiful. -Henri Poincaré")
+		},
+		func() string {
+			return ctx.Dot("f3171", "The study of mathematics, like the Nile, begins in minuteness but ends in magnificence. -Charles Caleb Colton")
+		},
 		func() string { return ctx.Dot("f3151", "The biggest risk is not taking any risk. -Mark Zuckerberg") },
 		func() string {
 			return ctx.Dot("9334e", "The greatest glory in living lies not in never falling, but in rising every time we fall. – Nelson Mandela")
