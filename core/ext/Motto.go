@@ -22,6 +22,8 @@ package ext
 
 import "laftools-go/core/context"
 
+// it's better to use a static file to store the motto list, but, actually I have no time at present, welcome to contribute
+
 func GetMottoList(ctx *context.WebContext) []func() string {
 	return []func() string{
 		func() string {

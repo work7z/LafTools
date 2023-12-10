@@ -101,9 +101,15 @@ export default (props: GenCodeMirrorProp) => {
     lastSelectResult: null,
   });
   mRef.current.renderCtn++;
-  let verObj = exportUtils.useSelector((val) => ({
-    ver: val.bigtext.textKVStatusMap[bigTextId]?.outsideUpdateVer,
-  }));
+  let verObj = exportUtils.useSelector((val) => {
+    let valueVer = val.bigtext.textKVStatusMap[bigTextId]?.outsideUpdateVer;
+    if (_.isNil(valueVer)) {
+      valueVer = 1;
+    }
+    return {
+      ver: valueVer,
+    };
+  });
   let bt_raw = exportUtils.useSelector((val) => {
     let crt = mRef.current;
     let m = val.bigtext.textKVStatusMap[bigTextId];

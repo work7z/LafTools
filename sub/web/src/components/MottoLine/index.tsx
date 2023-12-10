@@ -99,12 +99,33 @@ export default (props: BlinkProp): any => {
           </div>
         </span>
       );
+      // mottoLine = (
+      //   <div
+      //     style={{
+      //       // display: "flex",
+      //       // justifyContent: "space-between",
+      //       // flexWrap: "wrap",
+      //       display: "grid",
+      //       gridTemplateColumns: "1fr 1fr",
+      //       gap: "10px",
+      //     }}
+      //   >
+      //     {/* <div>"{mottoLine.substring(0, idx).trim()}"</div>
+      //     <div>-- {mottoLine.substring(idx + 2).trim()}</div> */}
+      //     <div style={{ textAlign: "left" }}>
+      //       "{mottoLine.substring(0, idx).trim()}"
+      //     </div>
+      //     <div style={{ textAlign: "right" }}>
+      //       -- {mottoLine.substring(idx + 2).trim()}
+      //     </div>
+      //   </div>
+      // );
     }
   }
   return (
     <div
       style={{
-        textAlign: "center",
+        // textAlign: "center",
         // padding: "10px 6px",
         margin: "0 auto",
         whiteSpace: "break-spaces",

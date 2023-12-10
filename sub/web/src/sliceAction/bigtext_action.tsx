@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 10 Dec 2023
 // Author: LafTools Team <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -81,7 +81,7 @@ export let FN_SetTextValueFromOutSideByBigTextId = (
     let stMap: TextKVStatus = FN_GetState().bigtext.textKVStatusMap[bigTextId];
     if (_.isNil(stMap)) {
       stMap = {
-        outsideUpdateVer: 1,
+        outsideUpdateVer: 2,
         value: newValue,
         internalValue: null,
       };
