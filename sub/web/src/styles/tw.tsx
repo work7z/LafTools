@@ -20,3 +20,6 @@
 
 export let CSS_TEXT_ANCHOR_CSS =
   "text-current no-underline hover:no-underline dark:text-current";
+
+export let CSS_TW_LAYOUT_BORDER =
+  " border-[1px]    border-gray-300 dark:border-gray-600  ";

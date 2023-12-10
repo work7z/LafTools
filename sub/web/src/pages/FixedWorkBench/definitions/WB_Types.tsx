@@ -149,6 +149,7 @@ export type FocusableProp = {
 };
 
 export type MenuDropDownListItem = {
+  icon?: string;
   label: string;
   pathname?: string;
   value: string;

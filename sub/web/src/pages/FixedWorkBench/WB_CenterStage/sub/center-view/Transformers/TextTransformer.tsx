@@ -33,6 +33,8 @@ import { findLastIndex } from "lodash";
 import { useState } from "react";
 import AjaxUtils from "../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../utils/AlertUtils";
+import { SysTabPane } from "../../../../components/SysTabPane";
+import { CSS_TW_LAYOUT_BORDER } from "../../../../../../styles/tw";
 
 let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -137,6 +139,41 @@ export let fn_format_button = (pmt: string) => {
     );
   };
 };
+let TextTransformerOutput = (props: CommonPassProp) => {
+  let [isCollapsed, onColl] = useState(false);
+  return (
+    <div
+      className={
+        "absolute bottom-0 right-0 w-[38.2%] h-[38.2%] " +
+        CSS_TW_LAYOUT_BORDER +
+        " border-r-0"
+      }
+    >
+      <SysTabPane
+        crtLeftNavId={props.sessionId + "output"}
+        leftNavList={[
+          {
+            icon: "export",
+            label: Dot("Dj9qqwk", "Output"),
+            value: "drawer",
+          },
+        ]}
+        rightCtrls={
+          <Button
+            onClick={() => {
+              onColl(!isCollapsed);
+            }}
+            small
+            minimal
+            rightIcon={isCollapsed ? "chevron-up" : "chevron-down"}
+          ></Button>
+        }
+        children={<div>{Dot("qpDBSWe1", "no available panel")}</div>}
+      ></SysTabPane>
+    </div>
+  );
+};
+
 export default (props: PassProps) => {
   let sessionId = props.sessionId;
   let bodyHeight = `calc(100% - ${controlBarHeight}px)`;
@@ -162,9 +199,7 @@ export default (props: PassProps) => {
           // value={"this is test data for " + sessionId}
         ></GenCodeMirror>
       </div>
-      <div className="absolute bottom-0 right-0">
-        <div>this is card options</div>
-      </div>
+      <TextTransformerOutput {...commonPassProp}></TextTransformerOutput>
     </div>
   );
 };

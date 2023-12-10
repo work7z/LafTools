@@ -133,17 +133,24 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
       </span>
     );
   }
-  let jsx_btn = hasMultipleList ? (
-    <Button
-      small
-      className="bp5-popover-dismiss  bp3-popover-dismiss "
-      minimal
-      text={crtObjLabel}
-      rightIcon={hasMultipleList ? "caret-down" : undefined}
-    ></Button>
-  ) : (
-    <span className="p-2">{crtObjLabel}</span>
-  );
+  let jsx_btn =
+    true || hasMultipleList ? (
+      <Button
+        small
+        className={
+          "bp5-popover-dismiss  bp3-popover-dismiss " +
+          (!hasMultipleList
+            ? "hover:!bg-transparent hover:!cursor-default"
+            : "")
+        }
+        minimal
+        icon={crtObject?.icon as any}
+        text={crtObjLabel}
+        rightIcon={hasMultipleList ? "caret-down" : undefined}
+      ></Button>
+    ) : (
+      <span className="p-2">{crtObjLabel}</span>
+    );
 
   // const [refId, onRefId] = useState(_.uniqueId(""));
   const [showPop, onShowPop] = useState(false);
