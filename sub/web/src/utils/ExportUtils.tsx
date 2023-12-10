@@ -20,6 +20,7 @@
 
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { RootState } from "../store";
+import { useMemo } from "react";
 import _ from "lodash";
 
 const exportUtils = {
@@ -38,6 +39,11 @@ const exportUtils = {
   },
   dispatch: useDispatch,
   useDispatch: useDispatch,
+  useCachedSelector<T>(callBack: (val: RootState) => T, cachedArr: any[]): T {
+    return useMemo(() => {
+      return exportUtils.useSelector(callBack);
+    }, [...cachedArr]);
+  },
   useSelector<T>(callBack: (val: RootState) => T, n?: any): T {
     if (_.isNil(n)) {
       n = shallowEqual;

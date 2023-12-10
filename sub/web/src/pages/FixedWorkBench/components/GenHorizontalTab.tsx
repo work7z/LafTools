@@ -233,15 +233,8 @@ export default (props: PassProp) => {
   }, []);
   let [crtTranslateX, onCrtTranslateX] = useState<number>(0);
   useEffect(() => {
-    let a = () => {
-      debugger;
-      onCrtTranslateX(0);
-    };
-    document.addEventListener("resize", a);
-    return () => {
-      document.removeEventListener("resize", a);
-    };
-  }, []);
+    onCrtTranslateX(0);
+  }, [exportUtils.resize_factors()]);
   let [p_width, onPWidth] = useState(0);
   let [subP_width, onSubPWidth] = useState(0);
   let moveStep = 120;

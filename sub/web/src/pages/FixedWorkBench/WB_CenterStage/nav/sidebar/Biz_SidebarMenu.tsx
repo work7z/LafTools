@@ -176,7 +176,7 @@ export let SidebarMenu = (props: TabNavProp): any => {
       },
       {
         desc: Dot(
-          "dkkq12q",
+          "dk122q",
           "Manage your workflows to combine multiple tools together."
         ),
         icon: "new-layers",

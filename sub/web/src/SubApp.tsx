@@ -114,7 +114,7 @@ function App() {
         })
       );
     };
-    let a = window.addEventListener("resize", fn);
+    window.addEventListener("resize", fn);
     return () => {
       window.removeEventListener("resize", fn);
     };

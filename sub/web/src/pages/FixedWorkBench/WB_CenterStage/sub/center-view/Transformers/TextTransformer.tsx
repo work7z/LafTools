@@ -26,6 +26,8 @@ import {
 } from "../../../../definitions/WB_Types";
 import { CommonPassProp } from "../transformer_types";
 import { Dot } from "../../../../../../utils/TranslationUtils";
+import { FN_GetDispatch } from "../../../../../../nocycle";
+import BigTextSlice from "../../../../../../slice/BigTextSlice";
 
 type PassProps = CommonPassProp & {};
 
@@ -33,6 +35,8 @@ export default (props: PassProps) => {
   let sessionId = props.sessionId;
   let controlBarHeight = VAL_CSS_CONTROL_PANEL;
   let bodyHeight = `calc(100% - ${controlBarHeight}px)`;
+  let inputBigTextId = props.inputBigTextId;
+  let outputBigTextId = props.outputBigTextId;
   let leftActions: ButtonProps[] = [
     {
       text: Dot("g4lqi", "Get MD2 Hash"),
@@ -49,6 +53,14 @@ export default (props: PassProps) => {
       intent: "none",
       className: "",
       title: Dot("NNd1o", "Use Example for Testing"),
+      onClick: () => {
+        FN_GetDispatch()(
+          BigTextSlice.actions.updatebigtext({
+            key: inputBigTextId,
+            value: "hello, world",
+          })
+        );
+      },
     },
   ];
   let rightActions: ButtonProps[] = [
@@ -109,7 +121,8 @@ export default (props: PassProps) => {
         className="w-full overflow-auto"
       >
         <GenCodeMirror
-          value={"this is test data for " + sessionId}
+          bigTextId={inputBigTextId}
+          // value={"this is test data for " + sessionId}
         ></GenCodeMirror>
       </div>
       <div className="absolute bottom-0 right-0">

@@ -82,19 +82,45 @@ import exportUtils from "../../utils/ExportUtils";
 // import { github } from "@uiw/codemirror-theme-github";
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { javascript } from "@codemirror/lang-javascript";
+import { FN_GetDispatch } from "../../nocycle";
+import BigTextSlice from "../../slice/BigTextSlice";
 
 // import darcula from "@uiw/codemirror-theme-darcula";
 type GenCodeMirrorProp = {
-  value: string;
+  bigTextId: string;
 };
 
 export default (props: GenCodeMirrorProp) => {
   let forgeObj = exportUtils.useSelector((val) => ({
     dark: val.forge.DarkThemeMode,
   }));
-
-  const value = "console.log('hello world!');" + props.value;
-  let setValue = (val: string) => {};
+  let bigTextId = props.bigTextId;
+  let verObj = exportUtils.useSelector((val) => {
+    let ver: number = val.bigtext.textKVStatusMap[bigTextId]?.outsideUpdateVer;
+    if (_.isNil(ver)) {
+      ver = 0;
+    }
+    return {
+      ver: 0,
+    };
+  });
+  let bt = exportUtils.useCachedSelector(
+    (val) => {
+      return {
+        bigText: val.bigtext.textKVMap[bigTextId] || "",
+      };
+    },
+    [verObj.ver]
+  );
+  let value: string = bt.bigText;
+  let setValue = (val: string) => {
+    FN_GetDispatch()(
+      BigTextSlice.actions.updatebigtext({
+        key: bigTextId,
+        value: val,
+      })
+    );
+  };
   const onChange = React.useCallback((val, viewUpdate) => {
     console.log("val:", val);
     setValue(val);
