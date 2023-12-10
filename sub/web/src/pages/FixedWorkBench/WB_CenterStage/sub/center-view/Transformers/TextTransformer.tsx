@@ -142,10 +142,13 @@ export let fn_format_button = (pmt: string) => {
 // TODO: provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
 let TextTransformerOutput = (props: CommonPassProp) => {
   let [isCollapsed, onColl] = useState(false);
+  // let h =' w-[38.2%] h-[38.2%] '
+  let h = " w-[44%] h-[42%] min-w-[450px] ";
   return (
     <div
       className={
-        "absolute bottom-0 right-0 w-[38.2%] h-[38.2%] " +
+        "absolute bottom-0 right-0  " +
+        h +
         CSS_TW_LAYOUT_BORDER +
         " border-r-0  " +
         ""

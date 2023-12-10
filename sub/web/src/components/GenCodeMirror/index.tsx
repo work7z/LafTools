@@ -96,44 +96,40 @@ export default (props: GenCodeMirrorProp) => {
     dark: val.forge.DarkThemeMode,
   }));
   let bigTextId = props.bigTextId;
-  // let verObj = exportUtils.useSelector((val) => {
-  //   let ver: number = val.bigtext.textKVStatusMap[bigTextId]?.outsideUpdateVer;
-  //   if (_.isNil(ver)) {
-  //     ver = 0;
-  //   }
-  //   return {
-  //     ver: 0,
-  //   };
-  // });
-  let bt = exportUtils.useSelector(
-    (val) => {
-      let m = val.bigtext.textKVStatusMap[bigTextId];
-      return {
-        // bigText: val.bigtext.textKVMap[bigTextId] || "",
-        bigText: m?.value || "",
-        ver: m?.outsideUpdateVer,
-      };
+  let mRef = useRef({
+    renderCtn: 0,
+    lastSelectResult: null,
+  });
+  mRef.current.renderCtn++;
+  let verObj = exportUtils.useSelector((val) => ({
+    ver: val.bigtext.textKVStatusMap[bigTextId]?.outsideUpdateVer,
+  }));
+  let bt_raw = exportUtils.useSelector((val) => {
+    let crt = mRef.current;
+    let m = val.bigtext.textKVStatusMap[bigTextId];
+    let finalText = m?.value || "";
+    if (m?.internalValue) {
+      finalText = m?.internalValue;
     }
-    // [verObj.ver]
-  );
+    return {
+      bigText: finalText,
+    };
+  });
+  let bt = useMemo(() => {
+    return bt_raw;
+  }, [verObj.ver]);
   let value: string = bt.bigText;
   let setValue = (val: string) => {
-    FN_GetDispatch()(
-      FN_SetTextValueFromInsideByBigTextId(bigTextId, val)
-      // BigTextSlice.actions.updatebigtext({
-      //   key: bigTextId,
-      //   value: val,
-      // })
-    );
+    FN_GetDispatch()(FN_SetTextValueFromInsideByBigTextId(bigTextId, val));
   };
   const onChange = React.useCallback((val, viewUpdate) => {
     console.log("val:", val);
     setValue(val);
   }, []);
-  console.log("rendering", value, bt.ver);
+  console.log("rendering", value, verObj.ver);
   return (
     <CodeMirror
-      key={bt.ver}
+      key={verObj.ver}
       onChange={(val) => {
         onChange(val, true);
       }}
