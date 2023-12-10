@@ -64,6 +64,10 @@ import { Dot } from "../../utils/TranslationUtils";
 import { useParams } from "react-router";
 import { ToolParamType } from "../../styles/var";
 
+function replaceAll(str: string, find: string, replace: string) {
+  return str.replace(new RegExp(find, "g"), replace);
+}
+
 interface BlinkProp {}
 export default (props: BlinkProp): any => {
   let toolParam = useParams() as ToolParamType;
@@ -77,9 +81,9 @@ export default (props: BlinkProp): any => {
   );
   let mottoLine: string | any = mottoLineRes?.data?.payload?.value;
   if (mottoLine) {
-    mottoLine = mottoLine.replace("--", "-");
-    mottoLine = mottoLine.replace("——", "-");
-    let idx = mottoLine.indexOf("-");
+    mottoLine = replaceAll(mottoLine, "--", "-");
+    mottoLine = replaceAll(mottoLine, "——", "-");
+    let idx = _.lastIndexOf(mottoLine, "-");
     if (idx != -1) {
       mottoLine = (
         <span>

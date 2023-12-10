@@ -141,7 +141,7 @@ export let fn_format_button = (pmt: string) => {
 };
 // TODO: provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
 let TextTransformerOutput = (props: CommonPassProp) => {
-  let [isCollapsed, onColl] = useState(false);
+  let [isCollapsed, onColl] = useState(true);
   // let h =' w-[38.2%] h-[38.2%] '
   let h = " w-[44%] h-[42%] min-w-[450px] ";
   return (
@@ -207,7 +207,7 @@ export default (props: PassProps) => {
     outputBigTextId,
   };
   return (
-    <div className="w-full h-full relative">
+    <div key={sessionId} className="w-full h-full relative">
       <TextTransformerControl {...commonPassProp}></TextTransformerControl>
       <div
         style={{

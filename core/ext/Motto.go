@@ -25,23 +25,93 @@ import "laftools-go/core/context"
 func GetMottoList(ctx *context.WebContext) []func() string {
 	return []func() string{
 		func() string {
-			return ctx.Dot("f3152", "Pure mathematics is, in its way, the poetry of logical ideas. -Albert Einstein")
+			return ctx.Dot("af3158", "Everything is determined... by forces over which we have no control. -Albert Einstein")
 		},
 		func() string {
-			return ctx.Dot("f3153", "Mathematics is the queen of the sciences. -Carl Friedrich Gauss")
+			return ctx.Dot("ddsdf3159", "Physics is really nothing more than a search for ultimate simplicity, but so far all we have is a kind of elegant messiness. -Bill Bryson")
 		},
 		func() string {
-			return ctx.Dot("f3154", "The book of nature is written in the language of mathematics. -Galileo Galilei")
+			return ctx.Dot("sdf3160", "The job of theorists, especially in biology, is to suggest new experiments. A good theory makes not only predictions, but surprising predictions that then turn out to be true. -Francis Crick")
 		},
 		func() string {
-			return ctx.Dot("f3155", "Mathematics is the door and key to the sciences. -Roger Bacon")
-		},
-		func() string { return ctx.Dot("f3156", "Mathematics is the music of reason. -James Joseph Sylvester") },
-		func() string {
-			return ctx.Dot("f3157", "Mathematics knows no races or geographic boundaries. -David Hilbert")
+			return ctx.Dot("f3sd162", "Biology is the study of complicated things that have the appearance of having been designed with a purpose. -Richard Dawkins")
 		},
 		func() string {
-			return ctx.Dot("f3158", "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding. -William Paul Thurston")
+			return ctx.Dot("f3sd164", "Biology gives you a brain. Life turns it into a mind. -Jeffrey Eugenides")
+		},
+		func() string {
+			return ctx.Dot("f3sd165", "In physics, you don't have to go around making trouble for yourself - nature does it for you. -Frank Wilczek")
+		},
+		func() string {
+			return ctx.Dot("f31sq66", "Biology is really chemistry, chemistry is really physics, physics is really math. -Matt Ridley")
+		},
+		func() string {
+			return ctx.Dot("f3sq167", "The good thing about science is that it's true whether or not you believe in it. -Neil deGrasse Tyson")
+		},
+		func() string {
+			return ctx.Dot("f3d169", "Physics is the only real science. The rest are just stamp collecting. -Ernest Rutherford")
+		},
+		func() string {
+			return ctx.Dot("f31q70", "Biology is the science. Evolution is the concept that makes biology unique. -Jared Diamond")
+		},
+		func() string {
+			return ctx.Dot("f31d71", "Physics is, hopefully, simple. Physicists are not. -Edward Teller")
+		},
+		func() string {
+			return ctx.Dot("f31q72", "Biology is the poetry of the physical world, and human biology is the poetry of our universe. -Julian Casablancas")
+		},
+		func() string { return ctx.Dot("fd3173", "Physics is imagination in a straight jacket. -John Moffat") },
+		func() string {
+			return ctx.Dot("f31q74", "Biology is just physics that has begun to smell bad. -Nigel Calder")
+		},
+		func() string {
+			return ctx.Dot("f31d75", "Physics is really nothing more than a search for ultimate simplicity, but so far all we have is a kind of elegant messiness. -Bill Bryson")
+		},
+		func() string {
+			return ctx.Dot("f31x76", "Biology is the study of the complex things in the Universe. Physics is the study of the simple ones. -Richard Dawkins")
+		},
+		func() string {
+			return ctx.Dot("f31x77", "Physics is experience, arranged in economical order. -Ernst Mach")
+		},
+		func() string {
+			return ctx.Dot("f3q178", "Biology is not destiny. It was never more than tendency. It was just nature's first quick and dirty way to compute with meat. Chips are destiny. -Bart Kosko")
+		},
+		func() string {
+			return ctx.Dot("f3d179", "Physics is becoming so unbelievably complex that it is taking longer and longer to train a physicist. It is taking so long, in fact, to train a physicist to the place where he understands the nature of physical problems that he is already too old to solve them. -Eugene Wigner")
+		},
+		func() string {
+			return ctx.Dot("f3d180", "Biology is the science of life, yet many of us do not understand the basics of our own bodies. -Kathy Reichs")
+		},
+		func() string {
+			return ctx.Dot("f31q81", "Physics is the science of the motions and actions of physical bodies conceived in terms of cause and effect. -Arthur Compton")
+		},
+		func() string {
+			return ctx.Dot("f31qe82", "Biology is a software process. Our bodies are made up of trillions of cells, each governed by this process. You and I are walking around with outdated software running in our bodies, which evolved in a very different era. -Ray Kurzweil")
+		},
+		func() string {
+			return ctx.Dot("f31r83", "Physics is becoming too difficult for the physicists. -David Hilbert")
+		},
+		func() string {
+			return ctx.Dot("f318e4", "Biology is the most powerful technology ever created. DNA is software, protein are hardware, cells are factories. -Arvind Gupta")
+		},
+		func() string {
+			return ctx.Dot("f31q52", "Pure mathematics is, in its way, the poetry of logical ideas. -Albert Einstein")
+		},
+		func() string {
+			return ctx.Dot("f31e53", "Mathematics is the queen of the sciences. -Carl Friedrich Gauss")
+		},
+		func() string {
+			return ctx.Dot("f31q54", "The book of nature is written in the language of mathematics. -Galileo Galilei")
+		},
+		func() string {
+			return ctx.Dot("f3e155", "Mathematics is the door and key to the sciences. -Roger Bacon")
+		},
+		func() string { return ctx.Dot("f31q56", "Mathematics is the music of reason. -James Joseph Sylvester") },
+		func() string {
+			return ctx.Dot("f315e7", "Mathematics knows no races or geographic boundaries. -David Hilbert")
+		},
+		func() string {
+			return ctx.Dot("f31q58", "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding. -William Paul Thurston")
 		},
 		func() string {
 			return ctx.Dot("f3159", "Mathematics is a game played according to certain simple rules with meaningless marks on paper. -David Hilbert")
