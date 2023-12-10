@@ -40,9 +40,10 @@ const exportUtils = {
   dispatch: useDispatch,
   useDispatch: useDispatch,
   useCachedSelector<T>(callBack: (val: RootState) => T, cachedArr: any[]): T {
-    return useMemo(() => {
-      return exportUtils.useSelector(callBack);
-    }, [...cachedArr]);
+    return exportUtils.useSelector(callBack);
+    // return useMemo(() => {
+    //   return exportUtils.useSelector(callBack);
+    // }, [...cachedArr]);
   },
   useSelector<T>(callBack: (val: RootState) => T, n?: any): T {
     if (_.isNil(n)) {

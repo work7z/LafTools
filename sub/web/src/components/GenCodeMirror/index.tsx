@@ -84,6 +84,7 @@ import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { javascript } from "@codemirror/lang-javascript";
 import { FN_GetDispatch } from "../../nocycle";
 import BigTextSlice from "../../slice/BigTextSlice";
+import { FN_SetTextValueFromInsideByBigTextId } from "../../sliceAction/bigtext_action";
 
 // import darcula from "@uiw/codemirror-theme-darcula";
 type GenCodeMirrorProp = {
@@ -115,10 +116,11 @@ export default (props: GenCodeMirrorProp) => {
   let value: string = bt.bigText;
   let setValue = (val: string) => {
     FN_GetDispatch()(
-      BigTextSlice.actions.updatebigtext({
-        key: bigTextId,
-        value: val,
-      })
+      FN_SetTextValueFromInsideByBigTextId(bigTextId, val)
+      // BigTextSlice.actions.updatebigtext({
+      //   key: bigTextId,
+      //   value: val,
+      // })
     );
   };
   const onChange = React.useCallback((val, viewUpdate) => {
