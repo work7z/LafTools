@@ -133,6 +133,11 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
       </span>
     );
   }
+  let extraProps = crtObject?.icon
+    ? {
+        icon: crtObject?.icon as any,
+      }
+    : {};
   let jsx_btn =
     true || hasMultipleList ? (
       <Button
@@ -144,7 +149,7 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
             : "")
         }
         minimal
-        icon={(crtObject?.icon + "") as any}
+        {...extraProps}
         text={crtObjLabel}
         rightIcon={hasMultipleList ? "caret-down" : undefined}
       ></Button>

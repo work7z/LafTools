@@ -139,6 +139,7 @@ export let fn_format_button = (pmt: string) => {
     );
   };
 };
+// TODO: provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
 let TextTransformerOutput = (props: CommonPassProp) => {
   let [isCollapsed, onColl] = useState(false);
   return (
