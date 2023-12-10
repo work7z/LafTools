@@ -7,14 +7,14 @@ let v: ExtensionVM = {
     {
       Id: "md2.text",
       Tooltip: Dot("P56UK", "Click here to encrypt your input text"),
-      Label: Dot("IP8-V", "MD2 from Text"),
+      Label: Dot("IP8-V", "Get MD2 Hash"),
       CallFuncList: Dot("md2.ConvertText"),
     },
-    {
-      Id: "md2.file",
-      Label: Dot("eNNrM", "MD2 from File"),
-      CallFuncList: Dot("md2.ConvertFile"),
-    },
+    // {
+    //   Id: "md2.file",
+    //   Label: Dot("eNNrM", "MD2 from File"),
+    //   CallFuncList: Dot("md2.ConvertFile"),
+    // },
   ],
   Info: {
     Id: "md2",

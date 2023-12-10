@@ -5,7 +5,7 @@
       "Id": "md4.text",
       "Label": [
         "IPtV",
-        "MD4 from Text"
+        "Get MD4 Hash"
       ],
       "Tooltip": [
         "REFy8",
@@ -13,16 +13,6 @@
       ],
       "CallFuncList": [
         "md4.ConvertText"
-      ]
-    },
-    {
-      "Id": "md4.file",
-      "Label": [
-        "5-S-B",
-        "MD4 from File"
-      ],
-      "CallFuncList": [
-        "md4.ConvertFile"
       ]
     }
   ],

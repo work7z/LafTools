@@ -9,20 +9,10 @@
       ],
       "Label": [
         "o3poi.sha256",
-        "SHA256 from Text"
+        "Get SHA256 Text"
       ],
       "CallFuncList": [
         "sha256.ConvertText"
-      ]
-    },
-    {
-      "Id": "sha256.file",
-      "Label": [
-        "gwo79.sha256",
-        "SHA256 from File"
-      ],
-      "CallFuncList": [
-        "sha256.ConvertFile"
       ]
     }
   ],

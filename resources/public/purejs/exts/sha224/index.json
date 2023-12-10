@@ -9,24 +9,10 @@
       ],
       "Label": [
         "o3poi.sha224",
-        "SHA224 from Text"
+        "Get SHA224 Hash"
       ],
       "CallFuncList": [
         "sha224.ConvertText"
-      ]
-    },
-    {
-      "Id": "sha224.file",
-      "Tooltip": [
-        "wqp_4",
-        "Click here to select a file and directly encrypt it."
-      ],
-      "Label": [
-        "gwo79.sha224",
-        "SHA224 from File"
-      ],
-      "CallFuncList": [
-        "sha224.ConvertFile"
       ]
     }
   ],

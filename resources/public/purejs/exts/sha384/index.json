@@ -5,7 +5,7 @@
       "Id": "sha384.text",
       "Label": [
         "o3poi.sha384",
-        "SHA384 from Text"
+        "Get SHA384 Hash"
       ],
       "Tooltip": [
         "E88Ej",
@@ -13,20 +13,6 @@
       ],
       "CallFuncList": [
         "sha384.ConvertText"
-      ]
-    },
-    {
-      "Id": "sha384.file",
-      "Label": [
-        "gwo79.sha384",
-        "SHA384 from File"
-      ],
-      "Tooltip": [
-        "vhgr3",
-        "Click here to select a file and directly encrypt it."
-      ],
-      "CallFuncList": [
-        "sha384.ConvertFile"
       ]
     }
   ],

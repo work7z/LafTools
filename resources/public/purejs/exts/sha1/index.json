@@ -5,7 +5,7 @@
       "Id": "sha1.text",
       "Label": [
         "o3poi",
-        "SHA1 from Text"
+        "Get SHA1 Hash"
       ],
       "Tooltip": [
         "ECm8j",
@@ -13,16 +13,6 @@
       ],
       "CallFuncList": [
         "sha1.ConvertText"
-      ]
-    },
-    {
-      "Id": "sha1.file",
-      "Label": [
-        "gwo79",
-        "SHA1 from File"
-      ],
-      "CallFuncList": [
-        "sha1.ConvertFile"
       ]
     }
   ],

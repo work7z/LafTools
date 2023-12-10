@@ -9,20 +9,10 @@
       ],
       "Label": [
         "o3poi.sha512",
-        "SHA512 from Text"
+        "Get SHA512 Hash"
       ],
       "CallFuncList": [
         "sha512.ConvertText"
-      ]
-    },
-    {
-      "Id": "sha512.file",
-      "Label": [
-        "gwo79.sha512",
-        "SHA512 from File"
-      ],
-      "CallFuncList": [
-        "sha512.ConvertFile"
       ]
     }
   ],

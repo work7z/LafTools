@@ -4,21 +4,11 @@
     {
       "Id": "md5.text",
       "Label": [
-        "vQq9v",
-        "MD5 from Text"
+        "vQqqe",
+        "Get MD5 Hash"
       ],
       "CallFuncList": [
         "md5.ConvertText"
-      ]
-    },
-    {
-      "Id": "md5.file",
-      "Label": [
-        "vu10K",
-        "MD5 from File"
-      ],
-      "CallFuncList": [
-        "md5.ConvertFile"
       ]
     }
   ],

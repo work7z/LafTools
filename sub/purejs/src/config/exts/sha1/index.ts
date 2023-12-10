@@ -5,15 +5,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "sha1.text",
-      Label: Dot("o3poi", "SHA1 from Text"),
+      Label: Dot("o3poi", "Get SHA1 Hash"),
       Tooltip: Dot("ECm8j", "Click here to encrypt your input text"),
       CallFuncList: Dot("sha1.ConvertText"),
     },
-    {
-      Id: "sha1.file",
-      Label: Dot("gwo79", "SHA1 from File"),
-      CallFuncList: Dot("sha1.ConvertFile"),
-    },
+    // {
+    //   Id: "sha1.file",
+    //   Label: Dot("gwo79", "SHA1 from File"),
+    //   CallFuncList: Dot("sha1.ConvertFile"),
+    // },
   ],
   Info: {
     Id: "sha1",

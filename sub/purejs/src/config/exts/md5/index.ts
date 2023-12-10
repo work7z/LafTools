@@ -6,14 +6,14 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "md5.text",
-      Label: Dot("vQq9v", "MD5 from Text"),
+      Label: Dot("vQqqe", "Get MD5 Hash"),
       CallFuncList: Dot("md5.ConvertText"),
     },
-    {
-      Id: "md5.file",
-      Label: Dot("vu10K", "MD5 from File"),
-      CallFuncList: Dot("md5.ConvertFile"),
-    },
+    // {
+    //   Id: "md5.file",
+    //   Label: Dot("vu10K", "MD5 from File"),
+    //   CallFuncList: Dot("md5.ConvertFile"),
+    // },
   ],
   Info: {
     Id: "md5",

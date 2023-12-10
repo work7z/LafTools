@@ -6,15 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "md4.text",
-      Label: Dot("IPtV", "MD4 from Text"),
+      Label: Dot("IPtV", "Get MD4 Hash"),
       Tooltip: Dot("REFy8", "Click here to encrypt your input text"),
       CallFuncList: Dot("md4.ConvertText"),
     },
-    {
-      Id: "md4.file",
-      Label: Dot("5-S-B", "MD4 from File"),
-      CallFuncList: Dot("md4.ConvertFile"),
-    },
+    // {
+    //   Id: "md4.file",
+    //   Label: Dot("5-S-B", "MD4 from File"),
+    //   CallFuncList: Dot("md4.ConvertFile"),
+    // },
   ],
   Info: {
     Id: "md4",

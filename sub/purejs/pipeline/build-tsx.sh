@@ -24,6 +24,7 @@ targetDir=$LAFTOOLS_ROOT/resources/public/purejs
 mkdir -p $targetDir 
 
 cp -a ./build/ $targetDir
-rsync -av --delete ./build/ $targetDir
+# rsync -av --delete ./build/ $targetDir
+rsync -av ./build/ $targetDir
 
 echo "[I] $(date) Completed"

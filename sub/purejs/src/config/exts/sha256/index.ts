@@ -6,14 +6,14 @@ let v: ExtensionVM = {
     {
       Id: "sha256.text",
       Tooltip: Dot("qjQvD", "Click here to encrypt your input text"),
-      Label: Dot("o3poi.sha256", "SHA256 from Text"),
+      Label: Dot("o3poi.sha256", "Get SHA256 Text"),
       CallFuncList: Dot("sha256.ConvertText"),
     },
-    {
-      Id: "sha256.file",
-      Label: Dot("gwo79.sha256", "SHA256 from File"),
-      CallFuncList: Dot("sha256.ConvertFile"),
-    },
+    // {
+    //   Id: "sha256.file",
+    //   Label: Dot("gwo79.sha256", "SHA256 from File"),
+    //   CallFuncList: Dot("sha256.ConvertFile"),
+    // },
   ],
   Info: {
     Id: "sha256",

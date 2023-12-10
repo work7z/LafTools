@@ -11,19 +11,19 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "sha384.text",
-      Label: Dot("o3poi.sha384", "SHA384 from Text"),
+      Label: Dot("o3poi.sha384", "Get SHA384 Hash"),
       Tooltip: Dot("E88Ej", "Click here to encrypt your input text"),
       CallFuncList: Dot("sha384.ConvertText"),
     },
-    {
-      Id: "sha384.file",
-      Label: Dot("gwo79.sha384", "SHA384 from File"),
-      Tooltip: [
-        "vhgr3",
-        "Click here to select a file and directly encrypt it.",
-      ],
-      CallFuncList: Dot("sha384.ConvertFile"),
-    },
+    // {
+    //   Id: "sha384.file",
+    //   Label: Dot("gwo79.sha384", "SHA384 from File"),
+    //   Tooltip: [
+    //     "vhgr3",
+    //     "Click here to select a file and directly encrypt it.",
+    //   ],
+    //   CallFuncList: Dot("sha384.ConvertFile"),
+    // },
   ],
   Info: {
     Id: "sha384",

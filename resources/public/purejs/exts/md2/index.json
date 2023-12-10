@@ -9,20 +9,10 @@
       ],
       "Label": [
         "IP8-V",
-        "MD2 from Text"
+        "Get MD2 Hash"
       ],
       "CallFuncList": [
         "md2.ConvertText"
-      ]
-    },
-    {
-      "Id": "md2.file",
-      "Label": [
-        "eNNrM",
-        "MD2 from File"
-      ],
-      "CallFuncList": [
-        "md2.ConvertFile"
       ]
     }
   ],
