@@ -116,175 +116,6 @@
                 ]
             },
             {
-                "Id": "codec.Encode_and_Decode",
-                "Label": [
-                    "y_2Q1",
-                    "Encode and Decode"
-                ],
-                "Icon": "widget-button",
-                "ChildrenIdSet": [
-                    "_"
-                ],
-                "ChildrenSetByInit": [
-                    {
-                        "Id": "edc_base64",
-                        "Label": [
-                            "41eedc_base64",
-                            "edc_base64"
-                        ],
-                        "Description": [
-                            "6wedc_base64",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "edc_url",
-                        "Label": [
-                            "41eedc_url",
-                            "edc_url"
-                        ],
-                        "Description": [
-                            "6wedc_url",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "edc_base32",
-                        "Label": [
-                            "41eedc_base32",
-                            "edc_base32"
-                        ],
-                        "Description": [
-                            "6wedc_base32",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "edc_hex",
-                        "Label": [
-                            "41eedc_hex",
-                            "edc_hex"
-                        ],
-                        "Description": [
-                            "6wedc_hex",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "edc_unicode",
-                        "Label": [
-                            "41eedc_unicode",
-                            "edc_unicode"
-                        ],
-                        "Description": [
-                            "6wedc_unicode",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "edc_base64-hex",
-                        "Label": [
-                            "41eedc_base64-hex",
-                            "edc_base64-hex"
-                        ],
-                        "Description": [
-                            "6wedc_base64-hex",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "edc_querystring",
-                        "Label": [
-                            "41eedc_querystring",
-                            "edc_querystring"
-                        ],
-                        "Description": [
-                            "6wedc_querystring",
-                            "TBC"
-                        ]
-                    }
-                ]
-            },
-            {
-                "Id": "codec.Escape_and_unescape",
-                "Label": [
-                    "z1oFn",
-                    "Escape and Unescape"
-                ],
-                "Icon": "vertical-inbetween",
-                "ChildrenIdSet": [
-                    "_"
-                ],
-                "ChildrenSetByInit": [
-                    {
-                        "Id": "esc_xml",
-                        "Label": [
-                            "41eesc_xml",
-                            "esc_xml"
-                        ],
-                        "Description": [
-                            "6wesc_xml",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "esc_html",
-                        "Label": [
-                            "41eesc_html",
-                            "esc_html"
-                        ],
-                        "Description": [
-                            "6wesc_html",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "esc_csv",
-                        "Label": [
-                            "41eesc_csv",
-                            "esc_csv"
-                        ],
-                        "Description": [
-                            "6wesc_csv",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "esc_java_string",
-                        "Label": [
-                            "41eesc_java_string",
-                            "esc_java_string"
-                        ],
-                        "Description": [
-                            "6wesc_java_string",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "esc_json",
-                        "Label": [
-                            "41eesc_json",
-                            "esc_json"
-                        ],
-                        "Description": [
-                            "6wesc_json",
-                            "TBC"
-                        ]
-                    },
-                    {
-                        "Id": "esc_javascript",
-                        "Label": [
-                            "41eesc_javascript",
-                            "esc_javascript"
-                        ],
-                        "Description": [
-                            "6wesc_javascript",
-                            "TBC"
-                        ]
-                    }
-                ]
-            },
-            {
                 "Id": "codec.Symmetric_Crypto",
                 "Label": [
                     "y_2Q2",
@@ -542,7 +373,177 @@
             "m0106",
             "Converter"
         ],
-        "SubCategories": []
+        "SubCategories": [
+            {
+                "Id": "codec.Encode_and_Decode",
+                "Label": [
+                    "y_2Q1",
+                    "Encode and Decode"
+                ],
+                "Icon": "widget-button",
+                "ChildrenIdSet": [
+                    "_"
+                ],
+                "ChildrenSetByInit": [
+                    {
+                        "Id": "edc_base64",
+                        "Label": [
+                            "41eedc_base64",
+                            "edc_base64"
+                        ],
+                        "Description": [
+                            "6wedc_base64",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "edc_url",
+                        "Label": [
+                            "41eedc_url",
+                            "edc_url"
+                        ],
+                        "Description": [
+                            "6wedc_url",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "edc_base32",
+                        "Label": [
+                            "41eedc_base32",
+                            "edc_base32"
+                        ],
+                        "Description": [
+                            "6wedc_base32",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "edc_hex",
+                        "Label": [
+                            "41eedc_hex",
+                            "edc_hex"
+                        ],
+                        "Description": [
+                            "6wedc_hex",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "edc_unicode",
+                        "Label": [
+                            "41eedc_unicode",
+                            "edc_unicode"
+                        ],
+                        "Description": [
+                            "6wedc_unicode",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "edc_base64-hex",
+                        "Label": [
+                            "41eedc_base64-hex",
+                            "edc_base64-hex"
+                        ],
+                        "Description": [
+                            "6wedc_base64-hex",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "edc_querystring",
+                        "Label": [
+                            "41eedc_querystring",
+                            "edc_querystring"
+                        ],
+                        "Description": [
+                            "6wedc_querystring",
+                            "TBC"
+                        ]
+                    }
+                ]
+            },
+            {
+                "Id": "codec.Escape_and_unescape",
+                "Label": [
+                    "z1oFn",
+                    "Escape and Unescape"
+                ],
+                "Icon": "vertical-inbetween",
+                "ChildrenIdSet": [
+                    "_"
+                ],
+                "ChildrenSetByInit": [
+                    {
+                        "Id": "esc_xml",
+                        "Label": [
+                            "41eesc_xml",
+                            "esc_xml"
+                        ],
+                        "Description": [
+                            "6wesc_xml",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "esc_html",
+                        "Label": [
+                            "41eesc_html",
+                            "esc_html"
+                        ],
+                        "Description": [
+                            "6wesc_html",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "esc_csv",
+                        "Label": [
+                            "41eesc_csv",
+                            "esc_csv"
+                        ],
+                        "Description": [
+                            "6wesc_csv",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "esc_java_string",
+                        "Label": [
+                            "41eesc_java_string",
+                            "esc_java_string"
+                        ],
+                        "Description": [
+                            "6wesc_java_string",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "esc_json",
+                        "Label": [
+                            "41eesc_json",
+                            "esc_json"
+                        ],
+                        "Description": [
+                            "6wesc_json",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "esc_javascript",
+                        "Label": [
+                            "41eesc_javascript",
+                            "esc_javascript"
+                        ],
+                        "Description": [
+                            "6wesc_javascript",
+                            "TBC"
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
         "Id": "generator",
@@ -554,7 +555,7 @@
             {
                 "Id": "code_convertor",
                 "Label": [
-                    "dCFIC",
+                    "dCFIwC",
                     "Code Generator"
                 ],
                 "Icon": "array-boolean",

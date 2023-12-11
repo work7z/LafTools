@@ -33,33 +33,6 @@ let value: ToolCategory[] = [
         ],
       },
       {
-        Id: "codec.Encode_and_Decode",
-        Label: Dot("y_2Q1", "Encode and Decode"),
-        Icon: "widget-button",
-        ChildrenIdSet: [
-          "edc_base64",
-          "edc_url",
-          "edc_base32",
-          "edc_hex",
-          "edc_unicode",
-          "edc_base64-hex",
-          "edc_querystring",
-        ],
-      },
-      {
-        Id: "codec.Escape_and_unescape",
-        Label: Dot("z1oFn", "Escape and Unescape"),
-        Icon: "vertical-inbetween",
-        ChildrenIdSet: [
-          "esc_xml",
-          "esc_html",
-          "esc_csv",
-          "esc_java_string",
-          "esc_json",
-          "esc_javascript",
-        ],
-      },
-      {
         Id: "codec.Symmetric_Crypto",
         Label: Dot("y_2Q2", "Symmetric Crypto"),
         Icon: "rect-width",
@@ -115,7 +88,33 @@ let value: ToolCategory[] = [
     Id: "convertor",
     Label: Dot("m0106", "Converter"),
     SubCategories: [
-      //
+      {
+        Id: "codec.Encode_and_Decode",
+        Label: Dot("y_2Q1", "Encode and Decode"),
+        Icon: "widget-button",
+        ChildrenIdSet: [
+          "edc_base64",
+          "edc_url",
+          "edc_base32",
+          "edc_hex",
+          "edc_unicode",
+          "edc_base64-hex",
+          "edc_querystring",
+        ],
+      },
+      {
+        Id: "codec.Escape_and_unescape",
+        Label: Dot("z1oFn", "Escape and Unescape"),
+        Icon: "vertical-inbetween",
+        ChildrenIdSet: [
+          "esc_xml",
+          "esc_html",
+          "esc_csv",
+          "esc_java_string",
+          "esc_json",
+          "esc_javascript",
+        ],
+      },
     ],
   },
   {
@@ -124,7 +123,7 @@ let value: ToolCategory[] = [
     SubCategories: [
       {
         Id: "code_convertor",
-        Label: Dot("dCFIC", "Code Generator"),
+        Label: Dot("dCFIwC", "Code Generator"),
         Icon: "array-boolean",
         ChildrenIdSet: [
           "gen_yaml_to_json",
