@@ -91,15 +91,7 @@ let TextTransformerControl = (props: CommonPassProp) => {
     },
   ];
   let sessionId = props.sessionId;
-  let isCollapsed = exportUtils.useSelector((x) => {
-    let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.collapseConfig;
-    if (_.isNil(v)) {
-      v = true;
-    }
-    return {
-      v: v,
-    };
-  }).v;
+  let isCollapsed = fn_coll_config(sessionId);
   let onColl = (v: boolean) => {
     FN_GetDispatch()(
       RuntimeStatusSlice.actions.setCollapseConfig({
@@ -240,17 +232,21 @@ let TextTransformerOutput = (props: CommonPassProp) => {
   );
 };
 
-let TextOptionsPanel = (props: CommonPassProp) => {
-  let sessionId = props.sessionId;
-  let isCollapsed = exportUtils.useSelector((x) => {
+let fn_coll_config = (sessionId) => {
+  return exportUtils.useSelector((x) => {
     let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.collapseConfig;
     if (_.isNil(v)) {
-      v = true;
+      v = false;
     }
     return {
       v: v,
     };
   }).v;
+};
+
+let TextOptionsPanel = (props: CommonPassProp) => {
+  let sessionId = props.sessionId;
+  let isCollapsed = fn_coll_config(sessionId);
   let onColl = (v: boolean) => {
     FN_GetDispatch()(
       RuntimeStatusSlice.actions.setCollapseConfig({
@@ -271,8 +267,8 @@ let TextOptionsPanel = (props: CommonPassProp) => {
         top: controlBarHeight * 3 + "px",
         // width: "26%",
         minWidth: w,
-        maxHeight: "70%",
-        minHeight: "200px",
+        // maxHeight: "70%",
+        height: "70%",
         transform: isCollapsed ? "translateX(" + w + ")" : "",
       }}
     >
