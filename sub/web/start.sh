@@ -25,13 +25,14 @@ addLicnese(){
 syncFiles(){
  while true; do 
   cp $LAFTOOLS_ROOT/sub/purejs/src/all-types.ts $LAFTOOLS_ROOT/sub/web/src/pages/FixedWorkBench/definitions/all-types.ts
-  sleep 4;
-  $LAFTOOLS_ROOT/sub/purejs/pipeline/build-tsx.sh
-  sleep 4;
+  sleep 5;
  done 
 }
 
-syncFiles &> /dev/null & 
+syncFiles &
+
+$LAFTOOLS_ROOT/sub/purejs/pipeline/job-sync-build-tsx.sh &
+
 
 # add license
 addLicnese &> /dev/null &

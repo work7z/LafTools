@@ -188,7 +188,7 @@ let value: ToolCategory[] = [
       },
     ],
   },
-  { Id: "docs", Label: Dot("m0109", "Docs Center"), SubCategories: [] },
+  // { Id: "docs", Label: Dot("m0109", "Docs Center"), SubCategories: [] },
 ];
 
 export default value;

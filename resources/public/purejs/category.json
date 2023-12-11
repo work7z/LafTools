@@ -875,13 +875,5 @@
                 ]
             }
         ]
-    },
-    {
-        "Id": "docs",
-        "Label": [
-            "m0109",
-            "Docs Center"
-        ],
-        "SubCategories": []
     }
 ]
