@@ -962,7 +962,7 @@
         ],
         "SubCategories": [
             {
-                "Id": "text_template",
+                "Id": "quick_diff",
                 "Label": [
                     "yfYeg",
                     "Quick Differenciate"

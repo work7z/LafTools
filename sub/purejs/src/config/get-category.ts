@@ -209,7 +209,7 @@ let value: ToolCategory[] = [
     Label: Dot("-Yo129I", "Text Tools"),
     SubCategories: [
       {
-        Id: "text_template",
+        Id: "quick_diff",
         Label: Dot("yfYeg", "Quick Differenciate"),
         Icon: "search-text",
         ChildrenIdSet: [
