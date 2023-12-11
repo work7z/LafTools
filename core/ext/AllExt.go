@@ -30,6 +30,7 @@ import (
 	"laftools-go/core/nocycle"
 	"laftools-go/core/translation"
 	"path"
+	"strconv"
 )
 
 type SubExtCategory struct {
@@ -50,6 +51,7 @@ type ToolChildrenSetByInit struct {
 
 type ToolCategory struct {
 	Id            string
+	TotalCount    int
 	Label         translation.TranslatePassArg
 	LabelByInit   string
 	SubCategories []*ToolSubCategory
@@ -128,7 +130,7 @@ func GetAllCategory(wc *context.WebContext) ([]*ToolCategory, error) {
 	}
 	// for each returnValue, translate its value into LabelByInit
 	for _, category := range returnValue {
-		category.LabelByInit = wc.DotWithoutScan(category.Label...)
+		category.LabelByInit = wc.DotWithoutScan(category.Label...) + "(" + strconv.Itoa(category.TotalCount) + ")"
 		category.Label = nil
 		for _, subCategory := range category.SubCategories {
 			subCategory.LabelByInit = wc.DotWithoutScan(subCategory.Label...)

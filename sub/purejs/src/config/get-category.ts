@@ -5,6 +5,7 @@ import type {
   FlushIdValuePair,
 } from "../all-types";
 import { Dot } from "../utils/translation";
+import _ from "lodash";
 
 let value: ToolCategory[] = [
   {
@@ -117,11 +118,21 @@ let value: ToolCategory[] = [
     SubCategories: [
       {
         Id: "command_parser",
-        Label: Dot("x1mij", "Command Parser"),
+        Label: Dot("ui5pZ", "Command Parser"),
         Icon: "hat",
         ChildrenIdSet: [
           "curl_to_pl",
           "curl_to_api",
+          //
+        ],
+      },
+      {
+        Id: "file_tools",
+        Label: Dot("gQhfS", "File Tools"),
+        Icon: "saved",
+        ChildrenIdSet: [
+          "correct_file_path",
+          "analyze_file_path",
           //
         ],
       },
@@ -140,6 +151,17 @@ let value: ToolCategory[] = [
           "gen_yaml_to_json",
           "gen_sql_to_json",
           "gen_dml_to_json",
+        ],
+      },
+      {
+        Id: "data_converter",
+        Label: Dot("aSOpr", "Data Model Generater"),
+        Icon: "array-boolean",
+        ChildrenIdSet: [
+          "json_to_model",
+          "xml_to_model",
+          "sql_to_model",
+          //
         ],
       },
       {
@@ -186,6 +208,16 @@ let value: ToolCategory[] = [
     Id: "translater",
     Label: Dot("-Yo129I", "Text Tools"),
     SubCategories: [
+      {
+        Id: "text_template",
+        Label: Dot("yfYeg", "Quick Differenciate"),
+        Icon: "search-text",
+        ChildrenIdSet: [
+          "text_compare",
+          "file_compare",
+          //
+        ],
+      },
       {
         Id: "general",
         Label: Dot("y_2Q5dqw", "Translation"),
@@ -250,5 +282,17 @@ let value: ToolCategory[] = [
     ],
   },
 ];
+
+_.forEach(value, (x) => {
+  // calculate its total count
+  let totalCount = 0;
+  _.forEach(x.SubCategories, (sub) => {
+    _.forEach(sub.ChildrenIdSet, (x) => {
+      totalCount++;
+    });
+  });
+  x.TotalCount = totalCount;
+});
+value[0].TotalCount = _.sumBy(value, (x) => x.TotalCount || 0);
 
 export default value;

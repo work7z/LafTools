@@ -166,13 +166,18 @@ export default (props: PassProp) => {
       <div className="pt-10">
         <InputGroup
           leftIcon="search"
-          placeholder={Dot("5XdnE1", "Search Tools by Keyword")}
+          placeholder={Dot("IAC0A", "Search Tools")}
           type="search"
           small={true}
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
+          // rightElement={
+          //   <ButtonGroup>
+          //     <Button small icon="plus" minimal></Button>
+          //   </ButtonGroup>
+          // }
         ></InputGroup>
       </div>
       <div
@@ -187,7 +192,9 @@ export default (props: PassProp) => {
       >
         <div
           style={{
-            flexGrow: 1,
+            // flexGrow: 1,
+            height: "calc(100% - 50px)",
+            overflow: "auto",
           }}
         >
           <Tree
@@ -246,7 +253,7 @@ export default (props: PassProp) => {
             className={Classes.ELEVATION_0}
           />
         </div>
-        <div className="btm-top">
+        <div className="btm-top ">
           <MottoLine />
         </div>
       </div>

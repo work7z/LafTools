@@ -5,7 +5,8 @@
             "cPS6q",
             "All Tools"
         ],
-        "SubCategories": []
+        "SubCategories": [],
+        "TotalCount": 86
     },
     {
         "Id": "codec",
@@ -534,7 +535,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "TotalCount": 39
     },
     {
         "Id": "converter",
@@ -546,7 +548,7 @@
             {
                 "Id": "command_parser",
                 "Label": [
-                    "x1mij",
+                    "ui5pZ",
                     "Command Parser"
                 ],
                 "Icon": "hat",
@@ -577,8 +579,44 @@
                         ]
                     }
                 ]
+            },
+            {
+                "Id": "file_tools",
+                "Label": [
+                    "gQhfS",
+                    "File Tools"
+                ],
+                "Icon": "saved",
+                "ChildrenIdSet": [
+                    "_"
+                ],
+                "ChildrenSetByInit": [
+                    {
+                        "Id": "correct_file_path",
+                        "Label": [
+                            "41ecorrect_file_path",
+                            "correct_file_path"
+                        ],
+                        "Description": [
+                            "6wcorrect_file_path",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "analyze_file_path",
+                        "Label": [
+                            "41eanalyze_file_path",
+                            "analyze_file_path"
+                        ],
+                        "Description": [
+                            "6wanalyze_file_path",
+                            "TBC"
+                        ]
+                    }
+                ]
             }
-        ]
+        ],
+        "TotalCount": 4
     },
     {
         "Id": "generater",
@@ -628,6 +666,52 @@
                         ],
                         "Description": [
                             "6wgen_dml_to_json",
+                            "TBC"
+                        ]
+                    }
+                ]
+            },
+            {
+                "Id": "data_converter",
+                "Label": [
+                    "aSOpr",
+                    "Data Model Generater"
+                ],
+                "Icon": "array-boolean",
+                "ChildrenIdSet": [
+                    "_"
+                ],
+                "ChildrenSetByInit": [
+                    {
+                        "Id": "json_to_model",
+                        "Label": [
+                            "41ejson_to_model",
+                            "json_to_model"
+                        ],
+                        "Description": [
+                            "6wjson_to_model",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "xml_to_model",
+                        "Label": [
+                            "41exml_to_model",
+                            "xml_to_model"
+                        ],
+                        "Description": [
+                            "6wxml_to_model",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "sql_to_model",
+                        "Label": [
+                            "41esql_to_model",
+                            "sql_to_model"
+                        ],
+                        "Description": [
+                            "6wsql_to_model",
                             "TBC"
                         ]
                     }
@@ -701,7 +785,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "TotalCount": 11
     },
     {
         "Id": "formatter",
@@ -866,7 +951,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "TotalCount": 13
     },
     {
         "Id": "translater",
@@ -875,6 +961,41 @@
             "Text Tools"
         ],
         "SubCategories": [
+            {
+                "Id": "text_template",
+                "Label": [
+                    "yfYeg",
+                    "Quick Differenciate"
+                ],
+                "Icon": "search-text",
+                "ChildrenIdSet": [
+                    "_"
+                ],
+                "ChildrenSetByInit": [
+                    {
+                        "Id": "text_compare",
+                        "Label": [
+                            "41etext_compare",
+                            "text_compare"
+                        ],
+                        "Description": [
+                            "6wtext_compare",
+                            "TBC"
+                        ]
+                    },
+                    {
+                        "Id": "file_compare",
+                        "Label": [
+                            "41efile_compare",
+                            "file_compare"
+                        ],
+                        "Description": [
+                            "6wfile_compare",
+                            "TBC"
+                        ]
+                    }
+                ]
+            },
             {
                 "Id": "general",
                 "Label": [
@@ -1037,7 +1158,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "TotalCount": 12
     },
     {
         "Id": "network_tools",
@@ -1136,6 +1258,7 @@
                     }
                 ]
             }
-        ]
+        ],
+        "TotalCount": 7
     }
 ]

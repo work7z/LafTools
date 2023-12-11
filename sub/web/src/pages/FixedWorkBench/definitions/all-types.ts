@@ -22,6 +22,7 @@ export type TranslatePassArg = string[];
 export type ToolCategory = {
   Id: string;
   Label: TranslatePassArg;
+  TotalCount?: number;
   SubCategories: ToolSubCategory[];
 };
 
