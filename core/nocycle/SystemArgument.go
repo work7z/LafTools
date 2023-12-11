@@ -20,12 +20,15 @@
 
 package nocycle
 
-import "os"
+import (
+	"laftools-go/core/env"
+	"os"
+)
 
 var (
 	RefId                 string        // for port information, if it's empty, then I will tell you in the home directory
 	IsDevMode             bool   = true // by default, it's true
 	SystemUserLanguage    string = "en_US"
-	LafToolsAppBaseDir    string = os.Getenv("LAFTOOLS_ROOT")
+	LafToolsAppBaseDir    string = env.GetEnvValueForLafToolsRoot()
 	LafToolsHomeConfigDir string = os.Getenv("CODEGEN_APP_DIR")
 )

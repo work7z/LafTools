@@ -4,6 +4,7 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
+	"laftools-go/core/env"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
 	"os"
@@ -16,7 +17,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var LAFTOOLS_ROOT string = os.Getenv("LAFTOOLS_ROOT")
+var LAFTOOLS_ROOT string = env.GetEnvValueForLafToolsRoot()
 
 type TranslateConfig struct {
 	Type    string

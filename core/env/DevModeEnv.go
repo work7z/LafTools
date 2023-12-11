@@ -21,8 +21,10 @@
 package env
 
 import (
+	"fmt"
 	"os"
 	"path"
+	"runtime"
 	"time"
 )
 
@@ -31,7 +33,22 @@ var homeDir, _ = os.UserHomeDir()
 // to start developing, update your own config in this file.
 // note that you shouldn't commit this file unless any value really need to be updated.
 
-var ENV_DefaultLafToolsRoot = os.Getenv("LAFTOOLS_ROOT")
+func GetEnvValueForLafToolsRoot() string {
+	a := os.Getenv("LAFTOOLS_ROOT")
+	if a != "" {
+		return a
+	}
+	_, file, line, ok := runtime.Caller(0)
+	if ok {
+		fmt.Printf("File: %s, Line: %d\n", file, line)
+		return path.Join(path.Dir(file), "..", "..")
+	} else {
+		fmt.Println("Could not get location")
+	}
+	return ""
+}
+
+var ENV_DefaultLafToolsRoot = GetEnvValueForLafToolsRoot()
 var ENV_defaultAppConfigDir = path.Join(homeDir, ENV_AppHomeDirName)
 
 var ENV_ShouldPrintLogAsJSON = false

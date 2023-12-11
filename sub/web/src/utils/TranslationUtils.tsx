@@ -39,6 +39,7 @@ let newLangMap2 = (): LangMap => {
 };
 export const newLangMap = newLangMap2;
 let crtNewLangMap = newLangMap();
+// TODO: for multiple values, use ref id to reduce the transimit size
 
 export const LANG_INIT_BEFORE_MAP: { [key: string]: boolean } = {};
 
