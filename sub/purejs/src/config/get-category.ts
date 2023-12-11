@@ -223,6 +223,7 @@ let value: ToolCategory[] = [
         Label: Dot("y_2Q5dqw", "Translation"),
         Icon: "translate",
         ChildrenIdSet: [
+          "dictionary",
           "translate_json",
           "translate_text",
           "translate_properties",

@@ -35,6 +35,8 @@ import AjaxUtils from "../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../components/SysTabPane";
 import { CSS_TW_LAYOUT_BORDER } from "../../../../../../styles/tw";
+import exportUtils from "../../../../../../utils/ExportUtils";
+import RuntimeStatusSlice from "../../../../../../slice/RuntimeStatusSlice";
 
 let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -141,7 +143,24 @@ export let fn_format_button = (pmt: string) => {
 };
 // TODO: provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
 let TextTransformerOutput = (props: CommonPassProp) => {
-  let [isCollapsed, onColl] = useState(true);
+  let sessionId = props.sessionId;
+  let isCollapsed = exportUtils.useSelector((x) => {
+    let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.collapseOutput;
+    if (_.isNil(v)) {
+      v = true;
+    }
+    return {
+      v: v,
+    };
+  }).v;
+  let onColl = (v: boolean) => {
+    FN_GetDispatch()(
+      RuntimeStatusSlice.actions.setCollapseOutput({
+        sessionId,
+        collapseOutput: v,
+      })
+    );
+  };
   // let h =' w-[38.2%] h-[38.2%] '
   let h = " w-[44%] h-[42%] min-w-[450px] ";
   return (

@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "dictionary.text",
+      "Tooltip": [
+        "P56dictionaryK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPdictionary",
+        "Get dictionary"
+      ],
+      "CallFuncList": [
+        "dictionary.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "dictionary",
+    "Label": [
+      "41edictionary",
+      "dictionary"
+    ],
+    "Description": [
+      "6wdictionary",
+      "TBC"
+    ]
+  }
+}

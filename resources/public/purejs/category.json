@@ -6,7 +6,7 @@
             "All Tools"
         ],
         "SubCategories": [],
-        "TotalCount": 86
+        "TotalCount": 87
     },
     {
         "Id": "codec",
@@ -1008,6 +1008,17 @@
                 ],
                 "ChildrenSetByInit": [
                     {
+                        "Id": "dictionary",
+                        "Label": [
+                            "41edictionary",
+                            "dictionary"
+                        ],
+                        "Description": [
+                            "6wdictionary",
+                            "TBC"
+                        ]
+                    },
+                    {
                         "Id": "translate_json",
                         "Label": [
                             "41etranslate_json",
@@ -1159,7 +1170,7 @@
                 ]
             }
         ],
-        "TotalCount": 12
+        "TotalCount": 13
     },
     {
         "Id": "network_tools",
