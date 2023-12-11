@@ -43,6 +43,7 @@ __debug_bin*
 target/
 runtime_api_set_dist
 system-node*
+temp
 runtime_api_set_dist/*
 dev-toolkit
 dev-toolkit/**/*

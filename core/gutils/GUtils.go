@@ -119,7 +119,7 @@ func GetResourceDir() string {
 }
 func GetSelfExecutionDir() string {
 	if nocycle.LafToolsAppBaseDir == "" {
-		logrus.Fatal("CodeGen Root is empty, note that it's not proper setup.")
+		logrus.Fatal("Warning, LafTools Root is empty, note that it's not proper setup.")
 	}
 	return nocycle.LafToolsAppBaseDir
 }

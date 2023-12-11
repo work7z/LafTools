@@ -22,7 +22,9 @@ package nocycle
 
 import (
 	"encoding/json"
+	"laftools-go/core/env"
 	"os"
+	"path"
 	"testing"
 )
 
@@ -41,20 +43,24 @@ func TestMergeTwoJSONs(t *testing.T) {
 	}
 }
 
+func createTestTempFile(dir, pattern string) (string, error) {
+	return path.Join(MkdirFileWithStr(path.Join(env.ENV_DefaultLafToolsRoot, "temp")), pattern), nil
+}
+
 func TestWriteJSONToFile(t *testing.T) {
 	// Create temporary file
-	file, err := os.CreateTemp("", "test.json")
+	file, err := createTestTempFile("", "test.json")
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer os.Remove(file.Name())
+	defer os.Remove(file)
 
 	// Write initial JSON data to file
 	initialData := map[string]interface{}{
 		"name": "Alice",
 		"age":  30,
 	}
-	err = WriteObjectIntoFileWithMergeChecking(file.Name(), initialData)
+	err = WriteObjectIntoFileWithMergeChecking(file, initialData)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -64,13 +70,13 @@ func TestWriteJSONToFile(t *testing.T) {
 		"name":  "Bob",
 		"email": "bob@example.com",
 	}
-	err = WriteObjectIntoFileWithMergeChecking(file.Name(), newData)
+	err = WriteObjectIntoFileWithMergeChecking(file, newData)
 	if err != nil {
 		t.Fatal(err)
 	}
 
 	// Read final JSON data from file
-	finalDataBytes, err := os.ReadFile(file.Name())
+	finalDataBytes, err := os.ReadFile(file)
 	if err != nil {
 		t.Fatal(err)
 	}
