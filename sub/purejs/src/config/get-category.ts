@@ -49,7 +49,7 @@ let value: ToolCategory[] = [
       {
         Id: "codec.Escape_and_unescape",
         Label: Dot("z1oFn", "Escape and Unescape"),
-        Icon: "widget-button",
+        Icon: "vertical-inbetween",
         ChildrenIdSet: [
           "esc_xml",
           "esc_html",
@@ -62,7 +62,7 @@ let value: ToolCategory[] = [
       {
         Id: "codec.Symmetric_Crypto",
         Label: Dot("y_2Q2", "Symmetric Crypto"),
-        Icon: "exchange",
+        Icon: "rect-width",
         ChildrenIdSet: [
           "sym_pbe_md5_des",
           "sym_pbe_sha1_rc2",
@@ -82,7 +82,7 @@ let value: ToolCategory[] = [
       {
         Id: "codec.Asymmetric_Crypto",
         Label: Dot("y_2Q3", "Asymmetric Crypto"),
-        Icon: "exchange",
+        Icon: "inheritance",
         ChildrenIdSet: [
           "asym_rsa",
           //
@@ -91,7 +91,7 @@ let value: ToolCategory[] = [
       {
         Id: "codec.SM_Algorithm",
         Label: Dot("y_2Q4", "China National Algorithms"),
-        Icon: "lock",
+        Icon: "search-around",
         ChildrenIdSet: [
           "sm2",
           "sm3",
@@ -125,7 +125,7 @@ let value: ToolCategory[] = [
       {
         Id: "code_convertor",
         Label: Dot("dCFIC", "Code Generator"),
-        Icon: "shield",
+        Icon: "array-boolean",
         ChildrenIdSet: [
           "gen_yaml_to_json",
           "gen_sql_to_json",
@@ -141,7 +141,7 @@ let value: ToolCategory[] = [
       {
         Id: "code_prettier",
         Label: Dot("dCFIC", "Code Prettier"),
-        Icon: "shield",
+        Icon: "array-string",
         ChildrenIdSet: [
           "fmt_html",
           "fmt_xml",
@@ -166,8 +166,8 @@ let value: ToolCategory[] = [
     SubCategories: [
       {
         Id: "general",
-        Label: Dot("y_2Q5", "Translation"),
-        Icon: "shield",
+        Label: Dot("y_2Q5dqw", "Translation"),
+        Icon: "translate",
         ChildrenIdSet: [
           "translate_json",
           "translate_text",
@@ -178,7 +178,7 @@ let value: ToolCategory[] = [
       {
         Id: "ai_posh",
         Label: Dot("Ot6EP", "Polish Tools"),
-        Icon: "shield",
+        Icon: "send-to-graph",
         ChildrenIdSet: [
           "write_by_ai",
           "polish_by_ai",
@@ -188,7 +188,6 @@ let value: ToolCategory[] = [
       },
     ],
   },
-  // { Id: "docs", Label: Dot("m0109", "Docs Center"), SubCategories: [] },
 ];
 
 export default value;

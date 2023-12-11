@@ -211,7 +211,7 @@
                     "z1oFn",
                     "Escape and Unescape"
                 ],
-                "Icon": "widget-button",
+                "Icon": "vertical-inbetween",
                 "ChildrenIdSet": [
                     "_"
                 ],
@@ -290,7 +290,7 @@
                     "y_2Q2",
                     "Symmetric Crypto"
                 ],
-                "Icon": "exchange",
+                "Icon": "rect-width",
                 "ChildrenIdSet": [
                     "_"
                 ],
@@ -435,7 +435,7 @@
                     "y_2Q3",
                     "Asymmetric Crypto"
                 ],
-                "Icon": "exchange",
+                "Icon": "inheritance",
                 "ChildrenIdSet": [
                     "_"
                 ],
@@ -459,7 +459,7 @@
                     "y_2Q4",
                     "China National Algorithms"
                 ],
-                "Icon": "lock",
+                "Icon": "search-around",
                 "ChildrenIdSet": [
                     "_"
                 ],
@@ -557,7 +557,7 @@
                     "dCFIC",
                     "Code Generator"
                 ],
-                "Icon": "shield",
+                "Icon": "array-boolean",
                 "ChildrenIdSet": [
                     "_"
                 ],
@@ -612,7 +612,7 @@
                     "dCFIC",
                     "Code Prettier"
                 ],
-                "Icon": "shield",
+                "Icon": "array-string",
                 "ChildrenIdSet": [
                     "_"
                 ],
@@ -774,10 +774,10 @@
             {
                 "Id": "general",
                 "Label": [
-                    "y_2Q5",
+                    "y_2Q5dqw",
                     "Translation"
                 ],
-                "Icon": "shield",
+                "Icon": "translate",
                 "ChildrenIdSet": [
                     "_"
                 ],
@@ -834,7 +834,7 @@
                     "Ot6EP",
                     "Polish Tools"
                 ],
-                "Icon": "shield",
+                "Icon": "send-to-graph",
                 "ChildrenIdSet": [
                     "_"
                 ],

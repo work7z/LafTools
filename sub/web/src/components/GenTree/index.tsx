@@ -112,16 +112,22 @@ export default (props: PassProp) => {
         let hasCaret = !_.isNil(x.hasCaret)
           ? x.hasCaret
           : !_.isEmpty(x.childNodes);
+        let isExpanded = hasSearchText
+          ? true
+          : _.includes(props.expanded, x.id.toString());
         let i = {
           icon: "application",
           ...x,
+          // icon: (hasCaret
+          //   ? !isExpanded
+          //     ? "folder-close"
+          //     : "folder-open"
+          //   : "application") as any,
           label:
             props.needShowCountChildren && hasCaret
               ? x.label + `(${_.size(x.childNodes)})`
               : x.label,
-          isExpanded: hasSearchText
-            ? true
-            : _.includes(props.expanded, x.id.toString()),
+          isExpanded: isExpanded,
           isSelected: _.includes(props.selected, x.id.toString()),
           childNodes: formatEachNodeItem(x.childNodes || []),
           // secondaryLabel: <Button minimal={true} icon="star-empty" />,

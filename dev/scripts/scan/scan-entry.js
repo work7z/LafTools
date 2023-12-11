@@ -43,8 +43,6 @@ let overwrittenDir = `${baseDIR}/dev/lang/overwrriten`;
 
 let webDIR = `${baseDIR}/sub/web`;
 let nodeDIR = `${baseDIR}/sub/node`;
-let overwrittenFile = `${overwrittenDir}/id-overwrite.json`;
-let overwrritenMap = getFile(overwrittenFile).jsonmap();
 
 let previousModifiedType = {};
 
@@ -96,9 +94,8 @@ let searchItems = [
     id: "purejs",
     prefix: "Dot(",
     pattern: commonText,
-    target:
-      "/Users/jerrylai/mincontent/PersonalProjects/laftools-go/sub/purejs/src/lang",
-    dir: "/Users/jerrylai/mincontent/PersonalProjects/laftools-go/sub/purejs/src",
+    target: baseDIR + "/sub/purejs/src/lang",
+    dir: baseDIR + "/sub/purejs/src",
   },
 ];
 
@@ -113,6 +110,9 @@ let scan = async (eachRunItem, eachLang) => {
       let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
       let dir = getFile(eachRunItem.dir); // replace with appropriate function
+      let overwrittenFile = `${overwrittenDir}/id-overwrite.json`;
+      let overwrritenMap = getFile(overwrittenFile).jsonmap();
+
       let idOverwriteJSONFile = getFile(`${overwrittenDir}/id-overwrite.json`); // replace with appropriate function
       let zhCNOverwriteJSONFile = getFile(
         `${overwrittenDir}/zh-CN-overwrite.json`
