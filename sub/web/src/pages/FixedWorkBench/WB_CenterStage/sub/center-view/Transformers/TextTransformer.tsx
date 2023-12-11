@@ -92,11 +92,21 @@ let TextTransformerControl = (props: CommonPassProp) => {
   ];
   let sessionId = props.sessionId;
   let isCollapsed = fn_coll_config(sessionId);
+  let isCollapsed_output = fn_coll_output(sessionId);
+
   let onColl = (v: boolean) => {
     FN_GetDispatch()(
       RuntimeStatusSlice.actions.setCollapseConfig({
         sessionId,
         collapseConfig: v,
+      })
+    );
+  };
+  let onColl_output = (v: boolean) => {
+    FN_GetDispatch()(
+      RuntimeStatusSlice.actions.setCollapseOutput({
+        sessionId,
+        collapseOutput: v,
       })
     );
   };
@@ -123,6 +133,16 @@ let TextTransformerControl = (props: CommonPassProp) => {
       className: isCollapsed ? "" : "btn-lime",
       onClick: () => {
         onColl(!isCollapsed);
+      },
+    },
+    {
+      icon: "export",
+      intent: isCollapsed_output ? "none" : "success",
+      // title: Dot("Fy217", "Configure Text Transformer"),
+      title: Dot("G3MJN", "Show Output Panel"),
+      className: isCollapsed_output ? "" : "btn-lime",
+      onClick: () => {
+        onColl_output(!isCollapsed_output);
       },
     },
   ];
@@ -158,10 +178,8 @@ export let fn_format_button = (pmt: string) => {
     );
   };
 };
-// TODO: provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
-let TextTransformerOutput = (props: CommonPassProp) => {
-  let sessionId = props.sessionId;
-  let isCollapsed = exportUtils.useSelector((x) => {
+let fn_coll_output = (sessionId) => {
+  return exportUtils.useSelector((x) => {
     let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.collapseOutput;
     if (_.isNil(v)) {
       v = true;
@@ -170,6 +188,12 @@ let TextTransformerOutput = (props: CommonPassProp) => {
       v: v,
     };
   }).v;
+};
+
+// TODO: provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
+let TextTransformerOutput = (props: CommonPassProp) => {
+  let sessionId = props.sessionId;
+  let isCollapsed = fn_coll_output(sessionId);
   let onColl = (v: boolean) => {
     FN_GetDispatch()(
       RuntimeStatusSlice.actions.setCollapseOutput({
@@ -269,6 +293,7 @@ let TextOptionsPanel = (props: CommonPassProp) => {
         minWidth: w,
         // maxHeight: "70%",
         height: "70%",
+        transition: "all 0.3s",
         transform: isCollapsed ? "translateX(" + w + ")" : "",
       }}
     >
