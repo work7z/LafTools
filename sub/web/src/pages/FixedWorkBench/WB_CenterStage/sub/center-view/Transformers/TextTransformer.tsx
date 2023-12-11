@@ -90,6 +90,24 @@ let TextTransformerControl = (props: CommonPassProp) => {
       },
     },
   ];
+  let sessionId = props.sessionId;
+  let isCollapsed = exportUtils.useSelector((x) => {
+    let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.collapseConfig;
+    if (_.isNil(v)) {
+      v = true;
+    }
+    return {
+      v: v,
+    };
+  }).v;
+  let onColl = (v: boolean) => {
+    FN_GetDispatch()(
+      RuntimeStatusSlice.actions.setCollapseConfig({
+        sessionId,
+        collapseConfig: v,
+      })
+    );
+  };
   let rightActions: ButtonProps[] = [
     {
       icon: "duplicate",
@@ -107,7 +125,13 @@ let TextTransformerControl = (props: CommonPassProp) => {
     },
     {
       icon: "cog",
-      title: Dot("Fy217", "Configure Text Transformer"),
+      intent: isCollapsed ? "none" : "success",
+      // title: Dot("Fy217", "Configure Text Transformer"),
+      title: Dot("Fy217", "Configure this Tool"),
+      className: isCollapsed ? "" : "btn-lime",
+      onClick: () => {
+        onColl(!isCollapsed);
+      },
     },
   ];
   return (
@@ -170,7 +194,7 @@ let TextTransformerOutput = (props: CommonPassProp) => {
         "absolute bottom-0 right-0  " +
         h +
         CSS_TW_LAYOUT_BORDER +
-        " border-r-0  " +
+        " border-r-0   " +
         ""
         // (isCollapsed ? " border-b-0 " : "")
       }
@@ -216,6 +240,91 @@ let TextTransformerOutput = (props: CommonPassProp) => {
   );
 };
 
+let TextOptionsPanel = (props: CommonPassProp) => {
+  let sessionId = props.sessionId;
+  let isCollapsed = exportUtils.useSelector((x) => {
+    let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.collapseConfig;
+    if (_.isNil(v)) {
+      v = true;
+    }
+    return {
+      v: v,
+    };
+  }).v;
+  let onColl = (v: boolean) => {
+    FN_GetDispatch()(
+      RuntimeStatusSlice.actions.setCollapseConfig({
+        sessionId,
+        collapseConfig: v,
+      })
+    );
+  };
+  let w = "320px";
+  return (
+    <div
+      className={
+        "absolute right-0   bg-white dark:bg-black   " +
+        CSS_TW_LAYOUT_BORDER +
+        " border-r-0   "
+      }
+      style={{
+        top: controlBarHeight * 3 + "px",
+        // width: "26%",
+        minWidth: w,
+        maxHeight: "70%",
+        minHeight: "200px",
+        transform: isCollapsed ? "translateX(" + w + ")" : "",
+      }}
+    >
+      <div className="absolute left-0 top-0 ">
+        {/* <Tooltip
+          content={Dot("J5aL1", "Toggle the visibility of tool config panel")}
+          style={{
+            // transform: "rotate(-90deg) translateY(-54px) translateX(-22px)",
+            transform: "translateX(-30px)",
+          }}
+          // placement="bottom-end"
+        > */}
+        <Button
+          style={{
+            // transform: "rotate(-90deg) translateY(-54px) translateX(-22px)",
+            transform: "translateX(-30px)",
+          }}
+          title={Dot("J5aL1", "Toggle the visibility of tool config panel")}
+          onClick={() => {
+            onColl(!isCollapsed);
+          }}
+          // text={Dot("0ji-Z", "Collapse Config")}
+          icon={isCollapsed ? "chevron-right" : "chevron-left"}
+          intent="none"
+        ></Button>
+        {/* </Tooltip> */}
+      </div>
+      <SysTabPane
+        crtLeftNavId={props.sessionId + "config"}
+        leftNavList={[
+          {
+            icon: "cog",
+            label: Dot("I88nZ", "Tools Config"),
+            value: "drawer",
+          },
+        ]}
+        rightCtrls={
+          <Button
+            onClick={() => {
+              // onColl(!isCollapsed);
+            }}
+            small
+            minimal
+            // rightIcon={!isCollapsed ? "chevron-up" : "chevron-down"}
+          ></Button>
+        }
+        children={<div>this is bg</div>}
+      ></SysTabPane>
+    </div>
+  );
+};
+
 export default (props: PassProps) => {
   let sessionId = props.sessionId;
   let bodyHeight = `calc(100% - ${controlBarHeight}px)`;
@@ -239,6 +348,7 @@ export default (props: PassProps) => {
         <GenCodeMirror bigTextId={inputBigTextId}></GenCodeMirror>
       </div>
       <TextTransformerOutput {...commonPassProp}></TextTransformerOutput>
+      <TextOptionsPanel {...commonPassProp}></TextOptionsPanel>
     </div>
   );
 };

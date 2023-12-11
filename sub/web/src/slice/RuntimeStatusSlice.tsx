@@ -26,7 +26,8 @@ type RuntimeStatusState = {
   toolOutputStatusMap: {
     [key: string]: {
       // key refers to sessionId
-      collapseOutput: boolean;
+      collapseOutput?: boolean;
+      collapseConfig?: boolean;
     };
   };
 };
@@ -44,9 +45,24 @@ const RuntimeStatusSlice = createSlice({
       action: PayloadAction<{ sessionId: string; collapseOutput: boolean }>
     ) => {
       let { sessionId, collapseOutput } = action.payload;
-      state.toolOutputStatusMap[sessionId] = {
-        collapseOutput,
-      };
+      if (!state.toolOutputStatusMap[sessionId]) {
+        state.toolOutputStatusMap[sessionId] = {
+          collapseOutput,
+        };
+      }
+      state.toolOutputStatusMap[sessionId].collapseOutput = collapseOutput;
+    },
+    setCollapseConfig: (
+      state,
+      action: PayloadAction<{ sessionId: string; collapseConfig: boolean }>
+    ) => {
+      let { sessionId, collapseConfig } = action.payload;
+      if (!state.toolOutputStatusMap[sessionId]) {
+        state.toolOutputStatusMap[sessionId] = {
+          collapseConfig,
+        };
+      }
+      state.toolOutputStatusMap[sessionId].collapseConfig = collapseConfig;
     },
   },
 });

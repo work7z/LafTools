@@ -15,7 +15,10 @@
 .btn-purple{
     @apply !bg-purple-700 hover:!bg-purple-900 ;
 }
-
+.btn-lime
+ {
+    @apply !bg-cyan-600 hover:!bg-cyan-900;
+}
 .btn-cyan{
     /* @apply !text-white !bg-green-700 hover:!bg-purple-900 ; */
 

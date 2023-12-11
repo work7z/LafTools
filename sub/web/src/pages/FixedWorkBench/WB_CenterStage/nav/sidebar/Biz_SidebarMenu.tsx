@@ -176,7 +176,7 @@ export let SidebarMenu = (props: TabNavProp): any => {
       // },
       {
         desc: Dot("twamg", "AI Assistant, Empowering Your Creativity"),
-        icon: "helper-management",
+        icon: "lab-test",
         id: "explain",
         label: Dot("krxSK", "AI Assistant"),
       },
