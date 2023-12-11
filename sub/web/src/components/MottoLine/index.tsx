@@ -130,7 +130,7 @@ export default (props: BlinkProp): any => {
         margin: "0 auto",
         whiteSpace: "break-spaces",
         width: "100%",
-        minWidth: "230px",
+        // minWidth: "230px",
         fontSize: "11px",
       }}
       className="py-2 px-2 whitespace-break-spaces overflow-hidden bp5-text-muted bp5-text-small  h-full   "
