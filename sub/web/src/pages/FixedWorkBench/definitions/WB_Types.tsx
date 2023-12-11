@@ -84,6 +84,7 @@ export type TabNavProp = ShowNavOrContentProp & {
 };
 
 export type SysTabPaneProp = {
+  hasOpacityWhenUnfocus?: boolean;
   loading?: boolean;
   children: any;
   // left nav list

@@ -224,6 +224,7 @@ let TextTransformerOutput = (props: CommonPassProp) => {
       }}
     >
       <SysTabPane
+        hasOpacityWhenUnfocus={true}
         crtLeftNavId={props.sessionId + "output"}
         leftNavList={[
           {
@@ -322,6 +323,7 @@ let TextOptionsPanel = (props: CommonPassProp) => {
         {/* </Tooltip> */}
       </div>
       <SysTabPane
+        hasOpacityWhenUnfocus={true}
         crtLeftNavId={props.sessionId + "config"}
         leftNavList={[
           {

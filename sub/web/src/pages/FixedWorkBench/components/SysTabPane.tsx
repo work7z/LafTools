@@ -197,7 +197,14 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
 
   return (
     <div
-      className={` ${focusCrt ? ` wp-focus-p ` : ""} ` + "sys-tab-pane-wp"}
+      className={
+        ` ${focusCrt ? ` wp-focus-p ` : ""} ` + " sys-tab-pane-wp "
+        // props.hasOpacityWhenUnfocus
+        //   ? focusCrt
+        //     ? "  "
+        //     : " opacity-60 "
+        //   : ""
+      }
       id={refId}
       onClick={() => {}}
     >
