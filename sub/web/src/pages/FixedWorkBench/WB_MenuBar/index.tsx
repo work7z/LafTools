@@ -456,6 +456,28 @@ export let WB_MenuBar = (props: PassProp) => {
               onClick={() => {}}
             />
           </Tooltip>
+          {/* <Tooltip content={Dot("ExqvX", "Hot Keys List")} position="bottom">
+            <Button
+              className={Classes.MINIMAL}
+              small={true}
+              icon={"key-option"}
+              onClick={() => {
+                // simulate ctrl+?
+                AlertUtils.win_alert({
+                  id: "xmSPw",
+                  msg: (
+                    <div>
+                      {Dot(
+                        "uVseB",
+                        "Press {0} to show hot key list",
+                        "Shift+/"
+                      )}
+                    </div>
+                  ),
+                });
+              }}
+            />
+          </Tooltip> */}
           <Tooltip content={Dot("LqWaFd", "System Settings")} position="bottom">
             <Button
               className={Classes.MINIMAL}

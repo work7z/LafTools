@@ -28,6 +28,7 @@ import { CommonPassProp } from "../transformer_types";
 import { Dot } from "../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../nocycle";
 import BigTextSlice from "../../../../../../slice/BigTextSlice";
+import _ from "lodash";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../sliceAction/bigtext_action";
 import { findLastIndex } from "lodash";
 import { useEffect, useState } from "react";

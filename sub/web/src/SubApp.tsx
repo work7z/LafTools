@@ -47,18 +47,13 @@ import PageUtils from "./utils/PageUtils";
 import AuthHookUtils from "./utils/AuthHookUtils";
 import InitUtils from "./utils/InitUtils";
 import _ from "lodash";
-import { IsDevMode, getIconPngFile } from "./nocycle";
+import { FN_GetDispatch, IsDevMode, getIconPngFile } from "./nocycle";
 import systemSlice from "./slice/SystemSlice";
+import forgeSlice from "./slice/ForgeSlice";
+import { isDarkTheme } from "@blueprintjs/core/lib/esm/common/utils";
+import { Dot } from "./utils/TranslationUtils";
 
 function App() {
-  let hotkeys = [
-    {
-      combo: "shift + K",
-      global: true,
-      label: "Quick Search by {0}",
-      onKeyDown: () => {},
-    },
-  ];
   let forgeObj = exportUtils.useSelector((val) => ({
     HasUserSelectedOption: val.forge.HasUserSelectedOption,
     dark: val.forge.DarkThemeMode,
@@ -68,6 +63,20 @@ function App() {
     HasInitSystemEnv: val.system.HasInitSystemEnv,
   }));
   let queryAuthStatus = AuthHookUtils.useQueryAuthStatus();
+  let hotkeys = [
+    {
+      combo: "shift + D",
+      global: true,
+      label: Dot("H8fQ4", "Toggle to Light or Dark Mode"),
+      onKeyDown: () => {
+        FN_GetDispatch()(
+          forgeSlice.actions.updateDarkMode({
+            isDark: !forgeObj.dark,
+          })
+        );
+      },
+    },
+  ];
 
   useEffect(() => {
     let isDark = forgeObj.dark;
