@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "edc_hex.text",
+      "Tooltip": [
+        "P56edc_hexK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPedc_hex",
+        "Get edc_hex"
+      ],
+      "CallFuncList": [
+        "edc_hex.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "edc_hex",
+    "Label": [
+      "41eedc_hex",
+      "edc_hex"
+    ],
+    "Description": [
+      "6wedc_hex",
+      "TBC"
+    ]
+  }
+}

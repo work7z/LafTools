@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "sym_rc4.text",
+      "Tooltip": [
+        "P56sym_rc4K",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPsym_rc4",
+        "Get sym_rc4"
+      ],
+      "CallFuncList": [
+        "sym_rc4.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "sym_rc4",
+    "Label": [
+      "41esym_rc4",
+      "sym_rc4"
+    ],
+    "Description": [
+      "6wsym_rc4",
+      "TBC"
+    ]
+  }
+}

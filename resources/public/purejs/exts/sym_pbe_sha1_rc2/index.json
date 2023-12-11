@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "sym_pbe_sha1_rc2.text",
+      "Tooltip": [
+        "P56sym_pbe_sha1_rc2K",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPsym_pbe_sha1_rc2",
+        "Get sym_pbe_sha1_rc2"
+      ],
+      "CallFuncList": [
+        "sym_pbe_sha1_rc2.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "sym_pbe_sha1_rc2",
+    "Label": [
+      "41esym_pbe_sha1_rc2",
+      "sym_pbe_sha1_rc2"
+    ],
+    "Description": [
+      "6wsym_pbe_sha1_rc2",
+      "TBC"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "edc_base32.text",
+      "Tooltip": [
+        "P56edc_base32K",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPedc_base32",
+        "Get edc_base32"
+      ],
+      "CallFuncList": [
+        "edc_base32.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "edc_base32",
+    "Label": [
+      "41eedc_base32",
+      "edc_base32"
+    ],
+    "Description": [
+      "6wedc_base32",
+      "TBC"
+    ]
+  }
+}

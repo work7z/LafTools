@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "jwt_decoder.text",
+      "Tooltip": [
+        "P56jwt_decoderK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPjwt_decoder",
+        "Get jwt_decoder"
+      ],
+      "CallFuncList": [
+        "jwt_decoder.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "jwt_decoder",
+    "Label": [
+      "41ejwt_decoder",
+      "jwt_decoder"
+    ],
+    "Description": [
+      "6wjwt_decoder",
+      "TBC"
+    ]
+  }
+}

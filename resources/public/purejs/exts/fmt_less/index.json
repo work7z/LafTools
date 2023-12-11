@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "fmt_less.text",
+      "Tooltip": [
+        "P56fmt_lessK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPfmt_less",
+        "Get fmt_less"
+      ],
+      "CallFuncList": [
+        "fmt_less.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "fmt_less",
+    "Label": [
+      "41efmt_less",
+      "fmt_less"
+    ],
+    "Description": [
+      "6wfmt_less",
+      "TBC"
+    ]
+  }
+}

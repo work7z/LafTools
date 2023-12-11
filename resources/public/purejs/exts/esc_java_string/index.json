@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "esc_java_string.text",
+      "Tooltip": [
+        "P56esc_java_stringK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPesc_java_string",
+        "Get esc_java_string"
+      ],
+      "CallFuncList": [
+        "esc_java_string.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "esc_java_string",
+    "Label": [
+      "41eesc_java_string",
+      "esc_java_string"
+    ],
+    "Description": [
+      "6wesc_java_string",
+      "TBC"
+    ]
+  }
+}

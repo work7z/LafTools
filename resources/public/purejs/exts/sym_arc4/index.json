@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "sym_arc4.text",
+      "Tooltip": [
+        "P56sym_arc4K",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPsym_arc4",
+        "Get sym_arc4"
+      ],
+      "CallFuncList": [
+        "sym_arc4.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "sym_arc4",
+    "Label": [
+      "41esym_arc4",
+      "sym_arc4"
+    ],
+    "Description": [
+      "6wsym_arc4",
+      "TBC"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "translate_text.text",
+      "Tooltip": [
+        "P56translate_textK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPtranslate_text",
+        "Get translate_text"
+      ],
+      "CallFuncList": [
+        "translate_text.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "translate_text",
+    "Label": [
+      "41etranslate_text",
+      "translate_text"
+    ],
+    "Description": [
+      "6wtranslate_text",
+      "TBC"
+    ]
+  }
+}

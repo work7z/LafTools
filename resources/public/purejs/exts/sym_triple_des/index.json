@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "sym_triple_des.text",
+      "Tooltip": [
+        "P56sym_triple_desK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPsym_triple_des",
+        "Get sym_triple_des"
+      ],
+      "CallFuncList": [
+        "sym_triple_des.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "sym_triple_des",
+    "Label": [
+      "41esym_triple_des",
+      "sym_triple_des"
+    ],
+    "Description": [
+      "6wsym_triple_des",
+      "TBC"
+    ]
+  }
+}

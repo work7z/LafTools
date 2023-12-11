@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "fmt_html.text",
+      "Tooltip": [
+        "P56fmt_htmlK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPfmt_html",
+        "Get fmt_html"
+      ],
+      "CallFuncList": [
+        "fmt_html.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "fmt_html",
+    "Label": [
+      "41efmt_html",
+      "fmt_html"
+    ],
+    "Description": [
+      "6wfmt_html",
+      "TBC"
+    ]
+  }
+}

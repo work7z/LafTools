@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "sym_des.text",
+      "Tooltip": [
+        "P56sym_desK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPsym_des",
+        "Get sym_des"
+      ],
+      "CallFuncList": [
+        "sym_des.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "sym_des",
+    "Label": [
+      "41esym_des",
+      "sym_des"
+    ],
+    "Description": [
+      "6wsym_des",
+      "TBC"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "fmt_typescript.text",
+      "Tooltip": [
+        "P56fmt_typescriptK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPfmt_typescript",
+        "Get fmt_typescript"
+      ],
+      "CallFuncList": [
+        "fmt_typescript.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "fmt_typescript",
+    "Label": [
+      "41efmt_typescript",
+      "fmt_typescript"
+    ],
+    "Description": [
+      "6wfmt_typescript",
+      "TBC"
+    ]
+  }
+}

@@ -168,11 +168,17 @@ export let SidebarMenu = (props: TabNavProp): any => {
       //   id: "grid-view",
       //   label: Dot("RNeBze0", "Opened Tabs"),
       // },
+      // {
+      //   desc: Dot("dkkq12", "Configure your tool in this tab."),
+      //   icon: "cog",
+      //   id: "cog",
+      //   label: Dot("RNewBze0", "Tool Config"),
+      // },
       {
-        desc: Dot("dkkq12", "Configure your tool in this tab."),
-        icon: "cog",
-        id: "cog",
-        label: Dot("RNewBze0", "Tool Config"),
+        desc: Dot("6tpYx", "Empowering Your Creativity"),
+        icon: "sensor",
+        id: "explain",
+        label: Dot("7LyXp", "AI Assistant"),
       },
       {
         desc: Dot(

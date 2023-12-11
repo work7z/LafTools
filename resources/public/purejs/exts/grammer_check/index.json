@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "grammer_check.text",
+      "Tooltip": [
+        "P56grammer_checkK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPgrammer_check",
+        "Get grammer_check"
+      ],
+      "CallFuncList": [
+        "grammer_check.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "grammer_check",
+    "Label": [
+      "41egrammer_check",
+      "grammer_check"
+    ],
+    "Description": [
+      "6wgrammer_check",
+      "TBC"
+    ]
+  }
+}

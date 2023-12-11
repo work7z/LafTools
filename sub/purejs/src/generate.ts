@@ -4,47 +4,112 @@ import {
   ToolSubCategory,
   ToolChildrenSetByInit,
 } from "./all-types";
-
+import _ from "lodash";
 // read files under job, config
 let fs = require("fs");
 let path = require("path");
 let getCategoryTS = require("./config/get-category");
-let exts = path.join(__dirname, "config", "exts");
+let dftCategory: ToolCategory[] = getCategoryTS.default;
 
+let anyExistChildIdSet: string[] = [];
+// preprocess for dftCategory, provide defaut values
+_.forEach(dftCategory, (x) => {
+  _.forEach(x.SubCategories, (eachSubCategory) => {
+    _.forEach(eachSubCategory.ChildrenIdSet, (xx) => {
+      let extFile = path.join(__dirname, "config", "exts", xx, "index.ts");
+      // mkdir extFile parent -p
+      let extFileDir = path.join(__dirname, "config", "exts", xx);
+      if (xx) {
+        anyExistChildIdSet.push(xx as string);
+      }
+      if (!fs.existsSync(extFileDir)) {
+        fs.mkdirSync(extFileDir);
+      }
+      // if extFile not exisst, then write string 'ok' into it
+      if (!fs.existsSync(extFile)) {
+        fs.writeFileSync(
+          extFile,
+          `import { ExtensionInfo, ExtensionVM } from "../../../all-types";
+import { Dot } from "../../../utils/translation";
+
+let v: ExtensionVM = {
+  Layout: "form",
+  Actions: [
+    {
+      Id: "${xx}.text",
+      Tooltip: Dot("P56${xx}K", "Click to process your data"),
+      Label: Dot("IP${xx}", "Get ${xx}"),
+      CallFuncList: Dot("${xx}.ConvertText"),
+    },
+  ],
+  Info: {
+    Id: "${xx}",
+    Label: Dot("41e${xx}", "${xx}"),
+    Description: [
+      "6w${xx}",
+      "TBC"
+    ],
+  },
+};
+
+export default v;
+`
+        );
+      }
+    });
+  });
+});
+
+// start hanlding exts
+let exts = path.join(__dirname, "config", "exts");
+// if any in exts are not in anyExistChildIdSet, then delete it and remove it from exts also
+let extsList2 = fs.readdirSync(exts);
+_.forEach(extsList2, (x) => {
+  if (!_.includes(anyExistChildIdSet, x)) {
+    let extFile = path.join(__dirname, "config", "exts", x, "index.ts");
+    // console.log("extFile", extFile, x);
+    // if (fs.existsSync(extFile)) {
+    //   // fs.unlinkSync(extFile);
+    //   fs.rmdirSync(path.join(__dirname, "config", "exts", x));
+    // }
+  }
+});
 // read each file under exts, and require them
 let extsList = fs.readdirSync(exts);
 let extsMap = {};
 for (let i = 0; i < extsList.length; i++) {
   let ext = extsList[i];
   let extPath = path.join(exts, ext);
-  let extInfo = require(extPath);
-  extsMap[ext] = extInfo;
+  if (fs.existsSync(extPath)) {
+    let extInfo = require(extPath);
+    extsMap[ext] = extInfo;
+  }
 }
-let dftCategory: ToolCategory[] = getCategoryTS.default;
 
-console.log(dftCategory);
-console.log([].map);
-console.log(dftCategory.map);
+console.log("dftCategory", dftCategory);
+console.log(" dftCategory.map", dftCategory.map);
 dftCategory = dftCategory.map((x) => {
   return {
     ...x,
-    SubCategories: x.SubCategories.map((xx) => {
-      return {
-        ...xx,
-        ChildrenIdSet: ["_"],
-        ChildrenSetByInit: xx.ChildrenIdSet.map((xxx) => {
-          let crtObj: ExtensionVM = extsMap[xxx].default as any;
-          if (crtObj === undefined || crtObj === null) {
-            return undefined;
-          }
+    SubCategories: !x.SubCategories
+      ? []
+      : x.SubCategories.map((xx) => {
           return {
-            Id: crtObj?.Info?.Id,
-            Label: crtObj?.Info?.Label,
-            Description: crtObj?.Info?.Description,
-          } as ToolChildrenSetByInit;
-        }).filter((x) => x),
-      } as ToolSubCategory;
-    }),
+            ...xx,
+            ChildrenIdSet: ["_"],
+            ChildrenSetByInit: xx.ChildrenIdSet.map((xxx) => {
+              let crtObj: ExtensionVM = extsMap[xxx]?.default as any;
+              if (crtObj === undefined || crtObj === null) {
+                return undefined;
+              }
+              return {
+                Id: crtObj?.Info?.Id,
+                Label: crtObj?.Info?.Label,
+                Description: crtObj?.Info?.Description,
+              } as ToolChildrenSetByInit;
+            }).filter((x) => x),
+          } as ToolSubCategory;
+        }),
   } as ToolCategory;
 });
 
@@ -52,7 +117,7 @@ console.log(dftCategory);
 console.log(extsMap);
 
 // write getCategoryTS into ./build/category.json
-let categoryJson: ToolCategory[] = JSON.stringify(dftCategory) as any;
+let categoryJson: ToolCategory[] = JSON.stringify(dftCategory, null, 4) as any;
 let categoryJsonPath = path.join(__dirname, "..", "build", "category.json");
 fs.writeFileSync(categoryJsonPath, categoryJson);
 

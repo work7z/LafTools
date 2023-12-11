@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "translate_customizer.text",
+      "Tooltip": [
+        "P56translate_customizerK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPtranslate_customizer",
+        "Get translate_customizer"
+      ],
+      "CallFuncList": [
+        "translate_customizer.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "translate_customizer",
+    "Label": [
+      "41etranslate_customizer",
+      "translate_customizer"
+    ],
+    "Description": [
+      "6wtranslate_customizer",
+      "TBC"
+    ]
+  }
+}

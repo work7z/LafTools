@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "esc_json.text",
+      "Tooltip": [
+        "P56esc_jsonK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPesc_json",
+        "Get esc_json"
+      ],
+      "CallFuncList": [
+        "esc_json.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "esc_json",
+    "Label": [
+      "41eesc_json",
+      "esc_json"
+    ],
+    "Description": [
+      "6wesc_json",
+      "TBC"
+    ]
+  }
+}

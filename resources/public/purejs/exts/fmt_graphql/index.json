@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "fmt_graphql.text",
+      "Tooltip": [
+        "P56fmt_graphqlK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPfmt_graphql",
+        "Get fmt_graphql"
+      ],
+      "CallFuncList": [
+        "fmt_graphql.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "fmt_graphql",
+    "Label": [
+      "41efmt_graphql",
+      "fmt_graphql"
+    ],
+    "Description": [
+      "6wfmt_graphql",
+      "TBC"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "esc_html.text",
+      "Tooltip": [
+        "P56esc_htmlK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPesc_html",
+        "Get esc_html"
+      ],
+      "CallFuncList": [
+        "esc_html.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "esc_html",
+    "Label": [
+      "41eesc_html",
+      "esc_html"
+    ],
+    "Description": [
+      "6wesc_html",
+      "TBC"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "sm3.text",
+      "Tooltip": [
+        "P56sm3K",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPsm3",
+        "Get sm3"
+      ],
+      "CallFuncList": [
+        "sm3.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "sm3",
+    "Label": [
+      "41esm3",
+      "sm3"
+    ],
+    "Description": [
+      "6wsm3",
+      "TBC"
+    ]
+  }
+}

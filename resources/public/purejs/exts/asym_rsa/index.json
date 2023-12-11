@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "asym_rsa.text",
+      "Tooltip": [
+        "P56asym_rsaK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPasym_rsa",
+        "Get asym_rsa"
+      ],
+      "CallFuncList": [
+        "asym_rsa.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "asym_rsa",
+    "Label": [
+      "41easym_rsa",
+      "asym_rsa"
+    ],
+    "Description": [
+      "6wasym_rsa",
+      "TBC"
+    ]
+  }
+}

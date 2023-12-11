@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "fmt_sql.text",
+      "Tooltip": [
+        "P56fmt_sqlK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPfmt_sql",
+        "Get fmt_sql"
+      ],
+      "CallFuncList": [
+        "fmt_sql.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "fmt_sql",
+    "Label": [
+      "41efmt_sql",
+      "fmt_sql"
+    ],
+    "Description": [
+      "6wfmt_sql",
+      "TBC"
+    ]
+  }
+}

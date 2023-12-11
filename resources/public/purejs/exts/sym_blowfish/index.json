@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "sym_blowfish.text",
+      "Tooltip": [
+        "P56sym_blowfishK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPsym_blowfish",
+        "Get sym_blowfish"
+      ],
+      "CallFuncList": [
+        "sym_blowfish.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "sym_blowfish",
+    "Label": [
+      "41esym_blowfish",
+      "sym_blowfish"
+    ],
+    "Description": [
+      "6wsym_blowfish",
+      "TBC"
+    ]
+  }
+}
