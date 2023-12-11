@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "curl_to_pl.text",
+      "Tooltip": [
+        "P56curl_to_plK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPcurl_to_pl",
+        "Get curl_to_pl"
+      ],
+      "CallFuncList": [
+        "curl_to_pl.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "curl_to_pl",
+    "Label": [
+      "41ecurl_to_pl",
+      "curl_to_pl"
+    ],
+    "Description": [
+      "6wcurl_to_pl",
+      "TBC"
+    ]
+  }
+}

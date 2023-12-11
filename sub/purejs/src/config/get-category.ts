@@ -15,7 +15,7 @@ let value: ToolCategory[] = [
   },
   {
     Id: "codec",
-    Label: Dot("m0105", "Codec"),
+    Label: Dot("pkZAd1s05", "Cyber Security"),
     SubCategories: [
       {
         Id: "codec.Digest_Algorithm",
@@ -73,22 +73,6 @@ let value: ToolCategory[] = [
         ],
       },
       {
-        Id: "codec.Web_Auth",
-        Label: Dot("y_2Q5", "Web Auth"),
-        Icon: "shield",
-        ChildrenIdSet: [
-          "jwt_encoder",
-          "jwt_decoder",
-          //
-        ],
-      },
-    ],
-  },
-  {
-    Id: "convertor",
-    Label: Dot("m0106", "Converter"),
-    SubCategories: [
-      {
         Id: "codec.Encode_and_Decode",
         Label: Dot("y_2Q1", "Encode and Decode"),
         Icon: "widget-button",
@@ -115,20 +99,59 @@ let value: ToolCategory[] = [
           "esc_javascript",
         ],
       },
+      {
+        Id: "codec.Web_Auth",
+        Label: Dot("y_2Q5", "Web Auth"),
+        Icon: "shield",
+        ChildrenIdSet: [
+          "jwt_encoder",
+          "jwt_decoder",
+          //
+        ],
+      },
     ],
   },
   {
-    Id: "generator",
-    Label: Dot("m0107", "Generator"),
+    Id: "converter",
+    Label: Dot("m0106", "Converter"),
     SubCategories: [
       {
-        Id: "code_convertor",
-        Label: Dot("dCFIwC", "Code Generator"),
+        Id: "command_parser",
+        Label: Dot("x1mij", "Command Parser"),
+        Icon: "hat",
+        ChildrenIdSet: [
+          "curl_to_pl",
+          "curl_to_api",
+          //
+        ],
+      },
+    ],
+  },
+
+  {
+    Id: "generater",
+    Label: Dot("m0107", "Generater"),
+    SubCategories: [
+      {
+        Id: "code_converter",
+        Label: Dot("dCFIwC", "Code Generater"),
         Icon: "array-boolean",
         ChildrenIdSet: [
           "gen_yaml_to_json",
           "gen_sql_to_json",
           "gen_dml_to_json",
+        ],
+      },
+      {
+        Id: "text_random",
+        Label: Dot("unc9E", "Random Text"),
+        Icon: "random",
+        ChildrenIdSet: [
+          "rand_uuid",
+          "rand_mock",
+          "rand_plaintext",
+          "rand_sundrytext",
+          "rand_loremipsum",
         ],
       },
     ],
@@ -160,8 +183,8 @@ let value: ToolCategory[] = [
     ],
   },
   {
-    Id: "translator",
-    Label: Dot("-YoYI", "Translator"),
+    Id: "translater",
+    Label: Dot("-Yo129I", "Text Tools"),
     SubCategories: [
       {
         Id: "general",
@@ -183,6 +206,45 @@ let value: ToolCategory[] = [
           "polish_by_ai",
           "grammer_check",
           //
+        ],
+      },
+      {
+        Id: "text_matcher",
+        Label: Dot("y_2Q5dqw", "Text Matcher"),
+        Icon: "oil-field",
+        ChildrenIdSet: [
+          "regex_tester",
+          //
+        ],
+      },
+      {
+        Id: "text_template",
+        Label: Dot("yfYeg", "Text Template"),
+        Icon: "oil-field",
+        ChildrenIdSet: [
+          "template_dotjs",
+          "template_handlebars",
+          //
+        ],
+      },
+    ],
+  },
+  {
+    Id: "network_tools",
+    Label: Dot("dGVUB", "Network Tools"),
+    SubCategories: [
+      {
+        Id: "ip_tools",
+        Label: Dot("a3z-3k12", "IP Address Tools"),
+        Icon: "ip-address",
+        ChildrenIdSet: [
+          "ipv4_masker",
+          "ipv4_to_long",
+          "ipv4_utility",
+          "ipv4_network_calculater",
+          "ipv4_address_converter",
+          "subnet_mask_tools", // include multiple tools
+          "nodes_host_calculater",
         ],
       },
     ],

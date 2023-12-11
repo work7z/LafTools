@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "template_handlebars.text",
+      "Tooltip": [
+        "P56template_handlebarsK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPtemplate_handlebars",
+        "Get template_handlebars"
+      ],
+      "CallFuncList": [
+        "template_handlebars.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "template_handlebars",
+    "Label": [
+      "41etemplate_handlebars",
+      "template_handlebars"
+    ],
+    "Description": [
+      "6wtemplate_handlebars",
+      "TBC"
+    ]
+  }
+}

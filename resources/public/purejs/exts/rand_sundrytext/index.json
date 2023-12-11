@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "rand_sundrytext.text",
+      "Tooltip": [
+        "P56rand_sundrytextK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPrand_sundrytext",
+        "Get rand_sundrytext"
+      ],
+      "CallFuncList": [
+        "rand_sundrytext.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "rand_sundrytext",
+    "Label": [
+      "41erand_sundrytext",
+      "rand_sundrytext"
+    ],
+    "Description": [
+      "6wrand_sundrytext",
+      "TBC"
+    ]
+  }
+}

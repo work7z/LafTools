@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "subnet_mask_tools.text",
+      "Tooltip": [
+        "P56subnet_mask_toolsK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPsubnet_mask_tools",
+        "Get subnet_mask_tools"
+      ],
+      "CallFuncList": [
+        "subnet_mask_tools.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "subnet_mask_tools",
+    "Label": [
+      "41esubnet_mask_tools",
+      "subnet_mask_tools"
+    ],
+    "Description": [
+      "6wsubnet_mask_tools",
+      "TBC"
+    ]
+  }
+}

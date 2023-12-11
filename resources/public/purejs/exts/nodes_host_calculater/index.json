@@ -1,0 +1,30 @@
+{
+  "Layout": "form",
+  "Actions": [
+    {
+      "Id": "nodes_host_calculater.text",
+      "Tooltip": [
+        "P56nodes_host_calculaterK",
+        "Click to process your data"
+      ],
+      "Label": [
+        "IPnodes_host_calculater",
+        "Get nodes_host_calculater"
+      ],
+      "CallFuncList": [
+        "nodes_host_calculater.ConvertText"
+      ]
+    }
+  ],
+  "Info": {
+    "Id": "nodes_host_calculater",
+    "Label": [
+      "41enodes_host_calculater",
+      "nodes_host_calculater"
+    ],
+    "Description": [
+      "6wnodes_host_calculater",
+      "TBC"
+    ]
+  }
+}
