@@ -129,7 +129,7 @@ export default (props: PassProp) => {
               : x.label,
           isExpanded: isExpanded,
           isSelected: _.includes(props.selected, x.id.toString()),
-          childNodes: formatEachNodeItem(x.childNodes || []),
+          childNodes: !isExpanded ? [] : formatEachNodeItem(x.childNodes || []),
           // secondaryLabel: <Button minimal={true} icon="star-empty" />,
           hasCaret,
         } as TreeNodeInfo;

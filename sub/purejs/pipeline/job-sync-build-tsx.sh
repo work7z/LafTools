@@ -1,12 +1,16 @@
 #!/bin/bash
 
+shopt -s expand_aliases
+
 # enter current dir
+
 cd $(dirname $0)
 
 # if md5 is not there, then use md5sum alias it
-# if [ "$(which md5)" = "" ];then
-#     alias md5=md5sum
-# fi
+if [ "$(which md5sum)" = "" ];then
+    echo "reset md5sum"
+    alias md5sum=md5
+fi
 
 prevMD5=
 while [ 1 -eq 1 ];
