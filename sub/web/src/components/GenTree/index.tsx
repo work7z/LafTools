@@ -74,6 +74,8 @@ import { ContextMenu, Tree, TreeNodeInfo } from "@blueprintjs/core";
 import { Example, ExampleProps } from "@blueprintjs/docs-theme";
 import { TreeWrapInfo } from "../../styles/var";
 import MottoLine from "../MottoLine";
+import apiSlice from "../../slice/apiSlice";
+import { useSearchQuery } from "../../pages/FixedWorkBench/definitions/WB_Func";
 
 let { cloneDeep } = _;
 
@@ -91,11 +93,13 @@ type PassProp = {
   onClick?: (node: TreeNodeInfo | undefined) => any;
 };
 
+type GroupTreeNodeInfo = TreeNodeInfo & { groupItem?: boolean };
+
 export default (props: PassProp) => {
-  let { cacheId } = props;
-  const contentSizing = {
-    popoverProps: { popoverClassName: Classes.POPOVER_CONTENT_SIZING },
-  };
+  // let { cacheId } = props;
+  // const contentSizing = {
+  //   popoverProps: { popoverClassName: Classes.POPOVER_CONTENT_SIZING },
+  // };
   let info = props.info;
   if (_.isEmpty(info)) {
     return <div>{Dot("yznU9", "Empty Tree Data")}</div>;
@@ -105,10 +109,20 @@ export default (props: PassProp) => {
 
   let hasSearchText = !gutils.empty(searchText);
 
+  const res_toolCategory = apiSlice.useGetToolCategoryQuery({}, {});
+  let categoryList = res_toolCategory.data?.payload?.list || [];
+
+  let sq = useSearchQuery();
+
+  let fc = sq.fc || _.get(categoryList, "[0].id", "all");
+
+  let isAllFC = fc == "all";
+
   let nodes: TreeNodeInfo[] = useMemo(() => {
     // recursively format tmp_nodes to nodes, so that we can use it in Tree, note that isExpanded is true when it's in props.expanded and isSeleced is true when it's in props.selected
     let formatEachNodeItem = (nodeList: TreeNodeInfo[]): TreeNodeInfo[] => {
       return _.map(nodeList, (x) => {
+        let rootLevel = (x.id + "").indexOf("root_") == 0;
         let hasCaret = !_.isNil(x.hasCaret)
           ? x.hasCaret
           : !_.isEmpty(x.childNodes);
@@ -118,18 +132,17 @@ export default (props: PassProp) => {
         let i = {
           icon: "application",
           ...x,
-          // icon: (hasCaret
-          //   ? !isExpanded
-          //     ? "folder-close"
-          //     : "folder-open"
-          //   : "application") as any,
           label:
-            props.needShowCountChildren && hasCaret
+            props.needShowCountChildren && hasCaret && !rootLevel
               ? x.label + `(${_.size(x.childNodes)})`
               : x.label,
           isExpanded: isExpanded,
           isSelected: _.includes(props.selected, x.id.toString()),
-          childNodes: !isExpanded ? [] : formatEachNodeItem(x.childNodes || []),
+          childNodes: !isExpanded
+            ? []
+            : rootLevel
+            ? x.childNodes
+            : formatEachNodeItem(x.childNodes || []),
           // secondaryLabel: <Button minimal={true} icon="star-empty" />,
           hasCaret,
         } as TreeNodeInfo;
@@ -138,6 +151,48 @@ export default (props: PassProp) => {
         }
         return i;
       });
+    };
+
+    let groupNodeItemIfAll = (item: TreeNodeInfo[]): TreeNodeInfo[] => {
+      if (!isAllFC) {
+        return item;
+      } else {
+        let remarkItem = item[0];
+        let prevItem = item.slice(1);
+        let newItem: GroupTreeNodeInfo[] = [
+          remarkItem,
+          ...(_.map(categoryList.slice(1), (x) => {
+            let crtNodes = [];
+            _.forEach(prevItem, (eachPrev) => {
+              if (
+                _.findIndex(x.SubCategories, (x) => x.Id == eachPrev.id) >= 0
+              ) {
+                crtNodes.push(eachPrev);
+              }
+            });
+            return {
+              id: "root_" + x.Id,
+              label: x.LabelByInit,
+              childNodes: crtNodes,
+              groupItem: true,
+            };
+          }) || []),
+        ].map((x: GroupTreeNodeInfo) => {
+          if (!_.get(x, ["groupItem"])) {
+            return x;
+          }
+          let isExpanded = hasSearchText
+            ? true
+            : _.includes(props.expanded, x.id.toString());
+          return formatEachNodeItem([
+            {
+              ...x,
+              icon: isExpanded ? "folder-open" : "folder-close",
+            },
+          ])[0];
+        });
+        return newItem as TreeNodeInfo[];
+      }
     };
 
     let tmp_nodes = hasSearchText
@@ -156,9 +211,9 @@ export default (props: PassProp) => {
 
     let fin: TreeNodeInfo[] = formatEachNodeItem(tmp_nodes);
     if (hasSearchText) {
-      return fin.filter((x) => !_.isEmpty(x.childNodes));
+      return groupNodeItemIfAll(fin.filter((x) => !_.isEmpty(x.childNodes)));
     }
-    return fin;
+    return groupNodeItemIfAll(fin);
   }, [info.nodes, props.expanded, props.selected, info.updateId, searchText]);
 
   return (

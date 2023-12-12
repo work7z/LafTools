@@ -141,21 +141,22 @@ export let InnerToolPanel = (): any => {
 
   let m_ws = useMergeParamWithWorkSpace();
   return (
-    <FunctionalMenu_Panel
-      loading={res_toolCategory.isLoading || extsListQuery.isLoading}
-      crtLeftNavId={fc}
-      leftNavList={
-        _.map(categoryList, (x) => {
-          return {
-            label: x.LabelByInit,
-            value: x.Id,
-            pathname: m_ws({
-              fc: x.Id,
-            }),
-          };
-        }) || []
-      }
-      children={<ToolExtensionTree activeOne={activeOne} />}
-    ></FunctionalMenu_Panel>
+    <div></div>
+    // <FunctionalMenu_Panel
+    //   loading={res_toolCategory.isLoading || extsListQuery.isLoading}
+    //   crtLeftNavId={fc}
+    //   leftNavList={
+    //     _.map(categoryList, (x) => {
+    //       return {
+    //         label: x.LabelByInit,
+    //         value: x.Id,
+    //         pathname: m_ws({
+    //           fc: x.Id,
+    //         }),
+    //       };
+    //     }) || []
+    //   }
+    //   children={<ToolExtensionTree activeOne={activeOne} />}
+    // ></FunctionalMenu_Panel>
   );
 };

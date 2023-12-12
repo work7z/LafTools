@@ -122,12 +122,7 @@ import {
 import ToolExtensionTree from "../sub/ToolExtensionTree";
 
 export let InnerToolPanel = (): any => {
-  const res_toolCategory = apiSlice.useGetToolCategoryQuery(
-    {},
-    {}
-    // exportUtils.refresh_v1(),
-    // exportUtils.refresh_v2()
-  );
+  const res_toolCategory = apiSlice.useGetToolCategoryQuery({}, {});
   let sq = useSearchQuery();
   let categoryList = res_toolCategory.data?.payload?.list || [];
   let fc = sq.fc || _.get(categoryList, "[0].id", "all");
