@@ -162,7 +162,7 @@ export default (props: PassProp) => {
         let newItem: GroupTreeNodeInfo[] = [
           remarkItem,
           ...(_.map(categoryList.slice(1), (x) => {
-            let crtNodes = [];
+            let crtNodes: GroupTreeNodeInfo[] = [];
             _.forEach(prevItem, (eachPrev) => {
               if (
                 _.findIndex(x.SubCategories, (x) => x.Id == eachPrev.id) >= 0
