@@ -62,6 +62,7 @@ export type RefAlloProp = {
   latest_size?: number[];
 };
 
+
 export type ShowNavOrContentProp = {
   className?: string;
   showNavOrContent: "nav" | "content";

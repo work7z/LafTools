@@ -82,13 +82,15 @@ To debug Go service, we have configured it in VSCode, you can just follow below 
 **Web Part**:
 
 ```bash
-cd sub/web
 # using pnpm instead of npm
 npm i -g pnpm
-# install ts-node
+# install ts library
+npm i -g ts-node
 npm i -g typescript
 # install project deps
-pnpm install
+cd $LAFTOOLS_ROOT/sub/web && pnpm install
+cd $LAFTOOLS_ROOT/sub/purejs && pnpm install
+cd $LAFTOOLS_ROOT/dev/scripts/scan && pnpm install
 
 
 # start webpack service
