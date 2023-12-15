@@ -4,8 +4,7 @@
   "description": "<p align=\"center\"> <img width=\"100\" src=\"https://github.com/work7z/LafTools/blob/dev/sub/web/public/static/icon.png?raw=true\"></img> <br> <span style=\"font-size:20px\">LafTools - The next generation of a versatile toolbox designed for programmers </span> <br><br> </p>",
   "scripts": {
     "fe-web": "(cd ./sub/web && npm run start)",
-    "fe-css":"sh ./sub/web/job-tailwind.sh",
-    "fe-scan": "(cd ./dev/scripts/scan && npm run scan)",
+    "fe-extra":"go run ./core/CodeGenApplication.go dev-extra --config $LAFTOOLS_ROOT/dev/config/laf-tools-dev.json",
     "fe-build": "(cd ./sub/web && npm run build)"
   },
   "keywords": [],

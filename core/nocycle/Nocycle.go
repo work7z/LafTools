@@ -39,6 +39,28 @@ var UNIT_TEST_SERVER_MODE bool
 var HTTP_PORT_ONCE_SET int
 var NodeWSToken = GetRandomString(32)
 
+func ReadFileAsString(filename string) string {
+	if !IsFileExist(filename) {
+		return ""
+	}
+	dat, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return ""
+	}
+	return string(dat)
+}
+
+func Exit(code int) {
+	os.Exit(code)
+}
+
+func ReadFileAsJson(DefaultConfigFile string, crtConfig interface{}) error {
+	// read DefaultConfigFile as string
+	str := ReadFileAsString(DefaultConfigFile)
+	// unmarshal str into crtConfig
+	return json.Unmarshal([]byte(str), &crtConfig)
+}
+
 func RenameFile(oldPath string, newPath string) error {
 	return os.Rename(oldPath, newPath)
 }

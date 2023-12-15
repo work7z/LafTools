@@ -1,5 +1,6 @@
-
+var/log/
 pre_html_dir
+*.lck
 .idea
 core/pkg/mode/**/*
 myproject

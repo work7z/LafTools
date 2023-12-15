@@ -95,8 +95,7 @@ cd $LAFTOOLS_ROOT/dev/scripts/scan && pnpm install
 
 # start webpack service
 npm run fe-web &
-npm run fe-css &
-npm run fe-scan &
+npm run fe-extra &
 
 ```
 

@@ -16,7 +16,7 @@ let value: ToolCategory[] = [
   },
   {
     Id: "codec",
-    Label: Dot("pkZAd1s05", "Cyber Security"),
+    Label: Dot("pkZAd1dd", "Cyber Security"),
     SubCategories: [
       {
         Id: "codec.Digest_Algorithm",

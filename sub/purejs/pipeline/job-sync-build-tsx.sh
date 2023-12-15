@@ -21,5 +21,5 @@ do
         prevMD5=$crtMD5
         ./build-tsx.sh
     fi
-    sleep 1
+    sleep 5
 done

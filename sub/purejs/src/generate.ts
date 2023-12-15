@@ -118,6 +118,7 @@ console.log(extsMap);
 
 // write getCategoryTS into ./build/category.json
 let categoryJson: ToolCategory[] = JSON.stringify(dftCategory, null, 4) as any;
+// let categoryJson: ToolCategory[] = JSON.stringify(dftCategory) as any;
 let categoryJsonPath = path.join(__dirname, "..", "build", "category.json");
 fs.writeFileSync(categoryJsonPath, categoryJson);
 

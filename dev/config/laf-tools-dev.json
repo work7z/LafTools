@@ -1,0 +1,45 @@
+{
+    "Env": [
+        "LAFTOOLS_ROOT"
+    ],
+    "LockFile":true,
+    "OutputDir":"$LAFTOOLS_ROOT/var/log",
+    "Jobs": [
+        {
+            "Name":"Copy Static Resources",
+            "Type": "CopyStatic",
+            "Commands": [
+                "$LAFTOOLS_ROOT/sub/web/job-syncstatic.sh"
+            ]
+        },
+        {   
+            "Name":"Run Tailwind DevTools",
+            "Type": "RunCommand",
+            "Commands": [
+                "$LAFTOOLS_ROOT/sub/web/job-tailwind.sh"
+            ]
+        },
+        {
+            "Name":"Scan and Translation",
+            "Type":"RunCommand",
+            "Commands":[
+                "node",
+                "$LAFTOOLS_ROOT/dev/scripts/scan/scan-entry.js"
+            ]
+        },
+        {
+            "Name":"Add License Headers",
+            "Type":"RunCommand",
+            "Commands":[
+                "$LAFTOOLS_ROOT/pipeline/dev-add-license-to-each-file.sh"
+            ]
+        },
+        {
+            "Name": "Build Purejs Project",
+            "Type":"RunCommand",
+            "Commands": [
+                "$LAFTOOLS_ROOT/sub/purejs/pipeline/job-sync-build-tsx.sh"
+            ]
+        }
+    ]
+}

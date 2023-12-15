@@ -27,6 +27,7 @@ import (
 	"laftools-go/core/api"
 	"laftools-go/core/config"
 	"laftools-go/core/env"
+	"laftools-go/core/extra"
 	"laftools-go/core/gutils"
 	"laftools-go/core/log"
 	"laftools-go/core/middleware"
@@ -49,6 +50,14 @@ var rootCmd = &cobra.Command{
 	Long:  `More detail please visit https://codegen.cc`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Do nothing with root command")
+	},
+}
+
+var devExtraCmd = &cobra.Command{
+	Use:   "dev-extra",
+	Short: "Run dev extra stuff",
+	Run: func(cmd *cobra.Command, args []string) {
+		extra.HandleExtraAction(cmd, args)
 	},
 }
 
@@ -101,9 +110,13 @@ func init() {
 	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsAppBaseDir, "root", env.ENV_DefaultLafToolsRoot, "system root path")
 	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsHomeConfigDir, "home", env.ENV_defaultAppConfigDir, "config home path")
 
+	// init run extra
+	devExtraCmd.PersistentFlags().StringVar(&extra.DefaultConfigFile, "config", "", "config file")
+
 	// init middleware
 	middleware.InitCMD(middlewareCmd)
 
+	rootCmd.AddCommand(devExtraCmd)
 	rootCmd.AddCommand(runServerCmd)
 	rootCmd.AddCommand(middlewareCmd)
 	rootCmd.AddCommand(runTestCmd)
