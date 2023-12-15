@@ -268,6 +268,7 @@ export let MainStage = (props: { className: string }) => {
           minSize={snapMin}
         >
           <BottomNavView />
+          
         </Allotment.Pane>
       </Allotment>
     </div>
