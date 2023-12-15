@@ -115,6 +115,7 @@ import layoutSlice from "../../../../../slice/LayoutSlice";
 import { FN_ACTION_CloseMenu_ltr } from "../../../../../sliceAction/layout_action";
 
 export default () => {
+  
   return (
     <SysTabPane
       crtLeftNavId="drawer"

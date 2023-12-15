@@ -74,7 +74,7 @@ export default (props: PassProp): any => {
   let dis = exportUtils.dispatch();
   return (
     <div>
-      <ButtonGroup fill={true} vertical={false}>
+      {/* <ButtonGroup fill={true} vertical={false}>
         <Button
           small={true}
           // text="Software Updates"
@@ -104,7 +104,7 @@ export default (props: PassProp): any => {
           target="_blank"
           title={Dot(`x009`, `To access our usage documentation`)}
         ></AnchorButton>
-      </ButtonGroup>
+      </ButtonGroup> */}
       <Section
         title={Dot(`about_LafTools_toolbox`, "About LafTools")}
         collapsible

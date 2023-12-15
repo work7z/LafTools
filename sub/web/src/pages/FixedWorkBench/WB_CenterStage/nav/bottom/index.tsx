@@ -113,14 +113,20 @@ import { useLeftTabsList } from "../../../definitions/WB_Common";
 import GenTabs from "../../../components/GenVerticalTabs";
 import layoutSlice from "../../../../../slice/LayoutSlice";
 import { FN_ACTION_CloseMenu_ltr } from "../../../../../sliceAction/layout_action";
+import { useSearchQuery } from "../../../definitions/WB_Func";
 
 export default () => {
+  let sq = useSearchQuery()
+  let bottomId = sq.b
+  if(bottomId == 'translate'){
+    return <div>ok</div>
+  }
   return (
     <SysTabPane
       crtLeftNavId="drawer"
       leftNavList={[
         {
-          label: Dot("dqqTqyvWY", "Drawer Menu"),
+          label: Dot("sk123", "Not yet finished"),
           value: "drawer",
         },
       ]}
@@ -140,7 +146,7 @@ export default () => {
           rightIcon="minus"
         ></Button>
       }
-      children={<div>{Dot("qpDBSWe1", "no available panel")}</div>}
+      children={<div>{Dot("qpDBSWe1", "no available panel")}test</div>}
     ></SysTabPane>
   );
 };

@@ -111,7 +111,7 @@ import apiSlice from "../../../../slice/apiSlice";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../../definitions/WB_Types";
 import { FunctionalMenu } from "../nav/functional";
 import { SidebarMenu } from "../nav/sidebar/Biz_SidebarMenu";
-import Biz_DrawerMenu from "../nav/control";
+import BottomNavView from "../nav/bottom";
 import layoutSlice from "../../../../slice/LayoutSlice";
 import {
   FN_CLOSE_LTR_MENU,
@@ -207,8 +207,6 @@ export let MainStage = (props: { className: string }) => {
     }, 200),
   };
 
-  // return <div>ok</div>;
-
   return (
     <div className={props.className}>
       <Allotment
@@ -269,7 +267,7 @@ export let MainStage = (props: { className: string }) => {
           snap
           minSize={snapMin}
         >
-          <Biz_DrawerMenu />
+          <BottomNavView />
         </Allotment.Pane>
       </Allotment>
     </div>
