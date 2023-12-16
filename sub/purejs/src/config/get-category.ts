@@ -10,13 +10,14 @@ import _ from "lodash";
 let value: ToolCategory[] = [
   {
     Id: "all", // should have no all in this field
-    // Label: Dot("M6MrW", "Good"),
+    // Label: Dot("M6MrW", "Good"), 
+    // Dot("dkjk12","this is test")
     Label: Dot("cPS6q", "All Tools"),
     SubCategories: [],
   },
   {
     Id: "codec",
-    Label: Dot("pkZAd1dd", "Cyber Security"),
+    Label: Dot("ks12d", "Cyber Security"),
     SubCategories: [
       {
         Id: "codec.Digest_Algorithm",
