@@ -190,6 +190,21 @@ let fn_coll_output = (sessionId) => {
   }).v;
 };
 
+let useCurrentActiveStyle = (panelId: string) => {
+  let sessionId = exportUtils.useSelector((x) => {
+    let v = x.runtimeStatus.toolOutputStatusMap[panelId]?.latestViewPanelId;
+    if (_.isNil(v)) {
+      v='N/A'
+    }
+    return {
+      v: v,
+    };
+  }).v;
+  return sessionId === panelId ? {
+    zIndex: 50
+  } : {};
+}
+
 // TODO: provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
 let TextTransformerOutput = (props: CommonPassProp) => {
   let sessionId = props.sessionId;
@@ -202,10 +217,19 @@ let TextTransformerOutput = (props: CommonPassProp) => {
       })
     );
   };
+  let currentStyleForActive = useCurrentActiveStyle("output")
   // let h =' w-[38.2%] h-[38.2%] '
   let h = " w-[44%] h-[42%] min-w-[450px] ";
   return (
     <div
+    onClick={()=>{
+      FN_GetDispatch()(
+        RuntimeStatusSlice.actions.selectLatestViewPanel({
+          sessionId,
+          panelId: "output",
+        })
+      );
+    }}
       className={
         "absolute bottom-0 right-0  " +
         h +
@@ -215,6 +239,8 @@ let TextTransformerOutput = (props: CommonPassProp) => {
         // (isCollapsed ? " border-b-0 " : "")
       }
       style={{
+        ...currentStyleForActive,
+        // zIndex: 80,
         ...(isCollapsed
           ? {
               height: VAL_CSS_TAB_TITLE_PANEL,
@@ -269,7 +295,7 @@ let fn_coll_config = (sessionId) => {
   }).v;
 };
 
-let TextOptionsPanel = (props: CommonPassProp) => {
+let TextTransformerConfig = (props: CommonPassProp) => {
   let sessionId = props.sessionId;
   let isCollapsed = fn_coll_config(sessionId);
   let onColl = (v: boolean) => {
@@ -280,15 +306,25 @@ let TextOptionsPanel = (props: CommonPassProp) => {
       })
     );
   };
+  let currentStyleForActive = useCurrentActiveStyle("config")
   let w = "320px";
   return (
     <div
+      onClick={()=>{
+        FN_GetDispatch()(
+          RuntimeStatusSlice.actions.selectLatestViewPanel({
+            sessionId,
+            panelId: "config",
+          })
+        );
+      }}
       className={
         "absolute right-0   bg-white dark:bg-black   " +
         CSS_TW_LAYOUT_BORDER +
         " border-r-0   "
       }
       style={{
+        ...currentStyleForActive,
         top: controlBarHeight * 3 + "px",
         // width: "26%",
         minWidth: w,
@@ -371,7 +407,7 @@ export default (props: PassProps) => {
         <GenCodeMirror bigTextId={inputBigTextId}></GenCodeMirror>
       </div>
       <TextTransformerOutput {...commonPassProp}></TextTransformerOutput>
-      <TextOptionsPanel {...commonPassProp}></TextOptionsPanel>
+      <TextTransformerConfig {...commonPassProp}></TextTransformerConfig>
     </div>
   );
 };

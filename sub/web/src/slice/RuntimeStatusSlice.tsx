@@ -21,6 +21,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import SyncStateUtils from "../utils/SyncStateUtils";
+
 
 type RuntimeStatusState = {
   toolOutputStatusMap: {
@@ -28,6 +30,7 @@ type RuntimeStatusState = {
       // key refers to sessionId
       collapseOutput?: boolean;
       collapseConfig?: boolean;
+      latestViewPanelId?: string;
     };
   };
 };
@@ -39,6 +42,24 @@ const RuntimeStatusSlice = createSlice({
   name: "runtimeStatus",
   initialState,
   reducers: {
+    // ...SyncStateUtils.getSyncStateReducers("runtimeStatus", {
+    //   RunOnInit: true,
+    //   RequireUserId: true,
+    //   RequireWorkspaceId: true,
+    // }),
+    // select the latest view panel
+    selectLatestViewPanel: (
+      state,
+      action: PayloadAction<{ sessionId: string; panelId: string }>
+    ) => {
+      let { sessionId, panelId } = action.payload;
+      if (!state.toolOutputStatusMap[sessionId]) {
+        state.toolOutputStatusMap[sessionId] = {
+          latestViewPanelId: panelId,
+        };
+      }
+      state.toolOutputStatusMap[sessionId].latestViewPanelId = panelId;
+    },
     //
     setCollapseOutput: (
       state,
@@ -50,6 +71,7 @@ const RuntimeStatusSlice = createSlice({
           collapseOutput,
         };
       }
+      state.toolOutputStatusMap[sessionId].latestViewPanelId='output'
       state.toolOutputStatusMap[sessionId].collapseOutput = collapseOutput;
     },
     setCollapseConfig: (
@@ -63,6 +85,7 @@ const RuntimeStatusSlice = createSlice({
         };
       }
       state.toolOutputStatusMap[sessionId].collapseConfig = collapseConfig;
+      state.toolOutputStatusMap[sessionId].latestViewPanelId='config'
     },
   },
 });
