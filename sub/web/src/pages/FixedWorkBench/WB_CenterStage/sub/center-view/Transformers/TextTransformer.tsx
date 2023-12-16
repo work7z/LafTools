@@ -190,17 +190,17 @@ let fn_coll_output = (sessionId) => {
   }).v;
 };
 
-let useCurrentActiveStyle = (panelId: string) => {
-  let sessionId = exportUtils.useSelector((x) => {
-    let v = x.runtimeStatus.toolOutputStatusMap[panelId]?.latestViewPanelId;
+let useCurrentActiveStyle = (sessionId: string, panelId: string) => {
+  let crt_panelId = exportUtils.useSelector((x) => {
+    let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.latestViewPanelId;
     if (_.isNil(v)) {
-      v='N/A'
+      v = 'N/A'
     }
     return {
       v: v,
     };
   }).v;
-  return sessionId === panelId ? {
+  return crt_panelId === panelId ? {
     zIndex: 50
   } : {};
 }
@@ -217,19 +217,19 @@ let TextTransformerOutput = (props: CommonPassProp) => {
       })
     );
   };
-  let currentStyleForActive = useCurrentActiveStyle("output")
+  let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "output")
   // let h =' w-[38.2%] h-[38.2%] '
   let h = " w-[44%] h-[42%] min-w-[450px] ";
   return (
     <div
-    onClick={()=>{
-      FN_GetDispatch()(
-        RuntimeStatusSlice.actions.selectLatestViewPanel({
-          sessionId,
-          panelId: "output",
-        })
-      );
-    }}
+      onClick={() => {
+        FN_GetDispatch()(
+          RuntimeStatusSlice.actions.selectLatestViewPanel({
+            sessionId,
+            panelId: "output",
+          })
+        );
+      }}
       className={
         "absolute bottom-0 right-0  " +
         h +
@@ -243,8 +243,8 @@ let TextTransformerOutput = (props: CommonPassProp) => {
         // zIndex: 80,
         ...(isCollapsed
           ? {
-              height: VAL_CSS_TAB_TITLE_PANEL,
-            }
+            height: VAL_CSS_TAB_TITLE_PANEL,
+          }
           : {}),
         transition: "all 0.3s",
       }}
@@ -306,11 +306,11 @@ let TextTransformerConfig = (props: CommonPassProp) => {
       })
     );
   };
-  let currentStyleForActive = useCurrentActiveStyle("config")
+  let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "config")
   let w = "320px";
   return (
     <div
-      onClick={()=>{
+      onClick={() => {
         FN_GetDispatch()(
           RuntimeStatusSlice.actions.selectLatestViewPanel({
             sessionId,
@@ -375,7 +375,7 @@ let TextTransformerConfig = (props: CommonPassProp) => {
             }}
             small
             minimal
-            // rightIcon={!isCollapsed ? "chevron-up" : "chevron-down"}
+          // rightIcon={!isCollapsed ? "chevron-up" : "chevron-down"}
           ></Button>
         }
         children={<div>this is bg</div>}
