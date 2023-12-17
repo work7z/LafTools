@@ -23,6 +23,7 @@ package extra
 import (
 	"bufio"
 	"fmt"
+	"laftools-go/core/env"
 	"laftools-go/core/gutils"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
@@ -49,6 +50,7 @@ type Config struct {
 var DefaultConfigFile string
 
 func HandleExtraAction(cmd *cobra.Command, args []string) {
+	env.ENV_ShouldPrintLogAsJSON = false
 	log.Ref().Debug("calling extra action")
 	log.Ref().Debug("DefaultConfigFile: ", DefaultConfigFile)
 	lckFile := DefaultConfigFile + ".lck"
@@ -103,12 +105,13 @@ func HandleExtraAction(cmd *cobra.Command, args []string) {
 			// trigger command by go command
 			mainProgram := job.Commands[0]
 			extArr := make([]string, 0)
-			if len(job.Commands) < 2 {
-				extArr = job.Commands[1:]
-			}
+			extArr = job.Commands[1:]
 			cmd := exec.Command(mainProgram, extArr...)
 			// get all output in cmd as a string, and convert it as NodeRes struct, note that return error if any
-			log.Ref().Debug("cmd is ", cmd)
+			// add env into cmd
+			cmd.Env = os.Environ()
+
+			log.Ref().Debug("cmd is ", extArr)
 
 			// var out bytes.Buffer
 			// var stderr bytes.Buffer

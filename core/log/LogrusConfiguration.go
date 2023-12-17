@@ -31,8 +31,8 @@ import (
 var InternalLog = logrus.New()
 
 func Ref() *logrus.Logger {
-	shouldOrNot := env.ENV_ShouldPrintLogAsJSON
-	if shouldOrNot {
+	shouldJSON := env.ENV_ShouldPrintLogAsJSON
+	if shouldJSON {
 		// InternalLog.as JSON instead of the default ASCII formatter.
 		InternalLog.SetFormatter(&logrus.JSONFormatter{})
 		// Output to stdout instead of the default stderr
@@ -49,6 +49,5 @@ func Ref() *logrus.Logger {
 		// Only InternalLog.the warning severity or above.
 		InternalLog.SetLevel(logrus.DebugLevel)
 	}
-	InternalLog.SetFormatter(&logrus.JSONFormatter{})
 	return InternalLog
 }

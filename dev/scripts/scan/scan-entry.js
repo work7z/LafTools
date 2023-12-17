@@ -6,6 +6,7 @@ let _ = require("lodash");
 var cnchars = require("cn-chars");
 
 var md5 = require("md5");
+const { exit } = require("process");
 
 function sub_exp(idx) {
   return "((?<![\\\\])['\"`])((?:.(?!(?<![\\\\])\\1))*.?)\\" + idx;
@@ -17,6 +18,10 @@ let commonText = new RegExp(
 
 // get env LAFTOOLS_ROOT
 let baseDIR = process.env.LAFTOOLS_ROOT;
+if (baseDIR == "") {
+  console.log('LAFTOOLS_ROOT could not be empty')
+  exit(-1)
+}
 // sleep
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -245,7 +250,7 @@ let scan = async (eachRunItem, eachLang) => {
       );
 
       // execute a command
-      let cmd = `go run ./translate-tools/bulktranslate.go --id=${eachRunItem.id} --lg=${eachLang} --output=${outputLangFile} `;
+      let cmd = `go run ${path.join(__dirname, "translate-tools", 'bulktranslate.go')} --id=${eachRunItem.id} --lg=${eachLang} --output=${outputLangFile} `;
       console.log("cmd is ", cmd);
       sh.exec(cmd);
       // console.log();
