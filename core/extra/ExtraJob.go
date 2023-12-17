@@ -90,9 +90,9 @@ func HandleExtraAction(cmd *cobra.Command, args []string) {
 	for _, job := range crtConfig.Jobs {
 		// set env
 		go func(job Job) {
-			if strings.Index(job.Name, "Scan") == -1 {
-				return
-			}
+			// if strings.Index(job.Name, "Scan") == -1 {
+			// return
+			// }
 			log.Ref().Debug("job: ", job)
 			// for each job.Commands, and replace their value with env
 			for _, env := range crtConfig.Env {

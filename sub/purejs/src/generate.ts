@@ -12,6 +12,7 @@ let fs = require("fs");
 let path = require("path");
 let getCategoryTS = require("./config/get-category");
 let getTranslation = require('./config/get-translation.ts')
+let geti18n = require('./config/get-i18n.ts')
 let dftCategory: ToolCategory[] = getCategoryTS.default;
 
 let anyExistChildIdSet: string[] = [];
@@ -153,7 +154,7 @@ for (let i = 0; i < extsMapKeys.length; i++) {
   fs.writeFileSync(extInfoJsonPath, extInfoJson);
 }
 
-let getExtraArr:FileValueMatcher[][] = [getTranslation]
+let getExtraArr:FileValueMatcher[][] = [getTranslation,geti18n]
 
 _.forEach(getExtraArr,(x:FileValueMatcher[])=>{
   _.forEach(x,pxx=>{
