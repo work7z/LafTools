@@ -82,14 +82,18 @@ const gutils = {
     _.set(window, key, value);
   },
   GetUserActualClientLang(): string {
-    let locale_str = navigator.language;
     let finalLang = "en_US";
-    if (locale_str == "zh-CN") {
-      finalLang = "zh_CN";
-    } else if (locale_str == "zh-TW" || locale_str == "zh-HK") {
-      finalLang = "zh_HK";
+    if(!navigator || !navigator.languages){
+      return finalLang
     }
-    return finalLang;
+    navigator.languages.forEach(locale_str=>{
+      if (locale_str == "zh-CN") {
+        finalLang = "zh_CN";
+      } else if (locale_str == "zh-TW" || locale_str == "zh-HK") {
+        finalLang = "zh_HK";
+      }
+    })
+    return finalLang
   },
   safeparse(str: string | null) {
     if (_.isNil(str)) {

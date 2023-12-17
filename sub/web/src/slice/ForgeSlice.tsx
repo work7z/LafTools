@@ -63,7 +63,7 @@ let newInitialState = (): ForgeState => {
     UsingSmartEditor: false,
     UpdatePageId: gutils.uuid(),
     DarkThemeMode: getStrIntoCache("dark-mode") === "true",
-    Language: gutils.IsDevMode() ? "zh_CN" : gutils.GetUserActualClientLang(),
+    Language: gutils.GetUserActualClientLang(),
     HasUserSelectedOption: false,
     VerForgeForm: VER_FORGE_FORM,
     FullScreenOrNot: false,

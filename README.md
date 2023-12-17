@@ -202,6 +202,7 @@ LafTools Team
 This project is primarily inspired by the following musicians:
 
 - Joe Pass
+- The Manhattan Transfer  
 - Khalil Fong    
 - Li Rong Hao     
 - Chet Atkins
