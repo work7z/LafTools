@@ -5,7 +5,7 @@ import {
   ToolChildrenSetByInit,
 } from "./all-types";
 import _ from "lodash";
-// read files under job, config
+// read files under job, definitiions
 let fs = require("fs");
 let path = require("path");
 let getCategoryTS = require("./config/get-category");
@@ -16,9 +16,9 @@ let anyExistChildIdSet: string[] = [];
 _.forEach(dftCategory, (x) => {
   _.forEach(x.SubCategories, (eachSubCategory) => {
     _.forEach(eachSubCategory.ChildrenIdSet, (xx) => {
-      let extFile = path.join(__dirname, "config", "exts", xx, "index.ts");
+      let extFile = path.join(__dirname, "definitiions", "exts", xx, "index.ts");
       // mkdir extFile parent -p
-      let extFileDir = path.join(__dirname, "config", "exts", xx);
+      let extFileDir = path.join(__dirname, "definitiions", "exts", xx);
       if (xx) {
         anyExistChildIdSet.push(xx as string);
       }
@@ -61,16 +61,16 @@ export default v;
 });
 
 // start hanlding exts
-let exts = path.join(__dirname, "config", "exts");
+let exts = path.join(__dirname, "definitiions", "exts");
 // if any in exts are not in anyExistChildIdSet, then delete it and remove it from exts also
 let extsList2 = fs.readdirSync(exts);
 _.forEach(extsList2, (x) => {
   if (!_.includes(anyExistChildIdSet, x)) {
-    let extFile = path.join(__dirname, "config", "exts", x, "index.ts");
+    let extFile = path.join(__dirname, "definitiions", "exts", x, "index.ts");
     // console.log("extFile", extFile, x);
     // if (fs.existsSync(extFile)) {
     //   // fs.unlinkSync(extFile);
-    //   fs.rmdirSync(path.join(__dirname, "config", "exts", x));
+    //   fs.rmdirSync(path.join(__dirname, "definitiions", "exts", x));
     // }
   }
 });

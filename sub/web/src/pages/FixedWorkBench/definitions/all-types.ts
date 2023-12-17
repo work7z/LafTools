@@ -5,6 +5,11 @@ export type NodeReq = {
   InputValue: any;
 };
 
+export type FileValueMatcher = {
+  Name: string;
+  Value: any;
+}
+
 export type FlushIdValuePair = {
   id: string;
   value: any;
