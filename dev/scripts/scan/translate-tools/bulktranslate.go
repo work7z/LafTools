@@ -51,7 +51,7 @@ func main() {
 		json.Unmarshal([]byte(outputJSONMapStr), &outputJSONMap)
 	}
 	// zhCN
-	zhCNOverwrittenFile := path.Join(LAFTOOLS_ROOT, "dev", "lang", "overwrriten", "zh-CN-overwrite.json")
+	zhCNOverwrittenFile := path.Join(LAFTOOLS_ROOT, "dev", "lang", "overwrriten", "zh_CN-overwrite.json")
 	zhCNOverwrittenFileContent, err := nocycle.ReadFileAsStr(zhCNOverwrittenFile)
 	if err != nil {
 		log.InternalLog.Panic("err", err)
@@ -78,7 +78,6 @@ func main() {
 	json.Unmarshal(configJSONPathStr, &configMap)
 	log.Ref().Debug(rawMap)
 	cacheDir := nocycle.MkdirFileWithStr(path.Join(translateResultDir, "cache", id))
-	// "zh-TW"
 	crtResultMap := make(map[string]string)
 	// for each rawMap
 	for k, v := range rawMap {
@@ -151,18 +150,4 @@ func translateNow(text, targetLang string) (string, error) {
 }
 
 func __ExampleCall() {
-	// var text string = `Toggle the visibility of toolbars tabs.`
-	// text = "Click to select a file for processing. The toolbox will directly process {0} in service and show the result in the output region."
-	// text = "It allows developers to execute various commands, such as running {0}, installing packages, and navigating the file system, all from within the editor. "
-	// // you can use "auto" for source language
-	// // so, translator will detect language
-	// result, _ := gt.Translate(text, "en", "zh-CN")
-	// fmt.Println(result)
-
-	// result2, _ := gt.Translate(text, "en", "zh-HK")
-	// fmt.Println(result2)
-
-	// result3, _ := gt.Translate(text, "en", "zh-TW")
-	// fmt.Println(result3)
-	// // Output: "Hola, Mundo!"
 }

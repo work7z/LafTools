@@ -4,8 +4,8 @@ import { Dot } from '../utils/translation'
 
 let langList = [
     {"Label": Dot("f7akol","English"), "Value": "en"},
-    {"Label": Dot("spdh98","Chinese (Simplified)"), "Value": "zh-cn"},
-    {"Label": Dot("7dm0d8","Chinese (Traditional)"), "Value": "zh-hk"},
+    {"Label": Dot("spdh98","Chinese (Simplified)"), "Value": "zh_HK"},
+    {"Label": Dot("7dm0d8","Chinese (Traditional)"), "Value": "zh_CN"},
     {"Label": Dot("aj3nhd","German"), "Value": "de"},
     {"Label": Dot("d5x1rl","Spanish"), "Value": "es"},
     {"Label": Dot("o1umzi","French"), "Value": "fr"},

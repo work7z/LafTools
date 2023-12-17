@@ -7,6 +7,7 @@ var cnchars = require("cn-chars");
 
 var md5 = require("md5");
 const { exit } = require("process");
+let i18njson = require('../../../resources/public/purejs/app-i18n.json')
 
 function sub_exp(idx) {
   return "((?<![\\\\])['\"`])((?:.(?!(?<![\\\\])\\1))*.?)\\" + idx;
@@ -120,10 +121,9 @@ let scan = async (eachRunItem, eachLang) => {
 
       let idOverwriteJSONFile = getFile(`${overwrittenDir}/id-overwrite.json`); // replace with appropriate function
       let zhCNOverwriteJSONFile = getFile(
-        `${overwrittenDir}/zh-CN-overwrite.json`
-      ); // replace with appropriate function
-      let zhONJsonMap = zhCNOverwriteJSONFile.jsonmap();
-      let enUSMap = readFileAsJSONMap(zhCNOverwriteJSONFile.text()); // replace with appropriate function
+        `${overwrittenDir}/zh_CN-overwrite.json`
+      ); 
+
       let lastModifiedForIdOverwriteJSONFile =
         idOverwriteJSONFile.lastModified() +
         zhCNOverwriteJSONFile.lastModified();
@@ -267,7 +267,7 @@ let scan = async (eachRunItem, eachLang) => {
           }
         });
 
-        if (eachLang != "zh-CN") {
+        if (eachLang != "zh_CN") {
           resultJSON = _.mapValues(resultJSON, (x, d, n) => {
             return _.chain(x)
               .split("")
@@ -292,7 +292,12 @@ let scan = async (eachRunItem, eachLang) => {
   }
 };
 
-let langarr = ["zh-HK", "zh-CN"];
+// "zh_HK", "zh_CN"
+let langarr = [];
+
+i18njson.forEach((x)=>{
+  langarr.push(x.Value)
+})
 
 for (let eachItem of searchItems) {
   if (fs.existsSync(eachItem.target)) {
