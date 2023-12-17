@@ -202,16 +202,17 @@ LafTools Team
 This project is primarily inspired by the following musicians:
 
 - Joe Pass
-- Khalil Fong (方大同)   
-- Li Rong Hao (李荣浩)    
+- Khalil Fong    
+- Li Rong Hao     
 - Chet Atkins
 - Tommy Emmanuel
 - Frédéric Chopin
-- Oscar Peterson
-- Jay Chou (周杰倫) 
-- Stefanie Sun (孫燕姿)  
-- David Tao (陶喆)  
-- Jacky Cheung (張學友)  
+- Oscar Peterson  
+- Hugo Strasser  
+- Jay Chou  
+- Stefanie Sun   
+- David Tao   
+- Jacky Cheung   
 
 Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
 

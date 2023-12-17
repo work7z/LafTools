@@ -109,7 +109,7 @@ func main() {
 			}
 			resultForCurrentLang = result2
 		} else {
-			fmt.Println("new text received")
+			fmt.Println("new text received, id: " + id)
 			resultForCurrentLang2, err2 := translateNow(v, eachLang)
 			if err2 != nil {
 				log.InternalLog.Panic("err", err2)
