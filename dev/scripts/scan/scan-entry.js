@@ -113,20 +113,27 @@ let scan = async (eachRunItem, eachLang) => {
   while (true) {
     try {
       let outputLang = eachLang.replace("-", "_");
+      let isChinese = eachLang == 'zh_CN' || eachLang == 'zh_HK'
       let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
       let dir = getFile(eachRunItem.dir); // replace with appropriate function
-      let overwrittenFile = `${overwrittenDir}/id-overwrite.json`;
+      let a1 = `${overwrittenDir}/${isChinese ? 'zh_CN' : eachLang}-id-overwrite.json`
+      let overwrittenFile = a1;
+      let idOverwriteJSONFile = getFile(a1); // replace with appropriate function
+      let overwriteJSONFile = getFile(
+        `${overwrittenDir}/${isChinese ? 'zh_CN' : eachLang}-overwrite.json`
+      );
+
+      if (!fs.existsSync(idOverwriteJSONFile.file)) {
+        fs.writeFileSync(idOverwriteJSONFile.file, '{}')
+      }
+      if (!fs.existsSync(overwriteJSONFile.file)) {
+        fs.writeFileSync(overwriteJSONFile.file, '{}')
+      }
       let overwrritenMap = getFile(overwrittenFile).jsonmap();
-
-      let idOverwriteJSONFile = getFile(`${overwrittenDir}/id-overwrite.json`); // replace with appropriate function
-      let zhCNOverwriteJSONFile = getFile(
-        `${overwrittenDir}/zh_CN-overwrite.json`
-      ); 
-
       let lastModifiedForIdOverwriteJSONFile =
         idOverwriteJSONFile.lastModified() +
-        zhCNOverwriteJSONFile.lastModified();
+        overwriteJSONFile.lastModified();
 
       // iterate all files for dir.file, recursively
       let iterateFiles = (dir, done) => {
@@ -267,7 +274,7 @@ let scan = async (eachRunItem, eachLang) => {
           }
         });
 
-        if (eachLang != "zh_CN") {
+        if (eachLang == "zh_HK") {
           resultJSON = _.mapValues(resultJSON, (x, d, n) => {
             return _.chain(x)
               .split("")
@@ -295,7 +302,10 @@ let scan = async (eachRunItem, eachLang) => {
 // "zh_HK", "zh_CN"
 let langarr = [];
 
-i18njson.forEach((x)=>{
+i18njson.forEach((x) => {
+  if (x.Value == 'en_US') {
+    return
+  };
   langarr.push(x.Value)
 })
 

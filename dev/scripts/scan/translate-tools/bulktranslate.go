@@ -10,6 +10,7 @@ import (
 	"os"
 	"path"
 	"strings"
+	"time"
 
 	"github.com/dlclark/regexp2"
 
@@ -35,14 +36,18 @@ func main() {
 	processArgs := os.Args[1:]
 	eachLang := ""
 	for _, eachArg := range processArgs {
+		fmt.Println("eachArg: ", eachArg)
 		if eachArg[:5] == "--lg=" {
 			eachLang = eachArg[5:]
+			continue
 		}
 		if eachArg[:5] == "--id=" {
 			id = eachArg[5:]
+			continue
 		}
 		if eachArg[:8] == "--output" {
 			outputJSONFile = eachArg[9:]
+			continue
 		}
 	}
 	outputJSONMap := make(map[string]string)
@@ -92,6 +97,8 @@ func main() {
 		md5FilePath := (path.Join(cacheDir, eachLang, md5Str))
 		var resultForCurrentLang string
 		fmt.Println("md5FilePath: ", md5FilePath)
+		// TODO: oragnize below part as separtate json
+		isChinese := strings.Index(eachLang, "zh") == 0
 		if val, ok := outputJSONMap[k]; ok {
 			resultForCurrentLang = val
 		} else if nocycle.IsFileExist(md5FilePath) {
@@ -110,17 +117,20 @@ func main() {
 			resultForCurrentLang = resultForCurrentLang2
 			fmt.Println(resultForCurrentLang)
 			nocycle.WriteStrIntoFile(md5FilePath, resultForCurrentLang)
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools", "LafTools工具箱")
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, " LafTools工具箱 ", "LafTools工具箱")
+			if isChinese {
+				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools", "LafTools工具箱")
+				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, " LafTools工具箱 ", "LafTools工具箱")
+			}
 		}
-		// TODO: oragnize below part as separtate json
-		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "拉夫工具", "LafTools")
-		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Laf Tools", "LafTools")
-		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Tools ", "LafTools")
-		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "工作空间", "工作区")
-		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools工具箱 ", "LafTools工具箱")
-		resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "CodeGen ToolBox", "CodeGen工具箱")
-		if strings.Index(eachLang, "zh") == 0 {
+		if isChinese {
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "拉夫工具", "LafTools")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Laf Tools", "LafTools")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Tools ", "LafTools")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "工作空间", "工作区")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools工具箱 ", "LafTools工具箱")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "CodeGen ToolBox", "CodeGen工具箱")
+		}
+		if isChinese {
 			v = strings.Trim(v, " ")
 			if val, ok := zhCNOverwrittenMap[v]; ok {
 				resultForCurrentLang = val
@@ -145,7 +155,16 @@ func getTranslateResultDir() string {
 }
 
 func translateNow(text, targetLang string) (string, error) {
-	// time.Sleep(1 * time.Second)
+	if targetLang == "en_US" {
+		targetLang = "en"
+	}
+	if targetLang == "zh_CN" {
+		targetLang = "zh-cn"
+	}
+	if targetLang == "zh_HK" {
+		targetLang = "zh-hk"
+	}
+	time.Sleep(20 * time.Millisecond)
 	return gt.Translate(text, "en", targetLang)
 }
 
