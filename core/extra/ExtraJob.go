@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sat, 16 Dec 2023
 // Author: LafTools Team - Ubuntu <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -83,11 +83,14 @@ func HandleExtraAction(cmd *cobra.Command, args []string) {
 		log.Ref().Debug("read config file failed, exit")
 		nocycle.Exit(0)
 	}
-	log.Ref().Debug("crtConfig: ", crtConfig)
+	// log.Ref().Debug("crtConfig: ", crtConfig)
 	// run commands for each job, remember to set env, and print output to the folder OutputDir
 	for _, job := range crtConfig.Jobs {
 		// set env
 		go func(job Job) {
+			if strings.Index(job.Name, "Scan") == -1 {
+				return
+			}
 			log.Ref().Debug("job: ", job)
 			// for each job.Commands, and replace their value with env
 			for _, env := range crtConfig.Env {

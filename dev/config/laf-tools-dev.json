@@ -20,6 +20,7 @@
             ]
         },
         {
+            "Id": "scan_and_translation",
             "Name":"Scan and Translation",
             "Type":"RunCommand",
             "Commands":[

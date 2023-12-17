@@ -43,12 +43,12 @@ git ls-tree -r --name-only $(git rev-parse --abbrev-ref HEAD) "./" | while read 
 # t_date=$(echo $date | sed "s/ ${day},/ ${day}${suffix},/")
 t_date=$(git log --reverse --format="%aD" -- $file | head -n 1 | awk '{print $1 " " $2 " " $3 " " $4}')
 
-echo $t_date
-echo "handling the file: $file"
+# echo $t_date
+# echo "handling the file: $file"
 
 # get ext of file
 ext=${file##*.}
-echo "file_type is $file_type"
+# echo "file_type is $file_type"
 # echo "file: -3 is ${ext}"
 
 # get full path of file
@@ -56,24 +56,24 @@ file_path=$(cd `dirname $file`; pwd)/`basename $file`
 
 # if the file contains example or Example, then continue
 if grep -q "example" "$file_path"; then
-    echo "skip the example content"
+    # echo "skip the example content"
     continue
 fi
 
 if grep -q "Example" "$file_path"; then
-    echo "skip the Example content"
+    # echo "skip the Example content"
     continue
 fi
 
 # check if the file contains "Copyright", if yes then continue
 if grep -q "Copyright" "$file"; then
-    echo "skip the Copyright content"
+    # echo "skip the Copyright content"
     continue
 fi
 
 # if file contains "node_modules", then quit
 if [[ $file == *"node_modules"* ]]; then
-    echo "skip the node_modules"
+    # echo "skip the node_modules"
     continue
 fi
 
