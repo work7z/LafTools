@@ -647,6 +647,12 @@ const LanguagePanel: React.FC<SelectPanelProps> = (props) => (
       <Radio label={"简体中文"} value={LANG_ZH_CN} />
       <Radio label={"繁體中文"} value={LANG_ZH_HK} />
     </RadioGroup>
+    
+    {/* <select multiple className="w-full">
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+    </select> */}
   </DialogBody>
 );
 
