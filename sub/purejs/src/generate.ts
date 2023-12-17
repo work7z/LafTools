@@ -1,14 +1,17 @@
+import { dirname } from "path";
 import {
   ExtensionVM,
   ToolCategory,
   ToolSubCategory,
   ToolChildrenSetByInit,
+  FileValueMatcher,
 } from "./all-types";
 import _ from "lodash";
-// read files under job, definitiions
+// read files under job, config
 let fs = require("fs");
 let path = require("path");
 let getCategoryTS = require("./config/get-category");
+let getTranslation = require('./config/get-translation.ts')
 let dftCategory: ToolCategory[] = getCategoryTS.default;
 
 let anyExistChildIdSet: string[] = [];
@@ -16,9 +19,9 @@ let anyExistChildIdSet: string[] = [];
 _.forEach(dftCategory, (x) => {
   _.forEach(x.SubCategories, (eachSubCategory) => {
     _.forEach(eachSubCategory.ChildrenIdSet, (xx) => {
-      let extFile = path.join(__dirname, "definitiions", "exts", xx, "index.ts");
+      let extFile = path.join(__dirname, "config", "exts", xx, "index.ts");
       // mkdir extFile parent -p
-      let extFileDir = path.join(__dirname, "definitiions", "exts", xx);
+      let extFileDir = path.join(__dirname, "config", "exts", xx);
       if (xx) {
         anyExistChildIdSet.push(xx as string);
       }
@@ -61,16 +64,16 @@ export default v;
 });
 
 // start hanlding exts
-let exts = path.join(__dirname, "definitiions", "exts");
+let exts = path.join(__dirname, "config", "exts");
 // if any in exts are not in anyExistChildIdSet, then delete it and remove it from exts also
 let extsList2 = fs.readdirSync(exts);
 _.forEach(extsList2, (x) => {
   if (!_.includes(anyExistChildIdSet, x)) {
-    let extFile = path.join(__dirname, "definitiions", "exts", x, "index.ts");
+    let extFile = path.join(__dirname, "config", "exts", x, "index.ts");
     // console.log("extFile", extFile, x);
     // if (fs.existsSync(extFile)) {
     //   // fs.unlinkSync(extFile);
-    //   fs.rmdirSync(path.join(__dirname, "definitiions", "exts", x));
+    //   fs.rmdirSync(path.join(__dirname, "config", "exts", x));
     // }
   }
 });
@@ -149,3 +152,19 @@ for (let i = 0; i < extsMapKeys.length; i++) {
   );
   fs.writeFileSync(extInfoJsonPath, extInfoJson);
 }
+
+let getExtraArr:FileValueMatcher[][] = [getTranslation]
+
+_.forEach(getExtraArr,(x:FileValueMatcher[])=>{
+  _.forEach(x,pxx=>{
+    _.forEach(pxx,xx=>{
+      console.log('xx',xx)
+      let filename = xx.Name
+      let value = xx.Value
+      console.log('__dirname',__dirname)
+      console.log('filename',filename)
+      let finalOutputPath = path.join(__dirname,"..","build",filename)
+      fs.writeFileSync(finalOutputPath,JSON.stringify(value,null,2))        
+    })
+  })
+})
