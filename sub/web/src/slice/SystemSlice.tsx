@@ -227,9 +227,10 @@ export const ACTION_getLangData = (): any => {
     let currentLanguage = ALL_NOCYCLE.store?.getState().forge.Language;
     // TODO: more languages support
     if (
-      currentLanguage != LANG_ZH_CN &&
-      currentLanguage != LANG_ZH_HK &&
-      currentLanguage != LANG_EN_US
+      false
+      // currentLanguage != LANG_ZH_CN &&
+      // currentLanguage != LANG_ZH_HK &&
+      // currentLanguage != LANG_EN_US
     ) {
       AlertUtils.popMsg("danger", {
         message: Dot(

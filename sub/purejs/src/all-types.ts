@@ -10,6 +10,9 @@ export type FileValueMatcher = {
   Value: any;
 }
 
+export type EachLang = { LabelInEnglish?: string; Label: string[], LabelByLang?: string, Value: string }
+
+
 export type FlushIdValuePair = {
   id: string;
   value: any;

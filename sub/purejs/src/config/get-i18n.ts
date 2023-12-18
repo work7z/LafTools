@@ -1,8 +1,7 @@
 
-import { FileValueMatcher } from '../all-types'
+import { EachLang, FileValueMatcher } from '../all-types'
 import { Dot } from '../utils/translation'
 
-type EachLang = { LabelInEnglish?: string; Label: string[], LabelByLang?: string, Value: string }
 let langList: EachLang[] = [
     { "Label": Dot("f7akol", "English"), LabelByLang: "English", "Value": "en_US" },
     { "Label": Dot("spdh98", "Simplified Chinese"), LabelByLang: "简体中文", "Value": "zh_CN" },

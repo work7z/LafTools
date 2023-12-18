@@ -143,6 +143,11 @@ let SyncStateUtils = {
     if (action_type.indexOf("replaceWithLatestState") != -1) {
       return;
     }
+    // if the user is initilizing his/her setup, then exit
+    let hasUserSelectOption = FN_GetState().forge.HasUserSelectedOption
+    if (!hasUserSelectOption) {
+      return;
+    }
     if (_.isEmpty(syncedReducerNameFnMap)) {
       _.forEach(syncedReducerNames, (eachReducerName) => {
         syncedReducerNameFnMap[eachReducerName] = _.throttle(

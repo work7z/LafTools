@@ -32,6 +32,7 @@ import {
   FnPureToolDefinition,
   WorkSpaceStruct,
 } from "../pages/FixedWorkBench/definitions/WB_Types";
+import { EachLang } from "../pages/FixedWorkBench/definitions/all-types";
 
 let createNotProhibitedResources = (build, resName) => {
   return build.query({
@@ -138,7 +139,7 @@ export const apiSlice = createApi({
       query: () => "/system/init/info",
     }),
     geti18nConfig: build.query<
-      PayloadValueData<any>,
+      PayloadValueData<EachLang[]>,
       any
     >({
       query: () => "/i18n/get",

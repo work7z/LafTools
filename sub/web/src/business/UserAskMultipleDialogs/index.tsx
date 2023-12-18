@@ -84,6 +84,7 @@ import FormSelect from "../../components/FormSelect";
 import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 import PageUtils from "../../utils/PageUtils";
+import { EachLang } from "../../pages/FixedWorkBench/definitions/all-types";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;
@@ -638,22 +639,33 @@ const LocalUserPanel: React.FC<
     </DialogBody>
   );
 };
+
+
+
 const LanguagePanel: React.FC<SelectPanelProps> = (props) => {
-  let i18nQ = apiSlice.useGeti18nConfigQuery({},{refetchOnMountOrArgChange:true});
+  let i18nQ = apiSlice.useGeti18nConfigQuery({}, { refetchOnMountOrArgChange: true });
   let r = QueryUtils.validateResult(i18nQ, {
     label: Dot("LM715", "Retrieving i18n config from local server API"),
   });
   if (r) {
     return r;
   }
+  let arr: EachLang[]|undefined = i18nQ.data?.payload?.value || [];
   return (
     <DialogBody className="docs-multistep-dialog-example-step">
       <p>{Dot("DrXAq", "Welcome to use LafTools! ")}</p>
       <p>{Dot("1YmJc", "Select one of options as your preferred language:")}</p>
       <RadioGroup onChange={props.onChange} selectedValue={props.selectedValue}>
-        <Radio label={`English`} value={LANG_EN_US} />
+        {
+          arr.map(x => {
+            return (
+              <Radio label={x.LabelByLang} value={x.Value} key={x.Value} />
+            )
+          })
+        }
+        {/* <Radio label={`English`} value={LANG_EN_US} />
         <Radio label={"简体中文"} value={LANG_ZH_CN} />
-        <Radio label={"繁體中文"} value={LANG_ZH_HK} />
+        <Radio label={"繁體中文"} value={LANG_ZH_HK} /> */}
       </RadioGroup>
       {/* <select multiple  className="w-full ">
         <option>A</option>

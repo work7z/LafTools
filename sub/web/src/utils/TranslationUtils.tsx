@@ -85,6 +85,9 @@ const TranslationUtils = {
     } else {
       let langmap = TranslationUtils.LangMap;
       let o = langmap[language] as LangDefinition;
+      if(_.isNil(o)){
+        return enText;
+      }
       let preText = o[id];
       if (!_.isNil(preText)) {
         enText = preText;
