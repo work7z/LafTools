@@ -201,7 +201,7 @@ let useCurrentActiveStyle = (sessionId: string, panelId: string) => {
     };
   }).v;
   return crt_panelId === panelId ? {
-    zIndex: 50
+    zIndex: 20
   } : {};
 }
 

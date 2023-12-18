@@ -225,12 +225,9 @@ let __load_language_map: { [key: string]: boolean } = {};
 export const ACTION_getLangData = (): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
     let currentLanguage = ALL_NOCYCLE.store?.getState().forge.Language;
-    // TODO: more languages support
+    debugger;
     if (
-      false
-      // currentLanguage != LANG_ZH_CN &&
-      // currentLanguage != LANG_ZH_HK &&
-      // currentLanguage != LANG_EN_US
+      !currentLanguage
     ) {
       AlertUtils.popMsg("danger", {
         message: Dot(
@@ -292,12 +289,6 @@ export const ACTION_initAllDataAtOnce = (): any => {
       dispatch(systemSlice.actions.resetToInitStatus());
       dispatch(
         systemSlice.actions.UpdateProcessText({
-          value: Dot("PUxuU", "Retrieving data for language packs..."),
-        })
-      );
-      await ACTION_getLangData()(dispatch);
-      dispatch(
-        systemSlice.actions.UpdateProcessText({
           value: Dot("4cGA_", "Retrieving data for system preferences..."),
         })
       );
@@ -305,6 +296,12 @@ export const ACTION_initAllDataAtOnce = (): any => {
       await SyncStateUtils.retrieveAllIDsFromServer((item) => {
         return item.RunOnInit === true;
       });
+      dispatch(
+        systemSlice.actions.UpdateProcessText({
+          value: Dot("PUxuU", "Retrieving data for language packs..."),
+        })
+      );
+      await ACTION_getLangData()(dispatch);
       dispatch(
         systemSlice.actions.UpdateProcessText({
           value: Dot("_trqL", "Retrieving data for system resources..."),
