@@ -65,7 +65,7 @@ func loadFileByLangFromDir(pathname string, lang string) error {
 	if lang == "en" || lang == "en_US" {
 		return nil
 	}
-	if _, found := previousLoadMap[loadKey]; found {
+	if _, found := previousLoadMap[loadKey]; found && !nocycle.IsDevMode {
 		return nil
 	}
 

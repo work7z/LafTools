@@ -4,139 +4,179 @@
       "f7akol",
       "English"
     ],
-    "Value": "en_US"
+    "LabelByLang": "English",
+    "Value": "en_US",
+    "LabelInEnglish": "English"
   },
   {
     "Label": [
       "spdh98",
-      "Chinese (Simplified)"
+      "Simplified Chinese"
     ],
-    "Value": "zh_HK"
+    "LabelByLang": "简体中文",
+    "Value": "zh_CN",
+    "LabelInEnglish": "Simplified Chinese"
   },
   {
     "Label": [
       "7dm0d8",
-      "Chinese (Traditional)"
+      "Traditional Chinese"
     ],
-    "Value": "zh_CN"
+    "LabelByLang": "繁體中文",
+    "Value": "zh_HK",
+    "LabelInEnglish": "Traditional Chinese"
   },
   {
     "Label": [
       "aj3nhd",
       "German"
     ],
-    "Value": "de"
+    "LabelByLang": "Deutsch",
+    "Value": "de",
+    "LabelInEnglish": "German"
   },
   {
     "Label": [
       "d5x1rl",
       "Spanish"
     ],
-    "Value": "es"
+    "Value": "es",
+    "LabelByLang": "Español",
+    "LabelInEnglish": "Spanish"
   },
   {
     "Label": [
       "o1umzi",
       "French"
     ],
-    "Value": "fr"
+    "Value": "fr",
+    "LabelByLang": "Français",
+    "LabelInEnglish": "French"
   },
   {
     "Label": [
       "1jj0ri",
       "Japanese"
     ],
-    "Value": "ja"
+    "Value": "ja",
+    "LabelByLang": "日本語",
+    "LabelInEnglish": "Japanese"
   },
   {
     "Label": [
       "5ggegx",
       "Korean"
     ],
-    "Value": "ko"
+    "Value": "ko",
+    "LabelByLang": "한국어",
+    "LabelInEnglish": "Korean"
   },
   {
     "Label": [
       "vci8rd",
       "Dutch"
     ],
-    "Value": "nl"
+    "Value": "nl",
+    "LabelByLang": "Nederlands",
+    "LabelInEnglish": "Dutch"
   },
   {
     "Label": [
       "2ybu7j",
       "Norwegian"
     ],
-    "Value": "no"
+    "Value": "no",
+    "LabelByLang": "Norsk",
+    "LabelInEnglish": "Norwegian"
   },
   {
     "Label": [
       "w92j07",
       "Russian"
     ],
-    "Value": "ru"
+    "Value": "ru",
+    "LabelByLang": "Русский",
+    "LabelInEnglish": "Russian"
   },
   {
     "Label": [
       "2tib5m",
       "Swedish"
     ],
-    "Value": "sv"
+    "Value": "sv",
+    "LabelByLang": "Svenska",
+    "LabelInEnglish": "Swedish"
   },
   {
     "Label": [
       "ykganl",
       "Danish"
     ],
-    "Value": "da"
+    "Value": "da",
+    "LabelByLang": "Dansk",
+    "LabelInEnglish": "Danish"
   },
   {
     "Label": [
       "9tbbkt",
       "Finnish"
     ],
-    "Value": "fi"
+    "Value": "fi",
+    "LabelByLang": "Suomi",
+    "LabelInEnglish": "Finnish"
   },
   {
     "Label": [
       "vrfjnf",
       "Italian"
     ],
-    "Value": "it"
+    "Value": "it",
+    "LabelByLang": "Italiano",
+    "LabelInEnglish": "Italian"
   },
   {
     "Label": [
       "n94an4",
       "Polish"
     ],
-    "Value": "pl"
+    "Value": "pl",
+    "LabelByLang": "Polski",
+    "LabelInEnglish": "Polish"
   },
   {
     "Label": [
       "n24tes",
       "Portuguese (Brazil)"
     ],
-    "Value": "pt"
+    "Value": "pt",
+    "LabelByLang": "Português (Brasil)",
+    "LabelInEnglish": "Portuguese (Brazil)"
   },
   {
     "Label": [
       "a4jbpq",
       "Czech"
     ],
-    "Value": "cs"
+    "Value": "cs",
+    "LabelByLang": "Čeština",
+    "LabelInEnglish": "Czech"
   },
   {
     "Label": [
       "ediql2",
       "Hungarian"
     ],
-    "Value": "hu"
+    "Value": "hu",
+    "LabelByLang": "Magyar",
+    "LabelInEnglish": "Hungarian"
   },
   {
     "Label": [
       "2lhqwp",
       "Turkish"
     ],
-    "Value": "tr"
+    "Value": "tr",
+    "LabelByLang": "Türkçe",
+    "LabelInEnglish": "Turkish"
   }
 ]

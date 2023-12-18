@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-//
+// 
 // Date: Mon, 18 Dec 2023
 // Author: LafTools Team - Ubuntu <work7z@outlook.com>
-// Description:
+// Description: 
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -19,3 +19,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package purejs
+
+// func GetPureJSFolder() string {
+// 	return "Not yet supported"
+// }
+
+func InitBeforeReadPureJS() {
+	// translation.LoadFromDir(path.Join(GetPureJSFolder(), "lang"))
+}

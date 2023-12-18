@@ -203,7 +203,7 @@ let scan = async (eachRunItem, eachLang) => {
         // sleep(1000);
         continue;
       } else {
-        console.log("continue to translate " + eachRunItem.dir);
+        // console.log("continue to translate " + eachRunItem.dir);
         previousModifiedType[keyidx] = thatFileMD5;
       }
       console.log(thatFileMD5);
