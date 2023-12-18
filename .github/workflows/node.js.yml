@@ -25,4 +25,4 @@ jobs:
       run: |
         cd sub/web
         npm i -g pnpm
-        pnpm install
+        pnpm install --no-frozen-lockfile

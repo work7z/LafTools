@@ -106,7 +106,7 @@ Note that if you prefer not to use the '&' symbol for background execution, you 
 ```bash
 cd dev/scripts/scan
 npm i -g pnpm # can skip if it's installed
-pnpm install
+pnpm install --no-frozen-lockfile
 npm run scan # start scanning files to provide translate service
 ```
 
