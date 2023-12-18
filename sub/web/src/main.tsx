@@ -52,6 +52,7 @@ import {
 } from "react-router-dom";
 ALL_NOCYCLE.store = store;
 
+
 logutils.debug("Lanuch the page...");
 
 const WrapApp = () => {

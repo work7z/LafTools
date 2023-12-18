@@ -76,6 +76,8 @@ import { TreeWrapInfo } from "../../styles/var";
 import "./index.scss";
 import DragElement from "../DragElement";
 import CodeMirror from "@uiw/react-codemirror";
+import { EditorState, EditorStateConfig, Extension } from '@codemirror/state';
+import { EditorView } from 'codemirror';
 import exportUtils from "../../utils/ExportUtils";
 // import { darcula } from "@uiw/codemirror-theme-darcula";
 // import { aura } from "@uiw/codemirror-theme-aura";
@@ -89,6 +91,7 @@ import { FN_SetTextValueFromInsideByBigTextId } from "../../sliceAction/bigtext_
 // import darcula from "@uiw/codemirror-theme-darcula";
 type GenCodeMirrorProp = {
   bigTextId: string;
+  lineWrap?: boolean;
 };
 
 export default (props: GenCodeMirrorProp) => {
@@ -145,9 +148,14 @@ export default (props: GenCodeMirrorProp) => {
       }}
       height="100%"
       value={value}
-      extensions={[javascript({ jsx: true })]}
+      extensions={[
+        javascript({ jsx: true }),
+        props.lineWrap ? EditorView.lineWrapping : null
+        // EditorState.readOnly.of(true)
+      ].filter(x => x) as any}
       theme={forgeObj.dark ? githubDark : githubLight}
-      // theme={"dark"}
+
+    // theme={"dark"}
     />
   );
 };

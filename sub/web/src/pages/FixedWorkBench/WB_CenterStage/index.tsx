@@ -128,7 +128,7 @@ export let WB_CenterStage = () => {
   } as RefAlloProp);
 
   return (
-    <div className="fixed-wb-nav-body">
+    <div className="  fixed-wb-nav-body">
       <div className="fixed-wb-nav-body-centre w-full flex">
         <FunctionalMenu
           onItemClicked={(e, isCurrentActive) => {

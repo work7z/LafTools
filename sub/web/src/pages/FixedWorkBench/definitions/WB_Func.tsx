@@ -19,8 +19,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { useHistory, useLocation } from "react-router";
-import PageUtils from "../../../utils/PageUtils";
-import QueryUtils from "../../../utils/QueryUtils";
 import qs from "querystring";
 import _ from "lodash";
 import { URL_WORKBENCH_WORKSPACE } from "../../../styles/path";
