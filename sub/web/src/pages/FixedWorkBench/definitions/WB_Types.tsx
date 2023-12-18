@@ -110,20 +110,20 @@ export const VAL_CSS_TAB_TITLE_PANEL = 30;
 export const VAL_CSS_CONTROL_PANEL = 34;
 export const VAL_CSS_MENU_TITLE_PANEL = 30;
 
-export let langList = [
-  {
-    label: "English",
-    value: "en_US",
-  },
-  {
-    label: "简体中文(Simplified Chinese)",
-    value: "zh_CN",
-  },
-  {
-    label: "繁體中文(Traditional Chinese)",
-    value: "zh_HK",
-  },
-];
+// export let langList = [
+//   {
+//     label: "English",
+//     value: "en_US",
+//   },
+//   {
+//     label: "简体中文(Simplified Chinese)",
+//     value: "zh_CN",
+//   },
+//   {
+//     label: "繁體中文(Traditional Chinese)",
+//     value: "zh_HK",
+//   },
+// ];
 export type FixedMenuItem = {
   id: string;
   intent?: string;

@@ -641,6 +641,17 @@ const LocalUserPanel: React.FC<
 };
 
 
+export let useGetI18nLangList = (): EachLang[]|undefined=>{
+  let i18nQ = apiSlice.useGeti18nConfigQuery({}, { refetchOnMountOrArgChange: true });
+  let r = QueryUtils.validateResult(i18nQ, {
+    label: Dot("kjks1", "Retrieving i18n config from local server API"),
+  });
+  if (r) {
+    return undefined;
+  }  
+  let arr: EachLang[]|undefined = i18nQ.data?.payload?.value || [];
+  return arr;
+}
 
 const LanguagePanel: React.FC<SelectPanelProps> = (props) => {
   let i18nQ = apiSlice.useGeti18nConfigQuery({}, { refetchOnMountOrArgChange: true });

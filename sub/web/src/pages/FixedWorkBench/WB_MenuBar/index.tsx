@@ -112,7 +112,7 @@ import FixedWorkBenchNotes from "../../FixedWorkBenchNotes";
 import { type } from "jquery";
 import apiSlice from "../../../slice/apiSlice";
 
-import { FixedMenuItem, langList } from "../definitions/WB_Types";
+import { FixedMenuItem, } from "../definitions/WB_Types";
 import { FixedMenuBar } from "./sub/InnerMenuBar";
 import {
   pushToWorkSpace,
@@ -120,6 +120,7 @@ import {
   useWorkSpaceListGet,
 } from "../../../common/workspace-utils";
 import AlertUtils from "../../../utils/AlertUtils";
+import { useGetI18nLangList } from "../../../business/UserAskMultipleDialogs";
 
 type PassProp = {
   leftPart?: JSX.Element;
@@ -334,7 +335,16 @@ export let WB_MenuBar = (props: PassProp) => {
       ],
     },
   ];
-
+  let p_langlist = useGetI18nLangList()
+  let langList: { label?: string, value?: string }[] = []
+  if (p_langlist) {
+    langList = p_langlist.map(x => {
+      return {
+        label: x.LabelByLang,
+        value: x.Value
+      }
+    })
+  }
   return (
     <FixedMenuBar
       requiredPageIcon
@@ -379,6 +389,7 @@ export let WB_MenuBar = (props: PassProp) => {
           </Tooltip>
 
           <Popover
+          placement="bottom-end"
             content={
               // write items for en_US, zh_CN, zh_HK
               <Menu>
@@ -388,8 +399,8 @@ export let WB_MenuBar = (props: PassProp) => {
                       text={x.label}
                       key={x.value}
                       onClick={() => {
-                        TranslationUtils.CurrentLanguage = x.value;
-                        dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(x.value));
+                        TranslationUtils.CurrentLanguage = x.value+"";
+                        dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(x.value+""));
                       }}
                       intent={
                         x.value == TranslationUtils.CurrentLanguage
@@ -410,7 +421,7 @@ export let WB_MenuBar = (props: PassProp) => {
                   : "")
               }
               usePortal={false}
-              position="bottom"
+              position="bottom-right"
             >
               <Button
                 small={false}
@@ -427,7 +438,7 @@ export let WB_MenuBar = (props: PassProp) => {
               />
             </Tooltip>
           </Popover>
-          <Tooltip
+          {/* <Tooltip
             content={Dot("Ma5mv", "Toggle the visibility of toolbar tabs")}
             position="bottom"
           >
@@ -442,7 +453,7 @@ export let WB_MenuBar = (props: PassProp) => {
                 //
               }}
             />
-          </Tooltip>
+          </Tooltip> */}
           <Tooltip
             content={Dot("iNqF1T", "Manage Cloud Account")}
             position="bottom"
@@ -453,7 +464,7 @@ export let WB_MenuBar = (props: PassProp) => {
               intent={false ? "primary" : "warning"}
               // title={Dot(`ZAKaFq`, `My Cloud Account`)}
               icon={"cloud"}
-              onClick={() => {}}
+              onClick={() => { }}
             />
           </Tooltip>
           {/* <Tooltip content={Dot("ExqvX", "Hot Keys List")} position="bottom">
