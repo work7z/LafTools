@@ -21,6 +21,11 @@
 @import '@blueprintjs/colors/lib/scss/colors';
 @import 'allotment/dist/style.css';
 
+// option:checked {
+//   background-color: -moz-html-cellhighlight !important;
+//   color: -moz-html-cellhighlighttext !important;
+// }
+
 @font-face {
   font-family: 'MyCustomFont';
   // src: url('/static/font/JetBrainsMono-Regular.woff2') format('woff2');

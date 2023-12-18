@@ -137,6 +137,12 @@ export const apiSlice = createApi({
     >({
       query: () => "/system/init/info",
     }),
+    geti18nConfig: build.query<
+      PayloadValueData<any>,
+      any
+    >({
+      query: () => "/i18n/get",
+    }),
     // visit
     getVisitAdminInitInfo: build.query<
       PayloadValueData<{ HasAdminInit: boolean; LastUpdatedTime: string }>,

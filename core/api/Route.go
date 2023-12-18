@@ -112,6 +112,7 @@ func ConfigSystemRouter(r *gin.Engine) {
 	doGET_(_visitor_can_("/node-rpc/getAllJobs"), API_Node_getAllJobs)
 	doPOST(_visitor_can_("/user/local/pw/calc"), API_USER_CalcPassword)
 	doPOST(_visitor_can_("/user/local/verify"), API_USER_VerifyUserServlet)
+	doGET_(_visitor_can_("/i18n/get"), API_Get_i18n_Lang)
 	doPOST("/user/local/new", API_USER_CreateNewAccount)
 	doPOST("/user/local/pw/reset", API_USER_ResetPasswordByOldPassword)
 	doGET_("/user/local/key/get", API_USER_GetAnyKeyByUserId)

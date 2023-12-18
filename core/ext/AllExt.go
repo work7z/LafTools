@@ -28,6 +28,7 @@ import (
 	"laftools-go/core/log"
 	"laftools-go/core/middleware"
 	"laftools-go/core/nocycle"
+	"laftools-go/core/purejs"
 	"laftools-go/core/translation"
 	"path"
 	"strconv"
@@ -73,17 +74,9 @@ type ToolSubCategory struct {
 	ChildrenSetByInit []*ToolChildrenSetByInit
 }
 
-func getPureJSFolder() string {
-	return path.Join(gutils.GetResourceNonProhibitedDir(), "purejs")
-}
-
-func initBeforeReadPureJS() {
-	translation.LoadFromDir(path.Join(getPureJSFolder(), "lang"))
-}
-
 func GetExtById(wc *context.WebContext, extId string) (*form.ExtensionVM, error) {
-	initBeforeReadPureJS()
-	var indexJSONFile = path.Join(getPureJSFolder(), "exts", extId, "index.json")
+	purejs.InitBeforeReadPureJS()
+	var indexJSONFile = path.Join(gutils.GetPureJSFolder(), "exts", extId, "index.json")
 	returnValue := &form.ExtensionVM{}
 	// read file and unmarhsla it to returnValue
 	b, er := nocycle.ReadFileAsStrWithNoTrim(indexJSONFile)
@@ -116,8 +109,8 @@ func GetExtById(wc *context.WebContext, extId string) (*form.ExtensionVM, error)
 }
 
 func GetAllCategory(wc *context.WebContext) ([]*ToolCategory, error) {
-	initBeforeReadPureJS()
-	var categoryFile = path.Join(getPureJSFolder(), "category.json")
+	purejs.InitBeforeReadPureJS()
+	var categoryFile = path.Join(gutils.GetPureJSFolder(), "category.json")
 	var returnValue []*ToolCategory = []*ToolCategory{}
 	// read file and unmarhsla it to returnValue
 	b, er := nocycle.ReadFileAsStrWithNoTrim(categoryFile)

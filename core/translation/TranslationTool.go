@@ -58,67 +58,94 @@ func TraFromWeb(lang string) *TraObject {
 
 var tmp_keyMap map[string]map[string]string = map[string]map[string]string{}
 
-func LoadFromDir(pathname string) error {
-	lock.Lock()
-	defer lock.Unlock()
+var previousLoadMap map[string]string = make(map[string]string, 1)
 
-	// TODO: in the future, we will provide more languages instead of hard code
-	// read all zh_CN.json and zh_HK.json in this directory and load them into tmp_keyMap(not replace but patch)
-	// if the key is already exist, then skip it
-	// if the key is not exist, then add it
-	// if the key is exist but the value is empty, then replace it
-	// if the key is exist but the value is not empty, then skip it
-	// if the key is not exist, then add it
-	var err error = nil
+func loadFileByLangFromDir(pathname string, lang string) error {
+	loadKey := pathname + lang
 
-	type LangIterator struct {
-		lang string
+	if _, found := previousLoadMap[loadKey]; found {
+		return nil
 	}
-	var list = []LangIterator{
-		{
-			lang: LANG_ZH_CN,
-		},
-		{
-			lang: LANG_ZH_HK,
-		},
-	}
-	for _, langIterator := range list {
-		tmpLangObj, err := nocycle.ReadJSONFile(path.Join(pathname, langIterator.lang+".json"))
-		if err != nil {
-			log.Ref().Fatal("LoadFromDir: ", err.Error())
-			return err
-		}
 
-		// append tmpZH_CN into tmp_keyMap
-		for key, value := range tmpLangObj {
-			if _, has := tmp_keyMap[langIterator.lang]; !has {
-				tmp_keyMap[langIterator.lang] = map[string]string{}
-			}
-			tmp_keyMap[langIterator.lang][key] = value
-		}
+	lockForPreloadLang.Lock()
+	defer lockForPreloadLang.Unlock()
 
-	}
+	tmpLangObj, err := nocycle.ReadJSONFile(path.Join(pathname, lang+".json"))
 	if err != nil {
 		log.Ref().Fatal("LoadFromDir: ", err.Error())
 		return err
 	}
+
+	for key, value := range tmpLangObj {
+		if _, has := tmp_keyMap[lang]; !has {
+			tmp_keyMap[lang] = map[string]string{}
+		}
+		tmp_keyMap[lang][key] = value
+	}
+
+	previousLoadMap[loadKey] = "1"
 	return nil
 }
 
-// lock for tmp_keyMap lock
-var lock = &sync.Mutex{}
+func LoadFromDir(pathname string) error {
+	lockForLoadLang.Lock()
+	defer lockForLoadLang.Unlock()
+	// do nothing here
+	return nil
+	// // TODO: in the future, we will provide more languages instead of hard code
+	// // read all zh_CN.json and zh_HK.json in this directory and load them into tmp_keyMap(not replace but patch)
+	// // if the key is already exist, then skip it
+	// // if the key is not exist, then add it
+	// // if the key is exist but the value is empty, then replace it
+	// // if the key is exist but the value is not empty, then skip it
+	// // if the key is not exist, then add it
+	// var err error = nil
+
+	// type LangIterator struct {
+	// 	lang string
+	// }
+	// var list = []LangIterator{
+	// 	{
+	// 		lang: LANG_ZH_CN,
+	// 	},
+	// 	{
+	// 		lang: LANG_ZH_HK,
+	// 	},
+	// }
+	// for _, langIterator := range list {
+	// }
+	// if err != nil {
+	// 	log.Ref().Fatal("LoadFromDir: ", err.Error())
+	// 	return err
+	// }
+	// return nil
+}
+
+// lockForLoadLang for tmp_keyMap lockForLoadLang
+var lockForLoadLang = &sync.Mutex{}
+var lockForPreloadLang = &sync.Mutex{}
 
 // SKIP_DOT
 func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
-	lock.Lock()
-	defer lock.Unlock()
+	lockForLoadLang.Lock()
+	defer lockForLoadLang.Unlock()
+	// load from files when needed
 	lang := t.lang
+
+	// preload other folders by array
+	otherFolders := []string{
+		gutils.GetPureJSLangFolder(),
+	}
+	for _, folder := range otherFolders {
+		loadFileByLangFromDir(folder, lang)
+	}
+
 	var newText = id
 	var ack bool = false
 	if lang == "" || lang == LANG_EN_US {
 		newText = enUS
 		ack = true
-	} else if lang == LANG_ZH_CN || lang == LANG_ZH_HK {
+	} else {
 		translationConfigObj := tmp_keyMap[lang]
 		if translationConfigObj == nil || nocycle.IsDevMode {
 			var err2 error = nil
@@ -148,9 +175,6 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 			log.Ref().Warning("No available text for the id " + id)
 			return enUS + "[UNTRANSLATED]"
 		}
-	} else {
-		log.Ref().Fatal("Unknown lang ", lang)
-		return "invalid config"
 	}
 
 	if !ack {

@@ -71,6 +71,13 @@ func GetResourceFormDir() string {
 func GetResourceNonProhibitedDir() string {
 	return path.Join(GetResourceDir(), "public")
 }
+
+func GetPureJSFolder() string {
+	return path.Join(GetResourceNonProhibitedDir(), "purejs")
+}
+func GetPureJSLangFolder() string {
+	return path.Join(GetPureJSFolder(), "lang")
+}
 func CleanHistoricalFilesByHour(dir string, hour int) {
 	CleanHistoricalFilesByMinute(dir, hour*60)
 }
