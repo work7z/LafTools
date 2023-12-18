@@ -118,8 +118,34 @@ import { useSearchQuery } from "../../../definitions/WB_Func";
 export default () => {
   let sq = useSearchQuery()
   let bottomId = sq.b
-  if(bottomId == 'translate'){
-    return <div>ok</div>
+  if (bottomId == 'translate') {
+    return <SysTabPane
+      crtLeftNavId="drawer"
+      leftNavList={[
+        {
+          label: Dot("kdi12", "Not yet finished"),
+          value: "drawer",
+        },
+      ]}
+      rightCtrls={
+        <Button
+          onClick={() => {
+            let dis = FN_GetDispatch();
+            dis(
+              FN_ACTION_CloseMenu_ltr({
+                menuRecordKey: "ttm",
+                menuKey: "bottom",
+              })
+            );
+          }}
+          small
+          minimal
+          rightIcon="minus"
+        ></Button>
+      }
+      children={<div>{Dot("qpDBdSWe1", "no available panel")}test</div>}
+    ></SysTabPane>
+
   }
   return (
     <SysTabPane
