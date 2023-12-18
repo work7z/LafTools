@@ -5,7 +5,6 @@ import (
 	"laftools-go/core/context"
 	"laftools-go/core/gutils"
 	"laftools-go/core/nocycle"
-	"laftools-go/core/purejs"
 	"path"
 
 	"github.com/gin-gonic/gin"
@@ -22,7 +21,7 @@ type AppI18nFormatted struct {
 }
 
 func API_Get_i18n_Lang(c *gin.Context) {
-	purejs.InitBeforeReadPureJS()
+
 	var indexJSONFile = path.Join(gutils.GetPureJSFolder(), "app-i18n.json")
 	returnValue := []AppI18nRaw{}
 	// read file and unmarhsla it to returnValue

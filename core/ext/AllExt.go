@@ -28,7 +28,6 @@ import (
 	"laftools-go/core/log"
 	"laftools-go/core/middleware"
 	"laftools-go/core/nocycle"
-	"laftools-go/core/purejs"
 	"laftools-go/core/translation"
 	"path"
 	"strconv"
@@ -75,7 +74,7 @@ type ToolSubCategory struct {
 }
 
 func GetExtById(wc *context.WebContext, extId string) (*form.ExtensionVM, error) {
-	purejs.InitBeforeReadPureJS()
+
 	var indexJSONFile = path.Join(gutils.GetPureJSFolder(), "exts", extId, "index.json")
 	returnValue := &form.ExtensionVM{}
 	// read file and unmarhsla it to returnValue
@@ -109,7 +108,7 @@ func GetExtById(wc *context.WebContext, extId string) (*form.ExtensionVM, error)
 }
 
 func GetAllCategory(wc *context.WebContext) ([]*ToolCategory, error) {
-	purejs.InitBeforeReadPureJS()
+
 	var categoryFile = path.Join(gutils.GetPureJSFolder(), "category.json")
 	var returnValue []*ToolCategory = []*ToolCategory{}
 	// read file and unmarhsla it to returnValue

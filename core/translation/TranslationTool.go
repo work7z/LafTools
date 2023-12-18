@@ -62,7 +62,9 @@ var previousLoadMap map[string]string = make(map[string]string, 1)
 
 func loadFileByLangFromDir(pathname string, lang string) error {
 	loadKey := pathname + lang
-
+	if lang == "en" || lang == "en_US" {
+		return nil
+	}
 	if _, found := previousLoadMap[loadKey]; found {
 		return nil
 	}
