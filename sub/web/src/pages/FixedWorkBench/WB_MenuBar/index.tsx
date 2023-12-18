@@ -389,7 +389,7 @@ export let WB_MenuBar = (props: PassProp) => {
           </Tooltip>
 
           <Popover
-          placement="bottom-end"
+            placement="bottom-end"
             content={
               // write items for en_US, zh_CN, zh_HK
               <Menu>
@@ -399,8 +399,15 @@ export let WB_MenuBar = (props: PassProp) => {
                       text={x.label}
                       key={x.value}
                       onClick={() => {
-                        TranslationUtils.CurrentLanguage = x.value+"";
-                        dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(x.value+""));
+                        TranslationUtils.CurrentLanguage = x.value + "";
+                        dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(x.value + ""));
+                        // AlertUtils.win_alert({
+                        //   id:"ksk12219s",
+                        //   msg: 
+                        // })
+                        AlertUtils.popMsg("success", {
+                          message: Dot("k1k239q", "Please reload page or restart app to apply this change.")
+                        })
                       }}
                       intent={
                         x.value == TranslationUtils.CurrentLanguage
