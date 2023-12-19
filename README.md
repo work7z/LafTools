@@ -95,11 +95,12 @@ cd $LAFTOOLS_ROOT/dev/scripts/scan && pnpm install
 
 # start webpack service
 npm run fe-web &
+npm run fe-css &
 npm run fe-extra &
 
 ```
 
-Note that if you prefer not to use the '&' symbol for background execution, you can alternatively run these commands in separate terminal instances. Otherwise, you'd better run above commands for fear of any misunderstanding.
+Note that if you prefer not to use the '&' symbol for background execution, you can alternatively run these commands in separate terminal instances.
 
 **Scan Part**:
 

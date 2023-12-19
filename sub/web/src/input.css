@@ -46,7 +46,7 @@ div,.fixed-wb-nav-menu{
 .full-editor-p  .cm-theme-light{
     @apply h-full;
 }
-.full-editor-p .cm-editor.cm-focused {
+.cm-editor.cm-focused {
     outline: none!important;
 }
 

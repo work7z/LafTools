@@ -58,34 +58,13 @@ import {
   TreeNode,
 } from "@blueprintjs/core";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import _ from "lodash";
-import { Dot } from "../../utils/TranslationUtils";
-import moment from "moment";
-import DateUtils from "../../utils/DateUtils";
-import { QueryStatus } from "@reduxjs/toolkit/dist/query";
-import {
-  MutationState,
-  MutationSubState,
-  QuerySubState,
-} from "@reduxjs/toolkit/dist/query/core/apiState";
-import gutils from "../../utils/GlobalUtils";
-import { UseQueryHookResult } from "@reduxjs/toolkit/dist/query/react/buildHooks";
-import { ContextMenu, Tree, TreeNodeInfo } from "@blueprintjs/core";
-import { Example, ExampleProps } from "@blueprintjs/docs-theme";
-import { TreeWrapInfo } from "../../styles/var";
 import "./index.scss";
-import DragElement from "../DragElement";
 import CodeMirror from "@uiw/react-codemirror";
-import { EditorState, EditorStateConfig, Extension } from '@codemirror/state';
 import { EditorView } from 'codemirror';
 import exportUtils from "../../utils/ExportUtils";
-// import { darcula } from "@uiw/codemirror-theme-darcula";
-// import { aura } from "@uiw/codemirror-theme-aura";
-// import { github } from "@uiw/codemirror-theme-github";
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { javascript } from "@codemirror/lang-javascript";
 import { FN_GetDispatch } from "../../nocycle";
-import BigTextSlice from "../../slice/BigTextSlice";
 import { FN_SetTextValueFromInsideByBigTextId } from "../../sliceAction/bigtext_action";
 
 // import darcula from "@uiw/codemirror-theme-darcula";
