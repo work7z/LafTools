@@ -71,6 +71,7 @@ import { FN_SetTextValueFromInsideByBigTextId } from "../../sliceAction/bigtext_
 type GenCodeMirrorProp = {
   bigTextId: string;
   lineWrap?: boolean;
+  onTextChange?:(newText?:string)=>any
 };
 
 export default (props: GenCodeMirrorProp) => {
@@ -113,6 +114,7 @@ export default (props: GenCodeMirrorProp) => {
   const onChange = React.useCallback((val, viewUpdate) => {
     console.log("val:", val);
     setValue(val);
+    props.onTextChange && props.onTextChange(val)
   }, []);
   console.log("rendering", value, verObj.ver);
   return (

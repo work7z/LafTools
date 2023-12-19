@@ -25,7 +25,7 @@ import { VAL_CSS_TAB_TITLE_PANEL } from "../../../definitions/WB_Types"
 
 type SrcTarget = 'source' | 'target'
 
-let EachTranslatorBlock = (props: { type: SrcTarget }) => {
+let EachTranslatorBlock = (props: {inputId:string, type: SrcTarget }) => {
   let isSource = props.type == 'source'
   return (
     <div className="h-full w-50p inline-block ">
@@ -53,7 +53,7 @@ let EachTranslatorBlock = (props: { type: SrcTarget }) => {
         maxHeight: `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px)`,
         // overflow:'auto'
       }}>
-        <GenCodeMirror lineWrap={true} bigTextId="ksdk1" key={''}></GenCodeMirror>
+        <GenCodeMirror lineWrap={true} bigTextId={props.inputId} key={''}></GenCodeMirror>
       </div>
     </div>
 
@@ -61,8 +61,11 @@ let EachTranslatorBlock = (props: { type: SrcTarget }) => {
 }
 
 export default () => {
+  let sessionId='nav-translator'
+  let textInputId=sessionId+'ipt';
+  let textOutputId=sessionId+'opt'
   return <div className="flex flex-row h-full w-full  overflow-auto">
-    <EachTranslatorBlock type='source'></EachTranslatorBlock>
-    <EachTranslatorBlock type='target'></EachTranslatorBlock>
+    <EachTranslatorBlock inputId={textInputId} type='source' ></EachTranslatorBlock>
+    <EachTranslatorBlock inputId={textOutputId} type='target'></EachTranslatorBlock>
   </div>
 }
