@@ -19,6 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import localforage from "localforage";
+import _ from 'lodash'
 import {
   Callout,
   PanelStack,

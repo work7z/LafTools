@@ -153,6 +153,10 @@ func ConfigSystemRouter(r *gin.Engine) {
 	doGET_("/sync/reducer/get", API_Sync_Reducer_Get)
 	doPOST("/sync/reducer/save", API_Sync_Reducer_Save)
 
+
+	// translation
+	doPOST("/translation/text", API_Translate_Text)
+
 	// static folders
 	nonPDir := gutils.GetResourceNonProhibitedDir()
 	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/public")), nonPDir)
