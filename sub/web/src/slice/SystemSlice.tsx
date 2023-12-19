@@ -225,7 +225,7 @@ let __load_language_map: { [key: string]: boolean } = {};
 export const ACTION_getLangData = (): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
     let currentLanguage = ALL_NOCYCLE.store?.getState().forge.Language;
-    debugger;
+    // debugger;
     if (
       !currentLanguage
     ) {

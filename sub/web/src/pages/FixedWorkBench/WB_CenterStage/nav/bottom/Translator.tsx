@@ -6,18 +6,21 @@ import { VAL_CSS_TAB_TITLE_PANEL } from "../../../definitions/WB_Types"
 type SrcTarget = 'source' | 'target'
 
 let EachTranslatorBlock = (props: { type: SrcTarget }) => {
+  let isSource = props.type =='source'
   return (
     <div className="h-full w-50p inline-block ">
       <div style={{
         height: VAL_CSS_TAB_TITLE_PANEL
-      }} className=" px-2 flex flex-col justify-between align-middle">
+      }} className=" px-2 flex flex-row justify-between align-middle border-b-slate-200 border-2">
         <div>
-          <Button small minimal  text={props.type == 'source' ? Dot("jJuNz", "Source Language") : Dot("TwFcr", "Target Language")}></Button>
+          <Button small minimal  text={isSource ? Dot("jJuNz", "Source Language") : Dot("TwFcr", "Target Language")}></Button>
         </div>
+        <div>{
+          isSource ? <span>left</span>:<span>right</span>}</div>
       </div>
-      <div className="w-full" style={{
-          height: `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL})`,
-          maxHeight: `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL})`,
+      <div className="w-full " style={{
+          height: `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px)`,
+          maxHeight: `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px)`,
           // overflow:'auto'
       }}>
       <GenCodeMirror lineWrap={true} bigTextId="ksdk1" key={''}></GenCodeMirror>
