@@ -76,7 +76,8 @@ import { SysTabPane } from "../../../components/SysTabPane";
 import { FN_ACTION_CloseMenu_ltr } from "../../../../../sliceAction/layout_action";
 import { useSearchQuery } from "../../../definitions/WB_Func";
 import { Dot } from "../../../../../utils/TranslationUtils";
-import Translator from './Translator'
+import MultipleSessionLeftView from '../../../../../business/MultipleSessionLeftView/index'
+import Translator from './TextTranslator'
 
 export default () => {
   let sq = useSearchQuery()
@@ -95,7 +96,8 @@ export default () => {
     minimal
     rightIcon="minus"
   ></Button>
-  // translator
+
+  // business logic ifelse
   if (bottomId == 'translate') {
     return <SysTabPane
       crtLeftNavId="drawer"
@@ -109,7 +111,8 @@ export default () => {
         fn_rightCtrl_common
       }
       children={
-        <Translator></Translator>
+        <MultipleSessionLeftView body={Translator}>
+        </MultipleSessionLeftView>
       }
     ></SysTabPane>
 

@@ -111,7 +111,7 @@ func init() {
 			log.Ref().Warn("unable to read reducer sync file: ", err)
 		} else {
 			// rename reducer sync file as *.bak
-			nocycle.RenameFile(reducerSyncFile, reducerSyncFile+".bak"+nocycle.GetRandomString(8))
+			nocycle.CopyFile(reducerSyncFile, reducerSyncFile+".bak"+nocycle.GetRandomString(8))
 			// unmarhsla str to tmpReducerValueMap
 			err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
 			if err2 != nil {

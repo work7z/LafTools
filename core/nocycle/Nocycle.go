@@ -64,6 +64,12 @@ func ReadFileAsJson(DefaultConfigFile string, crtConfig interface{}) error {
 func RenameFile(oldPath string, newPath string) error {
 	return os.Rename(oldPath, newPath)
 }
+func CopyFile(src string, dst string) error {
+	// read all content from src
+	content := ReadFileAsString(src)
+	// write content into dst
+	return WriteFileAsStr(dst, content)
+}
 func WriteFileAsStr(filename string, content string) error {
 	// firstly write to bak, then rename it to filename
 	bakFile := filename + ".bak"

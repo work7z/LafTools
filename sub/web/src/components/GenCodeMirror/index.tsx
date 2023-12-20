@@ -72,6 +72,7 @@ import { FN_SetTextValueFromInsideByBigTextId } from "../../sliceAction/bigtext_
 type GenCodeMirrorProp = {
   bigTextId: string;
   lineWrap?: boolean;
+  placeholder?:string;
   onTextChange?:(newText?:string)=>any
 };
 
@@ -124,6 +125,7 @@ export default (props: GenCodeMirrorProp) => {
       onChange={(val) => {
         onChange(val, true);
       }}
+      placeholder={props.placeholder}
       minHeight="100%"
       style={{
         height: "100%",
