@@ -64,17 +64,17 @@ import {
   VAL_CSS_MENU_TITLE_PANEL,
   VAL_CSS_TAB_TITLE_PANEL,
 } from "../../Main/definitions/WB_Types";
-import { Dot } from "../../../utils/TranslationUtils";
+import { Dot } from "../../../../../utils/TranslationUtils";
 import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
 import _ from "lodash";
-import gutils from "../../../utils/GlobalUtils";
-import AlertUtils from "../../../utils/AlertUtils";
-import DesktopUtils from "../../../utils/DesktopUtils";
-import apiSlice from "../../../reducers/apiSlice";
-import AjaxUtils from "../../../utils/AjaxUtils";
-import QueryUtils from "../../../utils/QueryUtils";
-import { useWorkSpaceListGet } from "../../../utils/WorkSpaceUtils";
+import gutils from "../../../../../utils/GlobalUtils";
+import AlertUtils from "../../../../../utils/AlertUtils";
+import DesktopUtils from "../../../../../utils/DesktopUtils";
+import apiSlice from "../../../../../reducers/apiSlice";
+import AjaxUtils from "../../../../../utils/AjaxUtils";
+import QueryUtils from "../../../../../utils/QueryUtils";
+import { useWorkSpaceListGet } from "../../../../../utils/WorkSpaceUtils";
 
 let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
   Dot("ph5jH", "Handling this part");

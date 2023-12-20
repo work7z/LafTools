@@ -66,56 +66,61 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, FN_GetDispatch, delayFN } from "../../../../../nocycle";
+import {
+  APPINFOJSON,
+  FN_GetDispatch,
+  delayFN,
+} from "../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
-import gutils from "../../../../../utils/GlobalUtils";
+import gutils from "../../../../../../../utils/GlobalUtils";
 import _ from "lodash";
 import { SysTabPane } from "../../../components/SysTabPane";
-import { FN_ACTION_CloseMenu_ltr } from "../../../../../actions/layout_action";
+import { FN_ACTION_CloseMenu_ltr } from "../../../../../../../actions/layout_action";
 import { useSearchQuery } from "../../../definitions/WB_Func";
-import { Dot } from "../../../../../utils/TranslationUtils";
-import MultipleSessionLeftView from '../../../../../containers/MultipleSessionLeftView/index'
-import Translator from './TextTranslator'
+import { Dot } from "../../../../../../../utils/TranslationUtils";
+// import MultipleSessionLeftView from "../../../containers/MultipleSessionLeftView/index";
+import Translator from "./TextTranslator";
+import MultipleSessionLeftView from "../../../../../../../containers/MultipleSessionLeftView";
 
 export default () => {
-  let sq = useSearchQuery()
-  let bottomId = sq.b
-  let fn_rightCtrl_common = <Button
-    onClick={() => {
-      let dis = FN_GetDispatch();
-      dis(
-        FN_ACTION_CloseMenu_ltr({
-          menuRecordKey: "ttm",
-          menuKey: "bottom",
-        })
-      );
-    }}
-    small
-    minimal
-    rightIcon="minus"
-  ></Button>
+  let sq = useSearchQuery();
+  let bottomId = sq.b;
+  let fn_rightCtrl_common = (
+    <Button
+      onClick={() => {
+        let dis = FN_GetDispatch();
+        dis(
+          FN_ACTION_CloseMenu_ltr({
+            menuRecordKey: "ttm",
+            menuKey: "bottom",
+          })
+        );
+      }}
+      small
+      minimal
+      rightIcon="minus"
+    ></Button>
+  );
 
   // business logic ifelse
-  if (bottomId == 'translate') {
-    return <SysTabPane
-      crtLeftNavId="drawer"
-      leftNavList={[
-        {
-          label: Dot("qQmBr", "Text Translation"),
-          value: "text-translation",
-        },
-      ]}
-      rightCtrls={
-        fn_rightCtrl_common
-      }
-      children={
-        <MultipleSessionLeftView body={Translator}>
-        </MultipleSessionLeftView>
-      }
-    ></SysTabPane>
-
+  if (bottomId == "translate") {
+    return (
+      <SysTabPane
+        crtLeftNavId="drawer"
+        leftNavList={[
+          {
+            label: Dot("qQmBr", "Text Translation"),
+            value: "text-translation",
+          },
+        ]}
+        rightCtrls={fn_rightCtrl_common}
+        children={
+          <MultipleSessionLeftView body={Translator}></MultipleSessionLeftView>
+        }
+      ></SysTabPane>
+    );
   }
   return (
     <SysTabPane
@@ -126,9 +131,7 @@ export default () => {
           value: "drawer",
         },
       ]}
-      rightCtrls={
-        fn_rightCtrl_common
-      }
+      rightCtrls={fn_rightCtrl_common}
       children={<div>{Dot("qpDBSWe1", "no available panel")}test</div>}
     ></SysTabPane>
   );

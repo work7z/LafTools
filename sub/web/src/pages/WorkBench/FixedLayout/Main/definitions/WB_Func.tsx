@@ -21,7 +21,7 @@
 import { useHistory, useLocation } from "react-router";
 import qs from "querystring";
 import _ from "lodash";
-import { URL_WORKBENCH_WORKSPACE } from "../../../styles/path";
+import { URL_WORKBENCH_WORKSPACE } from "../../../../../styles/path";
 import { useParams } from "react-router-dom";
 
 type PageQueryType = {

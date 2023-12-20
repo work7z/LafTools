@@ -18,25 +18,11 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
-import testReducer, { pong, testSliceActions } from "./reducers/testSlice";
-
-import { store, RootState } from "./store/index";
 import exportUtils from "./utils/ExportUtils";
-import { logutils } from "./utils/LogUtils";
 import { HotkeysProvider, HotkeysTarget2 } from "@blueprintjs/core";
-import {
-  withRouter,
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  Redirect,
-} from "react-router-dom";
-import Welcome from "./pages/Welcome";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import RouteComponent from "./Route";
 import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
@@ -46,11 +32,9 @@ import SystemAlertOrPrompt from "./SystemAlertOrPrompt";
 import PageUtils from "./utils/PageUtils";
 import AuthHookUtils from "./utils/AuthHookUtils";
 import InitUtils from "./utils/InitUtils";
-import _ from "lodash";
 import { FN_GetDispatch, IsDevMode, getIconPngFile } from "./nocycle";
 import systemSlice from "./reducers/SystemSlice";
 import forgeSlice from "./reducers/ForgeSlice";
-import { isDarkTheme } from "@blueprintjs/core/lib/esm/common/utils";
 import { Dot } from "./utils/TranslationUtils";
 
 function App() {

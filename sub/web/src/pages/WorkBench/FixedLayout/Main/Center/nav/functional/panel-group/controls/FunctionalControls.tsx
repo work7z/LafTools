@@ -71,15 +71,15 @@ import {
   FN_GetDispatch,
   FN_GetState,
   delayFN,
-} from "../../../../../../../nocycle";
+} from "../../../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
-import gutils from "../../../../../../../utils/GlobalUtils";
-import { logutils } from "../../../../../../../utils/LogUtils";
+import gutils from "../../../../../../../../../utils/GlobalUtils";
+import { logutils } from "../../../../../../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../../../../../styles/routeMem";
-import statusSlice from "../../../../../../../reducers/StatusSlice";
+import RouteMem from "../../../../../../../../../styles/routeMem";
+import statusSlice from "../../../../../../../../../reducers/StatusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   withRouter,
@@ -90,36 +90,31 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-import PageUtils from "../../../../../../../utils/PageUtils";
+import PageUtils from "../../../../../../../../../utils/PageUtils";
 import TranslationUtils, {
   Dot,
-} from "../../../../../../../utils/TranslationUtils";
+} from "../../../../../../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
-import exportUtils from "../../../../../../../utils/ExportUtils";
+import exportUtils from "../../../../../../../../../utils/ExportUtils";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../../../../../../reducers/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../../../../../../reducers/SystemSlice";
+} from "../../../../../../../../../reducers/ForgeSlice";
+import { ACTION_callRefreshAll } from "../../../../../../../../../reducers/SystemSlice";
 import {
   ID_FILES,
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
-} from "../../../../../../../styles/path";
-import FixedWorkBenchTool from "../../../../../../FixedWorkBenchTool";
-import FixedWorkBenchFiles from "../../../../../../FixedWorkBenchFiles";
-
-import FixedWorkBenchHistory from "../../../../../../FixedWorkBenchHistory";
-import FixedWorkBenchNotes from "../../../../../../FixedWorkBenchNotes";
+} from "../../../../../../../../../styles/path";
 import { type } from "jquery";
-import apiSlice from "../../../../../../../reducers/apiSlice";
+import apiSlice from "../../../../../../../../../reducers/apiSlice";
 
-import layoutSlice from "../../../../../../../reducers/LayoutSlice";
+import layoutSlice from "../../../../../../../../../reducers/LayoutSlice";
 import {
   FN_ACTION_CloseMenu_ltr,
   FN_ACTION_OpenMenu_ltr,
-} from "../../../../../../../actions/layout_action";
+} from "../../../../../../../../../actions/layout_action";
 
 export let FN_SHOW_LTR_MENU = (menuKey: string) => {
   let dis = FN_GetDispatch();

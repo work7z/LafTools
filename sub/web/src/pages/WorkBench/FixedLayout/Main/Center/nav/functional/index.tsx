@@ -66,15 +66,15 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../../../nocycle";
+import { APPINFOJSON, delayFN } from "../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
-import gutils from "../../../../../utils/GlobalUtils";
-import { logutils } from "../../../../../utils/LogUtils";
+import gutils from "../../../../../../../utils/GlobalUtils";
+import { logutils } from "../../../../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../../../styles/routeMem";
-import statusSlice from "../../../../../reducers/StatusSlice";
+import RouteMem from "../../../../../../../styles/routeMem";
+import statusSlice from "../../../../../../../reducers/StatusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   withRouter,
@@ -86,32 +86,29 @@ import {
   Redirect,
   useLocation,
 } from "react-router-dom";
-import PageUtils from "../../../../../utils/PageUtils";
-import TranslationUtils, { Dot } from "../../../../../utils/TranslationUtils";
+import PageUtils from "../../../../../../../utils/PageUtils";
+import TranslationUtils, {
+  Dot,
+} from "../../../../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
-import exportUtils from "../../../../../utils/ExportUtils";
+import exportUtils from "../../../../../../../utils/ExportUtils";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../../../../reducers/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../../../../reducers/SystemSlice";
+} from "../../../../../../../reducers/ForgeSlice";
+import { ACTION_callRefreshAll } from "../../../../../../../reducers/SystemSlice";
 import {
   ID_FILES,
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
-} from "../../../../../styles/path";
-import FixedWorkBenchTool from "../../../../FixedWorkBenchTool";
-import FixedWorkBenchFiles from "../../../../FixedWorkBenchFiles";
-
-import FixedWorkBenchHistory from "../../../../FixedWorkBenchHistory";
-import FixedWorkBenchNotes from "../../../../FixedWorkBenchNotes";
+} from "../../../../../../../styles/path";
 import { type } from "jquery";
-import apiSlice from "../../../../../reducers/apiSlice";
+import apiSlice from "../../../../../../../reducers/apiSlice";
 import { SysTabPane } from "../../../components/SysTabPane";
 import { EachTabPanelProp, TabNavProp } from "../../../definitions/WB_Types";
 import { useLeftTabsList } from "../../../definitions/WB_Common";
-import layoutSlice from "../../../../../reducers/LayoutSlice";
+import layoutSlice from "../../../../../../../reducers/LayoutSlice";
 import GenTabs from "../../../components/GenVerticalTabs";
 
 export let FunctionalMenu = (props: TabNavProp) => {

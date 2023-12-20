@@ -70,15 +70,15 @@ import ALL_NOCYCLE, {
   APPINFOJSON,
   FN_GetDispatch,
   delayFN,
-} from "../../nocycle";
+} from "../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
-import gutils from "../../utils/GlobalUtils";
-import { logutils } from "../../utils/LogUtils";
+import gutils from "../../../../utils/GlobalUtils";
+import { logutils } from "../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../styles/routeMem";
-import statusSlice from "../../reducers/StatusSlice";
+import RouteMem from "../../../../styles/routeMem";
+import statusSlice from "../../../../reducers/StatusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   withRouter,
@@ -90,28 +90,20 @@ import {
   Redirect,
   useParams,
 } from "react-router-dom";
-import PageUtils from "../../utils/PageUtils";
-import TranslationUtils, { Dot } from "../../utils/TranslationUtils";
+import PageUtils from "../../../../utils/PageUtils";
+import TranslationUtils, { Dot } from "../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
-import exportUtils from "../../utils/ExportUtils";
+import exportUtils from "../../../../utils/ExportUtils";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../reducers/ForgeSlice";
-import systemSlice, { ACTION_callRefreshAll } from "../../reducers/SystemSlice";
-import {
-  ID_FILES,
-  ID_HISTORY as ID_MANUAL,
-  ID_NOTES,
-  ID_TOOLS,
-} from "../../styles/path";
-import FixedWorkBenchTool from "../FixedWorkBenchTool";
-import FixedWorkBenchFiles from "../FixedWorkBenchFiles";
+} from "../../../../reducers/ForgeSlice";
+import systemSlice, {
+  ACTION_callRefreshAll,
+} from "../../../../reducers/SystemSlice";
 
-import FixedWorkBenchHistory from "../FixedWorkBenchHistory";
-import FixedWorkBenchNotes from "../FixedWorkBenchNotes";
 import { type } from "jquery";
-import apiSlice from "../../reducers/apiSlice";
+import apiSlice from "../../../../reducers/apiSlice";
 import { SysTabPane } from "./components/SysTabPane";
 import GenTabs from "./components/GenVerticalTabs";
 import { useLeftTabsList } from "./definitions/WB_Common";
@@ -128,16 +120,15 @@ import { WB_ControllerBar as WB_ControllBar } from "./Control";
 import { WB_MenuBar as WB_MenuBar } from "./Menu";
 import { WB_CenterStage as WB_CenterStage } from "./Center";
 import "./index.scss";
-import QueryUtils from "../../utils/QueryUtils";
-import AlertUtils from "../../utils/AlertUtils";
-import Blink from "../../components/Blink";
-import SyncStateUtils from "../../utils/SyncStateUtils";
+import QueryUtils from "../../../../utils/QueryUtils";
+import AlertUtils from "../../../../utils/AlertUtils";
+import Blink from "../../../../components/Blink";
+import SyncStateUtils from "../../../../utils/SyncStateUtils";
 import {
   getWorkspaceIdFromPath,
   setupWorkspaceData,
   useReadCurrentWorkspaceId,
-} from "../../utils/WorkSpaceUtils";
-
+} from "../../../../utils/WorkSpaceUtils";
 
 export default () => {
   const workspaceId = getWorkspaceIdFromPath();

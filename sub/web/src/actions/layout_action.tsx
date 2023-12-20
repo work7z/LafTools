@@ -21,7 +21,8 @@
 import _ from "lodash";
 import { FN_GetState } from "../nocycle";
 import layoutSlice from "../reducers/LayoutSlice";
-import { REF_mainstage } from "../pages/FixedWorkBench/WB_CenterStage/sub/CenterFirstLayer";
+// import { REF_mainstage } from "../pages/WorkBench/FixedLayout/Main/WB_CenterStage/sub/CenterFirstLayer";
+import { REF_mainstage } from "../pages/WorkBench/FixedLayout/Main/Center/sub/CenterFirstLayer";
 
 type MenuOpenCloseOper = {
   menuRecordKey: string;

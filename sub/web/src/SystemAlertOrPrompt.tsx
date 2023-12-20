@@ -64,7 +64,6 @@ import {
 } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 
-import Setup from "./pages/Setup";
 import $ from "jquery";
 import _ from "lodash";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";

@@ -59,15 +59,15 @@ import {
   Menu,
   MenuDivider,
 } from "@blueprintjs/core";
-import { APPINFOJSON, delayFN } from "../../../../nocycle";
+import { APPINFOJSON, delayFN } from "../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
-import gutils from "../../../../utils/GlobalUtils";
-import { logutils } from "../../../../utils/LogUtils";
+import gutils from "../../../../../../utils/GlobalUtils";
+import { logutils } from "../../../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../../styles/routeMem";
-import statusSlice from "../../../../reducers/StatusSlice";
+import RouteMem from "../../../../../../styles/routeMem";
+import statusSlice from "../../../../../../reducers/StatusSlice";
 import {
   withRouter,
   BrowserRouter as Router,
@@ -79,11 +79,11 @@ import {
 } from "react-router-dom";
 import "allotment/dist/style.css";
 import { Allotment, AllotmentHandle } from "allotment";
-import exportUtils from "../../../../utils/ExportUtils";
+import exportUtils from "../../../../../../utils/ExportUtils";
 import { FunctionalMenu } from "../nav/functional";
 import { SidebarMenu } from "../nav/sidebar/Biz_SidebarMenu";
 import BottomNavView from "../nav/bottom";
-import layoutSlice from "../../../../reducers/LayoutSlice";
+import layoutSlice from "../../../../../../reducers/LayoutSlice";
 import { InnerCenterView } from "./CenterSecondaryLayer";
 const snapMin = 100;
 
@@ -234,7 +234,6 @@ export let MainStage = (props: { className: string }) => {
           minSize={snapMin}
         >
           <BottomNavView />
-          
         </Allotment.Pane>
       </Allotment>
     </div>

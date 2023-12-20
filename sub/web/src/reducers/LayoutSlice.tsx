@@ -24,7 +24,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import CacheUtils from "../utils/CacheUtils";
 import _, { initial } from "lodash";
 import { logutils } from "../utils/LogUtils";
-import { EachTab } from "../pages/FixedWorkBench/components/GenHorizontalTab";
+import { EachTab } from "../pages/WorkBench/FixedLayout/Main/components/GenHorizontalTab";
 import SyncStateUtils from "../utils/SyncStateUtils";
 
 let preferredSizeForLeftRightMenu = 280; //0.13 * window.innerWidth;

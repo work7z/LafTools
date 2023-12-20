@@ -38,7 +38,7 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 import Welcome from "./pages/Welcome";
-import WorkBench from "./pages/FixedWorkBench";
+import WorkBench from "./pages/WorkBench/FixedLayout/Main";
 import $ from "jquery";
 import _ from "lodash";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";

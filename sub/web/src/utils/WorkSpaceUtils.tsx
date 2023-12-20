@@ -20,7 +20,7 @@
 
 import { useParams } from "react-router-dom";
 import _ from "lodash";
-import { EachWorkSpace } from "../pages/FixedWorkBench/definitions/WB_Types";
+import { EachWorkSpace } from "../pages/WorkBench/FixedLayout/Main/definitions/WB_Types";
 import apiSlice from "../reducers/apiSlice";
 import QueryUtils from "./QueryUtils";
 import { Dot } from "./TranslationUtils";

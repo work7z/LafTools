@@ -75,7 +75,7 @@ import { Example, ExampleProps } from "@blueprintjs/docs-theme";
 import { TreeWrapInfo } from "../../styles/var";
 import MottoLine from "../MottoLine";
 import apiSlice from "../../reducers/apiSlice";
-import { useSearchQuery } from "../../pages/FixedWorkBench/definitions/WB_Func";
+import { useSearchQuery } from "../../pages/WorkBench/FixedLayout/Main/definitions/WB_Func";
 
 let { cloneDeep } = _;
 

@@ -84,7 +84,7 @@ import FormSelect from "../../components/FormSelect";
 import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 import PageUtils from "../../utils/PageUtils";
-import { EachLang } from "../../pages/FixedWorkBench/definitions/all-types";
+import { EachLang } from "../../pages/WorkBench/FixedLayout/Main/definitions/all-types";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;
@@ -103,7 +103,7 @@ export interface MultistepDialogExampleState {
 
 const NAV_POSITIONS = ["left", "top", "right"];
 
-interface PassProps { }
+interface PassProps {}
 
 const STEP_LANG = "LANG";
 const STEP_THEME = "THEME";
@@ -163,107 +163,107 @@ export default (props: PassProps) => {
     title?: React.ReactNode;
     fn?: () => any;
   }[] = [
-      {
-        id: "select",
-        panel: (
-          <LanguagePanel
-            onChange={(e) => {
-              let newValue = e.currentTarget.value;
-              logutils.debug("newvalue", newValue);
-              dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(newValue));
-            }}
-            selectedValue={forgeObj?.lang || LANG_EN_US}
-          />
-        ),
-        title: Dot(`TD7DA`, "Languages"),
+    {
+      id: "select",
+      panel: (
+        <LanguagePanel
+          onChange={(e) => {
+            let newValue = e.currentTarget.value;
+            logutils.debug("newvalue", newValue);
+            dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(newValue));
+          }}
+          selectedValue={forgeObj?.lang || LANG_EN_US}
+        />
+      ),
+      title: Dot(`TD7DA`, "Languages"),
+    },
+    {
+      id: "dark_or_light",
+      panel: (
+        <DarkOrLightPanel
+          onChange={(e) => {
+            let newValue = e.currentTarget.value;
+            logutils.debug("newvalue", newValue);
+            dis(
+              forgeSlice.actions.updateDarkMode({
+                isDark: newValue == "dark" ? true : false,
+              })
+            );
+          }}
+          selectedValue={forgeObj?.dark ? "dark" : "light"}
+        />
+      ),
+      title: Dot(`-Rj3y`, "Themes"),
+    },
+    {
+      id: "setup_adminstrator",
+      panel: (
+        <AdministratorSetupPanel
+          stepIdx={stepIdx}
+          loadLeftPage={loadLeftPage}
+          admin_localAccountObject={admin_localAccountObject.current}
+          selectedValue="0"
+          onChange={(v) => v}
+        />
+      ),
+      title: Dot(`dxLQq`, "Root Permission"),
+      fn: async () => {
+        if (!admin_localAccountObject.current.NeedAdminInit) {
+          return;
+        }
+        onloadLeftPage(
+          Dot("44Ntw-", "Handling the create administrator operation.")
+        );
+        await ACTION_createAdminAccount({
+          localAccountObject: admin_localAccountObject.current,
+        })(dis);
+        onloadLeftPage(
+          Dot(
+            "vaP0v",
+            "Your local admin account has been successfully created."
+          )
+        );
+        localAccountObject.current.username =
+          admin_localAccountObject.current.username;
+        localAccountObject.current.password =
+          admin_localAccountObject.current.password;
+        onloadLeftPage("");
+        // return {
+        //   nextIdx:
+        //     _.findIndex(
+        //       dialogArr,
+        //       (x) => x.id == "sign_in_or_create_local_user"
+        //     ) + 1,
+        // };
       },
-      {
-        id: "dark_or_light",
-        panel: (
-          <DarkOrLightPanel
-            onChange={(e) => {
-              let newValue = e.currentTarget.value;
-              logutils.debug("newvalue", newValue);
-              dis(
-                forgeSlice.actions.updateDarkMode({
-                  isDark: newValue == "dark" ? true : false,
-                })
-              );
-            }}
-            selectedValue={forgeObj?.dark ? "dark" : "light"}
-          />
-        ),
-        title: Dot(`-Rj3y`, "Themes"),
+    },
+    {
+      id: "sign_in_or_create_local_user",
+      panel: (
+        <LocalUserPanel
+          localAccountObject={localAccountObject.current}
+          loadLeftPage={loadLeftPage}
+          selectedValue="0"
+          onChange={(v) => v}
+        />
+      ),
+      title: Dot(`-Jx4J`, "Local Account"),
+      fn: async () => {
+        onloadLeftPage(Dot("7bXS-", "Handling the sign-in operation."));
+        await ACTION_signInLocalAccount({
+          localAccountObject: localAccountObject.current,
+        })(dis);
+        onloadLeftPage(
+          Dot("y3qjd", "Your local account has been successfully verified.")
+        );
       },
-      {
-        id: "setup_adminstrator",
-        panel: (
-          <AdministratorSetupPanel
-            stepIdx={stepIdx}
-            loadLeftPage={loadLeftPage}
-            admin_localAccountObject={admin_localAccountObject.current}
-            selectedValue="0"
-            onChange={(v) => v}
-          />
-        ),
-        title: Dot(`dxLQq`, "Root Permission"),
-        fn: async () => {
-          if (!admin_localAccountObject.current.NeedAdminInit) {
-            return;
-          }
-          onloadLeftPage(
-            Dot("44Ntw-", "Handling the create administrator operation.")
-          );
-          await ACTION_createAdminAccount({
-            localAccountObject: admin_localAccountObject.current,
-          })(dis);
-          onloadLeftPage(
-            Dot(
-              "vaP0v",
-              "Your local admin account has been successfully created."
-            )
-          );
-          localAccountObject.current.username =
-            admin_localAccountObject.current.username;
-          localAccountObject.current.password =
-            admin_localAccountObject.current.password;
-          onloadLeftPage("");
-          // return {
-          //   nextIdx:
-          //     _.findIndex(
-          //       dialogArr,
-          //       (x) => x.id == "sign_in_or_create_local_user"
-          //     ) + 1,
-          // };
-        },
-      },
-      {
-        id: "sign_in_or_create_local_user",
-        panel: (
-          <LocalUserPanel
-            localAccountObject={localAccountObject.current}
-            loadLeftPage={loadLeftPage}
-            selectedValue="0"
-            onChange={(v) => v}
-          />
-        ),
-        title: Dot(`-Jx4J`, "Local Account"),
-        fn: async () => {
-          onloadLeftPage(Dot("7bXS-", "Handling the sign-in operation."));
-          await ACTION_signInLocalAccount({
-            localAccountObject: localAccountObject.current,
-          })(dis);
-          onloadLeftPage(
-            Dot("y3qjd", "Your local account has been successfully verified.")
-          );
-        },
-      },
-      {
-        id: "confirm",
-        panel: <ConfirmPanel selectedValue={"OK"} />,
-        title: Dot("MrgmU", "Confirm"),
-      },
-    ];
+    },
+    {
+      id: "confirm",
+      panel: <ConfirmPanel selectedValue={"OK"} />,
+      title: Dot("MrgmU", "Confirm"),
+    },
+  ];
   // const IDX_LOCAL_ACCOUNT_SIGN_IDX = _.findIndex(
   //   dialogArr,
   //   (x) => x.id == "sign_in_or_create_local_user"
@@ -285,7 +285,7 @@ export default (props: PassProps) => {
       className={"bp3-dark"}
       icon="info-sign"
       navigationPosition={"left"}
-      onClose={() => { }}
+      onClose={() => {}}
       backButtonProps={{
         text: Dot("5ZBYR", "Back"),
         onClick() {
@@ -313,8 +313,8 @@ export default (props: PassProps) => {
             } catch (e) {
               onloadLeftPage(
                 Dot("tIy3Q", "Encountered an error") +
-                ": " +
-                gutils.getErrMsg(e as Error)
+                  ": " +
+                  gutils.getErrMsg(e as Error)
               );
               onNextLoad(false);
             } finally {
@@ -640,40 +640,41 @@ const LocalUserPanel: React.FC<
   );
 };
 
-
-export let useGetI18nLangList = (): EachLang[]|undefined=>{
-  let i18nQ = apiSlice.useGeti18nConfigQuery({}, { refetchOnMountOrArgChange: true });
+export let useGetI18nLangList = (): EachLang[] | undefined => {
+  let i18nQ = apiSlice.useGeti18nConfigQuery(
+    {},
+    { refetchOnMountOrArgChange: true }
+  );
   let r = QueryUtils.validateResult(i18nQ, {
     label: Dot("kjks1", "Retrieving i18n config from local server API"),
   });
   if (r) {
     return undefined;
-  }  
-  let arr: EachLang[]|undefined = i18nQ.data?.payload?.value || [];
+  }
+  let arr: EachLang[] | undefined = i18nQ.data?.payload?.value || [];
   return arr;
-}
+};
 
 const LanguagePanel: React.FC<SelectPanelProps> = (props) => {
-  let i18nQ = apiSlice.useGeti18nConfigQuery({}, { refetchOnMountOrArgChange: true });
+  let i18nQ = apiSlice.useGeti18nConfigQuery(
+    {},
+    { refetchOnMountOrArgChange: true }
+  );
   let r = QueryUtils.validateResult(i18nQ, {
     label: Dot("LM715", "Retrieving i18n config from local server API"),
   });
   if (r) {
     return r;
   }
-  let arr: EachLang[]|undefined = i18nQ.data?.payload?.value || [];
+  let arr: EachLang[] | undefined = i18nQ.data?.payload?.value || [];
   return (
     <DialogBody className="docs-multistep-dialog-example-step">
       <p>{Dot("DrXAq", "Welcome to use LafTools! ")}</p>
       <p>{Dot("1YmJc", "Select one of options as your preferred language:")}</p>
       <RadioGroup onChange={props.onChange} selectedValue={props.selectedValue}>
-        {
-          arr.map(x => {
-            return (
-              <Radio label={x.LabelByLang} value={x.Value} key={x.Value} />
-            )
-          })
-        }
+        {arr.map((x) => {
+          return <Radio label={x.LabelByLang} value={x.Value} key={x.Value} />;
+        })}
         {/* <Radio label={`English`} value={LANG_EN_US} />
         <Radio label={"简体中文"} value={LANG_ZH_CN} />
         <Radio label={"繁體中文"} value={LANG_ZH_HK} /> */}
@@ -684,7 +685,7 @@ const LanguagePanel: React.FC<SelectPanelProps> = (props) => {
         <option>C</option>
       </select> */}
     </DialogBody>
-  )
+  );
 };
 
 const DarkOrLightPanel: React.FC<SelectPanelProps> = (props) => (

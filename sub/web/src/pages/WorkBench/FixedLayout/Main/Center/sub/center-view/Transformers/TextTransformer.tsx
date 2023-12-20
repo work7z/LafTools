@@ -19,25 +19,25 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Button, ButtonProps, Tooltip } from "@blueprintjs/core";
-import GenCodeMirror from "../../../../../../components/GenCodeMirror";
+import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
   VAL_CSS_TAB_TITLE_PANEL,
   VAL_CSS_CONTROL_PANEL,
-} from "../../../../definitions/WB_Types";
+} from "../../../../../Main/definitions/WB_Types";
 import { CommonPassProp } from "../transformer_types";
-import { Dot } from "../../../../../../utils/TranslationUtils";
-import { FN_GetDispatch } from "../../../../../../nocycle";
-import BigTextSlice from "../../../../../../reducers/BigTextSlice";
+import { Dot } from "../../../../../../../../utils/TranslationUtils";
+import { FN_GetDispatch } from "../../../../../../../../nocycle";
+import BigTextSlice from "../../../../../../../../reducers/BigTextSlice";
 import _ from "lodash";
-import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../actions/bigtext_action";
+import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
 import { useEffect, useState } from "react";
-import AjaxUtils from "../../../../../../utils/AjaxUtils";
-import AlertUtils from "../../../../../../utils/AlertUtils";
+import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
+import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../components/SysTabPane";
-import { CSS_TW_LAYOUT_BORDER } from "../../../../../../styles/tw";
-import exportUtils from "../../../../../../utils/ExportUtils";
-import RuntimeStatusSlice from "../../../../../../reducers/RuntimeStatusSlice";
+import { CSS_TW_LAYOUT_BORDER } from "../../../../../../../../styles/tw";
+import exportUtils from "../../../../../../../../utils/ExportUtils";
+import RuntimeStatusSlice from "../../../../../../../../reducers/RuntimeStatusSlice";
 
 let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -194,16 +194,18 @@ let useCurrentActiveStyle = (sessionId: string, panelId: string) => {
   let crt_panelId = exportUtils.useSelector((x) => {
     let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.latestViewPanelId;
     if (_.isNil(v)) {
-      v = 'N/A'
+      v = "N/A";
     }
     return {
       v: v,
     };
   }).v;
-  return crt_panelId === panelId ? {
-    zIndex: 20
-  } : {};
-}
+  return crt_panelId === panelId
+    ? {
+        zIndex: 20,
+      }
+    : {};
+};
 
 // TODO: provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
 let TextTransformerOutput = (props: CommonPassProp) => {
@@ -217,7 +219,7 @@ let TextTransformerOutput = (props: CommonPassProp) => {
       })
     );
   };
-  let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "output")
+  let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "output");
   // let h =' w-[38.2%] h-[38.2%] '
   let h = " w-[44%] h-[42%] min-w-[450px] ";
   return (
@@ -243,8 +245,8 @@ let TextTransformerOutput = (props: CommonPassProp) => {
         // zIndex: 80,
         ...(isCollapsed
           ? {
-            height: VAL_CSS_TAB_TITLE_PANEL,
-          }
+              height: VAL_CSS_TAB_TITLE_PANEL,
+            }
           : {}),
         transition: "all 0.3s",
       }}
@@ -306,7 +308,7 @@ let TextTransformerConfig = (props: CommonPassProp) => {
       })
     );
   };
-  let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "config")
+  let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "config");
   let w = "320px";
   return (
     <div
@@ -375,7 +377,7 @@ let TextTransformerConfig = (props: CommonPassProp) => {
             }}
             small
             minimal
-          // rightIcon={!isCollapsed ? "chevron-up" : "chevron-down"}
+            // rightIcon={!isCollapsed ? "chevron-up" : "chevron-down"}
           ></Button>
         }
         children={<div>this is bg</div>}

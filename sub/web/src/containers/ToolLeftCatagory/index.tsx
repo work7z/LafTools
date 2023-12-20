@@ -70,7 +70,7 @@ import apiSlice from "../../reducers/apiSlice";
 
 import { Link } from "react-router-dom";
 import PageUtils from "../../utils/PageUtils";
-import { FnPureToolDefinition } from "../../pages/FixedWorkBench/definitions/WB_Types";
+import { FnPureToolDefinition } from "../../pages/WorkBench/FixedLayout/Main/definitions/WB_Types";
 
 type PassProp = {
   allPureMenuArr: FnPureToolDefinition[];
