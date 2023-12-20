@@ -84,7 +84,7 @@ export default function configureAppStore() {
       return getDefaultMiddleware()
         .concat(apiSlice.middleware)
         .concat(alwaysHappyMiddleware)
-        .prepend(listenerfn.middleware);
+        .prepend(listenerMiddleware.middleware);
     },
     // preloadedState, // TODO: restore previous session
     enhancers: [],
