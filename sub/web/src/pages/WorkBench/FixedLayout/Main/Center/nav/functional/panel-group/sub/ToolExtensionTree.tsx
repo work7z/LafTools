@@ -114,12 +114,12 @@ import QueryUtils, {
 import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
-} from "../../../../../definitions/WB_Func";
+} from "../../../../../../../../../types/WB_Func";
 import RouteUtils from "../../../../../../../../../utils/RouteUtils";
 import ToolSlice from "../../../../../../../../../reducers/toolSlice";
 import MottoLine from "../../../../../../../../../components/MottoLine";
 import GenTree from "../../../../../../../../../components/GenTree";
-import { FnPureToolDefinition } from "../../../../../definitions/WB_Types";
+import { FnPureToolDefinition } from "../../../../../../../../../types/WB_Types";
 import WorkspaceSlice from "../../../../../../../../../reducers/workspaceSlice";
 
 export default (props: {

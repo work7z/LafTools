@@ -83,7 +83,10 @@ import {
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
 
-import { RefAlloProp, VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
+import {
+  RefAlloProp,
+  VAL_CSS_TAB_TITLE_PANEL,
+} from "../../../../../types/WB_Types";
 import { MainStage } from "./sub/CenterFirstLayer";
 import { SidebarMenu } from "./nav/sidebar/Biz_SidebarMenu";
 import { FunctionalMenu } from "./nav/functional";

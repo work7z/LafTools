@@ -104,14 +104,17 @@ import {
 } from "../../../../../../../styles/path";
 import { type } from "jquery";
 import apiSlice from "../../../../../../../reducers/apiSlice";
-import { SysTabPane } from "../../../components/SysTabPane";
-import GenTabs from "../../../components/GenVerticalTabs";
-import { EachTabPanelProp, TabNavProp } from "../../../definitions/WB_Types";
+import { SysTabPane } from "../../../../../../../components/SysTabPane";
+import GenTabs from "../../../../../../../components/GenVerticalTabs";
+import {
+  EachTabPanelProp,
+  TabNavProp,
+} from "../../../../../../../types/WB_Types";
 import { FN_ACTION_CloseMenu_ltr } from "../../../../../../../actions/layout_action";
 import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
-} from "../../../definitions/WB_Func";
+} from "../../../../../../../types/WB_Func";
 
 let RightPanelNoAvailablePanel = () => {
   let dis = exportUtils.dispatch();

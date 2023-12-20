@@ -23,7 +23,7 @@ import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
   VAL_CSS_TAB_TITLE_PANEL,
   VAL_CSS_CONTROL_PANEL,
-} from "../../../../../Main/definitions/WB_Types";
+} from "../../../../../../../../types/WB_Types";
 import { CommonPassProp } from "../transformer_types";
 import { Dot } from "../../../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
@@ -34,7 +34,7 @@ import { findLastIndex } from "lodash";
 import { useEffect, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
-import { SysTabPane } from "../../../../components/SysTabPane";
+import { SysTabPane } from "../../../../../../../../components/SysTabPane";
 import { CSS_TW_LAYOUT_BORDER } from "../../../../../../../../styles/tw";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/RuntimeStatusSlice";

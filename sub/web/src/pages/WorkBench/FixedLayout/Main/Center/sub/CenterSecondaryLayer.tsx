@@ -102,7 +102,7 @@ import {
 } from "../../../../../../styles/path";
 import { type } from "jquery";
 import apiSlice from "../../../../../../reducers/apiSlice";
-import { VAL_CSS_TAB_TITLE_PANEL } from "../../definitions/WB_Types";
+import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../types/WB_Types";
 import { FunctionalMenu } from "../nav/functional";
 import { SidebarMenu } from "../nav/sidebar/Biz_SidebarMenu";
 import Biz_DrawerMenu from "../nav/control";
@@ -112,12 +112,12 @@ import {
   FN_SHOW_LTR_MENU,
 } from "../nav/functional/panel-group/controls/FunctionalControls";
 import GenCodeMirror from "../../../../../../components/GenCodeMirror";
-import GenHorizontalTab from "../../components/GenHorizontalTab";
+import GenHorizontalTab from "../../../../../../components/GenHorizontalTab";
 import ToolCenterView from "./center-view/ToolCenterView";
 import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
-} from "../../definitions/WB_Func";
+} from "../../../../../../types/WB_Func";
 import OtherCenterView from "./center-view/OtherCenterView";
 let mappings = {
   tools: ToolCenterView,

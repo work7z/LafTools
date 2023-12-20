@@ -109,7 +109,7 @@ import {
 } from "../../../../../../../styles/path";
 import { type } from "jquery";
 import apiSlice from "../../../../../../../reducers/apiSlice";
-import { VAL_CSS_TAB_TITLE_PANEL } from "../../../definitions/WB_Types";
+import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../../types/WB_Types";
 import { FunctionalMenu } from "../../nav/functional";
 import { SidebarMenu } from "../../nav/sidebar/Biz_SidebarMenu";
 import Biz_DrawerMenu from "../../nav/control";
@@ -121,7 +121,7 @@ import {
 import GenCodeMirror from "../../../../../../../components/GenCodeMirror";
 import GenHorizontalTab, {
   EachTab,
-} from "../../../components/GenHorizontalTab";
+} from "../../../../../../../components/GenHorizontalTab";
 import WorkspaceSlice from "../../../../../../../reducers/workspaceSlice";
 import { ClosableText } from "../../../../../../../components/ClosableText";
 import TextTransformer from "./Transformers/TextTransformer";
@@ -129,7 +129,7 @@ import { CommonPassProp } from "./transformer_types";
 import {
   useMergeParamWithWorkSpace,
   useMergeParameter,
-} from "../../../definitions/WB_Func";
+} from "../../../../../../../types/WB_Func";
 import ToolInnerImplView from "./ToolInnerImplView";
 import EmptyToolMarks from "./EmptyToolMarks";
 

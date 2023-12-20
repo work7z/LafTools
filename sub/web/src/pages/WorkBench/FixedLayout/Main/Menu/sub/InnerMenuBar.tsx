@@ -20,7 +20,7 @@ import {
   FixedMenuBarProp,
   FixedMenuItem,
   VAL_CSS_MENU_TITLE_PANEL,
-} from "../../definitions/WB_Types";
+} from "../../../../../../types/WB_Types";
 import { CSS_TEXT_ANCHOR_CSS } from "../../../../../../styles/tw";
 
 export let FixedMenuBar = (props: FixedMenuBarProp) => {

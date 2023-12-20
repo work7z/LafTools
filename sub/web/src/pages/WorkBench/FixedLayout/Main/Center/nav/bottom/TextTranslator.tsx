@@ -21,7 +21,7 @@
 import { Button } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../components/GenCodeMirror";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
-import { VAL_CSS_TAB_TITLE_PANEL } from "../../../definitions/WB_Types";
+import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../../types/WB_Types";
 import { Allotment, AllotmentHandle } from "allotment";
 
 type SrcTarget = "source" | "target";

@@ -80,10 +80,10 @@ import React, {
   useMemo,
 } from "react";
 import "allotment/dist/style.css";
-import { VAL_CSS_TAB_TITLE_PANEL } from "../definitions/WB_Types";
-import { Dot } from "../../../../../utils/TranslationUtils";
-import exportUtils from "../../../../../utils/ExportUtils";
-import { CSS_TEXT_ANCHOR_CSS } from "../../../../../styles/tw";
+import { VAL_CSS_TAB_TITLE_PANEL } from "../types/WB_Types";
+import { Dot } from "../utils/TranslationUtils";
+import exportUtils from "../utils/ExportUtils";
+import { CSS_TEXT_ANCHOR_CSS } from "../styles/tw";
 
 export type EachTab = {
   id: string;

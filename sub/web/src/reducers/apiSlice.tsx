@@ -31,8 +31,8 @@ import {
   EachWorkSpace,
   FnPureToolDefinition,
   WorkSpaceStruct,
-} from "../pages/WorkBench/FixedLayout/Main/definitions/WB_Types";
-import { EachLang } from "../pages/WorkBench/FixedLayout/Main/definitions/all-types";
+} from "../types/WB_Types";
+import { EachLang } from "../types/all-types";
 
 let createNotProhibitedResources = (build, resName) => {
   return build.query({

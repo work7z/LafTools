@@ -9,6 +9,7 @@
             "Name":"Copy Static Resources",
             "Type": "CopyStatic",
             "Commands": [
+                "sh",
                 "$LAFTOOLS_ROOT/sub/web/job-syncstatic.sh"
             ]
         },
@@ -16,6 +17,7 @@
             "Name":"Run Tailwind DevTools",
             "Type": "RunCommand",
             "Commands": [
+                "sh",
                 "$LAFTOOLS_ROOT/sub/web/job-tailwind.sh"
             ]
         },
@@ -32,6 +34,7 @@
             "Name":"Add License Headers",
             "Type":"RunCommand",
             "Commands":[
+                "sh",
                 "$LAFTOOLS_ROOT/pipeline/dev-add-license-to-each-file.sh"
             ]
         },
@@ -39,6 +42,7 @@
             "Name": "Build Purejs Project",
             "Type":"RunCommand",
             "Commands": [
+                "sh",
                 "$LAFTOOLS_ROOT/sub/purejs/pipeline/job-sync-build-tsx.sh"
             ]
         }

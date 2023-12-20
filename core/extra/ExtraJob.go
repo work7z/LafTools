@@ -47,13 +47,14 @@ type Config struct {
 	Jobs      []Job    `json:"Jobs"`
 }
 
-var DefaultConfigFile string
+var ConfigFilePath string
 
 func HandleExtraAction(cmd *cobra.Command, args []string) {
 	env.ENV_ShouldPrintLogAsJSON = false
 	log.Ref().Debug("calling extra action")
-	log.Ref().Debug("DefaultConfigFile: ", DefaultConfigFile)
-	lckFile := DefaultConfigFile + ".lck"
+	ConfigFilePath = strings.ReplaceAll(ConfigFilePath, "$LAFTOOLS_ROOT", env.GetEnvValueForLafToolsRoot())
+	log.Ref().Debug("DefaultConfigFile: ", ConfigFilePath)
+	lckFile := ConfigFilePath + ".lck"
 	log.Ref().Debug("lckFile: ", lckFile)
 	// write uuid into lckFile, and keep that uuid. once the uuid is not matched with lckFile, then exit
 	crtUUID := gutils.UUID()
@@ -80,7 +81,7 @@ func HandleExtraAction(cmd *cobra.Command, args []string) {
 
 	crtConfig := Config{}
 	// unmarshal DefaultConfigFile into crtConfig
-	e := nocycle.ReadFileAsJson(DefaultConfigFile, &crtConfig)
+	e := nocycle.ReadFileAsJson(ConfigFilePath, &crtConfig)
 	if e != nil {
 		log.Ref().Debug("read config file failed, exit")
 		nocycle.Exit(0)

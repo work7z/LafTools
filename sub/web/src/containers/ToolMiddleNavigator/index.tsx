@@ -83,7 +83,7 @@ import RouteUtils from "../../utils/RouteUtils";
 import PageUtils from "../../utils/PageUtils";
 import forgeSlice from "../../reducers/ForgeSlice";
 import ExtHookUtils from "../../utils/ExtensionHookUtils";
-import { PassToolViewerProp } from "../../pages/WorkBench/FixedLayout/Main/definitions/WB_Types";
+import { PassToolViewerProp } from "../../types/WB_Types";
 
 type PassProp = PassToolViewerProp;
 

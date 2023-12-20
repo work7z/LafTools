@@ -84,7 +84,7 @@ import FormSelect from "../../components/FormSelect";
 import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 import PageUtils from "../../utils/PageUtils";
-import { EachLang } from "../../pages/WorkBench/FixedLayout/Main/definitions/all-types";
+import { EachLang } from "../../types/all-types";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;

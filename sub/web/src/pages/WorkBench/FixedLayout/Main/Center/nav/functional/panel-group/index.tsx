@@ -106,8 +106,8 @@ import { type } from "jquery";
 import apiSlice from "../../../../../../../../reducers/apiSlice";
 
 import RightCtrlForFunctionalMenu from "./controls/FunctionalControls";
-import { MenuDropDownListItem } from "../../../../definitions/WB_Types";
-import { SysTabPane } from "../../../../components/SysTabPane";
+import { MenuDropDownListItem } from "../../../../../../../../types/WB_Types";
+import { SysTabPane } from "../../../../../../../../components/SysTabPane";
 
 export default (props: {
   loading: boolean;

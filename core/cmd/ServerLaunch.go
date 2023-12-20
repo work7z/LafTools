@@ -111,7 +111,7 @@ func init() {
 	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsHomeConfigDir, "home", env.ENV_defaultAppConfigDir, "config home path")
 
 	// init run extra
-	devExtraCmd.PersistentFlags().StringVar(&extra.DefaultConfigFile, "config", "", "config file")
+	devExtraCmd.PersistentFlags().StringVar(&extra.ConfigFilePath, "config", "", "config file")
 
 	// init middleware
 	middleware.InitCMD(middlewareCmd)

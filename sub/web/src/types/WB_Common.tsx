@@ -66,15 +66,15 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../../../nocycle";
+import { APPINFOJSON, delayFN } from "../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
-import gutils from "../../../../../utils/GlobalUtils";
-import { logutils } from "../../../../../utils/LogUtils";
+import gutils from "../utils/GlobalUtils";
+import { logutils } from "../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../../../styles/routeMem";
-import statusSlice from "../../../../../reducers/StatusSlice";
+import RouteMem from "../styles/routeMem";
+import statusSlice from "../reducers/StatusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   withRouter,
@@ -85,28 +85,28 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-import PageUtils from "../../../../../utils/PageUtils";
-import TranslationUtils, { Dot } from "../../../../../utils/TranslationUtils";
+import PageUtils from "../utils/PageUtils";
+import TranslationUtils, { Dot } from "../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
-import exportUtils from "../../../../../utils/ExportUtils";
+import exportUtils from "../utils/ExportUtils";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../../../../reducers/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../../../../reducers/SystemSlice";
+} from "../reducers/ForgeSlice";
+import { ACTION_callRefreshAll } from "../reducers/SystemSlice";
 import {
   ID_FILES,
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
   URL_WORKBENCH_WORKSPACE,
-} from "../../../../../styles/path";
+} from "../styles/path";
 import { type } from "jquery";
-import apiSlice from "../../../../../reducers/apiSlice";
+import apiSlice from "../reducers/apiSlice";
 
 import { EachTabPanelProp } from "./WB_Types";
-import { InnerToolPanel } from "../Center/nav/functional/panel-group/panels/ToolPanel";
-import { InnerFilePanel } from "../Center/nav/functional/panel-group/panels/FilePanel";
+import { InnerToolPanel } from "../pages/WorkBench/FixedLayout/Main/Center/nav/functional/panel-group/panels/ToolPanel";
+import { InnerFilePanel } from "../pages/WorkBench/FixedLayout/Main/Center/nav/functional/panel-group/panels/FilePanel";
 import {
   useMergeParamWithWorkSpace,
   useMergeParameter,

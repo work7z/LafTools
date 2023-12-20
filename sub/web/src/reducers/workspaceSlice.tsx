@@ -21,7 +21,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { EachTab } from "../pages/WorkBench/FixedLayout/Main/components/GenHorizontalTab";
+import { EachTab } from "../components/GenHorizontalTab";
 import _ from "lodash";
 import SyncStateUtils from "../utils/SyncStateUtils";
 import { stat } from "fs";

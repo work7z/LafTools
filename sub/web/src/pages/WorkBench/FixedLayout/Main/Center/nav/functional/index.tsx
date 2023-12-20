@@ -105,11 +105,14 @@ import {
 } from "../../../../../../../styles/path";
 import { type } from "jquery";
 import apiSlice from "../../../../../../../reducers/apiSlice";
-import { SysTabPane } from "../../../components/SysTabPane";
-import { EachTabPanelProp, TabNavProp } from "../../../definitions/WB_Types";
-import { useLeftTabsList } from "../../../definitions/WB_Common";
+import { SysTabPane } from "../../../../../../../components/SysTabPane";
+import {
+  EachTabPanelProp,
+  TabNavProp,
+} from "../../../../../../../types/WB_Types";
+import { useLeftTabsList } from "../../../../../../../types/WB_Common";
 import layoutSlice from "../../../../../../../reducers/LayoutSlice";
-import GenTabs from "../../../components/GenVerticalTabs";
+import GenTabs from "../../../../../../../components/GenVerticalTabs";
 
 export let FunctionalMenu = (props: TabNavProp) => {
   let leftTabs: EachTabPanelProp[] = useLeftTabsList();

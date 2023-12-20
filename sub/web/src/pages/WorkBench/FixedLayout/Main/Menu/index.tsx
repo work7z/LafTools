@@ -107,7 +107,7 @@ import {
 import { type } from "jquery";
 import apiSlice from "../../../../../reducers/apiSlice";
 
-import { FixedMenuItem, } from "../definitions/WB_Types";
+import { FixedMenuItem } from "../../../../../types/WB_Types";
 import { FixedMenuBar } from "./sub/InnerMenuBar";
 import {
   pushToWorkSpace,
@@ -330,15 +330,15 @@ export let WB_MenuBar = (props: PassProp) => {
       ],
     },
   ];
-  let p_langlist = useGetI18nLangList()
-  let langList: { label?: string, value?: string }[] = []
+  let p_langlist = useGetI18nLangList();
+  let langList: { label?: string; value?: string }[] = [];
   if (p_langlist) {
-    langList = p_langlist.map(x => {
+    langList = p_langlist.map((x) => {
       return {
         label: x.LabelByLang,
-        value: x.Value
-      }
-    })
+        value: x.Value,
+      };
+    });
   }
   return (
     <FixedMenuBar
@@ -398,11 +398,14 @@ export let WB_MenuBar = (props: PassProp) => {
                         dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(x.value + ""));
                         // AlertUtils.win_alert({
                         //   id:"ksk12219s",
-                        //   msg: 
+                        //   msg:
                         // })
                         AlertUtils.popMsg("success", {
-                          message: Dot("k1k239q", "Please reload page or restart app to apply this change.")
-                        })
+                          message: Dot(
+                            "k1k239q",
+                            "Please reload page or restart app to apply this change."
+                          ),
+                        });
                       }}
                       intent={
                         x.value == TranslationUtils.CurrentLanguage
@@ -466,7 +469,7 @@ export let WB_MenuBar = (props: PassProp) => {
               intent={false ? "primary" : "warning"}
               // title={Dot(`ZAKaFq`, `My Cloud Account`)}
               icon={"cloud"}
-              onClick={() => { }}
+              onClick={() => {}}
             />
           </Tooltip>
           {/* <Tooltip content={Dot("ExqvX", "Hot Keys List")} position="bottom">

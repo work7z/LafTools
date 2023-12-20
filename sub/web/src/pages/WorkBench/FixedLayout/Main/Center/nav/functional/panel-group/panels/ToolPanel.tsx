@@ -113,7 +113,7 @@ import QueryUtils, {
 import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
-} from "../../../../../definitions/WB_Func";
+} from "../../../../../../../../../types/WB_Func";
 import ToolExtensionTree from "../sub/ToolExtensionTree";
 
 export let InnerToolPanel = (): any => {
