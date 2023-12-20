@@ -26,13 +26,13 @@ import {
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
 import { listenerMiddleware } from "./listenerMiddleware";
-import rootObj from "./slice";
+import rootObj from "./reducers";
 import thunk from "redux-thunk";
-import apiSlice from "./slice/apiSlice";
+import apiSlice from "./reducers/apiSlice";
 import nocycle from "./nocycle";
 import _ from "lodash";
 import { logutils } from "./utils/LogUtils";
-import { saveIntoForge2 } from "./slice/ForgeSlice";
+import { saveIntoForge2 } from "./reducers/ForgeSlice";
 import CacheUtils from "./utils/CacheUtils";
 import SyncStateUtils from "./utils/SyncStateUtils";
 

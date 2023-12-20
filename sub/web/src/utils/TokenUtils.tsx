@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import _ from "lodash";
-import UserSlice from "../slice/userSlice";
+import UserSlice from "../reducers/userSlice";
 import ALL_NOCYCLE from "../nocycle";
 const SYSTEM_INIT_TOKEN_LOCAL_KEY = "LOCAL_KEY_SYSTEM_INIT";
 const USER_TOKEN_LOCAL_KEY = "LOCAL_KEY_USER_TOKEN";

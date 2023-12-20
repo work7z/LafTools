@@ -35,12 +35,12 @@ import PageUtils from "./utils/PageUtils.tsx";
 import InitUtils from "./utils/InitUtils";
 import ALL_NOCYCLE from "./nocycle";
 import exportUtils from "./utils/ExportUtils";
-import fn_tailwindcss from "./init/hmr-reload-resources.tsx";
-import forgeSlice from "./slice/ForgeSlice.tsx";
+import fn_tailwindcss from "./hmr/hmr-reload-resources.tsx";
+import forgeSlice from "./reducers/ForgeSlice.tsx";
 import {
   useReadCurrentWorkspaceId,
   useReadCurrentWorkspaceItem,
-} from "./common/workspace-utils.tsx";
+} from "./utils/WorkSpaceUtils.tsx";
 import {
   withRouter,
   BrowserRouter as Router,

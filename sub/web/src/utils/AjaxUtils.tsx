@@ -29,7 +29,7 @@ import devJson from "../static/dev.json";
 import { AnyMapType } from "../styles/var";
 import TokenUtils from "./TokenUtils";
 import IDUtils from "./IDUtils";
-import { useReadCurrentWorkspaceId } from "../common/workspace-utils";
+import { useReadCurrentWorkspaceId } from "./WorkSpaceUtils";
 import ALL_NOCYCLE from "../nocycle";
 
 interface CommonRequest {

@@ -4,11 +4,43 @@
   "description": "<p align=\"center\"> <img width=\"100\" src=\"https://github.com/work7z/LafTools/blob/dev/sub/web/public/static/icon.png?raw=true\"></img> <br> <span style=\"font-size:20px\">LafTools - The next generation of a versatile toolbox designed for programmers </span> <br><br> </p>",
   "scripts": {
     "fe-web": "sh ./sub/web/start.sh",
-    "fe-css":"$LAFTOOLS_ROOT/sub/web/job-tailwind.sh",
-    "fe-extra":"go run ./core/CodeGenApplication.go dev-extra --config $LAFTOOLS_ROOT/dev/config/laf-tools-dev.json",
+    "fe-css": "(cd ./sub/web && sh ./job-tailwind.sh)",
+    "fe-extra": "go run ./core/CodeGenApplication.go dev-extra --config $LAFTOOLS_ROOT/dev/config/laf-tools-dev.json",
     "fe-build": "(cd ./sub/web && npm run build)"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "import-sort-cli": "^6.0.0",
+    "import-sort-style-renke": "^6.0.0",
+    "prettier": "^3.1.1"
+  },
+  "dependencies": {
+    "lint-staged": "^15.2.0"
+  },
+  "lint-staged": {
+    "sub/web/src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "sub/web/src/**/*.{css,scss,less}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "all"
+  },
+  "importSort": {
+    ".js, .jsx": {
+      "style": "renke"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }

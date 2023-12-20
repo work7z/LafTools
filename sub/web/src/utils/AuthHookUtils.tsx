@@ -29,8 +29,8 @@ import devJson from "../static/dev.json";
 import { AnyMapType } from "../styles/var";
 import TokenUtils from "./TokenUtils";
 import exportUtils from "./ExportUtils";
-import UserSlice, { UserConfig } from "../slice/userSlice";
-import apiSlice from "../slice/apiSlice";
+import UserSlice, { UserConfig } from "../reducers/userSlice";
+import apiSlice from "../reducers/apiSlice";
 import * as vars from "../styles/var";
 import { useEffect } from "react";
 

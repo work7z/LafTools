@@ -21,7 +21,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import testReducer, { pong, testSliceActions } from "./slice/testSlice";
+import testReducer, { pong, testSliceActions } from "./reducers/testSlice";
 import { store, RootState } from "./store/index";
 import exportUtils from "./utils/ExportUtils";
 import { logutils } from "./utils/LogUtils";
@@ -64,23 +64,22 @@ import {
 } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 
-import Setup from "./pages/Setup";
 import $ from "jquery";
 import _ from "lodash";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";
-import InitSystemEnv from "./pages/InitSystemEnv";
-import UserAskMultipleDialogs from "./business/UserAskMultipleDialogs";
+import InitSystemEnv from "./pages/Loading";
+import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
 import gutils from "./utils/GlobalUtils";
 import TranslationUtils, { Dot } from "./utils/TranslationUtils";
 import PageUtils from "./utils/PageUtils";
 import { URL_WORKBENCH } from "./styles/path";
 import RouteUtils from "./utils/RouteUtils";
 import InitRouteHistory from "./InitRouteHistory";
-import { DialogStoreMap } from "./slice/DialogSlice";
+import { DialogStoreMap } from "./reducers/DialogSlice";
 import { Z_INDEX_CONFIRM, Z_INDEX_DIALOG } from "./styles/config";
 import { FN_testDialogHere } from "./styles/dialog";
 import AlertUtils from "./utils/AlertUtils";
-import { PrompType } from "./slice/StatusSlice";
+import { PrompType } from "./reducers/StatusSlice";
 
 let EachPrompt = (props: { x: PrompType }): any => {
   let { x } = props;

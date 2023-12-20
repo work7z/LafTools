@@ -66,7 +66,7 @@ import exportUtils from "../../utils/ExportUtils";
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { javascript } from "@codemirror/lang-javascript";
 import { FN_GetDispatch } from "../../nocycle";
-import { FN_SetTextValueFromInsideByBigTextId } from "../../sliceAction/bigtext_action";
+import { FN_SetTextValueFromInsideByBigTextId } from "../../actions/bigtext_action";
 
 // import darcula from "@uiw/codemirror-theme-darcula";
 type GenCodeMirrorProp = {
