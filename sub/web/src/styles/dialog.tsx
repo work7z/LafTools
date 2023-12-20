@@ -55,25 +55,25 @@ import exportUtils from "../utils/ExportUtils";
 import { LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "../styles/var";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../slice/ForgeSlice";
+} from "../reducers/ForgeSlice";
 import TakeUtils from "../utils/TakeUtils";
 import { logutils } from "../utils/LogUtils";
 import {
   ACTION_getLangData,
   ACTION_initAllDataAtOnce,
-} from "../slice/SystemSlice";
+} from "../reducers/SystemSlice";
 import LinkHref from "../components/LinkHref";
 import PasswordInput from "../components/PasswordInput";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   ACTION_createLocalAccount,
   ACTION_signInLocalAccount,
-} from "../slice/userSlice";
+} from "../reducers/userSlice";
 import AlertUtils from "../utils/AlertUtils";
-import { PutNewDialogReqProp, TOOL_PutNewDialog } from "../slice/DialogSlice";
+import { PutNewDialogReqProp, TOOL_PutNewDialog } from "../reducers/DialogSlice";
 import ALL_NOCYCLE, { FN_GetDispatch } from "../nocycle";
-import { UserPassCreateProp } from "../business/UserAskMultipleDialogs";
-import apiSlice from "../slice/apiSlice";
+import { UserPassCreateProp } from "../containers/UserAskMultipleDialogs";
+import apiSlice from "../reducers/apiSlice";
 import MutationResLabel from "../components/MutationResLabel";
 
 export const FN_testDialogHere = () => {

@@ -74,7 +74,7 @@ import { ContextMenu, Tree, TreeNodeInfo } from "@blueprintjs/core";
 import { Example, ExampleProps } from "@blueprintjs/docs-theme";
 import { TreeWrapInfo } from "../../styles/var";
 import MottoLine from "../MottoLine";
-import apiSlice from "../../slice/apiSlice";
+import apiSlice from "../../reducers/apiSlice";
 import { useSearchQuery } from "../../pages/FixedWorkBench/definitions/WB_Func";
 
 let { cloneDeep } = _;

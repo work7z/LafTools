@@ -62,7 +62,7 @@ import { useParams } from "react-router";
 import _ from "lodash";
 import { Dot } from "./TranslationUtils";
 import gutils from "./GlobalUtils";
-import { ExtensionInfo } from "../slice/apiSlice";
+import { ExtensionInfo } from "../reducers/apiSlice";
 import ExtSlice, {
   ExtensionSessionParameter,
   ExtensionStatusData,
@@ -70,7 +70,7 @@ import ExtSlice, {
   SYNC_KEY_INPUT_REGION_DEFAULT,
   SYNC_KEY_OUTPUT_REGION_DEFAULT,
   fn_renew_createDefaultExtStatusData,
-} from "../slice/ExtSlice";
+} from "../reducers/ExtSlice";
 import exportUtils from "./ExportUtils";
 import { shallowEqual } from "react-redux";
 import {
@@ -78,10 +78,10 @@ import {
   ExtVMContext,
   PropExtSessionContext,
   PropExtVMContext,
-} from "../business/ExtensionSingleView";
+} from "../containers/ExtensionSingleView";
 import { logutils } from "./LogUtils";
 import { FN_GetState } from "../nocycle";
-import BigTextSlice from "../slice/BigTextSlice";
+import BigTextSlice from "../reducers/BigTextSlice";
 
 const ExtHookUtils = {
   useExtStatusData(): ExtensionStatusData | null {

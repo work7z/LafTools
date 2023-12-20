@@ -59,7 +59,7 @@ import {
 } from "@blueprintjs/core";
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
-import apiSlice from "../../slice/apiSlice";
+import apiSlice from "../../reducers/apiSlice";
 import { Dot } from "../../utils/TranslationUtils";
 import { useParams } from "react-router";
 import { ToolParamType } from "../../styles/var";

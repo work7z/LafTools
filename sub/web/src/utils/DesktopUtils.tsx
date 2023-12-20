@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { FN_GetDispatch } from "../nocycle";
-import apiSlice from "../slice/apiSlice";
+import apiSlice from "../reducers/apiSlice";
 import AjaxUtils from "./AjaxUtils";
 import AlertUtils from "./AlertUtils";
 import QueryUtils, { getAjaxValueRes } from "./QueryUtils";

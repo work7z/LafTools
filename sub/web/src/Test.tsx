@@ -21,7 +21,7 @@
 import React from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import testReducer, { pong, testSliceActions } from "./slice/testSlice";
+import testReducer, { pong, testSliceActions } from "./reducers/testSlice";
 
 import { store, RootState } from "./store/index";
 import exportUtils from "./utils/ExportUtils";

@@ -61,9 +61,9 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { Dot } from "../../utils/TranslationUtils";
 import exportUtils from "../../utils/ExportUtils";
-import forgeSlice from "../../slice/ForgeSlice";
+import forgeSlice from "../../reducers/ForgeSlice";
 import { LafTools_DOC_HOME } from "../../styles/constants";
-import systemSlice, { ACTION_initAllDataAtOnce } from "../../slice/SystemSlice";
+import systemSlice, { ACTION_initAllDataAtOnce } from "../../reducers/SystemSlice";
 
 interface PassProp {}
 

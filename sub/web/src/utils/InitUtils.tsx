@@ -22,8 +22,8 @@ import _ from "lodash";
 import gutils from "./GlobalUtils";
 import staticDevJson from "../static/dev.json";
 import PageUtils from "./PageUtils";
-import { P_ACTION_readForgeFromServerViaAPI } from "../slice/ForgeSlice";
-import { P_ACTION_createSystemWS } from "../slice/wsSlice";
+import { P_ACTION_readForgeFromServerViaAPI } from "../reducers/ForgeSlice";
+import { P_ACTION_createSystemWS } from "../reducers/wsSlice";
 
 // binding updates from all pages
 // defien a struct for required slice parts, read function, write function, onNewDataComing

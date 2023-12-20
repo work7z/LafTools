@@ -21,7 +21,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import testReducer, { pong, testSliceActions } from "./slice/testSlice";
+import testReducer, { pong, testSliceActions } from "./reducers/testSlice";
 
 import { store, RootState } from "./store/index";
 import exportUtils from "./utils/ExportUtils";
@@ -39,17 +39,17 @@ import {
 import Welcome from "./pages/Welcome";
 
 import RouteComponent from "./Route";
-import UserAskMultipleDialogs from "./business/UserAskMultipleDialogs";
+import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";
-import InitSystemEnv from "./pages/InitSystemEnv";
+import InitSystemEnv from "./pages/Loading";
 import SystemAlertOrPrompt from "./SystemAlertOrPrompt";
 import PageUtils from "./utils/PageUtils";
 import AuthHookUtils from "./utils/AuthHookUtils";
 import InitUtils from "./utils/InitUtils";
 import _ from "lodash";
 import { FN_GetDispatch, IsDevMode, getIconPngFile } from "./nocycle";
-import systemSlice from "./slice/SystemSlice";
-import forgeSlice from "./slice/ForgeSlice";
+import systemSlice from "./reducers/SystemSlice";
+import forgeSlice from "./reducers/ForgeSlice";
 import { isDarkTheme } from "@blueprintjs/core/lib/esm/common/utils";
 import { Dot } from "./utils/TranslationUtils";
 

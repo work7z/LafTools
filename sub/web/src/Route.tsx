@@ -21,7 +21,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import testReducer, { pong, testSliceActions } from "./slice/testSlice";
+import testReducer, { pong, testSliceActions } from "./reducers/testSlice";
 import { store, RootState } from "./store/index";
 import exportUtils from "./utils/ExportUtils";
 import { logutils } from "./utils/LogUtils";
@@ -39,12 +39,11 @@ import {
 } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import WorkBench from "./pages/FixedWorkBench";
-import Setup from "./pages/Setup";
 import $ from "jquery";
 import _ from "lodash";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";
-import InitSystemEnv from "./pages/InitSystemEnv";
-import UserAskMultipleDialogs from "./business/UserAskMultipleDialogs";
+import InitSystemEnv from "./pages/Loading";
+import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
 import gutils from "./utils/GlobalUtils";
 import TranslationUtils from "./utils/TranslationUtils";
 import PageUtils from "./utils/PageUtils";
@@ -52,10 +51,10 @@ import { URL_ENTRY, URL_WORKBENCH } from "./styles/path";
 import RouteUtils from "./utils/RouteUtils";
 import InitRouteHistory from "./InitRouteHistory";
 import SystemAlertOrPrompt from "./SystemAlertOrPrompt";
-import Entry from "./pages/Entry";
-import FixedPreWorkBench from "./pages/FixedPreWorkBench";
+import Entry from "./pages/Redirect";
+import FixedPreWorkBench from "./pages/WorkBench/FixedLayout/Initial/index";
 import ALL_NOCYCLE from "./nocycle";
-import { useReadCurrentWorkspaceId } from "./common/workspace-utils";
+import { useReadCurrentWorkspaceId } from "./utils/WorkSpaceUtils";
 
 gutils.ExposureIt("$", $);
 gutils.ExposureIt("gutils", gutils);
