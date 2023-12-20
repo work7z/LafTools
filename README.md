@@ -82,11 +82,9 @@ To debug Go service, we have configured it in VSCode, you can just follow below 
 **Web Part**:
 
 ```bash
-# using pnpm instead of npm
-npm i -g pnpm
-# install ts library
-npm i -g ts-node
-npm i -g typescript
+# install required global library
+npm i -g pnpm ts-node typescript  
+
 # install project deps
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/sub/web && pnpm install
@@ -96,15 +94,18 @@ cd $LAFTOOLS_ROOT/dev/scripts/scan && pnpm install
 # terminate previous processes if you're on Windows OS.
 npm run kill-prev
 
+# run web service on [Terminal - 1]
+npm run fe-web 
 
-# start webpack service
-npm run fe-web &
-npm run fe-css &
-npm run fe-extra &
+# run CSS processor on [Terminal - 2]
+npm run fe-css 
+
+# run extra jobs on [Terminal - 3]
+npm run fe-extra 
 
 ```
 
-Note that if you prefer not to use the '&' symbol for background execution, you can alternatively run these commands in separate terminal instances.
+Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
 
 **Scan Part**:
 
