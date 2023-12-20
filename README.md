@@ -91,8 +91,8 @@ cd $LAFTOOLS_ROOT/sub/web && pnpm install
 cd $LAFTOOLS_ROOT/sub/purejs && pnpm install
 cd $LAFTOOLS_ROOT/dev/scripts/scan && pnpm install
 
-# terminate previous processes if you're on Windows OS.
-npm run kill-prev
+# terminate previous processes if you're on Windows OS. (It's normal if your terminal is also terminated, just open new terminal to be continue)
+npm run kill-prev 
 
 # run web service on [Terminal - 1]
 npm run fe-web 
