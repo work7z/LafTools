@@ -93,6 +93,9 @@ cd $LAFTOOLS_ROOT/sub/web && pnpm install
 cd $LAFTOOLS_ROOT/sub/purejs && pnpm install
 cd $LAFTOOLS_ROOT/dev/scripts/scan && pnpm install
 
+# terminate previous processes if you're on Windows OS.
+npm run kill-prev
+
 
 # start webpack service
 npm run fe-web &
