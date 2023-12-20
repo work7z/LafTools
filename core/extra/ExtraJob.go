@@ -24,7 +24,7 @@ import (
 	"bufio"
 	"fmt"
 	"laftools-go/core/env"
-	"laftools-go/core/gutils"
+	"laftools-go/core/global"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
 	"os"
@@ -50,14 +50,14 @@ type Config struct {
 var ConfigFilePath string
 
 func HandleExtraAction(cmd *cobra.Command, args []string) {
-	env.ENV_ShouldPrintLogAsJSON = false
+	env.ShouldPrintLogAsJSON = false
 	log.Ref().Debug("calling extra action")
 	ConfigFilePath = strings.ReplaceAll(ConfigFilePath, "$LAFTOOLS_ROOT", env.GetEnvValueForLafToolsRoot())
 	log.Ref().Debug("DefaultConfigFile: ", ConfigFilePath)
 	lckFile := ConfigFilePath + ".lck"
 	log.Ref().Debug("lckFile: ", lckFile)
 	// write uuid into lckFile, and keep that uuid. once the uuid is not matched with lckFile, then exit
-	crtUUID := gutils.UUID()
+	crtUUID := global.UUID()
 	log.Ref().Debug("crtUUID: ", crtUUID)
 	nocycle.WriteStrIntoFile(lckFile, crtUUID)
 	go func() {

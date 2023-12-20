@@ -9,7 +9,7 @@
       "type": "go",
       "request": "launch",
       "mode": "auto",
-      "program": "${workspaceFolder}/core/CodeGenApplication.go",
+      "program": "${workspaceFolder}/core/LafToolsApplication.go",
       "console": "integratedTerminal",
       "args": ["server"],
       "internalConsoleOptions": "neverOpen"

@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Tue, 19 Sep 2023
+// Date: Wed, 20 Sep 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
@@ -18,41 +18,45 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package menu
+package handlers
 
 import (
-	"encoding/json"
-	"io/ioutil"
 	"laftools-go/core/global"
-	"laftools-go/core/log"
-	"path/filepath"
+	"path"
+	"testing"
+
+	"github.com/dablelv/cyan/file"
 )
 
-type Menu struct {
-	Root     bool   `json:"root"`
-	Label    string `json:"label"`
-	Icon     string `json:"icon"`
-	Id       string `json:"id"`
-	Children []Menu `json:"children"`
+func TestSystemRouter(t *testing.T) {
+	// r := gin.Default()
+	// ConfigSystemRouter(r)
+	// // t.Log("handlers ", r.Handlers)
+	// for _, info := range r.Routes() {
+	// 	t.Log("info path:", info.Path)
+	// 	if strings.Index(info.Path, url.CONFIG_URL_PUBLIC_BASE_PREFIX) == 0 {
+	// 		t.Log("URL Matched.")
+	// 	} else {
+	// 		if info.Path != "/"  {
+	// 			t.Fatal("Invalid path, that does not start with expectation. The path " + info.Path + " should start with " + url.CONFIG_URL_PUBLIC_BASE_PREFIX)
+	// 		}
+	// 	}
+	// }
 }
 
-var previousMenu *Menu = nil
-
-func GetMenuArr() (*Menu, error) {
-	if previousMenu != nil {
-		return previousMenu, nil
+func TestStaticNonProhibitedAccessible(t *testing.T) {
+	filesList := []string{
+		"menu.json",
 	}
-	menuJSONStrB, err := ioutil.ReadFile(filepath.Join(global.GetResourceNonProhibitedDir(), "menu.json"))
-	if err != nil {
-		return nil, err
-	} else {
-		var item Menu
-		err = json.Unmarshal(menuJSONStrB, &item)
+
+	for i := range filesList {
+		exist, err := file.IsExist(path.Join(global.GetResourceNonProhibitedDir(), filesList[i]))
 		if err != nil {
-			return nil, err
+			t.Error(err)
+			return
 		}
-		log.Ref().Info("Menu: ", item)
-		previousMenu = &item
-		return &item, nil
+		if !exist {
+			t.Error("file not found under " + global.GetResourceNonProhibitedDir())
+		}
 	}
 }

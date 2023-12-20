@@ -22,7 +22,7 @@ package config
 
 import (
 	"encoding/json"
-	"laftools-go/core/gutils"
+	"laftools-go/core/global"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
 	"path"
@@ -183,14 +183,14 @@ func shortenUserId(userId string) string {
 	return userId[0:8]
 }
 func GetDefaultWorkSpaceDir(userId string) string {
-	return nocycle.MkdirFileWithStr(path.Join(gutils.GetAppDataDirectory(), shortenUserId(userId), "workspace", "laf-tools"))
+	return nocycle.MkdirFileWithStr(path.Join(global.GetAppDataDirectory(), shortenUserId(userId), "workspace", "laf-tools"))
 }
 
 func GetTargetUserOwnFolder(userId string) string {
-	userMyFolder := nocycle.MkdirFileWithStr(path.Join(gutils.GetAppHomeConfigDirectory(), "users", userId))
+	userMyFolder := nocycle.MkdirFileWithStr(path.Join(global.GetAppHomeConfigDirectory(), "users", userId))
 	return userMyFolder
 }
 
 func getPIDConfigFile() string {
-	return (path.Join(gutils.GetAppHomeConfigDirectory(), "pid.json"))
+	return (path.Join(global.GetAppHomeConfigDirectory(), "pid.json"))
 }

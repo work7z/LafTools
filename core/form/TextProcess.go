@@ -70,7 +70,7 @@ type TextRequest struct {
 // }
 
 // func (tpf *TextProcessForm) LoadJSONConfig() {
-// 	fullPath := filepath.Join(gutils.GetResourceFormDir(), tpf.Id+".json")
+// 	fullPath := filepath.Join(global.GetResourceFormDir(), tpf.Id+".json")
 // 	config, err := nocycle.ReadFileAsStr(fullPath)
 // 	if err != nil {
 // 		log.Ref().Fatal(err)
@@ -78,7 +78,7 @@ type TextRequest struct {
 // 		tpf.LoaderConfigJSON = FormatContentWithinForm(tpf, config)
 // 	}
 // 	// javascript
-// 	fullPathForJS := filepath.Join(gutils.GetResourceFormDir(), tpf.Id+".js")
+// 	fullPathForJS := filepath.Join(global.GetResourceFormDir(), tpf.Id+".js")
 // 	if nocycle.IsFileExist(fullPathForJS) {
 // 		var a1, err = nocycle.ReadFileAsStr(fullPathForJS)
 // 		if err != nil {

@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Sun, 22 Oct 2023
+// Date: Mon, 18 Sep 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
@@ -18,22 +18,45 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package config
+package handlers
 
 import (
-	"laftools-go/core/global"
-	"laftools-go/core/nocycle"
-	"path"
+	"laftools-go/core/ws"
+
+	"github.com/gin-gonic/gin"
 )
 
-func GetUserConfigFile() string {
-	return (path.Join(global.GetAppHomeConfigDirectory(), "users.json"))
+func TEST_PingAPI(c *gin.Context) {
+	OKLa(c, gin.H{
+		"msg": "You guess what? Hey, pong.",
+	})
 }
-func GetAppTempUploadDir() string {
-	return nocycle.MkdirFileWithStr((path.Join(global.GetAppHomeTempDirectory(), "upload")))
+func TEST_PingWithErrAPI(c *gin.Context) {
+	ErrLa2(c, "cannot handle it")
 }
-func GetUserPWDir() string {
-	a := path.Join(global.GetAppHomeConfigDirectory(), "pw")
-	_ = nocycle.MkdirFile(a)
-	return a
+
+var upGrader = ws.GetUpgrader()
+
+func TEST_PingWSAPI(c *gin.Context) {
+	// upgrade GET request to websocket protocol
+	ws, err := upGrader.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		return
+	}
+	defer ws.Close()
+	for {
+		//读取ws中的数据
+		mt, message, err := ws.ReadMessage()
+		if err != nil {
+			break
+		}
+		if string(message) == "ping" {
+			message = []byte("pongWS")
+		}
+		//写入ws数据
+		err = ws.WriteMessage(mt, message)
+		if err != nil {
+			break
+		}
+	}
 }

@@ -6,7 +6,7 @@
     "kill-prev":"taskkill /F /IM bash.exe",
     "fe-web": "sh ./sub/web/start.sh",
     "fe-css": "(cd ./sub/web && sh ./job-tailwind.sh)",
-    "fe-extra": "go run ./core/CodeGenApplication.go dev-extra --config $LAFTOOLS_ROOT/dev/config/laf-tools-dev.json",
+    "fe-extra": "go run ./core/LafToolsApplication.go dev-extra --config $LAFTOOLS_ROOT/dev/config/laf-tools-dev.json",
     "fe-build": "(cd ./sub/web && npm run build)"
   },
   "keywords": [],

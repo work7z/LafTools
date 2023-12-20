@@ -22,8 +22,8 @@ package ext
 
 import (
 	"laftools-go/core/context"
+	"laftools-go/core/fn/tools"
 	"laftools-go/core/form"
-	"laftools-go/core/middleware"
 	"testing"
 )
 
@@ -31,7 +31,7 @@ func TestFuncMapForEachExtVM(t *testing.T) {
 	ctx := context.WebContext{}
 	// allExtVM := GetAllExtVM(&ctx)
 	// check the FuncMap output
-	allMap := middleware.GetAllFNMap(&ctx)
+	allMap := tools.GetAllFNMap(&ctx)
 
 	for funcName, funcValue := range allMap {
 		res := funcValue.ConvertText(form.ValueReq{

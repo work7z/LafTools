@@ -1,7 +1,7 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Sun, 22 Oct 2023
-// Author: LafTools Team <work7z@outlook.com>
+// Date: Wed, 20 Dec 2023
+// Author: LafTools Team - Ubuntu <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
@@ -18,22 +18,39 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package config
+package handlers
 
 import (
-	"laftools-go/core/global"
-	"laftools-go/core/nocycle"
-	"path"
+	gt "github.com/bas24/googletranslatefree"
+	"github.com/gin-gonic/gin"
 )
 
-func GetUserConfigFile() string {
-	return (path.Join(global.GetAppHomeConfigDirectory(), "users.json"))
+type TextTranslationReqForm struct {
+	SourceLang string
+	TargetLang string
+	Type       string
+	Text       string
 }
-func GetAppTempUploadDir() string {
-	return nocycle.MkdirFileWithStr((path.Join(global.GetAppHomeTempDirectory(), "upload")))
+
+func Translate_Text(c *gin.Context) {
+	form := TextTranslationReqForm{}
+	e := c.BindJSON(&form)
+	if e != nil {
+		ErrLa(c, e)
+	}
+
+	OKLa(c, DoValueRes(1))
 }
-func GetUserPWDir() string {
-	a := path.Join(global.GetAppHomeConfigDirectory(), "pw")
-	_ = nocycle.MkdirFile(a)
-	return a
+
+func translateText(text, sourceLang string, targetLang string) (string, error) {
+	if targetLang == "en_US" {
+		targetLang = "en"
+	}
+	if targetLang == "zh_CN" {
+		targetLang = "zh-cn"
+	}
+	if targetLang == "zh_HK" {
+		targetLang = "zh-hk"
+	}
+	return gt.Translate(text, sourceLang, targetLang)
 }

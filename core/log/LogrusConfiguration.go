@@ -31,7 +31,7 @@ import (
 var InternalLog = logrus.New()
 
 func Ref() *logrus.Logger {
-	shouldJSON := env.ENV_ShouldPrintLogAsJSON
+	shouldJSON := env.ShouldPrintLogAsJSON
 	if shouldJSON {
 		// InternalLog.as JSON instead of the default ASCII formatter.
 		InternalLog.SetFormatter(&logrus.JSONFormatter{})

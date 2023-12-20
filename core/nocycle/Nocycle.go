@@ -36,7 +36,7 @@ import (
 )
 
 var UNIT_TEST_SERVER_MODE bool
-var HTTP_PORT_ONCE_SET int
+var FINALIZED_HTTP_PORT int
 var NodeWSToken = GetRandomString(32)
 
 func ReadFileAsString(filename string) string {

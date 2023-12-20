@@ -21,12 +21,12 @@
 package config
 
 import (
-	"laftools-go/core/gutils"
+	"laftools-go/core/global"
 	"laftools-go/core/nocycle"
 )
 
 func SaveCurrentSystemInfo(systemInfo *SystemInfo) {
-	str, err := gutils.ToJSONStr(systemInfo)
+	str, err := global.ToJSONStr(systemInfo)
 	nocycle.ShouldNoErr(err, "x2k1394s")
-	_ = gutils.WriteIntoFileAtomic(GetCurrentSystemInfoFile(), str)
+	_ = global.WriteIntoFileAtomic(GetCurrentSystemInfoFile(), str)
 }

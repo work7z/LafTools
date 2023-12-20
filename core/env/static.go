@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Sun, 22 Oct 2023
+// Date: Sat, 18 Nov 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
@@ -18,22 +18,9 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package config
+package env
 
-import (
-	"laftools-go/core/global"
-	"laftools-go/core/nocycle"
-	"path"
-)
-
-func GetUserConfigFile() string {
-	return (path.Join(global.GetAppHomeConfigDirectory(), "users.json"))
-}
-func GetAppTempUploadDir() string {
-	return nocycle.MkdirFileWithStr((path.Join(global.GetAppHomeTempDirectory(), "upload")))
-}
-func GetUserPWDir() string {
-	a := path.Join(global.GetAppHomeConfigDirectory(), "pw")
-	_ = nocycle.MkdirFile(a)
-	return a
-}
+var AppHomeDirName = ".laf-tools-home"
+var AppDataDirName = "LafTools"
+var DevPortStartFrom = 35000 // TODO: this port is hard-coded at present, will refactor in the future
+var ProdPortStartFrom = -1

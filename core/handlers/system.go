@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Sun, 22 Oct 2023
+// Date: Tue, 19 Sep 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
@@ -18,22 +18,18 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package config
+package handlers
 
 import (
-	"laftools-go/core/global"
-	"laftools-go/core/nocycle"
-	"path"
+	"laftools-go/core/context"
+	"laftools-go/core/log"
+
+	"github.com/gin-gonic/gin"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func GetUserConfigFile() string {
-	return (path.Join(global.GetAppHomeConfigDirectory(), "users.json"))
-}
-func GetAppTempUploadDir() string {
-	return nocycle.MkdirFileWithStr((path.Join(global.GetAppHomeTempDirectory(), "upload")))
-}
-func GetUserPWDir() string {
-	a := path.Join(global.GetAppHomeConfigDirectory(), "pw")
-	_ = nocycle.MkdirFile(a)
-	return a
+func SYSTEM_Stats(c *gin.Context) {
+	webContext := context.WebContext{GinContext: c}
+	log.Ref().Info(webContext.Dot("m10344", "Test Example like {0}", "LafTools"))
+	OKLa(c, DoValueRes(timestamppb.Now()))
 }

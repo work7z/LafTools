@@ -1,0 +1,272 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+//
+// Date: Thu, 19 Oct 2023
+// Author: LafTools Team <work7z@outlook.com>
+// Description:
+// Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+package handlers
+
+import (
+	"encoding/json"
+	"laftools-go/core/config"
+	"laftools-go/core/env"
+	"laftools-go/core/log"
+	"laftools-go/core/nocycle"
+	"laftools-go/core/ws"
+	"path"
+	"sync"
+	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/gorilla/websocket"
+)
+
+var upGraderForDuplex = ws.GetUpgrader()
+
+func getHeaderClientToken(c *gin.Context) string {
+	return c.Query("lut")
+}
+
+func getPageId(c *gin.Context) string {
+	return c.Query("pd")
+}
+
+func VerifyWSRequest(c *gin.Context) bool {
+	nodeToken := c.Query("node-token")
+	if nodeToken != "" {
+		if nodeToken == nocycle.NodeWSToken {
+			return true
+		}
+	}
+
+	headerClientToken := getHeaderClientToken(c) // local account token
+	_, item_f := config.GetItemByTokenDirectly(headerClientToken)
+	return headerClientToken != "" && item_f
+}
+
+type SaveConnMark struct {
+	wsConn    *websocket.Conn
+	userToken string
+}
+type WsReq struct {
+	Mtype string
+	Value interface{}
+}
+
+// define a global variable to map token to ws
+var GLOBAL_WS_MAP = make(map[string]map[string]*SaveConnMark)
+
+// set a locker for GLOBAL_WS_MAP
+var GLOBAL_WS_MAP_LOCKER = &sync.Mutex{}
+
+func GetWSMarkByPageId(c *gin.Context) *SaveConnMark {
+	GLOBAL_WS_MAP_LOCKER.Lock()
+	defer func() {
+		GLOBAL_WS_MAP_LOCKER.Unlock()
+	}()
+	m := GLOBAL_WS_MAP[c.GetHeader(nocycle.HEADER_LOCAL_USER_TOKEN)]
+	if m == nil {
+		return nil
+	}
+	return m[c.GetHeader(nocycle.HEADER_LOCAL_PAGE_ID)]
+}
+func GetWSMarkListByTokenId(c *gin.Context) map[string]*SaveConnMark {
+	GLOBAL_WS_MAP_LOCKER.Lock()
+	defer func() {
+		GLOBAL_WS_MAP_LOCKER.Unlock()
+	}()
+	m := GLOBAL_WS_MAP[c.GetHeader(nocycle.HEADER_LOCAL_USER_TOKEN)]
+	if m == nil {
+		return nil
+	}
+	return m
+}
+
+func Node_getAllJobs(c *gin.Context) {
+	if !VerifyWSRequest(c) {
+		ErrLa2(c, "no permission")
+		return
+	}
+	// get all jobs
+	// reqSet := tools.Ref_NodeReqSet.Map
+	// OKLa(c, DoValueRes(reqSet))
+}
+
+var Lock_tmp_NodeWebsocket = &sync.Mutex{}
+
+type HmrReloadConfig struct {
+	Files []string
+}
+
+// set a lock for hmr ws
+var HmrReloadConfigLocker = &sync.Mutex{}
+
+// post a job to Go/Node, then receive response from remote server
+func HmrReload(c *gin.Context) {
+	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		return
+	}
+	defer func() {
+		// do nothing, just recover
+		recover()
+	}()
+	var shouldReturn = false
+	var crtLockForWS = &sync.Mutex{}
+	configHmrFile := path.Join(nocycle.LafToolsAppBaseDir, "sub/web/src/init/hmr.json")
+	var reloadConfig *HmrReloadConfig = &HmrReloadConfig{}
+	if nocycle.IsFileExist(configHmrFile) {
+		// unmarshal from configHmrFile
+		str, _ := nocycle.ReadFileAsStr(configHmrFile)
+		json.Unmarshal([]byte(str), reloadConfig)
+		// check if each file is changed
+		for _, _eachFile := range reloadConfig.Files {
+			eachFile := path.Join(nocycle.LafToolsAppBaseDir, "sub/web/public", _eachFile)
+			// get last timestamp
+			// if changed, then send reload command to ws
+			lastTimestamp, _ := nocycle.GetFileLastModifiedTimestamp(eachFile)
+			go func() {
+				for {
+					crtTimestamp, _ := nocycle.GetFileLastModifiedTimestamp(eachFile)
+					if crtTimestamp != lastTimestamp {
+						lastTimestamp = crtTimestamp
+						crtLockForWS.Lock()
+						err := ws.WriteJSON((DoValueRes("changed")))
+						crtLockForWS.Unlock()
+						if err != nil {
+							shouldReturn = true
+							return
+						}
+					}
+					time.Sleep(env.PUBLIC_RELOAD_FREQUENCY)
+				}
+			}()
+		}
+	}
+	for {
+		select {
+		// sleep 1 seconds and check
+		case <-time.After(time.Second * 1):
+
+		}
+		if shouldReturn {
+			return
+		}
+	}
+}
+
+// post a job to Go/Node, then receive response from remote server
+func PostJob_WebSocket(c *gin.Context) {
+	// upgrade GET request to websocket protocol
+	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		return
+	}
+	ws.WriteJSON(DoValueRes("Welcome to the Call API Service."))
+}
+
+func SYSTEM_WebSocket(c *gin.Context) {
+	// upgrade GET request to websocket protocol
+	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		return
+	}
+
+	defer ws.Close()
+	// write hello for ws
+
+	if !VerifyWSRequest(c) {
+		ws.WriteJSON(DoValueResForWS(99, "INVALID_TOKEN", map[string]interface{}{
+			"errors": "INVALID_TOKEN",
+		}))
+		return
+	}
+
+	headerClientToken := getHeaderClientToken(c) // local account token
+	pageId := getPageId(c)
+	if pageId == "" {
+		ws.WriteJSON(DoValueResForWS(99, "NO_PAGE", map[string]interface{}{
+			"errors": "NO_PAGE",
+		}))
+		return
+	}
+
+	setValueIntoGlobalWSMap := func(headerClientToken string, pageId string, value *SaveConnMark) {
+		GLOBAL_WS_MAP_LOCKER.Lock()
+		defer func() {
+			GLOBAL_WS_MAP_LOCKER.Unlock()
+		}()
+		// Check if the first layer ID exists in the map
+		if _, ok := GLOBAL_WS_MAP[headerClientToken]; !ok {
+			// If not, create a new map for the first layer ID
+			GLOBAL_WS_MAP[headerClientToken] = make(map[string]*SaveConnMark)
+		}
+
+		// Check if the second layer ID exists in the map
+		if _, ok := GLOBAL_WS_MAP[headerClientToken][pageId]; ok {
+			// If it exists, clean the previous record
+			// check if wsConn exist
+			if GLOBAL_WS_MAP[headerClientToken][pageId].wsConn != nil {
+				GLOBAL_WS_MAP[headerClientToken][pageId].wsConn.Close()
+			}
+			delete(GLOBAL_WS_MAP[headerClientToken], pageId)
+		}
+
+		// Set the value into the map
+		GLOBAL_WS_MAP[headerClientToken][pageId] = value
+	}
+	// set value into GLOBAL_WS_MAP, first layer id is headerClientToken, the second layer id is pageId, please check if it's nil and remember to clean prev record if have
+
+	setValueIntoGlobalWSMap(headerClientToken, pageId, &SaveConnMark{
+		userToken: headerClientToken,
+		wsConn:    ws,
+	})
+
+	defer func() {
+		GLOBAL_WS_MAP_LOCKER.Lock()
+		defer func() {
+			GLOBAL_WS_MAP_LOCKER.Unlock()
+		}()
+		// remove this pageId record
+		delete(GLOBAL_WS_MAP[headerClientToken], pageId)
+	}()
+
+	log.Ref().Debug("received ws request")
+
+	for {
+		//读取ws中的数据
+		_, message, err := ws.ReadMessage()
+		if err != nil {
+			break
+		}
+		crtReq := &WsReq{}
+		json.Unmarshal(message, crtReq)
+		var finValue interface{} = nil
+		if crtReq.Mtype == "ping" {
+			finValue = DoValueResForWS(0, "pong", "pong wor, ok jor.")
+		}
+
+		//写入ws数据
+		if finValue == nil {
+			finValue = DoValueResForWS(99, "unknown", "unknown wor, am i a joke to you?")
+		}
+		err = ws.WriteJSON(finValue)
+		if err != nil {
+			break
+		}
+	}
+}

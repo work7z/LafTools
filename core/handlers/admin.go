@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Sun, 22 Oct 2023
+// Date: Tue, 10 Oct 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
@@ -18,22 +18,15 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package config
+package handlers
 
 import (
-	"laftools-go/core/global"
-	"laftools-go/core/nocycle"
-	"path"
+	"errors"
+	"laftools-go/core/translation"
+
+	"github.com/gin-gonic/gin"
 )
 
-func GetUserConfigFile() string {
-	return (path.Join(global.GetAppHomeConfigDirectory(), "users.json"))
-}
-func GetAppTempUploadDir() string {
-	return nocycle.MkdirFileWithStr((path.Join(global.GetAppHomeTempDirectory(), "upload")))
-}
-func GetUserPWDir() string {
-	a := path.Join(global.GetAppHomeConfigDirectory(), "pw")
-	_ = nocycle.MkdirFile(a)
-	return a
+func ResetPasswordByAdmin(c *gin.Context) {
+	c.Error(errors.New(translation.TraSystemOnly().Dot("2106", "Wait to be completed.")))
 }

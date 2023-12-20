@@ -44,7 +44,7 @@ func TestMergeTwoJSONs(t *testing.T) {
 }
 
 func createTestTempFile(dir, pattern string) (string, error) {
-	return path.Join(MkdirFileWithStr(path.Join(env.ENV_DefaultLafToolsRoot, "temp")), pattern), nil
+	return path.Join(MkdirFileWithStr(path.Join(env.DefaultLafToolsRoot, "temp")), pattern), nil
 }
 
 func TestWriteJSONToFile(t *testing.T) {

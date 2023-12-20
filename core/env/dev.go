@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
-// Date: Sun, 22 Oct 2023
+// Date: Sat, 18 Nov 2023
 // Author: LafTools Team <work7z@outlook.com>
 // Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
@@ -18,22 +18,28 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package config
+package env
 
 import (
-	"laftools-go/core/global"
-	"laftools-go/core/nocycle"
+	"os"
 	"path"
+	"time"
 )
 
-func GetUserConfigFile() string {
-	return (path.Join(global.GetAppHomeConfigDirectory(), "users.json"))
-}
-func GetAppTempUploadDir() string {
-	return nocycle.MkdirFileWithStr((path.Join(global.GetAppHomeTempDirectory(), "upload")))
-}
-func GetUserPWDir() string {
-	a := path.Join(global.GetAppHomeConfigDirectory(), "pw")
-	_ = nocycle.MkdirFile(a)
-	return a
-}
+var homeDir, _ = os.UserHomeDir()
+
+// to start developing, update your own config in this file.
+// note that you shouldn't commit this file unless any value really need to be updated.
+
+var DefaultLafToolsRoot = GetEnvValueForLafToolsRoot()
+var DefaultAppConfigDir = path.Join(homeDir, AppHomeDirName)
+
+var ShouldPrintLogAsJSON = false
+
+// test stuff
+// var EXIT_SECONDS = "30"
+var EXIT_SECONDS = "5"
+var WAKUP_TIMES int64 = 0
+var USING_TSX_FOR_REAL_OUTPUT = true // for ws-index, true will use ts directly, otherwise will use js
+
+var PUBLIC_RELOAD_FREQUENCY = time.Millisecond * 20 // check frequency

@@ -8,9 +8,9 @@ mkdir -p dev-dist
 
 cd $LAFTOOLS_ROOT
 
-destFile=dev-dist/dev-middleware.bin
+destFile=dev-dist/dev-tools.bin
 echo "building $destFile"
-GOOS=darwin GOARCH=amd64 go build -o $destFile core/CodeGenApplication.go core/CodeGenApplication_unix.go
+GOOS=darwin GOARCH=amd64 go build -o $destFile core/LafToolsApplication.go core/LafToolsApplication_unix.go
 
 chmod +x $destFile
 $destFile test

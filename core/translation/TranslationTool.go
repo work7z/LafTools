@@ -21,7 +21,7 @@
 package translation
 
 import (
-	"laftools-go/core/gutils"
+	"laftools-go/core/global"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
 	"sync"
@@ -136,7 +136,7 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 
 	// preload other folders by array
 	otherFolders := []string{
-		gutils.GetPureJSLangFolder(),
+		global.GetPureJSLangFolder(),
 	}
 	for _, folder := range otherFolders {
 		loadFileByLangFromDir(folder, lang)
@@ -151,7 +151,7 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 		translationConfigObj := tmp_keyMap[lang]
 		if translationConfigObj == nil || nocycle.IsDevMode {
 			var err2 error = nil
-			translationConfigObj, err2 = nocycle.ReadJSONFile(path.Join(gutils.GetLangDir(), lang+".json"))
+			translationConfigObj, err2 = nocycle.ReadJSONFile(path.Join(global.GetLangDir(), lang+".json"))
 			if err2 != nil {
 				log.Ref().Fatal("No available text for the id " + id)
 			} else {

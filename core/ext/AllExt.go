@@ -23,10 +23,10 @@ package ext
 import (
 	"encoding/json"
 	"laftools-go/core/context"
+	"laftools-go/core/fn/tools"
 	"laftools-go/core/form"
-	"laftools-go/core/gutils"
+	"laftools-go/core/global"
 	"laftools-go/core/log"
-	"laftools-go/core/middleware"
 	"laftools-go/core/nocycle"
 	"laftools-go/core/translation"
 	"path"
@@ -75,7 +75,7 @@ type ToolSubCategory struct {
 
 func GetExtById(wc *context.WebContext, extId string) (*form.ExtensionVM, error) {
 
-	var indexJSONFile = path.Join(gutils.GetPureJSFolder(), "exts", extId, "index.json")
+	var indexJSONFile = path.Join(global.GetPureJSFolder(), "exts", extId, "index.json")
 	returnValue := &form.ExtensionVM{}
 	// read file and unmarhsla it to returnValue
 	b, er := nocycle.ReadFileAsStrWithNoTrim(indexJSONFile)
@@ -109,7 +109,7 @@ func GetExtById(wc *context.WebContext, extId string) (*form.ExtensionVM, error)
 
 func GetAllCategory(wc *context.WebContext) ([]*ToolCategory, error) {
 
-	var categoryFile = path.Join(gutils.GetPureJSFolder(), "category.json")
+	var categoryFile = path.Join(global.GetPureJSFolder(), "category.json")
 	var returnValue []*ToolCategory = []*ToolCategory{}
 	// read file and unmarhsla it to returnValue
 	b, er := nocycle.ReadFileAsStrWithNoTrim(categoryFile)
@@ -174,7 +174,7 @@ func GetAllExtVM(ctx *context.WebContext) ([]form.ExtensionVM, error) {
 }
 
 func GetAllFuncMapIntoOneMapWithKeyValuePair(ctx *context.WebContext) map[string]*form.ValueHandler {
-	allMaps := middleware.GetAllFNMap(ctx)
+	allMaps := tools.GetAllFNMap(ctx)
 	return allMaps
 }
 

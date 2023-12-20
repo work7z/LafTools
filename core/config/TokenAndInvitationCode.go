@@ -22,7 +22,7 @@ package config
 
 import (
 	"encoding/json"
-	"laftools-go/core/gutils"
+	"laftools-go/core/global"
 	"laftools-go/core/log"
 	"laftools-go/core/nocycle"
 	"path"
@@ -64,21 +64,21 @@ func GetCurrentSystemInfo() *SystemInfo {
 }
 
 func GetCurrentSystemInfoFile() string {
-	return path.Join(gutils.GetAppHomeConfigDirectory(), "system-info.json")
+	return path.Join(global.GetAppHomeConfigDirectory(), "system-info.json")
 }
 
 func GetCurrentReducerSyncFile() string {
-	return path.Join(gutils.GetAppHomeConfigDirectory(), "sync-config.json")
+	return path.Join(global.GetAppHomeConfigDirectory(), "sync-config.json")
 }
 
 func GetAdminInitTokenFile() string {
-	return path.Join(gutils.GetAppHomeConfigDirectory(), "access-token.txt")
+	return path.Join(global.GetAppHomeConfigDirectory(), "access-token.txt")
 }
 
 func GetAdminInitToken() string {
 	a, er := nocycle.ReadFileAsStr(GetAdminInitTokenFile())
 	if er != nil || a == "" {
-		newT := gutils.UUID()
+		newT := global.UUID()
 		er2 := atomic.WriteFile(GetAdminInitTokenFile(), strings.NewReader(newT))
 		nocycle.ShouldNoErr(er2, "Unable to initialize invitation code")
 		return newT

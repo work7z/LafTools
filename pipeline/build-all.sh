@@ -33,7 +33,7 @@ build-core(){
 
     mkdir -p $platformDistDir
     echo "[I] building [$platformName]"
-    GOOS=$argGOOS GOARCH=$platformArch go build -o $platformDistDir/core.$platformExt core/CodeGenApplication.go $platformGoFile
+    GOOS=$argGOOS GOARCH=$platformArch go build -o $platformDistDir/core.$platformExt core/LafToolsApplication.go $platformGoFile
 
     echo "[I] copying os-patch..."
 
@@ -72,12 +72,12 @@ build-fe(){
 
 build-be(){
     # golang core
-    build-core linux-x64 amd64 "core/CodeGenApplication_unix.go" linux
-    build-core linux-arm64 arm64 "core/CodeGenApplication_unix.go" linux
-    build-core darwin-x64 amd64 "core/CodeGenApplication_unix.go" darwin
-    build-core darwin-arm64 arm64 "core/CodeGenApplication_unix.go" darwin
-    build-core windows-x64 amd64 "core/CodeGenApplication_windows.go" windows
-    build-core windows-arm64 arm64 "core/CodeGenApplication_windows.go" windows
+    build-core linux-x64 amd64 "core/LafToolsApplication_unix.go" linux
+    build-core linux-arm64 arm64 "core/LafToolsApplication_unix.go" linux
+    build-core darwin-x64 amd64 "core/LafToolsApplication_unix.go" darwin
+    build-core darwin-arm64 arm64 "core/LafToolsApplication_unix.go" darwin
+    build-core windows-x64 amd64 "core/LafToolsApplication_windows.go" windows
+    build-core windows-arm64 arm64 "core/LafToolsApplication_windows.go" windows
 }
 
 clean-stuff(){
