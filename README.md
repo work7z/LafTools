@@ -88,6 +88,7 @@ npm i -g pnpm
 npm i -g ts-node
 npm i -g typescript
 # install project deps
+cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/sub/web && pnpm install
 cd $LAFTOOLS_ROOT/sub/purejs && pnpm install
 cd $LAFTOOLS_ROOT/dev/scripts/scan && pnpm install
