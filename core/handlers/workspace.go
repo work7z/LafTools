@@ -24,10 +24,10 @@ import (
 	"encoding/json"
 	"errors"
 	"laftools-go/core/config"
-	"laftools-go/core/context"
 	"laftools-go/core/global"
+	"laftools-go/core/handlers/context"
 	"laftools-go/core/log"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/tools"
 	"path/filepath"
 	"strings"
 	"sync"
@@ -99,7 +99,7 @@ func getWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
 	}
 	for _, item := range workspaceRes.WorkSpaces {
 		// iterate workspaceRes, and take the last one of its Path according to current platform if Label is nil or empty, then assign it to Label
-		item.Path = nocycle.NormalizeDir(item.Path)
+		item.Path = tools.NormalizeDir(item.Path)
 		dir, file := filepath.Split(item.Path)
 		if strings.Trim(item.Label, "") == "" {
 			(item).Label = file
@@ -120,7 +120,7 @@ func Workspace_Add_By_User(c *gin.Context) {
 	// if workspaceRes.WorkSpaces already have that same path, then error
 	// make sure no duplicate id
 	// if newSpace.Id exist, then replace
-	newSpace.Path = nocycle.NormalizeDir(newSpace.Path)
+	newSpace.Path = tools.NormalizeDir(newSpace.Path)
 	err := addNewWorkspace(newSpace, c, wc)
 	if err != nil {
 		ErrLa(c, err)
@@ -139,7 +139,7 @@ func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebCont
 	// 	return errors.New(wc.Dot("rj39U", "Id is required"))
 	// }
 	// check if Path exist
-	if nocycle.IsFileNonExist(newSpace.Path) {
+	if tools.IsFileNonExist(newSpace.Path) {
 		return errors.New(wc.Dot("WXi6O", "Path does not exist, please check if your input is correct"))
 	}
 
@@ -157,7 +157,7 @@ func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebCont
 	}
 
 	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, newSpace)
-	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
+	tools.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 	return nil
 }
 
@@ -176,7 +176,7 @@ func deleteWorkspaceByID(wc *context.WebContext, workspaceIDOrPath string) {
 	}
 	workspaceRes.WorkSpaces = newWorkSpaces
 	log.Ref().Debug("all", workspaceRes)
-	nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
+	tools.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 }
 
 // Workspace_Delete_By_User is the handler for deleting a workspace by user.
@@ -196,7 +196,7 @@ func getWorkspaceStruct(workspaceConfigFile string) *WorkSpaceStruct {
 	var workspaceRes *WorkSpaceStruct = &WorkSpaceStruct{
 		WorkSpaces: []*EachWorkSpace{},
 	}
-	s, e := nocycle.ReadFileAsBytes(workspaceConfigFile)
+	s, e := tools.ReadFileAsBytes(workspaceConfigFile)
 	if e == nil {
 		e2 := json.Unmarshal(s, workspaceRes)
 		if e2 != nil {

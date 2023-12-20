@@ -22,10 +22,10 @@ package cmd
 
 import (
 	"fmt"
-	"laftools-go/core/env"
-	"laftools-go/core/extra"
-	"laftools-go/core/fn/tools"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/project/base/env"
+	"laftools-go/core/project/base/extra"
+	itools "laftools-go/core/project/tools"
+	"laftools-go/core/tools"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -42,20 +42,20 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	// global env
-	rootCmd.PersistentFlags().BoolVar(&nocycle.IsDevMode, "debug", true, "whether enable release mode or not")
+	rootCmd.PersistentFlags().BoolVar(&tools.IsDevMode, "debug", true, "whether enable release mode or not")
 
 	// init run server
-	runServerCmd.PersistentFlags().StringVar(&nocycle.RefId, "ref-id", "dkzhZ.json", "stats report")
+	runServerCmd.PersistentFlags().StringVar(&tools.RefId, "ref-id", "dkzhZ.json", "stats report")
 	runServerCmd.PersistentFlags().IntVar(&env.ProdPortStartFrom, "port", -1, "port")
-	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsAppBaseDir, "root", env.DefaultLafToolsRoot, "system root path")
-	runServerCmd.PersistentFlags().StringVar(&nocycle.LafToolsHomeConfigDir, "home", env.DefaultAppConfigDir, "config home path")
+	runServerCmd.PersistentFlags().StringVar(&tools.LafToolsAppBaseDir, "root", env.DefaultLafToolsRoot, "system root path")
+	runServerCmd.PersistentFlags().StringVar(&tools.LafToolsHomeConfigDir, "home", env.DefaultAppConfigDir, "config home path")
 
 	// init run extra
 	devExtraCmd.PersistentFlags().StringVar(&extra.ConfigFilePath, "config", "", "config file")
 
 	// init middleware
 	// TODO: depreciated one
-	tools.Unused__InitCMD(middlewareCmd)
+	itools.Unused__InitCMD(middlewareCmd)
 
 	// add commands
 	rootCmd.AddCommand(devExtraCmd)

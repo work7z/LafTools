@@ -22,11 +22,11 @@ package handlers
 
 import (
 	"laftools-go/core/config"
-	"laftools-go/core/context"
-	"laftools-go/core/ext"
 	"laftools-go/core/global"
+	"laftools-go/core/handlers/context"
 	"laftools-go/core/log"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/project/base/ext"
+	"laftools-go/core/tools"
 	"strings"
 	"time"
 
@@ -115,7 +115,7 @@ func CreateAdminInitStatus(c *gin.Context) {
 		return
 	}
 	s_adminToken := config.GetAdminInitToken()
-	u_adminToken := c.GetHeader(nocycle.HEADER_ADMIN_TOKEN)
+	u_adminToken := c.GetHeader(tools.HEADER_ADMIN_TOKEN)
 	log.Ref().Debug("admin token: ", s_adminToken+" <-> ", u_adminToken)
 	if u_adminToken != s_adminToken {
 		ErrLa2(c, wc.Dot("2157", "Admin Token is required, please use valid initialization URL to starts with."))

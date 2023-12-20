@@ -22,9 +22,9 @@ package handlers
 
 import (
 	"encoding/json"
-	"laftools-go/core/context"
 	"laftools-go/core/global"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/handlers/context"
+	"laftools-go/core/tools"
 	"path"
 
 	"github.com/gin-gonic/gin"
@@ -50,7 +50,7 @@ func Get_i18n_Lang(c *gin.Context) {
 	var indexJSONFile = path.Join(global.GetPureJSFolder(), "app-i18n.json")
 	returnValue := []AppI18nRaw{}
 	// read file and unmarhsla it to returnValue
-	b, er := nocycle.ReadFileAsStrWithNoTrim(indexJSONFile)
+	b, er := tools.ReadFileAsStrWithNoTrim(indexJSONFile)
 	if er != nil {
 		ErrLa(c, er)
 		return

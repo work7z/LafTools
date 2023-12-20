@@ -1,20 +1,20 @@
 package middleware
 
 import (
-	"laftools-go/core/config"
-	"laftools-go/core/url"
+	gconfig "laftools-go/core/config"
+	"laftools-go/core/handlers/config"
 	"strings"
 )
 
 func Auth(headerClientToken, fullPath string) bool {
 
-	allowURLDefinitions := url.Fn_GetAllowURLDefinitions()
+	allowURLDefinitions := config.Fn_GetAllowURLDefinitions()
 	isThisPathCanbeSkipped := false
 	for _, definition := range allowURLDefinitions {
 		if fullPath == "" || fullPath == "/" {
 			isThisPathCanbeSkipped = true
 		}
-		if strings.Index(fullPath, url.FormatThatPathGlobally(definition)) == 0 {
+		if strings.Index(fullPath, config.FormatThatPathGlobally(definition)) == 0 {
 			isThisPathCanbeSkipped = true
 		}
 		if strings.Index(fullPath, definition) == 0 {
@@ -25,7 +25,7 @@ func Auth(headerClientToken, fullPath string) bool {
 		}
 	}
 	if !isThisPathCanbeSkipped {
-		_, userObj_f := config.GetItemByTokenDirectly(headerClientToken)
+		_, userObj_f := gconfig.GetItemByTokenDirectly(headerClientToken)
 		if !userObj_f {
 			return false
 		}

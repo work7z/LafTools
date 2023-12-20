@@ -21,36 +21,36 @@
 package global
 
 import (
-	"laftools-go/core/env"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/project/base/env"
+	"laftools-go/core/tools"
 	"os"
 	"path"
 )
 
 func GetUserHomeDir() string {
 	a, err := os.UserHomeDir()
-	nocycle.ShouldNoErr(err, "user home dir is empty")
-	e := nocycle.JoinWithMkdir(a)
-	nocycle.ShouldNoErr(e, "config file is not foundable")
+	tools.ShouldNoErr(err, "user home dir is empty")
+	e := tools.JoinWithMkdir(a)
+	tools.ShouldNoErr(e, "config file is not foundable")
 	return a
 }
 
 func GetAppHomeConfigDirectory() string {
-	return nocycle.MkdirFileWithStr(path.Join(GetAppHomeDirectory(), "config"))
+	return tools.MkdirFileWithStr(path.Join(GetAppHomeDirectory(), "config"))
 }
 func GetAppHomeTempDirectory() string {
-	return nocycle.MkdirFileWithStr(path.Join(GetAppHomeDirectory(), "temp"))
+	return tools.MkdirFileWithStr(path.Join(GetAppHomeDirectory(), "temp"))
 }
 
 func GetAppHomeDirectory() string {
 	pathname := path.Join(GetUserHomeDir(), env.AppHomeDirName)
-	e := nocycle.MkdirFile(pathname)
-	nocycle.ShouldNoErr(e, "~/"+env.AppHomeDirName+" cannot be created")
+	e := tools.MkdirFile(pathname)
+	tools.ShouldNoErr(e, "~/"+env.AppHomeDirName+" cannot be created")
 	return pathname
 }
 func GetAppDataDirectory() string {
 	pathname := path.Join(GetUserHomeDir(), env.AppDataDirName)
-	e := nocycle.MkdirFile(pathname)
-	nocycle.ShouldNoErr(e, "~/"+env.AppHomeDirName+" cannot be created")
+	e := tools.MkdirFile(pathname)
+	tools.ShouldNoErr(e, "~/"+env.AppHomeDirName+" cannot be created")
 	return pathname
 }

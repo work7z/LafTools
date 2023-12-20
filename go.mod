@@ -15,7 +15,7 @@ require (
 	github.com/natefinch/atomic v1.0.1
 	github.com/samber/lo v1.38.1
 	github.com/sirupsen/logrus v1.9.3
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.8.4
 	golang.org/x/crypto v0.14.0
 	google.golang.org/protobuf v1.31.0

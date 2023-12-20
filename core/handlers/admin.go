@@ -22,7 +22,7 @@ package handlers
 
 import (
 	"errors"
-	"laftools-go/core/translation"
+	translation "laftools-go/core/i18n"
 
 	"github.com/gin-gonic/gin"
 )

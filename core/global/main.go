@@ -24,7 +24,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/tools"
 	"log"
 	"math/rand"
 	"os"
@@ -112,10 +112,10 @@ func GetFrontEndStaticDir() string {
 	return path.Join(GetFrontEndRootAppDir(), "static")
 }
 func GetFrontEndRootAppDir() string {
-	if nocycle.IsDevMode {
-		return path.Join(nocycle.LafToolsAppBaseDir, "/sub/web/build")
+	if tools.IsDevMode {
+		return path.Join(tools.LafToolsAppBaseDir, "/sub/web/build")
 	} else {
-		return path.Join(nocycle.LafToolsAppBaseDir, "web")
+		return path.Join(tools.LafToolsAppBaseDir, "web")
 	}
 }
 func GetLangDir() string {
@@ -125,10 +125,10 @@ func GetResourceDir() string {
 	return path.Join(GetSelfExecutionDir(), "resources")
 }
 func GetSelfExecutionDir() string {
-	if nocycle.LafToolsAppBaseDir == "" {
+	if tools.LafToolsAppBaseDir == "" {
 		logrus.Fatal("Warning, LafTools Root is empty, note that it's not proper setup.")
 	}
-	return nocycle.LafToolsAppBaseDir
+	return tools.LafToolsAppBaseDir
 }
 
 func OpenInBrowser(url string) {
@@ -137,7 +137,7 @@ func OpenInBrowser(url string) {
 	case "linux":
 		err = exec.Command("xdg-open", url).Start()
 	case "windows":
-		err = exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
+		err = exec.Command("rundll32", "config.dll,FileProtocolHandler", url).Start()
 	case "darwin":
 		err = exec.Command("open", url).Start()
 	default:

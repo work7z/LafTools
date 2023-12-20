@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"laftools-go/core/extra"
+	"laftools-go/core/project/base/extra"
 
 	"github.com/spf13/cobra"
 )

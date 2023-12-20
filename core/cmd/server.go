@@ -3,14 +3,13 @@ package cmd
 import (
 	"encoding/json"
 	"io/ioutil"
-	"laftools-go/core/config"
-	"laftools-go/core/env"
+	gconfig "laftools-go/core/config"
 	"laftools-go/core/global"
 	handlers "laftools-go/core/handlers"
+	"laftools-go/core/handlers/config"
 	"laftools-go/core/log"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/project/base/env"
 	"laftools-go/core/tools"
-	"laftools-go/core/url"
 	"net/http"
 	"path"
 	"strconv"
@@ -33,7 +32,7 @@ func LaunchLafToolsServer() {
 		if err := recover(); err != nil {
 			SaveRefStatus(&RefStatus{
 				Status:  99,
-				Message: "Recovered from panic: " + nocycle.ToAnyString(err),
+				Message: "Recovered from panic: " + tools.ToAnyString(err),
 				Port:    0,
 				FullURL: "",
 				Host:    "",
@@ -41,7 +40,7 @@ func LaunchLafToolsServer() {
 		}
 	}()
 	log.Ref().Info("Service is launching...")
-	if nocycle.IsDevMode {
+	if tools.IsDevMode {
 		gin.SetMode(gin.DebugMode)
 	} else {
 		gin.SetMode(gin.ReleaseMode)
@@ -50,15 +49,15 @@ func LaunchLafToolsServer() {
 
 	handlers.SetupRoutes(R_Engine)
 
-	adminInitToken := config.GetAdminInitToken()
+	adminInitToken := gconfig.GetAdminInitToken()
 	if adminInitToken == "" {
-		log.Ref().Fatal("Unable to read the admin init code, please check the file: " + config.GetAdminInitTokenFile())
+		log.Ref().Fatal("Unable to read the admin init code, please check the file: " + gconfig.GetAdminInitTokenFile())
 		return
 	}
 
 	// set begin port
 	beginPort := 0
-	if nocycle.IsDevMode {
+	if tools.IsDevMode {
 		beginPort = env.DevPortStartFrom
 	} else {
 		beginPort = env.ProdPortStartFrom
@@ -67,16 +66,16 @@ func LaunchLafToolsServer() {
 	// if this port is unavailable, then use higher one
 	port, err2 := tools.GetAvailableTCPPortFrom(beginPort)
 
-	if port == env.DevPortStartFrom && !nocycle.IsDevMode {
+	if port == env.DevPortStartFrom && !tools.IsDevMode {
 		panic("Please do not use " + strconv.Itoa(env.DevPortStartFrom) + " to launch the service, try other port.")
 	}
 
-	nocycle.FINALIZED_HTTP_PORT = port
-	nocycle.ShouldNoErr(err2, "Unable to launch available port")
+	tools.FINALIZED_HTTP_PORT = port
+	tools.ShouldNoErr(err2, "Unable to launch available port")
 
 	host := "127.0.0.1:" + strconv.Itoa(port)
 
-	fullURL := "http://" + host + "" + url.CONFIG_URL_APP_FRONT_END_APP_PREFIX + "/entry?t=" + adminInitToken
+	fullURL := "http://" + host + "" + config.CONFIG_URL_APP_FRONT_END_APP_PREFIX + "/entry?t=" + adminInitToken
 
 	SaveRefStatus(&RefStatus{
 		Status:  0,
@@ -95,7 +94,7 @@ func LaunchLafToolsServer() {
 	println("-----------------------------------------------")
 	println("")
 
-	if !nocycle.IsDevMode {
+	if !tools.IsDevMode {
 		global.OpenInBrowser(fullURL)
 	}
 
@@ -106,7 +105,7 @@ func LaunchLafToolsServer() {
 
 	go func() {
 		if err := Srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			nocycle.ShouldNoErr(err, "Unable to launch the service")
+			tools.ShouldNoErr(err, "Unable to launch the service")
 		}
 	}()
 }
@@ -125,7 +124,7 @@ type RefStatus struct {
 }
 
 func GetRefDir() string {
-	refDir := nocycle.MkdirFileWithStr(path.Join(nocycle.LafToolsHomeConfigDir, "ref"))
+	refDir := tools.MkdirFileWithStr(path.Join(tools.LafToolsHomeConfigDir, "ref"))
 	return refDir
 }
 
@@ -136,7 +135,7 @@ func SaveRefStatus(refStatus *RefStatus) error {
 		return err
 	}
 	log.Ref().Debug("Output Ref with ", string(refStatusBytes))
-	err = ioutil.WriteFile(path.Join(refDir, ``+nocycle.RefId+``), refStatusBytes, 0644)
+	err = ioutil.WriteFile(path.Join(refDir, ``+tools.RefId+``), refStatusBytes, 0644)
 	if err != nil {
 		return err
 	}

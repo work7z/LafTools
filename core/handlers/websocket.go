@@ -23,10 +23,10 @@ package handlers
 import (
 	"encoding/json"
 	"laftools-go/core/config"
-	"laftools-go/core/env"
 	"laftools-go/core/log"
-	"laftools-go/core/nocycle"
-	"laftools-go/core/ws"
+	"laftools-go/core/project/base/env"
+	"laftools-go/core/tools"
+	"net/http"
 	"path"
 	"sync"
 	"time"
@@ -35,7 +35,16 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-var upGraderForDuplex = ws.GetUpgrader()
+func getUpgrader() websocket.Upgrader {
+	var upGrader = websocket.Upgrader{
+		CheckOrigin: func(r *http.Request) bool {
+			return true
+		},
+	}
+	return upGrader
+}
+
+var upGraderForDuplex = getUpgrader()
 
 func getHeaderClientToken(c *gin.Context) string {
 	return c.Query("lut")
@@ -48,7 +57,7 @@ func getPageId(c *gin.Context) string {
 func VerifyWSRequest(c *gin.Context) bool {
 	nodeToken := c.Query("node-token")
 	if nodeToken != "" {
-		if nodeToken == nocycle.NodeWSToken {
+		if nodeToken == tools.NodeWSToken {
 			return true
 		}
 	}
@@ -78,18 +87,18 @@ func GetWSMarkByPageId(c *gin.Context) *SaveConnMark {
 	defer func() {
 		GLOBAL_WS_MAP_LOCKER.Unlock()
 	}()
-	m := GLOBAL_WS_MAP[c.GetHeader(nocycle.HEADER_LOCAL_USER_TOKEN)]
+	m := GLOBAL_WS_MAP[c.GetHeader(tools.HEADER_LOCAL_USER_TOKEN)]
 	if m == nil {
 		return nil
 	}
-	return m[c.GetHeader(nocycle.HEADER_LOCAL_PAGE_ID)]
+	return m[c.GetHeader(tools.HEADER_LOCAL_PAGE_ID)]
 }
 func GetWSMarkListByTokenId(c *gin.Context) map[string]*SaveConnMark {
 	GLOBAL_WS_MAP_LOCKER.Lock()
 	defer func() {
 		GLOBAL_WS_MAP_LOCKER.Unlock()
 	}()
-	m := GLOBAL_WS_MAP[c.GetHeader(nocycle.HEADER_LOCAL_USER_TOKEN)]
+	m := GLOBAL_WS_MAP[c.GetHeader(tools.HEADER_LOCAL_USER_TOKEN)]
 	if m == nil {
 		return nil
 	}
@@ -127,21 +136,21 @@ func HmrReload(c *gin.Context) {
 	}()
 	var shouldReturn = false
 	var crtLockForWS = &sync.Mutex{}
-	configHmrFile := path.Join(nocycle.LafToolsAppBaseDir, "sub/web/src/init/hmr.json")
+	configHmrFile := path.Join(tools.LafToolsAppBaseDir, "sub/web/src/init/hmr.json")
 	var reloadConfig *HmrReloadConfig = &HmrReloadConfig{}
-	if nocycle.IsFileExist(configHmrFile) {
+	if tools.IsFileExist(configHmrFile) {
 		// unmarshal from configHmrFile
-		str, _ := nocycle.ReadFileAsStr(configHmrFile)
+		str, _ := tools.ReadFileAsStr(configHmrFile)
 		json.Unmarshal([]byte(str), reloadConfig)
 		// check if each file is changed
 		for _, _eachFile := range reloadConfig.Files {
-			eachFile := path.Join(nocycle.LafToolsAppBaseDir, "sub/web/public", _eachFile)
+			eachFile := path.Join(tools.LafToolsAppBaseDir, "sub/web/public", _eachFile)
 			// get last timestamp
 			// if changed, then send reload command to ws
-			lastTimestamp, _ := nocycle.GetFileLastModifiedTimestamp(eachFile)
+			lastTimestamp, _ := tools.GetFileLastModifiedTimestamp(eachFile)
 			go func() {
 				for {
-					crtTimestamp, _ := nocycle.GetFileLastModifiedTimestamp(eachFile)
+					crtTimestamp, _ := tools.GetFileLastModifiedTimestamp(eachFile)
 					if crtTimestamp != lastTimestamp {
 						lastTimestamp = crtTimestamp
 						crtLockForWS.Lock()

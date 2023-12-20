@@ -22,7 +22,7 @@
 package global
 
 import (
-	"laftools-go/core/nocycle"
+	"laftools-go/core/tools"
 	"os"
 	"path/filepath"
 	"testing"
@@ -102,7 +102,7 @@ func TestGetResourceDir(t *testing.T) {
 }
 
 func TestGetSelfExecutionDir(t *testing.T) {
-	expectedDir := nocycle.LafToolsAppBaseDir
+	expectedDir := tools.LafToolsAppBaseDir
 	dir := GetSelfExecutionDir()
 	if dir != expectedDir {
 		t.Errorf("GetSelfExecutionDir() = %v, want %v", dir, expectedDir)

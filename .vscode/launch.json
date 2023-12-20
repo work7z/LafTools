@@ -9,7 +9,7 @@
       "type": "go",
       "request": "launch",
       "mode": "auto",
-      "program": "${workspaceFolder}/core/LafToolsApplication.go",
+      "program": "${workspaceFolder}/core/app.go",
       "console": "integratedTerminal",
       "args": ["server"],
       "internalConsoleOptions": "neverOpen"

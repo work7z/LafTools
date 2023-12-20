@@ -28,22 +28,6 @@ import (
 	"github.com/dablelv/cyan/file"
 )
 
-func TestSystemRouter(t *testing.T) {
-	// r := gin.Default()
-	// ConfigSystemRouter(r)
-	// // t.Log("handlers ", r.Handlers)
-	// for _, info := range r.Routes() {
-	// 	t.Log("info path:", info.Path)
-	// 	if strings.Index(info.Path, url.CONFIG_URL_PUBLIC_BASE_PREFIX) == 0 {
-	// 		t.Log("URL Matched.")
-	// 	} else {
-	// 		if info.Path != "/"  {
-	// 			t.Fatal("Invalid path, that does not start with expectation. The path " + info.Path + " should start with " + url.CONFIG_URL_PUBLIC_BASE_PREFIX)
-	// 		}
-	// 	}
-	// }
-}
-
 func TestStaticNonProhibitedAccessible(t *testing.T) {
 	filesList := []string{
 		"menu.json",

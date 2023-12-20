@@ -23,10 +23,10 @@ package handlers
 import (
 	"errors"
 	"laftools-go/core/config"
-	"laftools-go/core/context"
 	"laftools-go/core/global"
+	"laftools-go/core/handlers/context"
 	"laftools-go/core/log"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/tools"
 	"os"
 	"strings"
 	"time"
@@ -250,9 +250,9 @@ func ResetPasswordByOldPassword(c *gin.Context) {
 	wc := context.NewWC(c)
 	form := &ResetPasswordByOldPasswordForm{}
 	c.BindJSON(&form)
-	u, u_f := nocycle.CheckStr(form.Username)
-	p, p_f := nocycle.CheckStr(form.Password)
-	np, np_f := nocycle.CheckStr(form.NewPassword)
+	u, u_f := tools.CheckStr(form.Username)
+	p, p_f := tools.CheckStr(form.Password)
+	np, np_f := tools.CheckStr(form.NewPassword)
 	if AnyIsFalse(u_f, p_f, np_f) {
 		IncompleteParam(wc)
 		return

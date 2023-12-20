@@ -21,12 +21,12 @@
 package cmd
 
 import (
-	"laftools-go/core/context"
-	"laftools-go/core/env"
-	"laftools-go/core/ext"
-	"laftools-go/core/fn/tools"
 	"laftools-go/core/global"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/handlers/context"
+	"laftools-go/core/project/base/env"
+	"laftools-go/core/project/base/ext"
+	"laftools-go/core/project/tools"
+	gtools "laftools-go/core/tools"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -109,7 +109,7 @@ var lock_Service = &sync.Mutex{}
 func QTestServerEnvLaunch(t *testing.T) func() {
 	lock_Service.Lock()
 	t.Parallel()
-	nocycle.UNIT_TEST_SERVER_MODE = true
+	gtools.UNIT_TEST_SERVER_MODE = true
 	LaunchLafToolsServer()
 	time.Sleep(time.Second * 3)
 	return func() {
@@ -157,7 +157,7 @@ func Test_GetAllExtVM(t *testing.T) {
 			for _, callFunc := range action.CallFuncList {
 				// get first part of callFunc
 				callFunc = callFunc[:strings.Index(callFunc, ".")]
-				if _, ok := (tools.GetAllFNMap(&ctx))[callFunc]; !ok {
+				if _, ok := (tools.GetAllFunctionMap(&ctx))[callFunc]; !ok {
 					// t.Errorf("the call func %s is not in the func map", callFunc)
 					// t.Log("Warning. the call func %s is not in the func map", callFunc)
 				}
@@ -178,7 +178,7 @@ func Test_GetAllExtVM(t *testing.T) {
 	}
 	// check FuncMap in allExtVM has only unique id
 	funcMapIdMap := make(map[string]bool)
-	for funcName, funcValue := range tools.GetAllFNMap(&ctx) {
+	for funcName, funcValue := range tools.GetAllFunctionMap(&ctx) {
 		if _, ok := funcMapIdMap[funcName]; ok {
 			t.Errorf("the func map id %s is not uniq", funcName)
 		} else {
@@ -200,7 +200,7 @@ type TmpLabel struct {
 // // average need 90ms, so my current solution still win the time
 // for i := 0; i < 10; i++ {
 // 	startTime := time.Now()
-// 	cmd := exec.Command("node", (nocycle.LafToolsGoRoot + "/sub/node/build/direct-run-job.js"))
+// 	cmd := exec.Command("node", (tools.LafToolsGoRoot + "/sub/node/build/direct-run-job.js"))
 // 	cmd.Stdout = os.Stdout
 // 	cmd.Stderr = os.Stderr
 // 	if err := cmd.Run(); err != nil {
@@ -242,7 +242,7 @@ func BasicTestNodeMultipleRequest(t *testing.T) {
 
 	//	defer QUnlockServer(t)
 
-	nocycle.IsDevMode = true
+	gtools.IsDevMode = true
 
 	// call GetAllSubExtCategory until endTime - startTime > 20seconds.
 	// and check the result

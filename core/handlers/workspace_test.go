@@ -21,14 +21,14 @@
 package handlers
 
 import (
-	"laftools-go/core/context"
+	"laftools-go/core/handlers/context"
 	"testing"
 )
 
 // TODO: make it good later
 
 func TestAddNewWorkspace(t *testing.T) {
-	// nocycle.MkdirFileWithStr("/home")
+	// tools.MkdirFileWithStr("/home")
 	// // Create a mock context and web context
 	// c := &gin.Context{}
 	// wc := context.WebContext{
@@ -87,7 +87,7 @@ func TestDeleteWorkspaceByID(t *testing.T) {
 	// workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
 	// workspaceRes := getWorkspaceStruct(workspaceConfigFile)
 	// workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, workspaceToDelete, workspaceToKeep)
-	// nocycle.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
+	// tools.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 
 	// // Call the function to delete the workspace
 	// deleteWorkspaceByID(&wc, workspaceToDelete.Id)

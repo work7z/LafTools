@@ -23,9 +23,9 @@ package handlers
 import (
 	"io"
 	"laftools-go/core/config"
-	"laftools-go/core/context"
 	"laftools-go/core/global"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/handlers/context"
+	"laftools-go/core/tools"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -68,7 +68,7 @@ func TEMP_FILE_READ(c *gin.Context) {
 
 	// read filename as string,
 	// and return it as a response
-	a, b := nocycle.ReadFileAsStrWithNoTrim(filepath)
+	a, b := tools.ReadFileAsStrWithNoTrim(filepath)
 	if b != nil {
 		ErrLa(c, b)
 		return
@@ -85,19 +85,19 @@ type OsOpenForm struct {
 func File_ExistOrNot(c *gin.Context) {
 	var openForm = &OsOpenForm{}
 	c.BindJSON(openForm)
-	OKLa(c, DoValueRes(nocycle.IsFileExist(openForm.Dir)))
+	OKLa(c, DoValueRes(tools.IsFileExist(openForm.Dir)))
 }
 
 func File_Mkdir(c *gin.Context) {
 	var openForm = &OsOpenForm{}
 	c.BindJSON(openForm)
-	OKLa(c, DoValueRes(nocycle.MkdirFileWithStr(openForm.Dir)))
+	OKLa(c, DoValueRes(tools.MkdirFileWithStr(openForm.Dir)))
 }
 
 func OS_OPENDIR(c *gin.Context) {
 	var openForm = &OsOpenForm{}
 	c.BindJSON(openForm)
-	err := nocycle.OpenDir(openForm.Dir)
+	err := tools.OpenDir(openForm.Dir)
 	if err != nil {
 		ErrLa(c, err)
 	} else {

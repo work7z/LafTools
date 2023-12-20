@@ -10,7 +10,7 @@ cd $LAFTOOLS_ROOT
 
 destFile=dev-dist/dev-tools.bin
 echo "building $destFile"
-GOOS=darwin GOARCH=amd64 go build -o $destFile core/LafToolsApplication.go core/LafToolsApplication_unix.go
+GOOS=darwin GOARCH=amd64 go build -o $destFile core/app.go core/app_unix.go
 
 chmod +x $destFile
 $destFile test

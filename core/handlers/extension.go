@@ -21,9 +21,9 @@
 package handlers
 
 import (
-	"laftools-go/core/context"
-	"laftools-go/core/ext"
-	"laftools-go/core/form"
+	"laftools-go/core/handlers/context"
+	"laftools-go/core/project/base/ext"
+	"laftools-go/core/project/base/form"
 	"strings"
 
 	"github.com/gin-gonic/gin"

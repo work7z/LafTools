@@ -24,9 +24,9 @@ import (
 	"encoding/json"
 	"errors"
 	"laftools-go/core/config"
-	"laftools-go/core/context"
+	"laftools-go/core/handlers/context"
 	"laftools-go/core/log"
-	"laftools-go/core/nocycle"
+	"laftools-go/core/tools"
 	"sync"
 
 	"github.com/gin-gonic/gin"
@@ -105,13 +105,13 @@ func init() {
 	last_updateIdx := 0
 	// last_modifiedFile := 0
 	reducerSyncFile := config.GetCurrentReducerSyncFile()
-	if nocycle.IsFileExist(reducerSyncFile) {
-		str, err := nocycle.ReadFileAsStr(reducerSyncFile)
+	if tools.IsFileExist(reducerSyncFile) {
+		str, err := tools.ReadFileAsStr(reducerSyncFile)
 		if err != nil {
 			log.Ref().Warn("unable to read reducer sync file: ", err)
 		} else {
 			// rename reducer sync file as *.bak
-			nocycle.CopyFile(reducerSyncFile, reducerSyncFile+".bak"+nocycle.GetRandomString(8))
+			tools.CopyFile(reducerSyncFile, reducerSyncFile+".bak"+tools.GetRandomString(8))
 			// unmarhsla str to tmpReducerValueMap
 			err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
 			if err2 != nil {
@@ -122,17 +122,17 @@ func init() {
 	go func() {
 		// every 3 seconds, write tmpReducerValueMap to reducerSyncFile
 		for {
-			nocycle.Sleep(3000)
+			tools.Sleep(3000)
 			if last_updateIdx != updateIdx {
 				last_updateIdx = updateIdx
 				lockAPI.Lock()
-				nocycle.WriteFileAsStr(reducerSyncFile, nocycle.ToJson(tmpReducerValueMap))
-				// last_modifiedFile = nocycle.GetFileLastModified(reducerSyncFile)
+				tools.WriteFileAsStr(reducerSyncFile, tools.ToJson(tmpReducerValueMap))
+				// last_modifiedFile = tools.GetFileLastModified(reducerSyncFile)
 				lockAPI.Unlock()
 			}
-			// if last_modifiedFile != nocycle.GetFileLastModified(reducerSyncFile) {
-			// 	last_modifiedFile = nocycle.GetFileLastModified(reducerSyncFile)
-			// 	str, err := nocycle.ReadFileAsStr(reducerSyncFile)
+			// if last_modifiedFile != tools.GetFileLastModified(reducerSyncFile) {
+			// 	last_modifiedFile = tools.GetFileLastModified(reducerSyncFile)
+			// 	str, err := tools.ReadFileAsStr(reducerSyncFile)
 			// 	if err != nil {
 			// 		log.Ref().Warn("unable to read reducer sync file: ", err)
 			// 	} else {

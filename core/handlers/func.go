@@ -2,8 +2,8 @@ package handlers
 
 import (
 	"laftools-go/core/global"
-	"laftools-go/core/nocycle"
-	"laftools-go/core/url"
+	"laftools-go/core/handlers/config"
+	"laftools-go/core/tools"
 	"path"
 	"strings"
 	"time"
@@ -17,39 +17,39 @@ func SetupRoutes(r *gin.Engine) {
 	r.Use(gzip.Gzip(gzip.DefaultCompression))
 	r.Use(AuthMiddleware)
 	doGET_ := func(relativePath string, handlers gin.HandlerFunc) gin.IRoutes {
-		return r.GET(url.FormatThatPathGlobally(relativePath), handlers)
+		return r.GET(config.FormatThatPathGlobally(relativePath), handlers)
 	}
 	doPOST := func(relativePath string, handlers gin.HandlerFunc) gin.IRoutes {
-		return r.POST(url.FormatThatPathGlobally(relativePath), handlers)
+		return r.POST(config.FormatThatPathGlobally(relativePath), handlers)
 	}
 	// root
 	r.GET("/", func(c *gin.Context) {
-		c.Redirect(302, url.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
+		c.Redirect(302, config.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
 	})
 
 	// app and static
-	if nocycle.IsDevMode {
+	if tools.IsDevMode {
 		// do nothing, this part will move to r.NoRoute part below.
 	} else {
 		feAppDir := global.GetFrontEndRootAppDir()
 		feStaticDir := global.GetFrontEndStaticDir()
-		r.Static(url.CONFIG_URL_APP_FRONT_END_APP_PREFIX, feAppDir)
-		r.Static(url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX, feStaticDir)
-		r.Static(url.CONFIG_URL_APP_FRONT_END_ASSETS_PREFIX, path.Join(feAppDir, "assets"))
+		r.Static(config.CONFIG_URL_APP_FRONT_END_APP_PREFIX, feAppDir)
+		r.Static(config.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX, feStaticDir)
+		r.Static(config.CONFIG_URL_APP_FRONT_END_ASSETS_PREFIX, path.Join(feAppDir, "assets"))
 	}
 
 	// setup for SPA
 	r.NoRoute(func(c *gin.Context) {
 		fullPath := c.Request.RequestURI
-		isAppPreFix := strings.Index(fullPath, url.CONFIG_URL_APP_FRONT_END_APP_PREFIX) == 0
-		isStaticPrefix := strings.Index(fullPath, url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX) == 0
+		isAppPreFix := strings.Index(fullPath, config.CONFIG_URL_APP_FRONT_END_APP_PREFIX) == 0
+		isStaticPrefix := strings.Index(fullPath, config.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX) == 0
 		// if current env is dev mode, then we just proxy the request to the front-end server.
-		if nocycle.IsDevMode {
+		if tools.IsDevMode {
 			if isAppPreFix {
-				Proxy_To_FE(c, url.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
+				Proxy_To_FE(c, config.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
 				return
 			} else if isStaticPrefix {
-				Proxy_To_FE(c, url.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX)
+				Proxy_To_FE(c, config.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX)
 				return
 			} else {
 				// all other request go to the front-end server
@@ -75,7 +75,7 @@ func SetupRoutes(r *gin.Engine) {
 	}))
 
 	_visitor_can_ := func(path string) string {
-		url.CONFIG_URL_VISIT_URLS = append(url.CONFIG_URL_VISIT_URLS, path)
+		config.CONFIG_URL_VISIT_URLS = append(config.CONFIG_URL_VISIT_URLS, path)
 		return path
 	}
 	/**
@@ -121,7 +121,7 @@ func SetupRoutes(r *gin.Engine) {
 	// ws(websocket, note that ws has particular auth logic in servlet)
 	doGET_("/ws/system", SYSTEM_WebSocket)
 	doGET_("/ws/post-job", PostJob_WebSocket)
-	if nocycle.IsDevMode {
+	if tools.IsDevMode {
 		doGET_("/ws/dev-hmr", HmrReload)
 	}
 
@@ -138,6 +138,6 @@ func SetupRoutes(r *gin.Engine) {
 
 	// static folders
 	nonPDir := global.GetResourceNonProhibitedDir()
-	r.Static(url.FormatThatPathGlobally(_visitor_can_("/res/public")), nonPDir)
+	r.Static(config.FormatThatPathGlobally(_visitor_can_("/res/public")), nonPDir)
 
 }

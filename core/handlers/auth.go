@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"laftools-go/core/context"
+	"laftools-go/core/handlers/context"
 	"laftools-go/core/handlers/middleware"
 	"laftools-go/core/log"
 
