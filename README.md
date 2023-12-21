@@ -41,35 +41,33 @@ Here are some screenshots for you to preview how this toolbox works.
 
 # 🍀 Getting Started
 
-> If you're using Windows, please ensure below commands will be executed in git-bash, further detail and [CONTRIBUTION](CONTRIBUTION.md) at first.
+> If you're using Windows, please ensure below commands will be executed in git-bash, further detail and [CONTRIBUTION](CONTRIBUTION.md) at first.    
 
-## IMPORTANT NOTES
+>  For developers in China mainland, kindly read [Common Env Issues](dev/notes/common/issues.md) also.     
+
 
 LafTools is still under development, its dependencies or prerequisites may changed as needed.
 
-**For any issue, in particular to developers in China mainland, please read [Common Env Issues](dev/notes/common/issues.md) firstly, if there's no solution can solve it then raise an issue to us at any time, thanks!**
 
 ## Setup System Environment
 
-Note that you need to set system environment variables in your bash before developing or building. If you're unsure how to do this, you can simply execute the following commands each time you open a new terminal:
+Let's say that you've cloned this repository to `/users/jerry/projects/laftools-repo`, then you should declare the below env in your file **~/.bashrc**, or just simply execute them before running any command.
 
-### LAFTOOLS_ROOT
 
-if you've cloned this repository to `/users/jerry/projects/laftools-repo`, then you should declare the env `LAFTOOLS_ROOT` in your file **~/.bashrc**.
+## Env for Windows:
+```bash
+export LAFTOOLS_ROOT="C:\\users\\jerry\\project\\laftools-repo"
+```
 
-### Examples for Linux/MacOS:
+## Env for Linux/MacOS:
 
 ```bash
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-### Examples for Windows:
-```bash
-export LAFTOOLS_ROOT="C:\\users\\jerry\\project\\laftools-repo"
-```
 
 
-## Launch Go service
+## Launch Go Service
 
 To run Go service in terminal, you can execute below command:
 
@@ -83,7 +81,7 @@ To debug Go service, we have configured it in VSCode, you can just follow below 
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## Launch Front-end project
+## Launch Front-end Module
 
 **Web Part**:
 
@@ -144,9 +142,6 @@ cd pipeline
 ./build-all.sh
 ```
 
-Note that this app is still under development, kindly stay tuned for when will it release, thanks a lots!
-
-> if you encounter any issue when you are developing LafTools or building your binary, please contact us at any time.
 
 # 🙋 Is it a free software?
 
