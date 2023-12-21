@@ -41,25 +41,20 @@ Here are some screenshots for you to preview how this toolbox works.
 
 # 🍀 Getting Started
 
-> If you're using Windows, please ensure below commands will be executed in git-bash, further detail and [CONTRIBUTION](CONTRIBUTION.md) at first.    
-
->  For developers in China mainland, kindly read [Common Env Issues](dev/notes/common/issues.md) also.     
+> LafTools is still under development, its dependencies or prerequisites may changed as needed.
 
 
-LafTools is still under development, its dependencies or prerequisites may changed as needed.
-
-
-## Setup System Environment
+## 1. Setup System Environment
 
 Let's say that you've cloned this repository to `/users/jerry/projects/laftools-repo`, then you should declare the below env in your file **~/.bashrc**, or just simply execute them before running any command.
 
 
-## Env for Windows:
+**Env for Windows:**
 ```bash
 export LAFTOOLS_ROOT="C:\\users\\jerry\\project\\laftools-repo"
 ```
 
-## Env for Linux/MacOS:
+**Env for Linux/MacOS:**
 
 ```bash
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
@@ -67,7 +62,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 
 
-## Launch Go Service
+## 2. Launch Go Service
 
 To run Go service in terminal, you can execute below command:
 
@@ -81,7 +76,7 @@ To debug Go service, we have configured it in VSCode, you can just follow below 
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## Launch Front-end Module
+## 3. Launch FrontEnd Module
 
 **Web Part**:
 
@@ -120,7 +115,7 @@ pnpm install --no-frozen-lockfile
 npm run scan # start scanning files to provide translate service
 ```
 
-## Access Local Service
+## 4. Start Developing
 
 Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing!
 
@@ -135,36 +130,12 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## Build
+## 5. Build
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
-
-
-# 🙋 Is it a free software?
-
-Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.
-
-While we strive to provide as many services as possible for free, some features do require payment. This is because we incur costs for servers, maintenance, and other operational aspects that are essential to keep our services running smoothly and reliably. By charging for premium services, we can cover these costs and continue to offer high-quality, sustainable services. We appreciate your understanding and support.
-
-Wait, actually there’s another option instead of just paying the bill.
-
-As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.
-
-What you can do is to
-
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
-
-Learn more kindly refer to [Contribution](CONTRIBUTION.md)
-
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
 
 # 🌠 Preview
 
@@ -174,35 +145,11 @@ Preview(English):
 Preview(简体中文):
 ![](https://github.com/work7z/LafTools/blob/dev/dev/source/img-preview.png?raw=true)
 
-# ✉️ A Letter to CodeGen ToolBox Users
-
-Greetings from the CodeGen ToolBox team.
-
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
-
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
-
-Our decision to completely open our source code was driven by the following reasons::
-
-- To conduct a security reviews
-- To demonstrate the void of malicious logic or backdoors
-- To welcome contributions from the community
-- To build a strong reputation and earn trust.
-
-We understand your concerns about potential hacking attempts to bypass the activation logic of the software. Indeed, we acknowledge this as a potential issue. However, we have realized that LafTools should thrive by selling services, not just software licenses.
-
-We'd like to remind you below things:
-
-- Download our software from the official Github repository or our official website.
-- Report any security issues you detect.
-- Do not hesitate to submit your proposals for UI, tools, development, or any other aspects.
-
-Lastly, we would like to express our gratitude for your time in reading this section.
-
-Thank you.
-
-Nov 18th, 2023  
-LafTools Team
+# 📑 Other Materials   
+Below are further resources that you can have a read if you'd like to learn more detail about this project:  
+- [FAQ](./FAQ.md)
+- [CONTRIBUTION](./CONTRIBUTION.md)
+- [For China Developers](dev/notes/common/issues.md)
 
 # 🎷 Inspiration
 
