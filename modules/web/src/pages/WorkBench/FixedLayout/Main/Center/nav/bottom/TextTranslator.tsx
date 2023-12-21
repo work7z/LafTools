@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Button } from "@blueprintjs/core";
+import { Button, Card, Popover } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../components/GenCodeMirror";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../../types/WB_Types";
@@ -29,6 +29,7 @@ import AjaxUtils from "../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../utils/AlertUtils";
 import { useCallback } from "react";
 import _ from 'lodash'
+import { useGetI18nLangList } from "../../../../../../../containers/UserAskMultipleDialogs";
 
 type SrcTarget = "source" | "target";
 
@@ -54,8 +55,21 @@ let EachTranslatorBlock = (props: { onTextChange?: (val: string) => any, bigText
   );
 };
 
-let LanguageChooser = (props: { label: string }) => {
-  return <Button small minimal text={props.label + ": English"}></Button>;
+let LanguageChooser = (props: { isSource: boolean; label: string }) => {
+  let { isSource } = props;
+  let langList = useGetI18nLangList()
+  return <Popover placement="bottom" minimal content={<Card className="w-[300px]" style={{
+    padding: '15px'
+  }} >
+    <h2 style={{ margin: 0, fontWeight: 'bold', marginBottom: '7px' }}>{!isSource ? Dot("6OJC6", "Target Language") : Dot("SQAw7", "Source Language")}</h2>
+    {
+      _.map(langList, x => {
+        return <Button small minimal text={x.LabelByLang} key={x.Value}></Button>
+      })
+    }
+  </Card>}>
+    <Button small minimal text={props.label + ": English"}></Button>
+  </Popover>;
 };
 
 let ExportButtonByInputId = () => {
@@ -120,10 +134,12 @@ export default () => {
           }}
         >
           <LanguageChooser
+            isSource={true}
             label={Dot("jJuNz", "Source Language")}
           ></LanguageChooser>
           <Button minimal small intent="none" icon="swap-horizontal"></Button>
           <LanguageChooser
+            isSource={false}
             label={Dot("TwFcr", "Target Language")}
           ></LanguageChooser>
         </div>

@@ -29,7 +29,7 @@ import devJson from "../static/dev.json";
 import { AnyMapType } from "../styles/var";
 import TokenUtils from "./TokenUtils";
 import IDUtils from "./IDUtils";
-import { useReadCurrentWorkspaceId } from "./WorkSpaceUtils";
+import { getWorkspaceIdFromPath, useReadCurrentWorkspaceId } from "./WorkSpaceUtils";
 import ALL_NOCYCLE from "../nocycle";
 
 interface CommonRequest {
@@ -62,7 +62,7 @@ const AjaxUtils = {
       "Content-Type": "application/json",
       "X-LOCAL-PAGE-ID": IDUtils.PAGE_ID,
       "X-LOCAL-CLIENT-ID": IDUtils.CLIENT_ID,
-      "X-LOCAL-WORKSPACE-ID": ALL_NOCYCLE.workspaceId,
+      "X-LOCAL-WORKSPACE-ID": getWorkspaceIdFromPath(),
       "X-LOCAL-USER-LANG": TranslationUtils.CurrentLanguage,
       "X-LOCAL-USER-TOKEN": TokenUtils.getLocalUserToken(),
       "X-LOCAL-ADMIN-TOKEN": TokenUtils.getSystemInitToken(),

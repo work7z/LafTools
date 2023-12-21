@@ -46,8 +46,9 @@ Here are some screenshots for you to preview how this toolbox works.
 
 ## 1. Setup System Environment
 
-Let's say that you've cloned this repository to `/users/jerry/projects/laftools-repo`, then you should declare the below env in your file **~/.bashrc**, or just simply execute them before running any command.
+Let's say that you've cloned this repository to `C:\\Users\jerrylai\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare the below env in your file **~/.bashrc**, or just simply execute them before running any command.
 
+Besides, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
 
 **Env for Windows:**
 ```bash
@@ -67,7 +68,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 To run Go service in terminal, you can execute below command:
 
 ```shell
-go run ./core/CodeGenApplication.go server
+go run ./core/app.go server
 ```
 
 To debug Go service, we have configured it in VSCode, you can just follow below steps:

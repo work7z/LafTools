@@ -23,6 +23,12 @@ import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SyncStateUtils from "../utils/SyncStateUtils";
 
+/**
+ * RuntimeSlice, contains below status
+ * 1. Collapse or not
+ * 2. Translation Selector  
+ * 3. Sessions and Related Config
+ */
 
 type RuntimeStatusState = {
   toolOutputStatusMap: {
@@ -42,11 +48,11 @@ const RuntimeStatusSlice = createSlice({
   name: "runtimeStatus",
   initialState,
   reducers: {
-    // ...SyncStateUtils.getSyncStateReducers("runtimeStatus", {
-    //   RunOnInit: true,
-    //   RequireUserId: true,
-    //   RequireWorkspaceId: true,
-    // }),
+    ...SyncStateUtils.getSyncStateReducers("runtimeStatus", {
+      RunOnInit: true,
+      RequireUserId: true,
+      RequireWorkspaceId: true,
+    }),
     // select the latest view panel
     selectLatestViewPanel: (
       state,
@@ -71,7 +77,7 @@ const RuntimeStatusSlice = createSlice({
           collapseOutput,
         };
       }
-      state.toolOutputStatusMap[sessionId].latestViewPanelId='output'
+      state.toolOutputStatusMap[sessionId].latestViewPanelId = 'output'
       state.toolOutputStatusMap[sessionId].collapseOutput = collapseOutput;
     },
     setCollapseConfig: (
@@ -85,7 +91,7 @@ const RuntimeStatusSlice = createSlice({
         };
       }
       state.toolOutputStatusMap[sessionId].collapseConfig = collapseConfig;
-      state.toolOutputStatusMap[sessionId].latestViewPanelId='config'
+      state.toolOutputStatusMap[sessionId].latestViewPanelId = 'config'
     },
   },
 });
