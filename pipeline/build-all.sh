@@ -62,7 +62,7 @@ build-res(){
 build-fe(){
     echo "[I] building fe"
     (
-        cd ./sub/web
+        cd ./modules/web
         [ ! -d node_modules ] && pnpm install
         npm run build
         cp -a ./dist/ $LAFTOOLS_ROOT/dist/web

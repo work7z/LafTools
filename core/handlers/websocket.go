@@ -136,7 +136,7 @@ func HmrReload(c *gin.Context) {
 	}()
 	var shouldReturn = false
 	var crtLockForWS = &sync.Mutex{}
-	configHmrFile := path.Join(tools.LafToolsAppBaseDir, "sub/web/src/init/hmr.json")
+	configHmrFile := path.Join(tools.LafToolsAppBaseDir, "modules/web/src/init/hmr.json")
 	var reloadConfig *HmrReloadConfig = &HmrReloadConfig{}
 	if tools.IsFileExist(configHmrFile) {
 		// unmarshal from configHmrFile
@@ -144,7 +144,7 @@ func HmrReload(c *gin.Context) {
 		json.Unmarshal([]byte(str), reloadConfig)
 		// check if each file is changed
 		for _, _eachFile := range reloadConfig.Files {
-			eachFile := path.Join(tools.LafToolsAppBaseDir, "sub/web/public", _eachFile)
+			eachFile := path.Join(tools.LafToolsAppBaseDir, "modules/web/public", _eachFile)
 			// get last timestamp
 			// if changed, then send reload command to ws
 			lastTimestamp, _ := tools.GetFileLastModifiedTimestamp(eachFile)

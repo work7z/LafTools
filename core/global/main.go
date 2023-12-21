@@ -113,7 +113,7 @@ func GetFrontEndStaticDir() string {
 }
 func GetFrontEndRootAppDir() string {
 	if tools.IsDevMode {
-		return path.Join(tools.LafToolsAppBaseDir, "/sub/web/build")
+		return path.Join(tools.LafToolsAppBaseDir, "/modules/web/build")
 	} else {
 		return path.Join(tools.LafToolsAppBaseDir, "web")
 	}

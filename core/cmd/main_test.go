@@ -200,7 +200,7 @@ type TmpLabel struct {
 // // average need 90ms, so my current solution still win the time
 // for i := 0; i < 10; i++ {
 // 	startTime := time.Now()
-// 	cmd := exec.Command("node", (tools.LafToolsGoRoot + "/sub/node/build/direct-run-job.js"))
+// 	cmd := exec.Command("node", (tools.LafToolsGoRoot + "/modules/node/build/direct-run-job.js"))
 // 	cmd.Stdout = os.Stdout
 // 	cmd.Stderr = os.Stderr
 // 	if err := cmd.Run(); err != nil {

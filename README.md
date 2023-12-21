@@ -1,5 +1,5 @@
 <p align="center">
-<img width="100" src="https://github.com/work7z/LafTools/blob/dev/sub/web/public/static/icon.png?raw=true"></img>
+<img width="100" src="https://github.com/work7z/LafTools/blob/dev/modules/web/public/static/icon.png?raw=true"></img>
 <br>
 <span style="font-size:20px">LafTools - The next generation of a versatile toolbox designed for programmers
 </span>
@@ -87,8 +87,8 @@ npm i -g pnpm ts-node typescript
 
 # install project deps
 cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/sub/web && pnpm install
-cd $LAFTOOLS_ROOT/sub/purejs && pnpm install
+cd $LAFTOOLS_ROOT/modules/web && pnpm install
+cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/dev/scripts/scan && pnpm install
 
 # terminate previous processes if you're on Windows OS. (It's normal if your terminal is also terminated, just open new terminal to be continue)

@@ -1,5 +1,5 @@
 # .codeqlignore
 
 # ignore prettier
-sub/node/src/lib/prettier/**
-sub/node/src/lib/prettier/*
+modules/node/src/lib/prettier/**
+modules/node/src/lib/prettier/*

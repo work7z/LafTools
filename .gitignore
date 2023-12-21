@@ -38,7 +38,7 @@ yarn-debug.log*
 yarn-error.log*
 
 
-sub/web/scan.sh
+modules/web/scan.sh
 dev/lang/overwrriten/duplicate.json
 time-consumer
 *.bin

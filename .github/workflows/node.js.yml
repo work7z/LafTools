@@ -2,13 +2,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ dev ]
+    branches: [dev]
   pull_request:
-    branches: [ dev ]
+    branches: [dev]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,13 +15,13 @@ jobs:
         node-version: [20.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install pnpm and dependencies
-      run: |
-        cd sub/web
-        npm i -g pnpm
-        pnpm install --no-frozen-lockfile
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install pnpm and dependencies
+        run: |
+          cd modules/web
+          npm i -g pnpm
+          pnpm install --no-frozen-lockfile

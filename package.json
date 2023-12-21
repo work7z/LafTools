@@ -1,13 +1,13 @@
 {
   "name": "laftools-go",
   "version": "1.0.0",
-  "description": "<p align=\"center\"> <img width=\"100\" src=\"https://github.com/work7z/LafTools/blob/dev/sub/web/public/static/icon.png?raw=true\"></img> <br> <span style=\"font-size:20px\">LafTools - The next generation of a versatile toolbox designed for programmers </span> <br><br> </p>",
+  "description": "<p align=\"center\"> <img width=\"100\" src=\"https://github.com/work7z/LafTools/blob/dev/modules/web/public/static/icon.png?raw=true\"></img> <br> <span style=\"font-size:20px\">LafTools - The next generation of a versatile toolbox designed for programmers </span> <br><br> </p>",
   "scripts": {
-    "win-clean":"taskkill /F /IM bash.exe",
-    "fe-web": "sh ./sub/web/start.sh",
-    "fe-css": "(cd ./sub/web && sh ./job-tailwind.sh)",
+    "win-clean": "taskkill /F /IM bash.exe",
+    "fe-web": "sh ./modules/web/start.sh",
+    "fe-css": "(cd ./modules/web && sh ./job-tailwind.sh)",
     "fe-extra": "go run ./core/app.go dev-extra --config $LAFTOOLS_ROOT/dev/config/laf-tools-dev.json",
-    "fe-build": "(cd ./sub/web && npm run build)"
+    "fe-build": "(cd ./modules/web && npm run build)"
   },
   "keywords": [],
   "author": "",
@@ -22,11 +22,11 @@
     "lint-staged": "^15.2.0"
   },
   "lint-staged": {
-    "sub/web/src/**/*.{js,jsx,ts,tsx}": [
+    "modules/web/src/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write"
     ],
-    "sub/web/src/**/*.{css,scss,less}": [
+    "modules/web/src/**/*.{css,scss,less}": [
       "stylelint --fix",
       "prettier --write"
     ]
