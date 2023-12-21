@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "xml_to_model",
     Label: Dot("41exml_to_model", "xml_to_model"),
-    Description: [
+    Description: Dot(
       "6wxml_to_model",
       "TBC"
-    ],
+    ),
   },
 };
 

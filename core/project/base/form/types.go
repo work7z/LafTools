@@ -114,5 +114,5 @@ type ExtensionVM struct {
 	Layout           string
 	InitialFormModel *FormModel
 	Info             *ExtensionInfo
-	Actions          *[]ExtensionAction
+	Actions          *[]*ExtensionAction
 }

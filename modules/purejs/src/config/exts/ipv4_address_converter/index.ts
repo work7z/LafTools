@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "ipv4_address_converter",
     Label: Dot("41eipv4_address_converter", "ipv4_address_converter"),
-    Description: [
+    Description: Dot(
       "6wipv4_address_converter",
       "TBC"
-    ],
+    ),
   },
 };
 

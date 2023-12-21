@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "esc_json",
     Label: Dot("41eesc_json", "esc_json"),
-    Description: [
+    Description: Dot(
       "6wesc_json",
       "TBC"
-    ],
+    ),
   },
 };
 

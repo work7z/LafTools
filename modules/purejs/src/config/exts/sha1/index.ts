@@ -18,10 +18,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "sha1",
     Label: Dot("TtyeA", "SHA1"),
-    Description: [
+    Description: Dot(
       "gh9zA",
       "SHA-1 or Secure Hash Algorithm 1 is a cryptographic algorithm which takes an input and produces a 160-bit (20-byte) hash value.",
-    ],
+    ),
   },
 };
 

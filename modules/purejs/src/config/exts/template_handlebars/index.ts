@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "template_handlebars",
     Label: Dot("41etemplate_handlebars", "template_handlebars"),
-    Description: [
+    Description: Dot(
       "6wtemplate_handlebars",
       "TBC"
-    ],
+    ),
   },
 };
 

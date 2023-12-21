@@ -35,8 +35,10 @@ import WorkspaceSlice from "./workspaceSlice";
 import PreWorkSpaceSlice from "./preWorkSpace";
 import onlineAPISlice from "./onlineAPISlice";
 import RuntimeStatusSlice from "./RuntimeStatusSlice";
+import SessionSlice from "./sessionSlice";
 
 export default {
+  session: SessionSlice,
   online: onlineAPISlice,
   preWorkspace: PreWorkSpaceSlice,
   workspace: WorkspaceSlice,

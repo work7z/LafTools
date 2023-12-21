@@ -19,10 +19,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "md4",
     Label: Dot("70PnM", "MD4"),
-    Description: [
+    Description: Dot(
       "7gKzt",
       "MD4 (Message-Digest Algorithm 4) is a cryptographic hash function that takes an input and produces a 128-bit (16-byte) hash value. It was developed by Ronald Rivest in 1990 as a successor to MD2 and MD3. However, MD4 has been shown to be vulnerable to collision attacks, and is no longer considered secure for cryptographic purposes. MD4 is still used in some applications, but is being phased out in favor of more secure hash functions such as SHA-256 and SHA-3.",
-    ],
+    ),
   },
 };
 

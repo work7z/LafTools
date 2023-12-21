@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "nodes_host_calculater",
     Label: Dot("41enodes_host_calculater", "nodes_host_calculater"),
-    Description: [
+    Description: Dot(
       "6wnodes_host_calculater",
       "TBC"
-    ],
+    ),
   },
 };
 

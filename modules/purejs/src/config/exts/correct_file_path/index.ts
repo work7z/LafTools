@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "correct_file_path",
     Label: Dot("41ecorrect_file_path", "correct_file_path"),
-    Description: [
+    Description: Dot(
       "6wcorrect_file_path",
       "TBC"
-    ],
+    ),
   },
 };
 

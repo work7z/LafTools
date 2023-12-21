@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "curl_to_api",
     Label: Dot("41ecurl_to_api", "curl_to_api"),
-    Description: [
+    Description: Dot(
       "6wcurl_to_api",
       "TBC"
-    ],
+    ),
   },
 };
 

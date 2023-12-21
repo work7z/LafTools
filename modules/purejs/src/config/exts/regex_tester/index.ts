@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "regex_tester",
     Label: Dot("41eregex_tester", "regex_tester"),
-    Description: [
+    Description: Dot(
       "6wregex_tester",
       "TBC"
-    ],
+    ),
   },
 };
 

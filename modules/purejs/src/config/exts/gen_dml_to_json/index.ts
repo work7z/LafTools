@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "gen_dml_to_json",
     Label: Dot("41egen_dml_to_json", "gen_dml_to_json"),
-    Description: [
+    Description: Dot(
       "6wgen_dml_to_json",
       "TBC"
-    ],
+    ),
   },
 };
 

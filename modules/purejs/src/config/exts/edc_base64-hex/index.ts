@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "edc_base64-hex",
     Label: Dot("41eedc_base64-hex", "edc_base64-hex"),
-    Description: [
+    Description: Dot(
       "6wedc_base64-hex",
       "TBC"
-    ],
+    ),
   },
 };
 

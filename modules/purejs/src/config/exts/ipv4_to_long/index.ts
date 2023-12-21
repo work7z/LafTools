@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "ipv4_to_long",
     Label: Dot("41eipv4_to_long", "ipv4_to_long"),
-    Description: [
+    Description: Dot(
       "6wipv4_to_long",
       "TBC"
-    ],
+    ),
   },
 };
 

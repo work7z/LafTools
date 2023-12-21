@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "sym_rc5",
     Label: Dot("41esym_rc5", "sym_rc5"),
-    Description: [
+    Description: Dot(
       "6wsym_rc5",
       "TBC"
-    ],
+    ),
   },
 };
 

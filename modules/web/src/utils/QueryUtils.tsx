@@ -81,10 +81,13 @@ const QueryUtils = {
     let errObj = _.get(res_toolCategory, "data.errors");
     if (res_toolCategory.isFetching && !options.onlyErr) {
       return (
-        <NonIdealState
-          className="whitespace-break-spaces"
-          title={Dot("aHAfR", "Fetching data for {0}...", options.label)}
-        ></NonIdealState>
+        <div className="p-2">
+          {Dot("aHAfR", "Fetching data for {0}...", options.label)}
+        </div>
+        // <NonIdealState
+        //   className="whitespace-break-spaces"
+        //   title={}
+        // ></NonIdealState>
       );
     } else if (res_toolCategory.isError) {
       return (

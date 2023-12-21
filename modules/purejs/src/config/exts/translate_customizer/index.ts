@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "translate_customizer",
     Label: Dot("41etranslate_customizer", "translate_customizer"),
-    Description: [
+    Description: Dot(
       "6wtranslate_customizer",
       "TBC"
-    ],
+    ),
   },
 };
 

@@ -397,6 +397,7 @@ export default (props: PassProps) => {
     inputBigTextId,
     outputBigTextId,
   };
+
   return (
     <div key={sessionId} className="w-full h-full relative">
       <TextTransformerControl {...commonPassProp}></TextTransformerControl>

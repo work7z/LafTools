@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "edc_querystring",
     Label: Dot("41eedc_querystring", "edc_querystring"),
-    Description: [
+    Description: Dot(
       "6wedc_querystring",
       "TBC"
-    ],
+    ),
   },
 };
 

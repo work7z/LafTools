@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "edc_unicode",
     Label: Dot("41eedc_unicode", "edc_unicode"),
-    Description: [
+    Description: Dot(
       "6wedc_unicode",
       "TBC"
-    ],
+    ),
   },
 };
 

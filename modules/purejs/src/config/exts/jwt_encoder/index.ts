@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "jwt_encoder",
     Label: Dot("41ejwt_encoder", "jwt_encoder"),
-    Description: [
+    Description: Dot(
       "6wjwt_encoder",
       "TBC"
-    ],
+    ),
   },
 };
 

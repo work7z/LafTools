@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "file_compare",
     Label: Dot("41efile_compare", "file_compare"),
-    Description: [
+    Description: Dot(
       "6wfile_compare",
       "TBC"
-    ],
+    ),
   },
 };
 

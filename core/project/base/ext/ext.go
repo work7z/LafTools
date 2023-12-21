@@ -74,7 +74,6 @@ type ToolSubCategory struct {
 }
 
 func GetExtById(wc *context.WebContext, extId string) (*form.ExtensionVM, error) {
-
 	var indexJSONFile = path.Join(global.GetPureJSFolder(), "exts", extId, "index.json")
 	returnValue := &form.ExtensionVM{}
 	// read file and unmarhsla it to returnValue
@@ -96,7 +95,8 @@ func GetExtById(wc *context.WebContext, extId string) (*form.ExtensionVM, error)
 	// TODO: enhance those ByInit logic with smarter logic
 
 	// also handle for returnValue.Actions
-	for _, action := range *returnValue.Actions {
+	for _, raction := range *returnValue.Actions {
+		action := raction
 		action.LabelByInit = wc.DotWithoutScan(action.Label...)
 		action.Label = nil
 
@@ -130,7 +130,8 @@ func GetAllCategory(wc *context.WebContext) ([]*ToolCategory, error) {
 			for _, childrenSetByInit := range subCategory.ChildrenSetByInit {
 				childrenSetByInit.LabelByInit = wc.DotWithoutScan(childrenSetByInit.Label...)
 				childrenSetByInit.Label = nil
-				childrenSetByInit.DescriptionByInit = wc.DotWithoutScan(childrenSetByInit.Description...)
+				// childrenSetByInit.DescriptionByInit = wc.DotWithoutScan(childrenSetByInit.Description...)
+				childrenSetByInit.DescriptionByInit = "" // wc.DotWithoutScan(childrenSetByInit.Description...)
 				childrenSetByInit.Description = nil
 			}
 		}
@@ -178,13 +179,13 @@ func GetAllFuncMapIntoOneMapWithKeyValuePair(ctx *context.WebContext) map[string
 	return allMaps
 }
 
-func GetAllExtActionsWithKeyValuePair(ctx *context.WebContext) (map[string]form.ExtensionAction, error) {
+func GetAllExtActionsWithKeyValuePair(ctx *context.WebContext) (map[string]*form.ExtensionAction, error) {
 	// get all Actions in GetAllExtVM, remember to recursive collect them
 	allExtVM, err := GetAllExtVM(ctx)
 	if err != nil {
 		return nil, err
 	}
-	allExtActions := make(map[string]form.ExtensionAction)
+	allExtActions := make(map[string]*form.ExtensionAction)
 	for _, extVM := range allExtVM {
 		for _, action := range *extVM.Actions {
 			allExtActions[action.Id] = action
@@ -193,13 +194,13 @@ func GetAllExtActionsWithKeyValuePair(ctx *context.WebContext) (map[string]form.
 	return allExtActions, nil
 }
 
-func GetAllExtActions(ctx *context.WebContext) ([]form.ExtensionAction, error) {
+func GetAllExtActions(ctx *context.WebContext) ([]*form.ExtensionAction, error) {
 	// get all Actions in GetAllExtVM, remember to recursive collect them
 	allExtVM, err := GetAllExtVM(ctx)
 	if err != nil {
 		return nil, err
 	}
-	allExtActions := make([]form.ExtensionAction, 0)
+	allExtActions := make([]*form.ExtensionAction, 0)
 	for _, extVM := range allExtVM {
 		allExtActions = append(allExtActions, *extVM.Actions...)
 	}

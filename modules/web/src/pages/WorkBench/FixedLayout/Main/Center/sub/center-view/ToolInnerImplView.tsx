@@ -131,6 +131,7 @@ import {
   useMergeParamWithWorkSpace,
   useMergeParameter,
 } from "../../../../../../../types/WB_Func";
+import QueryUtils from "../../../../../../../utils/QueryUtils";
 
 export default () => {
   let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
@@ -143,7 +144,20 @@ export default () => {
 
   let sessionId = s.tabId + "s1";
   let finalPanel = <div>{Dot("qG5BY", "Not yet defined.")}</div>;
+  let extId = s.tabId || 'unknown'
+
+  let extQ = apiSlice.useGetToolExtDetailQuery({
+    extId: extId,
+    val_extensionIdRefreshMap_id: 1,
+  })
+  let r = QueryUtils.validateResult(extQ, {
+    label: Dot("tEiv_", "Retrieving Extension Detail"),
+  })
+  if (r) {
+    return r;
+  }
   let commonPassProp: CommonPassProp = {
+    extId: extId,
     sessionId,
     inputBigTextId: s.tabId + "-i",
     outputBigTextId: s.tabId + "-o",

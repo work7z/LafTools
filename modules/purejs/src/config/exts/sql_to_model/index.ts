@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "sql_to_model",
     Label: Dot("41esql_to_model", "sql_to_model"),
-    Description: [
+    Description: Dot(
       "6wsql_to_model",
       "TBC"
-    ],
+    ),
   },
 };
 

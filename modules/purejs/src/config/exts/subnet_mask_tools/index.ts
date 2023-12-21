@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "subnet_mask_tools",
     Label: Dot("41esubnet_mask_tools", "subnet_mask_tools"),
-    Description: [
+    Description: Dot(
       "6wsubnet_mask_tools",
       "TBC"
-    ],
+    ),
   },
 };
 

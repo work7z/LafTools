@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "text_compare",
     Label: Dot("41etext_compare", "text_compare"),
-    Description: [
+    Description: Dot(
       "6wtext_compare",
       "TBC"
-    ],
+    ),
   },
 };
 

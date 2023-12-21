@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "gen_sql_to_json",
     Label: Dot("41egen_sql_to_json", "gen_sql_to_json"),
-    Description: [
+    Description: Dot(
       "6wgen_sql_to_json",
       "TBC"
-    ],
+    ),
   },
 };
 

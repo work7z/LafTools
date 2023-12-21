@@ -14,10 +14,10 @@ let v: ExtensionVM = {
   Info: {
     Id: "grammer_check",
     Label: Dot("41egrammer_check", "grammer_check"),
-    Description: [
+    Description: Dot(
       "6wgrammer_check",
       "TBC"
-    ],
+    ),
   },
 };
 
