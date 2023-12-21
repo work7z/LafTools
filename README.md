@@ -162,6 +162,7 @@ This project is primarily inspired by the following musicians:
 - Chet Atkins
 - Tommy Emmanuel
 - Frédéric Chopin
+- Claude Debussy  
 - Oscar Peterson
 - Hugo Strasser
 - Jay Chou
