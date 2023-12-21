@@ -43,12 +43,11 @@ Here are some screenshots for you to preview how this toolbox works.
 
 > LafTools is still under development, its dependencies or prerequisites may changed as needed.
 
-
 ## 1. Setup System Environment
 
 Let's say that you've cloned this repository to `C:\\Users\jerrylai\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare the below env in your file **~/.bashrc**, or just simply execute them before running any command.
 
-Besides, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
+If you're using Windows, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located. 
 
 **Env for Windows:**
 ```bash
