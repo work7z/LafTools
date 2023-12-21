@@ -117,5 +117,5 @@ done
 
 
 addLicense "$LAFTOOLS_ROOT" "go"
-addLicense "$LAFTOOLS_ROOT/sub" "scss"
-addLicense "$LAFTOOLS_ROOT/sub" "tsx"
+addLicense "$LAFTOOLS_ROOT/modules" "scss"
+addLicense "$LAFTOOLS_ROOT/modules" "tsx"

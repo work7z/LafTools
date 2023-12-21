@@ -108,7 +108,7 @@ import { type } from "jquery";
 import apiSlice from "../../../../../reducers/apiSlice";
 
 import { FixedMenuItem } from "../../../../../types/WB_Types";
-import { FixedMenuBar } from "./modules/InnerMenuBar";
+import { FixedMenuBar } from "./sub/InnerMenuBar";
 import {
   pushToWorkSpace,
   useReadCurrentWorkspaceId,

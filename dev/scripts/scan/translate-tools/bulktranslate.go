@@ -29,6 +29,7 @@ type TranslateConfig struct {
 }
 
 func main() {
+	// LAFTOOLS_ROOT =
 	// get argument xxx from --id=xxx
 	// go run ./translate-tools/bulktranslate.go --id=wl
 	id := ""
@@ -55,6 +56,7 @@ func main() {
 		outputJSONMapStr, _ := nocycle.ReadFileAsStr(outputJSONFile)
 		json.Unmarshal([]byte(outputJSONMapStr), &outputJSONMap)
 	}
+	log.Ref().Info("LAFTOOLS_ROOT", LAFTOOLS_ROOT)
 	// zhCN
 	zhCNOverwrittenFile := path.Join(LAFTOOLS_ROOT, "dev", "lang", "overwrriten", "zh_CN-overwrite.json")
 	zhCNOverwrittenFileContent, err := nocycle.ReadFileAsStr(zhCNOverwrittenFile)

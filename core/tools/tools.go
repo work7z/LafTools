@@ -82,6 +82,9 @@ func ReadFileAsStr(filename string) (string, error) {
 	}
 }
 
+// func ConvertUnixPathToWindowsPathWithDiskLetter(path string) string {
+// return	"C:\\Users\\jerrylai\\hmproject\\laf-tools"
+// }
 func ReadFileAsStrWithNoTrim(filename string) (string, error) {
 	s, a := os.ReadFile(filename)
 	if a != nil {

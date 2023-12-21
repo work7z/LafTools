@@ -114,7 +114,9 @@ import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
 } from "../../../../../../../../../types/WB_Func";
-import ToolExtensionTree from "../modules/ToolExtensionTree";
+import ToolExtensionTree from "../sub/ToolExtensionTree";
+
+// console.log(Dot("1j62a","Do this in other time"))
 
 export let InnerToolPanel = (): any => {
   const res_toolCategory = apiSlice.useGetToolCategoryQuery({}, {});

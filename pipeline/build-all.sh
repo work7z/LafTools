@@ -46,8 +46,8 @@ build-core(){
     cp -a ./dist/resources $platformDistDir
     cp -a ./dist/web $platformDistDir
 
-    cp -a ./os-script/$osScriptFile/* $platformDistDir
-    cp -a ./os-script/root/* $platformDistDir
+    cp -a ./parcel/scripts/$osScriptFile/* $platformDistDir
+    cp -a ./parcel/scripts/root/* $platformDistDir
 
     echo "[I] built"
     echo "--------- CORE DONE ---------"

@@ -87,7 +87,7 @@ import {
   RefAlloProp,
   VAL_CSS_TAB_TITLE_PANEL,
 } from "../../../../../types/WB_Types";
-import { MainStage } from "./modules/CenterFirstLayer";
+import { MainStage } from "./sub/CenterFirstLayer";
 import { SidebarMenu } from "./nav/sidebar/Biz_SidebarMenu";
 import { FunctionalMenu } from "./nav/functional";
 import {

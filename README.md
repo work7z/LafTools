@@ -55,13 +55,19 @@ Note that you need to set system environment variables in your bash before devel
 
 ### LAFTOOLS_ROOT
 
-if you've cloned this repository to `/users/jerry/projects/laftools-repo`, then you should set this path as the value for `LAFTOOLS_ROOT`
+if you've cloned this repository to `/users/jerry/projects/laftools-repo`, then you should declare the env `LAFTOOLS_ROOT` in your file **~/.bashrc**.
 
-### Examples:
+### Examples for Linux/MacOS:
 
 ```bash
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
+
+### Examples for Windows:
+```bash
+export LAFTOOLS_ROOT="C:\\users\\jerry\\project\\laftools-repo"
+```
+
 
 ## Launch Go service
 
