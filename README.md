@@ -83,7 +83,7 @@ To debug Go service, we have configured it in VSCode, you can just follow below 
 
 ```bash
 # install required global library
-npm i -g pnpm ts-node typescript  
+npm i -g pnpm ts-node typescript
 
 # install project deps
 cd $LAFTOOLS_ROOT && pnpm install
@@ -92,16 +92,16 @@ cd $LAFTOOLS_ROOT/sub/purejs && pnpm install
 cd $LAFTOOLS_ROOT/dev/scripts/scan && pnpm install
 
 # terminate previous processes if you're on Windows OS. (It's normal if your terminal is also terminated, just open new terminal to be continue)
-npm run kill-prev 
+npm run win-clean
 
 # run web service on [Terminal - 1]
-npm run fe-web 
+npm run fe-web
 
 # run CSS processor on [Terminal - 2]
-npm run fe-css 
+npm run fe-css
 
 # run extra jobs on [Terminal - 3]
-npm run fe-extra 
+npm run fe-extra
 
 ```
 
@@ -200,7 +200,7 @@ Lastly, we would like to express our gratitude for your time in reading this sec
 
 Thank you.
 
-Nov 18th, 2023   
+Nov 18th, 2023  
 LafTools Team
 
 # 🎷 Inspiration
@@ -208,26 +208,25 @@ LafTools Team
 This project is primarily inspired by the following musicians:
 
 - Joe Pass
-- The Manhattan Transfer  
-- Khalil Fong    
-- Li Rong Hao     
+- The Manhattan Transfer
+- Khalil Fong
+- Li Rong Hao
 - Chet Atkins
 - Tommy Emmanuel
 - Frédéric Chopin
-- Oscar Peterson  
-- Hugo Strasser  
-- Jay Chou  
-- Stefanie Sun   
-- David Tao   
-- Jacky Cheung   
+- Oscar Peterson
+- Hugo Strasser
+- Jay Chou
+- Stefanie Sun
+- David Tao
+- Jacky Cheung
 
 Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
 
 Thank you.
 
 Mar. 20th, 2021  
-Ryan Laf   
-
+Ryan Laf
 
 # 🪪 License
 
