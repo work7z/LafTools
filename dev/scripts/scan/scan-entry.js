@@ -7,21 +7,21 @@ var cnchars = require("cn-chars");
 
 var md5 = require("md5");
 const { exit } = require("process");
-let i18njson = require("../../../resources/public/purejs/app-i18n.json");
+let i18njson = require('../../../resources/public/purejs/app-i18n.json')
 
 function sub_exp(idx) {
   return "((?<![\\\\])['\"`])((?:.(?!(?<![\\\\])\\1))*.?)\\" + idx;
 }
 
 let commonText = new RegExp(
-  "Dot\\s*\\(\\s*" + sub_exp(1) + "\\s*,\\s*" + sub_exp(3),
+  "Dot\\s*\\(\\s*" + sub_exp(1) + "\\s*,\\s*" + sub_exp(3)
 );
 
 // get env LAFTOOLS_ROOT
 let baseDIR = process.env.LAFTOOLS_ROOT;
 if (baseDIR == "") {
-  console.log("LAFTOOLS_ROOT could not be empty");
-  exit(-1);
+  console.log('LAFTOOLS_ROOT could not be empty')
+  exit(-1)
 }
 // sleep
 function sleep(ms) {
@@ -47,8 +47,8 @@ function getFile(file) {
 }
 let overwrittenDir = `${baseDIR}/dev/lang/overwrriten`;
 
-let webDIR = `${baseDIR}/modules/web`;
-let nodeDIR = `${baseDIR}/modules/node`;
+let webDIR = `${baseDIR}/sub/web`;
+let nodeDIR = `${baseDIR}/sub/node`;
 
 let previousModifiedType = {};
 
@@ -100,8 +100,8 @@ let searchItems = [
     id: "purejs",
     prefix: "Dot(",
     pattern: commonText,
-    target: baseDIR + "/modules/purejs/src/lang",
-    dir: baseDIR + "/modules/purejs/src",
+    target: baseDIR + "/sub/purejs/src/lang",
+    dir: baseDIR + "/sub/purejs/src",
   },
 ];
 
@@ -113,28 +113,27 @@ let scan = async (eachRunItem, eachLang) => {
   while (true) {
     try {
       let outputLang = eachLang.replace("-", "_");
-      let isChinese = eachLang == "zh_CN" || eachLang == "zh_HK";
+      let isChinese = eachLang == 'zh_CN' || eachLang == 'zh_HK'
       let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
       let dir = getFile(eachRunItem.dir); // replace with appropriate function
-      let a1 = `${overwrittenDir}/${
-        isChinese ? "zh_CN" : eachLang
-      }-id-overwrite.json`;
+      let a1 = `${overwrittenDir}/${isChinese ? 'zh_CN' : eachLang}-id-overwrite.json`
       let overwrittenFile = a1;
       let idOverwriteJSONFile = getFile(a1); // replace with appropriate function
       let overwriteJSONFile = getFile(
-        `${overwrittenDir}/${isChinese ? "zh_CN" : eachLang}-overwrite.json`,
+        `${overwrittenDir}/${isChinese ? 'zh_CN' : eachLang}-overwrite.json`
       );
 
       if (!fs.existsSync(idOverwriteJSONFile.file)) {
-        fs.writeFileSync(idOverwriteJSONFile.file, "{}");
+        fs.writeFileSync(idOverwriteJSONFile.file, '{}')
       }
       if (!fs.existsSync(overwriteJSONFile.file)) {
-        fs.writeFileSync(overwriteJSONFile.file, "{}");
+        fs.writeFileSync(overwriteJSONFile.file, '{}')
       }
       let overwrritenMap = getFile(overwrittenFile).jsonmap();
       let lastModifiedForIdOverwriteJSONFile =
-        idOverwriteJSONFile.lastModified() + overwriteJSONFile.lastModified();
+        idOverwriteJSONFile.lastModified() +
+        overwriteJSONFile.lastModified();
 
       // iterate all files for dir.file, recursively
       let iterateFiles = (dir, done) => {
@@ -248,28 +247,24 @@ let scan = async (eachRunItem, eachLang) => {
       }
       fs.writeFileSync(
         path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
-        waitTranslateObjStr,
+        waitTranslateObjStr
       );
       fs.writeFileSync(
         path.join(tmpTranslateDir, `config-${eachRunItem.id}-${eachLang}.json`),
         toJSON({
           id: eachRunItem.id,
-        }),
+        })
       );
 
       // execute a command
-      let cmd = `go run ${path.join(
-        __dirname,
-        "translate-tools",
-        "bulktranslate.go",
-      )} --id=${eachRunItem.id} --lg=${eachLang} --output=${outputLangFile} `;
+      let cmd = `go run ${path.join(__dirname, "translate-tools", 'bulktranslate.go')} --id=${eachRunItem.id} --lg=${eachLang} --output=${outputLangFile} `;
       console.log("cmd is ", cmd);
       sh.exec(cmd);
       // console.log();
 
       let resultFile = path.join(
         __dirname,
-        `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`,
+        `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`
       );
       if (fs.existsSync(resultFile)) {
         let resultJSON = getFile(resultFile).jsonmap();
@@ -308,11 +303,11 @@ let scan = async (eachRunItem, eachLang) => {
 let langarr = [];
 
 i18njson.forEach((x) => {
-  if (x.Value == "en_US") {
-    return;
-  }
-  langarr.push(x.Value);
-});
+  if (x.Value == 'en_US') {
+    return
+  };
+  langarr.push(x.Value)
+})
 
 for (let eachItem of searchItems) {
   if (fs.existsSync(eachItem.target)) {
