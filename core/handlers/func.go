@@ -36,6 +36,7 @@ import (
 
 func SetupRoutes(r *gin.Engine) {
 	r.Use(gzip.Gzip(gzip.DefaultCompression))
+	// all APIs needs to be authenticated except for openAPIs
 	r.Use(AuthMiddleware)
 	// root
 	r.GET("/", func(c *gin.Context) {
@@ -92,7 +93,7 @@ func SetupRoutes(r *gin.Engine) {
 	// User routes
 	r_api := r.Group(config.CONFIG_URL_PUBLIC_BASE_PREFIX)
 
-	// TODO: if you have time, help to group sub routes like r_api.Group
+	// open APIs, mean no need to login to access
 	openRoutes := r_api.Group(config.CONFIG_URL_OPENAPI_PREFIX)
 	{
 		// User routes

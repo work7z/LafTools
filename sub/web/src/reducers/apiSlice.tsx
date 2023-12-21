@@ -33,10 +33,11 @@ import {
   WorkSpaceStruct,
 } from "../types/WB_Types";
 import { EachLang } from "../types/all-types";
+import { withPrefixOpenAPI } from "./func";
 
 let createNotProhibitedResources = (build, resName) => {
   return build.query({
-    query: () => `/res/public/${resName}`,
+    query: () => withPrefixOpenAPI(`/res/public/${resName}`),
   });
 };
 
@@ -136,17 +137,17 @@ export const apiSlice = createApi({
       }>,
       any
     >({
-      query: () => "/system/init/info",
+      query: () => withPrefixOpenAPI("/system/init/info"),
     }),
     geti18nConfig: build.query<PayloadValueData<EachLang[]>, any>({
-      query: () => "/i18n/get",
+      query: () => withPrefixOpenAPI("/i18n/get"),
     }),
     // visit
     getVisitAdminInitInfo: build.query<
       PayloadValueData<{ HasAdminInit: boolean; LastUpdatedTime: string }>,
       any
     >({
-      query: () => "/admin/init/info",
+      query: () => withPrefixOpenAPI("/admin/init/info"),
     }),
     postLocalPwCalc: build.mutation<
       PayloadValueData<{ CalcPW: string }>,
@@ -176,7 +177,7 @@ export const apiSlice = createApi({
       query: (obj) => {
         return {
           method: "GET",
-          url: "/user/one/getByToken",
+          url: withPrefixOpenAPI("/user/one/getByToken"),
           params: obj,
         };
       },
@@ -187,7 +188,7 @@ export const apiSlice = createApi({
       query: (obj) => {
         return {
           method: "GET",
-          url: "/user/all/getUserNameList",
+          url: withPrefixOpenAPI("/user/all/getUserNameList"),
           params: obj,
         };
       },
