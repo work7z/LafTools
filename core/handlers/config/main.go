@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Thu, 21 Dec 2023
 // Author: LafTools Team - FX <work7z@outlook.com>
-LafTools Team - Ubuntu <work7z@outlook.com>
-// Description: 
+// LafTools Team - Ubuntu <work7z@outlook.com>
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
