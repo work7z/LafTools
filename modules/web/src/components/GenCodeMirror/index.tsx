@@ -66,14 +66,15 @@ import exportUtils from "../../utils/ExportUtils";
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { javascript } from "@codemirror/lang-javascript";
 import { FN_GetDispatch } from "../../nocycle";
-import { FN_SetTextValueFromInsideByBigTextId } from "../../actions/bigtext_action";
+import { FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY } from "../../actions/bigtext_action";
 
 // import darcula from "@uiw/codemirror-theme-darcula";
 type GenCodeMirrorProp = {
   bigTextId: string;
   lineWrap?: boolean;
-  placeholder?:string;
-  onTextChange?:(newText?:string)=>any
+  language?: string;
+  placeholder?: string;
+  onTextChange?: (newText: string) => any
 };
 
 export default (props: GenCodeMirrorProp) => {
@@ -111,7 +112,7 @@ export default (props: GenCodeMirrorProp) => {
   }, [verObj.ver]);
   let value: string = bt.bigText;
   let setValue = (val: string) => {
-    FN_GetDispatch()(FN_SetTextValueFromInsideByBigTextId(bigTextId, val));
+    FN_GetDispatch()(FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY(bigTextId, val));
   };
   const onChange = React.useCallback((val, viewUpdate) => {
     console.log("val:", val);
@@ -119,6 +120,9 @@ export default (props: GenCodeMirrorProp) => {
     props.onTextChange && props.onTextChange(val)
   }, []);
   console.log("rendering", value, verObj.ver);
+  let langMap = {
+    javascript: () => javascript({ jsx: true })
+  }
   return (
     <CodeMirror
       key={verObj.ver}
@@ -132,8 +136,9 @@ export default (props: GenCodeMirrorProp) => {
       }}
       height="100%"
       value={value}
+      // lang={props.language || 'javascript'}
       extensions={[
-        javascript({ jsx: true }),
+        props.language && langMap[props.language] ? (langMap[props.language])() : null,
         props.lineWrap ? EditorView.lineWrapping : null
         // EditorState.readOnly.of(true)
       ].filter(x => x) as any}

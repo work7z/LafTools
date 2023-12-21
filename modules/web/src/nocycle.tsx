@@ -28,6 +28,10 @@ import { useHistory } from "react-router-dom";
 export let getAjaxValueRes = function <A extends { [key: string]: any }>(r): A {
   return r.response?.data?.payload?.value;
 };
+
+export let getAjaxValueResAsString = function (r): string {
+  return r.response?.data?.payload?.value;
+};
 function isObject(item) {
   return typeof item === "object" && !Array.isArray(item) && item !== null;
 }

@@ -38,11 +38,14 @@ func Translate_Text(c *gin.Context) {
 	if e != nil {
 		ErrLa(c, e)
 	}
-
-	OKLa(c, DoValueRes(1))
+	text, e := TranslateText(form.Text, form.SourceLang, form.TargetLang)
+	if e != nil {
+		ErrLa(c, e)
+	}
+	OKLa(c, DoValueRes(text))
 }
 
-func translateText(text, sourceLang string, targetLang string) (string, error) {
+func TranslateText(text, sourceLang string, targetLang string) (string, error) {
 	if targetLang == "en_US" {
 		targetLang = "en"
 	}

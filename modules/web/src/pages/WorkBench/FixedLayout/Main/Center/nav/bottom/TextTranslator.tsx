@@ -23,20 +23,31 @@ import GenCodeMirror from "../../../../../../../components/GenCodeMirror";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../../types/WB_Types";
 import { Allotment, AllotmentHandle } from "allotment";
+import { FN_GetDispatch, getAjaxValueRes, getAjaxValueResAsString } from "../../../../../../../nocycle";
+import { FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../actions/bigtext_action";
+import AjaxUtils from "../../../../../../../utils/AjaxUtils";
+import AlertUtils from "../../../../../../../utils/AlertUtils";
+import { useCallback } from "react";
+import _ from 'lodash'
 
 type SrcTarget = "source" | "target";
 
-let EachTranslatorBlock = (props: { inputId: string; type: SrcTarget }) => {
+let EachTranslatorBlock = (props: { onTextChange?: (val: string) => any, bigTextId: string; type: SrcTarget }) => {
+  let isSrc = props.type == "source"
   let placeholder =
-    props.type == "source"
+    isSrc
       ? Dot("L4Lm1", "Please input your source text in this editor.")
       : Dot("HEAhr", "After translating, the result will appear here.");
   return (
     <div className="h-full w-full inline-block ">
       <GenCodeMirror
+        language="text"
+        onTextChange={(val: string) => {
+          props.onTextChange && props.onTextChange(val)
+        }}
         placeholder={placeholder}
         lineWrap={true}
-        bigTextId={props.inputId}
+        bigTextId={props.bigTextId}
         key={""}
       ></GenCodeMirror>
     </div>
@@ -62,6 +73,30 @@ export default () => {
   let sessionId = "nav-translator";
   let textInputId = sessionId + "ipt";
   let textOutputId = sessionId + "opt";
+  let fn_textChg = useCallback(_.throttle(async (val) => {
+    //               SourceLang string
+    // TargetLang string
+    // Type       string
+    // Text       string
+    let r = await AjaxUtils.DoLocalRequestWithNoThrow({
+      url: "/translation/text/translate",
+      isPOST: true,
+      data: {
+        SourceLang: 'zh',
+        TargetLang: 'en',
+        Type: 'text',
+        Text: val,
+      },
+    })
+    if (r.error) {
+      AlertUtils.popError(r.error)
+      return
+    }
+    let ajaxResValue = getAjaxValueResAsString(r)
+    FN_GetDispatch()(
+      FN_SetTextValueFromOutSideByBigTextId(textOutputId, ajaxResValue as string)
+    )
+  }, 200), [textInputId])
   return (
     <div className="h-full w-full">
       <div
@@ -107,18 +142,19 @@ export default () => {
         <Allotment className="flex flex-row">
           <Allotment.Pane>
             <EachTranslatorBlock
-              inputId={textInputId}
+              bigTextId={textInputId}
               type="source"
+              onTextChange={fn_textChg}
             ></EachTranslatorBlock>
           </Allotment.Pane>
           <Allotment.Pane>
             <EachTranslatorBlock
-              inputId={textOutputId}
+              bigTextId={textOutputId}
               type="target"
             ></EachTranslatorBlock>
           </Allotment.Pane>
         </Allotment>
       </div>
-    </div>
+    </div >
   );
 };

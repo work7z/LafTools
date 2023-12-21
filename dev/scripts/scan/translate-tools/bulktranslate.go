@@ -12,9 +12,9 @@ import (
 	"strings"
 	"time"
 
+	gt "github.com/bas24/googletranslatefree"
 	"github.com/dlclark/regexp2"
 
-	gt "github.com/bas24/googletranslatefree"
 	"github.com/sirupsen/logrus"
 )
 

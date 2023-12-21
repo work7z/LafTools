@@ -2,7 +2,7 @@
 // 
 // Date: Thu, 21 Dec 2023
 // Author: LafTools Team - FX <work7z@outlook.com>
-LafTools Team - Ubuntu <work7z@outlook.com>
+// LafTools Team - Ubuntu <work7z@outlook.com>
 // Description: 
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //

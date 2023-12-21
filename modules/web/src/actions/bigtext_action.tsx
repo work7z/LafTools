@@ -44,7 +44,7 @@ export let FN_GetActualTextValueByBigTextId = (
   };
 };
 
-export let FN_SetTextValueFromInsideByBigTextId = (
+export let FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY = (
   bigTextId: string,
   newValue: string
 ) => {
