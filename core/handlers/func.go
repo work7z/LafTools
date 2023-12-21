@@ -188,4 +188,17 @@ func SetupRoutes(r *gin.Engine) {
 		wsRoutes.GET("/post-job", PostJob_WebSocket)
 	}
 
+	// WebSocket routes
+	syncRoutes := r_api.Group("/sync")
+	{
+		syncRoutes.POST("/reducer/save", Sync_Reducer_Save)
+		syncRoutes.GET("/reducer/get", Sync_Reducer_Get)
+	}
+
+	// WebSocket routes
+	translationRoutes := r_api.Group("/translation")
+	{
+		translationRoutes.POST("/text/translate", Translate_Text)
+	}
+
 }
