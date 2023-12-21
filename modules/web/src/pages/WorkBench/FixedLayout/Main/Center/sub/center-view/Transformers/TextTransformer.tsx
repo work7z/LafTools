@@ -202,8 +202,8 @@ let useCurrentActiveStyle = (sessionId: string, panelId: string) => {
   }).v;
   return crt_panelId === panelId
     ? {
-        zIndex: 20,
-      }
+      zIndex: 20,
+    }
     : {};
 };
 
@@ -245,8 +245,8 @@ let TextTransformerOutput = (props: CommonPassProp) => {
         // zIndex: 80,
         ...(isCollapsed
           ? {
-              height: VAL_CSS_TAB_TITLE_PANEL,
-            }
+            height: VAL_CSS_TAB_TITLE_PANEL,
+          }
           : {}),
         transition: "all 0.3s",
       }}
@@ -377,7 +377,7 @@ let TextTransformerConfig = (props: CommonPassProp) => {
             }}
             small
             minimal
-            // rightIcon={!isCollapsed ? "chevron-up" : "chevron-down"}
+          // rightIcon={!isCollapsed ? "chevron-up" : "chevron-down"}
           ></Button>
         }
         children={<div>this is bg</div>}
@@ -406,7 +406,7 @@ export default (props: PassProps) => {
         }}
         className="w-full overflow-auto"
       >
-        <GenCodeMirror bigTextId={inputBigTextId}></GenCodeMirror>
+        <GenCodeMirror language="javascript" bigTextId={inputBigTextId}></GenCodeMirror>
       </div>
       <TextTransformerOutput {...commonPassProp}></TextTransformerOutput>
       <TextTransformerConfig {...commonPassProp}></TextTransformerConfig>

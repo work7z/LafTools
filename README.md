@@ -140,10 +140,10 @@ cd pipeline
 # 🌠 Preview
 
 Preview(English):
-![](https://github.com/work7z/LafTools/blob/dev/dev/source/img-preview-en.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-1.png?raw=true)
 
-Preview(简体中文):
-![](https://github.com/work7z/LafTools/blob/dev/dev/source/img-preview.png?raw=true)
+Preview(Simplified Chinese|简体中文):
+![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-2.png?raw=true)
 
 # 📑 Other Materials   
 Below are further resources that you can have a read if you'd like to learn more detail about this project:  
