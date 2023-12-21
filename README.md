@@ -37,11 +37,18 @@ If the answer to any of the above is yes, then you should consider trying our to
 Example Preview:
 Here are some screenshots for you to preview how this toolbox works.
 
-(TO BE CONTINUE)
+# 🌠 Preview
+
+> LafTools is still under development, its dependencies, UI or prerequisites may changed as needed.
+
+Preview(English):
+![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-1.png?raw=true)
+
+Preview(Simplified Chinese|简体中文):
+![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-2.png?raw=true)
+
 
 # 🍀 Getting Started
-
-> LafTools is still under development, its dependencies or prerequisites may changed as needed.
 
 ## 1. Setup System Environment
 
@@ -136,14 +143,6 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 cd pipeline
 ./build-all.sh
 ```
-
-# 🌠 Preview
-
-Preview(English):
-![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-1.png?raw=true)
-
-Preview(Simplified Chinese|简体中文):
-![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-2.png?raw=true)
 
 # 📑 Other Materials   
 Below are further resources that you can have a read if you'd like to learn more detail about this project:  
