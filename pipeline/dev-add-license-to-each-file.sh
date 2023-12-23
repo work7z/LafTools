@@ -1,17 +1,6 @@
 #!/bin/bash
 
 
-# if [[ "$1" = "" ]]; then
-# cat <<EOF
-#   Please add a software name
-#   Usage:
-#   ./$0 <software name>
-#   Example:
-#   ./$0 "my awesome software"
-# EOF
-# exit 1
-# fi
-
 
 # exit when LAFTOOLS_ROOT has no value
 if [[ "$LAFTOOLS_ROOT" = "" ]]; then
@@ -19,7 +8,7 @@ if [[ "$LAFTOOLS_ROOT" = "" ]]; then
 fi
 
 
-function addLicense(){
+addLicense(){
 
 cd $1
 file_type=$2
