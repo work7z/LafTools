@@ -12,7 +12,6 @@
     "jsx": "react-jsx",
 
     /* Linting */
-    "useUnknownInCatchVariables": false,
     "strict": true,
     "noUnusedLocals": false,
     "noUncheckedIndexedAccess": false,
