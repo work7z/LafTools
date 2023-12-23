@@ -14,9 +14,11 @@ Before modifying the source code, you should read the below sections to learn th
 
 To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
 
-## How to build project?  
-We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:  
-```bash 
+## How to build project?
+
+We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
+
+```bash
 ./pipeline/build-all.sh
 ```
 
@@ -38,7 +40,7 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode 
+## Dev && Build on VSCode
 
 If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
 
@@ -131,16 +133,13 @@ To have a good software quality and strong international support, please follow 
 Please ensure all text is written in English, for instance:
 
 ```Typescript
-// first argument: uniq id
-// second argument: main string(English)
-// third argument: replace target for {0}
-// forth argument: replace target for {1}
-let str: string = Dot("leVsK","This is {0} project, I like {1}","good","LafTools")
+// "leVsK" -> fragment id
+// "This is a {0} project, I like {1}" -> main text
+// "awesome" -> {0}
+// "LafTools" -> {1}
+let str: string = Dot("leVsK","This is an {0} project, I like {1}","awesome","LafTools")
 
-// eventually, it will print out like
-
-// This is good project, I like LafTools
-console.log(str)
+console.log(str) // This is an awesome project, I like LafTools
 ```
 
 ## Next Chapter
@@ -160,5 +159,5 @@ For sure, there's also a FAQ link for your reference.
 
 Lastly, we appreciate that you want to contribute to this project. Should you had any issues or bewilderments, feel free to contact us via Github issue at any time.
 
-Thanks and Regards,   
+Thanks and Regards,  
 Laftools Team
