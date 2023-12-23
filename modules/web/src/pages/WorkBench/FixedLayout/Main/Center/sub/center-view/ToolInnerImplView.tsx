@@ -127,13 +127,14 @@ import GenHorizontalTab, {
 import WorkspaceSlice from "../../../../../../../reducers/workspaceSlice";
 import { ClosableText } from "../../../../../../../components/ClosableText";
 import TextTransformer from "./Transformers/TextTransformer";
-import { CommonPassProp } from "./transformer_types";
+import { CommonTransformerPassProp } from "./transformer_types";
 import {
   useMergeParamWithWorkSpace,
   useMergeParameter,
 } from "../../../../../../../types/WB_Func";
 import QueryUtils from "../../../../../../../utils/QueryUtils";
 import { ExtensionVM } from "../../../../../../../types/all-types";
+import UnknownPart from "../../../../../../../containers/UnknownPart";
 
 export default () => {
   let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
@@ -145,7 +146,6 @@ export default () => {
   });
 
   let sessionId = s.tabId + "s1";
-  let finalPanel = <div>{Dot("qG5BY", "Not yet defined.")}</div>;
   let extId = s.tabId || 'unknown'
 
   let extQ = apiSlice.useGetToolExtDetailQuery({
@@ -158,7 +158,7 @@ export default () => {
   if (r) {
     return r;
   }
-  let commonPassProp: CommonPassProp = {
+  let commonPassProp: CommonTransformerPassProp = {
     extId: extId,
     sessionId,
     inputBigTextId: s.tabId + "-i",
@@ -166,14 +166,19 @@ export default () => {
   };
 
   let val_ExtensionVM: ExtensionVM = getAjaxResPayloadValue(extQ);
-
-  let ExtImplementationMap = {
-    form: TextTransformer
+  if (!val_ExtensionVM || !val_ExtensionVM.Layout) {
+    return <div>Unknown Extension: {extId}</div>
   }
 
-  if (true) {
-    finalPanel = <TextTransformer {...commonPassProp}></TextTransformer>;
+  let layoutMappings = {
+    form2: TextTransformer
   }
+  let UnknownPartWrap = (p: CommonTransformerPassProp) => {
+    return <UnknownPart {...p} reason={Dot("d-qPr", "Unknown layout: {0}", val_ExtensionVM.Layout)} />
+  }
+  let PickupPanel = layoutMappings[val_ExtensionVM.Layout] || UnknownPartWrap
+
+  let finalPanel = <PickupPanel {...commonPassProp}></PickupPanel>;
 
   return (
     <div

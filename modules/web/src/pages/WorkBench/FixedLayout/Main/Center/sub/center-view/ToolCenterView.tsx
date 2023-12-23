@@ -125,7 +125,7 @@ import GenHorizontalTab, {
 import WorkspaceSlice from "../../../../../../../reducers/workspaceSlice";
 import { ClosableText } from "../../../../../../../components/ClosableText";
 import TextTransformer from "./Transformers/TextTransformer";
-import { CommonPassProp } from "./transformer_types";
+import { CommonTransformerPassProp } from "./transformer_types";
 import {
   useMergeParamWithWorkSpace,
   useMergeParameter,

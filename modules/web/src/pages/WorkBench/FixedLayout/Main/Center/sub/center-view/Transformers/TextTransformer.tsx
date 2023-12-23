@@ -24,7 +24,7 @@ import {
   VAL_CSS_TAB_TITLE_PANEL,
   VAL_CSS_CONTROL_PANEL,
 } from "../../../../../../../../types/WB_Types";
-import { CommonPassProp } from "../transformer_types";
+import { CommonTransformerPassProp } from "../transformer_types";
 import { Dot } from "../../../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
 import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
@@ -208,7 +208,7 @@ let useCurrentActiveStyle = (sessionId: string, panelId: string) => {
 };
 
 // TODO: provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
-let TextTransformerOutput = (props: CommonPassProp) => {
+let TextTransformerOutput = (props: CommonTransformerPassProp) => {
   let sessionId = props.sessionId;
   let isCollapsed = fn_coll_output(sessionId);
   let onColl = (v: boolean) => {
@@ -300,7 +300,7 @@ let fn_coll_config = (sessionId) => {
   }).v;
 };
 
-let TextTransformerConfig = (props: CommonPassProp) => {
+let TextTransformerConfig = (props: CommonTransformerPassProp) => {
   let sessionId = props.sessionId;
   let isCollapsed = fn_coll_config(sessionId);
   let onColl = (v: boolean) => {
@@ -395,7 +395,7 @@ export default (props: CommonTransformerProps) => {
   let inputBigTextId = props.inputBigTextId;
   let outputBigTextId = props.outputBigTextId;
   let extId = props.extId
-  let commonPassProp: CommonPassProp = {
+  let commonPassProp: CommonTransformerPassProp = {
     ...props
   };
 
@@ -410,7 +410,7 @@ export default (props: CommonTransformerProps) => {
       >
         <GenCodeMirror
           lineWrap
-          placeholder="Input your text here"
+          placeholder="Input your text here2"
           language="javascript"
           bigTextId={inputBigTextId}
         ></GenCodeMirror>
