@@ -93,7 +93,10 @@ export default (props: PassProps) => {
             label: Dot("7b3am", "Item-1"),
             id: "item-1",
             isSelected: true,
-            secondaryLabel: <Button minimal small icon={"menu"}></Button>
+            secondaryLabel: <div>
+                <Button minimal small icon={"duplicate"}></Button>
+                <Button minimal small icon={"trash"}></Button>
+            </div>
         },
         {
             label: Dot("BXxkd", "item-2"),

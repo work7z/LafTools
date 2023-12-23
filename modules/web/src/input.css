@@ -51,19 +51,22 @@ div,.fixed-wb-nav-menu{
 }
 
 /** laf-tools small tree BEGIN */
+.laft-small-tree .bp5-tree-node>.bp5-tree-node-content,
+.laft-small-tree .bp5-tree-node.bp5-tree-node-selected>.bp5-tree-node-content{
+    @apply  !text-slate-600 dark:!text-white;
+}
 .laft-secondary-btn,
 .laft-secondary-btn svg,
-.laft-small-tree .bp5-tree-node>.bp5-tree-node-content,
-.laft-small-tree .bp5-tree-node.bp5-tree-node-selected>.bp5-tree-node-content,
 .laft-small-tree .bp5-tree-node-secondary-label svg,
 .laft-small-tree .bp5-tree-node-secondary-label svg,
- .laft-small-tree .bp5-icon
-{
-    @apply  !text-slate-600;
+.laft-small-tree .bp5-icon{
+    @apply !text-slate-500 dark:!text-white;
 }
+
+
 .laft-small-tree .bp5-tree-node.bp5-tree-node-selected>.bp5-tree-node-content
 {
-    @apply !bg-slate-200 !fill-slate-200;
+    @apply !bg-slate-200 !fill-slate-200 dark:!bg-slate-600 dark:!bg-slate-600;
 }
 
 /** laf-tools small tree END */
