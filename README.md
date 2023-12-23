@@ -60,6 +60,7 @@ If you're using Windows, please ensure that all commands are executed in git-bas
 ```bash
 git config core.ignorecase false
 export LAFTOOLS_ROOT="C:\\users\\jerry\\project\\laftools-repo"
+export PATH=$PATH:$LAFTOOLS_ROOT\\dev\\source\\windows-bin
 ```
 
 **Env for Linux/MacOS:**
