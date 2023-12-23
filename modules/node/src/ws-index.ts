@@ -1,6 +1,6 @@
 var websocket = require("websocket");
 import fs from "fs";
-import { NodeReq, NodeRes } from "./all-types";
+import { NodeReq, NodeRes } from "./node-types";
 import JobDefinition from "./ext/job";
 // command: node ./ws-index.ts --autoExitSeconds=10 --input-config-file=/users/ksdkfqw/rrqw
 var inputConfigFile: string = "";
@@ -85,7 +85,7 @@ if (mode == "direct-call") {
     null,
     null,
     null,
-    null
+    null,
   );
   client.on("connectFailed", function (error: any) {
     console.log("Connect Error: " + error.toString());

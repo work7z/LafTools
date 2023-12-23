@@ -1,8 +1,8 @@
-import type { CategoryDefinition, NodeReq, NodeRes } from "../all-types";
+import type { CategoryDefinition, NodeReq, NodeRes } from "../node-types";
 import { Dot_fn } from "../translation";
 
 export default async function (
-  req: NodeReq
+  req: NodeReq,
 ): Promise<NodeRes<CategoryDefinition[]> | null> {
   let Dot = Dot_fn(req.Lang);
   return {

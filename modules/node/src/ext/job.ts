@@ -8,7 +8,7 @@ import {
   NodeReq,
   NodeRes,
   SubExtCategory,
-} from "../all-types";
+} from "../node-types";
 import { Dot_fn } from "../translation";
 import Job_ListSubCategoryAndFunctions from "./Job_ListAllExtCategory";
 import Job_ListCategory from "./Job_ListAllCategory";

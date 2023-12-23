@@ -18,8 +18,11 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import { ExtensionVM } from "../../../../../../../types/all-types";
+
 export type CommonTransformerPassProp = {
   extId?: string;
+  extVM?: ExtensionVM;
   inputBigTextId: string;
   outputBigTextId: string;
   sessionId: string;

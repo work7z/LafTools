@@ -1,7 +1,7 @@
-import { NodeReq, NodeRes, SubExtCategory } from "../all-types";
+import { NodeReq, NodeRes, SubExtCategory } from "../node-types";
 
 export default async function (
-  req: NodeReq
+  req: NodeReq,
 ): Promise<NodeRes<SubExtCategory[]> | null> {
   return {
     Type: req.Type,

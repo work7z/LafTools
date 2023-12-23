@@ -158,12 +158,6 @@ export default () => {
   if (r) {
     return r;
   }
-  let commonPassProp: CommonTransformerPassProp = {
-    extId: extId,
-    sessionId,
-    inputBigTextId: s.tabId + "-i",
-    outputBigTextId: s.tabId + "-o",
-  };
 
   let val_ExtensionVM: ExtensionVM = getAjaxResPayloadValue(extQ);
   if (!val_ExtensionVM || !val_ExtensionVM.Layout) {
@@ -171,12 +165,18 @@ export default () => {
   }
 
   let layoutMappings = {
-    form2: TextTransformer
+    form: TextTransformer
   }
   let UnknownPartWrap = (p: CommonTransformerPassProp) => {
     return <UnknownPart {...p} reason={Dot("d-qPr", "Unknown layout: {0}", val_ExtensionVM.Layout)} />
   }
   let PickupPanel = layoutMappings[val_ExtensionVM.Layout] || UnknownPartWrap
+  let commonPassProp: CommonTransformerPassProp = {
+    extId: extId,
+    sessionId,
+    inputBigTextId: s.tabId + "-i",
+    outputBigTextId: s.tabId + "-o",
+  };
 
   let finalPanel = <PickupPanel {...commonPassProp}></PickupPanel>;
 

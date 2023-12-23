@@ -37,7 +37,7 @@ let EachTranslatorBlock = (props: { onTextChange?: (val: string) => any, bigText
   let isSrc = props.type == "source"
   let placeholder =
     isSrc
-      ? Dot("L4Lm1", "Please input your source text in this editor.")
+      ? Dot("L42m1", "Please input your source text in this text field.")
       : Dot("HEAhr", "After translating, the result will appear here.");
   return (
     <div className="h-full w-full inline-block ">

@@ -1,7 +1,7 @@
-import type { CategoryDefinition, NodeReq, NodeRes } from "../all-types";
+import type { CategoryDefinition, NodeReq, NodeRes } from "../node-types";
 
 export default async function (
-  req: NodeReq
+  req: NodeReq,
 ): Promise<NodeRes<CategoryDefinition[]> | null> {
   return {
     Type: req.Type,
