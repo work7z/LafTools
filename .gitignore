@@ -42,7 +42,6 @@ modules/web/scan.sh
 dev/lang/overwrriten/duplicate.json
 time-consumer
 *.bin
-*.exe
 __debug_bin
 __debug_bin*
 .ideadev
