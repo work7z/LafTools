@@ -71,6 +71,7 @@ import {
   APPINFOJSON,
   FN_GetDispatch,
   delayFN,
+  getAjaxResPayloadValue,
 } from "../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
@@ -132,6 +133,7 @@ import {
   useMergeParameter,
 } from "../../../../../../../types/WB_Func";
 import QueryUtils from "../../../../../../../utils/QueryUtils";
+import { ExtensionVM } from "../../../../../../../types/all-types";
 
 export default () => {
   let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
@@ -162,6 +164,12 @@ export default () => {
     inputBigTextId: s.tabId + "-i",
     outputBigTextId: s.tabId + "-o",
   };
+
+  let val_ExtensionVM: ExtensionVM = getAjaxResPayloadValue(extQ);
+
+  let ExtImplementationMap = {
+    form: TextTransformer
+  }
 
   if (true) {
     finalPanel = <TextTransformer {...commonPassProp}></TextTransformer>;

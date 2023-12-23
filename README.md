@@ -122,7 +122,7 @@ npm run scan # start scanning files to provide translate service
 
 ## 4. Start Developing
 
-Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing!
+Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing, let us Go!
 
 Examples:
 
@@ -159,8 +159,8 @@ This project is primarily inspired by the following musicians:
 - Khalil Fong
 - Li Rong Hao
 - Chet Atkins
-- Martin Taylor
 - Tommy Emmanuel
+- Martin Taylor
 - Frédéric Chopin
 - Claude Debussy
 - Oscar Peterson

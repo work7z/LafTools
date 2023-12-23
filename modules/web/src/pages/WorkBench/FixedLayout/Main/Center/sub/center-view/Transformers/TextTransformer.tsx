@@ -38,13 +38,13 @@ import { SysTabPane } from "../../../../../../../../components/SysTabPane";
 import { CSS_TW_LAYOUT_BORDER } from "../../../../../../../../styles/tw";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
+import { CommonTransformerProps } from "./types";
 
 let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
 
-type PassProps = CommonPassProp & {};
-
-let TextTransformerControl = (props: CommonPassProp) => {
+type TextTransformerProps = CommonTransformerProps;
+let TextTransformerControl = (props: TextTransformerProps) => {
   let { inputBigTextId } = props;
   let [loadExample, onLoadExample] = useState(false);
   let leftActions: ButtonProps[] = [
@@ -78,7 +78,7 @@ let TextTransformerControl = (props: CommonPassProp) => {
           }
           let val = r.data;
           FN_GetDispatch()(
-            FN_SetTextValueFromOutSideByBigTextId(inputBigTextId, val)
+            FN_SetTextValueFromOutSideByBigTextId(inputBigTextId, val),
           );
           AlertUtils.popOK(Dot("gsHQM", "Loaded example data successfully"));
         } catch (e) {
@@ -99,7 +99,7 @@ let TextTransformerControl = (props: CommonPassProp) => {
       RuntimeStatusSlice.actions.setCollapseConfig({
         sessionId,
         collapseConfig: v,
-      })
+      }),
     );
   };
   let onColl_output = (v: boolean) => {
@@ -107,7 +107,7 @@ let TextTransformerControl = (props: CommonPassProp) => {
       RuntimeStatusSlice.actions.setCollapseOutput({
         sessionId,
         collapseOutput: v,
-      })
+      }),
     );
   };
   let rightActions: ButtonProps[] = [
@@ -216,7 +216,7 @@ let TextTransformerOutput = (props: CommonPassProp) => {
       RuntimeStatusSlice.actions.setCollapseOutput({
         sessionId,
         collapseOutput: v,
-      })
+      }),
     );
   };
   let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "output");
@@ -229,7 +229,7 @@ let TextTransformerOutput = (props: CommonPassProp) => {
           RuntimeStatusSlice.actions.selectLatestViewPanel({
             sessionId,
             panelId: "output",
-          })
+          }),
         );
       }}
       className={
@@ -276,7 +276,10 @@ let TextTransformerOutput = (props: CommonPassProp) => {
             <span></span>
           ) : (
             <div className="w-full h-full overflow-auto">
-              <GenCodeMirror bigTextId={props.outputBigTextId}></GenCodeMirror>
+              <GenCodeMirror
+                placeholder={Dot("y_9YM", "Output will be displayed here.")}
+                bigTextId={props.outputBigTextId}
+              ></GenCodeMirror>
             </div>
           )
         }
@@ -305,7 +308,7 @@ let TextTransformerConfig = (props: CommonPassProp) => {
       RuntimeStatusSlice.actions.setCollapseConfig({
         sessionId,
         collapseConfig: v,
-      })
+      }),
     );
   };
   let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "config");
@@ -317,7 +320,7 @@ let TextTransformerConfig = (props: CommonPassProp) => {
           RuntimeStatusSlice.actions.selectLatestViewPanel({
             sessionId,
             panelId: "config",
-          })
+          }),
         );
       }}
       className={
@@ -386,16 +389,14 @@ let TextTransformerConfig = (props: CommonPassProp) => {
   );
 };
 
-export default (props: PassProps) => {
+export default (props: CommonTransformerProps) => {
   let sessionId = props.sessionId;
   let bodyHeight = `calc(100% - ${controlBarHeight}px)`;
   let inputBigTextId = props.inputBigTextId;
   let outputBigTextId = props.outputBigTextId;
-
+  let extId = props.extId
   let commonPassProp: CommonPassProp = {
-    sessionId,
-    inputBigTextId,
-    outputBigTextId,
+    ...props
   };
 
   return (
@@ -407,7 +408,12 @@ export default (props: PassProps) => {
         }}
         className="w-full overflow-auto"
       >
-        <GenCodeMirror language="javascript" bigTextId={inputBigTextId}></GenCodeMirror>
+        <GenCodeMirror
+          lineWrap
+          placeholder="Input your text here"
+          language="javascript"
+          bigTextId={inputBigTextId}
+        ></GenCodeMirror>
       </div>
       <TextTransformerOutput {...commonPassProp}></TextTransformerOutput>
       <TextTransformerConfig {...commonPassProp}></TextTransformerConfig>

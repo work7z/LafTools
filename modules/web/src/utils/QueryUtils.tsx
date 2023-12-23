@@ -69,7 +69,7 @@ import _ from "lodash";
 import { Dot } from "./TranslationUtils";
 import gutils from "./GlobalUtils";
 import AlertUtils from "./AlertUtils";
-import { getAjaxValueRes as getAjaxValueResInner } from "../nocycle";
+import { getAjaxResPayloadValue as getAjaxValueResInner } from "../nocycle";
 
 export let getAjaxValueRes = getAjaxValueResInner;
 const QueryUtils = {

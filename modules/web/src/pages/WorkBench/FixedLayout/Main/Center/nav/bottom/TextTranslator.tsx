@@ -23,7 +23,7 @@ import GenCodeMirror from "../../../../../../../components/GenCodeMirror";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../../types/WB_Types";
 import { Allotment, AllotmentHandle } from "allotment";
-import { FN_GetDispatch, getAjaxValueRes, getAjaxValueResAsString } from "../../../../../../../nocycle";
+import { FN_GetDispatch, getAjaxResPayloadValue, getAjaxResPayloadValueAsString } from "../../../../../../../nocycle";
 import { FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../actions/bigtext_action";
 import AjaxUtils from "../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../utils/AlertUtils";
@@ -106,7 +106,7 @@ export default () => {
       AlertUtils.popError(r.error)
       return
     }
-    let ajaxResValue = getAjaxValueResAsString(r)
+    let ajaxResValue = getAjaxResPayloadValueAsString(r)
     FN_GetDispatch()(
       FN_SetTextValueFromOutSideByBigTextId(textOutputId, ajaxResValue as string)
     )

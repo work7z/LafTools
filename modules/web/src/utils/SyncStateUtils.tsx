@@ -23,7 +23,7 @@ import ALL_NOCYCLE, {
   FN_GetDispatch,
   FN_GetState,
   IsDevMode,
-  getAjaxValueRes,
+  getAjaxResPayloadValue,
 } from "../nocycle";
 import AjaxUtils from "./AjaxUtils";
 import _, { DebouncedFunc } from "lodash";
@@ -112,7 +112,7 @@ let SyncStateUtils = {
     }
     let replaceState: any = null;
     if (val.response) {
-      let innerValue = getAjaxValueRes(val);
+      let innerValue = getAjaxResPayloadValue(val);
       if (innerValue) {
         replaceState = innerValue;
       }
