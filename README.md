@@ -51,13 +51,14 @@ Preview(Simplified Chinese|简体中文):
 
 ## 1. Setup System Environment
 
-Let's say that you've cloned this repository to `C:\\Users\jerrylai\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare the below env in your file **~/.bashrc**, or just simply execute them before running any command.
+Let's say that you've cloned this repository to `C:\\Users\jerrylai\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or just simply execute them before running any command.
 
 If you're using Windows, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
 
 **Env for Windows:**
 
 ```bash
+git config core.ignorecase false
 export LAFTOOLS_ROOT="C:\\users\\jerry\\project\\laftools-repo"
 ```
 
