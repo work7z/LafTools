@@ -6,7 +6,7 @@
     "win-clean": "taskkill /F /IM bash.exe",
     "fe-web": "sh ./modules/web/start.sh",
     "fe-css": "(cd ./modules/web && sh ./job-tailwind.sh)",
-    "fe-extra": "go run ./core/app.go dev-extra --config $LAFTOOLS_ROOT/dev/config/laf-tools-dev.json",
+    "fe-extra": "go run ./core/app.go dev-extra --config $LAFTOOLS_ROOT/dev/config/laft-system-dev.json",
     "fe-build": "(cd ./modules/web && npm run build)"
   },
   "keywords": [],
