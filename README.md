@@ -47,16 +47,16 @@ Preview(English):
 Preview(Simplified Chinese|简体中文):
 ![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-2.png?raw=true)
 
-
 # 🍀 Getting Started
 
 ## 1. Setup System Environment
 
 Let's say that you've cloned this repository to `C:\\Users\jerrylai\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare the below env in your file **~/.bashrc**, or just simply execute them before running any command.
 
-If you're using Windows, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located. 
+If you're using Windows, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
 
 **Env for Windows:**
+
 ```bash
 export LAFTOOLS_ROOT="C:\\users\\jerry\\project\\laftools-repo"
 ```
@@ -66,8 +66,6 @@ export LAFTOOLS_ROOT="C:\\users\\jerry\\project\\laftools-repo"
 ```bash
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
-
-
 
 ## 2. Launch Go Service
 
@@ -144,8 +142,10 @@ cd pipeline
 ./build-all.sh
 ```
 
-# 📑 Other Materials   
-Below are further resources that you can have a read if you'd like to learn more detail about this project:  
+# 📑 Other Materials
+
+Below are further materials that you can have a look if you'd like to learn more detail about this project:
+
 - [FAQ](./FAQ.md)
 - [CONTRIBUTION](./CONTRIBUTION.md)
 - [For China Developers](dev/notes/common/issues.md)
@@ -159,9 +159,10 @@ This project is primarily inspired by the following musicians:
 - Khalil Fong
 - Li Rong Hao
 - Chet Atkins
+- Martin Taylor
 - Tommy Emmanuel
 - Frédéric Chopin
-- Claude Debussy  
+- Claude Debussy
 - Oscar Peterson
 - Hugo Strasser
 - Jay Chou

@@ -29,7 +29,7 @@ import localforage from "localforage";
 import gutils from "../utils/GlobalUtils";
 import _ from "lodash";
 import { logutils } from "../utils/LogUtils";
-import systemSlice, { ACTION_getLangData } from "./SystemSlice";
+import systemSlice, { ACTION_getLangData } from "./systemSlice";
 import testSlice from "./testSlice";
 import { RootState } from "../store";
 import INNER_CYCLE from "../innercycle";

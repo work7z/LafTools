@@ -95,7 +95,7 @@ import ExtSlice, {
   ACTION_processTextAction,
   SYNC_KEY_INPUT_REGION_DEFAULT,
   SYNC_KEY_OUTPUT_REGION_DEFAULT,
-} from "../../reducers/ExtSlice";
+} from "../../reducers/extSlice";
 
 export type ExtraInfoESVProp = {
   extId: string;
@@ -110,9 +110,9 @@ export default (prop: ExtraInfoESVProp) => {
           {!_.isEmpty(prop.extensionVM?.Info?.Description)
             ? prop.extensionVM?.Info?.Description
             : Dot(
-                "QL9Sn",
-                "At the moment, there doesn't appear to be a description available."
-              )}
+              "QL9Sn",
+              "At the moment, there doesn't appear to be a description available."
+            )}
         </p>
       </Callout>
     </Card>

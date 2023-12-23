@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Thu, 21 Dec 2023
 // Author: LafTools Team - FX <work7z@outlook.com>
 // LafTools Team - Ubuntu <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -58,6 +58,8 @@ import {
     Button,
     ButtonProps,
     Divider,
+    Tree,
+    TreeNodeInfo,
 } from "@blueprintjs/core";
 import React, { useEffect, useMemo, useState } from "react";
 import _ from "lodash";
@@ -72,20 +74,41 @@ import exportUtils from "../../utils/ExportUtils";
 import apiSlice, { ExtensionVM } from "../../reducers/apiSlice";
 import { Allotment, AllotmentHandle } from "allotment";
 
-
 type PassProps = {
-    body: () => JSX.Element
-}
+    sessionType: string;
+    body: React.FunctionComponent<SessionViewProp>;
+};
+
+type SessionViewProp = {
+    sessionId: string | null; // if null, then no session is selected
+};
 
 // TODO: main editor placeholder is useful to show the purpose and meaning of each tools
 
 export default (props: PassProps) => {
-    return <Allotment className="flex flex-row">
-        <Allotment.Pane preferredSize={180}>
-            <div>left menu</div>
-        </Allotment.Pane>
-        <Allotment.Pane>
-            {React.createElement(props.body)}
-        </Allotment.Pane>
-    </Allotment>
-}
+    let Body = props.body;
+    let sessionId = "test";
+    let nodes: TreeNodeInfo[] = [
+        {
+            label: Dot("7b3am", "Item-1"),
+            id: "item-1",
+            isSelected: true,
+            secondaryLabel: <Button minimal small icon={"menu"}></Button>
+        },
+        {
+            label: Dot("BXxkd", "item-2"),
+            id: "item-2"
+        }
+    ];
+    return (
+        <Allotment className="flex flex-row">
+            <Allotment.Pane preferredSize={180}>
+                <Tree className="laft-small-tree" contents={nodes}></Tree>
+                <Button fill text={Dot("bT4R6", "New Tab")} intent="none" icon="add" small minimal className="mt-2 laft-secondary-btn"></Button>
+            </Allotment.Pane>
+            <Allotment.Pane>
+                <Body sessionId={sessionId} />
+            </Allotment.Pane>
+        </Allotment>
+    );
+};

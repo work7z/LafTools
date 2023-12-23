@@ -66,7 +66,7 @@ import AboutSoftware from "../../components/AboutSoftware";
 import systemSlice, {
   ACTION_callInitAllDataAtOnceFromInitSystemEnv,
   ACTION_initAllDataAtOnce,
-} from "../../reducers/SystemSlice";
+} from "../../reducers/systemSlice";
 import { useEffect } from "react";
 import { CLZ_SECOND_TEXT } from "../../styles/var";
 import ConfirmICON from "../../components/ConfirmICON";

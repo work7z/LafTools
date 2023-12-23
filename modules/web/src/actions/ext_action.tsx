@@ -35,8 +35,8 @@ import { FN_GetState } from "../nocycle";
 import { PayloadValueData } from "../styles/var";
 import FileUtils from "../utils/FileUtils";
 import AlertUtils from "../utils/AlertUtils";
-import BigTextSlice from "../reducers/BigTextSlice";
-import statusSlice from "../reducers/StatusSlice";
+import BigTextSlice from "../reducers/bigTextSlice";
+import statusSlice from "../reducers/statusSlice";
 
 export let ACTION_fn_input_from_file = ({
   inputSyncId,

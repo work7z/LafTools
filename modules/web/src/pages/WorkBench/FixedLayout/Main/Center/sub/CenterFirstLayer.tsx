@@ -67,7 +67,7 @@ import gutils from "../../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../../utils/LogUtils";
 import _ from "lodash";
 import RouteMem from "../../../../../../styles/routeMem";
-import statusSlice from "../../../../../../reducers/StatusSlice";
+import statusSlice from "../../../../../../reducers/statusSlice";
 import {
   withRouter,
   BrowserRouter as Router,
@@ -83,7 +83,7 @@ import exportUtils from "../../../../../../utils/ExportUtils";
 import { FunctionalMenu } from "../nav/functional";
 import { SidebarMenu } from "../nav/sidebar/Biz_SidebarMenu";
 import BottomNavView from "../nav/bottom";
-import layoutSlice from "../../../../../../reducers/LayoutSlice";
+import layoutSlice from "../../../../../../reducers/layoutSlice";
 import { InnerCenterView } from "./CenterSecondaryLayer";
 const snapMin = 100;
 

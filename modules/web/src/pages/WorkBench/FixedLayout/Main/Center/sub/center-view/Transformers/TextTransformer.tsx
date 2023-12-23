@@ -27,7 +27,7 @@ import {
 import { CommonPassProp } from "../transformer_types";
 import { Dot } from "../../../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
-import BigTextSlice from "../../../../../../../../reducers/BigTextSlice";
+import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
@@ -37,7 +37,7 @@ import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
 import { CSS_TW_LAYOUT_BORDER } from "../../../../../../../../styles/tw";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
-import RuntimeStatusSlice from "../../../../../../../../reducers/RuntimeStatusSlice";
+import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 
 let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";

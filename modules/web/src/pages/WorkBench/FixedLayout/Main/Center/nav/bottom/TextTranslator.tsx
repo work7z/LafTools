@@ -61,7 +61,7 @@ let LanguageChooser = (props: { isSource: boolean; label: string }) => {
   return <Popover placement="bottom" minimal content={<Card className="w-[300px]" style={{
     padding: '15px'
   }} >
-    <h2 style={{ margin: 0, fontWeight: 'bold', marginBottom: '7px' }}>{!isSource ? Dot("6OJC6", "Target Language") : Dot("SQAw7", "Source Language")}</h2>
+    <h2 style={{ margin: 0, fontWeight: 'bold', marginBottom: '7px' }}>{!isSource ? Dot("hJUMN", "Target Language") : Dot("SQAw7", "Source Language")}</h2>
     {
       _.map(langList, x => {
         return <Button small minimal text={x.Label} key={x.Value}></Button>

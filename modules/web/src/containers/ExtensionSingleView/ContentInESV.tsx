@@ -100,13 +100,13 @@ import ExtSlice, {
   SYNC_KEY_OUTPUT_REGION_DEFAULT,
   fn_call_convert_with_action as ACTION_fn_call_ext_for_action,
   fn_call_convert_with_action,
-} from "../../reducers/ExtSlice";
+} from "../../reducers/extSlice";
 import Blink from "../../components/Blink";
-import BigTextSlice from "../../reducers/BigTextSlice";
+import BigTextSlice from "../../reducers/bigTextSlice";
 import statusSlice, {
   ProcessLoadType,
   fn_new_ProcessLoadType,
-} from "../../reducers/StatusSlice";
+} from "../../reducers/statusSlice";
 import { logutils } from "../../utils/LogUtils";
 import { FN_GetState } from "../../nocycle";
 import FileUtils from "../../utils/FileUtils";
@@ -367,49 +367,49 @@ const ContentInESV = (props: ContentProp) => {
   let actions: PopoverButtonProp[] = [
     ...(extVM.inst
       ? [
-          ..._.map(extVM.inst.Actions, (x) => {
-            let endWithText = _.endsWith(x.Id, ".text");
-            let endWithFile = _.endsWith(x.Id, ".file");
-            return {
-              text: x.Label,
-              overlay: endWithText
-                ? Dot("XKpI0", "Click to process your text in the input region")
-                : endWithFile
+        ..._.map(extVM.inst.Actions, (x) => {
+          let endWithText = _.endsWith(x.Id, ".text");
+          let endWithFile = _.endsWith(x.Id, ".file");
+          return {
+            text: x.Label,
+            overlay: endWithText
+              ? Dot("XKpI0", "Click to process your text in the input region")
+              : endWithFile
                 ? Dot(
-                    "ANUZ7",
-                    "Click to select a file for processing. The toolbox will directly process it in service and show the result in the output region."
-                  )
+                  "ANUZ7",
+                  "Click to select a file for processing. The toolbox will directly process it in service and show the result in the output region."
+                )
                 : null,
-              icon: "lightning",
-              intent: Intent.PRIMARY,
-              onClick: async () => {
-                if (endWithText) {
-                  dis(
-                    fn_call_convert_with_action({
-                      newValue: FN_GetState().bigtext.textKVMap[
-                        inputSyncId
-                      ] as string,
-                      sessionId: extInfo.sessionId,
-                      actionId: x.Id,
-                      outputSyncId,
-                    })
-                  );
-                } else if (endWithFile) {
-                  // dis(
-                  //   ACTION_processFileAction({
-                  //     action: x,
-                  //     mute: false,
-                  //   })
-                  // );
-                } else {
-                  AlertUtils.popMsg("danger", {
-                    message: Dot("KIc63", "Function not yet supported"),
-                  });
-                }
-              },
-            } as PopoverButtonProp;
-          }),
-        ]
+            icon: "lightning",
+            intent: Intent.PRIMARY,
+            onClick: async () => {
+              if (endWithText) {
+                dis(
+                  fn_call_convert_with_action({
+                    newValue: FN_GetState().bigtext.textKVMap[
+                      inputSyncId
+                    ] as string,
+                    sessionId: extInfo.sessionId,
+                    actionId: x.Id,
+                    outputSyncId,
+                  })
+                );
+              } else if (endWithFile) {
+                // dis(
+                //   ACTION_processFileAction({
+                //     action: x,
+                //     mute: false,
+                //   })
+                // );
+              } else {
+                AlertUtils.popMsg("danger", {
+                  message: Dot("KIc63", "Function not yet supported"),
+                });
+              }
+            },
+          } as PopoverButtonProp;
+        }),
+      ]
       : []),
     {
       text: Dot("LPJrV", "Copy Result"),

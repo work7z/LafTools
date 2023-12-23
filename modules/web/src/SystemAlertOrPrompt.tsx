@@ -75,11 +75,11 @@ import PageUtils from "./utils/PageUtils";
 import { URL_WORKBENCH } from "./styles/path";
 import RouteUtils from "./utils/RouteUtils";
 import InitRouteHistory from "./InitRouteHistory";
-import { DialogStoreMap } from "./reducers/DialogSlice";
+import { DialogStoreMap } from "./reducers/dialogSlice";
 import { Z_INDEX_CONFIRM, Z_INDEX_DIALOG } from "./styles/config";
 import { FN_testDialogHere } from "./styles/dialog";
 import AlertUtils from "./utils/AlertUtils";
-import { PrompType } from "./reducers/StatusSlice";
+import { PrompType } from "./reducers/statusSlice";
 
 let EachPrompt = (props: { x: PrompType }): any => {
   let { x } = props;
@@ -159,7 +159,7 @@ const OtherChoose = (prop) => {
             intent={x.intent || Intent.NONE}
             isOpen={true}
             loading={false}
-            onCancel={() => {}}
+            onCancel={() => { }}
             onConfirm={() => {
               AlertUtils.deleteAlertList(x.id);
             }}

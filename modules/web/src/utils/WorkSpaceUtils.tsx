@@ -27,7 +27,7 @@ import { Dot } from "./TranslationUtils";
 import ALL_NOCYCLE, { FN_GetDispatch } from "../nocycle";
 import { URL_PREFIX_LOCAL } from "../styles/config";
 import AlertUtils from "./AlertUtils";
-import systemSlice from "../reducers/SystemSlice";
+import systemSlice from "../reducers/systemSlice";
 import SyncStateUtils from "./SyncStateUtils";
 
 export let useReadCurrentWorkspaceId = (): string => {

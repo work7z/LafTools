@@ -20,22 +20,22 @@
 
 import testSlice from "./testSlice";
 import apiSlice from "./apiSlice";
-import systemSlice from "./SystemSlice";
+import systemSlice from "./systemSlice";
 import forgeSlice from "./ForgeSlice";
-import routeSlice from "./RouteSlice";
-import statusSlice from "./StatusSlice";
+import routeSlice from "./routeSlice";
+import statusSlice from "./statusSlice";
 import ToolSlice from "./toolSlice";
 import UserSlice from "./userSlice";
-import DialogSlice from "./DialogSlice";
-import ExtSlice from "./ExtSlice";
-import wsSlice from "./wsSlice";
-import BigTextSlice from "./BigTextSlice";
-import layoutSlice from "./LayoutSlice";
+import DialogSlice from "./dialogSlice";
+import ExtSlice from "./extSlice";
+import wsSlice from "./websocketSlice";
+import BigTextSlice from "./bigTextSlice";
+import layoutSlice from "./layoutSlice";
 import WorkspaceSlice from "./workspaceSlice";
 import PreWorkSpaceSlice from "./preWorkSpace";
 import onlineAPISlice from "./onlineAPISlice";
-import RuntimeStatusSlice from "./RuntimeStatusSlice";
-import SessionSlice from "./sessionSlice";
+import RuntimeStatusSlice from "./runtimeStatusSlice";
+import SessionSlice from "./container/sessionSlice";
 
 export default {
   session: SessionSlice,

@@ -63,9 +63,9 @@ import { Dot } from "../../utils/TranslationUtils";
 import exportUtils from "../../utils/ExportUtils";
 import forgeSlice from "../../reducers/ForgeSlice";
 import { LafTools_DOC_HOME } from "../../styles/constants";
-import systemSlice, { ACTION_initAllDataAtOnce } from "../../reducers/SystemSlice";
+import systemSlice, { ACTION_initAllDataAtOnce } from "../../reducers/systemSlice";
 
-interface PassProp {}
+interface PassProp { }
 
 export default (props: PassProp): any => {
   let val_1 = exportUtils.useSelector((val) => ({

@@ -50,6 +50,23 @@ div,.fixed-wb-nav-menu{
     outline: none!important;
 }
 
+/** laf-tools small tree BEGIN */
+.laft-secondary-btn,
+.laft-secondary-btn svg,
+.laft-small-tree .bp5-tree-node>.bp5-tree-node-content,
+.laft-small-tree .bp5-tree-node.bp5-tree-node-selected>.bp5-tree-node-content,
+.laft-small-tree .bp5-tree-node-secondary-label svg,
+.laft-small-tree .bp5-tree-node-secondary-label svg,
+ .laft-small-tree .bp5-icon
+{
+    @apply  !text-slate-600;
+}
+.laft-small-tree .bp5-tree-node.bp5-tree-node-selected>.bp5-tree-node-content
+{
+    @apply !bg-slate-200 !fill-slate-200;
+}
+
+/** laf-tools small tree END */
 
 
 .small-close-btn svg{

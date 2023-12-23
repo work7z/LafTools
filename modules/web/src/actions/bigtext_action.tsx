@@ -20,7 +20,7 @@
 
 import { FN_GetState } from "../nocycle";
 import _ from "lodash";
-import bigtextSlice, { TextKVStatus } from "../reducers/BigTextSlice";
+import bigtextSlice, { TextKVStatus } from "../reducers/bigTextSlice";
 
 /**
  * if there's an internal value in editor, then read it

@@ -78,7 +78,7 @@ import gutils from "../../../../utils/GlobalUtils";
 import { logutils } from "../../../../utils/LogUtils";
 import _ from "lodash";
 import RouteMem from "../../../../styles/routeMem";
-import statusSlice from "../../../../reducers/StatusSlice";
+import statusSlice from "../../../../reducers/statusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   withRouter,
@@ -100,7 +100,7 @@ import forgeSlice, {
 } from "../../../../reducers/ForgeSlice";
 import systemSlice, {
   ACTION_callRefreshAll,
-} from "../../../../reducers/SystemSlice";
+} from "../../../../reducers/systemSlice";
 
 import { type } from "jquery";
 import apiSlice from "../../../../reducers/apiSlice";
@@ -166,7 +166,7 @@ export default () => {
           "0gywa",
           "Workspace not found, you will be redirected to workspace index page."
         ),
-        fn() {},
+        fn() { },
       });
       onAvaialble(false);
       hist.replace("/workbench");

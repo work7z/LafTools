@@ -20,7 +20,7 @@
 
 import _ from "lodash";
 import { FN_GetState } from "../nocycle";
-import layoutSlice from "../reducers/LayoutSlice";
+import layoutSlice from "../reducers/layoutSlice";
 import { REF_mainstage } from "../pages/WorkBench/FixedLayout/Main/Center/sub/CenterFirstLayer";
 
 type MenuOpenCloseOper = {

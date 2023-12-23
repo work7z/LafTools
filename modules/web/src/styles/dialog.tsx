@@ -61,7 +61,7 @@ import { logutils } from "../utils/LogUtils";
 import {
   ACTION_getLangData,
   ACTION_initAllDataAtOnce,
-} from "../reducers/SystemSlice";
+} from "../reducers/systemSlice";
 import LinkHref from "../components/LinkHref";
 import PasswordInput from "../components/PasswordInput";
 import { useState, useContext, useCallback, useRef } from "react";
@@ -70,7 +70,7 @@ import {
   ACTION_signInLocalAccount,
 } from "../reducers/userSlice";
 import AlertUtils from "../utils/AlertUtils";
-import { PutNewDialogReqProp, TOOL_PutNewDialog } from "../reducers/DialogSlice";
+import { PutNewDialogReqProp, TOOL_PutNewDialog } from "../reducers/dialogSlice";
 import ALL_NOCYCLE, { FN_GetDispatch } from "../nocycle";
 import { UserPassCreateProp } from "../containers/UserAskMultipleDialogs";
 import apiSlice from "../reducers/apiSlice";

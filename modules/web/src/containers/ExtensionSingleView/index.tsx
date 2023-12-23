@@ -65,7 +65,7 @@ import { logutils } from "../../utils/LogUtils";
 import {
   SYNC_KEY_INPUT_REGION_DEFAULT,
   SYNC_KEY_OUTPUT_REGION_DEFAULT,
-} from "../../reducers/ExtSlice";
+} from "../../reducers/extSlice";
 import ExtraInfoESV from "./ExtraInfoESV";
 import moment from "moment";
 import AdaptUtils from "../../utils/AdaptUtils";
@@ -156,7 +156,7 @@ let Footer = () => {
         {Dot("jaj7M", "All rights reserved.")}{" "}
       </div>
       {TranslationUtils.CurrentLanguage == "zh_CN" &&
-      AdaptUtils.isPortalMode() ? (
+        AdaptUtils.isPortalMode() ? (
         <span>
           <a
             href="https://beian.miit.gov.cn/"

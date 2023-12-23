@@ -74,7 +74,7 @@ import gutils from "../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../utils/LogUtils";
 import _ from "lodash";
 import RouteMem from "../../../../../styles/routeMem";
-import statusSlice from "../../../../../reducers/StatusSlice";
+import statusSlice from "../../../../../reducers/statusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   withRouter,
@@ -93,7 +93,7 @@ import exportUtils from "../../../../../utils/ExportUtils";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
 } from "../../../../../reducers/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../../../../reducers/SystemSlice";
+import { ACTION_callRefreshAll } from "../../../../../reducers/systemSlice";
 import {
   ID_FILES,
   ID_HISTORY as ID_MANUAL,
@@ -171,7 +171,7 @@ export let WB_ControllerBar = () => {
     {
       text: Dot("Kw4OJr", "Terminal"),
       icon: "console",
-      onClick: () => {},
+      onClick: () => { },
       active: false,
       disabled: false,
       tooltip: Dot(
@@ -194,7 +194,7 @@ export let WB_ControllerBar = () => {
     {
       text: Dot("dpRY4", "Dictionary"),
       icon: "book",
-      onClick: () => {},
+      onClick: () => { },
       active: false,
       disabled: false,
       tooltip: Dot("xeP4zVd", "Quickly look up an English vocabulary."),
@@ -249,7 +249,7 @@ export let WB_ControllerBar = () => {
  */ {
       text: Dot("0PgZ_", "Translation"),
       icon: "paragraph",
-      onClick: () => {},
+      onClick: () => { },
       active: false,
       disabled: false,
       tooltip: Dot("c0eCw", "Translate your text into any language you want."),
@@ -260,7 +260,7 @@ export let WB_ControllerBar = () => {
     {
       text: Dot("8LdRj", "Overview"),
       icon: "panel-stats",
-      onClick: () => {},
+      onClick: () => { },
       active: false,
       disabled: false,
       tooltip: Dot(
@@ -301,12 +301,11 @@ export let WB_ControllerBar = () => {
   let statusBarItemRight: SystemStatusBarItem[] = [
     // show items for version, messages, windows
     {
-      text: `${Dot("2Ocbey", "Version")}: ${APPINFOJSON.version}(${
-        isActivated
-          ? Dot("ipOSQE", "Pro Edition")
-          : Dot("QhdpH", "Community Edition")
-      })`,
-      onClick: () => {},
+      text: `${Dot("2Ocbey", "Version")}: ${APPINFOJSON.version}(${isActivated
+        ? Dot("ipOSQE", "Pro Edition")
+        : Dot("QhdpH", "Community Edition")
+        })`,
+      onClick: () => { },
       active: false,
       disabled: false,
       tooltip: Dot(

@@ -81,7 +81,7 @@ import { FN_ACTION_CloseMenu_ltr } from "../../../../../../../actions/layout_act
 import { useSearchQuery } from "../../../../../../../types/WB_Func";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
 // import MultipleSessionLeftView from "../../../containers/MultipleSessionLeftView/index";
-import Translator from "./TextTranslator";
+import TextTranslator from "./TextTranslator";
 import MultipleSessionLeftView from "../../../../../../../containers/MultipleSessionLeftView";
 
 export default () => {
@@ -117,7 +117,7 @@ export default () => {
         ]}
         rightCtrls={fn_rightCtrl_common}
         children={
-          <MultipleSessionLeftView body={Translator}></MultipleSessionLeftView>
+          <MultipleSessionLeftView sessionType="translator" body={TextTranslator}></MultipleSessionLeftView>
         }
       ></SysTabPane>
     );

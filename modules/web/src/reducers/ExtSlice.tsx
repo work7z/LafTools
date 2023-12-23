@@ -25,10 +25,10 @@ import {
   PropExtSessionContext,
 } from "../containers/ExtensionSingleView";
 import CacheUtils from "../utils/CacheUtils";
-import statusSlice from "./StatusSlice";
+import statusSlice from "./statusSlice";
 import AjaxUtils from "../utils/AjaxUtils";
 import _ from "lodash";
-import BigTextSlice from "./BigTextSlice";
+import BigTextSlice from "./bigTextSlice";
 import { Dot } from "../utils/TranslationUtils";
 import gutils from "../utils/GlobalUtils";
 import { FN_GetState } from "../nocycle";

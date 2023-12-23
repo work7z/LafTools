@@ -70,7 +70,7 @@ import ExtSlice, {
   SYNC_KEY_INPUT_REGION_DEFAULT,
   SYNC_KEY_OUTPUT_REGION_DEFAULT,
   fn_renew_createDefaultExtStatusData,
-} from "../reducers/ExtSlice";
+} from "../reducers/extSlice";
 import exportUtils from "./ExportUtils";
 import { shallowEqual } from "react-redux";
 import {
@@ -81,7 +81,7 @@ import {
 } from "../containers/ExtensionSingleView";
 import { logutils } from "./LogUtils";
 import { FN_GetState } from "../nocycle";
-import BigTextSlice from "../reducers/BigTextSlice";
+import BigTextSlice from "../reducers/bigTextSlice";
 
 const ExtHookUtils = {
   useExtStatusData(): ExtensionStatusData | null {

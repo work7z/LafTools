@@ -33,7 +33,7 @@ import PageUtils from "./utils/PageUtils";
 import AuthHookUtils from "./utils/AuthHookUtils";
 import InitUtils from "./utils/InitUtils";
 import { FN_GetDispatch, IsDevMode, getIconPngFile } from "./nocycle";
-import systemSlice from "./reducers/SystemSlice";
+import systemSlice from "./reducers/systemSlice";
 import forgeSlice from "./reducers/ForgeSlice";
 import { Dot } from "./utils/TranslationUtils";
 

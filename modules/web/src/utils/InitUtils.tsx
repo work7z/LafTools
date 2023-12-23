@@ -23,7 +23,7 @@ import gutils from "./GlobalUtils";
 import staticDevJson from "../static/dev.json";
 import PageUtils from "./PageUtils";
 import { P_ACTION_readForgeFromServerViaAPI } from "../reducers/ForgeSlice";
-import { P_ACTION_createSystemWS } from "../reducers/wsSlice";
+import { P_ACTION_createSystemWS } from "../reducers/websocketSlice";
 
 // binding updates from all pages
 // defien a struct for required slice parts, read function, write function, onNewDataComing

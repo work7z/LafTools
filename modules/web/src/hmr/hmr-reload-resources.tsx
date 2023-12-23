@@ -21,9 +21,9 @@
 import axios from "axios";
 import gutils from "../utils/GlobalUtils";
 import $ from "jquery";
-import { connectToWebSocket } from "../reducers/wsSlice";
+import { connectToWebSocket } from "../reducers/websocketSlice";
 import hmrJSON from "./hmr.json";
-import { ACTION_getLangData } from "../reducers/SystemSlice";
+import { ACTION_getLangData } from "../reducers/systemSlice";
 import { FN_GetDispatch } from "../nocycle";
 
 // TODO: make this hmr part in vite.config.js

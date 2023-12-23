@@ -79,7 +79,7 @@ import gutils from "../../../../../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../../../../../utils/LogUtils";
 import _ from "lodash";
 import RouteMem from "../../../../../../../../../styles/routeMem";
-import statusSlice from "../../../../../../../../../reducers/StatusSlice";
+import statusSlice from "../../../../../../../../../reducers/statusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
   withRouter,
@@ -100,7 +100,7 @@ import exportUtils from "../../../../../../../../../utils/ExportUtils";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
 } from "../../../../../../../../../reducers/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../../../../../../../../reducers/SystemSlice";
+import { ACTION_callRefreshAll } from "../../../../../../../../../reducers/systemSlice";
 import {
   ID_FILES,
   ID_HISTORY as ID_MANUAL,
@@ -110,7 +110,7 @@ import {
 import { type } from "jquery";
 import apiSlice from "../../../../../../../../../reducers/apiSlice";
 
-import layoutSlice from "../../../../../../../../../reducers/LayoutSlice";
+import layoutSlice from "../../../../../../../../../reducers/layoutSlice";
 import {
   FN_ACTION_CloseMenu_ltr,
   FN_ACTION_OpenMenu_ltr,
