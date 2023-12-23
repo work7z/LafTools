@@ -122,7 +122,7 @@ let searchItems = [
   return x;
 });
 
-// console.log ('searchItems', searchItems);
+console.log ('searchItems', searchItems);
 
 if (true) {
 }
