@@ -81,7 +81,7 @@ import { logutils } from "../../utils/LogUtils";
 import RouteUtils from "../../utils/RouteUtils";
 
 import PageUtils from "../../utils/PageUtils";
-import forgeSlice from "../../reducers/ForgeSlice";
+import forgeSlice from "../../reducers/forgeSlice";
 import ExtHookUtils from "../../utils/ExtensionHookUtils";
 import { PassToolViewerProp } from "../../types/WB_Types";
 

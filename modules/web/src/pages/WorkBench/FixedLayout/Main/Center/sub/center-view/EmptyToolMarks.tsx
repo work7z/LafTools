@@ -25,7 +25,7 @@ import { FN_GetDispatch } from "../../../../../../../nocycle";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import exportUtils from "../../../../../../../utils/ExportUtils";
-import forgeSlice from "../../../../../../../reducers/ForgeSlice";
+import forgeSlice from "../../../../../../../reducers/forgeSlice";
 import { ClosableText } from "../../../../../../../components/ClosableText";
 
 export default () => {
@@ -33,23 +33,23 @@ export default () => {
     label: string;
     subLabel?: string;
   }[] = [
-    {
-      label: Dot("QM2Ob", "Recent Tools"),
-      subLabel: "Ctrl + E",
-    },
-    {
-      label: Dot("pKHRT", "Go to Tools"),
-      subLabel: Dot("HyIC_", "Slash Key (/)"),
-    },
-    {
-      label: Dot("F0CCF", "HotKeys List"),
-      subLabel: Dot("PpCHA", "Question Key(?)"),
-    },
-    {
-      label: Dot("psZoP", "Drop files here to process them"),
-      subLabel: Dot("mBgF1", "Mouse Action"),
-    },
-  ];
+      {
+        label: Dot("QM2Ob", "Recent Tools"),
+        subLabel: "Ctrl + E",
+      },
+      {
+        label: Dot("pKHRT", "Go to Tools"),
+        subLabel: Dot("HyIC_", "Slash Key (/)"),
+      },
+      {
+        label: Dot("F0CCF", "HotKeys List"),
+        subLabel: Dot("PpCHA", "Question Key(?)"),
+      },
+      {
+        label: Dot("psZoP", "Drop files here to process them"),
+        subLabel: Dot("mBgF1", "Mouse Action"),
+      },
+    ];
   let s = exportUtils.useSelector((v) => {
     return {
       close: v.forge.closePWAReminder,

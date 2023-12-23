@@ -44,7 +44,7 @@ import {
 import gutils from "../utils/GlobalUtils";
 import AjaxUtils from "../utils/AjaxUtils";
 // import { store } from "../store";
-import forgeSlice from "./ForgeSlice";
+import forgeSlice from "./forgeSlice";
 import AlertUtils from "../utils/AlertUtils";
 import { logutils } from "../utils/LogUtils";
 import ALL_NOCYCLE, { IsDevMode } from "../nocycle";

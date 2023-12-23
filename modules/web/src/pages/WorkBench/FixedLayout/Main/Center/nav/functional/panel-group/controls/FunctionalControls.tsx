@@ -96,17 +96,7 @@ import TranslationUtils, {
 } from "../../../../../../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
-import exportUtils from "../../../../../../../../../utils/ExportUtils";
-import forgeSlice, {
-  ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../../../../../../../../reducers/ForgeSlice";
-import { ACTION_callRefreshAll } from "../../../../../../../../../reducers/systemSlice";
-import {
-  ID_FILES,
-  ID_HISTORY as ID_MANUAL,
-  ID_NOTES,
-  ID_TOOLS,
-} from "../../../../../../../../../styles/path";
+
 import { type } from "jquery";
 import apiSlice from "../../../../../../../../../reducers/apiSlice";
 
@@ -115,6 +105,7 @@ import {
   FN_ACTION_CloseMenu_ltr,
   FN_ACTION_OpenMenu_ltr,
 } from "../../../../../../../../../actions/layout_action";
+import exportUtils from "../../../../../../../../../utils/ExportUtils";
 
 export let FN_SHOW_LTR_MENU = (menuKey: string) => {
   let dis = FN_GetDispatch();

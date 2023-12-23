@@ -95,7 +95,7 @@ import exportUtils from "../../../../../../../../../utils/ExportUtils";
 import _ from "lodash";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../../../../../../../../reducers/ForgeSlice";
+} from "../../../../../../../../../reducers/forgeSlice";
 import { ACTION_callRefreshAll } from "../../../../../../../../../reducers/systemSlice";
 import {
   ID_FILES,

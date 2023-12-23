@@ -55,7 +55,7 @@ import PageUtils from "../../utils/PageUtils";
 import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 import "./index.scss";
-import forgeSlice from "../../reducers/ForgeSlice";
+import forgeSlice from "../../reducers/forgeSlice";
 import AlertUtils from "../../utils/AlertUtils";
 import ToolSlice from "../../reducers/toolSlice";
 import ContentInESV from "./ContentInESV";

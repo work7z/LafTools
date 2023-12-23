@@ -97,7 +97,7 @@ import { Allotment } from "allotment";
 import exportUtils from "../../../../utils/ExportUtils";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
-} from "../../../../reducers/ForgeSlice";
+} from "../../../../reducers/forgeSlice";
 import systemSlice, {
   ACTION_callRefreshAll,
 } from "../../../../reducers/systemSlice";

@@ -61,7 +61,7 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { Dot } from "../../utils/TranslationUtils";
 import exportUtils from "../../utils/ExportUtils";
-import forgeSlice from "../../reducers/ForgeSlice";
+import forgeSlice from "../../reducers/forgeSlice";
 import { LafTools_DOC_HOME } from "../../styles/constants";
 import systemSlice, { ACTION_initAllDataAtOnce } from "../../reducers/systemSlice";
 

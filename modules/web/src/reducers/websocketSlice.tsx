@@ -31,7 +31,7 @@ import { URL_PREFIX_LOCAL } from "../styles/config";
 import AjaxUtils from "../utils/AjaxUtils";
 import TokenUtils from "../utils/TokenUtils";
 import IDUtils from "../utils/IDUtils";
-import { P_ACTION_readForgeFromServerViaAPI } from "./ForgeSlice";
+import { P_ACTION_readForgeFromServerViaAPI } from "./forgeSlice";
 
 let wsMemMap: { [key: string]: WebSocket | null } = {
   ws_system: null,
@@ -126,13 +126,13 @@ export function P_ACTION_createSystemWS() {
 export function connectToWebSocket({ subLink }): WebSocket {
   const ws = new WebSocket(
     "ws://" +
-      window.location.host +
-      URL_PREFIX_LOCAL +
-      subLink +
-      "?lut=" +
-      TokenUtils.getLocalUserToken() +
-      "&pd=" +
-      IDUtils.PAGE_ID
+    window.location.host +
+    URL_PREFIX_LOCAL +
+    subLink +
+    "?lut=" +
+    TokenUtils.getLocalUserToken() +
+    "&pd=" +
+    IDUtils.PAGE_ID
   );
   return ws;
 }

@@ -74,7 +74,7 @@ import PageUtils from "../../utils/PageUtils";
 import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 import "./index.scss";
-import forgeSlice from "../../reducers/ForgeSlice";
+import forgeSlice from "../../reducers/forgeSlice";
 import AlertUtils from "../../utils/AlertUtils";
 import ToolSlice from "../../reducers/toolSlice";
 
@@ -98,52 +98,52 @@ let StatusBarInESV = (props: StatusBarInESVProp) => {
     label: string;
     onClick: (e: any) => any;
   }[] = [
-    {
-      icon: isFavourite ? "star" : "star-empty",
-      tooltip: Dot("Bd9h-", "Add it to my favourite collection"),
-      label: Dot("Ugpng", "Favourite"),
-      onClick: (e) => {
-        if (isFavourite) {
-          dis(
-            forgeSlice.actions.removeExtensionIdFromTool_RemarkExtIds({
-              extId: props.extId + "",
-            })
-          );
-        } else {
-          dis(
-            forgeSlice.actions.addExtensionIdIntoTool_RemarkExtIds({
-              extId: props.extId + "",
-            })
-          );
-        }
+      {
+        icon: isFavourite ? "star" : "star-empty",
+        tooltip: Dot("Bd9h-", "Add it to my favourite collection"),
+        label: Dot("Ugpng", "Favourite"),
+        onClick: (e) => {
+          if (isFavourite) {
+            dis(
+              forgeSlice.actions.removeExtensionIdFromTool_RemarkExtIds({
+                extId: props.extId + "",
+              })
+            );
+          } else {
+            dis(
+              forgeSlice.actions.addExtensionIdIntoTool_RemarkExtIds({
+                extId: props.extId + "",
+              })
+            );
+          }
+        },
       },
-    },
-    {
-      icon: "comment",
-      tooltip: Dot(
-        "rpG0G",
-        "We value your feedback and would love to hear your thoughts on how we can improve our product - please don't hesitate to share your feedback with us!"
-      ),
-      label: Dot("xlqtA", "Feedback"),
-      onClick: () => {
-        console.log("Feedback");
+      {
+        icon: "comment",
+        tooltip: Dot(
+          "rpG0G",
+          "We value your feedback and would love to hear your thoughts on how we can improve our product - please don't hesitate to share your feedback with us!"
+        ),
+        label: Dot("xlqtA", "Feedback"),
+        onClick: () => {
+          console.log("Feedback");
+        },
       },
-    },
-    {
-      icon: "refresh",
-      tooltip: Dot(
-        "VgG5y",
-        "Click here to refresh the status of your extension"
-      ),
-      label: Dot("zaSKh", "Refresh"),
-      onClick: () => {
-        dis(ToolSlice.actions.updateExtensionIdRefreshMap({ extId: extId }));
-        AlertUtils.popMsg("success", {
-          message: Dot("LAc1m", "Refreshed the app view."),
-        });
+      {
+        icon: "refresh",
+        tooltip: Dot(
+          "VgG5y",
+          "Click here to refresh the status of your extension"
+        ),
+        label: Dot("zaSKh", "Refresh"),
+        onClick: () => {
+          dis(ToolSlice.actions.updateExtensionIdRefreshMap({ extId: extId }));
+          AlertUtils.popMsg("success", {
+            message: Dot("LAc1m", "Refreshed the app view."),
+          });
+        },
       },
-    },
-  ];
+    ];
 
   // iterate rightControls as a list of buttons, which contains Tooltip
   let rightControlsRender = _.map(rightControls, (x) => {

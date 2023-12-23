@@ -22,7 +22,7 @@ import _ from "lodash";
 import gutils from "./GlobalUtils";
 import staticDevJson from "../static/dev.json";
 import PageUtils from "./PageUtils";
-import { P_ACTION_readForgeFromServerViaAPI } from "../reducers/ForgeSlice";
+import { P_ACTION_readForgeFromServerViaAPI } from "../reducers/forgeSlice";
 import { P_ACTION_createSystemWS } from "../reducers/websocketSlice";
 
 // binding updates from all pages

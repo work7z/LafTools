@@ -27,7 +27,7 @@ type SessionState = {
     sessionKeyToList: {
         [sessionKey: string]: { // like text translator, md5, md2, etc...
             list: { label: string, value: string }[], // session-1, session-2
-            sessionMap: { [sessionIdAttrName: string]: string }// attrName to attrValue
+            sessionMap: { [sessionIdAttrName: string]: string }// attrName to attrValue, here we can save their settings, session val, etc...
         };
     }
 };

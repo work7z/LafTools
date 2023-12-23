@@ -36,7 +36,7 @@ import InitUtils from "./utils/InitUtils";
 import ALL_NOCYCLE from "./nocycle";
 import exportUtils from "./utils/ExportUtils";
 import fn_tailwindcss from "./hmr/hmr-reload-resources.tsx";
-import forgeSlice from "./reducers/ForgeSlice.tsx";
+import forgeSlice from "./reducers/forgeSlice.tsx";
 import {
   useReadCurrentWorkspaceId,
   useReadCurrentWorkspaceItem,
