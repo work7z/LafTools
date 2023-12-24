@@ -76,6 +76,8 @@ import { ExtensionVM } from '../../types/purejs-types-READ_ONLY'
 
 import { Allotment, AllotmentHandle } from "allotment";
 
+
+
 type PassProps = {
     defaultSessionId: string;
     defaultSessionArr: TreeNodeInfo[];

@@ -23,11 +23,15 @@ import { startListening } from "../../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SyncStateUtils from "../../utils/SyncStateUtils";
 
+export type SessionMapAttr = {
+    // attrName to attrValue, here we can save their settings, session val, etc...
+}
+
 type SessionState = {
     sessionKeyToList: {
         [sessionKey: string]: { // like text translator, md5, md2, etc...
             list: { label: string, value: string }[], // session-1, session-2
-            sessionMap: { [sessionIdAttrName: string]: string }// attrName to attrValue, here we can save their settings, session val, etc...
+            sessionMap: SessionMapAttr
         };
     }
 };

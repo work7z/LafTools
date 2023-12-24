@@ -126,7 +126,7 @@ let AboutThisSoftware = () => {
     <div className="center flex flex-col  m-auto w-full self-center">
       <p className="text-center flex items-center p-4 justify-center flex-col bg-slate-200 dark:bg-slate-600" style={{ textAlign: 'center' }}>
         <img style={{ width: "50px" }} src={"/static/" + getIconPngFile()}></img>
-        <p className="mt-2">LafTools - {APPINFOJSON.version}</p>
+        <p className="mt-2">{Dot("k41a5","LafTools")}({APPINFOJSON.version})</p>
       </p>
       <h3><b>{Dot("aked61", "Introduction")}</b></h3>
       <p>
