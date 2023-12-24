@@ -129,7 +129,7 @@ export default (props: PassProps) => {
     // render
     let Body = props.body;
     let [hoverId, onHoverId] = useState<string | null>(null)
-    let nodes: TreeNodeInfo[] = sessionList 
+    let nodes: TreeNodeInfo[] = sessionList
     // TODO: consider judging if it's good to show *
     // _.map(sessionList,x=>{
     //     return {
@@ -143,13 +143,42 @@ export default (props: PassProps) => {
             x.isSelected = x.id == activeSessionId;
             x.secondaryLabel = x.id == hoverId ? <div className="whitespace-nowrap flex flex-row">
                 {/* <Tooltip placement="bottom" content={Dot("4K_vhq", "Duplicate this tab")}> */}
-                <Button 
-                onClick={()=>{
-                    //
-                }} title={Dot("4K_vhq", "Duplicate this tab")} minimal small icon={"duplicate"}></Button>
+                <Button
+                    onClick={() => {
+                        // duplicate this tab and trigger dispatch
+                        FN_GetDispatch()(
+                            SessionSlice.actions.updateSessionList({
+                                sessionType: sessionType,
+                                list: [
+                                    ...(sessionList || []),
+                                    {
+                                        ...x,
+                                        id: gutils.uuid(),
+                                        label: x.label + " " + "(2)"
+                                    }
+                                ]
+                            })
+                        )
+                    }} title={Dot("4K_vhq", "Duplicate this tab")} minimal small icon={"duplicate"}></Button>
                 {/* </Tooltip> */}
                 {/* <Tooltip placement="bottom" content={}> */}
-                <Button minimal small icon={"trash"} title={Dot("U4qqq9", "Remove this tab from list")}></Button>
+                <Button
+                    onClick={() => {
+                        // remove this tab and trigger dispatch
+                        FN_GetDispatch()(
+                            SessionSlice.actions.updateSessionList({
+                                sessionType: sessionType,
+                                list: _.filter(sessionList || [], y => y.id != x.id)
+                            })
+                        )
+                        FN_GetDispatch()(
+                            SessionSlice.actions.updateActiveId({
+                                sessionType: sessionType,
+                                activeId: _.first(sessionList)?.id+""
+                            })
+                        )
+                    }}
+                    minimal small icon={"trash"} title={Dot("U4qqq9", "Remove this tab from list")}></Button>
                 {/* </Tooltip> */}
             </div> : null
             return x;
