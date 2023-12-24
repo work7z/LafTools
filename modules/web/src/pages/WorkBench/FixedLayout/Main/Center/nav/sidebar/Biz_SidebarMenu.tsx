@@ -73,7 +73,7 @@ import ReactDOM from "react-dom";
 import gutils from "../../../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../../../../../styles/routeMem";
+import RouteMem from "../../../../../../../types/router-mem";
 import statusSlice from "../../../../../../../reducers/statusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
@@ -101,7 +101,7 @@ import {
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
-} from "../../../../../../../styles/path";
+} from "../../../../../../../types/constants";
 import { type } from "jquery";
 import apiSlice from "../../../../../../../reducers/apiSlice";
 import { SysTabPane } from "../../../../../../../components/SysTabPane";
@@ -109,12 +109,12 @@ import GenTabs from "../../../../../../../components/GenVerticalTabs";
 import {
   EachTabPanelProp,
   TabNavProp,
-} from "../../../../../../../types/WB_Types";
+} from "../../../../../../../types/workbench-types";
 import { FN_ACTION_CloseMenu_ltr } from "../../../../../../../actions/layout_action";
 import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
-} from "../../../../../../../types/WB_Func";
+} from "../../../../../../../types/workbench-hook";
 
 let RightPanelNoAvailablePanel = () => {
   let dis = exportUtils.dispatch();

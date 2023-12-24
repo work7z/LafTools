@@ -20,8 +20,8 @@
 
 // SKIP_DOT
 import _ from "lodash";
-import { LANG_EN_US, LangDefinition } from "../styles/var";
-import { VER_FORGE_FORM } from "../styles/config";
+import { LANG_EN_US, LangDefinition } from "../types/constants";
+import { VER_FORGE_FORM } from "../types/constants";
 import { safeparse } from "./g_ref";
 
 export const KEY_LANG_PACK_ZH_CN = "KEY_LANG_PACK_ZH_CN" + VER_FORGE_FORM;

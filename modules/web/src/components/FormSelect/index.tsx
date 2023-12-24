@@ -72,7 +72,7 @@ import gutils from "../../utils/GlobalUtils";
 import { UseQueryHookResult } from "@reduxjs/toolkit/dist/query/react/buildHooks";
 import { ContextMenu, Tree, TreeNodeInfo } from "@blueprintjs/core";
 import { Example, ExampleProps } from "@blueprintjs/docs-theme";
-import { TreeWrapInfo } from "../../styles/var";
+import { TreeWrapInfo } from "../../types/constants";
 import "./index.scss";
 import Html_select from "../Html_select";
 

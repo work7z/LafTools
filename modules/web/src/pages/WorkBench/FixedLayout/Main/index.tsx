@@ -77,7 +77,7 @@ import ReactDOM from "react-dom";
 import gutils from "../../../../utils/GlobalUtils";
 import { logutils } from "../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../../styles/routeMem";
+import RouteMem from "../../../../types/router-mem";
 import statusSlice from "../../../../reducers/statusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
@@ -106,7 +106,7 @@ import { type } from "jquery";
 import apiSlice from "../../../../reducers/apiSlice";
 import { SysTabPane } from "../../../../components/SysTabPane";
 import GenTabs from "../../../../components/GenVerticalTabs";
-import { useLeftTabsList } from "../../../../types/WB_Common";
+import { useLeftTabsList } from "../../../../types/workbench-hook";
 import {
   EachTabPanelProp,
   FixedMenuBarProp,
@@ -115,7 +115,7 @@ import {
   TabNavProp,
   VAL_CSS_MENU_TITLE_PANEL,
   VAL_CSS_TAB_TITLE_PANEL,
-} from "../../../../types/WB_Types";
+} from "../../../../types/workbench-types";
 import { WB_ControllerBar as WB_ControllBar } from "./Control";
 import { WB_MenuBar as WB_MenuBar } from "./Menu";
 import { WB_CenterStage as WB_CenterStage } from "./Center";

@@ -23,8 +23,8 @@ import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
   VAL_CSS_TAB_TITLE_PANEL,
   VAL_CSS_CONTROL_PANEL,
-} from "../../../../../../../../types/WB_Types";
-import { CommonTransformerPassProp } from "../transformer_types";
+} from "../../../../../../../../types/workbench-types";
+import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
 import { Dot } from "../../../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
 import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
@@ -35,7 +35,7 @@ import { useEffect, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
-import { CSS_TW_LAYOUT_BORDER } from "../../../../../../../../styles/tw";
+import { CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 import { CommonTransformerProps } from "./types";

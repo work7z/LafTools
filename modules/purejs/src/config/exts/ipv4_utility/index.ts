@@ -1,4 +1,4 @@
-import { ExtensionInfo, ExtensionVM } from "../../../all-types";
+import { ExtensionInfo, ExtensionVM } from "../../../purejs-types";
 import { Dot } from "../../../utils/translation";
 
 let v: ExtensionVM = {

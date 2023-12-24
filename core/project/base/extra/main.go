@@ -37,6 +37,7 @@ import (
 type Job struct {
 	Name     string   `json:"Name"`
 	Type     string   `json:"Type"`
+	Disabled bool     `json:"Disabled"`
 	Commands []string `json:"Commands,omitempty"`
 }
 
@@ -89,6 +90,9 @@ func HandleExtraAction(cmd *cobra.Command, args []string) {
 	// log.Ref().Debug("crtConfig: ", crtConfig)
 	// run commands for each job, remember to set env, and print output to the folder OutputDir
 	for _, job := range crtConfig.Jobs {
+		if job.Disabled {
+			continue
+		}
 		// set env
 		go func(job Job) {
 			// if strings.Index(job.Name, "Scan") == -1 {

@@ -1,4 +1,4 @@
-import {FileValueMatcher} from '../all-types'
+import {FileValueMatcher} from '../purejs-types'
 import { Dot } from '../utils/translation'
 
 let langList = [

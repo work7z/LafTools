@@ -62,7 +62,7 @@ import _ from "lodash";
 import { Dot } from "../../utils/TranslationUtils";
 import exportUtils from "../../utils/ExportUtils";
 import forgeSlice from "../../reducers/forgeSlice";
-import { LafTools_DOC_HOME } from "../../styles/constants";
+import { LafTools_DOC_HOME } from "../../types/constants";
 import systemSlice, { ACTION_initAllDataAtOnce } from "../../reducers/systemSlice";
 
 interface PassProp { }

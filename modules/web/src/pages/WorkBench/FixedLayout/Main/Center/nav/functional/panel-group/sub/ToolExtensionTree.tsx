@@ -73,7 +73,7 @@ import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
 import gutils from "../../../../../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../../../../../utils/LogUtils";
-import RouteMem from "../../../../../../../../../styles/routeMem";
+import RouteMem from "../../../../../../../../../types/constants";
 import statusSlice from "../../../../../../../../../reducers/statusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
@@ -102,7 +102,7 @@ import {
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
-} from "../../../../../../../../../styles/path";
+} from "../../../../../../../../../types/constants";
 import { type } from "jquery";
 import apiSlice, {
   ExtensionInfo,
@@ -114,12 +114,12 @@ import QueryUtils, {
 import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
-} from "../../../../../../../../../types/WB_Func";
+} from "../../../../../../../../../types/workbench-hook";
 import RouteUtils from "../../../../../../../../../utils/RouteUtils";
 import ToolSlice from "../../../../../../../../../reducers/toolSlice";
 import MottoLine from "../../../../../../../../../components/MottoLine";
 import GenTree from "../../../../../../../../../components/GenTree";
-import { FnPureToolDefinition } from "../../../../../../../../../types/WB_Types";
+import { FnPureToolDefinition } from "../../../../../../../../../types/workbench-types";
 import WorkspaceSlice from "../../../../../../../../../reducers/workspaceSlice";
 
 export default (props: {

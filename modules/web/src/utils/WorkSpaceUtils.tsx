@@ -20,12 +20,12 @@
 
 import { useParams } from "react-router-dom";
 import _ from "lodash";
-import { EachWorkSpace } from "../types/WB_Types";
+import { EachWorkSpace } from "../types/workbench-types";
 import apiSlice from "../reducers/apiSlice";
 import QueryUtils from "./QueryUtils";
 import { Dot } from "./TranslationUtils";
 import ALL_NOCYCLE, { FN_GetDispatch } from "../nocycle";
-import { URL_PREFIX_LOCAL } from "../styles/config";
+import { URL_PREFIX_LOCAL } from "../types/constants";
 import AlertUtils from "./AlertUtils";
 import systemSlice from "../reducers/systemSlice";
 import SyncStateUtils from "./SyncStateUtils";

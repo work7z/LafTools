@@ -66,18 +66,18 @@ import Welcome from "./pages/Welcome";
 
 import $ from "jquery";
 import _ from "lodash";
-import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";
+import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./types/constants";
 import InitSystemEnv from "./pages/Loading";
 import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
 import gutils from "./utils/GlobalUtils";
 import TranslationUtils, { Dot } from "./utils/TranslationUtils";
 import PageUtils from "./utils/PageUtils";
-import { URL_WORKBENCH } from "./styles/path";
+import { URL_WORKBENCH } from "./types/constants";
 import RouteUtils from "./utils/RouteUtils";
 import InitRouteHistory from "./InitRouteHistory";
 import { DialogStoreMap } from "./reducers/dialogSlice";
-import { Z_INDEX_CONFIRM, Z_INDEX_DIALOG } from "./styles/config";
-import { FN_testDialogHere } from "./styles/dialog";
+import { Z_INDEX_CONFIRM, Z_INDEX_DIALOG } from "./types/constants";
+import { FN_testDialogHere } from "./types/dialog-fn";
 import AlertUtils from "./utils/AlertUtils";
 import { PrompType } from "./reducers/statusSlice";
 

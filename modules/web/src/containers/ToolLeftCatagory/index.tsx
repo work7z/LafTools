@@ -60,7 +60,7 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { useParams } from "react-router";
 import gutils from "../../utils/GlobalUtils";
-import { ToolParamType } from "../../styles/var";
+import { ToolParamType } from "../../types/constants";
 import { Dot } from "../../utils/TranslationUtils";
 
 import AjaxUtils from "../../utils/AjaxUtils";
@@ -70,7 +70,7 @@ import apiSlice from "../../reducers/apiSlice";
 
 import { Link } from "react-router-dom";
 import PageUtils from "../../utils/PageUtils";
-import { FnPureToolDefinition } from "../../types/WB_Types";
+import { FnPureToolDefinition } from "../../types/workbench-types";
 
 type PassProp = {
   allPureMenuArr: FnPureToolDefinition[];

@@ -53,7 +53,7 @@ import {
 import gutils from "../../utils/GlobalUtils";
 import { Dot } from "../../utils/TranslationUtils";
 import exportUtils from "../../utils/ExportUtils";
-import { LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "../../styles/var";
+import { LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "../../types/constants";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
 } from "../../reducers/forgeSlice";
@@ -75,7 +75,7 @@ import {
   PutNewDialogReqProp,
   TOOL_PutNewDialog,
 } from "../../reducers/dialogSlice";
-import { FN_ForgotPassword, FN_ShowNewLocalAccount } from "../../styles/dialog";
+import { FN_ForgotPassword, FN_ShowNewLocalAccount } from "../../types/dialog-fn";
 import apiSlice from "../../reducers/apiSlice";
 import MutationResLabel from "../../components/MutationResLabel";
 import QueryResLabel from "../../components/QueryResLabel";
@@ -84,7 +84,7 @@ import FormSelect from "../../components/FormSelect";
 import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 import PageUtils from "../../utils/PageUtils";
-import { EachLang } from "../../types/all-types";
+import { EachLang } from "../../types/purejs-types-READ_ONLY";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;

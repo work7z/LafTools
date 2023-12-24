@@ -42,8 +42,8 @@ import {
   FixedMenuBarProp,
   FixedMenuItem,
   VAL_CSS_MENU_TITLE_PANEL,
-} from "../../../../../../types/WB_Types";
-import { CSS_TEXT_ANCHOR_CSS } from "../../../../../../styles/tw";
+} from "../../../../../../types/workbench-types";
+import { CSS_TEXT_ANCHOR_CSS } from "../../../../../../types/constants";
 
 export let FixedMenuBar = (props: FixedMenuBarProp) => {
   let [activeId, onActiveId] = useState(null);

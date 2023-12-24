@@ -73,7 +73,7 @@ import ReactDOM from "react-dom";
 import gutils from "../../../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../../../../../styles/routeMem";
+import RouteMem from "../../../../../../../types/router-mem";
 import statusSlice from "../../../../../../../reducers/statusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
@@ -102,15 +102,15 @@ import {
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
-} from "../../../../../../../styles/path";
+} from "../../../../../../../types/constants";
 import { type } from "jquery";
 import apiSlice from "../../../../../../../reducers/apiSlice";
 import { SysTabPane } from "../../../../../../../components/SysTabPane";
 import {
   EachTabPanelProp,
   TabNavProp,
-} from "../../../../../../../types/WB_Types";
-import { useLeftTabsList } from "../../../../../../../types/WB_Common";
+} from "../../../../../../../types/workbench-types";
+import { useLeftTabsList } from "../../../../../../../types/workbench-hook";
 import layoutSlice from "../../../../../../../reducers/layoutSlice";
 import GenTabs from "../../../../../../../components/GenVerticalTabs";
 

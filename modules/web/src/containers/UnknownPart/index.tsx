@@ -58,7 +58,7 @@ import {
 } from "@blueprintjs/core";
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
-import { CommonTransformerPassProp as CommonTransformerPassProp } from "../../pages/WorkBench/FixedLayout/Main/Center/sub/center-view/transformer_types";
+import { CommonTransformerPassProp as CommonTransformerPassProp } from "../../types/workbench-types";
 import { Dot } from "../../utils/TranslationUtils";
 
 interface PassProp { }

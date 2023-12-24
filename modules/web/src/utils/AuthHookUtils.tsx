@@ -24,14 +24,14 @@ import TranslationUtils, { Dot } from "./TranslationUtils";
 import QS from "querystring";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import gutils from "./GlobalUtils";
-import { URL_PREFIX_LOCAL, URL_PREFIX_STATIC } from "../styles/config";
+import { URL_PREFIX_LOCAL, URL_PREFIX_STATIC } from "../types/constants";
 import devJson from "../static/dev.json";
-import { AnyMapType } from "../styles/var";
+import { AnyMapType } from "../types/constants";
 import TokenUtils from "./TokenUtils";
 import exportUtils from "./ExportUtils";
 import UserSlice, { UserConfig } from "../reducers/userSlice";
 import apiSlice from "../reducers/apiSlice";
-import * as vars from "../styles/var";
+import * as vars from "../types/constants";
 import { useEffect } from "react";
 
 export type AuthStatus = {

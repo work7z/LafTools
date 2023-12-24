@@ -78,7 +78,7 @@ import gutils from "../../../../../../../utils/GlobalUtils";
 import _ from "lodash";
 import { SysTabPane } from "../../../../../../../components/SysTabPane";
 import { FN_ACTION_CloseMenu_ltr } from "../../../../../../../actions/layout_action";
-import { useSearchQuery } from "../../../../../../../types/WB_Func";
+import { useSearchQuery } from "../../../../../../../types/workbench-hook";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
 // import MultipleSessionLeftView from "../../../containers/MultipleSessionLeftView/index";
 import TextTranslator from "./TextTranslator";

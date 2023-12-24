@@ -1,5 +1,5 @@
 
-import { EachLang, FileValueMatcher } from '../all-types'
+import { EachLang, FileValueMatcher } from '../purejs-types'
 import { Dot } from '../utils/translation'
 
 let langList: EachLang[] = [

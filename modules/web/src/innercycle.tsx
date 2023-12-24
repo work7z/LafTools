@@ -20,7 +20,7 @@
 
 import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
 import { RootState } from "./store";
-import { LANG_EN_US } from "./styles/var";
+import { LANG_EN_US } from "./types/constants";
 
 interface InnerCycle {
   CachedLanguage: string | null;

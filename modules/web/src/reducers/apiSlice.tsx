@@ -21,8 +21,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import AjaxUtils from "../utils/AjaxUtils";
 import _ from "lodash";
-import { URL_PREFIX_LOCAL } from "../styles/config";
-import { PayloadListData, PayloadValueData } from "../styles/var";
+import { URL_PREFIX_LOCAL } from "../types/constants";
+import { PayloadListData, PayloadValueData } from "../types/constants";
 import gutils from "../utils/GlobalUtils";
 import { UserConfig } from "./userSlice";
 import { url } from "inspector";
@@ -31,8 +31,8 @@ import {
   EachWorkSpace,
   FnPureToolDefinition,
   WorkSpaceStruct,
-} from "../types/WB_Types";
-import { EachLang } from "../types/all-types";
+} from "../types/workbench-types";
+import { EachLang, ExtensionInfo, ExtensionVM } from "../types/purejs-types-READ_ONLY";
 import { withPrefixOpenAPI } from "./func";
 
 let createNotProhibitedResources = (build, resName) => {
@@ -224,48 +224,8 @@ export const apiSlice = createApi({
   }),
 });
 
-export interface ValueReq {
-  InputText: string;
-  InputFile: string;
-  ExtraConfigMap?: Record<string, any>;
-  ReturnAsFile?: boolean; // by default false
-}
 
-export interface ValueRes {
-  Err?: Error;
-  OutputText: string;
-  OutputFile: string;
-}
 
-export interface ValueHandler {
-  ConvertText: (req: ValueReq) => ValueRes;
-  ConvertFile: (req: ValueReq) => ValueRes;
-}
-
-export type ExtensionFuncMap = Record<string, ValueHandler>;
-
-type FormModel = Record<string, any>;
-
-export interface ExtensionAction {
-  Id: string;
-  Label: string;
-  CallFuncList: string[];
-}
-
-export interface ExtensionVM {
-  Layout: string;
-  InitialFormModel?: FormModel;
-  Info?: ExtensionInfo;
-  Actions?: ExtensionAction[];
-  FuncMap?: ExtensionFuncMap;
-}
-
-export default apiSlice;
-export type ExtensionInfo = {
-  Id: string;
-  Label: string;
-  Description: string;
-};
 export type ListExtForTheCategoryRes = {
   CategoryId: string;
   Id: string;
@@ -273,3 +233,5 @@ export type ListExtForTheCategoryRes = {
   Icon: string;
   ChildrenAsInfo: ExtensionInfo[];
 };
+
+export default apiSlice;

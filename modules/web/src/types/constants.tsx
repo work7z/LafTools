@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+
 import { TreeNodeInfo } from "@blueprintjs/core";
 import { AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
@@ -60,7 +61,58 @@ import {
   CardList,
   Divider,
 } from "@blueprintjs/core";
-export const CLZ_ROOT_DARK = `bp5-dark`;
+
+export const LafTools_HOME = "https://laf-tools.com";
+export const LafTools_DOC_HOME = `${LafTools_HOME}/documentation/view?id=welcome`;
+export const SQ = "'";
+export const DQ = '"';
+export const AT = "`";
+
+// styles
+export const VAL_CSS_TAB_TITLE_PANEL = 30;
+export const VAL_CSS_CONTROL_PANEL = 34;
+export const VAL_CSS_MENU_TITLE_PANEL = 30;
+
+// concurrency 
+export const KEY_CONCURRENCY_SYSTEM_INIT = "J9EXO";
+
+
+// version
+export const VER_FORGE_FORM = "v2023.10.05";
+
+// url
+export const URL_PREFIX_STATIC = "/static";
+export const URL_PREFIX_LOCAL = "/api";
+
+// CacheUtils need to be saved is
+
+// zIndex
+export const Z_INDEX_DIALOG = 9990;
+export const Z_INDEX_CONFIRM = 9991;
+
+
+export const URL_WORKBENCH = "/workbench";
+export const URL_ENTRY = "/entry";
+export const URL_WORKBENCH_WORKSPACE = URL_WORKBENCH;
+
+export const ID_TOOLS = "tools";
+export const ID_FILES = "files";
+export const ID_NOTES = "notes";
+export const ID_HISTORY = "history";
+
+
+export let CSS_TEXT_ANCHOR_CSS =
+  "text-current no-underline hover:no-underline dark:text-current";
+
+export let CSS_TW_LAYOUT_BORDER =
+  " border-[1px]    border-gray-300 dark:border-gray-600  ";
+
+
+export type InitForm = {
+    Value: boolean;
+  };
+  
+  export const CLZ_ROOT_DARK = `bp5-dark`;
 export const CLZ_ROOT_LIGHT = `bp5-light bp5-bg-light`;
 export const CLZ_SECOND_TEXT = "bp5-text-muted";
 export const CLZ_SMALL_TEXT = "bp5-text-small";

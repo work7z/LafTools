@@ -62,7 +62,7 @@ import _ from "lodash";
 import apiSlice from "../../reducers/apiSlice";
 import { Dot } from "../../utils/TranslationUtils";
 import { useParams } from "react-router";
-import { ToolParamType } from "../../styles/var";
+import { ToolParamType } from "../../types/constants";
 
 function replaceAll(str: string, find: string, replace: string) {
   return str.replace(new RegExp(find, "g"), replace);

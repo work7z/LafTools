@@ -73,7 +73,7 @@ import ReactDOM from "react-dom";
 import gutils from "../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../../../styles/routeMem";
+import RouteMem from "../../../../../types/router-mem";
 import statusSlice from "../../../../../reducers/statusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
@@ -99,18 +99,18 @@ import {
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
-} from "../../../../../styles/path";
+} from "../../../../../types/constants";
 import { type } from "jquery";
 import apiSlice from "../../../../../reducers/apiSlice";
 
 import {
   SystemStatusBarItem,
   VAL_CSS_MENU_TITLE_PANEL,
-} from "../../../../../types/WB_Types";
+} from "../../../../../types/workbench-types";
 import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
-} from "../../../../../types/WB_Func";
+} from "../../../../../types/workbench-hook";
 import {
   FN_ACTION_CloseMenu_ltr,
   FN_ACTION_OpenMenu_ltr,

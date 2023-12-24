@@ -21,8 +21,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import AjaxUtils from "../utils/AjaxUtils";
 import _ from "lodash";
-import { URL_PREFIX_LOCAL } from "../styles/config";
-import { PayloadListData, PayloadValueData } from "../styles/var";
+import { URL_PREFIX_LOCAL } from "../types/constants";
+import { PayloadListData, PayloadValueData } from "../types/constants";
 import gutils from "../utils/GlobalUtils";
 import { UserConfig } from "./userSlice";
 import { url } from "inspector";

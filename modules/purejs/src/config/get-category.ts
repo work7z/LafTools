@@ -3,7 +3,7 @@ import type {
   NodeReq,
   NodeRes,
   FlushIdValuePair,
-} from "../all-types";
+} from "../purejs-types";
 import { Dot } from "../utils/translation";
 import _ from "lodash";
 

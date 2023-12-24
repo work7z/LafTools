@@ -73,7 +73,7 @@ import ReactDOM from "react-dom";
 import gutils from "../../../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../../../../../styles/routeMem";
+import RouteMem from "../../../../../../../types/router-mem";
 import statusSlice from "../../../../../../../reducers/statusSlice";
 import { useState, useContext, useCallback, useRef } from "react";
 import {
@@ -102,10 +102,10 @@ import {
   ID_NOTES,
   ID_TOOLS,
   URL_WORKBENCH_WORKSPACE,
-} from "../../../../../../../styles/path";
+} from "../../../../../../../types/constants";
 import { type } from "jquery";
 import apiSlice from "../../../../../../../reducers/apiSlice";
-import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../../types/WB_Types";
+import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../../types/workbench-types";
 import { FunctionalMenu } from "../../nav/functional";
 import { SidebarMenu } from "../../nav/sidebar/Biz_SidebarMenu";
 import Biz_DrawerMenu from "../../nav/control";

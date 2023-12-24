@@ -26,7 +26,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import RouteComponent from "./Route";
 import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
-import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./styles/var";
+import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./types/constants";
 import InitSystemEnv from "./pages/Loading";
 import SystemAlertOrPrompt from "./SystemAlertOrPrompt";
 import PageUtils from "./utils/PageUtils";

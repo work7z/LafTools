@@ -40,7 +40,7 @@ import {
   PromiseAction,
   SendErrorAction,
   TextValueAction,
-} from "../styles/var";
+} from "../types/constants";
 import gutils from "../utils/GlobalUtils";
 import AjaxUtils from "../utils/AjaxUtils";
 // import { store } from "../store";
@@ -50,7 +50,7 @@ import { logutils } from "../utils/LogUtils";
 import ALL_NOCYCLE, { IsDevMode } from "../nocycle";
 import _ from "lodash";
 import ConcurrencyUtils from "../utils/ConcurrencyUtils";
-import { KEY_CONCURRENCY_SYSTEM_INIT } from "../styles/concurrency";
+import { KEY_CONCURRENCY_SYSTEM_INIT } from "../types/constants";
 import { Intent } from "@blueprintjs/core";
 import SyncStateUtils from "../utils/SyncStateUtils";
 

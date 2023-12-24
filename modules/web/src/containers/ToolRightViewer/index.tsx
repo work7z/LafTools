@@ -60,7 +60,7 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { useParams } from "react-router";
 import gutils from "../../utils/GlobalUtils";
-import { ToolParamType } from "../../styles/var";
+import { ToolParamType } from "../../types/constants";
 import { Dot } from "../../utils/TranslationUtils";
 
 import {
@@ -73,7 +73,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import ExtensionSingleView from "../ExtensionSingleView";
-import { PassToolViewerProp } from "../../types/WB_Types";
+import { PassToolViewerProp } from "../../types/workbench-types";
 
 type PassProp = PassToolViewerProp;
 

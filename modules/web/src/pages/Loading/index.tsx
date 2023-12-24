@@ -68,11 +68,11 @@ import systemSlice, {
   ACTION_initAllDataAtOnce,
 } from "../../reducers/systemSlice";
 import { useEffect } from "react";
-import { CLZ_SECOND_TEXT } from "../../styles/var";
+import { CLZ_SECOND_TEXT } from "../../types/constants";
 import ConfirmICON from "../../components/ConfirmICON";
 import UserAskMultipleDialogs from "../../containers/UserAskMultipleDialogs";
 import ConcurrencyUtils from "../../utils/ConcurrencyUtils";
-import { KEY_CONCURRENCY_SYSTEM_INIT } from "../../styles/concurrency";
+import { KEY_CONCURRENCY_SYSTEM_INIT } from "../../types/constants";
 
 const InitSystemEnv = () => {
   let sysObj = eUtils.useSelector((val) => ({

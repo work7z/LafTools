@@ -27,7 +27,7 @@ import { FN_GetDispatch } from "../nocycle";
 import AlertUtils from "../utils/AlertUtils";
 import { Dot } from "../utils/TranslationUtils";
 import DateUtils from "../utils/DateUtils";
-import { URL_PREFIX_LOCAL } from "../styles/config";
+import { URL_PREFIX_LOCAL } from "../types/constants";
 import AjaxUtils from "../utils/AjaxUtils";
 import TokenUtils from "../utils/TokenUtils";
 import IDUtils from "../utils/IDUtils";

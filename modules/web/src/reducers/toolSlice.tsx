@@ -31,7 +31,7 @@ import AjaxUtils from "../utils/AjaxUtils";
 import { logutils } from "../utils/LogUtils";
 import PageUtils from "../utils/PageUtils";
 import { TreeNodeInfo } from "@blueprintjs/core";
-import { TreeWrapInfo } from "../styles/var";
+import { TreeWrapInfo } from "../types/constants";
 import _ from "lodash";
 
 const initialState = {

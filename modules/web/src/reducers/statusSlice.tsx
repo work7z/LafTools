@@ -21,7 +21,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { TextValueAction } from "../styles/var";
+import { TextValueAction } from "../types/constants";
 import { Intent } from "@blueprintjs/core";
 
 export type ProcessLoadType = {

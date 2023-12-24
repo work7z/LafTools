@@ -28,7 +28,7 @@ import {
   UserPassCreateProp,
 } from "../containers/UserAskMultipleDialogs";
 import gutils from "../utils/GlobalUtils";
-import { PayloadValueData } from "../styles/var";
+import { PayloadValueData } from "../types/constants";
 import { Dot } from "../utils/TranslationUtils";
 import TokenUtils from "../utils/TokenUtils";
 

@@ -1,4 +1,4 @@
-import { ExtensionInfo, ExtensionVM } from "../../../all-types";
+import { ExtensionInfo, ExtensionVM } from "../../../purejs-types";
 import { Dot } from "../../../utils/translation";
 Dot("e6SA-", "Additional Logic");
 Dot("aJcwm", "Thanks to my friend");

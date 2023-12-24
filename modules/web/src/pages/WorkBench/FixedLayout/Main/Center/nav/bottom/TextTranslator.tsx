@@ -21,7 +21,7 @@
 import { Button, Card, Popover } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../components/GenCodeMirror";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
-import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../../types/WB_Types";
+import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../../types/workbench-types";
 import { Allotment, AllotmentHandle } from "allotment";
 import { FN_GetDispatch, getAjaxResPayloadValue, getAjaxResPayloadValueAsString } from "../../../../../../../nocycle";
 import { FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../actions/bigtext_action";

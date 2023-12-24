@@ -63,7 +63,7 @@ import {
   EachWorkSpace,
   VAL_CSS_MENU_TITLE_PANEL,
   VAL_CSS_TAB_TITLE_PANEL,
-} from "../../../../../types/WB_Types";
+} from "../../../../../types/workbench-types";
 import { Dot } from "../../../../../utils/TranslationUtils";
 import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";

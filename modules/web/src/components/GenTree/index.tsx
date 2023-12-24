@@ -72,10 +72,10 @@ import gutils from "../../utils/GlobalUtils";
 import { UseQueryHookResult } from "@reduxjs/toolkit/dist/query/react/buildHooks";
 import { ContextMenu, Tree, TreeNodeInfo } from "@blueprintjs/core";
 import { Example, ExampleProps } from "@blueprintjs/docs-theme";
-import { TreeWrapInfo } from "../../styles/var";
+import { TreeWrapInfo } from "../../types/constants";
 import MottoLine from "../MottoLine";
 import apiSlice from "../../reducers/apiSlice";
-import { useSearchQuery } from "../../types/WB_Func";
+import { useSearchQuery } from "../../types/workbench-hook";
 
 let { cloneDeep } = _;
 

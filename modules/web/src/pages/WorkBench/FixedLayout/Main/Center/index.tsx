@@ -86,7 +86,7 @@ import { Allotment } from "allotment";
 import {
   RefAlloProp,
   VAL_CSS_TAB_TITLE_PANEL,
-} from "../../../../../types/WB_Types";
+} from "../../../../../types/workbench-types";
 import { MainStage } from "./sub/CenterFirstLayer";
 import { SidebarMenu } from "./nav/sidebar/Biz_SidebarMenu";
 import { FunctionalMenu } from "./nav/functional";

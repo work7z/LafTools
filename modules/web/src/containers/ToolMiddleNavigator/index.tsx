@@ -61,7 +61,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import _ from "lodash";
 import { useParams } from "react-router";
 import gutils from "../../utils/GlobalUtils";
-import { ToolParamType } from "../../styles/var";
+import { ToolParamType } from "../../types/constants";
 import { Dot } from "../../utils/TranslationUtils";
 
 import AjaxUtils from "../../utils/AjaxUtils";
@@ -83,7 +83,7 @@ import RouteUtils from "../../utils/RouteUtils";
 import PageUtils from "../../utils/PageUtils";
 import forgeSlice from "../../reducers/forgeSlice";
 import ExtHookUtils from "../../utils/ExtensionHookUtils";
-import { PassToolViewerProp } from "../../types/WB_Types";
+import { PassToolViewerProp } from "../../types/workbench-types";
 
 type PassProp = PassToolViewerProp;
 

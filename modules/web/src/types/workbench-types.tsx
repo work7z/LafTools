@@ -17,8 +17,26 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import { Intent } from "@blueprintjs/core";
-import { ToolCategory, ToolSubCategory } from "./all-types";
+import { ToolCategory ,ExtensionVM} from "./purejs-types-READ_ONLY";
+
+export * from './constants';
+
+export type CommonTransformerPassProp = {
+  extId?: string;
+  extVM?: ExtensionVM;
+  inputBigTextId: string;
+  outputBigTextId: string;
+  sessionId: string;
+};
+export type PageQueryType = {
+  fc: string;
+  f?: string;
+  e?: string;
+  b?: string;
+  tid?: string; // tool tab id
+};
 
 export type EachWorkSpace = {
   Label: string;
@@ -106,24 +124,6 @@ export type EachTabPanelProp = {
 
 export type PropGenTabsPanel = {};
 
-export const VAL_CSS_TAB_TITLE_PANEL = 30;
-export const VAL_CSS_CONTROL_PANEL = 34;
-export const VAL_CSS_MENU_TITLE_PANEL = 30;
-
-// export let langList = [
-//   {
-//     label: "English",
-//     value: "en_US",
-//   },
-//   {
-//     label: "简体中文(Simplified Chinese)",
-//     value: "zh_CN",
-//   },
-//   {
-//     label: "繁體中文(Traditional Chinese)",
-//     value: "zh_HK",
-//   },
-// ];
 export type FixedMenuItem = {
   id: string;
   intent?: string;

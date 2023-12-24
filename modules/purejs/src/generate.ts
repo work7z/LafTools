@@ -5,7 +5,7 @@ import {
   ToolSubCategory,
   ToolChildrenSetByInit,
   FileValueMatcher,
-} from "./all-types";
+} from "./purejs-types";
 import _ from "lodash";
 // read files under job, config
 let fs = require("fs");

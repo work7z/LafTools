@@ -1,3 +1,5 @@
+// DO NOT UPDATE THIS FILE, IT IS SYNCHRONIZED FROM modules/purejs/src/purejs-types.ts
+
 export type NodeReq = {
   Lang: string;
   Id: string;

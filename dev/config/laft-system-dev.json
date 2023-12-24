@@ -6,12 +6,13 @@
     {
       "Name": "Copy Static Resources",
       "Type": "CopyStatic",
-      "Commands": ["sh", "$LAFTOOLS_ROOT/modules/web/job-syncstatic.sh"]
+      "Commands": ["bash", "$LAFTOOLS_ROOT/modules/web/job-syncstatic.sh"]
     },
     {
       "Name": "Run Tailwind DevTools",
       "Type": "RunCommand",
-      "Commands": ["sh", "$LAFTOOLS_ROOT/modules/web/job-tailwind.sh"]
+      "Disabled": true,
+      "Commands": ["bash", "$LAFTOOLS_ROOT/modules/web/job-tailwind.sh"]
     },
     {
       "Id": "scan_and_translation",
@@ -23,7 +24,7 @@
       "Name": "Add License Headers",
       "Type": "RunCommand",
       "Commands": [
-        "sh",
+        "bash",
         "$LAFTOOLS_ROOT/pipeline/dev-add-license-to-each-file.sh"
       ]
     },
@@ -31,7 +32,7 @@
       "Name": "Build Purejs Project",
       "Type": "RunCommand",
       "Commands": [
-        "sh",
+        "bash",
         "$LAFTOOLS_ROOT/modules/purejs/pipeline/job-sync-build-tsx.sh"
       ]
     }

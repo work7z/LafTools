@@ -52,7 +52,7 @@ import {
 import gutils from "../utils/GlobalUtils";
 import { Dot } from "../utils/TranslationUtils";
 import exportUtils from "../utils/ExportUtils";
-import { LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "../styles/var";
+import { LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "./constants";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
 } from "../reducers/forgeSlice";
