@@ -293,7 +293,7 @@ let fn_coll_config = (sessionId) => {
   return exportUtils.useSelector((x) => {
     let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.collapseConfig;
     if (_.isNil(v)) {
-      v = false;
+      v = true;
     }
     return {
       v: v,
