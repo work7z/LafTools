@@ -170,7 +170,7 @@ export default async function (
             Label: Dot("70PnM", "MD4"),
             Description: Dot(
               "7gKzt",
-              "MD4 (Message-Digest Algorithm 4) is a cryptographic hash function that takes an input and produces a 128-bit (16-byte) hash value. It was developed by Ronald Rivest in 1990 as a successor to MD2 and MD3. However, MD4 has been shown to be vulnerable to collision attacks, and is no longer considered secure for cryptographic purposes. MD4 is still used in some applications, but is being phased out in favor of more secure hash functions such as SHA-256 and SHA-3.",
+              "MD4 (Message-Digest Algorithm 4) is a cryptographic hash function that takes an input and produces a 128-bit (16-byte) hash value. \n\nIt was developed by Ronald Rivest in 1990 as a successor to MD2 and MD3. However, MD4 has been shown to be vulnerable to collision attacks, and is no longer considered secure for cryptographic purposes. MD4 is still used in some applications, but is being phased out in favor of more secure hash functions such as SHA-256 and SHA-3.",
             ),
           },
         },
@@ -194,7 +194,7 @@ export default async function (
             Label: Dot("41ev7", "MD2"),
             Description: Dot(
               "6wtIW",
-              "MD2 (Message-Digest Algorithm 2) is a cryptographic hash function that takes an input and produces a 128-bit (16-byte) hash value. It was developed by Ronald Rivest in 1989 as a successor to MD1. MD2 is optimized for 8-bit computers and is relatively simple compared to other hash functions. However, MD2 has been shown to be vulnerable to collision attacks, and is no longer considered secure for cryptographic purposes. MD2 is still used in some applications, but is being phased out in favor of more secure hash functions such as SHA-256 and SHA-3.",
+              "MD2 (Message-Digest Algorithm 2) is a cryptographic hash function that takes an input and produces a 128-bit (16-byte) hash value. \n\nIt was developed by Ronald Rivest in 1989 as a successor to MD1. MD2 is optimized for 8-bit computers and is relatively simple compared to other hash functions. However, MD2 has been shown to be vulnerable to collision attacks, and is no longer considered secure for cryptographic purposes. MD2 is still used in some applications, but is being phased out in favor of more secure hash functions such as SHA-256 and SHA-3.",
             ),
           },
         },
