@@ -24,7 +24,7 @@ import ALL_NOCYCLE, { IsDevMode, copy, getErrMsg } from "../nocycle";
 
 const STR_DEV_MODE = "DEV_MODE";
 
-function uuid(str = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx") {
+function uuid(str = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"):string {
   return str
     .replace(/[xy]/g, function (c) {
       var r = (Math.random() * 16) | 0,

@@ -129,14 +129,12 @@ export default (props: PassProps) => {
     // render
     let Body = props.body;
     let [hoverId, onHoverId] = useState<string | null>(null)
-    let nodes: TreeNodeInfo[] = sessionList
-    // TODO: consider judging if it's good to show *
-    // _.map(sessionList,x=>{
-    //     return {
-    //         ...x,
-    //         label:x.label+(x.id==activeSessionId?"*":"")
-    //     }
-    // });
+    let nodes: TreeNodeInfo[] = _.map(sessionList, x => {
+        return {
+            ...x,
+            label: x.label + (x.id == activeSessionId ? "*" : "")
+        }
+    });
     // format
     let formattedNodes = useMemo(() => {
         return nodes.map(x => {
@@ -145,20 +143,31 @@ export default (props: PassProps) => {
                 {/* <Tooltip placement="bottom" content={Dot("4K_vhq", "Duplicate this tab")}> */}
                 <Button
                     onClick={() => {
+                        let newId = gutils.uuid()
+                        if(x.id && newId){
+                            FN_GetDispatch()(
+                                SessionSlice.actions.duplicateItem({
+                                    currentList: sessionList || [],
+                                    sessionType: sessionType,
+                                    currId: x.id+"",
+                                    newID: newId,
+                                    newLabel: x.label + " " + "(2)"
+                                })
+                            )    
+                        }
                         // duplicate this tab and trigger dispatch
-                        FN_GetDispatch()(
-                            SessionSlice.actions.updateSessionList({
-                                sessionType: sessionType,
-                                list: [
-                                    ...(sessionList || []),
-                                    {
-                                        ...x,
-                                        id: gutils.uuid(),
-                                        label: x.label + " " + "(2)"
-                                    }
-                                ]
-                            })
-                        )
+                        // FN_GetDispatch()(
+                        //     SessionSlice.actions.updateSessionList({
+                        //         sessionType: sessionType,
+                        //         list: [
+                        //             ...(sessionList || []),
+                        //             {
+                        //                 id: newId,
+                        //                 label: x.label + " " + "(2)"
+                        //             }
+                        //         ]
+                        //     })
+                        // )
                     }} title={Dot("4K_vhq", "Duplicate this tab")} minimal small icon={"duplicate"}></Button>
                 {/* </Tooltip> */}
                 {/* <Tooltip placement="bottom" content={}> */}
@@ -174,7 +183,7 @@ export default (props: PassProps) => {
                         FN_GetDispatch()(
                             SessionSlice.actions.updateActiveId({
                                 sessionType: sessionType,
-                                activeId: _.first(sessionList)?.id+""
+                                activeId: _.first(sessionList)?.id + ""
                             })
                         )
                     }}

@@ -23,6 +23,7 @@ import { startListening } from "../../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SyncStateUtils from "../../utils/SyncStateUtils";
 import { TreeNodeInfo } from "@blueprintjs/core";
+import _ from "lodash";
 
 export type TranslationSessionMapAttr = {
     //
@@ -87,12 +88,32 @@ const SessionSlice = createSlice({
             state.sessionTypeKVMap[sessionType].sessionMap = sessionMap;
         },
         // update all fields by sessionType
-        updateSession: (state, action: PayloadAction<{ sessionType: string, item:SessionEntireMapItem} >) => {
+        updateSession: (state, action: PayloadAction<{ sessionType: string, item: SessionEntireMapItem }>) => {
             const { sessionType, item } = action.payload;
             if (!state.sessionTypeKVMap[sessionType]) {
                 state.sessionTypeKVMap[sessionType] = {}
             }
             state.sessionTypeKVMap[sessionType] = item;
+        },
+        // duplicateItem
+        duplicateItem: (state, action: PayloadAction<{currentList:SessionListItem[], sessionType: string, newID: string, currId: string; newLabel: string }>) => {
+            const { sessionType, newID, currId, newLabel } = action.payload;
+            if (!state.sessionTypeKVMap[sessionType]) {
+                state.sessionTypeKVMap[sessionType] = {}
+            }
+            let kvmap = state.sessionTypeKVMap[sessionType]
+            kvmap.activeId = newID
+            kvmap.sessionList = [
+                ...(action.payload.currentList || []),
+                {
+                    id: newID,
+                    label: newLabel
+                }
+            ]
+            if (!kvmap.sessionMap) {
+                kvmap.sessionMap = {}
+            }
+            kvmap.sessionMap[newID] = _.cloneDeep(kvmap.sessionMap[currId])
         },
     },
 });
