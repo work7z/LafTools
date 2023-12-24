@@ -83,6 +83,7 @@ import { Dot } from "../../../../../../../utils/TranslationUtils";
 // import MultipleSessionLeftView from "../../../containers/MultipleSessionLeftView/index";
 import TextTranslator from "./TextTranslator";
 import MultipleSessionLeftView from "../../../../../../../containers/MultipleSessionLeftView";
+import MultipleTextTranslator from './MultipleTextTranslator'
 
 export default () => {
   let sq = useSearchQuery();
@@ -117,29 +118,7 @@ export default () => {
         ]}
         rightCtrls={fn_rightCtrl_common}
         children={
-          <MultipleSessionLeftView
-            defaultSessionId="en2zhcn"
-            defaultSessionMap={
-              {
-                "en2zhcn": {
-                  //
-                }
-              }
-            }
-            defaultSessionArr={
-              // TODO: for other languages, update its content
-              [
-                {
-                  label: Dot("QRAdA", "English to Chinese"),
-                  id: "en2zhcn",
-                },
-                {
-                  label: Dot("bVlBN", "Chinese to English"),
-                  id: "zhcn2en",
-                }
-              ]
-            }
-            sessionType="translator" body={TextTranslator}></MultipleSessionLeftView>
+          <MultipleTextTranslator />
         }
       ></SysTabPane>
     );

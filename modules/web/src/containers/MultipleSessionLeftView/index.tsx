@@ -67,6 +67,7 @@ import { useParams } from "react-router";
 import gutils from "../../utils/GlobalUtils";
 import { ToolParamType } from "../../types/constants";
 import TranslationUtils, { Dot } from "../../utils/TranslationUtils";
+import NewTabButton from "../../components/NewTabButton";
 
 import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
@@ -75,7 +76,8 @@ import apiSlice from "../../reducers/apiSlice";
 import { ExtensionVM } from '../../types/purejs-types-READ_ONLY'
 
 import { Allotment, AllotmentHandle } from "allotment";
-import { SessionMapAttr } from "../../reducers/container/sessionSlice";
+import SessionSlice, { SessionListItem, SessionMapAttr } from "../../reducers/container/sessionSlice";
+import { FN_GetDispatch } from "../../nocycle";
 
 
 type SessionViewProp = {
@@ -86,29 +88,69 @@ type SessionViewProp = {
 
 type PassProps = {
     defaultSessionId: string;
-    defaultSessionArr: TreeNodeInfo[];
-    defaultSessionMap: { [key: string]: SessionMapAttr };
+    defaultSessionList: SessionListItem[];
+    defaultSessionMap: SessionMapAttr;
     sessionType: string;
     body: React.FunctionComponent<SessionViewProp>;
 };
 
 
 export default (props: PassProps) => {
+    // exact
+    let sessionType = props.sessionType
+    let sessionMap = exportUtils.useSelector((state) => state.session.sessionTypeKVMap[sessionType]?.sessionMap)
+    let activeSessionId = exportUtils.useSelector((state) => state.session.sessionTypeKVMap[sessionType]?.activeId)
+    let sessionList = exportUtils.useSelector((state) => state.session.sessionTypeKVMap[sessionType]?.sessionList)
+    if (sessionList == null || _.isEmpty(sessionList)) {
+        sessionList = props.defaultSessionList;
+    }
+    if (activeSessionId == null) {
+        activeSessionId = props.defaultSessionId;
+    }
+    let isOriginalSessionMapNil = sessionMap == null
+    if (isOriginalSessionMapNil) {
+        sessionMap = props.defaultSessionMap;
+    }
+    useEffect(() => {
+        // if isOriginalSessionMapNil, then update it with defaultSessionMap
+        if (isOriginalSessionMapNil) {
+            FN_GetDispatch()(
+                SessionSlice.actions.updateSession({
+                    sessionType: sessionType,
+                    item: {
+                        sessionMap: props.defaultSessionMap,
+                        activeId: props.defaultSessionId,
+                        sessionList: props.defaultSessionList,
+                    }
+                })
+            )
+        }
+    }, [])
+    // render
     let Body = props.body;
     let [hoverId, onHoverId] = useState<string | null>(null)
-    let activeSessionId = props.defaultSessionId;
-    let nodes: TreeNodeInfo[] = props.defaultSessionArr;
+    let nodes: TreeNodeInfo[] = sessionList 
+    // TODO: consider judging if it's good to show *
+    // _.map(sessionList,x=>{
+    //     return {
+    //         ...x,
+    //         label:x.label+(x.id==activeSessionId?"*":"")
+    //     }
+    // });
     // format
     let formattedNodes = useMemo(() => {
         return nodes.map(x => {
             x.isSelected = x.id == activeSessionId;
             x.secondaryLabel = x.id == hoverId ? <div className="whitespace-nowrap flex flex-row">
-                <Tooltip placement="bottom" content={Dot("4K_vhq", "Duplicate this tab")}>
-                    <Button minimal small icon={"duplicate"}></Button>
-                </Tooltip>
-                <Tooltip placement="bottom" content={Dot("U4qqq9", "Remove this tab from list")}>
-                    <Button minimal small icon={"trash"}></Button>
-                </Tooltip>
+                {/* <Tooltip placement="bottom" content={Dot("4K_vhq", "Duplicate this tab")}> */}
+                <Button 
+                onClick={()=>{
+                    //
+                }} title={Dot("4K_vhq", "Duplicate this tab")} minimal small icon={"duplicate"}></Button>
+                {/* </Tooltip> */}
+                {/* <Tooltip placement="bottom" content={}> */}
+                <Button minimal small icon={"trash"} title={Dot("U4qqq9", "Remove this tab from list")}></Button>
+                {/* </Tooltip> */}
             </div> : null
             return x;
         })
@@ -126,10 +168,12 @@ export default (props: PassProps) => {
                         onHoverId(null)
                     }}
                     onNodeClick={(x) => {
-                        activeSessionId = x.id + "";
+                        FN_GetDispatch()(
+                            SessionSlice.actions.updateActiveId({ sessionType: sessionType, activeId: x.id + "" })
+                        )
                     }}
                 ></Tree>
-                <Button fill text={Dot("bT4R6", "New Tab")} intent="none" icon="add" small minimal className="mt-2 laft-secondary-btn"></Button>
+                <NewTabButton></NewTabButton>
             </Allotment.Pane>
             <Allotment.Pane>
                 <Body sessionId={activeSessionId} />

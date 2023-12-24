@@ -22,26 +22,34 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { startListening } from "../../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SyncStateUtils from "../../utils/SyncStateUtils";
+import { TreeNodeInfo } from "@blueprintjs/core";
 
 export type TranslationSessionMapAttr = {
     //
 }
 
-export type SessionMapAttr = Partial<TranslationSessionMapAttr&{
-    // attrName to attrValue, here we can save their settings, session val, etc...    
-}>
+// attrName to attrValue, here we can save their settings, session val, etc...    
+export type SessionAttr = Partial<TranslationSessionMapAttr & {}>
+export type SessionMapAttr = {
+    [key: string]: SessionMapAttr
+}
 
+
+export type SessionListItem = TreeNodeInfo
+type SessionEntireMapItem = Partial<{ // like text translator, md5, md2, etc...
+    activeId: string;
+    sessionList: SessionListItem[], // session-1, session-2
+    sessionMap: SessionMapAttr
+}>
+type SessionEntireMap = {
+    [sessionType: string]: SessionEntireMapItem;
+}
 type SessionState = {
-    sessionKeyToList: {
-        [sessionKey: string]: { // like text translator, md5, md2, etc...
-            list: { label: string, value: string }[], // session-1, session-2
-            sessionMap: Partial<SessionMapAttr>
-        };
-    }
+    sessionTypeKVMap: SessionEntireMap
 };
 
 const initialState: SessionState = {
-    sessionKeyToList: {}
+    sessionTypeKVMap: {}
 };
 
 
@@ -54,8 +62,37 @@ const SessionSlice = createSlice({
             RequireUserId: true,
             RequireWorkspaceId: true,
         }),
-        updateSession(state: SessionState, action: PayloadAction) {
-            //
+        // update list by sessionType and SessionListItem[]
+        updateSessionList: (state, action: PayloadAction<{ sessionType: string, list: SessionListItem[] }>) => {
+            const { sessionType, list } = action.payload;
+            if (!state.sessionTypeKVMap[sessionType]) {
+                state.sessionTypeKVMap[sessionType] = {}
+            }
+            state.sessionTypeKVMap[sessionType].sessionList = list;
+        },
+        // update activeId by sessionType
+        updateActiveId: (state, action: PayloadAction<{ sessionType: string, activeId: string }>) => {
+            const { sessionType, activeId } = action.payload;
+            if (!state.sessionTypeKVMap[sessionType]) {
+                state.sessionTypeKVMap[sessionType] = {}
+            }
+            state.sessionTypeKVMap[sessionType].activeId = activeId;
+        },
+        // update sessionMap by sessionType
+        updateSessionMap: (state, action: PayloadAction<{ sessionType: string, sessionMap: SessionMapAttr }>) => {
+            const { sessionType, sessionMap } = action.payload;
+            if (!state.sessionTypeKVMap[sessionType]) {
+                state.sessionTypeKVMap[sessionType] = {}
+            }
+            state.sessionTypeKVMap[sessionType].sessionMap = sessionMap;
+        },
+        // update all fields by sessionType
+        updateSession: (state, action: PayloadAction<{ sessionType: string, item:SessionEntireMapItem} >) => {
+            const { sessionType, item } = action.payload;
+            if (!state.sessionTypeKVMap[sessionType]) {
+                state.sessionTypeKVMap[sessionType] = {}
+            }
+            state.sessionTypeKVMap[sessionType] = item;
         },
     },
 });
