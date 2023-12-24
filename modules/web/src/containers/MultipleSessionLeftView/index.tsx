@@ -102,13 +102,17 @@ export default (props: PassProps) => {
     let formattedNodes = useMemo(() => {
         return nodes.map(x => {
             x.isSelected = x.id == activeSessionId;
-            x.secondaryLabel = x.id == hoverId ? <div className="whitespace-nowrap">
-                <Button minimal small icon={"duplicate"}></Button>
-                <Button minimal small icon={"trash"}></Button>
+            x.secondaryLabel = x.id == hoverId ? <div className="whitespace-nowrap flex flex-row">
+                <Tooltip placement="bottom" content={Dot("4K_vhq", "Duplicate this tab")}>
+                    <Button minimal small icon={"duplicate"}></Button>
+                </Tooltip>
+                <Tooltip placement="bottom" content={Dot("U4qqq9", "Remove this tab from list")}>
+                    <Button minimal small icon={"trash"}></Button>
+                </Tooltip>
             </div> : null
             return x;
         })
-    }, [nodes,hoverId])
+    }, [nodes, hoverId])
     return (
         <Allotment className="flex flex-row">
             <Allotment.Pane preferredSize={180}>
