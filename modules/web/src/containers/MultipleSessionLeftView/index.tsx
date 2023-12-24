@@ -77,6 +77,9 @@ import { ExtensionVM } from '../../types/purejs-types-READ_ONLY'
 import { Allotment, AllotmentHandle } from "allotment";
 
 type PassProps = {
+    defaultSessionId: string;
+    defaultSessionArr: TreeNodeInfo[];
+    defaultSessionMap: { [key: string]: any };
     sessionType: string;
     body: React.FunctionComponent<SessionViewProp>;
 };
@@ -87,30 +90,26 @@ type SessionViewProp = {
 
 export default (props: PassProps) => {
     let Body = props.body;
-    let activeSessionId = 'item-1';
     let [hoverId, onHoverId] = useState<string | null>(null)
-    let nodes: TreeNodeInfo[] = [
-        {
-            label: Dot("7b3am", "Item-1") + 'n',
-            id: "item-1",
-        },
-        {
-            label: Dot("BXxkd", "item-2"),
-            id: "item-2"
-        }
-    ];
-    nodes = nodes.map(x => {
-        x.isSelected = x.id == activeSessionId;
-        x.secondaryLabel =  x.id == hoverId ? <div className="whitespace-nowrap">
-            <Button minimal small icon={"duplicate"}></Button>
-            <Button minimal small icon={"trash"}></Button>
-        </div> : null
-        return x;
-    })
+    let activeSessionId = props.defaultSessionId;
+    let nodes: TreeNodeInfo[] = props.defaultSessionArr;
+    // format
+    let formattedNodes = useMemo(() => {
+        return nodes.map(x => {
+            x.isSelected = x.id == activeSessionId;
+            x.secondaryLabel = x.id == hoverId ? <div className="whitespace-nowrap">
+                <Button minimal small icon={"duplicate"}></Button>
+                <Button minimal small icon={"trash"}></Button>
+            </div> : null
+            return x;
+        })
+    }, [nodes,hoverId])
     return (
         <Allotment className="flex flex-row">
             <Allotment.Pane preferredSize={180}>
-                <Tree className="laft-small-tree" contents={nodes}
+                <Tree
+                    className="laft-small-tree"
+                    contents={formattedNodes}
                     onNodeMouseEnter={(x) => {
                         onHoverId(x.id + "")
                     }}

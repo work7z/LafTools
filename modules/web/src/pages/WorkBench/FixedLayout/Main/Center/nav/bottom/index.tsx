@@ -117,7 +117,29 @@ export default () => {
         ]}
         rightCtrls={fn_rightCtrl_common}
         children={
-          <MultipleSessionLeftView sessionType="translator" body={TextTranslator}></MultipleSessionLeftView>
+          <MultipleSessionLeftView
+            defaultSessionId="en2zhcn"
+            defaultSessionMap={
+              {
+                "en2zhcn": {
+                  //
+                }
+              }
+            }
+            defaultSessionArr={
+              // TODO: for other languages, update its content
+              [
+                {
+                  label: Dot("QRAdA", "English to Chinese"),
+                  id: "en2zhcn",
+                },
+                {
+                  label: Dot("bVlBN", "Chinese to English"),
+                  id: "zhcn2en",
+                }
+              ]
+            }
+            sessionType="translator" body={TextTranslator}></MultipleSessionLeftView>
         }
       ></SysTabPane>
     );
