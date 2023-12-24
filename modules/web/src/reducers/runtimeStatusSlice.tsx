@@ -22,22 +22,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SyncStateUtils from "../utils/SyncStateUtils";
-
-/**
- * RuntimeSlice, contains below status
- * 1. Collapse or not
- * 2. Translation Selector  
- * 3. Sessions and Related Config
- */
+import { ToolDefaultOutputType } from "../types/purejs-types-READ_ONLY";
 
 type RuntimeStatusState = {
   toolOutputStatusMap: {
-    [key: string]: {
-      // key refers to sessionId
-      collapseOutput?: boolean;
-      collapseConfig?: boolean;
-      latestViewPanelId?: string;
-    };
+    [key: string]: ToolDefaultOutputType;
   };
 };
 const initialState: RuntimeStatusState = {

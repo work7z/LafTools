@@ -13,6 +13,20 @@ export type FileValueMatcher = {
 export type EachLang = { LabelInEnglish?: string; Label: string[], LabelByLang?: string, Value: string }
 
 
+/**
+ * RuntimeSlice, contains below status
+ * 1. Collapse or not
+ * 2. Translation Selector  
+ * 3. Sessions and Related Config
+ */
+
+export type ToolDefaultOutputType = {
+  // key refers to sessionId
+  collapseOutput?: boolean;
+  collapseConfig?: boolean;
+  latestViewPanelId?: string;
+}
+
 export type FlushIdValuePair = {
   id: string;
   value: any;
@@ -93,6 +107,7 @@ export type ExtensionVM = {
   InitialFormModel?: FormModel;
   Info?: ExtensionInfo;
   Actions?: ExtensionAction[];
+  DefaultRuntimeStatus?:ToolDefaultOutputType;
 };
 export type SubExtCategory = {
   Id: string;
@@ -103,3 +118,4 @@ export type SubExtCategory = {
 
 // define a export type that input NodeReq and output NodeRes
 export type JobProcesser = (req: NodeReq) => Promise<NodeRes<any> | null>;
+
