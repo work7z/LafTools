@@ -106,7 +106,7 @@ import {
 import { type } from "jquery";
 import apiSlice from "../../../../../../../../../reducers/apiSlice";
 import {
-  ExtensionInfo
+  ExtensionInfoFormatted as ExtensionInfo
 }from "../../../../../../../../../types/purejs-types-READ_ONLY";
 import QueryUtils, {
   getAjaxValueRes as getAjaxValueRes,
@@ -190,6 +190,7 @@ export default (props: {
         });
       });
     }
+    debugger;
     return tmp;
   }, [
     updateMemStatus,
@@ -211,7 +212,7 @@ export default (props: {
       childNodes: _.map(favoritesList, (x) => {
         return {
           id: x.Id,
-          label: x.LabelByInit,
+          label: x.Label,
           icon: "application",
         } as TreeNodeInfo;
       }),

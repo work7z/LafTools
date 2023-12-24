@@ -32,7 +32,7 @@ import {
   FnPureToolDefinition,
   WorkSpaceStruct,
 } from "../types/workbench-types";
-import { EachLang, ExtensionInfo, ExtensionVM } from "../types/purejs-types-READ_ONLY";
+import { EachLang, ExtensionInfoFormatted as ExtensionInfo, ExtensionVM } from "../types/purejs-types-READ_ONLY";
 import { withPrefixOpenAPI } from "./func";
 
 let createNotProhibitedResources = (build, resName) => {

@@ -29,6 +29,12 @@ export type ToolDefaultOutputType = {
   latestViewPanelId?: string;
 }
 
+export type ExtensionInfoFormatted = {
+  Id: string;
+  Label: string;
+  Description: string;
+}
+
 export type FlushIdValuePair = {
   id: string;
   value: any;

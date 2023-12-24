@@ -85,8 +85,6 @@ type SessionViewProp = {
     sessionId: string | null; // if null, then no session is selected
 };
 
-// TODO: main editor placeholder is useful to show the purpose and meaning of each tools
-
 export default (props: PassProps) => {
     let Body = props.body;
     let sessionId = "test";
