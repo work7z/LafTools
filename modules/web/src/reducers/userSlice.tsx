@@ -31,6 +31,7 @@ import gutils from "../utils/GlobalUtils";
 import { PayloadValueData } from "../types/constants";
 import { Dot } from "../utils/TranslationUtils";
 import TokenUtils from "../utils/TokenUtils";
+import { withPrefixOpenAPI } from "./func";
 
 export interface UserConfig {
   Id: string;
@@ -73,7 +74,7 @@ export const ACTION_signInLocalAccount = ({
 }) => {
   return async (dispatch) => {
     let r = await AjaxUtils.DoLocalRequestWithNoThrow({
-      url: "/user/local/verify",
+      url: withPrefixOpenAPI("/user/local/verify"),
       isPOST: true,
       data: localAccountObject,
     });
@@ -117,7 +118,7 @@ export const ACTION_createLocalAccount = ({
 }) => {
   return async (dispatch) => {
     let r = await AjaxUtils.DoLocalRequestWithNoThrow({
-      url: "/user/local/new",
+      url: withPrefixOpenAPI("/user/local/new"),
       isPOST: true,
       data: localAccountObject,
     });

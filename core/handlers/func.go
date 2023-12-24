@@ -101,6 +101,9 @@ func SetupRoutes(r *gin.Engine) {
 		{
 			userRoutes.GET("/one/getByToken", VisitGetByToken)
 			userRoutes.GET("/all/getUserNameList", GetUsernameAsResult)
+			userRoutes.POST("/local/pw/calc", CalcPassword)
+			userRoutes.POST("/local/new", CreateNewAccount)
+			userRoutes.POST("/local/verify", VerifyUserServlet)
 		}
 
 		// Admin routes
@@ -137,9 +140,6 @@ func SetupRoutes(r *gin.Engine) {
 	{
 		localRoutes := userRoutes.Group("/local")
 		{
-			localRoutes.POST("/pw/calc", CalcPassword)
-			localRoutes.POST("/verify", VerifyUserServlet)
-			localRoutes.POST("/new", CreateNewAccount)
 			localRoutes.POST("/pw/reset", ResetPasswordByOldPassword)
 			localRoutes.GET("/key/get", GetAnyKeyByUserId)
 			localRoutes.POST("/key/set", SetAnyKeyByUserId)

@@ -25,6 +25,7 @@ import SyncStateUtils from "../../utils/SyncStateUtils";
 
 export type SessionMapAttr = {
     // attrName to attrValue, here we can save their settings, session val, etc...
+    
 }
 
 type SessionState = {

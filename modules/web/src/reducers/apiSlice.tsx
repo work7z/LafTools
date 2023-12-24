@@ -158,7 +158,7 @@ export const apiSlice = createApi({
         let formData = arg;
         return {
           method: "POST",
-          url: "/user/local/pw/calc",
+          url: withPrefixOpenAPI("/user/local/pw/calc"),
           body: formData,
         };
       },
