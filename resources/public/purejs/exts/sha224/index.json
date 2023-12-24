@@ -23,7 +23,7 @@
       "SHA224"
     ],
     "Description": [
-      "gh9zA.sha224",
+      "w2j1.sha224",
       "SHA-224 is a cryptographic hash function that takes an input and produces a 224-bit (28-byte) hash value. \n\nIt is part of the SHA-2 family of hash functions, which also includes SHA-256, SHA-384, and SHA-512. SHA-224 is designed to be more secure than its predecessor, SHA-1, which has been shown to be vulnerable to collision attacks. \n\nSHA-224 is widely used in digital signatures, message authentication codes, and other applications where data integrity is critical."
     ]
   }

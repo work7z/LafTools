@@ -124,14 +124,31 @@ type PassProp = {
 let AboutThisSoftware = () => {
   return (
     <div className="center flex flex-col  m-auto w-full self-center">
-      <img style={{ width: "120px" }} src={"/static/" + getIconPngFile()}></img>
-      <p className="mt-2">LafTools - {APPINFOJSON.version}</p>
+      <p className="text-center flex items-center p-4 justify-center flex-col bg-slate-200 dark:bg-slate-600"  style={{textAlign:'center'}}>
+        <img style={{ width: "50px" }} src={"/static/" + getIconPngFile()}></img>
+        <p className="mt-2">LafTools - {APPINFOJSON.version}</p>
+      </p>
       <p>
-        {Dot("hRFxV", "For more information, please visit our website")} -&gt;
-        <a href="https://laf-tools.com" target="_blank">
+        {Dot("yycJy", "  LafTools is a versatile toolbox specifically designed for programmers. It represents the second version of the CodeGen Toolbox. ")}
+      </p>
+      <p>
+        {Dot("X6Fq4j", "After years of dedicated development and refinement, we are confident that LafTools can significantly enhance your programming experience by bringing more convenience and efficiency to your workflow. ")}
+      </p>
+      <p>{Dot("QLKzF", "It's packed with features that cater to the needs of both novice and experienced developers, making it a must-have tool in any programmer's arsenal.")}</p>
+      <p>
+        {Dot("hRFxV", "For more information, please visit our website")}         <a href="https://laf-tools.com" target="_blank">
           laf-tools.com
         </a>
       </p>
+      <h3><b>{Dot("aked6", "References")}</b></h3>
+      <ul>
+        <li>
+          <a href="https://codegen.cc/blogs/preview-list" target="_blank">
+            [1] {Dot("eTmq", "History of CodeGen ToolBox")}
+          </a>
+        </li>
+      </ul>
+
     </div>
   );
 };

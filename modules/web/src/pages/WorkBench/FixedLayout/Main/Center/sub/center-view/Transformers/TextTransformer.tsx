@@ -35,7 +35,7 @@ import { useEffect, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
-import { CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
+import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 import {fn_format_description} from  "../../../../../../../../types/workbench-fn";
@@ -249,7 +249,7 @@ let TextTransformerOutput = (props: CommonTransformerPassProp) => {
             height: VAL_CSS_TAB_TITLE_PANEL,
           }
           : {}),
-        transition: "all 0.3s",
+        transition: CSS_TRANSITION_WIDTH_HEIGHT_ONLY,
       }}
     >
       <SysTabPane
@@ -336,7 +336,7 @@ let TextTransformerConfig = (props: CommonTransformerPassProp) => {
         minWidth: w,
         // maxHeight: "70%",
         height: "70%",
-        transition: "all 0.3s",
+        transition: CSS_TRANSITION_WIDTH_HEIGHT_ONLY,
         transform: isCollapsed ? "translateX(" + w + ")" : "",
       }}
     >
