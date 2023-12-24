@@ -124,10 +124,11 @@ type PassProp = {
 let AboutThisSoftware = () => {
   return (
     <div className="center flex flex-col  m-auto w-full self-center">
-      <p className="text-center flex items-center p-4 justify-center flex-col bg-slate-200 dark:bg-slate-600"  style={{textAlign:'center'}}>
+      <p className="text-center flex items-center p-4 justify-center flex-col bg-slate-200 dark:bg-slate-600" style={{ textAlign: 'center' }}>
         <img style={{ width: "50px" }} src={"/static/" + getIconPngFile()}></img>
         <p className="mt-2">LafTools - {APPINFOJSON.version}</p>
       </p>
+      <h3><b>{Dot("aked61", "Introduction")}</b></h3>
       <p>
         {Dot("rycJy", "LafTools is a versatile toolbox specifically designed for programmers. It represents the second version of the CodeGen Toolbox, now with a more lightweight runtime wrriten in Golang and JavaScript.")}
       </p>
@@ -143,8 +144,13 @@ let AboutThisSoftware = () => {
       <h3><b>{Dot("aked6", "References")}</b></h3>
       <ul>
         <li>
+          <a href="http://laftools.com/" target="_blank">
+            [1] {Dot("Kyd9H", "Source Code on GitHub")}
+          </a>
+        </li>
+        <li>
           <a href="https://codegen.cc/blogs/preview-list" target="_blank">
-            [1] {Dot("eTmq", "History of CodeGen ToolBox")}
+            [2] {Dot("eTmq", "History of CodeGen ToolBox")}
           </a>
         </li>
       </ul>
