@@ -75,20 +75,23 @@ import apiSlice from "../../reducers/apiSlice";
 import { ExtensionVM } from '../../types/purejs-types-READ_ONLY'
 
 import { Allotment, AllotmentHandle } from "allotment";
+import { SessionMapAttr } from "../../reducers/container/sessionSlice";
+
+
+type SessionViewProp = {
+    sessionId: string | null; // if null, then no session is selected
+};
 
 
 
 type PassProps = {
     defaultSessionId: string;
     defaultSessionArr: TreeNodeInfo[];
-    defaultSessionMap: { [key: string]: any };
+    defaultSessionMap: { [key: string]: SessionMapAttr };
     sessionType: string;
     body: React.FunctionComponent<SessionViewProp>;
 };
 
-type SessionViewProp = {
-    sessionId: string | null; // if null, then no session is selected
-};
 
 export default (props: PassProps) => {
     let Body = props.body;
