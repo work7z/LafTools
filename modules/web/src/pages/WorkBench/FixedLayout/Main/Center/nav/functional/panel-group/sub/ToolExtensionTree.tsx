@@ -104,10 +104,10 @@ import {
   ID_TOOLS,
 } from "../../../../../../../../../types/constants";
 import { type } from "jquery";
-import apiSlice, {
-  ExtensionInfo,
-  ListExtForTheCategoryRes,
-} from "../../../../../../../../../reducers/apiSlice";
+import apiSlice from "../../../../../../../../../reducers/apiSlice";
+import {
+  ExtensionInfo
+}from "../../../../../../../../../types/purejs-types-READ_ONLY";
 import QueryUtils, {
   getAjaxValueRes as getAjaxValueRes,
 } from "../../../../../../../../../utils/QueryUtils";
@@ -211,7 +211,7 @@ export default (props: {
       childNodes: _.map(favoritesList, (x) => {
         return {
           id: x.Id,
-          label: x.Label,
+          label: x.LabelByInit,
           icon: "application",
         } as TreeNodeInfo;
       }),
@@ -258,7 +258,7 @@ export default (props: {
               childNodes: _.map(x.ChildrenAsInfo, (child) => {
                 return {
                   id: child.Id,
-                  label: child.Label,
+                  label: _.toString(child.Label),
                   icon: "application",
                 } as TreeNodeInfo;
               }),

@@ -66,8 +66,6 @@ import ReactDOM from "react-dom";
 import gutils from "../../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../../utils/LogUtils";
 import _ from "lodash";
-import RouteMem from "../../../../../../types/constants";
-import statusSlice from "../../../../../../reducers/statusSlice";
 import {
   withRouter,
   BrowserRouter as Router,

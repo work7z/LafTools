@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ExtensionAction, ExtensionVM, ValueRes } from "./apiSlice";
+import { ExtensionAction, ExtensionVM, ValueRes } from "../types/purejs-types-READ_ONLY";
 import {
   ExtVMContext,
   PropExtSessionContext,

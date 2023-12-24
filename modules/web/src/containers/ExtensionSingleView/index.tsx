@@ -48,7 +48,7 @@ import TranslationUtils, { Dot } from "../../utils/TranslationUtils";
 import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";
-import apiSlice, { ExtensionVM } from "../../reducers/apiSlice";
+import apiSlice from "../../reducers/apiSlice";
 
 import { Link } from "react-router-dom";
 import PageUtils from "../../utils/PageUtils";
@@ -69,6 +69,7 @@ import {
 import ExtraInfoESV from "./ExtraInfoESV";
 import moment from "moment";
 import AdaptUtils from "../../utils/AdaptUtils";
+import { ExtensionVM } from "../../types/purejs-types-READ_ONLY";
 
 type PassWProp = {
   sessionId: string;
@@ -92,52 +93,7 @@ export const ExtSessionContext = React.createContext(tmp);
 export const ExtVMContext = React.createContext(tmp2);
 
 let Footer = () => {
-  let items = [
-    Dot(
-      "9OzZm",
-      "Boost your productivity with LafTools - the ultimate solution for all your programming needs."
-    ),
-    Dot(
-      "fzh4L",
-      "Simplify your coding process with LafTools - the all-in-one solution for your programming tasks."
-    ),
-    Dot(
-      "s96jp",
-      "Maximize your coding efficiency with LafTools - the ultimate toolkit for developers."
-    ),
-    Dot(
-      "mQywY",
-      "Take your coding to the next level with LafTools - the comprehensive solution for all your programming needs."
-    ),
-    Dot(
-      "AtXA9",
-      "Accelerate your coding process with LafTools - the perfect productivity tool for developers."
-    ),
-    Dot(
-      "VtIkD",
-      "Optimize your coding workflow with LafTools - the ultimate solution for efficient and reliable code."
-    ),
-    Dot(
-      "8OURB",
-      "Revolutionize your coding experience with LafTools - the perfect solution for all your programming challenges."
-    ),
-    Dot(
-      "jRcjH",
-      "Transform your coding process with LafTools - the ultimate solution for streamlined and efficient code."
-    ),
-    Dot(
-      "aQKpO",
-      "Empower your coding skills with LafTools - the optimal solution for all your programming requirements."
-    ),
-    Dot(
-      "CbHVE",
-      "Enhance your coding productivity with LafTools - the ideal solution for efficient and effective code."
-    ),
-    Dot(
-      "9IVWH",
-      "Upgrade your coding game with LafTools - the software for all your programming needs."
-    ),
-  ];
+  let items = []
   // rotate items every 3 seconds, by useState and useEffect
   let [index, setIndex] = useState(0);
   useEffect(() => {

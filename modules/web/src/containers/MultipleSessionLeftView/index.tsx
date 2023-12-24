@@ -71,7 +71,9 @@ import TranslationUtils, { Dot } from "../../utils/TranslationUtils";
 import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";
-import apiSlice, { ExtensionVM } from "../../reducers/apiSlice";
+import apiSlice from "../../reducers/apiSlice";
+import {ExtensionVM} from '../../types/purejs-types-READ_ONLY'
+
 import { Allotment, AllotmentHandle } from "allotment";
 
 type PassProps = {

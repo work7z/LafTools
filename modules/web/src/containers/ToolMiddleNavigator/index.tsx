@@ -67,10 +67,11 @@ import { Dot } from "../../utils/TranslationUtils";
 import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";
-import apiSlice, {
+import  {
   ExtensionInfo,
-  ListExtForTheCategoryRes,
-} from "../../reducers/apiSlice";
+} from "../../types/purejs-types-READ_ONLY";
+import apiSlice from '../../reducers/apiSlice'
+
 import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 import MottoLine from "../../components/MottoLine";
@@ -170,7 +171,7 @@ export default (props: PassProp): any => {
       childNodes: _.map(favoritesList, (x) => {
         return {
           id: x.Id,
-          label: x.Label,
+          label: (x.LabelByInit),
           icon: "application",
         } as TreeNodeInfo;
       }),
@@ -216,7 +217,7 @@ export default (props: PassProp): any => {
               childNodes: _.map(x.ChildrenAsInfo, (child) => {
                 return {
                   id: child.Id,
-                  label: child.Label,
+                  label: _.toString(child.Label),
                   icon: "application",
                 } as TreeNodeInfo;
               }),

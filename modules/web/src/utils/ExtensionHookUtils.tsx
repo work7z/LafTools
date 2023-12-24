@@ -62,7 +62,6 @@ import { useParams } from "react-router";
 import _ from "lodash";
 import { Dot } from "./TranslationUtils";
 import gutils from "./GlobalUtils";
-import { ExtensionInfo } from "../reducers/apiSlice";
 import ExtSlice, {
   ExtensionSessionParameter,
   ExtensionStatusData,

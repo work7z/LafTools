@@ -67,7 +67,7 @@ import { Dot } from "../../utils/TranslationUtils";
 import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";
-import apiSlice, { ExtensionVM } from "../../reducers/apiSlice";
+import apiSlice from "../../reducers/apiSlice";
 
 import { Link } from "react-router-dom";
 import PageUtils from "../../utils/PageUtils";
@@ -77,6 +77,7 @@ import "./index.scss";
 import forgeSlice from "../../reducers/forgeSlice";
 import AlertUtils from "../../utils/AlertUtils";
 import ToolSlice from "../../reducers/toolSlice";
+import { ExtensionVM } from "../../types/purejs-types-READ_ONLY";
 
 export type StatusBarInESVProp = {
   extId: string;

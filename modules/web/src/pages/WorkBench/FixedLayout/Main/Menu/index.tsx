@@ -129,7 +129,7 @@ let AboutThisSoftware = () => {
         <p className="mt-2">LafTools - {APPINFOJSON.version}</p>
       </p>
       <p>
-        {Dot("yycJy", "  LafTools is a versatile toolbox specifically designed for programmers. It represents the second version of the CodeGen Toolbox. ")}
+        {Dot("rycJy", "LafTools is a versatile toolbox specifically designed for programmers. It represents the second version of the CodeGen Toolbox, now with a more lightweight runtime wrriten in Golang and JavaScript.")}
       </p>
       <p>
         {Dot("X6Fq4j", "After years of dedicated development and refinement, we are confident that LafTools can significantly enhance your programming experience by bringing more convenience and efficiency to your workflow. ")}
