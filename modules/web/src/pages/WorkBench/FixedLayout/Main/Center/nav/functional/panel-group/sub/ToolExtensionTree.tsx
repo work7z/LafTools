@@ -190,7 +190,7 @@ export default (props: {
         });
       });
     }
-    debugger;
+    
     return tmp;
   }, [
     updateMemStatus,
@@ -444,7 +444,7 @@ export default (props: {
               }
             }}
             needShowCountChildren={true}
-            info={treeInfo}
+            info={treeInfo || []}
             onChange={(new_nodes) => {
               dis(ToolSlice.actions.updateSubCategoryTreeInfo(new_nodes));
             }}

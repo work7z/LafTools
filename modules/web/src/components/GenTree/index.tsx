@@ -76,6 +76,7 @@ import { TreeWrapInfo } from "../../types/constants";
 import MottoLine from "../MottoLine";
 import apiSlice from "../../reducers/apiSlice";
 import { useSearchQuery } from "../../types/workbench-hook";
+import { logutils } from "../../utils/LogUtils";
 
 let { cloneDeep } = _;
 
@@ -141,8 +142,8 @@ export default (props: PassProp) => {
           childNodes: !isExpanded
             ? []
             : rootLevel
-            ? x.childNodes
-            : formatEachNodeItem(x.childNodes || []),
+              ? x.childNodes
+              : formatEachNodeItem(x.childNodes || []),
           // secondaryLabel: <Button minimal={true} icon="star-empty" />,
           hasCaret,
         } as TreeNodeInfo;
@@ -197,24 +198,32 @@ export default (props: PassProp) => {
 
     let tmp_nodes = hasSearchText
       ? _.map(info.nodes, (x) => {
-          return {
-            ...x,
-            childNodes: _.filter(x.childNodes, (xx) => {
-              return _.includes(
-                (xx.label + "").toLowerCase(),
-                searchText.toLowerCase()
-              );
-            }),
-          };
-        })
+        return {
+          ...x,
+          childNodes: _.filter(x.childNodes, (xx) => {
+            return _.includes(
+              (xx.label + "").toLowerCase(),
+              searchText.toLowerCase()
+            );
+          }),
+        };
+      })
       : info.nodes;
 
-    let fin: TreeNodeInfo[] = formatEachNodeItem(tmp_nodes);
+    // let noUndefinedItems = (x: TreeNodeInfo[]) => _.filter(x, xx => !_.isNil(xx))
+
+    let fin: TreeNodeInfo[] = (formatEachNodeItem(tmp_nodes));
     if (hasSearchText) {
-      return groupNodeItemIfAll(fin.filter((x) => !_.isEmpty(x.childNodes)));
+      let n = _.filter(groupNodeItemIfAll(fin.filter((x) => !_.isEmpty(x.childNodes))), x => {
+        return x && !_.isEmpty(x.childNodes)
+      })
+      return n;
     }
     return groupNodeItemIfAll(fin);
-  }, [info.nodes, props.expanded, props.selected, info.updateId, searchText]);
+  }, [info.nodes, props.expanded, props.selected, info.updateId, searchText, hasSearchText]);
+
+
+  logutils.debug("s-nodes", nodes);
 
   return (
     <div className="h-full ">
@@ -228,11 +237,11 @@ export default (props: PassProp) => {
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
-          // rightElement={
-          //   <ButtonGroup>
-          //     <Button small icon="plus" minimal></Button>
-          //   </ButtonGroup>
-          // }
+        // rightElement={
+        //   <ButtonGroup>
+        //     <Button small icon="plus" minimal></Button>
+        //   </ButtonGroup>
+        // }
         ></InputGroup>
       </div>
       <div
