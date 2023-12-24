@@ -72,7 +72,7 @@ import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";
 import apiSlice from "../../reducers/apiSlice";
-import {ExtensionVM} from '../../types/purejs-types-READ_ONLY'
+import { ExtensionVM } from '../../types/purejs-types-READ_ONLY'
 
 import { Allotment, AllotmentHandle } from "allotment";
 
@@ -87,30 +87,44 @@ type SessionViewProp = {
 
 export default (props: PassProps) => {
     let Body = props.body;
-    let sessionId = "test";
+    let activeSessionId = 'item-1';
+    let [hoverId, onHoverId] = useState<string | null>(null)
     let nodes: TreeNodeInfo[] = [
         {
-            label: Dot("7b3am", "Item-1"),
+            label: Dot("7b3am", "Item-1") + 'n',
             id: "item-1",
-            isSelected: true,
-            secondaryLabel: <div>
-                <Button minimal small icon={"duplicate"}></Button>
-                <Button minimal small icon={"trash"}></Button>
-            </div>
         },
         {
             label: Dot("BXxkd", "item-2"),
             id: "item-2"
         }
     ];
+    nodes = nodes.map(x => {
+        x.isSelected = x.id == activeSessionId;
+        x.secondaryLabel =  x.id == hoverId ? <div className="whitespace-nowrap">
+            <Button minimal small icon={"duplicate"}></Button>
+            <Button minimal small icon={"trash"}></Button>
+        </div> : null
+        return x;
+    })
     return (
         <Allotment className="flex flex-row">
             <Allotment.Pane preferredSize={180}>
-                <Tree className="laft-small-tree" contents={nodes}></Tree>
+                <Tree className="laft-small-tree" contents={nodes}
+                    onNodeMouseEnter={(x) => {
+                        onHoverId(x.id + "")
+                    }}
+                    onNodeMouseLeave={(x) => {
+                        onHoverId(null)
+                    }}
+                    onNodeClick={(x) => {
+                        activeSessionId = x.id + "";
+                    }}
+                ></Tree>
                 <Button fill text={Dot("bT4R6", "New Tab")} intent="none" icon="add" small minimal className="mt-2 laft-secondary-btn"></Button>
             </Allotment.Pane>
             <Allotment.Pane>
-                <Body sessionId={sessionId} />
+                <Body sessionId={activeSessionId} />
             </Allotment.Pane>
         </Allotment>
     );
