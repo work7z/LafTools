@@ -68,7 +68,7 @@ import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";
 import  {
-  ExtensionInfo,
+  ExtensionInfoFormatted as ExtensionInfo,
 } from "../../types/purejs-types-READ_ONLY";
 import apiSlice from '../../reducers/apiSlice'
 
@@ -171,7 +171,7 @@ export default (props: PassProp): any => {
       childNodes: _.map(favoritesList, (x) => {
         return {
           id: x.Id,
-          label: (x.LabelByInit),
+          label: (x.Label),
           icon: "application",
         } as TreeNodeInfo;
       }),
