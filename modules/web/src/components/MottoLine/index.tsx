@@ -134,7 +134,7 @@ export default (props: BlinkProp): any => {
         fontSize: "11px",
       }}
       className="py-2 px-2 whitespace-break-spaces overflow-hidden bp5-text-muted bp5-text-small  h-full   "
-      title={mottoLine}
+      // title={mottoLine}
       onDoubleClick={() => {
         mottoLineRes.refetch();
       }}

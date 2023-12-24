@@ -131,7 +131,7 @@ import { CommonTransformerPassProp } from "../../../../../../../types/workbench-
 import {
   useMergeParamWithWorkSpace,
   useMergeParameter,
-} from "../../../../../../../types/workbench-types";
+} from "../../../../../../../types/workbench-hook";
 import QueryUtils from "../../../../../../../utils/QueryUtils";
 // import { ExtensionVM } from "../../../../../../../types/purejs-types-READ_ONLY";
 import UnknownPart from "../../../../../../../containers/UnknownPart";
@@ -174,6 +174,7 @@ export default () => {
   let PickupPanel = layoutMappings[val_ExtensionVM.Layout] || UnknownPartWrap
   let commonPassProp: CommonTransformerPassProp = {
     extId: extId,
+    extVM: val_ExtensionVM,
     sessionId,
     inputBigTextId: s.tabId + "-i",
     outputBigTextId: s.tabId + "-o",

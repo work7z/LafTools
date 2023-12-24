@@ -398,7 +398,8 @@ export default (props: CommonTransformerProps) => {
   let commonPassProp: CommonTransformerPassProp = {
     ...props
   };
-
+  let extVM=props.extVM
+  let desc = extVM?.Info?.DescriptionByInit
   return (
     <div key={sessionId} className="w-full h-full relative">
       <TextTransformerControl {...commonPassProp}></TextTransformerControl>
@@ -410,7 +411,7 @@ export default (props: CommonTransformerProps) => {
       >
         <GenCodeMirror
           lineWrap
-          placeholder="Input your text here2"
+          placeholder={desc||Dot("xPHqP","The description is not yet defined.")}
           language="javascript"
           bigTextId={inputBigTextId}
         ></GenCodeMirror>

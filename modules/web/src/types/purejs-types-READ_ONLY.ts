@@ -39,12 +39,15 @@ export type ToolCategory = {
 export type ToolChildrenSetByInit = {
   Id?: string;
   Label?: TranslatePassArg;
+  LabelByInit?:string
   Description?: TranslatePassArg;
+  DescriptionByInit?:string;
 };
 
 export type ToolSubCategory = {
   Id: string;
   Label: TranslatePassArg;
+  LabelByInit?:string
   Icon: string;
   ChildrenIdSet: string[]; // collect id only
   ChildrenSetByInit?: ToolChildrenSetByInit[]; // this field is provided by program
@@ -54,6 +57,8 @@ export type ExtensionInfo = {
   Id: string;
   Label: TranslatePassArg;
   Description: TranslatePassArg;
+  LabelByInit?:string
+  DescriptionByInit?:string;
 };
 
 export type ValueReq = {
