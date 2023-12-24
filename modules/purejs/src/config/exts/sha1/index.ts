@@ -19,8 +19,8 @@ let v: ExtensionVM = {
     Id: "sha1",
     Label: Dot("TtyeA", "SHA1"),
     Description: Dot(
-      "gh9zA",
-      "SHA-1 or Secure Hash Algorithm 1 is a cryptographic algorithm which takes an input and produces a 160-bit (20-byte) hash value.",
+      "gh9zxxA",
+      "SHA-1, or Secure Hash Algorithm 1, is a cryptographic hash function that takes an input (or 'message') and returns a fixed-size 160-bit (20-byte) hash value. \n\nThis is typically rendered as a hexadecimal number, 40 digits long. It's commonly used in various security applications and protocols, including TLS and SSL, PGP, SSH, and IPsec. \n\nHowever, SHA-1 is not considered secure against well-funded attackers. As such, it's recommended to use stronger hash functions like SHA-256 or SHA-3.",
     ),
   },
 };

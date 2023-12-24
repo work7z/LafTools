@@ -144,7 +144,7 @@ let AboutThisSoftware = () => {
       <h3><b>{Dot("aked6", "References")}</b></h3>
       <ul>
         <li>
-          <a href="http://laftools.com/" target="_blank">
+          <a href="https://github.com/work7z/LafTools" target="_blank">
             [1] {Dot("Kyd9H", "Source Code on GitHub")}
           </a>
         </li>
