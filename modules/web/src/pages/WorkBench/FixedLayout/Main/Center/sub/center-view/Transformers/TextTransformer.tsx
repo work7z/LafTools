@@ -38,6 +38,7 @@ import { SysTabPane } from "../../../../../../../../components/SysTabPane";
 import { CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
+import {fn_format_description} from  "../../../../../../../../types/workbench-fn";
 import { CommonTransformerProps } from "./types";
 
 let controlBarHeight = VAL_CSS_CONTROL_PANEL;
@@ -399,7 +400,7 @@ export default (props: CommonTransformerProps) => {
     ...props
   };
   let extVM=props.extVM
-  let desc = extVM?.Info?.DescriptionByInit
+  let desc = fn_format_description(extVM?.Info?.DescriptionByInit)
   return (
     <div key={sessionId} className="w-full h-full relative">
       <TextTransformerControl {...commonPassProp}></TextTransformerControl>

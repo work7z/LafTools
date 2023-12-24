@@ -33,7 +33,7 @@
                             "MD2"
                         ],
                         "Description": [
-                            "6wtIW",
+                            "16wtIW",
                             "MD2 (Message-Digest Algorithm 2) is a cryptographic hash function that takes an input and produces a 128-bit (16-byte) hash value. \n\nIt was developed by Ronald Rivest in 1989 as a successor to MD1. MD2 is optimized for 8-bit computers and is relatively simple compared to other hash functions. \n\nHowever, MD2 has been shown to be vulnerable to collision attacks, and is no longer considered secure for cryptographic purposes. MD2 is still used in some applications, but is being phased out in favor of more secure hash functions such as SHA-256 and SHA-3."
                         ]
                     },
@@ -44,7 +44,7 @@
                             "MD4"
                         ],
                         "Description": [
-                            "7gKzt",
+                            "s7gKzt",
                             "MD4 (Message-Digest Algorithm 4) is a cryptographic hash function that takes an input and produces a 128-bit (16-byte) hash value. \n\nIt was developed by Ronald Rivest in 1990 as a successor to MD2 and MD3. \n\nHowever, MD4 has been shown to be vulnerable to collision attacks, and is no longer considered secure for cryptographic purposes. MD4 is still used in some applications, but is being phased out in favor of more secure hash functions such as SHA-256 and SHA-3."
                         ]
                     },
@@ -55,8 +55,8 @@
                             "MD5"
                         ],
                         "Description": [
-                            "g0QB9",
-                            "The MD5 message-digest algorithm is a widely used hash function producing a 128-bit hash value. MD5 was designed by Ronald Rivest in 1991 to replace an earlier hash function MD4,[3] and was specified in 1992 as RFC 1321. MD5 can be used as a checksum to verify data integrity against unintentional corruption. Historically it was widely used as a cryptographic hash function; however it has been found to suffer from extensive vulnerabilities. It remains suitable for other non-cryptographic purposes, for example for determining the partition for a particular key in a partitioned database, and may be preferred due to lower computational requirements than more recent Secure Hash Algorithms.[4]"
+                            "1g20QB9",
+                            "The MD5 message-digest algorithm is a widely used hash function producing a 128-bit hash value. \n\nMD5 was designed by Ronald Rivest in 1991 to replace an earlier hash function MD4, and was specified in 1992 as RFC 1321. MD5 can be used as a checksum to verify data integrity against unintentional corruption. Historically it was widely used as a cryptographic hash function; however it has been found to suffer from extensive vulnerabilities. \n\nIt remains suitable for other non-cryptographic purposes, for example for determining the partition for a particular key in a partitioned database, and may be preferred due to lower computational requirements than more recent Secure Hash Algorithms."
                         ]
                     },
                     {
@@ -78,7 +78,7 @@
                         ],
                         "Description": [
                             "gh9zA.sha224",
-                            "SHA-224 is a cryptographic hash function that takes an input and produces a 224-bit (28-byte) hash value. It is part of the SHA-2 family of hash functions, which also includes SHA-256, SHA-384, and SHA-512. SHA-224 is designed to be more secure than its predecessor, SHA-1, which has been shown to be vulnerable to collision attacks. SHA-224 is widely used in digital signatures, message authentication codes, and other applications where data integrity is critical."
+                            "SHA-224 is a cryptographic hash function that takes an input and produces a 224-bit (28-byte) hash value. \n\nIt is part of the SHA-2 family of hash functions, which also includes SHA-256, SHA-384, and SHA-512. SHA-224 is designed to be more secure than its predecessor, SHA-1, which has been shown to be vulnerable to collision attacks. \n\nSHA-224 is widely used in digital signatures, message authentication codes, and other applications where data integrity is critical."
                         ]
                     },
                     {
@@ -88,8 +88,8 @@
                             "SHA256"
                         ],
                         "Description": [
-                            "gh9zA.sha256",
-                            "SHA-256 is a cryptographic hash function that takes an input and produces a 256-bit (32-byte) hash value. It is part of the SHA-2 family of hash functions, which also includes SHA-224, SHA-384, and SHA-512. SHA-256 is designed to be more secure than its predecessor, SHA-1, which has been shown to be vulnerable to collision attacks. SHA-256 is widely used in digital signatures, message authentication codes, and other applications where data integrity is critical."
+                            "gh9zs2.sha256",
+                            "SHA-256 is a cryptographic hash function that takes an input and produces a 256-bit (32-byte) hash value. \n\nIt is part of the SHA-2 family of hash functions, which also includes SHA-224, SHA-384, and SHA-512. SHA-256 is designed to be more secure than its predecessor, SHA-1, which has been shown to be vulnerable to collision attacks. \n\nSHA-256 is widely used in digital signatures, message authentication codes, and other applications where data integrity is critical."
                         ]
                     },
                     {
@@ -99,8 +99,8 @@
                             "SHA384"
                         ],
                         "Description": [
-                            "gh9zA.sha384",
-                            "SHA-384 is a cryptographic hash function that takes an input and produces a 384-bit (48-byte) hash value. It is part of the SHA-2 family of hash functions, which also includes SHA-224, SHA-256, SHA-512, SHA-512/224, and SHA-512/256. SHA-384 is designed to be more secure than its predecessor, SHA-1, which has been shown to be vulnerable to collision attacks. SHA-384 is widely used in digital signatures, message authentication codes, and other applications where data integrity is critical."
+                            "gh3zA.sha384",
+                            "SHA-384 is a cryptographic hash function that takes an input and produces a 384-bit (48-byte) hash value. \n\nIt is part of the SHA-2 family of hash functions, which also includes SHA-224, SHA-256, SHA-512, SHA-512/224, and SHA-512/256. SHA-384 is designed to be more secure than its predecessor, SHA-1, which has been shown to be vulnerable to collision attacks. \n\nSHA-384 is widely used in digital signatures, message authentication codes, and other applications where data integrity is critical."
                         ]
                     },
                     {
@@ -110,8 +110,8 @@
                             "SHA512"
                         ],
                         "Description": [
-                            "gh9zA.sha512",
-                            "SHA-512 is a cryptographic hash function that takes an input and produces a 512-bit (64-byte) hash value. It is part of the SHA-2 family of hash functions, which also includes SHA-224, SHA-256, SHA-384, SHA-512/224, and SHA-512/256. SHA-512 is designed to be more secure than its predecessor, SHA-1, which has been shown to be vulnerable to collision attacks. SHA-512 is widely used in digital signatures, message authentication codes, and other applications where data integrity is critical."
+                            "gh9zwA.sha512",
+                            "SHA-512 is a cryptographic hash function that takes an input and produces a 512-bit (64-byte) hash value. \n\nIt is part of the SHA-2 family of hash functions, which also includes SHA-224, SHA-256, SHA-384, SHA-512/224, and SHA-512/256. SHA-512 is designed to be more secure than its predecessor, SHA-1, which has been shown to be vulnerable to collision attacks. \n\nSHA-512 is widely used in digital signatures, message authentication codes, and other applications where data integrity is critical."
                         ]
                     }
                 ]
