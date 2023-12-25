@@ -26,13 +26,14 @@ import { TreeNodeInfo } from "@blueprintjs/core";
 import _ from "lodash";
 
 export type TranslationSessionMapAttr = {
-    //
+    T_SourceLang:string
+    T_TargetLang:string
 }
 
 // attrName to attrValue, here we can save their settings, session val, etc...    
 export type SessionAttr = Partial<TranslationSessionMapAttr & {}>
 export type SessionMapAttr = {
-    [key: string]: SessionMapAttr
+    [key: string]: SessionAttr
 }
 
 

@@ -93,12 +93,17 @@ export default () => {
       defaultSessionMap={
         {
           "en2zhcn": {
-            //
-          }
+            T_SourceLang:'en',
+            T_TargetLang:'zh_CN'
+          },
+          "zhcn2en": {
+            T_SourceLang:'zh_CN',
+            T_TargetLang:'en'
+          },
         }
       }
       defaultSessionList={
-        // TODO: for other languages, update its content
+        // TODO: for other languages, provide corresponding config
         [
           {
             label: Dot("QRAdA", "English to Chinese"),

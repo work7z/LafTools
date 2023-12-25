@@ -30,6 +30,9 @@ import AlertUtils from "../../../../../../../utils/AlertUtils";
 import { useCallback } from "react";
 import _ from 'lodash'
 import { useGetI18nLangList } from "../../../../../../../containers/UserAskMultipleDialogs";
+import { SessionViewProp } from "../../../../../../../containers/MultipleSessionLeftView";
+import { NoAvailableDataPanel, NoAvailablePanel } from "../../../../../../../types/workbench-hook";
+import exportUtils from "../../../../../../../utils/ExportUtils";
 
 type SrcTarget = "source" | "target";
 
@@ -83,8 +86,9 @@ let ExportButtonByInputId = () => {
   );
 };
 
-export default () => {
-  let sessionId = "nav-translator";
+export default (props: SessionViewProp) => {
+  let sessionType = props.sessionType
+  let sessionId = props.sessionId;
   let textInputId = sessionId + "ipt";
   let textOutputId = sessionId + "opt";
   let fn_textChg = useCallback(_.throttle(async (val) => {
@@ -111,6 +115,15 @@ export default () => {
       FN_SetTextValueFromOutSideByBigTextId(textOutputId, ajaxResValue as string)
     )
   }, 200), [textInputId])
+  let sessionMapAtr = exportUtils.useSelector(v => {
+    if (!sessionId) { return null }
+    // TODO: fix this part
+    // return v.session.sessionTypeKVMap[sessionType]?.sessionMap[sessionId] || null
+    return null;
+  })
+  if (!sessionId) {
+    return <NoAvailableDataPanel></NoAvailableDataPanel>
+  }
   return (
     <div className="h-full w-full">
       <div

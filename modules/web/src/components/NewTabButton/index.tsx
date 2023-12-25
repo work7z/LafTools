@@ -60,10 +60,46 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import "./index.scss";
 import { Dot } from "../../utils/TranslationUtils";
+import AlertUtils from "../../utils/AlertUtils";
 
-interface PassProp { }
+interface PassProp {
+  onNewNameProvided: (str: string) => any
+}
 export default (props: PassProp): any => {
-  return <Button fill text={Dot("bT4R6", "New Tab")} intent="none" icon="add" small minimal className="mt-2 laft-secondary-btn">
+  let { onNewNameProvided } = props;
+  // state, isNewMode 
+  let [newMode, onNewMode] = useState<boolean>(false)
+  let [tagName, onTagName] = useState<string>(Dot("7x3f6", "Tab - 1"))
+  let edgeClz = " mt-2 "
+  if (newMode) {
+    return <div>
+      <InputGroup
+        value={tagName}
+        onChange={(e) => {
+          onTagName(e.target.value)
+        }}
+        small
+        className={edgeClz + " "}
+        rightElement={<ButtonGroup>
+          <Button small icon="small-tick"
+            onClick={() => {
+              if (tagName.length == 0) {
+                AlertUtils.popError(new Error(Dot("Vaf2y", "Tab name could not be blank.")))
+                return
+              }
+              onNewMode(false)
+              onNewNameProvided(tagName)
+            }}
+          ></Button>
+          <Button small icon="small-cross" onClick={() => {
+            onNewMode(false)
+          }}></Button>
+        </ButtonGroup>}
+        fill placeholder={Dot("FDlRI", "Name this new tab and click to confirm it.")}></InputGroup>
+    </div>
+  }
+  return <Button fill text={Dot("bT4R6", "New Tab")} onClick={() => {
+    onNewMode(true)
+  }} intent="none" icon="add" small minimal className={edgeClz + " laft-secondary-btn"}>
   </Button>
-
 };

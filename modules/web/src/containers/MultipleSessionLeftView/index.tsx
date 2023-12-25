@@ -80,8 +80,9 @@ import SessionSlice, { SessionListItem, SessionMapAttr } from "../../reducers/co
 import { FN_GetDispatch } from "../../nocycle";
 
 
-type SessionViewProp = {
+export type SessionViewProp = {
     sessionId: string | null; // if null, then no session is selected
+    sessionType: string
 };
 
 
@@ -144,16 +145,17 @@ export default (props: PassProps) => {
                 <Button
                     onClick={() => {
                         let newId = gutils.uuid()
-                        if(x.id && newId){
+                        let thisItem = _.find(sessionList, xx => xx.id == x.id)
+                        if (thisItem && thisItem.id && newId) {
                             FN_GetDispatch()(
                                 SessionSlice.actions.duplicateItem({
                                     currentList: sessionList || [],
                                     sessionType: sessionType,
-                                    currId: x.id+"",
+                                    currId: x.id + "",
                                     newID: newId,
-                                    newLabel: x.label + " " + "(2)"
+                                    newLabel: thisItem.label + " " + "(2" + ")"
                                 })
-                            )    
+                            )
                         }
                         // duplicate this tab and trigger dispatch
                         // FN_GetDispatch()(
@@ -211,10 +213,30 @@ export default (props: PassProps) => {
                         )
                     }}
                 ></Tree>
-                <NewTabButton></NewTabButton>
+                <NewTabButton onNewNameProvided={val => {
+                    let newId = gutils.uuid()
+                    FN_GetDispatch()(
+                        SessionSlice.actions.updateSessionList({
+                            sessionType: sessionType,
+                            list: [
+                                ...(sessionList || []),
+                                {
+                                    id: newId,
+                                    label: val
+                                }
+                            ]
+                        })
+                    )
+                    FN_GetDispatch()(
+                        SessionSlice.actions.updateActiveId({
+                            sessionType: sessionType,
+                            activeId: newId
+                        })
+                    )
+                }}></NewTabButton>
             </Allotment.Pane>
             <Allotment.Pane>
-                <Body sessionId={activeSessionId} />
+                <Body sessionType={sessionType} sessionId={activeSessionId} />
             </Allotment.Pane>
         </Allotment>
     );
