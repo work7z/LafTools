@@ -104,6 +104,36 @@ const SessionSlice = createSlice({
             }
             state.sessionTypeKVMap[sessionType].sessionMap = sessionMap;
         },
+        // make default value for sessionMap
+        updateDefaultSessionMap: (state,
+            action: PayloadAction<{ sessionType: string, item: SessionEntireMapItem }>) => {
+            const { sessionType, item } = action.payload;
+            if (!state.sessionTypeKVMap[sessionType]) {
+                state.sessionTypeKVMap[sessionType] = {}
+            }
+            let crtObj = state.sessionTypeKVMap[sessionType]
+            if (!crtObj.activeId) {
+                crtObj.activeId = item.activeId;
+            }
+            if (!crtObj.sessionList) {
+                crtObj.sessionList = item.sessionList
+            }
+            let activeIdIdx = _.findIndex(crtObj.sessionList, x => x.id == crtObj.activeId)
+            if (activeIdIdx == -1) {
+                let b = _.first(crtObj.sessionList)?.id
+                if (b) {
+                    crtObj.activeId = b+""
+                }
+            }
+            if (!crtObj.sessionMap) {
+                crtObj.sessionMap = {}
+            }
+            _.forEach(item.sessionMap, (v, k) => {
+                if (crtObj.sessionMap && !crtObj.sessionMap[k]) {
+                    crtObj.sessionMap[k] = v
+                }
+            })
+        },
         // update all fields by sessionType
         updateSession: (state, action: PayloadAction<{ sessionType: string, item: SessionEntireMapItem }>) => {
             const { sessionType, item } = action.payload;

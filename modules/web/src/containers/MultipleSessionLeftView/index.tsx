@@ -113,20 +113,17 @@ export default (props: PassProps) => {
         sessionMap = props.defaultSessionMap;
     }
     useEffect(() => {
-        // if isOriginalSessionMapNil, then update it with defaultSessionMap
-        if (isOriginalSessionMapNil) {
-            FN_GetDispatch()(
-                SessionSlice.actions.updateSession({
-                    sessionType: sessionType,
-                    item: {
-                        sessionMap: props.defaultSessionMap,
-                        activeId: props.defaultSessionId,
-                        sessionList: props.defaultSessionList,
-                    }
-                })
-            )
-        }
-    }, [])
+        FN_GetDispatch()(
+            SessionSlice.actions.updateDefaultSessionMap({
+                sessionType: sessionType,
+                item: {
+                    sessionMap: props.defaultSessionMap,
+                    activeId: props.defaultSessionId,
+                    sessionList: props.defaultSessionList,
+                }
+            })
+        )
+    }, [_.size(sessionList),activeSessionId])
     // render
     let Body = props.body;
     let [hoverId, onHoverId] = useState<string | null>(null)
