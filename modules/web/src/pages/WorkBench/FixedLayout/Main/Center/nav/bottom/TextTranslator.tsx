@@ -112,6 +112,13 @@ export default (props: SessionViewProp) => {
   let sessionId = props.sessionId;
   let textInputId = sessionId + "ipt";
   let textOutputId = sessionId + "opt";
+  let sessionAttrOrNull: SessionAttr | null = exportUtils.useSelector(v => {
+    if (!sessionId) { return null }
+    // TODO: fix this part
+    let sessionObj = v.session.sessionTypeKVMap[sessionType]
+    if (!sessionObj || !sessionObj?.sessionMap) return null;
+    return sessionObj?.sessionMap[sessionId] 
+  })
   let fn_textChg = useCallback(_.throttle(async (val) => {
     // SourceLang string
     // TargetLang string
@@ -121,8 +128,9 @@ export default (props: SessionViewProp) => {
       url: "/translation/text/translate",
       isPOST: true,
       data: {
-        SourceLang: 'zh',
-        TargetLang: 'en',
+        sessionId:sessionId,
+        SourceLang: sessionAttrOrNull?.T_SourceLang,
+        TargetLang: sessionAttrOrNull?.T_TargetLang,
         Type: 'text',
         Text: val,
       },
@@ -136,13 +144,7 @@ export default (props: SessionViewProp) => {
       FN_SetTextValueFromOutSideByBigTextId(textOutputId, ajaxResValue as string)
     )
   }, 200), [textInputId])
-  let sessionAttrOrNull: SessionAttr | null = exportUtils.useSelector(v => {
-    if (!sessionId) { return null }
-    // TODO: fix this part
-    let sessionObj = v.session.sessionTypeKVMap[sessionType]
-    if (!sessionObj || !sessionObj?.sessionMap) return null;
-    return sessionObj?.sessionMap[sessionId] || null
-  })
+
   if (!sessionId) {
     return <NoAvailableDataPanel></NoAvailableDataPanel>
   }

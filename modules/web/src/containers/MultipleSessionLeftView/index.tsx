@@ -233,7 +233,7 @@ export default (props: PassProps) => {
                 }}></NewTabButton>
             </Allotment.Pane>
             <Allotment.Pane>
-                <Body sessionType={sessionType} sessionId={activeSessionId} />
+                <Body key={activeSessionId} sessionType={sessionType} sessionId={activeSessionId} />
             </Allotment.Pane>
         </Allotment>
     );

@@ -89,14 +89,14 @@ import MultipleSessionLeftView from "../../../../../../../containers/MultipleSes
 export default () => {
   return (
     <MultipleSessionLeftView
-      defaultSessionId="en2zhcn"
+      defaultSessionId="t_en2zhcn"
       defaultSessionMap={
         {
-          "en2zhcn": {
+          "t_en2zhcn": {
             T_SourceLang: 'en_US',
             T_TargetLang: 'zh_CN'
           },
-          "zhcn2en": {
+          "t_zhcn2en": {
             T_SourceLang: 'zh_CN',
             T_TargetLang: 'en_US'
           },
@@ -107,11 +107,11 @@ export default () => {
         [
           {
             label: Dot("QRAdA", "English to Chinese"),
-            id: "en2zhcn",
+            id: "t_en2zhcn",
           },
           {
             label: Dot("bVlBN", "Chinese to English"),
-            id: "zhcn2en",
+            id: "t_zhcn2en",
           }
         ]
       }
