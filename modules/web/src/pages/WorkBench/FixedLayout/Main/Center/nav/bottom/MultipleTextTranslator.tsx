@@ -93,12 +93,12 @@ export default () => {
       defaultSessionMap={
         {
           "en2zhcn": {
-            T_SourceLang:'en',
-            T_TargetLang:'zh_CN'
+            T_SourceLang: 'en_US',
+            T_TargetLang: 'zh_CN'
           },
           "zhcn2en": {
-            T_SourceLang:'zh_CN',
-            T_TargetLang:'en'
+            T_SourceLang: 'zh_CN',
+            T_TargetLang: 'en_US'
           },
         }
       }

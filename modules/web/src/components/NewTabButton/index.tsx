@@ -72,6 +72,17 @@ export default (props: PassProp): any => {
   let [tagName, onTagName] = useState<string>(Dot("7x3f6", "Tab - 1"))
   let edgeClz = " mt-2 "
   if (newMode) {
+    let fn_confirm = () => {
+      if (tagName.length == 0) {
+        AlertUtils.popError(new Error(Dot("Vaf2y", "Tab name could not be blank.")))
+        return
+      }
+      onNewMode(false)
+      onNewNameProvided(tagName)
+    }
+    let fn_cancel = () => {
+      onNewMode(false)
+    }
     return <div>
       <InputGroup
         value={tagName}
@@ -79,21 +90,22 @@ export default (props: PassProp): any => {
           onTagName(e.target.value)
         }}
         small
+        onKeyDown={e => {
+          // when e == enter
+          if (e.keyCode == 13) {
+            fn_confirm()
+          }
+          // when e == ese
+          if (e.keyCode == 27) {
+            fn_cancel()
+          }
+        }}
         className={edgeClz + " "}
         rightElement={<ButtonGroup>
           <Button small icon="small-tick"
-            onClick={() => {
-              if (tagName.length == 0) {
-                AlertUtils.popError(new Error(Dot("Vaf2y", "Tab name could not be blank.")))
-                return
-              }
-              onNewMode(false)
-              onNewNameProvided(tagName)
-            }}
+            onClick={fn_confirm}
           ></Button>
-          <Button small icon="small-cross" onClick={() => {
-            onNewMode(false)
-          }}></Button>
+          <Button small icon="small-cross" onClick={fn_cancel}></Button>
         </ButtonGroup>}
         fill placeholder={Dot("FDlRI", "Name this new tab and click to confirm it.")}></InputGroup>
     </div>

@@ -26,8 +26,8 @@ import { TreeNodeInfo } from "@blueprintjs/core";
 import _ from "lodash";
 
 export type TranslationSessionMapAttr = {
-    T_SourceLang:string
-    T_TargetLang:string
+    T_SourceLang: string
+    T_TargetLang: string
 }
 
 // attrName to attrValue, here we can save their settings, session val, etc...    
@@ -81,6 +81,22 @@ const SessionSlice = createSlice({
             state.sessionTypeKVMap[sessionType].activeId = activeId;
         },
         // update sessionMap by sessionType
+        updateSessionMapByAttrKey: (state, action: PayloadAction<{
+            sessionType: string, sessionMapKey: string, sessionMapValue: SessionAttr
+        }>) => {
+            const { sessionType, sessionMapKey, sessionMapValue } = action.payload;
+            if (state.sessionTypeKVMap[sessionType]
+                && state.sessionTypeKVMap[sessionType].sessionMap
+            ) {
+                let sessionMap = state.sessionTypeKVMap[sessionType].sessionMap
+                if (!sessionMap) {
+                    sessionMap = {}
+                }
+                sessionMap[sessionMapKey] = sessionMapValue
+                state.sessionTypeKVMap[sessionType].sessionMap = sessionMap;
+            }
+        },
+        // update sessionMap by sessionType
         updateSessionMap: (state, action: PayloadAction<{ sessionType: string, sessionMap: SessionMapAttr }>) => {
             const { sessionType, sessionMap } = action.payload;
             if (!state.sessionTypeKVMap[sessionType]) {
@@ -97,7 +113,7 @@ const SessionSlice = createSlice({
             state.sessionTypeKVMap[sessionType] = item;
         },
         // duplicateItem
-        duplicateItem: (state, action: PayloadAction<{currentList:SessionListItem[], sessionType: string, newID: string, currId: string; newLabel: string }>) => {
+        duplicateItem: (state, action: PayloadAction<{ currentList: SessionListItem[], sessionType: string, newID: string, currId: string; newLabel: string }>) => {
             const { sessionType, newID, currId, newLabel } = action.payload;
             if (!state.sessionTypeKVMap[sessionType]) {
                 state.sessionTypeKVMap[sessionType] = {}

@@ -27,12 +27,14 @@ import { FN_GetDispatch, getAjaxResPayloadValue, getAjaxResPayloadValueAsString 
 import { FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../actions/bigtext_action";
 import AjaxUtils from "../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../utils/AlertUtils";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import _ from 'lodash'
 import { useGetI18nLangList } from "../../../../../../../containers/UserAskMultipleDialogs";
 import { SessionViewProp } from "../../../../../../../containers/MultipleSessionLeftView";
 import { NoAvailableDataPanel, NoAvailablePanel } from "../../../../../../../types/workbench-hook";
 import exportUtils from "../../../../../../../utils/ExportUtils";
+import SessionSlice, { SessionAttr } from "../../../../../../../reducers/container/sessionSlice";
+import { EachLang } from "../../../../../../../types/purejs-types-READ_ONLY";
 
 type SrcTarget = "source" | "target";
 
@@ -58,20 +60,39 @@ let EachTranslatorBlock = (props: { onTextChange?: (val: string) => any, bigText
   );
 };
 
-let LanguageChooser = (props: { isSource: boolean; label: string }) => {
+let LanguageChooser = (props: { onSelectLanguage: (newVal: EachLang) => any, lang: string; isSource: boolean; label: string }) => {
   let { isSource } = props;
   let langList = useGetI18nLangList()
+  let showLangText = useMemo(() => {
+    if (!langList) {
+      return "N/A"
+    }
+    let obj = _.find(langList, (x: EachLang) => {
+      if (!x) {
+        return false;
+      }
+      return x.Value == props.lang
+    })
+    return obj?.Label || 'N/A'
+    // return _.first(_.find(langList,x=>{
+    //   return null;
+    // }));
+  }, [props.lang, langList])
   return <Popover placement="bottom" minimal content={<Card className="w-[300px]" style={{
     padding: '15px'
   }} >
     <h2 style={{ margin: 0, fontWeight: 'bold', marginBottom: '7px' }}>{!isSource ? Dot("hJUMN", "Target Language") : Dot("SQAw7", "Source Language")}</h2>
     {
       _.map(langList, x => {
-        return <Button small minimal text={x.Label} key={x.Value}></Button>
+        return <Button
+          intent={x && x.Value == props.lang ? 'primary' : 'none'}
+          onClick={() => {
+            props.onSelectLanguage(x)
+          }} small minimal text={x.Label} key={x.Value}></Button>
       })
     }
   </Card>}>
-    <Button small minimal text={props.label + ": English"}></Button>
+    <Button small minimal text={props.label + ": " + (showLangText)}></Button>
   </Popover>;
 };
 
@@ -92,7 +113,7 @@ export default (props: SessionViewProp) => {
   let textInputId = sessionId + "ipt";
   let textOutputId = sessionId + "opt";
   let fn_textChg = useCallback(_.throttle(async (val) => {
-    //               SourceLang string
+    // SourceLang string
     // TargetLang string
     // Type       string
     // Text       string
@@ -115,11 +136,12 @@ export default (props: SessionViewProp) => {
       FN_SetTextValueFromOutSideByBigTextId(textOutputId, ajaxResValue as string)
     )
   }, 200), [textInputId])
-  let sessionMapAtr = exportUtils.useSelector(v => {
+  let sessionAttrOrNull: SessionAttr | null = exportUtils.useSelector(v => {
     if (!sessionId) { return null }
     // TODO: fix this part
-    // return v.session.sessionTypeKVMap[sessionType]?.sessionMap[sessionId] || null
-    return null;
+    let sessionObj = v.session.sessionTypeKVMap[sessionType]
+    if (!sessionObj || !sessionObj?.sessionMap) return null;
+    return sessionObj?.sessionMap[sessionId] || null
   })
   if (!sessionId) {
     return <NoAvailableDataPanel></NoAvailableDataPanel>
@@ -147,12 +169,44 @@ export default (props: SessionViewProp) => {
           }}
         >
           <LanguageChooser
+            onSelectLanguage={(val: EachLang) => {
+              // update T_SourceLang
+              if (sessionId) {
+                FN_GetDispatch()(
+                  SessionSlice.actions.updateSessionMapByAttrKey({
+                    sessionMapValue: {
+                      ...(sessionAttrOrNull || {}),
+                      T_SourceLang: val.Value
+                    },
+                    sessionMapKey: sessionId,
+                    sessionType
+                  })
+                )
+              }
+            }}
+            lang={sessionAttrOrNull?.T_SourceLang || 'en_US'}
             isSource={true}
             label={Dot("jJuNz", "Source Language")}
           ></LanguageChooser>
           <Button minimal small intent="none" icon="swap-horizontal"></Button>
           <LanguageChooser
+            onSelectLanguage={(val: EachLang) => {
+              // update T_SourceLang
+              if (sessionId) {
+                FN_GetDispatch()(
+                  SessionSlice.actions.updateSessionMapByAttrKey({
+                    sessionMapValue: {
+                      ...(sessionAttrOrNull || {}),
+                      T_TargetLang: val.Value
+                    },
+                    sessionMapKey: sessionId,
+                    sessionType
+                  })
+                )
+              }
+            }}
             isSource={false}
+            lang={sessionAttrOrNull?.T_TargetLang || 'zh_CN'}
             label={Dot("TwFcr", "Target Language")}
           ></LanguageChooser>
         </div>
