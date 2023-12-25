@@ -45,7 +45,7 @@ Preview(English):
 ![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-1.png?raw=true)
 
 Preview(Simplified Chinese|简体中文):
-![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-2.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-3.png?raw=true)
 
 # 🍀 Getting Started
 
