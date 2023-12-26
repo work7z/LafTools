@@ -22,6 +22,7 @@ package cmd
 
 import (
 	"fmt"
+	"laftools-go/core/global"
 	"laftools-go/core/project/base/env"
 	"laftools-go/core/project/base/extra"
 	itools "laftools-go/core/project/tools"
@@ -48,7 +49,7 @@ func init() {
 	runServerCmd.PersistentFlags().StringVar(&tools.RefId, "ref-id", "dkzhZ.json", "stats report")
 	runServerCmd.PersistentFlags().IntVar(&env.ProdPortStartFrom, "port", -1, "port")
 	runServerCmd.PersistentFlags().StringVar(&tools.LafToolsAppBaseDir, "root", env.DefaultLafToolsRoot, "system root path")
-	runServerCmd.PersistentFlags().StringVar(&tools.LafToolsHomeConfigDir, "home", env.DefaultAppConfigDir, "config home path")
+	runServerCmd.PersistentFlags().StringVar(&tools.LafToolsHomeConfigDir, "home", global.GetDefaultAppConfigDir(), "config home path")
 
 	// init run extra
 	devExtraCmd.PersistentFlags().StringVar(&extra.ConfigFilePath, "config", "", "config file")

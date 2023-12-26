@@ -20,7 +20,5 @@
 
 package env
 
-var AppHomeDirName = ".laf-tools-home"
-var AppDataDirName = "LafTools"
 var DevPortStartFrom = 35000 // TODO: this port is hard-coded at present, will refactor in the future
 var ProdPortStartFrom = -1

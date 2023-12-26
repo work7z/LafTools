@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Thu, 21 Dec 2023
 // Author: LafTools Team - FX <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -27,9 +27,11 @@ import (
 
 const LEN_LIMIT_TRANSLATION_KEYS = 25
 
+// TODO: align below with the new config file
 var (
-	RefId                 string        // for port information, if it's empty, then I will tell you in the home directory
-	IsDevMode             bool   = true // by default, it's true
+	RefId                 string         // for port information, if it's empty, then I will tell you in the home directory
+	IsDevMode             bool   = true  // by default, it's true
+	IsUATMode             bool   = false // by default, it's true
 	SystemUserLanguage    string = "en_US"
 	LafToolsAppBaseDir    string = env.GetEnvValueForLafToolsRoot()
 	LafToolsHomeConfigDir string = os.Getenv("CODEGEN_APP_DIR")

@@ -21,7 +21,6 @@
 package global
 
 import (
-	"laftools-go/core/project/base/env"
 	"laftools-go/core/tools"
 	"os"
 	"path"
@@ -42,15 +41,39 @@ func GetAppHomeTempDirectory() string {
 	return tools.MkdirFileWithStr(path.Join(GetAppHomeDirectory(), "temp"))
 }
 
+func getProjectNameAffix() string {
+	// UAT, DEV, PROD("")
+	if tools.IsDevMode {
+		return "-DEV"
+	}
+	if tools.IsUATMode {
+		return "-UAT"
+	}
+	return ""
+}
+
+func GetAppHomeDirName() string {
+	return ".laf-tools-home" + getProjectNameAffix()
+}
+
+func GetDefaultAppConfigDir() string {
+	var homeDir, _ = os.UserHomeDir()
+	var DefaultAppConfigDir = path.Join(homeDir, GetAppHomeDirName())
+	return DefaultAppConfigDir
+}
+func GetAppDataDirName() string {
+	return "LafTools" + getProjectNameAffix()
+}
+
 func GetAppHomeDirectory() string {
-	pathname := path.Join(GetUserHomeDir(), env.AppHomeDirName)
+	pathname := path.Join(GetUserHomeDir(), GetAppHomeDirName())
 	e := tools.MkdirFile(pathname)
-	tools.ShouldNoErr(e, "~/"+env.AppHomeDirName+" cannot be created")
+	tools.ShouldNoErr(e, "~/"+GetAppHomeDirName()+" cannot be created")
 	return pathname
 }
 func GetAppDataDirectory() string {
-	pathname := path.Join(GetUserHomeDir(), env.AppDataDirName)
+	pathname := path.Join(GetUserHomeDir(), GetAppDataDirName())
 	e := tools.MkdirFile(pathname)
-	tools.ShouldNoErr(e, "~/"+env.AppHomeDirName+" cannot be created")
+	tools.ShouldNoErr(e, "~/"+GetAppDataDirName()+" cannot be created")
 	return pathname
 }

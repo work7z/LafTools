@@ -116,6 +116,7 @@ import {
 } from "../../../../../utils/WorkSpaceUtils";
 import AlertUtils from "../../../../../utils/AlertUtils";
 import { useGetI18nLangList } from "../../../../../containers/UserAskMultipleDialogs";
+import TokenUtils from "../../../../../utils/TokenUtils";
 
 type PassProp = {
   leftPart?: JSX.Element;
@@ -530,7 +531,7 @@ export let WB_MenuBar = (props: PassProp) => {
               }}
             />
           </Tooltip>
-          <Tooltip content={Dot("DVoKw", "Sign out this System")} position="bottom">
+          <Tooltip content={Dot("DVoKw", "Sign out this System")} position="bottom-right">
             <Button
               className={Classes.MINIMAL}
               small={true}
@@ -543,7 +544,7 @@ export let WB_MenuBar = (props: PassProp) => {
                   id: "8KF41kd",
                   msg: Dot("az4uS2", "Are you sure to sign out this system? Note that you will be redirected to the login page.")
                 })) {
-                  //
+                  TokenUtils.cleanAndSignOut()
                 }
                 // dis(forgeSlice.actions.updateDarkMode({ isDark: !val_1.dark }));
               }}

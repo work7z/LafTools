@@ -26,6 +26,10 @@ const USER_TOKEN_LOCAL_KEY = "LOCAL_KEY_USER_TOKEN";
 const USER_TOKEN_LOCAL_ID = "LOCAL_KEY_USER_ID";
 
 const TokenUtils = {
+  cleanAndSignOut() {
+    localStorage.clear()
+    location.reload() // TODO: other way is to use history.push('/login')
+  },
   // system
   getSystemInitToken() {
     return localStorage.getItem(SYSTEM_INIT_TOKEN_LOCAL_KEY);
