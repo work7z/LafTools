@@ -85,8 +85,6 @@ To debug Go service, we have configured it in VSCode, you can just follow below 
 
 ## 3. Launch FrontEnd Module
 
-**Web Part**:
-
 ```bash
 # install required global library
 npm i -g pnpm ts-node typescript
@@ -112,15 +110,6 @@ npm run fe-extra
 ```
 
 Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
-
-**Scan Part**:
-
-```bash
-cd dev/scripts/scan
-npm i -g pnpm # can skip if it's installed
-pnpm install --no-frozen-lockfile
-npm run scan # start scanning files to provide translate service
-```
 
 ## 4. Start Developing
 
