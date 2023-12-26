@@ -94,6 +94,7 @@ import forgeSlice, {
 } from "../reducers/forgeSlice";
 import { ACTION_callRefreshAll } from "../reducers/systemSlice";
 import {
+  ID_AILah,
   ID_FILES,
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
@@ -165,23 +166,25 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
              label: Dot("znVRwq", "Files"),
            },
        */
-      {
-        desc: Dot(
-          "p8Ec1s",
-          "There are various tools that leverage AI technologies to perform tasks more efficiently."
-        ),
-        // pathname: URL_WORKBENCH_FILES,
-        icon: "lab-test",
-        panel: InnerFilePanel,
-        id: ID_FILES,
-        label: Dot("10SZw", "AI Lah"),
-      },
+
       {
         desc: Dot("Ttrqqet", "Write and Save your thoughts here!"),
         // pathname: URL_WORKBENCH_NOTES,
         icon: "git-repo",
         id: ID_NOTES,
         label: Dot("VEfeqZG", "Notes"),
+      },
+
+      {
+        desc: Dot(
+          "p8Exc1s",
+          "There are various tools that leverage AI technologies to perform tasks more efficiently in AI Lab."
+        ),
+        // pathname: URL_WORKBENCH_FILES,
+        icon: "lab-test",
+        panel: InnerFilePanel,
+        id: ID_AILah,
+        label: Dot("jR1zX", "AI Lab"),
       },
 
       // write item for manuals

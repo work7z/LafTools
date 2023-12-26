@@ -85,6 +85,8 @@ import TextTranslator from "./Translator/TextTranslator";
 import MultipleSessionLeftView from "../../../../../../../containers/MultipleSessionLeftView";
 import MultipleTextTranslator from './Translator/MultipleTextTranslator'
 import MultipleTerminal from "./Terminal/MultipleTerminal";
+import Overview from "./Overview";
+import MultipleDictionary from "./Dictionary/MultipleDictionary";
 
 export default () => {
   let sq = useSearchQuery();
@@ -107,7 +109,41 @@ export default () => {
   );
 
   // business logic ifelse
-  // TODO: dictionary, terminal
+  // TODO: dictionary, overview
+  if (bottomId == 'dictionary') {
+    return (
+      <SysTabPane
+        crtLeftNavId="drawer"
+        leftNavList={[
+          {
+            label: Dot("kPD22", "Dictionary"),
+            value: "dictionary",
+          },
+        ]}
+        rightCtrls={fn_rightCtrl_common}
+        children={
+          <MultipleDictionary />
+        }
+      ></SysTabPane>
+    );
+  }
+  if (bottomId == 'overview') {
+    return (
+      <SysTabPane
+        crtLeftNavId="drawer"
+        leftNavList={[
+          {
+            label: Dot("x5tHV", "System Overview"),
+            value: "system-overview",
+          },
+        ]}
+        rightCtrls={fn_rightCtrl_common}
+        children={
+          <Overview />
+        }
+      ></SysTabPane>
+    );
+  }
   if (bottomId == "terminal") {
     return (
       <SysTabPane

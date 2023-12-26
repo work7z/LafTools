@@ -97,6 +97,7 @@ export const URL_WORKBENCH_WORKSPACE = URL_WORKBENCH;
 
 export const ID_TOOLS = "tools";
 export const ID_FILES = "files";
+export const ID_AILah = "ai";
 export const ID_NOTES = "notes";
 export const ID_HISTORY = "history";
 
@@ -112,10 +113,10 @@ export let CSS_TW_LAYOUT_BORDER =
 
 
 export type InitForm = {
-    Value: boolean;
-  };
-  
-  export const CLZ_ROOT_DARK = `bp5-dark`;
+  Value: boolean;
+};
+
+export const CLZ_ROOT_DARK = `bp5-dark`;
 export const CLZ_ROOT_LIGHT = `bp5-light bp5-bg-light`;
 export const CLZ_SECOND_TEXT = "bp5-text-muted";
 export const CLZ_SMALL_TEXT = "bp5-text-small";
