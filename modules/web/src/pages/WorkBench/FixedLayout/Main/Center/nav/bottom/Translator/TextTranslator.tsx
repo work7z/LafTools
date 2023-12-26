@@ -36,6 +36,7 @@ import exportUtils from "../../../../../../../../utils/ExportUtils";
 import SessionSlice, { SessionAttr } from "../../../../../../../../reducers/container/sessionSlice";
 import { EachLang } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import Blink from "../../../../../../../../components/Blink";
+import { ExportButtonByInputId } from "../../../../../../../../components/ExportButtonByInputId";
 
 type SrcTarget = "source" | "target";
 
@@ -95,17 +96,6 @@ let LanguageChooser = (props: { onSelectLanguage: (newVal: EachLang) => any, lan
   </Card>}>
     <Button small minimal text={props.label + ": " + (showLangText)}></Button>
   </Popover>;
-};
-
-let ExportButtonByInputId = () => {
-  return (
-    <Button
-      small
-      icon="duplicate"
-      intent="success"
-      text={Dot("Fv-zz", "Copy Result")}
-    ></Button>
-  );
 };
 
 export default (props: SessionViewProp) => {
@@ -246,7 +236,7 @@ export default (props: SessionViewProp) => {
           ></LanguageChooser>
         </div>
         <div>
-          <ExportButtonByInputId />
+          <ExportButtonByInputId bigtextId={textOutputId} />
         </div>
       </div>
       {/* editor */}

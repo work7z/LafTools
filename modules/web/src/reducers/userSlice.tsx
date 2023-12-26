@@ -99,7 +99,7 @@ export const ACTION_createAdminAccount = ({
 }) => {
   return async (dispatch) => {
     let r = await AjaxUtils.DoLocalRequestWithNoThrow({
-      url: "/admin/init/create",
+      url: withPrefixOpenAPI("/admin/init/create"),
       isPOST: true,
       data: localAccountObject,
     });

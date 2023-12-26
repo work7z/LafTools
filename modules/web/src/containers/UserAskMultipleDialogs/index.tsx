@@ -152,6 +152,7 @@ export default (props: PassProps) => {
     NeedAdminInit: true,
   });
 
+
   PageUtils.useUpdateTitle(Dot("YOYTp", "Quick Setup"), []);
 
   const [loadLeftPage, onloadLeftPage] = useState("");

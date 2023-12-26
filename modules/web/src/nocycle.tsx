@@ -53,6 +53,7 @@ export let copy = function (ctn: string, showMsg?: boolean) {
     obj.select();
     document.execCommand("Copy");
     if (showMsg) {
+      //
     }
   }
 };
