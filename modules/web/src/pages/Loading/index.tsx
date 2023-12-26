@@ -76,7 +76,7 @@ import { KEY_CONCURRENCY_SYSTEM_INIT } from "../../types/constants";
 
 const InitSystemEnv = () => {
   let sysObj = eUtils.useSelector((val) => ({
-    HasInitSystemEnv: val.system.HasInitSystemEnv,
+    LoadSystemData: val.system.LoadSystemData,
     ProgressText: val.system.SysInitStatus.ProgressText,
     ProgressError: val.system.SysInitStatus.ProgressError,
     HasError: val.system.SysInitStatus.HasError,

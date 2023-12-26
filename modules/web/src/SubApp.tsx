@@ -44,7 +44,7 @@ function App() {
     lang: val.forge.Language,
   }));
   let systemObj = exportUtils.useSelector((val) => ({
-    HasInitSystemEnv: val.system.HasInitSystemEnv,
+    LoadSystemData: val.system.LoadSystemData,
   }));
   let queryAuthStatus = AuthHookUtils.useQueryAuthStatus();
   let hotkeys = [
@@ -83,13 +83,13 @@ function App() {
   let isUserSignInNow =
     !forgeObj.HasUserSelectedOption ||
     (!queryAuthStatus.isFetching && !queryAuthStatus.HasLogin);
-  let isEnvNotInit = !systemObj.HasInitSystemEnv;
+  let isEnvNotLoad = !systemObj.LoadSystemData;
   let dis = exportUtils.dispatch();
   useEffect(() => {
-    if (!(isUserSignInNow || isEnvNotInit)) {
+    if (!(isUserSignInNow || isEnvNotLoad)) {
       InitUtils.InitAllWithDOMAfterLoginIn(dis);
     }
-  }, [isUserSignInNow, isEnvNotInit]);
+  }, [isUserSignInNow, isEnvNotLoad]);
 
   useEffect(() => {
     if (IsDevMode()) {
@@ -113,7 +113,7 @@ function App() {
     };
   }, []);
 
-  if (isEnvNotInit) {
+  if (isEnvNotLoad) {
     innerJSX = <InitSystemEnv key="init-system-env" />;
   } else if (isUserSignInNow) {
     innerJSX = <UserAskMultipleDialogs />;

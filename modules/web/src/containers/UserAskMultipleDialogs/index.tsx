@@ -117,7 +117,7 @@ export default (props: PassProps) => {
     lang: val.forge.Language,
   }));
   // let sysObj = exportUtils.useSelector((val) => ({
-  //   HasInitSystemEnv: val.system.HasInitSystemEnv,
+  //   LoadSystemData: val.system.LoadSystemData,
   // }));
   let dis = exportUtils.dispatch();
   React.useEffect(() => {

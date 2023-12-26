@@ -79,7 +79,7 @@ export type PageDataInitedMap = {
 interface SystemState {
   LoadingForPageData?: boolean;
   PageDataInitedMap: PageDataInitedMap;
-  HasInitSystemEnv: boolean;
+  LoadSystemData: boolean;
   RefreshID: number;
   SysInitStatus: InitStatus;
   LangIncrement: string;
@@ -101,7 +101,7 @@ const initialState: SystemState = {
   RefreshID: 0,
   PageDataInitedMap: {},
   LoadingForPageData: false,
-  HasInitSystemEnv: false,
+  LoadSystemData: false,
   SysInitStatus: newSysInitStatus(),
   LangIncrement: "d",
   MessageObjectKVMap: {},
@@ -150,7 +150,7 @@ const systemSlice = createSlice({
       state.SysInitStatus = newSysInitStatus();
     },
     markAllAsCompleted: (state, action) => {
-      state.HasInitSystemEnv = true;
+      state.LoadSystemData = true;
     },
     markIfRefreshing: (state, action: IsLoadingType) => {
       state.LoadingForPageData = action.payload.isLoading;
@@ -275,8 +275,8 @@ export const ACTION_callInitAllDataAtOnceFromInitSystemEnv = (): any => {
 };
 export const ACTION_initAllDataAtOnce = (): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
-    if (ALL_NOCYCLE.store?.getState().system.HasInitSystemEnv) {
-      logutils.debug("HasInitSystemEnv already there");
+    if (ALL_NOCYCLE.store?.getState().system.LoadSystemData) {
+      logutils.debug("LoadSystemData already there");
       return;
     }
 
