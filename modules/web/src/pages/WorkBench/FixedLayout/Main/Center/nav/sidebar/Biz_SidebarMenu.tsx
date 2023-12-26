@@ -183,13 +183,24 @@ export let SidebarMenu = (props: TabNavProp): any => {
       },
       {
         desc: Dot(
-          "dk122q",
-          "Manage your workflows to combine multiple tools together."
+          "82r0C",
+          "Manage your TODO list, and get things done more efficiently."
         ),
-        icon: "new-layers",
-        id: "flows",
-        label: Dot("1bd", "Workflow"),
+        icon: "generate",
+        id: "todo",
+        label: "TODO",
       },
+      /**
+      {
+         desc: Dot(
+           "dk122q",
+           "Manage your workflows to combine multiple tools together."
+         ),
+         icon: "new-layers",
+         id: "flows",
+         label: Dot("1bd", "Workflow"),
+       },
+       */
     ];
     return tmparr.map(fn_format_menu);
   }, [val_memo_deps]);

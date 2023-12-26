@@ -22,5 +22,7 @@ import Blink from "../../../../../../../../components/Blink";
 export default (props: SessionViewProp) => {
     let sessionType = props.sessionType
     let sessionId = props.sessionId;
-    return <div>this is terminal {sessionId}</div>
+    return <div className="p-2">this is terminal {sessionId}<br />
+        It's still under development
+    </div>
 }
