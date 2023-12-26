@@ -2,6 +2,7 @@
 
 [x] revise About This Software modal
 [] better sign-in form layout
+[] separte sign in page. firstly quick settle Language + Theme, then let redirect users to sign in or sign up page.
 [] complete cloud account sign-in
 [] add duplicate button on the right top conner of each editor
 [] for paid service, focus on cloud service
