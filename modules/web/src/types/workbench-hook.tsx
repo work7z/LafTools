@@ -152,16 +152,29 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
         id: ID_MANUAL,
         label: Dot("YrVqdd683", "Manuals"),
       },
+      /**
+          {
+             desc: Dot(
+               "qWw3eTH",
+               "This part helps to maintain files on your local disk or cloud disk."
+             ),
+             // pathname: URL_WORKBENCH_FILES,
+             icon: "folder-close",
+             panel: InnerFilePanel,
+             id: ID_FILES,
+             label: Dot("znVRwq", "Files"),
+           },
+       */
       {
         desc: Dot(
-          "qWw3eTH",
-          "This part helps to maintain files on your local disk or cloud disk."
+          "p8Ec1s",
+          "There are various tools that leverage AI technologies to perform tasks more efficiently."
         ),
         // pathname: URL_WORKBENCH_FILES,
-        icon: "folder-close",
+        icon: "lab-test",
         panel: InnerFilePanel,
         id: ID_FILES,
-        label: Dot("znVRwq", "Files"),
+        label: Dot("10SZw", "AI Lah"),
       },
       {
         desc: Dot("Ttrqqet", "Write and Save your thoughts here!"),
