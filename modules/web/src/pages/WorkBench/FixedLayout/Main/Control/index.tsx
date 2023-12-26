@@ -254,7 +254,7 @@ export let WB_ControllerBar = () => {
       disabled: false,
       tooltip: Dot("c0eCw", "Translate your text into any language you want."),
       intent: Intent.NONE,
-      id: "translate",
+      id: "translation",
     },
     // when the user click any menu, then
     {

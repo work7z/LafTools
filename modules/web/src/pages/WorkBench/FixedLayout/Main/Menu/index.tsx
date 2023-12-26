@@ -126,7 +126,7 @@ let AboutThisSoftware = () => {
     <div className="center flex flex-col  m-auto w-full self-center">
       <p className="text-center flex items-center p-4 justify-center flex-col bg-slate-200 dark:bg-slate-600" style={{ textAlign: 'center' }}>
         <img style={{ width: "50px" }} src={"/static/" + getIconPngFile()}></img>
-        <p className="mt-2">{Dot("k41a5","LafTools")}({APPINFOJSON.version})</p>
+        <p className="mt-2">{Dot("k41a5", "LafTools")}({APPINFOJSON.version})</p>
       </p>
       <h3><b>{Dot("aked61", "Introduction")}</b></h3>
       <p>
@@ -527,6 +527,25 @@ export let WB_MenuBar = (props: PassProp) => {
               icon={"cog"}
               onClick={() => {
                 dis(forgeSlice.actions.updateDarkMode({ isDark: !val_1.dark }));
+              }}
+            />
+          </Tooltip>
+          <Tooltip content={Dot("DVoKw", "Sign out this System")} position="bottom">
+            <Button
+              className={Classes.MINIMAL}
+              small={true}
+              intent={"none"}
+              // title={Dot(`BuihG`, `System Settings`)}
+              // text={APPINFOJSON.version}
+              icon={"power"}
+              onClick={async () => {
+                if (await AlertUtils.win_confirm_promise({
+                  id: "8KF41kd",
+                  msg: Dot("az4uS2", "Are you sure to sign out this system? Note that you will be redirected to the login page.")
+                })) {
+                  //
+                }
+                // dis(forgeSlice.actions.updateDarkMode({ isDark: !val_1.dark }));
               }}
             />
           </Tooltip>

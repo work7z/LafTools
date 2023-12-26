@@ -161,7 +161,7 @@ export default () => {
       ></SysTabPane>
     );
   }
-  if (bottomId == "translate") {
+  if (bottomId == "translation") {
     return (
       <SysTabPane
         crtLeftNavId="drawer"

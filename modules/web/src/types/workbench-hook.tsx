@@ -177,8 +177,8 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
 
       {
         desc: Dot(
-          "p8Exc1s",
-          "There are various tools that leverage AI technologies to perform tasks more efficiently in AI Lab."
+          "p8Exxc1s",
+          "There are various tools that leverage AI technologies to perform tasks more efficiently in AI Laboratory."
         ),
         // pathname: URL_WORKBENCH_FILES,
         icon: "lab-test",
@@ -224,6 +224,7 @@ export let useSearchQuery = (): PageQueryType => {
     });
   _.defaultsDeep(obj, {
     f: "tools",
+    b: "translation"
   });
   return obj as any;
 };
