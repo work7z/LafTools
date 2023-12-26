@@ -81,7 +81,7 @@ import { FN_GetDispatch } from "../../nocycle";
 
 
 export type SessionViewProp = {
-    sessionId: string | null; // if null, then no session is selected
+    sessionId: string; // if null, then no session is selected
     sessionType: string
 };
 
@@ -123,7 +123,7 @@ export default (props: PassProps) => {
                 }
             })
         )
-    }, [_.size(sessionList),activeSessionId])
+    }, [_.size(sessionList), activeSessionId])
     // render
     let Body = props.body;
     let [hoverId, onHoverId] = useState<string | null>(null)

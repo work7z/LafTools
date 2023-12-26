@@ -23,11 +23,11 @@ import GenCodeMirror from "../../../../../../../components/GenCodeMirror";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../../../../../../../types/workbench-types";
 import { Allotment, AllotmentHandle } from "allotment";
-import { FN_GetDispatch, getAjaxResPayloadValue, getAjaxResPayloadValueAsString } from "../../../../../../../nocycle";
-import { FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../actions/bigtext_action";
+import { FN_GetDispatch, FN_GetState, getAjaxResPayloadValue, getAjaxResPayloadValueAsString } from "../../../../../../../nocycle";
+import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../actions/bigtext_action";
 import AjaxUtils from "../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../utils/AlertUtils";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import _ from 'lodash'
 import { useGetI18nLangList } from "../../../../../../../containers/UserAskMultipleDialogs";
 import { SessionViewProp } from "../../../../../../../containers/MultipleSessionLeftView";
@@ -35,6 +35,7 @@ import { NoAvailableDataPanel, NoAvailablePanel } from "../../../../../../../typ
 import exportUtils from "../../../../../../../utils/ExportUtils";
 import SessionSlice, { SessionAttr } from "../../../../../../../reducers/container/sessionSlice";
 import { EachLang } from "../../../../../../../types/purejs-types-READ_ONLY";
+import Blink from "../../../../../../../components/Blink";
 
 type SrcTarget = "source" | "target";
 
@@ -112,25 +113,29 @@ export default (props: SessionViewProp) => {
   let sessionId = props.sessionId;
   let textInputId = sessionId + "ipt";
   let textOutputId = sessionId + "opt";
+  let [load, onLoad] = useState<boolean>(false);
   let sessionAttrOrNull: SessionAttr | null = exportUtils.useSelector(v => {
     if (!sessionId) { return null }
-    // TODO: fix this part
     let sessionObj = v.session.sessionTypeKVMap[sessionType]
     if (!sessionObj || !sessionObj?.sessionMap) return null;
-    return sessionObj?.sessionMap[sessionId] 
+    return {
+      ...sessionObj.sessionMap[sessionId]
+    }
   })
-  let fn_textChg = useCallback(_.throttle(async (val) => {
-    // SourceLang string
-    // TargetLang string
-    // Type       string
-    // Text       string
+  let fn_textChg = useCallback(async (val) => {
+    let sessionObj = FN_GetState().session.sessionTypeKVMap[sessionType]
+    if (!sessionObj) return;
+    let map = sessionObj.sessionMap
+    if (!map || !sessionId) return;
+    let sl = map[sessionId].T_SourceLang
+    let tl = map[sessionId].T_TargetLang
     let r = await AjaxUtils.DoLocalRequestWithNoThrow({
       url: "/translation/text/translate",
       isPOST: true,
       data: {
-        sessionId:sessionId,
-        SourceLang: sessionAttrOrNull?.T_SourceLang,
-        TargetLang: sessionAttrOrNull?.T_TargetLang,
+        sessionId: sessionId,
+        SourceLang: sl,
+        TargetLang: tl,
         Type: 'text',
         Text: val,
       },
@@ -143,8 +148,13 @@ export default (props: SessionViewProp) => {
     FN_GetDispatch()(
       FN_SetTextValueFromOutSideByBigTextId(textOutputId, ajaxResValue as string)
     )
-  }, 200), [textInputId])
-
+    onLoad(false)
+  }, [textInputId, sessionAttrOrNull, sessionAttrOrNull?.T_SourceLang, sessionAttrOrNull?.T_TargetLang])
+  let refreshNow = async () => {
+    onLoad(true)
+    await fn_textChg(FN_GetActualTextValueByBigTextId(textInputId))
+    onLoad(false)
+  }
   if (!sessionId) {
     return <NoAvailableDataPanel></NoAvailableDataPanel>
   }
@@ -158,17 +168,22 @@ export default (props: SessionViewProp) => {
       >
         <div>
           <Button
+            onClick={() => {
+              refreshNow()
+            }}
+            loading={load}
             icon="search-text"
             small
             intent="primary"
             text={Dot("bjZyW", "Translate")}
           ></Button>
         </div>
+        {/* {load ? <Blink min={3} max={5} ></Blink> : ''} */}
         <div
-          className="absolute left-[50%] "
-          style={{
-            transform: "translateX(-50%)",
-          }}
+        // className="absolute left-[50%] "
+        // style={{
+        //   transform: "translateX(-50%)",
+        // }}
         >
           <LanguageChooser
             onSelectLanguage={(val: EachLang) => {
@@ -184,13 +199,30 @@ export default (props: SessionViewProp) => {
                     sessionType
                   })
                 )
+                refreshNow()
               }
             }}
-            lang={sessionAttrOrNull?.T_SourceLang || 'en_US'}
+            lang={sessionAttrOrNull?.T_SourceLang || 'N/A'}
             isSource={true}
             label={Dot("jJuNz", "Source Language")}
           ></LanguageChooser>
-          <Button minimal small intent="none" icon="swap-horizontal"></Button>
+          <Button onClick={() => {
+            // update T_SourceLang
+            if (sessionId) {
+              FN_GetDispatch()(
+                SessionSlice.actions.updateSessionMapByAttrKey({
+                  sessionMapValue: {
+                    ...(sessionAttrOrNull || {}),
+                    T_SourceLang: sessionAttrOrNull?.T_TargetLang,
+                    T_TargetLang: sessionAttrOrNull?.T_SourceLang,
+                  },
+                  sessionMapKey: sessionId,
+                  sessionType
+                })
+              )
+              refreshNow()
+            }
+          }} minimal small intent="none" icon="swap-horizontal"></Button>
           <LanguageChooser
             onSelectLanguage={(val: EachLang) => {
               // update T_SourceLang
@@ -205,10 +237,11 @@ export default (props: SessionViewProp) => {
                     sessionType
                   })
                 )
+                refreshNow()
               }
             }}
             isSource={false}
-            lang={sessionAttrOrNull?.T_TargetLang || 'zh_CN'}
+            lang={sessionAttrOrNull?.T_TargetLang || 'N/A'}
             label={Dot("TwFcr", "Target Language")}
           ></LanguageChooser>
         </div>

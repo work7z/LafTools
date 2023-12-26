@@ -51,7 +51,11 @@ type SessionState = {
 };
 
 const initialState: SessionState = {
-    sessionTypeKVMap: {}
+    sessionTypeKVMap: {
+        translation: {
+
+        }
+    }
 };
 
 
@@ -96,14 +100,6 @@ const SessionSlice = createSlice({
                 state.sessionTypeKVMap[sessionType].sessionMap = sessionMap;
             }
         },
-        // update sessionMap by sessionType
-        updateSessionMap: (state, action: PayloadAction<{ sessionType: string, sessionMap: SessionMapAttr }>) => {
-            const { sessionType, sessionMap } = action.payload;
-            if (!state.sessionTypeKVMap[sessionType]) {
-                state.sessionTypeKVMap[sessionType] = {}
-            }
-            state.sessionTypeKVMap[sessionType].sessionMap = sessionMap;
-        },
         // make default value for sessionMap
         updateDefaultSessionMap: (state,
             action: PayloadAction<{ sessionType: string, item: SessionEntireMapItem }>) => {
@@ -122,7 +118,7 @@ const SessionSlice = createSlice({
             if (activeIdIdx == -1) {
                 let b = _.first(crtObj.sessionList)?.id
                 if (b) {
-                    crtObj.activeId = b+""
+                    crtObj.activeId = b + ""
                 }
             }
             if (!crtObj.sessionMap) {

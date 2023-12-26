@@ -31,17 +31,15 @@ import bigtextSlice, { TextKVStatus } from "../reducers/bigTextSlice";
  */
 export let FN_GetActualTextValueByBigTextId = (
   bigTextId: string
-): ((...args: any) => string) => {
-  return (dis): string => {
-    let stMap = FN_GetState().bigtext.textKVStatusMap[bigTextId];
-    if (_.isNil(stMap)) {
-      return "";
-    }
-    if (stMap.internalValue) {
-      return stMap.internalValue;
-    }
-    return stMap.value;
-  };
+): string => {
+  let stMap = FN_GetState().bigtext.textKVStatusMap[bigTextId];
+  if (_.isNil(stMap)) {
+    return "";
+  }
+  if (stMap.internalValue) {
+    return stMap.internalValue;
+  }
+  return stMap.value;
 };
 
 export let FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY = (

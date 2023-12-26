@@ -41,7 +41,7 @@ export let getWorkspaceIdFromPath = (): string => {
       return workspaceId;
     }
   } catch (e) {
-    console.log(e);
+    // console.log(e);
   }
   let reg = /workbench\/(\w+)/g;
   let arr = reg.exec(location.href);
