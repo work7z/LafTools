@@ -81,9 +81,10 @@ import { FN_ACTION_CloseMenu_ltr } from "../../../../../../../actions/layout_act
 import { useSearchQuery } from "../../../../../../../types/workbench-hook";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
 // import MultipleSessionLeftView from "../../../containers/MultipleSessionLeftView/index";
-import TextTranslator from "./TextTranslator";
+import TextTranslator from "./Translator/TextTranslator";
 import MultipleSessionLeftView from "../../../../../../../containers/MultipleSessionLeftView";
-import MultipleTextTranslator from './MultipleTextTranslator'
+import MultipleTextTranslator from './Translator/MultipleTextTranslator'
+import MultipleTerminal from "./Terminal/MultipleTerminal";
 
 export default () => {
   let sq = useSearchQuery();
@@ -106,6 +107,24 @@ export default () => {
   );
 
   // business logic ifelse
+  // TODO: dictionary, terminal
+  if (bottomId == "terminal") {
+    return (
+      <SysTabPane
+        crtLeftNavId="drawer"
+        leftNavList={[
+          {
+            label: Dot("8M1wY", "Local Terminal"),
+            value: "local-terminal",
+          },
+        ]}
+        rightCtrls={fn_rightCtrl_common}
+        children={
+          <MultipleTerminal />
+        }
+      ></SysTabPane>
+    );
+  }
   if (bottomId == "translate") {
     return (
       <SysTabPane

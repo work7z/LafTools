@@ -101,13 +101,14 @@ export default (props: PassProp): any => {
           }
         }}
         className={edgeClz + " "}
-        rightElement={<ButtonGroup>
+        rightElement={<ButtonGroup className="flex absolute right-0 top-0">
           <Button small icon="small-tick"
             onClick={fn_confirm}
           ></Button>
           <Button small icon="small-cross" onClick={fn_cancel}></Button>
         </ButtonGroup>}
-        fill placeholder={Dot("FDlRI", "Name this new tab and click to confirm it.")}></InputGroup>
+        // fill 
+        placeholder={Dot("FDlRI", "Name this new tab and click to confirm it.")}></InputGroup>
     </div>
   }
   return <Button fill text={Dot("bT4R6", "New Tab")} onClick={() => {

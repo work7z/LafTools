@@ -30,8 +30,15 @@ export type TranslationSessionMapAttr = {
     T_TargetLang: string
 }
 
+export type TerminalSessionMapAttr = {
+    //
+}
 // attrName to attrValue, here we can save their settings, session val, etc...    
-export type SessionAttr = Partial<TranslationSessionMapAttr & {}>
+export type SessionAttr = Partial<
+    TranslationSessionMapAttr
+    &
+    TerminalSessionMapAttr
+>
 export type SessionMapAttr = {
     [key: string]: SessionAttr
 }

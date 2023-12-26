@@ -71,19 +71,19 @@ import {
   APPINFOJSON,
   FN_GetDispatch,
   delayFN,
-} from "../../../../../../../nocycle";
+} from "../../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
-import gutils from "../../../../../../../utils/GlobalUtils";
+import gutils from "../../../../../../../../utils/GlobalUtils";
 import _ from "lodash";
-import { SysTabPane } from "../../../../../../../components/SysTabPane";
-import { FN_ACTION_CloseMenu_ltr } from "../../../../../../../actions/layout_action";
-import { useSearchQuery } from "../../../../../../../types/workbench-hook";
-import { Dot } from "../../../../../../../utils/TranslationUtils";
+import { SysTabPane } from "../../../../../../../../components/SysTabPane";
+import { FN_ACTION_CloseMenu_ltr } from "../../../../../../../../actions/layout_action";
+import { useSearchQuery } from "../../../../../../../../types/workbench-hook";
+import { Dot } from "../../../../../../../../utils/TranslationUtils";
 // import MultipleSessionLeftView from "../../../containers/MultipleSessionLeftView/index";
 import TextTranslator from "./TextTranslator";
-import MultipleSessionLeftView from "../../../../../../../containers/MultipleSessionLeftView";
+import MultipleSessionLeftView from "../../../../../../../../containers/MultipleSessionLeftView";
 
 
 export default () => {
