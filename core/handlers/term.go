@@ -24,7 +24,6 @@ import (
 	"encoding/json"
 	"laftools-go/core/log"
 	"laftools-go/core/project/base/pty"
-	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -68,25 +67,27 @@ func HandleTermWS(c *gin.Context) {
 }
 
 // opt ws
-func HandleOptWS(w http.ResponseWriter, r *http.Request) {
-	log.Ref().Info("Received Opt Request: ", r.URL)
-	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
-	c, err := upgrader.Upgrade(w, r, nil)
+func HandleOptWS(c *gin.Context) {
+
+	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
-		log.Ref().Info("upgrade:", err)
+		return
+	}
+	if !VerifyWSRequest(c) {
+		returnInvalidWS(ws)
+		return
+	}
+
+	r := c.Request
+	if !VerifyWSRequest(c) {
+		returnInvalidWS(ws)
 		return
 	}
 	log.Ref().Info("Interact with ", r.URL.RawQuery)
-	// TODO: verify permission
-	// concerto.Token
-	// if !strings.Contains(r.URL.RawQuery, pty.concerto.Token) {
-	// 	log.Ref().Error("Unable got the Token", r.URL.RawQuery)
-	// 	return
-	// }
-	defer c.Close()
+	defer ws.Close()
 	for {
 		log.Ref().Info("looped here, receiving the Message...")
-		mt, message, err := c.ReadMessage()
+		mt, message, err := ws.ReadMessage()
 		if err != nil {
 			log.Ref().Error("read:", err)
 			break

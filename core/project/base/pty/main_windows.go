@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Wed, 27 Dec 2023
 // Author: LafTools Team - Ubuntu <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,19 +24,18 @@
 package pty
 
 import (
-	"net/http"
-	"os"
-)
-import (
 	"bufio"
 	"bytes"
 	"encoding/json"
 	"flag"
-	"github.com/gorilla/websocket"
-	"github.com/iamacarpet/go-winpty"
 	"io"
 	"log"
+	"net/http"
+	"os"
 	"unicode/utf8"
+
+	"github.com/gorilla/websocket"
+	"github.com/iamacarpet/go-winpty"
 )
 
 var shared_term_inst_map = make(map[string]*winpty.WinPTY)
@@ -119,7 +118,7 @@ func (wp *wsPty) writePump() {
 		i := 0
 		for i < n {
 			char, charLen, e := runeReader.ReadRune()
-			if e != nil {„
+			if e != nil {
 				log.Printf("Failed to read from pty master 2: %s", err)
 				wp := wsPty{ws: wp.ws, token: wp.token}
 				wp.Start()
@@ -150,7 +149,7 @@ func (wp *wsPty) writePump() {
 //prev_tty.Close()
 //}
 
-func internalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocket.Conn) {
+func InternalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocket.Conn) {
 	var token = r.URL.Query().Get("Token")
 	wp := wsPty{ws: conn, token: token}
 	wp.Start()
@@ -160,7 +159,7 @@ func internalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocke
 	wp.readPump()
 }
 
-func internalHandleResize(inst_OptWSRequest OptWSRequest, token string) {
+func InternalHandleResize(inst_OptWSRequest OptWSRequest, token string) {
 	var prev_pty = shared_term_inst_map[token]
 	if prev_pty != nil {
 		prev_pty.SetSize(uint32(inst_OptWSRequest.Rows), uint32(inst_OptWSRequest.Cols))

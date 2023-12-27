@@ -21,7 +21,10 @@ require (
 	google.golang.org/protobuf v1.31.0
 )
 
-require github.com/creack/pty v1.1.9 // indirect
+require (
+	github.com/creack/pty v1.1.9 // indirect
+	github.com/iamacarpet/go-winpty v1.0.4 // indirect
+)
 
 require (
 	github.com/bas24/googletranslatefree v0.0.0-20231117033553-f5859fe54d30
