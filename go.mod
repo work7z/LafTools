@@ -21,6 +21,8 @@ require (
 	google.golang.org/protobuf v1.31.0
 )
 
+require github.com/creack/pty v1.1.9 // indirect
+
 require (
 	github.com/bas24/googletranslatefree v0.0.0-20231117033553-f5859fe54d30
 	github.com/bytedance/sonic v1.10.1 // indirect
@@ -40,6 +42,7 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.5 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
+	github.com/kr/pty v1.1.8
 	github.com/leodido/go-urn v1.2.4 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
