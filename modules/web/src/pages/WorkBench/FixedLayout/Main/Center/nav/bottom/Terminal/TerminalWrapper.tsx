@@ -508,14 +508,14 @@ class TerminalWrapper extends React.PureComponent<{ SessionId: string }, Termina
                     <div className={`${["gterm-header"]} `}>
                         <div className="sub-mr-5 ">
                             {[
-                                {
-                                    intent: "primary",
-                                    text: Dot("pA_feeJ", `Reconnect Terminal`),
-                                    onClick: async () => {
-                                        await this.reconnectTerminal();
-                                        AlertUtils.popOK(Dot("JQLmSq", "Completed."))
-                                    },
-                                },
+                                // {
+                                //     intent: "primary",
+                                //     text: Dot("pA_feeJ", `Reconnect Terminal`),
+                                //     onClick: async () => {
+                                //         await this.reconnectTerminal();
+                                //         AlertUtils.popOK(Dot("JQLmSq", "Completed."))
+                                //     },
+                                // },
                                 {
                                     intent: "none",
                                     text: Dot("dsdpA_eJ", `Adjust Size`),
@@ -551,31 +551,32 @@ class TerminalWrapper extends React.PureComponent<{ SessionId: string }, Termina
                         </div>
                         <div className="sub-ml-5 ">
                             {[
-                                {
-                                    intent: "none",
-                                    text: ``,
-                                    icon: "plus",
-                                    onClick: () => {
-                                        // this.props.PUtils.crtModel.config.fontSize++;
-                                    },
-                                },
-                                {
-                                    intent: "none",
-                                    text: ``,
-                                    icon: "minus",
-                                    onClick: () => {
-                                        // this.props.PUtils.crtModel.config.fontSize--;
-                                    },
-                                },
-                                {
-                                    intent: "primary",
-                                    text: ``,
-                                    icon: "cog",
-                                    onClick: () => {
-                                        // gstore.localUserConfig.drawer.open = true;
-                                        // gstore.localUserConfig.drawer.tabId = "processes";
-                                    },
-                                },
+                                // TODO: support plus + minus button
+                                // {
+                                //     intent: "none",
+                                //     text: ``,
+                                //     icon: "plus",
+                                //     onClick: () => {
+                                //         // this.props.PUtils.crtModel.config.fontSize++;
+                                //     },
+                                // },
+                                // {
+                                //     intent: "none",
+                                //     text: ``,
+                                //     icon: "minus",
+                                //     onClick: () => {
+                                //         // this.props.PUtils.crtModel.config.fontSize--;
+                                //     },
+                                // },
+                                // {
+                                //     intent: "primary",
+                                //     text: ``,
+                                //     icon: "cog",
+                                //     onClick: () => {
+                                //         // gstore.localUserConfig.drawer.open = true;
+                                //         // gstore.localUserConfig.drawer.tabId = "processes";
+                                //     },
+                                // },
                             ].map(fn_mapBtn)}
                         </div>
                     </div>
