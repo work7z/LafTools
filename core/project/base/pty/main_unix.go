@@ -1,3 +1,6 @@
+//go:build !windows
+// +build !windows
+
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
 // Date: Wed, 27 Dec 2023
@@ -17,9 +20,6 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-//go:build !windows
-// +build !windows
 
 package pty
 
@@ -62,7 +62,7 @@ func init_tty(w http.ResponseWriter, r *http.Request, conn *websocket.Conn) (*ex
 
 // term request
 func InternalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocket.Conn) {
-	log.Ref().Info("remoteaddr", r.RemoteAddr)
+	log.Ref().Info("remoteaddr" + r.RemoteAddr)
 
 	cmd, tty := init_tty(w, r, conn)
 
@@ -104,7 +104,7 @@ func InternalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocke
 			log.Ref().Errorf("Error after copying %d bytes", copied)
 			cmd, tty = init_tty(w, r, conn)
 		} else {
-			log.Ref().Info("Copied %d bytes", copied)
+			log.Ref().Info("Copied bytes " + string(copied))
 		}
 	}
 }
@@ -112,13 +112,13 @@ func InternalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocke
 func InternalHandleResize(inst_OptWSRequest OptWSRequest, token string) {
 	log.Ref().Debug("handling the opt resize event...", inst_OptWSRequest)
 	var tty = shared_term_inst_map[token]
-	log.Ref().Debug("Token is ", token)
+	log.Ref().Debugf("Token is " + token)
 	if tty != nil {
 		log.Ref().Debug("has the tty value")
 		resizeMessage := windowSize{}
 		resizeMessage.Cols = inst_OptWSRequest.Cols
 		resizeMessage.Rows = inst_OptWSRequest.Rows
-		log.Ref().Debug("resizeMessage", resizeMessage)
+		// log.Ref().Debug("resizeMessage", resizeMessage)
 		log.Ref().Info("Resizing terminal")
 		_, _, errno := syscall.Syscall(
 			syscall.SYS_IOCTL,

@@ -55,7 +55,7 @@ func HandleTermWS(c *gin.Context) {
 		return
 	}
 
-	log.Ref().Info("Interact with ", r.URL.RawQuery)
+	log.Ref().Info("Interact with " + r.URL.RawQuery)
 	// concerto.Token
 
 	if !VerifyWSRequest(c) {
@@ -83,19 +83,18 @@ func HandleOptWS(c *gin.Context) {
 		returnInvalidWS(ws)
 		return
 	}
-	log.Ref().Info("Interact with ", r.URL.RawQuery)
+	log.Ref().Info("Interact with " + r.URL.RawQuery)
 	defer ws.Close()
 	for {
 		log.Ref().Info("looped here, receiving the Message...")
-		mt, message, err := ws.ReadMessage()
+		_, message, err := ws.ReadMessage()
 		if err != nil {
 			log.Ref().Error("read:", err)
 			break
 		}
-		log.Ref().Info("RECEIVED HERE: %s", string(message), mt)
+		log.Ref().Debugf("RECEIVED HERE: %s", string(message))
 		var inst_OptWSRequest pty.OptWSRequest
 		json.Unmarshal(message, &inst_OptWSRequest)
-		log.Ref().Info("inst_OptWSRequest -> ", inst_OptWSRequest)
 		if strings.Compare(inst_OptWSRequest.Type, "resize") == 0 {
 			var token = r.URL.Query().Get("Token")
 			pty.InternalHandleResize(inst_OptWSRequest, token)
