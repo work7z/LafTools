@@ -38,7 +38,7 @@ import { SysTabPane } from "../../../../../../../../components/SysTabPane";
 import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
-import {fn_format_description} from  "../../../../../../../../types/workbench-fn";
+import { fn_format_description } from "../../../../../../../../types/workbench-fn";
 import { CommonTransformerProps } from "./types";
 
 let controlBarHeight = VAL_CSS_CONTROL_PANEL;
@@ -145,6 +145,13 @@ let TextTransformerControl = (props: TextTransformerProps) => {
       onClick: () => {
         onColl_output(!isCollapsed_output);
       },
+    },
+    {
+      icon: "gantt-chart",
+      intent: "none" as any,
+      className: "none",
+      text: "",
+      title: Dot("i8q8tb", "Configure WorkFlow for Input"),
     },
   ];
   return (
@@ -399,7 +406,7 @@ export default (props: CommonTransformerProps) => {
   let commonPassProp: CommonTransformerPassProp = {
     ...props
   };
-  let extVM=props.extVM
+  let extVM = props.extVM
   let desc = fn_format_description(extVM?.Info?.DescriptionByInit)
   return (
     <div key={sessionId} className="w-full h-full relative">
@@ -412,7 +419,7 @@ export default (props: CommonTransformerProps) => {
       >
         <GenCodeMirror
           lineWrap
-          placeholder={desc||Dot("xPHqP","The description is not yet defined.")}
+          placeholder={desc || Dot("xPHqP", "The description is not yet defined.")}
           language="javascript"
           bigTextId={inputBigTextId}
         ></GenCodeMirror>

@@ -107,7 +107,7 @@ import { type } from "jquery";
 import apiSlice from "../../../../../../../../../reducers/apiSlice";
 import {
   ExtensionInfoFormatted as ExtensionInfo
-}from "../../../../../../../../../types/purejs-types-READ_ONLY";
+} from "../../../../../../../../../types/purejs-types-READ_ONLY";
 import QueryUtils, {
   getAjaxValueRes as getAjaxValueRes,
 } from "../../../../../../../../../utils/QueryUtils";
@@ -190,7 +190,7 @@ export default (props: {
         });
       });
     }
-    
+
     return tmp;
   }, [
     updateMemStatus,
@@ -423,7 +423,7 @@ export default (props: {
                         />
                       </Tooltip>
 
-                      <Tooltip content={Dot("lipPs", "Open it in new tab")}>
+                      <Tooltip content={Dot("E6F9B", "Add it into workflow")}>
                         <Button
                           small
                           minimal

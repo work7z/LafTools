@@ -2,6 +2,7 @@
 
 [x] revise About This Software modal
 [] terminal basic support  
+[] check if browser side is able to process all tools that we need. (so unbelievable, cool)
 [] when I click bottom button, the panel should also turn into active style.
 [] better sign-in form layout
 [] separte sign in page. firstly quick settle Language + Theme, then let redirect users to sign in or sign up page.
