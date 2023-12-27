@@ -123,9 +123,8 @@ export function P_ACTION_createSystemWS() {
   };
 }
 
-export function connectToWebSocket({ subLink }): WebSocket {
-  const ws = new WebSocket(
-    "ws://" +
+export let getWSLink = (subLink: string): string => {
+  return "ws://" +
     window.location.host +
     URL_PREFIX_LOCAL +
     subLink +
@@ -133,6 +132,11 @@ export function connectToWebSocket({ subLink }): WebSocket {
     TokenUtils.getLocalUserToken() +
     "&pd=" +
     IDUtils.PAGE_ID
+}
+
+export function connectToWebSocket({ subLink }): WebSocket {
+  const ws = new WebSocket(
+    getWSLink(subLink)
   );
   return ws;
 }

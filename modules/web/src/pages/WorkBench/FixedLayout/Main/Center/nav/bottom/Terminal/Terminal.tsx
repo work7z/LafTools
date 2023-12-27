@@ -28,7 +28,7 @@ import { FN_GetDispatch, FN_GetState, getAjaxResPayloadValue, getAjaxResPayloadV
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import _ from 'lodash'
 import { useGetI18nLangList } from "../../../../../../../../containers/UserAskMultipleDialogs";
 import { SessionViewProp } from "../../../../../../../../containers/MultipleSessionLeftView";
@@ -37,12 +37,25 @@ import exportUtils from "../../../../../../../../utils/ExportUtils";
 import SessionSlice, { SessionAttr } from "../../../../../../../../reducers/container/sessionSlice";
 import { EachLang } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import Blink from "../../../../../../../../components/Blink";
+import React, { useEffect, } from 'react';
+import { Terminal } from 'xterm';
+import "xterm/css/xterm.css";
+import * as Xterm from "xterm";
+import { FitAddon } from "xterm-addon-fit";
+import { SearchAddon } from "xterm-addon-search";
+import { WebLinksAddon } from "xterm-addon-web-links";
+import { SerializeAddon } from "xterm-addon-serialize";
+import { CanvasAddon } from "xterm-addon-canvas";
+import { AttachAddon } from "xterm-addon-attach";
+import zmodem from "zmodem.js/src/zmodem_browser";
+import { Unicode11Addon } from "xterm-addon-unicode11";
+import TerminalWrapper from "./TerminalWrapper";
 
 
 export default (props: SessionViewProp) => {
     let sessionType = props.sessionType
     let sessionId = props.sessionId;
-    return <div className="p-2">this is terminal {sessionId}<br />
-        It's still under development
+    return <div className="w-full h-full">
+        <TerminalWrapper />
     </div>
 }

@@ -24,7 +24,7 @@ import ALL_NOCYCLE, { IsDevMode, copy, getErrMsg } from "../nocycle";
 
 const STR_DEV_MODE = "DEV_MODE";
 
-function uuid(str = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"):string {
+function uuid(str = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"): string {
   return str
     .replace(/[xy]/g, function (c) {
       var r = (Math.random() * 16) | 0,
@@ -35,6 +35,7 @@ function uuid(str = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"):string {
 }
 
 const gutils = {
+  defer: setTimeout,
   copy: copy,
   ConvertStrToNumberOrZero(val: string | null): number {
     if (_.isNil(val)) {
@@ -83,10 +84,10 @@ const gutils = {
   },
   GetUserActualClientLang(): string {
     let finalLang = "en_US";
-    if(!navigator || !navigator.languages){
+    if (!navigator || !navigator.languages) {
       return finalLang
     }
-    navigator.languages.forEach(locale_str=>{
+    navigator.languages.forEach(locale_str => {
       if (locale_str == "zh-CN") {
         finalLang = "zh_CN";
       } else if (locale_str == "zh-TW" || locale_str == "zh-HK") {

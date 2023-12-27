@@ -179,11 +179,12 @@ func GetUserForgeFile(userId string) string {
 func GetUserWorkSpaceConfigFile(userId string) string {
 	return GetUserAnyKeyFile(userId, "workspace-config")
 }
-func shortenUserId(userId string) string {
-	return userId[0:8]
+func formatUserId(userId string) string {
+	return userId
+	// return userId[0:8]
 }
 func GetDefaultWorkSpaceDir(userId string) string {
-	return tools.MkdirFileWithStr(path.Join(global.GetAppDataDirectory(), shortenUserId(userId), "workspace", "laf-tools"))
+	return tools.MkdirFileWithStr(path.Join(global.GetAppDataDirectory(), formatUserId(userId), "workspace", "laf-tools"))
 }
 
 func GetTargetUserOwnFolder(userId string) string {

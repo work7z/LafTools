@@ -35,7 +35,10 @@ let rootInst = Toaster.create({
 });
 const AlertUtils = {
   // copyWithAlertCopied
-  copyWithAlertCopied(ctn: string) {
+  copyWithAlertCopied(ctn?: string) {
+    if (!ctn) {
+      ctn = ""
+    }
     copy(ctn);
     AlertUtils.popMsg(Intent.SUCCESS, {
       icon: "endorsed",
