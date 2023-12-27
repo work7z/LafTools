@@ -1,6 +1,8 @@
 # middle priorities
 
 [x] revise About This Software modal
+[] terminal basic support  
+[] when I click bottom button, the panel should also turn into active style.
 [] better sign-in form layout
 [] separte sign in page. firstly quick settle Language + Theme, then let redirect users to sign in or sign up page.
 [] complete cloud account sign-in
