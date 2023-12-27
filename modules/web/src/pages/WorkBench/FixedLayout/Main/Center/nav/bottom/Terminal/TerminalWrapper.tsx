@@ -119,7 +119,7 @@ type TerminalState = {
     }
 }
 type Fn = () => any
-class TerminalWrapper extends React.PureComponent<any, TerminalState> {
+class TerminalWrapper extends React.PureComponent<{ SessionId: string }, TerminalState> {
     term: Terminal | null = null;
     fitAddon: FitAddon | null = null;
     searchAddon: SearchAddon | null = null;
@@ -316,7 +316,7 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
     getConcatParams = (): string => {
         // TODO: combine sessionId
         return queryString.stringify({
-            SessionId: "123"
+            SessionId: this.props.SessionId
         })
     }
 

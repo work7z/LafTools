@@ -100,6 +100,7 @@ export const ID_FILES = "files";
 export const ID_AILah = "ai";
 export const ID_NOTES = "notes";
 export const ID_HISTORY = "history";
+export const ID_RESOURCES = "resources";
 
 // export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "left 0.3s, top 0.3s, width 0.3s, height 0.3s;";
 // export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "transform 0.3s, top 0.3s, width 0.3s, height 0.3s;";

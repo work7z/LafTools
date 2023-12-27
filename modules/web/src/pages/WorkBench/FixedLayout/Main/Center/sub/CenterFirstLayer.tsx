@@ -83,6 +83,7 @@ import { SidebarMenu } from "../nav/sidebar/Biz_SidebarMenu";
 import BottomNavView from "../nav/bottom";
 import layoutSlice from "../../../../../../reducers/layoutSlice";
 import { InnerCenterView } from "./CenterSecondaryLayer";
+import ResizeUtils from "../../../../../../utils/ResizeUtils";
 const snapMin = 100;
 
 export let REF_mainstage: {
@@ -182,6 +183,7 @@ export let MainStage = (props: { className: string }) => {
         onChange={(size) => {
           logutils.debug("size", size);
           fn_syncSizes.sync_Vertical(size);
+          ResizeUtils.trigger()
         }}
       >
         <Allotment.Pane>
@@ -195,6 +197,7 @@ export let MainStage = (props: { className: string }) => {
               onChange={(size) => {
                 logutils.debug("size", size);
                 fn_syncSizes.sync_Horizontal(size);
+                ResizeUtils.trigger()
               }}
             >
               <Allotment.Pane

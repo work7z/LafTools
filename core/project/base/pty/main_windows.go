@@ -29,9 +29,11 @@ import (
 	"encoding/json"
 	"flag"
 	"io"
+	"laftools-go/core/tools"
 	"log"
 	"net/http"
 	"os"
+	"path"
 	"unicode/utf8"
 
 	"github.com/gorilla/websocket"
@@ -52,14 +54,22 @@ type wsPty struct {
 	token string
 }
 
+func getPtyDir() string {
+	if tools.IsDevMode {
+		return path.Join(tools.LafToolsAppBaseDir, "parcel/patch/windows-x64")
+	} else {
+		return ""
+	}
+}
+
 func (wp *wsPty) Start() {
 	var err error
 	// If you want to use a location other than the same folder for the DLL and exe
 	// specify the path as the first param, e.g. winpty.Open(`C:\MYAPP\support`, cmdFlag)
 	// wp.Pty, err = winpty.Open("", cmdFlag)
-	wp.Pty, err = winpty.Open("C:\\Users\\jerrylai\\hmproject\\laf-tools\\parcel\\patch\\windows-x64", cmdFlag)
+	wp.Pty, err = winpty.Open(getPtyDir(), cmdFlag)
 	if err != nil {
-		log.Fatalf("Failed to start command: %s\n", err)
+		log.Printf("Failed to start command: %s\n", err)
 	}
 	//Set the size of the pty
 	wp.Pty.SetSize(200, 60)

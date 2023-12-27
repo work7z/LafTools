@@ -56,6 +56,6 @@ export default (props: SessionViewProp) => {
     let sessionType = props.sessionType
     let sessionId = props.sessionId;
     return <div className="w-full h-full">
-        <TerminalWrapper />
+        <TerminalWrapper SessionId={sessionId} />
     </div>
 }

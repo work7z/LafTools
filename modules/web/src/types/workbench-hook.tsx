@@ -98,6 +98,7 @@ import {
   ID_FILES,
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
+  ID_RESOURCES,
   ID_TOOLS,
 } from "../types/constants";
 import { type } from "jquery";
@@ -152,6 +153,16 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
         icon: "manual",
         id: ID_MANUAL,
         label: Dot("YrVqdd683", "Manuals"),
+      },
+      {
+        desc: Dot(
+          "5NJedqddqGsu1",
+          "This section includes computer resources that can be used to build your own projects."
+        ),
+        // pathname: URL_WORKBENCH_MANUAL,
+        icon: "book",
+        id: ID_RESOURCES,
+        label: Dot("cNQp_", "Resources"),
       },
       /**
           {
