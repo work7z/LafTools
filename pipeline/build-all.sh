@@ -77,7 +77,8 @@ build-be(){
     build-core darwin-x64 amd64 "core/app_unix.go" darwin
     build-core darwin-arm64 arm64 "core/app_unix.go" darwin
     build-core windows-x64 amd64 "core/app_windows.go" windows
-    build-core windows-arm64 arm64 "core/app_windows.go" windows
+    # TODO: windows-arm64 is not yet supported due to winpty, consider supporting it in the near future
+    # build-core windows-arm64 arm64 "core/app_windows.go" windows
 }
 
 clean-stuff(){

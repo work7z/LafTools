@@ -39,30 +39,31 @@ import { getWSLink } from "../../../../../../../../reducers/websocketSlice";
 import './TerminalWrapper.scss'
 
 let fontSize = 13;
+let themeConfig = {
+    foreground: "#bbbbbb",
+    background: "#141314",
+    cursor: "#b5bd68",
+    cursorAccent: "#1d1f21",
+    selectionBackground: "rgba(255, 255, 255, 0.3)",
+    black: "#575757",
+    red: "#FF2C6D",
+    green: "#19f9d8",
+    yellow: "#FFB86C",
+    blue: "#45A9F9",
+    magenta: "#FF75B5",
+    cyan: "#B084EB",
+    white: "#CDCDCD",
+    brightBlack: "#757575",
+    brightRed: "#FF2C6D",
+    brightGreen: "#19f9d8",
+    brightYellow: "#FFCC95",
+    brightBlue: "#6FC1FF",
+    brightMagenta: "#FF9AC1",
+    brightCyan: "#BCAAFE",
+    brightWhite: "#E6E6E6",
+}
 let termProps = {
-    themeConfig: {
-        foreground: "#bbbbbb",
-        background: "#141314",
-        cursor: "#b5bd68",
-        cursorAccent: "#1d1f21",
-        selectionBackground: "rgba(255, 255, 255, 0.3)",
-        black: "#575757",
-        red: "#FF2C6D",
-        green: "#19f9d8",
-        yellow: "#FFB86C",
-        blue: "#45A9F9",
-        magenta: "#FF75B5",
-        cyan: "#B084EB",
-        white: "#CDCDCD",
-        brightBlack: "#757575",
-        brightRed: "#FF2C6D",
-        brightGreen: "#19f9d8",
-        brightYellow: "#FFCC95",
-        brightBlue: "#6FC1FF",
-        brightMagenta: "#FF9AC1",
-        brightCyan: "#BCAAFE",
-        brightWhite: "#E6E6E6",
-    },
+    themeConfig,
 };
 let config = {
     hotkey: "Control+2",
@@ -154,19 +155,19 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
     // internal functions
     initTerminal = async () => {
         try {
+            debugger;
             await this.___updateSocketConfig({ silent: true });
             const { id } = this.state;
-            const { themeConfig, tab = {} } = this.props;
             const term = new Terminal({
                 allowProposedApi: true,
                 scrollback: config.scrollback,
                 rightClickSelectsWord: false,
-                fontFamily: tab.fontFamily || config.fontFamily,
+                fontFamily: config.fontFamily,
                 theme: themeConfig,
                 allowTransparency: true,
                 cursorStyle: "block",
                 cursorBlink: config.cursorBlink,
-                fontSize: tab.fontSize || config.fontSize,
+                fontSize: config.fontSize,
                 // rendererType: "canvas" as any,
             });
             this.term = term;
@@ -218,6 +219,7 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
             } else {
                 // To check, AlertUtils.popError(e)
             }
+            throw e;
         }
     };
 
@@ -232,7 +234,7 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
             this.optSocket.send(
                 JSON.stringify({
                     type: "quit",
-                    uid: this.props.uid,
+                    uid: this.state.id,
                 })
             );
         }
@@ -333,7 +335,7 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
                 this.optSocket.send(
                     JSON.stringify({
                         type: "resize",
-                        uid: this.props.uid,
+                        uid: this.state.id,
                         cols,
                         rows,
                     })
@@ -376,7 +378,7 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
 
     ___resumeHistory = async (term) => {
         // TODO: resume your history if needed
-        const str = '' // await ls.getItem(this.props.uid);
+        const str = '' // await ls.getItem(this.state.id);
         if (str) {
             term.write(str);
         }
@@ -391,7 +393,7 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
         gutils.defer(async () => {
             // TODO: resume your history if needed
             // const str = this.___serializeTerminalData();
-            // const id = createLsId(this.props.uid);
+            // const id = createLsId(this.state.id);
             // await ls.setItem(id, str);
         });
     }, 1500);
@@ -414,7 +416,6 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
     };
 
     render() {
-        const { themeConfig } = this.props;
         let isLoading = this.state.loading;
         let terminalService = this.state.terminalService;
         let notOK = terminalService.status != "OK";
@@ -545,7 +546,7 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
                                     text: ``,
                                     icon: "plus",
                                     onClick: () => {
-                                        this.props.PUtils.crtModel.config.fontSize++;
+                                        // this.props.PUtils.crtModel.config.fontSize++;
                                     },
                                 },
                                 {
@@ -553,7 +554,7 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
                                     text: ``,
                                     icon: "minus",
                                     onClick: () => {
-                                        this.props.PUtils.crtModel.config.fontSize--;
+                                        // this.props.PUtils.crtModel.config.fontSize--;
                                     },
                                 },
                                 {

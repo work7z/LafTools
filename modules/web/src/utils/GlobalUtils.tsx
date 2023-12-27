@@ -21,6 +21,7 @@
 import _ from "lodash";
 import { Dot } from "./TranslationUtils";
 import ALL_NOCYCLE, { IsDevMode, copy, getErrMsg } from "../nocycle";
+import { fn } from "jquery";
 
 const STR_DEV_MODE = "DEV_MODE";
 
@@ -35,7 +36,7 @@ function uuid(str = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"): string {
 }
 
 const gutils = {
-  defer: setTimeout,
+  defer: (fn: any) => setTimeout(fn, 0),
   copy: copy,
   ConvertStrToNumberOrZero(val: string | null): number {
     if (_.isNil(val)) {
