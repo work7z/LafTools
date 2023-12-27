@@ -37,6 +37,10 @@ import moment from "moment";
 import FileUtils from "../../../../../../../../utils/FileUtils";
 import { getWSLink } from "../../../../../../../../reducers/websocketSlice";
 import './TerminalWrapper.scss'
+import queryString from "query-string";
+
+// this is shit mountain from CodeGen ToolBox v1.x.x
+// TODO: refactor it with hook and fcp
 
 let fontSize = 13;
 let themeConfig = {
@@ -155,7 +159,6 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
     // internal functions
     initTerminal = async () => {
         try {
-            debugger;
             await this.___updateSocketConfig({ silent: true });
             const { id } = this.state;
             const term = new Terminal({
@@ -197,8 +200,8 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
             })
             await this.___resumeHistory(term);
             // init websocket
+            await this.___initTerm();
             await this.___initOpt();
-            await this.___initSocket();
             gutils.defer(() => {
                 this.fitAddon && this.fitAddon.fit();
             });
@@ -303,15 +306,22 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
                 loading: false,
                 loadingMsg: null,
             });
+            throw e;
         }
     };
 
     ___getWsHost = () => {
         return `ws://${window.location.host}`;
     };
+    getConcatParams = (): string => {
+        // TODO: combine sessionId
+        return queryString.stringify({
+            SessionId: "123"
+        })
+    }
 
     ___initOpt = async () => {
-        const wsUrl = getWSLink('/ws/pty/opt');
+        const wsUrl = getWSLink('/ws/pty/opt', this.getConcatParams());
         const socket = new WebSocket(wsUrl);
         this.optSocket = socket;
         // alert("Inited");
@@ -353,7 +363,7 @@ class TerminalWrapper extends React.PureComponent<any, TerminalState> {
         return `?token=${this.state.terminalService.token}`;
     };
 
-    ___initSocket = async () => {
+    ___initTerm = async () => {
         const { term } = this;
         if (!term) { return; }
         const wsUrl = getWSLink("/ws/pty/term");

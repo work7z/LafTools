@@ -56,7 +56,8 @@ func (wp *wsPty) Start() {
 	var err error
 	// If you want to use a location other than the same folder for the DLL and exe
 	// specify the path as the first param, e.g. winpty.Open(`C:\MYAPP\support`, cmdFlag)
-	wp.Pty, err = winpty.Open("", cmdFlag)
+	// wp.Pty, err = winpty.Open("", cmdFlag)
+	wp.Pty, err = winpty.Open("C:\\Users\\jerrylai\\hmproject\\laf-tools\\parcel\\patch\\windows-x64", cmdFlag)
 	if err != nil {
 		log.Fatalf("Failed to start command: %s\n", err)
 	}
@@ -150,7 +151,7 @@ func (wp *wsPty) writePump() {
 //}
 
 func InternalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocket.Conn) {
-	var token = r.URL.Query().Get("Token")
+	var token = r.URL.Query().Get("SessionId")
 	wp := wsPty{ws: conn, token: token}
 	wp.Start()
 	shared_term_inst_map[token] = wp.Pty

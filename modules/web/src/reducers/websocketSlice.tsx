@@ -123,7 +123,7 @@ export function P_ACTION_createSystemWS() {
   };
 }
 
-export let getWSLink = (subLink: string): string => {
+export let getWSLink = (subLink: string, extraParams = ""): string => {
   return "ws://" +
     window.location.host +
     URL_PREFIX_LOCAL +
@@ -131,7 +131,9 @@ export let getWSLink = (subLink: string): string => {
     "?lut=" +
     TokenUtils.getLocalUserToken() +
     "&pd=" +
-    IDUtils.PAGE_ID
+    IDUtils.PAGE_ID + (
+      extraParams == "" ? "" : "&" + extraParams
+    );
 }
 
 export function connectToWebSocket({ subLink }): WebSocket {

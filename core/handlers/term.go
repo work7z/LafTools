@@ -38,7 +38,9 @@ var upgrader = websocket.Upgrader{
 // term ws
 func HandleTermWS(c *gin.Context) {
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
+
 	if err != nil {
+		log.Ref().Error("Unable to upgrade connection", err)
 		return
 	}
 	if !VerifyWSRequest(c) {
@@ -49,11 +51,7 @@ func HandleTermWS(c *gin.Context) {
 	w := c.Writer
 	r := c.Request
 	log.Ref().Infof("remoteaddr, %s", r.RemoteAddr)
-	conn, err := upgrader.Upgrade(w, r, nil)
-	if err != nil {
-		log.Ref().Error("Unable to upgrade connection", err)
-		return
-	}
+	conn := ws
 
 	log.Ref().Info("Interact with " + r.URL.RawQuery)
 	// concerto.Token
@@ -96,7 +94,7 @@ func HandleOptWS(c *gin.Context) {
 		var inst_OptWSRequest pty.OptWSRequest
 		json.Unmarshal(message, &inst_OptWSRequest)
 		if strings.Compare(inst_OptWSRequest.Type, "resize") == 0 {
-			var token = r.URL.Query().Get("Token")
+			var token = r.URL.Query().Get("SessionId")
 			pty.InternalHandleResize(inst_OptWSRequest, token)
 		}
 
