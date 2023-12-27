@@ -1,3 +1,23 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+//
+// Date: Wed, 27 Dec 2023
+// Author: LafTools Team - Ubuntu <work7z@outlook.com>
+// Description:
+// Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 //go:build !windows
 // +build !windows
 
@@ -41,7 +61,7 @@ func init_tty(w http.ResponseWriter, r *http.Request, conn *websocket.Conn) (*ex
 }
 
 // term request
-func internalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocket.Conn) {
+func InternalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocket.Conn) {
 	log.Ref().Info("remoteaddr", r.RemoteAddr)
 
 	cmd, tty := init_tty(w, r, conn)
@@ -89,7 +109,7 @@ func internalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocke
 	}
 }
 
-func internalHandleResize(inst_OptWSRequest OptWSRequest, token string) {
+func InternalHandleResize(inst_OptWSRequest OptWSRequest, token string) {
 	log.Ref().Debug("handling the opt resize event...", inst_OptWSRequest)
 	var tty = shared_term_inst_map[token]
 	log.Ref().Debug("Token is ", token)

@@ -130,6 +130,11 @@ func HmrReload(c *gin.Context) {
 	if err != nil {
 		return
 	}
+	if !VerifyWSRequest(c) {
+		returnInvalidWS(ws)
+		return
+	}
+
 	defer func() {
 		// do nothing, just recover
 		recover()
@@ -188,6 +193,12 @@ func PostJob_WebSocket(c *gin.Context) {
 	ws.WriteJSON(DoValueRes("Welcome to the Call API Service."))
 }
 
+func returnInvalidWS(ws *websocket.Conn) {
+	ws.WriteJSON(DoValueResForWS(99, "INVALID_TOKEN", map[string]interface{}{
+		"errors": "INVALID_TOKEN",
+	}))
+}
+
 func SYSTEM_WebSocket(c *gin.Context) {
 	// upgrade GET request to websocket protocol
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
@@ -199,9 +210,7 @@ func SYSTEM_WebSocket(c *gin.Context) {
 	// write hello for ws
 
 	if !VerifyWSRequest(c) {
-		ws.WriteJSON(DoValueResForWS(99, "INVALID_TOKEN", map[string]interface{}{
-			"errors": "INVALID_TOKEN",
-		}))
+		returnInvalidWS(ws)
 		return
 	}
 

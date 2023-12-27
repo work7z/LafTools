@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Tue, 26 Dec 2023
 // Author: LafTools Team - FX <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -21,6 +21,12 @@
 package handlers
 
 import (
+	"encoding/json"
+	"laftools-go/core/log"
+	"laftools-go/core/project/base/pty"
+	"net/http"
+	"strings"
+
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 )
@@ -30,6 +36,70 @@ var upgrader = websocket.Upgrader{
 	WriteBufferSize: 1024,
 }
 
-func XTermWebSocket(c *gin.Context) {
-	// TODO: provide xterm websocket
+// term ws
+func HandleTermWS(c *gin.Context) {
+	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
+	if err != nil {
+		return
+	}
+	if !VerifyWSRequest(c) {
+		returnInvalidWS(ws)
+		return
+	}
+
+	w := c.Writer
+	r := c.Request
+	log.Ref().Infof("remoteaddr, %s", r.RemoteAddr)
+	conn, err := upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		log.Ref().Error("Unable to upgrade connection", err)
+		return
+	}
+
+	log.Ref().Info("Interact with ", r.URL.RawQuery)
+	// concerto.Token
+
+	if !VerifyWSRequest(c) {
+		returnInvalidWS(ws)
+		return
+	}
+
+	pty.InternalHandleTermWS(w, r, conn)
+}
+
+// opt ws
+func HandleOptWS(w http.ResponseWriter, r *http.Request) {
+	log.Ref().Info("Received Opt Request: ", r.URL)
+	upgrader.CheckOrigin = func(r *http.Request) bool { return true }
+	c, err := upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		log.Ref().Info("upgrade:", err)
+		return
+	}
+	log.Ref().Info("Interact with ", r.URL.RawQuery)
+	// TODO: verify permission
+	// concerto.Token
+	// if !strings.Contains(r.URL.RawQuery, pty.concerto.Token) {
+	// 	log.Ref().Error("Unable got the Token", r.URL.RawQuery)
+	// 	return
+	// }
+	defer c.Close()
+	for {
+		log.Ref().Info("looped here, receiving the Message...")
+		mt, message, err := c.ReadMessage()
+		if err != nil {
+			log.Ref().Error("read:", err)
+			break
+		}
+		log.Ref().Info("RECEIVED HERE: %s", string(message), mt)
+		var inst_OptWSRequest pty.OptWSRequest
+		json.Unmarshal(message, &inst_OptWSRequest)
+		log.Ref().Info("inst_OptWSRequest -> ", inst_OptWSRequest)
+		if strings.Compare(inst_OptWSRequest.Type, "resize") == 0 {
+			var token = r.URL.Query().Get("Token")
+			pty.InternalHandleResize(inst_OptWSRequest, token)
+		}
+
+	}
+	log.Ref().Info("Ending read the Message")
 }
