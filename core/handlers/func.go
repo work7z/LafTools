@@ -186,6 +186,10 @@ func SetupRoutes(r *gin.Engine) {
 	{
 		wsRoutes.GET("/system", SYSTEM_WebSocket)
 		wsRoutes.GET("/post-job", PostJob_WebSocket)
+		// term, pty
+		termRoutes := wsRoutes.Group("/pty")
+		termRoutes.GET("/opt", HandleOptWS)
+		termRoutes.GET("/term", HandleTermWS)
 	}
 
 	// WebSocket routes

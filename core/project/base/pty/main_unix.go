@@ -104,7 +104,9 @@ func InternalHandleTermWS(w http.ResponseWriter, r *http.Request, conn *websocke
 			log.Ref().Errorf("Error after copying %d bytes", copied)
 			cmd, tty = init_tty(w, r, conn)
 		} else {
-			log.Ref().Info("Copied bytes " + string(copied))
+			log.Ref().Info("Copied bytes.")
+			// log.Ref().Info("Copied bytes " + string(copied))
+
 		}
 	}
 }
