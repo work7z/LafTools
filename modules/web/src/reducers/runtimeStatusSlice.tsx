@@ -22,7 +22,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SyncStateUtils from "../utils/SyncStateUtils";
-import { ToolDefaultOutputType } from "../types/purejs-types-READ_ONLY";
+import { ToolDefaultOutputType, Val_ToolTabIndex } from "../types/purejs-types-READ_ONLY";
 
 type RuntimeStatusState = {
   toolOutputStatusMap: {
@@ -54,6 +54,18 @@ const RuntimeStatusSlice = createSlice({
         };
       }
       state.toolOutputStatusMap[sessionId].latestViewPanelId = panelId;
+    },
+    setToolTabIndex: (
+      state,
+      action: PayloadAction<{ sessionId: string; tabIndex: Val_ToolTabIndex }>
+    ) => {
+      let { sessionId, tabIndex } = action.payload;
+      if (!state.toolOutputStatusMap[sessionId]) {
+        state.toolOutputStatusMap[sessionId] = {
+          toolTabIndex: 'general',
+        };
+      }
+      state.toolOutputStatusMap[sessionId].toolTabIndex = tabIndex;
     },
     //
     setCollapseOutput: (

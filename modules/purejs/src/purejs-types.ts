@@ -23,14 +23,14 @@ export type EachLang = {
  * 2. Translation Selector
  * 3. Sessions and Related Config
  */
-
+export type Val_ToolTabIndex = "general" | "tools";
 export type ToolDefaultOutputType = {
   // key refers to sessionId
   collapseOutput?: boolean;
   activeActionId?: string;
   collapseConfig?: boolean;
   latestViewPanelId?: string;
-  toolTabIndex?: "general" | "tools";
+  toolTabIndex?: Val_ToolTabIndex;
 };
 
 export type ExtensionInfoFormatted = {
