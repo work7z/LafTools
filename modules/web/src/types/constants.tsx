@@ -104,7 +104,7 @@ export const ID_RESOURCES = "resources";
 
 // export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "left 0.3s, top 0.3s, width 0.3s, height 0.3s;";
 // export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "transform 0.3s, top 0.3s, width 0.3s, height 0.3s;";
-export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "transform 0.3s, top 0.3s, width 0.3s, height 0.3s";
+export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "transform 0.3s, top 0.3s, width 0.3s, height 0.3s, left 0.3s";
 
 export let CSS_TEXT_ANCHOR_CSS =
   "text-current no-underline hover:no-underline dark:text-current";
@@ -127,7 +127,7 @@ export type IsLoadingType = PayloadAction<{ isLoading: boolean }>;
 export type SendErrorAction = PayloadAction<{ e: Error }>;
 export type TextValueAction = PayloadAction<{ value: string }>;
 export type LangDefinition = { [key: string]: string };
-
+export type LabelValuePair = { label: string; value: string }
 export type PopoverButtonProp = ButtonProps & { overlay?: string };
 export type MapKV = { [key: string]: any };
 

@@ -1,5 +1,5 @@
 
-import { Alignment, Button, ButtonProps, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, ButtonProps, FormGroup, InputGroup, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
     VAL_CSS_TAB_TITLE_PANEL,
@@ -23,6 +23,7 @@ import { fn_format_description } from "../../../../../../../../types/workbench-f
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "./hooks";
+import FormGenPanel from "../../../../../../../../components/FormGenPanel";
 
 
 let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
@@ -39,10 +40,18 @@ let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithR
         );
     };
     let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "config");
-    let w = "320px";
+    let w = "350px";
     let finalShowContent = <div>not yet defiend</div>
     if (toolTabIndex == "general") {
-        finalShowContent = <div>general</div>
+        finalShowContent = <FormGenPanel list={[
+            {
+                label: Dot("6AumW", "Default Action"),
+                helperText: Dot("nxJC7", "The default action to be executed when the transformer is performed."),
+                genEleConfig: {
+                    type: "input"
+                }
+            }
+        ]}></FormGenPanel>
     } else if (toolTabIndex == "tools") {
         finalShowContent = <div>tools</div>
     }
@@ -65,7 +74,8 @@ let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithR
                 ...currentStyleForActive,
                 top: controlBarHeight * 3 + "px",
                 // width: "26%",
-                minWidth: w,
+                // minWidth: w,
+                width: w,
                 // maxHeight: "70%",
                 height: "70%",
                 transition: CSS_TRANSITION_WIDTH_HEIGHT_ONLY,
