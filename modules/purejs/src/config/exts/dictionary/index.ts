@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "dictionary.text",
-      Tooltip: Dot("P56dictionaryK", "Click to process your data"),
-      Label: Dot("IPdictionary", "Get dictionary"),
-      CallFuncList: Dot("dictionary.ConvertText"),
+      Tooltip: Dot("xP56dictionaryK", "Click to process your data"),
+      Label: Dot("xIPdictionary", "Get dictionary"),
+      CallFuncList: Dot("xdictionary.ConvertText"),
     },
   ],
   Info: {
     Id: "dictionary",
-    Label: Dot("41edictionary", "dictionary"),
-    Description: Dot(
-      "6wdictionary",
-      "TBC"
-    ),
+    Label: Dot("x41edictionary", "dictionary"),
+    Description: Dot("6wdictionary", "TBC"),
   },
 };
 

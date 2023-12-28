@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "esc_javascript.text",
-      Tooltip: Dot("P56esc_javascriptK", "Click to process your data"),
-      Label: Dot("IPesc_javascript", "Get esc_javascript"),
-      CallFuncList: Dot("esc_javascript.ConvertText"),
+      Tooltip: Dot("xP56esc_javascriptK", "Click to process your data"),
+      Label: Dot("xIPesc_javascript", "Get esc_javascript"),
+      CallFuncList: Dot("xesc_javascript.ConvertText"),
     },
   ],
   Info: {
     Id: "esc_javascript",
-    Label: Dot("41eesc_javascript", "esc_javascript"),
-    Description: Dot(
-      "6wesc_javascript",
-      "TBC"
-    ),
+    Label: Dot("x41eesc_javascript", "esc_javascript"),
+    Description: Dot("6wesc_javascript", "TBC"),
   },
 };
 

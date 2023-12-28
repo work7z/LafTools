@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "sym_pbe_sha1_des.text",
-      Tooltip: Dot("P56sym_pbe_sha1_desK", "Click to process your data"),
-      Label: Dot("IPsym_pbe_sha1_des", "Get sym_pbe_sha1_des"),
-      CallFuncList: Dot("sym_pbe_sha1_des.ConvertText"),
+      Tooltip: Dot("xP56sym_pbe_sha1_desK", "Click to process your data"),
+      Label: Dot("xIPsym_pbe_sha1_des", "Get sym_pbe_sha1_des"),
+      CallFuncList: Dot("xsym_pbe_sha1_des.ConvertText"),
     },
   ],
   Info: {
     Id: "sym_pbe_sha1_des",
-    Label: Dot("41esym_pbe_sha1_des", "sym_pbe_sha1_des"),
-    Description: Dot(
-      "6wsym_pbe_sha1_des",
-      "TBC"
-    ),
+    Label: Dot("x41esym_pbe_sha1_des", "sym_pbe_sha1_des"),
+    Description: Dot("6wsym_pbe_sha1_des", "TBC"),
   },
 };
 

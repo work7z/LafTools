@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "sym_rc4.text",
-      Tooltip: Dot("P56sym_rc4K", "Click to process your data"),
-      Label: Dot("IPsym_rc4", "Get sym_rc4"),
-      CallFuncList: Dot("sym_rc4.ConvertText"),
+      Tooltip: Dot("xP56sym_rc4K", "Click to process your data"),
+      Label: Dot("xIPsym_rc4", "Get sym_rc4"),
+      CallFuncList: Dot("xsym_rc4.ConvertText"),
     },
   ],
   Info: {
     Id: "sym_rc4",
-    Label: Dot("41esym_rc4", "sym_rc4"),
-    Description: Dot(
-      "6wsym_rc4",
-      "TBC"
-    ),
+    Label: Dot("x41esym_rc4", "sym_rc4"),
+    Description: Dot("6wsym_rc4", "TBC"),
   },
 };
 

@@ -4,22 +4,22 @@
     {
       "Id": "template_handlebars.text",
       "Tooltip": [
-        "P56template_handlebarsK",
+        "xP56template_handlebarsK",
         "Click to process your data"
       ],
       "Label": [
-        "IPtemplate_handlebars",
+        "xIPtemplate_handlebars",
         "Get template_handlebars"
       ],
       "CallFuncList": [
-        "template_handlebars.ConvertText"
+        "xtemplate_handlebars.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "template_handlebars",
     "Label": [
-      "41etemplate_handlebars",
+      "x41etemplate_handlebars",
       "template_handlebars"
     ],
     "Description": [

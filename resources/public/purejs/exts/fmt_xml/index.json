@@ -4,22 +4,22 @@
     {
       "Id": "fmt_xml.text",
       "Tooltip": [
-        "P56fmt_xmlK",
+        "xP56fmt_xmlK",
         "Click to process your data"
       ],
       "Label": [
-        "IPfmt_xml",
+        "xIPfmt_xml",
         "Get fmt_xml"
       ],
       "CallFuncList": [
-        "fmt_xml.ConvertText"
+        "xfmt_xml.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "fmt_xml",
     "Label": [
-      "41efmt_xml",
+      "x41efmt_xml",
       "fmt_xml"
     ],
     "Description": [

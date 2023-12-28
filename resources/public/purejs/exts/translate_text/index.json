@@ -4,22 +4,22 @@
     {
       "Id": "translate_text.text",
       "Tooltip": [
-        "P56translate_textK",
+        "xP56translate_textK",
         "Click to process your data"
       ],
       "Label": [
-        "IPtranslate_text",
+        "xIPtranslate_text",
         "Get translate_text"
       ],
       "CallFuncList": [
-        "translate_text.ConvertText"
+        "xtranslate_text.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "translate_text",
     "Label": [
-      "41etranslate_text",
+      "x41etranslate_text",
       "translate_text"
     ],
     "Description": [

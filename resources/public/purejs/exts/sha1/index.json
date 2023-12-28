@@ -4,22 +4,22 @@
     {
       "Id": "sha1.text",
       "Label": [
-        "o3poi",
+        "xo3poi",
         "Get SHA1 Hash"
       ],
       "Tooltip": [
-        "ECm8j",
+        "xECm8j",
         "Click here to encrypt your input text"
       ],
       "CallFuncList": [
-        "sha1.ConvertText"
+        "xsha1.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "sha1",
     "Label": [
-      "TtyeA",
+      "xTtyeA",
       "SHA1"
     ],
     "Description": [

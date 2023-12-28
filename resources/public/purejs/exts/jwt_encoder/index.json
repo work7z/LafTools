@@ -4,22 +4,22 @@
     {
       "Id": "jwt_encoder.text",
       "Tooltip": [
-        "P56jwt_encoderK",
+        "xP56jwt_encoderK",
         "Click to process your data"
       ],
       "Label": [
-        "IPjwt_encoder",
+        "xIPjwt_encoder",
         "Get jwt_encoder"
       ],
       "CallFuncList": [
-        "jwt_encoder.ConvertText"
+        "xjwt_encoder.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "jwt_encoder",
     "Label": [
-      "41ejwt_encoder",
+      "x41ejwt_encoder",
       "jwt_encoder"
     ],
     "Description": [

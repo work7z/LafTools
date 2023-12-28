@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "edc_url.text",
-      Tooltip: Dot("P56edc_urlK", "Click to process your data"),
-      Label: Dot("IPedc_url", "Get edc_url"),
-      CallFuncList: Dot("edc_url.ConvertText"),
+      Tooltip: Dot("xP56edc_urlK", "Click to process your data"),
+      Label: Dot("xIPedc_url", "Get edc_url"),
+      CallFuncList: Dot("xedc_url.ConvertText"),
     },
   ],
   Info: {
     Id: "edc_url",
-    Label: Dot("41eedc_url", "edc_url"),
-    Description: Dot(
-      "6wedc_url",
-      "TBC"
-    ),
+    Label: Dot("x41eedc_url", "edc_url"),
+    Description: Dot("6wedc_url", "TBC"),
   },
 };
 

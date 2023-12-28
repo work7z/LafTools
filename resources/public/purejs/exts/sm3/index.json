@@ -4,22 +4,22 @@
     {
       "Id": "sm3.text",
       "Tooltip": [
-        "P56sm3K",
+        "xP56sm3K",
         "Click to process your data"
       ],
       "Label": [
-        "IPsm3",
+        "xIPsm3",
         "Get sm3"
       ],
       "CallFuncList": [
-        "sm3.ConvertText"
+        "xsm3.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "sm3",
     "Label": [
-      "41esm3",
+      "x41esm3",
       "sm3"
     ],
     "Description": [

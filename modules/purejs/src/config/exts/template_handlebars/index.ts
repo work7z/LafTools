@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "template_handlebars.text",
-      Tooltip: Dot("P56template_handlebarsK", "Click to process your data"),
-      Label: Dot("IPtemplate_handlebars", "Get template_handlebars"),
-      CallFuncList: Dot("template_handlebars.ConvertText"),
+      Tooltip: Dot("xP56template_handlebarsK", "Click to process your data"),
+      Label: Dot("xIPtemplate_handlebars", "Get template_handlebars"),
+      CallFuncList: Dot("xtemplate_handlebars.ConvertText"),
     },
   ],
   Info: {
     Id: "template_handlebars",
-    Label: Dot("41etemplate_handlebars", "template_handlebars"),
-    Description: Dot(
-      "6wtemplate_handlebars",
-      "TBC"
-    ),
+    Label: Dot("x41etemplate_handlebars", "template_handlebars"),
+    Description: Dot("6wtemplate_handlebars", "TBC"),
   },
 };
 

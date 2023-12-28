@@ -4,22 +4,22 @@
     {
       "Id": "xml_to_model.text",
       "Tooltip": [
-        "P56xml_to_modelK",
+        "xP56xml_to_modelK",
         "Click to process your data"
       ],
       "Label": [
-        "IPxml_to_model",
+        "xIPxml_to_model",
         "Get xml_to_model"
       ],
       "CallFuncList": [
-        "xml_to_model.ConvertText"
+        "xxml_to_model.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "xml_to_model",
     "Label": [
-      "41exml_to_model",
+      "x41exml_to_model",
       "xml_to_model"
     ],
     "Description": [

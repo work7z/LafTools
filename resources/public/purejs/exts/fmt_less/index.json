@@ -4,22 +4,22 @@
     {
       "Id": "fmt_less.text",
       "Tooltip": [
-        "P56fmt_lessK",
+        "xP56fmt_lessK",
         "Click to process your data"
       ],
       "Label": [
-        "IPfmt_less",
+        "xIPfmt_less",
         "Get fmt_less"
       ],
       "CallFuncList": [
-        "fmt_less.ConvertText"
+        "xfmt_less.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "fmt_less",
     "Label": [
-      "41efmt_less",
+      "x41efmt_less",
       "fmt_less"
     ],
     "Description": [

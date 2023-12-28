@@ -4,22 +4,22 @@
     {
       "Id": "edc_base64.text",
       "Tooltip": [
-        "P56edc_base64K",
+        "xP56edc_base64K",
         "Click to process your data"
       ],
       "Label": [
-        "IPedc_base64",
+        "xIPedc_base64",
         "Get edc_base64"
       ],
       "CallFuncList": [
-        "edc_base64.ConvertText"
+        "xedc_base64.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "edc_base64",
     "Label": [
-      "41eedc_base64",
+      "x41eedc_base64",
       "edc_base64"
     ],
     "Description": [

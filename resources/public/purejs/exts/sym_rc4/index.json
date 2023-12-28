@@ -4,22 +4,22 @@
     {
       "Id": "sym_rc4.text",
       "Tooltip": [
-        "P56sym_rc4K",
+        "xP56sym_rc4K",
         "Click to process your data"
       ],
       "Label": [
-        "IPsym_rc4",
+        "xIPsym_rc4",
         "Get sym_rc4"
       ],
       "CallFuncList": [
-        "sym_rc4.ConvertText"
+        "xsym_rc4.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "sym_rc4",
     "Label": [
-      "41esym_rc4",
+      "x41esym_rc4",
       "sym_rc4"
     ],
     "Description": [

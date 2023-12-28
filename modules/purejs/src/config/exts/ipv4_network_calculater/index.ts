@@ -6,18 +6,18 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "ipv4_network_calculater.text",
-      Tooltip: Dot("P56ipv4_network_calculaterK", "Click to process your data"),
-      Label: Dot("IPipv4_network_calculater", "Get ipv4_network_calculater"),
-      CallFuncList: Dot("ipv4_network_calculater.ConvertText"),
+      Tooltip: Dot(
+        "xP56ipv4_network_calculaterK",
+        "Click to process your data",
+      ),
+      Label: Dot("xIPipv4_network_calculater", "Get ipv4_network_calculater"),
+      CallFuncList: Dot("xipv4_network_calculater.ConvertText"),
     },
   ],
   Info: {
     Id: "ipv4_network_calculater",
-    Label: Dot("41eipv4_network_calculater", "ipv4_network_calculater"),
-    Description: Dot(
-      "6wipv4_network_calculater",
-      "TBC"
-    ),
+    Label: Dot("x41eipv4_network_calculater", "ipv4_network_calculater"),
+    Description: Dot("6wipv4_network_calculater", "TBC"),
   },
 };
 

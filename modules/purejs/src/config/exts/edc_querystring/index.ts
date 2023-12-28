@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "edc_querystring.text",
-      Tooltip: Dot("P56edc_querystringK", "Click to process your data"),
-      Label: Dot("IPedc_querystring", "Get edc_querystring"),
-      CallFuncList: Dot("edc_querystring.ConvertText"),
+      Tooltip: Dot("xP56edc_querystringK", "Click to process your data"),
+      Label: Dot("xIPedc_querystring", "Get edc_querystring"),
+      CallFuncList: Dot("xedc_querystring.ConvertText"),
     },
   ],
   Info: {
     Id: "edc_querystring",
-    Label: Dot("41eedc_querystring", "edc_querystring"),
-    Description: Dot(
-      "6wedc_querystring",
-      "TBC"
-    ),
+    Label: Dot("x41eedc_querystring", "edc_querystring"),
+    Description: Dot("6wedc_querystring", "TBC"),
   },
 };
 

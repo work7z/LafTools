@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "fmt_typescript.text",
-      Tooltip: Dot("P56fmt_typescriptK", "Click to process your data"),
-      Label: Dot("IPfmt_typescript", "Get fmt_typescript"),
-      CallFuncList: Dot("fmt_typescript.ConvertText"),
+      Tooltip: Dot("xP56fmt_typescriptK", "Click to process your data"),
+      Label: Dot("xIPfmt_typescript", "Get fmt_typescript"),
+      CallFuncList: Dot("xfmt_typescript.ConvertText"),
     },
   ],
   Info: {
     Id: "fmt_typescript",
-    Label: Dot("41efmt_typescript", "fmt_typescript"),
-    Description: Dot(
-      "6wfmt_typescript",
-      "TBC"
-    ),
+    Label: Dot("x41efmt_typescript", "fmt_typescript"),
+    Description: Dot("6wfmt_typescript", "TBC"),
   },
 };
 

@@ -4,22 +4,22 @@
     {
       "Id": "polish_by_ai.text",
       "Tooltip": [
-        "P56polish_by_aiK",
+        "xP56polish_by_aiK",
         "Click to process your data"
       ],
       "Label": [
-        "IPpolish_by_ai",
+        "xIPpolish_by_ai",
         "Get polish_by_ai"
       ],
       "CallFuncList": [
-        "polish_by_ai.ConvertText"
+        "xpolish_by_ai.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "polish_by_ai",
     "Label": [
-      "41epolish_by_ai",
+      "x41epolish_by_ai",
       "polish_by_ai"
     ],
     "Description": [

@@ -4,22 +4,22 @@
     {
       "Id": "sql_to_model.text",
       "Tooltip": [
-        "P56sql_to_modelK",
+        "xP56sql_to_modelK",
         "Click to process your data"
       ],
       "Label": [
-        "IPsql_to_model",
+        "xIPsql_to_model",
         "Get sql_to_model"
       ],
       "CallFuncList": [
-        "sql_to_model.ConvertText"
+        "xsql_to_model.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "sql_to_model",
     "Label": [
-      "41esql_to_model",
+      "x41esql_to_model",
       "sql_to_model"
     ],
     "Description": [

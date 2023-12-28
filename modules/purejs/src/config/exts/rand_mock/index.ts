@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "rand_mock.text",
-      Tooltip: Dot("P56rand_mockK", "Click to process your data"),
-      Label: Dot("IPrand_mock", "Get rand_mock"),
-      CallFuncList: Dot("rand_mock.ConvertText"),
+      Tooltip: Dot("xP56rand_mockK", "Click to process your data"),
+      Label: Dot("xIPrand_mock", "Get rand_mock"),
+      CallFuncList: Dot("xrand_mock.ConvertText"),
     },
   ],
   Info: {
     Id: "rand_mock",
-    Label: Dot("41erand_mock", "rand_mock"),
-    Description: Dot(
-      "6wrand_mock",
-      "TBC"
-    ),
+    Label: Dot("x41erand_mock", "rand_mock"),
+    Description: Dot("6wrand_mock", "TBC"),
   },
 };
 

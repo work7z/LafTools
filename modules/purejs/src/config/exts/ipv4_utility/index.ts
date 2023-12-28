@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "ipv4_utility.text",
-      Tooltip: Dot("P56ipv4_utilityK", "Click to process your data"),
-      Label: Dot("IPipv4_utility", "Get ipv4_utility"),
-      CallFuncList: Dot("ipv4_utility.ConvertText"),
+      Tooltip: Dot("xP56ipv4_utilityK", "Click to process your data"),
+      Label: Dot("xIPipv4_utility", "Get ipv4_utility"),
+      CallFuncList: Dot("xipv4_utility.ConvertText"),
     },
   ],
   Info: {
     Id: "ipv4_utility",
-    Label: Dot("41eipv4_utility", "ipv4_utility"),
-    Description: Dot(
-      "6wipv4_utility",
-      "TBC"
-    ),
+    Label: Dot("x41eipv4_utility", "ipv4_utility"),
+    Description: Dot("6wipv4_utility", "TBC"),
   },
 };
 

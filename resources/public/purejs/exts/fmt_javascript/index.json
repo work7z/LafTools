@@ -4,22 +4,22 @@
     {
       "Id": "fmt_javascript.text",
       "Tooltip": [
-        "P56fmt_javascriptK",
+        "xP56fmt_javascriptK",
         "Click to process your data"
       ],
       "Label": [
-        "IPfmt_javascript",
+        "xIPfmt_javascript",
         "Get fmt_javascript"
       ],
       "CallFuncList": [
-        "fmt_javascript.ConvertText"
+        "xfmt_javascript.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "fmt_javascript",
     "Label": [
-      "41efmt_javascript",
+      "x41efmt_javascript",
       "fmt_javascript"
     ],
     "Description": [

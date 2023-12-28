@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "fmt_json.text",
-      Tooltip: Dot("P56fmt_jsonK", "Click to process your data"),
-      Label: Dot("IPfmt_json", "Get fmt_json"),
-      CallFuncList: Dot("fmt_json.ConvertText"),
+      Tooltip: Dot("xP56fmt_jsonK", "Click to process your data"),
+      Label: Dot("xIPfmt_json", "Get fmt_json"),
+      CallFuncList: Dot("xfmt_json.ConvertText"),
     },
   ],
   Info: {
     Id: "fmt_json",
-    Label: Dot("41efmt_json", "fmt_json"),
-    Description: Dot(
-      "6wfmt_json",
-      "TBC"
-    ),
+    Label: Dot("x41efmt_json", "fmt_json"),
+    Description: Dot("6wfmt_json", "TBC"),
   },
 };
 

@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "rand_sundrytext.text",
-      Tooltip: Dot("P56rand_sundrytextK", "Click to process your data"),
-      Label: Dot("IPrand_sundrytext", "Get rand_sundrytext"),
-      CallFuncList: Dot("rand_sundrytext.ConvertText"),
+      Tooltip: Dot("xP56rand_sundrytextK", "Click to process your data"),
+      Label: Dot("xIPrand_sundrytext", "Get rand_sundrytext"),
+      CallFuncList: Dot("xrand_sundrytext.ConvertText"),
     },
   ],
   Info: {
     Id: "rand_sundrytext",
-    Label: Dot("41erand_sundrytext", "rand_sundrytext"),
-    Description: Dot(
-      "6wrand_sundrytext",
-      "TBC"
-    ),
+    Label: Dot("x41erand_sundrytext", "rand_sundrytext"),
+    Description: Dot("6wrand_sundrytext", "TBC"),
   },
 };
 

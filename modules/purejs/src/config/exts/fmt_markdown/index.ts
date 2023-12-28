@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "fmt_markdown.text",
-      Tooltip: Dot("P56fmt_markdownK", "Click to process your data"),
-      Label: Dot("IPfmt_markdown", "Get fmt_markdown"),
-      CallFuncList: Dot("fmt_markdown.ConvertText"),
+      Tooltip: Dot("xP56fmt_markdownK", "Click to process your data"),
+      Label: Dot("xIPfmt_markdown", "Get fmt_markdown"),
+      CallFuncList: Dot("xfmt_markdown.ConvertText"),
     },
   ],
   Info: {
     Id: "fmt_markdown",
-    Label: Dot("41efmt_markdown", "fmt_markdown"),
-    Description: Dot(
-      "6wfmt_markdown",
-      "TBC"
-    ),
+    Label: Dot("x41efmt_markdown", "fmt_markdown"),
+    Description: Dot("6wfmt_markdown", "TBC"),
   },
 };
 

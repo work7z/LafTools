@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "jwt_encoder.text",
-      Tooltip: Dot("P56jwt_encoderK", "Click to process your data"),
-      Label: Dot("IPjwt_encoder", "Get jwt_encoder"),
-      CallFuncList: Dot("jwt_encoder.ConvertText"),
+      Tooltip: Dot("xP56jwt_encoderK", "Click to process your data"),
+      Label: Dot("xIPjwt_encoder", "Get jwt_encoder"),
+      CallFuncList: Dot("xjwt_encoder.ConvertText"),
     },
   ],
   Info: {
     Id: "jwt_encoder",
-    Label: Dot("41ejwt_encoder", "jwt_encoder"),
-    Description: Dot(
-      "6wjwt_encoder",
-      "TBC"
-    ),
+    Label: Dot("x41ejwt_encoder", "jwt_encoder"),
+    Description: Dot("6wjwt_encoder", "TBC"),
   },
 };
 

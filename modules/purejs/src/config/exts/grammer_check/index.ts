@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "grammer_check.text",
-      Tooltip: Dot("P56grammer_checkK", "Click to process your data"),
-      Label: Dot("IPgrammer_check", "Get grammer_check"),
-      CallFuncList: Dot("grammer_check.ConvertText"),
+      Tooltip: Dot("xP56grammer_checkK", "Click to process your data"),
+      Label: Dot("xIPgrammer_check", "Get grammer_check"),
+      CallFuncList: Dot("xgrammer_check.ConvertText"),
     },
   ],
   Info: {
     Id: "grammer_check",
-    Label: Dot("41egrammer_check", "grammer_check"),
-    Description: Dot(
-      "6wgrammer_check",
-      "TBC"
-    ),
+    Label: Dot("x41egrammer_check", "grammer_check"),
+    Description: Dot("6wgrammer_check", "TBC"),
   },
 };
 

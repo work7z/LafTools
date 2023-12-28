@@ -4,22 +4,22 @@
     {
       "Id": "sm2.text",
       "Tooltip": [
-        "P56sm2K",
+        "xP56sm2K",
         "Click to process your data"
       ],
       "Label": [
-        "IPsm2",
+        "xIPsm2",
         "Get sm2"
       ],
       "CallFuncList": [
-        "sm2.ConvertText"
+        "xsm2.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "sm2",
     "Label": [
-      "41esm2",
+      "x41esm2",
       "sm2"
     ],
     "Description": [

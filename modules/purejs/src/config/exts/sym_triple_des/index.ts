@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "sym_triple_des.text",
-      Tooltip: Dot("P56sym_triple_desK", "Click to process your data"),
-      Label: Dot("IPsym_triple_des", "Get sym_triple_des"),
-      CallFuncList: Dot("sym_triple_des.ConvertText"),
+      Tooltip: Dot("xP56sym_triple_desK", "Click to process your data"),
+      Label: Dot("xIPsym_triple_des", "Get sym_triple_des"),
+      CallFuncList: Dot("xsym_triple_des.ConvertText"),
     },
   ],
   Info: {
     Id: "sym_triple_des",
-    Label: Dot("41esym_triple_des", "sym_triple_des"),
-    Description: Dot(
-      "6wsym_triple_des",
-      "TBC"
-    ),
+    Label: Dot("x41esym_triple_des", "sym_triple_des"),
+    Description: Dot("6wsym_triple_des", "TBC"),
   },
 };
 

@@ -4,22 +4,22 @@
     {
       "Id": "regex_tester.text",
       "Tooltip": [
-        "P56regex_testerK",
+        "xP56regex_testerK",
         "Click to process your data"
       ],
       "Label": [
-        "IPregex_tester",
+        "xIPregex_tester",
         "Get regex_tester"
       ],
       "CallFuncList": [
-        "regex_tester.ConvertText"
+        "xregex_tester.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "regex_tester",
     "Label": [
-      "41eregex_tester",
+      "x41eregex_tester",
       "regex_tester"
     ],
     "Description": [

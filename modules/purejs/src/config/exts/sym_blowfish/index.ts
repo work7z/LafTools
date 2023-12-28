@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "sym_blowfish.text",
-      Tooltip: Dot("P56sym_blowfishK", "Click to process your data"),
-      Label: Dot("IPsym_blowfish", "Get sym_blowfish"),
-      CallFuncList: Dot("sym_blowfish.ConvertText"),
+      Tooltip: Dot("xP56sym_blowfishK", "Click to process your data"),
+      Label: Dot("xIPsym_blowfish", "Get sym_blowfish"),
+      CallFuncList: Dot("xsym_blowfish.ConvertText"),
     },
   ],
   Info: {
     Id: "sym_blowfish",
-    Label: Dot("41esym_blowfish", "sym_blowfish"),
-    Description: Dot(
-      "6wsym_blowfish",
-      "TBC"
-    ),
+    Label: Dot("x41esym_blowfish", "sym_blowfish"),
+    Description: Dot("6wsym_blowfish", "TBC"),
   },
 };
 

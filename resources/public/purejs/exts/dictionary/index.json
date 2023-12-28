@@ -4,22 +4,22 @@
     {
       "Id": "dictionary.text",
       "Tooltip": [
-        "P56dictionaryK",
+        "xP56dictionaryK",
         "Click to process your data"
       ],
       "Label": [
-        "IPdictionary",
+        "xIPdictionary",
         "Get dictionary"
       ],
       "CallFuncList": [
-        "dictionary.ConvertText"
+        "xdictionary.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "dictionary",
     "Label": [
-      "41edictionary",
+      "x41edictionary",
       "dictionary"
     ],
     "Description": [

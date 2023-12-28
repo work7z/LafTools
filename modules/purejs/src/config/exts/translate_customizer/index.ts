@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "translate_customizer.text",
-      Tooltip: Dot("P56translate_customizerK", "Click to process your data"),
-      Label: Dot("IPtranslate_customizer", "Get translate_customizer"),
-      CallFuncList: Dot("translate_customizer.ConvertText"),
+      Tooltip: Dot("xP56translate_customizerK", "Click to process your data"),
+      Label: Dot("xIPtranslate_customizer", "Get translate_customizer"),
+      CallFuncList: Dot("xtranslate_customizer.ConvertText"),
     },
   ],
   Info: {
     Id: "translate_customizer",
-    Label: Dot("41etranslate_customizer", "translate_customizer"),
-    Description: Dot(
-      "6wtranslate_customizer",
-      "TBC"
-    ),
+    Label: Dot("x41etranslate_customizer", "translate_customizer"),
+    Description: Dot("6wtranslate_customizer", "TBC"),
   },
 };
 

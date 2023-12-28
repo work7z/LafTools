@@ -4,22 +4,22 @@
     {
       "Id": "rand_plaintext.text",
       "Tooltip": [
-        "P56rand_plaintextK",
+        "xP56rand_plaintextK",
         "Click to process your data"
       ],
       "Label": [
-        "IPrand_plaintext",
+        "xIPrand_plaintext",
         "Get rand_plaintext"
       ],
       "CallFuncList": [
-        "rand_plaintext.ConvertText"
+        "xrand_plaintext.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "rand_plaintext",
     "Label": [
-      "41erand_plaintext",
+      "x41erand_plaintext",
       "rand_plaintext"
     ],
     "Description": [

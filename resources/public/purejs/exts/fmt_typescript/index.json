@@ -4,22 +4,22 @@
     {
       "Id": "fmt_typescript.text",
       "Tooltip": [
-        "P56fmt_typescriptK",
+        "xP56fmt_typescriptK",
         "Click to process your data"
       ],
       "Label": [
-        "IPfmt_typescript",
+        "xIPfmt_typescript",
         "Get fmt_typescript"
       ],
       "CallFuncList": [
-        "fmt_typescript.ConvertText"
+        "xfmt_typescript.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "fmt_typescript",
     "Label": [
-      "41efmt_typescript",
+      "x41efmt_typescript",
       "fmt_typescript"
     ],
     "Description": [

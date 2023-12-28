@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "fmt_less.text",
-      Tooltip: Dot("P56fmt_lessK", "Click to process your data"),
-      Label: Dot("IPfmt_less", "Get fmt_less"),
-      CallFuncList: Dot("fmt_less.ConvertText"),
+      Tooltip: Dot("xP56fmt_lessK", "Click to process your data"),
+      Label: Dot("xIPfmt_less", "Get fmt_less"),
+      CallFuncList: Dot("xfmt_less.ConvertText"),
     },
   ],
   Info: {
     Id: "fmt_less",
-    Label: Dot("41efmt_less", "fmt_less"),
-    Description: Dot(
-      "6wfmt_less",
-      "TBC"
-    ),
+    Label: Dot("x41efmt_less", "fmt_less"),
+    Description: Dot("6wfmt_less", "TBC"),
   },
 };
 

@@ -4,22 +4,22 @@
     {
       "Id": "translate_json.text",
       "Tooltip": [
-        "P56translate_jsonK",
+        "xP56translate_jsonK",
         "Click to process your data"
       ],
       "Label": [
-        "IPtranslate_json",
+        "xIPtranslate_json",
         "Get translate_json"
       ],
       "CallFuncList": [
-        "translate_json.ConvertText"
+        "xtranslate_json.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "translate_json",
     "Label": [
-      "41etranslate_json",
+      "x41etranslate_json",
       "translate_json"
     ],
     "Description": [

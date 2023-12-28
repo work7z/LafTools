@@ -4,22 +4,22 @@
     {
       "Id": "rand_sundrytext.text",
       "Tooltip": [
-        "P56rand_sundrytextK",
+        "xP56rand_sundrytextK",
         "Click to process your data"
       ],
       "Label": [
-        "IPrand_sundrytext",
+        "xIPrand_sundrytext",
         "Get rand_sundrytext"
       ],
       "CallFuncList": [
-        "rand_sundrytext.ConvertText"
+        "xrand_sundrytext.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "rand_sundrytext",
     "Label": [
-      "41erand_sundrytext",
+      "x41erand_sundrytext",
       "rand_sundrytext"
     ],
     "Description": [

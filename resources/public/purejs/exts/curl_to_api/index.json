@@ -4,22 +4,22 @@
     {
       "Id": "curl_to_api.text",
       "Tooltip": [
-        "P56curl_to_apiK",
+        "xP56curl_to_apiK",
         "Click to process your data"
       ],
       "Label": [
-        "IPcurl_to_api",
+        "xIPcurl_to_api",
         "Get curl_to_api"
       ],
       "CallFuncList": [
-        "curl_to_api.ConvertText"
+        "xcurl_to_api.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "curl_to_api",
     "Label": [
-      "41ecurl_to_api",
+      "x41ecurl_to_api",
       "curl_to_api"
     ],
     "Description": [

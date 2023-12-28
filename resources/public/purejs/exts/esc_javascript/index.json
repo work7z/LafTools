@@ -4,22 +4,22 @@
     {
       "Id": "esc_javascript.text",
       "Tooltip": [
-        "P56esc_javascriptK",
+        "xP56esc_javascriptK",
         "Click to process your data"
       ],
       "Label": [
-        "IPesc_javascript",
+        "xIPesc_javascript",
         "Get esc_javascript"
       ],
       "CallFuncList": [
-        "esc_javascript.ConvertText"
+        "xesc_javascript.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "esc_javascript",
     "Label": [
-      "41eesc_javascript",
+      "x41eesc_javascript",
       "esc_javascript"
     ],
     "Description": [

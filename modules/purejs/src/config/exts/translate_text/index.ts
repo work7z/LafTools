@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "translate_text.text",
-      Tooltip: Dot("P56translate_textK", "Click to process your data"),
-      Label: Dot("IPtranslate_text", "Get translate_text"),
-      CallFuncList: Dot("translate_text.ConvertText"),
+      Tooltip: Dot("xP56translate_textK", "Click to process your data"),
+      Label: Dot("xIPtranslate_text", "Get translate_text"),
+      CallFuncList: Dot("xtranslate_text.ConvertText"),
     },
   ],
   Info: {
     Id: "translate_text",
-    Label: Dot("41etranslate_text", "translate_text"),
-    Description: Dot(
-      "6wtranslate_text",
-      "TBC"
-    ),
+    Label: Dot("x41etranslate_text", "translate_text"),
+    Description: Dot("6wtranslate_text", "TBC"),
   },
 };
 

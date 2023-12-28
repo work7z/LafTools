@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "gen_sql_to_json.text",
-      Tooltip: Dot("P56gen_sql_to_jsonK", "Click to process your data"),
-      Label: Dot("IPgen_sql_to_json", "Get gen_sql_to_json"),
-      CallFuncList: Dot("gen_sql_to_json.ConvertText"),
+      Tooltip: Dot("xP56gen_sql_to_jsonK", "Click to process your data"),
+      Label: Dot("xIPgen_sql_to_json", "Get gen_sql_to_json"),
+      CallFuncList: Dot("xgen_sql_to_json.ConvertText"),
     },
   ],
   Info: {
     Id: "gen_sql_to_json",
-    Label: Dot("41egen_sql_to_json", "gen_sql_to_json"),
-    Description: Dot(
-      "6wgen_sql_to_json",
-      "TBC"
-    ),
+    Label: Dot("x41egen_sql_to_json", "gen_sql_to_json"),
+    Description: Dot("6wgen_sql_to_json", "TBC"),
   },
 };
 

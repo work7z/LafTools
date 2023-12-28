@@ -40,6 +40,7 @@ import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 import { fn_format_description } from "../../../../../../../../types/workbench-fn";
 import { CommonTransformerProps } from "./types";
+import { ExtensionAction } from "../../../../../../../../types/purejs-types-READ_ONLY";
 
 let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -48,12 +49,24 @@ type TextTransformerProps = CommonTransformerProps;
 let TextTransformerControl = (props: TextTransformerProps) => {
   let { inputBigTextId } = props;
   let [loadExample, onLoadExample] = useState(false);
+  let extVM = props.extVM
+  let actions: ExtensionAction[] | undefined = extVM?.Actions
   let leftActions: ButtonProps[] = [
-    {
-      text: Dot("g4lqi", "Get MD2 Hash"),
-      intent: "primary",
-      title: Dot("Zpqqpf", "Encrypt the data with MD2"),
-    },
+    ...(actions || []).map(x => {
+      return {
+        text: x.LabelByInit,
+        intent: "primary",
+        title: x.TooltipByInit,
+        onClick: () => {
+          //
+        },
+      }
+    }) as ButtonProps[],
+    // {
+    //   text: Dot("g4lqi", "Get MD2 Hash"),
+    //   intent: "primary",
+    //   title: Dot("Zpqqpf", "Encrypt the data with MD2"),
+    // },
     {
       text: Dot("2bqHk", "Load from File"),
       intent: "none",
@@ -265,7 +278,7 @@ let TextTransformerOutput = (props: CommonTransformerPassProp) => {
         leftNavList={[
           {
             icon: "export",
-            label: Dot("Dj9qqwk", "Output"),
+            label: Dot("Dj9qqwk", "Output") + " - Get MD2 Hash ",
             value: "drawer",
           },
         ]}
@@ -397,6 +410,8 @@ let TextTransformerConfig = (props: CommonTransformerPassProp) => {
   );
 };
 
+// TODO: Output - Action A|B|C
+
 export default (props: CommonTransformerProps) => {
   let sessionId = props.sessionId;
   let bodyHeight = `calc(100% - ${controlBarHeight}px)`;
@@ -408,9 +423,21 @@ export default (props: CommonTransformerProps) => {
   };
   let extVM = props.extVM
   let desc = fn_format_description(extVM?.Info?.DescriptionByInit)
+  // process fn
+  let fn_notifyTextChange = (newValue: string) => {
+    // when text is changed, then trigger function to process
+    FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, newValue + "___TMP"));
+    FN_GetDispatch()(
+      RuntimeStatusSlice.actions.setCollapseOutput({
+        sessionId,
+        collapseOutput: false,
+      }),
+    );
+  }
   return (
     <div key={sessionId} className="w-full h-full relative">
-      <TextTransformerControl {...commonPassProp}></TextTransformerControl>
+      {/* onProcess={fn_notifyTextChange} */}
+      <TextTransformerControl  {...commonPassProp}></TextTransformerControl>
       <div
         style={{
           height: bodyHeight,
@@ -422,6 +449,7 @@ export default (props: CommonTransformerProps) => {
           placeholder={desc || Dot("xPHqP", "The description is not yet defined.")}
           language="javascript"
           bigTextId={inputBigTextId}
+          onTextChange={fn_notifyTextChange}
         ></GenCodeMirror>
       </div>
       <TextTransformerOutput {...commonPassProp}></TextTransformerOutput>

@@ -4,22 +4,22 @@
     {
       "Id": "template_dotjs.text",
       "Tooltip": [
-        "P56template_dotjsK",
+        "xP56template_dotjsK",
         "Click to process your data"
       ],
       "Label": [
-        "IPtemplate_dotjs",
+        "xIPtemplate_dotjs",
         "Get template_dotjs"
       ],
       "CallFuncList": [
-        "template_dotjs.ConvertText"
+        "xtemplate_dotjs.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "template_dotjs",
     "Label": [
-      "41etemplate_dotjs",
+      "x41etemplate_dotjs",
       "template_dotjs"
     ],
     "Description": [

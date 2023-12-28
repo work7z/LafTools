@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "fmt_sql.text",
-      Tooltip: Dot("P56fmt_sqlK", "Click to process your data"),
-      Label: Dot("IPfmt_sql", "Get fmt_sql"),
-      CallFuncList: Dot("fmt_sql.ConvertText"),
+      Tooltip: Dot("xP56fmt_sqlK", "Click to process your data"),
+      Label: Dot("xIPfmt_sql", "Get fmt_sql"),
+      CallFuncList: Dot("xfmt_sql.ConvertText"),
     },
   ],
   Info: {
     Id: "fmt_sql",
-    Label: Dot("41efmt_sql", "fmt_sql"),
-    Description: Dot(
-      "6wfmt_sql",
-      "TBC"
-    ),
+    Label: Dot("x41efmt_sql", "fmt_sql"),
+    Description: Dot("6wfmt_sql", "TBC"),
   },
 };
 

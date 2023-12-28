@@ -4,22 +4,22 @@
     {
       "Id": "write_by_ai.text",
       "Tooltip": [
-        "P56write_by_aiK",
+        "xP56write_by_aiK",
         "Click to process your data"
       ],
       "Label": [
-        "IPwrite_by_ai",
+        "xIPwrite_by_ai",
         "Get write_by_ai"
       ],
       "CallFuncList": [
-        "write_by_ai.ConvertText"
+        "xwrite_by_ai.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "write_by_ai",
     "Label": [
-      "41ewrite_by_ai",
+      "x41ewrite_by_ai",
       "write_by_ai"
     ],
     "Description": [

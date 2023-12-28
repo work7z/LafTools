@@ -4,22 +4,22 @@
     {
       "Id": "sm4.text",
       "Tooltip": [
-        "P56sm4K",
+        "xP56sm4K",
         "Click to process your data"
       ],
       "Label": [
-        "IPsm4",
+        "xIPsm4",
         "Get sm4"
       ],
       "CallFuncList": [
-        "sm4.ConvertText"
+        "xsm4.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "sm4",
     "Label": [
-      "41esm4",
+      "x41esm4",
       "sm4"
     ],
     "Description": [

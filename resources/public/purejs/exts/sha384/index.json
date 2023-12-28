@@ -4,22 +4,22 @@
     {
       "Id": "sha384.text",
       "Label": [
-        "o3poi.sha384",
+        "xo3poi.sha384",
         "Get SHA384 Hash"
       ],
       "Tooltip": [
-        "E88Ej",
+        "xE88Ej",
         "Click here to encrypt your input text"
       ],
       "CallFuncList": [
-        "sha384.ConvertText"
+        "xsha384.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "sha384",
     "Label": [
-      "TtyeA.sha384",
+      "xTtyeA.sha384",
       "SHA384"
     ],
     "Description": [

@@ -4,22 +4,22 @@
     {
       "Id": "edc_url.text",
       "Tooltip": [
-        "P56edc_urlK",
+        "xP56edc_urlK",
         "Click to process your data"
       ],
       "Label": [
-        "IPedc_url",
+        "xIPedc_url",
         "Get edc_url"
       ],
       "CallFuncList": [
-        "edc_url.ConvertText"
+        "xedc_url.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "edc_url",
     "Label": [
-      "41eedc_url",
+      "x41eedc_url",
       "edc_url"
     ],
     "Description": [

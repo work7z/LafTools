@@ -4,22 +4,22 @@
     {
       "Id": "translate_properties.text",
       "Tooltip": [
-        "P56translate_propertiesK",
+        "xP56translate_propertiesK",
         "Click to process your data"
       ],
       "Label": [
-        "IPtranslate_properties",
+        "xIPtranslate_properties",
         "Get translate_properties"
       ],
       "CallFuncList": [
-        "translate_properties.ConvertText"
+        "xtranslate_properties.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "translate_properties",
     "Label": [
-      "41etranslate_properties",
+      "x41etranslate_properties",
       "translate_properties"
     ],
     "Description": [

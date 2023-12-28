@@ -66,7 +66,7 @@ import exportUtils from "../../utils/ExportUtils";
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { javascript } from "@codemirror/lang-javascript";
 import { FN_GetDispatch } from "../../nocycle";
-import { FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY } from "../../actions/bigtext_action";
+import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY } from "../../actions/bigtext_action";
 
 // import darcula from "@uiw/codemirror-theme-darcula";
 type GenCodeMirrorProp = {
@@ -107,9 +107,16 @@ export default (props: GenCodeMirrorProp) => {
       bigText: finalText,
     };
   });
+  let fixedDeps = [verObj.ver]
   let bt = useMemo(() => {
     return bt_raw;
-  }, [verObj.ver]);
+  }, fixedDeps);
+  useEffect(() => {
+    console.log("bt_raw:", bt_raw)
+    if (verObj.ver != 1) {
+      props.onTextChange && props.onTextChange(FN_GetActualTextValueByBigTextId(bigTextId))
+    }
+  }, fixedDeps)
   let value: string = bt.bigText;
   let setValue = (val: string) => {
     FN_GetDispatch()(FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY(bigTextId, val));

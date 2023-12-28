@@ -4,22 +4,22 @@
     {
       "Id": "file_compare.text",
       "Tooltip": [
-        "P56file_compareK",
+        "xP56file_compareK",
         "Click to process your data"
       ],
       "Label": [
-        "IPfile_compare",
+        "xIPfile_compare",
         "Get file_compare"
       ],
       "CallFuncList": [
-        "file_compare.ConvertText"
+        "xfile_compare.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "file_compare",
     "Label": [
-      "41efile_compare",
+      "x41efile_compare",
       "file_compare"
     ],
     "Description": [

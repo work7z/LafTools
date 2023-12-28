@@ -4,22 +4,22 @@
     {
       "Id": "rand_loremipsum.text",
       "Tooltip": [
-        "P56rand_loremipsumK",
+        "xP56rand_loremipsumK",
         "Click to process your data"
       ],
       "Label": [
-        "IPrand_loremipsum",
+        "xIPrand_loremipsum",
         "Get rand_loremipsum"
       ],
       "CallFuncList": [
-        "rand_loremipsum.ConvertText"
+        "xrand_loremipsum.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "rand_loremipsum",
     "Label": [
-      "41erand_loremipsum",
+      "x41erand_loremipsum",
       "rand_loremipsum"
     ],
     "Description": [

@@ -4,22 +4,22 @@
     {
       "Id": "md4.text",
       "Label": [
-        "IPtV",
+        "xIPqtV",
         "Get MD4 Hash"
       ],
       "Tooltip": [
-        "REFy8",
+        "xREFy8",
         "Click here to encrypt your input text"
       ],
       "CallFuncList": [
-        "md4.ConvertText"
+        "xmd4.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "md4",
     "Label": [
-      "70PnM",
+      "x70PnM",
       "MD4"
     ],
     "Description": [

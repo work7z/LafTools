@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "edc_unicode.text",
-      Tooltip: Dot("P56edc_unicodeK", "Click to process your data"),
-      Label: Dot("IPedc_unicode", "Get edc_unicode"),
-      CallFuncList: Dot("edc_unicode.ConvertText"),
+      Tooltip: Dot("xP56edc_unicodeK", "Click to process your data"),
+      Label: Dot("xIPedc_unicode", "Get edc_unicode"),
+      CallFuncList: Dot("xedc_unicode.ConvertText"),
     },
   ],
   Info: {
     Id: "edc_unicode",
-    Label: Dot("41eedc_unicode", "edc_unicode"),
-    Description: Dot(
-      "6wedc_unicode",
-      "TBC"
-    ),
+    Label: Dot("x41eedc_unicode", "edc_unicode"),
+    Description: Dot("6wedc_unicode", "TBC"),
   },
 };
 

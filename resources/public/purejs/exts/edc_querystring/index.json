@@ -4,22 +4,22 @@
     {
       "Id": "edc_querystring.text",
       "Tooltip": [
-        "P56edc_querystringK",
+        "xP56edc_querystringK",
         "Click to process your data"
       ],
       "Label": [
-        "IPedc_querystring",
+        "xIPedc_querystring",
         "Get edc_querystring"
       ],
       "CallFuncList": [
-        "edc_querystring.ConvertText"
+        "xedc_querystring.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "edc_querystring",
     "Label": [
-      "41eedc_querystring",
+      "x41eedc_querystring",
       "edc_querystring"
     ],
     "Description": [

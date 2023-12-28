@@ -4,22 +4,22 @@
     {
       "Id": "sha512.text",
       "Tooltip": [
-        "pl8S6",
+        "xpl8S6",
         "Click here to encrypt your input text"
       ],
       "Label": [
-        "o3poi.sha512",
+        "xo3poi.sha512",
         "Get SHA512 Hash"
       ],
       "CallFuncList": [
-        "sha512.ConvertText"
+        "xsha512.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "sha512",
     "Label": [
-      "TtyeA.sha512",
+      "xTtyeA.sha512",
       "SHA512"
     ],
     "Description": [

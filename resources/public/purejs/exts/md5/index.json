@@ -4,18 +4,18 @@
     {
       "Id": "md5.text",
       "Label": [
-        "vQqqe",
+        "xvQqqe",
         "Get MD5 Hash"
       ],
       "CallFuncList": [
-        "md5.ConvertText"
+        "xmd5.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "md5",
     "Label": [
-      "AWqXD",
+      "xAWqXD",
       "MD5"
     ],
     "Description": [

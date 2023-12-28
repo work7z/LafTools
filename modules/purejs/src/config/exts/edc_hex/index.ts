@@ -6,18 +6,15 @@ let v: ExtensionVM = {
   Actions: [
     {
       Id: "edc_hex.text",
-      Tooltip: Dot("P56edc_hexK", "Click to process your data"),
-      Label: Dot("IPedc_hex", "Get edc_hex"),
-      CallFuncList: Dot("edc_hex.ConvertText"),
+      Tooltip: Dot("xP56edc_hexK", "Click to process your data"),
+      Label: Dot("xIPedc_hex", "Get edc_hex"),
+      CallFuncList: Dot("xedc_hex.ConvertText"),
     },
   ],
   Info: {
     Id: "edc_hex",
-    Label: Dot("41eedc_hex", "edc_hex"),
-    Description: Dot(
-      "6wedc_hex",
-      "TBC"
-    ),
+    Label: Dot("x41eedc_hex", "edc_hex"),
+    Description: Dot("6wedc_hex", "TBC"),
   },
 };
 

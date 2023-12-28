@@ -4,22 +4,22 @@
     {
       "Id": "rand_mock.text",
       "Tooltip": [
-        "P56rand_mockK",
+        "xP56rand_mockK",
         "Click to process your data"
       ],
       "Label": [
-        "IPrand_mock",
+        "xIPrand_mock",
         "Get rand_mock"
       ],
       "CallFuncList": [
-        "rand_mock.ConvertText"
+        "xrand_mock.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "rand_mock",
     "Label": [
-      "41erand_mock",
+      "x41erand_mock",
       "rand_mock"
     ],
     "Description": [

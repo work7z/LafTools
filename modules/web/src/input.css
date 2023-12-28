@@ -19,9 +19,6 @@
  {
     @apply !bg-cyan-600 hover:!bg-cyan-900;
 }
-.btn-white {
-    @apply !bg-white hover:!bg-white-900;
-}
 .btn-cyan{
     /* @apply !text-white !bg-green-700 hover:!bg-purple-900 ; */
 

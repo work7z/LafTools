@@ -4,22 +4,22 @@
     {
       "Id": "md2.text",
       "Tooltip": [
-        "P56UK",
+        "xP56UK",
         "Click here to encrypt your input text"
       ],
       "Label": [
-        "IP8-V",
+        "xIP8c-V",
         "Get MD2 Hash"
       ],
       "CallFuncList": [
-        "md2.ConvertText"
+        "xmd2.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "md2",
     "Label": [
-      "41ev7",
+      "x41ev7",
       "MD2"
     ],
     "Description": [

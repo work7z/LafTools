@@ -4,22 +4,22 @@
     {
       "Id": "text_compare.text",
       "Tooltip": [
-        "P56text_compareK",
+        "xP56text_compareK",
         "Click to process your data"
       ],
       "Label": [
-        "IPtext_compare",
+        "xIPtext_compare",
         "Get text_compare"
       ],
       "CallFuncList": [
-        "text_compare.ConvertText"
+        "xtext_compare.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "text_compare",
     "Label": [
-      "41etext_compare",
+      "x41etext_compare",
       "text_compare"
     ],
     "Description": [

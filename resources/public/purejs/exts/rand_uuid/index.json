@@ -4,22 +4,22 @@
     {
       "Id": "rand_uuid.text",
       "Tooltip": [
-        "P56rand_uuidK",
+        "xP56rand_uuidK",
         "Click to process your data"
       ],
       "Label": [
-        "IPrand_uuid",
+        "xIPrand_uuid",
         "Get rand_uuid"
       ],
       "CallFuncList": [
-        "rand_uuid.ConvertText"
+        "xrand_uuid.ConvertText"
       ]
     }
   ],
   "Info": {
     "Id": "rand_uuid",
     "Label": [
-      "41erand_uuid",
+      "x41erand_uuid",
       "rand_uuid"
     ],
     "Description": [
