@@ -45,8 +45,9 @@ import { LabelValuePair } from "../../types/constants";
 import { Dot } from "../../utils/TranslationUtils";
 import FormGenElement, { FormGenType } from "../FormGenElement";
 
+export type FormGenItem = FormGroupProps & { genEleConfig: FormGenType }
 type PropFormGenPanel = {
-    list: (FormGroupProps & { genEleConfig: FormGenType })[]
+    list: (FormGenItem)[]
 }
 export default (props: PropFormGenPanel) => {
     return <div className="p-2 whitespace-break-spaces">

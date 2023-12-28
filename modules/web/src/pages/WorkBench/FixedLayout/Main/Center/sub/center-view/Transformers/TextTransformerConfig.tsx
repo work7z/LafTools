@@ -16,20 +16,22 @@ import { useEffect, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
-import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
+import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER, LabelValuePair } from "../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 import { fn_format_description } from "../../../../../../../../types/workbench-fn";
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "./hooks";
-import FormGenPanel from "../../../../../../../../components/FormGenPanel";
+import FormGenPanel, { FormGenItem } from "../../../../../../../../components/FormGenPanel";
 
 
 let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
     let toolTabIndex = crtRuntimeStatus.toolTabIndex || "general"
     let sessionId = props.sessionId;
+    let extVM = props.extVM
+    let actions = extVM?.Actions
     let isCollapsed = fn_coll_config(sessionId);
     let onColl = (v: boolean) => {
         FN_GetDispatch()(
@@ -41,17 +43,34 @@ let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithR
     };
     let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "config");
     let w = "350px";
+    let toolList = [
+        //
+    ];
+    let generalList: FormGenItem[] = [
+        {
+            label: Dot("YuQqTX", "Auto Run?"),
+            helperText: Dot("YuQTX", "Whether to run the transformer automatically when the input text is changed."),
+            genEleConfig: {
+                type: "switch",
+            }
+        },
+        {
+            label: Dot("6AumW", "Default Action"),
+            helperText: Dot("nxJC7", "The default action to be executed when the transformer is performed."),
+            genEleConfig: {
+                type: "select",
+                selectList: (actions || []).map(x => {
+                    return {
+                        label: x.LabelByInit,
+                        value: x.Id
+                    } as LabelValuePair
+                })
+            }
+        }
+    ]
     let finalShowContent = <div>not yet defiend</div>
     if (toolTabIndex == "general") {
-        finalShowContent = <FormGenPanel list={[
-            {
-                label: Dot("6AumW", "Default Action"),
-                helperText: Dot("nxJC7", "The default action to be executed when the transformer is performed."),
-                genEleConfig: {
-                    type: "input"
-                }
-            }
-        ]}></FormGenPanel>
+        finalShowContent = <FormGenPanel list={generalList}></FormGenPanel >
     } else if (toolTabIndex == "tools") {
         finalShowContent = <div>tools</div>
     }
@@ -147,8 +166,8 @@ let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithR
                             >
                                 {/* icon={"home"} */}
                                 {/* icon={"folder-open"} */}
-                                <Tab id="general" title={Dot("sHoxW", "General")} tagContent={0} />
                                 <Tab id="tools" title={Dot("GKQDO", "Tools")} tagContent={4} />
+                                <Tab id="general" title={Dot("sHoxxW", "Conversion")} tagContent={_.size(generalList)} />
                             </Tabs>
                         </Navbar.Group>
                     </Navbar>
