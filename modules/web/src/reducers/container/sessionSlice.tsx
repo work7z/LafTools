@@ -31,7 +31,7 @@ export type TranslationSessionMapAttr = {
 }
 
 export type TerminalSessionMapAttr = {
-    //
+    TM_FontSize: number;
 }
 // attrName to attrValue, here we can save their settings, session val, etc...    
 export type SessionAttr = Partial<

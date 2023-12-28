@@ -1,3 +1,23 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Thu, 28 Dec 2023
+// Author: LafTools Team - FX <work7z@outlook.com>
+// Description: 
+// Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 
 import { Button, Card, Popover } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
@@ -436,11 +456,56 @@ class TerminalWrapper extends React.PureComponent<{ SessionId: string }, Termina
                     outlined={true}
                     text={x.text}
                     icon={x.icon}
-                    intent={x.intent}
+                    intent={'none'
+                    }
+                    className="btn-white"
+                    minimal={false}
                     onClick={x.onClick}
-                ></Button>
+                ></Button >
             );
         };
+        let processArr = [
+            // {
+            //     intent: "primary",
+            //     text: Dot("pA_feeJ", `Reconnect Terminal`),
+            //     onClick: async () => {
+            //         await this.reconnectTerminal();
+            //         AlertUtils.popOK(Dot("JQLmSq", "Completed."))
+            //     },
+            // },
+            {
+                intent: "none",
+                text: Dot("dsdpA_eJ", `Adjust Size`),
+                onClick: () => {
+                    this.___onFitTerminalLayout();
+                    AlertUtils.popOK(Dot("JQLmS", "Adjusted the size"))
+                },
+            },
+            {
+                intent: "none",
+                text: Dot("pA_qweJ", `Clear Buffer`),
+                onClick: () => {
+                    this.___clearTerminal();
+                },
+            },
+            {
+                intent: "none",
+                text: Dot("pA_deJ", `Export to Clipboard`),
+                onClick: () => {
+                    const str = this.___serializeTerminalData();
+                    AlertUtils.copyWithAlertCopied(str || "")
+                },
+            },
+            {
+                intent: "none",
+                text: Dot("psA_eJ", `Export as File`),
+                onClick: () => {
+                    const str = this.___serializeTerminalData();
+                    FileUtils.exportAsFile(`${Date.now()}-term.txt`, str || "N/A");
+                },
+            },
+        ]
+
         return (
             <SpinLoading
                 loadingJSX={
@@ -451,123 +516,55 @@ class TerminalWrapper extends React.PureComponent<{ SessionId: string }, Termina
                 }
                 loading={isLoading}
             >
-                {notOK ? (
-                    <div className="sys-card-wrapper" style={{ padding: "0 30px" }}>
-                        <h1 style={{ textAlign: "center" }}>
-                            {Dot("pAe_eJ", `The terminal service is loading or being suspended`)}
-                        </h1>
-                        <p style={{ textAlign: "center" }}>
-                            {Dot("Nt4qw_R",
-                                `It appears that the terminal is loading or being suspended, trouble you wait a moment. If the UI keeps showing this message, you can restart services and check the logs by clicking the button below.`
-                            )}
-                        </p>
-                        <ul>
-                            <li>
-                                {Dot("pA_sdeJ", `Status: `)}
-                                {terminalService.status}
-                            </li>
-                            <li>
-                                {Dot("pAc_eJ", `Message: `)}
-                                {terminalService.message}
-                            </li>
-                            <li>
-                                {Dot("pA_qweJ", `Token: `)}
-                                {terminalService.token}
-                            </li>
-                            <li>
-                                {Dot("pA_deJ", `Port: `)}
-                                {terminalService.token}
-                            </li>
-                            {/* <li>
-                                {Dot("pA_eJ", `Timestamp: `)}
-                                {moment(parseInt(terminalService.timestamp)).format(
-                                    "YYYY-MM-DD HH:mm:ss"
-                                )}
-                            </li> */}
-                        </ul>
-                        {/* <p>
-                            <div style={{ marginBottom: "5px" }}>{Dot("pqwA_eJ", `More Operations`)}:</div>
-                            <div>
-                                <Button
-                                    onClick={() => {
-                                        // gstore.localUserConfig.drawer.open = true;
-                                        // gstore.localUserConfig.drawer.tabId = "processes";
-                                    }}
-                                    text={Dot("pA_qweeJ", `View Integrated Service Panel`)}
-                                ></Button>
-                            </div>
-                        </p> */}
-                    </div>
-                ) : (
-                    ""
-                )}
                 <div
                     style={{ opacity: notOK ? 0 : 1 }}
-                    className={` ${["gterm-global-wrapper"]} `}
+                    className={`relative ${["gterm-global-wrapper"]} `}
                 >
+
+                    <div
+                        id={this.state.id}
+                        style={{
+                            background: _.get(themeConfig, "background"),
+                        }}
+                        className={` ${"gterm-core-body"} z-40 `}
+                    ></div>
+
                     <div className={`${["gterm-header"]} `}>
-                        <div className="sub-mr-5 ">
-                            {[
-                                // {
-                                //     intent: "primary",
-                                //     text: Dot("pA_feeJ", `Reconnect Terminal`),
-                                //     onClick: async () => {
-                                //         await this.reconnectTerminal();
-                                //         AlertUtils.popOK(Dot("JQLmSq", "Completed."))
-                                //     },
-                                // },
-                                {
-                                    intent: "none",
-                                    text: Dot("dsdpA_eJ", `Adjust Size`),
-                                    onClick: () => {
-                                        this.___onFitTerminalLayout();
-                                        AlertUtils.popOK(Dot("JQLmS", "Adjusted the size"))
-                                    },
-                                },
-                                {
-                                    intent: "none",
-                                    text: Dot("pA_qweJ", `Clear Buffer`),
-                                    onClick: () => {
-                                        this.___clearTerminal();
-                                    },
-                                },
-                                {
-                                    intent: "none",
-                                    text: Dot("pA_deJ", `Export to Clipboard`),
-                                    onClick: () => {
-                                        const str = this.___serializeTerminalData();
-                                        AlertUtils.copyWithAlertCopied(str || "")
-                                    },
-                                },
-                                {
-                                    intent: "none",
-                                    text: Dot("psA_eJ", `Export as File`),
-                                    onClick: () => {
-                                        const str = this.___serializeTerminalData();
-                                        FileUtils.exportAsFile(`${Date.now()}-term.txt`, str || "N/A");
-                                    },
-                                },
-                            ].map(fn_mapBtn)}
-                        </div>
                         <div className="sub-ml-5 ">
+                            {
+                                processArr.map(fn_mapBtn)
+                            }
+
+                        </div>
+                        <div className="sub-ml-5">
                             {[
-                                // TODO: support plus + minus button
-                                // {
-                                //     intent: "none",
-                                //     text: ``,
-                                //     icon: "plus",
-                                //     onClick: () => {
-                                //         // this.props.PUtils.crtModel.config.fontSize++;
-                                //     },
-                                // },
-                                // {
-                                //     intent: "none",
-                                //     text: ``,
-                                //     icon: "minus",
-                                //     onClick: () => {
-                                //         // this.props.PUtils.crtModel.config.fontSize--;
-                                //     },
-                                // },
+                                {
+                                    intent: "none",
+                                    text: ``,
+                                    icon: "plus",
+                                    onClick: () => {
+                                        // fontSize ++ for term
+                                        if (this.term) {
+                                            let opt = this.term?.options
+                                            opt.fontSize++;
+                                            this.___onFitTerminalLayout();
+                                        }
+                                        // this.props.PUtils.crtModel.config.fontSize++;
+                                    },
+                                },
+                                {
+                                    intent: "none",
+                                    text: ``,
+                                    icon: "minus",
+                                    onClick: () => {
+                                        if (this.term) {
+                                            let opt = this.term?.options
+                                            opt.fontSize--;
+                                            this.___onFitTerminalLayout();
+                                        }
+                                        // this.props.PUtils.crtModel.config.fontSize--;
+                                    },
+                                },
                                 // {
                                 //     intent: "primary",
                                 //     text: ``,
@@ -580,13 +577,9 @@ class TerminalWrapper extends React.PureComponent<{ SessionId: string }, Termina
                             ].map(fn_mapBtn)}
                         </div>
                     </div>
-                    <div
-                        id={this.state.id}
-                        style={{
-                            background: _.get(themeConfig, "background"),
-                        }}
-                        className={` ${"gterm-core-body"}  `}
-                    ></div>
+                    {/* <div className="absolute right-2 bottom-2 z-50" >
+                        <Button minimal icon="cog"></Button>
+                    </div> */}
                 </div>
             </SpinLoading>
         );
