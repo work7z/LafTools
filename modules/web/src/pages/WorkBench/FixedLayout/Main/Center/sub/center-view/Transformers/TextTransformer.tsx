@@ -40,13 +40,17 @@ import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 import { fn_format_description } from "../../../../../../../../types/workbench-fn";
 import { CommonTransformerProps } from "./types";
-import { ExtensionAction } from "../../../../../../../../types/purejs-types-READ_ONLY";
+import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 
 let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
 
+type TransofrmerWithRuntime = {
+  crtRuntimeStatus: ToolDefaultOutputType;
+}
+
 type TextTransformerProps = CommonTransformerProps;
-let TextTransformerControl = (props: TextTransformerProps) => {
+let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRuntime) => {
   let { inputBigTextId } = props;
   let [loadExample, onLoadExample] = useState(false);
   let extVM = props.extVM
@@ -231,7 +235,7 @@ let useCurrentActiveStyle = (sessionId: string, panelId: string) => {
 };
 
 // TODO: provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
-let TextTransformerOutput = (props: CommonTransformerPassProp) => {
+let TextTransformerOutput = (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
   let sessionId = props.sessionId;
   let isCollapsed = fn_coll_output(sessionId);
   let extVM = props.extVM
@@ -340,7 +344,7 @@ let fn_coll_config = (sessionId) => {
   }).v;
 };
 
-let TextTransformerConfig = (props: CommonTransformerPassProp) => {
+let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
   let sessionId = props.sessionId;
   let isCollapsed = fn_coll_config(sessionId);
   let onColl = (v: boolean) => {
@@ -442,8 +446,8 @@ let TextTransformerConfig = (props: CommonTransformerPassProp) => {
               >
                 {/* icon={"home"} */}
                 {/* icon={"folder-open"} */}
-                <Tab id="basic" title={Dot("wUGUS", "Basic")} tagContent={0} />
-                <Tab id="conversion" title={Dot("ciPuj", "Advanced")} tagContent={4} />
+                <Tab id="general" title={Dot("sHoxW", "General")} tagContent={0} />
+                <Tab id="tools" title={Dot("GKQDO", "Tools")} tagContent={4} />
               </Tabs>
             </Navbar.Group>
           </Navbar>
@@ -477,10 +481,17 @@ export default (props: CommonTransformerProps) => {
       }),
     );
   }
+  let crtRuntimeStatus = exportUtils.useSelector((x) => {
+    let v = x.runtimeStatus.toolOutputStatusMap[sessionId];
+    return {
+      v
+    }
+  }).v;
+
   return (
     <div key={sessionId} className="w-full h-full relative">
       {/* onProcess={fn_notifyTextChange} */}
-      <TextTransformerControl  {...commonPassProp}></TextTransformerControl>
+      <TextTransformerControl crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerControl>
       <div
         style={{
           height: bodyHeight,
@@ -495,8 +506,8 @@ export default (props: CommonTransformerProps) => {
           onTextChange={fn_notifyTextChange}
         ></GenCodeMirror>
       </div>
-      <TextTransformerOutput {...commonPassProp}></TextTransformerOutput>
-      <TextTransformerConfig {...commonPassProp}></TextTransformerConfig>
+      <TextTransformerOutput crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerOutput>
+      <TextTransformerConfig crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerConfig>
     </div>
   );
 };

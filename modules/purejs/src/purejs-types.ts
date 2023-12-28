@@ -30,6 +30,7 @@ export type ToolDefaultOutputType = {
   activeActionId?: string;
   collapseConfig?: boolean;
   latestViewPanelId?: string;
+  toolTabIndex?: "general" | "tools";
 };
 
 export type ExtensionInfoFormatted = {
