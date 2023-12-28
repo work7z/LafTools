@@ -53,6 +53,7 @@ import TerminalWrapper from "./TerminalWrapper";
 
 
 export default (props: SessionViewProp) => {
+    // TODO: recover the history of terminal
     let sessionType = props.sessionType
     let sessionId = props.sessionId;
     return <div className="w-full h-full">

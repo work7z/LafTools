@@ -154,7 +154,7 @@ class TerminalWrapper extends React.PureComponent<{ SessionId: string }, Termina
     constructor(props) {
         super(props);
         this.state = {
-            id: _.uniqueId("id"),
+            id: this.props.SessionId,
             loading: false,
             loadingMsg: null,
             lines: [],
