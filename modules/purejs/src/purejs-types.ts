@@ -27,6 +27,7 @@ export type EachLang = {
 export type ToolDefaultOutputType = {
   // key refers to sessionId
   collapseOutput?: boolean;
+  activeActionId?: string;
   collapseConfig?: boolean;
   latestViewPanelId?: string;
 };

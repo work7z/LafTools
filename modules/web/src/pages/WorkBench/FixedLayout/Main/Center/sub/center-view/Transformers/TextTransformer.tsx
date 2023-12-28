@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Button, ButtonProps, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, ButtonProps, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
   VAL_CSS_TAB_TITLE_PANEL,
@@ -140,15 +140,13 @@ let TextTransformerControl = (props: TextTransformerProps) => {
       title: Dot("i88tb", "Export Result to File"),
     },
     {
-      icon: "cog",
-      intent: isCollapsed ? "none" : "success",
-      // title: Dot("Fy217", "Configure Text Transformer"),
-      title: Dot("Fy217", "Configure this Tool"),
-      className: isCollapsed ? "" : "btn-lime",
-      onClick: () => {
-        onColl(!isCollapsed);
-      },
+      icon: "gantt-chart",
+      intent: "none" as any,
+      className: "none",
+      text: "",
+      title: Dot("i8q8tb", "Configure WorkFlow for Input"),
     },
+
     {
       icon: "export",
       intent: isCollapsed_output ? "none" : "success",
@@ -160,12 +158,16 @@ let TextTransformerControl = (props: TextTransformerProps) => {
       },
     },
     {
-      icon: "gantt-chart",
-      intent: "none" as any,
-      className: "none",
-      text: "",
-      title: Dot("i8q8tb", "Configure WorkFlow for Input"),
+      icon: "cog",
+      intent: isCollapsed ? "none" : "success",
+      // title: Dot("Fy217", "Configure Text Transformer"),
+      title: Dot("Fy217", "Configure this Tool"),
+      className: isCollapsed ? "" : "btn-lime",
+      onClick: () => {
+        onColl(!isCollapsed);
+      },
     },
+
   ];
   return (
     <div
@@ -232,6 +234,16 @@ let useCurrentActiveStyle = (sessionId: string, panelId: string) => {
 let TextTransformerOutput = (props: CommonTransformerPassProp) => {
   let sessionId = props.sessionId;
   let isCollapsed = fn_coll_output(sessionId);
+  let extVM = props.extVM
+  let activeActionId = exportUtils.useSelector((x) => {
+    let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.activeActionId;
+    if (_.isNil(v)) {
+      v = "N/A";
+    }
+    return {
+      v: v,
+    };
+  }).v;
   let onColl = (v: boolean) => {
     FN_GetDispatch()(
       RuntimeStatusSlice.actions.setCollapseOutput({
@@ -243,6 +255,9 @@ let TextTransformerOutput = (props: CommonTransformerPassProp) => {
   let currentStyleForActive = useCurrentActiveStyle(props.sessionId, "output");
   // let h =' w-[38.2%] h-[38.2%] '
   let h = " w-[44%] h-[42%] min-w-[450px] ";
+  if (!extVM) {
+    return <div>unknown extVM</div>
+  }
   return (
     <div
       onClick={() => {
@@ -278,9 +293,13 @@ let TextTransformerOutput = (props: CommonTransformerPassProp) => {
         leftNavList={[
           {
             icon: "export",
-            label: Dot("Dj9qqwk", "Output") + " - Get MD2 Hash ",
+            // TODO: let user can decide which id is ok
+            label: Dot("Dj9qqwk", "Output"),
             value: "drawer",
-          },
+          }
+          // ...(extVM.Actions || []).map(x => {
+          //   return 
+          // })
         ]}
         rightCtrls={
           <Button
@@ -404,7 +423,31 @@ let TextTransformerConfig = (props: CommonTransformerPassProp) => {
           // rightIcon={!isCollapsed ? "chevron-up" : "chevron-down"}
           ></Button>
         }
-        children={<div>this is bg</div>}
+        children={<div>
+          <Navbar>
+            <Navbar.Group>
+              <Navbar.Heading>
+                {/* Page: <strong>{''}</strong> */}
+                {Dot("ZIHEO", "Settings")}
+              </Navbar.Heading>
+            </Navbar.Group>
+            <Navbar.Group align={Alignment.RIGHT}>
+              <Tabs
+                animate={true}
+                fill={true}
+                id="navbar"
+                large={false}
+              // onChange={this.handleNavbarTabChange}
+              // selectedTabId={this.state.navbarTabId}
+              >
+                {/* icon={"home"} */}
+                {/* icon={"folder-open"} */}
+                <Tab id="basic" title={Dot("wUGUS", "Basic")} tagContent={0} />
+                <Tab id="conversion" title={Dot("ciPuj", "Advanced")} tagContent={4} />
+              </Tabs>
+            </Navbar.Group>
+          </Navbar>
+        </div>}
       ></SysTabPane>
     </div>
   );
