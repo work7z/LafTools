@@ -9,7 +9,23 @@
     "fe-extra": "go run ./core/app.go dev-extra --config $LAFTOOLS_ROOT/dev/config/laft-system-dev.json",
     "fe-build": "(cd ./modules/web && npm run build)"
   },
-  "keywords": [],
+  "keywords": [
+    "cipher",
+    "cypher",
+    "encode",
+    "decode",
+    "encrypt",
+    "decrypt",
+    "base64",
+    "xor",
+    "charset",
+    "hex",
+    "encoding",
+    "format",
+    "cybersecurity",
+    "data manipulation",
+    "data analysis"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
