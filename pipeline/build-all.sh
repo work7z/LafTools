@@ -33,7 +33,7 @@ build-core(){
 
     mkdir -p $platformDistDir
     echo "[I] building [$platformName]"
-    GOOS=$argGOOS GOARCH=$platformArch go build -o $platformDistDir/core.$platformExt core/app.go $platformGoFile
+    GOOS=$argGOOS GOARCH=$platformArch go build -o $platformDistDir/core.$platformExt core/app.go 
 
     echo "[I] copying os-patch..."
 

@@ -178,5 +178,41 @@
     "Value": "tr",
     "LabelByLang": "Türkçe",
     "LabelInEnglish": "Turkish"
+  },
+  {
+    "Label": [
+      "2lhqwp",
+      "Indonesian"
+    ],
+    "Value": "id",
+    "LabelByLang": "Bahasa Indonesia",
+    "LabelInEnglish": "Indonesian"
+  },
+  {
+    "Label": [
+      "2lhqwp",
+      "Vietnamese"
+    ],
+    "Value": "vi",
+    "LabelByLang": "Tiếng Việt",
+    "LabelInEnglish": "Vietnamese"
+  },
+  {
+    "Label": [
+      "2lhqwp",
+      "Thai"
+    ],
+    "Value": "th",
+    "LabelByLang": "ภาษาไทย",
+    "LabelInEnglish": "Thai"
+  },
+  {
+    "Label": [
+      "2lhqwp",
+      "Malay"
+    ],
+    "Value": "ms",
+    "LabelByLang": "Bahasa Melayu",
+    "LabelInEnglish": "Malay"
   }
 ]

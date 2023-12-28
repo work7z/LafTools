@@ -23,6 +23,7 @@ import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SyncStateUtils from "../utils/SyncStateUtils";
 import { ToolDefaultOutputType, Val_ToolTabIndex } from "../types/purejs-types-READ_ONLY";
+import _ from "lodash";
 
 type RuntimeStatusState = {
   toolOutputStatusMap: {
@@ -42,6 +43,19 @@ const RuntimeStatusSlice = createSlice({
       RequireUserId: true,
       RequireWorkspaceId: true,
     }),
+    initAtOnceBySessionIdAndValue: (
+      state,
+      action: PayloadAction<{ sessionId: string; value: ToolDefaultOutputType }>
+    ) => {
+      let { sessionId, value } = action.payload;
+      if (!state.toolOutputStatusMap[sessionId]) {
+        state.toolOutputStatusMap[sessionId] = value;
+      } else {
+        _.defaultsDeep(
+          state.toolOutputStatusMap[sessionId], value
+        )
+      }
+    },
     // select the latest view panel
     selectLatestViewPanel: (
       state,
@@ -49,9 +63,7 @@ const RuntimeStatusSlice = createSlice({
     ) => {
       let { sessionId, panelId } = action.payload;
       if (!state.toolOutputStatusMap[sessionId]) {
-        state.toolOutputStatusMap[sessionId] = {
-          latestViewPanelId: panelId,
-        };
+        return;
       }
       state.toolOutputStatusMap[sessionId].latestViewPanelId = panelId;
     },
@@ -61,9 +73,7 @@ const RuntimeStatusSlice = createSlice({
     ) => {
       let { sessionId, tabIndex } = action.payload;
       if (!state.toolOutputStatusMap[sessionId]) {
-        state.toolOutputStatusMap[sessionId] = {
-          toolTabIndex: 'general',
-        };
+        return
       }
       state.toolOutputStatusMap[sessionId].toolTabIndex = tabIndex;
     },
@@ -74,9 +84,7 @@ const RuntimeStatusSlice = createSlice({
     ) => {
       let { sessionId, collapseOutput } = action.payload;
       if (!state.toolOutputStatusMap[sessionId]) {
-        state.toolOutputStatusMap[sessionId] = {
-          collapseOutput,
-        };
+        return
       }
       state.toolOutputStatusMap[sessionId].latestViewPanelId = 'output'
       state.toolOutputStatusMap[sessionId].collapseOutput = collapseOutput;
@@ -87,9 +95,7 @@ const RuntimeStatusSlice = createSlice({
     ) => {
       let { sessionId, collapseConfig } = action.payload;
       if (!state.toolOutputStatusMap[sessionId]) {
-        state.toolOutputStatusMap[sessionId] = {
-          collapseConfig,
-        };
+        return
       }
       state.toolOutputStatusMap[sessionId].collapseConfig = collapseConfig;
       state.toolOutputStatusMap[sessionId].latestViewPanelId = 'config'

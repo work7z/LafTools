@@ -45,6 +45,7 @@ import { TransofrmerWithRuntime, controlBarHeight, fn_coll_config, useCurrentAct
 import TextTransformerControl from "./TextTransformerControl";
 import TextTransformerOutput from "./TextTransformerOutput";
 import TextTransformerConfig from "./TextTransformerConfig";
+import LoadingText from "../../../../../../../../components/LoadingText";
 
 export default (props: CommonTransformerProps) => {
   let sessionId = props.sessionId;
@@ -74,6 +75,21 @@ export default (props: CommonTransformerProps) => {
       v
     }
   }).v;
+
+  useEffect(() => {
+    FN_GetDispatch()(
+      RuntimeStatusSlice.actions.initAtOnceBySessionIdAndValue({
+        sessionId,
+        value: {
+          latestViewPanelId: "output",
+          toolTabIndex: "general",
+        },
+      }),
+    )
+  }, [])
+  if (!crtRuntimeStatus) {
+    return <LoadingText></LoadingText>
+  }
 
   return (
     <div key={sessionId} className="w-full h-full relative">

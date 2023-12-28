@@ -27,7 +27,7 @@ buildCoreForPlatform(){
     fi
     mkdir -p dist/$platformName
     echo "building $platformName"
-    GOOS=$argGOOS GOARCH=$platformArch go build -o dist/$platformName/codegen-momentousness-$platformName.$platformExt core/app.go $platformGoFile
+    GOOS=$argGOOS GOARCH=$platformArch go build -o dist/$platformName/codegen-momentousness-$platformName.$platformExt core/app.go 
 
     echo "built, copy cross platform resources..."
 
