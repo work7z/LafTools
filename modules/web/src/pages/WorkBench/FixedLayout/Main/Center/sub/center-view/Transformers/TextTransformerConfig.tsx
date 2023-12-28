@@ -85,7 +85,7 @@ let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithR
                 );
             }}
             className={
-                "absolute right-0   bg-white dark:bg-black   " +
+                "absolute right-0 overflow-y-auto  bg-white dark:bg-black   " +
                 CSS_TW_LAYOUT_BORDER +
                 " border-r-0   "
             }

@@ -71,8 +71,12 @@ func loadFileByLangFromDir(pathname string, lang string) error {
 
 	lockForPreloadLang.Lock()
 	defer lockForPreloadLang.Unlock()
-
-	tmpLangObj, err := tools.ReadJSONFile(path.Join(pathname, lang+".json"))
+	tFile := path.Join(pathname, lang+".json")
+	if !tools.IsFileExist(tFile) {
+		log.Ref().Warn("has no config file for lang: " + tFile)
+		return nil
+	}
+	tmpLangObj, err := tools.ReadJSONFile(tFile)
 	if err != nil {
 		log.Ref().Fatal("LoadFromDir: ", err.Error())
 		return err
@@ -175,7 +179,8 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 			}
 		} else {
 			log.Ref().Warning("No available text for the id " + id)
-			return enUS + "[UNTRANSLATED]"
+			// return enUS + "[UNTRANSLATED]"
+			return enUS
 		}
 	}
 

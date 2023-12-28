@@ -83,6 +83,8 @@ export default (props: CommonTransformerProps) => {
         value: {
           latestViewPanelId: "output",
           toolTabIndex: "general",
+          collapseConfig: true,
+          collapseOutput: true,
         },
       }),
     )

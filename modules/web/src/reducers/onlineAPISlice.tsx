@@ -130,7 +130,7 @@ export const onlineAPISlice = createApi({
       if (!_.isEmpty(errors)) {
         return false;
       }
-      return response.status === 200 && !result.isError;
+      return response && response.status === 200 && result && !result.isError;
     },
   }),
   endpoints: (build) => ({

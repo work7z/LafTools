@@ -112,9 +112,16 @@ func main() {
 			resultForCurrentLang = result2
 		} else {
 			fmt.Println("new text received, id: " + id)
-			resultForCurrentLang2, err2 := translateNow(v, eachLang)
-			if err2 != nil {
-				log.InternalLog.Panic("err", err2)
+			var resultForCurrentLang2 string = ""
+			for {
+				v_resultForCurrentLang2, err2 := translateNow(v, eachLang)
+				resultForCurrentLang2 = v_resultForCurrentLang2
+				if err2 != nil {
+					log.InternalLog.Warn("err", err2)
+					nocycle.Sleep(10000)
+				} else {
+					break
+				}
 			}
 			resultForCurrentLang = resultForCurrentLang2
 			fmt.Println(resultForCurrentLang)
@@ -168,7 +175,8 @@ func translateNow(text, targetLang string) (string, error) {
 		targetLang = "zh-hk"
 	}
 	time.Sleep(30 * time.Millisecond)
-	return gt.Translate(text, "en", targetLang)
+	n, e := gt.Translate(text, "en", targetLang)
+	return n, e
 }
 
 func __ExampleCall() {

@@ -33,19 +33,23 @@ let langList: EachLang[] = [
   },
   { Label: Dot("a4jbpq", "Czech"), Value: "cs", LabelByLang: "Čeština" },
   { Label: Dot("ediql2", "Hungarian"), Value: "hu", LabelByLang: "Magyar" },
-  { Label: Dot("2lhqwp", "Turkish"), Value: "tr", LabelByLang: "Türkçe" },
+  { Label: Dot("2lhcqwp", "Turkish"), Value: "tr", LabelByLang: "Türkçe" },
   {
-    Label: Dot("2lhqwp", "Indonesian"),
+    Label: Dot("2lhqqwp", "Indonesian"),
     Value: "id",
     LabelByLang: "Bahasa Indonesia",
   },
   {
-    Label: Dot("2lhqwp", "Vietnamese"),
+    Label: Dot("2lehqwp", "Vietnamese"),
     Value: "vi",
     LabelByLang: "Tiếng Việt",
   },
-  { Label: Dot("2lhqwp", "Thai"), Value: "th", LabelByLang: "ภาษาไทย" },
-  { Label: Dot("2lhqwp", "Malay"), Value: "ms", LabelByLang: "Bahasa Melayu" },
+  { Label: Dot("2lhqwwp", "Thai"), Value: "th", LabelByLang: "ภาษาไทย" },
+  {
+    Label: Dot("2lhqqwqp", "Malay"),
+    Value: "ms",
+    LabelByLang: "Bahasa Melayu",
+  },
 ].map((x: EachLang) => {
   x.LabelInEnglish = x.Label[1];
   return x;
