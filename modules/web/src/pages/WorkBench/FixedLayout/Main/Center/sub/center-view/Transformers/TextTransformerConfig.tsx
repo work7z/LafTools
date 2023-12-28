@@ -1,3 +1,23 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Thu, 28 Dec 2023
+// Author: LafTools Team - FX <work7z@outlook.com>
+// Description: 
+// Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 
 import { Alignment, Button, ButtonProps, FormGroup, InputGroup, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
@@ -85,7 +105,7 @@ let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithR
                 );
             }}
             className={
-                "absolute right-0 overflow-y-auto  bg-white dark:bg-black   " +
+                "absolute right-0 overflow-y-visible  bg-white dark:bg-black   " +
                 CSS_TW_LAYOUT_BORDER +
                 " border-r-0   "
             }
@@ -145,7 +165,7 @@ let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithR
                     // rightIcon={!isCollapsed ? "chevron-up" : "chevron-down"}
                     ></Button>
                 }
-                children={<div>
+                children={<div className="h-full overflow-auto">
                     <Navbar>
                         <Navbar.Group>
                             <Navbar.Heading>
