@@ -95,8 +95,7 @@ cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/dev/scripts/scan && pnpm install
 
-# terminate previous processes if you're on Windows OS. (It's normal if your terminal is also terminated, just open new terminal to be continue)
-npm run win-clean
+npm run win-clean # For Windows Only, it will close all terminals and previous processes.
 
 # run web service on [Terminal - 1]
 npm run fe-web
@@ -167,7 +166,7 @@ Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** i
 Thank you.
 
 Mar. 20th, 2021  
-Ryan Laf
+Ryan Lai
 
 # 🌱 What's with the name? 
 
