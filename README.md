@@ -51,7 +51,7 @@ Preview(Simplified Chinese|简体中文):
 
 ## 1. Setup System Environment
 
-Let's say that you've cloned this repository to `C:\\Users\jerrylai\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or just simply execute them before running any command.
+Let's say that you've cloned this repository to `C:\\Users\jerry\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or just simply execute them before running any command.
 
 If you're using Windows, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
 
@@ -133,6 +133,7 @@ cd pipeline
 ./build-all.sh
 ```
 
+
 # 📑 Other Materials
 
 Below are further materials that you can have a look if you'd like to learn more detail about this project:
@@ -167,6 +168,12 @@ Thank you.
 
 Mar. 20th, 2021  
 Ryan Laf
+
+# 🌱 What's with the name? 
+
+#### *The Tools for Laffin' At Life* 
+
+This project is dedicated to Chet Atkins' 'Laffin' At Life', an unforgettable classic country song released in 1987 that holds a special place in the author's heart. Whether we are studying or working, we should all face life with a positive attitude, just 'Laffin' At Life'.
 
 # 🪪 License
 
