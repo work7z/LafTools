@@ -174,9 +174,10 @@ Ryan Lai
 
 The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that has a special place in the author's heart.
 
-Whether we are studying or working, we should all face life with a positive attitude, just 'Laffin' At Life'.  Hopefully it will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance. 
+Whether we are studying or working, we should all face life with a positive attitude, just 'Laffin' At Life'.  
 
-Work hard, play hard.
+Hopefully it will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance. 
+
 
 # 🪪 License
 
