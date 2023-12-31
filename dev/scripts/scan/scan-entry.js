@@ -85,6 +85,14 @@ let searchItems = [
     dir: `${webDIR}/src`,
   },
   {
+    id: 'srv2',
+    type: 'go',
+    prefix: '.Dot(',
+    target: `/home/jerrylai/mincontent/PersonalProjects/laftools-server2/resources/lang`,
+    pattern: commonText,
+    dir: `/home/jerrylai/mincontent/PersonalProjects/laftools-server2/core`,
+  },
+  {
     id: 'portal-l',
     type: 'ts',
     prefix: 'Dot(',
