@@ -67,6 +67,35 @@ let nodeDIR = path.join (baseDIR, ...`modules/node`.split ('/'));
 
 let previousModifiedType = {};
 
+// personal project for RYAN LAI, just ignore it please
+let privateProjects = [
+    {
+      id: 'srv2',
+      type: 'go',
+      prefix: '.Dot(',
+      target: `/home/jerrylai/mincontent/PersonalProjects/laftools-server2/resources/lang`,
+      pattern: commonText,
+      dir: `/home/jerrylai/mincontent/PersonalProjects/laftools-server2/core`,
+    },
+    {
+      type: 'ts',
+      id: 'denote-pal-2',
+      prefix: 'Dot(',
+      pattern: commonText,
+      target: '/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/resources/lang2',
+      dir: '/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/java/com',
+    },  
+    {
+      id: 'portal-l',
+      type: 'ts',
+      prefix: 'Dot(',
+      pattern: commonText,
+      target: '/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal/public/static/lang',
+      dir: '/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal/src',
+    },
+  
+]
+
 let searchItems = [
   {
     id: 'brl',
@@ -85,22 +114,6 @@ let searchItems = [
     dir: `${webDIR}/src`,
   },
   {
-    id: 'srv2',
-    type: 'go',
-    prefix: '.Dot(',
-    target: `/home/jerrylai/mincontent/PersonalProjects/laftools-server2/resources/lang`,
-    pattern: commonText,
-    dir: `/home/jerrylai/mincontent/PersonalProjects/laftools-server2/core`,
-  },
-  {
-    id: 'portal-l',
-    type: 'ts',
-    prefix: 'Dot(',
-    pattern: commonText,
-    target: '/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal/public/static/lang',
-    dir: '/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal/src',
-  },
-  {
     type: 'ts',
     id: 'portal-sl',
     prefix: 'Dot(',
@@ -110,20 +123,13 @@ let searchItems = [
   },
   {
     type: 'ts',
-    id: 'denote-pal-2',
-    prefix: 'Dot(',
-    pattern: commonText,
-    target: '/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/resources/lang2',
-    dir: '/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/java/com',
-  },
-  {
-    type: 'ts',
     id: 'purejs',
     prefix: 'Dot(',
     pattern: commonText,
     target: baseDIR + '/modules/purejs/src/lang',
     dir: baseDIR + '/modules/purejs/src',
   },
+  ...privateProjects
 ].map (x => {
   x.dir = convertUnixPathToWindowsPath (x.dir);
   x.target = convertUnixPathToWindowsPath (x.target);
