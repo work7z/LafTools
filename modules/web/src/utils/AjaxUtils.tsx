@@ -69,6 +69,14 @@ const AjaxUtils = {
       "X-LOCAL-USER-ID": TokenUtils.getLocalUserId(),
     };
   },
+  getCloudAPIHeaders: () => {
+    return {
+      ...AjaxUtils.getHeaders(),
+      // cloud required
+      "X-WORK7Z-TOKEN": "N/A",
+      "X-WORK7Z-LANG": "en_US",
+    }
+  },
   getQSStr(obj: CommonRequest): string {
     let querystring = obj.querystring;
     return !_.isEmpty(querystring) ? "?" + QS.stringify(querystring) : "";

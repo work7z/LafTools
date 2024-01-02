@@ -166,13 +166,13 @@ Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** i
 Thank you.
 
 Mar. 20th, 2021  
-Ryan Lai
+Ryan Laf
 
 # 🌱 What's with the name? 
 
 #### *The Tools for Laffin' At Life* 
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that has a special place in the author's heart.
+The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
 
 Whether we are studying or working, we should all face life with a positive attitude, just 'Laffin' At Life'.  
 

@@ -116,7 +116,7 @@ export const onlineAPISlice = createApi({
     // Fill in your own server starting URL here
     baseUrl: URL_PREFIX_LOCAL,
     prepareHeaders(headers, api) {
-      let headers_New = AjaxUtils.getHeaders();
+      let headers_New = AjaxUtils.getCloudAPIHeaders();
       _.forEach(headers_New, (x, d, n) => {
         if (!_.isNil(x)) {
           headers.set(d, x);
