@@ -336,10 +336,6 @@ let scan = async (eachRunItem, eachLang) => {
     }
   }
   await triggerFn()
-  chokidar.watch(eachRunItem.dir).on('all', async (event, path) => {
-    console.log('some file is changed', event, path);
-    // await triggerFn()
-  });
 };
 
 // "zh_HK", "zh_CN"
@@ -358,10 +354,33 @@ for (let eachItem of searchItems) {
   console.log('existOrNot', existOrNot, eachItem.dir);
   if (existOrNot) {
     console.log('enter');
-    for (let eachLang of langarr) {
-      setTimeout(() => {
-        scan(eachItem, eachLang);
-      }, 0);
-    }
+
+    let triggerAllFn = _.debounce(()=>{
+      for (let eachLang of langarr) {
+        setTimeout(() => {
+          scan(eachItem, eachLang);
+        }, 0);
+      }  
+    },1000)
+    // triggerAllFn();
+
+    chokidar.watch(eachItem.dir).on('all', async (event, path) => {
+      // if new file is added or exist file is modified/delete
+      // console.log('some file is changed', event, path);
+      if (event == 'add' || event == 'change' || event == 'unlink') {
+        let eachFile = path;
+        if (
+          (eachFile + '').endsWith('go') ||
+          (eachFile + '').endsWith('ts') ||
+          (eachFile + '').endsWith('tsx') ||
+          (eachFile + '').endsWith('java') ||
+          (eachFile + '').endsWith('groovy') ||
+          (eachFile + '').endsWith('js') 
+        ){
+          console.log('some file is changed', event, path);
+          triggerAllFn()
+        }
+      }
+    });  
   }
 }
