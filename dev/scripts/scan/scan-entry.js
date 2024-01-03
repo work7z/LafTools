@@ -92,8 +92,8 @@ let privateProjects = [
     type: 'ts',
     prefix: 'Dot(',
     pattern: commonText,
-    target: '/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal/public/static/lang',
-    dir: '/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal/src',
+    target: '/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal2/public/static/lang',
+    dir: '/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal2/src',
   },
 
 ]
@@ -146,6 +146,10 @@ if (true) {
 let toJSON = obj => {
   return JSON.stringify(obj, null, 4);
 };
+
+let runStatusObj = {
+
+}
 
 let scan = async (eachRunItem, eachLang) => {
   let triggerFn = async () => {
@@ -335,7 +339,11 @@ let scan = async (eachRunItem, eachLang) => {
       await sleep(3000);
     }
   }
-  await triggerFn()
+  try {
+    await triggerFn()
+  } catch (e) {
+    console.log('err', e)
+  }
 };
 
 // "zh_HK", "zh_CN"
@@ -355,13 +363,22 @@ for (let eachItem of searchItems) {
   if (existOrNot) {
     console.log('enter');
 
-    let triggerAllFn = _.debounce(()=>{
-      for (let eachLang of langarr) {
-        setTimeout(() => {
-          scan(eachItem, eachLang);
-        }, 0);
-      }  
-    },1000)
+    let triggerAllFn = _.debounce(async () => {
+      let eachRunItem = eachItem
+      if (runStatusObj[eachRunItem.dir]) return;
+      runStatusObj[eachRunItem.dir] = '1'
+
+      try {
+        for (let eachLang of langarr) {
+          await scan(eachItem, eachLang);
+        }
+      } catch (e) {
+        console.log('err', e)
+      }
+
+      delete runStatusObj[eachRunItem.dir]
+
+    }, 1000)
     // triggerAllFn();
 
     chokidar.watch(eachItem.dir).on('all', async (event, path) => {
@@ -375,12 +392,12 @@ for (let eachItem of searchItems) {
           (eachFile + '').endsWith('tsx') ||
           (eachFile + '').endsWith('java') ||
           (eachFile + '').endsWith('groovy') ||
-          (eachFile + '').endsWith('js') 
-        ){
+          (eachFile + '').endsWith('js')
+        ) {
           console.log('some file is changed', event, path);
           triggerAllFn()
         }
       }
-    });  
+    });
   }
 }
