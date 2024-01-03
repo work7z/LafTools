@@ -210,40 +210,40 @@ let scan = async (eachRunItem, eachLang) => {
       allFiles.sort((a, b) => {
         return a.localeCompare(b);
       });
-      let md5TypeForLastModified = 0;
-      let lastFile = null;
-      for (let eachFile of allFiles) {
-        eachFile += '';
-        let file = getFile(eachFile); // replace with appropriate function
-        // console.log('file:',eachFile)
-        if (
-          // !(eachFile + "").endsWith(".json") &&
-          (eachFile + '').endsWith('go') ||
-          (eachFile + '').endsWith('ts') ||
-          (eachFile + '').endsWith('tsx')
-          // true
-        ) {
-          // lastModifiedForIdOverwriteJSONFile += file.lastModified();
-          if (md5TypeForLastModified < file.lastModified()) {
-            md5TypeForLastModified = file.lastModified();
-            lastFile = file.file;
-          }
-        }
-      }
-      let keyidx = eachRunItem.id + eachLang;
-      let thatFileMD5 = md5TypeForLastModified == 0
-        ? ''
-        : md5(getFile(lastFile).text()) + lastModifiedForIdOverwriteJSONFile;
-      if (previousModifiedType[keyidx] == thatFileMD5) {
-        // console.log("skipped translating due to same md5 file");
-        // sleep(1000);
-        return
-      } else {
-        // console.log("continue to translate " + eachRunItem.dir);
-        previousModifiedType[keyidx] = thatFileMD5;
-      }
-      console.log(thatFileMD5);
-      console.log(lastFile);
+      // let md5TypeForLastModified = 0;
+      // let lastFile = null;
+      // for (let eachFile of allFiles) {
+      //   eachFile += '';
+      //   let file = getFile(eachFile); // replace with appropriate function
+      //   // console.log('file:',eachFile)
+      //   if (
+      //     // !(eachFile + "").endsWith(".json") &&
+      //     (eachFile + '').endsWith('go') ||
+      //     (eachFile + '').endsWith('ts') ||
+      //     (eachFile + '').endsWith('tsx')
+      //     // true
+      //   ) {
+      //     // lastModifiedForIdOverwriteJSONFile += file.lastModified();
+      //     if (md5TypeForLastModified < file.lastModified()) {
+      //       md5TypeForLastModified = file.lastModified();
+      //       lastFile = file.file;
+      //     }
+      //   }
+      // }
+      // let keyidx = eachRunItem.id + eachLang;
+      // let thatFileMD5 = md5TypeForLastModified == 0
+      //   ? ''
+      //   : md5(getFile(lastFile).text()) + lastModifiedForIdOverwriteJSONFile;
+      // if (previousModifiedType[keyidx] == thatFileMD5) {
+      //   // console.log("skipped translating due to same md5 file");
+      //   // sleep(1000);
+      //   return
+      // } else {
+      //   // console.log("continue to translate " + eachRunItem.dir);
+      //   previousModifiedType[keyidx] = thatFileMD5;
+      // }
+      // console.log(thatFileMD5);
+      // console.log(lastFile);
 
       let anyDuplicateSet = {};
 
