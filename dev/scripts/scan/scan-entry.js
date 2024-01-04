@@ -214,42 +214,7 @@ let scan = async (eachRunItem, eachLang) => {
       allFiles.sort((a, b) => {
         return a.localeCompare(b);
       });
-      // let md5TypeForLastModified = 0;
-      // let lastFile = null;
-      // for (let eachFile of allFiles) {
-      //   eachFile += '';
-      //   let file = getFile(eachFile); // replace with appropriate function
-      //   // console.log('file:',eachFile)
-      //   if (
-      //     // !(eachFile + "").endsWith(".json") &&
-      //     (eachFile + '').endsWith('go') ||
-      //     (eachFile + '').endsWith('ts') ||
-      //     (eachFile + '').endsWith('tsx')
-      //     // true
-      //   ) {
-      //     // lastModifiedForIdOverwriteJSONFile += file.lastModified();
-      //     if (md5TypeForLastModified < file.lastModified()) {
-      //       md5TypeForLastModified = file.lastModified();
-      //       lastFile = file.file;
-      //     }
-      //   }
-      // }
-      // let keyidx = eachRunItem.id + eachLang;
-      // let thatFileMD5 = md5TypeForLastModified == 0
-      //   ? ''
-      //   : md5(getFile(lastFile).text()) + lastModifiedForIdOverwriteJSONFile;
-      // if (previousModifiedType[keyidx] == thatFileMD5) {
-      //   // console.log("skipped translating due to same md5 file");
-      //   // sleep(1000);
-      //   return
-      // } else {
-      //   // console.log("continue to translate " + eachRunItem.dir);
-      //   previousModifiedType[keyidx] = thatFileMD5;
-      // }
-      // console.log(thatFileMD5);
-      // console.log(lastFile);
 
-      let anyDuplicateSet = {};
 
       let waitTranslateObj = {};
       // iterate all files
@@ -270,8 +235,6 @@ let scan = async (eachRunItem, eachLang) => {
               // await sleep(10000);
             }
             waitTranslateObj[key] = value;
-            // crtMap_zhCN[key] = value;
-            // crtMap_zhHK[key] = value;
           }
           // substring
           text = text.substring(match.index + match[0].length);
@@ -333,7 +296,7 @@ let scan = async (eachRunItem, eachLang) => {
 
       console.log('------------------------------');
 
-      await sleep(3000);
+      // await sleep(3000);
     } catch (e) {
       console.log('err', e);
       await sleep(3000);
@@ -346,7 +309,6 @@ let scan = async (eachRunItem, eachLang) => {
   }
 };
 
-// "zh_HK", "zh_CN"
 let langarr = [];
 
 i18njson.forEach(x => {
