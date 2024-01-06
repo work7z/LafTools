@@ -2,6 +2,7 @@
 
 [x] revise About This Software modal
 [x] terminal basic support  
+[] support using local API server 
 [] provide a floating positioned button on the corner of editor, up or down depending on the y value.
 [] check if browser side is able to process all tools that we need. (so unbelievable, cool)
 [] when I click bottom button, the panel should also turn into active style.

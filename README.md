@@ -34,12 +34,12 @@ If the answer to any of the above is yes, then you should consider trying our to
 - Can be used over the web and with Docker
 - Extra helpers such as notes, manuals, etc...
 
-Example Preview:
+Preview:
 Here are some screenshots for you to preview how this toolbox works.
 
 # 🌠 Preview
 
-> LafTools is still under development, its dependencies, UI or prerequisites may changed as needed.
+> LafTools is still under development, its UI, dependencies or prerequisites may changed as needed.
 
 Preview(English):
 ![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-1.png?raw=true)
@@ -114,7 +114,7 @@ Note that you can use the '&' symbol for background execution if you don't want 
 
 Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing, let us Go!
 
-Examples:
+Example:
 
 ```output
 -----------------------------------------------
@@ -133,6 +133,15 @@ cd pipeline
 ```
 
 
+# 🌱 What's with the name? 
+
+#### *The Tools for Laffin' At Life* 
+
+The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+
+Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just 'Laffin' At Life'!
+
+
 # 📑 Other Materials
 
 Below are further materials that you can have a look if you'd like to learn more detail about this project:
@@ -140,6 +149,8 @@ Below are further materials that you can have a look if you'd like to learn more
 - [FAQ](./FAQ.md)
 - [CONTRIBUTION](./CONTRIBUTION.md)
 - [For China Developers](dev/notes/common/issues.md)
+
+
 
 # 🎷 Inspiration
 
@@ -150,6 +161,7 @@ This project is primarily inspired by the following musicians:
 - Khalil Fong
 - Li Rong Hao
 - Chet Atkins
+- Les Paul  
 - Tommy Emmanuel
 - Martin Taylor
 - Frédéric Chopin
@@ -167,17 +179,6 @@ Thank you.
 
 Mar. 20th, 2021  
 Ryan Laf
-
-# 🌱 What's with the name? 
-
-#### *The Tools for Laffin' At Life* 
-
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
-
-Whether we are studying or working, we should all face life with a positive attitude, just 'Laffin' At Life'.  
-
-Hopefully it will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance. 
-
 
 # 🪪 License
 
