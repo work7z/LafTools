@@ -492,7 +492,7 @@ export let WB_MenuBar = (props: PassProp) => {
             <Button
               className={Classes.MINIMAL}
               small={true}
-              intent={cloudStatus.Info?.HasLogin ? "primary" : "warning"}
+              intent={cloudStatus.Info?.isLogin ? "primary" : "warning"}
               // title={Dot(`ZAKaFq`, `My Cloud Account`)}
               icon={"cloud"}
               loading={cloudStatus.Loading}
