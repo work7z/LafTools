@@ -151,30 +151,11 @@ let runStatusObj = {
 
 }
 
-let scan = async (eachRunItem, eachLang) => {
+let scan = async (eachRunItem) => {
   let triggerFn = async () => {
     try {
-      let outputLang = eachLang.replace('-', '_');
-      let isChinese = eachLang == 'zh_CN' || eachLang == 'zh_HK';
-      let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
-
+      // get all dir
       let dir = getFile(eachRunItem.dir); // replace with appropriate function
-      let a1 = `${overwrittenDir}/${isChinese ? 'zh_CN' : eachLang}-id-overwrite.json`;
-      let overwrittenFile = a1;
-      let idOverwriteJSONFile = getFile(a1); // replace with appropriate function
-      let overwriteJSONFile = getFile(
-        `${overwrittenDir}/${isChinese ? 'zh_CN' : eachLang}-overwrite.json`
-      );
-
-      if (!fs.existsSync(idOverwriteJSONFile.file)) {
-        fs.writeFileSync(idOverwriteJSONFile.file, '{}');
-      }
-      if (!fs.existsSync(overwriteJSONFile.file)) {
-        fs.writeFileSync(overwriteJSONFile.file, '{}');
-      }
-      let overwrritenMap = getFile(overwrittenFile).jsonmap();
-      let lastModifiedForIdOverwriteJSONFile =
-        idOverwriteJSONFile.lastModified() + overwriteJSONFile.lastModified();
 
       // iterate all files for dir.file, recursively
       let iterateFiles = (dir, done) => {
@@ -216,6 +197,9 @@ let scan = async (eachRunItem, eachLang) => {
       });
 
 
+
+      let anyDuplicateSet = {};
+
       let waitTranslateObj = {};
       // iterate all files
       for (let eachFile of allFiles) {
@@ -241,60 +225,126 @@ let scan = async (eachRunItem, eachLang) => {
         }
       }
 
-      let waitTranslateObjStr = toJSON(waitTranslateObj);
-      // console.log(waitTranslateObj);
 
-      let tmpTranslateDir = path.join(__dirname, 'tmp-translate-result');
-      if (!fs.existsSync(tmpTranslateDir)) {
-        fs.mkdirSync(tmpTranslateDir);
-      }
-      fs.writeFileSync(
-        path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
-        waitTranslateObjStr
-      );
-      fs.writeFileSync(
-        path.join(
-          tmpTranslateDir,
-          `config-${eachRunItem.id}-${eachLang}.json`
-        ),
-        toJSON({
-          id: eachRunItem.id,
-        })
-      );
+      for (let eachLang of langarr) {
 
-      // execute a command
-      let cmd = `go run "${path.join(__dirname, 'translate-tools', 'bulktranslate.go')}" --id=${eachRunItem.id} --lg=${eachLang} --output="${outputLangFile}" `;
-      console.log('cmd is ', cmd);
-      sh.exec(cmd);
+        let outputLang = eachLang.replace('-', '_');
+        let isChinese = eachLang == 'zh_CN' || eachLang == 'zh_HK';
+        let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
-      let resultFile = path.join(
-        __dirname,
-        `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`
-      );
-      if (fs.existsSync(resultFile)) {
-        let resultJSON = getFile(resultFile).jsonmap();
-        _.forEach(overwrritenMap, (x, d, n) => {
-          if (resultJSON[d]) {
-            resultJSON[d] = x;
-          }
-        });
+        let a1 = `${overwrittenDir}/${isChinese ? 'zh_CN' : eachLang}-id-overwrite.json`;
+        let overwrittenFile = a1;
+        let idOverwriteJSONFile = getFile(a1); // replace with appropriate function
+        let overwriteJSONFile = getFile(
+          `${overwrittenDir}/${isChinese ? 'zh_CN' : eachLang}-overwrite.json`
+        );
 
-        if (eachLang == 'zh_HK') {
-          resultJSON = _.mapValues(resultJSON, (x, d, n) => {
-            return _.chain(x)
-              .split('')
-              .map(xx => cnchars.toTraditionalChar(xx))
-              .join('')
-              .value();
-          });
+        if (!fs.existsSync(idOverwriteJSONFile.file)) {
+          fs.writeFileSync(idOverwriteJSONFile.file, '{}');
         }
-        fs.writeFileSync(outputLangFile, toJSON(resultJSON));
-      } else {
-        console.log('file not exists: ', resultFile);
-        process.exit(-1);
-      }
+        if (!fs.existsSync(overwriteJSONFile.file)) {
+          fs.writeFileSync(overwriteJSONFile.file, '{}');
+        }
+        let overwrritenMap = getFile(overwrittenFile).jsonmap();
+        let lastModifiedForIdOverwriteJSONFile =
+          idOverwriteJSONFile.lastModified() + overwriteJSONFile.lastModified();
 
-      console.log('------------------------------');
+
+        // let md5TypeForLastModified = 0;
+        // let lastFile = null;
+        // for (let eachFile of allFiles) {
+        //   eachFile += '';
+        //   let file = getFile(eachFile); // replace with appropriate function
+        //   // console.log('file:',eachFile)
+        //   if (
+        //     // !(eachFile + "").endsWith(".json") &&
+        //     (eachFile + '').endsWith('go') ||
+        //     (eachFile + '').endsWith('ts') ||
+        //     (eachFile + '').endsWith('tsx')
+        //     // true
+        //   ) {
+        //     // lastModifiedForIdOverwriteJSONFile += file.lastModified();
+        //     if (md5TypeForLastModified < file.lastModified()) {
+        //       md5TypeForLastModified = file.lastModified();
+        //       lastFile = file.file;
+        //     }
+        //   }
+        // }
+        // let keyidx = eachRunItem.id + eachLang;
+        // let thatFileMD5 = md5TypeForLastModified == 0
+        //   ? ''
+        //   : md5(getFile(lastFile).text()) + lastModifiedForIdOverwriteJSONFile;
+        // if (previousModifiedType[keyidx] == thatFileMD5) {
+        //   console.log("skipped translating due to same md5 file");
+        //   sleep(1000);
+        //   return;
+        // } else {
+        //   // console.log("continue to translate " + eachRunItem.dir);
+        //   previousModifiedType[keyidx] = thatFileMD5;
+        // }
+        // console.log(thatFileMD5);
+        // console.log(lastFile);
+
+        let waitTranslateObjStr = toJSON(waitTranslateObj);
+        // console.log(waitTranslateObj);
+
+        let tmpTranslateDir = path.join(__dirname, 'tmp-translate-result');
+        if (!fs.existsSync(tmpTranslateDir)) {
+          fs.mkdirSync(tmpTranslateDir);
+        }
+
+        // start iteratting all languages here
+
+        fs.writeFileSync(
+          path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
+          waitTranslateObjStr
+        );
+        fs.writeFileSync(
+          path.join(
+            tmpTranslateDir,
+            `config-${eachRunItem.id}-${eachLang}.json`
+          ),
+          toJSON({
+            id: eachRunItem.id,
+          })
+        );
+
+        // execute a command
+        let cmd = `go run "${path.join(__dirname, 'translate-tools', 'bulktranslate.go')}" --id=${eachRunItem.id} --lg=${eachLang} --output="${outputLangFile}" `;
+        console.log('cmd is ', cmd);
+        sh.exec(cmd);
+
+        let resultFile = path.join(
+          __dirname,
+          `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`
+        );
+        if (fs.existsSync(resultFile)) {
+          let resultJSON = getFile(resultFile).jsonmap();
+          _.forEach(overwrritenMap, (x, d, n) => {
+            if (resultJSON[d]) {
+              resultJSON[d] = x;
+            }
+          });
+
+          if (eachLang == 'zh_HK') {
+            resultJSON = _.mapValues(resultJSON, (x, d, n) => {
+              return _.chain(x)
+                .split('')
+                .map(xx => cnchars.toTraditionalChar(xx))
+                .join('')
+                .value();
+            });
+          }
+          fs.writeFileSync(outputLangFile, toJSON(resultJSON));
+        } else {
+          console.log('file not exists: ', resultFile);
+          process.exit(-1);
+        }
+
+        console.log('------------------------------');
+
+
+      }
 
       // await sleep(3000);
     } catch (e) {
@@ -331,9 +381,7 @@ for (let eachItem of searchItems) {
       runStatusObj[eachRunItem.dir] = '1'
 
       try {
-        for (let eachLang of langarr) {
-          await scan(eachItem, eachLang);
-        }
+        await scan(eachItem);
       } catch (e) {
         console.log('err', e)
       }
