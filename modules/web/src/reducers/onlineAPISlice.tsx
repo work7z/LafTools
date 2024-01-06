@@ -73,7 +73,7 @@ interface InitWelcomeData {
 export type VCodePass = {
   VCODE: string;
 };
-interface UserPayload {
+export interface UserPayload {
   isLogin: boolean;
   isAdmin: boolean;
   id: number;

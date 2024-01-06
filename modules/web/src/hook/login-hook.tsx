@@ -1,12 +1,9 @@
 import { useEffect } from "react"
-import onlineAPISlice from "../reducers/onlineAPISlice";
+import onlineAPISlice, { UserPayload } from "../reducers/onlineAPISlice";
 
 export type LoginStatus = {
     Loading: boolean;
-    Info?: {
-        HasLogin?: boolean;
-        IsAdmin?: boolean;
-    }
+    Info?: UserPayload
 }
 
 export let useCloudLoginStatus = (): LoginStatus => {
@@ -16,6 +13,7 @@ export let useCloudLoginStatus = (): LoginStatus => {
         pollingInterval: 1000 * 60 * 5, // 5 minutes a time
     })
     return {
-        Loading: true,
+        Loading: st.isLoading,
+        Info: st.data?.payload.value,
     }
 }
