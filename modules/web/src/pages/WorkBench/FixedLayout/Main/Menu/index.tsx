@@ -68,6 +68,7 @@ import {
 } from "@blueprintjs/table";
 import ALL_NOCYCLE, {
   APPINFOJSON,
+  FN_GetDispatch,
   delayFN,
   getIconPngFile,
 } from "../../../../../nocycle";
@@ -495,10 +496,17 @@ export let WB_MenuBar = (props: PassProp) => {
               intent={cloudStatus.Info?.isLogin ? "primary" : "warning"}
               // title={Dot(`ZAKaFq`, `My Cloud Account`)}
               icon={"cloud"}
-              loading={cloudStatus.Loading}
               onClick={() => {
-                // show login panel
+                if (!cloudStatus.Info?.isLogin) {
+                  FN_GetDispatch()(
+                    statusSlice.actions.setWhetherShow({
+                      fieldName: "signIn",
+                      fieldValue: true,
+                    })
+                  )
+                }
               }}
+              loading={cloudStatus.Loading}
             />
           </Tooltip>
           {/* <Tooltip content={Dot("ExqvX", "Hot Keys List")} position="bottom">

@@ -61,10 +61,20 @@ func SetupRoutes(r *gin.Engine) {
 		isCloudPrefix := strings.Index(fullPath, config.CLOUD_URL_APP_CLOUD_PREFIX) == 0
 		isAppPreFix := strings.Index(fullPath, config.CONFIG_URL_APP_FRONT_END_APP_PREFIX) == 0
 		isStaticPrefix := strings.Index(fullPath, config.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX) == 0
+
+		// check if fullPath starts with one which is inside CONFIG_CLOUD_URL_PREFIX
+		for _, prefix := range config.CONFIG_CLOUD_URL_PREFIX {
+			if strings.Index(fullPath, prefix) == 0 {
+				isCloudPrefix = true
+				break
+			}
+		}
+
 		if isCloudPrefix {
 			proxyToCloud(c)
 			return
 		}
+
 		// if current env is dev mode, then we just proxy the request to the front-end server.
 		if tools.IsDevMode {
 			if isAppPreFix {
