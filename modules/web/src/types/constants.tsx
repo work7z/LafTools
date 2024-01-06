@@ -90,7 +90,7 @@ export const URL_PREFIX_LOCAL = "/api";
 export const Z_INDEX_DIALOG = 9990;
 export const Z_INDEX_CONFIRM = 9991;
 
-export const URL_PREFIX_ONLINE_API = "/x-v2-cloud/api"
+export const URL_PREFIX_ONLINE_API = "/x-v2-api/api"
 export const URL_WORKBENCH = "/workbench";
 export const URL_ENTRY = "/entry";
 export const URL_WORKBENCH_WORKSPACE = URL_WORKBENCH;
@@ -102,8 +102,6 @@ export const ID_NOTES = "notes";
 export const ID_HISTORY = "history";
 export const ID_RESOURCES = "resources";
 
-// export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "left 0.3s, top 0.3s, width 0.3s, height 0.3s;";
-// export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "transform 0.3s, top 0.3s, width 0.3s, height 0.3s;";
 export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "transform 0.3s, top 0.3s, width 0.3s, height 0.3s, left 0.3s";
 
 export let CSS_TEXT_ANCHOR_CSS =

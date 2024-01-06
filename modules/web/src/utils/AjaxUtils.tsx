@@ -73,8 +73,10 @@ const AjaxUtils = {
     return {
       ...AjaxUtils.getHeaders(),
       // cloud required
+      "X-Work7z-Res-Type": "JSON",
+      "X-Local-User-Lang": TranslationUtils.CurrentLanguage,
       "X-WORK7Z-TOKEN": "N/A",
-      "X-WORK7Z-LANG": "en_US",
+      "X-WORK7Z-LANG": TranslationUtils.CurrentLanguage,
     }
   },
   getQSStr(obj: CommonRequest): string {

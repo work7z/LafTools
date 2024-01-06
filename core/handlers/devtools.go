@@ -31,7 +31,7 @@ import (
 
 var url_feProxyPath = "http://localhost:5173"
 
-func proxyToFE(c *gin.Context, prefix string) {
+func proxyToDevFE(c *gin.Context, prefix string) {
 	allPath := c.Request.URL.Path
 	// read the file in feAppDir and pipe its content into c
 	subFilePath := strings.Replace(allPath, prefix, "", 1)
@@ -39,13 +39,13 @@ func proxyToFE(c *gin.Context, prefix string) {
 
 	r := c.Request
 	w := c.Writer
-	proxy := NewSingleHostReverseProxy(remoteFullPath)
+	proxy := NewSingleHostReverseProxyWithNoHeader(remoteFullPath)
 	r.Header.Set("X-Forwarded-Host", r.Header.Get("Host"))
 
 	proxy.ServeHTTP(w, r)
 }
 
-func NewSingleHostReverseProxy(target string) *httputil.ReverseProxy {
+func NewSingleHostReverseProxyWithNoHeader(target string) *httputil.ReverseProxy {
 	targetUrl, _ := url.Parse(target)
 	return &httputil.ReverseProxy{Director: func(r *http.Request) {
 		r.URL.Host = targetUrl.Host

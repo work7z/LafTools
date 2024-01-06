@@ -57,19 +57,25 @@ func SetupRoutes(r *gin.Engine) {
 	// setup for SPA
 	r.NoRoute(func(c *gin.Context) {
 		fullPath := c.Request.RequestURI
+
+		isCloudPrefix := strings.Index(fullPath, config.CLOUD_URL_APP_CLOUD_PREFIX) == 0
 		isAppPreFix := strings.Index(fullPath, config.CONFIG_URL_APP_FRONT_END_APP_PREFIX) == 0
 		isStaticPrefix := strings.Index(fullPath, config.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX) == 0
+		if isCloudPrefix {
+			proxyToCloud(c)
+			return
+		}
 		// if current env is dev mode, then we just proxy the request to the front-end server.
 		if tools.IsDevMode {
 			if isAppPreFix {
-				proxyToFE(c, config.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
+				proxyToDevFE(c, config.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
 				return
 			} else if isStaticPrefix {
-				proxyToFE(c, config.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX)
+				proxyToDevFE(c, config.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX)
 				return
 			} else {
 				// all other request go to the front-end server
-				proxyToFE(c, "")
+				proxyToDevFE(c, "")
 			}
 		}
 		if isAppPreFix || isStaticPrefix {
@@ -92,12 +98,6 @@ func SetupRoutes(r *gin.Engine) {
 
 	// User routes
 	r_api := r.Group(config.CONFIG_URL_PUBLIC_BASE_PREFIX)
-
-	// handle cloud APIs forward
-	cloudAPIRoutes := r_api.Group(config.CLOUD_URL_APP_CLOUD_PREFIX)
-	{
-		cloudAPIRoutes.Use(cloudForwardAPI)
-	}
 
 	// open APIs, mean no need to login to access
 	openRoutes := r_api.Group(config.CONFIG_URL_OPENAPI_PREFIX)
