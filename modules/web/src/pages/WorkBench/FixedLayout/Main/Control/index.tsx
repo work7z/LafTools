@@ -256,6 +256,20 @@ export let WB_ControllerBar = () => {
       intent: Intent.NONE,
       id: "translation",
     },
+    {
+      text: Dot("8LdRjq", "Compute"),
+      icon: "calculator",
+      onClick: () => { },
+      active: false,
+      disabled: false,
+      tooltip: Dot(
+        "M4ywN1",
+        "Calculator, Calendar, Clock, Weather, and more."
+      ),
+      intent: Intent.NONE,
+      id: "compute",
+    },
+
     // when the user click any menu, then
     {
       text: Dot("8LdRj", "Overview"),
