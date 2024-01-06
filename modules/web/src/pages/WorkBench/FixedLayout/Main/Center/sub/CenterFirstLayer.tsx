@@ -61,7 +61,7 @@ import {
 } from "@blueprintjs/core";
 import { APPINFOJSON, delayFN } from "../../../../../../nocycle";
 
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import ReactDOM from "react-dom";
 import gutils from "../../../../../../utils/GlobalUtils";
 import { logutils } from "../../../../../../utils/LogUtils";
@@ -110,6 +110,10 @@ gutils.ExposureIt("REF_mainstage", REF_mainstage, true);
 export let MainStage = (props: { className: string }) => {
   let hist = useHistory();
 
+  let refMountCountRef = useRef({
+    mountCount: 0,
+  })
+
   let v = exportUtils.useSelector((v) => {
     return {
       // show
@@ -126,10 +130,6 @@ export let MainStage = (props: { className: string }) => {
 
   let dis = exportUtils.dispatch();
 
-  // let fn_syncSizes = useMemo(() => {
-  //   return {
-  //   };
-  // }, [_.values(v)]);
   let fn_syncSizes = {
     sync_Vertical: _.throttle((size) => {
       dis(layoutSlice.actions.updateMenuRecord({ menu: "ttm", record: size }));
@@ -177,11 +177,14 @@ export let MainStage = (props: { className: string }) => {
       <Allotment
         vertical
         ref={(e) => {
-          REF_mainstage.inst_ttm = e;
-          runOnceForMainStage.ttm();
+          // REF_mainstage.inst_ttm = e;
+          // refMountCountRef.current.mountCount++
+          // if (refMountCountRef.current.mountCount == 1) {
+          // runOnceForMainStage.ttm();
+          // }
         }}
         onChange={(size) => {
-          logutils.debug("size", size);
+          logutils.debug("top bottom: size", size);
           fn_syncSizes.sync_Vertical(size);
           ResizeUtils.trigger()
         }}

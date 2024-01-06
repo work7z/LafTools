@@ -77,7 +77,7 @@ import ReactDOM from "react-dom";
 import gutils from "../../../../../../../utils/GlobalUtils";
 import _ from "lodash";
 import { SysTabPane } from "../../../../../../../components/SysTabPane";
-import { FN_ACTION_CloseMenu_ltr } from "../../../../../../../actions/layout_action";
+import { FN_ACTION_CloseMenu_ltr, FN_ACTION_CloseMenu_ttm } from "../../../../../../../actions/layout_action";
 import { useSearchQuery } from "../../../../../../../types/workbench-hook";
 import { Dot } from "../../../../../../../utils/TranslationUtils";
 // import MultipleSessionLeftView from "../../../containers/MultipleSessionLeftView/index";
@@ -96,7 +96,7 @@ export default () => {
       onClick={() => {
         let dis = FN_GetDispatch();
         dis(
-          FN_ACTION_CloseMenu_ltr({
+          FN_ACTION_CloseMenu_ttm({
             menuRecordKey: "ttm",
             menuKey: "bottom",
           })

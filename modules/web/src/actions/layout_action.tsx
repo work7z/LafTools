@@ -66,7 +66,7 @@ export function FN_ACTION_OpenMenu_ltr(arg: MenuOpenCloseOper): any {
 
 export function FN_ACTION_CloseMenu_ttm(arg: MenuOpenCloseOper): any {
   return async (dis) => {
-    let mainStage_ltr = REF_mainstage.inst_ttm;
+    let mainStage = REF_mainstage.inst_ttm;
     let crtSize = FN_GetState().layout.menuRecord[arg.menuRecordKey];
     let newSize: number[] | null = null;
     if (!_.isEmpty(crtSize)) {
@@ -82,7 +82,7 @@ export function FN_ACTION_CloseMenu_ttm(arg: MenuOpenCloseOper): any {
     );
     if (newSize != null) {
       setTimeout(() => {
-        newSize && mainStage_ltr?.resize(newSize as any);
+        newSize && mainStage?.resize(newSize as any);
       }, 0);
     }
     dis(
@@ -97,7 +97,7 @@ export function FN_ACTION_CloseMenu_ttm(arg: MenuOpenCloseOper): any {
 export function FN_ACTION_CloseMenu_ltr(arg: MenuOpenCloseOper): any {
   return async (dis) => {
     let mainStage_ltr = REF_mainstage.inst_ltr;
-    let crtSize = FN_GetState().layout.menuRecord[arg.menuRecordKey];
+    let crtSize = FN_GetState().layout.menuRecord[arg.menuRecordKey]; // e.g. ttm
     let newSize: number[] | null = null;
     if (!_.isEmpty(crtSize)) {
       if (arg.menuKey == "left") {
@@ -105,6 +105,7 @@ export function FN_ACTION_CloseMenu_ltr(arg: MenuOpenCloseOper): any {
       } else if (arg.menuKey == "right") {
         newSize = [crtSize[0], crtSize[1] + crtSize[2], 0];
       }
+      // if it's bottom, then ignore it
     }
     dis(
       layoutSlice.actions.updateMenuHide({
