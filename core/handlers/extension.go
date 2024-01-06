@@ -35,7 +35,7 @@ type DocallActionFuncListForm struct {
 	InputText string
 }
 
-func DoActionForConvertingText(c *gin.Context) {
+func doActionForConvertingText(c *gin.Context) {
 	crt_form := &DocallActionFuncListForm{}
 	c.BindJSON(&crt_form)
 	wc := context.NewWC(c)
@@ -80,8 +80,8 @@ func extraConvertAction(wc context.WebContext, actionId string) (*form.Extension
 	return nil, nil
 }
 
-// write a function GetOneExtUnderSpecificCategory for retrieving the detail of an extension by extId query
-func GetOneExtUnderSpecificCategory(c *gin.Context) {
+// write a function getOneExtUnderSpecificCategory for retrieving the detail of an extension by extId query
+func getOneExtUnderSpecificCategory(c *gin.Context) {
 	extId := c.Query("extId")
 	wc := context.WebContext{GinContext: c}
 	if extId == "" {
@@ -96,7 +96,7 @@ func GetOneExtUnderSpecificCategory(c *gin.Context) {
 	OKLa(c, DoValueRes(item))
 }
 
-func ListCategory(c *gin.Context) {
+func listCategory(c *gin.Context) {
 	wc := context.WebContext{GinContext: c}
 	b, e := ext.GetAllCategory(&wc)
 	if e != nil {
@@ -106,7 +106,7 @@ func ListCategory(c *gin.Context) {
 	OKLa(c, DoListRes(b))
 }
 
-func ListSubCategory(c *gin.Context) {
+func listSubCategory(c *gin.Context) {
 	categoryId := c.Query("categoryId")
 	wc := context.WebContext{GinContext: c}
 	if categoryId == "" {

@@ -33,7 +33,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetInitInfoSystem(c *gin.Context) {
+func getInitInfoSystem(c *gin.Context) {
 	OKLa(c, DoValueRes(gin.H{
 		"UserConfigFile": config.GetUserConfigFile(),
 		"UserConfigDir":  config.GetUserConfigDir(),
@@ -47,7 +47,7 @@ type ResFoundByToken struct {
 	Msg   string
 }
 
-func GetUsernameAsResult(c *gin.Context) {
+func getUsernameAsResult(c *gin.Context) {
 	a, _ := config.GetUserConfigFromFile()
 	usernames := []string{}
 	for _, uc := range a {
@@ -58,7 +58,7 @@ func GetUsernameAsResult(c *gin.Context) {
 	}))
 }
 
-func VisitGetByToken(c *gin.Context) {
+func visitGetByToken(c *gin.Context) {
 	token := strings.TrimSpace(c.Query("userToken"))
 	if token == "" {
 		OKLa(c, DoValueRes(ResFoundByToken{
@@ -85,7 +85,7 @@ func VisitGetByToken(c *gin.Context) {
 	}
 }
 
-func GetAdminInitStatus(c *gin.Context) {
+func getAdminInitStatus(c *gin.Context) {
 	a, _ := config.GetUserConfigFromFile()
 	anyAdmin := false
 	if a != nil {
@@ -106,7 +106,7 @@ type CreateAdminInitStatusForm struct {
 	Password string `json:"password"`
 }
 
-func CreateAdminInitStatus(c *gin.Context) {
+func createAdminInitStatus(c *gin.Context) {
 	wc := context.NewWC(c)
 	form := &CreateAdminInitStatusForm{}
 	_ = c.BindJSON(form)
@@ -152,7 +152,7 @@ func CreateAdminInitStatus(c *gin.Context) {
 }
 
 // Provide an API that randomly pick one string from GetMottoList(), and call OKLa return it by DoValueRes
-func GetMotto(c *gin.Context) {
+func getMotto(c *gin.Context) {
 	wc := context.NewWC(c)
 	list := ext.GetMottoList(&wc)
 	pickOne := global.RandomPickOneFromList(list)

@@ -62,7 +62,7 @@ func contactKeyByReq(c *gin.Context) (string, error) {
 	return finalKey, nil
 }
 
-func Sync_Reducer_Get(c *gin.Context) {
+func getSyncReducer(c *gin.Context) {
 	lockAPI.Lock()
 	defer lockAPI.Unlock()
 	// get reducer
@@ -80,7 +80,7 @@ func Sync_Reducer_Get(c *gin.Context) {
 	OKLa(c, DoValueRes(reducer))
 }
 
-func Sync_Reducer_Save(c *gin.Context) {
+func saveSyncReducer(c *gin.Context) {
 	lockAPI.Lock()
 	defer lockAPI.Unlock()
 	// get reducer

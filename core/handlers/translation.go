@@ -32,7 +32,7 @@ type TextTranslationReqForm struct {
 	Text       string
 }
 
-func Translate_Text(c *gin.Context) {
+func translateText(c *gin.Context) {
 	form := TextTranslationReqForm{}
 	e := c.BindJSON(&form)
 	if e != nil {

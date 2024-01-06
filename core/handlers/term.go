@@ -36,7 +36,7 @@ var upgrader = websocket.Upgrader{
 }
 
 // term ws
-func HandleTermWS(c *gin.Context) {
+func websocket_term_ws(c *gin.Context) {
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
 
 	if err != nil {
@@ -65,7 +65,7 @@ func HandleTermWS(c *gin.Context) {
 }
 
 // opt ws
-func HandleOptWS(c *gin.Context) {
+func websocket_opt_ws(c *gin.Context) {
 
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {

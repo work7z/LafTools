@@ -39,7 +39,7 @@ type CalcPasswordForm struct {
 	Pw string `json:"pw" binding:"required"`
 }
 
-func CalcPassword(c *gin.Context) {
+func calcPassword(c *gin.Context) {
 	form := CalcPasswordForm{}
 	err := c.BindJSON(&form)
 	wc := context.NewWC(c)
@@ -59,7 +59,7 @@ type VerifyUserServletForm struct {
 	Token    string `json:"token"`
 }
 
-func VerifyUserServlet(c *gin.Context) {
+func verifyUserServlet(c *gin.Context) {
 	wc := context.WebContext{GinContext: c}
 	form := &VerifyUserServletForm{}
 	e := c.BindJSON(&form)
@@ -120,7 +120,7 @@ func VerifyUserServlet(c *gin.Context) {
 // 	}))
 // }
 
-func GetAnyKeyByUserId(c *gin.Context) {
+func getAnyKeyByUserId(c *gin.Context) {
 	wc := context.WebContext{GinContext: c}
 	userId := wc.GetUserID()
 	key := c.Query("key")
@@ -137,7 +137,7 @@ type SetForgeByUserIdForm struct {
 	StateStr string
 }
 
-func SetAnyKeyByUserId(c *gin.Context) {
+func setAnyKeyByUserId(c *gin.Context) {
 	wc := context.WebContext{GinContext: c}
 	key := c.Query("key")
 	userId := wc.GetUserID()
@@ -173,7 +173,7 @@ type CreateNewAccounttForm struct {
 	InvitationCode string `json:"invitationCode"`
 }
 
-func CreateNewAccount(c *gin.Context) {
+func createNewAccount(c *gin.Context) {
 	wc := context.WebContext{GinContext: c}
 	form := &CreateNewAccounttForm{}
 	c.BindJSON(&form)
@@ -246,7 +246,7 @@ type ResetPasswordByOldPasswordForm struct {
 	NewPassword string
 }
 
-func ResetPasswordByOldPassword(c *gin.Context) {
+func resetPasswordByOldPassword(c *gin.Context) {
 	wc := context.NewWC(c)
 	form := &ResetPasswordByOldPasswordForm{}
 	c.BindJSON(&form)

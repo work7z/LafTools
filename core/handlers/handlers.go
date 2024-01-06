@@ -37,7 +37,7 @@ import (
 func SetupRoutes(r *gin.Engine) {
 	r.Use(gzip.Gzip(gzip.DefaultCompression))
 	// all APIs needs to be authenticated except for openAPIs
-	r.Use(AuthMiddleware)
+	r.Use(authMiddleware)
 	// root
 	r.GET("/", func(c *gin.Context) {
 		c.Redirect(302, config.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
@@ -62,14 +62,14 @@ func SetupRoutes(r *gin.Engine) {
 		// if current env is dev mode, then we just proxy the request to the front-end server.
 		if tools.IsDevMode {
 			if isAppPreFix {
-				Proxy_To_FE(c, config.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
+				proxyToFE(c, config.CONFIG_URL_APP_FRONT_END_APP_PREFIX)
 				return
 			} else if isStaticPrefix {
-				Proxy_To_FE(c, config.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX)
+				proxyToFE(c, config.CONFIG_URL_APP_FRONT_END_STATIC_PREFIX)
 				return
 			} else {
 				// all other request go to the front-end server
-				Proxy_To_FE(c, "")
+				proxyToFE(c, "")
 			}
 		}
 		if isAppPreFix || isStaticPrefix {
@@ -93,24 +93,30 @@ func SetupRoutes(r *gin.Engine) {
 	// User routes
 	r_api := r.Group(config.CONFIG_URL_PUBLIC_BASE_PREFIX)
 
+	// handle cloud APIs forward
+	cloudAPIRoutes := r_api.Group(config.CLOUD_URL_APP_CLOUD_PREFIX)
+	{
+		cloudAPIRoutes.Use(cloudForwardAPI)
+	}
+
 	// open APIs, mean no need to login to access
 	openRoutes := r_api.Group(config.CONFIG_URL_OPENAPI_PREFIX)
 	{
 		// User routes
 		userRoutes := openRoutes.Group("/user")
 		{
-			userRoutes.GET("/one/getByToken", VisitGetByToken)
-			userRoutes.GET("/all/getUserNameList", GetUsernameAsResult)
-			userRoutes.POST("/local/pw/calc", CalcPassword)
-			userRoutes.POST("/local/new", CreateNewAccount)
-			userRoutes.POST("/local/verify", VerifyUserServlet)
+			userRoutes.GET("/one/getByToken", visitGetByToken)
+			userRoutes.GET("/all/getUserNameList", getUsernameAsResult)
+			userRoutes.POST("/local/pw/calc", calcPassword)
+			userRoutes.POST("/local/new", createNewAccount)
+			userRoutes.POST("/local/verify", verifyUserServlet)
 		}
 
 		// Admin routes
 		adminRoutes := openRoutes.Group("/admin")
 		{
-			adminRoutes.GET("/init/info", GetAdminInitStatus)
-			adminRoutes.POST("/init/create", CreateAdminInitStatus)
+			adminRoutes.GET("/init/info", getAdminInitStatus)
+			adminRoutes.POST("/init/create", createAdminInitStatus)
 		}
 
 		// Static routes
@@ -120,19 +126,19 @@ func SetupRoutes(r *gin.Engine) {
 		// Node RPC routes
 		nodeRPCRoutes := openRoutes.Group("/node-rpc")
 		{
-			nodeRPCRoutes.GET("/getAllJobs", Node_getAllJobs)
+			nodeRPCRoutes.GET("/getAllJobs", getAllNodeJobs)
 		}
 
 		// System routes
 		systemRoutes := openRoutes.Group("/system")
 		{
-			systemRoutes.GET("/init/info", GetInitInfoSystem)
+			systemRoutes.GET("/init/info", getInitInfoSystem)
 		}
 
 		// I18n routes
 		i18nRoutes := openRoutes.Group("/i18n")
 		{
-			i18nRoutes.GET("/get", Get_i18n_Lang)
+			i18nRoutes.GET("/get", getI18NLang)
 		}
 	}
 
@@ -140,72 +146,72 @@ func SetupRoutes(r *gin.Engine) {
 	{
 		localRoutes := userRoutes.Group("/local")
 		{
-			localRoutes.POST("/pw/reset", ResetPasswordByOldPassword)
-			localRoutes.GET("/key/get", GetAnyKeyByUserId)
-			localRoutes.POST("/key/set", SetAnyKeyByUserId)
+			localRoutes.POST("/pw/reset", resetPasswordByOldPassword)
+			localRoutes.GET("/key/get", getAnyKeyByUserId)
+			localRoutes.POST("/key/set", setAnyKeyByUserId)
 		}
 	}
 
 	// System routes
 	systemRoutes := r_api.Group("/system")
 	{
-		systemRoutes.GET("/stats", SYSTEM_Stats)
-		systemRoutes.GET("/getOneMotto", GetMotto)
+		systemRoutes.GET("/stats", statsSystem)
+		systemRoutes.GET("/getOneMotto", getMotto)
 	}
 
 	// Tool extension routes
 	toolExtsRoutes := r_api.Group("/tool/exts")
 	{
-		toolExtsRoutes.GET("/listCategory", ListCategory)
-		toolExtsRoutes.GET("/listSubCategory", ListSubCategory)
-		toolExtsRoutes.GET("/getExtDetail", GetOneExtUnderSpecificCategory)
-		toolExtsRoutes.POST("/convertText", DoActionForConvertingText)
+		toolExtsRoutes.GET("/listCategory", listCategory)
+		toolExtsRoutes.GET("/listSubCategory", listSubCategory)
+		toolExtsRoutes.GET("/getExtDetail", getOneExtUnderSpecificCategory)
+		toolExtsRoutes.POST("/convertText", doActionForConvertingText)
 	}
 
 	// OS routes
 	osRoutes := r_api.Group("/os")
 	{
-		osRoutes.POST("/temp/file/upload", TEMP_FILE_UPLOAD)
-		osRoutes.GET("/temp/file/read", TEMP_FILE_READ)
-		osRoutes.POST("/openDir", OS_OPENDIR)
-		osRoutes.POST("/mkdirDir", File_Mkdir)
-		osRoutes.POST("/fileExist", File_ExistOrNot)
+		osRoutes.POST("/temp/file/upload", uploadTempFile)
+		osRoutes.GET("/temp/file/read", readTempFile)
+		osRoutes.POST("/openDir", openDir)
+		osRoutes.POST("/mkdirDir", mkdirDir)
+		osRoutes.POST("/fileExist", checkIfFileExist)
 	}
 
 	// Workspace routes
 	workspaceRoutes := r_api.Group("/workspace/users")
 	{
-		workspaceRoutes.GET("/one", WorkSpace_GetOne_By_User)
-		workspaceRoutes.GET("/list", WorkSpace_List_By_User)
-		workspaceRoutes.POST("/add", Workspace_Add_By_User)
-		workspaceRoutes.POST("/delete", Workspace_Delete_By_User)
+		workspaceRoutes.GET("/one", workSpace_GetOneByUser)
+		workspaceRoutes.GET("/list", workSpace_ListByUser)
+		workspaceRoutes.POST("/add", workspace_AddByUser)
+		workspaceRoutes.POST("/delete", workspace_DeleteByUser)
 	}
 
 	// WebSocket routes
 	wsRoutes := r_api.Group("/ws")
 	{
-		wsRoutes.GET("/system", SYSTEM_WebSocket)
-		wsRoutes.GET("/post-job", PostJob_WebSocket)
+		wsRoutes.GET("/system", websocket_system)
+		wsRoutes.GET("/post-job", websocket_postjob)
 		if tools.IsDevMode {
-			wsRoutes.GET("/dev-hmr", HmrReload)
+			wsRoutes.GET("/dev-hmr", websocket_hmrreload)
 		}
 		// term, pty
 		termRoutes := wsRoutes.Group("/pty")
-		termRoutes.GET("/opt", HandleOptWS)
-		termRoutes.GET("/term", HandleTermWS)
+		termRoutes.GET("/opt", websocket_opt_ws)
+		termRoutes.GET("/term", websocket_term_ws)
 	}
 
 	// WebSocket routes
 	syncRoutes := r_api.Group("/sync")
 	{
-		syncRoutes.POST("/reducer/save", Sync_Reducer_Save)
-		syncRoutes.GET("/reducer/get", Sync_Reducer_Get)
+		syncRoutes.POST("/reducer/save", saveSyncReducer)
+		syncRoutes.GET("/reducer/get", getSyncReducer)
 	}
 
 	// WebSocket routes
 	translationRoutes := r_api.Group("/translation")
 	{
-		translationRoutes.POST("/text/translate", Translate_Text)
+		translationRoutes.POST("/text/translate", translateText)
 	}
 
 }

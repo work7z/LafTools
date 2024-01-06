@@ -39,7 +39,7 @@ type FileInfo struct {
 	FileName string
 }
 
-func TEMP_FILE_READ(c *gin.Context) {
+func readTempFile(c *gin.Context) {
 	// Check if the request method is GET
 	if c.Request.Method != "GET" {
 		c.AbortWithStatus(http.StatusMethodNotAllowed)
@@ -82,19 +82,19 @@ type OsOpenForm struct {
 	Dir string `json:"dir"`
 }
 
-func File_ExistOrNot(c *gin.Context) {
+func checkIfFileExist(c *gin.Context) {
 	var openForm = &OsOpenForm{}
 	c.BindJSON(openForm)
 	OKLa(c, DoValueRes(tools.IsFileExist(openForm.Dir)))
 }
 
-func File_Mkdir(c *gin.Context) {
+func mkdirDir(c *gin.Context) {
 	var openForm = &OsOpenForm{}
 	c.BindJSON(openForm)
 	OKLa(c, DoValueRes(tools.MkdirFileWithStr(openForm.Dir)))
 }
 
-func OS_OPENDIR(c *gin.Context) {
+func openDir(c *gin.Context) {
 	var openForm = &OsOpenForm{}
 	c.BindJSON(openForm)
 	err := tools.OpenDir(openForm.Dir)
@@ -105,8 +105,8 @@ func OS_OPENDIR(c *gin.Context) {
 	}
 }
 
-// complete a function TEMP_FILE_UPLOAD, which will be used in core/api/Route.go, and saving the uploaded file to the directory core/config/ConfigPath.go:GetAppTempUploadDir()
-func TEMP_FILE_UPLOAD(c *gin.Context) {
+// complete a function uploadTempFile, which will be used in core/api/Route.go, and saving the uploaded file to the directory core/config/ConfigPath.go:GetAppTempUploadDir()
+func uploadTempFile(c *gin.Context) {
 	// Check if the request method is POST
 	if c.Request.Method != "POST" {
 		c.AbortWithStatus(http.StatusMethodNotAllowed)

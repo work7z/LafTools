@@ -28,7 +28,7 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func SYSTEM_Stats(c *gin.Context) {
+func statsSystem(c *gin.Context) {
 	webContext := context.WebContext{GinContext: c}
 	log.Ref().Info(webContext.Dot("m10344", "Test Example like {0}", "LafTools"))
 	OKLa(c, DoValueRes(timestamppb.Now()))

@@ -31,7 +31,7 @@ import (
 
 var url_feProxyPath = "http://localhost:5173"
 
-func Proxy_To_FE(c *gin.Context, prefix string) {
+func proxyToFE(c *gin.Context, prefix string) {
 	allPath := c.Request.URL.Path
 	// read the file in feAppDir and pipe its content into c
 	subFilePath := strings.Replace(allPath, prefix, "", 1)

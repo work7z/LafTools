@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Thu, 21 Dec 2023
 // Author: LafTools Team - FX <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -28,7 +28,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func AuthMiddleware(c *gin.Context) {
+func authMiddleware(c *gin.Context) {
 	fullPath := c.FullPath()
 	log.Ref().Debug("full path: ", fullPath)
 	webContext := &context.WebContext{GinContext: c}

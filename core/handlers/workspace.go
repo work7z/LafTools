@@ -53,7 +53,7 @@ type WorkSpaceStruct struct {
 // TODO: we use multiple instance to lock each user's workspace config file separately.
 var workspaceLock = &sync.Mutex{}
 
-func WorkSpace_GetOne_By_User(c *gin.Context) {
+func workSpace_GetOneByUser(c *gin.Context) {
 	wc := context.NewWC(c)
 	workspaceId := c.Query("Id")
 	if workspaceId == "" {
@@ -69,7 +69,7 @@ func WorkSpace_GetOne_By_User(c *gin.Context) {
 	}
 	OKLa(c, DoValueRes(EachWorkSpace{}))
 }
-func WorkSpace_List_By_User(c *gin.Context) {
+func workSpace_ListByUser(c *gin.Context) {
 	workspaceLock.Lock()
 	defer workspaceLock.Unlock()
 	wc := context.NewWC(c)
@@ -110,7 +110,7 @@ func getWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
 	return workspaceRes
 }
 
-func Workspace_Add_By_User(c *gin.Context) {
+func workspace_AddByUser(c *gin.Context) {
 	workspaceLock.Lock()
 	defer workspaceLock.Unlock()
 	wc := context.NewWC(c)
@@ -179,8 +179,8 @@ func deleteWorkspaceByID(wc *context.WebContext, workspaceIDOrPath string) {
 	tools.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 }
 
-// Workspace_Delete_By_User is the handler for deleting a workspace by user.
-func Workspace_Delete_By_User(c *gin.Context) {
+// workspace_DeleteByUser is the handler for deleting a workspace by user.
+func workspace_DeleteByUser(c *gin.Context) {
 	var newSpace EachWorkSpace
 	c.BindJSON(&newSpace)
 	wc := context.NewWC(c)

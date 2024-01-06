@@ -21,7 +21,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import AjaxUtils from "../utils/AjaxUtils";
 import _ from "lodash";
-import { URL_PREFIX_LOCAL } from "../types/constants";
+import { URL_PREFIX_LOCAL, URL_PREFIX_ONLINE_API } from "../types/constants";
 import { PayloadListData, PayloadValueData } from "../types/constants";
 import gutils from "../utils/GlobalUtils";
 import { UserConfig } from "./userSlice";
@@ -114,7 +114,7 @@ export const onlineAPISlice = createApi({
   reducerPath: "online",
   baseQuery: fetchBaseQuery({
     // Fill in your own server starting URL here
-    baseUrl: URL_PREFIX_LOCAL,
+    baseUrl: URL_PREFIX_ONLINE_API,
     prepareHeaders(headers, api) {
       let headers_New = AjaxUtils.getCloudAPIHeaders();
       _.forEach(headers_New, (x, d, n) => {

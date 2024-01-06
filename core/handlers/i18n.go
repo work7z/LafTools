@@ -45,7 +45,7 @@ type AppI18nFormatted struct {
 	Value          string
 }
 
-func Get_i18n_Lang(c *gin.Context) {
+func getI18NLang(c *gin.Context) {
 
 	var indexJSONFile = path.Join(global.GetPureJSFolder(), "app-i18n.json")
 	returnValue := []AppI18nRaw{}

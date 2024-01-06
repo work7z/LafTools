@@ -35,6 +35,7 @@ import { logutils } from "./utils/LogUtils";
 import { saveIntoForge2 } from "./reducers/forgeSlice";
 import CacheUtils from "./utils/CacheUtils";
 import SyncStateUtils from "./utils/SyncStateUtils";
+import onlineAPISlice from "./reducers/onlineAPISlice";
 
 type RootObjType = typeof rootObj;
 const rootReducer = _.mapValues(rootObj, (x, d, n) => {
@@ -82,6 +83,7 @@ export default function configureAppStore() {
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) => {
       return getDefaultMiddleware()
+        .concat(onlineAPISlice.middleware)
         .concat(apiSlice.middleware)
         .concat(alwaysHappyMiddleware)
         .prepend(listenerMiddleware.middleware);

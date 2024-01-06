@@ -105,7 +105,7 @@ func GetWSMarkListByTokenId(c *gin.Context) map[string]*SaveConnMark {
 	return m
 }
 
-func Node_getAllJobs(c *gin.Context) {
+func getAllNodeJobs(c *gin.Context) {
 	if !VerifyWSRequest(c) {
 		ErrLa2(c, "no permission")
 		return
@@ -125,7 +125,7 @@ type HmrReloadConfig struct {
 var HmrReloadConfigLocker = &sync.Mutex{}
 
 // post a job to Go/Node, then receive response from remote server
-func HmrReload(c *gin.Context) {
+func websocket_hmrreload(c *gin.Context) {
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
 		return
@@ -184,7 +184,7 @@ func HmrReload(c *gin.Context) {
 }
 
 // post a job to Go/Node, then receive response from remote server
-func PostJob_WebSocket(c *gin.Context) {
+func websocket_postjob(c *gin.Context) {
 	// upgrade GET request to websocket protocol
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
@@ -199,7 +199,7 @@ func returnInvalidWS(ws *websocket.Conn) {
 	}))
 }
 
-func SYSTEM_WebSocket(c *gin.Context) {
+func websocket_system(c *gin.Context) {
 	// upgrade GET request to websocket protocol
 	ws, err := upGraderForDuplex.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {

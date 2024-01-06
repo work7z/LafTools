@@ -117,6 +117,7 @@ import {
 import AlertUtils from "../../../../../utils/AlertUtils";
 import { useGetI18nLangList } from "../../../../../containers/UserAskMultipleDialogs";
 import TokenUtils from "../../../../../utils/TokenUtils";
+import { useCloudLoginStatus } from "../../../../../hook/login-hook";
 
 type PassProp = {
   leftPart?: JSX.Element;
@@ -364,6 +365,7 @@ export let WB_MenuBar = (props: PassProp) => {
       };
     });
   }
+  let cloudStatus = useCloudLoginStatus()
   return (
     <FixedMenuBar
       requiredPageIcon
@@ -490,9 +492,10 @@ export let WB_MenuBar = (props: PassProp) => {
             <Button
               className={Classes.MINIMAL}
               small={true}
-              intent={false ? "primary" : "warning"}
+              intent={cloudStatus.Info?.HasLogin ? "primary" : "warning"}
               // title={Dot(`ZAKaFq`, `My Cloud Account`)}
               icon={"cloud"}
+              loading={cloudStatus.Loading}
               onClick={() => { }}
             />
           </Tooltip>
@@ -531,7 +534,7 @@ export let WB_MenuBar = (props: PassProp) => {
               }}
             />
           </Tooltip>
-          <Tooltip content={Dot("DVoKw", "Sign out this System")} position="bottom-right">
+          <Tooltip content={Dot("DVoKw", "Sign out this System")} position="bottom">
             <Button
               className={Classes.MINIMAL}
               small={true}
