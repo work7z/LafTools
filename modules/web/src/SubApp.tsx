@@ -19,7 +19,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { useEffect } from "react";
-import "./App.css";
 import exportUtils from "./utils/ExportUtils";
 import { HotkeysProvider, HotkeysTarget2 } from "@blueprintjs/core";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -28,7 +27,7 @@ import RouteComponent from "./Route";
 import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./types/constants";
 import InitSystemEnv from "./pages/Loading";
-import SystemAlertOrPrompt from "./SystemAlertOrPrompt";
+import SystemAlertOrPrompt from "./overlap/SystemAlertOrPrompt";
 import PageUtils from "./utils/PageUtils";
 import AuthHookUtils from "./utils/AuthHookUtils";
 import InitUtils from "./utils/InitUtils";

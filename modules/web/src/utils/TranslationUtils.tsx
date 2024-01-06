@@ -76,6 +76,11 @@ function formatResultWithReplacer(val = "", ...args) {
 
 const TranslationUtils = {
   CurrentLanguage: LANG_EN_US,
+  IsChinese() {
+    return (
+      TranslationUtils.CurrentLanguage == "zh_CN"
+    );
+  },
   LangMap: crtNewLangMap,
   RealtimeObj: {},
   Dot(id: string, enText: string, ...args: any[]): string {
@@ -85,7 +90,7 @@ const TranslationUtils = {
     } else {
       let langmap = TranslationUtils.LangMap;
       let o = langmap[language] as LangDefinition;
-      if(_.isNil(o)){
+      if (_.isNil(o)) {
         return enText;
       }
       let preText = o[id];

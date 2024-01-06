@@ -71,6 +71,8 @@ import gutils from "./GlobalUtils";
 import AlertUtils from "./AlertUtils";
 import { getAjaxResPayloadValue as getAjaxValueResInner } from "../nocycle";
 
+
+
 export let getAjaxValueRes = getAjaxValueResInner;
 const QueryUtils = {
   getDoAjaxValueRes: getAjaxValueResInner,

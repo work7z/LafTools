@@ -19,7 +19,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect } from "react";
-import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import testReducer, { pong, testSliceActions } from "./reducers/testSlice";
 import { store, RootState } from "./store/index";
@@ -50,7 +49,7 @@ import PageUtils from "./utils/PageUtils";
 import { URL_ENTRY, URL_WORKBENCH } from "./types/constants";
 import RouteUtils from "./utils/RouteUtils";
 import InitRouteHistory from "./InitRouteHistory";
-import SystemAlertOrPrompt from "./SystemAlertOrPrompt";
+import SystemAlertOrPrompt from "./overlap/SystemAlertOrPrompt";
 import Entry from "./pages/Redirect";
 import FixedPreWorkBench from "./pages/WorkBench/FixedLayout/Initial/index";
 import ALL_NOCYCLE from "./nocycle";
@@ -92,8 +91,6 @@ let RouteComponent = () => {
       key={forgeObj.lang}
     >
       {innerJSX}
-      {/* <SystemAlertOrPrompt /> */}
-      {/* <SysNav /> */}
     </div>
   );
 };

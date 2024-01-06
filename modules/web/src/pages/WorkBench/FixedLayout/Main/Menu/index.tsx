@@ -496,7 +496,9 @@ export let WB_MenuBar = (props: PassProp) => {
               // title={Dot(`ZAKaFq`, `My Cloud Account`)}
               icon={"cloud"}
               loading={cloudStatus.Loading}
-              onClick={() => { }}
+              onClick={() => {
+                // show login panel
+              }}
             />
           </Tooltip>
           {/* <Tooltip content={Dot("ExqvX", "Hot Keys List")} position="bottom">

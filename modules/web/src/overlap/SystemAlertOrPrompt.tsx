@@ -19,12 +19,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect, useState } from "react";
-import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import testReducer, { pong, testSliceActions } from "./reducers/testSlice";
-import { store, RootState } from "./store/index";
-import exportUtils from "./utils/ExportUtils";
-import { logutils } from "./utils/LogUtils";
+import testReducer, { pong, testSliceActions } from "../reducers/testSlice";
+import { store, RootState } from "../store/index";
+import exportUtils from "../utils/ExportUtils";
+import { logutils } from "../utils/LogUtils";
 import {
   Alert,
   HotkeysProvider,
@@ -62,24 +61,25 @@ import {
   useParams,
   useRouteMatch,
 } from "react-router-dom";
-import Welcome from "./pages/Welcome";
+import Welcome from "../pages/Welcome";
 
 import $ from "jquery";
 import _ from "lodash";
-import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./types/constants";
-import InitSystemEnv from "./pages/Loading";
-import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
-import gutils from "./utils/GlobalUtils";
-import TranslationUtils, { Dot } from "./utils/TranslationUtils";
-import PageUtils from "./utils/PageUtils";
-import { URL_WORKBENCH } from "./types/constants";
-import RouteUtils from "./utils/RouteUtils";
-import InitRouteHistory from "./InitRouteHistory";
-import { DialogStoreMap } from "./reducers/dialogSlice";
-import { Z_INDEX_CONFIRM, Z_INDEX_DIALOG } from "./types/constants";
-import { FN_testDialogHere } from "./types/dialog-fn";
-import AlertUtils from "./utils/AlertUtils";
-import { PrompType } from "./reducers/statusSlice";
+import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "../types/constants";
+import InitSystemEnv from "../pages/Loading";
+import UserAskMultipleDialogs from "../containers/UserAskMultipleDialogs";
+import gutils from "../utils/GlobalUtils";
+import TranslationUtils, { Dot } from "../utils/TranslationUtils";
+import PageUtils from "../utils/PageUtils";
+import { URL_WORKBENCH } from "../types/constants";
+import RouteUtils from "../utils/RouteUtils";
+import InitRouteHistory from "../InitRouteHistory";
+import { DialogStoreMap } from "../reducers/dialogSlice";
+import { Z_INDEX_CONFIRM, Z_INDEX_DIALOG } from "../types/constants";
+import { FN_testDialogHere } from "../types/dialog-fn";
+import AlertUtils from "../utils/AlertUtils";
+import { PrompType } from "../reducers/statusSlice";
+import CloudLoginPanel from "./CloudLoginPanel";
 
 let EachPrompt = (props: { x: PrompType }): any => {
   let { x } = props;
@@ -150,6 +150,7 @@ const OtherChoose = (prop) => {
 
   return (
     <div>
+      <CloudLoginPanel />
       {o1.alert.map((x) => {
         return (
           <Alert

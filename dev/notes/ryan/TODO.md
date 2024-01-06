@@ -2,7 +2,8 @@
 
 [x] revise About This Software modal
 [x] terminal basic support  
-[] support using local API server 
+[] align version list with GitHub tags
+[] support using local API server
 [] provide a floating positioned button on the corner of editor, up or down depending on the y value.
 [] check if browser side is able to process all tools that we need. (so unbelievable, cool)
 [] when I click bottom button, the panel should also turn into active style.
@@ -15,11 +16,10 @@
 [] account login in move to separte page, not in user intiialization page
 [] calculate line numbers in your project, provide satistic report
 
-
 # low priorities
 
 [] watch my package and notify users to install (or automatically? cool!)
 
+# server
 
-# server 
 [] remove inactive CRT_USER keys in Redis DB

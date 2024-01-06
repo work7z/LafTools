@@ -65,6 +65,9 @@ type StatusState = {
   nav: {
     currentPlateId: string;
   };
+  whetherShow: {
+    signIn: boolean;
+  },
   ProcessLoadTypeKVMap: { [key: string]: ProcessLoadType | null };
   msg: {
     confirmList: ConfirmType[];
@@ -76,6 +79,9 @@ type StatusState = {
 const initialState: StatusState = {
   nav: {
     currentPlateId: "tools",
+  },
+  whetherShow: {
+    signIn: true,
   },
   ProcessLoadTypeKVMap: {},
   msg: {
@@ -89,6 +95,13 @@ const statusSlice = createSlice({
   name: "status",
   initialState,
   reducers: {
+    // set the field value in whetherShow, note that the field type should be set clearly
+    setWhetherShow(state: StatusState, action: PayloadAction<{
+      fieldName: Partial<keyof StatusState["whetherShow"]>;
+      fieldValue: StatusState["whetherShow"][keyof StatusState["whetherShow"]];
+    }>) {
+      state.whetherShow[action.payload.fieldName] = action.payload.fieldValue;
+    },
     // write slice to update confirmList, promptList, alertList separtely
     // update confirmList
     updateConfirmList(state: StatusState, action: PayloadAction<ConfirmType>) {
