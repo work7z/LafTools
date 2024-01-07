@@ -67,7 +67,7 @@ import exportUtils from "../../utils/ExportUtils";
 import onlineAPISlice from "../../reducers/onlineAPISlice";
 import { CLZ_FORM_SINGLE_CLZ } from "../../types/styles";
 import { Dot } from "../../utils/TranslationUtils";
-import { URL_NAV_FORM_SIGN_UP, URL_NAV_FORM_USER_PASSWORD } from "../../types/online";
+import { URL_NAV_FORM_SIGN_UP, URL_NAV_FORM_USER_PASSWORD, getOnlineFullLink } from "../../types/online";
 import VerifyCodeFormGroup from "../../containers/VerifyCodeFormGroup";
 import OnlineHookUtils, { getPayloadValue } from "../../utils/OnlineHookUtils";
 import PasswordInput from "../../components/PasswordInput";
@@ -107,7 +107,7 @@ export default function SignInForm() {
             />
           </FormGroup>
           <div className="pt-form-helper-text text-right">
-            <a target="_blank" href={URL_NAV_FORM_USER_PASSWORD}>
+            <a target="_blank" href={getOnlineFullLink(URL_NAV_FORM_USER_PASSWORD)}>
               {Dot("2D9a6", "Forgot Password?")}
             </a>
           </div>
@@ -165,7 +165,7 @@ export default function SignInForm() {
           style={{ marginTop: "15px" }}
         >
           {Dot("ssDaO", "New to CodeGen?")}
-          <a target="_blank" href={URL_NAV_FORM_SIGN_UP}>
+          <a target="_blank" href={getOnlineFullLink(URL_NAV_FORM_SIGN_UP)}>
             {Dot("32D9a6", "Create an Account")}
           </a>
         </div>

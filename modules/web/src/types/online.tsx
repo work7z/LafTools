@@ -18,13 +18,19 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import TranslationUtils from "../utils/TranslationUtils";
+
 export const URL_UI_PREFIX = "/v2";
 
 export const URL_LANDING_PAGE = `/landing-page`;
 
 // current
-export const URL_NAV_PORTAL = `https://laf-tools.com/v2/nav`;
 
+export let getOnlineFullLink = (subLink: string): string => {
+    let l = TranslationUtils.getFormattedLang(TranslationUtils.CurrentLanguage)
+    return `https://laf-tools.com/v2/${l}${subLink}`
+}
+let URL_NAV_PORTAL = '/nav'
 export const URL_NAV_USER_CENTRE = `${URL_NAV_PORTAL}/user/centre`;
 export const URL_NAV_FORM_SIGN_IN = `${URL_NAV_PORTAL}/form/sign-in`;
 export const URL_NAV_FORM_SIGN_UP = `${URL_NAV_PORTAL}/form/sign-up`;
