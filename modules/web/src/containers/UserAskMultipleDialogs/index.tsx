@@ -564,7 +564,7 @@ export const AdministratorSetupPanel: React.FC<
                     </p>
                     <p>{Dot("mjHoR", "Also, technically, nobody can read this token otherwise he/she has attacked and controlled your computer.")}</p>
                     <p>
-                      {Dot("Nc0LX","If you think there's an vulnerability in this process, please feel free to contact us via EMail or GitHub at any time, we are pleased to help you.")}
+                      {Dot("Nqc0LX","If you think there's an vulnerability in this process, please feel free to contact us via EMail or GitHub at any time, we are pleased to help you.")}
                     </p>
                   </p>
                 })
@@ -594,7 +594,7 @@ export const AdministratorSetupPanel: React.FC<
                     return
                   }
                   // do create things
-                  
+
                 }}
                 // loading={result.isLoading}
                 intent="success"
@@ -818,7 +818,7 @@ const ConfirmPanel: React.FC<ConfirmPanelProps> = (props) => (
     <p>
       {Dot(
         "ERK7E",
-        "If you encounter any issue or have any suggestion while using LafTools, please feel free to contact us via EMail or GitHub at any time, we are pleased to help you."
+        "If you encounter any issue or have any suggestion while using LafTools, please feel free to contact us via EMail or GitHub at any time, we are willing to enhance it urgently."
       )}
     </p>
     <p>
