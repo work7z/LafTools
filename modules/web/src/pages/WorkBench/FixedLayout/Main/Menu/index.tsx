@@ -360,12 +360,12 @@ export let WB_MenuBar = (props: PassProp) => {
   let p_langlist = useGetI18nLangList();
   let langList: { label?: string; value?: string }[] = [];
   if (p_langlist) {
-    langList = p_langlist.map((x) => {
+    langList = _.take(p_langlist.map((x) => {
       return {
         label: x.LabelByLang,
         value: x.Value,
       };
-    });
+    }),18);
   }
   let cloudStatus = useCloudLoginStatus()
   return (

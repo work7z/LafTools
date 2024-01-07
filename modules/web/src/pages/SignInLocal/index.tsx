@@ -43,13 +43,30 @@ import { Dot } from "../../utils/TranslationUtils";
 import { useHistory } from "react-router";
 import { useEffect } from "react";
 import { URL_WORKBENCH } from "../../types/constants";
+import { WB_MenuBar } from "../WorkBench/FixedLayout/Main/Menu";
+import SignInLocalContent from './SignInLocalContent.tsx'
 
 export default () => {
-  const history = useHistory();
-
   return (
-    <div>
-      {Dot("iQmuM","This is sign in local page")}
+    <div
+      className="fixed-wb-p  3 "
+      style={{
+        overflow: "hidden",
+      }}
+    >
+      <WB_MenuBar
+        leftPart={
+          <div
+            className="inline-flex h-full absolute left-[50%]"
+            style={{
+              transform: "translateX(-50%)",
+            }}
+          >
+            {Dot("WYCVL","Quick Setup")}
+          </div>
+        }
+      />
+      <SignInLocalContent></SignInLocalContent>
     </div>
   );
 };

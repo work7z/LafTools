@@ -68,8 +68,11 @@ function replaceAll(str: string, find: string, replace: string) {
   return str.replace(new RegExp(find, "g"), replace);
 }
 
-interface BlinkProp {}
+interface BlinkProp {
+  singleLineMode?:boolean
+}
 export default (props: BlinkProp): any => {
+  let singleLineMode=props.singleLineMode
   let toolParam = useParams() as ToolParamType;
   let mottoLineRes = apiSlice.useGetOneMottoQuery(
     {
@@ -80,6 +83,10 @@ export default (props: BlinkProp): any => {
     }
   );
   let mottoLine: string | any = mottoLineRes?.data?.payload?.value;
+  let p_mottoLine = mottoLine;
+  if(singleLineMode){
+    return <div>{p_mottoLine}</div>
+  }
   if (mottoLine) {
     mottoLine = replaceAll(mottoLine, "--", "-");
     mottoLine = replaceAll(mottoLine, "——", "-");

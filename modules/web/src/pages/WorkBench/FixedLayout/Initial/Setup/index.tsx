@@ -242,9 +242,10 @@ export default () => {
   }, [filterText, allWorkspaces]);
 
   let entryJSX = (
-    <div
-      className="flex flex-col   mt-10 overflow-auto h-[500px] w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-slate-100 dark:shadow-slate-900 rounded self-start px-2 py-2"
+    <Card
+      className="flex flex-col  border-none mt-10 overflow-auto h-[500px] w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-slate-100 dark:shadow-slate-900 rounded self-start px-2 py-2"
       style={{
+        border:'none',
         minHeight: "400px",
       }}
     >
@@ -372,18 +373,18 @@ export default () => {
           })}
         </div>
       </div>
-    </div>
+    </Card>
   );
 
   return (
     <div
-      className=" common-bg-color-align flex justify-center relative content-start align-top "
+      className="bg-slate-200 dark:bg-gray-800 flex justify-center relative content-start align-top "
       style={{
         height: `calc(100vh - ${VAL_CSS_MENU_TITLE_PANEL}px)`,
       }}
     >
       <div>
-        <div className="z-0 absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-gray-100 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-60 pattern-size-8"></div>
+        <div className="z-0 absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-slate-300 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-60 pattern-size-8"></div>
       </div>
       <div className="z-10">{entryJSX}</div>
     </div>

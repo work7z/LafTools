@@ -380,7 +380,7 @@ const NoteMsg = () => {
   );
 };
 
-const AdministratorSetupPanel: React.FC<
+export const AdministratorSetupPanel: React.FC<
   SelectPanelProps & {
     admin_localAccountObject: AdminUserPassProp;
     loadLeftPage: string;
@@ -422,7 +422,6 @@ const AdministratorSetupPanel: React.FC<
   );
   if (infoQueryObj.isSuccess) {
     let HasAdminInit = infoQueryObj.data?.payload?.value?.HasAdminInit;
-    let LastUpdatedTime = infoQueryObj.data?.payload?.value?.LastUpdatedTime;
     props.admin_localAccountObject.NeedAdminInit = !HasAdminInit;
 
     if (HasAdminInit) {
@@ -442,9 +441,9 @@ const AdministratorSetupPanel: React.FC<
               </p>
               <code>
                 ----------------------------------------------- PLEASE ACCESSTHE
-                LINK BELOW IN BROWSER. 请复制下方链接并在浏览器端打开(for zh_CN
-                users) 請復製下方鏈接並在瀏覽器端打開(for zh_HK users)
-                http://127.0.0.18080/app/entry?t=11ee9a11186590df157b9732036066b8
+                LINK BELOW IN BROWSER. <br />请复制下方链接并在浏览器端打开(for zh-hans
+                users) <br />請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
+                http://127.0.0.18080/app/entry?t=YOUR_AUTH_ID
                 -----------------------------------------------
               </code>
               <p>
@@ -537,7 +536,7 @@ const AdministratorSetupPanel: React.FC<
   );
 };
 
-const LocalUserPanel: React.FC<
+export const LocalUserPanel: React.FC<
   SelectPanelProps & { loadLeftPage: string; localAccountObject: UserPassProp }
 > = (props) => {
   let dis = exportUtils.dispatch();
@@ -561,21 +560,15 @@ const LocalUserPanel: React.FC<
   }
   return (
     <DialogBody className="docs-multistep-dialog-example-step">
-      <p>
-        {Dot(
-          "nTvw4",
-          "To protect and separately save your data and settings, you may use your local account to achieve that. Besides, LafTools will support instant message widgets amongst users in the future. "
-        )}
+      {/* <p>
+        {Dot(          "nTvw4", "To protect and separately save your data and settings, you may use your local account to achieve that. Besides, LafTools will support instant message widgets amongst users in the future. ")}
       </p>
       <p>
-        {Dot(
-          "e8Crq",
-          "Please fill up below username and password field to continue."
-        )}{" "}
+        {Dot(          "e8Crq","Please fill up below username and password field to continue."        )}{" "}
         <NoteMsg></NoteMsg>
-      </p>
-      <FormGroup label={Dot("fBP5h", "Username")}>
-        <FormSelect
+      </p> */}
+      {/* <FormGroup label={Dot("fBP5h", "Username")}> */}
+      {/* <FormSelect
           list={_.map(usernames_list_if_have, (x) => {
             return {
               label: x,
@@ -586,8 +579,8 @@ const LocalUserPanel: React.FC<
           onChange={(val) => {
             props.localAccountObject.username = val;
           }}
-        ></FormSelect>
-        {/* <InputGroup
+        ></FormSelect> */}
+      {/* <InputGroup
           asyncControl={true}
           placeholder={Dot("Y9mQ2", "Please provide account username here")}
           defaultValue={props.localAccountObject.username}
@@ -595,11 +588,14 @@ const LocalUserPanel: React.FC<
             props.localAccountObject.username = val.target.value;
           }}
         ></InputGroup> */}
-      </FormGroup>
-      <FormGroup label={Dot("YAAU3", "Password")}>
+      {/* </FormGroup> */}
+      <h1 className="text-center mt-0">{Dot("rQkas", "Welcome to LafTools")}</h1>
+      <FormGroup label={Dot("YAAU3q", "Locker Password")} >
         <PasswordInput
+          large
           asyncControl={true}
-          placeholder={Dot("Sm9tq", "Please provide account password here")}
+          // placeholder={Dot("Sm9tq", "Please provide account password here")}
+          placeholder={Dot("Sm9tqq", "Please provide password to unlock your LafTools")}
           type="password"
           defaultValue={props.localAccountObject.password}
           onChange={(val) => {
@@ -607,8 +603,31 @@ const LocalUserPanel: React.FC<
           }}
         ></PasswordInput>
       </FormGroup>
-      <ButtonGroup style={{ textAlign: "right", display: "block" }}>
+      <div className="pt-form-helper-text mb-2 mt-2 text-right">
+        <a href={'javascript:void(0)'} onClick={() => {
+          FN_ForgotPassword();
+        }}>
+          {Dot("2D9a6", "Forgot Password?")}
+        </a>
+      </div>
+
+      <div>
         <Button
+          type="button"
+          onClick={() => {
+            //
+          }}
+          // loading={result.isLoading}
+          intent="success"
+          fill
+          large
+          text={Dot("fqV_1P", "Unlock Your LafTools")}
+        />
+
+      </div>
+
+      {/* <ButtonGroup style={{ textAlign: "right", display: "block" }}> */}
+      {/* <Button
           small={true}
           intent="success"
           onClick={() => {
@@ -616,16 +635,16 @@ const LocalUserPanel: React.FC<
           }}
         >
           {Dot("UZ2Ig", "New Local Account")}
-        </Button>
-        <Button
+        </Button> */}
+      {/* <Button
           small={true}
           onClick={() => {
             FN_ForgotPassword();
           }}
         >
           {Dot("04SSf", "Forgot Password?")}
-        </Button>
-      </ButtonGroup>
+        </Button> */}
+      {/* </ButtonGroup> */}
 
       {gutils.empty(props.loadLeftPage) ? (
         ""

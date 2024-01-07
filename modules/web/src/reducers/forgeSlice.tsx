@@ -44,6 +44,7 @@ import AlertUtils from "../utils/AlertUtils";
 import { RemarkUtils } from "../utils/RemarkUtils";
 import QueryUtils from "../utils/QueryUtils";
 import SyncStateUtils from "../utils/SyncStateUtils";
+import { GetUserActualClientLang } from "../i18n";
 
 // never DO deep LEVEL here
 interface ForgeState {
@@ -78,7 +79,8 @@ if (initialState.VerForgeForm != VER_FORGE_FORM) {
 }
 
 let syncWithTransationUtils = (state: ForgeState) => {
-  TranslationUtils.CurrentLanguage = state.Language;
+  // TranslationUtils.CurrentLanguage = state.Language;
+  TranslationUtils.CurrentLanguage = GetUserActualClientLang();
 };
 
 let onlySaveIntoForgeWithoutSet = (state: ForgeState) => {

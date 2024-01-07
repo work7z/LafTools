@@ -62,16 +62,14 @@ import {
   Divider,
 } from "@blueprintjs/core";
 
+export * from './styles'
+
 export const LafTools_HOME = "https://laf-tools.com";
 export const LafTools_DOC_HOME = `${LafTools_HOME}/documentation/view?id=welcome`;
 export const SQ = "'";
 export const DQ = '"';
 export const AT = "`";
 
-// styles
-export const VAL_CSS_TAB_TITLE_PANEL = 30;
-export const VAL_CSS_CONTROL_PANEL = 34;
-export const VAL_CSS_MENU_TITLE_PANEL = 30;
 
 // concurrency 
 export const KEY_CONCURRENCY_SYSTEM_INIT = "J9EXO";
@@ -103,14 +101,6 @@ export const ID_AILah = "ai";
 export const ID_NOTES = "notes";
 export const ID_HISTORY = "history";
 export const ID_RESOURCES = "resources";
-
-export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "transform 0.3s, top 0.3s, width 0.3s, height 0.3s, left 0.3s";
-
-export let CSS_TEXT_ANCHOR_CSS =
-  "text-current no-underline hover:no-underline dark:text-current";
-
-export let CSS_TW_LAYOUT_BORDER =
-  " border-[1px]    border-gray-300 dark:border-gray-600  ";
 
 
 export type InitForm = {

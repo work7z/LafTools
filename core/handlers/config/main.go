@@ -21,6 +21,8 @@
 
 package config
 
+import gtools "laftools-go/core/tools"
+
 const CONFIG_URL_PUBLIC_BASE_PREFIX string = "/api"
 const CLOUD_URL_APP_CLOUD_PREFIX string = "/x-v2-api"
 const CONFIG_URL_OPENAPI_PREFIX string = "/open"
@@ -42,16 +44,20 @@ var CONFIG_URL_ADMIN_URLS []string = []string{
 }
 
 func Fn_GetAllowURLDefinitions() []string {
-	filesList := []string{
+	urlList := []string{
 		CONFIG_URL_APP_FRONT_END_APP_PREFIX,
 		CONFIG_URL_APP_FRONT_END_STATIC_PREFIX,
 		CONFIG_URL_APP_FRONT_END_ASSETS_PREFIX,
 		CONFIG_URL_OPENAPI_PREFIX,
+		"/system/getOneMotto",
 		"/ws/", // websocket has own auth logic, no need to be checked here
 	}
 	// append CONFIG_URL_ADMIN_URLS and CONFIG_URL_ADMIN_URLS into filesList
-	filesList = append(filesList, CONFIG_URL_VISIT_URLS...)
-	return filesList
+	urlList = append(urlList, CONFIG_URL_VISIT_URLS...)
+	if gtools.IsDevMode {
+		urlList = append(urlList, "/ws/dev-hmr")
+	}
+	return urlList
 }
 
 func FormatThatPathGlobally(relativePath string) string {

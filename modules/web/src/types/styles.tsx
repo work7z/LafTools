@@ -19,3 +19,17 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 export const CLZ_FORM_SINGLE_CLZ = "pure-u-24-24 pure-u-lg-24-24";
+
+
+export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "transform 0.3s, top 0.3s, width 0.3s, height 0.3s, left 0.3s";
+
+export let CSS_TEXT_ANCHOR_CSS =
+  "text-current no-underline hover:no-underline dark:text-current";
+
+export let CSS_TW_LAYOUT_BORDER =
+  " border-[1px]    border-gray-300 dark:border-gray-600  ";
+
+  // styles
+export const VAL_CSS_TAB_TITLE_PANEL = 30;
+export const VAL_CSS_CONTROL_PANEL = 34;
+export const VAL_CSS_MENU_TITLE_PANEL = 30;
