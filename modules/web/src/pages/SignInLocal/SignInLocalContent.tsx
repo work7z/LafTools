@@ -42,7 +42,7 @@ import "./index.scss";
 import { Dot } from "../../utils/TranslationUtils";
 import { useHistory } from "react-router";
 import { useEffect, useRef, useState } from "react";
-import { CSS_TEXT_ANCHOR_CSS, URL_WORKBENCH, VAL_CSS_MENU_TITLE_PANEL } from "../../types/constants";
+import { CSS_TEXT_ANCHOR_CSS, LAFTOOLS_DEFAULT_USERNAME, URL_WORKBENCH, VAL_CSS_MENU_TITLE_PANEL } from "../../types/constants";
 import LanguageFlowList from '../../containers/LanguageFlowList'
 import RouteUtils from "../../utils/RouteUtils";
 import PageUtils from "../../utils/PageUtils";
@@ -93,12 +93,13 @@ let FooterContent = () => {
 
 let InnerContent = () => {
     const localAccountObject: { current: UserPassProp } = useRef({
-        username: "",
+        username: LAFTOOLS_DEFAULT_USERNAME,
         password: "",
     });
     const admin_localAccountObject: { current: AdminUserPassProp } = useRef({
-        username: "",
+        username: LAFTOOLS_DEFAULT_USERNAME,
         password: "",
+        confirmPassword: "",
         token: "",
         NeedAdminInit: true,
     });
@@ -145,6 +146,8 @@ export default () => {
         className=" bg-slate-200 dark:bg-gray-800  text-center p-8"
         style={{
             height: `calc(100vh - ${VAL_CSS_MENU_TITLE_PANEL}px)`,
+            paddingBottom:'30px',
+            overflow:'auto'
         }}
     >
         <Card style={{

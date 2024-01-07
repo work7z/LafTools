@@ -577,7 +577,24 @@ export const AdministratorSetupPanel: React.FC<
               <Button
                 type="button"
                 onClick={() => {
-                  //
+                  if(_.isEmpty(props.admin_localAccountObject.password)){
+                    AlertUtils.popMsg("danger",{
+                      message: <p>
+                        {Dot("L71q_N", "The password you provided is empty, please check and try again.")}
+                      </p>
+                    })
+                    return
+                  }
+                  if(props.admin_localAccountObject.confirmPassword != props.admin_localAccountObject.password){
+                    AlertUtils.popMsg("danger",{
+                      message: <p>
+                        {Dot("Le71_N-", "The password you provided is not same as the confirmed one, please check and try again.")}
+                      </p>
+                    })
+                    return
+                  }
+                  // do create things
+                  
                 }}
                 // loading={result.isLoading}
                 intent="success"
