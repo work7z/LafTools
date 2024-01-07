@@ -61,14 +61,15 @@ import "./index.scss";
 import { Dot } from "../../utils/TranslationUtils";
 import { useHistory } from "react-router";
 import { useEffect } from "react";
+import { URL_WORKBENCH } from "../../types/constants";
 
 export default () => {
   // router redirect to /workbench/tools in the useEffect code
   const history = useHistory();
   useEffect(() => {
     setTimeout(() => {
-      history.push("/workbench");
-    }, 1000);
+      history.push(URL_WORKBENCH);
+    }, 0);
   }, []);
 
   return (

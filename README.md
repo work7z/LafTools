@@ -119,8 +119,8 @@ Example:
 ```output
 -----------------------------------------------
 PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh_CN users)
-請復製下方鏈接並在瀏覽器端打開(for zh_HK users)
+请复制下方链接并在浏览器端打开(for zh-hans users)
+請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
 http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```

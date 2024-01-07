@@ -113,6 +113,7 @@ import {
   FixedMenuItem,
   RefAlloProp,
   TabNavProp,
+  URL_WORKBENCH,
   VAL_CSS_MENU_TITLE_PANEL,
   VAL_CSS_TAB_TITLE_PANEL,
 } from "../../../../types/workbench-types";
@@ -169,7 +170,7 @@ export default () => {
         fn() { },
       });
       onAvaialble(false);
-      hist.replace("/workbench");
+      hist.replace(URL_WORKBENCH);
     }
   }, [FetchedWorkspaceId]);
   // setup

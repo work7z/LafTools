@@ -61,10 +61,9 @@ const PageUtils = {
       }
     }, [title + TranslationUtils.CurrentLanguage, ...eff]);
   },
-  GetRoutePath(subPath: string): string {
-    return PageUtils.route_base + subPath;
-  },
-  route_base: "/app",
+  // GetRoutePath(subPath: string): string {
+  //   return "/app/en" + subPath;
+  // },
   UpdateRequestObj: (newRequestObj: Request) => {
     _.merge(VAL_REQUEST_OBJ, newRequestObj);
   },

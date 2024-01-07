@@ -25,9 +25,6 @@ import { useHistory, useParams } from "react-router";
 import PageUtils from "./PageUtils";
 
 const RouteUtils = {
-  getCompleteURL(str: string) {
-    return PageUtils.GetRoutePath(str);
-  },
   hist_ref: null,
   useHistory: useHistory,
   usePathVariablesList: () => {

@@ -72,23 +72,6 @@ let newInitialState = (): ForgeState => {
 };
 let initialState: ForgeState = newInitialState();
 
-// let preLocalStr = localStorage.getItem(KEY_PERSIST_INTO_LOCAL);
-// if (!_.isEmpty(preLocalStr)) {
-//   let p = gutils.safeparse(preLocalStr);
-//   if (!_.isEmpty(p)) {
-//     initialState = p as ForgeState;
-//   }
-// }
-// _.defaultsDeep(initialState, newInitialState());
-
-if (
-  initialState.Language != null &&
-  [LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK].indexOf(initialState.Language) === -1
-) {
-  logutils.warn("missed language: " + initialState.Language);
-  initialState.Language = LANG_EN_US;
-}
-
 if (initialState.VerForgeForm != VER_FORGE_FORM) {
   initialState.HasUserSelectedOption = false;
   initialState.VerForgeForm = VER_FORGE_FORM;
@@ -200,6 +183,7 @@ INNER_CYCLE.CachedLanguage = initialState.Language;
 
 export const ACTION_UPDATE_LANG_AND_APPLY_CHANGE = (language: string): any => {
   return async (dispatch) => {
+    let prevPath = "/"+location.pathname.split('/').slice(3).join("/")
     dispatch(forgeSlice.actions.updateLanguage({ lang: language }));
     await ACTION_getLangData()(dispatch);
   };

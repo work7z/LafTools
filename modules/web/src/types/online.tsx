@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import { getFormattedLang } from "../i18n";
 import TranslationUtils from "../utils/TranslationUtils";
 
 export const URL_UI_PREFIX = "/v2";
@@ -27,7 +28,7 @@ export const URL_LANDING_PAGE = `/landing-page`;
 // current
 
 export let getOnlineFullLink = (subLink: string): string => {
-    let l = TranslationUtils.getFormattedLang(TranslationUtils.CurrentLanguage)
+    let l = getFormattedLang(TranslationUtils.CurrentLanguage)
     return `https://laf-tools.com/v2/${l}${subLink}`
 }
 let URL_NAV_PORTAL = '/nav'

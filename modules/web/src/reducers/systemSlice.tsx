@@ -53,6 +53,7 @@ import ConcurrencyUtils from "../utils/ConcurrencyUtils";
 import { KEY_CONCURRENCY_SYSTEM_INIT } from "../types/constants";
 import { Intent } from "@blueprintjs/core";
 import SyncStateUtils from "../utils/SyncStateUtils";
+import { GetUserActualClientLang } from "../i18n";
 
 export type MessagePackItem = {
   Title: string;
@@ -87,6 +88,7 @@ interface SystemState {
   ClientWidth: number;
   ClientHeight: number;
   IsWorkBenchPageAvailable: boolean;
+  // LanguageInPath:string
 }
 
 let newSysInitStatus = (): InitStatus => {
@@ -108,6 +110,7 @@ const initialState: SystemState = {
   ClientWidth: window["innerWidth"],
   ClientHeight: window["innerHeight"],
   IsWorkBenchPageAvailable: false,
+  // LanguageInPath: GetUserActualClientLang()
 };
 
 const systemSlice = createSlice({

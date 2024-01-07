@@ -76,20 +76,6 @@ function formatResultWithReplacer(val = "", ...args) {
 
 const TranslationUtils = {
   CurrentLanguage: LANG_EN_US,
-  getFormattedLang(crtLang:string){
-    // debugger;
-    // let crtLang = TranslationUtils.CurrentLanguage
-    if(crtLang == 'zh_CN'){
-      return 'zh-hans'
-    }
-    if(crtLang == 'zh_HK'){
-      return 'zh-hant'
-    }
-    if(crtLang=='en_US'){
-      return 'en'
-    }
-    return crtLang;
-  },
   IsChinese() {
     return (
       TranslationUtils.CurrentLanguage == "zh_CN"

@@ -80,6 +80,7 @@ const initialState: StatusState = {
   nav: {
     currentPlateId: "tools",
   },
+  
   whetherShow: {
     signIn: false,
   },

@@ -35,6 +35,7 @@ import { FN_GetDispatch, IsDevMode, getIconPngFile } from "./nocycle";
 import systemSlice from "./reducers/systemSlice";
 import forgeSlice from "./reducers/forgeSlice";
 import { Dot } from "./utils/TranslationUtils";
+import { getFormattedLang } from "./i18n";
 
 function App() {
   let forgeObj = exportUtils.useSelector((val) => ({
@@ -114,15 +115,18 @@ function App() {
 
   if (isEnvNotLoad) {
     innerJSX = <InitSystemEnv key="init-system-env" />;
-  } else if (isUserSignInNow) {
+  } else if ( isUserSignInNow) { // TODO: will remove this part
     innerJSX = <UserAskMultipleDialogs />;
   } else {
     innerJSX = <RouteComponent></RouteComponent>;
   }
 
+  let langInPath = getFormattedLang(exportUtils.useSelector(v => v.forge.Language))
+  let basename = "/app/" + langInPath
+
   return (
     <HotkeysProvider>
-      <Router basename={PageUtils.GetRoutePath("")}>
+      <Router basename={basename}>
         <HotkeysTarget2 hotkeys={hotkeys}>
           {({ handleKeyDown, handleKeyUp }) => {
             return (

@@ -25,7 +25,7 @@ import apiSlice from "../reducers/apiSlice";
 import QueryUtils from "./QueryUtils";
 import { Dot } from "./TranslationUtils";
 import ALL_NOCYCLE, { FN_GetDispatch } from "../nocycle";
-import { URL_PREFIX_LOCAL } from "../types/constants";
+import { URL_PREFIX_LOCAL, URL_WORKBENCH } from "../types/constants";
 import AlertUtils from "./AlertUtils";
 import systemSlice from "../reducers/systemSlice";
 import SyncStateUtils from "./SyncStateUtils";
@@ -78,7 +78,7 @@ export let setupWorkspaceData = async () => {
 export let pushToWorkSpace = (workspaceId: string) => {
   AlertUtils.popOK(Dot("Z7ALO", "Switched to the selected workspace"));
   ALL_NOCYCLE.history &&
-    ALL_NOCYCLE.history.replace("/workbench/" + workspaceId);
+    ALL_NOCYCLE.history.replace(URL_WORKBENCH+"/" + workspaceId);
   setTimeout(() => {
     setupWorkspaceData();
     FN_GetDispatch()(systemSlice.actions.updateIsWorkBenchPageAvailable(false));

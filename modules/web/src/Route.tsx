@@ -40,7 +40,7 @@ import Welcome from "./pages/Welcome";
 import WorkBench from "./pages/WorkBench/FixedLayout/Main";
 import $ from "jquery";
 import _ from "lodash";
-import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./types/constants";
+import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT, URL_LOGIN, URL_REDIRECT } from "./types/constants";
 import InitSystemEnv from "./pages/Loading";
 import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
 import gutils from "./utils/GlobalUtils";
@@ -54,6 +54,9 @@ import Entry from "./pages/Redirect";
 import FixedPreWorkBench from "./pages/WorkBench/FixedLayout/Initial/index";
 import ALL_NOCYCLE from "./nocycle";
 import { useReadCurrentWorkspaceId } from "./utils/WorkSpaceUtils";
+import SignInLocal from './pages/SignInLocal'
+import AuthHookUtils from "./utils/AuthHookUtils";
+import RedirectPage from './pages/Redirect'
 
 gutils.ExposureIt("$", $);
 gutils.ExposureIt("gutils", gutils);
@@ -68,29 +71,38 @@ let RouteComponent = () => {
   ALL_NOCYCLE.history = hist;
 
   let forgeObj = exportUtils.useSelector((val) => ({
+    HasUserSelectedOption: val.forge.HasUserSelectedOption,
     dark: val.forge.DarkThemeMode,
     lang: val.forge.Language,
   }));
-  // once trigger only
+
   InitRouteHistory(hist);
-  // + "/:workspaceId"
-  let innerJSX = (
-    <Switch>
-      <Route
-        path={URL_WORKBENCH + "/:workspaceId"}
-        component={WorkBench}
-      ></Route>
-      <Route path={URL_WORKBENCH} component={FixedPreWorkBench}></Route>
-      <Route path={URL_ENTRY} component={Entry}></Route>
-      <Redirect path="*" to={URL_WORKBENCH}></Redirect>
-    </Switch>
-  );
+
+  let queryAuthStatus = AuthHookUtils.useQueryAuthStatus();
+
+  let isUserSignInNow =
+  !forgeObj.HasUserSelectedOption ||
+  (!queryAuthStatus.isFetching && !queryAuthStatus.HasLogin);
+
+  // useEffect(()=>{
+    // isUserSignInNow
+  // },[])
+
   return (
     <div
       className={" " + (forgeObj.dark ? " bp5-dark dark " : " ")}
       key={forgeObj.lang}
     >
-      {innerJSX}
+      <Switch>
+        <Route
+          path={URL_LOGIN}
+          component={SignInLocal}
+        ></Route>
+        <Route path={URL_WORKBENCH} component={FixedPreWorkBench}></Route>
+        <Route path={URL_ENTRY} component={Entry}></Route>
+        <Route path={URL_REDIRECT} component={RedirectPage}></Route>
+        <Redirect path="*" to={URL_REDIRECT}></Redirect>
+      </Switch>
     </div>
   );
 };

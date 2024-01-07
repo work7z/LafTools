@@ -52,7 +52,6 @@ import {
 } from "react-router-dom";
 ALL_NOCYCLE.store = store;
 
-
 logutils.debug("Lanuch the page...");
 
 const WrapApp = () => {
@@ -80,11 +79,6 @@ const WrapApp = () => {
         })
       );
 
-      // if (e.matches) {
-      //   console.log("Dark mode is enabled");
-      // } else {
-      //   console.log("Light mode is enabled");
-      // }
     }
 
     // Call the function once to handle the current color scheme

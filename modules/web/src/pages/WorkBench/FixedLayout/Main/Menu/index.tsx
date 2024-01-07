@@ -104,6 +104,7 @@ import {
   ID_HISTORY as ID_MANUAL,
   ID_NOTES,
   ID_TOOLS,
+  URL_WORKBENCH,
 } from "../../../../../types/constants";
 import { type } from "jquery";
 import apiSlice from "../../../../../reducers/apiSlice";
@@ -185,7 +186,7 @@ export let WB_MenuBar = (props: PassProp) => {
       id: x.Id,
       label: x.Label,
       intent: crtWorkspaceId == x.Id ? "primary" : "none",
-      link: "/workbench/" + x.Id,
+      link: URL_WORKBENCH+"/" + x.Id,
       routerLinkType: true,
       // onClick: () => {
       // AlertUtils.popOK(
@@ -255,7 +256,7 @@ export let WB_MenuBar = (props: PassProp) => {
           id: "SFnhx",
           label: Dot("aCkOP", "Exit"),
           onClick: () => {
-            hist.push("/workbench");
+            hist.push(URL_WORKBENCH);
           },
         },
       ],

@@ -61,6 +61,7 @@ import {
 } from "@blueprintjs/core";
 import {
   EachWorkSpace,
+  URL_WORKBENCH,
   VAL_CSS_MENU_TITLE_PANEL,
   VAL_CSS_TAB_TITLE_PANEL,
 } from "../../../../../types/workbench-types";
@@ -98,7 +99,7 @@ let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
           setViewContent(false);
         }}
         className="mt-1 w-full relative hover:text-black p-2 rounded  px-3 flex no-underline hover:no-underline text-black hover:bg-blue-200 hover:bg-opacity-20"
-        to={"/workbench/" + x.Id}
+        to={URL_WORKBENCH+"/" + x.Id}
         style={{
           flexDirection: "column",
         }}
@@ -242,7 +243,7 @@ export default () => {
 
   let entryJSX = (
     <div
-      className="flex flex-col  mt-10 overflow-auto h-[500px] w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-slate-100 dark:shadow-slate-900 rounded self-start px-2 py-2"
+      className="flex flex-col   mt-10 overflow-auto h-[500px] w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-slate-100 dark:shadow-slate-900 rounded self-start px-2 py-2"
       style={{
         minHeight: "400px",
       }}
