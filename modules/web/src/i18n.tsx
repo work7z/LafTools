@@ -1,3 +1,7 @@
+import appi18nJSON from '../../../resources/public/purejs/app-i18n.json'
+import _ from 'lodash'
+
+
 export let getFormattedLang = function(crtLang:string){
   // let crtLang = TranslationUtils.CurrentLanguage
   if(crtLang == 'zh_CN'){
@@ -26,7 +30,10 @@ export let GetUserActualClientLang = function (): string {
       if (prevValue == 'en') {
         prevValue = 'en_US'
       }
-      return prevValue;
+      let findIdx = _.findIndex(appi18nJSON,x=>x.Value == prevValue)
+      if(findIdx!=-1){
+        return prevValue;
+      }
     }
   
     

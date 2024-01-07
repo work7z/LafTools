@@ -70,6 +70,8 @@ export const SQ = "'";
 export const DQ = '"';
 export const AT = "`";
 
+export const LAFTOOLS_DEFAULT_USERNAME = "default-user"
+
 
 // concurrency 
 export const KEY_CONCURRENCY_SYSTEM_INIT = "J9EXO";

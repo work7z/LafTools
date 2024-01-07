@@ -53,7 +53,7 @@ import {
 import gutils from "../../utils/GlobalUtils";
 import { Dot } from "../../utils/TranslationUtils";
 import exportUtils from "../../utils/ExportUtils";
-import { LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "../../types/constants";
+import { LAFTOOLS_DEFAULT_USERNAME, LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "../../types/constants";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
 } from "../../reducers/forgeSlice";
@@ -142,12 +142,13 @@ export default (props: PassProps) => {
     onStepIndex(newIdx);
   };
   const localAccountObject: { current: UserPassProp } = useRef({
-    username: "",
+    username: LAFTOOLS_DEFAULT_USERNAME,
     password: "",
   });
   const admin_localAccountObject: { current: AdminUserPassProp } = useRef({
-    username: "",
+    username: LAFTOOLS_DEFAULT_USERNAME,
     password: "",
+    confirmPassword: "",
     token: "",
     NeedAdminInit: true,
   });
@@ -360,6 +361,7 @@ export type UserPassProp = {
 export type AdminUserPassProp = {
   username: string;
   password: string;
+  confirmPassword: string;
   token: string;
   NeedAdminInit: boolean;
 };
@@ -440,10 +442,10 @@ export const AdministratorSetupPanel: React.FC<
                 )}
               </p>
               <code>
-                ----------------------------------------------- PLEASE ACCESSTHE
+                ----------------------------------------------- <br></br>PLEASE ACCESSTHE
                 LINK BELOW IN BROWSER. <br />请复制下方链接并在浏览器端打开(for zh-hans
                 users) <br />請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-                http://127.0.0.18080/app/entry?t=YOUR_AUTH_ID
+                http://127.0.0.18080/app/entry?t=YOUR_AUTH_ID<br></br>
                 -----------------------------------------------
               </code>
               <p>
@@ -470,23 +472,33 @@ export const AdministratorSetupPanel: React.FC<
     <QueryResLabel
       jsx={
         <DialogBody className="docs-multistep-dialog-example-step">
+          <h1 className="text-center mt-0">{Dot("SZgXb", "Setup Local Password")}</h1>
           <p>
-            <b>
-              {Dot("K1JZI", "Welcome to the admin space, Your Excellency.")}
-            </b>
-          </p>
-          <p>
-            {Dot(
-              "bp_-b",
+              {Dot(
+                "c7Uoi",
+                "One more step to LafTools, which is mandatory for you to setup your local password. Please provide and confirm your local password in below form."
+              )}
+            </p>
+            <p>
+              {Dot("Fhbqo","Note that you need to unlock your locker first before using LafTools, otherwise, you can't access any of your data and settings, meaning you'd better properly save your local password in a safe place.")}
+            </p>
+          {/* <p> */}
+            {/* <b>
+              {Dot("K1qJZI", "Welcome to the LafTools, Your Excellency.")}
+            </b> */}
+          {/* </p> */}
+          {/* <p> */}
+            {/* {Dot("L49kCq", "Please provide and confirm lock password in this form to secure your LafTools.")} */}
+            {/* {Dot(              "bp_-b",
               "To fully manage the LafTools, you need to set up your administrator at the beginning of setup flow. We have verified your identification by the URL parameter token, please be assured that there's nobody else can setup your root permission unless he or she obtains setup token."
             )}
             {Dot(
               "I8FLi",
               "Now, it's time to setup your administrator, please set the password as complex as you can so that you can perplex those impolite attackers."
-            )}
-          </p>
+            )} */}
+          {/* </p> */}
           <p>
-            <FormGroup label={Dot("lIn3_", "Admin Username")}>
+            {/* <FormGroup label={Dot("lIn3_", "Admin Username")}>
               <InputGroup
                 asyncControl={true}
                 placeholder={Dot(
@@ -497,13 +509,13 @@ export const AdministratorSetupPanel: React.FC<
                   props.admin_localAccountObject.username = val.target.value;
                 }}
               ></InputGroup>
-            </FormGroup>
-            <FormGroup label={Dot("Y__kt", "Admin Password")}>
+            </FormGroup> */}
+            <FormGroup label={Dot("OSqZQM", "Local Password")}>
               <PasswordInput
                 asyncControl={true}
                 placeholder={Dot(
-                  "H-A75",
-                  "Please provide admin account password here"
+                  "H-qA75",
+                  "Please provide local password."
                 )}
                 type="password"
                 strong={true}
@@ -512,12 +524,20 @@ export const AdministratorSetupPanel: React.FC<
                 }}
               ></PasswordInput>
             </FormGroup>
-            <p>
-              {Dot(
-                "aiLHC",
-                "After filling up the above form, click the below button to proceed the create operation."
-              )}
-            </p>
+            <FormGroup label={Dot("qtpmvP", "Confirm Local Password")}>
+              <PasswordInput
+                asyncControl={true}
+                placeholder={Dot(
+                  "H-Ae75",
+                  "Please confirm your local password."
+                )}
+                type="password"
+                strong={true}
+                onChange={(val) => {
+                  props.admin_localAccountObject.confirmPassword = val.target.value;
+                }}
+              ></PasswordInput>
+            </FormGroup>
             {gutils.empty(props.loadLeftPage) ? (
               ""
             ) : (
@@ -528,6 +548,21 @@ export const AdministratorSetupPanel: React.FC<
                 {props.loadLeftPage}
               </div>
             )}
+
+            <div>
+              <Button
+                type="button"
+                onClick={() => {
+                  //
+                }}
+                // loading={result.isLoading}
+                intent="success"
+                fill
+                large
+                text={Dot("DIweG", "Lock Your LafTools")}
+              />
+
+            </div>
           </p>
         </DialogBody>
       }
@@ -590,7 +625,7 @@ export const LocalUserPanel: React.FC<
         ></InputGroup> */}
       {/* </FormGroup> */}
       <h1 className="text-center mt-0">{Dot("rQkas", "Welcome to LafTools")}</h1>
-      <FormGroup label={Dot("YAAU3q", "Locker Password")} >
+      <FormGroup label={Dot("YAAU3q", "Local Password")} >
         <PasswordInput
           large
           asyncControl={true}
@@ -618,7 +653,7 @@ export const LocalUserPanel: React.FC<
             //
           }}
           // loading={result.isLoading}
-          intent="success"
+          intent="primary"
           fill
           large
           text={Dot("fqV_1P", "Unlock Your LafTools")}
