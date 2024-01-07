@@ -164,7 +164,7 @@ export default function SignInForm() {
           className="pt-form-helper-text text-right"
           style={{ marginTop: "15px" }}
         >
-          {Dot("ssDaO", "New to CodeGen?")}
+          {Dot("ssDaOq", "New to LafTools?")}
           <a target="_blank" href={getOnlineFullLink(URL_NAV_FORM_SIGN_UP)}>
             {Dot("32D9a6", "Create an Account")}
           </a>
