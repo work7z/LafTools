@@ -8,7 +8,8 @@ import {
 } from "./purejs-types";
 import _ from "lodash";
 // read files under job, config
-let fs = require("fs");
+// let fs = require("fs");
+import fs from 'fs'
 let path = require("path");
 let getCategoryTS = require("./config/get-category");
 let getTranslation = require('./config/get-translation.ts')
@@ -121,7 +122,7 @@ console.log(dftCategory);
 console.log(extsMap);
 
 // write getCategoryTS into ./build/category.json
-let categoryJson: ToolCategory[] = JSON.stringify(dftCategory, null, 4) as any;
+let categoryJson: string = JSON.stringify(dftCategory, null, 4) as any;
 // let categoryJson: ToolCategory[] = JSON.stringify(dftCategory) as any;
 let categoryJsonPath = path.join(__dirname, "..", "build", "category.json");
 fs.writeFileSync(categoryJsonPath, categoryJson);
@@ -165,7 +166,13 @@ _.forEach(getExtraArr,(x:FileValueMatcher[])=>{
       console.log('__dirname',__dirname)
       console.log('filename',filename)
       let finalOutputPath = path.join(__dirname,"..","build",filename)
-      fs.writeFileSync(finalOutputPath,JSON.stringify(value,null,2))        
+      let nextValue = JSON.stringify(value,null,2)
+      let r = fs.readFileSync(finalOutputPath)
+      if(r.toString()===nextValue){
+        console.log('same')
+        return
+      }
+      fs.writeFileSync(finalOutputPath,nextValue)        
     })
   })
 })
