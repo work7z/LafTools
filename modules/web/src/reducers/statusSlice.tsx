@@ -81,7 +81,7 @@ const initialState: StatusState = {
     currentPlateId: "tools",
   },
   whetherShow: {
-    signIn: true,
+    signIn: false,
   },
   ProcessLoadTypeKVMap: {},
   msg: {
