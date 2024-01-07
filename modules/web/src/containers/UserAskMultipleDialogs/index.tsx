@@ -85,6 +85,7 @@ import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 import PageUtils from "../../utils/PageUtils";
 import { EachLang } from "../../types/purejs-types-READ_ONLY";
+import IDUtils from "../../utils/IDUtils";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;
@@ -474,22 +475,22 @@ export const AdministratorSetupPanel: React.FC<
         <DialogBody className="docs-multistep-dialog-example-step">
           <h1 className="text-center mt-0">{Dot("SZgXb", "Setup Local Password")}</h1>
           <p>
-              {Dot(
-                "c7Uoi",
-                "One more step to LafTools, which is mandatory for you to setup your local password. Please provide and confirm your local password in below form."
-              )}
-            </p>
-            <p>
-              {Dot("Fhbqo","Note that you need to unlock your locker first before using LafTools, otherwise, you can't access any of your data and settings, meaning you'd better properly save your local password in a safe place.")}
-            </p>
+            {Dot(
+              "c7Uoi",
+              "One more step to LafTools, which is mandatory for you to setup your local password. Please provide and confirm your local password in below form."
+            )}
+          </p>
+          <p>
+            {Dot("Fhbqo", "Note that you need to unlock your locker first before using LafTools, otherwise, you can't access any of your data and settings, meaning you'd better properly save your local password in a safe place.")}
+          </p>
           {/* <p> */}
-            {/* <b>
+          {/* <b>
               {Dot("K1qJZI", "Welcome to the LafTools, Your Excellency.")}
             </b> */}
           {/* </p> */}
           {/* <p> */}
-            {/* {Dot("L49kCq", "Please provide and confirm lock password in this form to secure your LafTools.")} */}
-            {/* {Dot(              "bp_-b",
+          {/* {Dot("L49kCq", "Please provide and confirm lock password in this form to secure your LafTools.")} */}
+          {/* {Dot(              "bp_-b",
               "To fully manage the LafTools, you need to set up your administrator at the beginning of setup flow. We have verified your identification by the URL parameter token, please be assured that there's nobody else can setup your root permission unless he or she obtains setup token."
             )}
             {Dot(
@@ -548,6 +549,29 @@ export const AdministratorSetupPanel: React.FC<
                 {props.loadLeftPage}
               </div>
             )}
+
+            <div className="pt-form-helper-text mb-2 mt-2 text-right">
+              <a href={'javascript:void(0)'} onClick={() => {
+                let systemInitToken = TokenUtils.getSystemInitToken();
+
+                AlertUtils.win_alert({
+                  id: "jZGbQ",
+                  msg: <p>
+                    <p>
+                      {Dot("wAxtg", "Initially, we generated an UUID as an authorinized token for you to do this setup. From what LafTools has received, the token you provided is {0}, it's verified by LafTools successfully and consequently you can continue to setup this form.",
+                        systemInitToken
+                      )}
+                    </p>
+                    <p>{Dot("mjHoR", "Also, technically, nobody can read this token otherwise he/she has attacked and controlled your computer.")}</p>
+                    <p>
+                      {Dot("Nc0LX","If you think there's an vulnerability in this process, please feel free to contact us via EMail or GitHub at any time, we are pleased to help you.")}
+                    </p>
+                  </p>
+                })
+              }}>
+                {Dot("2D9qdk6", "Is it Secure Enough?")}
+              </a>
+            </div>
 
             <div>
               <Button
