@@ -167,6 +167,8 @@ let InnerContent = () => {
                 )
                 hist.push(URL_WORKBENCH)
                 infoQueryObj.refetch()
+                // TODO: remove the ugly reload code
+                location.reload()
             }}
             onChange={(v) => v}
         />

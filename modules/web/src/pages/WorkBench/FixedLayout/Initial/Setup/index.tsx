@@ -250,9 +250,9 @@ export default () => {
         // minHeight: "400px",
       }}
     >
-      <div className="mb-4 text-center ">
-        <b>{Dot("eYjWI", "Workspace List")}</b>
-      </div>
+      {/* <div className="mb-4 text-center ">
+        <b>{Dotxx("eYjWI", "Workspace List")}</b>
+      </div> */}
       <div>
         <InputGroup
           leftIcon="search"

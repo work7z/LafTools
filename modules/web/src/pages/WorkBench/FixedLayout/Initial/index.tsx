@@ -80,7 +80,8 @@ export default () => {
             }}
           >
             {/* - Empowering Your Creativity */}
-            {Dot("nJAX6", "Welcome to {0}", Dot("CVUl0", "LafTools"))}
+            {/* {Dotxx("nJAX6", "Welcome to {0}", Dot("CVUl0", "LafTools"))} */}
+            {Dot("XQxJB","My Workspaces")}
           </div>
         }
       />
