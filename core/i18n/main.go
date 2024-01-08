@@ -142,8 +142,11 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 	// preload other folders by array
 	otherFolders := []string{
 		global.GetPureJSLangFolder(),
+		global.GetLangDir(),
 	}
+
 	for _, folder := range otherFolders {
+		log.Ref().Debug("load folder: ", folder)
 		loadFileByLangFromDir(folder, lang)
 	}
 
@@ -154,22 +157,24 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 		ack = true
 	} else {
 		translationConfigObj := tmp_keyMap[lang]
-		if translationConfigObj == nil || tools.IsDevMode {
-			var err2 error = nil
-			translationConfigObj, err2 = tools.ReadJSONFile(path.Join(global.GetLangDir(), lang+".json"))
-			if err2 != nil {
-				log.Ref().Fatal("No available text for the id " + id)
-			} else {
-				// merge translationConfigObj into tmp_keyMap[lang]
-				for key, value := range translationConfigObj {
-					if _, has := tmp_keyMap[lang]; !has {
-						tmp_keyMap[lang] = map[string]string{}
-					}
-					tmp_keyMap[lang][key] = value
-				}
-			}
-			translationConfigObj = tmp_keyMap[lang]
-		}
+		// if translationConfigObj == nil || tools.IsDevMode {
+		// 	var err2 error = nil
+		// 	selfLang := path.Join(global.GetLangDir(), lang+".json")
+		// 	log.Ref().Debug("load file: ", selfLang)
+		// 	translationConfigObj, err2 = tools.ReadJSONFile(selfLang)
+		// 	if err2 != nil {
+		// 		log.Ref().Fatal("No available text for the id "+id, err2)
+		// 	} else {
+		// 		// merge translationConfigObj into tmp_keyMap[lang]
+		// 		for key, value := range translationConfigObj {
+		// 			if _, has := tmp_keyMap[lang]; !has {
+		// 				tmp_keyMap[lang] = map[string]string{}
+		// 			}
+		// 			tmp_keyMap[lang][key] = value
+		// 		}
+		// 	}
+		// 	translationConfigObj = tmp_keyMap[lang]
+		// }
 		value, has := translationConfigObj[id]
 		if has {
 			pText := strings.ReplaceAll(value, "''", "'")

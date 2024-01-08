@@ -35,7 +35,7 @@ import { FN_GetDispatch, IsDevMode, getIconPngFile } from "./nocycle";
 import systemSlice from "./reducers/systemSlice";
 import forgeSlice from "./reducers/forgeSlice";
 import { Dot } from "./utils/TranslationUtils";
-import { getFormattedLang } from "./i18n";
+import { GetUserActualClientLang, getFormattedLang } from "./i18n";
 
 function App() {
   let forgeObj = exportUtils.useSelector((val) => ({
@@ -119,7 +119,7 @@ function App() {
     innerJSX = <RouteComponent></RouteComponent>;
   }
 
-  let langInPath = getFormattedLang(exportUtils.useSelector(v => v.forge.Language))
+  let langInPath = getFormattedLang(GetUserActualClientLang())
   let basename = "/app/" + langInPath
 
   return (
