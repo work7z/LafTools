@@ -74,7 +74,7 @@ import { FN_GetDispatch } from "../../nocycle";
 import exportUtils from "../../utils/ExportUtils";
 
 export let FooterContent = () => {
-    return <div className='w-8/12 space-y-3 mx-auto bp5-text-muted  break-words pt-8 flex flex-col' >
+    return <div className='  w-8/12 space-y-3 mx-auto bp5-text-muted  break-words pt-8 flex flex-col pb-6' >
         <LanguageFlowList></LanguageFlowList>
         <i className="text-xs">            <MottoLine singleLineMode={true}></MottoLine></i>
         <div className='space-x-3'>
@@ -181,18 +181,22 @@ export default () => {
     PageUtils.useUpdateTitle(Dot("SGs7B", "Setup Your LafTools Quickly"), [])
 
     return <div
-        className=" bg-slate-200 dark:bg-gray-800  text-center p-8"
+        className="flex flex-col bg-slate-200 dark:bg-gray-800  text-center p-8"
         style={{
             height: `calc(100vh - ${VAL_CSS_MENU_TITLE_PANEL}px)`,
             paddingBottom:'30px',
-            overflow:'auto'
+            overflow:'auto',
         }}
     >
+        <div className="" style={{
+            flex: 1
+        }}>
         <Card style={{
             // minHeight: '400px'
         }} className='w-6/12 flex  mx-auto text-left  '>
             <InnerContent></InnerContent>
         </Card>
+        </div>
         <FooterContent></FooterContent>
     </div>
 }

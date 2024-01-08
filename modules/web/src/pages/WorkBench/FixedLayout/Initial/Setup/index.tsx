@@ -244,9 +244,10 @@ export default () => {
 
   let entryJSX = (
     <Card
-      className="flex flex-col  border-none mt-10 overflow-auto h-auto w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-slate-100 dark:shadow-slate-900 rounded self-start px-2 py-2 mx-auto"
+      className="flex  flex-1 flex-col  border-none mt-10 overflow-auto h-auto w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-slate-100 dark:shadow-slate-900 rounded self-start px-2 py-2 mx-auto"
       style={{
         border:'none',
+        flex: 1,
         // minHeight: "400px",
       }}
     >
@@ -388,9 +389,16 @@ export default () => {
         <div className="z-0 absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-slate-300 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-30 pattern-size-8"></div>
       </div>
       <div className="z-10 flex flex-col">
-        {entryJSX}
 
-<div className="text-center mt-10">
+
+<div style={{
+  flex: 1
+}}>
+{entryJSX}
+
+</div>
+
+<div className="text-center ">
 <FooterContent></FooterContent>
   </div>      
       </div>
