@@ -145,7 +145,6 @@ export default function SignInForm() {
                   setKev(_.uniqueId(""));
                   return;
                 } else {
-                  // dis(ACTION_callRefreshAll());
                   AlertUtils.popOK(
                     Dot("s4OeX", "Sign in the system successfully")
                   );

@@ -25,7 +25,6 @@ import (
 	"errors"
 	"laftools-go/core/config"
 	translation "laftools-go/core/i18n"
-	"laftools-go/core/log"
 	"laftools-go/core/tools"
 	"net/http"
 	"strings"
@@ -112,7 +111,9 @@ func (wc *WebContext) GetUserID() string {
 	}
 	userId := wc.GetHeaderValue(tools.HEADER_LOCAL_USER_ID)
 	if userId == "" {
-		log.Ref().Fatal("userid is empty")
+		if tools.IsDevMode {
+			// log.Ref().Fatal("userid is empty")
+		}
 	}
 	return userId
 }

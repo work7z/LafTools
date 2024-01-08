@@ -30,6 +30,7 @@ import _, { DebouncedFunc } from "lodash";
 import Qs from "query-string";
 
 import AlertUtils from "./AlertUtils";
+import TokenUtils from "./TokenUtils";
 window["_"] = _;
 
 type SyncDefinition = {
@@ -143,11 +144,17 @@ let SyncStateUtils = {
     if (action_type.indexOf("replaceWithLatestState") != -1) {
       return;
     }
+    // debugger;
     // if the user is initilizing his/her setup, then exit
-    let hasUserSelectOption = FN_GetState().forge.HasUserSelectedOption
-    if (!hasUserSelectOption) {
+    let userId = TokenUtils.getLocalUserId()
+    if (!userId || userId == "") {
       return;
     }
+    // let hasUserSelectOption = FN_GetState().forge.HasUserSelectedOption
+    // if (!hasUserSelectOption) {
+    //   return;
+    // }
+    // debugger;
     if (_.isEmpty(syncedReducerNameFnMap)) {
       _.forEach(syncedReducerNames, (eachReducerName) => {
         syncedReducerNameFnMap[eachReducerName] = _.throttle(

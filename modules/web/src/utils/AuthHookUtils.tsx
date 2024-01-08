@@ -24,7 +24,7 @@ import TranslationUtils, { Dot } from "./TranslationUtils";
 import QS from "querystring";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import gutils from "./GlobalUtils";
-import { URL_PREFIX_LOCAL, URL_PREFIX_STATIC } from "../types/constants";
+import { URL_PREFIX_LOCAL, URL_PREFIX_STATIC, URL_WORKBENCH } from "../types/constants";
 import devJson from "../static/dev.json";
 import { AnyMapType } from "../types/constants";
 import TokenUtils from "./TokenUtils";
@@ -33,11 +33,12 @@ import UserSlice, { UserConfig } from "../reducers/userSlice";
 import apiSlice from "../reducers/apiSlice";
 import * as vars from "../types/constants";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 export type AuthStatus = {
   isFetching: boolean;
   HasLogin: boolean;
-  currentUser: UserConfig | null;
+  currentUser: UserConfig | undefined;
 };
 
 const AuthHookUtils = {
@@ -61,34 +62,28 @@ const AuthHookUtils = {
       }
     );
     const dis = exportUtils.dispatch();
-    useEffect(() => {
-      if (userObj.isSuccess && userObj.data.payload.value.Found) {
-        dis(
-          UserSlice.actions.updateUserObject({
-            userConfig: userObj.data.payload.value.Obj,
-          })
-        );
-      }
-    }, [userObj]);
+    // let hist = useHistory()
+    // useEffect(() => {
+    // }, [userObj]);
 
     if (gutils.empty(userToken)) {
       return {
         isFetching: false,
         HasLogin: false,
-        currentUser: null,
+        currentUser: undefined,
       };
     }
     if (_.isNil(currentUserObj)) {
       return {
         isFetching: true,
         HasLogin: false,
-        currentUser: null,
+        currentUser: undefined,
       };
     }
     return {
       isFetching: userObj.isFetching,
       HasLogin: userObj.isSuccess ? userObj.data.payload.value.Found : false,
-      currentUser: currentUserObj.userConfig,
+      currentUser: userObj?.data?.payload.value.Obj,
     };
   },
 };

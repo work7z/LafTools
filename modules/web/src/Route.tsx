@@ -52,12 +52,13 @@ import InitRouteHistory from "./InitRouteHistory";
 import SystemAlertOrPrompt from "./overlap/SystemAlertOrPrompt";
 import Entry from "./pages/Redirect";
 import FixedPreWorkBench from "./pages/WorkBench/FixedLayout/Initial/index";
-import ALL_NOCYCLE from "./nocycle";
+import ALL_NOCYCLE, { FN_GetDispatch } from "./nocycle";
 import { useReadCurrentWorkspaceId } from "./utils/WorkSpaceUtils";
 import SignInLocal from './pages/SignInLocal'
 import AuthHookUtils from "./utils/AuthHookUtils";
 import RedirectPage from './pages/Redirect'
 import apiSlice from "./reducers/apiSlice";
+import UserSlice from "./reducers/userSlice";
 
 gutils.ExposureIt("$", $);
 gutils.ExposureIt("gutils", gutils);
@@ -84,14 +85,31 @@ let RouteComponent = () => {
   let isUserSignInNow = (!queryAuthStatus.isFetching && queryAuthStatus.HasLogin);
 
   useEffect(() => {
+    if(queryAuthStatus.isFetching){
+      return;
+    }
     if (!isUserSignInNow) {
+      // not sign in
       hist.push(URL_LOGIN)
     }else{
+      // sign in
+      if(queryAuthStatus.currentUser){
+        FN_GetDispatch()(
+          UserSlice.actions.updateUserObject({
+            userConfig: queryAuthStatus.currentUser,
+          })
+        );  
+      }
+
       if(hist.location.pathname.indexOf(URL_LOGIN)!=-1){
         hist.push(URL_WORKBENCH)
       }
+        // if(hist.location.pathname.indexOf(vars.URL_LOGIN)){
+        //   hist.push(URL_WORKBENCH)
+        // }
+
     }
-  }, [isUserSignInNow])
+  }, [queryAuthStatus.isFetching,isUserSignInNow])
 
   return (
     <div

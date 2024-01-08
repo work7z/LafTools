@@ -77,6 +77,9 @@ import AjaxUtils from "../../../../../utils/AjaxUtils";
 import QueryUtils from "../../../../../utils/QueryUtils";
 import { useWorkSpaceListGet } from "../../../../../utils/WorkSpaceUtils";
 import { FooterContent } from "../../../../SignInLocal/SignInLocalContent";
+import exportUtils from "../../../../../utils/ExportUtils";
+import { FN_GetDispatch } from "../../../../../nocycle";
+import { ACTION_callRefreshAll } from "../../../../../reducers/systemSlice";
 
 let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
   Dot("ph5jH", "Handling this part");
@@ -100,7 +103,7 @@ let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
           setViewContent(false);
         }}
         className="mt-1 w-full relative hover:text-black p-2 rounded  px-3 flex no-underline hover:no-underline text-black hover:bg-blue-200 hover:bg-opacity-20"
-        to={URL_WORKBENCH+"/" + x.Id}
+        to={URL_WORKBENCH + "/" + x.Id}
         style={{
           flexDirection: "column",
         }}
@@ -220,7 +223,7 @@ let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
 };
 
 export default () => {
-  let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({});
+  let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery(exportUtils.refresh_v1(), exportUtils.refresh_v2());
   let r = QueryUtils.validateResult(workspaceListRes, {
     label: Dot("RjCO3", "Workspace List"),
   });
@@ -246,7 +249,7 @@ export default () => {
     <Card
       className="flex  flex-1 flex-col  border-none mt-10 overflow-auto h-auto w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-slate-100 dark:shadow-slate-900 rounded self-start px-2 py-2 mx-auto"
       style={{
-        border:'none',
+        border: 'none',
         flex: 1,
         // minHeight: "400px",
       }}
@@ -323,6 +326,7 @@ export default () => {
                             AlertUtils.popCreated();
                             AlertUtils.deletePromptList(idForWin);
                           }
+                          FN_GetDispatch(ACTION_callRefreshAll(false))
                           workspaceListRes.refetch();
                         } else {
                           AlertUtils.popError([
@@ -393,16 +397,16 @@ export default () => {
       <div className="z-10 flex flex-col">
 
 
-<div style={{
-  flex: 1
-}}>
-{entryJSX}
+        <div style={{
+          flex: 1
+        }}>
+          {entryJSX}
 
-</div>
+        </div>
 
-<div className="text-center ">
-<FooterContent></FooterContent>
-  </div>      
+        <div className="text-center ">
+          <FooterContent></FooterContent>
+        </div>
       </div>
     </div>
   );

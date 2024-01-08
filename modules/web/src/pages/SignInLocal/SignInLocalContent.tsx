@@ -190,10 +190,8 @@ let InnerContent = () => {
             selectedValue="0"
             notifyCreatedOK={()=>{
                 FN_GetDispatch()(
-                    ACTION_callRefreshAll()
+                    ACTION_callRefreshAll(false)
                 )
-                hist.push(URL_WORKBENCH)
-                infoQueryObj.refetch()
                 // TODO: remove the ugly reload code
                 // location.reload()
             }}
