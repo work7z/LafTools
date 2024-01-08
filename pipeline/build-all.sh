@@ -155,9 +155,17 @@ dockerize-laftools(){
         cd $subDockerDir
         cp ../../pkg/*$platformName.tar.gz ./linux.tar.gz
         cp $LAFTOOLS_ROOT/parcel/docker/* ./
-        docker build -t laftools-$platformName:insider -f ./Dockerfile .
+        sudo docker build -t laftools-$platformName:insider -f ./Dockerfile .
     )
 }
+
+docker-all(){
+    if [[ "$mode" = "linux" ]]; then
+        dockerize-laftools linux-x64
+        dockerize-laftools linux-arm64
+    fi
+}
+
 
 # [BEGIN]
 # build core and fe
@@ -169,8 +177,7 @@ refining
 # package as zip and tar.gz
 package-all
 # build docker images
-dockerize-laftools linux-x64
-dockerize-laftools linux-arm64
+docker-all
 # [END]
 
 

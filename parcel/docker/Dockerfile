@@ -1,5 +1,6 @@
 FROM ubuntu:18.04  
 RUN mkdir /opt/app
-COPY ["./dist", "/opt/app"]
-WORKDIR "/opt/app/codegen-toolbox"
-CMD ["/bin/sh","-c","echo 'Loading...' "]
+COPY ["./linux.tar.gz", "/opt/app"]
+COPY ["./bootstrap.sh","/opt/app"]
+WORKDIR "/opt/app"
+CMD ["/opt/app/bootstrap.sh"]
