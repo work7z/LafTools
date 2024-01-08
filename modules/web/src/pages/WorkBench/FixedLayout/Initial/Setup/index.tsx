@@ -264,7 +264,7 @@ export default () => {
           onChange={(e) => {
             onFilterText(e.target.value);
           }}
-          placeholder={Dot("SMD13", "Filter Workspaces")}
+          placeholder={Dot("SMqD13", "Key in to filter")}
           rightElement={
             <ButtonGroup>
               <Tooltip
@@ -273,8 +273,9 @@ export default () => {
               >
                 <Button
                   className="mr-2"
-                  icon="add"
-                  text={Dot("ImUmf", "New")}
+                  icon="map-create"
+                  // text={Dot("ImUmf", "New")}
+                  minimal
                   intent={Intent.PRIMARY}
                   small
                   onClick={() => {
@@ -340,7 +341,8 @@ export default () => {
               >
                 <Button
                   icon="refresh"
-                  text={Dot("5dF7o", "Refresh")}
+                  minimal
+                  // text={Dot("5dF7o", "Refresh")}
                   small
                   intent={Intent.SUCCESS}
                   onClick={() => {

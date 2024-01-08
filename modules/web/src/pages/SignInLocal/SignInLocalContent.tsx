@@ -181,10 +181,11 @@ export default () => {
     PageUtils.useUpdateTitle(Dot("SGs7B", "Setup Your LafTools Quickly"), [])
 
     return <div
-        className="flex flex-col bg-slate-200 dark:bg-gray-800  text-center p-8"
+        className="flex flex-col bg-slate-200 dark:bg-gray-800  text-center p-8 pb-0"
         style={{
             height: `calc(100vh - ${VAL_CSS_MENU_TITLE_PANEL}px)`,
-            paddingBottom:'30px',
+            // paddingBottom:'30px',
+            paddingBottom:'0px',
             overflow:'auto',
         }}
     >

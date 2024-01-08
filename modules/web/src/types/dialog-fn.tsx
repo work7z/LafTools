@@ -127,10 +127,12 @@ export const FN_ForgotPassword = () => {
                 )}
                 <ol>
                   <li>
+                    <b>
                     {Dot(
                       "PazM-",
                       "Use below form controls to encrypt your password"
                     )}
+                    </b>
                   </li>
                   <li>
                     {Dot(
