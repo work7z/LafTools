@@ -137,6 +137,7 @@ func (t *TraObject) Dot(id string, enUS string, arg ...interface{}) string {
 	defer lockForLoadLang.Unlock()
 	// load from files when needed
 	lang := t.lang
+	log.Ref().Debug("Dot: ", lang, ", id:"+id+" -> ", enUS)
 
 	// preload other folders by array
 	otherFolders := []string{

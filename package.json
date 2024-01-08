@@ -10,7 +10,7 @@
     "fe-build": "(cd ./modules/web && npm run build)",
     "build-all":"./pipeline/build-all.sh",
     "build-linux":"./pipeline/build-all.sh linux",
-    "run-test":"(cd $LAFTOOLS_ROOT/dist/os/linux-x64 && ./run.sh)"
+    "test-linux":"(cd $LAFTOOLS_ROOT/dist/os/linux-x64 && ./run.sh)"
   },
   "keywords": [
     "cipher",

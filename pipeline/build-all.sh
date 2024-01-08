@@ -13,7 +13,13 @@ echo "[I] $(date) Working..."
 echo "[I] PWD: $(pwd)"
 echo "[I] Removing dist dir: $distDir"
 [ -d $distDir ] && rm -rf $distDir  
+
+# dist dir
 mkdir -p $distDir
+pkgDir=$distDir/pkg
+[ -d $pkgDir ] && rm -rf $pkgDir
+mkdir -p $pkgDir
+
 
 build-core(){
     platformName=$1
@@ -70,7 +76,7 @@ build-fe(){
 }
 
 build-be(){
-    if [ $mode == "linux" ]; then
+    if [[ $mode = "linux" ]]; then
         build-core linux-x64 amd64 "core/app_unix.go" linux
         build-core linux-arm64 arm64 "core/app_unix.go" linux
     else
@@ -79,7 +85,7 @@ build-be(){
         build-core darwin-x64 amd64 "core/app_unix.go" darwin
         build-core darwin-arm64 arm64 "core/app_unix.go" darwin
         build-core windows-x64 amd64 "core/app_windows.go" windows
-        build-core windows-arm64 arm64 "core/app_windows.go" windows
+        # build-core windows-arm64 arm64 "core/app_windows.go" windows
     fi
 }
 
@@ -91,11 +97,38 @@ refining(){
     find ./dist -iname "ph" -exec rm -f {} \;
 }
 package-for(){
-    echo "[I] packaging for $1"
+    platformName=$1
+    packageType=$2
+    platformDistDir=./dist/os/$platformName/
+    if [ -z $packageType ]; then
+        packageType=tar.gz
+    fi
+    echo "[I] packaging for $platformName"
+    (
+        cd $platformDistDir
+        fileName=
+        if [ $packageType == "zip" ]; then
+            fileName=$platformName.zip
+            zip -r $fileName ./* &> /dev/null
+        else
+            fileName=$platformName.tar.gz
+            tar -zcvf $fileName ./* &> /dev/null
+        fi
+        mv $fileName ../../pkg
+        # do verify 
+        cd ../../pkg
+        echo "[I] verifying $fileName"
+        if [ $packageType == "zip" ]; then
+            unzip -l $fileName &> /dev/null
+        else
+            tar -ztvf $fileName &> /dev/null
+        fi
+        echo "[I] file size: $(du -sh $fileName | awk '{print $1}')"
+    )
 }
 package-all(){
     echo "[I] packaging all platforms"
-    if [ $mode == "linux" ]; then
+    if [[ $mode = "linux" ]]; then
         package-for linux-x64
         package-for linux-arm64
     else
@@ -103,8 +136,8 @@ package-all(){
         package-for linux-arm64
         package-for darwin-x64
         package-for darwin-arm64
-        package-for windows-x64
-        package-for windows-arm64
+        package-for windows-x64 zip
+        # package-for windows-arm64 zip
     fi
 }
 
