@@ -326,7 +326,8 @@ export default () => {
                             AlertUtils.popCreated();
                             AlertUtils.deletePromptList(idForWin);
                           }
-                          FN_GetDispatch(ACTION_callRefreshAll(false))
+                          let b = ACTION_callRefreshAll(false)
+                          FN_GetDispatch()(b)
                           workspaceListRes.refetch();
                         } else {
                           AlertUtils.popError([

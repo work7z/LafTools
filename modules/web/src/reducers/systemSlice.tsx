@@ -204,7 +204,7 @@ const systemSlice = createSlice({
     },
   },
 });
-export const ACTION_callRefreshAll = (showMsg?:boolean): any => {
+export const ACTION_callRefreshAll = (showMsg:boolean): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
     dispatch(systemSlice.actions.markIfRefreshing({ isLoading: true }));
     try {
