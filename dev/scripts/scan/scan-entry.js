@@ -227,6 +227,7 @@ let scan = async (eachRunItem) => {
 
 
       for (let eachLang of langarr) {
+        await sleep(1000)
 
         let outputLang = eachLang.replace('-', '_');
         let isChinese = eachLang == 'zh_CN' || eachLang == 'zh_HK';
@@ -382,6 +383,7 @@ for (let eachItem of searchItems) {
 
       try {
         await scan(eachItem);
+        await sleep(1000)
       } catch (e) {
         console.log('err', e)
       }

@@ -72,6 +72,7 @@ import apiSlice from "../../reducers/apiSlice";
 import { ACTION_callRefreshAll } from "../../reducers/systemSlice";
 import { FN_GetDispatch } from "../../nocycle";
 import exportUtils from "../../utils/ExportUtils";
+import AlertUtils from "../../utils/AlertUtils";
 
 export let FooterContent = () => {
     return <div className='  w-8/12 space-y-3 mx-auto bp5-text-muted  break-words pt-8 flex flex-col pb-6' >
@@ -85,21 +86,47 @@ export let FooterContent = () => {
                         link: "https://github.com/work7z/LafTools/issues"
                     },
                     {
-                        label: Dot("zmDWx", "Contact Us"),
-                        link: "mailto:work7z@outlook.com"
-                    },
-                    {
                         label: Dot("V6U_f", "Terms of Service"),
                         link: "https://codegen.cc/main/license/main"
                     },
                     {
-                        label: Dot("d5LAU", "Licensed under AGPLv3"),
+                        // label: Dot("d5LAU", "Licensed under AGPLv3"),
+                        label: Dot("4PIqD", "Code Review"),
                         link: "https://github.com/work7z/LafTools/"
                         // link: 'https://en.wikipedia.org/wiki/Affero_General_Public_License'
                     },
-
+                    {
+                        label: Dot("zmDWx", "Contact Us"),
+                        link: "mailto:work7z@outlook.com"
+                    },
+                    {
+                        label: Dot("13pmE","Support Us"),
+                        link: "javascript:void(0);",
+                        onClick: ()=>{
+                            AlertUtils.win_alert({
+                                id:"W1z_B",
+                                msg: <p>
+                                    <h1>{Dot("qHoktx","Thank You!")}</h1>
+                                    <p>
+                                    {Dot("CidOqAZ","As the creator of LafTools, I am so touched that you are willing to support us. We have good people on our team who work hard to continuously improve LafTools.")}
+                                    </p>
+                                    <p>
+                                        {Dot("6hsnqWe","Although LafTools is free and open source, maintaining it still requires a significant amount of time and energy. In particular, we need funds to pay for certain cloud APIs. If you appreciate LafTools, please consider supporting us.")}
+                                    </p>
+                                    <p>
+                                    {Dot("AqYcS","To support LafTools, consider upgrading to our professional version through a monthly subscription. We would greatly appreciate your help, and we promise that LafTools will become even better with the funds raised.")}</p>
+                                    <p
+                                    className='bp5-text-muted'
+                                    >{Dot("qWmXE4","Ryan Laf")}
+                                    <br/>
+                                    {Dot("WemXE4","Creator of LafTools")}
+                                    </p>
+                                </p>
+                            })
+                        }
+                    }
                 ].map(x => {
-                    return <a href={x.link} className={CSS_TEXT_ANCHOR_CSS} target='_blank'>{x.label}</a>
+                    return <a onClick={x.onClick} href={x.link} className={CSS_TEXT_ANCHOR_CSS} target={x.onClick? '':'_blank'}>{x.label}</a>
                 })
             }
         </div>
