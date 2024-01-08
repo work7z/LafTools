@@ -29,6 +29,7 @@ import { URL_PREFIX_LOCAL, URL_WORKBENCH } from "../types/constants";
 import AlertUtils from "./AlertUtils";
 import systemSlice from "../reducers/systemSlice";
 import SyncStateUtils from "./SyncStateUtils";
+import exportUtils from "./ExportUtils";
 
 export let useReadCurrentWorkspaceId = (): string => {
   return getWorkspaceIdFromPath();
@@ -44,7 +45,7 @@ export let getWorkspaceIdFromPath = (): string => {
     // console.log(e);
   }
   // let reg = /workbench\/(\w+)/g;
-  let reg = new RegExp(URL_WORKBENCH.replace("/","")+'/(\\w+)', 'g');
+  let reg = new RegExp(URL_WORKBENCH.replace("/", "") + '/(\\w+)', 'g');
   let arr = reg.exec(location.href);
   if (!arr) {
     return "";
@@ -61,10 +62,16 @@ export let useReadCurrentWorkspaceItem = (): EachWorkSpace | undefined => {
 };
 
 export let useWorkSpaceListGet = (): EachWorkSpace[] => {
-  let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({});
-  let r = QueryUtils.validateResult(workspaceListRes, {
-    label: Dot("RjCO3", "Workspace List"),
+  let v1 = exportUtils.refresh_v1()
+  let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({
+    ...v1
+  }, {
+    ...exportUtils.refresh_v2(),
+    ...exportUtils.refresh_v2_only_for_user(),
   });
+  // let r = QueryUtils.validateResult(workspaceListRes, {
+  //   label: Dot("RjCO3", "Workspace List"),
+  // });
   let allWorkspaces: EachWorkSpace[] =
     workspaceListRes.data?.payload?.value?.WorkSpaces || [];
   return allWorkspaces;
@@ -79,7 +86,7 @@ export let setupWorkspaceData = async () => {
 export let pushToWorkSpace = (workspaceId: string) => {
   AlertUtils.popOK(Dot("Z7ALO", "Switched to the selected workspace"));
   ALL_NOCYCLE.history &&
-    ALL_NOCYCLE.history.replace(URL_WORKBENCH+"/" + workspaceId);
+    ALL_NOCYCLE.history.replace(URL_WORKBENCH + "/" + workspaceId);
   setTimeout(() => {
     setupWorkspaceData();
     FN_GetDispatch()(systemSlice.actions.updateIsWorkBenchPageAvailable(false));

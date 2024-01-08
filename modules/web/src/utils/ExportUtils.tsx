@@ -22,15 +22,20 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { RootState } from "../store";
 import { useMemo } from "react";
 import _ from "lodash";
+import TokenUtils from "./TokenUtils";
 
 const exportUtils = {
   refresh_v1: () => {
     return {
       v: exportUtils.useSelector((val) => val.system.RefreshID),
+      _uid: TokenUtils.getLocalUserId(),
     };
   },
   refresh_v2: () => {
     return { refetchOnMountOrArgChange: true };
+  },
+  refresh_v2_only_for_user: () => {
+    return { skip:_.trim(TokenUtils.getLocalUserId()||"")=='' };
   },
   resize_factors: (): number[] => {
     return exportUtils.useSelector((val) => {

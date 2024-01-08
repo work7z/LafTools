@@ -25,6 +25,7 @@ import (
 	"errors"
 	"laftools-go/core/config"
 	translation "laftools-go/core/i18n"
+	"laftools-go/core/log"
 	"laftools-go/core/tools"
 	"net/http"
 	"strings"
@@ -109,7 +110,11 @@ func (wc *WebContext) GetUserID() string {
 	if wc.OverwriteUserId != "" {
 		return wc.OverwriteUserId
 	}
-	return wc.GetHeaderValue(tools.HEADER_LOCAL_USER_ID)
+	userId := wc.GetHeaderValue(tools.HEADER_LOCAL_USER_ID)
+	if userId == "" {
+		log.Ref().Fatal("userid is empty")
+	}
+	return userId
 }
 func (wc *WebContext) GetWorkspaceID() string {
 	return wc.GetHeaderValue(tools.HEADER_LOCAL_WORKSPACE_ID)

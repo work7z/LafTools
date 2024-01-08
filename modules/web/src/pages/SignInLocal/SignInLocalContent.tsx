@@ -82,12 +82,12 @@ export let FooterContent = () => {
             {
                 [
                     {
-                        label: Dot("OQWm4", "Report a Bug"),
-                        link: "https://github.com/work7z/LafTools/issues"
-                    },
-                    {
                         label: Dot("V6U_f", "Terms of Service"),
                         link: "https://codegen.cc/main/license/main"
+                    },
+                    {
+                        label: Dot("OQWm4", "Report a Bug"),
+                        link: "https://github.com/work7z/LafTools/issues"
                     },
                     {
                         // label: Dot("d5LAU", "Licensed under AGPLv3"),
@@ -195,7 +195,7 @@ let InnerContent = () => {
                 hist.push(URL_WORKBENCH)
                 infoQueryObj.refetch()
                 // TODO: remove the ugly reload code
-                location.reload()
+                // location.reload()
             }}
             onChange={(v) => v}
         />
