@@ -1,4 +1,4 @@
-FROM ubuntu:18.04  
+FROM centos  
 RUN mkdir /opt/app
 COPY ["./linux.tar.gz", "/opt/app"]
 COPY ["./bootstrap.sh","/opt/app"]
