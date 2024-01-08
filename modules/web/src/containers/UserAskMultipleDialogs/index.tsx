@@ -722,8 +722,13 @@ export const LocalUserPanel: React.FC<
           defaultValue={props.localAccountObject.password}
           onChange={(val) => {
             props.localAccountObject.password = val.target.value;
-            doAction(false)
+            // doAction(false)
           }}
+        // onKeyDown={()=>{
+        // setTimeout(() => {
+        //   doAction(false)
+        // }, 100);
+        // }}
         ></PasswordInput>
       </FormGroup>
       <div className="pt-form-helper-text mb-2 mt-2 text-right">

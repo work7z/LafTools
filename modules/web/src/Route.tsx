@@ -122,7 +122,7 @@ let RouteComponent = () => {
           component={SignInLocal}
         ></Route>
         <Route path={URL_WORKBENCH} exact component={FixedPreWorkBench}></Route>
-        <Route path={URL_WORKBENCH_WORKSPACE} component={WorkBench}></Route>
+        <Route path={URL_WORKBENCH_WORKSPACE+"/:workspaceId"} component={WorkBench}></Route>
         <Route path={URL_ENTRY} component={Entry}></Route>
         <Route path={URL_REDIRECT} component={RedirectPage}></Route>
         <Redirect path="*" to={URL_REDIRECT}></Redirect>

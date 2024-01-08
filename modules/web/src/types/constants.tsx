@@ -95,7 +95,7 @@ export const URL_LOGIN = "/login";
 export const URL_WORKBENCH = "/main";
 export const URL_ENTRY = "/entry";
 export const URL_REDIRECT = "/redirect";
-export const URL_WORKBENCH_WORKSPACE = URL_WORKBENCH+"/:workspaceId";
+export const URL_WORKBENCH_WORKSPACE = URL_WORKBENCH;
 
 export const ID_TOOLS = "tools";
 export const ID_FILES = "files";
