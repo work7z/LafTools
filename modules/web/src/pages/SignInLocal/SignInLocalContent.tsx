@@ -117,9 +117,9 @@ export let FooterContent = () => {
                                     {Dot("AqYcS","To support LafTools, consider upgrading to our professional version through a monthly subscription. We would greatly appreciate your help, and we promise that LafTools will become even better with the funds raised.")}</p>
                                     <p
                                     className='bp5-text-muted'
-                                    >{Dot("qWmXE4","Ryan Laf")}
+                                    >{'Ryan Laf'}
                                     <br/>
-                                    {Dot("WemXE4","Creator of LafTools")}
+                                    {Dot("qWemXE4","Jan, 1st, 2024")}
                                     </p>
                                 </p>
                             })

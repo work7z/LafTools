@@ -626,9 +626,10 @@ export const AdministratorSetupPanel: React.FC<
 };
 
 export const LocalUserPanel: React.FC<
-  SelectPanelProps & { 
-    notifyCreatedOK?:()=>any,
-    loadLeftPage: string; localAccountObject: UserPassProp }
+  SelectPanelProps & {
+    notifyCreatedOK?: () => any,
+    loadLeftPage: string; localAccountObject: UserPassProp
+  }
 > = (props) => {
   let dis = exportUtils.dispatch();
   let userQuery = apiSlice.useListUserNamesQuery(
@@ -641,6 +642,33 @@ export const LocalUserPanel: React.FC<
   let r = QueryUtils.validateResult(userQuery, {
     label: Dot("LM715", "Retrieving usernames from local server API"),
   });
+  let doAction = async (showMsg: boolean) => {
+    try {
+      onLoading(true)
+      // TODO: do unlock logic
+      let localAccountObject = {
+        current: props.localAccountObject
+      }
+      if (localAccountObject.current.password == "") {
+        throw new Error(Dot("DrbEr", "The password you provided is empty, please check and try again."))
+      }
+      if (_.isEmpty(localAccountObject.current.username)) {
+        throw new Error(Dot("qDrbEr", "The username you provided is empty, please check and try again."))
+      }
+      await ACTION_signInLocalAccount({
+        localAccountObject: localAccountObject.current,
+      })(dis);
+      AlertUtils.popOK(Dot("y3qjdd", "Your local password has been successfully verified."))
+      props.notifyCreatedOK && props.notifyCreatedOK()
+      onLoading(false)
+      hist.push(URL_WORKBENCH)
+    } catch (e) {
+      if (showMsg) {
+        AlertUtils.popError(e as any);
+      }
+      onLoading(false)
+    }
+  }
   if (r) {
     return r;
   }
@@ -694,6 +722,7 @@ export const LocalUserPanel: React.FC<
           defaultValue={props.localAccountObject.password}
           onChange={(val) => {
             props.localAccountObject.password = val.target.value;
+            doAction(false)
           }}
         ></PasswordInput>
       </FormGroup>
@@ -713,29 +742,7 @@ export const LocalUserPanel: React.FC<
           type="button"
           loading={loading}
           onClick={async () => {
-            try {
-              onLoading(true)
-              // TODO: do unlock logic
-              let localAccountObject = {
-                current: props.localAccountObject
-              }
-              if (localAccountObject.current.password == "") {
-                throw new Error(Dot("DrbEr", "The password you provided is empty, please check and try again."))
-              }
-              if (_.isEmpty(localAccountObject.current.username)) {
-                throw new Error(Dot("qDrbEr", "The username you provided is empty, please check and try again."))
-              }
-              await ACTION_signInLocalAccount({
-                localAccountObject: localAccountObject.current,
-              })(dis);
-              AlertUtils.popOK(Dot("y3qjdd", "Your local password has been successfully verified."))
-              props.notifyCreatedOK && props.notifyCreatedOK()
-              onLoading(false)
-              hist.push(URL_WORKBENCH)
-            } catch (e) {
-              onLoading(false)
-              AlertUtils.popError(e as any);
-            }
+            doAction(true)
           }}
           // loading={result.isLoading}
           intent="primary"
