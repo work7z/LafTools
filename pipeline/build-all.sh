@@ -7,6 +7,7 @@ cd $(dirname $0)/..
 distDir=./dist
 set -e
 source ./pipeline/env.sh
+mode=$1
 
 echo "[I] $(date) Working..."
 echo "[I] PWD: $(pwd)"
@@ -22,7 +23,7 @@ build-core(){
     argGOOS=$4
     osPatchDir=./os-patch/$platformName
     platformDistDir=./dist/os/$platformName/
-    echo "--------- CORE BEGIN ---------"
+    echo "--------- CORE $platformName BEGIN ---------"
     echo "[I] building be core"
     osScriptFile=$argGOOS
     if [ $platformName == "windows-x64" ] || [ $platformName == "windows-arm64" ]; then
@@ -50,8 +51,6 @@ build-core(){
     cp -a ./parcel/scripts/root/* $platformDistDir
 
     echo "[I] built"
-    echo "--------- CORE DONE ---------"
-    echo ""
 }
 
 build-res(){
@@ -71,33 +70,54 @@ build-fe(){
 }
 
 build-be(){
-    # golang core
-    build-core linux-x64 amd64 "core/app_unix.go" linux
-    build-core linux-arm64 arm64 "core/app_unix.go" linux
-    build-core darwin-x64 amd64 "core/app_unix.go" darwin
-    build-core darwin-arm64 arm64 "core/app_unix.go" darwin
-    build-core windows-x64 amd64 "core/app_windows.go" windows
-    # TODO: windows-arm64 is not yet supported due to winpty, consider supporting it in the near future
-    # build-core windows-arm64 arm64 "core/app_windows.go" windows
+    if [ $mode == "linux" ]; then
+        build-core linux-x64 amd64 "core/app_unix.go" linux
+        build-core linux-arm64 arm64 "core/app_unix.go" linux
+    else
+        build-core linux-x64 amd64 "core/app_unix.go" linux
+        build-core linux-arm64 arm64 "core/app_unix.go" linux
+        build-core darwin-x64 amd64 "core/app_unix.go" darwin
+        build-core darwin-arm64 arm64 "core/app_unix.go" darwin
+        build-core windows-x64 amd64 "core/app_windows.go" windows
+        build-core windows-arm64 arm64 "core/app_windows.go" windows
+    fi
 }
 
-clean-stuff(){
-    echo "[I] executing chmod if needed.."
+refining(){
+    echo "[I] refining resources.."
     find ./dist -iname "*.bin" -exec chmod 755 {} \;
     find ./dist -iname "*.sh" -exec chmod 755 {} \;
     find ./dist -iname "*.command" -exec chmod 755 {} \;
     find ./dist -iname "ph" -exec rm -f {} \;
 }
-test-run(){
-    cd $LAFTOOLS_ROOT/dist/os/darwin-x64
-    ./run.command
+package-for(){
+    echo "[I] packaging for $1"
+}
+package-all(){
+    echo "[I] packaging all platforms"
+    if [ $mode == "linux" ]; then
+        package-for linux-x64
+        package-for linux-arm64
+    else
+        package-for linux-x64
+        package-for linux-arm64
+        package-for darwin-x64
+        package-for darwin-arm64
+        package-for windows-x64
+        package-for windows-arm64
+    fi
 }
 
+# [BEGIN]
+# build core and fe
 build-res
 build-fe 
 build-be
-clean-stuff
-# test-run
+# refine resources
+refining
+# package as zip and tar.gz
+package-all
+# [END]
 
 
 echo "[I] $(date) Done."

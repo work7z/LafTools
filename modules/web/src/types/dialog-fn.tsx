@@ -52,7 +52,7 @@ import {
 import gutils from "../utils/GlobalUtils";
 import { Dot } from "../utils/TranslationUtils";
 import exportUtils from "../utils/ExportUtils";
-import { LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "./constants";
+import { LAFTOOLS_DEFAULT_USERNAME, LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "./constants";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
 } from "../reducers/forgeSlice";
@@ -110,7 +110,7 @@ export const FN_ForgotPassword = () => {
         <Dialog
           onClose={props.obj.close}
           isOpen={true}
-          title={Dot("bP_6G", "Tips for Forgot or Reset Password")}
+          title={Dot("bP_6qG", "Tips for Forgot Your Password")}
           icon="info-sign"
         >
           <DialogBody>
@@ -127,26 +127,18 @@ export const FN_ForgotPassword = () => {
                 )}
                 <ol>
                   <li>
-                    <b>
                     {Dot(
-                      "PazM-",
-                      "Use below form controls to encrypt your password"
-                    )}
-                    </b>
-                  </li>
-                  <li>
-                    {Dot(
-                      "Kbl-O",
-                      "Now you got your encrypted password, and try to enter the directory "
+                      "PqazM-",
+                      "First of all, please use below form controls to encrypt your password"
                     )}
                   </li>
                   <li>
                     {Dot(
-                      "b0jSL",
-                      "Assume that your username is {0}, then please enter the directory {1} and create a file {2}, put your encrypted password as its entire file content.",
-                      username,
+                      "b0qjSL",
+                      "Please enter the directory {1} and create a file {2}, put your encrypted password as its entire file content.",
+                      'N/A',
                       UserPWDir,
-                      username + ".txt"
+                      LAFTOOLS_DEFAULT_USERNAME + ".txt"
                     )}
                   </li>
                   <li>
