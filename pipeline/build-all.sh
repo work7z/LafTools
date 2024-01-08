@@ -16,9 +16,14 @@ echo "[I] Removing dist dir: $distDir"
 
 # dist dir
 mkdir -p $distDir
+# pkg
 pkgDir=$distDir/pkg
 [ -d $pkgDir ] && rm -rf $pkgDir
 mkdir -p $pkgDir
+# docker
+dockerDir=$distDir/docker
+[ -d $dockerDir ] && rm -rf $dockerDir
+mkdir -p $dockerDir
 
 
 build-core(){
@@ -141,6 +146,19 @@ package-all(){
     fi
 }
 
+dockerize-laftools(){
+    platformName=$1
+    echo "[I] dockerizing laftools for $platformName"
+    subDockerDir=$dockerDir/$platformName
+    mkdir -p $subDockerDir
+    (
+        cd $subDockerDir
+        cp ../../pkg/*$platformName.tar.gz ./linux.tar.gz
+        cp $LAFTOOLS_ROOT/parcel/docker/* ./
+        docker build -t laftools-$platformName:insider -f ./Dockerfile .
+    )
+}
+
 # [BEGIN]
 # build core and fe
 build-res
@@ -150,6 +168,9 @@ build-be
 refining
 # package as zip and tar.gz
 package-all
+# build docker images
+dockerize-laftools linux-x64
+dockerize-laftools linux-arm64
 # [END]
 
 
