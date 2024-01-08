@@ -82,6 +82,7 @@ interface SystemState {
   PageDataInitedMap: PageDataInitedMap;
   LoadSystemData: boolean;
   RefreshID: number;
+  checkLoginStatusCount:number;
   SysInitStatus: InitStatus;
   LangIncrement: string;
   MessageObjectKVMap: {};
@@ -101,6 +102,7 @@ let LangRefreshCount = 0;
 
 const initialState: SystemState = {
   RefreshID: 0,
+  checkLoginStatusCount: 0,
   PageDataInitedMap: {},
   LoadingForPageData: false,
   LoadSystemData: false,
@@ -155,6 +157,10 @@ const systemSlice = createSlice({
     markAllAsCompleted: (state, action) => {
       state.LoadSystemData = true;
     },
+    // increment for checkLoginStatusCount
+    upsertCheckLoginStatusCount:(state,action)=>{
+      state.checkLoginStatusCount++
+    },
     markIfRefreshing: (state, action: IsLoadingType) => {
       state.LoadingForPageData = action.payload.isLoading;
     },
@@ -198,7 +204,7 @@ const systemSlice = createSlice({
     },
   },
 });
-export const ACTION_callRefreshAll = (): any => {
+export const ACTION_callRefreshAll = (showMsg?:boolean): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
     dispatch(systemSlice.actions.markIfRefreshing({ isLoading: true }));
     try {
@@ -208,9 +214,11 @@ export const ACTION_callRefreshAll = (): any => {
       )) {
         await each();
       }
-      AlertUtils.popMsg("success", {
-        message: Dot("gnKMZ", "Refreshed."),
-      });
+      if(showMsg){
+        AlertUtils.popMsg("success", {
+          message: Dot("gnKMZ", "Refreshed."),
+        });
+      }
     } catch (e) {
       AlertUtils.popError(e as Error, Dot("cj1pd", "Refresh Operation"));
     } finally {

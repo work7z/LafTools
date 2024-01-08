@@ -115,8 +115,6 @@ function App() {
 
   if (isEnvNotLoad) {
     innerJSX = <InitSystemEnv key="init-system-env" />;
-  } else if (false && isUserSignInNow) { // TODO: will remove this part
-    innerJSX = <UserAskMultipleDialogs />;
   } else {
     innerJSX = <RouteComponent></RouteComponent>;
   }

@@ -69,8 +69,11 @@ import PageUtils from "../../utils/PageUtils";
 import MottoLine from "../../components/MottoLine";
 import { AdminUserPassProp, AdministratorSetupPanel, LocalUserPanel, UserPassProp } from "../../containers/UserAskMultipleDialogs";
 import apiSlice from "../../reducers/apiSlice";
+import { ACTION_callRefreshAll } from "../../reducers/systemSlice";
+import { FN_GetDispatch } from "../../nocycle";
+import exportUtils from "../../utils/ExportUtils";
 
-let FooterContent = () => {
+export let FooterContent = () => {
     return <div className='w-8/12 space-y-3 mx-auto bp5-text-muted  break-words pt-8 flex flex-col' >
         <LanguageFlowList></LanguageFlowList>
         <i className="text-xs">            <MottoLine singleLineMode={true}></MottoLine></i>
@@ -116,6 +119,7 @@ let InnerContent = () => {
         username: LAFTOOLS_DEFAULT_USERNAME,
         password: "",
     });
+    let hist = useHistory()
     const admin_localAccountObject: { current: AdminUserPassProp } = useRef({
         username: LAFTOOLS_DEFAULT_USERNAME,
         password: "",
@@ -128,6 +132,7 @@ let InnerContent = () => {
     const infoQueryObj = apiSlice.useGetVisitAdminInitInfoQuery(
         {
             stepIdx,
+            ...exportUtils.refresh_v1()
         },
         {
             refetchOnMountOrArgChange: true,
@@ -144,6 +149,10 @@ let InnerContent = () => {
             stepIdx={stepIdx}
             loadLeftPage={loadLeftPage}
             admin_localAccountObject={admin_localAccountObject.current}
+            localAccountObject={localAccountObject.current}
+            notifyCreatedOK={()=>{
+                infoQueryObj.refetch()
+            }}
             selectedValue="0"
             onChange={(v) => v}
         ></AdministratorSetupPanel>
@@ -152,6 +161,13 @@ let InnerContent = () => {
             localAccountObject={localAccountObject.current}
             loadLeftPage={loadLeftPage}
             selectedValue="0"
+            notifyCreatedOK={()=>{
+                FN_GetDispatch()(
+                    ACTION_callRefreshAll()
+                )
+                hist.push(URL_WORKBENCH)
+                infoQueryObj.refetch()
+            }}
             onChange={(v) => v}
         />
     }

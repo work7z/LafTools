@@ -43,7 +43,8 @@ export let getWorkspaceIdFromPath = (): string => {
   } catch (e) {
     // console.log(e);
   }
-  let reg = /workbench\/(\w+)/g;
+  // let reg = /workbench\/(\w+)/g;
+  let reg = new RegExp(URL_WORKBENCH.replace("/","")+'/(\\w+)', 'g');
   let arr = reg.exec(location.href);
   if (!arr) {
     return "";

@@ -186,7 +186,7 @@ export let WB_MenuBar = (props: PassProp) => {
       id: x.Id,
       label: x.Label,
       intent: crtWorkspaceId == x.Id ? "primary" : "none",
-      link: URL_WORKBENCH+"/" + x.Id,
+      link: URL_WORKBENCH + "/" + x.Id,
       routerLinkType: true,
       // onClick: () => {
       // AlertUtils.popOK(
@@ -365,7 +365,7 @@ export let WB_MenuBar = (props: PassProp) => {
         label: x.LabelByLang,
         value: x.Value,
       };
-    }),18);
+    }), 18);
   }
   let cloudStatus = useCloudLoginStatus()
   return (
@@ -406,7 +406,9 @@ export let WB_MenuBar = (props: PassProp) => {
               loading={var_3.LoadingForPageData}
               icon={"refresh"}
               onClick={() => {
-                dis(ACTION_callRefreshAll());
+                dis(ACTION_callRefreshAll(true));
+
+
               }}
             />
           </Tooltip>

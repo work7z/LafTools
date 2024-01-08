@@ -40,7 +40,7 @@ import Welcome from "./pages/Welcome";
 import WorkBench from "./pages/WorkBench/FixedLayout/Main";
 import $ from "jquery";
 import _ from "lodash";
-import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT, URL_LOGIN, URL_REDIRECT } from "./types/constants";
+import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT, URL_LOGIN, URL_REDIRECT, URL_WORKBENCH_WORKSPACE } from "./types/constants";
 import InitSystemEnv from "./pages/Loading";
 import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
 import gutils from "./utils/GlobalUtils";
@@ -57,6 +57,7 @@ import { useReadCurrentWorkspaceId } from "./utils/WorkSpaceUtils";
 import SignInLocal from './pages/SignInLocal'
 import AuthHookUtils from "./utils/AuthHookUtils";
 import RedirectPage from './pages/Redirect'
+import apiSlice from "./reducers/apiSlice";
 
 gutils.ExposureIt("$", $);
 gutils.ExposureIt("gutils", gutils);
@@ -80,13 +81,17 @@ let RouteComponent = () => {
 
   let queryAuthStatus = AuthHookUtils.useQueryAuthStatus();
 
-  let isUserSignInNow =
-  !forgeObj.HasUserSelectedOption ||
-  (!queryAuthStatus.isFetching && !queryAuthStatus.HasLogin);
+  let isUserSignInNow = (!queryAuthStatus.isFetching && queryAuthStatus.HasLogin);
 
-  // useEffect(()=>{
-    // isUserSignInNow
-  // },[])
+  useEffect(() => {
+    if (!isUserSignInNow) {
+      hist.push(URL_LOGIN)
+    }else{
+      if(hist.location.pathname.indexOf(URL_LOGIN)!=-1){
+        hist.push(URL_WORKBENCH)
+      }
+    }
+  }, [isUserSignInNow])
 
   return (
     <div
@@ -98,7 +103,8 @@ let RouteComponent = () => {
           path={URL_LOGIN}
           component={SignInLocal}
         ></Route>
-        <Route path={URL_WORKBENCH} component={FixedPreWorkBench}></Route>
+        <Route path={URL_WORKBENCH} exact component={FixedPreWorkBench}></Route>
+        <Route path={URL_WORKBENCH_WORKSPACE} component={WorkBench}></Route>
         <Route path={URL_ENTRY} component={Entry}></Route>
         <Route path={URL_REDIRECT} component={RedirectPage}></Route>
         <Redirect path="*" to={URL_REDIRECT}></Redirect>

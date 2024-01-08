@@ -75,12 +75,12 @@ export default (props: PasswordInputProps & InputGroupProps): any => {
     if (password == "" || password.length < 6) {
       return Dot("MN2lT", "The length of Password cannot less than 6");
     }
-    if (!password.match(/[\d\W]/g) || !password.match(/[a-z]/g)) {
-      return Dot(
-        "RObhX",
-        `Password cannot be simple, please include number, alphbet or symbol`
-      );
-    }
+    // if (!password.match(/[\d\W]/g) || !password.match(/[a-z]/g)) {
+    //   return Dot(
+    //     "RObhX",
+    //     `Password cannot be simple, please include number, alphbet or symbol`
+    //   );
+    // }
     return "";
   }, [tmpValue]);
 

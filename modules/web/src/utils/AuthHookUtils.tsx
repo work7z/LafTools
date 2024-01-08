@@ -54,6 +54,7 @@ const AuthHookUtils = {
       {
         userToken: userToken || "",
         refreshTokenStatus: currentUserObj.refreshTokenStatus,
+        ...exportUtils.refresh_v1()
       },
       {
         refetchOnMountOrArgChange: true,

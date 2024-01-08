@@ -76,6 +76,7 @@ import apiSlice from "../../../../../reducers/apiSlice";
 import AjaxUtils from "../../../../../utils/AjaxUtils";
 import QueryUtils from "../../../../../utils/QueryUtils";
 import { useWorkSpaceListGet } from "../../../../../utils/WorkSpaceUtils";
+import { FooterContent } from "../../../../SignInLocal/SignInLocalContent";
 
 let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
   Dot("ph5jH", "Handling this part");
@@ -243,10 +244,10 @@ export default () => {
 
   let entryJSX = (
     <Card
-      className="flex flex-col  border-none mt-10 overflow-auto h-[500px] w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-slate-100 dark:shadow-slate-900 rounded self-start px-2 py-2"
+      className="flex flex-col  border-none mt-10 overflow-auto h-auto w-[500px] using-edge-ui-bg border-gray-300 dark:border-gray-600  border-[1px] shadow-lg shadow-slate-100 dark:shadow-slate-900 rounded self-start px-2 py-2 mx-auto"
       style={{
         border:'none',
-        minHeight: "400px",
+        // minHeight: "400px",
       }}
     >
       <div className="mb-4 text-center ">
@@ -384,9 +385,15 @@ export default () => {
       }}
     >
       <div>
-        <div className="z-0 absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-slate-300 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-60 pattern-size-8"></div>
+        <div className="z-0 absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-slate-300 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-30 pattern-size-8"></div>
       </div>
-      <div className="z-10">{entryJSX}</div>
+      <div className="z-10 flex flex-col">
+        {entryJSX}
+
+<div className="text-center mt-10">
+<FooterContent></FooterContent>
+  </div>      
+      </div>
     </div>
   );
 };

@@ -53,7 +53,7 @@ import {
 import gutils from "../../utils/GlobalUtils";
 import { Dot } from "../../utils/TranslationUtils";
 import exportUtils from "../../utils/ExportUtils";
-import { LAFTOOLS_DEFAULT_USERNAME, LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "../../types/constants";
+import { LAFTOOLS_DEFAULT_USERNAME, LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK, URL_WORKBENCH } from "../../types/constants";
 import forgeSlice, {
   ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
 } from "../../reducers/forgeSlice";
@@ -86,6 +86,7 @@ import QueryUtils from "../../utils/QueryUtils";
 import PageUtils from "../../utils/PageUtils";
 import { EachLang } from "../../types/purejs-types-READ_ONLY";
 import IDUtils from "../../utils/IDUtils";
+import { useHistory } from "react-router-dom";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;
@@ -204,6 +205,7 @@ export default (props: PassProps) => {
           <AdministratorSetupPanel
             stepIdx={stepIdx}
             loadLeftPage={loadLeftPage}
+            localAccountObject={localAccountObject.current}
             admin_localAccountObject={admin_localAccountObject.current}
             selectedValue="0"
             onChange={(v) => v}
@@ -214,23 +216,6 @@ export default (props: PassProps) => {
           if (!admin_localAccountObject.current.NeedAdminInit) {
             return;
           }
-          onloadLeftPage(
-            Dot("44Ntw-", "Handling the create administrator operation.")
-          );
-          await ACTION_createAdminAccount({
-            localAccountObject: admin_localAccountObject.current,
-          })(dis);
-          onloadLeftPage(
-            Dot(
-              "vaP0v",
-              "Your local admin account has been successfully created."
-            )
-          );
-          localAccountObject.current.username =
-            admin_localAccountObject.current.username;
-          localAccountObject.current.password =
-            admin_localAccountObject.current.password;
-          onloadLeftPage("");
           // return {
           //   nextIdx:
           //     _.findIndex(
@@ -252,13 +237,6 @@ export default (props: PassProps) => {
         ),
         title: Dot(`-Jx4J`, "Local Account"),
         fn: async () => {
-          onloadLeftPage(Dot("7bXS-", "Handling the sign-in operation."));
-          await ACTION_signInLocalAccount({
-            localAccountObject: localAccountObject.current,
-          })(dis);
-          onloadLeftPage(
-            Dot("y3qjd", "Your local account has been successfully verified.")
-          );
         },
       },
       {
@@ -386,7 +364,9 @@ const NoteMsg = () => {
 export const AdministratorSetupPanel: React.FC<
   SelectPanelProps & {
     admin_localAccountObject: AdminUserPassProp;
+    localAccountObject: UserPassProp,
     loadLeftPage: string;
+    notifyCreatedOK?: () => any;
     stepIdx: number;
   }
 > = (props) => {
@@ -423,6 +403,10 @@ export const AdministratorSetupPanel: React.FC<
       </p>
     </DialogBody>
   );
+  let dis = exportUtils.dispatch();
+  let [loadLeftPage, onloadLeftPage] = useState("");
+  let [loading, onLoading] = useState(false)
+
   if (infoQueryObj.isSuccess) {
     let HasAdminInit = infoQueryObj.data?.payload?.value?.HasAdminInit;
     props.admin_localAccountObject.NeedAdminInit = !HasAdminInit;
@@ -468,7 +452,6 @@ export const AdministratorSetupPanel: React.FC<
     }
   }
 
-  let dis = exportUtils.dispatch();
   return (
     <QueryResLabel
       jsx={
@@ -476,12 +459,9 @@ export const AdministratorSetupPanel: React.FC<
           <h1 className="text-center mt-0">{Dot("SZgXb", "Setup Local Password")}</h1>
           <p>
             {Dot(
-              "c7Uoi",
-              "One more step to LafTools, which is mandatory for you to setup your local password. Please provide and confirm your local password in below form."
+              "c7Uoqqe",
+              "Before using LafTools, please provide and confirm your local password as below."
             )}
-          </p>
-          <p>
-            {Dot("Fhbqo", "Note that you need to unlock your locker first before using LafTools, otherwise, you can't access any of your data and settings, meaning you'd better properly save your local password in a safe place.")}
           </p>
           {/* <p> */}
           {/* <b>
@@ -564,7 +544,7 @@ export const AdministratorSetupPanel: React.FC<
                     </p>
                     <p>{Dot("mjHoR", "Also, technically, nobody can read this token otherwise he/she has attacked and controlled your computer.")}</p>
                     <p>
-                      {Dot("Nqc0LX","If you think there's an vulnerability in this process, please feel free to contact us via EMail or GitHub at any time, we are pleased to help you.")}
+                      {Dot("Nqc0LqwX", "If you think there's an vulnerability in this process, please feel free to contact us via EMail or GitHub at any time, we would like to enhance it urgently.")}
                     </p>
                   </p>
                 })
@@ -572,35 +552,68 @@ export const AdministratorSetupPanel: React.FC<
                 {Dot("2D9qdk6", "Is it Secure Enough?")}
               </a>
             </div>
+            {
+              loadLeftPage != "" ? <p>{loadLeftPage}</p> : ''
+            }
 
             <div>
               <Button
                 type="button"
-                onClick={() => {
-                  if(_.isEmpty(props.admin_localAccountObject.password)){
-                    AlertUtils.popMsg("danger",{
-                      message: <p>
-                        {Dot("L71q_N", "The password you provided is empty, please check and try again.")}
-                      </p>
-                    })
-                    return
-                  }
-                  if(props.admin_localAccountObject.confirmPassword != props.admin_localAccountObject.password){
-                    AlertUtils.popMsg("danger",{
-                      message: <p>
-                        {Dot("Le71_N-", "The password you provided is not same as the confirmed one, please check and try again.")}
-                      </p>
-                    })
-                    return
-                  }
-                  // do create things
+                loading={loading}
+                onClick={async () => {
+                  try {
+                    onLoading(true)
+                    let admin_localAccountObject = {
+                      current: props.admin_localAccountObject
+                    }
+                    if (_.isEmpty(props.admin_localAccountObject.password)) {
+                      AlertUtils.popMsg("danger", {
+                        message: Dot("L71q_N", "The password you provided is empty, please check and try again.")
+                      })
+                      onLoading(false)
+                      return
+                    }
+                    if (props.admin_localAccountObject.confirmPassword != props.admin_localAccountObject.password) {
+                      AlertUtils.popMsg("danger", {
+                        message: Dot("Le71_N-", "The password you provided is not same as the confirmed one, please check and try again.")
+                      })
+                      onLoading(false)
+                      return
+                    }
 
+                    // do create things
+
+                    onloadLeftPage(
+                      Dot("44Ntqw-", "Handling the operation.")
+                    );
+                    await ACTION_createAdminAccount({
+                      localAccountObject: admin_localAccountObject.current,
+                    })(dis);
+                    AlertUtils.popOK(Dot(
+                      "vaP0vq",
+                      "Setup the local password successfully."
+                    ))
+                    // onloadLeftPage(
+                    // );
+                    props.localAccountObject.username =
+                      admin_localAccountObject.current.username;
+                    props.localAccountObject.password =
+                      admin_localAccountObject.current.password;
+                    props.notifyCreatedOK && props.notifyCreatedOK()
+                    onloadLeftPage("");
+                    onLoading(false)
+                  } catch (e) {
+                    onLoading(false)
+                    onloadLeftPage(Dot("tIyq3Q", "Encountered an error") +
+                      ": " +
+                      gutils.getErrMsg(e as Error));
+                  }
                 }}
                 // loading={result.isLoading}
                 intent="success"
                 fill
                 large
-                text={Dot("DIweG", "Lock Your LafTools")}
+                text={Dot("DIweGq", "Secure Your LafTools")}
               />
 
             </div>
@@ -613,13 +626,18 @@ export const AdministratorSetupPanel: React.FC<
 };
 
 export const LocalUserPanel: React.FC<
-  SelectPanelProps & { loadLeftPage: string; localAccountObject: UserPassProp }
+  SelectPanelProps & { 
+    notifyCreatedOK?:()=>any,
+    loadLeftPage: string; localAccountObject: UserPassProp }
 > = (props) => {
   let dis = exportUtils.dispatch();
   let userQuery = apiSlice.useListUserNamesQuery(
     exportUtils.refresh_v1(),
     exportUtils.refresh_v2()
   );
+  let [loading, onLoading] = useState(false)
+  let [loadLeftPage, onloadLeftPage] = useState("")
+  let hist = useHistory()
   let r = QueryUtils.validateResult(userQuery, {
     label: Dot("LM715", "Retrieving usernames from local server API"),
   });
@@ -687,11 +705,37 @@ export const LocalUserPanel: React.FC<
         </a>
       </div>
 
+      {
+        loadLeftPage != "" ? <p>{loadLeftPage}</p> : ''
+      }
       <div>
         <Button
           type="button"
-          onClick={() => {
-            //
+          loading={loading}
+          onClick={async () => {
+            try {
+              onLoading(true)
+              // TODO: do unlock logic
+              let localAccountObject = {
+                current: props.localAccountObject
+              }
+              if (localAccountObject.current.password == "") {
+                throw new Error(Dot("DrbEr", "The password you provided is empty, please check and try again."))
+              }
+              if (_.isEmpty(localAccountObject.current.username)) {
+                throw new Error(Dot("qDrbEr", "The username you provided is empty, please check and try again."))
+              }
+              await ACTION_signInLocalAccount({
+                localAccountObject: localAccountObject.current,
+              })(dis);
+              AlertUtils.popOK(Dot("y3qjdd", "Your local password has been successfully verified."))
+              props.notifyCreatedOK && props.notifyCreatedOK()
+              onLoading(false)
+              hist.push(URL_WORKBENCH)
+            } catch (e) {
+              onLoading(false)
+              AlertUtils.popError(e as any);
+            }
           }}
           // loading={result.isLoading}
           intent="primary"

@@ -80,7 +80,7 @@ const initialState: StatusState = {
   nav: {
     currentPlateId: "tools",
   },
-  
+  // checkLoginStatusCount: 0,
   whetherShow: {
     signIn: false,
   },
