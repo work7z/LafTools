@@ -24,7 +24,6 @@ import (
 	"laftools-go/core/config"
 	"laftools-go/core/global"
 	"laftools-go/core/handlers/context"
-	"laftools-go/core/log"
 	"laftools-go/core/project/base/ext"
 	"laftools-go/core/tools"
 	"strings"
@@ -116,7 +115,6 @@ func createAdminInitStatus(c *gin.Context) {
 	}
 	s_adminToken := config.GetAdminInitToken()
 	u_adminToken := c.GetHeader(tools.HEADER_ADMIN_TOKEN)
-	log.Ref().Debug("admin token: ", s_adminToken+" <-> ", u_adminToken)
 	if u_adminToken != s_adminToken {
 		ErrLa2(c, wc.Dot("2157", "Admin Token is required, please use valid initialization URL to starts with."))
 		return
@@ -130,6 +128,7 @@ func createAdminInitStatus(c *gin.Context) {
 	if e {
 		return
 	}
+	// THIS LOGIC need to align with the logic in server.go
 	userConfig := config.UserConfig{
 		Id:             global.UUID(),
 		Username:       form.Username,

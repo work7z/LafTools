@@ -135,6 +135,10 @@ func OpenInBrowser(url string) {
 	var err error
 	switch runtime.GOOS {
 	case "linux":
+		if tools.IsDockerMode() {
+			fmt.Println("ignore this command in docker mode")
+			return
+		}
 		err = exec.Command("xdg-open", url).Start()
 	case "windows":
 		err = exec.Command("rundll32", "config.dll,FileProtocolHandler", url).Start()

@@ -32,6 +32,13 @@ import (
 	"github.com/dablelv/cyan/file"
 )
 
+func IsDockerMode() bool {
+	return strings.Index(Mode, "docker") != -1
+}
+func IsOnlineMode() bool {
+	return strings.Index(Mode, "online") != -1
+}
+
 func IsFileNonExist(filename string) bool {
 	return !IsFileExist(filename)
 }

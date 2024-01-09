@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Thu, 21 Dec 2023
 // Author: LafTools Team - FX <work7z@outlook.com>
-// Description: 
+// Description:
 // Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -33,6 +33,8 @@ import (
 	"net/http"
 	"path"
 	"strconv"
+	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
@@ -93,9 +95,41 @@ func LaunchLafToolsServer() {
 	tools.FINALIZED_HTTP_PORT = port
 	tools.ShouldNoErr(err2, "Unable to launch available port")
 
-	host := "127.0.0.1:" + strconv.Itoa(port)
+	host := "0.0.0.0:" + strconv.Itoa(port)
 
-	fullURL := "http://" + host + "" + config.CONFIG_URL_APP_FRONT_END_APP_PREFIX + "/entry?t=" + adminInitToken
+	actualServerPath := "127.0.0.1"
+	if tools.IsDockerMode() {
+		actualServerPath = "127.0.0.1" // TODO: consider to use other domain
+	}
+	fullURL := "http://" + strings.ReplaceAll(host, "0.0.0.0", actualServerPath) + "" + config.CONFIG_URL_APP_FRONT_END_APP_PREFIX + "/entry?t=" + adminInitToken
+
+	if tools.IsOnlineMode() {
+		// align with visit.go
+		// set password directly
+		userConfig := gconfig.UserConfig{
+			Id:             global.UUID(),
+			Username:       "test",
+			Password:       gconfig.EncryptUserPassword("12345"),
+			Token:          global.UUID(),
+			CreateTime:     time.Now(),
+			IsAdmin:        true,
+			InvitationCode: global.UUID(),
+		}
+		userConfigMap, e2 := gconfig.GetUserConfigFromFile()
+		if e2 != nil {
+			tools.ShouldNoErr(e2, "get user config from file")
+			return
+		}
+		userConfigMap[userConfig.Id] = userConfig
+		err := gconfig.SetUserConfigIntoFile(userConfigMap)
+		if err != nil {
+			tools.ShouldNoErr(err, "set user config into file")
+		}
+		// update system info
+		systemInfo := gconfig.GetCurrentSystemInfo()
+		systemInfo.HasAdminInit = true
+		gconfig.SaveCurrentSystemInfo(systemInfo)
+	}
 
 	SaveRefStatus(&RefStatus{
 		Status:  0,

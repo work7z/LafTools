@@ -46,6 +46,7 @@ func init() {
 	rootCmd.PersistentFlags().BoolVar(&tools.IsDevMode, "debug", true, "whether enable release mode or not")
 
 	// init run server
+	runServerCmd.PersistentFlags().StringVar(&tools.Mode, "mode", "regular", "application mode")
 	runServerCmd.PersistentFlags().StringVar(&tools.RefId, "ref-id", "dkzhZ.json", "stats report")
 	runServerCmd.PersistentFlags().IntVar(&env.ProdPortStartFrom, "port", -1, "port")
 	runServerCmd.PersistentFlags().StringVar(&tools.LafToolsAppBaseDir, "root", env.DefaultLafToolsRoot, "system root path")

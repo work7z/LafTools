@@ -30,6 +30,7 @@ const LEN_LIMIT_TRANSLATION_KEYS = 25
 // TODO: align below with the new config file
 var (
 	RefId                 string         // for port information, if it's empty, then I will tell you in the home directory
+	Mode                  string         // multiple values joined by comma, e.g. docker,online
 	IsDevMode             bool   = true  // by default, it's true
 	IsUATMode             bool   = false // by default, it's true
 	SystemUserLanguage    string = "en_US"

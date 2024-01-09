@@ -155,6 +155,7 @@ dockerize-laftools(){
         cd $subDockerDir
         cp ../../pkg/*$platformName.tar.gz ./linux.tar.gz
         cp $LAFTOOLS_ROOT/parcel/docker/* ./
+        # date +%Y%m%d-%s
         sudo docker build -t laftools-$platformName:insider -f ./Dockerfile .
     )
 }
