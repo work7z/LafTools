@@ -425,6 +425,7 @@ export let WB_MenuBar = (props: PassProp) => {
                       key={x.value}
                       onClick={() => {
                         TranslationUtils.CurrentLanguage = x.value + "";
+                        TranslationUtils.ForcbilyLanguage = x.value + ""
                         dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(x.value + ""));
                         // AlertUtils.win_alert({
                         //   id:"ksk12219s",

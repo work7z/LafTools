@@ -75,6 +75,7 @@ function formatResultWithReplacer(val = "", ...args) {
 }
 
 const TranslationUtils = {
+  ForcbilyLanguage: "",
   CurrentLanguage: LANG_EN_US,
   IsChinese() {
     return (

@@ -11,7 +11,8 @@
     "build-all":"./pipeline/build-all.sh",
     "build-linux":"./pipeline/build-all.sh linux",
     "test-linux":"(cd $LAFTOOLS_ROOT/dist/os/linux-x64 && ./run.sh)",
-    "test-docker":"sudo docker run -p 0.0.0.0:39000:39000 laftools-linux-x64:insider"
+    "push-docker":"docker push codegentoolbox/laftools-linux-x64:insider",
+    "test-docker":"sudo docker run -p 0.0.0.0:39000:39000 codegentoolbox/laftools-linux-x64:insider"
   },
   "keywords": [
     "cipher",

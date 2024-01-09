@@ -20,6 +20,7 @@
 
 import appi18nJSON from '../../../resources/public/purejs/app-i18n.json'
 import _ from 'lodash'
+import TranslationUtils from './utils/TranslationUtils'
 
 
 export let getFormattedLang = function (crtLang: string) {
@@ -39,6 +40,9 @@ export let getFormattedLang = function (crtLang: string) {
 let prevLangValue: string | null = null
 
 export let GetUserActualClientLang = function (): string {
+  if(TranslationUtils.ForcbilyLanguage){
+    return TranslationUtils.ForcbilyLanguage
+  }
   if (prevLangValue) return prevLangValue
   // if url is specified, then forcebly use this once
   let matchResult = location.href.match(/\/app\/([^\/]+)/)

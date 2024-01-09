@@ -12,6 +12,7 @@ nouse
 .DS_Store
 tmp-translate-result
 time-consumer
+laft.tmp.gz
 dist
 
 

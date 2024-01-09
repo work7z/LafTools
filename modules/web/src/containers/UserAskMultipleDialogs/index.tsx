@@ -41,6 +41,7 @@ import {
   RadioGroup,
   Switch,
   DialogStepProps,
+  Callout,
 } from "@blueprintjs/core";
 import _ from "lodash";
 import {
@@ -712,7 +713,11 @@ export const LocalUserPanel: React.FC<
         ></InputGroup> */}
       {/* </FormGroup> */}
       <h1 className="text-center mt-0">{Dot("rQkas", "Welcome to LafTools")}</h1>
-      <FormGroup label={Dot("YAAU3q", "Local Password")} >
+      <FormGroup label={Dot("YAAU3q", "Local Password")}
+      helperText={
+        Dot("2giYv","Test Password: {0}","1234")
+      }
+      >
         <PasswordInput
           large
           asyncControl={true}
@@ -788,6 +793,16 @@ export const LocalUserPanel: React.FC<
           {props.loadLeftPage}
         </div>
       )}
+      <Callout style={{marginTop:'20px'}}>
+        <p>
+          <b>
+        {Dot("JYqxz2","Welcome to LafTools, this is an insider version.")}
+        </b>
+        </p>
+        <p>
+          {Dot("_LFF3","Should you encounter any issue or have any suggestion while using LafTools, please feel free to contact us via EMail or GitHub at any time, we are willing to enhance it.")}
+        </p>
+      </Callout>
     </DialogBody>
   );
 };
