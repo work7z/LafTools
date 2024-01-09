@@ -1,4 +1,4 @@
-FROM centos  
+FROM ubuntu:22.04
 RUN mkdir /opt/app
 COPY ["./linux.tar.gz", "/opt/app"]
 COPY ["./bootstrap.sh","/opt/app"]
