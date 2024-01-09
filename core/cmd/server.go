@@ -108,8 +108,8 @@ func LaunchLafToolsServer() {
 		// set password directly
 		userConfig := gconfig.UserConfig{
 			Id:             global.UUID(),
-			Username:       "test",
-			Password:       gconfig.EncryptUserPassword("12345"),
+			Username:       "root", // default value
+			Password:       gconfig.EncryptUserPassword("1234"),
 			Token:          global.UUID(),
 			CreateTime:     time.Now(),
 			IsAdmin:        true,
