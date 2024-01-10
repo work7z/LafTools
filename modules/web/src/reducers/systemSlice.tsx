@@ -54,6 +54,7 @@ import { KEY_CONCURRENCY_SYSTEM_INIT } from "../types/constants";
 import { Intent } from "@blueprintjs/core";
 import SyncStateUtils from "../utils/SyncStateUtils";
 import { GetUserActualClientLang } from "../i18n";
+import { sleep } from "../utils/SyncUtils";
 
 export type MessagePackItem = {
   Title: string;
@@ -69,6 +70,7 @@ interface InitStatus {
   ProgressText: string;
   ProgressError?: string;
   IsLangPacksOK?: boolean;
+  ProgressBarValue?: number;
   IsSystemPrefOK?: boolean;
   IsSystemUpdatesOK?: boolean;
 }
@@ -82,7 +84,7 @@ interface SystemState {
   PageDataInitedMap: PageDataInitedMap;
   LoadSystemData: boolean;
   RefreshID: number;
-  checkLoginStatusCount:number;
+  checkLoginStatusCount: number;
   SysInitStatus: InitStatus;
   LangIncrement: string;
   MessageObjectKVMap: {};
@@ -158,7 +160,7 @@ const systemSlice = createSlice({
       state.LoadSystemData = true;
     },
     // increment for checkLoginStatusCount
-    upsertCheckLoginStatusCount:(state,action)=>{
+    upsertCheckLoginStatusCount: (state, action) => {
       state.checkLoginStatusCount++
     },
     markIfRefreshing: (state, action: IsLoadingType) => {
@@ -169,6 +171,9 @@ const systemSlice = createSlice({
     },
     markSystemPrefStatus: (state, action: IsOKType) => {
       state.SysInitStatus.IsSystemPrefOK = action.payload.isOK;
+    },
+    markProgressValue(state, action: PayloadAction<number>) {
+      state.SysInitStatus.ProgressBarValue = action.payload
     },
     markSystemUpdateStatus: (state, action: IsOKType) => {
       state.SysInitStatus.IsSystemUpdatesOK = action.payload.isOK;
@@ -204,7 +209,7 @@ const systemSlice = createSlice({
     },
   },
 });
-export const ACTION_callRefreshAll = (showMsg:boolean): any => {
+export const ACTION_callRefreshAll = (showMsg: boolean): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
     dispatch(systemSlice.actions.markIfRefreshing({ isLoading: true }));
     try {
@@ -214,7 +219,7 @@ export const ACTION_callRefreshAll = (showMsg:boolean): any => {
       )) {
         await each();
       }
-      if(showMsg){
+      if (showMsg) {
         AlertUtils.popMsg("success", {
           message: Dot("gnKMZ", "Refreshed."),
         });
@@ -304,6 +309,7 @@ export const ACTION_initAllDataAtOnce = (): any => {
         })
       );
       await ACTION_getSystemPreferences()(dispatch);
+      dispatch(systemSlice.actions.markProgressValue(19.98))
       await SyncStateUtils.retrieveAllIDsFromServer((item) => {
         return item.RunOnInit === true;
       });
@@ -313,18 +319,22 @@ export const ACTION_initAllDataAtOnce = (): any => {
         })
       );
       await ACTION_getLangData()(dispatch);
+      dispatch(systemSlice.actions.markProgressValue(61.8))
       dispatch(
         systemSlice.actions.UpdateProcessText({
           value: Dot("_trqL", "Retrieving data for system resources..."),
         })
       );
       await ACTION_getLatestSystemResources()(dispatch);
+      // await sleep(3000);
+      dispatch(systemSlice.actions.markProgressValue(90.98))
       dispatch(
         systemSlice.actions.UpdateProcessText({
           value: Dot("HIc3c", "Completed"),
         })
       );
       dispatch(systemSlice.actions.markAllAsCompleted({}));
+      dispatch(systemSlice.actions.markProgressValue(100))
     } catch (e: any) {
       ConcurrencyUtils.removeInitStatus(KEY_CONCURRENCY_SYSTEM_INIT);
       logutils.debug("err", e);

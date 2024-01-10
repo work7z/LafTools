@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider, useDispatch } from "react-redux";
 import SubApp from "./SubApp";
@@ -37,6 +37,7 @@ import ALL_NOCYCLE from "./nocycle";
 import exportUtils from "./utils/ExportUtils";
 import fn_tailwindcss from "./hmr/hmr-reload-resources.tsx";
 import forgeSlice from "./reducers/forgeSlice.tsx";
+
 import {
   useReadCurrentWorkspaceId,
   useReadCurrentWorkspaceItem,
@@ -50,6 +51,7 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
+import SystemLoadingBar from "./containers/SystemLoadingBar/index.tsx";
 ALL_NOCYCLE.store = store;
 
 logutils.debug("Lanuch the page...");
@@ -94,6 +96,7 @@ const WrapApp = () => {
 export const FinalRootApp = () => {
   return (
     <Provider store={store}>
+      <SystemLoadingBar />
       <WrapApp />
     </Provider>
   );

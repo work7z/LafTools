@@ -30,6 +30,7 @@ import InitSystemEnv from "./pages/Loading";
 import SystemAlertOrPrompt from "./overlap/SystemAlertOrPrompt";
 import PageUtils from "./utils/PageUtils";
 import AuthHookUtils from "./utils/AuthHookUtils";
+import LoadingBar from 'react-top-loading-bar'
 import InitUtils from "./utils/InitUtils";
 import { FN_GetDispatch, IsDevMode, getIconPngFile } from "./nocycle";
 import systemSlice from "./reducers/systemSlice";
@@ -37,6 +38,7 @@ import forgeSlice from "./reducers/forgeSlice";
 import { Dot } from "./utils/TranslationUtils";
 import { GetUserActualClientLang, getFormattedLang } from "./i18n";
 import AlertUtils from "./utils/AlertUtils";
+import SystemLoadingBar from "./containers/SystemLoadingBar";
 
 function App() {
   let forgeObj = exportUtils.useSelector((val) => ({
@@ -114,17 +116,17 @@ function App() {
     };
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     // if window size smaller than 1000, then alert
-    if(window.innerWidth < 800){
+    if (window.innerWidth < 800) {
       AlertUtils.win_alert({
-        id:"3QF1S",
-        msg: Dot("8qzWJu","Sorry, currently we haven't supported small screen device yet, please use PC to visit this page.")
+        id: "3QF1S",
+        msg: Dot("8qzWJu", "Sorry, currently we haven't supported small screen device yet, please use PC to visit this page.")
       })
     }
-  },[])
+  }, [])
 
-  if (isEnvNotLoad) {
+  if (false && isEnvNotLoad) {
     innerJSX = <InitSystemEnv key="init-system-env" />;
   } else {
     innerJSX = <RouteComponent></RouteComponent>;
@@ -136,6 +138,7 @@ function App() {
 
   return (
     <HotkeysProvider>
+
       <Router basename={basename}>
         <HotkeysTarget2 hotkeys={hotkeys}>
           {({ handleKeyDown, handleKeyUp }) => {

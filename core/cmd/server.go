@@ -95,7 +95,12 @@ func LaunchLafToolsServer() {
 	tools.FINALIZED_HTTP_PORT = port
 	tools.ShouldNoErr(err2, "Unable to launch available port")
 
-	host := "0.0.0.0:" + strconv.Itoa(port)
+	var host string = ""
+	if tools.IsDockerMode() {
+		host = "0.0.0.0:" + strconv.Itoa(port)
+	} else {
+		host = "127.0.0.1:" + strconv.Itoa(port)
+	}
 
 	actualServerPath := "127.0.0.1"
 	if tools.IsDockerMode() {
