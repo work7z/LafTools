@@ -55,8 +55,8 @@ export default () => {
         // color="lightblue"
         // color="#007BFF"
         // lightblue
-        color={sysObj.HasError ? "red" : forgeObj.dark ? "#007BFF" : "yellowgreen"}
-        height={3}
+        color={sysObj.HasError ? "red" : forgeObj.dark ? "#007BFF" : "#00d6fff2"}
+        height={2}
     // onLoaderFinished={() => setProgress(0)}
     // ref={() => { }} 
     />

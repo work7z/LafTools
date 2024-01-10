@@ -183,13 +183,13 @@ export default () => {
   if (res) {
     return res;
   }
-  if (!available) {
-    return (
-      <p className="p-10  w-full h-full align-center justify-center">
-        {Dot("oBz8D", "Loading")} <Blink min={3} max={10}></Blink>
-      </p>
-    );
-  }
+  // if (!available) {
+  //   return (
+  //     <p className="p-10  w-full h-full align-center justify-center">
+  //       {Dot("oBz8D", "Loading")} <Blink min={3} max={10}></Blink>
+  //     </p>
+  //   );
+  // }
   return (
     <div
       className="fixed-wb-p "
