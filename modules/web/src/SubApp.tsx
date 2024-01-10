@@ -36,6 +36,7 @@ import systemSlice from "./reducers/systemSlice";
 import forgeSlice from "./reducers/forgeSlice";
 import { Dot } from "./utils/TranslationUtils";
 import { GetUserActualClientLang, getFormattedLang } from "./i18n";
+import AlertUtils from "./utils/AlertUtils";
 
 function App() {
   let forgeObj = exportUtils.useSelector((val) => ({
@@ -113,6 +114,16 @@ function App() {
     };
   }, []);
 
+  useEffect(()=>{
+    // if window size smaller than 1000, then alert
+    if(window.innerWidth < 800){
+      AlertUtils.win_alert({
+        id:"3QF1S",
+        msg: Dot("8qzWJu","Sorry, currently we haven't supported small screen device yet, please use PC to visit this page.")
+      })
+    }
+  },[])
+
   if (isEnvNotLoad) {
     innerJSX = <InitSystemEnv key="init-system-env" />;
   } else {
@@ -121,6 +132,7 @@ function App() {
 
   let langInPath = getFormattedLang(GetUserActualClientLang())
   let basename = "/app/" + langInPath
+
 
   return (
     <HotkeysProvider>

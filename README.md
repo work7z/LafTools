@@ -3,9 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - The next generation of a versatile toolbox designed for programmers
 </span>
+<center>
 <div style="text-align:center;">
-<a href="http://cloud.laf-tools.com">Preview the Insider Version of LafTools</a>
+<a target="_blank" href="http://cloud.laf-tools.com">Preview the Insider Version of LafTools</a>
 </div>
+</center>
 <br><br>
 </p>
 
@@ -37,8 +39,6 @@ If the answer to any of the above is yes, then you should consider trying our to
 - Can be used over the web and with Docker
 - Extra helpers such as notes, manuals, etc...
 
-Preview:
-Here are some screenshots for you to preview how this toolbox works.
 
 # 🌠 Preview
 
@@ -122,7 +122,7 @@ Note that you can use the '&' symbol for background execution if you don't want 
 
 ## 4. Start Developing
 
-Once the Go service is running, you should see a URL in the output. Copy this URL and paste it into your browser to start developing, let us Go!
+Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
 
 Example:
 
@@ -149,7 +149,7 @@ cd pipeline
 
 The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just 'Laffin' At Life'!
+Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
 
 
 # 📑 Other Materials
@@ -189,6 +189,7 @@ Thank you.
 
 Mar. 20th, 2021  
 Ryan Laf
+
 
 # 🪪 License
 
