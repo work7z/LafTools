@@ -13,11 +13,9 @@
 
 # 💡 Introduction
 
-You may wonder why we are determined to develop this toolbox if there are numerous commonly used tools exist on online websites.
+You may wonder why we are determined to develop this toolbox if there are numerous online tools available on the Internet.
 
-Indeed, most tools in our toolbox can be found on any online website and you also can collect them easily into your favorites in the browser, such as common encryption and decryption, translation tools, generating QR codes, etc…
-
-However, it’s not the simplest and quickest approach to access these conversion tools, in other words, not the most comfortable and efficient way.
+Indeed, most tools we have provided can be easily found on the Internet, such as codec, formatter, translation, QR Code, etc… However, it’s not the simplest and quickest approach to use these tools, in other words, not the most comfortable and efficient way.
 
 Have you ever met the below issues while using those online tools?
 

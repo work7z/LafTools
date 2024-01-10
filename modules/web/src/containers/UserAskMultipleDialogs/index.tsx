@@ -802,6 +802,7 @@ export const LocalUserPanel: React.FC<
         <p>
           {Dot("_LFF3","Should you encounter any issue or have any suggestion while using LafTools, please feel free to contact us via EMail or GitHub at any time, we are willing to enhance it.")}
         </p>
+        <p><a href={'https://laf-tools.com'} target="_blank">https://laf-tools.com</a></p>
       </Callout>
     </DialogBody>
   );
