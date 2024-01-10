@@ -3,6 +3,9 @@
 <br>
 <span style="font-size:20px">LafTools - The next generation of a versatile toolbox designed for programmers
 </span>
+<div style="text-align:center;">
+<a href="http://cloud.laf-tools.com">Preview the Insider Version of LafTools</a>
+</div>
 <br><br>
 </p>
 
@@ -41,10 +44,17 @@ Here are some screenshots for you to preview how this toolbox works.
 
 > LafTools is still under development, its UI, dependencies or prerequisites may changed as needed.
 
-Preview(English):
+
+### Preview(English):
+
+
+[Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-1.png?raw=true)
 
-Preview(Simplified Chinese|简体中文):
+
+### Preview(Simplified Chinese|简体中文):
+
+[在线预览](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-3.png?raw=true)
 
 # 🍀 Getting Started
