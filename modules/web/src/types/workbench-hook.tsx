@@ -106,6 +106,7 @@ import apiSlice from "../reducers/apiSlice";
 
 import { InnerToolPanel } from "../pages/WorkBench/FixedLayout/Main/Center/nav/functional/panel-group/panels/ToolPanel";
 import { InnerFilePanel } from "../pages/WorkBench/FixedLayout/Main/Center/nav/functional/panel-group/panels/FilePanel";
+import InnerNotePanel from "../pages/WorkBench/FixedLayout/Main/Center/nav/functional/panel-group/panels/NotePanel";
 import { ToolCategory, ToolSubCategory } from "./purejs-types-READ_ONLY";
 
 
@@ -183,6 +184,7 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
         // pathname: URL_WORKBENCH_NOTES,
         icon: "git-repo",
         id: ID_NOTES,
+        panel: InnerNotePanel,
         label: Dot("VEfeqZG", "Notes"),
       },
 

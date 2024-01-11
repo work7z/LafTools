@@ -326,7 +326,7 @@ export const ACTION_initAllDataAtOnce = (): any => {
         })
       );
       await ACTION_getLatestSystemResources()(dispatch);
-      // await sleep(3000);
+      // await sleep(30000);
       dispatch(systemSlice.actions.markProgressValue(90.98))
       dispatch(
         systemSlice.actions.UpdateProcessText({

@@ -1,9 +1,31 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Thu, 11 Jan 2024
+// Author: LafTools Team - FX <work7z@outlook.com>
+// Ryan Laf <get>
+// Description: 
+// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import { useEffect } from "react";
 import LoadingBar from 'react-top-loading-bar'
 import exportUtils from "../../utils/ExportUtils";
 import { ACTION_callInitAllDataAtOnceFromInitSystemEnv } from "../../reducers/systemSlice";
 import _ from "lodash";
 import AlertUtils from "../../utils/AlertUtils";
+import './index.scss'
 
 export default () => {
     let forgeObj = exportUtils.useSelector((val) => ({
@@ -55,6 +77,9 @@ export default () => {
         // color="lightblue"
         // color="#007BFF"
         // lightblue
+        // className="loading-bar-animated"
+        waitingTime={1300}
+        className="animated-loading-bar"
         color={sysObj.HasError ? "red" : forgeObj.dark ? "#00d6fff2" : "#00d6fff2"}
         height={2}
     // onLoaderFinished={() => setProgress(0)}

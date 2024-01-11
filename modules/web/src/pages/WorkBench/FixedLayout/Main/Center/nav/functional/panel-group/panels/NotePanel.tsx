@@ -105,11 +105,12 @@ export let InnerFilePanel = (): any => {
       crtLeftNavId="all"
       leftNavList={[
         {
-          label: Dot("TyqvWY3", "Local File"),
+          label: Dot("TyqvqWY3", "My Notebooks"),
           value: "all",
         },
       ]}
-      children={<div>THIS IS LOCAL FILE2</div>}
+      children={<div>THIS IS LOCAL Notebook</div>}
     ></FunctionalMenu_Panel>
   );
 };
+export default InnerFilePanel;
