@@ -61,14 +61,17 @@ import {
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./index.scss";
 import CodeMirror from "@uiw/react-codemirror";
-import { EditorView } from 'codemirror';
 import exportUtils from "../../utils/ExportUtils";
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { javascript } from "@codemirror/lang-javascript";
 import { FN_GetDispatch } from "../../nocycle";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY } from "../../actions/bigtext_action";
-
+import { EditorView } from "codemirror"
+import { loadLanguage, langNames, langs } from '@uiw/codemirror-extensions-langs';
 // import darcula from "@uiw/codemirror-theme-darcula";
+console.log(langs)
+
+
 type GenCodeMirrorProp = {
   bigTextId: string;
   lineWrap?: boolean;
@@ -107,6 +110,12 @@ export default (props: GenCodeMirrorProp) => {
       bigText: finalText,
     };
   });
+
+  let langMap = {
+    javascript: () => javascript({ jsx: true }),
+    shell: () => langs.shell()
+  }
+
   let fixedDeps = [verObj.ver]
   let bt = useMemo(() => {
     return bt_raw;
@@ -127,9 +136,6 @@ export default (props: GenCodeMirrorProp) => {
     props.onTextChange && props.onTextChange(val)
   }, []);
   console.log("rendering", value, verObj.ver);
-  let langMap = {
-    javascript: () => javascript({ jsx: true })
-  }
   return (
     <CodeMirror
       key={verObj.ver}
@@ -145,9 +151,10 @@ export default (props: GenCodeMirrorProp) => {
       value={value}
       // lang={props.language || 'javascript'}
       extensions={[
+      ] || [
+        // basicSetup,
         props.language && langMap[props.language] ? (langMap[props.language])() : null,
         props.lineWrap ? EditorView.lineWrapping : null
-        // EditorState.readOnly.of(true)
       ].filter(x => x) as any}
       theme={forgeObj.dark ? githubDark : githubLight}
 

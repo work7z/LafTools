@@ -106,8 +106,16 @@ export let InnerFilePanel = (): any => {
       crtLeftNavId="all"
       leftNavList={[
         {
-          label: Dot("uXz4cq", "All Notebooks"),
-          value: "all",
+          label: Dot("KYh1N", "All Notes"),
+          value: "all"
+        },
+        {
+          label: Dot("yqiRso", "Local Notes"),
+          value: "local",
+        },
+        {
+          label: Dot("yiRso", "Cloud Notes"),
+          value: "cloud",
         },
       ]}
       children={<div className="p-2">

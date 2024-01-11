@@ -80,7 +80,8 @@ export default () => {
         // className="loading-bar-animated"
         waitingTime={1300}
         className="animated-loading-bar"
-        color={sysObj.HasError ? "red" : forgeObj.dark ? "#00d6fff2" : "#00d6fff2"}
+        // color={sysObj.HasError ? "red" : forgeObj.dark ? "#00d6fff2" : "#00d6fff2"}
+        color={sysObj.HasError ? "red" : "yellowgreen"}
         height={2}
     // onLoaderFinished={() => setProgress(0)}
     // ref={() => { }} 

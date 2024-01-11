@@ -1,5 +1,6 @@
 var/log/
 pnpm-lock.yaml
+pnpm-lock.yaml
 package-lock.json
 /vendor
 pre_html_dir

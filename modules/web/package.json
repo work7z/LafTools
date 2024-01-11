@@ -40,6 +40,7 @@
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "@types/zepto": "1.0.34",
+    "@uiw/codemirror-extensions-langs": "^4.21.21",
     "@uiw/codemirror-theme-aura": "^4.21.21",
     "@uiw/codemirror-theme-darcula": "^4.21.21",
     "@uiw/codemirror-theme-github": "^4.21.21",
