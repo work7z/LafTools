@@ -111,13 +111,13 @@ import {
 } from "../nav/functional/panel-group/controls/FunctionalControls";
 import GenCodeMirror from "../../../../../../components/GenCodeMirror";
 import GenHorizontalTab from "../../../../../../components/GenHorizontalTab";
-import ToolCenterView from "./center-view/ToolCenterView";
-import NotesCenterView from "./center-view/NotesCenterView";
+import ToolCenterView from "./center-view/tools/ToolCenterView";
+import NotesCenterView from "./center-view/notes/NotesCenterView";
 import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
 } from "../../../../../../types/workbench-hook";
-import OtherCenterView from "./center-view/OtherCenterView";
+import OtherCenterView from "./center-view/other/OtherCenterView";
 let mappings = {
   tools: ToolCenterView,
   notes: NotesCenterView

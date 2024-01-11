@@ -20,36 +20,34 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { FN_GetDispatch } from "../../../../../../../nocycle";
+import { FN_GetDispatch } from "../../../../../../../../nocycle";
 
-import { Dot } from "../../../../../../../utils/TranslationUtils";
+import { Dot } from "../../../../../../../../utils/TranslationUtils";
 import "allotment/dist/style.css";
-import exportUtils from "../../../../../../../utils/ExportUtils";
-import forgeSlice from "../../../../../../../reducers/forgeSlice";
-import { ClosableText } from "../../../../../../../components/ClosableText";
+import exportUtils from "../../../../../../../../utils/ExportUtils";
+import forgeSlice from "../../../../../../../../reducers/forgeSlice";
+import { ClosableText } from "../../../../../../../../components/ClosableText";
 
-export default () => {
-  let helpers: {
-    label: string;
-    subLabel?: string;
-  }[] = [
-      {
-        label: Dot("QM2Ob", "Recent Tools"),
-        subLabel: "Ctrl + E",
-      },
-      {
-        label: Dot("pKHRT", "Go to Tools"),
-        subLabel: Dot("HyIC_", "Slash Key (/)"),
-      },
-      {
-        label: Dot("F0CCF", "HotKeys List"),
-        subLabel: Dot("PpCHA", "Question Key(?)"),
-      },
-      {
-        label: Dot("psZoP", "Drop files here to process them"),
-        subLabel: Dot("mBgF1", "Mouse Action"),
-      },
-    ];
+export type NavSubItem = {
+  label: string;
+  subLabel?: string;
+}
+
+export default (props: {
+  extraHelpers: NavSubItem[]
+  emptyTitle: string
+}) => {
+  let helpers: NavSubItem[] = [
+    ...props.extraHelpers,
+    {
+      label: Dot("F0CCF", "HotKeys List"),
+      subLabel: Dot("PpCHA", "Question Key(?)"),
+    },
+    {
+      label: Dot("psZoP", "Drop files here to process them"),
+      subLabel: Dot("mBgF1", "Mouse Action"),
+    },
+  ];
   let s = exportUtils.useSelector((v) => {
     return {
       close: v.forge.closePWAReminder,
@@ -57,7 +55,7 @@ export default () => {
   });
   return (
     <div className="bg-slate-100 relative p-5 dark:bg-black  w-full p-0 m-0 h-full">
-      <h1 className="m-0 mb-3">{Dot("dDGrH", "LafTools Navigator")}</h1>
+      <h1 className="m-0 mb-3">{props.emptyTitle}</h1>
       <ul className="list">
         {/* <div>{Dot("FOyHW", "Search Everywhere")}</div> */}
         {/* <div>{Dot("uwqGE", "Go to Tools")}</div> */}

@@ -349,7 +349,7 @@ export default (props: {
                 return true;
               });
               dis(
-                WorkspaceSlice.actions.pushTabs({
+                WorkspaceSlice.actions.addTab({
                   keyName: "tools",
                   newTab: {
                     id: _.toString(childId) || "Unknown Id",
@@ -399,22 +399,28 @@ export default (props: {
                             gutils.stopE(e);
                             if (hasRemarkThisOne) {
                               dis(
-                                WorkspaceSlice.actions.updateTools({
-                                  favourites: _.filter(
-                                    workspaceDataForTree.favourites,
-                                    (xx) => {
-                                      return xx != x.id;
-                                    }
-                                  ),
+                                WorkspaceSlice.actions.mergeTabPart({
+                                  name: 'tools',
+                                  value: {
+                                    favourites: _.filter(
+                                      workspaceDataForTree.favourites,
+                                      (xx) => {
+                                        return xx != x.id;
+                                      }
+                                    ),
+                                  }
                                 })
                               );
                             } else {
                               dis(
-                                WorkspaceSlice.actions.updateTools({
-                                  favourites: (_.uniq([
-                                    ...(workspaceDataForTree.favourites || []),
-                                    x.id,
-                                  ]) || []) as any,
+                                WorkspaceSlice.actions.mergeTabPart({
+                                  name: 'tools',
+                                  value: {
+                                    favourites: (_.uniq([
+                                      ...(workspaceDataForTree.favourites || []),
+                                      x.id,
+                                    ]) || []) as any,
+                                  }
                                 })
                               );
                             }
@@ -452,15 +458,21 @@ export default (props: {
             selected={workspaceDataForTree.selected || []}
             onExpandedChange={(value) => {
               dis(
-                WorkspaceSlice.actions.updateTools({
-                  expanded: value,
+                WorkspaceSlice.actions.mergeTabPart({
+                  name: 'tools',
+                  value: {
+                    expanded: value,
+                  }
                 })
               );
             }}
             onSelectedChange={(value) => {
               dis(
-                WorkspaceSlice.actions.updateTools({
-                  selected: value,
+                WorkspaceSlice.actions.mergeTabPart({
+                  name: "tools",
+                  value: {
+                    selected: value,
+                  }
                 })
               );
             }}

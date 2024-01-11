@@ -37,20 +37,27 @@ type GeneralTabBasicTab = {
   favourites: string[];
 };
 
-type ToolWSPState = {} & GeneralTabBasicTab;
 
 type CurrentWorkspaceState = {
-  tools: ToolWSPState;
+  tools: {} & GeneralTabBasicTab;
+  notes: {} & GeneralTabBasicTab
 };
 
-const initialState: CurrentWorkspaceState = {
-  tools: {
+export type WorkspaceStateKey = keyof CurrentWorkspaceState;
+
+export function fn_newTabData(): GeneralTabBasicTab {
+  return {
     tabId: null,
     tabs: [],
     selected: [],
     expanded: [],
     favourites: [],
-  },
+  };
+}
+
+const initialState: CurrentWorkspaceState = {
+  tools: fn_newTabData(),
+  notes: fn_newTabData(),
 };
 
 // write a function that shadowlly merge and only merge when target value is undefined||null
@@ -73,7 +80,7 @@ const WorkspaceSlice = createSlice({
       RequireUserId: true,
       RequireWorkspaceId: true,
     }),
-    pushTabs: (
+    addTab: (
       state,
       action: PayloadAction<{
         keyName: keyof CurrentWorkspaceState;
@@ -94,7 +101,7 @@ const WorkspaceSlice = createSlice({
         }
       }
     },
-    updateNewTabs: (
+    refreshTabList: (
       state,
       action: PayloadAction<{
         keyName: keyof CurrentWorkspaceState;
@@ -119,10 +126,12 @@ const WorkspaceSlice = createSlice({
         }
       }
     },
-    // update tools
-    updateTools: (state, action: PayloadAction<Partial<ToolWSPState>>) => {
-      _.forEach(action.payload, (x, d, n) => {
-        state.tools[d] = x;
+    mergeTabPart: (state, action: PayloadAction<{
+      name: keyof CurrentWorkspaceState;
+      value: Partial<GeneralTabBasicTab>;
+    }>) => {
+      _.forEach(action.payload.value, (x, d, n) => {
+        state[action.payload.name][d] = x;
       });
     },
   },
