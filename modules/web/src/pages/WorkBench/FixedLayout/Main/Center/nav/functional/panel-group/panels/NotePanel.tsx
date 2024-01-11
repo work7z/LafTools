@@ -66,7 +66,7 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../../../../../../../nocycle";
+import { APPINFOJSON, FN_GetDispatch, delayFN } from "../../../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -97,6 +97,7 @@ import { type } from "jquery";
 import apiSlice from "../../../../../../../../../reducers/apiSlice";
 
 import FunctionalMenu_Panel from "..";
+import WorkspaceSlice from "../../../../../../../../../reducers/workspaceSlice";
 
 export let InnerFilePanel = (): any => {
   return (
@@ -105,12 +106,29 @@ export let InnerFilePanel = (): any => {
       crtLeftNavId="all"
       leftNavList={[
         {
-          label: Dot("TyqvqWY3", "My Notebooks"),
+          label: Dot("uXz4cq", "All Notebooks"),
           value: "all",
         },
       ]}
-      children={<div>THIS IS LOCAL Notebook</div>}
-    ></FunctionalMenu_Panel>
+      children={<div className="p-2">
+        <p>{Dot("yVprb", "This part is still under development.")}</p>
+        <p>
+          <Button onClick={() => {
+            FN_GetDispatch()(
+              WorkspaceSlice.actions.addTab({
+                keyName: "notes",
+                newTab: {
+                  id: "notes" + Math.random(),
+                  label: "Notes-1",
+                  icon: "document",
+                  pageTitle: "Notes",
+                }
+              })
+            )
+          }} fill text={Dot("ah-C4", "New Note")} intent="primary"></Button>
+        </p>
+      </div >}
+    ></FunctionalMenu_Panel >
   );
 };
 export default InnerFilePanel;

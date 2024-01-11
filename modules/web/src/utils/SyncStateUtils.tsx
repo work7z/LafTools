@@ -38,6 +38,7 @@ type SyncDefinition = {
   RunOnEnterWorkBench?: boolean;
   RequireUserId: boolean;
   RequireWorkspaceId: boolean;
+  SyncToHashParameter?: boolean; // TODO: wait to be implemented. Once it's enabled, the config will be synced to url parameters
 };
 let syncReducerDefinitions: { [key: string]: SyncDefinition } = {};
 let syncedReducerNames: string[] = [];

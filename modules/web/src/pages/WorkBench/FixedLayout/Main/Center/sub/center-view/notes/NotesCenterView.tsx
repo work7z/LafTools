@@ -127,7 +127,7 @@ export default () => {
         subLabel: "Ctrl + E",
       },
       {
-        label: Dot("pKHRq", "Go to Notes"),
+        label: Dot("pKqHRq", "Search Notes"),
         subLabel: Dot("HyIC_d", "Slash Key (/)"),
       },
     ]}
