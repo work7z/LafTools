@@ -25,6 +25,7 @@ export default () => {
             </Allotment.Pane>
             <Allotment.Pane >
                 <GenCodeMirror bigTextId="target" language="shell" lineWrap={false}></GenCodeMirror>
+                {/* <GenCodeMirror bigTextId="shellgrp" lineWrap={false}></GenCodeMirror> */}
             </Allotment.Pane>
         </Allotment>
     </div>

@@ -66,14 +66,9 @@ import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { javascript } from "@codemirror/lang-javascript";
 import { FN_GetDispatch } from "../../nocycle";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY } from "../../actions/bigtext_action";
-import { go } from '@codemirror/legacy-modes/mode/go';
-import { shell } from '@codemirror/legacy-modes/mode/shell';
-import { StreamLanguage } from '@codemirror/language';
+// import { EditorView } from "codemirror"
+// import { loadLanguage, langNames, langs } from '@uiw/codemirror-extensions-langs';
 
-
-import { EditorView } from "codemirror"
-// import { langs, langNames, loadLanguage } from '@uiw/codemirror-extensions-langs';
-// console.log('langNames', langs.mysql())
 
 type GenCodeMirrorProp = {
   bigTextId: string;
@@ -116,7 +111,7 @@ export default (props: GenCodeMirrorProp) => {
 
   let langMap = {
     javascript: () => javascript({ jsx: true }),
-    shell: () => StreamLanguage.define(shell)
+    // shell: () => langs.shell()
   }
 
   let fixedDeps = [verObj.ver]
@@ -138,7 +133,7 @@ export default (props: GenCodeMirrorProp) => {
     setValue(val);
     props.onTextChange && props.onTextChange(val)
   }, []);
-  let langPack = props.language && langMap[props.language] ? (langMap[props.language])() : null
+  // let langPack = props.language && langMap[props.language] ? (langMap[props.language])() : null
   return (
     <CodeMirror
       key={verObj.ver}
@@ -153,12 +148,10 @@ export default (props: GenCodeMirrorProp) => {
       height="100%"
       value={value}
       // lang={props.language || 'javascript'}
-      basicSetup={{
-      }}
       // lang={"shell"}
       extensions={[
-        langPack,
-        props.lineWrap ? EditorView.lineWrapping : null
+        // langPack,
+        // props.lineWrap ? EditorView.lineWrapping : null
       ].filter(x => x != null) as any}
       theme={forgeObj.dark ? githubDark : githubLight}
     />
