@@ -60,6 +60,17 @@ export let fn_coll_output = (sessionId) => {
     }).v;
 };
 
+export let useHookWithSkippingFirst = (fn: () => void, deps: any[]) => {
+    let [first, setFirst] = useState(true);
+    useEffect(() => {
+        if (first) {
+            setFirst(false);
+            return;
+        }
+        fn();
+    }, deps);
+}
+
 export let useCurrentActiveStyle = (sessionId: string, panelId: string) => {
     let crt_panelId = exportUtils.useSelector((x) => {
         let v = x.runtimeStatus.toolOutputStatusMap[sessionId]?.latestViewPanelId;

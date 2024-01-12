@@ -20,14 +20,14 @@
 
 import { Allotment, AllotmentHandle } from "allotment";
 import gutils from "../../../../../../../../../utils/GlobalUtils";
-import { Button, InputGroup, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, Tab, InputGroup, Navbar, Tabs, Tooltip } from "@blueprintjs/core";
 import { Dot } from "../../../../../../../../../utils/TranslationUtils";
 import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import TagList, {
     TagType,
 } from "../../../../../../../../../components/TagList";
 import React, { useEffect } from "react";
-import { CSS_TW_LAYOUT_BORDER_Y, VAL_CSS_MENU_TITLE_PANEL } from "../../../../../../../../../types/styles";
+import { CSS_TW_LAYOUT_BORDER, CSS_TW_LAYOUT_BORDER_LIGHTER, CSS_TW_LAYOUT_BORDER_Y, VAL_CSS_MENU_TITLE_PANEL } from "../../../../../../../../../types/styles";
 import SortByButton, {
     SortItem,
 } from "../../../../../../../../../components/SortByButton";
@@ -36,6 +36,8 @@ import { FN_GetDispatch } from "../../../../../../../../../nocycle";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../../actions/bigtext_action";
 import _ from "lodash";
 import moment from "moment";
+import { useHookWithSkippingFirst } from "../../Transformers/hooks";
+import CopyButton from "../../../../../../../../../components/CopyButton";
 
 // extension: .shg
 
@@ -88,7 +90,7 @@ export default () => {
             copyTimes: 10,
         },
         {
-            id: "find old files which are not modified in 30 days",
+            id: "file-update",
             name: Dot("mabHq", "Find Old Files"),
             content: `find /home/username/Projects/ProjectName/ -type f -mtime +30`,
             tags: ["sit2", "uat2", "prod2"],
@@ -128,8 +130,8 @@ export default () => {
             name: Dot("ooiFU", "Restart Java Service"),
             content: `systemctl restart java.service`,
             tags: ["sit2", "uat2", "prod2"],
-            createTime: 1634345678,
-            copyTimes: 0,
+            createTime: 1639995678,
+            copyTimes: 29,
         },
     ]);
 
@@ -164,7 +166,6 @@ export default () => {
         })
     }, [shellCommands, sortDirection, activeSortItem])
 
-    let [bigTextId] = React.useState(_.uniqueId(""));
 
     useEffect(() => {
         FN_GetDispatch()(
@@ -172,8 +173,21 @@ export default () => {
         )
     }, [activeCommandId])
 
+    useHookWithSkippingFirst(() => {
+        setActiveCommandId("")
+    }, [activeTag])
+
     let activeCommand = shellCommands.find(e => e.id == activeCommandId)
 
+    let [previewTrash, setPreviewTrash] = React.useState(false)
+
+    useHookWithSkippingFirst(() => {
+        setPreviewTrash(false)
+    }, [hoverCommandId])
+    let [bigTextId] = activeCommandId;
+
+    let [viewPanelId, setViewPanelId] = React.useState("general");
+    let [showMoreInfo, setShowMoreInfo] = React.useState(false);
     return (
         <div className="w100 h100">
             <Allotment
@@ -284,11 +298,21 @@ export default () => {
                                             </div>
                                             {
                                                 hoverCommandId == e.id ? <div className="absolute  -translate-y-1/2  top-1/2 right-4" >
-                                                    <Tooltip content={Dot("ucDLv", "You've copied this item for {0} times", e.copyTimes || 0)} placement="right">
-                                                        <Button onClick={() => {
+                                                    <Tooltip content={Dot("ucDLv", "You've copied this record for {0} times", e.copyTimes || 0)} placement="bottom">
+                                                        <CopyButton onCopy={() => {
                                                             AlertUtils.copyWithAlertCopied(e.content)
-                                                        }} icon="duplicate" intent="success" minimal ></Button>
-                                                        {/* {text = { e.copyTimes || 0 }} */}
+                                                            e.copyTimes = (e.copyTimes || 0) + 1
+                                                            setShellCommands([...shellCommands])
+                                                        }}></CopyButton>
+                                                    </Tooltip>
+                                                    <Tooltip content={previewTrash ? Dot("CEv8B", "Are you sure to remove this record? If yes, then click this button again.") : Dot("5qV5Sf", "Remove this record from the list", e.copyTimes || 0)} placement="bottom">
+                                                        <Button onClick={() => {
+                                                            if (!previewTrash) {
+                                                                setPreviewTrash(true)
+                                                                return
+                                                            }
+                                                            setShellCommands(shellCommands.filter(ee => ee.id != e.id))
+                                                        }} icon={!previewTrash ? "trash" : "warning-sign"} intent="danger" minimal ></Button>
                                                     </Tooltip>
                                                 </div> : ''
                                             }
@@ -308,7 +332,7 @@ export default () => {
                                     fontWeight: 500,
                                     fontSize: 16
                                 }}>
-                                    {activeCommand.name}
+                                    {activeCommand.name}({Dot("52OiQ", "Copied {0} times", activeCommand.copyTimes || 0)})
                                 </div>
                                 <div>
                                     {moment().from(activeCommand.createTime * 1000)}
@@ -317,13 +341,77 @@ export default () => {
                             <div style={{
                                 height: `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
                             }}>
-                                <GenCodeMirror
-                                    bigTextId={bigTextId}
-                                    language="shell"
-                                    lineWrap={false}
-                                ></GenCodeMirror>
+                                <Allotment className="flex flex-row" vertical >
+                                    <Allotment.Pane>
+                                        <GenCodeMirror
+                                            bigTextId={bigTextId}
+                                            language="shell"
+                                            lineWrap={false}
+                                            onTextChange={(val) => {
+                                                if (activeCommand) {
+                                                    activeCommand.content = val
+                                                    setShellCommands([...shellCommands])
+                                                }
+                                            }}
+                                            key={activeCommandId}
+                                        ></GenCodeMirror>
+                                    </Allotment.Pane>
+                                    <Allotment.Pane>
+                                        <div className={CSS_TW_LAYOUT_BORDER_LIGHTER + " "} style={{
+                                            borderBottom: 'none',
+                                            borderRight: 'none'
+                                        }}>
+                                            <Navbar>
+                                                <Navbar.Group>
+                                                    <Navbar.Heading>
+                                                        {/* Page: <strong>{''}</strong> */}
+                                                        {Dot("5-Zxa", "Control Panel")}
+                                                    </Navbar.Heading>
+                                                </Navbar.Group>
+                                                <Navbar.Group align={Alignment.RIGHT}>
+                                                    <Tabs
+                                                        animate={true}
+                                                        fill={true}
+                                                        id="navbar"
+                                                        large={false}
+                                                        onChange={(v) => {
+                                                            //
+                                                        }}
+                                                        selectedTabId={"general"}
+                                                    >
+                                                        <Tab id="general" title={Dot("lUh5c", "General")} tagContent={3} />
+                                                        <Tab id="history" title={Dot("VI6VT", "History")} tagContent={4} disabled />
+                                                    </Tabs>
+                                                </Navbar.Group>
+                                            </Navbar>
+                                            <p className="p-4">
+                                                {
+                                                    showMoreInfo ? <div>
+                                                        <p>
+                                                            {Dot("qdeFXx", "Currently, this page you've looking for is not yet fully implemented.")} {Dot("m8rTc1", "Once the shell scripts manager is implemented, you can use it to manage your shell commands.")}
+                                                        </p>
+                                                        <p>
+                                                            {Dot("vEm7qb", "For the module Notesbook, LafTools does not only provide shell commands manager, but also does provide MarkDown, Latex, {0}, and so on. ", Dot("iknTS", "Password Manager"))}
+                                                        </p>
+                                                        <p>
+                                                            {Dot("nSeIq8-", "And most importantly, it's for free and open source. You can use it for your personal or commercial purpose.")}
+                                                        </p>
+                                                        <p>
+                                                            {Dot("OpPFe", "If you like LafTools, please share it with your friends and give us a star, thanks!")} <a href="https://github.com/work7z/LafTools/" target="_blank">{Dot("71x7x", "Source Code on GitHub")}</a>
+                                                        </p>
+
+                                                    </div> : <div>
+                                                        <Button intent="primary" minimal onClick={() => {
+                                                            setShowMoreInfo(true)
+                                                        }}>{Dot("tY3p1", "More Information")}</Button>
+                                                    </div>
+                                                }
+                                            </p>
+                                        </div>
+                                    </Allotment.Pane>
+                                </Allotment>
                             </div>
-                        </div> : <div className="p-2">{Dot("tW1yF", "No available shell command can be displayed, please select one at first.")}</div>
+                        </div> : <div className="p-2">{Dot("tWe1yF", "No available shell command.")}</div>
                     }
                 </Allotment.Pane>
             </Allotment>
