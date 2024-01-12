@@ -29,7 +29,10 @@ export let CSS_TEXT_ANCHOR_CSS =
 export let CSS_TW_LAYOUT_BORDER =
   " border-[1px]    border-gray-300 dark:border-gray-600  ";
 
-  // styles
+// styles
 export const VAL_CSS_TAB_TITLE_PANEL = 30;
 export const VAL_CSS_CONTROL_PANEL = 34;
 export const VAL_CSS_MENU_TITLE_PANEL = 30;
+
+
+export let CSS_TW_LAYOUT_BORDER_Y = " border-gray-300 dark:border-gray-600 border-y-2 "

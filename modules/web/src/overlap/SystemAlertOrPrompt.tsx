@@ -122,17 +122,21 @@ let EachPrompt = (props: { x: PrompType }): any => {
       <p>
         <InputGroup
           {...(x.textProps || {})}
-          style={{ width: "100%" }}
+          // style={{ width: "100%" }}
           value={val}
           onChange={(e) => {
             onVal(e.target.value);
           }}
-          fill={true}
+          // fill={true}
           defaultValue={x.textFieldDefaultValue}
-          placeholder={Dot(
-            "tEkR3",
-            "Input your value according to the prompt message"
-          )}
+          placeholder={
+            ''
+            // Dot("Fzp3t", "Please provide value in this field")
+            //   Dot(
+            //   "tEkR3",
+            //   "Input your value according to the prompt message"
+            // )
+          }
         />
       </p>
     </Alert>

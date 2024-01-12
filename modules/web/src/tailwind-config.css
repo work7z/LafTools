@@ -12,6 +12,9 @@
 .btn-yellow  svg {
     /* @apply !fill-amber-300; */
 }
+.tag-gray svg{
+    @apply !bg-gray-100 !text-gray-600 dark:!bg-gray-700 dark:!text-gray-300;
+}
 .btn-purple{
     @apply !bg-purple-700 hover:!bg-purple-900 ;
 }

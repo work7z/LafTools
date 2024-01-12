@@ -127,7 +127,7 @@ export let InnerFilePanel = (): any => {
                 keyName: "notes",
                 newTab: {
                   id: "notes" + Math.random(),
-                  label: "Notes-1",
+                  label: "Note-1",
                   icon: "document",
                   pageTitle: "Notes",
                 }
