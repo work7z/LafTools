@@ -20,7 +20,7 @@
 
 import { Allotment, AllotmentHandle } from "allotment";
 import gutils from "../../../../../../../../../utils/GlobalUtils";
-import { Alignment, Button, Tab, InputGroup, Navbar, Tabs, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, Tab, InputGroup, Navbar, Tabs, Tooltip, HotkeysTarget2 } from "@blueprintjs/core";
 import { Dot } from "../../../../../../../../../utils/TranslationUtils";
 import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import TagList, {
@@ -38,6 +38,7 @@ import _ from "lodash";
 import moment from "moment";
 import { useHookWithSkippingFirst } from "../../Transformers/hooks";
 import CopyButton from "../../../../../../../../../components/CopyButton";
+import ShellNewPanel from "./ShellNewPanel";
 
 // extension: .shg
 
@@ -188,7 +189,8 @@ export default () => {
 
     let [viewPanelId, setViewPanelId] = React.useState("general");
     let [showMoreInfo, setShowMoreInfo] = React.useState(false);
-    return (
+    let [showCreatePanel, onShowCreatePanel] = React.useState(false);
+    let returnJSX = (
         <div className="w100 h100">
             <Allotment
                 ref={(e) => {
@@ -203,218 +205,266 @@ export default () => {
                 }}
             >
                 <Allotment.Pane preferredSize={550}>
-                    <div className="">
-                        <div className="">
-                            <div
-                                className={
-                                    "p-2  " + " border-t-0 " + CSS_TW_LAYOUT_BORDER_Y + ""
-                                }
-                                style={{ borderTop: "none" }}
-                            >
-                                <InputGroup
-                                    leftIcon="search"
-                                    placeholder={Dot("E62ej", "Filter Shell Commands")}
-                                ></InputGroup>
-                            </div>
-                            <TagList
-                                onNewTag={(name: string) => {
-                                    setTags([
-                                        ...tags,
-                                        {
-                                            id: name,
-                                            name: name,
-                                            icon: "application",
-                                        },
-                                    ]);
-                                }}
-                                activeTag={activeTag}
-                                setActiveTag={setActiveTag}
-                                tags={tags}
-                            ></TagList>
-                        </div>
+                    <div className="relative w-full h-full flex flex-col">
                         <div>
-                            {/*
+                            <div className="">
+                                <div
+                                    className={
+                                        "p-2  " + " border-t-0 " + CSS_TW_LAYOUT_BORDER_Y + ""
+                                    }
+                                    style={{ borderTop: "none" }}
+                                >
+                                    <InputGroup
+                                        leftIcon="search"
+                                        placeholder={Dot("E62ej", "Filter Shell Commands")}
+                                    ></InputGroup>
+                                </div>
+                                <TagList
+                                    onNewTag={(name: string) => {
+                                        setTags([
+                                            ...tags,
+                                            {
+                                                id: name,
+                                                name: name,
+                                                icon: "application",
+                                            },
+                                        ]);
+                                    }}
+                                    activeTag={activeTag}
+                                    setActiveTag={setActiveTag}
+                                    tags={tags}
+                                ></TagList>
+                            </div>
+                            <div>
+                                {/*
                         left side: count of shell commands
                         right side: sort button
                         */}
-                            <div
-                                className={
-                                    "flex justify-between px-2 py-1 using-edge-ui-bg   " +
-                                    CSS_TW_LAYOUT_BORDER_Y
-                                }
-                            >
-                                <div className="text-gray-500 dark:text-gray-300">
-                                    <span>
-                                        {Dot("oqHqqV", "Total: {0} Commands", shellCommands.length)}
-                                    </span>
+                                <div
+                                    className={
+                                        "flex justify-between px-2 py-1 using-edge-ui-bg   " +
+                                        CSS_TW_LAYOUT_BORDER_Y
+                                    }
+                                >
+                                    <div className="text-gray-500 dark:text-gray-300">
+                                        <span>
+                                            {Dot("oqHqqV", "Total: {0} Commands", shellCommands.length)}
+                                        </span>
+                                    </div>
+                                    <SortByButton
+                                        sortItems={sortItems}
+                                        activeItem={activeSortItem.id}
+                                        setActiveItem={(item) => {
+                                            setActiveSortItem(sortItems.find((e) => e.id == item)!);
+                                        }}
+                                        sortDirection={sortDirection}
+                                        setSortDirection={setSortDirection}
+                                    ></SortByButton>
                                 </div>
-                                <SortByButton
-                                    sortItems={sortItems}
-                                    activeItem={activeSortItem.id}
-                                    setActiveItem={(item) => {
-                                        setActiveSortItem(sortItems.find((e) => e.id == item)!);
-                                    }}
-                                    sortDirection={sortDirection}
-                                    setSortDirection={setSortDirection}
-                                ></SortByButton>
+                            </div>
+                            <div className="cmd-list" onMouseOut={() => {
+                                // setHoverCommandId("")
+                            }}>
+                                {formatted_shellCommands
+                                    .filter((e) => isAllMode || e.tags.includes(activeTag))
+                                    .map((e) => {
+                                        return (
+                                            <div
+                                                onMouseMove={() => {
+                                                    setHoverCommandId(e.id)
+                                                }}
+                                                className={
+                                                    "w-full relative p-2 px-3  hover:bg-slate-100 " +
+                                                    " dark:hover:bg-slate-700 transition-all duration-100 cursor-pointer "
+                                                    +
+                                                    (
+                                                        activeCommandId == e.id
+                                                            ? " bg-slate-100 dark:bg-slate-700 "
+                                                            : ""
+                                                    )
+                                                }
+                                                onClick={() => {
+                                                    setActiveCommandId(e.id)
+                                                }}
+                                                key={e.id}
+                                            >
+                                                <div className="w-full">
+                                                    <span className="">{e.name}</span>
+                                                    {e.tags.map((e) => {
+                                                        return (
+                                                            <span className="px-1 py-0.5 mx-1 text-xs bg-lime-300 text-gray-700 rounded">
+                                                                {e}
+                                                            </span>
+                                                        );
+                                                    })}{" "}
+                                                </div>
+                                                <div className="w-[80%] pt-1 overflow-ellipsis whitespace-nowrap" style={{ marginTop: '2px' }}>
+                                                    <i>{e.content}</i>
+                                                </div>
+                                                {
+                                                    hoverCommandId == e.id ? <div className="absolute  -translate-y-1/2  top-1/2 right-4" >
+                                                        <Tooltip content={Dot("ucDLv", "You've copied this record for {0} times", e.copyTimes || 0)} placement="bottom">
+                                                            <CopyButton onCopy={() => {
+                                                                AlertUtils.copyWithAlertCopied(e.content)
+                                                                e.copyTimes = (e.copyTimes || 0) + 1
+                                                                setShellCommands([...shellCommands])
+                                                            }}></CopyButton>
+                                                        </Tooltip>
+                                                        <Tooltip content={previewTrash ? Dot("CEv8B", "Are you sure to remove this record? If yes, then click this button again.") : Dot("5qV5Sf", "Remove this record from the list", e.copyTimes || 0)} placement="bottom">
+                                                            <Button onClick={() => {
+                                                                if (!previewTrash) {
+                                                                    setPreviewTrash(true)
+                                                                    return
+                                                                }
+                                                                setShellCommands(shellCommands.filter(ee => ee.id != e.id))
+                                                            }} icon={!previewTrash ? "trash" : "warning-sign"} intent="danger" minimal ></Button>
+                                                        </Tooltip>
+                                                    </div> : ''
+                                                }
+                                            </div>
+                                        );
+                                    })}
                             </div>
                         </div>
-                        <div className="cmd-list">
-                            {formatted_shellCommands
-                                .filter((e) => isAllMode || e.tags.includes(activeTag))
-                                .map((e) => {
-                                    return (
-                                        <div
-                                            onMouseMove={() => {
-                                                setHoverCommandId(e.id)
-                                            }}
-                                            className={
-                                                "w-full relative p-2 px-3  hover:bg-slate-100 " +
-                                                " dark:hover:bg-slate-700 transition-all duration-100 cursor-pointer "
-                                                +
-                                                (
-                                                    activeCommandId == e.id
-                                                        ? " bg-slate-100 dark:bg-slate-700 "
-                                                        : ""
-                                                )
-                                            }
-                                            onClick={() => {
-                                                setActiveCommandId(e.id)
-                                            }}
-                                            key={e.id}
-                                        >
-                                            <div className="w-full">
-                                                <span className="">{e.name}</span>
-                                                {e.tags.map((e) => {
-                                                    return (
-                                                        <span className="px-1 py-0.5 mx-1 text-xs bg-lime-300 text-gray-700 rounded">
-                                                            {e}
-                                                        </span>
-                                                    );
-                                                })}{" "}
-                                            </div>
-                                            <div className="w-[80%] pt-1 overflow-ellipsis whitespace-nowrap" style={{ marginTop: '2px' }}>
-                                                <i>{e.content}</i>
-                                            </div>
-                                            {
-                                                hoverCommandId == e.id ? <div className="absolute  -translate-y-1/2  top-1/2 right-4" >
-                                                    <Tooltip content={Dot("ucDLv", "You've copied this record for {0} times", e.copyTimes || 0)} placement="bottom">
-                                                        <CopyButton onCopy={() => {
-                                                            AlertUtils.copyWithAlertCopied(e.content)
-                                                            e.copyTimes = (e.copyTimes || 0) + 1
-                                                            setShellCommands([...shellCommands])
-                                                        }}></CopyButton>
-                                                    </Tooltip>
-                                                    <Tooltip content={previewTrash ? Dot("CEv8B", "Are you sure to remove this record? If yes, then click this button again.") : Dot("5qV5Sf", "Remove this record from the list", e.copyTimes || 0)} placement="bottom">
-                                                        <Button onClick={() => {
-                                                            if (!previewTrash) {
-                                                                setPreviewTrash(true)
-                                                                return
-                                                            }
-                                                            setShellCommands(shellCommands.filter(ee => ee.id != e.id))
-                                                        }} icon={!previewTrash ? "trash" : "warning-sign"} intent="danger" minimal ></Button>
-                                                    </Tooltip>
-                                                </div> : ''
-                                            }
-                                        </div>
-                                    );
-                                })}
+
+                        <hr />
+                        <div className=" pt-4  transform p-2 ">
+                            {
+                                showCreatePanel ? <Button onClick={() => {
+                                    // new create
+                                    onShowCreatePanel(false)
+                                }} text={Dot("tiaiB", "Cancel")} large intent="danger" minimal outlined fill  > </Button> : <Button onClick={() => {
+                                    // new create
+                                    onShowCreatePanel(true)
+                                }} text={Dot("fEr5j", "Create New Script")} large intent="success" fill  > </Button>
+                            }
                         </div>
+                        <ShellNewPanel
+                            onNewShellCommand={(val: ShellCommandGroup) => {
+
+                            }}
+                            show={showCreatePanel} onClose={() => {
+                                onShowCreatePanel(false)
+                            }}></ShellNewPanel>
                     </div>
                 </Allotment.Pane>
                 <Allotment.Pane>
                     {
-                        activeCommand ? <div className="w-full h-full">
-                            <div className="using-edge-ui-bg px-3 flex flex-row justify-between items-center" style={{
-                                height: VAL_CSS_MENU_TITLE_PANEL,
-                            }}>
-                                <div style={{
-                                    fontWeight: 500,
-                                    fontSize: 16
+                        showCreatePanel ? <div className="w-full h-full p-2">
+                            <p>ok</p>
+                        </div>
+                            :
+                            activeCommand ? <div className="w-full h-full">
+                                <div className="using-edge-ui-bg px-3 flex flex-row justify-between items-center" style={{
+                                    height: VAL_CSS_MENU_TITLE_PANEL,
                                 }}>
-                                    {activeCommand.name}({Dot("52OiQ", "Copied {0} times", activeCommand.copyTimes || 0)})
+                                    <div style={{
+                                        fontWeight: 500,
+                                        fontSize: 16
+                                    }}>
+                                        {activeCommand.name}({Dot("52OiQ", "Copied {0} times", activeCommand.copyTimes || 0)})
+                                    </div>
+                                    <div>
+                                        {moment().from(activeCommand.createTime * 1000)}
+                                    </div>
                                 </div>
-                                <div>
-                                    {moment().from(activeCommand.createTime * 1000)}
+                                <div style={{
+                                    height: `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
+                                }}>
+                                    <Allotment className="flex flex-row" vertical >
+                                        <Allotment.Pane>
+                                            <GenCodeMirror
+                                                bigTextId={bigTextId}
+                                                language="shell"
+                                                lineWrap={false}
+                                                onTextChange={(val) => {
+                                                    if (activeCommand) {
+                                                        activeCommand.content = val
+                                                        setShellCommands([...shellCommands])
+                                                    }
+                                                }}
+                                                key={activeCommandId}
+                                            ></GenCodeMirror>
+                                        </Allotment.Pane>
+                                        <Allotment.Pane>
+                                            <div className={CSS_TW_LAYOUT_BORDER_LIGHTER + " "} style={{
+                                                borderBottom: 'none',
+                                                borderRight: 'none'
+                                            }}>
+                                                <Navbar>
+                                                    <Navbar.Group>
+                                                        <Navbar.Heading>
+                                                            {/* Page: <strong>{''}</strong> */}
+                                                            {Dot("5q-Zxqa", "Scripts Manager")}
+                                                        </Navbar.Heading>
+                                                    </Navbar.Group>
+                                                    <Navbar.Group align={Alignment.RIGHT}>
+                                                        <Tabs
+                                                            animate={true}
+                                                            fill={true}
+                                                            id="navbar"
+                                                            large={false}
+                                                            onChange={(v) => {
+                                                                //
+                                                            }}
+                                                            selectedTabId={"general"}
+                                                        >
+                                                            <Tab id="general" title={Dot("lUh5c", "Generator")} tagContent={3} />
+                                                            <Tab id="variables" title={Dot("A69UZ", "Variables")} tagContent={3} disabled />
+                                                            {/* <Tab id="variable" disabled title={Dot("huE6U", "Variable")} tagContent={7} /> */}
+                                                            <Tab id="history" title={Dot("VI6VT", "History")} tagContent={4} disabled />
+                                                        </Tabs>
+                                                    </Navbar.Group>
+                                                </Navbar>
+                                                <p className="p-4">
+                                                    {
+                                                        showMoreInfo ? <div>
+                                                            <p>
+                                                                {Dot("qdeFXx", "Currently, this page you've looking for is not yet fully implemented.")} {Dot("m8rTc1", "Once the shell scripts manager is implemented, you can use it to manage your shell commands.")}
+                                                            </p>
+                                                            <p>
+                                                                {Dot("6qT9d-N", "For the notebook, LafTools does not only provide shell commands manager, but also will add powerful note tools into it in the near future such as MarkDown, Latex, {0}, and so on. ", Dot("iknTS", "Password Manager"))}
+                                                                {Dot("nSeIq8-", "Most importantly, it's for free and open source. You can use it for your personal or commercial purpose.")}
+                                                            </p>
+                                                            <p>
+                                                                {Dot("OpPFe", "If you like LafTools, please share it with your friends and give us a star, thanks!")} <a href="https://github.com/work7z/LafTools/" target="_blank">{Dot("71x7x", "Source Code on GitHub")}</a>
+                                                            </p>
+                                                        </div> : <div>
+                                                            <Button intent="primary" outlined minimal onClick={() => {
+                                                                setShowMoreInfo(true)
+                                                            }}>{Dot("tY3p1", "More Information")}</Button>
+                                                        </div>
+                                                    }
+                                                </p>
+                                            </div>
+                                        </Allotment.Pane>
+                                    </Allotment>
                                 </div>
-                            </div>
-                            <div style={{
-                                height: `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
-                            }}>
-                                <Allotment className="flex flex-row" vertical >
-                                    <Allotment.Pane>
-                                        <GenCodeMirror
-                                            bigTextId={bigTextId}
-                                            language="shell"
-                                            lineWrap={false}
-                                            onTextChange={(val) => {
-                                                if (activeCommand) {
-                                                    activeCommand.content = val
-                                                    setShellCommands([...shellCommands])
-                                                }
-                                            }}
-                                            key={activeCommandId}
-                                        ></GenCodeMirror>
-                                    </Allotment.Pane>
-                                    <Allotment.Pane>
-                                        <div className={CSS_TW_LAYOUT_BORDER_LIGHTER + " "} style={{
-                                            borderBottom: 'none',
-                                            borderRight: 'none'
-                                        }}>
-                                            <Navbar>
-                                                <Navbar.Group>
-                                                    <Navbar.Heading>
-                                                        {/* Page: <strong>{''}</strong> */}
-                                                        {Dot("5q-Zxqa", "Scripts Manager")}
-                                                    </Navbar.Heading>
-                                                </Navbar.Group>
-                                                <Navbar.Group align={Alignment.RIGHT}>
-                                                    <Tabs
-                                                        animate={true}
-                                                        fill={true}
-                                                        id="navbar"
-                                                        large={false}
-                                                        onChange={(v) => {
-                                                            //
-                                                        }}
-                                                        selectedTabId={"general"}
-                                                    >
-                                                        <Tab id="general" title={Dot("lUh5c", "Generator")} tagContent={3} />
-                                                        <Tab id="variables" title={Dot("A69UZ", "Variables")} tagContent={3} disabled />
-                                                        {/* <Tab id="variable" disabled title={Dot("huE6U", "Variable")} tagContent={7} /> */}
-                                                        <Tab id="history" title={Dot("VI6VT", "History")} tagContent={4} disabled />
-                                                    </Tabs>
-                                                </Navbar.Group>
-                                            </Navbar>
-                                            <p className="p-4">
-                                                {
-                                                    showMoreInfo ? <div>
-                                                        <p>
-                                                            {Dot("qdeFXx", "Currently, this page you've looking for is not yet fully implemented.")} {Dot("m8rTc1", "Once the shell scripts manager is implemented, you can use it to manage your shell commands.")}
-                                                        </p>
-                                                        <p>
-                                                            {Dot("6qT9d-N", "For the notebook, LafTools does not only provide shell commands manager, but also will add powerful note tools into it in the near future such as MarkDown, Latex, {0}, and so on. ", Dot("iknTS", "Password Manager"))}
-                                                            {Dot("nSeIq8-", "Most importantly, it's for free and open source. You can use it for your personal or commercial purpose.")}
-                                                        </p>
-                                                        <p>
-                                                            {Dot("OpPFe", "If you like LafTools, please share it with your friends and give us a star, thanks!")} <a href="https://github.com/work7z/LafTools/" target="_blank">{Dot("71x7x", "Source Code on GitHub")}</a>
-                                                        </p>
-
-                                                    </div> : <div>
-                                                        <Button intent="primary" outlined minimal onClick={() => {
-                                                            setShowMoreInfo(true)
-                                                        }}>{Dot("tY3p1", "More Information")}</Button>
-                                                    </div>
-                                                }
-                                            </p>
-                                        </div>
-                                    </Allotment.Pane>
-                                </Allotment>
-                            </div>
-                        </div> : <div className="p-2">{Dot("tWe1yF", "No available shell command.")}</div>
+                            </div> : <div className="p-2">{Dot("tWe1yF", "No available shell command.")}</div>
                     }
                 </Allotment.Pane>
             </Allotment>
         </div>
     );
+    return (
+        returnJSX
+    )
+    // return (
+    //     <HotkeysTarget2 hotkeys={[
+    //         {
+    //             combo: "shift + c",
+    //             global: true,
+    //             label: Dot("L-p-Y", "Copy the content of the current shell command to the clipboard"),
+    //             onKeyDown: () => {
+    //                 alert("ok")
+    //                 //
+    //             },
+    //         },
+    //     ]}>
+    //         {({ handleKeyDown, handleKeyUp }) => {
+    //             return (
+    //             );
+    //         }}
+    //     </HotkeysTarget2>
+    // )
 };
