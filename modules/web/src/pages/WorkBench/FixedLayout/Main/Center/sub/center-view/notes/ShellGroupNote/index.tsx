@@ -26,12 +26,15 @@ import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import TagList, {
     TagType,
 } from "../../../../../../../../../components/TagList";
-import React from "react";
-import { CSS_TW_LAYOUT_BORDER_Y } from "../../../../../../../../../types/styles";
+import React, { useEffect } from "react";
+import { CSS_TW_LAYOUT_BORDER_Y, VAL_CSS_MENU_TITLE_PANEL } from "../../../../../../../../../types/styles";
 import SortByButton, {
     SortItem,
 } from "../../../../../../../../../components/SortByButton";
 import AlertUtils from "../../../../../../../../../utils/AlertUtils";
+import { FN_GetDispatch } from "../../../../../../../../../nocycle";
+import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../../actions/bigtext_action";
+import _ from "lodash";
 
 // extension: .shg
 
@@ -160,6 +163,14 @@ export default () => {
         })
     }, [shellCommands, sortDirection, activeSortItem])
 
+    let [bigTextId] = React.useState(_.uniqueId(""));
+
+    useEffect(() => {
+        FN_GetDispatch()(
+            FN_SetTextValueFromOutSideByBigTextId(bigTextId, shellCommands.find(e => e.id == activeCommandId)?.content || "")
+        )
+    }, [activeCommandId])
+
     return (
         <div className="w100 h100">
             <Allotment
@@ -285,11 +296,28 @@ export default () => {
                     </div>
                 </Allotment.Pane>
                 <Allotment.Pane>
-                    <GenCodeMirror
-                        bigTextId="target"
-                        language="shell"
-                        lineWrap={false}
-                    ></GenCodeMirror>
+                    <div className="using-edge-ui-bg px-4 flex flex-row justify-between items-center" style={{
+                        height: VAL_CSS_MENU_TITLE_PANEL,
+                    }}>
+                        <div style={{
+                            fontWeight: 500,
+                            fontSize: 16
+                        }}>
+                            {activeCommandId}
+                        </div>
+                        <div>
+                            other
+                        </div>
+                    </div>
+                    <div style={{
+                        height: `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
+                    }}>
+                        <GenCodeMirror
+                            bigTextId={bigTextId}
+                            language="shell"
+                            lineWrap={false}
+                        ></GenCodeMirror>
+                    </div>
                     {/* <GenCodeMirror bigTextId="shellgrp" lineWrap={false}></GenCodeMirror> */}
                 </Allotment.Pane>
             </Allotment>
