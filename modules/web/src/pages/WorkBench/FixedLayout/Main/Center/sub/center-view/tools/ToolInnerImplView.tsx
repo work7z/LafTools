@@ -137,6 +137,11 @@ import QueryUtils from "../../../../../../../../utils/QueryUtils";
 import UnknownPart from "../../../../../../../../containers/UnknownPart";
 import { ExtensionVM } from "../../../../../../../../types/purejs-types-READ_ONLY";
 
+export let getSessionId = (tabId: string | null | undefined): string => {
+  if (!tabId) { return "unknown" }
+  return tabId + "-s";
+}
+
 export default () => {
   let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
   let s = exportUtils.useSelector((v) => {
@@ -146,7 +151,7 @@ export default () => {
     };
   });
 
-  let sessionId = s.tabId + "s1";
+  let sessionId = getSessionId(s.tabId);
   let extId = s.tabId || 'unknown'
 
   let extQ = apiSlice.useGetToolExtDetailQuery({

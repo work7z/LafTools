@@ -118,8 +118,16 @@ import {
 import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import GenHorizontalTab from "../../../../../../../../components/GenHorizontalTab";
 import ShellGroupNote from "./ShellGroupNote";
+import { getSessionId } from "../tools/ToolInnerImplView";
 
 
 export default () => {
-    return <ShellGroupNote></ShellGroupNote>
+    let s = exportUtils.useSelector((v) => {
+        return {
+            tabs: v.workspace.notes.tabs,
+            tabId: v.workspace.notes.tabId,
+        };
+    });
+    let sessionId = getSessionId(s.tabId)
+    return <ShellGroupNote key={sessionId}></ShellGroupNote>
 }

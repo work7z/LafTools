@@ -20,7 +20,7 @@
 
 import { Allotment, AllotmentHandle } from "allotment";
 import gutils from "../../../../../../../../../utils/GlobalUtils";
-import { Button, InputGroup } from "@blueprintjs/core";
+import { Button, InputGroup, Tooltip } from "@blueprintjs/core";
 import { Dot } from "../../../../../../../../../utils/TranslationUtils";
 import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import TagList, {
@@ -31,6 +31,7 @@ import { CSS_TW_LAYOUT_BORDER_Y } from "../../../../../../../../../types/styles"
 import SortByButton, {
     SortItem,
 } from "../../../../../../../../../components/SortByButton";
+import AlertUtils from "../../../../../../../../../utils/AlertUtils";
 
 // extension: .shg
 
@@ -38,6 +39,8 @@ export type ShellCommandGroup = {
     name: string;
     content: string;
     tags: string[];
+    createTime: number;
+    copyTimes?: number;
     id: string;
 };
 
@@ -70,26 +73,32 @@ export default () => {
             icon: "database",
         },
     ]);
-    let [activeTag, setActiveTag] = React.useState(tags[0].id);
+    let [activeTag, setActiveTag] = React.useState("all");
     let [shellCommands, setShellCommands] = React.useState<ShellCommandGroup[]>([
         {
             id: "copy-files-to-sit2",
             name: Dot("etV-l", "Copy Files to SIT2"),
             content: `rsync -avz --progress --stats --exclude-from=exclude.txt --delete -e "ssh -p 22" /home/username/Projects/ProjectName/ username@"SIT2":/home/username/Projects/ProjectName/`,
             tags: ["sit2"],
+            createTime: 1612345678,
+            copyTimes: 10,
         },
         {
             id: "find old files which are not modified in 30 days",
             name: Dot("mabHq", "Find Old Files"),
             content: `find /home/username/Projects/ProjectName/ -type f -mtime +30`,
             tags: ["sit2", "uat2", "prod2"],
+            createTime: 1612345699,
+            copyTimes: 12,
         },
         // item for database regulary backup
         {
             id: "backup-database",
             name: Dot("hMvh1", "Backup Database"),
             content: `mysqldump -u username -p --all-databases > all-databases.sql`,
-            tags: ["db1", "db2"],
+            tags: ["db1", "db2", "prod2"],
+            createTime: 1612345671,
+            copyTimes: 30,
         },
         // item for database restore
         {
@@ -97,13 +106,17 @@ export default () => {
             name: Dot("oj23X", "Restore Database"),
             content: `mysql -u username -p < all-databases.sql`,
             tags: ["db1", "db2"],
+            createTime: 1614345678,
+            copyTimes: 12,
         },
         // item for redis backup
         {
             id: "backup-redis",
             name: Dot("xQ_ls", "Backup Redis"),
             content: `redis-cli save`,
-            tags: ["db1", "db2"],
+            createTime: 1614342678,
+            tags: ["db1",],
+            copyTimes: 2,
         },
         // item for restart java service
         {
@@ -111,6 +124,8 @@ export default () => {
             name: Dot("ooiFU", "Restart Java Service"),
             content: `systemctl restart java.service`,
             tags: ["sit2", "uat2", "prod2"],
+            createTime: 1614345678,
+            copyTimes: 0,
         },
     ]);
 
@@ -123,25 +138,43 @@ export default () => {
         },
         {
             id: "copy-times",
-            name: Dot("oqHqVq", "Copy Times"),
+            name: Dot("oqHqqVq", "Copy Times"),
         },
     ]);
     let [activeSortItem, setActiveSortItem] = React.useState<SortItem>(
         sortItems[0],
     );
     let [sortDirection, setSortDirection] = React.useState<"asc" | "desc">("asc");
+    let resizeCount = React.useRef(0);
+    let [activeCommandId, setActiveCommandId] = React.useState<string>(shellCommands[0].id);
+    let [hoverCommandId, setHoverCommandId] = React.useState<string>("");
+    let formatted_shellCommands = React.useMemo(() => {
+        return shellCommands.sort((a, b) => {
+            if (activeSortItem.id == "create-time") {
+                return sortDirection == "asc" ? a.createTime - b.createTime : b.createTime - a.createTime
+            }
+            if (activeSortItem.id == "copy-times") {
+                return sortDirection == "asc" ? (a.copyTimes || 0) - (b.copyTimes || 0) : (b.copyTimes || 0) - (a.copyTimes || 0)
+            }
+            return -1
+        })
+    }, [shellCommands, sortDirection, activeSortItem])
 
     return (
         <div className="w100 h100">
             <Allotment
                 ref={(e) => {
-                    gutils.ExposureIt("allot_e", e);
-                    gutils.defer(() => {
-                        e && e.reset();
-                    });
+                    if (!e) return;
+                    if (resizeCount.current == 0) {
+                        resizeCount.current++;
+                        gutils.defer(() => {
+                            e && e.reset();
+                        });
+                    }
+
                 }}
             >
-                <Allotment.Pane preferredSize={500}>
+                <Allotment.Pane preferredSize={550}>
                     <div className="">
                         <div className="">
                             <div
@@ -199,19 +232,31 @@ export default () => {
                             </div>
                         </div>
                         <div className="cmd-list">
-                            {shellCommands
+                            {formatted_shellCommands
                                 .filter((e) => isAllMode || e.tags.includes(activeTag))
                                 .map((e) => {
                                     return (
                                         <div
+                                            onMouseMove={() => {
+                                                setHoverCommandId(e.id)
+                                            }}
                                             className={
-                                                "w-full p-2 px-3 hover:bg-slate-100 " +
-                                                " dark:hover:bg-slate-700 transition-all duration-100 cursor-pointer"
+                                                "w-full relative p-2 px-3  hover:bg-slate-100 " +
+                                                " dark:hover:bg-slate-700 transition-all duration-100 cursor-pointer "
+                                                +
+                                                (
+                                                    activeCommandId == e.id
+                                                        ? " bg-slate-100 dark:bg-slate-700 "
+                                                        : ""
+                                                )
                                             }
+                                            onClick={() => {
+                                                setActiveCommandId(e.id)
+                                            }}
                                             key={e.id}
                                         >
                                             <div className="w-full">
-                                                {e.name}
+                                                <span className="">{e.name}</span>
                                                 {e.tags.map((e) => {
                                                     return (
                                                         <span className="px-1 py-0.5 mx-1 text-xs bg-lime-300 text-gray-700 rounded">
@@ -220,9 +265,19 @@ export default () => {
                                                     );
                                                 })}{" "}
                                             </div>
-                                            <div className="w-full overflow-ellipsis whitespace-nowrap">
-                                                {e.content}
+                                            <div className="w-[80%] pt-1 overflow-ellipsis whitespace-nowrap" style={{ marginTop: '2px' }}>
+                                                <i>{e.content}</i>
                                             </div>
+                                            {
+                                                hoverCommandId == e.id ? <div className="absolute  -translate-y-1/2  top-1/2 right-4" >
+                                                    <Tooltip content={Dot("ucDLv", "You've copied this item for {0} times", e.copyTimes || 0)} placement="right">
+                                                        <Button onClick={() => {
+                                                            AlertUtils.copyWithAlertCopied(e.content)
+                                                        }} icon="duplicate" intent="success" minimal ></Button>
+                                                        {/* {text = { e.copyTimes || 0 }} */}
+                                                    </Tooltip>
+                                                </div> : ''
+                                            }
                                         </div>
                                     );
                                 })}
