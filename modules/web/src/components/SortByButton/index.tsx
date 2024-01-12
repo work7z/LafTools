@@ -7,14 +7,14 @@ export type SortItem = {
 }
 
 export default (props: {
-    items: SortItem[]
+    sortItems: SortItem[]
     activeItem?: string
     setActiveItem: (item: string) => void
-    sortDirection?: "asc" | "desc"
-    setSortDirection?: (direction: "asc" | "desc") => void
+    sortDirection: "asc" | "desc"
+    setSortDirection: (direction: "asc" | "desc") => void
 }) => {
-    let activeItem = props.activeItem || props.items[0].id
-    let activeObj = props.items.find(item => item.id == activeItem)
+    let activeItem = props.activeItem || props.sortItems[0].id
+    let activeObj = props.sortItems.find(item => item.id == activeItem)
 
     return (
         <div className="text-gray-500 dark:text-gray-300 flex flex-row align-middle justify-center items-center space-x-1">
@@ -25,19 +25,33 @@ export default (props: {
                 activeObj?.name + (
                     props.sortDirection == "asc" ? " ↑" : " ↓"
                 )
-            } small onClick={() => { }} ></Button>
+            } small onClick={() => {
+                props.setSortDirection(
+                    props.sortDirection == "asc" ? "desc" : "asc"
+                )
+            }} ></Button>
             {/* <Button text={Dot("qN1LdZ2", "Last Modified")} small onClick={() => { }} ></Button> */}
-            <Popover>
+            <Popover
+
+                placement="bottom-start"
+                captureDismiss={true}
+                minimal
+                canEscapeKeyClose
+                interactionKind="click"
+                shouldReturnFocusOnClose
+                content={
+                    <Menu>
+                        {props.sortItems.map(item => {
+                            return <MenuItem active={
+                                props.activeItem == item.id
+                            } text={item.name} key={item.id} onClick={() => {
+                                props.setActiveItem(item.id)
+                            }}></MenuItem>
+                        })}
+                    </Menu>
+                }
+            >
                 <Button icon="cog" small></Button>
-                <Menu>
-                    {props.items.map(item => {
-                        return <MenuItem active={
-                            props.activeItem == item.id
-                        } text={item.name} key={item.id} onClick={() => {
-                            props.setActiveItem(item.id)
-                        }}></MenuItem>
-                    })}
-                </Menu>
             </Popover>
         </div>
     )
