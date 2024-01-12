@@ -20,7 +20,7 @@
 
 import { Allotment, AllotmentHandle } from "allotment";
 import gutils from "../../../../../../../../../utils/GlobalUtils";
-import { Alignment, Button, Tab, InputGroup, Navbar, Tabs, Tooltip, HotkeysTarget2 } from "@blueprintjs/core";
+import { Alignment, Button, Tab, InputGroup, Navbar, Tabs, Tooltip, HotkeysTarget2, FormGroup, TagInput } from "@blueprintjs/core";
 import { Dot } from "../../../../../../../../../utils/TranslationUtils";
 import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import TagList, {
@@ -190,6 +190,7 @@ export default () => {
     let [viewPanelId, setViewPanelId] = React.useState("general");
     let [showMoreInfo, setShowMoreInfo] = React.useState(false);
     let [showCreatePanel, onShowCreatePanel] = React.useState(false);
+    // let [showCreatePanel, onShowCreatePanel] = React.useState(true);
     let returnJSX = (
         <div className="w100 h100">
             <Allotment
@@ -339,19 +340,75 @@ export default () => {
                                 }} text={Dot("fEr5j", "Create New Script")} large intent="success" fill  > </Button>
                             }
                         </div>
-                        <ShellNewPanel
-                            onNewShellCommand={(val: ShellCommandGroup) => {
-
-                            }}
-                            show={showCreatePanel} onClose={() => {
-                                onShowCreatePanel(false)
-                            }}></ShellNewPanel>
                     </div>
                 </Allotment.Pane>
                 <Allotment.Pane>
                     {
-                        showCreatePanel ? <div className="w-full h-full p-2">
-                            <p>ok</p>
+                        showCreatePanel ? <div className="w-full h-full">
+                            <div className="using-edge-ui-bg px-3 flex flex-row justify-between items-center" style={{
+                                height: VAL_CSS_MENU_TITLE_PANEL,
+                            }}>
+                                <div style={{
+                                    fontWeight: 500,
+                                    fontSize: 16
+                                }}>
+                                    {Dot("VZtqg6", "Create New Script Form")}
+                                </div>
+                                <div>
+                                    <Button onClick={() => {
+                                        onShowCreatePanel(false)
+                                    }} small intent="danger" minimal outlined>{Dot("9_qaj", "Exit this Form")}</Button>
+                                </div>
+                            </div>
+
+                            <div style={{
+                                height: `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
+                            }}>
+                                <ShellNewPanel
+                                    onNewShellCommand={(val: ShellCommandGroup) => {
+
+                                    }}
+                                    show={showCreatePanel} onClose={() => {
+                                        onShowCreatePanel(false)
+                                    }}></ShellNewPanel>
+
+                                <div className="p-2">
+                                    <FormGroup label={Dot("jb392", "Name")} helperText={Dot("J-3KA", "Please provide a name for this script, which would be more helpful.")}>
+                                        <InputGroup large placeholder={Dot("J164i", "e.g. Copy files to remote server")}></InputGroup>
+                                    </FormGroup>
+                                    <FormGroup label={Dot("r1GLS", "Tags")} helperText={Dot("pANmj", "Tags can be defined based on server types, script usages, or any other criteria you prefer.") + " " + Dot("SPem9", "This field is not yet ready.")} >
+                                        <TagInput disabled placeholder={Dot("EgBXL", "Select or provide tags.")} tagProps={{
+                                            large: true,
+                                            intent: 'none',
+                                            minimal: true,
+                                        }} large
+                                            values={tags.map(e => e.name)}
+                                        ></TagInput>
+                                    </FormGroup>
+                                    <FormGroup label={Dot("5eXVS", "Script Content")}>
+                                        <div className="h-[300px]" style={{
+                                            height: '300px'
+                                        }}>
+                                            <GenCodeMirror
+                                                bigTextId="test-example"
+                                                language="shell"
+                                                lineWrap={false}
+                                                onTextChange={(val) => {
+                                                    //
+                                                }}
+                                            ></GenCodeMirror>
+                                        </div>
+                                    </FormGroup>
+                                    <div className="p-2">
+                                        <Button onClick={() => {
+                                            // onShowCreatePanel(true)
+                                            AlertUtils.popMsg("danger", {
+                                                message: Dot("slqcWD", "This logic part is not yet supported, kindly stay tuned.")
+                                            })
+                                        }} text={Dot("fEr5j", "Create New Script")} large intent="primary" fill  > </Button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                             :
                             activeCommand ? <div className="w-full h-full">
@@ -444,7 +501,7 @@ export default () => {
                     }
                 </Allotment.Pane>
             </Allotment>
-        </div>
+        </div >
     );
     return (
         returnJSX
