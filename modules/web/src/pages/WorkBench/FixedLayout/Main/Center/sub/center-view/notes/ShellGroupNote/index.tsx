@@ -35,6 +35,7 @@ import AlertUtils from "../../../../../../../../../utils/AlertUtils";
 import { FN_GetDispatch } from "../../../../../../../../../nocycle";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../../actions/bigtext_action";
 import _ from "lodash";
+import moment from "moment";
 
 // extension: .shg
 
@@ -83,7 +84,7 @@ export default () => {
             name: Dot("etV-l", "Copy Files to SIT2"),
             content: `rsync -avz --progress --stats --exclude-from=exclude.txt --delete -e "ssh -p 22" /home/username/Projects/ProjectName/ username@"SIT2":/home/username/Projects/ProjectName/`,
             tags: ["sit2"],
-            createTime: 1612345678,
+            createTime: 1712345678,
             copyTimes: 10,
         },
         {
@@ -91,7 +92,7 @@ export default () => {
             name: Dot("mabHq", "Find Old Files"),
             content: `find /home/username/Projects/ProjectName/ -type f -mtime +30`,
             tags: ["sit2", "uat2", "prod2"],
-            createTime: 1612345699,
+            createTime: 1582345699,
             copyTimes: 12,
         },
         // item for database regulary backup
@@ -100,7 +101,7 @@ export default () => {
             name: Dot("hMvh1", "Backup Database"),
             content: `mysqldump -u username -p --all-databases > all-databases.sql`,
             tags: ["db1", "db2", "prod2"],
-            createTime: 1612345671,
+            createTime: 1132345671,
             copyTimes: 30,
         },
         // item for database restore
@@ -109,7 +110,7 @@ export default () => {
             name: Dot("oj23X", "Restore Database"),
             content: `mysql -u username -p < all-databases.sql`,
             tags: ["db1", "db2"],
-            createTime: 1614345678,
+            createTime: 1714345678,
             copyTimes: 12,
         },
         // item for redis backup
@@ -117,7 +118,7 @@ export default () => {
             id: "backup-redis",
             name: Dot("xQ_ls", "Backup Redis"),
             content: `redis-cli save`,
-            createTime: 1614342678,
+            createTime: 1714342678,
             tags: ["db1",],
             copyTimes: 2,
         },
@@ -127,7 +128,7 @@ export default () => {
             name: Dot("ooiFU", "Restart Java Service"),
             content: `systemctl restart java.service`,
             tags: ["sit2", "uat2", "prod2"],
-            createTime: 1614345678,
+            createTime: 1634345678,
             copyTimes: 0,
         },
     ]);
@@ -170,6 +171,8 @@ export default () => {
             FN_SetTextValueFromOutSideByBigTextId(bigTextId, shellCommands.find(e => e.id == activeCommandId)?.content || "")
         )
     }, [activeCommandId])
+
+    let activeCommand = shellCommands.find(e => e.id == activeCommandId)
 
     return (
         <div className="w100 h100">
@@ -296,29 +299,32 @@ export default () => {
                     </div>
                 </Allotment.Pane>
                 <Allotment.Pane>
-                    <div className="using-edge-ui-bg px-4 flex flex-row justify-between items-center" style={{
-                        height: VAL_CSS_MENU_TITLE_PANEL,
-                    }}>
-                        <div style={{
-                            fontWeight: 500,
-                            fontSize: 16
-                        }}>
-                            {activeCommandId}
-                        </div>
-                        <div>
-                            other
-                        </div>
-                    </div>
-                    <div style={{
-                        height: `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
-                    }}>
-                        <GenCodeMirror
-                            bigTextId={bigTextId}
-                            language="shell"
-                            lineWrap={false}
-                        ></GenCodeMirror>
-                    </div>
-                    {/* <GenCodeMirror bigTextId="shellgrp" lineWrap={false}></GenCodeMirror> */}
+                    {
+                        activeCommand ? <div className="w-full h-full">
+                            <div className="using-edge-ui-bg px-3 flex flex-row justify-between items-center" style={{
+                                height: VAL_CSS_MENU_TITLE_PANEL,
+                            }}>
+                                <div style={{
+                                    fontWeight: 500,
+                                    fontSize: 16
+                                }}>
+                                    {activeCommand.name}
+                                </div>
+                                <div>
+                                    {moment().from(activeCommand.createTime * 1000)}
+                                </div>
+                            </div>
+                            <div style={{
+                                height: `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
+                            }}>
+                                <GenCodeMirror
+                                    bigTextId={bigTextId}
+                                    language="shell"
+                                    lineWrap={false}
+                                ></GenCodeMirror>
+                            </div>
+                        </div> : <div className="p-2">{Dot("tW1yF", "No available shell command can be displayed, please select one at first.")}</div>
+                    }
                 </Allotment.Pane>
             </Allotment>
         </div>
