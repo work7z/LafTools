@@ -190,6 +190,16 @@ export let SidebarMenu = (props: TabNavProp): any => {
         id: "todo",
         label: Dot("OeOQY", "TODO"),
       },
+      {
+        desc: Dot(
+          "8veXac",
+          "Time is the most valuable resource, manage it wisely."
+        ),
+        icon: "stopwatch",
+        id: "stopwatch",
+        label: Dot("hu-iz", "Timer"),
+      },
+
       /**
       {
          desc: Dot(

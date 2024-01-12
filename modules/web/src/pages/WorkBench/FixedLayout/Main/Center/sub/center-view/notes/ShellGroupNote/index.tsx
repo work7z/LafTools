@@ -365,7 +365,7 @@ export default () => {
                                                 <Navbar.Group>
                                                     <Navbar.Heading>
                                                         {/* Page: <strong>{''}</strong> */}
-                                                        {Dot("5-Zxa", "Control Panel")}
+                                                        {Dot("5q-Zxqa", "Scripts Manager")}
                                                     </Navbar.Heading>
                                                 </Navbar.Group>
                                                 <Navbar.Group align={Alignment.RIGHT}>
@@ -379,7 +379,9 @@ export default () => {
                                                         }}
                                                         selectedTabId={"general"}
                                                     >
-                                                        <Tab id="general" title={Dot("lUh5c", "General")} tagContent={3} />
+                                                        <Tab id="general" title={Dot("lUh5c", "Generator")} tagContent={3} />
+                                                        <Tab id="variables" title={Dot("A69UZ", "Variables")} tagContent={3} disabled />
+                                                        {/* <Tab id="variable" disabled title={Dot("huE6U", "Variable")} tagContent={7} /> */}
                                                         <Tab id="history" title={Dot("VI6VT", "History")} tagContent={4} disabled />
                                                     </Tabs>
                                                 </Navbar.Group>
@@ -391,17 +393,15 @@ export default () => {
                                                             {Dot("qdeFXx", "Currently, this page you've looking for is not yet fully implemented.")} {Dot("m8rTc1", "Once the shell scripts manager is implemented, you can use it to manage your shell commands.")}
                                                         </p>
                                                         <p>
-                                                            {Dot("vEm7qb", "For the module Notesbook, LafTools does not only provide shell commands manager, but also does provide MarkDown, Latex, {0}, and so on. ", Dot("iknTS", "Password Manager"))}
-                                                        </p>
-                                                        <p>
-                                                            {Dot("nSeIq8-", "And most importantly, it's for free and open source. You can use it for your personal or commercial purpose.")}
+                                                            {Dot("6qT9d-N", "For the notebook, LafTools does not only provide shell commands manager, but also will add powerful note tools into it in the near future such as MarkDown, Latex, {0}, and so on. ", Dot("iknTS", "Password Manager"))}
+                                                            {Dot("nSeIq8-", "Most importantly, it's for free and open source. You can use it for your personal or commercial purpose.")}
                                                         </p>
                                                         <p>
                                                             {Dot("OpPFe", "If you like LafTools, please share it with your friends and give us a star, thanks!")} <a href="https://github.com/work7z/LafTools/" target="_blank">{Dot("71x7x", "Source Code on GitHub")}</a>
                                                         </p>
 
                                                     </div> : <div>
-                                                        <Button intent="primary" minimal onClick={() => {
+                                                        <Button intent="primary" outlined minimal onClick={() => {
                                                             setShowMoreInfo(true)
                                                         }}>{Dot("tY3p1", "More Information")}</Button>
                                                     </div>
