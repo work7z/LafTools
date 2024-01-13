@@ -84,10 +84,10 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
         },
     ];
     let sessionId = props.sessionId;
-    let isCollapsed = fn_coll_config(sessionId);
+    let isCollapsed_config = fn_coll_config(sessionId);
     let isCollapsed_output = fn_coll_output(sessionId);
 
-    let onColl = (v: boolean) => {
+    let onColl_config = (v: boolean) => {
         FN_GetDispatch()(
             RuntimeStatusSlice.actions.setCollapseConfig({
                 sessionId,
@@ -103,6 +103,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
             }),
         );
     };
+    let isColl = isCollapsed_config
     let rightActions: ButtonProps[] = [
         {
             icon: "duplicate",
@@ -125,27 +126,36 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
             text: "",
             title: Dot("i8q8tb", "Configure WorkFlow for Input"),
         },
-
         {
-            icon: "export",
-            intent: isCollapsed_output ? "none" : "success",
-            // title: Dot("Fy217", "Configure Text Transformer"),
-            title: Dot("G3MJN", "Show Output Panel"),
-            className: isCollapsed_output ? "" : "btn-lime",
-            onClick: () => {
+            icon: "console",
+            intent: isColl ? "none" : "success",
+            className: isColl ? "" : "btn-lime",
+            onClick() {
                 onColl_output(!isCollapsed_output);
-            },
+                onColl_config(!isCollapsed_config);
+            }
         },
-        {
-            icon: "cog",
-            intent: isCollapsed ? "none" : "success",
-            // title: Dot("Fy217", "Configure Text Transformer"),
-            title: Dot("Fy217", "Configure this Tool"),
-            className: isCollapsed ? "" : "btn-lime",
-            onClick: () => {
-                onColl(!isCollapsed);
-            },
-        },
+
+        // {
+        //     icon: "export",
+        //     intent: isCollapsed_output ? "none" : "success",
+        //     // title: Dot("Fy217", "Configure Text Transformer"),
+        //     title: Dot("G3MJN", "Show Output Panel"),
+        //     className: isCollapsed_output ? "" : "btn-lime",
+        //     onClick: () => {
+        //         onColl_output(!isCollapsed_output);
+        //     },
+        // },
+        // {
+        //     icon: "cog",
+        //     intent: isCollapsed ? "none" : "success",
+        //     // title: Dot("Fy217", "Configure Text Transformer"),
+        //     title: Dot("Fy217", "Configure this Tool"),
+        //     className: isCollapsed ? "" : "btn-lime",
+        //     onClick: () => {
+        //         onColl(!isCollapsed);
+        //     },
+        // },
 
     ];
     return (

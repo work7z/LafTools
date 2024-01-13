@@ -1,0 +1,107 @@
+
+import { Alignment, Button, ButtonProps, FormGroup, InputGroup, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
+import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
+import {
+    VAL_CSS_TAB_TITLE_PANEL,
+    VAL_CSS_CONTROL_PANEL,
+} from "../../../../../../../../types/workbench-types";
+import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
+import { Dot } from "../../../../../../../../utils/TranslationUtils";
+import { FN_GetDispatch } from "../../../../../../../../nocycle";
+import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
+import _ from "lodash";
+import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
+import { findLastIndex } from "lodash";
+import { useEffect, useState } from "react";
+import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
+import AlertUtils from "../../../../../../../../utils/AlertUtils";
+import { SysTabPane } from "../../../../../../../../components/SysTabPane";
+import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER, LabelValuePair } from "../../../../../../../../types/constants";
+import exportUtils from "../../../../../../../../utils/ExportUtils";
+import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
+import { fn_format_description } from "../../../../../../../../types/workbench-fn";
+import { CommonTransformerProps } from "./types";
+import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../types/purejs-types-READ_ONLY";
+import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "./hooks";
+import FormGenPanel, { FormGenItem } from "../../../../../../../../components/FormGenPanel";
+
+export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
+    let crtRuntimeStatus = props.crtRuntimeStatus
+    let toolTabIndex = crtRuntimeStatus.toolTabIndex || "output"
+    let sessionId = props.sessionId;
+    let extVM = props.extVM
+    let actions = extVM?.Actions
+    let arr: any[] = []
+    for (let i = 0; i < 100; i++) {
+        arr.push(<div>test {i}</div>)
+    }
+    let toolList = [
+        //
+    ];
+    let generalList: FormGenItem[] = [
+        {
+            label: Dot("YuQqTX", "Auto Run?"),
+            helperText: Dot("YuQTX", "Whether to run the transformer automatically when the input text is changed."),
+            genEleConfig: {
+                type: "switch",
+            }
+        },
+        {
+            label: Dot("6AumW", "Default Action"),
+            helperText: Dot("nxJC7", "The default action to be executed when the transformer is performed."),
+            genEleConfig: {
+                type: "select",
+                selectList: (actions || []).map(x => {
+                    return {
+                        label: x.LabelByInit,
+                        value: x.Id
+                    } as LabelValuePair
+                })
+            }
+        }
+    ]
+    let finalShowContent = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
+    let pdValue = 'p-2'
+    if (toolTabIndex == "tools") {
+        finalShowContent = <FormGenPanel list={generalList}></FormGenPanel >
+    } else if (toolTabIndex == "output") {
+        pdValue = 'p-0'
+        finalShowContent = <div className="w-full h-full overflow-auto">
+            <GenCodeMirror
+                placeholder={Dot("y_9YM", "Output will be displayed here.")}
+                bigTextId={props.outputBigTextId}
+            ></GenCodeMirror>
+        </div>
+    }
+    return <div className="h-full overflow-auto " style={{
+        padding: '1px'
+    }}>
+        <Navbar>
+            <Navbar.Group>
+                <Navbar.Heading>
+                    {/* Page: <strong>{''}</strong> */}
+                    {Dot("z-o28we", "Process Panel")}
+                </Navbar.Heading>
+            </Navbar.Group>
+            <Navbar.Group align={Alignment.RIGHT}>
+                <Tabs
+                    animate={true}
+                    fill={true}
+                    id="navbar"
+                    large={false}
+                    onChange={(v) => {
+                        FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: v as Val_ToolTabIndex }))
+                    }}
+                    selectedTabId={toolTabIndex}
+                >
+                    <Tab id="output" icon="tick" title={Dot("FjYbR", "Output")} />
+                    <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(toolList)} />
+                    <Tab id="history" icon="history" title={Dot("sHoxxW", "History")} />
+                </Tabs>
+            </Navbar.Group>
+        </Navbar>
+        <div style={{ height: `calc(100% - 51px)`, overflow: 'auto' }} className={pdValue}>
+            {finalShowContent}
+        </div>
+    </div>
+}

@@ -19,5 +19,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
+import { AppOptViewMode as AppOptViewMode } from ".";
 
-export type CommonTransformerProps = CommonTransformerPassProp & {};
+export type CommonTransformerProps = CommonTransformerPassProp & {
+    crtOptMode: AppOptViewMode
+};

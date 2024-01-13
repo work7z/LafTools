@@ -41,11 +41,15 @@ import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSl
 import { fn_format_description } from "../../../../../../../../types/workbench-fn";
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
-import { TransofrmerWithRuntime, controlBarHeight, fn_coll_config, useCurrentActiveStyle } from "./hooks";
-import TextTransformerControl from "./TextTransformerControl";
-import TextTransformerOutput from "./TextTransformerOutput";
-import TextTransformerConfig from "./TextTransformerConfig";
+import { TransofrmerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
+import TextTransformerControl from "./SideControl";
+import TextTransformerOutput from "./unused/PanelOutput";
+import TextTransformerConfig from "./unused/PanelConfig";
 import LoadingText from "../../../../../../../../components/LoadingText";
+import { Allotment, AllotmentHandle } from "allotment";
+import PanelMain from "./PanelMain";
+
+export type AppOptViewMode = "fixed" | "float"
 
 export default (props: CommonTransformerProps) => {
   let sessionId = props.sessionId;
@@ -75,6 +79,14 @@ export default (props: CommonTransformerProps) => {
       v
     }
   }).v;
+  // let crtOptMode: TextOptMode = "fixed"
+  let crtOptMode: AppOptViewMode = ((): AppOptViewMode => {
+    return "float"
+  })()
+  let isFixedMode = crtOptMode === "fixed"
+  let isFloatMode = !isFixedMode
+
+
 
   useEffect(() => {
     FN_GetDispatch()(
@@ -82,13 +94,14 @@ export default (props: CommonTransformerProps) => {
         sessionId,
         value: {
           latestViewPanelId: "output",
-          toolTabIndex: "general",
-          collapseConfig: true,
-          collapseOutput: true,
+          toolTabIndex: "output",
+          collapseConfig: false,
+          collapseOutput: false,
         },
       }),
     )
   }, [])
+  let isCollapsed_config = fn_coll_config(sessionId);
   if (!crtRuntimeStatus) {
     return <LoadingText></LoadingText>
   }
@@ -96,23 +109,39 @@ export default (props: CommonTransformerProps) => {
   return (
     <div key={sessionId} className="w-full h-full relative">
       {/* onProcess={fn_notifyTextChange} */}
-      <TextTransformerControl crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerControl>
+      <TextTransformerControl crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerControl>
       <div
         style={{
           height: bodyHeight,
         }}
         className="w-full overflow-auto"
       >
-        <GenCodeMirror
-          lineWrap
-          placeholder={desc || Dot("xPHqP", "The description is not yet defined.")}
-          language="javascript"
-          bigTextId={inputBigTextId}
-          onTextChange={fn_notifyTextChange}
-        ></GenCodeMirror>
+        <Allotment
+          vertical
+        >
+          <Allotment.Pane>
+            <GenCodeMirror
+              lineWrap
+              placeholder={desc || Dot("xPHqP", "The description is not yet defined.")}
+              language="javascript"
+              bigTextId={inputBigTextId}
+              onTextChange={fn_notifyTextChange}
+            ></GenCodeMirror>
+
+          </Allotment.Pane>
+          {isCollapsed_config ? '' :
+            <Allotment.Pane>
+              <PanelMain crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></PanelMain>
+            </Allotment.Pane>
+          }
+        </Allotment>
       </div>
-      <TextTransformerOutput crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerOutput>
-      <TextTransformerConfig crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerConfig>
+      {
+        isFixedMode ? [
+          <TextTransformerOutput crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerOutput>,
+          <TextTransformerConfig crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerConfig>
+        ] : []
+      }
     </div>
   );
 };

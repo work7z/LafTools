@@ -4,7 +4,7 @@
 [x] terminal basic support  
 [] align version list with GitHub tags
 [x] support using local API server
-[] correct langauge name zh_CN and zh_HK to zh-hans and zh-hant 
+[] correct langauge name zh_CN and zh_HK to zh-hans and zh-hant
 [] provide a floating positioned button on the corner of editor, up or down depending on the y value.
 [] check if browser side is able to process all tools that we need. (so unbelievable, cool)
 [] when I click bottom button, the panel should also turn into active style.
@@ -16,6 +16,7 @@
 [] support providing keyboard on SysTabPane by pressing keys, just like JetBrains, and a yellow div will be accordingly displayed.
 [] account login in move to separte page, not in user intiialization page
 [] calculate line numbers in your project, provide satistic report
+[x] provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
 
 # low priorities
 
