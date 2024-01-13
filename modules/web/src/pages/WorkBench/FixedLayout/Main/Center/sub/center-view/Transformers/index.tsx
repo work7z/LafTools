@@ -72,6 +72,7 @@ export default (props: CommonTransformerProps) => {
         collapseOutput: false,
       }),
     );
+    FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: "output" }))
   }
   let crtRuntimeStatus = exportUtils.useSelector((x) => {
     let v = x.runtimeStatus.toolOutputStatusMap[sessionId];
