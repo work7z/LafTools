@@ -25,6 +25,12 @@ dockerDir=$distDir/docker
 [ -d $dockerDir ] && rm -rf $dockerDir
 mkdir -p $dockerDir
 
+# building LafTools with dev commands
+build-cmd(){
+    echo "[I] building cmd"
+
+    echo "[I] built cmd"
+}
 
 build-core(){
     platformName=$1
@@ -170,6 +176,7 @@ docker-all(){
 
 # [BEGIN]
 # build core and fe
+build-cmd
 build-res
 build-fe 
 build-be
