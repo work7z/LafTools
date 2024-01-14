@@ -2,7 +2,10 @@ import { ExtensionVM } from '../types/purejs-types-READ_ONLY'
 import gutils from '../utils/GlobalUtils';
 import Chef from './core/Chef.mjs'
 import Utils from './core/Utils.mjs';
+import setupApp from './setupApp.ts'
 import DefaultMJS from './core/config/modules/Default.tsx'
+
+setupApp()
 
 export type ProcessReturnType = {
     result: string;
@@ -12,10 +15,6 @@ export type ProcessReturnType = {
 let chefInst = new Chef()
 gutils.ExposureIt("chef1", chefInst)
 gutils.ExposureIt("DefaultMJS", DefaultMJS)
-let a = new DefaultMJS.ToBase64()
-let ipt = Utils.strToArrayBuffer("ok12345")
-let b = a.run(ipt, [])
-gutils.ExposureIt("ProcessedValue", b)
 
 
 let LibIndex = {
@@ -24,8 +23,11 @@ let LibIndex = {
         extVM: ExtensionVM | undefined,
         extId: string | undefined
     }): Promise<ProcessReturnType> => {
+        let inst = new DefaultMJS.ToBase64()
+        let ipt = Utils.strToArrayBuffer(originalValue)
+        let result = inst.run(ipt, [])
         return {
-            result: originalValue + "_test"
+            result: result
         }
     }
 }
