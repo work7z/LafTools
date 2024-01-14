@@ -8,6 +8,7 @@
     "dev": "vite",
     "start": "sh ./start.sh",
     "build": "sh ./build.sh",
+    "visualize": "npx vite-bundle-visualizer",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --debug hmr",
     "preview": "vite preview"
   },
@@ -201,6 +202,7 @@
     "ua-parser-js": "^1.0.34",
     "unorm": "^1.6.0",
     "utf8": "^3.0.0",
+    "vite-bundle-visualizer": "^1.0.0",
     "vite-plugin-top-level-await": "^1.4.1",
     "vite-plugin-wasm": "^3.3.0",
     "vkbeautify": "^0.99.3",
