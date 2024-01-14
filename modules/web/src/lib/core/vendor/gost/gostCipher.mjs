@@ -34,7 +34,8 @@
 
 import GostRandom from './gostRandom.mjs';
 
-import crypto from 'crypto'
+// import crypto from 'crypto';
+var crypto = require('crypto')
 
 /*
 * Initial parameters and common algortithms of GOST 28147-89

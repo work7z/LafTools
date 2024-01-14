@@ -6,7 +6,7 @@
 
 import Operation from "../Operation.mjs";
 import Utils from "../Utils.mjs";
-import unzip from "zlibjs/bin/unzip.min.js";
+var unzip = require( "zlibjs/bin/unzip.min.js")
 
 const Zlib = unzip.Zlib;
 

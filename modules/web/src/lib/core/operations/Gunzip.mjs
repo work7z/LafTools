@@ -5,7 +5,9 @@
  */
 
 import Operation from "../Operation.mjs";
-import gunzip from "zlibjs/bin/gunzip.min.js";
+// import gunzip from "zlibjs/bin/gunzip.min.js";
+var gunzip = require("zlibjs/bin/gunzip.min.js");
+
 
 const Zlib = gunzip.Zlib;
 

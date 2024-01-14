@@ -8,7 +8,8 @@ import Operation from "../Operation.mjs";
 import OperationError from "../errors/OperationError.mjs";
 import Utils from "../Utils.mjs";
 import {isImage} from "../lib/FileType.mjs";
-import jimp from "jimp";
+// import jimp from "jimp";
+var jimp = require('jimp')
 
 /**
  * Split Colour Channels operation

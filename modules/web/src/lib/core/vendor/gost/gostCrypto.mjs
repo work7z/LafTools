@@ -35,7 +35,8 @@
 import GostRandom from './gostRandom.mjs';
 import gostEngine from './gostEngine.mjs';
 
-import crypto from 'crypto'
+// import crypto from 'crypto';
+var crypto = require('crypto')
 
 /*
 * Algorithm normalization

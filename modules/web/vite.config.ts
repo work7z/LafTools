@@ -10,8 +10,8 @@ import builtins from 'rollup-plugin-node-builtins';
 const builtinsPlugin = builtins({crypto: true});
 builtinsPlugin.name = 'builtins';
 
-import wasm from "vite-plugin-wasm";
-import topLevelAwait from "vite-plugin-top-level-await";
+// import wasm from "vite-plugin-wasm";
+// import topLevelAwait from "vite-plugin-top-level-await";
 import commonjs from '@rollup/plugin-commonjs';
 
 
@@ -20,8 +20,8 @@ import commonjs from '@rollup/plugin-commonjs';
 export default defineConfig({
   plugins: [
     commonjs(),
-    wasm(),
-    topLevelAwait(),
+    // wasm(),
+    // topLevelAwait(),
     builtinsPlugin,
     react({
     // jsxRuntime: 'classic',

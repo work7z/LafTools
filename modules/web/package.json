@@ -7,7 +7,7 @@
     "postinstall": "patch-package",
     "dev": "vite",
     "start": "sh ./start.sh",
-    "build": "tsc && vite build",
+    "build": "sh ./build.sh",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --debug hmr",
     "preview": "vite preview"
   },

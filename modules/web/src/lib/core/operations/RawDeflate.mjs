@@ -6,7 +6,7 @@
 
 import Operation from "../Operation.mjs";
 import {COMPRESSION_TYPE} from "../lib/Zlib.mjs";
-import rawdeflate from "zlibjs/bin/rawdeflate.min.js";
+var rawdeflate = require( "zlibjs/bin/rawdeflate.min.js");
 
 const Zlib = rawdeflate.Zlib;
 

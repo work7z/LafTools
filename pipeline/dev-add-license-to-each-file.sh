@@ -55,7 +55,7 @@ if grep -q "Example" "$file_path"; then
 fi
 
 # check if the file contains "Copyright", if yes then continue
-if grep -q "Copyright" "$file"; then
+if grep -q "LafTools -" "$file"; then
     # echo "skip the Copyright content"
     continue
 fi

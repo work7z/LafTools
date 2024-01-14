@@ -31,7 +31,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-import crypto from 'crypto';
+// import crypto from 'crypto';
+var crypto = require('crypto')
 
 
 /**

@@ -36,7 +36,8 @@
  import GostRandom from './gostRandom.mjs';
  import GostDigest from './gostDigest.mjs';
 
- import crypto from 'crypto';
+ // import crypto from 'crypto';
+var crypto = require('crypto')
 
     /*
      * Predefined curves and params collection

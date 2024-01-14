@@ -9,7 +9,8 @@ import OperationError from "../errors/OperationError.mjs";
 import Utils from "../Utils.mjs";
 import { isImage } from "../lib/FileType.mjs";
 import { toBase64 } from "../lib/Base64.mjs";
-import jimp from "jimp";
+// import jimp from "jimp";
+var jimp = require('jimp')
 
 /**
  * View Bit Plane operation

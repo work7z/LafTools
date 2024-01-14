@@ -38,7 +38,8 @@
 
 import GostRandom from './gostRandom.mjs';
 import GostCipher from './gostCipher.mjs';
-import crypto from 'crypto';
+// import crypto from 'crypto';
+var crypto = require('crypto')
 
 /*
     * GOST R 34.11

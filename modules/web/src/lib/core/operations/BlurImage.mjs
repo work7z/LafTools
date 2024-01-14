@@ -10,7 +10,8 @@ import { isWorkerEnvironment } from "../Utils.mjs";
 import { isImage } from "../lib/FileType.mjs";
 import { toBase64 } from "../lib/Base64.mjs";
 import { gaussianBlur } from "../lib/ImageManipulation.mjs";
-import jimp from "jimp";
+// import jimp from "jimp";
+var jimp = require('jimp')
 
 /**
  * Blur Image operation

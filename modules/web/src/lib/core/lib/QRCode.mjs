@@ -10,7 +10,8 @@ import OperationError from "../errors/OperationError.mjs";
 import jsQR from "jsqr";
 import qr from "qr-image";
 import Utils from "../Utils.mjs";
-import jimp from "jimp";
+// // import jimp from "jimp";
+var jimp = require('jimp')
 
 /**
  * Parses a QR code image from an image

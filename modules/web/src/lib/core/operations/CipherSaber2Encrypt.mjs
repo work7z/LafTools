@@ -5,7 +5,8 @@
  */
 
 import Operation from "../Operation.mjs";
-import crypto from "crypto";
+// import crypto from "crypto";
+var crypto = require('crypto')
 import { encode } from "../lib/CipherSaber2.mjs";
 import Utils from "../Utils.mjs";
 

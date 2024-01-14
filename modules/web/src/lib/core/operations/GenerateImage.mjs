@@ -10,7 +10,8 @@ import Utils from "../Utils.mjs";
 import {isImage} from "../lib/FileType.mjs";
 import {toBase64} from "../lib/Base64.mjs";
 import {isWorkerEnvironment} from "../Utils.mjs";
-import jimp from "jimp";
+// import jimp from "jimp";
+var jimp = require('jimp')
 
 /**
  * Generate Image operation

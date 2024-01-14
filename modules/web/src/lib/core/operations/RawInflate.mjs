@@ -6,7 +6,7 @@
 
 import Operation from "../Operation.mjs";
 import {INFLATE_BUFFER_TYPE} from "../lib/Zlib.mjs";
-import rawinflate from "zlibjs/bin/rawinflate.min.js";
+var rawinflate =require( "zlibjs/bin/rawinflate.min.js")
 
 const Zlib = rawinflate.Zlib;
 

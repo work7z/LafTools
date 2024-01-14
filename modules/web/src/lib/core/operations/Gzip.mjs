@@ -6,7 +6,9 @@
 
 import Operation from "../Operation.mjs";
 import {COMPRESSION_TYPE, ZLIB_COMPRESSION_TYPE_LOOKUP} from "../lib/Zlib.mjs";
-import gzip from "zlibjs/bin/gzip.min.js";
+// import gzip from "zlibjs/bin/gzip.min.js";
+var gzip = require("zlibjs/bin/gzip.min.js")
+
 
 const Zlib = gzip.Zlib;
 
