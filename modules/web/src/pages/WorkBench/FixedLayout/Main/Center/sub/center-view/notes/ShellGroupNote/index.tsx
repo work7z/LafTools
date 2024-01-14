@@ -392,7 +392,7 @@ export default () => {
                                             <GenCodeMirror
                                                 bigTextId="test-example"
                                                 language="shell"
-                                                lineWrap={false}
+                                                lineWrap={true}
                                                 onTextChange={(val) => {
                                                     //
                                                 }}
@@ -433,7 +433,7 @@ export default () => {
                                             <GenCodeMirror
                                                 bigTextId={bigTextId}
                                                 language="shell"
-                                                lineWrap={false}
+                                                lineWrap={true}
                                                 onTextChange={(val) => {
                                                     if (activeCommand) {
                                                         activeCommand.content = val
