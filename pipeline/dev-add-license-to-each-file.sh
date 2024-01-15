@@ -108,3 +108,4 @@ done
 addLicense "$LAFTOOLS_ROOT" "go"
 addLicense "$LAFTOOLS_ROOT/modules" "scss"
 addLicense "$LAFTOOLS_ROOT/modules" "tsx"
+addLicense "$LAFTOOLS_ROOT/modules" "mjs"

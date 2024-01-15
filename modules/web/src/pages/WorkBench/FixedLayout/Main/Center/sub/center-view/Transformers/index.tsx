@@ -31,7 +31,7 @@ import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
@@ -50,6 +50,9 @@ import { Allotment, AllotmentHandle } from "allotment";
 import PanelMain from "./PanelMain";
 import LibProcessEntryPoint from '../../../../../../../../lib/entrypoint'
 import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions/transformer_action";
+import loadLib from "../../../../../../../../lib/core/loadLib";
+import Operation from "../../../../../../../../lib/core/Operation.mjs";
+import gutils from "../../../../../../../../utils/GlobalUtils";
 
 export type AppOptViewMode = "fixed" | "float"
 
@@ -91,8 +94,37 @@ export default (props: CommonTransformerProps) => {
   })()
   let isFixedMode = crtOptMode === "fixed"
   let isFloatMode = !isFixedMode
-
-
+  let operaRef = useRef<Operation | null>(null)
+  let [loadingStatic, setLoadingStatic] = useState(true)
+  let [loadingProgressRate, setLoadingProgressRate] = useState(0)
+  useEffect(() => {
+    let tmp_loadingProgressRate = 0
+    let loopFn = () => {
+      let maxVal = 98.16;
+      if (tmp_loadingProgressRate >= maxVal) {
+        clearInterval(timer)
+        return
+      }
+      tmp_loadingProgressRate = Math.min(maxVal, tmp_loadingProgressRate + (Math.random() * 4))
+      setLoadingProgressRate(tmp_loadingProgressRate)
+    }
+    let timer = setInterval(loopFn, 89);
+    (async () => {
+      try {
+        setLoadingProgressRate(0)
+        setLoadingStatic(true)
+        // await gutils.sleep(30000)
+        let opera = await loadLib.load()
+        operaRef.current = opera
+        window.clearInterval(timer)
+      } finally {
+        setLoadingStatic(false)
+      }
+    })()
+    return () => {
+      window.clearInterval(timer)
+    }
+  }, [])
 
   useEffect(() => {
     FN_GetDispatch()(
@@ -111,7 +143,36 @@ export default (props: CommonTransformerProps) => {
   if (!crtRuntimeStatus) {
     return <LoadingText></LoadingText>
   }
-
+  if (loadingStatic) {
+    // let progressedRect = '▬'
+    // let progressedRectEmpty = '▭'
+    // let showTextSize = 50
+    // let progressedRectWidth = showTextSize
+    // let progressedRectEmptyWidth = showTextSize
+    // let progressedRectWidthRate = loadingProgressRate / 100 * progressedRectWidth
+    // let progressedRectEmptyWidthRate = progressedRectWidth - progressedRectWidthRate
+    // let progressedRectWithText = progressedRect.repeat(progressedRectWidthRate)
+    // let progressedRectEmptyWithText = progressedRectEmpty.repeat(progressedRectEmptyWidthRate)
+    // let loadingBarWithText = progressedRectWithText + progressedRectEmptyWithText
+    // "Loading resources, please be patient..."
+    // "Retrieving static resources, hold on..."
+    // "Fetching resources, please wait..."
+    // "Static resources are being loaded, please stand by..."
+    // "We're getting the resources ready for you, hang tight..."
+    // (loadingBarWithText) + '\n' +
+    let pre = loadingProgressRate.toFixed(2)
+    let b = pre.split('.')
+    if (b.length == 1) {
+      pre += '.00'
+    }
+    // if (b[0].length == 1) {
+    //   pre = '0' + pre
+    // }
+    desc = Dot("OqqGx2qg", "Loading the static resources, please wait...") + "\n" + (
+      Dot("AkXgF", "In Progress: {0}%", pre)
+    ) + "\n" + (
+        '')
+  }
   return (
     <div key={sessionId} className="w-full h-full relative">
       {/* onProcess={fn_notifyTextChange} */}

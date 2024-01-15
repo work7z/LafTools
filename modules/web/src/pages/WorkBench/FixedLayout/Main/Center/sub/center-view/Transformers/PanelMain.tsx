@@ -29,10 +29,10 @@ import { CommonTransformerPassProp } from "../../../../../../../../types/workben
 import { Dot } from "../../../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
 import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
-import _ from "lodash";
+import _, { set } from "lodash";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
@@ -44,6 +44,8 @@ import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "./hooks";
 import FormGenPanel, { FormGenItem } from "../../../../../../../../components/FormGenPanel";
+import loadLib from "../../../../../../../../lib/core/loadLib";
+import Operation from "../../../../../../../../lib/core/Operation.mjs";
 
 export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
@@ -82,6 +84,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     ]
     let finalShowContent = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
     let pdValue = 'p-2'
+    let loadingStatic = false
     if (toolTabIndex == "tools") {
         finalShowContent = <FormGenPanel list={generalList}></FormGenPanel >
     } else if (toolTabIndex == "output") {
@@ -93,6 +96,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
             ></GenCodeMirror>
         </div>
     }
+    let loadingTextClz = "text-blue-500 dark:text-blue-300"
     return <div className="h-full overflow-auto " style={{
         padding: '1px'
     }}>
@@ -102,18 +106,23 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
 
                     {/* Page: <strong>{''}</strong> */}
                     <Icon intent={
-                        crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
-                    } icon={crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" : "code"} iconSize={20} className={"mr-2  " + (
-                        crtRuntimeStatus.processing ? " animate-spin " : ""
-                    )} />
+                        loadingStatic ? "success" :
+                            crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
+                    } icon={
+                        loadingStatic ? "changes" :
+                            crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" : "code"} iconSize={20} className={"mr-2  " + (
+                                crtRuntimeStatus.processing ? " animate-spin " : ""
+                            )} />
                     <span className={
-                        crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? "text-blue-500 " + (
-                            "dark:text-blue-300"
-                        ) : "text-gray-500"
+                        loadingStatic ? "" + (
+                            "text-lime-700 dark:text-lime-500"
+                        ) :
+                            crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? loadingTextClz : "  "
                     }>
                         {
-                            crtRuntimeStatus.processError ? Dot("jOXj0", "Opps, something went wrong.") :
-                                crtRuntimeStatus.processing ? Dot("zqiIoqXw", "Running computations...") : Dot("z-o28we", "Process Panel")}
+                            loadingStatic ? Dot("y_9YqM", "Loading static resources...") :
+                                crtRuntimeStatus.processError ? Dot("jOXj0", "Opps, something went wrong.") :
+                                    crtRuntimeStatus.processing ? Dot("zqiIoqXw", "Running computations...") : Dot("z-o28we", "Process Panel")}
                     </span>
                 </Navbar.Heading>
             </Navbar.Group>
