@@ -21,131 +21,57 @@
 package handlers
 
 import (
-	"encoding/json"
-	"errors"
-	"laftools-go/core/config"
-	"laftools-go/core/global"
 	"laftools-go/core/handlers/context"
 	"laftools-go/core/log"
+	"laftools-go/core/project/syspath"
 	"laftools-go/core/tools"
-	"path"
-	"path/filepath"
-	"strings"
 	"sync"
 
 	"github.com/gin-gonic/gin"
 )
 
 type WorkSpaceListByUserForm struct {
-	//
 }
 
-type EachWorkSpace struct {
-	Id       string
-	Label    string
-	Path     string
-	ShowPath string
-}
-type WorkSpaceStruct struct {
-	WorkSpaces []*EachWorkSpace
-}
-
-// lock for workspace
-// TODO: we use multiple instance to lock each user's workspace config file separately.
 var workspaceLock = &sync.Mutex{}
 
-func workSpace_GetOneByUser(c *gin.Context) {
+func getOneWorkspaceByUser(c *gin.Context) {
 	wc := context.NewWC(c)
 	workspaceId := c.Query("Id")
 	if workspaceId == "" {
 		ErrLa2(c, wc.Dot("eWfrs", "Id is required"))
 	}
-	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
-	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	workspaceConfigFile := syspath.GetUserWorkSpaceConfigFile(wc.GetUserID())
+	workspaceRes := syspath.GetWorkspaceStruct(workspaceConfigFile)
 	for _, each := range workspaceRes.WorkSpaces {
 		if each.Id == workspaceId || each.Path == workspaceId {
 			OKLa(c, DoValueRes(each))
 			return
 		}
 	}
-	OKLa(c, DoValueRes(EachWorkSpace{}))
+	OKLa(c, DoValueRes(syspath.EachWorkSpace{}))
 }
-func workSpace_ListByUser(c *gin.Context) {
+func listWorkspaceByUser(c *gin.Context) {
 	workspaceLock.Lock()
 	defer workspaceLock.Unlock()
 	wc := context.NewWC(c)
-	workspaceRes := getWorkspaceList(&wc)
+	workspaceRes := syspath.GetWorkspaceList(&wc)
 	// anyway, if no error then users will get his/her workspace as normal
 	OKLa(c, DoValueRes(workspaceRes))
 }
 
-var WS_DEFAULT_ID = "default"
-
-func getWorkspaceById(workspaceId string, wc *context.WebContext) (*EachWorkSpace, error) {
-	workspaceList := getWorkspaceList(wc)
-	// get workspace from workspaceList by id
-	var workspace *EachWorkSpace
-	for _, item := range workspaceList.WorkSpaces {
-		if item.Id == workspaceId {
-			workspace = item
-			break
-		}
-	}
-	if workspace == nil {
-		return nil, errors.New("workspace not found")
-	}
-	return workspace, nil
-}
-
-func getReducerSyncFileInWorkspace(workspace *EachWorkSpace, crtKey string) string {
-	return path.Join(
-		tools.MkdirFileWithStr(path.Join(workspace.Path, "_status", crtKey)),
-		"reducerSync.json",
-	)
-}
-
-func getWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
-	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
-	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
-	hasDefault := false
-	for _, item := range workspaceRes.WorkSpaces {
-		if item.Id == WS_DEFAULT_ID {
-			hasDefault = true
-		}
-	}
-	if !hasDefault {
-		defaultPath := config.GetDefaultWorkSpaceDir(wc.GetUserID())
-		addNewWorkspace(&EachWorkSpace{
-			Id:   WS_DEFAULT_ID,
-			Path: defaultPath,
-		}, wc.GinContext, *wc)
-		workspaceRes = getWorkspaceStruct(workspaceConfigFile)
-	}
-	for _, item := range workspaceRes.WorkSpaces {
-		// iterate workspaceRes, and take the last one of its Path according to current platform if Label is nil or empty, then assign it to Label
-		item.Path = tools.NormalizeDir(item.Path)
-		dir, file := filepath.Split(item.Path)
-		if strings.Trim(item.Label, "") == "" {
-			(item).Label = file
-		}
-		item.ShowPath = dir
-		item.ShowPath = strings.ReplaceAll(item.ShowPath, global.GetUserHomeDir(), "~")
-	}
-	return workspaceRes
-}
-
-func workspace_AddByUser(c *gin.Context) {
+func addWorkspaceByUser(c *gin.Context) {
 	workspaceLock.Lock()
 	defer workspaceLock.Unlock()
 	wc := context.NewWC(c)
-	var newSpace = &EachWorkSpace{}
+	var newSpace = &syspath.EachWorkSpace{}
 	c.BindJSON(newSpace)
 	// label and path cannot be empty
 	// if workspaceRes.WorkSpaces already have that same path, then error
 	// make sure no duplicate id
 	// if newSpace.Id exist, then replace
 	newSpace.Path = tools.NormalizeDir(newSpace.Path)
-	err := addNewWorkspace(newSpace, c, wc)
+	err := syspath.AddNewWorkspace(newSpace, c, wc)
 	if err != nil {
 		ErrLa(c, err)
 		return
@@ -153,46 +79,14 @@ func workspace_AddByUser(c *gin.Context) {
 	OKLa(c, DoValueRes("OK"))
 }
 
-func addNewWorkspace(newSpace *EachWorkSpace, c *gin.Context, wc context.WebContext) error {
-	newSpace.Path = strings.Trim(newSpace.Path, "")
-	if newSpace.Path == "" {
-		return errors.New(wc.Dot("IWLGS", "path cannot be empty"))
-	}
-	newSpace.Id = global.ShortShortUUID()
-	// if newSpace.Id == "" {
-	// 	return errors.New(wc.Dot("rj39U", "Id is required"))
-	// }
-	// check if Path exist
-	if tools.IsFileNonExist(newSpace.Path) {
-		return errors.New(wc.Dot("WXi6O", "Path does not exist, please check if your input is correct"))
-	}
-
-	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
-	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
-
-	for _, each := range workspaceRes.WorkSpaces {
-		if each.Path == newSpace.Path {
-			log.Ref().Debug("each.Path: ", each.Path)
-			return errors.New(wc.Dot("7jymU", "the file path is used by other workspace"))
-		}
-		if each.Id == newSpace.Id {
-			return errors.New(wc.Dot("cPzXD", "the id is used by other workspace, check id -> ", each.Id))
-		}
-	}
-
-	workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, newSpace)
-	tools.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
-	return nil
-}
-
 // DeleteWorkspaceByID deletes a workspace by its ID.
 func deleteWorkspaceByID(wc *context.WebContext, workspaceIDOrPath string) {
 	workspaceLock.Lock()
 	defer workspaceLock.Unlock()
 	// label and path cannot be empty
-	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
-	workspaceRes := getWorkspaceStruct(workspaceConfigFile)
-	var newWorkSpaces []*EachWorkSpace
+	workspaceConfigFile := syspath.GetUserWorkSpaceConfigFile(wc.GetUserID())
+	workspaceRes := syspath.GetWorkspaceStruct(workspaceConfigFile)
+	var newWorkSpaces []*syspath.EachWorkSpace
 	for _, each := range workspaceRes.WorkSpaces {
 		if each.Id != workspaceIDOrPath && each.Path != workspaceIDOrPath {
 			newWorkSpaces = append(newWorkSpaces, each)
@@ -203,9 +97,9 @@ func deleteWorkspaceByID(wc *context.WebContext, workspaceIDOrPath string) {
 	tools.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 }
 
-// workspace_DeleteByUser is the handler for deleting a workspace by user.
-func workspace_DeleteByUser(c *gin.Context) {
-	var newSpace EachWorkSpace
+// deleteWorkspaceByUser is the handler for deleting a workspace by user.
+func deleteWorkspaceByUser(c *gin.Context) {
+	var newSpace syspath.EachWorkSpace
 	c.BindJSON(&newSpace)
 	wc := context.NewWC(c)
 	if newSpace.Id == "" {
@@ -214,22 +108,4 @@ func workspace_DeleteByUser(c *gin.Context) {
 	}
 	deleteWorkspaceByID(&wc, newSpace.Id)
 	OKLa(c, DoValueRes("OK"))
-}
-
-func getWorkspaceStruct(workspaceConfigFile string) *WorkSpaceStruct {
-	var workspaceRes *WorkSpaceStruct = &WorkSpaceStruct{
-		WorkSpaces: []*EachWorkSpace{},
-	}
-	s, e := tools.ReadFileAsBytes(workspaceConfigFile)
-	if e == nil {
-		e2 := json.Unmarshal(s, workspaceRes)
-		if e2 != nil {
-
-		} else {
-			log.Ref().Error(e2)
-		}
-	} else {
-		log.Ref().Error(e)
-	}
-	return workspaceRes
 }

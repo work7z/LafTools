@@ -101,7 +101,7 @@ let SyncStateUtils = {
   retrieveIDFromServer: async (eachReducerName: string) => {
     let def = syncReducerDefinitions[eachReducerName];
     let queryStr = {
-      name: eachReducerName,
+      Name: eachReducerName,
       ...def,
     };
     let val = await AjaxUtils.DoLocalRequestWithNoThrow({
@@ -162,7 +162,7 @@ let SyncStateUtils = {
           async (newState) => {
             let def = syncReducerDefinitions[eachReducerName];
             let obj = {
-              name: eachReducerName,
+              Name: eachReducerName,
               ...def,
             };
             let r = (await AjaxUtils.DoLocalRequestWithNoThrow({

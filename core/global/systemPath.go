@@ -35,10 +35,10 @@ func GetUserHomeDir() string {
 }
 
 func GetAppHomeConfigDirectory() string {
-	return tools.MkdirFileWithStr(path.Join(GetAppHomeDirectory(), "config"))
+	return tools.MkdirDirWithStr(path.Join(GetAppHomeDirectory(), "config"))
 }
 func GetAppHomeTempDirectory() string {
-	return tools.MkdirFileWithStr(path.Join(GetAppHomeDirectory(), "temp"))
+	return tools.MkdirDirWithStr(path.Join(GetAppHomeDirectory(), "temp"))
 }
 
 func getProjectNameAffix() string {
@@ -53,7 +53,7 @@ func getProjectNameAffix() string {
 }
 
 func GetAppHomeDirName() string {
-	return ".laf-tools-home" + getProjectNameAffix()
+	return ".laf" + getProjectNameAffix() + "-tools-home"
 }
 
 func GetDefaultAppConfigDir() string {
@@ -62,18 +62,18 @@ func GetDefaultAppConfigDir() string {
 	return DefaultAppConfigDir
 }
 func GetAppDataDirName() string {
-	return "LafTools" + getProjectNameAffix()
+	return "L" + getProjectNameAffix() + "LafTools"
 }
 
 func GetAppHomeDirectory() string {
 	pathname := path.Join(GetUserHomeDir(), GetAppHomeDirName())
-	e := tools.MkdirFile(pathname)
+	e := tools.MkdirDir(pathname)
 	tools.ShouldNoErr(e, "~/"+GetAppHomeDirName()+" cannot be created")
 	return pathname
 }
 func GetAppDataDirectory() string {
 	pathname := path.Join(GetUserHomeDir(), GetAppDataDirName())
-	e := tools.MkdirFile(pathname)
+	e := tools.MkdirDir(pathname)
 	tools.ShouldNoErr(e, "~/"+GetAppDataDirName()+" cannot be created")
 	return pathname
 }

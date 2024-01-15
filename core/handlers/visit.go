@@ -25,6 +25,8 @@ import (
 	"laftools-go/core/global"
 	"laftools-go/core/handlers/context"
 	"laftools-go/core/project/base/ext"
+	"laftools-go/core/project/sysmodel"
+	"laftools-go/core/project/syspath"
 	"laftools-go/core/tools"
 	"strings"
 	"time"
@@ -34,20 +36,20 @@ import (
 
 func getInitInfoSystem(c *gin.Context) {
 	OKLa(c, DoValueRes(gin.H{
-		"UserConfigFile": config.GetUserConfigFile(),
-		"UserConfigDir":  config.GetUserConfigDir(),
-		"UserPWDir":      config.GetUserPWDir(),
+		"UserConfigFile": syspath.GetUserConfigFile(),
+		"UserConfigDir":  syspath.GetUserConfigDir(),
+		"UserPWDir":      syspath.GetUserPWDir(),
 	}))
 }
 
 type ResFoundByToken struct {
-	Obj   *config.UserConfig
+	Obj   *sysmodel.UserConfig
 	Found bool
 	Msg   string
 }
 
 func getUsernameAsResult(c *gin.Context) {
-	a, _ := config.GetUserConfigFromFile()
+	a, _ := syspath.GetUserConfigFromFile()
 	usernames := []string{}
 	for _, uc := range a {
 		usernames = append(usernames, uc.Username)
@@ -67,8 +69,8 @@ func visitGetByToken(c *gin.Context) {
 		}))
 		return
 	}
-	a, _ := config.GetUserConfigFromFile()
-	item, item_f := config.GetItemByToken(a, token)
+	a, _ := syspath.GetUserConfigFromFile()
+	item, item_f := config.GetUserItemByToken(a, token)
 	if item_f {
 		OKLa(c, DoValueRes(ResFoundByToken{
 			Obj:   item,
@@ -85,7 +87,7 @@ func visitGetByToken(c *gin.Context) {
 }
 
 func getAdminInitStatus(c *gin.Context) {
-	a, _ := config.GetUserConfigFromFile()
+	a, _ := syspath.GetUserConfigFromFile()
 	anyAdmin := false
 	if a != nil {
 		for _, userConfig := range a {
@@ -119,7 +121,7 @@ func createAdminInitStatus(c *gin.Context) {
 		ErrLa2(c, wc.Dot("2157", "Admin Token is required, please use valid initialization URL to starts with."))
 		return
 	}
-	userConfigMap, e2 := config.GetUserConfigFromFile()
+	userConfigMap, e2 := syspath.GetUserConfigFromFile()
 	if e2 != nil {
 		ErrLa(c, e2)
 		return
@@ -129,7 +131,7 @@ func createAdminInitStatus(c *gin.Context) {
 		return
 	}
 	// THIS LOGIC need to align with the logic in server.go
-	userConfig := config.UserConfig{
+	userConfig := sysmodel.UserConfig{
 		Id:             global.UUID(),
 		Username:       form.Username,
 		Password:       config.EncryptUserPassword(form.Password),
@@ -139,7 +141,7 @@ func createAdminInitStatus(c *gin.Context) {
 		InvitationCode: global.UUID(),
 	}
 	userConfigMap[userConfig.Id] = userConfig
-	err := config.SetUserConfigIntoFile(userConfigMap)
+	err := syspath.SetUserConfigIntoFile(userConfigMap)
 	if HasError(wc, err) {
 		return
 	}

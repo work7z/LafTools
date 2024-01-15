@@ -77,7 +77,7 @@ export const apiSlice = createApi({
         };
       },
     }),
-    getWorkspaceListByUserId: build.query<
+    GetWorkspaceListByUserId: build.query<
       PayloadValueData<WorkSpaceStruct>,
       any
     >({

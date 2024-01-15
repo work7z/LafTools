@@ -26,6 +26,8 @@ import (
 	"laftools-go/core/global"
 	"laftools-go/core/handlers/context"
 	"laftools-go/core/log"
+	"laftools-go/core/project/sysmodel"
+	"laftools-go/core/project/syspath"
 	"laftools-go/core/tools"
 	"os"
 	"strings"
@@ -72,7 +74,7 @@ func verifyUserServlet(c *gin.Context) {
 	if HasError(wc, e) {
 		return
 	}
-	userConfig, err := config.GetUserConfigFromFile()
+	userConfig, err := syspath.GetUserConfigFromFile()
 	if HasError(wc, err) {
 		return
 	}
@@ -124,7 +126,7 @@ func getAnyKeyByUserId(c *gin.Context) {
 	wc := context.WebContext{GinContext: c}
 	userId := wc.GetUserID()
 	key := c.Query("key")
-	str, err := config.ReadUserAnyKeyFromFile(userId, key)
+	str, err := syspath.ReadUserAnyKeyFromFile(userId, key)
 	if HasError(wc, err) {
 		return
 	}
@@ -194,7 +196,7 @@ func createNewAccount(c *gin.Context) {
 		return
 	}
 	anyAck := false
-	userConfigMap, err := config.GetUserConfigFromFile()
+	userConfigMap, err := syspath.GetUserConfigFromFile()
 	if err != nil {
 		HasError(wc, err)
 		return
@@ -213,7 +215,7 @@ func createNewAccount(c *gin.Context) {
 		HasErrorS(wc, wc.Dot("1722", "The token for creating new user is incorrect"))
 		return
 	} else {
-		userConfig := config.UserConfig{
+		userConfig := sysmodel.UserConfig{
 			Id:             global.UUID(),
 			Username:       u1,
 			Password:       config.EncryptUserPassword(p1),
@@ -223,7 +225,7 @@ func createNewAccount(c *gin.Context) {
 			InvitationCode: "",
 		}
 		userConfigMap[userConfig.Id] = userConfig
-		err := config.SetUserConfigIntoFile(userConfigMap)
+		err := syspath.SetUserConfigIntoFile(userConfigMap)
 		if HasError(wc, err) {
 			return
 		}
@@ -231,7 +233,7 @@ func createNewAccount(c *gin.Context) {
 	}
 }
 
-func FN_verifyUserStatus(userConfigMap map[string]config.UserConfig, u1 string, wc context.WebContext) bool {
+func FN_verifyUserStatus(userConfigMap map[string]sysmodel.UserConfig, u1 string, wc context.WebContext) bool {
 	_, foundPrev := config.GetItemByUserName(userConfigMap, u1)
 	if foundPrev {
 		HasErrorS(wc, wc.Dot("1753", "Username is already used in system."))
@@ -257,7 +259,7 @@ func resetPasswordByOldPassword(c *gin.Context) {
 		IncompleteParam(wc)
 		return
 	}
-	userConfigMap, err := config.GetUserConfigFromFile()
+	userConfigMap, err := syspath.GetUserConfigFromFile()
 	if HasError(wc, err) {
 		return
 	}
@@ -273,7 +275,7 @@ func resetPasswordByOldPassword(c *gin.Context) {
 		return
 	}
 	obj.Password = np
-	err2 := config.SetUserConfigIntoFile(userConfigMap)
+	err2 := syspath.SetUserConfigIntoFile(userConfigMap)
 	if HasError(wc, err2) {
 		return
 	}

@@ -106,7 +106,7 @@ func RunCMD(cmd *cobra.Command, args []string) {
 
 func initTestDB() {
 	// mkdir tools.CodeGenGoRoot+"/tmp
-	tools.MkdirFile(tools.LafToolsAppBaseDir + "/tmp")
+	tools.MkdirDir(tools.LafToolsAppBaseDir + "/tmp")
 
 	db, err := sql.Open("sqlite3", tools.LafToolsAppBaseDir+"/tmp/test.db")
 	if err != nil {

@@ -23,7 +23,7 @@ package tools
 import (
 	"bufio"
 	"encoding/json"
-	"log"
+	"laftools-go/core/log"
 	"os"
 	"path"
 	"strings"
@@ -31,6 +31,23 @@ import (
 	"github.com/dablelv/cyan/conv"
 	"github.com/dablelv/cyan/file"
 )
+
+func GetMapByFile[T any](userConfigFile string, res T) (T, error) {
+	if !IsFileExist(userConfigFile) {
+		return res, nil
+	}
+	a, err := ReadFileAsBytes(userConfigFile)
+	if err != nil {
+		log.Ref().Error("Unable to read the config file", userConfigFile)
+		return res, err
+	}
+	err2 := json.Unmarshal(a, &res)
+	if err2 != nil {
+		log.Ref().Error("Unable to parse the config file", userConfigFile)
+		return res, err
+	}
+	return res, nil
+}
 
 func IsDockerMode() bool {
 	return strings.Index(Mode, "docker") != -1
@@ -50,11 +67,14 @@ func IsFileExist(filename string) bool {
 		return a
 	}
 }
-func MkdirFileWithStr(filename string) string {
-	_ = MkdirFile(filename)
+func MkdirDirWithStr(filename string) string {
+	err := MkdirDir(filename)
+	if err != nil {
+		log.Ref().Warn("err", err)
+	}
 	return filename
 }
-func MkdirFile(filename string) error {
+func MkdirDir(filename string) error {
 	if IsFileExist(filename) {
 		return nil
 	}
@@ -62,18 +82,18 @@ func MkdirFile(filename string) error {
 }
 func ShouldNoErr(e error, label string) {
 	if e != nil {
-		log.Panic("FATAL_ERROR:" + label + " -> " + e.Error())
+		log.Ref().Panic("FATAL_ERROR:" + label + " -> " + e.Error())
 	}
 }
 
 func ShouldShowWarning(e error, label string) {
 	if e != nil {
-		log.Print("FATAL_WARNING:" + label + " -> " + e.Error())
+		log.Ref().Warn("FATAL_WARNING:" + label + " -> " + e.Error())
 	}
 }
 func JoinWithMkdir(arg ...string) error {
 	newpath := path.Join(arg...)
-	err := MkdirFile(newpath)
+	err := MkdirDir(newpath)
 	if err != nil {
 		return err
 	}
@@ -149,7 +169,7 @@ func ReadPropertiesFile(filename string) (map[string]string, error) {
 	}
 	file, err := os.Open(filename)
 	if err != nil {
-		log.Panic(err)
+		log.Ref().Panic(err)
 		return nil, err
 	}
 	defer file.Close()
@@ -169,7 +189,7 @@ func ReadPropertiesFile(filename string) (map[string]string, error) {
 	}
 
 	if err := scanner.Err(); err != nil {
-		log.Panic(err)
+		log.Ref().Panic(err)
 		return nil, err
 	}
 

@@ -22,27 +22,15 @@ package config
 
 import (
 	"encoding/json"
-	"laftools-go/core/global"
 	"laftools-go/core/log"
+	"laftools-go/core/project/sysmodel"
+	"laftools-go/core/project/syspath"
 	"laftools-go/core/tools"
 	"path"
 	"strings"
-	"time"
-
-	file2 "github.com/dablelv/cyan/file"
 )
 
-type UserConfig struct {
-	Id             string
-	Username       string
-	Password       string
-	Token          string
-	CreateTime     time.Time
-	IsAdmin        bool
-	InvitationCode string
-}
-
-func GetUserPassword(userConfig *UserConfig) string {
+func GetUserPassword(userConfig *sysmodel.UserConfig) string {
 	pwFile := GetUserPasswordPatchFile(*userConfig)
 	log.Ref().Debug("check pw file : ", pwFile)
 	if tools.IsFileNonExist(pwFile) {
@@ -60,22 +48,11 @@ func GetUserPassword(userConfig *UserConfig) string {
 		}
 	}
 }
-
-func GetUserPasswordPatchFile(userConfig UserConfig) string {
-	return path.Join(GetUserPWDir(), userConfig.Username+".txt")
-}
-func GetUserConfigDir() string {
-	return path.Dir(GetUserConfigFile())
+func GetUserPasswordPatchFile(userConfig sysmodel.UserConfig) string {
+	return path.Join(syspath.GetUserPWDir(), userConfig.Username+".txt")
 }
 
-type UserConfigMap = map[string]UserConfig
-
-func GetUserConfigFromFile() (UserConfigMap, error) {
-	userConfigFile := GetUserConfigFile()
-	var res UserConfigMap = make(UserConfigMap)
-	return getMapByFile(userConfigFile, res)
-}
-func GetItemByUserName(userConfig UserConfigMap, submittedUsername string) (*UserConfig, bool) {
+func GetItemByUserName(userConfig sysmodel.UserConfigMap, submittedUsername string) (*sysmodel.UserConfig, bool) {
 	for _, config := range userConfig {
 		if config.Username == submittedUsername {
 			return &config, true
@@ -84,8 +61,8 @@ func GetItemByUserName(userConfig UserConfigMap, submittedUsername string) (*Use
 	return nil, false
 }
 
-func GetItemByTokenDirectly(token string) (*UserConfig, bool) {
-	userConfig, e := GetUserConfigFromFile()
+func GetItemByTokenDirectly(token string) (*sysmodel.UserConfig, bool) {
+	userConfig, e := syspath.GetUserConfigFromFile()
 	if e != nil {
 		return nil, false
 	}
@@ -97,7 +74,7 @@ func GetItemByTokenDirectly(token string) (*UserConfig, bool) {
 	return nil, false
 }
 
-func GetItemByToken(userConfig UserConfigMap, token string) (*UserConfig, bool) {
+func GetUserItemByToken(userConfig sysmodel.UserConfigMap, token string) (*sysmodel.UserConfig, bool) {
 	for _, config := range userConfig {
 		if config.Token == token {
 			return &config, true
@@ -106,9 +83,8 @@ func GetItemByToken(userConfig UserConfigMap, token string) (*UserConfig, bool) 
 	return nil, false
 }
 
-// /////////////////////////////
 func WriteUserAnyKeyFromFile(userId string, key string, item_str string) error {
-	file := GetUserAnyKeyFile(userId, key)
+	file := syspath.GetUserAnyKeyFile(userId, key)
 	var item interface{}
 	err := json.Unmarshal([]byte(item_str), &item)
 	if err != nil {
@@ -119,79 +95,4 @@ func WriteUserAnyKeyFromFile(userId string, key string, item_str string) error {
 		return err2
 	}
 	return nil
-}
-
-func ReadUserAnyKeyFromFile(userId string, key string) (string, error) {
-	file := GetUserAnyKeyFile(userId, key)
-	if tools.IsFileNonExist(file) {
-		return "", nil
-	}
-	a, b := tools.ReadFileAsBytes(file)
-	if b != nil {
-		return "", b
-	}
-	return string(a), nil
-}
-
-///////////////////////////////
-
-func GetPidConfigFromFile() (map[string]map[string]any, error) {
-	file := getPIDConfigFile()
-	var res map[string]map[string]any = make(map[string]map[string]any)
-	return getMapByFile(file, res)
-}
-func SetUserConfigIntoFile(b UserConfigMap) error {
-	for _, config := range b {
-		config.Username = strings.TrimSpace(config.Username)
-	}
-	file := GetUserConfigFile()
-	file2.CreateFile(file)
-	err := tools.WriteObjectIntoFileWithMergeChecking(file, b)
-	return err
-}
-
-func getMapByFile[T any](userConfigFile string, res T) (T, error) {
-	if !tools.IsFileExist(userConfigFile) {
-		return res, nil
-	}
-	a, err := tools.ReadFileAsBytes(userConfigFile)
-	if err != nil {
-		log.Ref().Error("Unable to read the config file", userConfigFile)
-		return res, err
-	}
-	err2 := json.Unmarshal(a, &res)
-	if err2 != nil {
-		log.Ref().Error("Unable to parse the config file", userConfigFile)
-		return res, err
-	}
-	return res, nil
-}
-
-func GetUserAnyKeyFile(userId string, key string) string {
-	userMyFolder := GetTargetUserOwnFolder(userId)
-	return (path.Join(userMyFolder, key+".json"))
-}
-func GetUserForgeFile(userId string) string {
-	userMyFolder := GetTargetUserOwnFolder(userId)
-	finalFolder := tools.MkdirFileWithStr(path.Join(userMyFolder, "forge"))
-	return (path.Join(finalFolder, "forge.json"))
-}
-func GetUserWorkSpaceConfigFile(userId string) string {
-	return GetUserAnyKeyFile(userId, "workspace-config")
-}
-func formatUserId(userId string) string {
-	return userId
-	// return userId[0:8]
-}
-func GetDefaultWorkSpaceDir(userId string) string {
-	return tools.MkdirFileWithStr(path.Join(global.GetAppDataDirectory(), formatUserId(userId), "workspace", "laf-tools"))
-}
-
-func GetTargetUserOwnFolder(userId string) string {
-	userMyFolder := tools.MkdirFileWithStr(path.Join(global.GetAppHomeConfigDirectory(), "users", userId))
-	return userMyFolder
-}
-
-func getPIDConfigFile() string {
-	return (path.Join(global.GetAppHomeConfigDirectory(), "pid.json"))
 }

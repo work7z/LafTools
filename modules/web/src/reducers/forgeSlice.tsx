@@ -113,7 +113,7 @@ const forgeSlice = createSlice({
     ...SyncStateUtils.getSyncStateReducers("forge", {
       RunOnInit: true,
       RequireUserId: true,
-      RequireWorkspaceId: false,
+      RequireWorkspaceId: true,
     }),
     updateFieldNameValue(
       state,

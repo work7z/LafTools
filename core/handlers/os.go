@@ -22,9 +22,9 @@ package handlers
 
 import (
 	"io"
-	"laftools-go/core/config"
 	"laftools-go/core/global"
 	"laftools-go/core/handlers/context"
+	"laftools-go/core/project/syspath"
 	"laftools-go/core/tools"
 	"net/http"
 	"os"
@@ -56,7 +56,7 @@ func readTempFile(c *gin.Context) {
 	}
 
 	// Set the path to the file
-	tempDir := config.GetAppTempUploadDir()
+	tempDir := syspath.GetAppTempUploadDir()
 	filepath := filepath.Join(tempDir, filename)
 
 	// Check if the file exists and is not a directory
@@ -91,7 +91,7 @@ func checkIfFileExist(c *gin.Context) {
 func mkdirDir(c *gin.Context) {
 	var openForm = &OsOpenForm{}
 	c.BindJSON(openForm)
-	OKLa(c, DoValueRes(tools.MkdirFileWithStr(openForm.Dir)))
+	OKLa(c, DoValueRes(tools.MkdirDirWithStr(openForm.Dir)))
 }
 
 func openDir(c *gin.Context) {
@@ -130,7 +130,7 @@ func uploadTempFile(c *gin.Context) {
 	defer file.Close()
 
 	// Create a new file on the server
-	tempDir := config.GetAppTempUploadDir()
+	tempDir := syspath.GetAppTempUploadDir()
 
 	// clean historical files under tempDir which was created 1 hours ago
 	global.CleanHistoricalFilesByHour(tempDir, 1)

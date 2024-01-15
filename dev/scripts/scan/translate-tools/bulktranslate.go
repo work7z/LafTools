@@ -84,7 +84,7 @@ func main() {
 	json.Unmarshal(rawJSONPathStr, &rawMap)
 	json.Unmarshal(configJSONPathStr, &configMap)
 	log.Ref().Debug(rawMap)
-	cacheDir := nocycle.MkdirFileWithStr(path.Join(translateResultDir, "cache", id))
+	cacheDir := nocycle.MkdirDirWithStr(path.Join(translateResultDir, "cache", id))
 	crtResultMap := make(map[string]string)
 	// for each rawMap
 	for k, v := range rawMap {
@@ -95,7 +95,7 @@ func main() {
 		// write md5 file
 		// write translate result to file
 		md5Str := fmt.Sprintf("%x", md5.Sum([]byte(k+v)))
-		nocycle.MkdirFileWithStr(path.Join(cacheDir, eachLang))
+		nocycle.MkdirDirWithStr(path.Join(cacheDir, eachLang))
 		md5FilePath := (path.Join(cacheDir, eachLang, md5Str))
 		var resultForCurrentLang string
 		fmt.Println("md5FilePath: ", md5FilePath)

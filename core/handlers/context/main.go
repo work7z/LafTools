@@ -23,7 +23,6 @@ package context
 import (
 	"encoding/json"
 	"errors"
-	"laftools-go/core/config"
 	translation "laftools-go/core/i18n"
 	"laftools-go/core/tools"
 	"net/http"
@@ -143,13 +142,6 @@ func (wc *WebContext) GetHeaderClientToken() string {
 	return token
 }
 
-func (wc *WebContext) GetUserOwnConfigFolder() string {
-	userId := wc.GetUserID()
-	return config.GetTargetUserOwnFolder(userId)
-}
-func (wc *WebContext) GetUserWorkSpaceConfigFile() string {
-	return config.GetUserWorkSpaceConfigFile(wc.GetUserID())
-}
 func (wc *WebContext) DotWithoutScan(arg ...string) string {
 	if len(arg) == 0 {
 		return ""

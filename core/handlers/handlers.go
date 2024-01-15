@@ -191,10 +191,10 @@ func SetupRoutes(r *gin.Engine) {
 	// Workspace routes
 	workspaceRoutes := r_api.Group("/workspace/users")
 	{
-		workspaceRoutes.GET("/one", workSpace_GetOneByUser)
-		workspaceRoutes.GET("/list", workSpace_ListByUser)
-		workspaceRoutes.POST("/add", workspace_AddByUser)
-		workspaceRoutes.POST("/delete", workspace_DeleteByUser)
+		workspaceRoutes.GET("/one", getOneWorkspaceByUser)
+		workspaceRoutes.GET("/list", listWorkspaceByUser)
+		workspaceRoutes.POST("/add", addWorkspaceByUser)
+		workspaceRoutes.POST("/delete", deleteWorkspaceByUser)
 	}
 
 	// WebSocket routes

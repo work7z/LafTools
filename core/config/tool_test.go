@@ -21,11 +21,12 @@
 package config
 
 import (
+	"laftools-go/core/project/syspath"
 	"testing"
 )
 
 func TestGetUserConfigFromFile(t *testing.T) {
-	got, err := GetUserConfigFromFile()
+	got, err := syspath.GetUserConfigFromFile()
 	if err != nil {
 		t.Fatal("Should no err", err)
 	} else {

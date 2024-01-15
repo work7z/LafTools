@@ -24,6 +24,7 @@ import (
 	"encoding/json"
 	"laftools-go/core/global"
 	"laftools-go/core/log"
+	"laftools-go/core/project/sysmodel"
 	"laftools-go/core/tools"
 	"path"
 	"strings"
@@ -32,13 +33,8 @@ import (
 	"github.com/natefinch/atomic"
 )
 
-type SystemInfo struct {
-	HasAdminInit    bool      `json:"HasAdminInit"`
-	LastUpdatedTime time.Time `json:"LastUpdatedTime"`
-}
-
-func GetCurrentSystemInfo() *SystemInfo {
-	r := &SystemInfo{
+func GetCurrentSystemInfo() *sysmodel.SystemInfo {
+	r := &sysmodel.SystemInfo{
 		HasAdminInit:    false,
 		LastUpdatedTime: time.Now(),
 	}

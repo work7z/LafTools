@@ -29,6 +29,8 @@ import (
 	"laftools-go/core/handlers/config"
 	"laftools-go/core/log"
 	"laftools-go/core/project/base/env"
+	"laftools-go/core/project/sysmodel"
+	"laftools-go/core/project/syspath"
 	"laftools-go/core/tools"
 	"net/http"
 	"path"
@@ -111,7 +113,7 @@ func LaunchLafToolsServer() {
 	if tools.IsOnlineMode() {
 		// align with visit.go
 		// set password directly
-		userConfig := gconfig.UserConfig{
+		userConfig := sysmodel.UserConfig{
 			Id:             global.UUID(),
 			Username:       "root", // default value
 			Password:       gconfig.EncryptUserPassword("1234"),
@@ -120,13 +122,13 @@ func LaunchLafToolsServer() {
 			IsAdmin:        true,
 			InvitationCode: global.UUID(),
 		}
-		userConfigMap, e2 := gconfig.GetUserConfigFromFile()
+		userConfigMap, e2 := syspath.GetUserConfigFromFile()
 		if e2 != nil {
 			tools.ShouldNoErr(e2, "get user config from file")
 			return
 		}
 		userConfigMap[userConfig.Id] = userConfig
-		err := gconfig.SetUserConfigIntoFile(userConfigMap)
+		err := syspath.SetUserConfigIntoFile(userConfigMap)
 		if err != nil {
 			tools.ShouldNoErr(err, "set user config into file")
 		}
@@ -183,7 +185,7 @@ type RefStatus struct {
 }
 
 func GetRefDir() string {
-	refDir := tools.MkdirFileWithStr(path.Join(tools.LafToolsHomeConfigDir, "ref"))
+	refDir := tools.MkdirDirWithStr(path.Join(tools.LafToolsHomeConfigDir, "ref"))
 	return refDir
 }
 

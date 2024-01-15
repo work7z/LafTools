@@ -21,13 +21,7 @@
 package log
 
 import (
-	"encoding/json"
-	"io/ioutil"
-	"laftools-go/core/global"
-	"laftools-go/core/project/base/env"
-	"laftools-go/core/tools"
 	"os"
-	"path"
 
 	"github.com/sirupsen/logrus"
 )
@@ -39,24 +33,25 @@ const TYPE_WARN = "WARN"
 var InternalLog = logrus.New()
 
 func Ref() *logrus.Logger {
-	shouldJSON := env.ShouldPrintLogAsJSON
-	if shouldJSON {
-		// InternalLog.as JSON instead of the default ASCII formatter.
-		InternalLog.SetFormatter(&logrus.JSONFormatter{})
-		// Output to stdout instead of the default stderr
-		// Can be any io.Writer, see below for File example
-		InternalLog.SetOutput(os.Stdout)
-		// Only InternalLog.the warning severity or above.
-		InternalLog.SetLevel(logrus.InfoLevel)
-	} else {
-		// while dev mode, using text formatter by default
-		InternalLog.SetFormatter(&logrus.TextFormatter{})
-		// Output to stdout instead of the default stderr
-		// Can be any io.Writer, see below for File example
-		InternalLog.SetOutput(os.Stdout)
-		// Only InternalLog.the warning severity or above.
-		InternalLog.SetLevel(logrus.DebugLevel)
-	}
+	// shouldJSON := env.ShouldPrintLogAsJSON
+	// if shouldJSON {
+	// 	// InternalLog.as JSON instead of the default ASCII formatter.
+	// 	InternalLog.SetFormatter(&logrus.JSONFormatter{})
+	// 	// Output to stdout instead of the default stderr
+	// 	// Can be any io.Writer, see below for File example
+	// 	InternalLog.SetOutput(os.Stdout)
+	// 	// Only InternalLog.the warning severity or above.
+	// 	InternalLog.SetLevel(logrus.InfoLevel)
+	// } else {
+	// }
+	// while dev mode, using text formatter by default
+	InternalLog.SetFormatter(&logrus.TextFormatter{})
+	// Output to stdout instead of the default stderr
+	// Can be any io.Writer, see below for File example
+	InternalLog.SetOutput(os.Stdout)
+	// Only InternalLog.the warning severity or above.
+	InternalLog.SetLevel(logrus.DebugLevel)
+
 	return InternalLog
 }
 
@@ -73,15 +68,17 @@ type GlobalLogCollector struct {
 var instGlobalLogCollector = GlobalLogCollector{}
 
 func PublishLogToExternalLog(item GlobalLogType) {
-	instGlobalLogCollector.List = append(instGlobalLogCollector.List, item)
-	a, err := json.Marshal(instGlobalLogCollector)
-	if err == nil {
-		filepath := path.Join(global.GetAppHomeDirectory(), "publish-to-external.json")
-		err2 := ioutil.WriteFile(filepath, a, 0755)
-		if err2 != nil {
-			InternalLog.Warnf("Publish-log-pid.json unable to access")
-		}
-	} else {
-		tools.ShouldNoErr(err, "Unable to publish log to external log")
-	}
+	// instGlobalLogCollector.List = append(instGlobalLogCollector.List, item)
+	// a, err := json.Marshal(instGlobalLogCollector)
+	// if err == nil {
+	// 	filepath := path.Join(global.GetAppHomeDirectory(), "publish-to-external.json")
+	// 	err2 := ioutil.WriteFile(filepath, a, 0755)
+	// 	if err2 != nil {
+	// 		InternalLog.Warnf("Publish-log-pid.json unable to access")
+	// 	}
+	// } else {
+	// 	if err != nil {
+	// 		panic("Unable to publish log to external log")
+	// 	}
+	// }
 }

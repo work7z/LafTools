@@ -22,6 +22,7 @@ package handlers
 
 import (
 	"laftools-go/core/handlers/context"
+	"laftools-go/core/project/syspath"
 	"testing"
 )
 
@@ -47,18 +48,18 @@ func TestAddNewWorkspace(t *testing.T) {
 	// deleteWorkspaceByID(&wc, newSpace.Path)
 	// deleteWorkspaceByID(&wc, newSpace.Id)
 
-	// err := addNewWorkspace(newSpace, c, wc)
+	// err := AddNewWorkspace(newSpace, c, wc)
 
 	// // Assert that there is no error
 	// assert.NoError(t, err)
 
 	// // Assert that the workspace was added to the configuration file
 	// workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
-	// workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	// workspaceRes := GetWorkspaceStruct(workspaceConfigFile)
 	// assert.Contains(t, workspaceRes.WorkSpaces, *newSpace)
 
 	// // Try adding the same workspace again
-	// err = addNewWorkspace(newSpace, c, wc)
+	// err = AddNewWorkspace(newSpace, c, wc)
 
 	// // Assert that an error is returned
 	// expectedErr := errors.New(wc.Dot("2nKgN", "the file path is used by other workspace"))
@@ -85,7 +86,7 @@ func TestDeleteWorkspaceByID(t *testing.T) {
 
 	// // Add workspaces to the configuration file
 	// workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()
-	// workspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	// workspaceRes := GetWorkspaceStruct(workspaceConfigFile)
 	// workspaceRes.WorkSpaces = append(workspaceRes.WorkSpaces, workspaceToDelete, workspaceToKeep)
 	// tools.WriteObjIntoFile(workspaceConfigFile, workspaceRes)
 
@@ -93,7 +94,7 @@ func TestDeleteWorkspaceByID(t *testing.T) {
 	// deleteWorkspaceByID(&wc, workspaceToDelete.Id)
 
 	// // Assert that the workspace was deleted from the configuration file
-	// updatedWorkspaceRes := getWorkspaceStruct(workspaceConfigFile)
+	// updatedWorkspaceRes := GetWorkspaceStruct(workspaceConfigFile)
 	// assert.NotContains(t, updatedWorkspaceRes.WorkSpaces, *workspaceToDelete)
 	// assert.Contains(t, updatedWorkspaceRes.WorkSpaces, *workspaceToKeep)
 }
@@ -105,7 +106,7 @@ func TestGetWorkspaceList(t *testing.T) {
 	}
 
 	// Call the function
-	workspaceList := getWorkspaceList(&wc)
+	workspaceList := syspath.GetWorkspaceList(&wc)
 	t.Log("workspaceList", workspaceList)
 
 }

@@ -21,7 +21,7 @@
 
 package config
 
-import gtools "laftools-go/core/tools"
+import "laftools-go/core/tools"
 
 const CONFIG_URL_PUBLIC_BASE_PREFIX string = "/api"
 const CLOUD_URL_APP_CLOUD_PREFIX string = "/x-v2-api"
@@ -54,7 +54,7 @@ func Fn_GetAllowURLDefinitions() []string {
 	}
 	// append CONFIG_URL_ADMIN_URLS and CONFIG_URL_ADMIN_URLS into filesList
 	urlList = append(urlList, CONFIG_URL_VISIT_URLS...)
-	if gtools.IsDevMode {
+	if tools.IsDevMode {
 		urlList = append(urlList, "/ws/dev-hmr")
 	}
 	return urlList

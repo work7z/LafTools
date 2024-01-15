@@ -22,11 +22,12 @@ package config
 
 import (
 	"laftools-go/core/global"
+	"laftools-go/core/project/sysmodel"
 	"laftools-go/core/tools"
 )
 
-func SaveCurrentSystemInfo(systemInfo *SystemInfo) {
+func SaveCurrentSystemInfo(systemInfo *sysmodel.SystemInfo) {
 	str, err := global.ToJSONStr(systemInfo)
-	tools.ShouldNoErr(err, "x2k1394s")
+	tools.ShouldNoErr(err, "system info is not valid")
 	_ = global.WriteIntoFileAtomic(GetCurrentSystemInfoFile(), str)
 }

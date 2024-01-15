@@ -21,28 +21,37 @@
 package handlers
 
 import (
-	"encoding/json"
 	"errors"
-	"laftools-go/core/config"
 	"laftools-go/core/handlers/context"
 	"laftools-go/core/log"
+	"laftools-go/core/project/syspath"
 	"laftools-go/core/tools"
 	"sync"
+	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/samber/lo"
 )
 
 var globalValMap map[string]interface{} = make(map[string]interface{})
 var lockAPI = &sync.Mutex{}
-var updateIdx = 0
 
-// workspace
-var workspaceValMap map[string]map[string]interface{} = make(map[string]map[string]interface{})
-var lockForWorkspace = &sync.Mutex{}
+// var incrementForGlobalVal = 0
+
+type syncReqForm struct {
+	RequireWorkspaceId bool
+	RequireUserId      bool
+	Name               string `json:"name"`
+}
 
 func contactKeyByReq(c *gin.Context) (string, error) {
 	wc := context.NewWC(c)
-	reducerName := c.Query("name")
+	syncForm := &syncReqForm{}
+	err := c.BindQuery(&syncForm)
+	if err != nil {
+		return "", err
+	}
+	reducerName := syncForm.Name // c.Query("name")
 	if reducerName == "" {
 		return "", errors.New(wc.Dot("DSXi7", "Reducer name is empty"))
 	}
@@ -50,8 +59,8 @@ func contactKeyByReq(c *gin.Context) (string, error) {
 	userId := wc.GetUserID()
 	workspaceId := wc.GetWorkspaceID()
 	// workspace is required for some reducers
-	RequireWorkspaceId := c.Query("RequireWorkspaceId") == "true"
-	RequireUserId := c.Query("RequireUserId") == "true"
+	RequireWorkspaceId := syncForm.RequireWorkspaceId // c.Query("RequireWorkspaceId") == "true"
+	RequireUserId := syncForm.RequireUserId           // c.Query("RequireUserId") == "true"
 	if RequireUserId && userId == "" {
 		return "", errors.New(wc.Dot("q5_aE", "UserID is empty"))
 	}
@@ -65,61 +74,6 @@ func contactKeyByReq(c *gin.Context) (string, error) {
 		finalKey = finalKey + workspaceId
 	}
 	return finalKey, nil
-}
-
-func getReducerStoreMap(c *gin.Context, crtKey string) (map[string]interface{}, error) {
-	wc := context.NewWC(c)
-	workspaceId := wc.GetWorkspaceID()
-	// workspace is required for some reducers
-	RequireWorkspaceId := c.Query("RequireWorkspaceId") == "true"
-	if RequireWorkspaceId {
-		e := readWorkspaceMapValIfNeeded(workspaceId, wc, crtKey)
-		if e != nil {
-			return nil, e
-		}
-		return globalValMap, nil
-	} else {
-		return globalValMap, nil
-	}
-}
-
-func writeWorkspaceMapIntoFile(workspaceId string, wc context.WebContext, outputStr string, crtKey string) error {
-	lockForWorkspace.Lock()
-	defer lockForWorkspace.Unlock()
-	workspace, workspaceErr := getWorkspaceById(workspaceId, &wc)
-	if workspaceErr != nil {
-		return workspaceErr
-	}
-	reducerSyncFile := getReducerSyncFileInWorkspace(workspace, crtKey)
-	err := tools.WriteFileAsStr(reducerSyncFile, outputStr)
-	return err
-}
-
-func readWorkspaceMapValIfNeeded(workspaceId string, wc context.WebContext, crtKey string) error {
-	lockForWorkspace.Lock()
-	defer lockForWorkspace.Unlock()
-	workspace, workspaceErr := getWorkspaceById(workspaceId, &wc)
-	if workspaceErr != nil {
-		return workspaceErr
-	}
-	reducerSyncFile := getReducerSyncFileInWorkspace(workspace, crtKey)
-	str, err := tools.ReadFileAsStr(reducerSyncFile)
-	if err != nil {
-		log.Ref().Warn("unable to read reducer sync file: ", err)
-	} else {
-		// rename reducer sync file as *.bak
-		tools.CopyFile(reducerSyncFile, reducerSyncFile+".bak"+tools.GetRandomString(8))
-		if workspaceValMap[workspaceId] == nil {
-			workspaceValMap[workspaceId] = make(map[string]interface{})
-		}
-		ref := workspaceValMap[workspaceId]
-		// unmarhsla str to tmpReducerValueMap
-		err2 := json.Unmarshal([]byte(str), &ref)
-		if err2 != nil {
-			log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
-		}
-	}
-	return nil
 }
 
 func getSyncReducer(c *gin.Context) {
@@ -143,6 +97,12 @@ func getSyncReducer(c *gin.Context) {
 func saveSyncReducer(c *gin.Context) {
 	lockAPI.Lock()
 	defer lockAPI.Unlock()
+	syncForm := &syncReqForm{}
+	err := c.BindQuery(&syncForm)
+	if err != nil {
+		ErrLa2(c, err.Error())
+		return
+	}
 	// get reducer
 	crtKey, err := contactKeyByReq(c)
 	if err != nil {
@@ -155,69 +115,86 @@ func saveSyncReducer(c *gin.Context) {
 		ErrLa(c, err)
 		return
 	}
-	updateIdx++
 	// save state
-	mapVal, err := getReducerStoreMap(c, crtKey)
+	wc := context.NewWC(c)
+	workspaceId := wc.GetWorkspaceID()
+	mapVal, err := syspath.ReadSyncDataFromWorkspaceMap(workspaceId, wc, crtKey)
 	if err != nil {
 		ErrLa2(c, err.Error())
 		return
 	}
+
 	mapVal[crtKey] = state
-	// saveReducerStoreMap(c, crtKey)
-	wc := context.NewWC(c)
-	go func() {
-		// TODO: move query to other DTO
-		if c.Query("RequireWorkspaceId") == "true" {
-			writeWorkspaceMapIntoFile(wc.GetWorkspaceID(), context.NewWC(c), tools.ToJson(mapVal), crtKey)
-		}
-	}()
+
+	prevFn, ok := debouncedFnMap.Load(crtKey)
+	if !ok {
+		de, _ := lo.NewDebounce(1000*time.Millisecond, func() {
+			tmp1, tmp2 := debouncedValueMap.Load(crtKey)
+			if !tmp2 {
+				log.Ref().Warn("unknown crtKey: ", crtKey)
+				return
+			}
+			val := tmp1.(string)
+			syspath.WriteMapDataIntoWorkspaceFile(wc.GetWorkspaceID(), context.NewWC(c), val, crtKey)
+		})
+		debouncedFnMap.Store(crtKey, de)
+		prevFn = de
+	}
+
+	debouncedValueMap.Store(crtKey, tools.ToJson(state))
+	prevFn.(func())()
+
 	OKLa(c, DoValueRes("saved"))
+
 }
 
+var debouncedFnMap sync.Map = sync.Map{}
+var debouncedValueMap sync.Map = sync.Map{}
+
 func init() {
-	last_updateIdx := 0
-	// last_modifiedFile := 0
-	reducerSyncFile := config.GetCurrentReducerSyncFile()
-	if tools.IsFileExist(reducerSyncFile) {
-		str, err := tools.ReadFileAsStr(reducerSyncFile)
-		if err != nil {
-			log.Ref().Warn("unable to read reducer sync file: ", err)
-		} else {
-			// rename reducer sync file as *.bak
-			tools.CopyFile(reducerSyncFile, reducerSyncFile+".bak"+tools.GetRandomString(8))
-			// unmarhsla str to tmpReducerValueMap
-			err2 := json.Unmarshal([]byte(str), &globalValMap)
-			if err2 != nil {
-				log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
-			}
-		}
-	}
-	go func() {
-		// every 3 seconds, write tmpReducerValueMap to reducerSyncFile
-		for {
-			tools.Sleep(3000)
-			if last_updateIdx != updateIdx {
-				last_updateIdx = updateIdx
-				lockAPI.Lock()
-				tools.WriteFileAsStr(reducerSyncFile, tools.ToJson(globalValMap))
-				// last_modifiedFile = tools.GetFileLastModified(reducerSyncFile)
-				lockAPI.Unlock()
-			}
-			// if last_modifiedFile != tools.GetFileLastModified(reducerSyncFile) {
-			// 	last_modifiedFile = tools.GetFileLastModified(reducerSyncFile)
-			// 	str, err := tools.ReadFileAsStr(reducerSyncFile)
-			// 	if err != nil {
-			// 		log.Ref().Warn("unable to read reducer sync file: ", err)
-			// 	} else {
-			// 		// unmarhsla str to tmpReducerValueMap
-			// 		lockAPI.Lock()
-			// 		err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
-			// 		lockAPI.Unlock()
-			// 		if err2 != nil {
-			// 			log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
-			// 		}
-			// 	}
-			// }
-		}
-	}()
+	// last_updateIdx := 0
+	// // last_modifiedFile := 0
+	// reducerSyncFile := config.GetCurrentReducerSyncFile()
+	// if tools.IsFileExist(reducerSyncFile) {
+	// 	str, err := tools.ReadFileAsStr(reducerSyncFile)
+	// 	if err != nil {
+	// 		log.Ref().Warn("unable to read reducer sync file: ", err)
+	// 	} else {
+	// 		// rename reducer sync file as *.bak
+	// 		tools.CopyFile(reducerSyncFile, reducerSyncFile+".bak"+tools.GetRandomString(8))
+	// 		// unmarhsla str to tmpReducerValueMap
+	// 		err2 := json.Unmarshal([]byte(str), &globalValMap)
+	// 		if err2 != nil {
+	// 			log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
+	// 		}
+	// 	}
+	// }
+	// go func() {
+	// 	// every 3 seconds, write tmpReducerValueMap to reducerSyncFile
+	// 	for {
+	// 		tools.Sleep(3000)
+	// 		if last_updateIdx != incrementForGlobalVal {
+	// 			last_updateIdx = incrementForGlobalVal
+	// 			lockAPI.Lock()
+	// 			tools.WriteFileAsStr(reducerSyncFile, tools.ToJson(globalValMap))
+	// 			// last_modifiedFile = tools.GetFileLastModified(reducerSyncFile)
+	// 			lockAPI.Unlock()
+	// 		}
+	// 		// if last_modifiedFile != tools.GetFileLastModified(reducerSyncFile) {
+	// 		// 	last_modifiedFile = tools.GetFileLastModified(reducerSyncFile)
+	// 		// 	str, err := tools.ReadFileAsStr(reducerSyncFile)
+	// 		// 	if err != nil {
+	// 		// 		log.Ref().Warn("unable to read reducer sync file: ", err)
+	// 		// 	} else {
+	// 		// 		// unmarhsla str to tmpReducerValueMap
+	// 		// 		lockAPI.Lock()
+	// 		// 		err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
+	// 		// 		lockAPI.Unlock()
+	// 		// 		if err2 != nil {
+	// 		// 			log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
+	// 		// 		}
+	// 		// 	}
+	// 		// }
+	// 	}
+	// }()
 }
