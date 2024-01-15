@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import { Alignment, Button, ButtonProps, FormGroup, InputGroup, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, ButtonProps, FormGroup, Icon, InputGroup, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
     VAL_CSS_TAB_TITLE_PANEL,
@@ -98,9 +98,13 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     }}>
         <Navbar>
             <Navbar.Group>
-                <Navbar.Heading>
+                <Navbar.Heading >
+
                     {/* Page: <strong>{''}</strong> */}
-                    {Dot("z-o28we", "Process Panel")}
+                    <Icon icon="code" iconSize={20} className="mr-2" />
+                    <span>
+                        {Dot("z-o28we", "Process Panel")}
+                    </span>
                 </Navbar.Heading>
             </Navbar.Group>
             <Navbar.Group align={Alignment.RIGHT}>

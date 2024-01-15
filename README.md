@@ -15,7 +15,7 @@
 
 You may wonder why we are determined to develop this toolbox if there are numerous online tools available on the Internet.
 
-Indeed, most tools we have provided can be easily found on the Internet, such as codec, formatter, translation, QR Code, etc… However, it’s not the simplest and quickest approach to use these tools, in other words, not the most comfortable and efficient way.
+Indeed, most tools we have provided can be easily found on the Internet, such as codec, formatter, translation, QR Code, etc… However, it’s not the most comfortable and efficient approach to use these tools.
 
 Have you ever met the below issues while using those online tools?
 
@@ -37,18 +37,14 @@ If the answer to any of the above is yes, then you should consider trying our to
 - Can be used over the web and with Docker
 - Extra helpers such as notes, manuals, etc...
 
-
 # 🌠 Preview
 
 > LafTools is still under development, its UI, dependencies or prerequisites may changed as needed.
 
-
 ### Preview(English):
-
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-1.png?raw=true)
-
 
 ### Preview(Simplified Chinese|简体中文):
 
@@ -140,15 +136,13 @@ cd pipeline
 ./build-all.sh
 ```
 
+# 🌱 What's with the name?
 
-# 🌱 What's with the name? 
-
-#### *The Tools for Laffin' At Life* 
+#### _The Tools for Laffin' At Life_
 
 The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
 
 Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
-
 
 # 📑 Other Materials
 
@@ -157,8 +151,6 @@ Below are further materials that you can have a look if you'd like to learn more
 - [FAQ](./FAQ.md)
 - [CONTRIBUTION](./CONTRIBUTION.md)
 - [For China Developers](dev/notes/common/issues.md)
-
-
 
 # 🎷 Inspiration
 
@@ -169,7 +161,7 @@ This project is primarily inspired by the following musicians:
 - Khalil Fong
 - Li Rong Hao
 - Chet Atkins
-- Les Paul  
+- Les Paul
 - Tommy Emmanuel
 - Martin Taylor
 - Frédéric Chopin
@@ -187,7 +179,6 @@ Thank you.
 
 Mar. 20th, 2021  
 Ryan Laf
-
 
 # 🪪 License
 

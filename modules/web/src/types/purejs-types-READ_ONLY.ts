@@ -125,6 +125,7 @@ export type ExtensionVM = {
   Actions?: ExtensionAction[];
   DefaultRuntimeStatus?: ToolDefaultOutputType;
 };
+
 export type SubExtCategory = {
   Id: string;
   Label: TranslatePassArg;

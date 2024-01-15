@@ -85,9 +85,15 @@ func getSyncReducer(c *gin.Context) {
 		ErrLa2(c, err.Error())
 		return
 	}
-	reducer := globalValMap[crtKey]
+	wc := context.NewWC(c)
+	workspaceId := wc.GetWorkspaceID()
+	reducer, err := syspath.ReadSyncDataFromWorkspaceMap(workspaceId, wc, crtKey)
+	if err != nil {
+		ErrLa2(c, err.Error())
+		return
+	}
 	if reducer == nil {
-		ErrLa2(c, "Reducer not found")
+		ErrLa2(c, "Reducer not found, crtKey: "+crtKey)
 		return
 	}
 	// get state
@@ -117,18 +123,10 @@ func saveSyncReducer(c *gin.Context) {
 	}
 	// save state
 	wc := context.NewWC(c)
-	workspaceId := wc.GetWorkspaceID()
-	mapVal, err := syspath.ReadSyncDataFromWorkspaceMap(workspaceId, wc, crtKey)
-	if err != nil {
-		ErrLa2(c, err.Error())
-		return
-	}
-
-	mapVal[crtKey] = state
 
 	prevFn, ok := debouncedFnMap.Load(crtKey)
 	if !ok {
-		de, _ := lo.NewDebounce(1000*time.Millisecond, func() {
+		de, _ := lo.NewDebounce(3000*time.Millisecond, func() {
 			tmp1, tmp2 := debouncedValueMap.Load(crtKey)
 			if !tmp2 {
 				log.Ref().Warn("unknown crtKey: ", crtKey)
@@ -141,10 +139,14 @@ func saveSyncReducer(c *gin.Context) {
 		prevFn = de
 	}
 
+	syspath.WriteMapDataIntoWorkspaceFileForCache(wc.GetWorkspaceID(), context.NewWC(c), tools.ToJson(state), crtKey)
 	debouncedValueMap.Store(crtKey, tools.ToJson(state))
 	prevFn.(func())()
 
-	OKLa(c, DoValueRes("saved"))
+	OKLa(c, DoValueRes(gin.H{
+		"msg":    "saved",
+		"crtKey": crtKey,
+	}))
 
 }
 

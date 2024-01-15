@@ -10,7 +10,7 @@ import _ from "lodash";
 let value: ToolCategory[] = [
   {
     Id: "all", // should have no all in this field
-    // Label: Dot("M6MrW", "Good"), 
+    // Label: Dot("M6MrW", "Good"),
     // Dot("dkjk12","this is test")
     Label: Dot("cPS6q", "All Tools"),
     SubCategories: [],
@@ -67,12 +67,7 @@ let value: ToolCategory[] = [
         Id: "codec.SM_Algorithm",
         Label: Dot("y_2Q4", "China National Algorithms"),
         Icon: "search-around",
-        ChildrenIdSet: [
-          "sm2",
-          "sm3",
-          "sm4",
-          //
-        ],
+        ChildrenIdSet: ["sm2", "sm3", "sm4"],
       },
       {
         Id: "codec.Encode_and_Decode",

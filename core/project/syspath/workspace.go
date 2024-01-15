@@ -1,3 +1,23 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+//
+// Date: Mon, 15 Jan 2024
+// Author: Ryan Laf <get>
+// Description:
+// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 package syspath
 
 import (
@@ -107,10 +127,6 @@ func getReducerSyncFileInWorkspace(workspace *EachWorkSpace, crtKey string) stri
 		f,
 		"reducerSync.json",
 	)
-	if !tools.IsFileExist(file) {
-		// write {} into this file
-		tools.WriteFileAsStr(file, "{}")
-	}
 	return file
 }
 
@@ -167,6 +183,11 @@ func GetWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
 	return workspaceRes
 }
 
+func WriteMapDataIntoWorkspaceFileForCache(workspaceId string, wc context.WebContext, outputStr string, crtKey string) error {
+	cacheForSyncData.Store(crtKey, outputStr)
+	return nil
+}
+
 func WriteMapDataIntoWorkspaceFile(workspaceId string, wc context.WebContext, outputStr string, crtKey string) error {
 	lockForWorkspace.Lock()
 	defer lockForWorkspace.Unlock()
@@ -179,6 +200,8 @@ func WriteMapDataIntoWorkspaceFile(workspaceId string, wc context.WebContext, ou
 	return err
 }
 
+var cacheForSyncData = sync.Map{}
+
 func ReadSyncDataFromWorkspaceMap(workspaceId string, wc context.WebContext, crtKey string) (map[string]interface{}, error) {
 	lockForWorkspace.Lock()
 	defer lockForWorkspace.Unlock()
@@ -186,23 +209,36 @@ func ReadSyncDataFromWorkspaceMap(workspaceId string, wc context.WebContext, crt
 	if workspaceErr != nil {
 		return nil, workspaceErr
 	}
-	reducerSyncFile := getReducerSyncFileInWorkspace(workspace, crtKey)
-	str, err := tools.ReadFileAsStr(reducerSyncFile)
-	if err != nil {
-		log.Ref().Warn("unable to read reducer sync file: ", err)
-		return nil, err
-	} else {
-		// rename reducer sync file as *.bak
-		tools.CopyFile(reducerSyncFile, reducerSyncFile+".bak"+tools.GetRandomString(8))
-		if workspaceValMap[workspaceId] == nil {
-			workspaceValMap[workspaceId] = make(map[string]interface{})
-		}
-		ref := workspaceValMap[workspaceId]
+	pCache, ok := cacheForSyncData.Load(crtKey)
+	if ok {
+		// unmarhsla str to tmpReducerValueMap
+		str := pCache.(string)
+		ref := make(map[string]interface{})
 		// unmarhsla str to tmpReducerValueMap
 		err2 := json.Unmarshal([]byte(str), &ref)
 		if err2 != nil {
 			log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
 		}
+		return ref, nil
+	}
+	reducerSyncFile := getReducerSyncFileInWorkspace(workspace, crtKey)
+	if !tools.IsFileExist(reducerSyncFile) {
+		// write {} into this file
+		return nil, errors.New("reducer not found")
+	}
+	str, err := tools.ReadFileAsStr(reducerSyncFile)
+	if err != nil {
+		log.Ref().Warn("unable to read reducer sync file: ", err)
+		return nil, err
+	} else {
+		ref := make(map[string]interface{})
+		// unmarhsla str to tmpReducerValueMap
+		err2 := json.Unmarshal([]byte(str), &ref)
+		if err2 != nil {
+			log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
+		}
+		// TODO: save it as byte array
+		cacheForSyncData.Store(crtKey, str)
 		return ref, nil
 	}
 }
