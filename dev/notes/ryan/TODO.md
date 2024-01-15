@@ -4,9 +4,9 @@
 [x] terminal basic support  
 [] align version list with GitHub tags
 [x] support using local API server
-[] correct langauge name zh_CN and zh_HK to zh-hans and zh-hant
+[x] correct langauge name zh_CN and zh_HK to zh-hans and zh-hant
 [] provide a floating positioned button on the corner of editor, up or down depending on the y value.
-[] check if browser side is able to process all tools that we need. (so unbelievable, cool)
+[x] check if browser side is able to process all tools that we need. (so unbelievable, cool)
 [] when I click bottom button, the panel should also turn into active style.
 [] better sign-in form layout
 [x] separte sign in page. firstly quick settle Language + Theme, then let redirect users to sign in or sign up page.
@@ -17,6 +17,7 @@
 [] account login in move to separte page, not in user intiialization page
 [] calculate line numbers in your project, provide satistic report
 [x] provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
+[] move purejs to web project as we can use code split to avoid a huge bundle size  
 
 # low priorities
 
