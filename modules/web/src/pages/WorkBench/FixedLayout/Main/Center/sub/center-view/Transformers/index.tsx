@@ -181,10 +181,11 @@ export default (props: CommonTransformerProps) => {
         style={{
           height: bodyHeight,
         }}
-        className="w-full overflow-auto"
+        className="w-full overflow-auto "
       >
         <Allotment
           vertical
+          className=""
         >
           <Allotment.Pane>
             <GenCodeMirror
