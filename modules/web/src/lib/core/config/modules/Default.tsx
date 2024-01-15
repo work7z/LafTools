@@ -170,7 +170,7 @@
 // import ToBase45 from "../../operations/ToBase45.mjs";
 // import ToBase58 from "../../operations/ToBase58.mjs";
 // import ToBase62 from "../../operations/ToBase62.mjs";
-import ToBase64 from "../../operations/ToBase64.mjs";
+// import ToBase64 from "../../operations/ToBase64.mjs";
 // import ToBase85 from "../../operations/ToBase85.mjs";
 // import ToBinary from "../../operations/ToBinary.mjs";
 // import ToBraille from "../../operations/ToBraille.mjs";
@@ -348,7 +348,7 @@ let definitions = {
     // "To Base45": ToBase45,
     // "To Base58": ToBase58,
     // "To Base62": ToBase62,
-    "ToBase64": ToBase64,
+    // "ToBase64": ToBase64,
     // "To Base85": ToBase85,
     // "To Binary": ToBinary,
     // "To Braille": ToBraille,

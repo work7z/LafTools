@@ -1,6 +1,6 @@
 import { ExtensionVM } from "../types/purejs-types-READ_ONLY.ts";
 import gutils from "../utils/GlobalUtils.tsx";
-import Chef from "./core/Chef.mjs";
+// import Chef from "./core/Chef.mjs";
 import Utils from "./core/Utils.mjs";
 import setupApp from "./setupApp.ts";
 import ToBase64 from "./core/impl/ToBase64.js";
@@ -11,11 +11,7 @@ export type ProcessReturnType = {
   error?: string;
 };
 
-let chefInst = new Chef();
-gutils.ExposureIt("chef1", chefInst);
-
 let LibIndex = {
-  chef: chefInst,
   process: async (
     originalValue: string,
     param: {
