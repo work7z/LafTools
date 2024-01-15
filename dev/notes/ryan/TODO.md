@@ -18,17 +18,19 @@
 [] calculate line numbers in your project, provide satistic report
 [x] provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
 [] move purejs to web project as we can use code split to avoid a huge bundle size  
+[] add a TODO viewer that can show current project
 
 # low priorities
 
 [] watch my package and notify users to install (or automatically? cool!)
 
 # note-0115
+
 [] code split for React app  
 [] move chef code to other place, and use ts to refactor it then.  
 [] add icon before title in the process panel
 [] keep different page status in the same workspace  
-[] ensure all settings or reducer data are saved into the workspace 
+[] ensure all settings or reducer data are saved into the workspace
 
 # server
 

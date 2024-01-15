@@ -31,6 +31,7 @@ let LibIndex = {
         result: result,
       };
     } catch (e) {
+      console.log("err", e);
       return {
         result: "",
         error: gutils.getErrMsg(e),

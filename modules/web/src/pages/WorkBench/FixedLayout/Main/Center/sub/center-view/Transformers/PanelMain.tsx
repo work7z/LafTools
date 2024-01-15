@@ -101,9 +101,19 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                 <Navbar.Heading >
 
                     {/* Page: <strong>{''}</strong> */}
-                    <Icon icon="code" iconSize={20} className="mr-2" />
-                    <span>
-                        {Dot("z-o28we", "Process Panel")}
+                    <Icon intent={
+                        crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
+                    } icon={crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" : "code"} iconSize={20} className={"mr-2  " + (
+                        crtRuntimeStatus.processing ? " animate-spin " : ""
+                    )} />
+                    <span className={
+                        crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? "text-blue-500 " + (
+                            "dark:text-blue-300"
+                        ) : "text-gray-500"
+                    }>
+                        {
+                            crtRuntimeStatus.processError ? Dot("jOXj0", "Opps, something went wrong.") :
+                                crtRuntimeStatus.processing ? Dot("zqiIoqXw", "Running computations...") : Dot("z-o28we", "Process Panel")}
                     </span>
                 </Navbar.Heading>
             </Navbar.Group>
@@ -118,7 +128,9 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                     }}
                     selectedTabId={toolTabIndex}
                 >
-                    <Tab id="output" icon="tick" title={Dot("FjYbR", "Output")} />
+                    <Tab id="output" icon={
+                        crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "tick"
+                    } title={Dot("FjYbR", "Output")} />
                     <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(toolList)} />
                     <Tab id="history" icon="history" title={Dot("sHoxxW", "History")} />
                 </Tabs>
