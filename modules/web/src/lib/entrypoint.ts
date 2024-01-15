@@ -3,7 +3,7 @@ import gutils from "../utils/GlobalUtils.tsx";
 // import Chef from "./core/Chef.mjs";
 import Utils from "./core/Utils.mjs";
 import setupApp from "./setupApp.ts";
-import ToBase64 from "./core/impl/ToBase64.js";
+// import ToBase64 from "./core/impl/ToBase64.js";
 setupApp();
 
 export type ProcessReturnType = {
@@ -20,11 +20,11 @@ let LibIndex = {
     },
   ): Promise<ProcessReturnType> => {
     try {
-      let inst = new ToBase64();
-      let ipt = Utils.strToArrayBuffer(originalValue);
-      let result = inst.run(ipt, []);
+      // let inst = new ToBase64();
+      // let ipt = Utils.strToArrayBuffer(originalValue);
+      // let result = inst.run(ipt, []);
       return {
-        result: result,
+        result: "test",
       };
     } catch (e) {
       console.log("err", e);
