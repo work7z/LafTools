@@ -7,8 +7,8 @@
 [x] correct langauge name zh_CN and zh_HK to zh-hans and zh-hant
 [] provide a floating positioned button on the corner of editor, up or down depending on the y value.
 [x] check if browser side is able to process all tools that we need. (so unbelievable, cool)
-[] when I click bottom button, the panel should also turn into active style.
-[] better sign-in form layout
+[x] when I click bottom button, the panel should also turn into active style.
+[x] better sign-in form layout
 [x] separte sign in page. firstly quick settle Language + Theme, then let redirect users to sign in or sign up page.
 [] complete cloud account sign-in
 [] add duplicate button on the right top conner of each editor
@@ -19,6 +19,7 @@
 [x] provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
 [] move purejs to web project as we can use code split to avoid a huge bundle size  
 [] add a TODO viewer that can show current project
+[] for settings in process panel, we can just spread it out as a horizontal items, user can scroll them from left to right
 
 # low priorities
 
@@ -26,9 +27,9 @@
 
 # note-0115
 
-[] code split for React app  
-[] move chef code to other place, and use ts to refactor it then.  
-[] add icon before title in the process panel
+[x] code split for React app  
+[x] move chef code to other place, and use ts to refactor it then.  
+[x] add icon before title in the process panel
 [] keep different page status in the same workspace  
 [] ensure all settings or reducer data are saved into the workspace
 
