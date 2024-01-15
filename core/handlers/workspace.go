@@ -28,6 +28,7 @@ import (
 	"laftools-go/core/handlers/context"
 	"laftools-go/core/log"
 	"laftools-go/core/tools"
+	"path"
 	"path/filepath"
 	"strings"
 	"sync"
@@ -79,6 +80,29 @@ func workSpace_ListByUser(c *gin.Context) {
 }
 
 var WS_DEFAULT_ID = "default"
+
+func getWorkspaceById(workspaceId string, wc *context.WebContext) (*EachWorkSpace, error) {
+	workspaceList := getWorkspaceList(wc)
+	// get workspace from workspaceList by id
+	var workspace *EachWorkSpace
+	for _, item := range workspaceList.WorkSpaces {
+		if item.Id == workspaceId {
+			workspace = item
+			break
+		}
+	}
+	if workspace == nil {
+		return nil, errors.New("workspace not found")
+	}
+	return workspace, nil
+}
+
+func getReducerSyncFileInWorkspace(workspace *EachWorkSpace, crtKey string) string {
+	return path.Join(
+		tools.MkdirFileWithStr(path.Join(workspace.Path, "_status", crtKey)),
+		"reducerSync.json",
+	)
+}
 
 func getWorkspaceList(wc *context.WebContext) *WorkSpaceStruct {
 	workspaceConfigFile := wc.GetUserWorkSpaceConfigFile()

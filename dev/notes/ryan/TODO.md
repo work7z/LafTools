@@ -9,7 +9,7 @@
 [] check if browser side is able to process all tools that we need. (so unbelievable, cool)
 [] when I click bottom button, the panel should also turn into active style.
 [] better sign-in form layout
-[] separte sign in page. firstly quick settle Language + Theme, then let redirect users to sign in or sign up page.
+[x] separte sign in page. firstly quick settle Language + Theme, then let redirect users to sign in or sign up page.
 [] complete cloud account sign-in
 [] add duplicate button on the right top conner of each editor
 [] focus on cloud paid service rather than local offline services.
@@ -21,6 +21,13 @@
 # low priorities
 
 [] watch my package and notify users to install (or automatically? cool!)
+
+# note-0115
+[] code split for React app  
+[] move chef code to other place, and use ts to refactor it then.  
+[] add icon before title in the process panel
+[] keep different page status in the same workspace  
+[] ensure all settings or reducer data are saved into the workspace 
 
 # server
 

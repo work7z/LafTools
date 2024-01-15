@@ -3,3 +3,6 @@
 # ignore prettier
 modules/node/src/lib/prettier/**
 modules/node/src/lib/prettier/*
+modules/web/src/lib/core
+modules/web/src/lib/core/**
+modules/web/src/lib/core/*

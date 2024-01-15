@@ -37,7 +37,7 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 import Welcome from "./pages/Welcome";
-import WorkBench from "./pages/WorkBench/FixedLayout/Main";
+// import FixedWorkBench from "./pages/WorkBench/FixedLayout/Main";
 import $ from "jquery";
 import _ from "lodash";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT, URL_LOGIN, URL_REDIRECT, URL_WORKBENCH_WORKSPACE } from "./types/constants";
@@ -51,7 +51,7 @@ import RouteUtils from "./utils/RouteUtils";
 import InitRouteHistory from "./InitRouteHistory";
 import SystemAlertOrPrompt from "./overlap/SystemAlertOrPrompt";
 import Entry from "./pages/Redirect";
-import FixedPreWorkBench from "./pages/WorkBench/FixedLayout/Initial/index";
+import FixedWorkBenchList from "./pages/WorkBench/FixedLayout/Initial/index";
 import ALL_NOCYCLE, { FN_GetDispatch } from "./nocycle";
 import { useReadCurrentWorkspaceId } from "./utils/WorkSpaceUtils";
 import SignInLocal from './pages/SignInLocal'
@@ -59,6 +59,12 @@ import AuthHookUtils from "./utils/AuthHookUtils";
 import RedirectPage from './pages/Redirect'
 import apiSlice from "./reducers/apiSlice";
 import UserSlice from "./reducers/userSlice";
+import loadable from "@loadable/component";
+import LoadingText from "./components/LoadingText/index.js";
+
+const LoadableComponent = loadable(() => import("./pages/WorkBench/FixedLayout/Main"), {
+  fallback: <LoadingText/>
+});
 
 gutils.ExposureIt("$", $);
 gutils.ExposureIt("gutils", gutils);
@@ -121,8 +127,10 @@ let RouteComponent = () => {
           path={URL_LOGIN}
           component={SignInLocal}
         ></Route>
-        <Route path={URL_WORKBENCH} exact component={FixedPreWorkBench}></Route>
-        <Route path={URL_WORKBENCH_WORKSPACE+"/:workspaceId"} component={WorkBench}></Route>
+        <Route path={URL_WORKBENCH} exact component={FixedWorkBenchList}></Route>
+        <Route path={URL_WORKBENCH_WORKSPACE+"/:workspaceId"} component={LoadableComponent}></Route>
+        {/* <Route path={URL_WORKBENCH_WORKSPACE+"/:workspaceId"} component={FixedWorkBench}></Route> */}
+        
         <Route path={URL_ENTRY} component={Entry}></Route>
         <Route path={URL_REDIRECT} component={RedirectPage}></Route>
         <Redirect path="*" to={URL_REDIRECT}></Redirect>

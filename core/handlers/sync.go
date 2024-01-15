@@ -32,9 +32,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var tmpReducerValueMap map[string]interface{} = make(map[string]interface{})
+var globalValMap map[string]interface{} = make(map[string]interface{})
 var lockAPI = &sync.Mutex{}
 var updateIdx = 0
+
+// workspace
+var workspaceValMap map[string]map[string]interface{} = make(map[string]map[string]interface{})
+var lockForWorkspace = &sync.Mutex{}
 
 func contactKeyByReq(c *gin.Context) (string, error) {
 	wc := context.NewWC(c)
@@ -45,6 +49,7 @@ func contactKeyByReq(c *gin.Context) (string, error) {
 	finalKey := reducerName
 	userId := wc.GetUserID()
 	workspaceId := wc.GetWorkspaceID()
+	// workspace is required for some reducers
 	RequireWorkspaceId := c.Query("RequireWorkspaceId") == "true"
 	RequireUserId := c.Query("RequireUserId") == "true"
 	if RequireUserId && userId == "" {
@@ -62,6 +67,61 @@ func contactKeyByReq(c *gin.Context) (string, error) {
 	return finalKey, nil
 }
 
+func getReducerStoreMap(c *gin.Context, crtKey string) (map[string]interface{}, error) {
+	wc := context.NewWC(c)
+	workspaceId := wc.GetWorkspaceID()
+	// workspace is required for some reducers
+	RequireWorkspaceId := c.Query("RequireWorkspaceId") == "true"
+	if RequireWorkspaceId {
+		e := readWorkspaceMapValIfNeeded(workspaceId, wc, crtKey)
+		if e != nil {
+			return nil, e
+		}
+		return globalValMap, nil
+	} else {
+		return globalValMap, nil
+	}
+}
+
+func writeWorkspaceMapIntoFile(workspaceId string, wc context.WebContext, outputStr string, crtKey string) error {
+	lockForWorkspace.Lock()
+	defer lockForWorkspace.Unlock()
+	workspace, workspaceErr := getWorkspaceById(workspaceId, &wc)
+	if workspaceErr != nil {
+		return workspaceErr
+	}
+	reducerSyncFile := getReducerSyncFileInWorkspace(workspace, crtKey)
+	err := tools.WriteFileAsStr(reducerSyncFile, outputStr)
+	return err
+}
+
+func readWorkspaceMapValIfNeeded(workspaceId string, wc context.WebContext, crtKey string) error {
+	lockForWorkspace.Lock()
+	defer lockForWorkspace.Unlock()
+	workspace, workspaceErr := getWorkspaceById(workspaceId, &wc)
+	if workspaceErr != nil {
+		return workspaceErr
+	}
+	reducerSyncFile := getReducerSyncFileInWorkspace(workspace, crtKey)
+	str, err := tools.ReadFileAsStr(reducerSyncFile)
+	if err != nil {
+		log.Ref().Warn("unable to read reducer sync file: ", err)
+	} else {
+		// rename reducer sync file as *.bak
+		tools.CopyFile(reducerSyncFile, reducerSyncFile+".bak"+tools.GetRandomString(8))
+		if workspaceValMap[workspaceId] == nil {
+			workspaceValMap[workspaceId] = make(map[string]interface{})
+		}
+		ref := workspaceValMap[workspaceId]
+		// unmarhsla str to tmpReducerValueMap
+		err2 := json.Unmarshal([]byte(str), &ref)
+		if err2 != nil {
+			log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
+		}
+	}
+	return nil
+}
+
 func getSyncReducer(c *gin.Context) {
 	lockAPI.Lock()
 	defer lockAPI.Unlock()
@@ -71,7 +131,7 @@ func getSyncReducer(c *gin.Context) {
 		ErrLa2(c, err.Error())
 		return
 	}
-	reducer := tmpReducerValueMap[crtKey]
+	reducer := globalValMap[crtKey]
 	if reducer == nil {
 		ErrLa2(c, "Reducer not found")
 		return
@@ -97,7 +157,20 @@ func saveSyncReducer(c *gin.Context) {
 	}
 	updateIdx++
 	// save state
-	tmpReducerValueMap[crtKey] = state
+	mapVal, err := getReducerStoreMap(c, crtKey)
+	if err != nil {
+		ErrLa2(c, err.Error())
+		return
+	}
+	mapVal[crtKey] = state
+	// saveReducerStoreMap(c, crtKey)
+	wc := context.NewWC(c)
+	go func() {
+		// TODO: move query to other DTO
+		if c.Query("RequireWorkspaceId") == "true" {
+			writeWorkspaceMapIntoFile(wc.GetWorkspaceID(), context.NewWC(c), tools.ToJson(mapVal), crtKey)
+		}
+	}()
 	OKLa(c, DoValueRes("saved"))
 }
 
@@ -113,7 +186,7 @@ func init() {
 			// rename reducer sync file as *.bak
 			tools.CopyFile(reducerSyncFile, reducerSyncFile+".bak"+tools.GetRandomString(8))
 			// unmarhsla str to tmpReducerValueMap
-			err2 := json.Unmarshal([]byte(str), &tmpReducerValueMap)
+			err2 := json.Unmarshal([]byte(str), &globalValMap)
 			if err2 != nil {
 				log.Ref().Warn("unable to unmarshal reducer sync file: ", err2)
 			}
@@ -126,7 +199,7 @@ func init() {
 			if last_updateIdx != updateIdx {
 				last_updateIdx = updateIdx
 				lockAPI.Lock()
-				tools.WriteFileAsStr(reducerSyncFile, tools.ToJson(tmpReducerValueMap))
+				tools.WriteFileAsStr(reducerSyncFile, tools.ToJson(globalValMap))
 				// last_modifiedFile = tools.GetFileLastModified(reducerSyncFile)
 				lockAPI.Unlock()
 			}

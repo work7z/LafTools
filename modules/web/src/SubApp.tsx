@@ -126,11 +126,6 @@ function App() {
     }
   }, [])
 
-  if (false && isEnvNotLoad) {
-    innerJSX = <InitSystemEnv key="init-system-env" />;
-  } else {
-    innerJSX = <RouteComponent></RouteComponent>;
-  }
 
   let langInPath = getFormattedLang(GetUserActualClientLang())
   let basename = "/app/" + langInPath
@@ -155,7 +150,7 @@ function App() {
                 onKeyUp={handleKeyUp}
                 style={{ width: "100%", height: "100%" }}
               >
-                {innerJSX}
+                <RouteComponent></RouteComponent>
                 <SystemAlertOrPrompt></SystemAlertOrPrompt>
               </div>
             );
