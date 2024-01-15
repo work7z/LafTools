@@ -37,7 +37,7 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 import Welcome from "./pages/Welcome";
-// import FixedWorkBench from "./pages/WorkBench/FixedLayout/Main";
+import FixedWorkBench from "./pages/WorkBench/FixedLayout/Main";
 import $ from "jquery";
 import _ from "lodash";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT, URL_LOGIN, URL_REDIRECT, URL_WORKBENCH_WORKSPACE } from "./types/constants";
@@ -62,9 +62,9 @@ import UserSlice from "./reducers/userSlice";
 import loadable from "@loadable/component";
 import LoadingText from "./components/LoadingText/index.js";
 
-const LoadableComponent = loadable(() => import("./pages/WorkBench/FixedLayout/Main"), {
-  fallback: <LoadingText/>
-});
+// const LoadableComponent = loadable(() => import("./pages/WorkBench/FixedLayout/Main"), {
+//   fallback: <LoadingText/>
+// });
 
 gutils.ExposureIt("$", $);
 gutils.ExposureIt("gutils", gutils);
@@ -128,7 +128,7 @@ let RouteComponent = () => {
           component={SignInLocal}
         ></Route>
         <Route path={URL_WORKBENCH} exact component={FixedWorkBenchList}></Route>
-        <Route path={URL_WORKBENCH_WORKSPACE+"/:workspaceId"} component={LoadableComponent}></Route>
+        <Route path={URL_WORKBENCH_WORKSPACE+"/:workspaceId"} component={FixedWorkBench}></Route>
         {/* <Route path={URL_WORKBENCH_WORKSPACE+"/:workspaceId"} component={FixedWorkBench}></Route> */}
         
         <Route path={URL_ENTRY} component={Entry}></Route>
