@@ -22,8 +22,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SyncStateUtils from "../utils/SyncStateUtils";
-import { ToolDefaultOutputType, Val_ToolTabIndex } from "../types/purejs-types-READ_ONLY";
+import { ToolDefaultOutputType, Val_ToolTabIndex } from "../types/purejs-types-EXPORT";
 import _ from "lodash";
+import { ProcessReturnType } from "../lib/entrypoint";
 
 type RuntimeStatusState = {
   toolOutputStatusMap: {
@@ -76,6 +77,39 @@ const RuntimeStatusSlice = createSlice({
         return
       }
       state.toolOutputStatusMap[sessionId].toolTabIndex = tabIndex;
+    },
+    updateProcessValue: (
+      state,
+      action: PayloadAction<{
+        value: ProcessReturnType,
+        sessionId: string
+      }>
+    ) => {
+      let { sessionId } = action.payload;
+      if (!state.toolOutputStatusMap[sessionId]) {
+        return
+      }
+      let obj = state.toolOutputStatusMap[sessionId]
+      obj.collapseOutput = false;
+      obj.toolTabIndex = "output"
+      obj.processError = action.payload.value.error
+      obj.processing = false;
+    },
+    resetProcessValueBeforeProcess: (
+      state,
+      action: PayloadAction<{
+        value: ProcessReturnType,
+        sessionId: string
+      }>
+    ) => {
+      let { sessionId } = action.payload;
+      if (!state.toolOutputStatusMap[sessionId]) {
+        return
+      }
+      let obj = state.toolOutputStatusMap[sessionId]
+      obj.collapseOutput = false;
+      obj.processError = action.payload.value.error
+      obj.processing = true;
     },
     //
     setCollapseOutput: (

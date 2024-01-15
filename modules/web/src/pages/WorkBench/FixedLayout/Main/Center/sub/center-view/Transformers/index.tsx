@@ -48,7 +48,8 @@ import TextTransformerConfig from "./unused/PanelConfig";
 import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
 import PanelMain from "./PanelMain";
-import LibIndex from '../../../../../../../../lib/index'
+import LibProcessEntryPoint from '../../../../../../../../lib/entrypoint'
+import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions/transformer_action";
 
 export type AppOptViewMode = "fixed" | "float"
 
@@ -64,20 +65,19 @@ export default (props: CommonTransformerProps) => {
   let extVM = props.extVM
   let desc = fn_format_description(extVM?.Info?.DescriptionByInit)
   // process fn
-  let fn_notifyTextChange = async (originalValue: string) => {
-    let processedNewValue = await LibIndex.process(originalValue, {
-      extVM,
-      extId,
-    });
-    // when text is changed, then trigger function to process
-    FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, processedNewValue.result));
-    FN_GetDispatch()(
-      RuntimeStatusSlice.actions.setCollapseOutput({
-        sessionId,
-        collapseOutput: false,
-      }),
-    );
-    FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: "output" }))
+  let fn_notifyTextChange = () => {
+    if (extVM && extId && sessionId && outputBigTextId) {
+      FN_GetDispatch()(
+        ACTION_Transformer_Process_Text({
+          extVM,
+          extId,
+          sessionId,
+          outputBigTextId
+        })
+      )
+    } else {
+      console.error("fn_notifyTextChange failed")
+    }
   }
   let crtRuntimeStatus = exportUtils.useSelector((x) => {
     let v = x.runtimeStatus.toolOutputStatusMap[sessionId];

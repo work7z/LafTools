@@ -160,7 +160,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
     ];
     return (
         <div
-            className="w-full using-edge-ui-bg flex  border-b-[1px] dark:border-gray-600 px-1  flex-column items-center justify-between"
+            className="w-full using-edge-ui-bg flex border-b-[1px] dark:border-gray-600 px-1  flex-column items-center justify-between"
             style={{
                 height: controlBarHeight,
             }}

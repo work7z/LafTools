@@ -31,6 +31,8 @@ export type ToolDefaultOutputType = {
   collapseConfig?: boolean;
   latestViewPanelId?: string;
   toolTabIndex?: Val_ToolTabIndex;
+  processError?: string;
+  processing?: boolean;
 };
 
 export type ExtensionInfoFormatted = {
