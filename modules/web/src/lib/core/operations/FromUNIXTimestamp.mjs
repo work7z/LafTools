@@ -1,7 +1,7 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
 // Date: Sun, 14 Jan 2024
-// Author: Ryan Laf <get>
+// Second Author: Ryan Laf 
 // Description: 
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //

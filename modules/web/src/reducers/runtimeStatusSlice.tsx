@@ -25,6 +25,7 @@ import SyncStateUtils from "../utils/SyncStateUtils";
 import { ToolDefaultOutputType, Val_ToolTabIndex } from "../types/purejs-types-EXPORT";
 import _ from "lodash";
 import { ProcessReturnType } from "../lib/entrypoint";
+import { Dot } from "../utils/TranslationUtils";
 
 type RuntimeStatusState = {
   toolOutputStatusMap: {
@@ -82,7 +83,8 @@ const RuntimeStatusSlice = createSlice({
       state,
       action: PayloadAction<{
         value: ProcessReturnType,
-        sessionId: string
+        sessionId: string,
+        elapsedTime: string
       }>
     ) => {
       let { sessionId } = action.payload;
@@ -94,6 +96,7 @@ const RuntimeStatusSlice = createSlice({
       obj.collapseConfig = false;
       obj.toolTabIndex = "output"
       obj.processError = action.payload.value.error
+      obj.processText = Dot("z5kQw", "Elapsed time: {0}", action.payload.elapsedTime)
       obj.processing = false;
     },
     resetProcessValueBeforeProcess: (
@@ -111,6 +114,7 @@ const RuntimeStatusSlice = createSlice({
       obj.collapseOutput = false;
       obj.collapseConfig = false;
       obj.processError = undefined
+      obj.processText = Dot("zqiIoqXw", "Running computations...")
       obj.processing = true;
     },
     //

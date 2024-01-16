@@ -13,7 +13,7 @@
 
 # 💡 Introduction
 
-You may wonder why we are determined to develop this toolbox as there are numerous online tools available can be used on the Internet.
+You may wonder why we are determined to develop this toolbox as there are numerous tools can be used on the Internet.
 
 Indeed, most tools we have provided can be easily found on the Internet, such as codec, formatter, translation, QR Code, etc… However, it’s not the most comfortable and efficient approach to use these tools.
 
@@ -158,6 +158,7 @@ This project is primarily inspired by the following musicians:
 
 - Joe Pass
 - The Manhattan Transfer
+- Asleep at the Wheel
 - Khalil Fong
 - Li Rong Hao
 - Chet Atkins
@@ -172,6 +173,7 @@ This project is primarily inspired by the following musicians:
 - Stefanie Sun
 - David Tao
 - Jacky Cheung
+- Teresa Teng  
 
 Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
 

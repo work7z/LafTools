@@ -25,6 +25,8 @@ import { ExtensionVM } from "../types/purejs-types-READ_ONLY";
 import { FN_SetTextValueFromOutSideByBigTextId } from "./bigtext_action";
 import gutils from "../utils/GlobalUtils";
 import _ from "lodash";
+import moment from "moment";
+window["moment"] = moment
 
 type PassType = {
     sessionId: string,
@@ -36,6 +38,7 @@ type PassType = {
 export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
     let { extVM, extId, sessionId, outputBigTextId } = obj;
     return async (originalValue: string) => {
+        let beginTime = new Date().getTime()
         let processId = _.uniqueId("")
         // before process
         FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, ""));
@@ -56,10 +59,12 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
         } else {
             FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, processedNewValue.result));
         }
+        let elapsedTime = moment(beginTime).diff(moment(), "seconds");
         FN_GetDispatch()(
             RuntimeStatusSlice.actions.updateProcessValue({
                 value: processedNewValue,
                 sessionId,
+                elapsedTime:elapsedTime+"s"
             })
         )
     }

@@ -110,7 +110,9 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                             crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
                     } icon={
                         loadingStatic ? "changes" :
-                            crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" : "code"} iconSize={20} className={"mr-2  " + (
+                            crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" :
+                            crtRuntimeStatus.processText ? "tick":
+                            "code"} iconSize={20} className={"mr-2  " + (
                                 crtRuntimeStatus.processing ? " animate-spin " : ""
                             )} />
                     <span className={
@@ -121,8 +123,10 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                     }>
                         {
                             loadingStatic ? Dot("y_9YqM", "Loading static resources...") :
-                                crtRuntimeStatus.processError ? Dot("jOXj0", "Opps, something went wrong.") :
-                                    crtRuntimeStatus.processing ? Dot("zqiIoqXw", "Running computations...") : Dot("z-o28we", "Process Panel")}
+                            crtRuntimeStatus.processText ? crtRuntimeStatus.processText : Dot("z-o28we", "Process Panel")
+                                // crtRuntimeStatus.processError ? Dot("jOXj0", "Opps, something went wrong.") :
+                                //     crtRuntimeStatus.processing ?  : 
+                                    }
                     </span>
                 </Navbar.Heading>
             </Navbar.Group>

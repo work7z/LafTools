@@ -32,6 +32,7 @@ export type ToolDefaultOutputType = {
   latestViewPanelId?: string;
   toolTabIndex?: Val_ToolTabIndex;
   processError?: string;
+  processText?:string;
   processing?: boolean;
 };
 
