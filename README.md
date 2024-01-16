@@ -13,7 +13,7 @@
 
 # 💡 Introduction
 
-You may wonder why we are determined to develop this toolbox if there are numerous online tools available on the Internet.
+You may wonder why we are determined to develop this toolbox as there are numerous online tools available can be used on the Internet.
 
 Indeed, most tools we have provided can be easily found on the Internet, such as codec, formatter, translation, QR Code, etc… However, it’s not the most comfortable and efficient approach to use these tools.
 
