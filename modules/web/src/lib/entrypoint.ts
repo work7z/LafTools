@@ -1,5 +1,6 @@
 import { ExtensionVM } from "../types/purejs-types-READ_ONLY.ts";
 import gutils from "../utils/GlobalUtils.tsx";
+import Operation from "./core/Operation.mjs";
 // import Chef from "./core/Chef.mjs";
 import Utils from "./core/Utils.mjs";
 import setupApp from "./setupApp.ts";
@@ -15,16 +16,18 @@ let LibIndex = {
   process: async (
     originalValue: string,
     param: {
+      operation: Operation,
       extVM: ExtensionVM | undefined;
       extId: string | undefined;
     },
   ): Promise<ProcessReturnType> => {
     try {
-      // let inst = new ToBase64();
-      // let ipt = Utils.strToArrayBuffer(originalValue);
-      // let result = inst.run(ipt, []);
+      let inst = param.operation;
+      let ipt = Utils.strToArrayBuffer(originalValue);
+      let result = inst.run(ipt, []);
+      debugger;
       return {
-        result: "test",
+        result: result,
       };
     } catch (e) {
       console.log("err", e);

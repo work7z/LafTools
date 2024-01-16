@@ -79,6 +79,19 @@ const RuntimeStatusSlice = createSlice({
       }
       state.toolOutputStatusMap[sessionId].toolTabIndex = tabIndex;
     },
+    cleanProcessText: (
+      state,
+      action: PayloadAction<{
+        sessionId: string,
+      }>
+    )=>{
+      let { sessionId } = action.payload;
+      if (!state.toolOutputStatusMap[sessionId]) {
+        return
+      }
+      let obj = state.toolOutputStatusMap[sessionId]      
+      obj.processText = undefined
+    },
     updateProcessValue: (
       state,
       action: PayloadAction<{
@@ -96,7 +109,7 @@ const RuntimeStatusSlice = createSlice({
       obj.collapseConfig = false;
       obj.toolTabIndex = "output"
       obj.processError = action.payload.value.error
-      obj.processText = Dot("z5kQw", "Elapsed time: {0}", action.payload.elapsedTime)
+      obj.processText = Dot("JVI3f", "Elapsed Time: {0}", action.payload.elapsedTime)
       obj.processing = false;
     },
     resetProcessValueBeforeProcess: (

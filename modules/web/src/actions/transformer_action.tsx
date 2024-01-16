@@ -26,6 +26,7 @@ import { FN_SetTextValueFromOutSideByBigTextId } from "./bigtext_action";
 import gutils from "../utils/GlobalUtils";
 import _ from "lodash";
 import moment from "moment";
+import Operation from "../lib/core/Operation.mjs";
 window["moment"] = moment
 
 type PassType = {
@@ -33,13 +34,18 @@ type PassType = {
     extVM: ExtensionVM,
     extId: string,
     outputBigTextId: string
+    operation: Operation
 }
+
+let tmpLog = {}
 
 export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
     let { extVM, extId, sessionId, outputBigTextId } = obj;
     return async (originalValue: string) => {
+        let operation = obj.operation
         let beginTime = new Date().getTime()
-        let processId = _.uniqueId("")
+        let checkId = _.uniqueId("")
+        tmpLog[sessionId] = checkId
         // before process
         FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, ""));
         FN_GetDispatch()(
@@ -47,11 +53,11 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
                 sessionId,
             })
         )
-        await gutils.sleep(2000)
         // processing
         let processedNewValue = await LibProcessEntryPoint.process(originalValue, {
             extVM,
             extId,
+            operation
         });
         // after process
         if (processedNewValue.error) {
@@ -59,13 +65,22 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
         } else {
             FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, processedNewValue.result));
         }
-        let elapsedTime = moment(beginTime).diff(moment(), "seconds");
+        let elapsedTime = Math.abs(moment(beginTime).diff(moment(), "seconds"));
         FN_GetDispatch()(
             RuntimeStatusSlice.actions.updateProcessValue({
                 value: processedNewValue,
                 sessionId,
-                elapsedTime:elapsedTime+"s"
+                elapsedTime: elapsedTime + "s"
             })
         )
+        setTimeout(() => {
+            if (tmpLog[sessionId] != checkId) return;
+            FN_GetDispatch()(
+                RuntimeStatusSlice.actions.cleanProcessText({
+                    sessionId,
+                })
+            )
+            delete tmpLog[sessionId]
+        }, 1000)
     }
 }

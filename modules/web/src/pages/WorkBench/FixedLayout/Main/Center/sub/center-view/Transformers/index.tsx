@@ -67,15 +67,18 @@ export default (props: CommonTransformerProps) => {
   };
   let extVM = props.extVM
   let desc = fn_format_description(extVM?.Info?.DescriptionByInit)
+  let operaRef = useRef<Operation | null>(null)
   // process fn
   let fn_notifyTextChange = () => {
-    if (extVM && extId && sessionId && outputBigTextId) {
+    if (extVM && extId && sessionId && outputBigTextId && operaRef.current) {
+      let Oper = operaRef.current
       FN_GetDispatch()(
         ACTION_Transformer_Process_Text({
           extVM,
           extId,
           sessionId,
-          outputBigTextId
+          outputBigTextId,
+          operation: operaRef.current
         })
       )
     } else {
@@ -94,7 +97,6 @@ export default (props: CommonTransformerProps) => {
   })()
   let isFixedMode = crtOptMode === "fixed"
   let isFloatMode = !isFixedMode
-  let operaRef = useRef<Operation | null>(null)
   let [loadingStatic, setLoadingStatic] = useState(true)
   let [loadingProgressRate, setLoadingProgressRate] = useState(0)
   useEffect(() => {
@@ -115,7 +117,7 @@ export default (props: CommonTransformerProps) => {
         setLoadingStatic(true)
         // await gutils.sleep(30000)
         let opera = await loadLib.load()
-        operaRef.current = opera
+        operaRef.current = new opera["default"]()
         window.clearInterval(timer)
       } finally {
         setLoadingStatic(false)
