@@ -22,7 +22,7 @@ import { FN_GetDispatch } from "../nocycle";
 import RuntimeStatusSlice from "../reducers/runtimeStatusSlice";
 import LibProcessEntryPoint from '../lib/entrypoint'
 import { ExtensionVM } from "../types/purejs-types-READ_ONLY";
-import { FN_SetTextValueFromOutSideByBigTextId } from "./bigtext_action";
+import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "./bigtext_action";
 import gutils from "../utils/GlobalUtils";
 import _ from "lodash";
 import moment from "moment";
@@ -34,14 +34,16 @@ type PassType = {
     extVM: ExtensionVM,
     extId: string,
     outputBigTextId: string
+    inputBigTextId:string
     operation: Operation
 }
 
 let tmpLog = {}
 
 export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
-    let { extVM, extId, sessionId, outputBigTextId } = obj;
-    return async (originalValue: string) => {
+    let { extVM, extId, sessionId, outputBigTextId ,inputBigTextId} = obj;
+    return async () => {
+        let originalValue = FN_GetActualTextValueByBigTextId(inputBigTextId)
         let operation = obj.operation
         let beginTime = new Date().getTime()
         let checkId = _.uniqueId("")
@@ -81,6 +83,6 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
                 })
             )
             delete tmpLog[sessionId]
-        }, 1000)
+        }, 2000)
     }
 }

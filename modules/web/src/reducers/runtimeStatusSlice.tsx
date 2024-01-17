@@ -91,6 +91,7 @@ const RuntimeStatusSlice = createSlice({
       }
       let obj = state.toolOutputStatusMap[sessionId]      
       obj.processText = undefined
+      obj.processOK=false;
     },
     updateProcessValue: (
       state,
@@ -109,8 +110,10 @@ const RuntimeStatusSlice = createSlice({
       obj.collapseConfig = false;
       obj.toolTabIndex = "output"
       obj.processError = action.payload.value.error
-      obj.processText = Dot("JVI3f", "Elapsed Time: {0}", action.payload.elapsedTime)
+      // obj.processText = Dot("azpNX", "Completed.", action.payload.elapsedTime)
+      obj.processText = Dot("-DqwwR", "Operation Completed.", action.payload.elapsedTime)
       obj.processing = false;
+      obj.processOK=true;
     },
     resetProcessValueBeforeProcess: (
       state,
@@ -129,6 +132,7 @@ const RuntimeStatusSlice = createSlice({
       obj.processError = undefined
       obj.processText = Dot("zqiIoqXw", "Running computations...")
       obj.processing = true;
+      obj.processOK=false;
     },
     //
     setCollapseOutput: (

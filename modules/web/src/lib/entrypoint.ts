@@ -23,7 +23,8 @@ let LibIndex = {
   ): Promise<ProcessReturnType> => {
     try {
       let inst = param.operation;
-      let ipt = Utils.strToArrayBuffer(originalValue);
+      // let ipt = Utils.strToArrayBuffer(originalValue);
+      let ipt = originalValue
       let result = inst.run(ipt, []);
       debugger;
       return {

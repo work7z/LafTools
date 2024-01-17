@@ -33,6 +33,7 @@ export type ToolDefaultOutputType = {
   toolTabIndex?: Val_ToolTabIndex;
   processError?: string;
   processText?:string;
+  processOK?:boolean;
   processing?: boolean;
 };
 

@@ -78,6 +78,7 @@ export default (props: CommonTransformerProps) => {
           extId,
           sessionId,
           outputBigTextId,
+          inputBigTextId,
           operation: operaRef.current
         })
       )

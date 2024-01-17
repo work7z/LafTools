@@ -97,6 +97,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
         </div>
     }
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
+    let greenClz = "text-lime-700 dark:text-lime-500"
     return <div className="h-full overflow-auto " style={{
         padding: '1px'
     }}>
@@ -107,6 +108,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                     {/* Page: <strong>{''}</strong> */}
                     <Icon intent={
                         loadingStatic ? "success" :
+                        crtRuntimeStatus.processOK ? "success" :
                             crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
                     } icon={
                         loadingStatic ? "changes" :
@@ -117,8 +119,9 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                             )} />
                     <span className={
                         loadingStatic ? "" + (
-                            "text-lime-700 dark:text-lime-500"
+                            greenClz
                         ) :
+                        crtRuntimeStatus.processOK ? greenClz:
                             crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? loadingTextClz : "  "
                     }>
                         {
