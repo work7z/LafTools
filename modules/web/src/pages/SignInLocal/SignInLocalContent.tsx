@@ -75,7 +75,9 @@ import exportUtils from "../../utils/ExportUtils";
 import AlertUtils from "../../utils/AlertUtils";
 
 export let FooterContent = () => {
-    return <div className='  w-8/12 space-y-3 mx-auto bp5-text-muted  break-words pt-8 flex flex-col pb-6' >
+    return <div className='  w-8/12 space-y-3 mx-auto bp5-text-muted  break-words pt-8 flex flex-col pb-6 ' style={{
+        minWidth: '50vw'
+    }} >
         <LanguageFlowList></LanguageFlowList>
         <i className="text-xs">            <MottoLine singleLineMode={true}></MottoLine></i>
         <div className='space-x-3'>
@@ -132,7 +134,13 @@ export let FooterContent = () => {
         </div>
         <div>
             <b>
-                <a className={CSS_TEXT_ANCHOR_CSS} href="https://laf-tools.com" target='_blank'>{''} {Dot("flKq30", "{0} Powered by LafTools team", "LafTools@" + APPINFOJSON.version + "")}</a>
+                <a className={CSS_TEXT_ANCHOR_CSS} href="https://laf-tools.com" target='_blank'>{''} {
+
+                    Dot("ZbD3F", "{0}, crafted by the LafTools team", "LafTools@" + APPINFOJSON.version + "")
+                    // Dot("rK6cx", "{0}, designed and developed by the LafTools team", "LafTools@" + APPINFOJSON.version + "")
+
+
+                }</a>
             </b>
         </div>
         {/* <div>
