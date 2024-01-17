@@ -28,14 +28,17 @@ import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, control
 let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRuntime) => {
     let { inputBigTextId } = props;
     let [loadExample, onLoadExample] = useState(false);
+    let toolHandler = props.toolHandler
     let extVM = props.extVM
     let actions: ExtensionAction[] | undefined = extVM?.Actions
     let leftActions: ButtonProps[] = [
-        ...(actions || []).map(x => {
+        ...(
+            toolHandler?.getOperations() || []
+        ).map(x => {
             return {
-                text: x.Label,
+                text: x.name,
                 intent: "primary",
-                title: x.TooltipByInit,
+                title: x.description,
                 onClick: () => {
                     //
                 },

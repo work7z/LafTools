@@ -84,7 +84,12 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     let finalShowContent = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
     let pdValue = 'p-2'
     let loadingStatic = false
-    if (toolTabIndex == "tools") {
+    let toolHanlder = props.toolHandler
+    if (toolTabIndex == 'wiki') {
+        finalShowContent = <div className="w-full h-full overflow-auto">
+            <iframe src={toolHanlder?.getMetaInfo().infoURL} className="w-full h-full border-none outline-none"></iframe>
+        </div>
+    } else if (toolTabIndex == "tools") {
         finalShowContent = <FormGenPanel list={generalList}></FormGenPanel >
     } else if (toolTabIndex == "output") {
         pdValue = 'p-0'
@@ -95,6 +100,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
             ></GenCodeMirror>
         </div>
     }
+    let operList = toolHanlder?.getOperations() || []
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
     return <div className="h-full overflow-auto " style={{
@@ -143,11 +149,12 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                     }}
                     selectedTabId={toolTabIndex}
                 >
+                    <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(operList)} />
+                    <Tab id="wiki" icon="globe-network" title={Dot("Wq82a6", "Reference")} />
                     <Tab id="output" icon={
                         crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "tick"
                     } title={Dot("FjYbR", "Output")} />
-                    <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(toolList)} />
-                    <Tab id="history" icon="history" title={Dot("sHoxxW", "History")} />
+                    {/* <Tab id="history" icon="history" title={Dot("sHoxxW", "History")} /> */}
                 </Tabs>
             </Navbar.Group>
         </Navbar>

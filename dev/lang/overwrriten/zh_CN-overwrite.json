@@ -12,6 +12,8 @@
   "Korean": "韩语",
   "process_detail": "进度情况",
   "Github": "Github",
+  "Encode {0}": "编码{0}",
+  "Decode {0}": "解码{0}",
   "Remove": "移除",
   "Refreshed": "已刷新",
   "Cancelled": "已取消",
