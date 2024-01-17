@@ -68,7 +68,6 @@ export type WorkSpaceStruct = {
 export type FnPureToolDefinition = ToolCategory & {
   Id: string;
   Label: string;
-  // sdfsdf: ToolSubCategory[];
 };
 export interface PassToolViewerProp {
   category: string | null | undefined;

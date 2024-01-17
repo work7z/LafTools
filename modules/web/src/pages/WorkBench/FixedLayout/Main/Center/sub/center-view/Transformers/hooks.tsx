@@ -101,7 +101,7 @@ export let useGetCategoryList = (): FnPureToolDefinition[] => {
             SubCategories: x.SubCategories,
             TotalCount: x.TotalCount
         }
-    })
+    }).filter(x => x.TotalCount != 0)
 }
 
 export let useHookWithSkippingFirst = (fn: () => void, deps: any[]) => {
