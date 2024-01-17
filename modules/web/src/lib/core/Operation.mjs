@@ -44,6 +44,7 @@ class Operation {
     this._flowControl = false;
     this._manualBake = false;
     this._ingList = [];
+    this.checks = [];
 
     // Public fields
     this.name = "";

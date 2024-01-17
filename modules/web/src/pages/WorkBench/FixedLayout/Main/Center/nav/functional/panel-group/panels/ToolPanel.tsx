@@ -120,7 +120,6 @@ export let InnerToolPanel = (): any => {
     },
   );
   let activeOne = _.find(categoryList, (x) => x.Id == fc);
-  debugger;
   let m_ws = useMergeParamWithWorkSpace();
   return (
     <FunctionalMenu_Panel

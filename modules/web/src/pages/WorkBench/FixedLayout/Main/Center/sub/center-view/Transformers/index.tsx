@@ -50,9 +50,10 @@ import { Allotment, AllotmentHandle } from "allotment";
 import PanelMain from "./PanelMain";
 import LibProcessEntryPoint from '../../../../../../../../lib/entrypoint'
 import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions/transformer_action";
-import loadLib from "../../../../../../../../lib/core/loadLib";
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
 import gutils from "../../../../../../../../utils/GlobalUtils";
+import appToolInfoObj, { AppInfoType } from "../../../../../../../../lib/meta/tools/info";
+import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../lib/meta/tools/handler";
 
 export type AppOptViewMode = "fixed" | "float"
 
@@ -62,16 +63,16 @@ export default (props: CommonTransformerProps) => {
   let inputBigTextId = props.inputBigTextId;
   let outputBigTextId = props.outputBigTextId;
   let extId = props.extId
+  let operaRef = useRef<ToolHandler | undefined>(undefined)
   let commonPassProp: CommonTransformerPassProp = {
-    ...props
+    ...props,
+    toolHandler: operaRef.current
   };
   let extVM = props.extVM
   let desc = fn_format_description(extVM?.Info?.DescriptionByInit)
-  let operaRef = useRef<Operation | null>(null)
   // process fn
   let fn_notifyTextChange = () => {
     if (extVM && extId && sessionId && outputBigTextId && operaRef.current) {
-      let Oper = operaRef.current
       FN_GetDispatch()(
         ACTION_Transformer_Process_Text({
           extVM,
@@ -79,7 +80,7 @@ export default (props: CommonTransformerProps) => {
           sessionId,
           outputBigTextId,
           inputBigTextId,
-          operation: operaRef.current
+          toolHandler: operaRef.current
         })
       )
     } else {
@@ -99,6 +100,7 @@ export default (props: CommonTransformerProps) => {
   let isFixedMode = crtOptMode === "fixed"
   let isFloatMode = !isFixedMode
   let [loadingStatic, setLoadingStatic] = useState(true)
+  let [loadError, onLoadError] = useState<string | null>(null)
   let [loadingProgressRate, setLoadingProgressRate] = useState(0)
   useEffect(() => {
     let tmp_loadingProgressRate = 0
@@ -114,11 +116,22 @@ export default (props: CommonTransformerProps) => {
     let timer = setInterval(loopFn, 89);
     (async () => {
       try {
+        onLoadError(null)
         setLoadingProgressRate(0)
         setLoadingStatic(true)
         // await gutils.sleep(30000)
-        let opera = await loadLib.load()
+        let obj: AppInfoType = appToolInfoObj[props.extId as any]
+        if (!obj.Import) {
+          // TODO: add alert warnings
+          return;
+        }
+        let opera: any = await obj.Import()
         operaRef.current = new opera["default"]()
+        window.clearInterval(timer)
+        setLoadingStatic(false)
+      } catch (e) {
+        let anyError = gutils.getErrMsg(e)
+        onLoadError(anyError)
         window.clearInterval(timer)
       } finally {
         setLoadingStatic(false)
@@ -175,6 +188,9 @@ export default (props: CommonTransformerProps) => {
       Dot("AkXgF", "In Progress: {0}%", pre)
     ) + "\n" + (
         '')
+  }
+  if (loadError) {
+    desc = `${Dot("RO4ZP", "An Error Occurred")}: \n${loadError}`
   }
   return (
     <div key={sessionId} className="w-full h-full relative">

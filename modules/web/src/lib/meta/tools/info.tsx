@@ -20,13 +20,13 @@
 
 import { OneOf } from "protobufjs";
 import { Dot } from "../../../utils/TranslationUtils";
-import { AppHandler } from "./handler";
+import { ToolHandler, ToolHandlerClass } from "./handler";
 import _ from "lodash";
 
 
 export type AppInfoType = {
     Label: string;
-    Import?: () => Promise<AppHandler>
+    Import?: () => Promise<ToolHandlerClass>
     Description?: string;
 }
 let passInfo = (obj: AppInfoType): AppInfoType => {

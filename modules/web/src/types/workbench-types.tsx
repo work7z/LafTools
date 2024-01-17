@@ -20,6 +20,7 @@
 
 import { Intent } from "@blueprintjs/core";
 import { ToolCategory, ExtensionVM } from "./purejs-types-READ_ONLY";
+import { ToolHandler } from "../lib/meta/tools/handler";
 
 export * from './constants';
 
@@ -29,6 +30,7 @@ export type CommonTransformerPassProp = {
   inputBigTextId: string;
   outputBigTextId: string;
   sessionId: string;
+  toolHandler?: ToolHandler
 };
 export type PageQueryType = {
   fc: string;

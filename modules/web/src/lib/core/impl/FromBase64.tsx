@@ -24,6 +24,7 @@
  * @license Apache-2.0
  */
 
+import { Dot } from "../../../utils/TranslationUtils";
 import Operation from "../Operation.mjs";
 import { fromBase64, ALPHABET_OPTIONS } from "../lib/Base64.mjs";
 

@@ -40,11 +40,11 @@ const RuntimeStatusSlice = createSlice({
   name: "runtimeStatus",
   initialState,
   reducers: {
-    ...SyncStateUtils.getSyncStateReducers("runtimeStatus", {
-      RunOnInit: true,
-      RequireUserId: true,
-      RequireWorkspaceId: true,
-    }),
+    // ...SyncStateUtils.getSyncStateReducers("runtimeStatus", {
+    //   RunOnInit: true,
+    //   RequireUserId: true,
+    //   RequireWorkspaceId: true,
+    // }),
     initAtOnceBySessionIdAndValue: (
       state,
       action: PayloadAction<{ sessionId: string; value: ToolDefaultOutputType }>
@@ -84,14 +84,14 @@ const RuntimeStatusSlice = createSlice({
       action: PayloadAction<{
         sessionId: string,
       }>
-    )=>{
+    ) => {
       let { sessionId } = action.payload;
       if (!state.toolOutputStatusMap[sessionId]) {
         return
       }
-      let obj = state.toolOutputStatusMap[sessionId]      
+      let obj = state.toolOutputStatusMap[sessionId]
       obj.processText = undefined
-      obj.processOK=false;
+      obj.processOK = false;
     },
     updateProcessValue: (
       state,
@@ -113,7 +113,7 @@ const RuntimeStatusSlice = createSlice({
       // obj.processText = Dot("azpNX", "Completed.", action.payload.elapsedTime)
       obj.processText = Dot("-DqwwR", "Operation Completed.", action.payload.elapsedTime)
       obj.processing = false;
-      obj.processOK=true;
+      obj.processOK = true;
     },
     resetProcessValueBeforeProcess: (
       state,
@@ -132,7 +132,7 @@ const RuntimeStatusSlice = createSlice({
       obj.processError = undefined
       obj.processText = Dot("zqiIoqXw", "Running computations...")
       obj.processing = true;
-      obj.processOK=false;
+      obj.processOK = false;
     },
     //
     setCollapseOutput: (

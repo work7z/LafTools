@@ -16,17 +16,16 @@ let LibIndex = {
   process: async (
     originalValue: string,
     param: {
-      operation: Operation,
+      operation: Operation;
       extVM: ExtensionVM | undefined;
       extId: string | undefined;
     },
   ): Promise<ProcessReturnType> => {
     try {
+      // debugger;
       let inst = param.operation;
-      // let ipt = Utils.strToArrayBuffer(originalValue);
-      let ipt = originalValue
+      let ipt = originalValue;
       let result = inst.run(ipt, []);
-      debugger;
       return {
         result: result,
       };
@@ -39,5 +38,6 @@ let LibIndex = {
     }
   },
 };
+// let ipt = Utils.strToArrayBuffer(originalValue);
 
 export default LibIndex;

@@ -27,6 +27,7 @@ import gutils from "../utils/GlobalUtils";
 import _ from "lodash";
 import moment from "moment";
 import Operation from "../lib/core/Operation.mjs";
+import { ToolHandler } from "../lib/meta/tools/handler";
 window["moment"] = moment
 
 type PassType = {
@@ -34,17 +35,17 @@ type PassType = {
     extVM: ExtensionVM,
     extId: string,
     outputBigTextId: string
-    inputBigTextId:string
-    operation: Operation
+    inputBigTextId: string
+    toolHandler: ToolHandler
 }
 
 let tmpLog = {}
 
 export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
-    let { extVM, extId, sessionId, outputBigTextId ,inputBigTextId} = obj;
+    let { extVM, extId, sessionId, outputBigTextId, inputBigTextId } = obj;
     return async () => {
         let originalValue = FN_GetActualTextValueByBigTextId(inputBigTextId)
-        let operation = obj.operation
+        let toolHandler = obj.toolHandler
         let beginTime = new Date().getTime()
         let checkId = _.uniqueId("")
         tmpLog[sessionId] = checkId
@@ -55,34 +56,38 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
                 sessionId,
             })
         )
-        // processing
-        let processedNewValue = await LibProcessEntryPoint.process(originalValue, {
-            extVM,
-            extId,
-            operation
-        });
-        // after process
-        if (processedNewValue.error) {
-            FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, processedNewValue.error));
-        } else {
-            FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, processedNewValue.result));
-        }
-        let elapsedTime = Math.abs(moment(beginTime).diff(moment(), "seconds"));
-        FN_GetDispatch()(
-            RuntimeStatusSlice.actions.updateProcessValue({
-                value: processedNewValue,
-                sessionId,
-                elapsedTime: elapsedTime + "s"
-            })
-        )
-        setTimeout(() => {
-            if (tmpLog[sessionId] != checkId) return;
+        try {
+            // processing
+            let processedNewValue = await LibProcessEntryPoint.process(originalValue, {
+                extVM,
+                extId,
+                operation: toolHandler.getOperations()[0]
+            });
+            // after process
+            if (processedNewValue.error) {
+                FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, processedNewValue.error));
+            } else {
+                FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, processedNewValue.result));
+            }
+            let elapsedTime = Math.abs(moment(beginTime).diff(moment(), "seconds"));
             FN_GetDispatch()(
-                RuntimeStatusSlice.actions.cleanProcessText({
+                RuntimeStatusSlice.actions.updateProcessValue({
+                    value: processedNewValue,
                     sessionId,
+                    elapsedTime: elapsedTime + "s"
                 })
             )
-            delete tmpLog[sessionId]
-        }, 2000)
+            setTimeout(() => {
+                if (tmpLog[sessionId] != checkId) return;
+                FN_GetDispatch()(
+                    RuntimeStatusSlice.actions.cleanProcessText({
+                        sessionId,
+                    })
+                )
+                delete tmpLog[sessionId]
+            }, 500)
+        } catch (e) {
+            FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, "Error: " + gutils.getErrMsg(e)));
+        }
     }
 }

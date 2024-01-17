@@ -44,7 +44,6 @@ import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "./hooks";
 import FormGenPanel, { FormGenItem } from "../../../../../../../../components/FormGenPanel";
-import loadLib from "../../../../../../../../lib/core/loadLib";
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
 
 export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
