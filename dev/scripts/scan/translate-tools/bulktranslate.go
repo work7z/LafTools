@@ -136,6 +136,7 @@ func main() {
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Laf Tools", "LafTools")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "Tools ", "LafTools")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "工作空间", "工作区")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "存储库", "仓库")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools工具箱 ", "LafTools工具箱")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "CodeGen ToolBox", "CodeGen工具箱")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "你", "您") // 您们? 您们的? haha, it's too courtesy, but it's ok for me at least.

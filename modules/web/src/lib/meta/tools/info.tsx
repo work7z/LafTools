@@ -20,10 +20,13 @@
 
 import { OneOf } from "protobufjs";
 import { Dot } from "../../../utils/TranslationUtils";
+import { AppHandler } from "./handler";
+import _ from "lodash";
 
 
 export type AppInfoType = {
     Label: string;
+    Import?: () => Promise<AppHandler>
     Description?: string;
 }
 let passInfo = (obj: AppInfoType): AppInfoType => {
@@ -34,13 +37,16 @@ let appToolInfoObj = {
         Label: Dot("gkC8t", "Base64")
     }),
     "edc_base32": passInfo({
-        Label: Dot("gkC8t", "Base32")
+        Label: Dot("gkqC8t", "Base32")
     }),
     // Example
     "Example": passInfo({
         Label: Dot("1X8x7", "Example")
     }),
 }
+_.forEach(appToolInfoObj, (x, d, n) => {
+    x.Import = () => import(`./impl/${d}.tsx`)
+})
 
 export type AppToolKeyType = keyof typeof appToolInfoObj; // "a" | "b"
 
