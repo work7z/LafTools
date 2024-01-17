@@ -2,7 +2,7 @@
 // 
 // Date: Thu, 11 Jan 2024
 // Author: LafTools Team - FX <work7z@outlook.com>
-// Ryan Laf <get>
+// Ryan Laf <work7z@outlook.com>
 // Description: 
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //

@@ -1,7 +1,7 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
 // Date: Sun, 7 Jan 2024
-// Author: Ryan Laf <get>
+// Author: Ryan Laf <work7z@outlook.com>
 // Description: 
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
@@ -100,33 +100,33 @@ export let FooterContent = () => {
                         link: "mailto:work7z@outlook.com"
                     },
                     {
-                        label: Dot("13pmE","Support Us"),
+                        label: Dot("13pmE", "Support Us"),
                         link: "javascript:void(0);",
-                        onClick: ()=>{
+                        onClick: () => {
                             AlertUtils.win_alert({
-                                id:"W1z_B",
+                                id: "W1z_B",
                                 msg: <p>
-                                    <h1>{Dot("qHoktx","Thank You!")}</h1>
+                                    <h1>{Dot("qHoktx", "Thank You!")}</h1>
                                     <p>
-                                    {Dot("CidOqAZ","As the creator of LafTools, I am so touched that you are willing to support us. We have good people on our team who work hard to continuously improve LafTools.")}
+                                        {Dot("CidOqAZ", "As the creator of LafTools, I am so touched that you are willing to support us. We have good people on our team who work hard to continuously improve LafTools.")}
                                     </p>
                                     <p>
-                                        {Dot("6hsnqWe","Although LafTools is free and open source, maintaining it still requires a significant amount of time and energy. In particular, we need funds to pay for certain cloud APIs. If you appreciate LafTools, please consider supporting us.")}
+                                        {Dot("6hsnqWe", "Although LafTools is free and open source, maintaining it still requires a significant amount of time and energy. In particular, we need funds to pay for certain cloud APIs. If you appreciate LafTools, please consider supporting us.")}
                                     </p>
                                     <p>
-                                    {Dot("AqYcS","To support LafTools, consider upgrading to our professional version through a monthly subscription. We would greatly appreciate your help, and we promise that LafTools will become even better with the funds raised.")}</p>
+                                        {Dot("AqYcS", "To support LafTools, consider upgrading to our professional version through a monthly subscription. We would greatly appreciate your help, and we promise that LafTools will become even better with the funds raised.")}</p>
                                     <p
-                                    className='bp5-text-muted'
+                                        className='bp5-text-muted'
                                     >{'Ryan Laf'}
-                                    <br/>
-                                    {Dot("qWemXE4","Jan, 1st, 2024")}
+                                        <br />
+                                        {Dot("qWemXE4", "Jan, 1st, 2024")}
                                     </p>
                                 </p>
                             })
                         }
                     }
                 ].map(x => {
-                    return <a onClick={x.onClick} href={x.link} className={CSS_TEXT_ANCHOR_CSS} target={x.onClick? '':'_blank'}>{x.label}</a>
+                    return <a onClick={x.onClick} href={x.link} className={CSS_TEXT_ANCHOR_CSS} target={x.onClick ? '' : '_blank'}>{x.label}</a>
                 })
             }
         </div>
@@ -177,7 +177,7 @@ let InnerContent = () => {
             loadLeftPage={loadLeftPage}
             admin_localAccountObject={admin_localAccountObject.current}
             localAccountObject={localAccountObject.current}
-            notifyCreatedOK={()=>{
+            notifyCreatedOK={() => {
                 infoQueryObj.refetch()
             }}
             selectedValue="0"
@@ -188,7 +188,7 @@ let InnerContent = () => {
             localAccountObject={localAccountObject.current}
             loadLeftPage={loadLeftPage}
             selectedValue="0"
-            notifyCreatedOK={()=>{
+            notifyCreatedOK={() => {
                 FN_GetDispatch()(
                     ACTION_callRefreshAll(false)
                 )
@@ -210,18 +210,18 @@ export default () => {
         style={{
             height: `calc(100vh - ${VAL_CSS_MENU_TITLE_PANEL}px)`,
             // paddingBottom:'30px',
-            paddingBottom:'0px',
-            overflow:'auto',
+            paddingBottom: '0px',
+            overflow: 'auto',
         }}
     >
         <div className="" style={{
             flex: 1
         }}>
-        <Card style={{
-            // minHeight: '400px'
-        }} className='w-6/12 flex  mx-auto text-left  '>
-            <InnerContent></InnerContent>
-        </Card>
+            <Card style={{
+                // minHeight: '400px'
+            }} className='w-6/12 flex  mx-auto text-left  '>
+                <InnerContent></InnerContent>
+            </Card>
         </div>
         <FooterContent></FooterContent>
     </div>

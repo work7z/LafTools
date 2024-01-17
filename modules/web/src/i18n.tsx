@@ -1,7 +1,7 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
 // Date: Sun, 7 Jan 2024
-// Author: Ryan Laf <get>
+// Author: Ryan Laf <work7z@outlook.com>
 // Description: 
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
@@ -40,7 +40,7 @@ export let getFormattedLang = function (crtLang: string) {
 let prevLangValue: string | null = null
 
 export let GetUserActualClientLang = function (): string {
-  if(TranslationUtils.ForcbilyLanguage){
+  if (TranslationUtils.ForcbilyLanguage) {
     return TranslationUtils.ForcbilyLanguage
   }
   if (prevLangValue) return prevLangValue

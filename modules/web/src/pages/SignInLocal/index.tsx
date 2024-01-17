@@ -1,7 +1,7 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
 // Date: Sun, 7 Jan 2024
-// Author: Ryan Laf <get>
+// Author: Ryan Laf <work7z@outlook.com>
 // Description: 
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
@@ -82,7 +82,7 @@ export default () => {
               transform: "translateX(-50%)",
             }}
           >
-            {Dot("WYCVL","Quick Setup")}
+            {Dot("WYCVL", "Quick Setup")}
           </div>
         }
       />
