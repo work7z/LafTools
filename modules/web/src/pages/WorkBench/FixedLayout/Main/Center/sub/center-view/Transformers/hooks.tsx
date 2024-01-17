@@ -44,7 +44,7 @@ import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ExtensionInfo, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import AppCategory from "../../../../../../../../lib/meta/tools/category";
 import { ListExtForTheCategoryRes } from "../../../../../../../../reducers/apiSlice";
-import AppToolInfoObj from "../../../../../../../../lib/meta/tools/info";
+import appToolInfoObj from "../../../../../../../../lib/meta/tools/info";
 
 export let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 export let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -79,7 +79,7 @@ export let useExtsList = (fc: string): ListExtForTheCategoryRes[] => {
                     ChildrenAsInfo: (xx.ChildrenIdSet || []).map(xxx => {
                         return {
                             Id: xxx,
-                            Label: AppToolInfoObj[xxx]?.Label || xxx,
+                            Label: appToolInfoObj[xxx]?.Label || xxx,
                             // Description: xxx.Description + ""
                         } as ExtensionInfo
                     })

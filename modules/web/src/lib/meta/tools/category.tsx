@@ -1,3 +1,25 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Wed, 17 Jan 2024
+// Author: LafTools Team - FX <work7z@outlook.com>
+// LafTools Team - Ubuntu < work7z@outlook.com>
+//   LafTools Team < work7z@outlook.com>
+// Description: 
+// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import { Dot } from "../../../utils/TranslationUtils";
 import type {
   ToolCategory as ToolCategory,
@@ -79,12 +101,12 @@ let AppCategory: ToolCategory[] = [
         Icon: "widget-button",
         ChildrenIdSet: [
           "edc_base64",
-          "edc_url",
+          // "edc_url",
           "edc_base32",
-          "edc_hex",
-          "edc_unicode",
-          "edc_base64-hex",
-          "edc_querystring",
+          // "edc_hex",
+          // "edc_unicode",
+          // "edc_base64-hex",
+          // "edc_querystring",
         ],
       },
       {
@@ -92,12 +114,12 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("z1oFn", "Escape and Unescape"),
         Icon: "vertical-inbetween",
         ChildrenIdSet: [
-          "esc_xml",
-          "esc_html",
-          "esc_csv",
-          "esc_java_string",
-          "esc_json",
-          "esc_javascript",
+          // "esc_xml",
+          // "esc_html",
+          // "esc_csv",
+          // "esc_java_string",
+          // "esc_json",
+          // "esc_javascript",
         ],
       },
       {
@@ -105,9 +127,8 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("y_2Q5", "Web Auth"),
         Icon: "shield",
         ChildrenIdSet: [
-          "jwt_encoder",
-          "jwt_decoder",
-          //
+          // "jwt_encoder",
+          // "jwt_decoder",
         ],
       },
     ],
@@ -121,8 +142,8 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("ui5pZ", "Command Parser"),
         Icon: "hat",
         ChildrenIdSet: [
-          "curl_to_pl",
-          "curl_to_api",
+          // "curl_to_pl",
+          // "curl_to_api",
           //
         ],
       },
@@ -131,8 +152,8 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("gQhfS", "File Tools"),
         Icon: "saved",
         ChildrenIdSet: [
-          "correct_file_path",
-          "analyze_file_path",
+          // "correct_file_path",
+          // "analyze_file_path",
           //
         ],
       },
@@ -148,9 +169,9 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("dCFIwC", "Code Generater"),
         Icon: "array-boolean",
         ChildrenIdSet: [
-          "gen_yaml_to_json",
-          "gen_sql_to_json",
-          "gen_dml_to_json",
+          // "gen_yaml_to_json",
+          // "gen_sql_to_json",
+          // "gen_dml_to_json",
         ],
       },
       {
@@ -158,9 +179,9 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("aSOpr", "Data Model Generater"),
         Icon: "array-boolean",
         ChildrenIdSet: [
-          "json_to_model",
-          "xml_to_model",
-          "sql_to_model",
+          // "json_to_model",
+          // "xml_to_model",
+          // "sql_to_model",
           //
         ],
       },
@@ -169,11 +190,11 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("unc9E", "Random Text"),
         Icon: "random",
         ChildrenIdSet: [
-          "rand_uuid",
-          "rand_mock",
-          "rand_plaintext",
-          "rand_sundrytext",
-          "rand_loremipsum",
+          // "rand_uuid",
+          // "rand_mock",
+          // "rand_plaintext",
+          // "rand_sundrytext",
+          // "rand_loremipsum",
         ],
       },
     ],
@@ -187,19 +208,19 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("dCFIC", "Code Prettier"),
         Icon: "array-string",
         ChildrenIdSet: [
-          "fmt_html",
-          "fmt_xml",
-          "fmt_yaml",
-          "fmt_css",
-          "fmt_css",
-          "fmt_less",
-          "fmt_sass",
-          "fmt_json",
-          "fmt_markdown",
-          "fmt_javascript",
-          "fmt_typescript",
-          "fmt_sql",
-          "fmt_graphql",
+          // "fmt_html",
+          // "fmt_xml",
+          // "fmt_yaml",
+          // "fmt_css",
+          // "fmt_css",
+          // "fmt_less",
+          // "fmt_sass",
+          // "fmt_json",
+          // "fmt_markdown",
+          // "fmt_javascript",
+          // "fmt_typescript",
+          // "fmt_sql",
+          // "fmt_graphql",
         ],
       },
     ],
@@ -212,18 +233,21 @@ let AppCategory: ToolCategory[] = [
         Id: "quick_diff",
         Label: Dot("yfYeg", "Quick Differenciate"),
         Icon: "search-text",
-        ChildrenIdSet: ["text_compare", "file_compare"],
+        ChildrenIdSet: [
+          // "text_compare", 
+          // "file_compare"
+        ],
       },
       {
         Id: "general",
         Label: Dot("y_2Q5dqw", "Translation"),
         Icon: "translate",
         ChildrenIdSet: [
-          "dictionary",
-          "translate_json",
-          "translate_text",
-          "translate_properties",
-          "translate_customizer",
+          // "dictionary",
+          // "translate_json",
+          // "translate_text",
+          // "translate_properties",
+          // "translate_customizer",
         ],
       },
       {
@@ -231,9 +255,9 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("Ot6EP", "Polish Tools"),
         Icon: "send-to-graph",
         ChildrenIdSet: [
-          "write_by_ai",
-          "polish_by_ai",
-          "grammer_check",
+          // "write_by_ai",
+          // "polish_by_ai",
+          // "grammer_check",
           //
         ],
       },
@@ -242,7 +266,7 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("y_2Q5dqw", "Text Matcher"),
         Icon: "oil-field",
         ChildrenIdSet: [
-          "regex_tester",
+          // "regex_tester",
           //
         ],
       },
@@ -251,8 +275,8 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("yfYeg", "Text Template"),
         Icon: "oil-field",
         ChildrenIdSet: [
-          "template_dotjs",
-          "template_handlebars",
+          // "template_dotjs",
+          // "template_handlebars",
           //
         ],
       },
@@ -267,13 +291,13 @@ let AppCategory: ToolCategory[] = [
         Label: Dot("a3z-3k12", "IP Address Tools"),
         Icon: "ip-address",
         ChildrenIdSet: [
-          "ipv4_masker",
-          "ipv4_to_long",
-          "ipv4_utility",
-          "ipv4_network_calculater",
-          "ipv4_address_converter",
-          "subnet_mask_tools", // include multiple tools
-          "nodes_host_calculater",
+          // "ipv4_masker",
+          // "ipv4_to_long",
+          // "ipv4_utility",
+          // "ipv4_network_calculater",
+          // "ipv4_address_converter",
+          // "subnet_mask_tools", // include multiple tools
+          // "nodes_host_calculater",
         ],
       },
     ],
