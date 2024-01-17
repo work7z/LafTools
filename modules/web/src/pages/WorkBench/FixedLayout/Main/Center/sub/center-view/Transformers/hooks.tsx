@@ -23,6 +23,7 @@ import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
     VAL_CSS_TAB_TITLE_PANEL,
     VAL_CSS_CONTROL_PANEL,
+    FnPureToolDefinition,
 } from "../../../../../../../../types/workbench-types";
 import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
 import { Dot } from "../../../../../../../../utils/TranslationUtils";
@@ -40,7 +41,10 @@ import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 import { fn_format_description } from "../../../../../../../../types/workbench-fn";
 import { CommonTransformerProps } from "./types";
-import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
+import { ExtensionAction, ExtensionInfo, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
+import AppCategory from "../../../../../../../../lib/meta/tools/category";
+import { ListExtForTheCategoryRes } from "../../../../../../../../reducers/apiSlice";
+import AppToolInfoObj from "../../../../../../../../lib/meta/tools/info";
 
 export let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 export let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -59,6 +63,46 @@ export let fn_coll_output = (sessionId) => {
         };
     }).v;
 };
+
+export let useExtsList = (fc: string): ListExtForTheCategoryRes[] => {
+    let arr: ListExtForTheCategoryRes[] = []
+    let isAll = fc == 'all';
+    AppCategory.forEach(x => {
+        if (isAll || x.Id == fc) {
+            x.SubCategories.forEach(xx => {
+                let obj = {
+                    Id: xx.Id,
+                    Label: xx.Label,
+                    Icon: xx.Icon,
+                    CategoryId: x.Id,
+                    // ChildrenIdSet: xx.ChildrenIdSet,
+                    ChildrenAsInfo: (xx.ChildrenIdSet || []).map(xxx => {
+                        return {
+                            Id: xxx,
+                            Label: AppToolInfoObj[xxx]?.Label || xxx,
+                            // Description: xxx.Description + ""
+                        } as ExtensionInfo
+                    })
+                }
+                if (!_.isEmpty(obj.ChildrenAsInfo)) {
+                    arr.push(obj)
+                }
+            })
+        }
+    })
+    return arr
+}
+
+export let useGetCategoryList = (): FnPureToolDefinition[] => {
+    return AppCategory.map(x => {
+        return {
+            Id: x.Id,
+            Label: x.Label,
+            SubCategories: x.SubCategories,
+            TotalCount: x.TotalCount
+        }
+    })
+}
 
 export let useHookWithSkippingFirst = (fn: () => void, deps: any[]) => {
     let [first, setFirst] = useState(true);

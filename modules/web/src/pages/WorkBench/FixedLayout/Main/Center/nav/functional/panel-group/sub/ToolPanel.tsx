@@ -107,22 +107,6 @@ import {
 import ToolExtensionTree from "./ToolExtensionTree";
 
 export let InnerToolPanel = (): any => {
-  const res_toolCategory = apiSlice.useGetToolCategoryQuery(
-    {},
-    {}
-    // exportUtils.refresh_v1(),
-    // exportUtils.refresh_v2()
-  );
-  let sq = useSearchQuery();
-  let categoryList = res_toolCategory.data?.payload?.list || [];
-  let fc = sq.fc || _.get(categoryList, "[0].id", "all");
-  let extsListQuery = apiSlice.useGetToolCategoryExtsListQuery(
-    { categoryId: fc },
-    {
-      refetchOnMountOrArgChange: true,
-    }
-  );
-  let activeOne = _.find(categoryList, (x) => x.Id == fc);
 
   let m_ws = useMergeParamWithWorkSpace();
   return (
@@ -133,7 +117,7 @@ export let InnerToolPanel = (): any => {
     //   leftNavList={
     //     _.map(categoryList, (x) => {
     //       return {
-    //         label: x.LabelByInit,
+    //         label: x.Label,
     //         value: x.Id,
     //         pathname: m_ws({
     //           fc: x.Id,

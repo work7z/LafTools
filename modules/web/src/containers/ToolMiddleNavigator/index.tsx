@@ -67,7 +67,7 @@ import { Dot } from "../../utils/TranslationUtils";
 import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";
-import  {
+import {
   ExtensionInfoFormatted as ExtensionInfo,
 } from "../../types/purejs-types-READ_ONLY";
 import apiSlice from '../../reducers/apiSlice'
@@ -89,218 +89,220 @@ import { PassToolViewerProp } from "../../types/workbench-types";
 type PassProp = PassToolViewerProp;
 
 export default (props: PassProp): any => {
-  let dis = exportUtils.dispatch();
-  let currentCategoryId = props?.findCurrentPureItem?.Id;
-  const [updateMemStatus, onUpdateMemStatus] = useState(0);
+  return <span></span>
+}
+//   let dis = exportUtils.dispatch();
+//   let currentCategoryId = props?.findCurrentPureItem?.Id;
+//   const [updateMemStatus, onUpdateMemStatus] = useState(0);
 
-  let extsListQuery = apiSlice.useGetToolCategoryExtsListQuery(
-    { categoryId: currentCategoryId + "" },
-    {
-      refetchOnMountOrArgChange: true,
-    }
-  );
+//   let extsListQuery = apiSlice.useGetToolCategoryExtsListQuery(
+//     { categoryId: currentCategoryId + "" },
+//     {
+//       refetchOnMountOrArgChange: true,
+//     }
+//   );
 
-  let b = useParams();
-  let toolParam = useParams() as ToolParamType;
-  let { Tool_RemarkExtIds } = exportUtils.useSelector((v) => {
-    return {
-      Tool_RemarkExtIds: [], // v.forge.Tool_RemarkExtIds,
-    };
-  });
-  let treeInfo = exportUtils.useSelector((x) => x.tool.subCategoryTreeInfo);
+//   let b = useParams();
+//   let toolParam = useParams() as ToolParamType;
+//   let { Tool_RemarkExtIds } = exportUtils.useSelector((v) => {
+//     return {
+//       Tool_RemarkExtIds: [], // v.forge.Tool_RemarkExtIds,
+//     };
+//   });
+//   let treeInfo = exportUtils.useSelector((x) => x.tool.subCategoryTreeInfo);
 
-  let favoritesList: ExtensionInfo[] = useMemo(() => {
-    let list = extsListQuery.data?.payload?.list;
-    let existSet = new Set();
-    // select items in each of list.ChildrenAsInfo by matching if their id is in Tool_RemarkExtIds
-    let tmp: ExtensionInfo[] = [];
-    if (!_.isNil(list)) {
-      _.forEach(list, (x) => {
-        return _.forEach(x.ChildrenAsInfo, (xx) => {
-          let isThatFoundable = _.findIndex(Tool_RemarkExtIds, (xxx) => {
-            return xxx === xx.Id;
-          });
-          if (isThatFoundable != -1) {
-            if (existSet.has(xx.Id)) return;
-            tmp.push(xx);
-            existSet.add(xx.Id);
-          }
-        });
-      });
-    }
-    return tmp;
-  }, [
-    updateMemStatus,
-    extsListQuery.status,
-    Tool_RemarkExtIds.join("-"),
-    treeInfo.updateId,
-    _.size(treeInfo.nodes),
-  ]);
+//   let favoritesList: ExtensionInfo[] = useMemo(() => {
+//     let list = extsListQuery.data?.payload?.list;
+//     let existSet = new Set();
+//     // select items in each of list.ChildrenAsInfo by matching if their id is in Tool_RemarkExtIds
+//     let tmp: ExtensionInfo[] = [];
+//     if (!_.isNil(list)) {
+//       _.forEach(list, (x) => {
+//         return _.forEach(x.ChildrenAsInfo, (xx) => {
+//           let isThatFoundable = _.findIndex(Tool_RemarkExtIds, (xxx) => {
+//             return xxx === xx.Id;
+//           });
+//           if (isThatFoundable != -1) {
+//             if (existSet.has(xx.Id)) return;
+//             tmp.push(xx);
+//             existSet.add(xx.Id);
+//           }
+//         });
+//       });
+//     }
+//     return tmp;
+//   }, [
+//     updateMemStatus,
+//     extsListQuery.status,
+//     Tool_RemarkExtIds.join("-"),
+//     treeInfo.updateId,
+//     _.size(treeInfo.nodes),
+//   ]);
 
-  gutils.ExposureIt("middle_toolParam", toolParam, true);
-  gutils.ExposureIt("middle_toolParam_b", b, true);
+//   gutils.ExposureIt("middle_toolParam", toolParam, true);
+//   gutils.ExposureIt("middle_toolParam_b", b, true);
 
-  // check if toolParam.extId is empty, if yes, then jump to the link which is comprised of extsListQuery.data?.payload?.list if have
-  let hist = RouteUtils.useHistory();
-  let goWithChildId = (childId) => {
-    if (!_.isNil(childId)) {
-      hist.push(`${"nouse"}/${currentCategoryId}/${childId}`);
-      dis(ToolSlice.actions.updateSubCategoryForSelected([childId]));
-    }
-  };
-  useEffect(() => {
-    if (gutils.empty(toolParam.extId)) {
-      if (!_.isNil(extsListQuery.data?.payload?.list)) {
-        let firstItem = _.first(extsListQuery.data?.payload?.list);
-        // check if firstItem and its childrenAsInfo[0] exist, if yes, then read their Id
-        if (!_.isNil(firstItem)) {
-          let childId = _.first(firstItem.ChildrenAsInfo)?.Id;
-          goWithChildId(childId);
-        }
-      }
-    }
-  }, [extsListQuery.status]);
+//   // check if toolParam.extId is empty, if yes, then jump to the link which is comprised of extsListQuery.data?.payload?.list if have
+//   let hist = RouteUtils.useHistory();
+//   let goWithChildId = (childId) => {
+//     if (!_.isNil(childId)) {
+//       hist.push(`${"nouse"}/${currentCategoryId}/${childId}`);
+//       dis(ToolSlice.actions.updateSubCategoryForSelected([childId]));
+//     }
+//   };
+//   useEffect(() => {
+//     if (gutils.empty(toolParam.extId)) {
+//       if (!_.isNil(extsListQuery.data?.payload?.list)) {
+//         let firstItem = _.first(extsListQuery.data?.payload?.list);
+//         // check if firstItem and its childrenAsInfo[0] exist, if yes, then read their Id
+//         if (!_.isNil(firstItem)) {
+//           let childId = _.first(firstItem.ChildrenAsInfo)?.Id;
+//           goWithChildId(childId);
+//         }
+//       }
+//     }
+//   }, [extsListQuery.status]);
 
-  let fn_calculate_fav = (): TreeNodeInfo => {
-    return {
-      // add item for Remarks
-      id: "Remarks",
-      label: Dot("IfsGO", "Favourites"),
-      icon: "star",
-      hasCaret: true,
-      childNodes: _.map(favoritesList, (x) => {
-        return {
-          id: x.Id,
-          label: (x.Label),
-          icon: "application",
-        } as TreeNodeInfo;
-      }),
-    };
-  };
+//   let fn_calculate_fav = (): TreeNodeInfo => {
+//     return {
+//       // add item for Remarks
+//       id: "Remarks",
+//       label: Dot("IfsGO", "Favourites"),
+//       icon: "star",
+//       hasCaret: true,
+//       childNodes: _.map(favoritesList, (x) => {
+//         return {
+//           id: x.Id,
+//           label: (x.Label),
+//           icon: "application",
+//         } as TreeNodeInfo;
+//       }),
+//     };
+//   };
 
-  useEffect(() => {
-    dis(ToolSlice.actions.updateSubCategoryTreeRemarks(fn_calculate_fav()));
-  }, [(favoritesList || []).join("-")]);
+//   useEffect(() => {
+//     dis(ToolSlice.actions.updateSubCategoryTreeRemarks(fn_calculate_fav()));
+//   }, [(favoritesList || []).join("-")]);
 
-  useEffect(() => {
-    dis(
-      ToolSlice.actions.updateSubCategoryTreeInfo({
-        updateId: new Date().getTime() + "",
-        expanded: [
-          _.first(
-            _.map(
-              _.filter(extsListQuery.data?.payload?.list, (x2) => {
-                return (
-                  _.findIndex(
-                    x2.ChildrenAsInfo,
-                    (ix2) => ix2.Id == toolParam.extId
-                  ) != -1
-                );
-              }) || [],
-              (x, d, n) => {
-                return x.Id;
-              }
-            )
-          ),
-        ] as any,
-        selected: !_.isNil(toolParam.extId)
-          ? ([toolParam.extId] as string[])
-          : [],
-        nodes: [
-          fn_calculate_fav(),
-          ..._.map(extsListQuery.data?.payload?.list || [], (x, d, n) => {
-            return {
-              id: x.Id,
-              hasCaret: true,
-              icon: x.Icon || "application",
-              label: x.Label,
-              childNodes: _.map(x.ChildrenAsInfo, (child) => {
-                return {
-                  id: child.Id,
-                  label: _.toString(child.Label),
-                  icon: "application",
-                } as TreeNodeInfo;
-              }),
-            } as TreeNodeInfo;
-          }),
-        ],
-      })
-    );
-  }, [extsListQuery.status]);
+//   useEffect(() => {
+//     dis(
+//       ToolSlice.actions.updateSubCategoryTreeInfo({
+//         updateId: new Date().getTime() + "",
+//         expanded: [
+//           _.first(
+//             _.map(
+//               _.filter(extsListQuery.data?.payload?.list, (x2) => {
+//                 return (
+//                   _.findIndex(
+//                     x2.ChildrenAsInfo,
+//                     (ix2) => ix2.Id == toolParam.extId
+//                   ) != -1
+//                 );
+//               }) || [],
+//               (x, d, n) => {
+//                 return x.Id;
+//               }
+//             )
+//           ),
+//         ] as any,
+//         selected: !_.isNil(toolParam.extId)
+//           ? ([toolParam.extId] as string[])
+//           : [],
+//         nodes: [
+//           fn_calculate_fav(),
+//           ..._.map(extsListQuery.data?.payload?.list || [], (x, d, n) => {
+//             return {
+//               id: x.Id,
+//               hasCaret: true,
+//               icon: x.Icon || "application",
+//               label: x.Label,
+//               childNodes: _.map(x.ChildrenAsInfo, (child) => {
+//                 return {
+//                   id: child.Id,
+//                   label: _.toString(child.Label),
+//                   icon: "application",
+//                 } as TreeNodeInfo;
+//               }),
+//             } as TreeNodeInfo;
+//           }),
+//         ],
+//       })
+//     );
+//   }, [extsListQuery.status]);
 
-  let activeOne = props.findCurrentPureItem;
+//   let activeOne = props.findCurrentPureItem;
 
-  let activeExt: TreeNodeInfo | null =
-    useMemo<TreeNodeInfo | null>((): TreeNodeInfo | null => {
-      let findObj: TreeNodeInfo | null = null;
-      if (treeInfo == null) return null;
-      if (treeInfo.nodes == null) return null;
-      logutils.info(
-        "check all nodes",
-        treeInfo.nodes + ", findObj is",
-        findObj
-      );
-      _.find(treeInfo.nodes, (x) => {
-        logutils.info("check node", x);
-        _.find(x.childNodes, (xx) => {
-          if (xx.id == toolParam.extId) {
-            findObj = xx;
-          }
-          return findObj != null;
-        });
-        return findObj != null;
-      });
-      return findObj;
-    }, [
-      treeInfo.updateId,
-      toolParam.extId,
-      toolParam.category,
-      extsListQuery.status,
-      _.size(treeInfo.nodes),
-    ]);
+//   let activeExt: TreeNodeInfo | null =
+//     useMemo<TreeNodeInfo | null>((): TreeNodeInfo | null => {
+//       let findObj: TreeNodeInfo | null = null;
+//       if (treeInfo == null) return null;
+//       if (treeInfo.nodes == null) return null;
+//       logutils.info(
+//         "check all nodes",
+//         treeInfo.nodes + ", findObj is",
+//         findObj
+//       );
+//       _.find(treeInfo.nodes, (x) => {
+//         logutils.info("check node", x);
+//         _.find(x.childNodes, (xx) => {
+//           if (xx.id == toolParam.extId) {
+//             findObj = xx;
+//           }
+//           return findObj != null;
+//         });
+//         return findObj != null;
+//       });
+//       return findObj;
+//     }, [
+//       treeInfo.updateId,
+//       toolParam.extId,
+//       toolParam.category,
+//       extsListQuery.status,
+//       _.size(treeInfo.nodes),
+//     ]);
 
-  gutils.ExposureIt("activeExt", activeExt, true);
+//   gutils.ExposureIt("activeExt", activeExt, true);
 
-  PageUtils.useUpdateTitle(
-    [activeExt?.label as string, activeOne?.LabelByInit]
-      .filter((x) => !_.isNil(x))
-      .join(" - "),
-    [toolParam.category + "", toolParam.extId + ""]
-  );
+//   PageUtils.useUpdateTitle(
+//     [activeExt?.label as string, activeOne?.Label]
+//       .filter((x) => !_.isNil(x))
+//       .join(" - "),
+//     [toolParam.category + "", toolParam.extId + ""]
+//   );
 
-  let r = QueryUtils.validateResult(extsListQuery, {
-    label: Dot("CWoqhy", "Exts List by selected CategoryID"),
-  });
-  if (!_.isNil(r)) {
-    return r;
-  }
+//   let r = QueryUtils.validateResult(extsListQuery, {
+//     label: Dot("CWoqhy", "Exts List by selected CategoryID"),
+//   });
+//   if (!_.isNil(r)) {
+//     return r;
+//   }
 
-  if (_.isNil(props.findCurrentPureItem)) {
-    return (
-      <NonIdealState
-        icon="array-string"
-        title={Dot("cuRCb", "Category not found.")}
-      ></NonIdealState>
-    );
-  }
-  return (
-    <div className="w100 h100 flex-parent">
-      <div className="flex-main-body">
-        {_.isEmpty(extsListQuery.data?.payload?.list) ? (
-          <NonIdealState
-            icon="array"
-            title={Dot(
-              "qUabR",
-              "There's no available tools for this category."
-            )}
-          ></NonIdealState>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="btm-top">
-        <MottoLine />
-      </div>
-    </div>
-  );
-};
+//   if (_.isNil(props.findCurrentPureItem)) {
+//     return (
+//       <NonIdealState
+//         icon="array-string"
+//         title={Dot("cuRCb", "Category not found.")}
+//       ></NonIdealState>
+//     );
+//   }
+//   return (
+//     <div className="w100 h100 flex-parent">
+//       <div className="flex-main-body">
+//         {_.isEmpty(extsListQuery.data?.payload?.list) ? (
+//           <NonIdealState
+//             icon="array"
+//             title={Dot(
+//               "qUabR",
+//               "There's no available tools for this category."
+//             )}
+//           ></NonIdealState>
+//         ) : (
+//           ""
+//         )}
+//       </div>
+//       <div className="btm-top">
+//         <MottoLine />
+//       </div>
+//     </div>
+//   );
+// };

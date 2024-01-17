@@ -1,1 +1,1 @@
-export * from "../../../purejs/src/purejs-types";
+export * from "../lib/meta/purejs-types";

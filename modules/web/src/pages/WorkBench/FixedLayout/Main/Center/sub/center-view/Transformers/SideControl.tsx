@@ -33,7 +33,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
     let leftActions: ButtonProps[] = [
         ...(actions || []).map(x => {
             return {
-                text: x.LabelByInit,
+                text: x.Label,
                 intent: "primary",
                 title: x.TooltipByInit,
                 onClick: () => {

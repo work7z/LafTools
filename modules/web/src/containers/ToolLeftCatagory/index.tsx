@@ -96,7 +96,7 @@ export default (props: PassProp): any => {
             className={isActive ? "active-tool-item" : ""}
             key={x.Id}
           >
-            {x.LabelByInit}
+            {x.Label}
           </Link>
         );
       })}

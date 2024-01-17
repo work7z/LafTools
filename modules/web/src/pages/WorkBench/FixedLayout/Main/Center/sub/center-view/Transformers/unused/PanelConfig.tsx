@@ -81,7 +81,7 @@ let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithR
         //         type: "select",
         //         selectList: (actions || []).map(x => {
         //             return {
-        //                 label: x.LabelByInit,
+        //                 label: x.Label,
         //                 value: x.Id
         //             } as LabelValuePair
         //         })

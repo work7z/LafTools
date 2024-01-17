@@ -121,6 +121,7 @@ import MottoLine from "../../../../../../../../../components/MottoLine";
 import GenTree from "../../../../../../../../../components/GenTree";
 import { FnPureToolDefinition } from "../../../../../../../../../types/workbench-types";
 import WorkspaceSlice from "../../../../../../../../../reducers/workspaceSlice";
+import { useExtsList } from "../../../../sub/center-view/Transformers/hooks";
 
 export default (props: {
   activeOne: FnPureToolDefinition | undefined;
@@ -128,12 +129,12 @@ export default (props: {
   let sq = useSearchQuery();
   const [updateMemStatus, onUpdateMemStatus] = useState(0);
   let fc = sq.fc || "all";
-  let extsListQuery = apiSlice.useGetToolCategoryExtsListQuery(
-    { categoryId: fc },
-    {
-      refetchOnMountOrArgChange: false,
-    }
-  );
+  // let extsListQuery = apiSlice.useGetToolCategoryExtsListQuery(
+  //   { categoryId: fc },
+  //   {
+  //     refetchOnMountOrArgChange: false,
+  //   }
+  // );
   let dis = exportUtils.dispatch();
   let toolParam = {
     category: fc,
@@ -141,6 +142,7 @@ export default (props: {
   };
   let treeInfo = exportUtils.useSelector((x) => x.tool.subCategoryTreeInfo);
   let hist = RouteUtils.useHistory();
+  let extsList = useExtsList(fc)
   let goWithChildId = (childId) => {
     // if (!_.isNil(childId)) {
     //   hist.push(`${URL_WORKBENCH_TOOLS}/${currentCategoryId}/${childId}`);
@@ -148,17 +150,17 @@ export default (props: {
     // }
   };
   useEffect(() => {
-    if (gutils.empty(toolParam.extId)) {
-      if (!_.isNil(extsListQuery.data?.payload?.list)) {
-        let firstItem = _.first(extsListQuery.data?.payload?.list);
-        // check if firstItem and its childrenAsInfo[0] exist, if yes, then read their Id
-        if (!_.isNil(firstItem)) {
-          let childId = _.first(firstItem.ChildrenAsInfo)?.Id;
-          goWithChildId(childId);
-        }
-      }
-    }
-  }, [extsListQuery.status]);
+    // if (gutils.empty(toolParam.extId)) {
+    //   if (!_.isEmpty(extsList)) {
+    //     let firstItem = _.first(extsList);
+    //     // check if firstItem and its childrenAsInfo[0] exist, if yes, then read their Id
+    //     if (!_.isNil(firstItem)) {
+    //       let childId = _.first(firstItem.ChildrenAsInfo)?.Id;
+    //       goWithChildId(childId);
+    //     }
+    //   }
+    // }
+  }, [fc]);
 
   let workspaceDataForTree = exportUtils.useSelector((v) => {
     return {
@@ -167,15 +169,15 @@ export default (props: {
       favourites: v.workspace.tools.favourites,
     };
   });
+  let list = extsList;
 
   let favoritesList: ExtensionInfo[] = useMemo(() => {
-    let list = extsListQuery.data?.payload?.list;
     let existSet = new Set();
     // select items in each of list.ChildrenAsInfo by matching if their id is in Tool_RemarkExtIds
     let tmp: ExtensionInfo[] = [];
     if (!_.isNil(list)) {
       _.forEach(list, (x) => {
-        return _.forEach(x.ChildrenAsInfo, (xx) => {
+        _.forEach(x.ChildrenAsInfo, (xx) => {
           let isThatFoundable = _.findIndex(
             workspaceDataForTree.favourites,
             (xxx) => {
@@ -194,7 +196,8 @@ export default (props: {
     return tmp;
   }, [
     updateMemStatus,
-    extsListQuery.status,
+    // extsListQuery.status,
+    fc,
     workspaceDataForTree.favourites,
     treeInfo.updateId,
     _.size(treeInfo.nodes),
@@ -230,7 +233,7 @@ export default (props: {
         expanded: [
           _.first(
             _.map(
-              _.filter(extsListQuery.data?.payload?.list, (x2) => {
+              _.filter(extsList, (x2) => {
                 return (
                   _.findIndex(
                     x2.ChildrenAsInfo,
@@ -249,7 +252,7 @@ export default (props: {
           : [],
         nodes: [
           fn_calculate_fav(),
-          ..._.map(extsListQuery.data?.payload?.list || [], (x, d, n) => {
+          ..._.map(extsList || [], (x, d, n) => {
             // TODO: hover to show detail
             return {
               id: x.Id,
@@ -268,7 +271,7 @@ export default (props: {
         ],
       })
     );
-  }, [extsListQuery.status]);
+  }, [fc]);
 
   let activeExt: TreeNodeInfo | null =
     useMemo<TreeNodeInfo | null>((): TreeNodeInfo | null => {
@@ -295,19 +298,19 @@ export default (props: {
       treeInfo.updateId,
       toolParam.extId,
       toolParam.category,
-      extsListQuery.status,
+      fc,
       _.size(treeInfo.nodes),
     ]);
 
   gutils.ExposureIt("activeExt", activeExt, true);
   let activeOne = props.activeOne;
 
-  let r = QueryUtils.validateResult(extsListQuery, {
-    label: Dot("CWohyqde", "Tools"),
-  });
-  if (!_.isNil(r)) {
-    return r;
-  }
+  // let r = QueryUtils.validateResult(extsListQuery, {
+  //   label: Dot("CWohyqde", "Tools"),
+  // });
+  // if (!_.isNil(r)) {
+  //   return r;
+  // }
 
   if (_.isNil(activeOne)) {
     return (
@@ -321,7 +324,7 @@ export default (props: {
   return (
     <div className=" select-none w100 h100 flex-parent whitespace-break-spaces overflow-auto">
       <div className="flex-main-body h-full">
-        {_.isEmpty(extsListQuery.data?.payload?.list) ? (
+        {_.isEmpty(extsList) ? (
           <NonIdealState
             icon="array"
             title={Dot("q12beqwR", "No Available Tools")}
@@ -332,7 +335,7 @@ export default (props: {
             onClick={(node) => {
               if (node?.hasCaret) return;
               let childId = node?.id;
-              goWithChildId(childId);
+              // goWithChildId(childId);
               let parentIcon: string | null = null;
               let parentLabel: string | null = null;
               _.every(treeInfo.nodes, (x: TreeNodeInfo) => {

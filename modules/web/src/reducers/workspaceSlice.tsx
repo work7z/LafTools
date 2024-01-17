@@ -25,6 +25,7 @@ import { EachTab } from "../components/GenHorizontalTab";
 import _ from "lodash";
 import SyncStateUtils from "../utils/SyncStateUtils";
 import { stat } from "fs";
+import { ExtensionInfo, ExtensionVM } from "../types/purejs-types-READ_ONLY";
 
 // workspace slice, will be used to store and display the selected workspace.
 // note that this slice should not be used unless the user got an valid workspace.
@@ -34,7 +35,7 @@ type GeneralTabBasicTab = {
   tabs: EachTab[];
   selected: string[];
   expanded: string[];
-  favourites: string[];
+  favourites: string[]
 };
 
 

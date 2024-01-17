@@ -77,6 +77,7 @@ import MottoLine from "../MottoLine";
 import apiSlice from "../../reducers/apiSlice";
 import { useSearchQuery } from "../../types/workbench-hook";
 import { logutils } from "../../utils/LogUtils";
+import { useGetCategoryList } from "../../pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformers/hooks";
 
 let { cloneDeep } = _;
 
@@ -110,8 +111,7 @@ export default (props: PassProp) => {
 
   let hasSearchText = !gutils.empty(searchText);
 
-  const res_toolCategory = apiSlice.useGetToolCategoryQuery({}, {});
-  let categoryList = res_toolCategory.data?.payload?.list || [];
+  let categoryList = useGetCategoryList()
 
   let sq = useSearchQuery();
 
@@ -173,7 +173,7 @@ export default (props: PassProp) => {
             });
             return {
               id: "root_" + x.Id,
-              label: x.LabelByInit,
+              label: x.Label,
               childNodes: crtNodes,
               groupItem: true,
             };

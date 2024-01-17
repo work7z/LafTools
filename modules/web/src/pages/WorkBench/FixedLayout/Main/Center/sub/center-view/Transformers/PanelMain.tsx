@@ -75,7 +75,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                 type: "select",
                 selectList: (actions || []).map(x => {
                     return {
-                        label: x.LabelByInit,
+                        label: x.Label,
                         value: x.Id
                     } as LabelValuePair
                 })
@@ -108,28 +108,28 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                     {/* Page: <strong>{''}</strong> */}
                     <Icon intent={
                         loadingStatic ? "success" :
-                        crtRuntimeStatus.processOK ? "success" :
-                            crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
+                            crtRuntimeStatus.processOK ? "success" :
+                                crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
                     } icon={
                         loadingStatic ? "changes" :
                             crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" :
-                            crtRuntimeStatus.processText ? "tick":
-                            "code"} iconSize={20} className={"mr-2  " + (
-                                crtRuntimeStatus.processing ? " animate-spin " : ""
-                            )} />
+                                crtRuntimeStatus.processText ? "tick" :
+                                    "code"} iconSize={20} className={"mr-2  " + (
+                                        crtRuntimeStatus.processing ? " animate-spin " : ""
+                                    )} />
                     <span className={
                         loadingStatic ? "" + (
                             greenClz
                         ) :
-                        crtRuntimeStatus.processOK ? greenClz:
-                            crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? loadingTextClz : "  "
+                            crtRuntimeStatus.processOK ? greenClz :
+                                crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? loadingTextClz : "  "
                     }>
                         {
                             loadingStatic ? Dot("y_9YqM", "Loading static resources...") :
-                            crtRuntimeStatus.processText ? crtRuntimeStatus.processText : Dot("z-o28we", "Process Panel")
-                                // crtRuntimeStatus.processError ? Dot("jOXj0", "Opps, something went wrong.") :
-                                //     crtRuntimeStatus.processing ?  : 
-                                    }
+                                crtRuntimeStatus.processText ? crtRuntimeStatus.processText : Dot("z-o28we", "Process Panel")
+                            // crtRuntimeStatus.processError ? Dot("jOXj0", "Opps, something went wrong.") :
+                            //     crtRuntimeStatus.processing ?  : 
+                        }
                     </span>
                 </Navbar.Heading>
             </Navbar.Group>

@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Intent } from "@blueprintjs/core";
-import { ToolCategory ,ExtensionVM} from "./purejs-types-READ_ONLY";
+import { ToolCategory, ExtensionVM } from "./purejs-types-READ_ONLY";
 
 export * from './constants';
 
@@ -49,9 +49,25 @@ export type WorkSpaceStruct = {
   WorkSpaces: EachWorkSpace[];
 };
 
+/**
+ {
+    "payload": {
+        "list": [
+            {
+                "Id": "all",
+                "TotalCount": 87,
+                "Label": null,
+                "Label": "所有工具(87)",
+                "SubCategories": []
+            },
+          ]
+        ]
+    }
+  }
+ */
 export type FnPureToolDefinition = ToolCategory & {
   Id: string;
-  LabelByInit: string;
+  Label: string;
   // sdfsdf: ToolSubCategory[];
 };
 export interface PassToolViewerProp {

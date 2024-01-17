@@ -105,13 +105,13 @@ import {
   useSearchQuery,
 } from "../../../../../../../../../types/workbench-hook";
 import ToolExtensionTree from "../sub/ToolExtensionTree";
+import { useGetCategoryList } from "../../../../sub/center-view/Transformers/hooks";
 
 // console.log(Dot("1j62a","Do this in other time"))
 
 export let InnerToolPanel = (): any => {
-  const res_toolCategory = apiSlice.useGetToolCategoryQuery({}, {});
   let sq = useSearchQuery();
-  let categoryList = res_toolCategory.data?.payload?.list || [];
+  let categoryList = useGetCategoryList()
   let fc = sq.fc || _.get(categoryList, "[0].id", "all");
   let extsListQuery = apiSlice.useGetToolCategoryExtsListQuery(
     { categoryId: fc },
@@ -120,16 +120,16 @@ export let InnerToolPanel = (): any => {
     },
   );
   let activeOne = _.find(categoryList, (x) => x.Id == fc);
-
+  debugger;
   let m_ws = useMergeParamWithWorkSpace();
   return (
     <FunctionalMenu_Panel
-      loading={res_toolCategory.isLoading || extsListQuery.isLoading}
+      loading={extsListQuery.isLoading}
       crtLeftNavId={fc}
       leftNavList={
         _.map(categoryList, (x) => {
           return {
-            label: x.LabelByInit + "",
+            label: x.Label + `(${x.TotalCount})`,
             value: x.Id,
             pathname: m_ws({
               fc: x.Id,

@@ -232,6 +232,7 @@ export type ListExtForTheCategoryRes = {
   Label: string;
   Icon: string;
   ChildrenAsInfo: ExtensionInfo[];
+  // ChildrenIdSet: string[]
 };
 
 export default apiSlice;
