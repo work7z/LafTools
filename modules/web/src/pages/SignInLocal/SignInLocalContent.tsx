@@ -132,7 +132,7 @@ export let FooterContent = () => {
         </div>
         <div>
             <b>
-                <a className={CSS_TEXT_ANCHOR_CSS} href="https://laf-tools.com" target='_blank'>{("LafTools@" + APPINFOJSON.version + "." + APPINFOJSON.releaseDate)} - {Dot("flK30", "Powered by LafTools team")}</a>
+                <a className={CSS_TEXT_ANCHOR_CSS} href="https://laf-tools.com" target='_blank'>{''} {Dot("flKq30", "{0} Powered by LafTools team", "LafTools@" + APPINFOJSON.version + "")}</a>
             </b>
         </div>
         {/* <div>
