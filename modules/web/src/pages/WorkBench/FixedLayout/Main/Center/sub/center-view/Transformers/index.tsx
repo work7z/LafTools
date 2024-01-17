@@ -147,8 +147,8 @@ export default (props: CommonTransformerProps) => {
       RuntimeStatusSlice.actions.initAtOnceBySessionIdAndValue({
         sessionId,
         value: {
-          latestViewPanelId: "general",
-          toolTabIndex: "general",
+          latestViewPanelId: "tools",
+          toolTabIndex: "tools",
           collapseConfig: false,
           collapseOutput: false,
         },
