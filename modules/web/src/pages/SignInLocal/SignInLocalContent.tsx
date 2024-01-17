@@ -70,7 +70,7 @@ import MottoLine from "../../components/MottoLine";
 import { AdminUserPassProp, AdministratorSetupPanel, LocalUserPanel, UserPassProp } from "../../containers/UserAskMultipleDialogs";
 import apiSlice from "../../reducers/apiSlice";
 import { ACTION_callRefreshAll } from "../../reducers/systemSlice";
-import { FN_GetDispatch } from "../../nocycle";
+import { APPINFOJSON, FN_GetDispatch } from "../../nocycle";
 import exportUtils from "../../utils/ExportUtils";
 import AlertUtils from "../../utils/AlertUtils";
 
@@ -132,7 +132,7 @@ export let FooterContent = () => {
         </div>
         <div>
             <b>
-                <a className={CSS_TEXT_ANCHOR_CSS} href="https://laf-tools.com" target='_blank'>{Dot("flK30", "Powered by LafTools team")}</a>
+                <a className={CSS_TEXT_ANCHOR_CSS} href="https://laf-tools.com" target='_blank'>{("LafTools@" + APPINFOJSON.version + "." + APPINFOJSON.releaseDate)} - {Dot("flK30", "Powered by LafTools team")}</a>
             </b>
         </div>
         {/* <div>
