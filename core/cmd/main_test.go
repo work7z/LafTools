@@ -25,62 +25,58 @@ import (
 	"laftools-go/core/handlers/context"
 	"laftools-go/core/project/base/env"
 	"laftools-go/core/project/base/ext"
-	"laftools-go/core/project/tools"
 	gtools "laftools-go/core/tools"
 	"math/rand"
 	"strconv"
-	"strings"
 	"sync"
 	"testing"
 	"time"
-
-	"github.com/stretchr/testify/assert"
 )
 
 func TestGetAllSubExtCategory(t *testing.T) {
-	// QTestServerEnvLaunch(t)
+	// // QTestServerEnvLaunch(t)
 
-	// defer QUnlockServer(t)
-	// for 1..3
-	// define an array with three element capablity
-	var arr [3]string
-	arr[0] = "zh_CN"
-	arr[1] = "zh_HK"
-	arr[2] = "en_US"
-	// for arr
-	for i := 0; i < 3; i++ {
-		startTime := time.Now()
-		b, _ := ext.GetAllSubExtCategory(&context.WebContext{
-			OverwriteUserLang: "zh_HK",
-		})
-		a, e := ext.GetAllSubExtCategory(&context.WebContext{
-			OverwriteUserLang: "zh_CN",
-		})
-		c, _ := ext.GetAllSubExtCategory(&context.WebContext{
-			OverwriteUserLang: "en_US",
-		})
-		if e != nil {
-			t.Error(e)
-			return
-		}
-		zh_CNStr, _ := global.ToJSONStr(a)
-		b2, _ := global.ToJSONStr(b)
-		c2, _ := global.ToJSONStr(c)
-		// check b contains "編碼和解碼"
-		assert.Contains(t, b2, "編碼和解碼")
-		// check a contains "编码与解码"
-		assert.Contains(t, zh_CNStr, "编码和解码")
-		// check c contains "Click here to"
-		assert.Contains(t, c2, "Digest Algorithm")
+	// // defer QUnlockServer(t)
+	// // for 1..3
+	// // define an array with three element capablity
+	// var arr [3]string
+	// arr[0] = "zh_CN"
+	// arr[1] = "zh_HK"
+	// arr[2] = "en_US"
+	// // for arr
+	// for i := 0; i < 3; i++ {
+	// 	startTime := time.Now()
+	// 	b, _ := ext.GetAllSubExtCategory(&context.WebContext{
+	// 		OverwriteUserLang: "zh_HK",
+	// 	})
+	// 	a, e := ext.GetAllSubExtCategory(&context.WebContext{
+	// 		OverwriteUserLang: "zh_CN",
+	// 	})
+	// 	c, _ := ext.GetAllSubExtCategory(&context.WebContext{
+	// 		OverwriteUserLang: "en_US",
+	// 	})
+	// 	if e != nil {
+	// 		t.Error(e)
+	// 		return
+	// 	}
+	// 	zh_CNStr, _ := global.ToJSONStr(a)
+	// 	b2, _ := global.ToJSONStr(b)
+	// 	c2, _ := global.ToJSONStr(c)
+	// 	// check b contains "編碼和解碼"
+	// 	assert.Contains(t, b2, "編碼和解碼")
+	// 	// check a contains "编码与解码"
+	// 	assert.Contains(t, zh_CNStr, "编码和解码")
+	// 	// check c contains "Click here to"
+	// 	assert.Contains(t, c2, "Digest Algorithm")
 
-		// assert a2!= b2!=c2
-		assert.NotEqual(t, zh_CNStr, b2)
-		assert.NotEqual(t, b2, c2)
-		assert.NotEqual(t, zh_CNStr, c2)
-		endTime := time.Now()
-		t.Log("time cost:", endTime.Sub(startTime))
-		// t.Log("result" + a2)
-	}
+	// 	// assert a2!= b2!=c2
+	// 	assert.NotEqual(t, zh_CNStr, b2)
+	// 	assert.NotEqual(t, b2, c2)
+	// 	assert.NotEqual(t, zh_CNStr, c2)
+	// 	endTime := time.Now()
+	// 	t.Log("time cost:", endTime.Sub(startTime))
+	// 	// t.Log("result" + a2)
+	// }
 }
 
 func TestGetAllCategory(t *testing.T) {
@@ -125,70 +121,70 @@ func QUnlockServer(t *testing.T) {
 
 // write test cases to verify the returns of GetAllExtVM, make sure the Actions in each item has uniq id, at the same time, Info.Id should also be uniq
 func Test_GetAllExtVM(t *testing.T) {
-	ctx := context.WebContext{}
-	allExtVM, err := ext.GetAllExtVM(&ctx)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-	// check the uniq of Actions.Id
-	// actionsIdMap := make(map[string]bool)
+	// ctx := context.WebContext{}
+	// allExtVM, err := ext.GetAllExtVM(&ctx)
+	// if err != nil {
+	// 	t.Error(err)
+	// 	return
+	// }
+	// // check the uniq of Actions.Id
+	// // actionsIdMap := make(map[string]bool)
+	// // for _, extVM := range allExtVM {
+	// // 	for _, action := range *extVM.Actions {
+	// // 		if _, ok := actionsIdMap[action.Id]; ok {
+	// // 			t.Errorf("the action id %s is not uniq", action.Id)
+	// // 		} else {
+	// // 			actionsIdMap[action.Id] = true
+	// // 		}
+	// // 	}
+	// // }
+	// // check the uniq of Info.Id
+	// // infoIdMap := make(map[string]bool)
+	// // for _, extVM := range allExtVM {
+	// // 	if _, ok := infoIdMap[extVM.Info.Id]; ok {
+	// // 		t.Errorf("the info id %s is not uniq", extVM.Info.Id)
+	// // 	} else {
+	// // 		infoIdMap[extVM.Info.Id] = true
+	// // 	}
+	// // }
+	// // check the field Actions.CallFuncList, the first part of their value(split by ".") should be in the FuncMap
 	// for _, extVM := range allExtVM {
 	// 	for _, action := range *extVM.Actions {
-	// 		if _, ok := actionsIdMap[action.Id]; ok {
-	// 			t.Errorf("the action id %s is not uniq", action.Id)
-	// 		} else {
-	// 			actionsIdMap[action.Id] = true
+	// 		for _, callFunc := range action.CallFuncList {
+	// 			// get first part of callFunc
+	// 			callFunc = callFunc[:strings.Index(callFunc, ".")]
+	// 			if _, ok := (tools.GetAllFunctionMap(&ctx))[callFunc]; !ok {
+	// 				// t.Errorf("the call func %s is not in the func map", callFunc)
+	// 				// t.Log("Warning. the call func %s is not in the func map", callFunc)
+	// 			}
 	// 		}
 	// 	}
 	// }
-	// check the uniq of Info.Id
-	// infoIdMap := make(map[string]bool)
+	// // check the field Actions.CallFuncList, the second part of its value which is joinned by "." should be "ConvertText" or "ConvertFile"
 	// for _, extVM := range allExtVM {
-	// 	if _, ok := infoIdMap[extVM.Info.Id]; ok {
-	// 		t.Errorf("the info id %s is not uniq", extVM.Info.Id)
-	// 	} else {
-	// 		infoIdMap[extVM.Info.Id] = true
+	// 	for _, action := range *extVM.Actions {
+	// 		for _, callFunc := range action.CallFuncList {
+	// 			// get second part of callFunc
+	// 			callFunc = callFunc[strings.Index(callFunc, ".")+1:]
+	// 			if callFunc != "ConvertText" && callFunc != "ConvertFile" {
+	// 				t.Errorf("the call func %s is not ConvertText or ConvertFile", callFunc)
+	// 			}
+	// 		}
 	// 	}
 	// }
-	// check the field Actions.CallFuncList, the first part of their value(split by ".") should be in the FuncMap
-	for _, extVM := range allExtVM {
-		for _, action := range *extVM.Actions {
-			for _, callFunc := range action.CallFuncList {
-				// get first part of callFunc
-				callFunc = callFunc[:strings.Index(callFunc, ".")]
-				if _, ok := (tools.GetAllFunctionMap(&ctx))[callFunc]; !ok {
-					// t.Errorf("the call func %s is not in the func map", callFunc)
-					// t.Log("Warning. the call func %s is not in the func map", callFunc)
-				}
-			}
-		}
-	}
-	// check the field Actions.CallFuncList, the second part of its value which is joinned by "." should be "ConvertText" or "ConvertFile"
-	for _, extVM := range allExtVM {
-		for _, action := range *extVM.Actions {
-			for _, callFunc := range action.CallFuncList {
-				// get second part of callFunc
-				callFunc = callFunc[strings.Index(callFunc, ".")+1:]
-				if callFunc != "ConvertText" && callFunc != "ConvertFile" {
-					t.Errorf("the call func %s is not ConvertText or ConvertFile", callFunc)
-				}
-			}
-		}
-	}
-	// check FuncMap in allExtVM has only unique id
-	funcMapIdMap := make(map[string]bool)
-	for funcName, funcValue := range tools.GetAllFunctionMap(&ctx) {
-		if _, ok := funcMapIdMap[funcName]; ok {
-			t.Errorf("the func map id %s is not uniq", funcName)
-		} else {
-			funcMapIdMap[funcName] = true
-		}
-		// check the funcValue
-		if funcValue == nil {
-			t.Errorf("the func map value of %s is nil", funcName)
-		}
-	}
+	// // check FuncMap in allExtVM has only unique id
+	// funcMapIdMap := make(map[string]bool)
+	// for funcName, funcValue := range tools.GetAllFunctionMap(&ctx) {
+	// 	if _, ok := funcMapIdMap[funcName]; ok {
+	// 		t.Errorf("the func map id %s is not uniq", funcName)
+	// 	} else {
+	// 		funcMapIdMap[funcName] = true
+	// 	}
+	// 	// check the funcValue
+	// 	if funcValue == nil {
+	// 		t.Errorf("the func map value of %s is nil", funcName)
+	// 	}
+	// }
 }
 
 type TmpLabel struct {

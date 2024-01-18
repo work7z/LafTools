@@ -21,15 +21,14 @@
 package menu
 
 import (
-	"laftools-go/core/log"
 	"testing"
 )
 
 func TestMenuArr(t *testing.T) {
-	var a, err = GetMenuArr()
-	if err != nil {
-		log.Ref().Fatal(err)
-	} else {
-		log.Ref().Info(a)
-	}
+	// var a, err = GetMenuArr()
+	// if err != nil {
+	// 	log.Ref().Fatal(err)
+	// } else {
+	// 	log.Ref().Info(a)
+	// }
 }

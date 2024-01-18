@@ -17,9 +17,11 @@
 [] account login in move to separte page, not in user intiialization page
 [] calculate line numbers in your project, provide satistic report
 [x] provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
-[] move purejs to web project as we can use code split to avoid a huge bundle size  
+[x] move purejs to web project as we can use code split to avoid a huge bundle size  
 [] add a TODO viewer that can show current project
 [] for settings in process panel, we can just spread it out as a horizontal items, user can scroll them from left to right
+[] add nature sound and white noise in this app, that sounds great, like freemind
+
 
 # low priorities
 
