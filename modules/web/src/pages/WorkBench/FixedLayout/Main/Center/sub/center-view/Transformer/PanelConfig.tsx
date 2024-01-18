@@ -20,30 +20,30 @@
 
 
 import { Alignment, Button, ButtonProps, FormGroup, InputGroup, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
-import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
+import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
     VAL_CSS_TAB_TITLE_PANEL,
     VAL_CSS_CONTROL_PANEL,
-} from "../../../../../../../../../types/workbench-types";
-import { CommonTransformerPassProp } from "../../../../../../../../../types/workbench-types";
-import { Dot } from "../../../../../../../../../utils/TranslationUtils";
-import { FN_GetDispatch } from "../../../../../../../../../nocycle";
-import BigTextSlice from "../../../../../../../../../reducers/bigTextSlice";
+} from "../../../../../../../../types/workbench-types";
+import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
+import { Dot } from "../../../../../../../../utils/TranslationUtils";
+import { FN_GetDispatch } from "../../../../../../../../nocycle";
+import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";
-import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../../actions/bigtext_action";
+import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
 import { useEffect, useState } from "react";
-import AjaxUtils from "../../../../../../../../../utils/AjaxUtils";
-import AlertUtils from "../../../../../../../../../utils/AlertUtils";
-import { SysTabPane } from "../../../../../../../../../components/SysTabPane";
-import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER, LabelValuePair } from "../../../../../../../../../types/constants";
-import exportUtils from "../../../../../../../../../utils/ExportUtils";
-import RuntimeStatusSlice from "../../../../../../../../../reducers/runtimeStatusSlice";
-import { fn_format_description } from "../../../../../../../../../types/workbench-fn";
-import { CommonTransformerProps } from "../types";
-import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../../types/purejs-types-READ_ONLY";
-import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "../hooks";
-import FormGenPanel, { FormGenItem } from "../../../../../../../../../components/FormGenPanel";
+import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
+import AlertUtils from "../../../../../../../../utils/AlertUtils";
+import { SysTabPane } from "../../../../../../../../components/SysTabPane";
+import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER, LabelValuePair } from "../../../../../../../../types/constants";
+import exportUtils from "../../../../../../../../utils/ExportUtils";
+import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
+
+import { CommonTransformerProps } from "./types";
+import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../types/purejs-types-READ_ONLY";
+import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "./hooks";
+import FormGenPanel, { FormGenItem } from "../../../../../../../../components/FormGenPanel";
 
 
 let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
@@ -67,26 +67,7 @@ let TextTransformerConfig = (props: CommonTransformerPassProp & TransofrmerWithR
         //
     ];
     let generalList: FormGenItem[] = [
-        // {
-        //     label: Dot("YuQqTX", "Auto Run?"),
-        //     helperText: Dot("YuQTX", "Whether to run the transformer automatically when the input text is changed."),
-        //     genEleConfig: {
-        //         type: "switch",
-        //     }
-        // },
-        // {
-        //     label: Dot("6AumW", "Default Action"),
-        //     helperText: Dot("nxJC7", "The default action to be executed when the transformer is performed."),
-        //     genEleConfig: {
-        //         type: "select",
-        //         selectList: (actions || []).map(x => {
-        //             return {
-        //                 label: x.Label,
-        //                 value: x.Id
-        //             } as LabelValuePair
-        //         })
-        //     }
-        // }
+  
     ]
     let finalShowContent = <div>not yet defiend</div>
     if (toolTabIndex == "general") {

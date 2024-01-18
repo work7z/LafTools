@@ -78,14 +78,14 @@ import "./index.scss";
 import Html_select from "../Html_select";
 
 export default (props: {
-  value: boolean | undefined | null;
-  onChange: (value: boolean) => void;
+  value: string;
+  onChange: (value: string) => void;
 }) => {
   return (
     <Switch
-      checked={props.value ? true : false}
+      checked={props.value == 'true' ? true : false}
       onChange={(e) => {
-        props.onChange(props.value ? false : true);
+        props.onChange(props.value =='true'? 'false' : 'true');
       }}
       innerLabelChecked={Dot("O94Yx", "on")}
       innerLabel={Dot("k2SVY", "off")}

@@ -121,7 +121,7 @@ import MottoLine from "../../../../../../../../../components/MottoLine";
 import GenTree from "../../../../../../../../../components/GenTree";
 import { FnPureToolDefinition } from "../../../../../../../../../types/workbench-types";
 import WorkspaceSlice from "../../../../../../../../../reducers/workspaceSlice";
-import { useExtsList } from "../../../../sub/center-view/Transformers/hooks";
+import { useExtsList } from "../../../../sub/center-view/Transformer/hooks";
 
 export default (props: {
   activeOne: FnPureToolDefinition | undefined;

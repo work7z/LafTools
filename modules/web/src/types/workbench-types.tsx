@@ -20,7 +20,8 @@
 
 import { Intent } from "@blueprintjs/core";
 import { ToolCategory, ExtensionVM } from "./purejs-types-READ_ONLY";
-import { ToolHandler } from "../lib/meta/tools/handler";
+import { ToolHandler, ToolMetaInfo } from "../lib/meta/tools/handler";
+import Operation from "../lib/core/Operation.mjs";
 
 export * from './constants';
 
@@ -31,6 +32,10 @@ export type CommonTransformerPassProp = {
   outputBigTextId: string;
   sessionId: string;
   toolHandler?: ToolHandler
+  operaList?:Operation[],
+  crtDefaultOpera?:Operation,
+  metaInfo?:ToolMetaInfo,
+  crtDefaultOperaId?:string,
 };
 export type PageQueryType = {
   fc: string;

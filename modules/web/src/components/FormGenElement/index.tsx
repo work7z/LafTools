@@ -64,6 +64,7 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { LabelValuePair } from "../../types/constants";
 import { Dot } from "../../utils/TranslationUtils";
+import FormSwitch from "../FormSwitch";
 
 export type FormGenType = {
     type: "select" | "input" | "radio" | "switch";
@@ -78,13 +79,15 @@ export default (props: { config: FormGenType }) => {
         return <InputGroup {...config.inputProps}></InputGroup>
     }
     if (config.type == "select") {
-        return <HTMLSelect options={config.selectList}></HTMLSelect>
+        return <HTMLSelect value={config.value} onChange={x=>{
+            config.onChange(x.target.value)
+        }} options={config.selectList}></HTMLSelect>
     }
     // if(config.type == "radio"){
     //     return <RadioGroup ></RadioGroup>
     // }
     if (config.type == "switch") {
-        return <Switch label={Dot("h8E01", "Enabled")}></Switch>
+        return <FormSwitch value={config.value||'false'} onChange={config.onChange} ></FormSwitch>
     }
     return <div>not yet defined</div>
 }

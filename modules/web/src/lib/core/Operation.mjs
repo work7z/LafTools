@@ -51,6 +51,8 @@ class Operation {
     this.id = ""
     this.module = "";
     this.description = "";
+    this.exampleInput = ""
+    this.exampleOutput = ""
     this.infoURL = null;
   }
 

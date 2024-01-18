@@ -45,6 +45,9 @@ class FromBase64 extends Operation {
       "1k_44",
       "This operation decodes data from an ASCII Base64 string back into its raw format.",
     );
+    // from base64 example
+    this.exampleInput = "SGVsbG8gV29ybGQh";
+    this.exampleOutput = "Hello World!";
     this.infoURL = "";
     this.inputType = "string";
     this.outputType = "byteArray";

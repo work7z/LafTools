@@ -39,12 +39,13 @@ import { SysTabPane } from "../../../../../../../../components/SysTabPane";
 import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER, LabelValuePair } from "../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
-import { fn_format_description } from "../../../../../../../../types/workbench-fn";
+
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "./hooks";
 import FormGenPanel, { FormGenItem } from "../../../../../../../../components/FormGenPanel";
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
+import { logutils } from "../../../../../../../../utils/LogUtils";
 
 export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
@@ -61,10 +62,11 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     let toolList = [
         //
     ];
+    logutils.debug("autorun-crtRuntimeStatus",crtRuntimeStatus)
     let generalList: FormGenItem[] = [
         {
-            label: Dot("YuQqTX", "Disable Auto Run?"),
-            helperText: Dot("YuqQTXs", "Not to run the transformer automatically when the input text is changed, if needed."),
+            label: Dot("YquQqTXq", "Auto Run?"),
+            helperText: Dot("Ye3TXses", "To configure whether the transformation will be executed automatically when the input text is changed."),
             genEleConfig: {
                 type: "switch",
                 value: crtRuntimeStatus.autoRun,
@@ -87,6 +89,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                 type: "select",
                 value: crtRuntimeStatus.defaultOperationId,
                 onChange(newVal){
+                    // debugger
                     FN_GetDispatch()(
                         RuntimeStatusSlice.actions.updateValueInStatusMap({
                             sessionId,
@@ -110,6 +113,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     let loadingStatic = false
     let toolHanlder = props.toolHandler
     if (toolTabIndex == 'wiki') {
+        pdValue='p-0'
         finalShowContent = <div className="w-full h-full overflow-auto">
             <iframe src={toolHanlder?.getMetaInfo().infoURL} className="w-full h-full border-none outline-none"></iframe>
         </div>
@@ -173,7 +177,9 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                     selectedTabId={toolTabIndex}
                 >
                     <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(operList)} />
-                    <Tab id="wiki" icon="globe-network" title={Dot("Wq82a6", "Reference")} />
+
+                    <Tab id="faq" icon="manual" title={"FAQ"} />
+                    <Tab id="wiki" icon="globe" title={"Wiki"} />
                     <Tab id="output" icon={
                         crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "tick"
                     } title={Dot("FjYbR", "Output")} />

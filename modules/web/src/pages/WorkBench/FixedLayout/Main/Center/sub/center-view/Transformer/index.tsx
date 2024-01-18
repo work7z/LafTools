@@ -38,13 +38,13 @@ import { SysTabPane } from "../../../../../../../../components/SysTabPane";
 import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
-import { fn_format_description } from "../../../../../../../../types/workbench-fn";
+
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TransofrmerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
 import TextTransformerControl from "./ControlBar";
-import TextTransformerOutput from "./unused/PanelOutput";
-import TextTransformerConfig from "./unused/PanelConfig";
+import TextTransformerOutput from "./PanelOutput";
+import TextTransformerConfig from "./PanelConfig";
 import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
 import PanelMain from "./ProcessPanel";
@@ -53,9 +53,15 @@ import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
 import gutils from "../../../../../../../../utils/GlobalUtils";
 import appToolInfoObj, { AppInfoType } from "../../../../../../../../lib/meta/tools/info";
+import {getInitValueForRuntimeStatus} from './init.tsx'
 import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../lib/meta/tools/handler";
 
 export type AppOptViewMode = "fixed" | "float"
+
+export type TitleSubPair = {
+  title: string
+  subTitle: string
+}
 
 export default (props: CommonTransformerProps) => {
   let sessionId = props.sessionId;
@@ -64,11 +70,42 @@ export default (props: CommonTransformerProps) => {
   let outputBigTextId = props.outputBigTextId;
   let extId = props.extId
   let operaRef = useRef<ToolHandler | undefined>(undefined)
+  let metaInfo = operaRef.current?.getMetaInfo()
+  let operaList = operaRef.current?.getOperations()
+  let crtRuntimeStatus = exportUtils.useSelector((x) => {
+    let v = x.runtimeStatus.toolOutputStatusMap[sessionId];
+    return {
+      v
+    }
+  }).v;
+  let crtDefaultOperaId = crtRuntimeStatus && crtRuntimeStatus.defaultOperationId || (operaList && operaList[0] && operaList[0].id)
+  let crtDefaultOpera = _.find(operaList, x => x.id === crtDefaultOperaId)
   let commonPassProp: CommonTransformerPassProp = {
     ...props,
-    toolHandler: operaRef.current
+    toolHandler: operaRef.current,
+    operaList,
+    metaInfo,
+    crtDefaultOperaId,
+    crtDefaultOpera
   };
   let extVM = props.extVM
+  let fn_format_description = (desc: string | undefined): string => {
+    let arr: TitleSubPair[] = [
+        {
+            title: Dot("wcl1K", "Usage"),
+            subTitle: Dot("rT4qnO", "Enter text for processing. The result will display in the output editor.")
+        },
+        {
+            title: Dot("8L1Kk", "About"),
+            subTitle: desc?.replace(/\\n/g, '\n') + ""
+        },
+        {
+            title:Dot("SYSq1","Example"),
+            subTitle: Dot("vh9j4","Input")+": "+(commonPassProp.crtDefaultOpera?.exampleInput)+"\n"+Dot("dGKMx","Output")+": "+commonPassProp.crtDefaultOpera?.exampleOutput+""
+        }
+    ]
+    return arr.map(x => `[${x.title}]\n${x.subTitle}`).join("\n\n")
+}
   let desc = fn_format_description(commonPassProp.toolHandler?.getMetaInfo().description)
   // process fn
   let fn_notifyTextChange = () => {
@@ -87,12 +124,6 @@ export default (props: CommonTransformerProps) => {
       console.error("fn_notifyTextChange failed")
     }
   }
-  let crtRuntimeStatus = exportUtils.useSelector((x) => {
-    let v = x.runtimeStatus.toolOutputStatusMap[sessionId];
-    return {
-      v
-    }
-  }).v;
   // let crtOptMode: TextOptMode = "fixed"
   let crtOptMode: AppOptViewMode = ((): AppOptViewMode => {
     return "float"
@@ -146,12 +177,7 @@ export default (props: CommonTransformerProps) => {
     FN_GetDispatch()(
       RuntimeStatusSlice.actions.initAtOnceBySessionIdAndValue({
         sessionId,
-        value: {
-          latestViewPanelId: "tools",
-          toolTabIndex: "tools",
-          collapseConfig: false,
-          collapseOutput: false,
-        },
+        value: getInitValueForRuntimeStatus(),
       }),
     )
   }, [sessionId])
@@ -215,7 +241,6 @@ export default (props: CommonTransformerProps) => {
               bigTextId={inputBigTextId}
               onTextChange={fn_notifyTextChange}
             ></GenCodeMirror>
-
           </Allotment.Pane>
           {isCollapsed_config ? '' :
             <Allotment.Pane>

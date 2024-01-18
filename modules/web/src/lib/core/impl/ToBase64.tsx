@@ -46,6 +46,9 @@ class ToBase64 extends Operation {
       "This operation encodes raw data into an ASCII Base64 string.",
     );
     // <br><br><br><br>e.g. <code>hello</code> becomes <code>aGVsbG8=</code>
+    // example
+    this.exampleInput = "Hello World!";
+    this.exampleOutput = "SGVsbG8gV29ybGQh";
     this.infoURL = "https://wikipedia.org/wiki/Base64";
     this.inputType = "ArrayBuffer";
     this.outputType = "string";

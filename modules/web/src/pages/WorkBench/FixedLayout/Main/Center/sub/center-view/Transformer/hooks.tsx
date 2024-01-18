@@ -39,7 +39,7 @@ import { SysTabPane } from "../../../../../../../../components/SysTabPane";
 import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
-import { fn_format_description } from "../../../../../../../../types/workbench-fn";
+
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ExtensionInfo, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import AppCategory from "../../../../../../../../lib/meta/tools/category";

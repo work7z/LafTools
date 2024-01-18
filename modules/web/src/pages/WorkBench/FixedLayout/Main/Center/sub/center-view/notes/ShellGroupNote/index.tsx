@@ -36,7 +36,7 @@ import { FN_GetDispatch } from "../../../../../../../../../nocycle";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../../actions/bigtext_action";
 import _ from "lodash";
 import moment from "moment";
-import { useHookWithSkippingFirst } from "../../Transformers/hooks";
+import { useHookWithSkippingFirst } from "../../Transformer/hooks";
 import CopyButton from "../../../../../../../../../components/CopyButton";
 import ShellNewPanel from "./ShellNewPanel";
 

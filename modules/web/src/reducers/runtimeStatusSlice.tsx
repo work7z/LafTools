@@ -40,11 +40,11 @@ const RuntimeStatusSlice = createSlice({
   name: "runtimeStatus",
   initialState,
   reducers: {
-    ...SyncStateUtils.getSyncStateReducers("runtime", {
-      RunOnInit: true,
-      RequireUserId: true,
-      RequireWorkspaceId: true,
-    }),
+    // ...SyncStateUtils.getSyncStateReducers("runtime", {
+    //   RunOnInit: true,
+    //   RequireUserId: true,
+    //   RequireWorkspaceId: true,
+    // }),
     initAtOnceBySessionIdAndValue: (
       state,
       action: PayloadAction<{ sessionId: string; value: ToolDefaultOutputType }>

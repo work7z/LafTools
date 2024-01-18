@@ -19,7 +19,7 @@ import { SysTabPane } from "../../../../../../../../components/SysTabPane";
 import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
-import { fn_format_description } from "../../../../../../../../types/workbench-fn";
+
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button } from "./hooks";
@@ -31,8 +31,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
     let toolHandler = props.toolHandler
     let extVM = props.extVM
     let operaList = toolHandler?.getOperations() || []
-    let crtDefaultOperaId = props.crtRuntimeStatus.defaultOperationId || (operaList[0] && operaList[0].id)
-    let actions: ExtensionAction[] | undefined = extVM?.Actions
+    let crtDefaultOperaId = props.crtDefaultOperaId
     let leftActions: ButtonProps[] = [
         ...(
             operaList
@@ -56,11 +55,6 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
                 },
             }
         }) as ButtonProps[],
-        // {
-        //   text: Dot("g4lqi", "Get MD2 Hash"),
-        //   intent: "primary",
-        //   title: Dot("Zpqqpf", "Encrypt the data with MD2"),
-        // },
         {
             text: Dot("2bqHk", "Load from File"),
             intent: "none",
