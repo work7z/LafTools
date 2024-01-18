@@ -610,6 +610,7 @@
     "rQkas": "Vítejte v LafTools",
     "rR1vd": "Vstup ze souboru",
     "rR4R_FO1vd": "Můžete vybrat a potvrdit soubor, který chcete zpracovat, pak jej panel nástrojů přečte a vloží obsah do vstupní oblasti.",
+    "rT34qnO": "Zadejte text ke zpracování. Výsledek se zobrazí ve výstupním editoru.",
     "rVqlu": "Dekódovat {0}",
     "rYSpw": "Algoritmus MD2 (Message-Digest 2) je kryptografická hašovací funkce vyvinutá Ronaldem Rivestem v roce 1989. Algoritmus je optimalizován pro 8bitové počítače.<br><br>Přestože MD2 již není považován za bezpečný, a to ani od roku 2014, zůstává používán v infrastrukturách veřejných klíčů jako součást certifikátů generovaných pomocí MD2 a RSA. Algoritmus zpracování zpráv se ve výchozím nastavení skládá z 18 kol.",
     "r_n6h": "Světlý nebo tmavý režim",

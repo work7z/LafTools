@@ -610,6 +610,7 @@
     "rQkas": "Bem-vindo ao LafTools",
     "rR1vd": "Entrada do arquivo",
     "rR4R_FO1vd": "Você pode selecionar e confirmar o arquivo que deseja processar, então a caixa de ferramentas irá lê-lo e colar o conteúdo na região de entrada.",
+    "rT34qnO": "Insira o texto para processamento. O resultado será exibido no editor de saída.",
     "rVqlu": "Decodificar {0}",
     "rYSpw": "O algoritmo MD2 (Message-Digest 2) é uma função hash criptográfica desenvolvida por Ronald Rivest em 1989. O algoritmo é otimizado para computadores de 8 bits.<br><br>Embora o MD2 não seja mais considerado seguro, mesmo a partir de 2014, permanece em uso em infraestruturas de chave pública como parte de certificados gerados com MD2 e RSA. O algoritmo de resumo da mensagem consiste, por padrão, em 18 rodadas.",
     "r_n6h": "Modo claro ou escuro",

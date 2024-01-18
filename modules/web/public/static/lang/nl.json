@@ -610,6 +610,7 @@
     "rQkas": "Welkom bij LafTools",
     "rR1vd": "Invoer uit bestand",
     "rR4R_FO1vd": "U kunt het bestand dat u wilt verwerken selecteren en bevestigen, waarna Toolbox het zal lezen en de inhoud in het invoergebied zal plakken.",
+    "rT34qnO": "Voer tekst in voor verwerking. Het resultaat wordt weergegeven in de uitvoereditor.",
     "rVqlu": "Decodeer {0}",
     "rYSpw": "Het MD2-algoritme (Message-Digest 2) is een cryptografische hashfunctie ontwikkeld door Ronald Rivest in 1989. Het algoritme is geoptimaliseerd voor 8-bit computers.<br><br>Hoewel MD2 niet langer als veilig wordt beschouwd, zelfs sinds 2014, het blijft in gebruik in publieke sleutelinfrastructuren als onderdeel van certificaten gegenereerd met MD2 en RSA. Het message digest-algoritme bestaat standaard uit 18 ronden.",
     "r_n6h": "Lichte of donkere modus",

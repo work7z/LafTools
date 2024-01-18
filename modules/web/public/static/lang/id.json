@@ -610,6 +610,7 @@
     "rQkas": "Selamat datang di LafTools",
     "rR1vd": "Masukan Dari File",
     "rR4R_FO1vd": "Anda dapat memilih dan mengonfirmasi file yang ingin Anda proses, lalu toolbox akan membacanya dan menempelkan konten ke wilayah input.",
+    "rT34qnO": "Masukkan teks untuk diproses. Hasilnya akan ditampilkan di editor keluaran.",
     "rVqlu": "Dekode {0}",
     "rYSpw": "Algoritme MD2 (Message-Digest 2) adalah fungsi hash kriptografi yang dikembangkan oleh Ronald Rivest pada tahun 1989. Algoritme ini dioptimalkan untuk komputer 8-bit.<br><br>Meskipun MD2 tidak lagi dianggap aman, bahkan sejak tahun 2014, ini tetap digunakan dalam infrastruktur kunci publik sebagai bagian dari sertifikat yang dihasilkan dengan MD2 dan RSA. Algoritma intisari pesan, secara default, terdiri dari 18 putaran.",
     "r_n6h": "Mode Terang atau Gelap",

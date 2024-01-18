@@ -610,6 +610,7 @@
     "rQkas": "Bienvenue sur LafTools",
     "rR1vd": "Entrée à partir d'un fichier",
     "rR4R_FO1vd": "Vous pouvez sélectionner et confirmer le fichier que vous souhaitez traiter, puis la boîte à outils le lira et collera le contenu dans la région d'entrée.",
+    "rT34qnO": "Saisissez le texte à traiter. Le résultat s'affichera dans l'éditeur de sortie.",
     "rVqlu": "Décoder {0}",
     "rYSpw": "L'algorithme MD2 (Message-Digest 2) est une fonction de hachage cryptographique développée par Ronald Rivest en 1989. L'algorithme est optimisé pour les ordinateurs 8 bits.<br><br>Bien que MD2 ne soit plus considéré comme sécurisé, même depuis 2014, il reste utilisé dans les infrastructures à clé publique dans le cadre des certificats générés avec MD2 et RSA. L'algorithme de résumé de message se compose, par défaut, de 18 tours.",
     "r_n6h": "Mode clair ou sombre",

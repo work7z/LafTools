@@ -610,6 +610,7 @@
     "rQkas": "Üdvözli a LafTools",
     "rR1vd": "Bevitel fájlból",
     "rR4R_FO1vd": "Kiválaszthatja és megerősítheti a feldolgozni kívánt fájlt, majd az eszköztár beolvassa és beilleszti a tartalmat a beviteli régióba.",
+    "rT34qnO": "Írja be a szöveget a feldolgozáshoz. Az eredmény megjelenik a kimeneti szerkesztőben.",
     "rVqlu": "{0} dekódolása",
     "rYSpw": "Az MD2 (Message-Digest 2) algoritmus egy Ronald Rivest által 1989-ben kifejlesztett kriptográfiai hash függvény. Az algoritmust 8 bites számítógépekre optimalizálták.<br><br>Bár az MD2 már 2014-től sem tekinthető biztonságosnak, továbbra is használatban marad a nyilvános kulcsú infrastruktúrákban az MD2-vel és az RSA-val generált tanúsítványok részeként. Az üzenetkivonat-algoritmus alapértelmezés szerint 18 körből áll.",
     "r_n6h": "Világos vagy Sötét mód",

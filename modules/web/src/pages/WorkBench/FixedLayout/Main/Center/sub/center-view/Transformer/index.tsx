@@ -94,7 +94,7 @@ export default (props: CommonTransformerProps) => {
     let arr: TitleSubPair[] = [
       {
         title: Dot("wcl1K", "Usage"),
-        subTitle: Dot("rT4qnO", '' + "Enter text for processing. The result will display in the output editor.")
+        subTitle: Dot("rT34qnO", "Enter text for processing. The result will display in the output editor.")
       },
       {
         title: Dot("8eeL1Kk", "About", commonPassProp.crtDefaultOpera?.name),
