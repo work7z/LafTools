@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { ExtensionVM } from "../types/purejs-types-READ_ONLY.ts";
 import gutils from "../utils/GlobalUtils.tsx";
 import Operation from "./core/Operation.mjs";
@@ -27,13 +28,13 @@ let LibIndex = {
       let ipt = originalValue;
       let result = inst.run(ipt, []);
       return {
-        result: result,
+        result: _.toString(result),
       };
     } catch (e) {
       console.log("err", e);
       return {
         result: "",
-        error: gutils.getErrMsg(e),
+        error: _.toString(gutils.getErrMsg(e)),
       };
     }
   },

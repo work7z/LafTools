@@ -121,11 +121,19 @@ export default (props: GenCodeMirrorProp) => {
   let bt = useMemo(() => {
     return bt_raw;
   }, [verObj.ver]);
+  let propRef = React.useRef<{
+    fn_onTextChange?: (newText: string) => any
+  }>({
+    fn_onTextChange: props.onTextChange
+  })
+  useEffect(() => {
+    propRef.current.fn_onTextChange = props.onTextChange
+  }, [props.onTextChange])
   useEffect(() => {
     if (verObj.ver != 1) {
       let actualText = FN_GetActualTextValueByBigTextId(bigTextId)
       console.log("onTextChange :", bt.bigText, bt_raw)
-      props.onTextChange && props.onTextChange(actualText)
+      propRef.current.fn_onTextChange && propRef.current.fn_onTextChange(actualText)
     }
   }, [verObj.ver])
   let value: string = bt.bigText;
@@ -136,7 +144,7 @@ export default (props: GenCodeMirrorProp) => {
   const onChange = React.useCallback((val, viewUpdate) => {
     console.log("val:", val);
     setValue(val);
-    props.onTextChange && props.onTextChange(val)
+    propRef.current.fn_onTextChange && propRef.current.fn_onTextChange(val)
   }, []);
   let langPack = props.language && langMap[props.language] ? (langMap[props.language])() : null
   return (

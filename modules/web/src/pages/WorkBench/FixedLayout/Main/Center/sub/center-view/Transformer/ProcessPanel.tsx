@@ -123,6 +123,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
         pdValue = 'p-0'
         finalShowContent = <div className="w-full h-full overflow-auto">
             <GenCodeMirror
+            lineWrap
                 placeholder={Dot("y_9YM", "Output will be displayed here.")}
                 bigTextId={props.outputBigTextId}
             ></GenCodeMirror>

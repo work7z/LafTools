@@ -31,7 +31,7 @@ import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
@@ -53,8 +53,9 @@ import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
 import gutils from "../../../../../../../../utils/GlobalUtils";
 import appToolInfoObj, { AppInfoType } from "../../../../../../../../lib/meta/tools/info";
-import {getInitValueForRuntimeStatus} from './init.tsx'
+import { getInitValueForRuntimeStatus } from './init.tsx'
 import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../lib/meta/tools/handler";
+import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
 
 export type AppOptViewMode = "fixed" | "float"
 
@@ -91,24 +92,28 @@ export default (props: CommonTransformerProps) => {
   let extVM = props.extVM
   let fn_format_description = (desc: string | undefined): string => {
     let arr: TitleSubPair[] = [
-        {
-            title: Dot("wcl1K", "Usage"),
-            subTitle: Dot("rT4qnO", "Enter text for processing. The result will display in the output editor.")
-        },
-        {
-            title: Dot("8L1Kk", "About"),
-            subTitle: desc?.replace(/\\n/g, '\n') + ""
-        },
-        {
-            title:Dot("SYSq1","Example"),
-            subTitle: Dot("vh9j4","Input")+": "+(commonPassProp.crtDefaultOpera?.exampleInput)+"\n"+Dot("dGKMx","Output")+": "+commonPassProp.crtDefaultOpera?.exampleOutput+""
-        }
+      {
+        title: Dot("wcl1K", "Usage"),
+        subTitle: Dot("rT4qnO", '' + "Enter text for processing. The result will display in the output editor.")
+      },
+      {
+        title: Dot("8eeL1Kk", "About", commonPassProp.crtDefaultOpera?.name),
+        subTitle: desc?.replace(/\\n/g, '\n') + ""
+      },
+      {
+        title: Dot("SYSq1", "Example"),
+        subTitle: Dot("GR7jK", "Type") + ": " + commonPassProp.crtDefaultOpera?.name + "\n" + Dot("vh9j4", "Input") + ": " + (commonPassProp.crtDefaultOpera?.exampleInput) + "\n" + Dot("dGKMx", "Output") + ": " + commonPassProp.crtDefaultOpera?.exampleOutput + ""
+      }
     ]
     return arr.map(x => `[${x.title}]\n${x.subTitle}`).join("\n\n")
-}
+  }
   let desc = fn_format_description(commonPassProp.toolHandler?.getMetaInfo().description)
   // process fn
-  let fn_notifyTextChange = () => {
+  logutils.debug("commonPassProp",commonPassProp)
+  let fn_notifyTextChange = (fromChangeEvent: boolean) => {
+    if (fromChangeEvent && crtRuntimeStatus?.autoRun != 'true') {
+      return;
+    }
     if (extVM && extId && sessionId && outputBigTextId && operaRef.current) {
       FN_GetDispatch()(
         ACTION_Transformer_Process_Text({
@@ -117,7 +122,8 @@ export default (props: CommonTransformerProps) => {
           sessionId,
           outputBigTextId,
           inputBigTextId,
-          toolHandler: operaRef.current
+          toolHandler: operaRef.current,
+          commonPassProp: commonPassProp
         })
       )
     } else {
@@ -220,8 +226,8 @@ export default (props: CommonTransformerProps) => {
   }
   return (
     <div key={sessionId} className="w-full h-full relative">
-      {/* onProcess={fn_notifyTextChange} */}
-      <TextTransformerControl crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerControl>
+      <TextTransformerControl 
+      crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerControl>
       <div
         style={{
           height: bodyHeight,
@@ -239,7 +245,9 @@ export default (props: CommonTransformerProps) => {
               language="javascript"
               key={inputBigTextId}
               bigTextId={inputBigTextId}
-              onTextChange={fn_notifyTextChange}
+              onTextChange={(val) => {
+                fn_notifyTextChange(true)
+              }}
             ></GenCodeMirror>
           </Allotment.Pane>
           {isCollapsed_config ? '' :
@@ -249,12 +257,12 @@ export default (props: CommonTransformerProps) => {
           }
         </Allotment>
       </div>
-      {
+      {/* {
         isFixedMode ? [
           <TextTransformerOutput crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerOutput>,
           <TextTransformerConfig crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerConfig>
         ] : []
-      }
+      } */}
     </div>
   );
 };

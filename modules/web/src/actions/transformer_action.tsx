@@ -28,6 +28,8 @@ import _ from "lodash";
 import moment from "moment";
 import Operation from "../lib/core/Operation.mjs";
 import { ToolHandler } from "../lib/meta/tools/handler";
+import { CommonTransformerPassProp } from "../types/workbench-types";
+import { logutils } from "../utils/LogUtils";
 window["moment"] = moment
 
 type PassType = {
@@ -37,15 +39,17 @@ type PassType = {
     outputBigTextId: string
     inputBigTextId: string
     toolHandler: ToolHandler
+    commonPassProp: CommonTransformerPassProp
 }
 
 let tmpLog = {}
 
 export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
-    let { extVM, extId, sessionId, outputBigTextId, inputBigTextId } = obj;
+    let { extVM, extId, sessionId, outputBigTextId, inputBigTextId,commonPassProp } = obj;
     return async () => {
         let originalValue = FN_GetActualTextValueByBigTextId(inputBigTextId)
         let toolHandler = obj.toolHandler
+        let crtDefaultOpera = commonPassProp.crtDefaultOpera
         let beginTime = new Date().getTime()
         let checkId = _.uniqueId("")
         tmpLog[sessionId] = checkId
@@ -57,11 +61,15 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
             })
         )
         try {
+            if(!crtDefaultOpera){
+                logutils.warn("no available opera")
+                return;
+            }
             // processing
             let processedNewValue = await LibProcessEntryPoint.process(originalValue, {
                 extVM,
                 extId,
-                operation: toolHandler.getOperations()[0]
+                operation: crtDefaultOpera
             });
             // after process
             if (processedNewValue.error) {
