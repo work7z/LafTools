@@ -69,6 +69,8 @@ export type FormGenType = {
     type: "select" | "input" | "radio" | "switch";
     inputProps?: InputGroupProps;
     selectList?: LabelValuePair[]
+    value?: string;
+    onChange: (str:string)=>any
 }
 export default (props: { config: FormGenType }) => {
     let { config } = props;

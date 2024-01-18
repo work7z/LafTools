@@ -30,17 +30,29 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
     let [loadExample, onLoadExample] = useState(false);
     let toolHandler = props.toolHandler
     let extVM = props.extVM
+    let operaList = toolHandler?.getOperations() || []
+    let crtDefaultOperaId = props.crtRuntimeStatus.defaultOperationId || (operaList[0] && operaList[0].id)
     let actions: ExtensionAction[] | undefined = extVM?.Actions
     let leftActions: ButtonProps[] = [
         ...(
-            toolHandler?.getOperations() || []
+            operaList
         ).map(x => {
+            let isHighlightOne = x.id==crtDefaultOperaId;
             return {
                 text: x.name,
                 intent: "primary",
                 title: x.description,
+                outlined: !isHighlightOne,
+                minimal: !isHighlightOne,
                 onClick: () => {
-                    //
+                    FN_GetDispatch()(
+                        RuntimeStatusSlice.actions.updateValueInStatusMap({
+                            sessionId,
+                            obj: {
+                                defaultOperationId: x.id
+                            }
+                        })
+                    )
                 },
             }
         }) as ButtonProps[],

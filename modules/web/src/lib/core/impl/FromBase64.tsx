@@ -38,6 +38,7 @@ class FromBase64 extends Operation {
   constructor() {
     super();
 
+    this.id='frombase64'
     this.name = Dot("rVqlu", "Decode {0}", "Base64");
     this.module = "Default";
     this.description = Dot(

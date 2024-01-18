@@ -38,6 +38,7 @@ class ToBase64 extends Operation {
   constructor() {
     super();
 
+    this.id='tobase64'
     this.name = Dot("M3ytc", "Encode {0}", "Base64");
     this.module = "Default";
     this.description = Dot(

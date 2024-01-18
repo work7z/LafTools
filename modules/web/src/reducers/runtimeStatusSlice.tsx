@@ -40,11 +40,11 @@ const RuntimeStatusSlice = createSlice({
   name: "runtimeStatus",
   initialState,
   reducers: {
-    // ...SyncStateUtils.getSyncStateReducers("runtimeStatus", {
-    //   RunOnInit: true,
-    //   RequireUserId: true,
-    //   RequireWorkspaceId: true,
-    // }),
+    ...SyncStateUtils.getSyncStateReducers("runtime", {
+      RunOnInit: true,
+      RequireUserId: true,
+      RequireWorkspaceId: true,
+    }),
     initAtOnceBySessionIdAndValue: (
       state,
       action: PayloadAction<{ sessionId: string; value: ToolDefaultOutputType }>
@@ -78,6 +78,18 @@ const RuntimeStatusSlice = createSlice({
         return
       }
       state.toolOutputStatusMap[sessionId].toolTabIndex = tabIndex;
+    },
+    updateValueInStatusMap: (
+      state,
+      action: PayloadAction<{ sessionId: string; obj:Partial<{ [K in keyof ToolDefaultOutputType]: any }> }>
+    ) => {
+      let { sessionId, obj } = action.payload;
+      if (!state.toolOutputStatusMap[sessionId]) {
+        return
+      }
+      _.forEach(obj,(x,d,n)=>{
+        state.toolOutputStatusMap[sessionId][d]=x;
+      })
     },
     cleanProcessText: (
       state,

@@ -28,16 +28,18 @@ export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
         return {
             description: Dot(
-                "0Ceru",
+                "0Ceqru",
                 "Base64 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers.",
             ),
             infoURL: 'https://wikipedia.org/wiki/Base64'
         }
     }
     getOperations(): Operation[] {
-        return [
-            new ToBase64(),
-            new FromBase64(),
-        ]
+        return (
+            [
+                new ToBase64(),
+                new FromBase64(),
+            ]
+        )
     }
 }

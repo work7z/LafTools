@@ -52,6 +52,8 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     let sessionId = props.sessionId;
     let extVM = props.extVM
     let actions = extVM?.Actions
+    let toolHandler = props.toolHandler
+    let operList =toolHandler?.getOperations()||[]
     let arr: any[] = []
     for (let i = 0; i < 100; i++) {
         arr.push(<div>test {i}</div>)
@@ -61,10 +63,21 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     ];
     let generalList: FormGenItem[] = [
         {
-            label: Dot("YuQqTX", "Auto Run?"),
-            helperText: Dot("YuQTX", "Whether to run the transformer automatically when the input text is changed."),
+            label: Dot("YuQqTX", "Disable Auto Run?"),
+            helperText: Dot("YuqQTXs", "Not to run the transformer automatically when the input text is changed, if needed."),
             genEleConfig: {
                 type: "switch",
+                value: crtRuntimeStatus.autoRun,
+                onChange(newVal){
+                    FN_GetDispatch()(
+                        RuntimeStatusSlice.actions.updateValueInStatusMap({
+                            sessionId,
+                            obj: {
+                                autoRun: newVal
+                            }
+                        })
+                    )
+                },
             }
         },
         {
@@ -72,10 +85,21 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
             helperText: Dot("nxJC7", "The default action to be executed when the transformer is performed."),
             genEleConfig: {
                 type: "select",
-                selectList: (actions || []).map(x => {
+                value: crtRuntimeStatus.defaultOperationId,
+                onChange(newVal){
+                    FN_GetDispatch()(
+                        RuntimeStatusSlice.actions.updateValueInStatusMap({
+                            sessionId,
+                            obj: {
+                                defaultOperationId: newVal
+                            }
+                        })
+                    )
+                },
+                selectList: (operList || []).map(x => {
                     return {
-                        label: x.Label,
-                        value: x.Id
+                        label: x.name,
+                        value: x.id
                     } as LabelValuePair
                 })
             }
@@ -100,7 +124,6 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
             ></GenCodeMirror>
         </div>
     }
-    let operList = toolHanlder?.getOperations() || []
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
     return <div className="h-full overflow-auto " style={{

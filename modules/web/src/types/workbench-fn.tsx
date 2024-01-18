@@ -18,6 +18,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import { Dot } from "../utils/TranslationUtils"
+
 export let fn_format_description = (desc: string | undefined): string => {
-    return desc?.replace(/\\n/g, '\n') || ''
+    return Dot("rT4qnO","Enter text for processing. The result will display in the output editor.")+"\n\n"+Dot("PyYaq","Introduction: ")+"\n"+desc?.replace(/\\n/g, '\n') || ''
 }

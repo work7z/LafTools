@@ -58,6 +58,8 @@ export type ToolDefaultOutputType = {
   collapseConfig?: boolean;
   latestViewPanelId?: string;
   toolTabIndex?: Val_ToolTabIndex;
+  defaultOperationId?:string;
+  autoRun?:string;
   processError?: string;
   processText?: string;
   processOK?: boolean;

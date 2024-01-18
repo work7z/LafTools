@@ -42,12 +42,12 @@ import { fn_format_description } from "../../../../../../../../types/workbench-f
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TransofrmerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
-import TextTransformerControl from "./SideControl";
+import TextTransformerControl from "./ControlBar";
 import TextTransformerOutput from "./unused/PanelOutput";
 import TextTransformerConfig from "./unused/PanelConfig";
 import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
-import PanelMain from "./PanelMain";
+import PanelMain from "./ProcessPanel";
 import LibProcessEntryPoint from '../../../../../../../../lib/entrypoint'
 import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions/transformer_action";
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
@@ -69,7 +69,7 @@ export default (props: CommonTransformerProps) => {
     toolHandler: operaRef.current
   };
   let extVM = props.extVM
-  let desc = fn_format_description(extVM?.Info?.DescriptionByInit)
+  let desc = fn_format_description(commonPassProp.toolHandler?.getMetaInfo().description)
   // process fn
   let fn_notifyTextChange = () => {
     if (extVM && extId && sessionId && outputBigTextId && operaRef.current) {
@@ -140,7 +140,7 @@ export default (props: CommonTransformerProps) => {
     return () => {
       window.clearInterval(timer)
     }
-  }, [])
+  }, [sessionId])
 
   useEffect(() => {
     FN_GetDispatch()(
@@ -154,7 +154,7 @@ export default (props: CommonTransformerProps) => {
         },
       }),
     )
-  }, [])
+  }, [sessionId])
   let isCollapsed_config = fn_coll_config(sessionId);
   if (!crtRuntimeStatus) {
     return <LoadingText></LoadingText>
@@ -211,6 +211,7 @@ export default (props: CommonTransformerProps) => {
               lineWrap
               placeholder={desc || Dot("xPHqP", "The description is not yet defined.")}
               language="javascript"
+              key={inputBigTextId}
               bigTextId={inputBigTextId}
               onTextChange={fn_notifyTextChange}
             ></GenCodeMirror>

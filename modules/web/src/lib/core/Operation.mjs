@@ -48,6 +48,7 @@ class Operation {
 
     // Public fields
     this.name = "";
+    this.id = ""
     this.module = "";
     this.description = "";
     this.infoURL = null;
