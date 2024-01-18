@@ -106,7 +106,7 @@ export default (props: GenCodeMirrorProp) => {
     let crt = mRef.current;
     let m = val.bigtext.textKVStatusMap[bigTextId];
     let finalText = m?.value || "";
-    if (m?.internalValue) {
+    if (!_.isNil(m?.internalValue)) {
       finalText = m?.internalValue;
     }
     return {
@@ -118,19 +118,19 @@ export default (props: GenCodeMirrorProp) => {
     javascript: () => javascript({ jsx: true }),
     shell: () => StreamLanguage.define(shell)
   }
-
-  let fixedDeps = [verObj.ver]
   let bt = useMemo(() => {
     return bt_raw;
-  }, fixedDeps);
+  }, [verObj.ver]);
   useEffect(() => {
-    console.log("bt_raw:", bt_raw)
     if (verObj.ver != 1) {
-      props.onTextChange && props.onTextChange(FN_GetActualTextValueByBigTextId(bigTextId))
+      let actualText = FN_GetActualTextValueByBigTextId(bigTextId)
+      console.log("onTextChange :", bt.bigText, bt_raw)
+      props.onTextChange && props.onTextChange(actualText)
     }
-  }, fixedDeps)
+  }, [verObj.ver])
   let value: string = bt.bigText;
   let setValue = (val: string) => {
+    // debugger;
     FN_GetDispatch()(FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY(bigTextId, val));
   };
   const onChange = React.useCallback((val, viewUpdate) => {

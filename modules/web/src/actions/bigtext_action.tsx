@@ -36,7 +36,7 @@ export let FN_GetActualTextValueByBigTextId = (
   if (_.isNil(stMap)) {
     return "";
   }
-  if (stMap.internalValue) {
+  if (!_.isNil(stMap.internalValue)) {
     return stMap.internalValue;
   }
   return stMap.value;

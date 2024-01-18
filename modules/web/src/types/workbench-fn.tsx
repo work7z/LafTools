@@ -20,6 +20,25 @@
 
 import { Dot } from "../utils/TranslationUtils"
 
+export type TitleSubPair = {
+    title: string
+    subTitle: string
+}
+
 export let fn_format_description = (desc: string | undefined): string => {
-    return Dot("rT4qnO","Enter text for processing. The result will display in the output editor.")+"\n\n"+Dot("PyYaq","Introduction: ")+"\n"+desc?.replace(/\\n/g, '\n') || ''
+    let arr: TitleSubPair[] = [
+        {
+            title: Dot("wcl1K", "Usage"),
+            subTitle: Dot("rT4qnO", "Enter text for processing. The result will display in the output editor.")
+        },
+        {
+            title: Dot("8L1Kk", "About"),
+            subTitle: desc?.replace(/\\n/g, '\n') + ""
+        },
+        {
+            title:Dot("SYSq1","Example"),
+            subTitle: "Input: Hello World\nOutput: Hello World"
+        }
+    ]
+    return arr.map(x => `[${x.title}]\n${x.subTitle}`).join("\n\n")
 }
