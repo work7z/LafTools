@@ -74,7 +74,7 @@ cat <<EOF >"${file}.agpl"
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
 // Date: $t_date
-// Author: $(git log --follow --pretty="format:%an <%ae>" -- "$file" | sort | uniq | sed  's/jerry549@icloud.com/work7z@outlook.com/g' | sed 's/CodeGen ToolBox/LafTools Team/g')
+// Author: $(git log --follow --pretty="format:%an <%ae>" -- "$file" | sort | uniq | sed  's/jerry549@icloud.com/work7z@outlook.com/g' | sed 's/CodeGen ToolBox/LafTools Team/g' | sed -i ':a;N;$!ba;s/\n/ /g' filename)  
 // Description: 
 // Copyright (C) $(date +%Y) - Present, https://laf-tools.com and https://codegen.cc
 //
