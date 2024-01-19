@@ -81,14 +81,14 @@ const RuntimeStatusSlice = createSlice({
     },
     updateValueInStatusMap: (
       state,
-      action: PayloadAction<{ sessionId: string; obj:Partial<{ [K in keyof ToolDefaultOutputType]: any }> }>
+      action: PayloadAction<{ sessionId: string; obj: Partial<{ [K in keyof ToolDefaultOutputType]: any }> }>
     ) => {
       let { sessionId, obj } = action.payload;
       if (!state.toolOutputStatusMap[sessionId]) {
         return
       }
-      _.forEach(obj,(x,d,n)=>{
-        state.toolOutputStatusMap[sessionId][d]=x;
+      _.forEach(obj, (x, d, n) => {
+        state.toolOutputStatusMap[sessionId][d] = x;
       })
     },
     cleanProcessText: (
@@ -126,6 +126,18 @@ const RuntimeStatusSlice = createSlice({
       obj.processText = Dot("-DqwwR", "Operation Completed.", action.payload.elapsedTime)
       obj.processing = false;
       obj.processOK = true;
+    },
+    moveTabToToolsPart: (state,
+      action: PayloadAction<{
+        sessionId: string
+      }>
+    ) => {
+      let { sessionId } = action.payload;
+      if (!state.toolOutputStatusMap[sessionId]) {
+        return
+      }
+      let obj = state.toolOutputStatusMap[sessionId]
+      obj.toolTabIndex = "tools"
     },
     resetProcessValueBeforeProcess: (
       state,

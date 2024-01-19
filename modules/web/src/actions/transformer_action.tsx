@@ -40,14 +40,14 @@ type PassType = {
     inputBigTextId: string
     toolHandler: ToolHandler
     commonPassProp: CommonTransformerPassProp
+    originalValue:string
 }
 
 let tmpLog = {}
 
 export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
-    let { extVM, extId, sessionId, outputBigTextId, inputBigTextId,commonPassProp } = obj;
+    let {originalValue, extVM, extId, sessionId, outputBigTextId, inputBigTextId,commonPassProp } = obj;
     return async () => {
-        let originalValue = FN_GetActualTextValueByBigTextId(inputBigTextId)
         let toolHandler = obj.toolHandler
         let crtDefaultOpera = commonPassProp.crtDefaultOpera
         let beginTime = new Date().getTime()

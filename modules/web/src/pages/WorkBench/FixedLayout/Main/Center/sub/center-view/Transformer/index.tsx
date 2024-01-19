@@ -29,7 +29,7 @@ import { Dot } from "../../../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
 import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";
-import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
+import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
 import { useEffect, useMemo, useRef, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
@@ -115,17 +115,27 @@ export default (props: CommonTransformerProps) => {
       return;
     }
     if (extVM && extId && sessionId && outputBigTextId && operaRef.current) {
-      FN_GetDispatch()(
-        ACTION_Transformer_Process_Text({
-          extVM,
-          extId,
-          sessionId,
-          outputBigTextId,
-          inputBigTextId,
-          toolHandler: operaRef.current,
-          commonPassProp: commonPassProp
-        })
-      )
+      let originalValue = FN_GetActualTextValueByBigTextId(inputBigTextId)
+      if(originalValue == ''){
+        FN_GetDispatch()(
+          RuntimeStatusSlice.actions.moveTabToToolsPart({
+              sessionId,
+          })
+        )
+      }else{
+        FN_GetDispatch()(
+          ACTION_Transformer_Process_Text({
+            originalValue,
+            extVM,
+            extId,
+            sessionId,
+            outputBigTextId,
+            inputBigTextId,
+            toolHandler: operaRef.current,
+            commonPassProp: commonPassProp
+          })
+        )  
+      }
     } else {
       console.error("fn_notifyTextChange failed")
     }
