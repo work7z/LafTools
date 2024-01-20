@@ -1,3 +1,23 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Sun, 21 Jan 2024
+// Author:   
+// Description: 
+// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import React, { useEffect, useState } from 'react'
 import { CommonTransformerProps } from '../types'
 import { CommonTransformerPassProp } from '../../../../../../../../../types/workbench-types'
@@ -38,13 +58,13 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                 </b>    </div>
             <div>
                 <a href={props.toolHandler?.getMetaInfo().infoURL} target='_blank'>
-                    {Dot("U2ZNl", "Learn more on wikipedia")}
+                    {Dot("U2ZNl", "Learn more on Wikipedia")}
                 </a>
             </div>
         </div>
         {
             faq.map((x, i) => {
-                return <div key={i} className="transform transition-all border-slate-200 border-[1px] hover:border-lime-600 rounded overflow-hidden shadow-md mb-2 px-4 py-4">
+                return <div key={i} className="transform transition-all hover:border-lime-600  dark:hover:border-lime-600  dark:border-slate-600 border-slate-200 border-[1px] rounded overflow-hidden shadow-md mb-2 px-4 py-4">
                     <div className="px-0 pb-2 font-bold text-md ">({i + 1}) {x.question}</div>
                     <div className="px-0 py-0">{x.answer}</div>
                 </div>

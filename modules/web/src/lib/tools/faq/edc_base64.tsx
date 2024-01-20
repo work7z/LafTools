@@ -29,15 +29,29 @@ let faqForBase64: FAQItem[] = [
   {
     question: Dot("mno34567", "Advantages of Base64"),
     answer: <p>
+      <ul>
+        <li>
       {Dot("pqrs890t", "Universal Compatibility: Base64 is widely recognized and supported in all major programming languages.", "Compatibility")}
+        </li>
+        <li>
       {Dot("uvwxyza1", "No Data Loss: Since it's a reversible process, Base64 encoding doesn't result in any loss of information.", "NoDataLoss")}
+
+        </li>
+      </ul>
     </p>
   },
   {
     question: Dot("2bcde3fg", "Disadvantages of Base64"),
     answer: <p>
-      {Dot("4hijk5lm", "Size Increase: Encoded data is roughly 33% larger than the original binary data.", "SizeIncrease")}
+      <ol>
+        <li>
+        {Dot("4hijk5lm", "Size Increase: Encoded data is roughly 33% larger than the original binary data.", "SizeIncrease")}
+        </li>
+        <li>
       {Dot("6nopqrst", "No Encryption: Base64 is not an encryption method; it's easily decoded and provides no security.", "NotEncryption")}
+
+        </li>
+      </ol>
     </p>
   },
   {
@@ -96,7 +110,7 @@ let faqForBase64: FAQItem[] = [
   {
     question: Dot("zyx98765", "Can Base64 be used for compression?"),
     answer: <p>
-      {Dot("cba54321", "No, Base64 isn't a compression technique; it only changes the representation of data, not its size.", "CompressionExplanation")}
+      {Dot("cbaq54321", "No, Base64 isn't a compression technique, it only changes the representation of data not its size.", )}
     </p>
   }
 ];
