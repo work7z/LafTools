@@ -49,8 +49,7 @@ export type EachLang = {
  * 2. Translation Selector
  * 3. Sessions and Related Config
  */
-// export type Val_ToolTabIndex = "output" | "general" | "tools";
-export type Val_ToolTabIndex = "output" | "general" | "tools" | "wiki" | "faq";
+export type Val_ToolTabIndex = "output" | "tools" | "wiki" | "impl" | "faq";
 export type ToolDefaultOutputType = {
   // key refers to sessionId
   collapseOutput?: boolean;
@@ -58,9 +57,9 @@ export type ToolDefaultOutputType = {
   collapseConfig?: boolean;
   latestViewPanelId?: string;
   toolTabIndex?: Val_ToolTabIndex;
-  defaultOperationId?:string;
-  autoRun?:string;
-  ignoreEmptyStr?:string;
+  defaultOperationId?: string;
+  autoRun?: string;
+  ignoreEmptyStr?: string;
   // process status
   processError?: string;
   processText?: string;

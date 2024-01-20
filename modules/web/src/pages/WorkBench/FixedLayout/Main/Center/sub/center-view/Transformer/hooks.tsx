@@ -50,7 +50,7 @@ import ActionButton from "../../../../../../../../components/ActionButton";
 export let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 export let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
 
-export type TransofrmerWithRuntime = {
+export type TransformerWithRuntime = {
     crtRuntimeStatus: ToolDefaultOutputType;
 }
 export let fn_coll_output = (sessionId) => {

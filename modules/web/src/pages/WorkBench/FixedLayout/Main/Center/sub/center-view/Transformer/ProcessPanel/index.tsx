@@ -20,34 +20,35 @@
 
 
 import { Alignment, Button, ButtonProps, FormGroup, Icon, InputGroup, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
-import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
+import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
+import FaqPanel from './FaqPanel'
 import {
     VAL_CSS_TAB_TITLE_PANEL,
     VAL_CSS_CONTROL_PANEL,
-} from "../../../../../../../../types/workbench-types";
-import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
-import { Dot } from "../../../../../../../../utils/TranslationUtils";
-import { FN_GetDispatch } from "../../../../../../../../nocycle";
-import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
+} from "../../../../../../../../../types/workbench-types";
+import { CommonTransformerPassProp } from "../../../../../../../../../types/workbench-types";
+import { Dot } from "../../../../../../../../../utils/TranslationUtils";
+import { FN_GetDispatch } from "../../../../../../../../../nocycle";
+import BigTextSlice from "../../../../../../../../../reducers/bigTextSlice";
 import _, { set } from "lodash";
-import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
+import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
 import { useEffect, useRef, useState } from "react";
-import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
-import AlertUtils from "../../../../../../../../utils/AlertUtils";
-import { SysTabPane } from "../../../../../../../../components/SysTabPane";
-import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER, LabelValuePair } from "../../../../../../../../types/constants";
-import exportUtils from "../../../../../../../../utils/ExportUtils";
-import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
+import AjaxUtils from "../../../../../../../../../utils/AjaxUtils";
+import AlertUtils from "../../../../../../../../../utils/AlertUtils";
+import { SysTabPane } from "../../../../../../../../../components/SysTabPane";
+import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER, LabelValuePair } from "../../../../../../../../../types/constants";
+import exportUtils from "../../../../../../../../../utils/ExportUtils";
+import RuntimeStatusSlice from "../../../../../../../../../reducers/runtimeStatusSlice";
 
-import { CommonTransformerProps } from "./types";
-import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../types/purejs-types-READ_ONLY";
-import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "./hooks";
-import FormGenPanel, { FormGenItem } from "../../../../../../../../components/FormGenPanel";
-import Operation from "../../../../../../../../lib/core/Operation.mjs";
-import { logutils } from "../../../../../../../../utils/LogUtils";
+import { CommonTransformerProps } from "../types";
+import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../../types/purejs-types-READ_ONLY";
+import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "../hooks";
+import FormGenPanel, { FormGenItem } from "../../../../../../../../../components/FormGenPanel";
+import Operation from "../../../../../../../../../lib/core/Operation.mjs";
+import { logutils } from "../../../../../../../../../utils/LogUtils";
 
-export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
+export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
     let toolTabIndex = crtRuntimeStatus.toolTabIndex || "output"
     let sessionId = props.sessionId;
@@ -145,7 +146,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
             ></GenCodeMirror>
         </div>
     } else if (toolTabIndex == "faq") {
-        finalShowContent = <div>this is faq element</div>
+        finalShowContent = <FaqPanel {...props}></FaqPanel>
     }
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
@@ -161,11 +162,11 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                         loadingStatic ? "success" :
                             crtRuntimeStatus.processOK ? "success" :
                                 crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
-                    } icon={
+                    }  icon={
                         loadingStatic ? "changes" :
                             crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" :
                                 crtRuntimeStatus.processText ? "tick" :
-                                    "code"} iconSize={20} className={"mr-2  " + (
+                                    "console"} iconSize={20} className={"mr-2  " + (
                                         crtRuntimeStatus.processing ? " animate-spin " : ""
                                     )} />
                     <span className={
@@ -198,7 +199,8 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                     <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(generalList)} />
 
                     <Tab id="faq" icon="manual" title={"FAQ"} />
-                    <Tab id="wiki" icon="globe" title={"Wiki"} />
+                    <Tab id="impl" icon="code" title={Dot("JQEVK","Code")} />
+                    {/* <Tab id="wiki" icon="globe" title={"Wiki"} /> */}
                     <Tab id="output" icon={
                         crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "tick"
                     } title={Dot("FjYbR", "Output")} />

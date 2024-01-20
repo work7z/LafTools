@@ -1,34 +1,34 @@
 
 import { Alignment, Button, ButtonProps, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
-import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
+import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import {
     VAL_CSS_TAB_TITLE_PANEL,
     VAL_CSS_CONTROL_PANEL,
-} from "../../../../../../../../types/workbench-types";
-import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
-import { Dot } from "../../../../../../../../utils/TranslationUtils";
-import { FN_GetDispatch } from "../../../../../../../../nocycle";
-import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
+} from "../../../../../../../../../types/workbench-types";
+import { CommonTransformerPassProp } from "../../../../../../../../../types/workbench-types";
+import { Dot } from "../../../../../../../../../utils/TranslationUtils";
+import { FN_GetDispatch } from "../../../../../../../../../nocycle";
+import BigTextSlice from "../../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";
-import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
+import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
 import { useEffect, useRef, useState } from "react";
-import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
-import AlertUtils from "../../../../../../../../utils/AlertUtils";
-import { SysTabPane } from "../../../../../../../../components/SysTabPane";
-import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
-import exportUtils from "../../../../../../../../utils/ExportUtils";
-import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
+import AjaxUtils from "../../../../../../../../../utils/AjaxUtils";
+import AlertUtils from "../../../../../../../../../utils/AlertUtils";
+import { SysTabPane } from "../../../../../../../../../components/SysTabPane";
+import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../../types/constants";
+import exportUtils from "../../../../../../../../../utils/ExportUtils";
+import RuntimeStatusSlice from "../../../../../../../../../reducers/runtimeStatusSlice";
 
-import { CommonTransformerProps } from "./types";
-import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
-import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button } from "./hooks";
-import gutils from "../../../../../../../../utils/GlobalUtils";
-import CopyButton from "../../../../../../../../components/CopyButton";
-import { ActionButtonProps } from "../../../../../../../../components/ActionButton";
+import { CommonTransformerProps } from "../types";
+import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../../types/purejs-types-READ_ONLY";
+import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button } from "../hooks";
+import gutils from "../../../../../../../../../utils/GlobalUtils";
+import CopyButton from "../../../../../../../../../components/CopyButton";
+import { ActionButtonProps } from "../../../../../../../../../components/ActionButton";
 
 
-let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRuntime & {
+let TextTransformerControl = (props: TextTransformerProps & TransformerWithRuntime & {
     onProcess: () => any;
 }) => {
     let { inputBigTextId } = props;

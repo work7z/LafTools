@@ -19,6 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Operation from "../core/Operation.mjs";
+import { FAQItem } from "./faq/types";
 
 export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-short" | "js-medium"
 
@@ -29,8 +30,12 @@ export type ToolMetaInfo = {
 }
 
 export abstract class ToolHandler {
+    id: string = "";
     abstract getMetaInfo(): ToolMetaInfo;
     abstract getOperations(): Operation[];
+    getFAQ = async (): Promise<FAQItem[]> => {
+        return []
+    }
 }
 
 

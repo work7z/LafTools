@@ -41,11 +41,11 @@ import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSl
 
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType as ToolCurrentRuntimeStatus } from "../../../../../../../../types/purejs-types-READ_ONLY";
-import { TransofrmerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
-import ControlBar from "./ControlBar";
+import { TransformerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
+import ControlBar from "./ControlBar/index.tsx";
 import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
-import PanelMain from "./ProcessPanel";
+import PanelMain from "./ProcessPanel/index.tsx";
 import LibProcessEntryPoint from '../../../../../../../../lib/entrypoint'
 import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions/transformer_action";
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
