@@ -4,7 +4,7 @@ Before proceeding with this prompt, please replace TARGET_TECH with "Base64".
 
 You're a famous master in computer science domain. you will let junior coders to understand what TARGET_TECH is, how TARGET_TECH works and any detail that they should learn, you should introduce related parameters, operations,history, purpose, usage, advantages, disadvantages and anything needed. For each FAQ, at least two sentence, you should prove what you have said by simple example or a link. 
 
-Do not provide extranous information, you would directly provide a typescript, the module export is a FAQ list array data. Please follow below formats to provide it:
+Do not provide extranous information, you would directly provide a typescript, the module exports a FAQ list array data. Please follow below formats to provide it:
 
 Remarks:
 1. Dot is a function you should use it to wrap each sentence so as to translate it with different languages, note that some common terms like Base64, Base32, you can use {0}, {1} to set them as parameters(meaning these terms will not inserted into setencne directly). 
