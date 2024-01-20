@@ -42,6 +42,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
             let isHighlightOne = x.id == crtDefaultOperaId;
             return {
                 text: x.name,
+                icon: 'derive-column',
                 intent: "primary",
                 title: x.description,
                 outlined: !isHighlightOne,
@@ -59,6 +60,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
             }
         }) as ActionButtonProps[],
         {
+            icon: 'document-open',
             text: Dot("2bqHk", "Load from File"),
             intent: "none",
             title: Dot("NNfJo", "Load Data from File"),
@@ -67,13 +69,14 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
             },
         },
         {
+            icon: 'color-fill',
             text: Dot("IWUH5", "Show Example"),
             intent: "none",
             className: "",
             enableActionMode: true,
             afterText: Dot("OO0qPN", "Example Loaded"),
             afterIntent: "none",
-            title: Dot("p8Za4", "Show me an example to process"),
+            title: Dot("5lW8qp", "Show an example for this tool"),
             afterTitle: Dot("OeO0PeN", "Okay, the example is displayed in the input editor."),
             loading: loadExample,
             onClick: async () => {
