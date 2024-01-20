@@ -34,7 +34,9 @@ export type AppInfoType = {
 let passInfo = (obj: AppInfoType): AppInfoType => {
     return obj;
 }
-let appToolInfoObj = {
+let appToolInfoObj:{
+    [key:string]:AppInfoType
+} = {
     "edc_base64": passInfo({
         Label: Dot("gkC8t", "Base64")
     }),

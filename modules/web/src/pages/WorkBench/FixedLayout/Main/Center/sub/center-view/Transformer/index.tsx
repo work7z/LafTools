@@ -176,14 +176,16 @@ export default (props: CommonTransformerProps) => {
         onLoadError(null)
         setLoadingProgressRate(0)
         setLoadingStatic(true)
-        // await gutils.sleep(30000)
         let obj: AppInfoType = appToolInfoObj[props.extId as any]
         if (!obj.ImportImpl) {
-          // TODO: add alert warnings
+          logutils.warn("no import impl")
           return;
         }
         let opera: any = await obj.ImportImpl()
         operaRef.current = new opera["default"]()
+        if (operaRef.current) {
+          operaRef.current.id = props.extId + ""
+        }
         window.clearInterval(timer)
         setLoadingStatic(false)
       } catch (e) {

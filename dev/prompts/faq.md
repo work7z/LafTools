@@ -9,7 +9,7 @@ Do not provide extranous information, you would directly provide a typescript, t
 Remarks:
 1. Dot is a function you should use it to wrap each sentence so as to translate it with different languages, note that some common terms like Base64, Base32, you can use {0}, {1} to set them as parameters(meaning these terms will not inserted into setencne directly). 
 
-2. the value field is a JSX element, you can provide some HTML tags to emphaisis the parts if required, such as <b></b> <br/> or other tags, which is to make content more reasonable and cleaner. 
+2. the answer field is a JSX element, you can provide some HTML tags to emphaisis the parts if required, such as <b></b> <br/> or other tags, which is to make content more reasonable and cleaner. 
 
 3. for the Dot function, its first arguemnt is a random uuid whose length should be limited to 7.
 
@@ -20,20 +20,22 @@ Remarks:
 6. replace {RANDOM_VAL} with a short uuid (length: 7)
 
 ```typescript
-type FAQItem = {
-    label: string,
-    value: any
-}
+import { Dot, loadDOT, } from "../../../utils/TranslationUtils";
+import { FAQItem } from "./types";
+import React from "react";
+
+loadDOT("TARGET_TECH")
 
 let faqForTARGET_TECH: FAQItem[] = [
     {
         label: Dot("{RANDOM_VAL}","FAQ Item 1"),
-        value: <p>
+        answer: <p>
             {Dot("{RANDOM_VAL}","To xxx, FAQ item is xxx")}<br/>
             {Dot("{RANDOM_VAL}","Bascially, we will use {0} to process xxx","FAQ_ITEM")}
         </p>
     }
 ]
+export default faqForBase64
 ```
 
 Most important, manage to control the length limit of your response, you can brief it if it's really needed.

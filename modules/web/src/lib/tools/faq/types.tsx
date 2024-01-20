@@ -1,4 +1,4 @@
 export type FAQItem = {
-    label: string,
-    value: JSX.Element
+    question: string,
+    answer: JSX.Element
 }

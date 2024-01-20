@@ -20,6 +20,7 @@
 
 import Operation from "../core/Operation.mjs";
 import { FAQItem } from "./faq/types";
+import appToolInfoObj from "./info";
 
 export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-short" | "js-medium"
 
@@ -34,7 +35,13 @@ export abstract class ToolHandler {
     abstract getMetaInfo(): ToolMetaInfo;
     abstract getOperations(): Operation[];
     getFAQ = async (): Promise<FAQItem[]> => {
-        return []
+        let o = appToolInfoObj[this.id]
+        if(!o.ImportFAQ){
+            return [];
+        }
+        let r = await o.ImportFAQ()
+        let r2= r["default"]
+        return r2;
     }
 }
 

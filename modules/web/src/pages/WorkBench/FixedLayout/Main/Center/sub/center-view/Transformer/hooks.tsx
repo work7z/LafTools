@@ -46,6 +46,7 @@ import AppCategory from "../../../../../../../../lib/tools/category";
 import { ListExtForTheCategoryRes } from "../../../../../../../../reducers/apiSlice";
 import appToolInfoObj from "../../../../../../../../lib/tools/info";
 import ActionButton from "../../../../../../../../components/ActionButton";
+import gutils from "../../../../../../../../utils/GlobalUtils";
 
 export let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 export let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -64,6 +65,68 @@ export let fn_coll_output = (sessionId) => {
         };
     }).v;
 };
+
+
+export let usePromiseWait = (obj: {
+    text: string,
+    whenToStart:boolean,
+    promise: () => Promise<any>,
+},deps: any[]): { loading: boolean, progressText: string } => {
+    let [errorMsg, onErrorMsg] = useState<string | null>(null)
+    let [loadingStatic, setLoadingStatic] = useState(true)
+
+    let [loadError, onLoadError] = useState<string | null>(null)
+    let [loadingProgressRate, setLoadingProgressRate] = useState(0)
+
+    let progressText = loadingStatic ? `${obj.text} ${loadingProgressRate.toFixed(2)}%...` : obj.text;
+    // increment percentage randomly, and mark its loading  as false if success, or set errorMsg if having error 
+    useEffect(() => {
+        if(!obj.whenToStart){
+            return;
+        }
+        let tmp_loadingProgressRate = 0
+        let loopFn = () => {
+            let maxVal = 98.16;
+            if (tmp_loadingProgressRate >= maxVal) {
+                clearInterval(timer)
+                return
+            }
+            tmp_loadingProgressRate = Math.min(maxVal, tmp_loadingProgressRate + (Math.random() * 4))
+            setLoadingProgressRate(tmp_loadingProgressRate)
+        }
+        let timer = setInterval(loopFn, 89);
+        (async () => {
+            try {
+                onLoadError(null)
+                setLoadingProgressRate(0)
+                setLoadingStatic(true)
+                // await gutils.sleep(30000)
+                await obj.promise()
+                window.clearInterval(timer)
+                setLoadingStatic(false)
+            } catch (e) {
+                let anyError = gutils.getErrMsg(e)
+                onLoadError(anyError)
+                window.clearInterval(timer)
+            } finally {
+                setLoadingStatic(false)
+            }
+        })()
+        return () => {
+            window.clearInterval(timer)
+        }
+    }, [...deps,obj.whenToStart])
+
+    if (loadError) {
+        loadingStatic = false
+        progressText = Dot("07naT", "Error: {0}", loadError)
+    }
+    return {
+        loading: loadingStatic,
+        progressText
+    }
+}
+
 
 export let useExtsList = (fc: string): ListExtForTheCategoryRes[] => {
     let arr: ListExtForTheCategoryRes[] = []

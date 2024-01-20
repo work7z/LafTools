@@ -4,71 +4,55 @@ import { CommonTransformerPassProp } from '../../../../../../../../../types/work
 import { TransformerWithRuntime as TransformerWithRuntime } from '../hooks'
 import gutils from '../../../../../../../../../utils/GlobalUtils'
 import { Dot } from '../../../../../../../../../utils/TranslationUtils'
-
-
-let usePromiseWait = (obj: {
-    text: string,
-    promise: () => Promise<any>,
-}): { loading: boolean, progressText: string } => {
-    let [errorMsg, onErrorMsg] = useState<string | null>(null)
-    let [loadingStatic, setLoadingStatic] = useState(true)
-
-    let [loadError, onLoadError] = useState<string | null>(null)
-    let [loadingProgressRate, setLoadingProgressRate] = useState(0)
-
-    let progressText = loadingStatic ? `${obj.text} ${loadingProgressRate}%` : obj.text;
-    // increment percentage randomly, and mark its loading  as false if success, or set errorMsg if having error 
-    useEffect(() => {
-        let tmp_loadingProgressRate = 0
-        let loopFn = () => {
-            let maxVal = 98.16;
-            if (tmp_loadingProgressRate >= maxVal) {
-                clearInterval(timer)
-                return
-            }
-            tmp_loadingProgressRate = Math.min(maxVal, tmp_loadingProgressRate + (Math.random() * 4))
-            setLoadingProgressRate(tmp_loadingProgressRate)
-        }
-        let timer = setInterval(loopFn, 89);
-        (async () => {
-            try {
-                onLoadError(null)
-                setLoadingProgressRate(0)
-                setLoadingStatic(true)
-                // await gutils.sleep(30000)
-                await obj.promise()
-                window.clearInterval(timer)
-                setLoadingStatic(false)
-            } catch (e) {
-                let anyError = gutils.getErrMsg(e)
-                onLoadError(anyError)
-                window.clearInterval(timer)
-            } finally {
-                setLoadingStatic(false)
-            }
-        })()
-        return () => {
-            window.clearInterval(timer)
-        }
-    }, [])
-
-    if (loadError) {
-        loadingStatic = false
-        progressText = Dot("07naT", "Error: {0}", loadError)
-    }
-    return {
-        loading: loadingStatic,
-        progressText
-    }
-}
+import { usePromiseWait } from '../hooks'
+import { FAQItem } from '../../../../../../../../../lib/tools/faq/types'
+import _ from 'lodash'
+import { AnchorButton, Button } from '@blueprintjs/core'
 
 export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     // props.toolHandler
+    let [faq, onFaq] = useState<FAQItem[]>([])
     let { loading, progressText } = usePromiseWait({
         text: Dot("jhDoE", "Retrieving FAQ Data"),
+        whenToStart: !_.isNil(props.toolHandler),
         promise: async () => {
-            await gutils.sleep(3000)
+            if (!props.toolHandler) {
+                return;
+            }
+            let crt_faq = await props.toolHandler.getFAQ()
+            debugger;
+            onFaq(crt_faq)
         }
-    })
-    return <div>nihao</div>
+    }, [props.toolHandler])
+    if (loading) {
+        return <div className="p-2">{progressText}</div>
+    }
+    if (!faq || faq.length == 0) {
+        return <div className="p-2">{Dot("jgDoEq", "No FAQ Data")}</div>
+    }
+    return <div className='p-2'>
+        <div className="flex justify-between items-center mb-2 mt-0">
+            <div>
+                <b>
+                    {Dot("xOJqG1", "Frequently Asked Questions", _.size(faq))}:
+                </b>    </div>
+            <div>
+                <a href={props.toolHandler?.getMetaInfo().infoURL} target='_blank'>
+                    {Dot("U2ZNl", "Learn more on wikipedia")}
+                </a>
+            </div>
+        </div>
+        {
+            faq.map((x, i) => {
+                return <div key={i} className="transform transition-all border-slate-200 border-[1px] hover:border-lime-600 rounded overflow-hidden shadow-md mb-2 px-4 py-4">
+                    <div className="px-0 pb-2 font-bold text-md ">({i + 1}) {x.question}</div>
+                    <div className="px-0 py-0">{x.answer}</div>
+                </div>
+            })
+        }
+        <div className="text-center mb-2 mt-4">
+            <AnchorButton target='_blank' minimal outlined href={'https://github.com/work7z/LafTools/issues'} intent="none" text={Dot("Ylq2X", "Error Correction")}></AnchorButton>
+        </div>
+
+    </div>
 }
