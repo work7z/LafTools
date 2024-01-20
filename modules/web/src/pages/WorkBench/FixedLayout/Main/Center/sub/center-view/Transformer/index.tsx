@@ -43,8 +43,6 @@ import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TransofrmerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
 import TextTransformerControl from "./ControlBar";
-import TextTransformerOutput from "./PanelOutput";
-import TextTransformerConfig from "./PanelConfig";
 import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
 import PanelMain from "./ProcessPanel";

@@ -144,6 +144,8 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                 bigTextId={props.outputBigTextId}
             ></GenCodeMirror>
         </div>
+    }else if(toolTabIndex=="faq"){
+        finalShowContent = <div>this is faq element</div>
     }
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
