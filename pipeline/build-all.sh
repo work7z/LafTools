@@ -91,12 +91,12 @@ build-be(){
         build-core linux-x64 amd64 "core/app_unix.go" linux
         build-core linux-arm64 arm64 "core/app_unix.go" linux
     else
+        build-core windows-x64 amd64 "core/app_windows.go" windows
+        # build-core windows-arm64 arm64 "core/app_windows.go" windows
         build-core linux-x64 amd64 "core/app_unix.go" linux
         build-core linux-arm64 arm64 "core/app_unix.go" linux
         build-core darwin-x64 amd64 "core/app_unix.go" darwin
         build-core darwin-arm64 arm64 "core/app_unix.go" darwin
-        build-core windows-x64 amd64 "core/app_windows.go" windows
-        # build-core windows-arm64 arm64 "core/app_windows.go" windows
     fi
 }
 
@@ -143,12 +143,12 @@ package-all(){
         package-for linux-x64
         package-for linux-arm64
     else
+        package-for windows-x64 zip
+        # package-for windows-arm64 zip
         package-for linux-x64
         package-for linux-arm64
         package-for darwin-x64
         package-for darwin-arm64
-        package-for windows-x64 zip
-        # package-for windows-arm64 zip
     fi
 }
 

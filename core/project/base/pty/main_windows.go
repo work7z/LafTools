@@ -1,3 +1,6 @@
+//go:build windows
+// +build windows
+
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
 // Date: Wed, 27 Dec 2023
@@ -17,9 +20,6 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-//go:build windows
-// +build windows
 
 package pty
 
