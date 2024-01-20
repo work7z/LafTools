@@ -59,9 +59,6 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     for (let i = 0; i < 100; i++) {
         arr.push(<div>test {i}</div>)
     }
-    let toolList = [
-        //
-    ];
     logutils.debug("autorun-crtRuntimeStatus",crtRuntimeStatus)
     let generalList: FormGenItem[] = [
         {
@@ -126,6 +123,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
             }
         }
     ]
+    // generalList=[...generalList,...generalList,...generalList]
     let finalShowContent = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
     let pdValue = 'p-2'
     let loadingStatic = false

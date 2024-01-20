@@ -109,20 +109,20 @@ export default (props: CommonTransformerProps) => {
   }
   let desc = fn_format_description(commonPassProp.toolHandler?.getMetaInfo().description)
   // process fn
-  logutils.debug("commonPassProp",commonPassProp)
+  logutils.debug("commonPassProp", commonPassProp)
   let fn_notifyTextChange = (fromChangeEvent: boolean) => {
     if (fromChangeEvent && crtRuntimeStatus?.autoRun != 'true') {
       return;
     }
     if (extVM && extId && sessionId && outputBigTextId && operaRef.current) {
       let originalValue = FN_GetActualTextValueByBigTextId(inputBigTextId)
-      if(originalValue == ''){
+      if (originalValue == '' && crtRuntimeStatus.ignoreEmptyStr == 'true') {
         FN_GetDispatch()(
           RuntimeStatusSlice.actions.moveTabToToolsPart({
-              sessionId,
+            sessionId,
           })
         )
-      }else{
+      } else {
         FN_GetDispatch()(
           ACTION_Transformer_Process_Text({
             originalValue,
@@ -134,7 +134,7 @@ export default (props: CommonTransformerProps) => {
             toolHandler: operaRef.current,
             commonPassProp: commonPassProp
           })
-        )  
+        )
       }
     } else {
       console.error("fn_notifyTextChange failed")
@@ -236,8 +236,8 @@ export default (props: CommonTransformerProps) => {
   }
   return (
     <div key={sessionId} className="w-full h-full relative">
-      <TextTransformerControl 
-      crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerControl>
+      <TextTransformerControl
+        crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerControl>
       <div
         style={{
           height: bodyHeight,

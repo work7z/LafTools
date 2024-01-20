@@ -70,14 +70,22 @@ type PropFormGenPanel = {
     list: (FormGenItem)[]
 }
 export default (props: PropFormGenPanel) => {
-    return <div className="p-2 whitespace-break-spaces">
+    let chunkItems = _.chunk(props.list, 3);
+    return <div className="flex  whitespace-break-spaces pure-g space-y-2">
         {
-            props.list.map((x, d) => {
-                return (
-                    <FormGroup key={d} {...x}>
-                        <FormGenElement config={x.genEleConfig}></FormGenElement>
-                    </FormGroup>
-                )
+            chunkItems.map((eachChunkItem, eachChunkItemIdx) => {
+                return <div key={eachChunkItemIdx} className=" mb-2 pure-u-s-24-24 pure-u-12-24 pure-u-xxl-6-24 ">
+                    {
+                        eachChunkItem.map((x, d) => {
+                            return (
+                                <FormGroup key={d} {...x}>
+                                    <FormGenElement config={x.genEleConfig}></FormGenElement>
+                                </FormGroup>
+                            )
+                        })
+                    }
+                    {/* <hr className="mb-2"/> */}
+                </div>
             })
         }
     </div>
