@@ -26,6 +26,7 @@ export let getInitValueForRuntimeStatus = ():ToolDefaultOutputType=>{
         toolTabIndex: "tools",
         collapseConfig: false,
         collapseOutput: false,
+        ignoreEmptyStr:"true",
         autoRun: "true"
       }
 }

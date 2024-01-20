@@ -65,6 +65,24 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     logutils.debug("autorun-crtRuntimeStatus",crtRuntimeStatus)
     let generalList: FormGenItem[] = [
         {
+            label: Dot("FQzhg", "Ignore Empty Input"),
+            helperText: Dot("crD7I", "To configure whether the transformation should ignore the empty input text whose length is zero."),
+            genEleConfig: {
+                type: "switch",
+                value: crtRuntimeStatus.ignoreEmptyStr,
+                onChange(newVal){
+                    FN_GetDispatch()(
+                        RuntimeStatusSlice.actions.updateValueInStatusMap({
+                            sessionId,
+                            obj: {
+                                ignoreEmptyStr: newVal
+                            }
+                        })
+                    )
+                },
+            }
+        },
+        {
             label: Dot("YquQqTXq", "Auto Run?"),
             helperText: Dot("Ye3TXses", "To configure whether the transformation will be executed automatically when the input text is changed."),
             genEleConfig: {

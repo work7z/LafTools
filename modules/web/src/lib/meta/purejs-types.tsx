@@ -60,6 +60,8 @@ export type ToolDefaultOutputType = {
   toolTabIndex?: Val_ToolTabIndex;
   defaultOperationId?:string;
   autoRun?:string;
+  ignoreEmptyStr?:string;
+  // process status
   processError?: string;
   processText?: string;
   processOK?: boolean;
