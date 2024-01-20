@@ -1,9 +1,22 @@
+import { LabelValuePair } from "../../../types/constants";
 
-export type PopularLanguages = "JavaScript" | "Python" | "Java" | "C#" | "C++" | "TypeScript" | "PHP" | "Swift" | "Kotlin" | "Go" | "Ruby" | "Rust" | "C" | "Scala" | "Shell";
+export type PopularLanguages = "node.js" | "Python" | "Java" | "C#" | "C++" | "PHP" | "Go" | "Rust" | "C";
 
+
+export const program_languages: LabelValuePair[] = [
+    { label: "Node.js", value: "node.js" },
+    { label: "Python", value: "Python" },
+    { label: "Java", value: "Java" },
+    { label: "C#", value: "C#" },
+    { label: "C++", value: "C++" },
+    { label: "PHP", value: "PHP" },
+    { label: "Go", value: "Go" },
+    { label: "Rust", value: "Rust" },
+    { label: "C", value: "C" },
+];
 export type CodeImplDetail = {
     template: string,
-    howToRunItTips: string
+    howToRunItTips: JSX.Element
 }
 
 export type CodeImplMap = {
