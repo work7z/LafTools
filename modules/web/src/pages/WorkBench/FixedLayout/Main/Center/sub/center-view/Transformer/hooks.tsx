@@ -36,7 +36,7 @@ import { useEffect, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
-import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
+import { CLZ_BTN_TRANSITION_STYLE, CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 
@@ -154,6 +154,7 @@ export let fn_format_button = (pmt: string) => {
                     small
                     intent={x.intent}
                     text={x.text}
+                    className={CLZ_BTN_TRANSITION_STYLE + " transition-colors" + " " + x.className}
                 ></Button>
             </Tooltip>
         );

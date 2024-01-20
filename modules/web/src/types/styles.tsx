@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 export const CLZ_FORM_SINGLE_CLZ = "pure-u-24-24 pure-u-lg-24-24";
-
+export const CLZ_BTN_TRANSITION_STYLE = " transition-colors "
 
 export const CSS_TRANSITION_WIDTH_HEIGHT_ONLY = "transform 0.3s, top 0.3s, width 0.3s, height 0.3s, left 0.3s";
 

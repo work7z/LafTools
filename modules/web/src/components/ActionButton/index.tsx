@@ -22,31 +22,32 @@ import { Button, ButtonProps, Placement, Tooltip } from "@blueprintjs/core"
 import { useRef, useState } from "react"
 import { Dot } from "../../utils/TranslationUtils"
 
-export default (props: {
+export default (props: ButtonProps & {
     enableTextMode?: boolean,
     onCopy: () => any,
     extraButtonProps?: ButtonProps,
     placement?: Placement,
+    // text format
+    actionText: string;
+    afterActionText: string;
+    lastingTime?: number; // by defaults, it's 3000ms
 }) => {
-    let [mouseEnter, onMouseEnter] = useState(false)
-    let [copied, setCopied] = useState(false)
+    let [triggered, setTrigger] = useState(false)
     let operaRef = useRef({
         copyTimestamp: 0,
         releaseCopyEventFn: () => { },
     })
-    let [times, setTimes] = useState(0)
-    let title = copied ? Dot("psqqpq_o", "Okay, the result has been copied to your clipboard for {0} times.", times) : Dot("2JyFN", "Copy Result to Clipboard")
+    let title = triggered ? props.afterActionText : props.actionText
     let [isOpen, setIsOpen] = useState(false)
 
     let btn = <Button
-        className=" transition-colors "
+        {...props}
+        className={" transition-colors " + " " + props.className}
         onMouseEnter={() => {
             setIsOpen(true)
-            onMouseEnter(true)
         }}
         onMouseLeave={() => {
             setIsOpen(false)
-            onMouseEnter(false)
             operaRef.current.releaseCopyEventFn()
         }}
         onClick={() => {
@@ -54,23 +55,22 @@ export default (props: {
             operaRef.current.copyTimestamp = v
             operaRef.current.releaseCopyEventFn = () => { }
             props.onCopy()
-            setCopied(true)
-            setTimes(times + 1)
+            setTrigger(true)
             setTimeout(() => {
                 if (operaRef.current.copyTimestamp != v) return;
                 let fn = () => {
-                    setCopied(false)
+                    setTrigger(false)
                 }
                 // if (mouseEnter) {
                 //     operaRef.current.releaseCopyEventFn = fn
                 //     return;
                 // }
                 fn()
-            }, 2000)
-        }} icon={copied ? "tick" : "duplicate"} text={props.enableTextMode ? (
-            copied ? Dot("-8l11", "Copied") : Dot("gK3dNQ", "Copy")
+            }, props.lastingTime || 3000)
+        }} icon={triggered ? "tick" : "duplicate"} text={props.enableTextMode ? (
+            triggered ? Dot("-8l11", "Copied") : Dot("gK3dNQ", "Copy")
         ) : ''} intent="success" minimal={props.enableTextMode ? (
-            copied ? true : false
+            triggered ? true : false
         ) : true} {...(props.extraButtonProps || {})} ></Button>
     if (!props.enableTextMode) return btn;
     return <Tooltip
