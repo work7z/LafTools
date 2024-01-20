@@ -66,7 +66,7 @@ export default (props: {
                 //     return;
                 // }
                 fn()
-            }, 2000)
+            }, 1200)
         }} icon={copied ? "tick" : "duplicate"} text={props.enableTextMode ? (
             copied ? Dot("-8l11", "Copied") : Dot("gK3dNQ", "Copy")
         ) : ''} intent="success" minimal={props.enableTextMode ? (

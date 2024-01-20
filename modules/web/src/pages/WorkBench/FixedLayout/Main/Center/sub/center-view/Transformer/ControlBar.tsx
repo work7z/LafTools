@@ -71,9 +71,10 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
             intent: "none",
             className: "",
             enableActionMode: true,
-            afterText: Dot("OO0PN", "Done"),
+            afterText: Dot("OO0qPN", "Example Loaded"),
+            afterIntent: "none",
             title: Dot("p8Za4", "Show me an example to process"),
-            afterTitle: Dot("OO0PN", "Okay, the example is displayed in the input editor."),
+            afterTitle: Dot("OeO0PeN", "Okay, the example is displayed in the input editor."),
             loading: loadExample,
             onClick: async () => {
                 try {
@@ -88,7 +89,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
                     FN_GetDispatch()(
                         FN_SetTextValueFromOutSideByBigTextId(inputBigTextId, val),
                     );
-                    AlertUtils.popOK(Dot("gsHQM", "Loaded example data successfully"));
+                    // AlertUtils.popOK(Dot("gsHQM", "Loaded example data successfully"));
                 } catch (e) {
                     console.log(e);
                     AlertUtils.popError(e as any);

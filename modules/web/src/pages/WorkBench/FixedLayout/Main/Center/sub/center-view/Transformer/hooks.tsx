@@ -45,6 +45,7 @@ import { ExtensionAction, ExtensionInfo, ToolDefaultOutputType } from "../../../
 import AppCategory from "../../../../../../../../lib/meta/tools/category";
 import { ListExtForTheCategoryRes } from "../../../../../../../../reducers/apiSlice";
 import appToolInfoObj from "../../../../../../../../lib/meta/tools/info";
+import ActionButton from "../../../../../../../../components/ActionButton";
 
 export let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 export let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -147,16 +148,17 @@ export let fn_coll_config = (sessionId) => {
 export let fn_format_button = (pmt: string) => {
     return (x: ButtonProps) => {
         return (
-            <Tooltip placement={pmt as any} content={x.title}>
-                <Button
-                    {...x}
-                    title={""}
-                    small
-                    intent={x.intent}
-                    text={x.text}
-                    className={CLZ_BTN_TRANSITION_STYLE + " transition-colors" + " " + x.className}
-                ></Button>
-            </Tooltip>
+            // <Tooltip placement={pmt as any} content={x.title}>
+            <ActionButton
+                {...x}
+                title={x.title}
+                placement={pmt as any}
+                small
+                intent={x.intent}
+                text={x.text}
+                className={CLZ_BTN_TRANSITION_STYLE + " transition-colors" + " " + x.className}
+            ></ActionButton>
+            // </Tooltip>
         );
     };
 };

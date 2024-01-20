@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Button, ButtonProps, Placement, Tooltip } from "@blueprintjs/core"
+import { Button, ButtonProps, Intent, Placement, Tooltip } from "@blueprintjs/core"
 import { useRef, useState } from "react"
 import { Dot } from "../../utils/TranslationUtils"
 
@@ -29,6 +29,7 @@ export type ActionButtonProps = ButtonProps & {
     // text format
     afterTitle?: string;
     afterText?: string;
+    afterIntent?: Intent,
     lastingTime?: number; // by defaults, it's 3000ms
 }
 
@@ -52,8 +53,12 @@ export default (props: ActionButtonProps) => {
             setIsOpen(false)
             operaRef.current.releaseCopyEventFn()
         }}
-        onClick={(e) => {
-            props.onClick && props.onClick(e)
+        onClick={async (e) => {
+            if (
+                props.onClick
+            ) {
+                await props.onClick(e)
+            }
             if (!props.enableActionMode) {
                 return;
             }
@@ -67,13 +72,12 @@ export default (props: ActionButtonProps) => {
                     setTrigger(false)
                 }
                 fn()
-            }, props.lastingTime || 3000)
-        }} icon={triggered ? "tick" : "duplicate"} text={enableTextMode ? (
+            }, props.lastingTime || 1200)
+        }} icon={triggered ? "tick" : props.icon} text={enableTextMode ? (
             triggered ? props.afterText : props.text
-        ) : ''} intent="success" minimal={enableTextMode ? (
+        ) : ''} intent={triggered && props.afterIntent ? props.afterIntent : props.intent || "success"} minimal={enableTextMode ? (
             triggered ? true : false
         ) : true} {...(props.extraButtonProps || {})} ></Button>
-    if (!enableTextMode) return btn;
     return <Tooltip
         isOpen={isOpen}
         // onInteraction={(v) => {
