@@ -11,11 +11,11 @@ Remarks:
 
 2. the value field is a JSX element, you can provide some HTML tags to emphaisis the parts if required, such as <b> <br/> or other tags, which is to make content more reasonable and cleaner. 
 
-3. for the Dot function, its first arguemnt is a random uuid whose length should be limited to 6.
+3. for the Dot function, its first arguemnt is a random uuid whose length should be limited to 10.
 
 4. do not use values in below example, such as {RANDOM_VAL}
 
-5. the array faqForTARGET_TECH should contains at least 6 items, which should not be duplicate and meaninglessful. 
+5. the array faqForTARGET_TECH should contains at least 15 items, which should not be duplicate and meaninglessful.
 
 
 ```typescript
@@ -37,5 +37,4 @@ let faqForTARGET_TECH: FAQItem[] = [
 
 Most important, manage to control the length limit of your response, you can brief it if it's really needed.
 
-If you can understand all points above fully, please proceed.  
-
+If you can understand all points above fully, please proceed. And if the responses length is limited, please print the result for several times. (I can say "Next" to view next page of your response)
