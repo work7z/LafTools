@@ -1,0 +1,84 @@
+type FAQItem = {
+    label: string,
+    value: any
+}
+
+let faqForBase64: FAQItem[] = [
+    {
+        label: Dot("aJ_Ul","What is Base64?"),
+        value: <p>
+            {Dot("NSB0G","Base64 is a binary-to-text encoding scheme.")}
+            {Dot("OSB1H","For example, the binary data 'Hello' would be encoded in Base64 as 'SGVsbG8='.")}
+        </p>
+    },
+    {
+        label: Dot("bJ_Vm","When was Base64 invented?"),
+        value: <p>
+            {Dot("PSB2I","Base64 was first described in RFC 1421 in 1987.")}
+            {Dot("QSB3J","You can refer to the RFC document for more details.")}
+        </p>
+    },
+    {
+        label: Dot("cK_Wn","What is the purpose of Base64?"),
+        value: <p>
+            {Dot("RSB4K","Base64 is used to encode binary data for scenarios where the data needs to be stored and transferred over media that are designed to deal with text.")}
+            {Dot("TSB6M","For example, it can be used to embed binary data in XML or JSON.")}
+        </p>
+    },
+    {
+        label: Dot("dL_Xo","How does Base64 work?"),
+        value: <p>
+            {Dot("USB7N","Base64 works by dividing the input data into 6-bit blocks and encoding these blocks as printable characters.")}
+            {Dot("VSB8O","For example, the binary data '011000 010101' would be encoded as 'YU'.")}
+        </p>
+    },
+    {
+        label: Dot("eM_Yp","What are some applications of Base64?"),
+        value: <p>
+            {Dot("WSB9P","Base64 is used in a variety of applications.")}
+            {Dot("XSBaQ","For example, it is used in data URLs to embed images in HTML, and it is used in email to encode attachments.")}
+        </p>
+    },
+    {
+        label: Dot("fN_Zq","What are the characters used in Base64 encoding?"),
+        value: <p>
+            {Dot("YSBbR","Base64 uses a set of 64 different ASCII characters: A–Z, a–z, 0–9, +, / and = (padding character).")}
+            {Dot("ZSBcS","For example, the Base64 encoding of 'Man' is 'TWFu'.")}
+        </p>
+    },
+    {
+        label: Dot("gO_aR","What is the output length of Base64 encoding?"),
+        value: <p>
+            {Dot("aTBdT","The output length of Base64 encoding is generally about 33% larger than the original data.")}
+            {Dot("bUBfU","For example, the string 'Hello' is 5 bytes, but its Base64 encoding 'SGVsbG8=' is 8 bytes.")}
+        </p>
+    },
+    {
+        label: Dot("hP_bS","Is Base64 encryption or encoding?"),
+        value: <p>
+            {Dot("cVBgV","Base64 is an encoding scheme, not an encryption scheme.")}
+            {Dot("dWBhW","It does not provide any security or confidentiality by itself. For example, 'SGVsbG8=' can be easily decoded back to 'Hello'.")}
+        </p>
+    },
+    {
+        label: Dot("iQ_cT","Can Base64 encode any data?"),
+        value: <p>
+            {Dot("eVBiX","Yes, Base64 can encode any binary data.")}
+            {Dot("fWBjY","For example, it can encode binary files like images or executables.")}
+        </p>
+    },
+    {
+        label: Dot("jR_dU","What is the difference between Base64 and Base32?"),
+        value: <p>
+            {Dot("gXBkZ","Both Base64 and Base32 are binary-to-text encoding schemes.")}
+            {Dot("hXBla","The main difference is that Base64 uses 64 characters to represent the data and Base32 uses 32 characters. For example, the string 'Hello' is 'SGVsbG8=' in Base64 and 'JBSWY3DPEB3W64TMMQ====' in Base32.")}
+        </p>
+    },
+    {
+        label: Dot("kS_eV","Why is Base64 used in data URLs?"),
+        value: <p>
+            {Dot("iXBmb","Base64 is used in data URLs because it can represent binary data in an ASCII string format.")}
+            {Dot("jXBgc","For example, an image can be embedded directly into HTML using a data URL like 'data:image/png;base64,iVBORw0KG...'.")}
+        </p>
+    }
+]

@@ -2,9 +2,7 @@
 
 Before proceeding with this prompt, please replace TARGET_TECH with "Base64".
 
-You're a master of computer science. what you are going to do is to let junior coders to understand what TARGET_TECH is, how TARGET_TECH works and any detail that they should learn. 
-
-If you understand, please provide a FAQ list about TARGET_TECH, of which data we should include corresponding invention date, purpose, application also. 
+You're a famous master in computer science domain. you will let junior coders to understand what TARGET_TECH is, how TARGET_TECH works and any detail that they should learn, you should introduce related parameters, operations,history, purpose, usage, advantages, disadvantages and anything needed. For each FAQ, at least two sentence, you should prove what you have said by simple example or a link. 
 
 Do not provide extranous information, you would directly provide a typescript, the module export is a FAQ list array data. Please follow below formats to provide it:
 
@@ -17,7 +15,8 @@ Remarks:
 
 4. do not use values in below example, such as {RANDOM_VAL}
 
-5. the array faqForTARGET_TECH should contains at least 12 items, which should not be duplicate and meaninglessful. 
+5. the array faqForTARGET_TECH should contains at least 6 items, which should not be duplicate and meaninglessful. 
+
 
 ```typescript
 type FAQItem = {
@@ -29,12 +28,14 @@ let faqForTARGET_TECH: FAQItem[] = [
     {
         label: Dot("{RANDOM_VAL}","FAQ Item 1"),
         value: <p>
-            {Dot("{RANDOM_VAL}","balbalbal")}
-            {Dot("{RANDOM_VAL}","This is {0} logic part","FAQ_ITEM")}
+            {Dot("{RANDOM_VAL}","To xxx, FAQ item is xxx")}<br/>
+            {Dot("{RANDOM_VAL}","Bascially, we will use {0} to process xxx","FAQ_ITEM")}
         </p>
     }
 ]
 ```
 
+Most important, manage to control the length limit of your response, you can brief it if it's really needed.
 
+If you can understand all points above fully, please proceed.  
 
