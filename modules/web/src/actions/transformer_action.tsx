@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { FN_GetDispatch } from "../nocycle";
+import { FN_GetDispatch, FN_GetState } from "../nocycle";
 import RuntimeStatusSlice from "../reducers/runtimeStatusSlice";
 import LibProcessEntryPoint from '../lib/entrypoint'
 import { ExtensionVM } from "../types/purejs-types-READ_ONLY";
@@ -40,16 +40,24 @@ type PassType = {
     inputBigTextId: string
     toolHandler: ToolHandler
     commonPassProp: CommonTransformerPassProp
-    originalValue:string
+    originalValue: string
 }
 
 let tmpLog = {}
 
 export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
-    let {originalValue, extVM, extId, sessionId, outputBigTextId, inputBigTextId,commonPassProp } = obj;
+    let { originalValue, extVM, extId, sessionId, outputBigTextId, inputBigTextId, commonPassProp } = obj;
     return async () => {
         let toolHandler = obj.toolHandler
-        let crtDefaultOpera = commonPassProp.crtDefaultOpera
+        let m = FN_GetState().runtimeStatus.toolOutputStatusMap[sessionId]
+        let operaList = commonPassProp.operaList
+        let crtRuntimeStatus = m
+        if (!crtRuntimeStatus) {
+            logutils.warn("no available crtRuntimeStatus")
+            return;
+        }; // no runtime status
+        let crtDefaultOperaId = crtRuntimeStatus && crtRuntimeStatus.defaultOperationId || (operaList && operaList[0] && operaList[0].id)
+        let crtDefaultOpera = _.find(operaList, x => x.id === crtDefaultOperaId)
         let beginTime = new Date().getTime()
         let checkId = _.uniqueId("")
         tmpLog[sessionId] = checkId
@@ -61,7 +69,7 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
             })
         )
         try {
-            if(!crtDefaultOpera){
+            if (!crtDefaultOpera) {
                 logutils.warn("no available opera")
                 return;
             }

@@ -28,7 +28,9 @@ import CopyButton from "../../../../../../../../components/CopyButton";
 import { ActionButtonProps } from "../../../../../../../../components/ActionButton";
 
 
-let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRuntime) => {
+let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRuntime & {
+    onProcess: () => any;
+}) => {
     let { inputBigTextId } = props;
     let [loadExample, onLoadExample] = useState(false);
     let toolHandler = props.toolHandler
@@ -45,6 +47,11 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
                 icon: 'derive-column',
                 intent: "primary",
                 title: x.description,
+                afterTitle: Dot("CASef", "Okay, the operation is triggerred."),
+                enableActionMode: true,
+                afterText: x.name,
+                lastingTime: 800,
+                doNotBeMinimalWhenTrigger: true,
                 outlined: !isHighlightOne,
                 minimal: !isHighlightOne,
                 onClick: () => {
@@ -56,6 +63,9 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
                             }
                         })
                     )
+                    setTimeout(() => {
+                        props.onProcess()
+                    }, 0)
                 },
             }
         }) as ActionButtonProps[],

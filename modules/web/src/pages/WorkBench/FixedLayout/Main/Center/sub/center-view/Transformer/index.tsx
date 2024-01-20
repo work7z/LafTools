@@ -40,7 +40,7 @@ import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 
 import { CommonTransformerProps } from "./types";
-import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
+import { ExtensionAction, ToolDefaultOutputType as ToolCurrentRuntimeStatus } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TransofrmerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
 import ControlBar from "./ControlBar";
 import LoadingText from "../../../../../../../../components/LoadingText";
@@ -77,16 +77,28 @@ export default (props: CommonTransformerProps) => {
       v
     }
   }).v;
-  let crtDefaultOperaId = crtRuntimeStatus && crtRuntimeStatus.defaultOperationId || (operaList && operaList[0] && operaList[0].id)
-  let crtDefaultOpera = _.find(operaList, x => x.id === crtDefaultOperaId)
-  let commonPassProp: CommonTransformerPassProp = {
-    ...props,
-    toolHandler: operaRef.current,
-    operaList,
-    metaInfo,
-    crtDefaultOperaId,
-    crtDefaultOpera
-  };
+  let fn_createCommonPassProp = (
+    obj: {
+      crtRuntimeStatus: ToolCurrentRuntimeStatus,
+      operaList: Operation[] | undefined,
+    }
+  ): CommonTransformerPassProp => {
+    let { crtRuntimeStatus, operaList } = obj;
+    let crtDefaultOperaId = crtRuntimeStatus && crtRuntimeStatus.defaultOperationId || (operaList && operaList[0] && operaList[0].id)
+    let crtDefaultOpera = _.find(operaList, x => x.id === crtDefaultOperaId)
+    return {
+      ...props,
+      toolHandler: operaRef.current,
+      operaList,
+      metaInfo,
+      crtDefaultOperaId,
+      crtDefaultOpera
+    }
+  }
+  let commonPassProp: CommonTransformerPassProp = fn_createCommonPassProp({
+    crtRuntimeStatus,
+    operaList
+  });
   let extVM = props.extVM
   let fn_format_description = (desc: string | undefined): string => {
     let arr: TitleSubPair[] = [
@@ -235,6 +247,9 @@ export default (props: CommonTransformerProps) => {
   return (
     <div key={sessionId} className="w-full h-full relative">
       <ControlBar
+        onProcess={() => {
+          fn_notifyTextChange(false)
+        }}
         crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ControlBar>
       <div
         style={{

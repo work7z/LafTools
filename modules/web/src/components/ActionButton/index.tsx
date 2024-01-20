@@ -23,6 +23,7 @@ import { useRef, useState } from "react"
 import { Dot } from "../../utils/TranslationUtils"
 
 export type ActionButtonProps = ButtonProps & {
+    doNotBeMinimalWhenTrigger?: boolean;
     extraButtonProps?: ButtonProps,
     placement?: Placement,
     enableActionMode?: boolean,
@@ -75,14 +76,11 @@ export default (props: ActionButtonProps) => {
             }, props.lastingTime || 1200)
         }} icon={triggered ? "tick" : props.icon} text={enableTextMode ? (
             triggered ? props.afterText : props.text
-        ) : ''} intent={triggered && props.afterIntent ? props.afterIntent : props.intent || "success"} minimal={enableTextMode ? (
+        ) : ''} intent={triggered && props.afterIntent ? props.afterIntent : props.intent || "success"} minimal={props.doNotBeMinimalWhenTrigger ? false : enableTextMode ? (
             triggered ? true : false
         ) : true} {...(props.extraButtonProps || {})} ></Button>
     return <Tooltip
         isOpen={isOpen}
-        // onInteraction={(v) => {
-        //     setIsOpen(v)
-        // }}
         content={title} placement={props.placement || "bottom"} >
         {btn}
     </Tooltip>
