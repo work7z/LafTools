@@ -10,9 +10,9 @@ import { Dot } from "../../../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
 import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";
-import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
+import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
@@ -23,6 +23,7 @@ import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSl
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button } from "./hooks";
+import gutils from "../../../../../../../../utils/GlobalUtils";
 
 
 let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRuntime) => {
@@ -36,7 +37,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
         ...(
             operaList
         ).map(x => {
-            let isHighlightOne = x.id==crtDefaultOperaId;
+            let isHighlightOne = x.id == crtDefaultOperaId;
             return {
                 text: x.name,
                 intent: "primary",
@@ -67,13 +68,13 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
             text: Dot("IWUH5", "Show Example"),
             intent: "none",
             className: "",
-            title: Dot("NNd1o", "Use Example for Testing"),
+            title: Dot("p8Za4", "Show me an example to process"),
             loading: loadExample,
             onClick: async () => {
                 try {
                     onLoadExample(true);
                     let r = await AjaxUtils.DoStaticRequest({
-                        url: "/example/javascript-s.txt",
+                        url: "/example/" + toolHandler?.getMetaInfo()?.exampleType + ".txt",
                     });
                     if (r.status != 200) {
                         throw new Error(Dot("vU17B", "Unable to send the request"));
@@ -113,12 +114,34 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
         );
     };
     let isColl = isCollapsed_config
+    let [copied, setCopied] = useState(false);
+    let operaRef = useRef({
+        copyTimestamp: 0
+    })
     let rightActions: ButtonProps[] = [
         {
-            icon: "duplicate",
+            // icon: "duplicate",
             intent: "success",
-            text: Dot("Mg4ldi", "Copy"),
-            title: Dot("2JyFN", "Copy Result to Clipboard"),
+            icon: copied ? "tick" : "duplicate",
+            text: copied ? Dot("-8l11", "Copied") : Dot("gK3dNQ", "Copy"),
+            minimal: copied,
+            title: copied ? Dot("L51_M", "Copied the result to your clipboard!") : Dot("2JyFN", "Copy Result to Clipboard"),
+            onClick: () => {
+                let outputValue = FN_GetActualTextValueByBigTextId(props.outputBigTextId)
+                if (outputValue == '') {
+                    AlertUtils.popMsg('warning', {
+                        message: Dot("1h6jH", "Warning, the output is an empty value whose length is zero!")
+                    })
+                }
+                gutils.copy(outputValue)
+                setCopied(true)
+                let v = (new Date().getTime())
+                operaRef.current.copyTimestamp = v
+                setTimeout(() => {
+                    if (operaRef.current.copyTimestamp != v) return;
+                    setCopied(false)
+                }, 2000)
+            }
         },
         {
             // icon: "export",

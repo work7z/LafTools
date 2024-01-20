@@ -20,9 +20,12 @@
 
 import Operation from "../../core/Operation.mjs";
 
+export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-short" | "js-medium"
+
 export type ToolMetaInfo = {
     description: string;
     infoURL: string;
+    exampleType: ShowExampleType
 }
 
 export abstract class ToolHandler {

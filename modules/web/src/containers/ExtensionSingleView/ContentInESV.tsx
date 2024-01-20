@@ -73,7 +73,7 @@ import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";
 import exportUtils from "../../utils/ExportUtils";
 import apiSlice from "../../reducers/apiSlice";
-import {ExtensionVM} from '../../types/purejs-types-READ_ONLY'
+import { ExtensionVM } from '../../types/purejs-types-READ_ONLY'
 
 import { Link } from "react-router-dom";
 import PageUtils from "../../utils/PageUtils";
@@ -344,199 +344,200 @@ const ProcessButtonGroup = (props: {
 };
 
 const ContentInESV = (props: ContentProp) => {
-  const extInfo = ExtHookUtils.useExtInfo();
-  const extVM = ExtHookUtils.useExtVM();
-  const dis = exportUtils.dispatch();
-  const quickALL = ExtHookUtils.useQuickAll();
+  // const extInfo = ExtHookUtils.useExtInfo();
+  // const extVM = ExtHookUtils.useExtVM();
+  // const dis = exportUtils.dispatch();
+  // const quickALL = ExtHookUtils.useQuickAll();
 
-  let inputSyncId = quickALL.getBigTextIdByPropName(
-    SYNC_KEY_INPUT_REGION_DEFAULT
-  ) as string;
-  let outputSyncId = quickALL.getBigTextIdByPropName(
-    SYNC_KEY_OUTPUT_REGION_DEFAULT
-  ) as string;
+  // let inputSyncId = quickALL.getBigTextIdByPropName(
+  //   SYNC_KEY_INPUT_REGION_DEFAULT
+  // ) as string;
+  // let outputSyncId = quickALL.getBigTextIdByPropName(
+  //   SYNC_KEY_OUTPUT_REGION_DEFAULT
+  // ) as string;
 
-  gutils.ExposureIt(
-    "input_output_SyncId",
-    {
-      inputSyncId,
-      outputSyncId,
-    },
-    true
-  );
+  // gutils.ExposureIt(
+  //   "input_output_SyncId",
+  //   {
+  //     inputSyncId,
+  //     outputSyncId,
+  //   },
+  //   true
+  // );
 
-  let actions: PopoverButtonProp[] = [
-    ...(extVM.inst
-      ? [
-        ..._.map(extVM.inst.Actions, (x) => {
-          let endWithText = _.endsWith(x.Id, ".text");
-          let endWithFile = _.endsWith(x.Id, ".file");
-          return {
-            text: x.Label,
-            overlay: endWithText
-              ? Dot("XKpI0", "Click to process your text in the input region")
-              : endWithFile
-                ? Dot(
-                  "ANUZ7",
-                  "Click to select a file for processing. The toolbox will directly process it in service and show the result in the output region."
-                )
-                : null,
-            icon: "lightning",
-            intent: Intent.PRIMARY,
-            onClick: async () => {
-              if (endWithText) {
-                dis(
-                  fn_call_convert_with_action({
-                    newValue: FN_GetState().bigtext.textKVMap[
-                      inputSyncId
-                    ] as string,
-                    sessionId: extInfo.sessionId,
-                    actionId: x.Id,
-                    outputSyncId,
-                  })
-                );
-              } else if (endWithFile) {
-                // dis(
-                //   ACTION_processFileAction({
-                //     action: x,
-                //     mute: false,
-                //   })
-                // );
-              } else {
-                AlertUtils.popMsg("danger", {
-                  message: Dot("KIc63", "Function not yet supported"),
-                });
-              }
-            },
-          } as PopoverButtonProp;
-        }),
-      ]
-      : []),
-    {
-      text: Dot("LPJrV", "Copy Result"),
-      icon: "duplicate",
-      intent: Intent.SUCCESS,
-      overlay: Dot(
-        "j-VM7",
-        "Copy the value of output region to your clipboard."
-      ),
-      onClick: () => {
-        AlertUtils.copyWithAlertCopied(
-          FN_GetState().bigtext.textKVMap[outputSyncId] as string
-        );
-      },
-    },
-    // {
-    //   text: Dot("9Xv8-", "Save As Note"),
-    //   disabled: true,
-    //   icon: "floppy-disk",
-    //   intent: Intent.SUCCESS,
-    // },
-  ];
+  // let actions: PopoverButtonProp[] = [
+  //   ...(extVM.inst
+  //     ? [
+  //       ..._.map(extVM.inst.Actions, (x) => {
+  //         let endWithText = _.endsWith(x.Id, ".text");
+  //         let endWithFile = _.endsWith(x.Id, ".file");
+  //         return {
+  //           text: x.Label,
+  //           overlay: endWithText
+  //             ? Dot("XKpI0", "Click to process your text in the input region")
+  //             : endWithFile
+  //               ? Dot(
+  //                 "ANUZ7",
+  //                 "Click to select a file for processing. The toolbox will directly process it in service and show the result in the output region."
+  //               )
+  //               : null,
+  //           icon: "lightning",
+  //           intent: Intent.PRIMARY,
+  //           onClick: async () => {
+  //             if (endWithText) {
+  //               dis(
+  //                 fn_call_convert_with_action({
+  //                   newValue: FN_GetState().bigtext.textKVMap[
+  //                     inputSyncId
+  //                   ] as string,
+  //                   sessionId: extInfo.sessionId,
+  //                   actionId: x.Id,
+  //                   outputSyncId,
+  //                 })
+  //               );
+  //             } else if (endWithFile) {
+  //               // dis(
+  //               //   ACTION_processFileAction({
+  //               //     action: x,
+  //               //     mute: false,
+  //               //   })
+  //               // );
+  //             } else {
+  //               AlertUtils.popMsg("danger", {
+  //                 message: Dot("KIc63", "Function not yet supported"),
+  //               });
+  //             }
+  //           },
+  //         } as PopoverButtonProp;
+  //       }),
+  //     ]
+  //     : []),
+  //   {
+  //     text: Dot("LPJrV", "Copy Result"),
+  //     icon: "duplicate",
+  //     intent: Intent.SUCCESS,
+  //     overlay: Dot(
+  //       "j-VM7",
+  //       "Copy the value of output region to your clipboard."
+  //     ),
+  //     onClick: () => {
+  //       AlertUtils.copyWithAlertCopied(
+  //         FN_GetState().bigtext.textKVMap[outputSyncId] as string
+  //       );
+  //     },
+  //   },
+  //   // {
+  //   //   text: Dot("9Xv8-", "Save As Note"),
+  //   //   disabled: true,
+  //   //   icon: "floppy-disk",
+  //   //   intent: Intent.SUCCESS,
+  //   // },
+  // ];
 
-  let realtimeAction = quickALL.fromExtData("realtimeAction") as string;
-  let realtimeDebounce = quickALL.fromExtData("realtimeDebounce") as string;
-  let usingRealtimeMode = quickALL.fromExtData("usingRealtimeMode") as boolean;
+  // let realtimeAction = quickALL.fromExtData("realtimeAction") as string;
+  // let realtimeDebounce = quickALL.fromExtData("realtimeDebounce") as string;
+  // let usingRealtimeMode = quickALL.fromExtData("usingRealtimeMode") as boolean;
 
-  // KEYPART: content in esv
-  let onRealtimeCapture = useMemo(() => {
-    return _.debounce((newValue: string) => {
-      (async () => {
-        if (usingRealtimeMode) {
-          dis(
-            ACTION_fn_call_ext_for_action({
-              outputSyncId,
-              sessionId: extInfo.sessionId,
-              newValue,
-              actionId: realtimeAction,
-            })
-          );
-        }
-      })();
-    }, gutils.ConvertStrToNumberOrZero(realtimeDebounce));
-  }, [
-    inputSyncId,
-    outputSyncId,
-    extInfo.sessionId,
-    realtimeAction + realtimeDebounce + usingRealtimeMode,
-  ]);
-  let sessionId = extInfo.sessionId;
+  // // KEYPART: content in esv
+  // let onRealtimeCapture = useMemo(() => {
+  //   return _.debounce((newValue: string) => {
+  //     (async () => {
+  //       if (usingRealtimeMode) {
+  //         dis(
+  //           ACTION_fn_call_ext_for_action({
+  //             outputSyncId,
+  //             sessionId: extInfo.sessionId,
+  //             newValue,
+  //             actionId: realtimeAction,
+  //           })
+  //         );
+  //       }
+  //     })();
+  //   }, gutils.ConvertStrToNumberOrZero(realtimeDebounce));
+  // }, [
+  //   inputSyncId,
+  //   outputSyncId,
+  //   extInfo.sessionId,
+  //   realtimeAction + realtimeDebounce + usingRealtimeMode,
+  // ]);
+  // let sessionId = extInfo.sessionId;
 
-  let controls: PopoverButtonProp[] = [
-    {
-      text: Dot("rR1vd", "Input From File"),
-      icon: "document-open",
-      intent: Intent.NONE,
-      overlay: Dot(
-        "rR4R_FO1vd",
-        "You could select and confirm the file you want to process, then toolbox will read it and paste the content to input region."
-      ),
-      onClick: async () => {
-        dis(
-          ACTION_fn_input_from_file({
-            inputSyncId,
-            outputSyncId,
-            sessionId,
-            usingRealtimeMode,
-            realtimeAction,
-          })
-        );
-      },
-    },
-    {
-      text: Dot("2Y1mR", "Clear Text"),
-      icon: "eraser",
-      intent: Intent.NONE,
-      overlay: Dot(
-        "DoWY7",
-        "Set the text of either input region or output region as empty."
-      ),
-    },
-    {
-      text: Dot("_trez", "Swap Text"),
-      icon: "swap-horizontal",
-      intent: Intent.NONE,
-      overlay: Dot("n98EW", "Swap the text of input region and output region."),
-    },
-    {
-      text: Dot("L3zEM", "Show Example"),
-      icon: "eye-open",
-      intent: Intent.NONE,
-      overlay: Dot("iNQvo", "Show an example to start with."),
-    },
-    {
-      text: "",
-      icon: "help",
-      intent: Intent.NONE,
-      overlay: Dot("pmAee", "Read more information about this tool."),
-    },
-  ];
-  return (
-    <Card className="esv-content-w esv-content-layout-form">
-      <ProcessTextArea
-        syncId={inputSyncId}
-        placeholder={Dot(
-          "mNucv",
-          "Please input your text, load from file or drag a file here, then toolbox will use it to process accordingly."
-        )}
-        title={Dot("AW9N8", "Input Region")}
-        rightJSX={ConfigControlPanel}
-        onChangeCapture={onRealtimeCapture}
-      />
-      <ProcessButtonGroup actions={actions} controls={controls} />
-      <ProcessTextArea
-        syncId={outputSyncId}
-        placeholder={Dot(
-          "hmqzl",
-          `After clicking one of above button controls, result will appear here.`
-        )}
-        title={Dot("P4ROa", "Output Region")}
-        onChangeCapture={(newValue) => {
-          //
-        }}
-      />
-    </Card>
-  );
+  // let controls: PopoverButtonProp[] = [
+  //   {
+  //     text: Dot("rR1vd", "Input From File"),
+  //     icon: "document-open",
+  //     intent: Intent.NONE,
+  //     overlay: Dot(
+  //       "rR4R_FO1vd",
+  //       "You could select and confirm the file you want to process, then toolbox will read it and paste the content to input region."
+  //     ),
+  //     onClick: async () => {
+  //       dis(
+  //         ACTION_fn_input_from_file({
+  //           inputSyncId,
+  //           outputSyncId,
+  //           sessionId,
+  //           usingRealtimeMode,
+  //           realtimeAction,
+  //         })
+  //       );
+  //     },
+  //   },
+  //   {
+  //     text: Dot("2Y1mR", "Clear Text"),
+  //     icon: "eraser",
+  //     intent: Intent.NONE,
+  //     overlay: Dot(
+  //       "DoWY7",
+  //       "Set the text of either input region or output region as empty."
+  //     ),
+  //   },
+  //   {
+  //     text: Dot("_trez", "Swap Text"),
+  //     icon: "swap-horizontal",
+  //     intent: Intent.NONE,
+  //     overlay: Dot("n98EW", "Swap the text of input region and output region."),
+  //   },
+  //   {
+  //     text: Dot("L3zEM", "Show Example"),
+  //     icon: "eye-open",
+  //     intent: Intent.NONE,
+  //     overlay: Dot("iNQvo", "Show an example to start with."),
+  //   },
+  //   {
+  //     text: "",
+  //     icon: "help",
+  //     intent: Intent.NONE,
+  //     overlay: Dot("pmAee", "Read more information about this tool."),
+  //   },
+  // ];
+  // return (
+  //   <Card className="esv-content-w esv-content-layout-form">
+  //     <ProcessTextArea
+  //       syncId={inputSyncId}
+  //       placeholder={Dot(
+  //         "mNucv",
+  //         "Please input your text, load from file or drag a file here, then toolbox will use it to process accordingly."
+  //       )}
+  //       title={Dot("AW9N8", "Input Region")}
+  //       rightJSX={ConfigControlPanel}
+  //       onChangeCapture={onRealtimeCapture}
+  //     />
+  //     <ProcessButtonGroup actions={actions} controls={controls} />
+  //     <ProcessTextArea
+  //       syncId={outputSyncId}
+  //       placeholder={Dot(
+  //         "hmqzl",
+  //         `After clicking one of above button controls, result will appear here.`
+  //       )}
+  //       title={Dot("P4ROa", "Output Region")}
+  //       onChangeCapture={(newValue) => {
+  //         //
+  //       }}
+  //     />
+  //   </Card>
+  // );
+  return ''
 };
 let ConfigControlPanel = (props: HeightProp & PassExtQuickAllType) => {
   const [tabId, setTabId] = useState("config");

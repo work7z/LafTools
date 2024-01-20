@@ -27,6 +27,7 @@ import { ToolHandler, ToolMetaInfo } from "../handler";
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
         return {
+            exampleType: "text-short",
             description: Dot(
                 "0Ceqru",
                 "Base64 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers.",
