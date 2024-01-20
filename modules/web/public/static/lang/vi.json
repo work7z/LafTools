@@ -1,5 +1,6 @@
 {
     "": "Tin nhắn: {0}",
+    "-8l11": "Đã sao chép",
     "-DqwwR": "Hoạt động đã hoàn tất.",
     "-GJ_72": "Đã chuyển sang không gian làm việc đã chọn {0}",
     "-Jx4J": "Tài khoản địa phương",
@@ -222,7 +223,6 @@
     "L3zEM": "Hiển thị ví dụ",
     "L42mxa": "Vui lòng nhập văn bản nguồn của bạn vào trường này.",
     "L49kCq": "Vui lòng cung cấp và xác nhận mật khẩu khóa trong biểu mẫu này để bảo mật LafTools của bạn.",
-    "L51_M": "Đã sao chép kết quả vào clipboard của bạn!",
     "L71q_N": "Mật khẩu bạn cung cấp trống, vui lòng kiểm tra và thử lại.",
     "LAc1m": "Đã làm mới chế độ xem ứng dụng.",
     "LFdvM": "Chưa đăng nhập",
@@ -575,6 +575,7 @@
     "pqs7y3": "Vui lòng xem xét việc đăng ký trang web này dưới dạng PWA để được hỗ trợ sơ đồ bàn phím đầy đủ.",
     "psA_eJ": "Xuất dưới dạng tệp",
     "psZoP": "Thả tập tin vào đây để xử lý chúng",
+    "psqp_o": "Xong, kết quả sẽ được sao chép vào clipboard của bạn.",
     "q12beqwR": "Không có công cụ nào",
     "q29t31": "Đánh bóng",
     "q6K7o": "Tải từ ghi chú",

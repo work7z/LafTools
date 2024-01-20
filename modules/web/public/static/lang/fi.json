@@ -1,5 +1,6 @@
 {
     "": "Viesti: {0}",
+    "-8l11": "Kopioitu",
     "-DqwwR": "Operaatio valmis.",
     "-GJ_72": "Vaihdettu valittuun työtilaan {0}",
     "-Jx4J": "Paikallinen tili",
@@ -222,7 +223,6 @@
     "L3zEM": "Näytä esimerkki",
     "L42mxa": "Syötä lähdetekstisi tähän kenttään.",
     "L49kCq": "Suojaa LafTools antamalla ja vahvistamalla lukitussalasana tässä lomakkeessa.",
-    "L51_M": "Tulos kopioitiin leikepöydällesi!",
     "L71q_N": "Antamasi salasana on tyhjä, tarkista ja yritä uudelleen.",
     "LAc1m": "Päivitetty sovellusnäkymä.",
     "LFdvM": "Ei kirjautuneena",
@@ -575,6 +575,7 @@
     "pqs7y3": "Harkitse tämän verkkosivun rekisteröintiä PWA:ksi saadaksesi täyden näppäinkartan tuen.",
     "psA_eJ": "Vie tiedostona",
     "psZoP": "Pudota tiedostot tähän käsitelläksesi ne",
+    "psqp_o": "Valmis, tulos kopioidaan leikepöydällesi.",
     "q12beqwR": "Ei käytettävissä olevia työkaluja",
     "q29t31": "Kiillottaa",
     "q6K7o": "Lataa muistiinpanoista",

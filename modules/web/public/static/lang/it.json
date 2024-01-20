@@ -1,5 +1,6 @@
 {
     "": "Messaggio: {0}",
+    "-8l11": "Copiato",
     "-DqwwR": "Operazione completata.",
     "-GJ_72": "Passato all'area di lavoro selezionata {0}",
     "-Jx4J": "Conto locale",
@@ -222,7 +223,6 @@
     "L3zEM": "Mostra esempio",
     "L42mxa": "Inserisci il testo di origine in questo campo.",
     "L49kCq": "Fornisci e conferma la password di blocco in questo modulo per proteggere LafTools.",
-    "L51_M": "Copiato il risultato negli appunti!",
     "L71q_N": "La password che hai fornito è vuota, controlla e riprova.",
     "LAc1m": "Aggiornata la visualizzazione dell'app.",
     "LFdvM": "Accesso non effettuato",
@@ -575,6 +575,7 @@
     "pqs7y3": "Si prega di considerare la registrazione di questa pagina Web come PWA per avere il supporto completo della mappatura dei tasti.",
     "psA_eJ": "Esporta come file",
     "psZoP": "Rilascia qui i file per elaborarli",
+    "psqp_o": "Fatto, il risultato viene copiato negli appunti.",
     "q12beqwR": "Nessuno strumento disponibile",
     "q29t31": "Polacco",
     "q6K7o": "Carica dalle note",

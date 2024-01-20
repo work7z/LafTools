@@ -1,5 +1,6 @@
 {
     "": "Zpráva: {0}",
+    "-8l11": "Zkopírováno",
     "-DqwwR": "Operace dokončena.",
     "-GJ_72": "Přepnuto na vybraný pracovní prostor {0}",
     "-Jx4J": "Místní účet",
@@ -222,7 +223,6 @@
     "L3zEM": "Zobrazit příklad",
     "L42mxa": "Do tohoto pole zadejte zdrojový text.",
     "L49kCq": "V tomto formuláři prosím zadejte a potvrďte heslo zámku, abyste zabezpečili své LafTools.",
-    "L51_M": "Výsledek byl zkopírován do vaší schránky!",
     "L71q_N": "Zadané heslo je prázdné, zkontrolujte jej a zkuste to znovu.",
     "LAc1m": "Aktualizováno zobrazení aplikace.",
     "LFdvM": "Nepřihlášen",
@@ -575,6 +575,7 @@
     "pqs7y3": "Laskavě zvažte registraci této webové stránky jako PWA, abyste měli plnou podporu mapy kláves.",
     "psA_eJ": "Exportovat jako soubor",
     "psZoP": "Sem přetáhněte soubory, abyste je mohli zpracovat",
+    "psqp_o": "Hotovo, výsledek se zkopíruje do vaší schránky.",
     "q12beqwR": "Žádné dostupné nástroje",
     "q29t31": "polština",
     "q6K7o": "Načíst z poznámek",

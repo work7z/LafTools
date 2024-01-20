@@ -1,5 +1,6 @@
 {
     "": "Besked: {0}",
+    "-8l11": "Kopieret",
     "-DqwwR": "Operation afsluttet.",
     "-GJ_72": "Skiftet til det valgte arbejdsområde {0}",
     "-Jx4J": "Lokal konto",
@@ -222,7 +223,6 @@
     "L3zEM": "Vis eksempel",
     "L42mxa": "Indtast venligst din kildetekst i dette felt.",
     "L49kCq": "Angiv og bekræft låseadgangskoden i denne formular for at sikre dine LafTools.",
-    "L51_M": "Kopierede resultatet til dit udklipsholder!",
     "L71q_N": "Den adgangskode, du har angivet, er tom. Tjek venligst og prøv igen.",
     "LAc1m": "Opdaterede appvisningen.",
     "LFdvM": "Ikke logget ind",
@@ -575,6 +575,7 @@
     "pqs7y3": "Overvej venligst at registrere denne webside som en PWA for at få fuld tastaturunderstøttelse.",
     "psA_eJ": "Eksporter som fil",
     "psZoP": "Slip filer her for at behandle dem",
+    "psqp_o": "Færdig, resultatet kopieres til din udklipsholder.",
     "q12beqwR": "Ingen tilgængelige værktøjer",
     "q29t31": "Polere",
     "q6K7o": "Indlæs fra noter",

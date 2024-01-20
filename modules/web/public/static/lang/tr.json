@@ -1,5 +1,6 @@
 {
     "": "Mesaj: {0}",
+    "-8l11": "Kopyalandı",
     "-DqwwR": "Operasyon Tamamlandı.",
     "-GJ_72": "Seçilen {0} çalışma alanına geçildi",
     "-Jx4J": "Yerel Hesap",
@@ -222,7 +223,6 @@
     "L3zEM": "Örneği Göster",
     "L42mxa": "Lütfen kaynak metninizi bu alana girin.",
     "L49kCq": "LafTools'unuzu güvence altına almak için lütfen bu formda kilit şifresini sağlayın ve onaylayın.",
-    "L51_M": "Sonucu panonuza kopyaladım!",
     "L71q_N": "Girdiğiniz şifre boş, lütfen kontrol edip tekrar deneyin.",
     "LAc1m": "Uygulama görünümü yenilendi.",
     "LFdvM": "Giriş yapmadınız",
@@ -575,6 +575,7 @@
     "pqs7y3": "Tam tuş haritası desteğine sahip olmak için lütfen bu web sayfasını PWA olarak kaydetmeyi düşünün.",
     "psA_eJ": "Dosya Olarak Dışa Aktar",
     "psZoP": "Dosyaları işlemek için buraya bırakın",
+    "psqp_o": "Bitti, sonuç panonuza kopyalanır.",
     "q12beqwR": "Kullanılabilir Araç Yok",
     "q29t31": "Lehçe",
     "q6K7o": "Notlardan Yükle",

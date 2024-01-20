@@ -1,5 +1,6 @@
 {
     "": "Nachricht: {0}",
+    "-8l11": "Kopiert",
     "-DqwwR": "Vorgang abgeschlossen.",
     "-GJ_72": "Zum ausgewählten Arbeitsbereich {0} gewechselt",
     "-Jx4J": "Lokales Konto",
@@ -222,7 +223,6 @@
     "L3zEM": "Beispiel anzeigen",
     "L42mxa": "Bitte geben Sie in diesem Feld Ihren Quelltext ein.",
     "L49kCq": "Bitte geben Sie in diesem Formular das Sperrkennwort ein und bestätigen Sie es, um Ihre LafTools zu sichern.",
-    "L51_M": "Das Ergebnis wurde in Ihre Zwischenablage kopiert!",
     "L71q_N": "Das von Ihnen angegebene Passwort ist leer. Bitte überprüfen Sie es und versuchen Sie es erneut.",
     "LAc1m": "Die App-Ansicht wurde aktualisiert.",
     "LFdvM": "Nicht eingeloggt",
@@ -575,6 +575,7 @@
     "pqs7y3": "Bitte erwägen Sie die Registrierung dieser Webseite als PWA, um vollständige Keymap-Unterstützung zu erhalten.",
     "psA_eJ": "Als Datei exportieren",
     "psZoP": "Legen Sie Dateien hier ab, um sie zu verarbeiten",
+    "psqp_o": "Fertig, das Ergebnis wird in Ihre Zwischenablage kopiert.",
     "q12beqwR": "Keine verfügbaren Tools",
     "q29t31": "Polieren",
     "q6K7o": "Aus Notizen laden",

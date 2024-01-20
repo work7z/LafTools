@@ -1,5 +1,6 @@
 {
     "": "Mesej: {0}",
+    "-8l11": "disalin",
     "-DqwwR": "Operasi Selesai.",
     "-GJ_72": "Bertukar ke ruang kerja yang dipilih {0}",
     "-Jx4J": "Akaun Tempatan",
@@ -222,7 +223,6 @@
     "L3zEM": "Tunjukkan Contoh",
     "L42mxa": "Sila masukkan teks sumber anda dalam medan ini.",
     "L49kCq": "Sila berikan dan sahkan kata laluan kunci dalam borang ini untuk melindungi LafTools anda.",
-    "L51_M": "Menyalin hasilnya ke papan keratan anda!",
     "L71q_N": "Kata laluan yang anda berikan kosong, sila semak dan cuba lagi.",
     "LAc1m": "Muat semula paparan apl.",
     "LFdvM": "Tidak log masuk",
@@ -575,6 +575,7 @@
     "pqs7y3": "Sila pertimbangkan untuk mendaftarkan halaman web ini sebagai PWA untuk mendapatkan sokongan penuh peta kunci.",
     "psA_eJ": "Eksport sebagai Fail",
     "psZoP": "Lepaskan fail di sini untuk memprosesnya",
+    "psqp_o": "Selesai, hasilnya disalin ke papan keratan anda.",
     "q12beqwR": "Tiada Alat Tersedia",
     "q29t31": "Poland",
     "q6K7o": "Muatkan Dari Nota",

@@ -1,5 +1,6 @@
 {
     "": "Mensaje: {0}",
+    "-8l11": "Copiado",
     "-DqwwR": "Operación completada.",
     "-GJ_72": "Cambiado al espacio de trabajo seleccionado {0}",
     "-Jx4J": "Cuenta local",
@@ -222,7 +223,6 @@
     "L3zEM": "Mostrar ejemplo",
     "L42mxa": "Por favor ingrese su texto fuente en este campo.",
     "L49kCq": "Proporcione y confirme la contraseña de bloqueo en este formulario para proteger sus LafTools.",
-    "L51_M": "¡Copiaste el resultado a tu portapapeles!",
     "L71q_N": "La contraseña que proporcionaste está vacía, verifícala e inténtalo nuevamente.",
     "LAc1m": "Se actualizó la vista de la aplicación.",
     "LFdvM": "Sin iniciar sesión",
@@ -575,6 +575,7 @@
     "pqs7y3": "Considere registrar esta página web como PWA para tener soporte completo para mapas de teclas.",
     "psA_eJ": "Exportar como archivo",
     "psZoP": "Suelta archivos aquí para procesarlos",
+    "psqp_o": "Listo, el resultado se copia a su portapapeles.",
     "q12beqwR": "No hay herramientas disponibles",
     "q29t31": "Polaco",
     "q6K7o": "Cargar desde notas",

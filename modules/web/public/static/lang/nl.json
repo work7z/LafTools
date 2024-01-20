@@ -1,5 +1,6 @@
 {
     "": "Bericht: {0}",
+    "-8l11": "Gekopieerd",
     "-DqwwR": "Operatie voltooid.",
     "-GJ_72": "Overgeschakeld naar de geselecteerde werkruimte {0}",
     "-Jx4J": "Lokaal account",
@@ -222,7 +223,6 @@
     "L3zEM": "Voorbeeld tonen",
     "L42mxa": "Voer in dit veld uw brontekst in.",
     "L49kCq": "Geef en bevestig het slotwachtwoord in dit formulier om uw LafTools te beveiligen.",
-    "L51_M": "Kopieer het resultaat naar uw klembord!",
     "L71q_N": "Het door u opgegeven wachtwoord is leeg. Controleer dit en probeer het opnieuw.",
     "LAc1m": "De app-weergave vernieuwd.",
     "LFdvM": "Niet ingelogd",
@@ -575,6 +575,7 @@
     "pqs7y3": "Overweeg alstublieft om deze webpagina als PWA te registreren, zodat u volledige toetsenbordondersteuning krijgt.",
     "psA_eJ": "Exporteren als bestand",
     "psZoP": "Zet bestanden hier neer om ze te verwerken",
+    "psqp_o": "Klaar, het resultaat wordt naar uw klembord gekopieerd.",
     "q12beqwR": "Geen beschikbare hulpmiddelen",
     "q29t31": "Pools",
     "q6K7o": "Laden uit notities",

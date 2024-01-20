@@ -1,5 +1,6 @@
 {
     "": "Message : {0}",
+    "-8l11": "Copié",
     "-DqwwR": "Opération terminée.",
     "-GJ_72": "Basculé vers l'espace de travail sélectionné {0}",
     "-Jx4J": "Compte local",
@@ -222,7 +223,6 @@
     "L3zEM": "Afficher l'exemple",
     "L42mxa": "Veuillez saisir votre texte source dans ce champ.",
     "L49kCq": "Veuillez fournir et confirmer le mot de passe de verrouillage dans ce formulaire pour sécuriser votre LafTools.",
-    "L51_M": "Copié le résultat dans votre presse-papiers !",
     "L71q_N": "Le mot de passe que vous avez fourni est vide, veuillez vérifier et réessayer.",
     "LAc1m": "Actualisation de la vue de l'application.",
     "LFdvM": "Pas connecté",
@@ -575,6 +575,7 @@
     "pqs7y3": "Veuillez envisager d'enregistrer cette page Web en tant que PWA pour bénéficier d'une prise en charge complète du clavier.",
     "psA_eJ": "Exporter sous forme de fichier",
     "psZoP": "Déposez les fichiers ici pour les traiter",
+    "psqp_o": "Terminé, le résultat est copié dans votre presse-papiers.",
     "q12beqwR": "Aucun outil disponible",
     "q29t31": "polonais",
     "q6K7o": "Charger à partir de notes",

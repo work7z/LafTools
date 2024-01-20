@@ -1,5 +1,6 @@
 {
     "": "Wiadomość: {0}",
+    "-8l11": "Skopiowano",
     "-DqwwR": "Operacja zakończona.",
     "-GJ_72": "Przełączono do wybranego obszaru roboczego {0}",
     "-Jx4J": "Konto lokalne",
@@ -222,7 +223,6 @@
     "L3zEM": "Pokaż przykład",
     "L42mxa": "W tym polu wpisz tekst źródłowy.",
     "L49kCq": "Podaj i potwierdź hasło blokady w tym formularzu, aby zabezpieczyć LafTools.",
-    "L51_M": "Skopiowano wynik do schowka!",
     "L71q_N": "Podane hasło jest puste. Sprawdź i spróbuj ponownie.",
     "LAc1m": "Odświeżono widok aplikacji.",
     "LFdvM": "Nie zalogowany",
@@ -575,6 +575,7 @@
     "pqs7y3": "Prosimy rozważyć zarejestrowanie tej strony jako PWA, aby mieć pełną obsługę map klawiszy.",
     "psA_eJ": "Eksportuj jako plik",
     "psZoP": "Upuść tutaj pliki, aby je przetworzyć",
+    "psqp_o": "Gotowe, wynik zostanie skopiowany do schowka.",
     "q12beqwR": "Brak dostępnych narzędzi",
     "q29t31": "Polski",
     "q6K7o": "Załaduj z notatek",

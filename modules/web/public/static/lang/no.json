@@ -1,5 +1,6 @@
 {
     "": "Melding: {0}",
+    "-8l11": "Kopiert",
     "-DqwwR": "Operasjon fullført.",
     "-GJ_72": "Byttet til det valgte arbeidsområdet {0}",
     "-Jx4J": "Lokal konto",
@@ -222,7 +223,6 @@
     "L3zEM": "Vis eksempel",
     "L42mxa": "Skriv inn kildeteksten din i dette feltet.",
     "L49kCq": "Vennligst oppgi og bekreft låsepassordet i dette skjemaet for å sikre LafTools.",
-    "L51_M": "Kopierte resultatet til utklippstavlen din!",
     "L71q_N": "Passordet du oppga er tomt. Vennligst sjekk og prøv igjen.",
     "LAc1m": "Oppdaterte appvisningen.",
     "LFdvM": "Ikke logget inn",
@@ -575,6 +575,7 @@
     "pqs7y3": "Vurder å registrere denne nettsiden som en PWA for å ha full støtte for tastaturkart.",
     "psA_eJ": "Eksporter som fil",
     "psZoP": "Slipp filer her for å behandle dem",
+    "psqp_o": "Ferdig, resultatet kopieres til utklippstavlen din.",
     "q12beqwR": "Ingen tilgjengelige verktøy",
     "q29t31": "Pusse",
     "q6K7o": "Last inn fra notater",

@@ -1,5 +1,6 @@
 {
     "": "Meddelande: {0}",
+    "-8l11": "Kopierade",
     "-DqwwR": "Operation slutförd.",
     "-GJ_72": "Bytte till den valda arbetsytan {0}",
     "-Jx4J": "Lokalt konto",
@@ -222,7 +223,6 @@
     "L3zEM": "Visa exempel",
     "L42mxa": "Vänligen ange din källtext i det här fältet.",
     "L49kCq": "Vänligen ange och bekräfta låslösenordet i det här formuläret för att säkra dina LafTools.",
-    "L51_M": "Kopierade resultatet till ditt urklipp!",
     "L71q_N": "Lösenordet du angav är tomt, kontrollera och försök igen.",
     "LAc1m": "Uppdaterade appvyn.",
     "LFdvM": "Inte inloggad",
@@ -575,6 +575,7 @@
     "pqs7y3": "Vänligen överväg att registrera den här webbsidan som en PWA för att få fullt stöd för tangentbord.",
     "psA_eJ": "Exportera som fil",
     "psZoP": "Släpp filer här för att bearbeta dem",
+    "psqp_o": "Klart, resultatet kopieras till ditt urklipp.",
     "q12beqwR": "Inga tillgängliga verktyg",
     "q29t31": "putsa",
     "q6K7o": "Ladda från anteckningar",

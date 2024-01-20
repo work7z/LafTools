@@ -18,18 +18,65 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Button } from "@blueprintjs/core"
-import { useState } from "react"
+import { Button, ButtonProps, Placement, Tooltip } from "@blueprintjs/core"
+import { useRef, useState } from "react"
+import { Dot } from "../../utils/TranslationUtils"
 
 export default (props: {
-    onCopy: () => any
+    enableTextMode?: boolean,
+    onCopy: () => any,
+    extraButtonProps?: ButtonProps,
+    placement?: Placement
 }) => {
+    let [mouseEnter, onMouseEnter] = useState(false)
     let [copied, setCopied] = useState(false)
-    return <Button onClick={() => {
-        props.onCopy()
-        setCopied(true)
-        setTimeout(() => {
-            setCopied(false)
-        }, 2000)
-    }} icon={copied ? "tick" : "duplicate"} intent="success" minimal ></Button>
+    let operaRef = useRef({
+        copyTimestamp: 0,
+        releaseCopyEventFn: () => { },
+    })
+    let title = copied ? Dot("psqp_o", "Done, the result is copied to your clipboard.") : Dot("2JyFN", "Copy Result to Clipboard")
+    let [isOpen, setIsOpen] = useState(false)
+
+    let btn = <Button
+        className="transition-all"
+        onMouseEnter={() => {
+            setIsOpen(true)
+            onMouseEnter(true)
+        }}
+        onMouseLeave={() => {
+            setIsOpen(false)
+            onMouseEnter(false)
+            operaRef.current.releaseCopyEventFn()
+        }}
+        onClick={() => {
+            let v = (new Date().getTime())
+            operaRef.current.copyTimestamp = v
+            operaRef.current.releaseCopyEventFn = () => { }
+            props.onCopy()
+            setCopied(true)
+            setTimeout(() => {
+                if (operaRef.current.copyTimestamp != v) return;
+                let fn = () => {
+                    setCopied(false)
+                }
+                // if (mouseEnter) {
+                //     operaRef.current.releaseCopyEventFn = fn
+                //     return;
+                // }
+                fn()
+            }, 3000)
+        }} icon={copied ? "tick" : "duplicate"} text={props.enableTextMode ? (
+            copied ? Dot("-8l11", "Copied") : Dot("gK3dNQ", "Copy")
+        ) : ''} intent="success" minimal={props.enableTextMode ? (
+            copied ? true : false
+        ) : true} {...(props.extraButtonProps || {})} ></Button>
+    if (!props.enableTextMode) return btn;
+    return <Tooltip
+        isOpen={isOpen}
+        // onInteraction={(v) => {
+        //     setIsOpen(v)
+        // }}
+        content={title} placement={props.placement || "bottom"} >
+        {btn}
+    </Tooltip>
 }

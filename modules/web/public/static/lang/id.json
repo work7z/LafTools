@@ -1,5 +1,6 @@
 {
     "": "Pesan: {0}",
+    "-8l11": "Disalin",
     "-DqwwR": "Operasi Selesai.",
     "-GJ_72": "Beralih ke ruang kerja yang dipilih {0}",
     "-Jx4J": "Akun Lokal",
@@ -222,7 +223,6 @@
     "L3zEM": "Tunjukkan Contoh",
     "L42mxa": "Silakan masukkan teks sumber Anda di bidang ini.",
     "L49kCq": "Harap berikan dan konfirmasi kata sandi kunci dalam formulir ini untuk mengamankan LafTools Anda.",
-    "L51_M": "Salin hasilnya ke clipboard Anda!",
     "L71q_N": "Kata sandi yang Anda berikan kosong, silakan periksa dan coba lagi.",
     "LAc1m": "Menyegarkan tampilan aplikasi.",
     "LFdvM": "Belum masuk",
@@ -575,6 +575,7 @@
     "pqs7y3": "Mohon pertimbangkan untuk mendaftarkan halaman web ini sebagai PWA untuk mendapatkan dukungan keymap penuh.",
     "psA_eJ": "Ekspor sebagai File",
     "psZoP": "Letakkan file di sini untuk memprosesnya",
+    "psqp_o": "Selesai, hasilnya disalin ke clipboard Anda.",
     "q12beqwR": "Tidak Ada Alat yang Tersedia",
     "q29t31": "Polandia",
     "q6K7o": "Muat Dari Catatan",

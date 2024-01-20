@@ -24,6 +24,7 @@ import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button } from "./hooks";
 import gutils from "../../../../../../../../utils/GlobalUtils";
+import CopyButton from "../../../../../../../../components/CopyButton";
 
 
 let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRuntime) => {
@@ -114,35 +115,18 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
         );
     };
     let isColl = isCollapsed_config
-    let [copied, setCopied] = useState(false);
-    let operaRef = useRef({
-        copyTimestamp: 0
-    })
+
     let rightActions: ButtonProps[] = [
-        {
-            // icon: "duplicate",
-            intent: "success",
-            icon: copied ? "tick" : "duplicate",
-            text: copied ? Dot("-8l11", "Copied") : Dot("gK3dNQ", "Copy"),
-            minimal: copied,
-            title: copied ? Dot("L51_M", "Copied the result to your clipboard!") : Dot("2JyFN", "Copy Result to Clipboard"),
-            onClick: () => {
-                let outputValue = FN_GetActualTextValueByBigTextId(props.outputBigTextId)
-                if (outputValue == '') {
-                    AlertUtils.popMsg('warning', {
-                        message: Dot("1h6jH", "Warning, the output is an empty value whose length is zero!")
-                    })
-                }
-                gutils.copy(outputValue)
-                setCopied(true)
-                let v = (new Date().getTime())
-                operaRef.current.copyTimestamp = v
-                setTimeout(() => {
-                    if (operaRef.current.copyTimestamp != v) return;
-                    setCopied(false)
-                }, 2000)
-            }
-        },
+        // {
+        //     // icon: "duplicate",
+        //     intent: "success",
+        //     icon: copied ? "tick" : "duplicate",
+        //     text:,
+        //     minimal: copied,
+        //     title: ,
+        //     onClick: () => {
+        //     }
+        // },
         {
             // icon: "export",
             icon: "download",
@@ -201,6 +185,21 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
                 {leftActions.map(fn_format_button("bottom-start"))}
             </div>
             <div className={controlClz}>
+                <CopyButton
+                    placement="bottom-end"
+                    extraButtonProps={{
+                        small: true,
+                    }}
+                    enableTextMode
+                    onCopy={() => {
+                        let outputValue = FN_GetActualTextValueByBigTextId(props.outputBigTextId)
+                        if (outputValue == '') {
+                            AlertUtils.popMsg('warning', {
+                                message: Dot("1h6jH", "Warning, the output is an empty value whose length is zero!")
+                            })
+                        }
+                        gutils.copy(outputValue)
+                    }}></CopyButton>
                 {rightActions.map(fn_format_button("bottom-end"))}
             </div>
         </div>
