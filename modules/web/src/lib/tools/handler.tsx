@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
-// Date: Wed, 17 Jan 2024
+// Date: Thu, 18 Jan 2024
 // Author: LafTools Team - FX <work7z@outlook.com>
 // Description: 
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
@@ -18,36 +18,20 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { OneOf } from "protobufjs";
-import { Dot } from "../../../utils/TranslationUtils";
-import { ToolHandler, ToolHandlerClass } from "./handler";
-import _ from "lodash";
+import Operation from "../core/Operation.mjs";
 
+export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-short" | "js-medium"
 
-export type AppInfoType = {
-    Label: string;
-    Import?: () => Promise<ToolHandlerClass>
-    Description?: string;
+export type ToolMetaInfo = {
+    description: string;
+    infoURL: string;
+    exampleType: ShowExampleType
 }
-let passInfo = (obj: AppInfoType): AppInfoType => {
-    return obj;
-}
-let appToolInfoObj = {
-    "edc_base64": passInfo({
-        Label: Dot("gkC8t", "Base64")
-    }),
-    "edc_base32": passInfo({
-        Label: Dot("gkqC8t", "Base32")
-    }),
-    // Example
-    "Example": passInfo({
-        Label: Dot("1X8x7", "Example")
-    }),
-}
-_.forEach(appToolInfoObj, (x, d, n) => {
-    x.Import = () => import(`./impl/${d}.tsx`)
-})
 
-export type AppToolKeyType = keyof typeof appToolInfoObj; // "a" | "b"
+export abstract class ToolHandler {
+    abstract getMetaInfo(): ToolMetaInfo;
+    abstract getOperations(): Operation[];
+}
 
-export default appToolInfoObj
+
+export type ToolHandlerClass = typeof ToolHandler;

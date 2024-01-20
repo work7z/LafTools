@@ -18,10 +18,10 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Dot } from "../../../../utils/TranslationUtils";
-import Operation from "../../../core/Operation.mjs";
-import FromBase64 from "../../../core/impl/FromBase64.js";
-import ToBase64 from "../../../core/impl/ToBase64.js";
+import { Dot } from "../../../utils/TranslationUtils";
+import Operation from "../../core/Operation.mjs";
+import FromBase64 from "../../core/impl/FromBase64.js";
+import ToBase64 from "../../core/impl/ToBase64.js";
 import { ToolHandler, ToolMetaInfo } from "../handler";
 
 export default class Base64Handler extends ToolHandler {

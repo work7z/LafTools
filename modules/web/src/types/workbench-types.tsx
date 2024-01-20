@@ -20,7 +20,7 @@
 
 import { Intent } from "@blueprintjs/core";
 import { ToolCategory, ExtensionVM } from "./purejs-types-READ_ONLY";
-import { ToolHandler, ToolMetaInfo } from "../lib/meta/tools/handler";
+import { ToolHandler, ToolMetaInfo } from "../lib/tools/handler";
 import Operation from "../lib/core/Operation.mjs";
 
 export * from './constants';

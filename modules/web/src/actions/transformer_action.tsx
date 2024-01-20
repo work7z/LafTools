@@ -27,7 +27,7 @@ import gutils from "../utils/GlobalUtils";
 import _ from "lodash";
 import moment from "moment";
 import Operation from "../lib/core/Operation.mjs";
-import { ToolHandler } from "../lib/meta/tools/handler";
+import { ToolHandler } from "../lib/tools/handler";
 import { CommonTransformerPassProp } from "../types/workbench-types";
 import { logutils } from "../utils/LogUtils";
 window["moment"] = moment

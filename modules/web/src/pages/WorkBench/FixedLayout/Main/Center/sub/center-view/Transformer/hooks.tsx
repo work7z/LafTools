@@ -42,9 +42,9 @@ import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSl
 
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ExtensionInfo, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
-import AppCategory from "../../../../../../../../lib/meta/tools/category";
+import AppCategory from "../../../../../../../../lib/tools/category";
 import { ListExtForTheCategoryRes } from "../../../../../../../../reducers/apiSlice";
-import appToolInfoObj from "../../../../../../../../lib/meta/tools/info";
+import appToolInfoObj from "../../../../../../../../lib/tools/info";
 import ActionButton from "../../../../../../../../components/ActionButton";
 
 export let controlBarHeight = VAL_CSS_CONTROL_PANEL;
@@ -148,7 +148,6 @@ export let fn_coll_config = (sessionId) => {
 export let fn_format_button = (pmt: string) => {
     return (x: ButtonProps) => {
         return (
-            // <Tooltip placement={pmt as any} content={x.title}>
             <ActionButton
                 {...x}
                 title={x.title}
@@ -158,7 +157,6 @@ export let fn_format_button = (pmt: string) => {
                 text={x.text}
                 className={CLZ_BTN_TRANSITION_STYLE + " transition-colors" + " " + x.className}
             ></ActionButton>
-            // </Tooltip>
         );
     };
 };

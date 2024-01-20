@@ -106,3 +106,12 @@ const TranslationUtils = {
 
 export default TranslationUtils;
 export const Dot = TranslationUtils.Dot;
+
+/**
+ * We dynamically load ts files, to reduce the bundle size of i18n files, we separately load them.
+ * 
+ * @param pathname 
+ */
+export const loadDOT = (pathname: string): any => {
+  // load resources dynamically
+}

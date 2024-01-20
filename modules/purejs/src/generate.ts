@@ -7,7 +7,7 @@
 //   ToolSubCategory,
 //   ToolChildrenSetByInit,
 //   FileValueMatcher,
-// } from "../../web/src/lib/meta/purejs-types";
+// } from "../../web/src/lib/purejs-types";
 // import _ from "lodash";
 // // read files under job, config
 // // let fs = require("fs");

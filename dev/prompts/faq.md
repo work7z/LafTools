@@ -11,12 +11,13 @@ Remarks:
 
 2. the value field is a JSX element, you can provide some HTML tags to emphaisis the parts if required, such as <b></b> <br/> or other tags, which is to make content more reasonable and cleaner. 
 
-3. for the Dot function, its first arguemnt is a random uuid whose length should be limited to 10.
+3. for the Dot function, its first arguemnt is a random uuid whose length should be limited to 7.
 
 4. do not use values in below example, such as {RANDOM_VAL}
 
 5. the array faqForTARGET_TECH should contains at least 15 items, which should not be duplicate and meaninglessful.
 
+6. replace {RANDOM_VAL} with a short uuid (length: 7)
 
 ```typescript
 type FAQItem = {

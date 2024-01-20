@@ -50,9 +50,9 @@ import LibProcessEntryPoint from '../../../../../../../../lib/entrypoint'
 import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions/transformer_action";
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
 import gutils from "../../../../../../../../utils/GlobalUtils";
-import appToolInfoObj, { AppInfoType } from "../../../../../../../../lib/meta/tools/info";
+import appToolInfoObj, { AppInfoType } from "../../../../../../../../lib/tools/info";
 import { getInitValueForRuntimeStatus } from './init.tsx'
-import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../lib/meta/tools/handler";
+import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../lib/tools/handler";
 import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
 
 export type AppOptViewMode = "fixed" | "float"
@@ -178,11 +178,11 @@ export default (props: CommonTransformerProps) => {
         setLoadingStatic(true)
         // await gutils.sleep(30000)
         let obj: AppInfoType = appToolInfoObj[props.extId as any]
-        if (!obj.Import) {
+        if (!obj.ImportImpl) {
           // TODO: add alert warnings
           return;
         }
-        let opera: any = await obj.Import()
+        let opera: any = await obj.ImportImpl()
         operaRef.current = new opera["default"]()
         window.clearInterval(timer)
         setLoadingStatic(false)
