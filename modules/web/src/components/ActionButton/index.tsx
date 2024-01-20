@@ -22,22 +22,24 @@ import { Button, ButtonProps, Placement, Tooltip } from "@blueprintjs/core"
 import { useRef, useState } from "react"
 import { Dot } from "../../utils/TranslationUtils"
 
-export default (props: ButtonProps & {
-    enableTextMode?: boolean,
-    onCopy: () => any,
+export type ActionButtonProps = ButtonProps & {
     extraButtonProps?: ButtonProps,
     placement?: Placement,
+    enableActionMode?: boolean,
     // text format
-    actionText: string;
-    afterActionText: string;
+    afterTitle?: string;
+    afterText?: string;
     lastingTime?: number; // by defaults, it's 3000ms
-}) => {
+}
+
+export default (props: ActionButtonProps) => {
+    let enableTextMode = true;
     let [triggered, setTrigger] = useState(false)
     let operaRef = useRef({
         copyTimestamp: 0,
         releaseCopyEventFn: () => { },
     })
-    let title = triggered ? props.afterActionText : props.actionText
+    let title = triggered ? props.afterTitle : props.title
     let [isOpen, setIsOpen] = useState(false)
 
     let btn = <Button
@@ -50,29 +52,28 @@ export default (props: ButtonProps & {
             setIsOpen(false)
             operaRef.current.releaseCopyEventFn()
         }}
-        onClick={() => {
+        onClick={(e) => {
+            props.onClick && props.onClick(e)
+            if (!props.enableActionMode) {
+                return;
+            }
             let v = (new Date().getTime())
             operaRef.current.copyTimestamp = v
             operaRef.current.releaseCopyEventFn = () => { }
-            props.onCopy()
             setTrigger(true)
             setTimeout(() => {
                 if (operaRef.current.copyTimestamp != v) return;
                 let fn = () => {
                     setTrigger(false)
                 }
-                // if (mouseEnter) {
-                //     operaRef.current.releaseCopyEventFn = fn
-                //     return;
-                // }
                 fn()
             }, props.lastingTime || 3000)
-        }} icon={triggered ? "tick" : "duplicate"} text={props.enableTextMode ? (
-            triggered ? Dot("-8l11", "Copied") : Dot("gK3dNQ", "Copy")
-        ) : ''} intent="success" minimal={props.enableTextMode ? (
+        }} icon={triggered ? "tick" : "duplicate"} text={enableTextMode ? (
+            triggered ? props.afterText : props.text
+        ) : ''} intent="success" minimal={enableTextMode ? (
             triggered ? true : false
         ) : true} {...(props.extraButtonProps || {})} ></Button>
-    if (!props.enableTextMode) return btn;
+    if (!enableTextMode) return btn;
     return <Tooltip
         isOpen={isOpen}
         // onInteraction={(v) => {

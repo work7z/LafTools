@@ -25,6 +25,7 @@ import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../
 import { TextTransformerProps, TransofrmerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button } from "./hooks";
 import gutils from "../../../../../../../../utils/GlobalUtils";
 import CopyButton from "../../../../../../../../components/CopyButton";
+import { ActionButtonProps } from "../../../../../../../../components/ActionButton";
 
 
 let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRuntime) => {
@@ -34,7 +35,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
     let extVM = props.extVM
     let operaList = toolHandler?.getOperations() || []
     let crtDefaultOperaId = props.crtDefaultOperaId
-    let leftActions: ButtonProps[] = [
+    let leftActions: ActionButtonProps[] = [
         ...(
             operaList
         ).map(x => {
@@ -56,7 +57,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
                     )
                 },
             }
-        }) as ButtonProps[],
+        }) as ActionButtonProps[],
         {
             text: Dot("2bqHk", "Load from File"),
             intent: "none",
@@ -69,7 +70,10 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
             text: Dot("IWUH5", "Show Example"),
             intent: "none",
             className: "",
+            enableActionMode: true,
+            afterText: Dot("OO0PN", "Done"),
             title: Dot("p8Za4", "Show me an example to process"),
+            afterTitle: Dot("OO0PN", "Okay, the example is displayed in the input editor."),
             loading: loadExample,
             onClick: async () => {
                 try {
@@ -116,7 +120,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransofrmerWithRunti
     };
     let isColl = isCollapsed_config
 
-    let rightActions: ButtonProps[] = [
+    let rightActions: ActionButtonProps[] = [
         // {
         //     // icon: "duplicate",
         //     intent: "success",
