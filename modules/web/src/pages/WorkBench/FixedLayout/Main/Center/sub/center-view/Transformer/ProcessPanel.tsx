@@ -54,12 +54,12 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
     let extVM = props.extVM
     let actions = extVM?.Actions
     let toolHandler = props.toolHandler
-    let operList =toolHandler?.getOperations()||[]
+    let operList = toolHandler?.getOperations() || []
     let arr: any[] = []
     for (let i = 0; i < 100; i++) {
         arr.push(<div>test {i}</div>)
     }
-    logutils.debug("autorun-crtRuntimeStatus",crtRuntimeStatus)
+    logutils.debug("autorun-crtRuntimeStatus", crtRuntimeStatus)
     let generalList: FormGenItem[] = [
         {
             label: Dot("FQzhg", "Ignore Empty Input"),
@@ -67,7 +67,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
             genEleConfig: {
                 type: "switch",
                 value: crtRuntimeStatus.ignoreEmptyStr,
-                onChange(newVal){
+                onChange(newVal) {
                     FN_GetDispatch()(
                         RuntimeStatusSlice.actions.updateValueInStatusMap({
                             sessionId,
@@ -85,7 +85,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
             genEleConfig: {
                 type: "switch",
                 value: crtRuntimeStatus.autoRun,
-                onChange(newVal){
+                onChange(newVal) {
                     FN_GetDispatch()(
                         RuntimeStatusSlice.actions.updateValueInStatusMap({
                             sessionId,
@@ -103,7 +103,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
             genEleConfig: {
                 type: "select",
                 value: crtRuntimeStatus.defaultOperationId,
-                onChange(newVal){
+                onChange(newVal) {
                     // debugger
                     FN_GetDispatch()(
                         RuntimeStatusSlice.actions.updateValueInStatusMap({
@@ -123,13 +123,13 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
             }
         }
     ]
-    // generalList=[...generalList,...generalList,...generalList]
+    // generalList = [...generalList, ...generalList, ...generalList, ...generalList]
     let finalShowContent = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
     let pdValue = 'p-2'
     let loadingStatic = false
     let toolHanlder = props.toolHandler
     if (toolTabIndex == 'wiki') {
-        pdValue='p-0'
+        pdValue = 'p-0'
         finalShowContent = <div className="w-full h-full overflow-auto">
             <iframe src={toolHanlder?.getMetaInfo().infoURL} className="w-full h-full border-none outline-none"></iframe>
         </div>
@@ -139,12 +139,12 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
         pdValue = 'p-0'
         finalShowContent = <div className="w-full h-full overflow-auto">
             <GenCodeMirror
-            lineWrap
+                lineWrap
                 placeholder={Dot("y_9YM", "Output will be displayed here.")}
                 bigTextId={props.outputBigTextId}
             ></GenCodeMirror>
         </div>
-    }else if(toolTabIndex=="faq"){
+    } else if (toolTabIndex == "faq") {
         finalShowContent = <div>this is faq element</div>
     }
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
@@ -195,7 +195,7 @@ export default (props: CommonTransformerPassProp & TransofrmerWithRuntime) => {
                     }}
                     selectedTabId={toolTabIndex}
                 >
-                    <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(operList)} />
+                    <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(generalList)} />
 
                     <Tab id="faq" icon="manual" title={"FAQ"} />
                     <Tab id="wiki" icon="globe" title={"Wiki"} />

@@ -74,7 +74,7 @@ export default (props: PropFormGenPanel) => {
     return <div className="flex  whitespace-break-spaces pure-g space-y-2">
         {
             chunkItems.map((eachChunkItem, eachChunkItemIdx) => {
-                return <div key={eachChunkItemIdx} className=" mb-2 pure-u-s-24-24 pure-u-12-24 pure-u-xxl-6-24 ">
+                return <div key={eachChunkItemIdx} className=" mb-2 pure-u-xxl-6-24 pure-u-xl-8-24 pure-u-sm-24-24 pure-u-12-24  ">
                     {
                         eachChunkItem.map((x, d) => {
                             return (

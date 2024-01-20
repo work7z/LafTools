@@ -26,6 +26,7 @@ import reportWebVitals from "./reportWebVitals";
 import { store, RootState } from "./store/index";
 import gutils from "./utils/GlobalUtils";
 import "purecss/build/pure.css";
+import "purecss/build/grids-responsive-min.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "./system.scss";
