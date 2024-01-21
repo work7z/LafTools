@@ -175,10 +175,133 @@ fn main() {
   },
 
   "c": {
-    template: `// Note: Base64 encoding and decoding in C requires a third-party library.
-// Below is an example using OpenSSL:
-// ... Include headers and implement similar functions as shown in the C++ example ...
-`,
-    howToRunItTips: <p>{Dot("yP9Fw", "C language lacks a native Base64 implementation. Similar to the C++ example, you can use OpenSSL or another library to handle Base64 operations. Install OpenSSL, include the necessary headers, and link against the OpenSSL libraries during compilation.")}</p>
-  }
+    template: `// C example requires OpenSSL library
+#include <stdio.h>
+#include <string.h>
+#include <openssl/bio.h>
+#include <openssl/evp.h>
+#include <openssl/buffer.h>
+
+// Function to calculate the size of the buffer needed for decoding Base64
+size_t calcDecodeLength(const char* b64input) {
+    int len = strlen(b64input), padding = 0;
+    if (b64input[len-1] == '=' && b64input[len-2] == '=') 
+        padding = 2;
+    else if (b64input[len-1] == '=')
+        padding = 1;
+
+    return ((len * 3) / 4) - padding;
+}
+
+void base64_encode_decode(const char* input) {
+    BIO *bio, *b64;
+    BUF_MEM *bufferPtr;
+    
+    const char* encodedInput = NULL;
+    char decodedBuffer[calcDecodeLength(input) + 1];
+
+    // Encode
+    bio = BIO_new(BIO_s_mem());
+    b64 = BIO_new(BIO_f_base64());
+    bio = BIO_push(b64, bio);
+    BIO_set_flags(bio, BIO_FLAGS_BASE64_NO_NL); // Ignore newlines
+    BIO_write(bio, input, strlen(input));
+    BIO_flush(bio);
+    BIO_get_mem_ptr(bio, &bufferPtr);
+    BIO_set_close(bio, BIO_NOCLOSE);
+    BIO_free_all(bio);
+    encodedInput = bufferPtr->data;
+
+    printf("Encoded: %s\n", encodedInput);
+
+    // Decode
+    bio = BIO_new_mem_buf(encodedInput, -1);
+    b64 = BIO_new(BIO_f_base64());
+    bio = BIO_push(b64, bio);
+    BIO_set_flags(bio, BIO_FLAGS_BASE64_NO_NL); // Do not use newlines to flush buffer
+    BIO_read(bio, decodedBuffer, calcDecodeLength(encodedInput));
+    decodedBuffer[BIO_number_read(bio)] = '\0';
+    BIO_free_all(bio);
+
+    printf("Decoded: %s\n", decodedBuffer);
+
+    // Free memory allocated by OpenSSL
+    BUF_MEM_free(bufferPtr);
+}
+
+int main() {
+    const char* input = "TEST12345";
+    base64_encode_decode(input);
+    return 0;
+}`,
+    howToRunItTips: <p>{Dot("uW7eZ", "In C, there's no native Base64 implementation. This example uses OpenSSL library for Base64 encoding and decoding. To use this code snippet, install OpenSSL on your system and link against the appropriate libraries when compiling your program using a command similar to 'gcc -o base64_example base64_example.c -lssl -lcrypto'.")}</p>
+  },
+
+
+
+
+
+  "ruby": {
+    template: `require 'base64'
+
+input_data = 'TEST12345'
+encoded_data = Base64.strict_encode64(input_data)
+decoded_data = Base64.decode64(encoded_data)
+
+puts "Encoded: #{encoded_data}"
+puts "Decoded: #{decoded_data}"`,
+    howToRunItTips: <p>{Dot("kZd9G", "Ruby has a built-in 'base64' library that provides methods for Base64 encoding and decoding. Include the library with 'require \"base64\"' in your script.")}</p>
+  },
+
+  "swift": {
+    template: `import Foundation
+
+let input = "TEST12345"
+let data = input.data(using: .utf8)!
+let encodedData = data.base64EncodedString()
+let decodedData = Data(base64Encoded: encodedData)!.string(using: .utf8)!
+
+print("Encoded: \(encodedData)")
+print("Decoded: \(decodedData)")`,
+    howToRunItTips: <p>{Dot("jRzgS", "Swift's Foundation framework includes built-in methods for Base64 encoding and decoding. No external libraries are needed; simply import 'Foundation' to use these features.")}</p>
+  },
+
+  "kotlin": {
+    template: `import android.util.Base64
+
+val input = "TEST12345".toByteArray(Charsets.UTF_8)
+val encodedData = Base64.encodeToString(input, Base64.DEFAULT)
+val decodedData = String(Base64.decode(encodedData, Base64.DEFAULT), Charsets.UTF_8)
+
+println("Encoded: $encodedData")
+println("Decoded: $decodedData")`,
+    howToRunItTips: <p>{Dot("rLXJN", "In Kotlin, Android's built-in 'android.util.Base64' class can be used for Base64 encoding and decoding. This example assumes an Android environment; for non-Android Kotlin projects, consider using 'java.util.Base64'.")}</p>
+  },
+
+  // ... Similar templates and tips for other languages ...
+
+  "scala": {
+    template: `import java.util.Base64
+
+val input = "TEST12345".getBytes("UTF-8")
+val encodedData = Base64.getEncoder.encodeToString(input)
+val decodedData = new String(Base64.getDecoder.decode(encodedData), "UTF-8")
+
+println(s"Encoded: $encodedData")
+println(s"Decoded: $decodedData")`,
+    howToRunItTips: <p>{Dot("sBxHr", "Scala uses Java's built-in 'java.util.Base64' class for Base64 operations. Ensure you're running on a JVM platform with Java 8 or higher.")}</p>
+  },
+  
+  "perl": {
+    template: `use MIME::Base64;
+
+my $input = "TEST12345";
+my $encodedData = encode_base64($input);
+my $decodedData = decode_base64($encodedData);
+
+print "Encoded: $encodedData\n";
+print "Decoded: $decodedData\n";`,
+    howToRunItTips: <p>{Dot("fTt2N", "Perl requires the 'MIME::Base64' module for Base64 encoding and decoding. Install it by running 'cpan install MIME::Base64' if not already installed.")}</p>
+  },
+
 };
