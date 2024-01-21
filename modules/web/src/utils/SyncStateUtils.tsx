@@ -190,13 +190,14 @@ let SyncStateUtils = {
             if (usingSyncLocationParam && def.SyncLocationOnParameter) {
               if (ALL_NOCYCLE.history) {
                 let p = ALL_NOCYCLE.history.location
-                let newPathname = p.pathname + "?t=" + Date.now() + "&" + Qs.stringify((
-                  {
+                let newPathname = p.pathname + "?v=" + ("" + Date.now()).substring(7) + "&" + Qs.stringify((
+                  _.pickBy({
                     ...Qs.parse(p.search.replace("?", "")) || {},
-                    [def.SyncLocationOnParameter]: ((JSON.stringify({
+                    [def.SyncLocationOnParameter]: btoaUTF8((JSON.stringify({
                       ...newState,
-                    })))
-                  }
+                    }))),
+                    v: null
+                  }, x => !_.isNil(x))
                 ))
                 logutils.debug('newPathname', newPathname)
                 ALL_NOCYCLE.history.push(newPathname)

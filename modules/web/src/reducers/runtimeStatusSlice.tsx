@@ -40,7 +40,7 @@ const RuntimeStatusSlice = createSlice({
   name: "runtimeStatus",
   initialState,
   reducers: {
-    ...SyncStateUtils.getSyncStateReducers("runtime", {
+    ...SyncStateUtils.getSyncStateReducers("runtimeStatus", {
       RunOnInit: true,
       RequireUserId: true,
       RequireWorkspaceId: true,

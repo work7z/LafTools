@@ -110,6 +110,7 @@ const layoutSlice = createSlice({
       RunOnEnterWorkBench: true,
       RequireUserId: true,
       RequireWorkspaceId: true,
+      SyncLocationOnParameter: 'lts', // /app?lts=xxx
     }),
     // write slice for updating menuRecord
     updateMenuRecord(
