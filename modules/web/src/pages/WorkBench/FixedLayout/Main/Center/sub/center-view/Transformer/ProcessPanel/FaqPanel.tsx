@@ -40,7 +40,6 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                 return;
             }
             let crt_faq = await props.toolHandler.getFAQ()
-            debugger;
             onFaq(crt_faq)
         }
     }, [props.toolHandler])

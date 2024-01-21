@@ -79,6 +79,7 @@ type GenCodeMirrorProp = {
   bigTextId: string;
   lineWrap?: boolean;
   language?: string;
+  directValue?:string;
   placeholder?: string;
   onTextChange?: (newText: string) => any
 };
@@ -136,7 +137,7 @@ export default (props: GenCodeMirrorProp) => {
       propRef.current.fn_onTextChange && propRef.current.fn_onTextChange(actualText)
     }
   }, [verObj.ver])
-  let value: string = bt.bigText;
+  let value: string =props.directValue || bt.bigText;
   let setValue = (val: string) => {
     // debugger;
     FN_GetDispatch()(FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY(bigTextId, val));

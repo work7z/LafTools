@@ -23,12 +23,14 @@ import { Dot } from "../../utils/TranslationUtils";
 import { ToolHandler, ToolHandlerClass } from "./handler";
 import {FAQItem } from './faq/types'
 import _ from "lodash";
+import { CodeImplMap } from "./code/types";
 
 
 export type AppInfoType = {
     Label: string;
     ImportImpl?: () => Promise<ToolHandlerClass>
     ImportFAQ?: () => Promise<FAQItem[]>
+    ImportCode?: () => Promise<CodeImplMap>
     Description?: string;
 }
 let passInfo = (obj: AppInfoType): AppInfoType => {
@@ -51,6 +53,7 @@ let appToolInfoObj:{
 _.forEach(appToolInfoObj, (x, d, n) => {
     x.ImportImpl = () => import(`./impl/${d}.tsx`)
     x.ImportFAQ = () => import(`./faq/${d}.tsx`)
+    x.ImportCode = () => import(`./code/${d}.tsx`)
 })
 
 export type AppToolKeyType = keyof typeof appToolInfoObj; // "a" | "b"

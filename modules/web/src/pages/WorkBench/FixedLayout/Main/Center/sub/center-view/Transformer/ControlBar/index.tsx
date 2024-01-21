@@ -153,6 +153,9 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
             className: "btn-purple",
             text: Dot("o52xW", "Export"),
             title: Dot("i88tb", "Export Result to File"),
+            onClick: ()=>{
+                AlertUtils.popNotSupport()
+            }
         },
         {
             icon: "gantt-chart",
@@ -160,6 +163,9 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
             className: "none",
             text: "",
             title: Dot("i8q8tb", "Configure WorkFlow for Input"),
+            onClick: ()=>{
+                AlertUtils.popNotSupport()
+            }
         },
         {
             icon: "console",

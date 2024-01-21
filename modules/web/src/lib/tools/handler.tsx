@@ -19,6 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Operation from "../core/Operation.mjs";
+import { CodeImplMap } from "./code/types";
 import { FAQItem } from "./faq/types";
 import appToolInfoObj from "./info";
 
@@ -36,11 +37,20 @@ export abstract class ToolHandler {
     abstract getOperations(): Operation[];
     getFAQ = async (): Promise<FAQItem[]> => {
         let o = appToolInfoObj[this.id]
-        if(!o.ImportFAQ){
+        if (!o.ImportFAQ) {
             return [];
         }
         let r = await o.ImportFAQ()
-        let r2= r["default"]
+        let r2 = r["default"]
+        return r2;
+    }
+    getCode = async (): Promise<CodeImplMap | null> => {
+        let o = appToolInfoObj[this.id]
+        if (!o.ImportCode) {
+            return null;
+        }
+        let r = await o.ImportCode()
+        let r2 = r["default"]
         return r2;
     }
 }

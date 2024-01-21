@@ -1,59 +1,58 @@
 
 import { Dot } from '../../../utils/TranslationUtils';
 import { CodeImplMap, CodeImplDetail, PopularLanguages } from './types'
-let r: CodeImplMap = {
-    "node.js": {
-        template: `const crypto = require('crypto');
-const inputBuffer = Buffer.from('TEST12345', 'utf8');
-const encodedData = inputBuffer.toString('base64');
+
+
+export default {
+  "nodejs": {
+    template: `const input = 'TEST12345';
+const encodedData = Buffer.from(input, 'utf8').toString('base64');
 const decodedData = Buffer.from(encodedData, 'base64').toString('utf8');
 
 console.log('Encoded:', encodedData);
 console.log('Decoded:', decodedData);`,
-        howToRunItTips: <p>{Dot("x7dJc", "To run this in Node.js, you don't need any external libraries as the built-in 'crypto' module provides Base64 encoding and decoding functionality.")}</p>
-    },
+    howToRunItTips: <p>{Dot("h7rUq", "In Node.js, the built-in 'Buffer' class can handle Base64 encoding and decoding without requiring any external libraries. This code snippet encodes the string 'TEST12345' to Base64 and then decodes it back to the original string.")}</p>
+  },
 
-    "Python": {
-        template: `import base64
+  "python": {
+    template: `import base64
 
-input_data = b'TEST12345'
-encoded_data = base64.b64encode(input_data)
-decoded_data = base64.b64decode(encoded_data)
+input_data = 'TEST12345'
+encoded_data = base64.b64encode(input_data.encode('utf-8'))
+decoded_data = base64.b64decode(encoded_data).decode('utf-8')
 
 print('Encoded:', encoded_data.decode('utf-8'))
-print('Decoded:', decoded_data.decode('utf-8'))`,
-        howToRunItTips: <p>{Dot("aZV9q", "In Python, the built-in 'base64' module is used for Base64 encoding and decoding, so no additional installation is required.")}</p>
-    },
+print('Decoded:', decoded_data)`,
+    howToRunItTips: <p>{Dot("z9kVv", "Python has a built-in 'base64' module which provides methods for Base64 encoding and decoding. The input string is first converted to bytes using UTF-8 encoding before being encoded to Base64, and then decoded back to its original form.")}</p>
+  },
 
-    "Java": {
-        template: `import java.util.Base64;
+  "java": {
+    template: `import java.util.Base64;
 
 public class Main {
     public static void main(String[] args) {
         String input = "TEST12345";
         byte[] inputBytes = input.getBytes(java.nio.charset.StandardCharsets.UTF_8);
-        
+
         // Encode
         String encodedString = Base64.getEncoder().encodeToString(inputBytes);
         System.out.println("Encoded: " + encodedString);
-        
+
         // Decode
         byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
         String decodedString = new String(decodedBytes, java.nio.charset.StandardCharsets.UTF_8);
         System.out.println("Decoded: " + decodedString);
     }
 }`,
-        howToRunItTips: <p>{Dot("R4zYg", "Java's built-in 'java.util.Base64' class, available since Java 8, provides Base64 encoding and decoding capabilities without requiring any external libraries.")}</p>
-    },
+    howToRunItTips: <p>{Dot("sKx5t", "Java's built-in 'java.util.Base64' class, available since Java 8, provides methods for Base64 encoding and decoding. The input string is converted to bytes using UTF-8 encoding, then encoded and decoded as needed.")}</p>
+  },
 
-    "C#": {
-        template: `using System;
+  "csharp": {
+    template: `using System;
 using System.Text;
 
-class Program
-{
-    static void Main()
-    {
+class Program {
+    static void Main() {
         string input = "TEST12345";
         byte[] inputBytes = Encoding.UTF8.GetBytes(input);
 
@@ -67,12 +66,11 @@ class Program
         Console.WriteLine("Decoded: " + decodedString);
     }
 }`,
-        howToRunItTips: <p>{Dot("eUdXm", "In C#, the 'System.Convert' class provides methods for Base64 encoding and decoding, which are included in the .NET Framework and do not require additional installations.")}</p>
-    },
+    howToRunItTips: <p>{Dot("dWbBm", "C# includes the 'System.Convert' class with built-in methods ToBase64String and FromBase64String that allow you to encode and decode Base64 data. The input string is first converted to a byte array using UTF-8 encoding, then encoded and decoded accordingly.")}</p>
+  },
 
-    "C++": {
-        template: `#include <iostream>
-#include <string>
+  "cpp": {
+    template: `// C++ example requires OpenSSL library
 #include <openssl/bio.h>
 #include <openssl/evp.h>
 #include <openssl/buffer.h>
@@ -129,22 +127,22 @@ int main() {
 
     return 0;
 }`,
-        howToRunItTips: <p>{Dot("k1WvF", "For C++, OpenSSL library is needed to handle Base64 encoding and decoding. You can install it using package managers like apt (Ubuntu), yum (CentOS), or brew (macOS).")}</p>
-    },
+    howToRunItTips: <p>{Dot("gT6re", "C++ does not have a native Base64 implementation. This example uses OpenSSL library to perform Base64 encoding and decoding. To use OpenSSL, install it on your system and link against the appropriate libraries when compiling your program.")}</p>
+  },
 
-    "PHP": {
-        template: `<?php
+  "php": {
+    template: `<?php
 $input = 'TEST12345';
 $encodedData = base64_encode($input);
 $decodedData = base64_decode($encodedData);
 
 echo "Encoded: " . $encodedData . "\n";
 echo "Decoded: " . $decodedData . "\n";`,
-        howToRunItTips: <p>{Dot("fTt2N", "PHP has built-in functions 'base64_encode()' and 'base64_decode()' for Base64 operations, so no extra libraries are required.")}</p>
-    },
+    howToRunItTips: <p>{Dot("jZvLJ", "PHP comes with built-in functions 'base64_encode()' and 'base64_decode()' for handling Base64 operations. These functions are readily available and require no additional setup or installation.")}</p>
+  },
 
-    "Go": {
-        template: `package main
+  "go": {
+    template: `package main
 
 import (
 	"encoding/base64"
@@ -159,11 +157,11 @@ func main() {
 	fmt.Println("Encoded:", encodedData)
 	fmt.Println("Decoded:", string(decodedData))
 }`,
-        howToRunItTips: <p>{Dot("sBzHr", "In Go, the 'encoding/base64' standard library package provides functions for Base64 encoding and decoding without needing any external dependencies.")}</p>
-    },
+    howToRunItTips: <p>{Dot("tR8pY", "Go provides a standard library package 'encoding/base64' with functions for Base64 encoding and decoding. No external dependencies are required; simply import this package into your Go program and call the appropriate functions.")}</p>
+  },
 
-    "Rust": {
-        template: `use base64::{encode, decode};
+  "rust": {
+    template: `use base64::{encode, decode};
 
 fn main() {
     let input = "TEST12345".as_bytes();
@@ -173,20 +171,14 @@ fn main() {
     println!("Encoded: {}", encoded_data);
     println!("Decoded: {:?}", String::from_utf8(decoded_data).unwrap());
 }`,
-        howToRunItTips: <p>{Dot("Q9ZwP", "In Rust, the 'base64' crate is required for Base64 operations. You can add it to your project by adding 'base64 = \"1.x\"' to your Cargo.toml file under the [dependencies] section and running 'cargo build'.")}</p>
-    },
+    howToRunItTips: <p>{Dot("eN4fM", "In Rust, you can use the 'base64' crate for Base64 encoding and decoding. Add 'base64 = \"1.x\"' to your Cargo.toml file under the [dependencies] section, run 'cargo build', and include the necessary imports in your code to utilize these functions.")}</p>
+  },
 
-    "C": {
-        template: `// Note: Base64 encoding and decoding in C requires a third-party library.
+  "c": {
+    template: `// Note: Base64 encoding and decoding in C requires a third-party library.
 // Below is an example using OpenSSL:
-#include <openssl/bio.h>
-#include <openssl/evp.h>
-#include <openssl/buffer.h>
-
-// ... Define similar encode and decode functions as shown in the C++ example ...
+// ... Include headers and implement similar functions as shown in the C++ example ...
 `,
-        howToRunItTips: <p>{Dot("Gy3Yj", "In C, there's no built-in support for Base64 encoding and decoding. OpenSSL library can be used similarly to the C++ example above. Include the necessary headers and link against the OpenSSL library during compilation.")}</p>
-    }
+    howToRunItTips: <p>{Dot("yP9Fw", "C language lacks a native Base64 implementation. Similar to the C++ example, you can use OpenSSL or another library to handle Base64 operations. Install OpenSSL, include the necessary headers, and link against the OpenSSL libraries during compilation.")}</p>
+  }
 };
-
-export default r;

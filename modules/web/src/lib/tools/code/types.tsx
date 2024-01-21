@@ -1,19 +1,23 @@
 import { LabelValuePair } from "../../../types/constants";
 
-export type PopularLanguages = "node.js" | "Python" | "Java" | "C#" | "C++" | "PHP" | "Go" | "Rust" | "C";
 
+// align scope begin
+export type PopularLanguages = "node.js" | "python" | "java" | "csharp" | "cpp" | "php" | "go" | "rust" | "c";
 
 export const program_languages: LabelValuePair[] = [
-    { label: "Node.js", value: "node.js" },
-    { label: "Python", value: "Python" },
-    { label: "Java", value: "Java" },
-    { label: "C#", value: "C#" },
-    { label: "C++", value: "C++" },
-    { label: "PHP", value: "PHP" },
-    { label: "Go", value: "Go" },
-    { label: "Rust", value: "Rust" },
-    { label: "C", value: "C" },
+    { label: "Java", value: "java" },
+    { label: "Node.js", value: "nodejs" },
+    { label: "Python", value: "python" },
+    { label: "C#", value: "csharp" },
+    { label: "C++", value: "cpp" },
+    { label: "PHP", value: "php" },
+    { label: "Go", value: "go" },
+    { label: "Rust", value: "rust" },
+    { label: "C", value: "c" },
 ];
+
+// align scope end
+
 export type CodeImplDetail = {
     template: string,
     howToRunItTips: JSX.Element

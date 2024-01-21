@@ -21,6 +21,9 @@
 [] add a TODO viewer that can show current project
 [] for settings in process panel, we can just spread it out as a horizontal items, user can scroll them from left to right
 [] add nature sound and white noise in this app, that sounds great, like freemind
+[] for each dynamic script, we should also load their i18n separately. related files: 1) Translation.go, 2) scan-entry.j
+s
+[] add a google statisic script 
 
 
 # low priorities
@@ -32,8 +35,8 @@
 [x] code split for React app  
 [x] move chef code to other place, and use ts to refactor it then.  
 [x] add icon before title in the process panel
-[] keep different page status in the same workspace  
-[] ensure all settings or reducer data are saved into the workspace
+[x] keep different page status in the same workspace  
+[x] ensure all settings or reducer data are saved into the workspace
 
 # server
 

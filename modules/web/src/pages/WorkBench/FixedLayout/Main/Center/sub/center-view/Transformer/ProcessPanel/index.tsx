@@ -22,6 +22,7 @@
 import { Alignment, Button, ButtonProps, FormGroup, Icon, InputGroup, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import FaqPanel from './FaqPanel'
+import CodePanel from './CodePanel'
 import {
     VAL_CSS_TAB_TITLE_PANEL,
     VAL_CSS_CONTROL_PANEL,
@@ -147,6 +148,8 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
         </div>
     } else if (toolTabIndex == "faq") {
         finalShowContent = <FaqPanel {...props}></FaqPanel>
+    } else if (toolTabIndex == 'code'){
+        finalShowContent =<CodePanel {...props}></CodePanel>
     }
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
@@ -199,7 +202,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                     <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(generalList)} />
 
                     <Tab id="faq" icon="manual" title={"FAQ"} />
-                    <Tab id="impl" icon="code" title={Dot("JQEVK","Code")} />
+                    <Tab id="code" icon="code" title={Dot("JQEVK","Code")} />
                     {/* <Tab id="wiki" icon="globe" title={"Wiki"} /> */}
                     <Tab id="output" icon={
                         crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "tick"

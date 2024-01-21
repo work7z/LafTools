@@ -82,6 +82,11 @@ const AlertUtils = {
       message: Dot("ip2g1", "Copied"),
     });
   },
+  popNotSupport() {
+    AlertUtils.popMsg("warning", {
+      message: Dot("Zk7JI", "It's not yet supported"),
+    });
+  },
   popOK(msg?: string) {
     AlertUtils.popMsg("success", {
       message: msg || Dot("mihc3", "Completed this operation"),
