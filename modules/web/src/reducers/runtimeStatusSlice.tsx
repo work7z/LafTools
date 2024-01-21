@@ -44,6 +44,7 @@ const RuntimeStatusSlice = createSlice({
       RunOnInit: true,
       RequireUserId: true,
       RequireWorkspaceId: true,
+      SyncLocationOnParameter: 'rts', // /app?rts=xxx
     }),
     initAtOnceBySessionIdAndValue: (
       state,

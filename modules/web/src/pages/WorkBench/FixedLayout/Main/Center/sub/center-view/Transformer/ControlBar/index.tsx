@@ -76,8 +76,8 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
             intent: "none",
             title: Dot("NNfJo", "Load Data from File"),
             onClick: () => {
-                //
-            },
+                AlertUtils.popNotSupport()
+            }
         },
         {
             icon: 'color-fill',
@@ -153,7 +153,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
             className: "btn-purple",
             text: Dot("o52xW", "Export"),
             title: Dot("i88tb", "Export Result to File"),
-            onClick: ()=>{
+            onClick: () => {
                 AlertUtils.popNotSupport()
             }
         },
@@ -163,7 +163,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
             className: "none",
             text: "",
             title: Dot("i8q8tb", "Configure WorkFlow for Input"),
-            onClick: ()=>{
+            onClick: () => {
                 AlertUtils.popNotSupport()
             }
         },

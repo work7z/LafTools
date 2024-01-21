@@ -31,14 +31,23 @@ import Qs from "query-string";
 
 import AlertUtils from "./AlertUtils";
 import TokenUtils from "./TokenUtils";
+import { logutils } from "./LogUtils";
 window["_"] = _;
+
+export function btoaUTF8(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
+
+export function atobUTF8(str) {
+  return decodeURIComponent(escape(atob(str)));
+}
 
 type SyncDefinition = {
   RunOnInit?: boolean;
   RunOnEnterWorkBench?: boolean;
   RequireUserId: boolean;
   RequireWorkspaceId: boolean;
-  SyncToHashParameter?: boolean; // TODO: wait to be implemented. Once it's enabled, the config will be synced to url parameters
+  SyncLocationOnParameter?: string; // TODO: wait to be implemented. Once it's enabled, the config will be synced to url parameters
 };
 let syncReducerDefinitions: { [key: string]: SyncDefinition } = {};
 let syncedReducerNames: string[] = [];
@@ -49,9 +58,6 @@ let SyncStateUtils = {
   rootObj: null,
   setSyncedReducerNames(val: string[], st: any) {
     syncedReducerNames = val;
-    // _.forEach(syncedReducerNames, (eachReducerName) => {
-    //   originalInitialState[eachReducerName] = _.cloneDeep(st[eachReducerName]);
-    // });
   },
   getSyncStateReducers(sliceName: string, syncDefinition: SyncDefinition) {
     syncReducerDefinitions[sliceName] = syncDefinition;
@@ -77,8 +83,6 @@ let SyncStateUtils = {
         let obj = { ...newState };
         let src = { ...state };
         newState = _.mergeWith(obj, src, checkDefaultsDeep);
-        if (sliceName == "workspace") {
-        }
         return newState;
       },
     };
@@ -88,9 +92,6 @@ let SyncStateUtils = {
   ) {
     for (let eachReducerName of syncedReducerNames) {
       let def = syncReducerDefinitions[eachReducerName];
-      // if (syncedAlreadyMap[eachReducerName]) {
-      //   continue;
-      // }
       if (def && !checkFN(def)) {
         continue;
       }
@@ -104,21 +105,41 @@ let SyncStateUtils = {
       Name: eachReducerName,
       ...def,
     };
-    let val = await AjaxUtils.DoLocalRequestWithNoThrow({
-      url: "/sync/reducer/get?" + Qs.stringify(queryStr),
-    });
-    if (val.error) {
-      // if (IsDevMode()) {
-      //   AlertUtils.popError(val.error);
-      // }
-    }
+    let usingSyncLocationParam = def && !_.isNil(def.SyncLocationOnParameter)
     let replaceState: any = null;
-    if (val.response) {
-      let innerValue = getAjaxResPayloadValue(val);
-      if (innerValue) {
-        replaceState = innerValue;
+    if (usingSyncLocationParam) {
+      // TODO: write the code to retrieve the state from url parameters
+      replaceState = null;
+      if (ALL_NOCYCLE.history && def.SyncLocationOnParameter) {
+        let loc = ALL_NOCYCLE.history.location
+        let p = Qs.parse(loc.search.replace("?", ""))
+        let v = p[def.SyncLocationOnParameter]
+        if (v) {
+          try {
+            let obj = JSON.parse(atobUTF8(v as string))
+            replaceState = obj
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      }
+    } else {
+      let val = await AjaxUtils.DoLocalRequestWithNoThrow({
+        url: "/sync/reducer/get?" + Qs.stringify(queryStr),
+      });
+      if (val.error) {
+        // if (IsDevMode()) {
+        //   AlertUtils.popError(val.error);
+        // }
+      }
+      if (val.response) {
+        let innerValue = getAjaxResPayloadValue(val);
+        if (innerValue) {
+          replaceState = innerValue;
+        }
       }
     }
+    // replace state
     if (replaceState == null) {
       let fn = _.get(SyncStateUtils.rootObj, [
         eachReducerName,
@@ -158,20 +179,37 @@ let SyncStateUtils = {
     // debugger;
     if (_.isEmpty(syncedReducerNameFnMap)) {
       _.forEach(syncedReducerNames, (eachReducerName) => {
-        syncedReducerNameFnMap[eachReducerName] = _.throttle(
+        syncedReducerNameFnMap[eachReducerName] = _.debounce(
           async (newState) => {
             let def = syncReducerDefinitions[eachReducerName];
             let obj = {
               Name: eachReducerName,
               ...def,
             };
-            let r = (await AjaxUtils.DoLocalRequestWithNoThrow({
-              url: "/sync/reducer/save?" + Qs.stringify(obj),
-              isPOST: true,
-              data: newState,
-            })) as any;
-            if (r.error) {
-              AlertUtils.popError(r.error);
+            let usingSyncLocationParam = def && !_.isNil(def.SyncLocationOnParameter)
+            if (usingSyncLocationParam && def.SyncLocationOnParameter) {
+              if (ALL_NOCYCLE.history) {
+                let p = ALL_NOCYCLE.history.location
+                let newPathname = p.pathname + "?t=" + Date.now() + "&" + Qs.stringify((
+                  {
+                    ...Qs.parse(p.search.replace("?", "")) || {},
+                    [def.SyncLocationOnParameter]: ((JSON.stringify({
+                      ...newState,
+                    })))
+                  }
+                ))
+                logutils.debug('newPathname', newPathname)
+                ALL_NOCYCLE.history.push(newPathname)
+              }
+            } else {
+              let r = (await AjaxUtils.DoLocalRequestWithNoThrow({
+                url: "/sync/reducer/save?" + Qs.stringify(obj),
+                isPOST: true,
+                data: newState,
+              })) as any;
+              if (r.error) {
+                AlertUtils.popError(r.error);
+              }
             }
           },
           800

@@ -80,6 +80,7 @@ const WorkspaceSlice = createSlice({
       RunOnEnterWorkBench: true,
       RequireUserId: true,
       RequireWorkspaceId: true,
+      SyncLocationOnParameter: "wsp"
     }),
     addTab: (
       state,
