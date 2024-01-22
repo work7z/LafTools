@@ -27,7 +27,7 @@
 import Operation from "../../../core/Operation.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
-import {ALPHABET_OPTIONS} from "../../../core/lib/Base85.mjs";
+import { ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";
 import { Dot } from "../../../../utils/TranslationUtils";
 
 /**
@@ -51,17 +51,20 @@ class FromBase85 extends Operation {
 
 
 
-    // new
-    this.id='frombase64'
-    this.name = Dot("rVqlu", "Decode {0}", "Base85");
-    this.description = Dot(
-      "wj3VS",
-      "This operation decodes data from an ASCII {0} string back into its raw format.",
-      "Base85"
-    );
-    this.exampleInput = "BOu!rD]j7BEbo7";
-    this.exampleOutput = "hello world";
-    // new
+        // new
+        this.id = 'frombase64'
+        this.name = Dot("rVqlu", "Decode {0}", "Base85");
+        this.description = Dot(
+            "wj3VS",
+            "This operation decodes data from an ASCII {0} string back into its raw format.",
+            "Base85"
+        );
+
+
+
+        this.exampleOutput = "Hello World!";
+        this.exampleInput = "87cURD]i,\"Ebo80";
+        // new
 
 
 
@@ -123,7 +126,7 @@ class FromBase85 extends Operation {
         const alphabet = Utils.expandAlphRange(args[0]).join(""),
             removeNonAlphChars = args[1],
             allZeroGroupChar = typeof args[2] === "string" ? args[2].slice(0, 1) : "",
-            result:any = [];
+            result: any = [];
 
         if (alphabet.length !== 85 ||
             ([] as any).unique.call(alphabet).length !== 85) {
@@ -140,7 +143,7 @@ class FromBase85 extends Operation {
 
         // Remove non-alphabet characters
         if (removeNonAlphChars) {
-            const re = new RegExp("[^~" + allZeroGroupChar +alphabet.replace(/[[\]\\\-^$]/g, "\\$&") + "]", "g");
+            const re = new RegExp("[^~" + allZeroGroupChar + alphabet.replace(/[[\]\\\-^$]/g, "\\$&") + "]", "g");
             input = input.replace(re, "");
             // Remove delimiters again if present (incase of non-alphabet characters in front/behind delimiters)
             const matches = input.match(/^<~(.+?)~>$/);

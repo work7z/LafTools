@@ -21,7 +21,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { CommonTransformerProps } from '../types'
-import { CSS_TW_LAYOUT_BORDER_LIGHTER, CommonTransformerPassProp } from '../../../../../../../../../types/workbench-types'
+import { CSS_TW_LAYOUT_BORDER_LIGHTER, CommonTransformerPassProp, LabelValuePair } from '../../../../../../../../../types/workbench-types'
 import { TransformerWithRuntime as TransformerWithRuntimeProp } from '../hooks'
 import gutils from '../../../../../../../../../utils/GlobalUtils'
 import { Dot } from '../../../../../../../../../utils/TranslationUtils'
@@ -39,6 +39,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
         text: Dot("KcrRr", "Retrieving Code Implementation Data"),
         whenToStart: !_.isNil(props.toolHandler),
         promise: async () => {
+            onCode(null)
             if (!props.toolHandler) {
                 return;
             }
@@ -68,21 +69,23 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
 
     return <div className='p-2'>
         <div className=''>
-            <Tabs id="CodeImplTabs" vertical onChange={(newTabId) => {
-                onTabId(newTabId.toString())
-            }
-            } selectedTabId={tabId}>
+            <Tabs id="CodeImplTabs" vertical
+                className='flex-tab'
+                onChange={(newTabId) => {
+                    onTabId(newTabId.toString())
+                }
+                } selectedTabId={tabId}>
                 {
-                    _.map(program_languages, x => {
+                    _.map((_.filter(program_languages, x => code && code[x.value]) as LabelValuePair[]), x => {
                         let o: CodeImplDetail = code && code[x.value]
                         return <Tabs.Tab key={x.value} id={x.value} title={x.label} panel={<div className='min-w-full w-full h-auto whitespace-nowrap'>
-                                                        <div className='whitespace-normal min-w-full w-[80%] mb-2'>
+                            <div className='whitespace-normal min-w-full w-[80%] mb-2'>
                                 <Callout intent='none' icon="info-sign"  >
-                                {o.howToRunItTips}
+                                    {o.howToRunItTips}
 
                                 </Callout>
                             </div>
-                            <div className={CSS_TW_LAYOUT_BORDER_LIGHTER+" min-w-full"}>
+                            <div className={CSS_TW_LAYOUT_BORDER_LIGHTER + " min-w-full"}>
                                 <GenCodeMirror
                                     language={'javascript'}
                                     placeholder={''}

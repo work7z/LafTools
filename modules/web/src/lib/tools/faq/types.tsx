@@ -21,4 +21,5 @@
 export type FAQItem = {
     question: string,
     answer: JSX.Element
+    links?: { link: string, name: string }[]
 }

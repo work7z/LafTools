@@ -147,13 +147,13 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
             ></GenCodeMirror>
         </div>
     } else if (toolTabIndex == "faq") {
-        finalShowContent = <FaqPanel {...props}></FaqPanel>
-    } else if (toolTabIndex == 'code'){
-        finalShowContent =<CodePanel {...props}></CodePanel>
+        finalShowContent = <FaqPanel key={sessionId} {...props}></FaqPanel>
+    } else if (toolTabIndex == 'code') {
+        finalShowContent = <CodePanel {...props}></CodePanel>
     }
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
-    return <div className="h-full overflow-auto " style={{
+    return <div key={props.sessionId} className="h-full overflow-auto " style={{
         padding: '1px'
     }}>
         <Navbar>
@@ -165,7 +165,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                         loadingStatic ? "success" :
                             crtRuntimeStatus.processOK ? "success" :
                                 crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
-                    }  icon={
+                    } icon={
                         loadingStatic ? "changes" :
                             crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" :
                                 crtRuntimeStatus.processText ? "tick" :
@@ -202,7 +202,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                     <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(generalList)} />
 
                     <Tab id="faq" icon="manual" title={"FAQ"} />
-                    <Tab id="code" icon="code" title={Dot("JQEVK","Code")} />
+                    <Tab id="code" icon="code" title={Dot("JQEVK", "Code")} />
                     {/* <Tab id="wiki" icon="globe" title={"Wiki"} /> */}
                     <Tab id="output" icon={
                         crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "tick"

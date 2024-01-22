@@ -27,7 +27,7 @@
 import Operation from "../../../core/Operation.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
-import {alphabetName, ALPHABET_OPTIONS} from "../../../core/lib/Base85.mjs";
+import { alphabetName, ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";
 import { Dot } from "../../../../utils/TranslationUtils";
 
 /**
@@ -61,16 +61,16 @@ class ToBase85 extends Operation {
         ];
 
 
-        this.id='tobase85'
+        this.id = 'tobase85'
         this.name = Dot("M3ytc", "Encode {0}", "Base85");
         this.description = Dot(
-          "nodBw",
-          "This operation encodes raw data into an ASCII {0} string.",
-          "Base85"
+            "nodBw",
+            "This operation encodes raw data into an ASCII {0} string.",
+            "Base85"
         );
         this.exampleInput = "Hello World!";
-        this.exampleOutput = "SGVsbG8gV29ybGQh";
-    
+        this.exampleOutput = "87cURD]i,\"Ebo80";
+
     }
 
     /**
@@ -92,17 +92,17 @@ class ToBase85 extends Operation {
 
         if (input.length === 0) return "";
 
-        let block:number;
+        let block: number;
         for (let i = 0; i < input.length; i += 4) {
             block = (
-                ((input[i])          << 24) +
+                ((input[i]) << 24) +
                 ((input[i + 1] || 0) << 16) +
-                ((input[i + 2] || 0) << 8)  +
+                ((input[i + 2] || 0) << 8) +
                 ((input[i + 3] || 0))
             ) >>> 0;
 
             if (encoding !== "Standard" || block > 0) {
-                let digits:any = [];
+                let digits: any = [];
                 for (let j = 0; j < 5; j++) {
                     digits.push((block as any) % 85);
                     block = Math.floor(block / 85);

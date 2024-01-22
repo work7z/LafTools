@@ -45,7 +45,7 @@ import { TransformerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_outpu
 import ControlBar from "./ControlBar/index.tsx";
 import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
-import PanelMain from "./ProcessPanel/index.tsx";
+import ProcessPanel from "./ProcessPanel/index.tsx";
 import LibProcessEntryPoint from '../../../../../../../../lib/entrypoint'
 import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions/transformer_action";
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
@@ -277,7 +277,7 @@ export default (props: CommonTransformerProps) => {
           </Allotment.Pane>
           {isCollapsed_config ? '' :
             <Allotment.Pane>
-              <PanelMain crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></PanelMain>
+              <ProcessPanel crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
             </Allotment.Pane>
           }
         </Allotment>

@@ -28,6 +28,7 @@ import { usePromiseWait } from '../hooks'
 import { FAQItem } from '../../../../../../../../../lib/tools/faq/types'
 import _ from 'lodash'
 import { AnchorButton, Button } from '@blueprintjs/core'
+import { logutils } from '../../../../../../../../../utils/LogUtils'
 
 export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     // props.toolHandler
@@ -36,13 +37,15 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
         text: Dot("jhDoE", "Retrieving FAQ Data"),
         whenToStart: !_.isNil(props.toolHandler),
         promise: async () => {
+            onFaq([])
             if (!props.toolHandler) {
                 return;
             }
             let crt_faq = await props.toolHandler.getFAQ()
             onFaq(crt_faq)
         }
-    }, [props.toolHandler])
+    }, [props.toolHandler, props.sessionId])
+    logutils.debug("faq-log", props.sessionId, faq)
     if (loading) {
         return <div className="p-2">{progressText}</div>
     }
@@ -66,6 +69,19 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                 return <div key={i} className="transform transition-all hover:border-lime-600  dark:hover:border-lime-600  dark:border-slate-600 border-slate-200 border-[1px] rounded overflow-hidden shadow-md mb-2 px-4 py-4">
                     <div className="px-0 pb-2 font-bold text-md ">({i + 1}) {x.question}</div>
                     <div className="px-0 py-0">{x.answer}</div>
+                    {
+                        x.links && x.links.length > 0 && <div className="px-0 py-0">
+                            <ul className="text-sm">
+                                {
+                                    x.links.map((y, j) => {
+                                        return <li key={j}>
+                                            <a href={y.link} target='_blank'>[{j + 1}] {y.name}</a>
+                                        </li>
+                                    })
+                                }
+                            </ul>
+                        </div>
+                    }
                 </div>
             })
         }

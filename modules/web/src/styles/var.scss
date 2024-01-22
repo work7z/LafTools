@@ -18,28 +18,34 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-@import '@blueprintjs/colors/lib/scss/colors';
-@import 'allotment/dist/style.css';
+@import "@blueprintjs/colors/lib/scss/colors";
+@import "allotment/dist/style.css";
 
 // option:checked {
 //   background-color: -moz-html-cellhighlight !important;
 //   color: -moz-html-cellhighlighttext !important;
 // }
 
-.w-50p{
-  width:50%;
+.w-50p {
+  width: 50%;
+}
+
+.flex-tab {
+  .bp5-tab-panel {
+    flex: 1;
+  }
 }
 
 @font-face {
-  font-family: 'MyCustomFont';
+  font-family: "MyCustomFont";
   // src: url('/static/font/JetBrainsMono-Regular.woff2') format('woff2');
-  src: url('/static/font/JetBrainsMonoNL-Regular.ttf');
+  src: url("/static/font/JetBrainsMonoNL-Regular.ttf");
 }
 
 // .cm-editor,
 // .cm-editor *
 .cm-line {
-  font-family: 'MyCustomFont', fallback-fonts !important;
+  font-family: "MyCustomFont", fallback-fonts !important;
 }
 
 // :focus {
@@ -178,14 +184,13 @@ $common-border-color: #656a71 !default;
   }
 }
 @mixin fn-border-type-all() {
-  @include fn-border-type('left');
-  @include fn-border-type('right');
-  @include fn-border-type('top');
-  @include fn-border-type('bottom');
+  @include fn-border-type("left");
+  @include fn-border-type("right");
+  @include fn-border-type("top");
+  @include fn-border-type("bottom");
 }
-.common-border-left{
-  @include fn-border-type('left');
-
+.common-border-left {
+  @include fn-border-type("left");
 }
 @mixin fn-make-bg-color-align() {
   background-color: $appNavBgWhite;
@@ -198,11 +203,11 @@ $common-border-color: #656a71 !default;
 }
 
 .btm-border {
-  @include fn-border-type('bottom');
+  @include fn-border-type("bottom");
 }
 
 .btm-top {
-  @include fn-border-type('top');
+  @include fn-border-type("top");
 }
 
 .w100 {
