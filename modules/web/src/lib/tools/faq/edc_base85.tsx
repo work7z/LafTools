@@ -45,7 +45,7 @@ let faqForBase85: FAQItem[] = [
         answer: (
             <p>
                 <div dangerouslySetInnerHTML={{
-                    __html: Dot("p8e9n", "You can use libraries like 'base85' (<a href='https://www.npmjs.com/package/base85'>npm link</a>) or 'ascii85' (<a href='https://github.com/SheetJS/js-codec/tree/master/lib/ascii85'>GitHub link</a>) for Base85 encoding and decoding in JavaScript.")
+                    __html: Dot("p8eq9n", "You can use libraries like 'base85' or 'ascii85'  for Base85 encoding and decoding in JavaScript.")
                 }}>
                 </div><br />
                 {Dot("z5m6t", "Example usage: `const base85 = require('base85'); const encoded = base85.encode('your-data'); const decoded = base85.decode(encoded);`")}
@@ -66,8 +66,8 @@ let faqForBase85: FAQItem[] = [
         question: Dot("u1i2b", "What are the advantages of using Base85 over Base64 or Base32?"),
         answer: (
             <p>
-                {Dot("r9n8v", "The main advantage of Base85 is its improved space efficiency due to a larger character set (85 vs. 64 in Base64 or 32 in Base32).")} < br />
-                {Dot("k2m5e", "This results in shorter output strings for the same amount of input data, which can be beneficial in scenarios where minimizing size is critical.", "SPACE_EFFICIENCY")}
+                {Dot("r9qn8v", "The main advantage of Base85 is its improved space efficiency due to a larger character set (85 vs. 64 in Base64 or 32 in Base32).")} < br />
+                {Dot("k2em5e", "This results in shorter output strings for the same amount of input data, which can be beneficial in scenarios where minimizing size is critical.", "SPACE_EFFICIENCY")}
             </p>
         ),
         links: []

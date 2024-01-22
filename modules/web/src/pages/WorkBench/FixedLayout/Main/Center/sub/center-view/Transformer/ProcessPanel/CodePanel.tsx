@@ -103,7 +103,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
             </Tabs>
         </div>
         <div className="text-center mb-2 mt-4">
-            <AnchorButton target='_blank' minimal outlined href={'https://github.com/work7z/LafTools/issues'} intent="none" text={Dot("Ylq2X", "Error Correction")}></AnchorButton>
+            <AnchorButton target='_blank' minimal outlined href={`https://github.com/work7z/LafTools/blob/dev/modules/web/src/lib/tools/code/${props.extId}.tsx`} intent="none" text={Dot("Ylq2X", "Error Correction")}></AnchorButton>
         </div>
 
     </div>
