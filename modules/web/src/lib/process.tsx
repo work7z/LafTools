@@ -28,7 +28,7 @@ let LibIndex = {
       if (inst.inputType == "ArrayBuffer") {
         input = Utils.strToArrayBuffer(input);
       }
-      let result = inst.run(input, []);
+      let result = inst.run(input, inst.args);
       return {
         result: _.toString(result),
       };
