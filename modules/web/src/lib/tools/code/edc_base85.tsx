@@ -83,5 +83,4 @@ export default {
         ]
     },
 
-    // ... Continue with additional languages ...
 } as CodeImplMap;

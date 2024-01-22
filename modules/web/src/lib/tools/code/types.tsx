@@ -26,7 +26,7 @@ export type PopularLanguages = "node.js" | "python" | "java" | "csharp" | "cpp" 
 
 export const program_languages: LabelValuePair[] = [
     { label: "Java", value: "java" },
-    { label: "Node.js", value: "nodejs" },
+    { label: "Node.js", value: "node.js" },
     { label: "Python", value: "python" },
     { label: "C#", value: "csharp" },
     { label: "C++", value: "cpp" },

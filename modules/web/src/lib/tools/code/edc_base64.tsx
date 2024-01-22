@@ -4,7 +4,7 @@ import { CodeImplMap, CodeImplDetail, PopularLanguages } from './types'
 
 
 export default {
-  "nodejs": {
+  "node.js": {
     template: `const input = 'TEST12345';
 const encodedData = Buffer.from(input, 'utf8').toString('base64');
 const decodedData = Buffer.from(encodedData, 'base64').toString('utf8');
@@ -291,7 +291,7 @@ println(s"Encoded: $encodedData")
 println(s"Decoded: $decodedData")`,
     howToRunItTips: <p>{Dot("sBxHr", "Scala uses Java's built-in 'java.util.Base64' class for Base64 operations. Ensure you're running on a JVM platform with Java 8 or higher.")}</p>
   },
-  
+
   "perl": {
     template: `use MIME::Base64;
 

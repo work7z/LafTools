@@ -96,7 +96,7 @@ export default {
                 {Dot("j9s5r", "For C#, you can use the 'Base45' library available on NuGet.")}<br />
                 {Dot("p6e3n", "To install it, run `Install-Package Base45` in the Package Manager Console or add the dependency via NuGet Package Manager.")}
                 <br />
-                {Dot("z8m2t", "The library provides encoder and decoder classes for Base45 operations. Copy the template code into a C# console application and execute it after installing the package.")}
+                {Dot("z8qm2t", "The library provides encoder and decoder classes for Base45 operations. Copy the template code into a C# console application and execute it after installing the package.")}
             </p>
         )
     },

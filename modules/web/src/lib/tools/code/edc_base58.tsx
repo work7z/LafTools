@@ -101,7 +101,7 @@ Console.WriteLine(decoded);
                 {Dot("j9s5r", "For C#, use the 'NBitcoin' library to handle Base58 encoding and decoding.")}<br />
                 {Dot("p6e3n", "Install the package via NuGet by running `Install-Package NBitcoin` in Package Manager Console or add it through NuGet Package Manager.")}
                 <br />
-                {Dot("z8m2t", "After installation, copy the provided template into a C# console application and replace the placeholder with the actual encoded value before running the program.")}
+                {Dot("z8em2t", "After installation, copy the provided template into a C# console application and replace the placeholder with the actual encoded value before running the program.")}
             </p>
         )
     },

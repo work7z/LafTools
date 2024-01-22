@@ -948,6 +948,7 @@
     "z7t1p": "Base62'nin belirli varyantları var mı?",
     "z8m2t": "Base45 kullanmanın Base64 veya Base32'ye göre avantajları nelerdir?",
     "z8n6k": "'TEST12345'i istediğiniz dizeyle değiştirin, Base32 kodlama ve kod çözme sonuçlarını görmek için bu programı derleyin ve çalıştırın.",
+    "z8qm2t": "Kütüphane, Base45 işlemleri için kodlayıcı ve kod çözücü sınıfları sağlar. Şablon kodunu bir C# konsol uygulamasına kopyalayın ve paketi yükledikten sonra çalıştırın.",
     "z9b6n": "Bağımlılığı Swift Paket Yöneticisi ('https://github.com/krzyzanowskim/CryptoSwift') aracılığıyla Xcode projenize ekleyin.",
     "z9kVv": "Python, Base64 kodlama ve kod çözme yöntemleri sağlayan yerleşik bir 'base64' modülüne sahiptir. Giriş dizesi, Base64'e kodlanmadan önce UTF-8 kodlaması kullanılarak bayta dönüştürülür ve ardından orijinal biçimine geri döndürülür.",
     "z9t2p": "Base58'in belirli çeşitleri var mı?",
