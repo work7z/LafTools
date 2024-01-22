@@ -44,11 +44,13 @@ If the answer to any of the above is yes, then you should consider trying our to
 ### Preview(English):
 
 [Online Preview](http://cloud.laf-tools.com)
+![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-enus.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-1.png?raw=true)
 
 ### Preview(Simplified Chinese|简体中文):
 
 [在线预览](http://cloud.laf-tools.com)
+![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-zhcn.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-3.png?raw=true)
 
 # 🍀 Getting Started
