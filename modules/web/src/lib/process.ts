@@ -23,10 +23,12 @@ let LibIndex = {
     },
   ): Promise<ProcessReturnType> => {
     try {
-      // debugger;
       let inst = param.operation;
-      let ipt = originalValue;
-      let result = inst.run(ipt, []);
+      let input: any = originalValue;
+      if (inst.inputType == "ArrayBuffer") {
+        input = Utils.strToArrayBuffer(input);
+      }
+      let result = inst.run(input, []);
       return {
         result: _.toString(result),
       };

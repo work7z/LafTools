@@ -77,12 +77,26 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
                 } selectedTabId={tabId}>
                 {
                     _.map((_.filter(program_languages, x => code && code[x.value]) as LabelValuePair[]), x => {
-                        let o: CodeImplDetail = code && code[x.value]
+                        let o: CodeImplDetail | null = code && code[x.value]
+                        if (!o) { return '' }
                         return <Tabs.Tab key={x.value} id={x.value} title={x.label} panel={<div className='min-w-full w-full h-auto whitespace-nowrap'>
                             <div className='whitespace-normal min-w-full w-[80%] mb-2'>
                                 <Callout intent='none' icon="info-sign"  >
                                     {o.howToRunItTips}
-
+                                    {
+                                        o.links && <div className='mt-2'>
+                                            <b>{Dot("KcqrRr", "Reference")}</b>
+                                            <ul className='list-disc list-inside'>
+                                                {
+                                                    _.map(o.links, x => {
+                                                        return <li key={x.link}>
+                                                            <a href={x.link} target='_blank'>{x.name}</a>
+                                                        </li>
+                                                    })
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
                                 </Callout>
                             </div>
                             <div className={CSS_TW_LAYOUT_BORDER_LIGHTER + " min-w-full"}>

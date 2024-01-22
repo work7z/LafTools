@@ -46,7 +46,7 @@ import ControlBar from "./ControlBar/index.tsx";
 import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
 import ProcessPanel from "./ProcessPanel/index.tsx";
-import LibProcessEntryPoint from '../../../../../../../../lib/entrypoint'
+import LibProcessEntryPoint from '../../../../../../../../lib/process.ts'
 import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions/transformer_action";
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
 import gutils from "../../../../../../../../utils/GlobalUtils";

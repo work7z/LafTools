@@ -46,8 +46,9 @@ export const program_languages: LabelValuePair[] = [
 export type CodeImplDetail = {
     template: string,
     howToRunItTips: JSX.Element
+    links?: { link: string, name: string }[]
 }
 
 export type CodeImplMap = {
-    [key in PopularLanguages]: CodeImplDetail
+    [key: string]: CodeImplDetail
 }

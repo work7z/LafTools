@@ -47,14 +47,14 @@ class ToBase32 extends Operation {
         // new
         this.name = Dot("M3ytc", "Encode {0}", "Base32");
         this.description = Dot(
-          "BGd7dP9",
-          "This operation encodes raw data into an ASCII {0} string.",
-          "Base32"
-        );    
+            "BGd7dP9",
+            "This operation encodes raw data into an ASCII {0} string.",
+            "Base32"
+        );
 
         this.exampleOutput = "NBSWY3DPEB3W64TMMQ======";
         this.exampleInput = "hello world";
-    
+
         // new
         this.args = [
             {
@@ -72,6 +72,7 @@ class ToBase32 extends Operation {
      */
     run(input, args) {
         if (!input) return "";
+
         input = new Uint8Array(input);
 
         const alphabet = args[0] ? Utils.expandAlphRange(args[0]).join("") : "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567=";

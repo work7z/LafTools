@@ -24,7 +24,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SyncStateUtils from "../utils/SyncStateUtils";
 import { ToolDefaultOutputType, Val_ToolTabIndex } from "../types/purejs-types-EXPORT";
 import _ from "lodash";
-import { ProcessReturnType } from "../lib/entrypoint";
+import { ProcessReturnType } from "../lib/process";
 import { Dot } from "../utils/TranslationUtils";
 
 type RuntimeStatusState = {

@@ -20,7 +20,7 @@
 
 import { FN_GetDispatch, FN_GetState } from "../nocycle";
 import RuntimeStatusSlice from "../reducers/runtimeStatusSlice";
-import LibProcessEntryPoint from '../lib/entrypoint'
+import LibProcessEntryPoint from '../lib/process'
 import { ExtensionVM } from "../types/purejs-types-READ_ONLY";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "./bigtext_action";
 import gutils from "../utils/GlobalUtils";
@@ -103,6 +103,7 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
                 delete tmpLog[sessionId]
             }, 500)
         } catch (e) {
+            console.log(e)
             FN_GetDispatch()(FN_SetTextValueFromOutSideByBigTextId(outputBigTextId, "Error: " + gutils.getErrMsg(e)));
         }
     }

@@ -1,4 +1,5 @@
 import { Dot } from "../../../utils/TranslationUtils";
+import { CodeImplMap } from "./types";
 
 export default {
     "node.js": {
@@ -216,4 +217,4 @@ print("Decoded: \(String(data: decodedData, encoding: .utf8)!)")`,
             {Dot("s5e8r", "Replace 'TEST12345' with your actual data and run this snippet within a Swift application context to perform Base32 operations.")}
         </p>
     },
-}
+} as CodeImplMap
