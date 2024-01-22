@@ -136,6 +136,7 @@ import QueryUtils from "../../../../../../../../utils/QueryUtils";
 // import { ExtensionVM } from "../../../../../../../types/purejs-types-READ_ONLY";
 import UnknownPart from "../../../../../../../../containers/UnknownPart";
 import { ExtensionVM } from "../../../../../../../../types/purejs-types-READ_ONLY";
+import LoadingText from "../../../../../../../../components/LoadingText";
 
 export let getSessionId = (tabId: string | null | undefined): string => {
   if (!tabId) { return "unknown" }
@@ -154,20 +155,27 @@ export default () => {
   let sessionId = getSessionId(s.tabId);
   let extId = s.tabId || 'unknown'
 
-  let extQ = apiSlice.useGetToolExtDetailQuery({
-    extId: extId,
-    val_extensionIdRefreshMap_id: 1,
-  })
-  let r = QueryUtils.validateResult(extQ, {
-    label: Dot("tEiv_", "Retrieving Extension Detail"),
-  })
-  if (r) {
-    return r;
-  }
+  // let extQ = apiSlice.useGetToolExtDetailQuery({
+  //   extId: extId,
+  //   val_extensionIdRefreshMap_id: 1,
+  // })
+  // let r = QueryUtils.validateResult(extQ, {
+  //   label: Dot("tEiv_", "Retrieving Extension Detail"),
+  // })
+  // if (r) {
+  //   return r;
+  // }
 
-  let val_ExtensionVM: ExtensionVM = getAjaxResPayloadValue(extQ);
-  if (!val_ExtensionVM || !val_ExtensionVM.Layout) {
-    return <div>Unknown Extension: {extId}</div>
+  // let val_ExtensionVM: ExtensionVM = getAjaxResPayloadValue(extQ);
+  // if (!val_ExtensionVM || !val_ExtensionVM.Layout) {
+  //   return <div>Unknown Extension: {extId}</div>
+  // }
+  let val_ExtensionVM: ExtensionVM = {
+    Layout: 'form'
+  };
+
+  if(!val_ExtensionVM){
+    return <LoadingText></LoadingText>
   }
 
   let layoutMappings = {
@@ -176,7 +184,7 @@ export default () => {
   let UnknownPartWrap = (p: CommonTransformerPassProp) => {
     return <UnknownPart {...p} reason={Dot("d-qPr", "Unknown layout: {0}", val_ExtensionVM.Layout)} />
   }
-  let PickupPanel = layoutMappings[val_ExtensionVM.Layout] || UnknownPartWrap
+  let PickupPanel = layoutMappings[val_ExtensionVM.Layout || 'form'] || UnknownPartWrap
   let commonPassProp: CommonTransformerPassProp = {
     extId: extId,
     extVM: val_ExtensionVM,

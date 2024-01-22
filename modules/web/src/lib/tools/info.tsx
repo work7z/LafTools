@@ -45,6 +45,18 @@ let appToolInfoObj:{
     "edc_base32": passInfo({
         Label: Dot("gkqC8t", "Base32")
     }),
+    "edc_base45": passInfo({
+        Label: Dot("gkdqqC8t", "Base45")
+    }),
+    "edc_base58": passInfo({
+        Label: Dot("egkqC8t", "Base58")
+    }),
+    "edc_base62": passInfo({
+        Label: Dot("egkqCd8t", "Base62")
+    }),
+    "edc_base85": passInfo({
+        Label: Dot("e4Cd8t", "Base85")
+    }),
     // Example
     "Example": passInfo({
         Label: Dot("1X8x7", "Example")

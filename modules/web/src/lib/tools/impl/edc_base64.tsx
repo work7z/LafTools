@@ -20,8 +20,9 @@
 
 import { Dot } from "../../../utils/TranslationUtils";
 import Operation from "../../core/Operation.mjs";
-import FromBase64 from "../../core/impl/FromBase64.js";
-import ToBase64 from "../../core/impl/ToBase64.js";
+import FromBase64 from "./conversion/FromBase64.js";
+import ToBase64 from "./conversion/ToBase64.js";
+
 import { ToolHandler, ToolMetaInfo } from "../handler";
 
 export default class Base64Handler extends ToolHandler {

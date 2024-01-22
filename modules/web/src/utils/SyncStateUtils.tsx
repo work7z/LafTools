@@ -190,7 +190,8 @@ let SyncStateUtils = {
             if (usingSyncLocationParam && def.SyncLocationOnParameter) {
               if (ALL_NOCYCLE.history) {
                 let p = ALL_NOCYCLE.history.location
-                let newPathname = p.pathname + "?v=" + ("" + Date.now()).substring(7) + "&" + Qs.stringify((
+                // let newPathname = p.pathname + "?v=" + ("" + Date.now()).substring(7) + "&" + Qs.stringify((
+                  let newPathname = p.pathname + "?v=160701" + "&" + Qs.stringify((
                   _.pickBy({
                     ...Qs.parse(p.search.replace("?", "")) || {},
                     [def.SyncLocationOnParameter]: btoaUTF8((JSON.stringify({

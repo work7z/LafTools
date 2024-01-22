@@ -26,7 +26,7 @@
 
 import Operation from "../Operation.mjs";
 import otp from "otp";
-import ToBase32 from "./ToBase32.mjs";
+import ToBase32 from "../impl/ToBase32.js";
 
 /**
  * Generate HOTP operation

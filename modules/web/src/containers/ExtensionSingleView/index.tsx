@@ -197,100 +197,101 @@ let Footer = () => {
 };
 
 const InnerExtensionSingleView = (props: PassWProp) => {
-  let m_makeIt = exportUtils.useSelector((v) => {
-    return {
-      val_extensionIdRefreshMap: v.tool.extensionIdRefreshMap[props.extId + ""],
-    };
-  });
-  let val_extensionIdRefreshMap_id = m_makeIt.val_extensionIdRefreshMap;
+  //   let m_makeIt = exportUtils.useSelector((v) => {
+  //     return {
+  //       val_extensionIdRefreshMap: v.tool.extensionIdRefreshMap[props.extId + ""],
+  //     };
+  //   });
+  //   let val_extensionIdRefreshMap_id = m_makeIt.val_extensionIdRefreshMap;
 
-  let extDetailQuery = apiSlice.useGetToolExtDetailQuery(
-    { extId: props.extId + "", val_extensionIdRefreshMap_id },
-    { refetchOnMountOrArgChange: true }
-  );
+  //   let extDetailQuery = apiSlice.useGetToolExtDetailQuery(
+  //     { extId: props.extId + "", val_extensionIdRefreshMap_id },
+  //     { refetchOnMountOrArgChange: true }
+  //   );
 
-  let extStatusData = ExtHookUtils.useExtStatusData();
-  let sessionId = props.sessionId;
-  let extOp = ExtHookUtils.useExtOperator();
-  let dis = exportUtils.dispatch();
+  //   let extStatusData = ExtHookUtils.useExtStatusData();
+  //   let sessionId = props.sessionId;
+  //   let extOp = ExtHookUtils.useExtOperator();
+  //   let dis = exportUtils.dispatch();
 
-  let cachedVMValue: PropExtVMContext = useMemo(() => {
-    return {
-      inst: extDetailQuery.data?.payload?.value,
-    };
-  }, [[props.extId, props.sessionId, extDetailQuery.status].join("-")]);
+  //   let cachedVMValue: PropExtVMContext = useMemo(() => {
+  //     return {
+  //       inst: extDetailQuery.data?.payload?.value,
+  //     };
+  //   }, [[props.extId, props.sessionId, extDetailQuery.status].join("-")]);
 
-  let quickALL = ExtHookUtils.useQuickAll();
+  //   let quickALL = ExtHookUtils.useQuickAll();
 
-  useEffect(() => {
-    if (extStatusData == null) {
-      extOp.initExtStatusMap({
-        sessionId,
-        extId: props.extId,
-      });
-    }
-  }, [extStatusData]);
+  //   useEffect(() => {
+  //     if (extStatusData == null) {
+  //       extOp.initExtStatusMap({
+  //         sessionId,
+  //         extId: props.extId,
+  //       });
+  //     }
+  //   }, [extStatusData]);
 
-  let r = QueryUtils.validateResult(extDetailQuery, {
-    label: Dot("zwd4v", "Extension Detail"),
-  });
-  if (r) {
-    return r;
-  }
+  //   let r = QueryUtils.validateResult(extDetailQuery, {
+  //     label: Dot("zwd4v", "Extension Detail"),
+  //   });
+  //   if (r) {
+  //     return r;
+  //   }
 
-  if (extStatusData == null) {
-    return (
-      <NonIdealState
-        icon="exchange"
-        title={Dot("lzGS2", "Extension Detail")}
-        description={Dot("uFcDQ", "Initializing the statusdata...")}
-      />
-    );
-  }
+  //   if (extStatusData == null) {
+  //     return (
+  //       <NonIdealState
+  //         icon="exchange"
+  //         title={Dot("lzGS2", "Extension Detail")}
+  //         description={Dot("uFcDQ", "Initializing the statusdata...")}
+  //       />
+  //     );
+  //   }
 
-  if (!props.extId) {
-    return (
-      <NonIdealState
-        icon="error"
-        title={Dot("uV5Bi", "Unable to Load Extension")}
-        description={Dot("e--gB", "Extension ID is not provided.")}
-      />
-    );
-  }
-  let extensionVM = extDetailQuery.data?.payload.value;
-  gutils.ExposureIt("extensionVM", extensionVM, true);
+  //   if (!props.extId) {
+  //     return (
+  //       <NonIdealState
+  //         icon="error"
+  //         title={Dot("uV5Bi", "Unable to Load Extension")}
+  //         description={Dot("e--gB", "Extension ID is not provided.")}
+  //       />
+  //     );
+  //   }
+  //   let extensionVM = extDetailQuery.data?.payload.value;
+  //   gutils.ExposureIt("extensionVM", extensionVM, true);
 
-  return (
-    <ExtVMContext.Provider value={cachedVMValue}>
-      <div className="esv-w" key={val_extensionIdRefreshMap_id}>
-        <StatusBarInESV extId={props.extId} extensionVM={extensionVM} />
-        <ContentInESV extId={props.extId} extensionVM={extensionVM} />
-        <ExtraInfoESV extId={props.extId} extensionVM={extensionVM} />
-        <Footer></Footer>
-      </div>
-    </ExtVMContext.Provider>
-  );
-};
+  //   return (
+  //     <ExtVMContext.Provider value={cachedVMValue}>
+  //       <div className="esv-w" key={val_extensionIdRefreshMap_id}>
+  //         <StatusBarInESV extId={props.extId} extensionVM={extensionVM} />
+  //         <ContentInESV extId={props.extId} extensionVM={extensionVM} />
+  //         <ExtraInfoESV extId={props.extId} extensionVM={extensionVM} />
+  //         <Footer></Footer>
+  //       </div>
+  //     </ExtVMContext.Provider>
+  //   );
+  // };
 
-export default (props: { extId: string }) => {
-  const sessionId = useMemo(() => {
-    return props.extId + "_s1";
-  }, [props.extId]);
+  // export default (props: { extId: string }) => {
+  //   const sessionId = useMemo(() => {
+  //     return props.extId + "_s1";
+  //   }, [props.extId]);
 
-  let cachedCtxValue: PropExtSessionContext = useMemo(() => {
-    return {
-      extId: props.extId,
-      sessionId: sessionId,
-    };
-  }, [[props.extId, sessionId].join("-")]);
+  //   let cachedCtxValue: PropExtSessionContext = useMemo(() => {
+  //     return {
+  //       extId: props.extId,
+  //       sessionId: sessionId,
+  //     };
+  //   }, [[props.extId, sessionId].join("-")]);
 
-  return (
-    <ExtSessionContext.Provider value={cachedCtxValue}>
-      <InnerExtensionSingleView
-        key={sessionId}
-        extId={props.extId}
-        sessionId={sessionId}
-      />
-    </ExtSessionContext.Provider>
-  );
+  //   return (
+  //     <ExtSessionContext.Provider value={cachedCtxValue}>
+  //       <InnerExtensionSingleView
+  //         key={sessionId}
+  //         extId={props.extId}
+  //         sessionId={sessionId}
+  //       />
+  //     </ExtSessionContext.Provider>
+  //   );
+  return <div>test</div>
 };
