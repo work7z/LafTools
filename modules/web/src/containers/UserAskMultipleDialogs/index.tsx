@@ -88,6 +88,7 @@ import PageUtils from "../../utils/PageUtils";
 import { EachLang } from "../../types/purejs-types-READ_ONLY";
 import IDUtils from "../../utils/IDUtils";
 import { useHistory } from "react-router-dom";
+import { getFormattedLang } from "../../i18n";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;
@@ -173,9 +174,13 @@ export default (props: PassProps) => {
         panel: (
           <LanguagePanel
             onChange={(e) => {
-              let newValue = e.currentTarget.value;
-              logutils.debug("newvalue", newValue);
-              dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(newValue));
+              // let newValue = e.currentTarget.value;
+              // logutils.debug("newvalue", newValue);
+              // dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(newValue));
+              let splitArr = location.pathname.split("/")
+              let m = [...splitArr]
+              m[2] = getFormattedLang(newValue)
+              location.href = m.join("/")
             }}
             selectedValue={forgeObj?.lang || LANG_EN_US}
           />
@@ -714,9 +719,9 @@ export const LocalUserPanel: React.FC<
       {/* </FormGroup> */}
       <h1 className="text-center mt-0">{Dot("rQkas", "Welcome to LafTools")}</h1>
       <FormGroup label={Dot("YAAU3q", "Local Password")}
-      helperText={
-        Dot("2giYv","Test Password: {0}","1234")
-      }
+        helperText={
+          Dot("2giYv", "Test Password: {0}", "1234")
+        }
       >
         <PasswordInput
           large
@@ -793,14 +798,14 @@ export const LocalUserPanel: React.FC<
           {props.loadLeftPage}
         </div>
       )}
-      <Callout style={{marginTop:'20px'}}>
+      <Callout style={{ marginTop: '20px' }}>
         <p>
           <b>
-        {Dot("JYqxz2","Welcome to LafTools, this is an insider version.")}
-        </b>
+            {Dot("JYqxz2", "Welcome to LafTools, this is an insider version.")}
+          </b>
         </p>
         <p>
-          {Dot("_LFF3","Should you encounter any issue or have any suggestion while using LafTools, please feel free to contact us via EMail or GitHub at any time, we are willing to enhance it.")}
+          {Dot("_LFF3", "Should you encounter any issue or have any suggestion while using LafTools, please feel free to contact us via EMail or GitHub at any time, we are willing to enhance it.")}
         </p>
         <p><a href={'https://laf-tools.com'} target="_blank">https://laf-tools.com</a></p>
       </Callout>

@@ -52,8 +52,8 @@ class ToBase62 extends Operation {
           "This operation encodes raw data into an ASCII {0} string.",
           "Base62"
         );    
-        this.exampleInput = "hello world" ;
-        this.exampleOutput = "2Qz7V9";
+        this.exampleInput = "Hello World!" ;
+        this.exampleOutput = "T8dgcjRGkZ3aysdN";
 
 
 

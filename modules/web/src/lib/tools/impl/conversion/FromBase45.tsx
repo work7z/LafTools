@@ -70,7 +70,7 @@ class FromBase45 extends Operation {
       "Base45"
     );
     // example for base45
-    this.exampleInput = "%69 VD92EX0";
+    this.exampleInput = "%69 VD82EI2B.KESTC";
     this.exampleOutput = "Hello World!";
     // new
 

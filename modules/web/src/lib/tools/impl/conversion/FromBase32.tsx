@@ -57,8 +57,8 @@ class FromBase32 extends Operation {
       "Base32"
     );
     // example for base32
-    this.exampleInput = "JBSWY3DPEBLW64TMMQ======";
-    this.exampleOutput = "Hello World!";
+    this.exampleInput = "NBSWY3DPEB3W64TMMQ======";
+    this.exampleOutput = "hello world";
     // new
 
 

@@ -58,8 +58,10 @@ class ToBase45 extends Operation {
                   "This operation encodes raw data into an ASCII {0} string.",
                   "Base45"
                 );    
+
+                this.exampleOutput = "%69 VD82EI2B.KESTC";
                 this.exampleInput = "Hello World!";
-                this.exampleOutput = "UJCLQE7W581";
+            
                 // new
         
 

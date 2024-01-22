@@ -51,8 +51,10 @@ class ToBase32 extends Operation {
           "This operation encodes raw data into an ASCII {0} string.",
           "Base32"
         );    
-        this.exampleInput = "Hello World!";
-        this.exampleOutput = "JBSWY3DPEBLW64TMMQ======";    
+
+        this.exampleOutput = "NBSWY3DPEB3W64TMMQ======";
+        this.exampleInput = "hello world";
+    
         // new
         this.args = [
             {

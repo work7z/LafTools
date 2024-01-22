@@ -50,8 +50,8 @@ class ToBase58 extends Operation {
           "This operation encodes raw data into an ASCII {0} string.",
           "Base58"
         );    
-        this.exampleInput = "hello world" ;
-        this.exampleOutput = "StV1DL6CwTryKyV";
+        this.exampleInput = "Hello World!" ;
+        this.exampleOutput = "2NEpo7TZRRrLZSi2U";
 
 
         this.inputType = "ArrayBuffer";

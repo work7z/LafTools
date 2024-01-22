@@ -65,8 +65,10 @@ class FromBase62 extends Operation {
             "This operation decodes data from an ASCII string (with an alphabet of your choosing, presets included) back into its raw form.",
         );
         // example for from base62
-        this.exampleInput = "2Qz7V9";
-        this.exampleOutput = "hello world";
+
+        this.exampleOutput = "Hello World!" ;
+        this.exampleInput = "T8dgcjRGkZ3aysdN";
+
         // new
 
 
