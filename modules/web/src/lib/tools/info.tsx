@@ -21,7 +21,7 @@
 import { OneOf } from "protobufjs";
 import { Dot } from "../../utils/TranslationUtils";
 import { ToolHandler, ToolHandlerClass } from "./handler";
-import {FAQItem } from './faq/types'
+import { FAQItem } from './faq/types'
 import _ from "lodash";
 import { CodeImplMap } from "./code/types";
 
@@ -36,8 +36,8 @@ export type AppInfoType = {
 let passInfo = (obj: AppInfoType): AppInfoType => {
     return obj;
 }
-let appToolInfoObj:{
-    [key:string]:AppInfoType
+let appToolInfoObj: {
+    [key: string]: AppInfoType
 } = {
     "edc_base64": passInfo({
         Label: Dot("gkC8t", "Base64")
@@ -56,6 +56,9 @@ let appToolInfoObj:{
     }),
     "edc_base85": passInfo({
         Label: Dot("e4Cd8t", "Base85")
+    }),
+    "md5": passInfo({
+        Label: "MD5"
     }),
     // Example
     "Example": passInfo({

@@ -48,7 +48,7 @@ let AppCategory: ToolCategory[] = [
         ChildrenIdSet: [
           // "md2",
           // "md4",
-          // "md5",
+          "md5",
           // "sha1",
           // "sha224",
           // "sha256",

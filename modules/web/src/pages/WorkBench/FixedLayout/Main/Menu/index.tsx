@@ -120,6 +120,7 @@ import AlertUtils from "../../../../../utils/AlertUtils";
 import { useGetI18nLangList } from "../../../../../containers/UserAskMultipleDialogs";
 import TokenUtils from "../../../../../utils/TokenUtils";
 import { useCloudLoginStatus } from "../../../../../hook/login-hook";
+import { getFormattedLang } from "../../../../../i18n";
 
 type PassProp = {
   leftPart?: JSX.Element;
@@ -424,19 +425,29 @@ export let WB_MenuBar = (props: PassProp) => {
                       text={x.label}
                       key={x.value}
                       onClick={() => {
-                        TranslationUtils.CurrentLanguage = x.value + "";
-                        TranslationUtils.ForcbilyLanguage = x.value + ""
-                        dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(x.value + ""));
-                        // AlertUtils.win_alert({
-                        //   id:"ksk12219s",
-                        //   msg:
-                        // })
-                        AlertUtils.popMsg("success", {
-                          message: Dot(
-                            "k1k239q",
-                            "Please reload page or restart app to apply this change.",
-                          ),
-                        });
+
+
+                        let newValue = x.value + "";
+                        let splitArr = location.pathname.split("/")
+                        let m = [...splitArr]
+                        m[2] = getFormattedLang(newValue)
+                        location.replace(m.join("/") + "" + location.search)
+                        // location.reload()
+
+
+                        // TranslationUtils.CurrentLanguage = x.value + "";
+                        // TranslationUtils.ForcbilyLanguage = x.value + ""
+                        // dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(x.value + ""));
+                        // // AlertUtils.win_alert({
+                        // //   id:"ksk12219s",
+                        // //   msg:
+                        // // })
+                        // AlertUtils.popMsg("success", {
+                        //   message: Dot(
+                        //     "k1k239q",
+                        //     "Please reload page or restart app to apply this change.",
+                        //   ),
+                        // });
                       }}
                       intent={
                         x.value == TranslationUtils.CurrentLanguage

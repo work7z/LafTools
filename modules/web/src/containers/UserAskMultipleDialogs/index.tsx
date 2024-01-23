@@ -174,13 +174,12 @@ export default (props: PassProps) => {
         panel: (
           <LanguagePanel
             onChange={(e) => {
-              // let newValue = e.currentTarget.value;
-              // logutils.debug("newvalue", newValue);
-              // dis(ACTION_UPDATE_LANG_AND_APPLY_CHANGE(newValue));
+              let newValue = e.currentTarget.value;
               let splitArr = location.pathname.split("/")
               let m = [...splitArr]
               m[2] = getFormattedLang(newValue)
-              location.href = m.join("/")
+              location.replace(m.join("/"))
+              location.reload()
             }}
             selectedValue={forgeObj?.lang || LANG_EN_US}
           />

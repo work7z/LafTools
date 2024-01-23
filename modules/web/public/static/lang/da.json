@@ -606,7 +606,6 @@
     "jhDoE": "Henter FAQ-data",
     "jlxvpk": "koreansk",
     "k17PG": "Websocket-forbindelse lukket.",
-    "k1k239q": "Genindlæs siden eller genstart appen for at anvende denne ændring.",
     "k1m4e": "Den tilbyder dog ikke helt den samme pladseffektivitet som Base64 eller Base32, da den bruger færre tegn i alfabetet.",
     "k2SVY": "af",
     "k2em5e": "Dette resulterer i kortere outputstrenge for den samme mængde inputdata, hvilket kan være fordelagtigt i scenarier, hvor minimering af størrelse er kritisk.",
