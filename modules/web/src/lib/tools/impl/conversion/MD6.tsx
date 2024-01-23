@@ -78,11 +78,12 @@ class MD6 extends Operation {
    * @returns {string}
    */
   run(input, args) {
+
     const [size, levels, key] = args;
 
     if (size < 0 || size > 512)
-      throw new OperationError("Size must be between 0 and 512");
-    if (levels < 0) throw new OperationError("Levels must be greater than 0");
+      throw new OperationError(Dot("CFg8B", "Size must be between 0 and 512"));
+    if (levels < 0) throw new OperationError(Dot("DqFI5", "Levels must be greater than 0"));
 
     return NodeMD6.getHashOfText(input, size, key, levels);
   }

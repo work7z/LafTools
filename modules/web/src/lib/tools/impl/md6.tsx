@@ -1,7 +1,7 @@
 
 import { Dot } from "../../../utils/TranslationUtils.js";
 import Operation from "../../core/Operation.mjs";
-import md5 from "./conversion/MD6.tsx";
+import hashfn from "./conversion/MD6.tsx";
 import { ToolHandler, ToolMetaInfo } from "../handler.js";
 
 export default class Base64Handler extends ToolHandler {
@@ -9,7 +9,7 @@ export default class Base64Handler extends ToolHandler {
         return {
             exampleType: "text-short",
             description: Dot(
-                "EEQkW",
+                "EEQkeW",
                 "The MD6 (Message-Digest 6) algorithm is a cryptographic hash function. It uses a Merkle tree-like structure to allow for immense parallel computation of hashes for very long inputs."
             ),
             infoURL: "https://wikipedia.org/wiki/MD6"
@@ -18,7 +18,7 @@ export default class Base64Handler extends ToolHandler {
     getOperations(): Operation[] {
         return (
             [
-                new md5(),
+                new hashfn(),
             ]
         )
     }

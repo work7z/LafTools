@@ -173,6 +173,11 @@ export default (props: CommonTransformerProps) => {
     let timer = setInterval(loopFn, 89);
     (async () => {
       try {
+        // for CyberChef LEGACY CODE BEGIN
+        window["_hash"] = null;
+        // for CyberChef LEGACY CODE END
+
+
         onLoadError(null)
         setLoadingProgressRate(0)
         setLoadingStatic(true)
@@ -189,6 +194,8 @@ export default (props: CommonTransformerProps) => {
         window.clearInterval(timer)
         setLoadingStatic(false)
       } catch (e) {
+        debugger;
+        logutils.error('loading-Transformer', e)
         let anyError = gutils.getErrMsg(e)
         onLoadError(anyError)
         window.clearInterval(timer)
