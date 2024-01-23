@@ -417,13 +417,30 @@ export default (props: {
             }}
             expanded={selectExpandFavouriteObj.expanded || []}
             selected={selectExpandFavouriteObj.selected || []}
-            onExpandedChange={(value) => {
+            onExpandedChange={(value, newValId) => {
               logutils.log("expanded log", value)
+              let newValue: string[] = []
+              let isCurrentNewValInExtList = _.findIndex(extsList, eachExt => eachExt.Id == newValId) != -1
+              if (isCurrentNewValInExtList) {
+                _.forEach(value, x => {
+                  if (newValId == x) {
+                    newValue.push(x)
+                    return
+                  }
+                  if (_.findIndex(extsList, eachExt => eachExt.Id == x) != -1) {
+                    // ignore it
+                  } else {
+                    newValue.push(x)
+                  }
+                })
+              } else {
+                newValue = value
+              }
               dis(
                 WorkspaceSlice.actions.mergeTabPart({
                   name: 'tools',
                   value: {
-                    expanded: value,
+                    expanded: newValue,
                   }
                 })
               );

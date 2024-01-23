@@ -84,7 +84,7 @@ let { cloneDeep } = _;
 type PassProp = {
   expanded: string[];
   selected: string[];
-  onExpandedChange: (newVal: string[]) => any;
+  onExpandedChange: (newVal: string[], valId: string | null) => any;
   onSelectedChange: (newVal: string[]) => any;
   cacheId: string;
   needShowCountChildren?: boolean;
@@ -282,11 +282,13 @@ export default (props: PassProp) => {
                   props.onExpandedChange(
                     _.filter(props.expanded, (x) => {
                       return x != node.id;
-                    })
+                    }),
+                    null
                   );
                 } else {
                   props.onExpandedChange(
-                    _.uniq([...(props.expanded || []), node.id]) as any
+                    _.uniq([...(props.expanded || []), node.id]) as any,
+                    node.id + ""
                   );
                 }
                 if (!_.isNil(e)) {
@@ -307,12 +309,13 @@ export default (props: PassProp) => {
               props.onExpandedChange(
                 _.filter(props.expanded, (x) => {
                   return x != obj.id;
-                })
+                }),
+                null
               );
             }}
             onNodeExpand={(obj) => {
               let fin = _.uniq([...(props.expanded || []), obj.id]) as string[];
-              props.onExpandedChange(fin);
+              props.onExpandedChange(fin, obj.id + "");
             }}
             className={Classes.ELEVATION_0}
           />
