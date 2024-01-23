@@ -23,8 +23,12 @@ import { RootState } from "../store";
 import { useMemo } from "react";
 import _ from "lodash";
 import TokenUtils from "./TokenUtils";
+import TranslationUtils from "./TranslationUtils";
 
 const exportUtils = {
+  refresh_lang: (): any[] => {
+    return [TranslationUtils.CurrentLanguage]
+  },
   refresh_v1: () => {
     return {
       v: exportUtils.useSelector((val) => val.system.RefreshID),
@@ -35,7 +39,7 @@ const exportUtils = {
     return { refetchOnMountOrArgChange: true };
   },
   refresh_v2_only_for_user: () => {
-    return { skip:_.trim(TokenUtils.getLocalUserId()||"")=='' };
+    return { skip: _.trim(TokenUtils.getLocalUserId() || "") == '' };
   },
   resize_factors: (): number[] => {
     return exportUtils.useSelector((val) => {

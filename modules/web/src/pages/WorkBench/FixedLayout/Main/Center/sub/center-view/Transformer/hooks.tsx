@@ -26,13 +26,13 @@ import {
     FnPureToolDefinition,
 } from "../../../../../../../../types/workbench-types";
 import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
-import { Dot } from "../../../../../../../../utils/TranslationUtils";
+import TranslationUtils, { Dot } from "../../../../../../../../utils/TranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
 import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";
 import { FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
@@ -41,8 +41,8 @@ import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 
 import { CommonTransformerProps } from "./types";
-import { ExtensionAction, ExtensionInfo, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
-import AppCategory from "../../../../../../../../lib/tools/category";
+import { ExtensionAction, ExtensionInfo, ToolCategory, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
+import fn_AppCategory from "../../../../../../../../lib/tools/category";
 import { ListExtForTheCategoryRes } from "../../../../../../../../reducers/apiSlice";
 import appToolInfoObj from "../../../../../../../../lib/tools/info";
 import ActionButton from "../../../../../../../../components/ActionButton";
@@ -69,9 +69,9 @@ export let fn_coll_output = (sessionId) => {
 
 export let usePromiseWait = (obj: {
     text: string,
-    whenToStart:boolean,
+    whenToStart: boolean,
     promise: () => Promise<any>,
-},deps: any[]): { loading: boolean, progressText: string } => {
+}, deps: any[]): { loading: boolean, progressText: string } => {
     let [errorMsg, onErrorMsg] = useState<string | null>(null)
     let [loadingStatic, setLoadingStatic] = useState(true)
 
@@ -81,7 +81,7 @@ export let usePromiseWait = (obj: {
     let progressText = loadingStatic ? `${obj.text} ${loadingProgressRate.toFixed(2)}%...` : obj.text;
     // increment percentage randomly, and mark its loading  as false if success, or set errorMsg if having error 
     useEffect(() => {
-        if(!obj.whenToStart){
+        if (!obj.whenToStart) {
             return;
         }
         let tmp_loadingProgressRate = 0
@@ -115,7 +115,7 @@ export let usePromiseWait = (obj: {
         return () => {
             window.clearInterval(timer)
         }
-    }, [...deps,obj.whenToStart])
+    }, [...deps, obj.whenToStart])
 
     if (loadError) {
         loadingStatic = false
@@ -127,11 +127,17 @@ export let usePromiseWait = (obj: {
     }
 }
 
+let useGetAppCategory = (): ToolCategory[] => {
+    return useMemo(() => {
+        return fn_AppCategory()
+    }, [...exportUtils.refresh_lang()]);
+}
 
 export let useExtsList = (fc: string): ListExtForTheCategoryRes[] => {
     let arr: ListExtForTheCategoryRes[] = []
     let isAll = fc == 'all';
-    AppCategory.forEach(x => {
+    let appCategory = useGetAppCategory()
+    appCategory.forEach(x => {
         if (isAll || x.Id == fc) {
             x.SubCategories.forEach(xx => {
                 let obj = {
@@ -158,7 +164,8 @@ export let useExtsList = (fc: string): ListExtForTheCategoryRes[] => {
 }
 
 export let useGetCategoryList = (): FnPureToolDefinition[] => {
-    return AppCategory.map(x => {
+    let appCategory = useGetAppCategory()
+    return appCategory.map(x => {
         return {
             Id: x.Id,
             Label: x.Label,

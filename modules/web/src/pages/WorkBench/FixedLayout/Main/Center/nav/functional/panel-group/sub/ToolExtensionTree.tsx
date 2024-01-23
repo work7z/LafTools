@@ -201,6 +201,7 @@ export default (props: {
     workspaceDataForTree.favourites,
     treeInfo.updateId,
     _.size(treeInfo.nodes),
+    ...exportUtils.refresh_lang()
   ]);
 
   let m_ws = useMergeParamWithWorkSpace();
@@ -224,7 +225,7 @@ export default (props: {
 
   useEffect(() => {
     dis(ToolSlice.actions.updateSubCategoryTreeRemarks(fn_calculate_fav()));
-  }, [(favoritesList || []).join("-")]);
+  }, [(favoritesList || []).join("-"), ...exportUtils.refresh_lang()]);
 
   useEffect(() => {
     dis(
@@ -271,7 +272,7 @@ export default (props: {
         ],
       })
     );
-  }, [fc]);
+  }, [fc, ...exportUtils.refresh_lang()]);
 
   let activeExt: TreeNodeInfo | null =
     useMemo<TreeNodeInfo | null>((): TreeNodeInfo | null => {
