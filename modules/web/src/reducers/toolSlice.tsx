@@ -55,12 +55,6 @@ const ToolSlice = createSlice({
       state.subCategoryTreeInfo = action.payload;
       state.subCategoryTreeInfo.updateId = new Date().getTime() + " ";
     },
-    updateSubCategoryForSelected(
-      state: ToolState,
-      action: PayloadAction<string[]>
-    ) {
-      state.subCategoryTreeInfo.selected = action.payload;
-    },
     updateSubCategoryTreeRemarks(
       state: ToolState,
       action: PayloadAction<TreeNodeInfo>

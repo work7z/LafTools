@@ -70,7 +70,7 @@ export const SQ = "'";
 export const DQ = '"';
 export const AT = "`";
 
- // by default, the first user is working with root permission
+// by default, the first user is working with root permission
 export const LAFTOOLS_DEFAULT_USERNAME = "root"
 
 // concurrency 
@@ -132,10 +132,8 @@ export type PayloadListData<T> = { payload: { list: T[] } };
 export type PayloadValueData<T> = { payload: { value: T } };
 
 export type TreeWrapInfo = {
-  updateId: string;
+  updateId?: string;
   nodes: TreeNodeInfo[];
-  selected?: string[];
-  expanded?: string[];
 };
 
 export type LocalResponse = {};

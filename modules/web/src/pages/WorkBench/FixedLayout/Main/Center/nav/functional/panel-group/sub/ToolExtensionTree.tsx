@@ -129,38 +129,13 @@ export default (props: {
   let sq = useSearchQuery();
   const [updateMemStatus, onUpdateMemStatus] = useState(0);
   let fc = sq.fc || "all";
-  // let extsListQuery = apiSlice.useGetToolCategoryExtsListQuery(
-  //   { categoryId: fc },
-  //   {
-  //     refetchOnMountOrArgChange: false,
-  //   }
-  // );
+
   let dis = exportUtils.dispatch();
-  let toolParam = {
-    category: fc,
-    extId: "", // TODO: patch extId
-  };
+
   let treeInfo = exportUtils.useSelector((x) => x.tool.subCategoryTreeInfo);
   let hist = RouteUtils.useHistory();
   let extsList = useExtsList(fc)
-  let goWithChildId = (childId) => {
-    // if (!_.isNil(childId)) {
-    //   hist.push(`${URL_WORKBENCH_TOOLS}/${currentCategoryId}/${childId}`);
-    //   dis(ToolSlice.actions.updateSubCategoryForSelected([childId]));
-    // }
-  };
-  useEffect(() => {
-    // if (gutils.empty(toolParam.extId)) {
-    //   if (!_.isEmpty(extsList)) {
-    //     let firstItem = _.first(extsList);
-    //     // check if firstItem and its childrenAsInfo[0] exist, if yes, then read their Id
-    //     if (!_.isNil(firstItem)) {
-    //       let childId = _.first(firstItem.ChildrenAsInfo)?.Id;
-    //       goWithChildId(childId);
-    //     }
-    //   }
-    // }
-  }, [fc]);
+
 
   let workspaceDataForTree = exportUtils.useSelector((v) => {
     return {
@@ -196,7 +171,6 @@ export default (props: {
     return tmp;
   }, [
     updateMemStatus,
-    // extsListQuery.status,
     fc,
     workspaceDataForTree.favourites,
     treeInfo.updateId,
@@ -204,11 +178,8 @@ export default (props: {
     ...exportUtils.refresh_lang()
   ]);
 
-  let m_ws = useMergeParamWithWorkSpace();
-
   let fn_calculate_fav = (): TreeNodeInfo => {
     return {
-      // add item for Remarks
       id: "Remarks",
       label: Dot("IfsdGO", "Favourites"),
       icon: "star",
@@ -227,30 +198,20 @@ export default (props: {
     dis(ToolSlice.actions.updateSubCategoryTreeRemarks(fn_calculate_fav()));
   }, [(favoritesList || []).join("-"), ...exportUtils.refresh_lang()]);
 
+  // update tree info
   useEffect(() => {
+    let expandedList = [
+      _.first(
+        _.map(
+          extsList || [],
+          (x, d, n) => {
+            return x.Id;
+          }
+        )
+      ),
+    ]
     dis(
       ToolSlice.actions.updateSubCategoryTreeInfo({
-        updateId: new Date().getTime() + "",
-        expanded: [
-          _.first(
-            _.map(
-              _.filter(extsList, (x2) => {
-                return (
-                  _.findIndex(
-                    x2.ChildrenAsInfo,
-                    (ix2) => ix2.Id == toolParam.extId
-                  ) != -1
-                );
-              }) || [],
-              (x, d, n) => {
-                return x.Id;
-              }
-            )
-          ),
-        ] as any,
-        selected: !_.isNil(toolParam.extId)
-          ? ([toolParam.extId] as string[])
-          : [],
         nodes: [
           fn_calculate_fav(),
           ..._.map(extsList || [], (x, d, n) => {
@@ -274,44 +235,8 @@ export default (props: {
     );
   }, [fc, ...exportUtils.refresh_lang()]);
 
-  let activeExt: TreeNodeInfo | null =
-    useMemo<TreeNodeInfo | null>((): TreeNodeInfo | null => {
-      let findObj: TreeNodeInfo | null = null;
-      if (treeInfo == null) return null;
-      if (treeInfo.nodes == null) return null;
-      // logutils.info(
-      //   "check all nodes",
-      //   treeInfo.nodes + ", findObj is",
-      //   findObj
-      // );
-      _.find(treeInfo.nodes, (x) => {
-        logutils.info("check node", x);
-        _.find(x.childNodes, (xx) => {
-          if (xx.id == toolParam.extId) {
-            findObj = xx;
-          }
-          return findObj != null;
-        });
-        return findObj != null;
-      });
-      return findObj;
-    }, [
-      treeInfo.updateId,
-      toolParam.extId,
-      toolParam.category,
-      fc,
-      _.size(treeInfo.nodes),
-    ]);
-
-  gutils.ExposureIt("activeExt", activeExt, true);
   let activeOne = props.activeOne;
 
-  // let r = QueryUtils.validateResult(extsListQuery, {
-  //   label: Dot("CWohyqde", "Tools"),
-  // });
-  // if (!_.isNil(r)) {
-  //   return r;
-  // }
 
   if (_.isNil(activeOne)) {
     return (
