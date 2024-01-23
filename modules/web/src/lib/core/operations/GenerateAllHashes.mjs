@@ -27,10 +27,10 @@
 
 import Operation from "../Operation.mjs";
 import Utils from "../Utils.mjs";
-import MD2 from "./MD2.mjs";
-import MD4 from "./MD4.mjs";
+import MD2 from "../../tools/impl/conversion/MD2.js";
+import MD4 from "../../tools/impl/conversion/MD4.js";
 import MD5 from "../../tools/impl/conversion/MD5.js";
-import MD6 from "./MD6.mjs";
+import MD6 from "../../tools/impl/conversion/MD6.js";
 import SHA0 from "./SHA0.mjs";
 import SHA1 from "./SHA1.mjs";
 import SHA2 from "./SHA2.mjs";

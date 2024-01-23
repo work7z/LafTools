@@ -1,7 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf
+// Author: LafTools Team - FX <work7z@outlook.com>
+// Ryan Laf <work7z@outlook.com>
 // Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
@@ -29,31 +30,39 @@ import Operation from "../../../core/Operation.mjs";
 import { runHash } from "../../../core/lib/Hash.mjs";
 
 /**
- * MD5 operation
+ * MD2 operation
  */
-class MD5 extends Operation {
+class MD2 extends Operation {
   /**
-   * MD5 constructor
+   * MD2 constructor
    */
   constructor() {
     super();
 
-    this.name = "MD5";
+    this.name = "MD2";
     this.module = "Crypto";
-    // this.infoURL = "";
     this.inputType = "ArrayBuffer";
     this.outputType = "string";
-    this.args = [];
+    this.args = [
+      {
+        name: "Rounds",
+        type: "number",
+        value: 18,
+        min: 0,
+      },
+    ];
 
-    this.id = 'md5'
-    this.name = Dot("md5.textiDjMIo", "Generate {0} Hash", "MD5");
+
+    this.id = 'md2'
+    this.name = Dot("md2.text.192d3", "Generate {0} Hash", "MD2");
     this.description = Dot(
-      "md5.desc.rxsHq",
+      "md2.desc.1039",
       "This operation hashes data into an {0} hash.",
-      "MD5"
+      "MD2"
     );
     this.exampleInput = "Hello World!"
-    this.exampleOutput = "ed076287532e86365e841e92bfc50d8c"
+    this.exampleOutput = "da853b0d3f88d99b30283a69e6ded6bb";
+
   }
 
   /**
@@ -62,8 +71,8 @@ class MD5 extends Operation {
    * @returns {string}
    */
   run(input, args) {
-    return runHash("md5", input);
+    return runHash("md2", input, { rounds: args[0] });
   }
 }
 
-export default MD5;
+export default MD2;

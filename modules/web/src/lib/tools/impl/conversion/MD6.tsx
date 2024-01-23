@@ -1,8 +1,7 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
 // Date: Sun, 14 Jan 2024
-// Author: LafTools Team - FX <work7z@outlook.com>
-// Ryan Laf <work7z@outlook.com>
+// Second Author: Ryan Laf
 // Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
@@ -25,46 +24,68 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
-import { runHash } from "../lib/Hash.mjs";
+import { Dot } from "../../../../utils/TranslationUtils";
+import Operation from "../../../core/Operation.mjs";
+import OperationError from "../../../core/errors/OperationError.mjs";
+import NodeMD6 from "node-md6";
 
 /**
- * MD2 operation
+ * MD6 operation
  */
-class MD2 extends Operation {
+class MD6 extends Operation {
   /**
-   * MD2 constructor
+   * MD6 constructor
    */
   constructor() {
     super();
 
-    this.name = "MD2";
+    this.name = "MD6";
     this.module = "Crypto";
-    this.description = Dot(
-      "rYSpw",
-      "The MD2 (Message-Digest 2) algorithm is a cryptographic hash function developed by Ronald Rivest in 1989. The algorithm is optimized for 8-bit computers.<br><br>Although MD2 is no longer considered secure, even as of 2014, it remains in use in public key infrastructures as part of certificates generated with MD2 and RSA. The message digest algorithm consists, by default, of 18 rounds.",
-    );
-    this.infoURL = "https://wikipedia.org/wiki/MD2_(cryptography)";
-    this.inputType = "ArrayBuffer";
+    this.inputType = "string";
     this.outputType = "string";
     this.args = [
       {
-        name: "Rounds",
+        name: "Size",
         type: "number",
-        value: 18,
-        min: 0,
+        value: 256,
+      },
+      {
+        name: "Levels",
+        type: "number",
+        value: 64,
+      },
+      {
+        name: "Key",
+        type: "string",
+        value: "",
       },
     ];
+
+    this.id = 'md6'
+    this.name = Dot("md6.text.192d3", "Generate {0} Hash", "MD6");
+    this.description = Dot(
+      "md6.desc.1039",
+      "This operation hashes data into an {0} hash.",
+      "MD6"
+    );
+    this.exampleInput = "Hello World!"
+    this.exampleOutput = "cb70e1d7788af65e7a2cd8568d8d294e6fea3457bb6db4441787a2dbb3e5b1b8";
   }
 
   /**
-   * @param {ArrayBuffer} input
+   * @param {string} input
    * @param {Object[]} args
    * @returns {string}
    */
   run(input, args) {
-    return runHash("md2", input, { rounds: args[0] });
+    const [size, levels, key] = args;
+
+    if (size < 0 || size > 512)
+      throw new OperationError("Size must be between 0 and 512");
+    if (levels < 0) throw new OperationError("Levels must be greater than 0");
+
+    return NodeMD6.getHashOfText(input, size, key, levels);
   }
 }
 
-export default MD2;
+export default MD6;

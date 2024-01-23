@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,38 +24,47 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
-import {runHash} from "../lib/Hash.mjs";
+import { Dot } from "../../../../utils/TranslationUtils";
+import Operation from "../../../core/Operation.mjs";
+import { runHash } from "../../../core/lib/Hash.mjs";
 
 /**
  * MD4 operation
  */
 class MD4 extends Operation {
+  /**
+   * MD4 constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * MD4 constructor
-     */
-    constructor() {
-        super();
+    this.name = "MD4";
+    this.module = "Crypto";
+    this.inputType = "ArrayBuffer";
+    this.outputType = "string";
+    this.args = [];
 
-        this.name = "MD4";
-        this.module = "Crypto";
-        this.description = "The MD4 (Message-Digest 4) algorithm is a cryptographic hash function developed by Ronald Rivest in 1990. The digest length is 128 bits. The algorithm has influenced later designs, such as the MD5, SHA-1 and RIPEMD algorithms.<br><br>The security of MD4 has been severely compromised.";
-        this.infoURL = "https://wikipedia.org/wiki/MD4";
-        this.inputType = "ArrayBuffer";
-        this.outputType = "string";
-        this.args = [];
-    }
 
-    /**
-     * @param {ArrayBuffer} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        return runHash("md4", input);
-    }
+    this.id = 'md4'
+    this.name = Dot("md4.text.192d3", "Generate {0} Hash", "MD4");
+    this.description = Dot(
+      "md4.desc.1039",
+      "This operation hashes data into an {0} hash.",
+      "MD4"
+    );
+    this.exampleInput = "Hello World!"
+    this.exampleOutput = "db346d691d7acc4dcdf1400d8786f7ab";
 
+  }
+
+  /**
+   * @param {ArrayBuffer} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    return runHash("md4", input);
+  }
 }
 
 export default MD4;
