@@ -67,7 +67,7 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../../../../../../../nocycle";
+import { APPINFOJSON, FN_GetDispatch, delayFN } from "../../../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -118,43 +118,44 @@ import {
 import RouteUtils from "../../../../../../../../../utils/RouteUtils";
 import ToolSlice from "../../../../../../../../../reducers/toolSlice";
 import MottoLine from "../../../../../../../../../components/MottoLine";
-import GenTree from "../../../../../../../../../components/GenTree";
+import GenTree, { TREE_ROOT_ID_PREFIX } from "../../../../../../../../../components/SystemNavTree";
 import { FnPureToolDefinition } from "../../../../../../../../../types/workbench-types";
 import WorkspaceSlice from "../../../../../../../../../reducers/workspaceSlice";
-import { useExtsList } from "../../../../sub/center-view/Transformer/hooks";
+import { useExtsList, useGetAppCategory, useGetCategoryList } from "../../../../sub/center-view/Transformer/hooks";
 
 export default (props: {
   activeOne: FnPureToolDefinition | undefined;
 }): any => {
+  let category = useGetAppCategory()
   let sq = useSearchQuery();
   const [updateMemStatus, onUpdateMemStatus] = useState(0);
   let fc = sq.fc || "all";
 
   let dis = exportUtils.dispatch();
 
-  let treeInfo = exportUtils.useSelector((x) => x.tool.subCategoryTreeInfo);
+  let treeNodeData = exportUtils.useSelector((x) => x.tool.subCategoryTreeInfo);
   let hist = RouteUtils.useHistory();
   let extsList = useExtsList(fc)
 
-
-  let workspaceDataForTree = exportUtils.useSelector((v) => {
+  let selectExpandFavouriteObj = exportUtils.useSelector((v) => {
     return {
+      initialized: v.workspace.tools.initialized,
       expanded: v.workspace.tools.expanded,
       selected: v.workspace.tools.selected,
       favourites: v.workspace.tools.favourites,
     };
   });
-  let list = extsList;
+  let extsList2 = extsList;
 
   let favoritesList: ExtensionInfo[] = useMemo(() => {
     let existSet = new Set();
     // select items in each of list.ChildrenAsInfo by matching if their id is in Tool_RemarkExtIds
     let tmp: ExtensionInfo[] = [];
-    if (!_.isNil(list)) {
-      _.forEach(list, (x) => {
+    if (!_.isNil(extsList2)) {
+      _.forEach(extsList2, (x) => {
         _.forEach(x.ChildrenAsInfo, (xx) => {
           let isThatFoundable = _.findIndex(
-            workspaceDataForTree.favourites,
+            selectExpandFavouriteObj.favourites,
             (xxx) => {
               return xxx === xx.Id;
             }
@@ -172,9 +173,9 @@ export default (props: {
   }, [
     updateMemStatus,
     fc,
-    workspaceDataForTree.favourites,
-    treeInfo.updateId,
-    _.size(treeInfo.nodes),
+    selectExpandFavouriteObj.favourites,
+    treeNodeData.updateId,
+    _.size(treeNodeData.nodes),
     ...exportUtils.refresh_lang()
   ]);
 
@@ -198,24 +199,13 @@ export default (props: {
     dis(ToolSlice.actions.updateSubCategoryTreeRemarks(fn_calculate_fav()));
   }, [(favoritesList || []).join("-"), ...exportUtils.refresh_lang()]);
 
-  // update tree info
+  // update tree main data
   useEffect(() => {
-    let expandedList = [
-      _.first(
-        _.map(
-          extsList || [],
-          (x, d, n) => {
-            return x.Id;
-          }
-        )
-      ),
-    ]
     dis(
       ToolSlice.actions.updateSubCategoryTreeInfo({
         nodes: [
           fn_calculate_fav(),
           ..._.map(extsList || [], (x, d, n) => {
-            // TODO: hover to show detail
             return {
               id: x.Id,
               hasCaret: true,
@@ -226,6 +216,7 @@ export default (props: {
                   id: child.Id,
                   label: _.toString(child.Label),
                   icon: "application",
+                  // TODO: hover to show detail
                 } as TreeNodeInfo;
               }),
             } as TreeNodeInfo;
@@ -234,6 +225,51 @@ export default (props: {
       })
     );
   }, [fc, ...exportUtils.refresh_lang()]);
+
+  // update default data for tree select, expanded
+  let categoryList = useGetCategoryList()
+  useEffect(() => {
+    if (_.isEmpty(extsList)) {
+      return;
+    }
+    if (!treeNodeData || !treeNodeData.nodes || treeNodeData.nodes.length == 0) {
+      return;
+    }
+    if (selectExpandFavouriteObj.initialized) {
+      return;
+    }
+    if (_.isEmpty(categoryList)) {
+      return;
+    }
+    let defaultExpanded: string[] = []
+    // _.forEach(treeNodeData.nodes, (x, d, n) => {
+    // defaultExpanded.push(x.id + "")
+    // _.forEach(x.childNodes, (xx, dd, nn) => {
+    //   defaultExpanded.push(xx.id + "")
+    // })
+    // })
+    // let firstMenuId = treeNodeData.nodes[0].id
+    // if (firstMenuId) {
+    //   defaultExpanded.push(firstMenuId + "")
+    // }
+    // defaultExpanded.push(treeNodeData.nodes[1].id + "")
+
+    _.forEach(categoryList, x => {
+      defaultExpanded.push(TREE_ROOT_ID_PREFIX + x.Id)
+    })
+
+    dis(
+      WorkspaceSlice.actions.mergeTabPart({
+        name: "tools",
+        value: {
+          expanded: defaultExpanded,
+        }
+      })
+    );
+    // FN_GetDispatch()(
+    //   WorkspaceSlice.actions.markInitialized("tools")
+    // )
+  }, [treeNodeData.nodes, selectExpandFavouriteObj.initialized, ...exportUtils.refresh_lang()]);
 
   let activeOne = props.activeOne;
 
@@ -264,7 +300,7 @@ export default (props: {
               // goWithChildId(childId);
               let parentIcon: string | null = null;
               let parentLabel: string | null = null;
-              _.every(treeInfo.nodes, (x: TreeNodeInfo) => {
+              _.every(treeNodeData.nodes, (x: TreeNodeInfo) => {
                 if (!x.childNodes || x.icon == "star") {
                   return true;
                 }
@@ -287,10 +323,6 @@ export default (props: {
                       "Unknown Label",
                     pageTitle: `${_.toString(node?.label)}`,
                     icon: (parentIcon || "application") as any,
-                    // pathname: m_ws({
-                    //   fc: fc,
-                    //   extId: childId,
-                    // }),
                   },
                 })
               );
@@ -332,7 +364,7 @@ export default (props: {
                                   name: 'tools',
                                   value: {
                                     favourites: _.filter(
-                                      workspaceDataForTree.favourites,
+                                      selectExpandFavouriteObj.favourites,
                                       (xx) => {
                                         return xx != x.id;
                                       }
@@ -346,7 +378,7 @@ export default (props: {
                                   name: 'tools',
                                   value: {
                                     favourites: (_.uniq([
-                                      ...(workspaceDataForTree.favourites || []),
+                                      ...(selectExpandFavouriteObj.favourites || []),
                                       x.id,
                                     ]) || []) as any,
                                   }
@@ -379,13 +411,14 @@ export default (props: {
               }
             }}
             needShowCountChildren={true}
-            info={treeInfo || []}
+            info={treeNodeData || []}
             onChange={(new_nodes) => {
               dis(ToolSlice.actions.updateSubCategoryTreeInfo(new_nodes));
             }}
-            expanded={workspaceDataForTree.expanded || []}
-            selected={workspaceDataForTree.selected || []}
+            expanded={selectExpandFavouriteObj.expanded || []}
+            selected={selectExpandFavouriteObj.selected || []}
             onExpandedChange={(value) => {
+              logutils.log("expanded log", value)
               dis(
                 WorkspaceSlice.actions.mergeTabPart({
                   name: 'tools',

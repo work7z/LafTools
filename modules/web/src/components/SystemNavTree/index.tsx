@@ -78,7 +78,7 @@ import apiSlice from "../../reducers/apiSlice";
 import { useSearchQuery } from "../../types/workbench-hook";
 import { logutils } from "../../utils/LogUtils";
 import { useGetCategoryList } from "../../pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/hooks";
-
+export let TREE_ROOT_ID_PREFIX = "root_"
 let { cloneDeep } = _;
 
 type PassProp = {
@@ -123,7 +123,7 @@ export default (props: PassProp) => {
     // recursively format tmp_nodes to nodes, so that we can use it in Tree, note that isExpanded is true when it's in props.expanded and isSeleced is true when it's in props.selected
     let formatEachNodeItem = (nodeList: TreeNodeInfo[]): TreeNodeInfo[] => {
       return _.map(nodeList, (x) => {
-        let rootLevel = (x.id + "").indexOf("root_") == 0;
+        let rootLevel = (x.id + "").indexOf(TREE_ROOT_ID_PREFIX) == 0;
         let hasCaret = !_.isNil(x.hasCaret)
           ? x.hasCaret
           : !_.isEmpty(x.childNodes);
@@ -172,7 +172,7 @@ export default (props: PassProp) => {
               }
             });
             return {
-              id: "root_" + x.Id,
+              id: TREE_ROOT_ID_PREFIX + x.Id,
               label: x.Label,
               childNodes: crtNodes,
               groupItem: true,

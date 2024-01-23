@@ -76,7 +76,7 @@ import AuthHookUtils from "../../utils/AuthHookUtils";
 import QueryUtils from "../../utils/QueryUtils";
 import MottoLine from "../../components/MottoLine";
 import { Tree } from "@blueprintjs/icons";
-import GenTree from "../../components/GenTree";
+import GenTree from "../../components/SystemNavTree";
 import ToolSlice from "../../reducers/toolSlice";
 import { logutils } from "../../utils/LogUtils";
 import RouteUtils from "../../utils/RouteUtils";

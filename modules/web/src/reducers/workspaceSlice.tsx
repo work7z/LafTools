@@ -35,7 +35,8 @@ type GeneralTabBasicTab = {
   tabs: EachTab[];
   selected: string[];
   expanded: string[];
-  favourites: string[]
+  favourites: string[];
+  initialized?: boolean; // has it completed first time initialization?
 };
 
 
@@ -82,6 +83,9 @@ const WorkspaceSlice = createSlice({
       RequireWorkspaceId: true,
       SyncLocationOnParameter: "wsp"
     }),
+    markInitialized: (state, action: PayloadAction<WorkspaceStateKey>) => {
+      state[action.payload].initialized = true;
+    },
     addTab: (
       state,
       action: PayloadAction<{

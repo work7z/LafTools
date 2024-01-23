@@ -127,7 +127,7 @@ export let usePromiseWait = (obj: {
     }
 }
 
-let useGetAppCategory = (): ToolCategory[] => {
+export let useGetAppCategory = (): ToolCategory[] => {
     return useMemo(() => {
         return fn_AppCategory()
     }, [...exportUtils.refresh_lang()]);
@@ -165,14 +165,16 @@ export let useExtsList = (fc: string): ListExtForTheCategoryRes[] => {
 
 export let useGetCategoryList = (): FnPureToolDefinition[] => {
     let appCategory = useGetAppCategory()
-    return appCategory.map(x => {
-        return {
-            Id: x.Id,
-            Label: x.Label,
-            SubCategories: x.SubCategories,
-            TotalCount: x.TotalCount
-        }
-    }).filter(x => x.TotalCount != 0)
+    return useMemo(() => {
+        return appCategory.map(x => {
+            return {
+                Id: x.Id,
+                Label: x.Label,
+                SubCategories: x.SubCategories,
+                TotalCount: x.TotalCount
+            }
+        }).filter(x => x.TotalCount != 0)
+    }, [appCategory])
 }
 
 export let useHookWithSkippingFirst = (fn: () => void, deps: any[]) => {
