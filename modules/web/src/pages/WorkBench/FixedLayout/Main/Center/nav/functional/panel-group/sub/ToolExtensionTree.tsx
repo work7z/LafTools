@@ -266,9 +266,9 @@ export default (props: {
         }
       })
     );
-    // FN_GetDispatch()(
-    //   WorkspaceSlice.actions.markInitialized("tools")
-    // )
+    FN_GetDispatch()(
+      WorkspaceSlice.actions.markInitialized("tools")
+    )
   }, [treeNodeData.nodes, selectExpandFavouriteObj.initialized, ...exportUtils.refresh_lang()]);
 
   let activeOne = props.activeOne;
@@ -420,7 +420,7 @@ export default (props: {
             onExpandedChange={(value, newValId) => {
               logutils.log("expanded log", value)
               let newValue: string[] = []
-              let isCurrentNewValInExtList = _.findIndex(extsList, eachExt => eachExt.Id == newValId) != -1
+              let isCurrentNewValInExtList = newValId == null || _.findIndex(extsList, eachExt => eachExt.Id == newValId) != -1
               if (isCurrentNewValInExtList) {
                 _.forEach(value, x => {
                   if (newValId == x) {
