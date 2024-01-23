@@ -179,7 +179,7 @@ export default (props: {
     ...exportUtils.refresh_lang()
   ]);
 
-  let fn_calculate_fav = (): TreeNodeInfo => {
+  let fn_get_favourite = (): TreeNodeInfo => {
     return {
       id: "Remarks",
       label: Dot("IfsdGO", "Favourites"),
@@ -196,7 +196,7 @@ export default (props: {
   };
 
   useEffect(() => {
-    dis(ToolSlice.actions.updateSubCategoryTreeRemarks(fn_calculate_fav()));
+    dis(ToolSlice.actions.updateSubCategoryTreeRemarks(fn_get_favourite()));
   }, [(favoritesList || []).join("-"), ...exportUtils.refresh_lang()]);
 
   // update tree main data
@@ -204,7 +204,7 @@ export default (props: {
     dis(
       ToolSlice.actions.updateSubCategoryTreeInfo({
         nodes: [
-          fn_calculate_fav(),
+          fn_get_favourite(),
           ..._.map(extsList || [], (x, d, n) => {
             return {
               id: x.Id,
