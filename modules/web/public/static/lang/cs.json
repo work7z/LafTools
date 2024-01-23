@@ -12,6 +12,7 @@
     "07naT": "Chyba: {0}",
     "07ui6": "Více informací",
     "0Ceqru": "Base64 je zápis pro kódování libovolných bajtových dat pomocí omezené sady symbolů, které mohou lidé pohodlně používat a zpracovávat počítače.",
+    "0MOjj": "MD5 (Message-Digest 5) je široce používaná hashovací funkce. Používá se v různých bezpečnostních aplikacích a běžně se také používá ke kontrole integrity souborů. MD5 však není odolný proti kolizi a není vhodný pro aplikace, jako jsou certifikáty SSL/TLS nebo digitální podpisy, které na tuto vlastnost spoléhají.",
     "0PgZ_": "Překlad",
     "0gvcN": "Vítejte na stránce přehledu, je stále ve vývoji.",
     "0gywa": "Pracovní prostor nebyl nalezen, budete přesměrováni na stránku indexu pracovního prostoru.",

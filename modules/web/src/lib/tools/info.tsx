@@ -60,6 +60,15 @@ let appToolInfoObj: {
     "md5": passInfo({
         Label: "MD5"
     }),
+    "md2": passInfo({
+        Label: "MD2"
+    }),
+    "md4": passInfo({
+        Label: "MD4"
+    }),
+    "md6": passInfo({
+        Label: "MD6"
+    }),
     // Example
     "Example": passInfo({
         Label: Dot("1X8x7", "Example")

@@ -12,6 +12,7 @@
     "07naT": "Erro: {0}",
     "07ui6": "Mais informações",
     "0Ceqru": "Base64 é uma notação para codificação de dados de bytes arbitrários usando um conjunto restrito de símbolos que podem ser convenientemente usados ​​por humanos e processados ​​por computadores.",
+    "0MOjj": "MD5 (Message-Digest 5) é uma função hash amplamente usada. Ele tem sido usado em uma variedade de aplicações de segurança e também é comumente usado para verificar a integridade de arquivos. No entanto, o MD5 não é resistente a colisões e não é adequado para aplicações como certificados SSL/TLS ou assinaturas digitais que dependem desta propriedade.",
     "0PgZ_": "Tradução",
     "0gvcN": "Bem-vindo à página de visão geral, ela ainda está em desenvolvimento.",
     "0gywa": "Espaço de trabalho não encontrado. Você será redirecionado para a página de índice do espaço de trabalho.",

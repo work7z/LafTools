@@ -12,6 +12,7 @@
     "07naT": "Hiba: {0}",
     "07ui6": "Több információ",
     "0Ceqru": "A Base64 egy tetszőleges bájtos adatok kódolására szolgáló jelölés korlátozott szimbólumkészlettel, amelyet az emberek kényelmesen használhatnak és a számítógépek feldolgozhatnak.",
+    "0MOjj": "Az MD5 (Message-Digest 5) egy széles körben használt hash függvény. Számos biztonsági alkalmazásban használták, és gyakran használják a fájlok integritásának ellenőrzésére is. Az MD5 azonban nem ütközésálló, és nem alkalmas olyan alkalmazásokhoz, mint az SSL/TLS-tanúsítványok vagy a digitális aláírások, amelyek erre a tulajdonságra támaszkodnak.",
     "0PgZ_": "Fordítás",
     "0gvcN": "Üdvözöljük az áttekintő oldalon, még fejlesztés alatt áll.",
     "0gywa": "A munkaterület nem található, a rendszer átirányítja a munkaterület indexoldalára.",

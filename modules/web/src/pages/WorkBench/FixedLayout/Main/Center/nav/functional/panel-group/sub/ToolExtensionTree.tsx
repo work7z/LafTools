@@ -242,17 +242,6 @@ export default (props: {
       return;
     }
     let defaultExpanded: string[] = []
-    // _.forEach(treeNodeData.nodes, (x, d, n) => {
-    // defaultExpanded.push(x.id + "")
-    // _.forEach(x.childNodes, (xx, dd, nn) => {
-    //   defaultExpanded.push(xx.id + "")
-    // })
-    // })
-    // let firstMenuId = treeNodeData.nodes[0].id
-    // if (firstMenuId) {
-    //   defaultExpanded.push(firstMenuId + "")
-    // }
-    // defaultExpanded.push(treeNodeData.nodes[1].id + "")
 
     _.forEach(categoryList, x => {
       defaultExpanded.push(TREE_ROOT_ID_PREFIX + x.Id)

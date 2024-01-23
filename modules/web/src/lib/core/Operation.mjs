@@ -48,11 +48,11 @@ class Operation {
 
     // Public fields
     this.name = "";
-    this.id = ""
+    this.id = "";
     this.module = "";
     this.description = "";
-    this.exampleInput = ""
-    this.exampleOutput = ""
+    this.exampleInput = "";
+    this.exampleOutput = "";
     this.infoURL = null;
   }
 

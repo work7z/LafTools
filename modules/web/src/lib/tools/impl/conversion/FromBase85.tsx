@@ -52,7 +52,7 @@ class FromBase85 extends Operation {
 
 
         // new
-        this.id = 'frombase64'
+        this.id = 'frombase85'
         this.name = Dot("rVqlu", "Decode {0}", "Base85");
         this.description = Dot(
             "wj3VS",

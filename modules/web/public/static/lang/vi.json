@@ -12,6 +12,7 @@
     "07naT": "Lỗi: {0}",
     "07ui6": "Thêm thông tin",
     "0Ceqru": "Base64 là ký hiệu để mã hóa dữ liệu byte tùy ý bằng cách sử dụng một bộ ký hiệu hạn chế mà con người có thể sử dụng thuận tiện và được máy tính xử lý.",
+    "0MOjj": "MD5 (Message-Digest 5) là hàm băm được sử dụng rộng rãi. Nó đã được sử dụng trong nhiều ứng dụng bảo mật và cũng thường được sử dụng để kiểm tra tính toàn vẹn của tệp. Tuy nhiên, MD5 không có khả năng chống va chạm và không phù hợp với các ứng dụng như chứng chỉ SSL/TLS hoặc chữ ký số dựa vào thuộc tính này.",
     "0PgZ_": "Dịch",
     "0gvcN": "Chào mừng bạn đến với trang tổng quan, nó vẫn đang được phát triển.",
     "0gywa": "Không tìm thấy không gian làm việc, bạn sẽ được chuyển hướng đến trang chỉ mục không gian làm việc.",

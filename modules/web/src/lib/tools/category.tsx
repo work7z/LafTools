@@ -43,14 +43,35 @@ export default (): ToolCategory[] => {
       Id: "codec",
       Label: Dot("ks12d", "Cyber Security"),
       SubCategories: [
+
+
+        {
+          Id: "codec.Encode_and_Decode",
+          Label: Dot("y_2Q1", "Encode and Decode"),
+          Icon: "widget-button",
+          ChildrenIdSet: [
+            "edc_base32",
+            "edc_base45",
+            "edc_base58",
+            "edc_base62",
+            "edc_base64",
+            "edc_base85",
+            // "edc_url",
+            // "edc_hex",
+            // "edc_unicode",
+            // "edc_base64-hex",
+            // "edc_querystring",
+          ],
+        },
         {
           Id: "codec.Digest_Algorithm",
           Label: Dot("y_BN6", "Digest Algorithm"),
           Icon: "segmented-control",
           ChildrenIdSet: [
-            // "md2",
-            // "md4",
+            "md2",
+            "md4",
             "md5",
+            "md6"
             // "sha1",
             // "sha224",
             // "sha256",
@@ -95,24 +116,6 @@ export default (): ToolCategory[] => {
             // "sm2",
             //  "sm3", 
             //  "sm4"
-          ],
-        },
-        {
-          Id: "codec.Encode_and_Decode",
-          Label: Dot("y_2Q1", "Encode and Decode"),
-          Icon: "widget-button",
-          ChildrenIdSet: [
-            "edc_base32",
-            "edc_base45",
-            "edc_base58",
-            "edc_base62",
-            "edc_base64",
-            "edc_base85",
-            // "edc_url",
-            // "edc_hex",
-            // "edc_unicode",
-            // "edc_base64-hex",
-            // "edc_querystring",
           ],
         },
         {
