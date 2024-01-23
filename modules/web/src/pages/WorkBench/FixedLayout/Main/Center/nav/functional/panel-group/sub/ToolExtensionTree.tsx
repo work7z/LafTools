@@ -216,6 +216,7 @@ export default (props: {
                   id: child.Id,
                   label: _.toString(child.Label),
                   icon: "application",
+                  // isSelected: true,
                   // TODO: hover to show detail
                 } as TreeNodeInfo;
               }),
