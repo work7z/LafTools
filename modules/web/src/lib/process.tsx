@@ -48,7 +48,18 @@ let LibIndex = {
       if (inst.inputType == "ArrayBuffer") {
         input = Utils.strToArrayBuffer(input);
       }
-      let result = inst.run(input, inst.args);
+      // TODO: arg value should be coming from a model not form, it's just more convenient for now
+      let argsValueArr = _.map(inst.args, (arg) => {
+        let eachValue = _.get(arg, 'value')
+        if (_.isString(eachValue)) {
+          return eachValue
+        }
+        if (_.isArray(eachValue)) {
+          return _.get(eachValue, [0, 'value'])
+        }
+        return eachValue;
+      })
+      let result = inst.run(input, argsValueArr);
       return {
         result: _.toString(result),
       };

@@ -110,6 +110,7 @@ class ToBase32 extends Operation {
                 alphabet.charAt(enc4) + alphabet.charAt(enc5) + alphabet.charAt(enc6) +
                 alphabet.charAt(enc7) + alphabet.charAt(enc8);
         }
+
         return output;
     }
 
