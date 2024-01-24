@@ -39,6 +39,10 @@ function uuid(str = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"): string {
 const gutils = {
   defer: (fn: any) => setTimeout(fn, 0),
   copy: copy,
+  convertASCIICodeInStr(indentStr: string): string {
+    indentStr = indentStr.replace(/\\t/g, "\t").replace(/\\n/g, "\n").replace(/\\r/g, "\r").replace(/\\f/g, "\f").replace(/\\v/g, "\v").replace(/\\b/g, "\b").replace(/\\0/g, "\0");
+    return indentStr;
+  },
   ConvertStrToNumberOrZero(val: string | null): number {
     if (_.isNil(val)) {
       return 0;
@@ -84,7 +88,7 @@ const gutils = {
     }
     _.set(window, key, value);
   },
-  GetUserActualClientLang:GetUserActualClientLang,
+  GetUserActualClientLang: GetUserActualClientLang,
   // GetUserActualClientLang(): string {
   //   let finalLang = "en_US";
   //   if (!navigator || !navigator.languages) {

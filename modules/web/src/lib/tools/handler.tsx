@@ -23,7 +23,7 @@ import { CodeImplMap } from "./code/types";
 import { FAQItem } from "./faq/types";
 import appToolInfoObj from "./info";
 
-export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-short" | "js-medium"
+export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-short" | "js-medium" | "css-short"
 
 export type ToolMetaInfo = {
     description: string;

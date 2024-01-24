@@ -1,3 +1,23 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Wed, 24 Jan 2024
+// Author:   
+// Description: 
+// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 import { Dot, loadDOT } from "../../../utils/TranslationUtils";
 import { FAQItem } from "./types";
 import React from "react";
@@ -40,6 +60,43 @@ let faqForMD6: FAQItem[] = [
                 link: "https://people.csail.mit.edu/rivest/pubs/RSW08.pdf"
             }
         ]
+    },
+
+    {
+        question: Dot("MD6-ComparisonSHA3-020", "How does MD6 compare to SHA-3 (Keccak)?"),
+        answer: (
+            <p>
+                {Dot("MD6-vs-SHA3-DiffDesign-021", "MD6 and SHA-3 are both designed with security in mind, but they employ different hashing techniques. MD6 uses a tree-based design for improved parallelism, while SHA-3 is based on the sponge construction.")}<br />
+                {Dot("MD6-vs-SHA3-Flexibility-022", "MD6 offers variable output lengths, which can be advantageous for applications that require custom hash sizes. SHA-3 also supports variable output lengths, although its most common variant, SHAKE, provides even more flexibility with arbitrary-length outputs.")}<br />
+                {Dot("MD6-vs-SHA3-Adoption-023", "SHA-3 has been adopted as an official NIST standard and gained widespread use due to its robust security and performance. MD6, despite being theoretically secure, hasn't seen the same level of adoption or standardization.")}
+            </p>
+        ),
+        links: [
+            {
+                name: Dot("SHA3-NISTStandard-024", "SHA-3 Standardization"),
+                link: "https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf"
+            }
+        ]
+    },
+    {
+        question: Dot("MD6-UseInPKI-025", "Can MD6 be used for Public Key Infrastructure (PKI) or digital signatures?"),
+        answer: (
+            <p>
+                {Dot("MD6-PKI-Considerations-026", "While MD6 was intended to provide stronger security than earlier hash functions like MD5, it has not been widely adopted for PKI or digital signature schemes due to its relative novelty and lack of broad cryptographic community acceptance.")}<br />
+                {Dot("MD6-PKI-Alternatives-027", "For PKI and digital signature applications, standards such as RSA/SHA-256 or ECDSA with SHA-2 or SHA-3 variants are commonly used instead. These have gone through extensive analysis and have established trust within the cryptographic community.")}
+            </p>
+        ),
+        links: []
+    },
+    {
+        question: Dot("MD6-FutureDevelopments-028", "Are there any future developments or improvements planned for MD6?"),
+        answer: (
+            <p>
+                {Dot("MD6-FutureUnknown-029", "As of now, there isn't any publicly available information about ongoing development or plans to improve upon the MD6 algorithm. Cryptographic research continues to evolve, and new algorithms may emerge to address emerging threats or requirements.")}<br />
+                {Dot("MD6-StayingCurrent-030", "It's essential to stay updated with the latest research findings and recommendations from cryptographic experts when choosing a hash function for any application, especially as the landscape of cryptographic security evolves over time.")}
+            </p>
+        ),
+        links: []
     },
 ]
 

@@ -43,7 +43,6 @@ class FromBase32 extends Operation {
         this.name = "From Base32";
         this.module = "Default";
         this.description = "";
-        this.infoURL = "https://wikipedia.org/wiki/Base32";
         this.inputType = "string";
         this.outputType = "byteArray";
 

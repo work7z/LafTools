@@ -57,6 +57,24 @@ let appToolInfoObj: {
     "edc_base85": passInfo({
         Label: Dot("e4Cd8t", "Base85")
     }),
+    "CSSBeautify": passInfo({
+        Label: Dot("1Xe8x7", "CSS Beautify")
+    }),
+    "JSONBeautify": passInfo({
+        Label: Dot("1X8x7q", "JSON Beautify")
+    }),
+    "JavaScriptBeautify": passInfo({
+        Label: Dot("ZWJ79W5LR", "JavaScript Beautify")
+    }),
+    "XMLBeautify": passInfo({
+        Label: Dot("2Ul6y", "XML Beautify")
+    }),
+    "GenericCodeBeautify": passInfo({
+        Label: Dot("iNEhY", "Generic Code Beautify")
+    }),
+    "SQLBeautify": passInfo({
+        Label: Dot("-nE6n", "SQL Beautify")
+    }),
     "md5": passInfo({
         Label: "MD5"
     }),

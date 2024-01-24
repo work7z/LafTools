@@ -41,6 +41,7 @@ type PassType = {
     toolHandler: ToolHandler
     commonPassProp: CommonTransformerPassProp
     originalValue: string
+    fromChangeEvent: boolean
 }
 
 let tmpLog = {}
@@ -108,3 +109,7 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
         }
     }
 }
+
+export let ACTION_Transformer_Process_Text_Delay = _.debounce((obj: PassType & { dispatch: any }) => {
+    obj.dispatch(ACTION_Transformer_Process_Text(obj))
+}, 300)

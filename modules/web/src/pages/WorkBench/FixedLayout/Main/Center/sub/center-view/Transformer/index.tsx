@@ -47,7 +47,7 @@ import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
 import ProcessPanel from "./ProcessPanel/index.tsx";
 import LibProcessEntryPoint from '../../../../../../../../lib/process.ts'
-import { ACTION_Transformer_Process_Text } from "../../../../../../../../actions/transformer_action";
+import { ACTION_Transformer_Process_Text, ACTION_Transformer_Process_Text_Delay } from "../../../../../../../../actions/transformer_action";
 import Operation from "../../../../../../../../lib/core/Operation.mjs";
 import gutils from "../../../../../../../../utils/GlobalUtils";
 import appToolInfoObj, { AppInfoType } from "../../../../../../../../lib/tools/info";
@@ -120,8 +120,8 @@ export default (props: CommonTransformerProps) => {
   let desc = fn_format_description(commonPassProp.toolHandler?.getMetaInfo().description)
   // process fn
   logutils.debug("commonPassProp", commonPassProp)
-  let fn_notifyTextChange = (fromChangeEvent: boolean) => {
-    if (fromChangeEvent && crtRuntimeStatus?.autoRun != 'true') {
+  let fn_notifyTextChange = (fromTextInputEvent: boolean) => {
+    if (fromTextInputEvent && crtRuntimeStatus?.autoRun != 'true') {
       return;
     }
     if (extVM && extId && sessionId && outputBigTextId && operaRef.current) {
@@ -133,8 +133,24 @@ export default (props: CommonTransformerProps) => {
           })
         )
       } else {
-        FN_GetDispatch()(
-          ACTION_Transformer_Process_Text({
+
+        if (!fromTextInputEvent) {
+          FN_GetDispatch()(
+            ACTION_Transformer_Process_Text({
+              originalValue,
+              extVM,
+              extId,
+              sessionId,
+              outputBigTextId,
+              inputBigTextId,
+              toolHandler: operaRef.current,
+              fromChangeEvent: fromTextInputEvent,
+              commonPassProp: commonPassProp
+            })
+          )
+        } else {
+          ACTION_Transformer_Process_Text_Delay({
+            dispatch: FN_GetDispatch(),
             originalValue,
             extVM,
             extId,
@@ -142,9 +158,10 @@ export default (props: CommonTransformerProps) => {
             outputBigTextId,
             inputBigTextId,
             toolHandler: operaRef.current,
+            fromChangeEvent: fromTextInputEvent,
             commonPassProp: commonPassProp
           })
-        )
+        }
       }
     } else {
       console.error("fn_notifyTextChange failed")
