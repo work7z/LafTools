@@ -70,7 +70,7 @@ class MD6 extends Operation {
       "MD6"
     );
     this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD
-    this.exampleOutput = "cb70e1d7788af65e7a2cd8568d8d294e6fea3457bb6db4441787a2dbb3e5b1b8";
+    this.exampleOutput = "6270a6d976267aa1224ac8d905dec46a96f6b62f6b6e9bb8085c2e946c1eb576";
   }
 
   /**

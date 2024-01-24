@@ -59,6 +59,9 @@ let LibIndex = {
         }
         return eachValue;
       })
+      if (_.isNil(argsValueArr)) {
+        argsValueArr = []
+      }
       let result = inst.run(input, argsValueArr);
       return {
         result: _.toString(result),

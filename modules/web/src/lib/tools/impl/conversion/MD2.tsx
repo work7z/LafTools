@@ -62,7 +62,7 @@ class MD2 extends Operation {
       "MD2"
     );
     this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD
-    this.exampleOutput = "da853b0d3f88d99b30283a69e6ded6bb";
+    this.exampleOutput = "315f7c67223f01fb7cab4b95100e872e";
 
   }
 

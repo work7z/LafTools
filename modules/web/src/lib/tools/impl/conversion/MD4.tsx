@@ -54,7 +54,7 @@ class MD4 extends Operation {
       "MD4"
     );
     this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD
-    this.exampleOutput = "db346d691d7acc4dcdf1400d8786f7ab";
+    this.exampleOutput = "b2a5cc34fc21a764ae2fad94d56fadf6";
 
   }
 
