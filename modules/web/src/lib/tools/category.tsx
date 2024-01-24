@@ -230,6 +230,42 @@ export default (): ToolCategory[] => {
             // "fmt_typescript",
             // "fmt_sql",
             // "fmt_graphql",
+
+          //   {
+          //     "name": "Code tidy",
+          //     "ops": [
+          //         "Syntax highlighter",
+          //         "Generic Code Beautify",
+          //         "JavaScript Parser",
+          //         "JavaScript Beautify",
+          //         "JavaScript Minify",
+          //         "JSON Beautify",
+          //         "JSON Minify",
+          //         "XML Beautify",
+          //         "XML Minify",
+          //         "SQL Beautify",
+          //         "SQL Minify",
+          //         "CSS Beautify",
+          //         "CSS Minify",
+          //         "XPath expression",
+          //         "JPath expression",
+          //         "CSS selector",
+          //         "PHP Deserialize",
+          //         "Microsoft Script Decoder",
+          //         "Strip HTML tags",
+          //         "Diff",
+          //         "To Snake case",
+          //         "To Camel case",
+          //         "To Kebab case",
+          //         "BSON serialise",
+          //         "BSON deserialise",
+          //         "To MessagePack",
+          //         "From MessagePack",
+          //         "Render Markdown"
+          //     ]
+          // },
+      
+
           ],
         },
       ],

@@ -44,10 +44,10 @@ func GetAppHomeTempDirectory() string {
 func getProjectNameAffix() string {
 	// UAT, DEV, PROD("")
 	if tools.IsDevMode {
-		return "-DEV"
+		return "L-DEV"
 	}
 	if tools.IsUATMode {
-		return "-UAT"
+		return "L-UAT"
 	}
 	return ""
 }
@@ -62,7 +62,7 @@ func GetDefaultAppConfigDir() string {
 	return DefaultAppConfigDir
 }
 func GetAppDataDirName() string {
-	return "L" + getProjectNameAffix() + "LafTools"
+	return getProjectNameAffix() + "LafTools"
 }
 
 func GetAppHomeDirectory() string {

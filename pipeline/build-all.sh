@@ -5,7 +5,7 @@
 cd $(dirname $0)/..
 
 distDir=./dist
-set -e
+set +e
 source ./pipeline/env.sh
 mode=$1
 
