@@ -25,6 +25,7 @@
  */
 
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import Operation from "../../../core/Operation.mjs";
 import { runHash } from "../../../core/lib/Hash.mjs";
 
@@ -52,7 +53,7 @@ class MD5 extends Operation {
       "This operation hashes data into an {0} hash.",
       "MD5"
     );
-    this.exampleInput = "Hello World!"
+    this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD
     this.exampleOutput = "ed076287532e86365e841e92bfc50d8c"
   }
 

@@ -25,6 +25,7 @@
  */
 
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import Operation from "../../../core/Operation.mjs";
 import Utils from "../../../core/Utils.mjs";
 
@@ -48,18 +49,18 @@ class FromBase32 extends Operation {
 
 
 
-            // new
-    this.id='frombase32'
-    this.name = Dot("rVqlu", "Decode {0}", "Base64");
-    this.description = Dot(
-      "JiUE8",
-      "This operation decodes data from an ASCII {0} string back into its raw format.",
-      "Base32"
-    );
-    // example for base32
-    this.exampleInput = "NBSWY3DPEB3W64TMMQ======";
-    this.exampleOutput = "hello world";
-    // new
+        // new
+        this.id = 'frombase32'
+        this.name = Dot("rVqlu", "Decode {0}", "Base64");
+        this.description = Dot(
+            "JiUE8",
+            "This operation decodes data from an ASCII {0} string back into its raw format.",
+            "Base32"
+        );
+        // example for base32
+        this.exampleInput = "JBSWY3DPEBLW64TMMQQQ====";
+        this.exampleOutput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
+        // new
 
 
 
@@ -93,9 +94,9 @@ class FromBase32 extends Operation {
         if (!input) return [];
 
         const alphabet = args[0] ?
-                Utils.expandAlphRange(args[0]).join("") : "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567=",
+            Utils.expandAlphRange(args[0]).join("") : "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567=",
             removeNonAlphChars = args[1],
-            output:any[] = [];
+            output: any[] = [];
 
         let chr1, chr2, chr3, chr4, chr5,
             enc1, enc2, enc3, enc4, enc5, enc6, enc7, enc8,

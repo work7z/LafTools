@@ -25,6 +25,7 @@
  */
 
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import Operation from "../../../core/Operation.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import NodeMD6 from "node-md6";
@@ -68,7 +69,7 @@ class MD6 extends Operation {
       "This operation hashes data into an {0} hash.",
       "MD6"
     );
-    this.exampleInput = "Hello World!"
+    this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD
     this.exampleOutput = "cb70e1d7788af65e7a2cd8568d8d294e6fea3457bb6db4441787a2dbb3e5b1b8";
   }
 

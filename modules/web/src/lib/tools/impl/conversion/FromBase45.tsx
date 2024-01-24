@@ -24,11 +24,12 @@
  * @license Apache-2.0
  */
 
-import {ALPHABET, highlightToBase45, highlightFromBase45} from "../../../core/lib/Base45.mjs";
+import { ALPHABET, highlightToBase45, highlightFromBase45 } from "../../../core/lib/Base45.mjs";
 import Operation from "../../../core/Operation.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 
 
 /**
@@ -44,7 +45,6 @@ class FromBase45 extends Operation {
 
         this.name = "From Base45";
         this.module = "Default";
-        this.infoURL = "https://wikipedia.org/wiki/List_of_numeral_systems";
         this.inputType = "string";
         this.outputType = "byteArray";
         this.args = [
@@ -61,18 +61,18 @@ class FromBase45 extends Operation {
         ];
 
 
-                    // new
-    this.id='frombase45'
-    this.name = Dot("rVqlu", "Decode {0}", "Base45");
-    this.description = Dot(
-      "JiUE8",
-      "This operation decodes data from an ASCII {0} string back into its raw format.",
-      "Base45"
-    );
-    // example for base45
-    this.exampleInput = "%69 VD82EI2B.KESTC";
-    this.exampleOutput = "Hello World!";
-    // new
+        // new
+        this.id = 'frombase45'
+        this.name = Dot("rVqlu", "Decode {0}", "Base45");
+        this.description = Dot(
+            "JiUE8",
+            "This operation decodes data from an ASCII {0} string back into its raw format.",
+            "Base45"
+        );
+        // example for base45
+        this.exampleInput = "%69 VD82EI2B.KESTC";
+        this.exampleOutput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
+        // new
 
 
 
@@ -90,7 +90,7 @@ class FromBase45 extends Operation {
         const alphabet = Utils.expandAlphRange(args[0]).join("");
         const removeNonAlphChars = args[1];
 
-        const res:any = [];
+        const res: any = [];
 
         // Remove non-alphabet characters
         if (removeNonAlphChars) {

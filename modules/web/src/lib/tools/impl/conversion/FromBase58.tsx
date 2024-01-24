@@ -25,6 +25,7 @@
  */
 
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import Operation from "../../../core/Operation.mjs";
 import Utils from "../../../core/Utils.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
@@ -70,7 +71,7 @@ class FromBase58 extends Operation {
         );
         // example for base58
 
-        this.exampleOutput = "Hello World!" ;
+        this.exampleOutput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
         this.exampleInput = "2NEpo7TZRRrLZSi2U";
 
         // new

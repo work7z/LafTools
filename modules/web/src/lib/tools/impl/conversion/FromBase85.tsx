@@ -29,6 +29,7 @@ import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
 import { ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 
 /**
  * From Base85 operation
@@ -62,7 +63,7 @@ class FromBase85 extends Operation {
 
 
 
-        this.exampleOutput = "Hello World!";
+        this.exampleOutput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
         this.exampleInput = "87cURD]i,\"Ebo80";
         // new
 

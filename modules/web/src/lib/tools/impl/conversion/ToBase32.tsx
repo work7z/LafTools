@@ -25,6 +25,7 @@
  */
 
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import Operation from "../../../core/Operation.mjs";
 import Utils from "../../../core/Utils.mjs";
 
@@ -52,9 +53,8 @@ class ToBase32 extends Operation {
             "Base32"
         );
 
-        this.exampleOutput = "NBSWY3DPEB3W64TMMQ======";
-        this.exampleInput = "hello world";
-
+        this.exampleOutput = "JBSWY3DPEBLW64TMMQQQ====";
+        this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
         // new
         this.args = [
             {

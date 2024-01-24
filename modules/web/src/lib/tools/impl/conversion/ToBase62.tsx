@@ -27,8 +27,9 @@
 import Operation from "../../../core/Operation.mjs";
 import BigNumber from "bignumber.js";
 import Utils from "../../../core/Utils.mjs";
-import {toHexFast} from "../../../core/lib/Hex.mjs";
+import { toHexFast } from "../../../core/lib/Hex.mjs";
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 
 /**
  * To Base62 operation
@@ -41,6 +42,7 @@ class ToBase62 extends Operation {
     constructor() {
         super();
 
+        this.id = 'tobase62'
         this.name = "To Base62";
         this.module = "Default";
 
@@ -48,11 +50,11 @@ class ToBase62 extends Operation {
 
         this.name = Dot("M3ytc", "Encode {0}", "Base62");
         this.description = Dot(
-          "BGd7dP9",
-          "This operation encodes raw data into an ASCII {0} string.",
-          "Base62"
-        );    
-        this.exampleInput = "Hello World!" ;
+            "BGd7dP9",
+            "This operation encodes raw data into an ASCII {0} string.",
+            "Base62"
+        );
+        this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
         this.exampleOutput = "T8dgcjRGkZ3aysdN";
 
 

@@ -28,6 +28,7 @@ import Operation from "../../../core/Operation.mjs";
 import BigNumber from "bignumber.js";
 import Utils from "../../../core/Utils.mjs";
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 
 
 /**
@@ -66,7 +67,7 @@ class FromBase62 extends Operation {
         );
         // example for from base62
 
-        this.exampleOutput = "Hello World!" ;
+        this.exampleOutput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
         this.exampleInput = "T8dgcjRGkZ3aysdN";
 
         // new

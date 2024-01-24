@@ -25,6 +25,7 @@
  */
 
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import Operation from "../../../core/Operation.mjs";
 import { toBase64, ALPHABET_OPTIONS } from "../../../core/lib/Base64.mjs";
 
@@ -39,15 +40,15 @@ class ToBase64 extends Operation {
     super();
 
     this.module = "Default";
-    this.id='tobase64'
+    this.id = 'tobase64'
     this.name = Dot("M3ytc", "Encode {0}", "Base64");
     this.description = Dot(
       "BGd7P9",
       "This operation encodes raw data into an ASCII Base64 string.",
     );
-    this.exampleInput = "Hello World!";
+    this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
     this.exampleOutput = "SGVsbG8gV29ybGQh";
-    this.infoURL = "https://wikipedia.org/wiki/Base64";
+    this.id = 'tobase85'
     this.inputType = "ArrayBuffer";
     this.outputType = "string";
     this.args = [

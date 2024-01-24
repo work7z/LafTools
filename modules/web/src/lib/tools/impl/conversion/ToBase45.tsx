@@ -25,7 +25,8 @@
  */
 
 import { Dot } from "../../../../utils/TranslationUtils";
-import {ALPHABET, highlightToBase45, highlightFromBase45} from "../../../core/lib/Base45.mjs";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import { ALPHABET, highlightToBase45, highlightFromBase45 } from "../../../core/lib/Base45.mjs";
 import Operation from "../../../core/Operation.mjs";
 import Utils from "../../../core/Utils.mjs";
 
@@ -51,19 +52,20 @@ class ToBase45 extends Operation {
             }
         ];
 
-                // new
-                this.name = Dot("M3ytc", "Encode {0}", "Base45");
-                this.description = Dot(
-                  "BGd7dP9",
-                  "This operation encodes raw data into an ASCII {0} string.",
-                  "Base45"
-                );    
+        // new
+        this.id = 'base45'
+        this.name = Dot("M3ytc", "Encode {0}", "Base45");
+        this.description = Dot(
+            "BGd7dP9",
+            "This operation encodes raw data into an ASCII {0} string.",
+            "Base45"
+        );
 
-                this.exampleOutput = "%69 VD82EI2B.KESTC";
-                this.exampleInput = "Hello World!";
-            
-                // new
-        
+        this.exampleOutput = "%69 VD82EI2B.KESTC";
+        this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
+
+        // new
+
 
         this.highlight = highlightToBase45;
         this.highlightReverse = highlightFromBase45;
@@ -77,9 +79,9 @@ class ToBase45 extends Operation {
     run(input, args) {
         if (!input) return "";
         input = new Uint8Array(input);
-        const alphabet:any[] = Utils.expandAlphRange(args[0]);
+        const alphabet: any[] = Utils.expandAlphRange(args[0]);
 
-        const res:any[] = [];
+        const res: any[] = [];
 
         for (const pair of Utils.chunked(input, 2)) {
             let b = 0;

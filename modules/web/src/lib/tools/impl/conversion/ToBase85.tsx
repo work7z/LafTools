@@ -29,6 +29,7 @@ import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
 import { alphabetName, ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";
 import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 
 /**
  * To Base85 operation
@@ -41,10 +42,9 @@ class ToBase85 extends Operation {
     constructor() {
         super();
 
+        this.id = 'tobase85'
         this.name = "To Base85";
         this.module = "Default";
-        // this.description = "Base85 (also called Ascii85) is a notation for encoding arbitrary byte data. It is usually more efficient that Base64.This operation encodes data in an ASCII string (with an alphabet of your choosing, presets included).e.g. <code>hello world</code> becomes <code>BOu!rD]j7BEbo7</code>Base85 is commonly used in Adobe's PostScript and PDF file formats.<strong>Options</strong><br><u>Alphabet</u><ul><li>Standard - The standard alphabet, referred to as Ascii85</li><li>Z85 (ZeroMQ) - A string-safe variant of Base85, which avoids quote marks and backslash characters</li><li>IPv6 - A variant of Base85 suitable for encoding IPv6 addresses (RFC 1924)</li></ul><u>Include delimiter</u><br>Adds a '<~' and '~>' delimiter to the start and end of the data. This is standard for Adobe's implementation of Base85.";
-        // this.infoURL = "https://wikipedia.org/wiki/Ascii85";
         this.inputType = "ArrayBuffer";
         this.outputType = "string";
         this.args = [
@@ -68,7 +68,7 @@ class ToBase85 extends Operation {
             "This operation encodes raw data into an ASCII {0} string.",
             "Base85"
         );
-        this.exampleInput = "Hello World!";
+        this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
         this.exampleOutput = "87cURD]i,\"Ebo80";
 
     }
