@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,43 +24,41 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * Add line numbers operation
  */
 class AddLineNumbers extends Operation {
+  /**
+   * AddLineNumbers constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * AddLineNumbers constructor
-     */
-    constructor() {
-        super();
+    this.name = "Add line numbers";
+    this.module = "Default";
+    this.description = "Adds line numbers to the output.";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "Add line numbers";
-        this.module = "Default";
-        this.description = "Adds line numbers to the output.";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [];
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    const lines = input.split("\n"),
+      width = lines.length.toString().length;
+    let output = "";
+
+    for (let n = 0; n < lines.length; n++) {
+      output += (n + 1).toString().padStart(width, " ") + " " + lines[n] + "\n";
     }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        const lines = input.split("\n"),
-            width = lines.length.toString().length;
-        let output = "";
-
-        for (let n = 0; n < lines.length; n++) {
-            output += (n+1).toString().padStart(width, " ") + " " + lines[n] + "\n";
-        }
-        return output.slice(0, output.length-1);
-    }
-
+    return output.slice(0, output.length - 1);
+  }
 }
 
 export default AddLineNumbers;

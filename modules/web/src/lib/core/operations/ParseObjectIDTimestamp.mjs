@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import OperationError from "../errors/OperationError.mjs";
 import BSON from "bson";
 
@@ -32,36 +32,35 @@ import BSON from "bson";
  * Parse ObjectID timestamp operation
  */
 class ParseObjectIDTimestamp extends Operation {
+  /**
+   * ParseObjectIDTimestamp constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * ParseObjectIDTimestamp constructor
-     */
-    constructor() {
-        super();
+    this.name = "Parse ObjectID timestamp";
+    this.module = "Serialise";
+    this.description = "Parse timestamp from MongoDB/BSON ObjectID hex string.";
+    this.infoURL =
+      "https://docs.mongodb.com/manual/reference/method/ObjectId.getTimestamp/";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "Parse ObjectID timestamp";
-        this.module = "Serialise";
-        this.description = "Parse timestamp from MongoDB/BSON ObjectID hex string.";
-        this.infoURL = "https://docs.mongodb.com/manual/reference/method/ObjectId.getTimestamp/";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [];
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    try {
+      const objectId = new BSON.ObjectID(input);
+      return objectId.getTimestamp().toISOString();
+    } catch (err) {
+      throw new OperationError(err);
     }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        try {
-            const objectId = new BSON.ObjectID(input);
-            return objectId.getTimestamp().toISOString();
-        } catch (err) {
-            throw new OperationError(err);
-        }
-    }
-
+  }
 }
 
 export default ParseObjectIDTimestamp;

@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -25,43 +25,41 @@
  */
 
 import vkbeautify from "vkbeautify";
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * XML Minify operation
  */
 class XMLMinify extends Operation {
+  /**
+   * XMLMinify constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * XMLMinify constructor
-     */
-    constructor() {
-        super();
+    this.name = "XML Minify";
+    this.module = "Code";
+    this.description = "Compresses eXtensible Markup Language (XML) code.";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Preserve comments",
+        type: "boolean",
+        value: false,
+      },
+    ];
+  }
 
-        this.name = "XML Minify";
-        this.module = "Code";
-        this.description = "Compresses eXtensible Markup Language (XML) code.";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                "name": "Preserve comments",
-                "type": "boolean",
-                "value": false
-            }
-        ];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        const preserveComments = args[0];
-        return vkbeautify.xmlmin(input, preserveComments);
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    const preserveComments = args[0];
+    return vkbeautify.xmlmin(input, preserveComments);
+  }
 }
 
 export default XMLMinify;

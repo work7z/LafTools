@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../../../core/Operation.mjs";
+import Operation from "../../../core/Operation.tsx";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
 import { alphabetName, ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";

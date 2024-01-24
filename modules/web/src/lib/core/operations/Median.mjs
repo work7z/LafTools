@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,7 @@
  */
 
 import BigNumber from "bignumber.js";
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import { median, createNumArray } from "../lib/Arithmetic.mjs";
 import { ARITHMETIC_DELIM_OPTIONS } from "../lib/Delim.mjs";
 
@@ -34,38 +34,37 @@ import { ARITHMETIC_DELIM_OPTIONS } from "../lib/Delim.mjs";
  * Median operation
  */
 class Median extends Operation {
+  /**
+   * Median constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * Median constructor
-     */
-    constructor() {
-        super();
+    this.name = "Median";
+    this.module = "Default";
+    this.description =
+      "Computes the median of a number list. If an item in the string is not a number it is excluded from the list.<br><br>e.g. <code>0x0a 8 1 .5</code> becomes <code>4.5</code>";
+    this.infoURL = "https://wikipedia.org/wiki/Median";
+    this.inputType = "string";
+    this.outputType = "BigNumber";
+    this.args = [
+      {
+        name: "Delimiter",
+        type: "option",
+        value: ARITHMETIC_DELIM_OPTIONS,
+      },
+    ];
+  }
 
-        this.name = "Median";
-        this.module = "Default";
-        this.description = "Computes the median of a number list. If an item in the string is not a number it is excluded from the list.<br><br>e.g. <code>0x0a 8 1 .5</code> becomes <code>4.5</code>";
-        this.infoURL = "https://wikipedia.org/wiki/Median";
-        this.inputType = "string";
-        this.outputType = "BigNumber";
-        this.args = [
-            {
-                "name": "Delimiter",
-                "type": "option",
-                "value": ARITHMETIC_DELIM_OPTIONS,
-            }
-        ];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {BigNumber}
-     */
-    run(input, args) {
-        const val = median(createNumArray(input, args[0]));
-        return BigNumber.isBigNumber(val) ? val : new BigNumber(NaN);
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {BigNumber}
+   */
+  run(input, args) {
+    const val = median(createNumArray(input, args[0]));
+    return BigNumber.isBigNumber(val) ? val : new BigNumber(NaN);
+  }
 }
 
 export default Median;

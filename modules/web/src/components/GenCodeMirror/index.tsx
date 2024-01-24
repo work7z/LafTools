@@ -63,11 +63,21 @@ import "./index.scss";
 import CodeMirror from "@uiw/react-codemirror";
 import exportUtils from "../../utils/ExportUtils";
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
-import { javascript } from "@codemirror/lang-javascript";
+import { javascript, jsxLanguage } from "@codemirror/lang-javascript";
 import { FN_GetDispatch } from "../../nocycle";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY } from "../../actions/bigtext_action";
 import { go } from '@codemirror/legacy-modes/mode/go';
 import { shell } from '@codemirror/legacy-modes/mode/shell';
+import { json, jsonld } from '@codemirror/legacy-modes/mode/javascript';
+import { css, sCSS, less } from '@codemirror/legacy-modes/mode/css';
+import { html } from '@codemirror/legacy-modes/mode/xml';
+import { python } from '@codemirror/legacy-modes/mode/python';
+import { ruby } from '@codemirror/legacy-modes/mode/ruby';
+// import { sql } from '@codemirror/legacy-modes/mode/sql';
+import { xml } from '@codemirror/legacy-modes/mode/xml';
+import { yaml } from '@codemirror/legacy-modes/mode/yaml';
+import { c, cpp, csharp } from '@codemirror/legacy-modes/mode/clike';
+
 import { StreamLanguage } from '@codemirror/language';
 
 
@@ -79,11 +89,26 @@ type GenCodeMirrorProp = {
   bigTextId: string;
   lineWrap?: boolean;
   language?: string;
-  directValue?:string;
+  directValue?: string;
   placeholder?: string;
   onTextChange?: (newText: string) => any
 };
-
+const langMap = {
+  javascript: () => javascript({ jsx: true }),
+  shell: () => StreamLanguage.define(shell),
+  css: () => StreamLanguage.define(css),
+  html: () => StreamLanguage.define(html),
+  json: () => StreamLanguage.define(json),
+  jsonld: () => StreamLanguage.define(jsonld),
+  python: () => StreamLanguage.define(python),
+  ruby: () => StreamLanguage.define(ruby),
+  xml: () => StreamLanguage.define(xml),
+  yaml: () => StreamLanguage.define(yaml),
+  c: () => StreamLanguage.define(c),
+  cpp: () => StreamLanguage.define(cpp),
+  csharp: () => StreamLanguage.define(csharp),
+  go: () => StreamLanguage.define(go),
+}
 export default (props: GenCodeMirrorProp) => {
   let forgeObj = exportUtils.useSelector((val) => ({
     dark: val.forge.DarkThemeMode,
@@ -115,10 +140,7 @@ export default (props: GenCodeMirrorProp) => {
     };
   });
 
-  let langMap = {
-    javascript: () => javascript({ jsx: true }),
-    shell: () => StreamLanguage.define(shell)
-  }
+
   let bt = useMemo(() => {
     return bt_raw;
   }, [verObj.ver]);
@@ -137,7 +159,7 @@ export default (props: GenCodeMirrorProp) => {
       propRef.current.fn_onTextChange && propRef.current.fn_onTextChange(actualText)
     }
   }, [verObj.ver])
-  let value: string =props.directValue || bt.bigText;
+  let value: string = props.directValue || bt.bigText;
   let setValue = (val: string) => {
     // debugger;
     FN_GetDispatch()(FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY(bigTextId, val));
@@ -161,10 +183,8 @@ export default (props: GenCodeMirrorProp) => {
       }}
       height="100%"
       value={value}
-      // lang={props.language || 'javascript'}
       basicSetup={{
       }}
-      // lang={"shell"}
       extensions={[
         langPack,
         props.lineWrap ? EditorView.lineWrapping : null

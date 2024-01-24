@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,64 +24,63 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import { affineEncode } from "../lib/Ciphers.mjs";
 
 /**
  * Atbash Cipher operation
  */
 class AtbashCipher extends Operation {
+  /**
+   * AtbashCipher constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * AtbashCipher constructor
-     */
-    constructor() {
-        super();
+    this.name = "Atbash Cipher";
+    this.module = "Ciphers";
+    this.description =
+      "Atbash is a mono-alphabetic substitution cipher originally used to encode the Hebrew alphabet. It has been modified here for use with the Latin alphabet.";
+    this.infoURL = "https://wikipedia.org/wiki/Atbash";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "Atbash Cipher";
-        this.module = "Ciphers";
-        this.description = "Atbash is a mono-alphabetic substitution cipher originally used to encode the Hebrew alphabet. It has been modified here for use with the Latin alphabet.";
-        this.infoURL = "https://wikipedia.org/wiki/Atbash";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [];
-    }
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    return affineEncode(input, [25, 25]);
+  }
 
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        return affineEncode(input, [25, 25]);
-    }
+  /**
+   * Highlight Atbash Cipher
+   *
+   * @param {Object[]} pos
+   * @param {number} pos[].start
+   * @param {number} pos[].end
+   * @param {Object[]} args
+   * @returns {Object[]} pos
+   */
+  highlight(pos, args) {
+    return pos;
+  }
 
-    /**
-     * Highlight Atbash Cipher
-     *
-     * @param {Object[]} pos
-     * @param {number} pos[].start
-     * @param {number} pos[].end
-     * @param {Object[]} args
-     * @returns {Object[]} pos
-     */
-    highlight(pos, args) {
-        return pos;
-    }
-
-    /**
-     * Highlight Atbash Cipher in reverse
-     *
-     * @param {Object[]} pos
-     * @param {number} pos[].start
-     * @param {number} pos[].end
-     * @param {Object[]} args
-     * @returns {Object[]} pos
-     */
-    highlightReverse(pos, args) {
-        return pos;
-    }
-
+  /**
+   * Highlight Atbash Cipher in reverse
+   *
+   * @param {Object[]} pos
+   * @param {number} pos[].start
+   * @param {number} pos[].end
+   * @param {Object[]} args
+   * @returns {Object[]} pos
+   */
+  highlightReverse(pos, args) {
+    return pos;
+  }
 }
 
 export default AtbashCipher;

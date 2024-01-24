@@ -93,17 +93,19 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
             onClick: async () => {
                 try {
                     onLoadExample(true);
-                    let r = await AjaxUtils.DoStaticRequest({
-                        url: "/example/" + toolHandler?.getMetaInfo()?.exampleType + ".txt",
-                    });
-                    if (r.status != 200) {
-                        throw new Error(Dot("vU17B", "Unable to send the request"));
+                    let val: string = props.crtDefaultOpera?.exampleInput || ''
+                    if (_.isEmpty(val)) {
+                        let r = await AjaxUtils.DoStaticRequest({
+                            url: "/example/" + toolHandler?.getMetaInfo()?.exampleType + ".txt",
+                        });
+                        if (r.status != 200) {
+                            throw new Error(Dot("vU17B", "Unable to send the request"));
+                        }
+                        val = r.data;
                     }
-                    let val = r.data;
                     FN_GetDispatch()(
                         FN_SetTextValueFromOutSideByBigTextId(inputBigTextId, val),
                     );
-                    // AlertUtils.popOK(Dot("gsHQM", "Loaded example data successfully"));
                 } catch (e) {
                     console.log(e);
                     AlertUtils.popError(e as any);

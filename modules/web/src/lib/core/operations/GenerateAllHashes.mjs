@@ -25,7 +25,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import Utils from "../Utils.mjs";
 import MD2 from "../../tools/impl/conversion/MD2.js";
 import MD4 from "../../tools/impl/conversion/MD4.js";

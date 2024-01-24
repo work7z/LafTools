@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import OperationError from "../errors/OperationError.mjs";
 import { isImage } from "../lib/FileType.mjs";
 import { toBase64 } from "../lib/Base64.mjs";

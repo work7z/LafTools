@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,182 +24,187 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import OperationError from "../errors/OperationError.mjs";
 import Utils from "../Utils.mjs";
-import {isImage} from "../lib/FileType.mjs";
-import {toBase64} from "../lib/Base64.mjs";
-import {isWorkerEnvironment} from "../Utils.mjs";
+import { isImage } from "../lib/FileType.mjs";
+import { toBase64 } from "../lib/Base64.mjs";
+import { isWorkerEnvironment } from "../Utils.mjs";
 // import jimp from "jimp";
-var jimp = require('jimp')
+var jimp = require("jimp");
 
 /**
  * Generate Image operation
  */
 class GenerateImage extends Operation {
+  /**
+   * GenerateImage constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * GenerateImage constructor
-     */
-    constructor() {
-        super();
+    this.name = "Generate Image";
+    this.module = "Image";
+    this.description = "Generates an image using the input as pixel values.";
+    this.infoURL = "";
+    this.inputType = "ArrayBuffer";
+    this.outputType = "ArrayBuffer";
+    this.presentType = "html";
+    this.args = [
+      {
+        name: "Mode",
+        type: "option",
+        value: ["Greyscale", "RG", "RGB", "RGBA", "Bits"],
+      },
+      {
+        name: "Pixel Scale Factor",
+        type: "number",
+        value: 8,
+      },
+      {
+        name: "Pixels per row",
+        type: "number",
+        value: 64,
+      },
+    ];
+  }
 
-        this.name = "Generate Image";
-        this.module = "Image";
-        this.description = "Generates an image using the input as pixel values.";
-        this.infoURL = "";
-        this.inputType = "ArrayBuffer";
-        this.outputType = "ArrayBuffer";
-        this.presentType = "html";
-        this.args = [
-            {
-                "name": "Mode",
-                "type": "option",
-                "value": ["Greyscale", "RG", "RGB", "RGBA", "Bits"]
-            },
-            {
-                "name": "Pixel Scale Factor",
-                "type": "number",
-                "value": 8,
-            },
-            {
-                "name": "Pixels per row",
-                "type": "number",
-                "value": 64,
-            }
-        ];
+  /**
+   * @param {byteArray} input
+   * @param {Object[]} args
+   * @returns {ArrayBuffer}
+   */
+  async run(input, args) {
+    const [mode, scale, width] = args;
+    input = new Uint8Array(input);
+
+    if (scale <= 0) {
+      throw new OperationError("Pixel Scale Factor needs to be > 0");
     }
 
-    /**
-     * @param {byteArray} input
-     * @param {Object[]} args
-     * @returns {ArrayBuffer}
-     */
-    async run(input, args) {
-        const [mode, scale, width] = args;
-        input = new Uint8Array(input);
+    if (width <= 0) {
+      throw new OperationError("Pixels per Row needs to be > 0");
+    }
 
-        if (scale <= 0) {
-            throw new OperationError("Pixel Scale Factor needs to be > 0");
+    const bytePerPixelMap = {
+      Greyscale: 1,
+      RG: 2,
+      RGB: 3,
+      RGBA: 4,
+      Bits: 1 / 8,
+    };
+
+    const bytesPerPixel = bytePerPixelMap[mode];
+
+    if (bytesPerPixel > 0 && input.length % bytesPerPixel !== 0) {
+      throw new OperationError(
+        `Number of bytes is not a divisor of ${bytesPerPixel}`,
+      );
+    }
+
+    const height = Math.ceil(input.length / bytesPerPixel / width);
+    const image = await new jimp(width, height, (err, image) => {});
+
+    if (isWorkerEnvironment())
+      self.sendStatusMessage("Generating image from data...");
+
+    if (mode === "Bits") {
+      let index = 0;
+      for (let j = 0; j < input.length; j++) {
+        const curByte = Utils.bin(input[j]);
+        for (let k = 0; k < 8; k++, index++) {
+          const x = index % width;
+          const y = Math.floor(index / width);
+
+          const value = curByte[k] === "0" ? 0xff : 0x00;
+          const pixel = jimp.rgbaToInt(value, value, value, 0xff);
+          image.setPixelColor(pixel, x, y);
         }
+      }
+    } else {
+      let i = 0;
+      while (i < input.length) {
+        const index = i / bytesPerPixel;
+        const x = index % width;
+        const y = Math.floor(index / width);
 
-        if (width <= 0) {
-            throw new OperationError("Pixels per Row needs to be > 0");
-        }
+        let red = 0x00;
+        let green = 0x00;
+        let blue = 0x00;
+        let alpha = 0xff;
 
-        const bytePerPixelMap = {
-            "Greyscale": 1,
-            "RG": 2,
-            "RGB": 3,
-            "RGBA": 4,
-            "Bits": 1/8,
-        };
+        switch (mode) {
+          case "Greyscale":
+            red = green = blue = input[i++];
+            break;
 
-        const bytesPerPixel = bytePerPixelMap[mode];
+          case "RG":
+            red = input[i++];
+            green = input[i++];
+            break;
 
-        if (bytesPerPixel > 0 && input.length % bytesPerPixel  !== 0) {
-            throw new OperationError(`Number of bytes is not a divisor of ${bytesPerPixel}`);
-        }
+          case "RGB":
+            red = input[i++];
+            green = input[i++];
+            blue = input[i++];
+            break;
 
-        const height = Math.ceil(input.length / bytesPerPixel / width);
-        const image = await new jimp(width, height, (err, image) => {});
+          case "RGBA":
+            red = input[i++];
+            green = input[i++];
+            blue = input[i++];
+            alpha = input[i++];
+            break;
 
-        if (isWorkerEnvironment())
-            self.sendStatusMessage("Generating image from data...");
-
-        if (mode === "Bits") {
-            let index = 0;
-            for (let j = 0; j < input.length; j++) {
-                const curByte = Utils.bin(input[j]);
-                for (let k = 0; k < 8; k++, index++) {
-                    const x = index % width;
-                    const y = Math.floor(index / width);
-
-                    const value = curByte[k] === "0" ? 0xFF : 0x00;
-                    const pixel = jimp.rgbaToInt(value, value, value, 0xFF);
-                    image.setPixelColor(pixel, x, y);
-                }
-            }
-        } else {
-            let i = 0;
-            while (i < input.length) {
-                const index = i / bytesPerPixel;
-                const x = index % width;
-                const y = Math.floor(index / width);
-
-                let red = 0x00;
-                let green = 0x00;
-                let blue = 0x00;
-                let alpha = 0xFF;
-
-                switch (mode) {
-                    case "Greyscale":
-                        red = green = blue = input[i++];
-                        break;
-
-                    case "RG":
-                        red = input[i++];
-                        green = input[i++];
-                        break;
-
-                    case "RGB":
-                        red = input[i++];
-                        green = input[i++];
-                        blue = input[i++];
-                        break;
-
-                    case "RGBA":
-                        red = input[i++];
-                        green = input[i++];
-                        blue = input[i++];
-                        alpha = input[i++];
-                        break;
-
-                    default:
-                        throw new OperationError(`Unsupported Mode: (${mode})`);
-                }
-
-                try {
-                    const pixel = jimp.rgbaToInt(red, green, blue, alpha);
-                    image.setPixelColor(pixel, x, y);
-                } catch (err) {
-                    throw new OperationError(`Error while generating image from pixel values. (${err})`);
-                }
-            }
-        }
-
-        if (scale !== 1) {
-            if (isWorkerEnvironment())
-                self.sendStatusMessage("Scaling image...");
-
-            image.scaleToFit(width*scale, height*scale, jimp.RESIZE_NEAREST_NEIGHBOR);
+          default:
+            throw new OperationError(`Unsupported Mode: (${mode})`);
         }
 
         try {
-            const imageBuffer = await image.getBufferAsync(jimp.MIME_PNG);
-            return imageBuffer.buffer;
+          const pixel = jimp.rgbaToInt(red, green, blue, alpha);
+          image.setPixelColor(pixel, x, y);
         } catch (err) {
-            throw new OperationError(`Error generating image. (${err})`);
+          throw new OperationError(
+            `Error while generating image from pixel values. (${err})`,
+          );
         }
+      }
     }
 
-    /**
-     * Displays the generated image using HTML for web apps
-     * @param {ArrayBuffer} data
-     * @returns {html}
-     */
-    present(data) {
-        if (!data.byteLength) return "";
-        const dataArray = new Uint8Array(data);
+    if (scale !== 1) {
+      if (isWorkerEnvironment()) self.sendStatusMessage("Scaling image...");
 
-        const type = isImage(dataArray);
-        if (!type) {
-            throw new OperationError("Invalid file type.");
-        }
-
-        return `<img src="data:${type};base64,${toBase64(dataArray)}">`;
+      image.scaleToFit(
+        width * scale,
+        height * scale,
+        jimp.RESIZE_NEAREST_NEIGHBOR,
+      );
     }
 
+    try {
+      const imageBuffer = await image.getBufferAsync(jimp.MIME_PNG);
+      return imageBuffer.buffer;
+    } catch (err) {
+      throw new OperationError(`Error generating image. (${err})`);
+    }
+  }
+
+  /**
+   * Displays the generated image using HTML for web apps
+   * @param {ArrayBuffer} data
+   * @returns {html}
+   */
+  present(data) {
+    if (!data.byteLength) return "";
+    const dataArray = new Uint8Array(data);
+
+    const type = isImage(dataArray);
+    if (!type) {
+      throw new OperationError("Invalid file type.");
+    }
+
+    return `<img src="data:${type};base64,${toBase64(dataArray)}">`;
+  }
 }
 
 export default GenerateImage;

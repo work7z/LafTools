@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -25,43 +25,45 @@
  */
 
 import r from "jsrsasign";
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * Hex to PEM operation
  */
 class HexToPEM extends Operation {
+  /**
+   * HexToPEM constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * HexToPEM constructor
-     */
-    constructor() {
-        super();
+    this.name = "Hex to PEM";
+    this.module = "PublicKey";
+    this.description =
+      "Converts a hexadecimal DER (Distinguished Encoding Rules) string into PEM (Privacy Enhanced Mail) format.";
+    this.infoURL = "https://wikipedia.org/wiki/Privacy-Enhanced_Mail";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Header string",
+        type: "string",
+        value: "CERTIFICATE",
+      },
+    ];
+  }
 
-        this.name = "Hex to PEM";
-        this.module = "PublicKey";
-        this.description = "Converts a hexadecimal DER (Distinguished Encoding Rules) string into PEM (Privacy Enhanced Mail) format.";
-        this.infoURL = "https://wikipedia.org/wiki/Privacy-Enhanced_Mail";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                "name": "Header string",
-                "type": "string",
-                "value": "CERTIFICATE"
-            }
-        ];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        return r.KJUR.asn1.ASN1Util.getPEMStringFromHex(input.replace(/\s/g, ""), args[0]);
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    return r.KJUR.asn1.ASN1Util.getPEMStringFromHex(
+      input.replace(/\s/g, ""),
+      args[0],
+    );
+  }
 }
 
 export default HexToPEM;

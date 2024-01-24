@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,51 +24,50 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * Chi Square operation
  */
 class ChiSquare extends Operation {
+  /**
+   * ChiSquare constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * ChiSquare constructor
-     */
-    constructor() {
-        super();
+    this.name = "Chi Square";
+    this.module = "Default";
+    this.description = "Calculates the Chi Square distribution of values.";
+    this.infoURL = "https://wikipedia.org/wiki/Chi-squared_distribution";
+    this.inputType = "ArrayBuffer";
+    this.outputType = "number";
+    this.args = [];
+  }
 
-        this.name = "Chi Square";
-        this.module = "Default";
-        this.description = "Calculates the Chi Square distribution of values.";
-        this.infoURL = "https://wikipedia.org/wiki/Chi-squared_distribution";
-        this.inputType = "ArrayBuffer";
-        this.outputType = "number";
-        this.args = [];
+  /**
+   * @param {ArrayBuffer} input
+   * @param {Object[]} args
+   * @returns {number}
+   */
+  run(input, args) {
+    const data = new Uint8Array(input);
+    const distArray = new Array(256).fill(0);
+    let total = 0;
+
+    for (let i = 0; i < data.length; i++) {
+      distArray[data[i]]++;
     }
 
-    /**
-     * @param {ArrayBuffer} input
-     * @param {Object[]} args
-     * @returns {number}
-     */
-    run(input, args) {
-        const data = new Uint8Array(input);
-        const distArray = new Array(256).fill(0);
-        let total = 0;
-
-        for (let i = 0; i < data.length; i++) {
-            distArray[data[i]]++;
-        }
-
-        for (let i = 0; i < distArray.length; i++) {
-            if (distArray[i] > 0) {
-                total += Math.pow(distArray[i] - data.length / 256, 2) / (data.length / 256);
-            }
-        }
-
-        return total;
+    for (let i = 0; i < distArray.length; i++) {
+      if (distArray[i] > 0) {
+        total +=
+          Math.pow(distArray[i] - data.length / 256, 2) / (data.length / 256);
+      }
     }
 
+    return total;
+  }
 }
 
 export default ChiSquare;

@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,84 +24,88 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import OperationError from "../errors/OperationError.mjs";
 
 /**
  * Set Difference operation
  */
 class SetDifference extends Operation {
+  /**
+   * Set Difference constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * Set Difference constructor
-     */
-    constructor() {
-        super();
+    this.name = "Set Difference";
+    this.module = "Default";
+    this.description =
+      "Calculates the difference, or relative complement, of two sets.";
+    this.infoURL =
+      "https://wikipedia.org/wiki/Complement_(set_theory)#Relative_complement";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Sample delimiter",
+        type: "binaryString",
+        value: "\\n\\n",
+      },
+      {
+        name: "Item delimiter",
+        type: "binaryString",
+        value: ",",
+      },
+    ];
+  }
 
-        this.name = "Set Difference";
-        this.module = "Default";
-        this.description = "Calculates the difference, or relative complement, of two sets.";
-        this.infoURL = "https://wikipedia.org/wiki/Complement_(set_theory)#Relative_complement";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                name: "Sample delimiter",
-                type: "binaryString",
-                value: "\\n\\n"
-            },
-            {
-                name: "Item delimiter",
-                type: "binaryString",
-                value: ","
-            },
-        ];
+  /**
+   * Validate input length
+   *
+   * @param {Object[]} sets
+   * @throws {Error} if not two sets
+   */
+  validateSampleNumbers(sets) {
+    if (!sets || sets.length !== 2) {
+      throw new OperationError(
+        "Incorrect number of sets, perhaps you need to modify the sample delimiter or add more samples?",
+      );
     }
+  }
 
-    /**
-     * Validate input length
-     *
-     * @param {Object[]} sets
-     * @throws {Error} if not two sets
-     */
-    validateSampleNumbers(sets) {
-        if (!sets || (sets.length !== 2)) {
-            throw new OperationError("Incorrect number of sets, perhaps you need to modify the sample delimiter or add more samples?");
-        }
-    }
+  /**
+   * Run the difference operation
+   *
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   * @throws {OperationError}
+   */
+  run(input, args) {
+    [this.sampleDelim, this.itemDelimiter] = args;
+    const sets = input.split(this.sampleDelim);
 
-    /**
-     * Run the difference operation
-     *
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     * @throws {OperationError}
-     */
-    run(input, args) {
-        [this.sampleDelim, this.itemDelimiter] = args;
-        const sets = input.split(this.sampleDelim);
+    this.validateSampleNumbers(sets);
 
-        this.validateSampleNumbers(sets);
+    return this.runSetDifference(
+      ...sets.map((s) => s.split(this.itemDelimiter)),
+    );
+  }
 
-        return this.runSetDifference(...sets.map(s => s.split(this.itemDelimiter)));
-    }
-
-    /**
-     * Get elements in set a that are not in set b
-     *
-     * @param {Object[]} a
-     * @param {Object[]} b
-     * @returns {Object[]}
-     */
-    runSetDifference(a, b) {
-        return a
-            .filter((item) => {
-                return b.indexOf(item) === -1;
-            })
-            .join(this.itemDelimiter);
-    }
-
+  /**
+   * Get elements in set a that are not in set b
+   *
+   * @param {Object[]} a
+   * @param {Object[]} b
+   * @returns {Object[]}
+   */
+  runSetDifference(a, b) {
+    return a
+      .filter((item) => {
+        return b.indexOf(item) === -1;
+      })
+      .join(this.itemDelimiter);
+  }
 }
 
 export default SetDifference;

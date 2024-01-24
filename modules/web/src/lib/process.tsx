@@ -21,7 +21,7 @@
 import _ from "lodash";
 import { ExtensionVM } from "../types/purejs-types-READ_ONLY.ts";
 import gutils from "../utils/GlobalUtils.tsx";
-import Operation from "./core/Operation.mjs";
+import Operation from "./core/Operation.tsx";
 // import Chef from "./core/Chef.mjs";
 import Utils from "./core/Utils.mjs";
 import setupApp from "./setupApp.ts";
@@ -63,8 +63,17 @@ let LibIndex = {
         argsValueArr = []
       }
       let result = inst.run(input, argsValueArr);
+      if (inst.outputType == "ArrayBuffer") {
+        result = Utils.arrayBufferToStr(result);
+      }
+      if (inst.outputType == "string") {
+        // do nothing
+      }
+      if (inst.outputType == "byteArray") {
+        result = Utils.byteArrayToChars(result);
+      }
       return {
-        result: _.toString(result),
+        result,
       };
     } catch (e) {
       console.log("err", e);

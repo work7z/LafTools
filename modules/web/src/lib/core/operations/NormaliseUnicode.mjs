@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,59 +24,59 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import OperationError from "../errors/OperationError.mjs";
-import {UNICODE_NORMALISATION_FORMS} from "../lib/ChrEnc.mjs";
+import { UNICODE_NORMALISATION_FORMS } from "../lib/ChrEnc.mjs";
 import unorm from "unorm";
 
 /**
  * Normalise Unicode operation
  */
 class NormaliseUnicode extends Operation {
+  /**
+   * NormaliseUnicode constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * NormaliseUnicode constructor
-     */
-    constructor() {
-        super();
+    this.name = "Normalise Unicode";
+    this.module = "Encodings";
+    this.description =
+      "Transform Unicode characters to one of the Normalisation Forms";
+    this.infoURL =
+      "https://wikipedia.org/wiki/Unicode_equivalence#Normal_forms";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Normal Form",
+        type: "option",
+        value: UNICODE_NORMALISATION_FORMS,
+      },
+    ];
+  }
 
-        this.name = "Normalise Unicode";
-        this.module = "Encodings";
-        this.description = "Transform Unicode characters to one of the Normalisation Forms";
-        this.infoURL = "https://wikipedia.org/wiki/Unicode_equivalence#Normal_forms";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                name: "Normal Form",
-                type: "option",
-                value: UNICODE_NORMALISATION_FORMS
-            }
-        ];
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    const [normalForm] = args;
+
+    switch (normalForm) {
+      case "NFD":
+        return unorm.nfd(input);
+      case "NFC":
+        return unorm.nfc(input);
+      case "NFKD":
+        return unorm.nfkd(input);
+      case "NFKC":
+        return unorm.nfkc(input);
+      default:
+        throw new OperationError("Unknown Normalisation Form");
     }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        const [normalForm] = args;
-
-        switch (normalForm) {
-            case "NFD":
-                return unorm.nfd(input);
-            case "NFC":
-                return unorm.nfc(input);
-            case "NFKD":
-                return unorm.nfkd(input);
-            case "NFKC":
-                return unorm.nfkc(input);
-            default:
-                throw new OperationError("Unknown Normalisation Form");
-        }
-    }
-
+  }
 }
 
 export default NormaliseUnicode;

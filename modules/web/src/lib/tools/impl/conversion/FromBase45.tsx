@@ -25,7 +25,7 @@
  */
 
 import { ALPHABET, highlightToBase45, highlightFromBase45 } from "../../../core/lib/Base45.mjs";
-import Operation from "../../../core/Operation.mjs";
+import Operation from "../../../core/Operation.tsx";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
 import { Dot } from "../../../../utils/TranslationUtils";

@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Dot } from "../../../utils/TranslationUtils";
-import Operation from "../../core/Operation.mjs";
+import Operation from "../../core/Operation.tsx";
 import FromBase64 from "./conversion/FromBase64.js";
 import ToBase64 from "./conversion/ToBase64.js";
 

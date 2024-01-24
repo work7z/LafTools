@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,47 +24,46 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import cptable from "codepage";
 
 /**
  * Citrix CTX1 Encode operation
  */
 class CitrixCTX1Encode extends Operation {
+  /**
+   * CitrixCTX1Encode constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * CitrixCTX1Encode constructor
-     */
-    constructor() {
-        super();
+    this.name = "Citrix CTX1 Encode";
+    this.module = "Encodings";
+    this.description = "Encodes strings to Citrix CTX1 password format.";
+    this.infoURL =
+      "https://www.reddit.com/r/AskNetsec/comments/1s3r6y/citrix_ctx1_hash_decoding/";
+    this.inputType = "string";
+    this.outputType = "byteArray";
+    this.args = [];
+  }
 
-        this.name = "Citrix CTX1 Encode";
-        this.module = "Encodings";
-        this.description = "Encodes strings to Citrix CTX1 password format.";
-        this.infoURL = "https://www.reddit.com/r/AskNetsec/comments/1s3r6y/citrix_ctx1_hash_decoding/";
-        this.inputType = "string";
-        this.outputType = "byteArray";
-        this.args = [];
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {byteArray}
+   */
+  run(input, args) {
+    const utf16pass = Array.from(cptable.utils.encode(1200, input));
+    const result = [];
+    let temp = 0;
+    for (let i = 0; i < utf16pass.length; i++) {
+      temp = utf16pass[i] ^ 0xa5 ^ temp;
+      result.push(((temp >>> 4) & 0xf) + 0x41);
+      result.push((temp & 0xf) + 0x41);
     }
 
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {byteArray}
-     */
-    run(input, args) {
-        const utf16pass = Array.from(cptable.utils.encode(1200, input));
-        const result = [];
-        let temp = 0;
-        for (let i = 0; i < utf16pass.length; i++) {
-            temp = utf16pass[i] ^ 0xa5 ^ temp;
-            result.push(((temp >>> 4) & 0xf) + 0x41);
-            result.push((temp & 0xf) + 0x41);
-        }
-
-        return result;
-    }
-
+    return result;
+  }
 }
 
 export default CitrixCTX1Encode;

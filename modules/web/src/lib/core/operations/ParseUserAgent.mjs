@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,44 +24,44 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import UAParser from "ua-parser-js";
 
 /**
  * Parse User Agent operation
  */
 class ParseUserAgent extends Operation {
+  /**
+   * ParseUserAgent constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * ParseUserAgent constructor
-     */
-    constructor() {
-        super();
+    this.name = "Parse User Agent";
+    this.module = "UserAgent";
+    this.description =
+      "Attempts to identify and categorise information contained in a user-agent string.";
+    this.infoURL = "https://wikipedia.org/wiki/User_agent";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [];
+    this.checks = [
+      {
+        pattern: "^(User-Agent:|Mozilla\\/)[^\\n\\r]+\\s*$",
+        flags: "i",
+        args: [],
+      },
+    ];
+  }
 
-        this.name = "Parse User Agent";
-        this.module = "UserAgent";
-        this.description = "Attempts to identify and categorise information contained in a user-agent string.";
-        this.infoURL = "https://wikipedia.org/wiki/User_agent";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [];
-        this.checks = [
-            {
-                pattern:  "^(User-Agent:|Mozilla\\/)[^\\n\\r]+\\s*$",
-                flags:  "i",
-                args:   []
-            }
-        ];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        const ua = UAParser(input);
-        return `Browser
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    const ua = UAParser(input);
+    return `Browser
     Name: ${ua.browser.name || "unknown"}
     Version: ${ua.browser.version || "unknown"}
 Device
@@ -76,8 +76,7 @@ OS
     Version: ${ua.os.version || "unknown"}
 CPU
     Architecture: ${ua.cpu.architecture || "unknown"}`;
-    }
-
+  }
 }
 
 export default ParseUserAgent;

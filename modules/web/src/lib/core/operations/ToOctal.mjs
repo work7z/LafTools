@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,47 +24,45 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import Utils from "../Utils.mjs";
-import {DELIM_OPTIONS} from "../lib/Delim.mjs";
-
+import { DELIM_OPTIONS } from "../lib/Delim.mjs";
 
 /**
  * To Octal operation
  */
 class ToOctal extends Operation {
+  /**
+   * ToOctal constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * ToOctal constructor
-     */
-    constructor() {
-        super();
+    this.name = "To Octal";
+    this.module = "Default";
+    this.description =
+      "Converts the input string to octal bytes separated by the specified delimiter.<br><br>e.g. The UTF-8 encoded string <code>Γειά σου</code> becomes <code>316 223 316 265 316 271 316 254 40 317 203 316 277 317 205</code>";
+    this.infoURL = "https://wikipedia.org/wiki/Octal";
+    this.inputType = "byteArray";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Delimiter",
+        type: "option",
+        value: DELIM_OPTIONS,
+      },
+    ];
+  }
 
-        this.name = "To Octal";
-        this.module = "Default";
-        this.description = "Converts the input string to octal bytes separated by the specified delimiter.<br><br>e.g. The UTF-8 encoded string <code>Γειά σου</code> becomes <code>316 223 316 265 316 271 316 254 40 317 203 316 277 317 205</code>";
-        this.infoURL = "https://wikipedia.org/wiki/Octal";
-        this.inputType = "byteArray";
-        this.outputType = "string";
-        this.args = [
-            {
-                "name": "Delimiter",
-                "type": "option",
-                "value": DELIM_OPTIONS
-            }
-        ];
-    }
-
-    /**
-     * @param {byteArray} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        const delim = Utils.charRep(args[0] || "Space");
-        return input.map(val => val.toString(8)).join(delim);
-    }
-
+  /**
+   * @param {byteArray} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    const delim = Utils.charRep(args[0] || "Space");
+    return input.map((val) => val.toString(8)).join(delim);
+  }
 }
 
 export default ToOctal;

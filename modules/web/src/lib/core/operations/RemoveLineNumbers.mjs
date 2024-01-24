@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,36 +24,35 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * Remove line numbers operation
  */
 class RemoveLineNumbers extends Operation {
+  /**
+   * RemoveLineNumbers constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * RemoveLineNumbers constructor
-     */
-    constructor() {
-        super();
+    this.name = "Remove line numbers";
+    this.module = "Default";
+    this.description =
+      "Removes line numbers from the output if they can be trivially detected.";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "Remove line numbers";
-        this.module = "Default";
-        this.description = "Removes line numbers from the output if they can be trivially detected.";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        return input.replace(/^[ \t]{0,5}\d+[\s:|\-,.)\]]/gm, "");
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    return input.replace(/^[ \t]{0,5}\d+[\s:|\-,.)\]]/gm, "");
+  }
 }
 
 export default RemoveLineNumbers;

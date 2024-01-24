@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../../../core/Operation.mjs";
+import Operation from "../../../core/Operation.tsx";
 import BigNumber from "bignumber.js";
 import Utils from "../../../core/Utils.mjs";
 import { toHexFast } from "../../../core/lib/Hex.mjs";

@@ -1,6 +1,6 @@
 
 import { Dot } from "../../../utils/TranslationUtils.js";
-import Operation from "../../core/Operation.mjs";
+import Operation from "../../core/Operation.tsx";
 import FromBase45 from "./conversion/FromBase45.tsx";
 import ToBase45 from "./conversion/ToBase45.tsx";
 import { ToolHandler, ToolMetaInfo } from "../handler.js";

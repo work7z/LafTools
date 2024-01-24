@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,38 +24,37 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import JSCRC from "js-crc";
 
 /**
  * CRC-16 Checksum operation
  */
 class CRC16Checksum extends Operation {
+  /**
+   * CRC16Checksum constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * CRC16Checksum constructor
-     */
-    constructor() {
-        super();
+    this.name = "CRC-16 Checksum";
+    this.module = "Crypto";
+    this.description =
+      "A cyclic redundancy check (CRC) is an error-detecting code commonly used in digital networks and storage devices to detect accidental changes to raw data.<br><br>The CRC was invented by W. Wesley Peterson in 1961.";
+    this.infoURL = "https://wikipedia.org/wiki/Cyclic_redundancy_check";
+    this.inputType = "ArrayBuffer";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "CRC-16 Checksum";
-        this.module = "Crypto";
-        this.description = "A cyclic redundancy check (CRC) is an error-detecting code commonly used in digital networks and storage devices to detect accidental changes to raw data.<br><br>The CRC was invented by W. Wesley Peterson in 1961.";
-        this.infoURL = "https://wikipedia.org/wiki/Cyclic_redundancy_check";
-        this.inputType = "ArrayBuffer";
-        this.outputType = "string";
-        this.args = [];
-    }
-
-    /**
-     * @param {ArrayBuffer} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        return JSCRC.crc16(input);
-    }
-
+  /**
+   * @param {ArrayBuffer} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    return JSCRC.crc16(input);
+  }
 }
 
 export default CRC16Checksum;

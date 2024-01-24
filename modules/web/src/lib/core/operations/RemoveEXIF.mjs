@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -25,52 +25,50 @@
  */
 
 import { removeEXIF } from "../vendor/remove-exif.mjs";
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import OperationError from "../errors/OperationError.mjs";
 
 /**
  * Remove EXIF operation
  */
 class RemoveEXIF extends Operation {
+  /**
+   * RemoveEXIF constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * RemoveEXIF constructor
-     */
-    constructor() {
-        super();
+    this.name = "Remove EXIF";
+    this.module = "Image";
+    this.description = [
+      "Removes EXIF data from a JPEG image.",
+      "<br><br>",
+      "EXIF data embedded in photos usually contains information about the image file itself as well as the device used to create it.",
+    ].join("\n");
+    this.infoURL = "https://wikipedia.org/wiki/Exif";
+    this.inputType = "ArrayBuffer";
+    this.outputType = "byteArray";
+    this.args = [];
+  }
 
-        this.name = "Remove EXIF";
-        this.module = "Image";
-        this.description = [
-            "Removes EXIF data from a JPEG image.",
-            "<br><br>",
-            "EXIF data embedded in photos usually contains information about the image file itself as well as the device used to create it.",
-        ].join("\n");
-        this.infoURL = "https://wikipedia.org/wiki/Exif";
-        this.inputType = "ArrayBuffer";
-        this.outputType = "byteArray";
-        this.args = [];
+  /**
+   * @param {ArrayBuffer} input
+   * @param {Object[]} args
+   * @returns {byteArray}
+   */
+  run(input, args) {
+    input = new Uint8Array(input);
+    // Do nothing if input is empty
+    if (input.length === 0) return input;
+
+    try {
+      return removeEXIF(input);
+    } catch (err) {
+      // Simply return input if no EXIF data is found
+      if (err === "Exif not found.") return input;
+      throw new OperationError(`Could not remove EXIF data from image: ${err}`);
     }
-
-    /**
-     * @param {ArrayBuffer} input
-     * @param {Object[]} args
-     * @returns {byteArray}
-     */
-    run(input, args) {
-        input = new Uint8Array(input);
-        // Do nothing if input is empty
-        if (input.length === 0) return input;
-
-        try {
-            return removeEXIF(input);
-        } catch (err) {
-            // Simply return input if no EXIF data is found
-            if (err === "Exif not found.") return input;
-            throw new OperationError(`Could not remove EXIF data from image: ${err}`);
-        }
-    }
-
+  }
 }
 
 export default RemoveEXIF;

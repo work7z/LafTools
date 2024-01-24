@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,44 +24,43 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * Sleep operation
  */
 class Sleep extends Operation {
+  /**
+   * Sleep constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * Sleep constructor
-     */
-    constructor() {
-        super();
+    this.name = "Sleep";
+    this.module = "Default";
+    this.description =
+      "Sleep causes the recipe to wait for a specified number of milliseconds before continuing execution.";
+    this.inputType = "ArrayBuffer";
+    this.outputType = "ArrayBuffer";
+    this.args = [
+      {
+        name: "Time (ms)",
+        type: "number",
+        value: 1000,
+      },
+    ];
+  }
 
-        this.name = "Sleep";
-        this.module = "Default";
-        this.description = "Sleep causes the recipe to wait for a specified number of milliseconds before continuing execution.";
-        this.inputType = "ArrayBuffer";
-        this.outputType = "ArrayBuffer";
-        this.args = [
-            {
-                "name": "Time (ms)",
-                "type": "number",
-                "value": 1000
-            }
-        ];
-    }
-
-    /**
-     * @param {ArrayBuffer} input
-     * @param {Object[]} args
-     * @returns {ArrayBuffer}
-     */
-    async run(input, args) {
-        const ms = args[0];
-        await new Promise(r => setTimeout(r, ms));
-        return input;
-    }
-
+  /**
+   * @param {ArrayBuffer} input
+   * @param {Object[]} args
+   * @returns {ArrayBuffer}
+   */
+  async run(input, args) {
+    const ms = args[0];
+    await new Promise((r) => setTimeout(r, ms));
+    return input;
+  }
 }
 
 export default Sleep;

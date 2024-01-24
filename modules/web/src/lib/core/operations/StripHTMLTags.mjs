@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,69 +24,67 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import Utils from "../Utils.mjs";
 
 /**
  * Strip HTML tags operation
  */
 class StripHTMLTags extends Operation {
+  /**
+   * StripHTMLTags constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * StripHTMLTags constructor
-     */
-    constructor() {
-        super();
+    this.name = "Strip HTML tags";
+    this.module = "Default";
+    this.description = "Removes all HTML tags from the input.";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Remove indentation",
+        type: "boolean",
+        value: true,
+      },
+      {
+        name: "Remove excess line breaks",
+        type: "boolean",
+        value: true,
+      },
+    ];
+    this.checks = [
+      {
+        pattern: "(</html>|</div>|</body>)",
+        flags: "i",
+        args: [true, true],
+      },
+    ];
+  }
 
-        this.name = "Strip HTML tags";
-        this.module = "Default";
-        this.description = "Removes all HTML tags from the input.";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                "name": "Remove indentation",
-                "type": "boolean",
-                "value": true
-            },
-            {
-                "name": "Remove excess line breaks",
-                "type": "boolean",
-                "value": true
-            }
-        ];
-        this.checks = [
-            {
-                pattern:  "(</html>|</div>|</body>)",
-                flags:  "i",
-                args:   [true, true]
-            }
-        ];
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    const [removeIndentation, removeLineBreaks] = args;
+
+    input = Utils.stripHtmlTags(input);
+
+    if (removeIndentation) {
+      input = input.replace(/\n[ \f\t]+/g, "\n");
     }
 
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        const [removeIndentation, removeLineBreaks] = args;
-
-        input = Utils.stripHtmlTags(input);
-
-        if (removeIndentation) {
-            input = input.replace(/\n[ \f\t]+/g, "\n");
-        }
-
-        if (removeLineBreaks) {
-            input = input
-                .replace(/^\s*\n/, "") // first line
-                .replace(/(\n\s*){2,}/g, "\n"); // all others
-        }
-
-        return input;
+    if (removeLineBreaks) {
+      input = input
+        .replace(/^\s*\n/, "") // first line
+        .replace(/(\n\s*){2,}/g, "\n"); // all others
     }
 
+    return input;
+  }
 }
 
 export default StripHTMLTags;

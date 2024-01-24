@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,55 +24,54 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import cptable from "codepage";
-import {CHR_ENC_CODE_PAGES} from "../lib/ChrEnc.mjs";
+import { CHR_ENC_CODE_PAGES } from "../lib/ChrEnc.mjs";
 
 /**
  * Encode text operation
  */
 class EncodeText extends Operation {
+  /**
+   * EncodeText constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * EncodeText constructor
-     */
-    constructor() {
-        super();
+    this.name = "Encode text";
+    this.module = "Encodings";
+    this.description = [
+      "Encodes text into the chosen character encoding.",
+      "<br><br>",
+      "Supported charsets are:",
+      "<ul>",
+      Object.keys(CHR_ENC_CODE_PAGES)
+        .map((e) => `<li>${e}</li>`)
+        .join("\n"),
+      "</ul>",
+    ].join("\n");
+    this.infoURL = "https://wikipedia.org/wiki/Character_encoding";
+    this.inputType = "string";
+    this.outputType = "ArrayBuffer";
+    this.args = [
+      {
+        name: "Encoding",
+        type: "option",
+        value: Object.keys(CHR_ENC_CODE_PAGES),
+      },
+    ];
+  }
 
-        this.name = "Encode text";
-        this.module = "Encodings";
-        this.description = [
-            "Encodes text into the chosen character encoding.",
-            "<br><br>",
-            "Supported charsets are:",
-            "<ul>",
-            Object.keys(CHR_ENC_CODE_PAGES).map(e => `<li>${e}</li>`).join("\n"),
-            "</ul>",
-        ].join("\n");
-        this.infoURL = "https://wikipedia.org/wiki/Character_encoding";
-        this.inputType = "string";
-        this.outputType = "ArrayBuffer";
-        this.args = [
-            {
-                "name": "Encoding",
-                "type": "option",
-                "value": Object.keys(CHR_ENC_CODE_PAGES)
-            }
-        ];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {ArrayBuffer}
-     */
-    run(input, args) {
-        const format = CHR_ENC_CODE_PAGES[args[0]];
-        const encoded = cptable.utils.encode(format, input);
-        return new Uint8Array(encoded).buffer;
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {ArrayBuffer}
+   */
+  run(input, args) {
+    const format = CHR_ENC_CODE_PAGES[args[0]];
+    const encoded = cptable.utils.encode(format, input);
+    return new Uint8Array(encoded).buffer;
+  }
 }
-
 
 export default EncodeText;

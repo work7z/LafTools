@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -25,37 +25,36 @@
  */
 
 import r from "jsrsasign";
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * Hex to Object Identifier operation
  */
 class HexToObjectIdentifier extends Operation {
+  /**
+   * HexToObjectIdentifier constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * HexToObjectIdentifier constructor
-     */
-    constructor() {
-        super();
+    this.name = "Hex to Object Identifier";
+    this.module = "PublicKey";
+    this.description =
+      "Converts a hexadecimal string into an object identifier (OID).";
+    this.infoURL = "https://wikipedia.org/wiki/Object_identifier";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "Hex to Object Identifier";
-        this.module = "PublicKey";
-        this.description = "Converts a hexadecimal string into an object identifier (OID).";
-        this.infoURL = "https://wikipedia.org/wiki/Object_identifier";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        return r.KJUR.asn1.ASN1Util.oidHexToInt(input.replace(/\s/g, ""));
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    return r.KJUR.asn1.ASN1Util.oidHexToInt(input.replace(/\s/g, ""));
+  }
 }
 
 export default HexToObjectIdentifier;

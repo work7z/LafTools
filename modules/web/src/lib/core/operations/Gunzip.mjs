@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,10 +24,9 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 // import gunzip from "zlibjs/bin/gunzip.min.js";
 var gunzip = require("zlibjs/bin/gunzip.min.js");
-
 
 const Zlib = gunzip.Zlib;
 
@@ -35,39 +34,38 @@ const Zlib = gunzip.Zlib;
  * Gunzip operation
  */
 class Gunzip extends Operation {
+  /**
+   * Gunzip constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * Gunzip constructor
-     */
-    constructor() {
-        super();
+    this.name = "Gunzip";
+    this.module = "Compression";
+    this.description =
+      "Decompresses data which has been compressed using the deflate algorithm with gzip headers.";
+    this.infoURL = "https://wikipedia.org/wiki/Gzip";
+    this.inputType = "ArrayBuffer";
+    this.outputType = "ArrayBuffer";
+    this.args = [];
+    this.checks = [
+      {
+        pattern: "^\\x1f\\x8b\\x08",
+        flags: "",
+        args: [],
+      },
+    ];
+  }
 
-        this.name = "Gunzip";
-        this.module = "Compression";
-        this.description = "Decompresses data which has been compressed using the deflate algorithm with gzip headers.";
-        this.infoURL = "https://wikipedia.org/wiki/Gzip";
-        this.inputType = "ArrayBuffer";
-        this.outputType = "ArrayBuffer";
-        this.args = [];
-        this.checks = [
-            {
-                pattern: "^\\x1f\\x8b\\x08",
-                flags: "",
-                args: []
-            }
-        ];
-    }
-
-    /**
-     * @param {ArrayBuffer} input
-     * @param {Object[]} args
-     * @returns {File}
-     */
-    run(input, args) {
-        const gzipObj = new Zlib.Gunzip(new Uint8Array(input));
-        return new Uint8Array(gzipObj.decompress()).buffer;
-    }
-
+  /**
+   * @param {ArrayBuffer} input
+   * @param {Object[]} args
+   * @returns {File}
+   */
+  run(input, args) {
+    const gzipObj = new Zlib.Gunzip(new Uint8Array(input));
+    return new Uint8Array(gzipObj.decompress()).buffer;
+  }
 }
 
 export default Gunzip;

@@ -31,6 +31,10 @@ export type NodeReq = {
   InputValue: any;
 };
 
+export type InputOutputEditorLang = {
+  inputLang: string;
+  outputLang: string;
+}
 export type FileValueMatcher = {
   Name: string;
   Value: any;

@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -25,41 +25,39 @@
  */
 
 import OperationError from "../errors/OperationError.mjs";
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import * as terser from "terser";
 
 /**
  * JavaScript Minify operation
  */
 class JavaScriptMinify extends Operation {
+  /**
+   * JavaScriptMinify constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * JavaScriptMinify constructor
-     */
-    constructor() {
-        super();
+    this.name = "JavaScript Minify";
+    this.module = "Code";
+    this.description = "Compresses JavaScript code.";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "JavaScript Minify";
-        this.module = "Code";
-        this.description = "Compresses JavaScript code.";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [];
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  async run(input, args) {
+    const result = await terser.minify(input);
+    if (result.error) {
+      throw new OperationError(`Error minifying JavaScript. (${result.error})`);
     }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    async run(input, args) {
-        const result = await terser.minify(input);
-        if (result.error) {
-            throw new OperationError(`Error minifying JavaScript. (${result.error})`);
-        }
-        return result.code;
-    }
-
+    return result.code;
+  }
 }
 
 export default JavaScriptMinify;

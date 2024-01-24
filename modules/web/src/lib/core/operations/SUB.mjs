@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import Utils from "../Utils.mjs";
 import { bitOp, sub, BITWISE_OP_DELIMS } from "../lib/BitwiseOp.mjs";
 
@@ -32,66 +32,66 @@ import { bitOp, sub, BITWISE_OP_DELIMS } from "../lib/BitwiseOp.mjs";
  * SUB operation
  */
 class SUB extends Operation {
+  /**
+   * SUB constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * SUB constructor
-     */
-    constructor() {
-        super();
+    this.name = "SUB";
+    this.module = "Default";
+    this.description =
+      "SUB the input with the given key (e.g. <code>fe023da5</code>), MOD 255";
+    this.infoURL =
+      "https://wikipedia.org/wiki/Bitwise_operation#Bitwise_operators";
+    this.inputType = "byteArray";
+    this.outputType = "byteArray";
+    this.args = [
+      {
+        name: "Key",
+        type: "toggleString",
+        value: "",
+        toggleValues: BITWISE_OP_DELIMS,
+      },
+    ];
+  }
 
-        this.name = "SUB";
-        this.module = "Default";
-        this.description = "SUB the input with the given key (e.g. <code>fe023da5</code>), MOD 255";
-        this.infoURL = "https://wikipedia.org/wiki/Bitwise_operation#Bitwise_operators";
-        this.inputType = "byteArray";
-        this.outputType = "byteArray";
-        this.args = [
-            {
-                "name": "Key",
-                "type": "toggleString",
-                "value": "",
-                "toggleValues": BITWISE_OP_DELIMS
-            }
-        ];
-    }
+  /**
+   * @param {byteArray} input
+   * @param {Object[]} args
+   * @returns {byteArray}
+   */
+  run(input, args) {
+    const key = Utils.convertToByteArray(args[0].string || "", args[0].option);
 
-    /**
-     * @param {byteArray} input
-     * @param {Object[]} args
-     * @returns {byteArray}
-     */
-    run(input, args) {
-        const key = Utils.convertToByteArray(args[0].string || "", args[0].option);
+    return bitOp(input, key, sub);
+  }
 
-        return bitOp(input, key, sub);
-    }
+  /**
+   * Highlight SUB
+   *
+   * @param {Object[]} pos
+   * @param {number} pos[].start
+   * @param {number} pos[].end
+   * @param {Object[]} args
+   * @returns {Object[]} pos
+   */
+  highlight(pos, args) {
+    return pos;
+  }
 
-    /**
-     * Highlight SUB
-     *
-     * @param {Object[]} pos
-     * @param {number} pos[].start
-     * @param {number} pos[].end
-     * @param {Object[]} args
-     * @returns {Object[]} pos
-     */
-    highlight(pos, args) {
-        return pos;
-    }
-
-    /**
-     * Highlight SUB in reverse
-     *
-     * @param {Object[]} pos
-     * @param {number} pos[].start
-     * @param {number} pos[].end
-     * @param {Object[]} args
-     * @returns {Object[]} pos
-     */
-    highlightReverse(pos, args) {
-        return pos;
-    }
-
+  /**
+   * Highlight SUB in reverse
+   *
+   * @param {Object[]} pos
+   * @param {number} pos[].start
+   * @param {number} pos[].end
+   * @param {Object[]} args
+   * @returns {Object[]} pos
+   */
+  highlightReverse(pos, args) {
+    return pos;
+  }
 }
 
 export default SUB;

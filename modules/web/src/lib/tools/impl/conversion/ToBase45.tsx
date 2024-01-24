@@ -27,7 +27,7 @@
 import { Dot } from "../../../../utils/TranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import { ALPHABET, highlightToBase45, highlightFromBase45 } from "../../../core/lib/Base45.mjs";
-import Operation from "../../../core/Operation.mjs";
+import Operation from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 
 /**

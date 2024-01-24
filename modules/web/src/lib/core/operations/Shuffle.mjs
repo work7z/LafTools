@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,75 +24,76 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import Utils from "../Utils.mjs";
-import {INPUT_DELIM_OPTIONS} from "../lib/Delim.mjs";
+import { INPUT_DELIM_OPTIONS } from "../lib/Delim.mjs";
 
 /**
  * Shuffle operation
  */
 class Shuffle extends Operation {
+  /**
+   * Shuffle constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * Shuffle constructor
-     */
-    constructor() {
-        super();
+    this.name = "Shuffle";
+    this.module = "Default";
+    this.description = "Randomly reorders input elements.";
+    this.infoURL = "https://wikipedia.org/wiki/Shuffling";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Delimiter",
+        type: "option",
+        value: INPUT_DELIM_OPTIONS,
+      },
+    ];
+  }
 
-        this.name = "Shuffle";
-        this.module = "Default";
-        this.description = "Randomly reorders input elements.";
-        this.infoURL = "https://wikipedia.org/wiki/Shuffling";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                name: "Delimiter",
-                type: "option",
-                value: INPUT_DELIM_OPTIONS
-            }
-        ];
-    }
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    const delim = Utils.charRep(args[0]);
+    if (input.length === 0) return input;
 
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        const delim = Utils.charRep(args[0]);
-        if (input.length === 0) return input;
-
-        // return a random number in [0, 1)
-        const rng = (typeof crypto) !== "undefined" && crypto.getRandomValues ? (function() {
+    // return a random number in [0, 1)
+    const rng =
+      typeof crypto !== "undefined" && crypto.getRandomValues
+        ? (function () {
             const buf = new Uint32Array(2);
-            return function() {
-                // generate 53-bit random integer: 21 + 32 bits
-                crypto.getRandomValues(buf);
-                const value = (buf[0] >>> (32 - 21)) * ((1 << 30) * 4) + buf[1];
-                return value / ((1 << 23) * (1 << 30));
+            return function () {
+              // generate 53-bit random integer: 21 + 32 bits
+              crypto.getRandomValues(buf);
+              const value = (buf[0] >>> (32 - 21)) * ((1 << 30) * 4) + buf[1];
+              return value / ((1 << 23) * (1 << 30));
             };
-        })() : Math.random;
+          })()
+        : Math.random;
 
-        // return a random integer in [0, max)
-        const randint = function(max) {
-            return Math.floor(rng() * max);
-        };
+    // return a random integer in [0, max)
+    const randint = function (max) {
+      return Math.floor(rng() * max);
+    };
 
-        // Split input into shuffleable sections
-        const toShuffle = input.split(delim);
+    // Split input into shuffleable sections
+    const toShuffle = input.split(delim);
 
-        // shuffle elements
-        for (let i = toShuffle.length - 1; i > 0; i--) {
-            const idx = randint(i + 1);
-            const tmp = toShuffle[idx];
-            toShuffle[idx] = toShuffle[i];
-            toShuffle[i] = tmp;
-        }
-
-        return toShuffle.join(delim);
+    // shuffle elements
+    for (let i = toShuffle.length - 1; i > 0; i--) {
+      const idx = randint(i + 1);
+      const tmp = toShuffle[idx];
+      toShuffle[idx] = toShuffle[i];
+      toShuffle[i] = tmp;
     }
 
+    return toShuffle.join(delim);
+  }
 }
 
 export default Shuffle;

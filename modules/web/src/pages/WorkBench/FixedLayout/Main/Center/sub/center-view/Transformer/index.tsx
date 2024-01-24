@@ -48,7 +48,7 @@ import { Allotment, AllotmentHandle } from "allotment";
 import ProcessPanel from "./ProcessPanel/index.tsx";
 import LibProcessEntryPoint from '../../../../../../../../lib/process.ts'
 import { ACTION_Transformer_Process_Text, ACTION_Transformer_Process_Text_Delay } from "../../../../../../../../actions/transformer_action";
-import Operation from "../../../../../../../../lib/core/Operation.mjs";
+import Operation from "../../../../../../../../lib/core/Operation.tsx";
 import gutils from "../../../../../../../../utils/GlobalUtils";
 import appToolInfoObj, { AppInfoType } from "../../../../../../../../lib/tools/info";
 import { getInitValueForRuntimeStatus } from './init.tsx'

@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,81 +24,80 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * Bit shift right operation
  */
 class BitShiftRight extends Operation {
+  /**
+   * BitShiftRight constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * BitShiftRight constructor
-     */
-    constructor() {
-        super();
+    this.name = "Bit shift right";
+    this.module = "Default";
+    this.description =
+      "Shifts the bits in each byte towards the right by the specified amount.<br><br><i>Logical shifts</i> replace the leftmost bits with zeros.<br><i>Arithmetic shifts</i> preserve the most significant bit (MSB) of the original byte keeping the sign the same (positive or negative).";
+    this.infoURL = "https://wikipedia.org/wiki/Bitwise_operation#Bit_shifts";
+    this.inputType = "ArrayBuffer";
+    this.outputType = "ArrayBuffer";
+    this.args = [
+      {
+        name: "Amount",
+        type: "number",
+        value: 1,
+      },
+      {
+        name: "Type",
+        type: "option",
+        value: ["Logical shift", "Arithmetic shift"],
+      },
+    ];
+  }
 
-        this.name = "Bit shift right";
-        this.module = "Default";
-        this.description = "Shifts the bits in each byte towards the right by the specified amount.<br><br><i>Logical shifts</i> replace the leftmost bits with zeros.<br><i>Arithmetic shifts</i> preserve the most significant bit (MSB) of the original byte keeping the sign the same (positive or negative).";
-        this.infoURL = "https://wikipedia.org/wiki/Bitwise_operation#Bit_shifts";
-        this.inputType = "ArrayBuffer";
-        this.outputType = "ArrayBuffer";
-        this.args = [
-            {
-                "name": "Amount",
-                "type": "number",
-                "value": 1
-            },
-            {
-                "name": "Type",
-                "type": "option",
-                "value": ["Logical shift", "Arithmetic shift"]
-            }
-        ];
-    }
+  /**
+   * @param {ArrayBuffer} input
+   * @param {Object[]} args
+   * @returns {ArrayBuffer}
+   */
+  run(input, args) {
+    const amount = args[0],
+      type = args[1],
+      mask = type === "Logical shift" ? 0 : 0x80;
+    input = new Uint8Array(input);
 
-    /**
-     * @param {ArrayBuffer} input
-     * @param {Object[]} args
-     * @returns {ArrayBuffer}
-     */
-    run(input, args) {
-        const amount = args[0],
-            type = args[1],
-            mask = type === "Logical shift" ? 0 : 0x80;
-        input = new Uint8Array(input);
+    return input.map((b) => {
+      return (b >>> amount) ^ (b & mask);
+    }).buffer;
+  }
 
-        return input.map(b => {
-            return (b >>> amount) ^ (b & mask);
-        }).buffer;
-    }
+  /**
+   * Highlight Bit shift right
+   *
+   * @param {Object[]} pos
+   * @param {number} pos[].start
+   * @param {number} pos[].end
+   * @param {Object[]} args
+   * @returns {Object[]} pos
+   */
+  highlight(pos, args) {
+    return pos;
+  }
 
-    /**
-     * Highlight Bit shift right
-     *
-     * @param {Object[]} pos
-     * @param {number} pos[].start
-     * @param {number} pos[].end
-     * @param {Object[]} args
-     * @returns {Object[]} pos
-     */
-    highlight(pos, args) {
-        return pos;
-    }
-
-    /**
-     * Highlight Bit shift right in reverse
-     *
-     * @param {Object[]} pos
-     * @param {number} pos[].start
-     * @param {number} pos[].end
-     * @param {Object[]} args
-     * @returns {Object[]} pos
-     */
-    highlightReverse(pos, args) {
-        return pos;
-    }
-
+  /**
+   * Highlight Bit shift right in reverse
+   *
+   * @param {Object[]} pos
+   * @param {number} pos[].start
+   * @param {number} pos[].end
+   * @param {Object[]} args
+   * @returns {Object[]} pos
+   */
+  highlightReverse(pos, args) {
+    return pos;
+  }
 }
 
 export default BitShiftRight;

@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,43 +24,42 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import Utils from "../Utils.mjs";
 
 /**
  * Expand alphabet range operation
  */
 class ExpandAlphabetRange extends Operation {
+  /**
+   * ExpandAlphabetRange constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * ExpandAlphabetRange constructor
-     */
-    constructor() {
-        super();
+    this.name = "Expand alphabet range";
+    this.module = "Default";
+    this.description =
+      "Expand an alphabet range string into a list of the characters in that range.<br><br>e.g. <code>a-z</code> becomes <code>abcdefghijklmnopqrstuvwxyz</code>.";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Delimiter",
+        type: "binaryString",
+        value: "",
+      },
+    ];
+  }
 
-        this.name = "Expand alphabet range";
-        this.module = "Default";
-        this.description = "Expand an alphabet range string into a list of the characters in that range.<br><br>e.g. <code>a-z</code> becomes <code>abcdefghijklmnopqrstuvwxyz</code>.";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                "name": "Delimiter",
-                "type": "binaryString",
-                "value": ""
-            }
-        ];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        return Utils.expandAlphRange(input).join(args[0]);
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    return Utils.expandAlphRange(input).join(args[0]);
+  }
 }
 
 export default ExpandAlphabetRange;

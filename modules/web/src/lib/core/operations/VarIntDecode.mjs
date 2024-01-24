@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import OperationError from "../errors/OperationError.mjs";
 import Protobuf from "../lib/Protobuf.mjs";
 
@@ -32,35 +32,35 @@ import Protobuf from "../lib/Protobuf.mjs";
  * VarInt Decode operation
  */
 class VarIntDecode extends Operation {
+  /**
+   * VarIntDecode constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * VarIntDecode constructor
-     */
-    constructor() {
-        super();
+    this.name = "VarInt Decode";
+    this.module = "Default";
+    this.description =
+      "Decodes a VarInt encoded integer. VarInt is an efficient way of encoding variable length integers and is commonly used with Protobuf.";
+    this.infoURL =
+      "https://developers.google.com/protocol-buffers/docs/encoding#varints";
+    this.inputType = "byteArray";
+    this.outputType = "number";
+    this.args = [];
+  }
 
-        this.name = "VarInt Decode";
-        this.module = "Default";
-        this.description = "Decodes a VarInt encoded integer. VarInt is an efficient way of encoding variable length integers and is commonly used with Protobuf.";
-        this.infoURL = "https://developers.google.com/protocol-buffers/docs/encoding#varints";
-        this.inputType = "byteArray";
-        this.outputType = "number";
-        this.args = [];
+  /**
+   * @param {byteArray} input
+   * @param {Object[]} args
+   * @returns {number}
+   */
+  run(input, args) {
+    try {
+      return Protobuf.varIntDecode(input);
+    } catch (err) {
+      throw new OperationError(err);
     }
-
-    /**
-     * @param {byteArray} input
-     * @param {Object[]} args
-     * @returns {number}
-     */
-    run(input, args) {
-        try {
-            return Protobuf.varIntDecode(input);
-        } catch (err) {
-            throw new OperationError(err);
-        }
-    }
-
+  }
 }
 
 export default VarIntDecode;

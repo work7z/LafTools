@@ -1,6 +1,6 @@
 
 import { Dot } from "../../../utils/TranslationUtils.js";
-import Operation from "../../core/Operation.mjs";
+import Operation from "../../core/Operation.tsx";
 import hashfn from "./conversion/MD6.tsx";
 import { ToolHandler, ToolMetaInfo } from "../handler.js";
 

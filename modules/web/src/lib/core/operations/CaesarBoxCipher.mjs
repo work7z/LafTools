@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,58 +24,56 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * Caesar Box Cipher operation
  */
 class CaesarBoxCipher extends Operation {
+  /**
+   * CaesarBoxCipher constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * CaesarBoxCipher constructor
-     */
-    constructor() {
-        super();
+    this.name = "Caesar Box Cipher";
+    this.module = "Ciphers";
+    this.description =
+      "Caesar Box is a transposition cipher used in the Roman Empire, in which letters of the message are written in rows in a square (or a rectangle) and then, read by column.";
+    this.infoURL = "https://www.dcode.fr/caesar-box-cipher";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Box Height",
+        type: "number",
+        value: 1,
+      },
+    ];
+  }
 
-        this.name = "Caesar Box Cipher";
-        this.module = "Ciphers";
-        this.description = "Caesar Box is a transposition cipher used in the Roman Empire, in which letters of the message are written in rows in a square (or a rectangle) and then, read by column.";
-        this.infoURL = "https://www.dcode.fr/caesar-box-cipher";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                name: "Box Height",
-                type: "number",
-                value: 1
-            }
-        ];
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    const tableHeight = args[0];
+    const tableWidth = Math.ceil(input.length / tableHeight);
+    while (input.indexOf(" ") !== -1) input = input.replace(" ", "");
+    for (let i = 0; i < tableHeight * tableWidth - input.length; i++) {
+      input += "\x00";
     }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        const tableHeight = args[0];
-        const tableWidth = Math.ceil(input.length / tableHeight);
-        while (input.indexOf(" ") !== -1)
-            input = input.replace(" ", "");
-        for (let i = 0; i < (tableHeight * tableWidth) - input.length; i++) {
-            input += "\x00";
+    let result = "";
+    for (let i = 0; i < tableHeight; i++) {
+      for (let j = i; j < input.length; j += tableHeight) {
+        if (input.charAt(j) !== "\x00") {
+          result += input.charAt(j);
         }
-        let result = "";
-        for (let i = 0; i < tableHeight; i++) {
-            for (let j = i; j < input.length; j += tableHeight) {
-                if (input.charAt(j) !== "\x00") {
-                    result += input.charAt(j);
-                }
-            }
-        }
-        return result;
+      }
     }
-
+    return result;
+  }
 }
 
 export default CaesarBoxCipher;

@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,40 +24,39 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * Return operation
  */
 class Return extends Operation {
+  /**
+   * Return constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * Return constructor
-     */
-    constructor() {
-        super();
+    this.name = "Return";
+    this.flowControl = true;
+    this.module = "Default";
+    this.description =
+      "End execution of operations at this point in the recipe.";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "Return";
-        this.flowControl = true;
-        this.module = "Default";
-        this.description = "End execution of operations at this point in the recipe.";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [];
-    }
-
-    /**
-     * @param {Object} state - The current state of the recipe.
-     * @param {number} state.progress - The current position in the recipe.
-     * @param {Dish} state.dish - The Dish being operated on.
-     * @param {Operation[]} state.opList - The list of operations in the recipe.
-     * @returns {Object} The updated state of the recipe.
-     */
-    run(state) {
-        state.progress = state.opList.length;
-        return state;
-    }
-
+  /**
+   * @param {Object} state - The current state of the recipe.
+   * @param {number} state.progress - The current position in the recipe.
+   * @param {Dish} state.dish - The Dish being operated on.
+   * @param {Operation[]} state.opList - The list of operations in the recipe.
+   * @returns {Object} The updated state of the recipe.
+   */
+  run(state) {
+    state.progress = state.opList.length;
+    return state;
+  }
 }
 
 export default Return;

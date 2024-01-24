@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -25,37 +25,36 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * HTML To Text operation
  */
 class HTMLToText extends Operation {
+  /**
+   * HTMLToText constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * HTMLToText constructor
-     */
-    constructor() {
-        super();
+    this.name = "HTML To Text";
+    this.module = "Default";
+    this.description =
+      "Converts an HTML output from an operation to a readable string instead of being rendered in the DOM.";
+    this.infoURL = "";
+    this.inputType = "html";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "HTML To Text";
-        this.module = "Default";
-        this.description = "Converts an HTML output from an operation to a readable string instead of being rendered in the DOM.";
-        this.infoURL = "";
-        this.inputType = "html";
-        this.outputType = "string";
-        this.args = [];
-    }
-
-    /**
-     * @param {html} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        return input;
-    }
-
+  /**
+   * @param {html} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    return input;
+  }
 }
 
 export default HTMLToText;

@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,38 +24,37 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * XKCD Random Number operation
  */
 class XKCDRandomNumber extends Operation {
+  /**
+   * XKCDRandomNumber constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * XKCDRandomNumber constructor
-     */
-    constructor() {
-        super();
+    this.name = "XKCD Random Number";
+    this.module = "Default";
+    this.description =
+      "RFC 1149.5 specifies 4 as the standard IEEE-vetted random number.";
+    this.infoURL = "https://xkcd.com/221/";
+    this.inputType = "string";
+    this.outputType = "number";
+    this.args = [];
+  }
 
-        this.name = "XKCD Random Number";
-        this.module = "Default";
-        this.description = "RFC 1149.5 specifies 4 as the standard IEEE-vetted random number.";
-        this.infoURL = "https://xkcd.com/221/";
-        this.inputType = "string";
-        this.outputType = "number";
-        this.args = [];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {number}
-     */
-    run(input, args) {
-        return 4; // chosen by fair dice roll.
-                  // guaranteed to be random.
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {number}
+   */
+  run(input, args) {
+    return 4; // chosen by fair dice roll.
+    // guaranteed to be random.
+  }
 }
 
 export default XKCDRandomNumber;

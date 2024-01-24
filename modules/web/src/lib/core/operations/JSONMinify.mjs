@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -25,37 +25,35 @@
  */
 
 import vkbeautify from "vkbeautify";
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * JSON Minify operation
  */
 class JSONMinify extends Operation {
+  /**
+   * JSONMinify constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * JSONMinify constructor
-     */
-    constructor() {
-        super();
+    this.name = "JSON Minify";
+    this.module = "Code";
+    this.description = "Compresses JavaScript Object Notation (JSON) code.";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "JSON Minify";
-        this.module = "Code";
-        this.description = "Compresses JavaScript Object Notation (JSON) code.";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        if (!input) return "";
-        return vkbeautify.jsonmin(input);
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    if (!input) return "";
+    return vkbeautify.jsonmin(input);
+  }
 }
 
 export default JSONMinify;

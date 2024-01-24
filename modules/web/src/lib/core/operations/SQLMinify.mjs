@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -25,36 +25,34 @@
  */
 
 import vkbeautify from "vkbeautify";
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * SQL Minify operation
  */
 class SQLMinify extends Operation {
+  /**
+   * SQLMinify constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * SQLMinify constructor
-     */
-    constructor() {
-        super();
+    this.name = "SQL Minify";
+    this.module = "Code";
+    this.description = "Compresses Structured Query Language (SQL) code.";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [];
+  }
 
-        this.name = "SQL Minify";
-        this.module = "Code";
-        this.description = "Compresses Structured Query Language (SQL) code.";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        return vkbeautify.sqlmin(input);
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    return vkbeautify.sqlmin(input);
+  }
 }
 
 export default SQLMinify;

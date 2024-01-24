@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,9 +24,9 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import Utils from "../Utils.mjs";
-import {HASH_DELIM_OPTIONS} from "../lib/Delim.mjs";
+import { HASH_DELIM_OPTIONS } from "../lib/Delim.mjs";
 import ctphjs from "ctph.js";
 import OperationError from "../errors/OperationError.mjs";
 
@@ -34,39 +34,40 @@ import OperationError from "../errors/OperationError.mjs";
  * Compare CTPH hashes operation
  */
 class CompareCTPHHashes extends Operation {
+  /**
+   * CompareCTPHHashes constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * CompareCTPHHashes constructor
-     */
-    constructor() {
-        super();
+    this.name = "Compare CTPH hashes";
+    this.module = "Crypto";
+    this.description =
+      "Compares two Context Triggered Piecewise Hashing (CTPH) fuzzy hashes to determine the similarity between them on a scale of 0 to 100.";
+    this.infoURL =
+      "https://forensicswiki.xyz/wiki/index.php?title=Context_Triggered_Piecewise_Hashing";
+    this.inputType = "string";
+    this.outputType = "Number";
+    this.args = [
+      {
+        name: "Delimiter",
+        type: "option",
+        value: HASH_DELIM_OPTIONS,
+      },
+    ];
+  }
 
-        this.name = "Compare CTPH hashes";
-        this.module = "Crypto";
-        this.description = "Compares two Context Triggered Piecewise Hashing (CTPH) fuzzy hashes to determine the similarity between them on a scale of 0 to 100.";
-        this.infoURL = "https://forensicswiki.xyz/wiki/index.php?title=Context_Triggered_Piecewise_Hashing";
-        this.inputType = "string";
-        this.outputType = "Number";
-        this.args = [
-            {
-                "name": "Delimiter",
-                "type": "option",
-                "value": HASH_DELIM_OPTIONS
-            }
-        ];
-    }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {Number}
-     */
-    run(input, args) {
-        const samples = input.split(Utils.charRep(args[0]));
-        if (samples.length !== 2) throw new OperationError("Incorrect number of samples.");
-        return ctphjs.similarity(samples[0], samples[1]);
-    }
-
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {Number}
+   */
+  run(input, args) {
+    const samples = input.split(Utils.charRep(args[0]));
+    if (samples.length !== 2)
+      throw new OperationError("Incorrect number of samples.");
+    return ctphjs.similarity(samples[0], samples[1]);
+  }
 }
 
 export default CompareCTPHHashes;

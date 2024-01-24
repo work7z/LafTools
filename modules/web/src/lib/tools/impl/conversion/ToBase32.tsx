@@ -26,7 +26,7 @@
 
 import { Dot } from "../../../../utils/TranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.mjs";
+import Operation from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 
 /**

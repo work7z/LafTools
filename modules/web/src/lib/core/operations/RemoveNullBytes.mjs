@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,41 +24,40 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 
 /**
  * Remove null bytes operation
  */
 class RemoveNullBytes extends Operation {
+  /**
+   * RemoveNullBytes constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * RemoveNullBytes constructor
-     */
-    constructor() {
-        super();
+    this.name = "Remove null bytes";
+    this.module = "Default";
+    this.description =
+      "Removes all null bytes (<code>0x00</code>) from the input.";
+    this.inputType = "ArrayBuffer";
+    this.outputType = "byteArray";
+    this.args = [];
+  }
 
-        this.name = "Remove null bytes";
-        this.module = "Default";
-        this.description = "Removes all null bytes (<code>0x00</code>) from the input.";
-        this.inputType = "ArrayBuffer";
-        this.outputType = "byteArray";
-        this.args = [];
+  /**
+   * @param {ArrayBuffer} input
+   * @param {Object[]} args
+   * @returns {byteArray}
+   */
+  run(input, args) {
+    input = new Uint8Array(input);
+    const output = [];
+    for (let i = 0; i < input.length; i++) {
+      if (input[i] !== 0) output.push(input[i]);
     }
-
-    /**
-     * @param {ArrayBuffer} input
-     * @param {Object[]} args
-     * @returns {byteArray}
-     */
-    run(input, args) {
-        input = new Uint8Array(input);
-        const output = [];
-        for (let i = 0; i < input.length; i++) {
-            if (input[i] !== 0) output.push(input[i]);
-        }
-        return output;
-    }
-
+    return output;
+  }
 }
 
 export default RemoveNullBytes;

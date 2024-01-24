@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,55 +24,52 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import bcrypt from "bcryptjs";
 import { isWorkerEnvironment } from "../Utils.mjs";
-
 
 /**
  * Bcrypt compare operation
  */
 class BcryptCompare extends Operation {
+  /**
+   * BcryptCompare constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * BcryptCompare constructor
-     */
-    constructor() {
-        super();
+    this.name = "Bcrypt compare";
+    this.module = "Crypto";
+    this.description =
+      "Tests whether the input matches the given bcrypt hash. To test multiple possible passwords, use the 'Fork' operation.";
+    this.infoURL = "https://wikipedia.org/wiki/Bcrypt";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Hash",
+        type: "string",
+        value: "",
+      },
+    ];
+  }
 
-        this.name = "Bcrypt compare";
-        this.module = "Crypto";
-        this.description = "Tests whether the input matches the given bcrypt hash. To test multiple possible passwords, use the 'Fork' operation.";
-        this.infoURL = "https://wikipedia.org/wiki/Bcrypt";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                "name": "Hash",
-                "type": "string",
-                "value": ""
-            }
-        ];
-    }
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  async run(input, args) {
+    const hash = args[0];
 
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    async run(input, args) {
-        const hash = args[0];
+    const match = await bcrypt.compare(input, hash, null, (p) => {
+      // Progress callback
+      if (isWorkerEnvironment())
+        self.sendStatusMessage(`Progress: ${(p * 100).toFixed(0)}%`);
+    });
 
-        const match = await bcrypt.compare(input, hash, null, p => {
-            // Progress callback
-            if (isWorkerEnvironment())
-                self.sendStatusMessage(`Progress: ${(p * 100).toFixed(0)}%`);
-        });
-
-        return match ? "Match: " + input : "No match";
-
-    }
-
+    return match ? "Match: " + input : "No match";
+  }
 }
 
 export default BcryptCompare;

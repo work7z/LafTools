@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import OperationError from "../errors/OperationError.mjs";
 import xmldom from "xmldom";
 import xpath from "xpath";
@@ -33,74 +33,75 @@ import xpath from "xpath";
  * XPath expression operation
  */
 class XPathExpression extends Operation {
+  /**
+   * XPathExpression constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * XPathExpression constructor
-     */
-    constructor() {
-        super();
+    this.name = "XPath expression";
+    this.module = "Code";
+    this.description =
+      "Extract information from an XML document with an XPath query";
+    this.infoURL = "https://wikipedia.org/wiki/XPath";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "XPath",
+        type: "string",
+        value: "",
+      },
+      {
+        name: "Result delimiter",
+        type: "binaryShortString",
+        value: "\\n",
+      },
+    ];
+  }
 
-        this.name = "XPath expression";
-        this.module = "Code";
-        this.description = "Extract information from an XML document with an XPath query";
-        this.infoURL = "https://wikipedia.org/wiki/XPath";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                "name": "XPath",
-                "type": "string",
-                "value": ""
-            },
-            {
-                "name": "Result delimiter",
-                "type": "binaryShortString",
-                "value": "\\n"
-            }
-        ];
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    const [query, delimiter] = args;
+
+    let doc;
+    try {
+      doc = new xmldom.DOMParser({
+        errorHandler: {
+          warning(w) {
+            throw w;
+          },
+          error(e) {
+            throw e;
+          },
+          fatalError(e) {
+            throw e;
+          },
+        },
+      }).parseFromString(input, "application/xml");
+    } catch (err) {
+      throw new OperationError("Invalid input XML.");
     }
 
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        const [query, delimiter] = args;
-
-        let doc;
-        try {
-            doc = new xmldom.DOMParser({
-                errorHandler: {
-                    warning(w) {
-                        throw w;
-                    },
-                    error(e) {
-                        throw e;
-                    },
-                    fatalError(e) {
-                        throw e;
-                    }
-                }
-            }).parseFromString(input, "application/xml");
-        } catch (err) {
-            throw new OperationError("Invalid input XML.");
-        }
-
-        let nodes;
-        try {
-            nodes = xpath.parse(query).select({ node: doc, allowAnyNamespaceForNoPrefix: true });
-        } catch (err) {
-            throw new OperationError(`Invalid XPath. Details:\n${err.message}.`);
-        }
-
-        const nodeToString = function(node) {
-            return node.toString();
-        };
-
-        return nodes.map(nodeToString).join(delimiter);
+    let nodes;
+    try {
+      nodes = xpath
+        .parse(query)
+        .select({ node: doc, allowAnyNamespaceForNoPrefix: true });
+    } catch (err) {
+      throw new OperationError(`Invalid XPath. Details:\n${err.message}.`);
     }
 
+    const nodeToString = function (node) {
+      return node.toString();
+    };
+
+    return nodes.map(nodeToString).join(delimiter);
+  }
 }
 
 export default XPathExpression;

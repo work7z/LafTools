@@ -18,15 +18,15 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Operation from "../core/Operation.mjs";
+import Operation from "../core/Operation.tsx";
 import { CodeImplMap } from "./code/types";
 import { FAQItem } from "./faq/types";
 import appToolInfoObj from "./info";
 
 export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-short" | "js-medium" | "css-short"
 
+
 export type ToolMetaInfo = {
-    outputLang?: string;
     description: string;
     infoURL: string;
     exampleType: ShowExampleType

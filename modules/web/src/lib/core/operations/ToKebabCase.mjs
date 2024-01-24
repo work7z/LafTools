@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
+// Second Author: Ryan Laf
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -25,50 +25,49 @@
  */
 
 import kebabCase from "lodash/kebabCase.js";
-import Operation from "../Operation.mjs";
+import Operation from "../Operation.tsx";
 import { replaceVariableNames } from "../lib/Code.mjs";
 
 /**
  * To Kebab case operation
  */
 class ToKebabCase extends Operation {
+  /**
+   * ToKebabCase constructor
+   */
+  constructor() {
+    super();
 
-    /**
-     * ToKebabCase constructor
-     */
-    constructor() {
-        super();
+    this.name = "To Kebab case";
+    this.module = "Code";
+    this.description =
+      "Converts the input string to kebab case.\n<br><br>\nKebab case is all lower case with dashes as word boundaries.\n<br><br>\ne.g. this-is-kebab-case\n<br><br>\n'Attempt to be context aware' will make the operation attempt to nicely transform variable and function names.";
+    this.infoURL = "https://wikipedia.org/wiki/Kebab_case";
+    this.inputType = "string";
+    this.outputType = "string";
+    this.args = [
+      {
+        name: "Attempt to be context aware",
+        type: "boolean",
+        value: false,
+      },
+    ];
+  }
 
-        this.name = "To Kebab case";
-        this.module = "Code";
-        this.description = "Converts the input string to kebab case.\n<br><br>\nKebab case is all lower case with dashes as word boundaries.\n<br><br>\ne.g. this-is-kebab-case\n<br><br>\n'Attempt to be context aware' will make the operation attempt to nicely transform variable and function names.";
-        this.infoURL = "https://wikipedia.org/wiki/Kebab_case";
-        this.inputType = "string";
-        this.outputType = "string";
-        this.args = [
-            {
-                "name": "Attempt to be context aware",
-                "type": "boolean",
-                "value": false
-            }
-        ];
+  /**
+   * @param {string} input
+   * @param {Object[]} args
+   * @returns {string}
+   */
+  run(input, args) {
+    const smart = args[0];
+
+    if (smart) {
+      return replaceVariableNames(input, kebabCase);
+    } else {
+      return kebabCase(input);
     }
-
-    /**
-     * @param {string} input
-     * @param {Object[]} args
-     * @returns {string}
-     */
-    run(input, args) {
-        const smart = args[0];
-
-        if (smart) {
-            return replaceVariableNames(input, kebabCase);
-        } else {
-            return kebabCase(input);
-        }
-    }
-
+  }
 }
 
 export default ToKebabCase;

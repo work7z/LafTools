@@ -27,9 +27,10 @@
 import vkbeautify from "vkbeautify";
 import { Dot } from "../../../../utils/TranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.mjs";
+import Operation from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "../../../../utils/GlobalUtils.tsx";
+import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 
 /**
  * CSS Beautify operation
@@ -76,6 +77,13 @@ class CSSBeautify extends Operation {
     run(input, args) {
         let indentStr = gutils.convertASCIICodeInStr(args[0]);
         return vkbeautify.css(input, indentStr);
+    }
+
+    getInputOutputEditorLang(): InputOutputEditorLang | null {
+        return {
+            inputLang: "css",
+            outputLang: "css",
+        }
     }
 
 }
