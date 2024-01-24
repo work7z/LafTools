@@ -40,6 +40,22 @@ ext=${file##*.}
 # echo "file_type is $file_type"
 # echo "file: -3 is ${ext}"
 
+if [ ! -f "$file" ]; then
+    # echo "skip the file: $file"
+    continue
+fi
+
+pDIR=$(dirname "$file")
+# echo "pDIR is $pDIR"
+if [[ $pDIR == *"node_modules"* ]]; then
+    # echo "skip the node_modules"
+    continue
+fi
+if [ ! -d "$pDIR" ]; then
+    # echo "skip the file: $file"
+    continue
+fi
+
 # get full path of file
 file_path=$(cd `dirname $file`; pwd)/`basename $file`
 

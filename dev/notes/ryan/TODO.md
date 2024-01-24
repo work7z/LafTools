@@ -2,6 +2,7 @@
 
 [x] revise About This Software modal
 [x] terminal basic support  
+[] when the user collapsed one menu which contains a selected child, then its right elemetns should show something (liek flag)
 [] align version list with GitHub tags
 [x] support using local API server
 [x] correct langauge name zh_CN and zh_HK to zh-hans and zh-hant
@@ -19,12 +20,10 @@
 [x] provide additionl layout like half to half. ops, I got back-to-back meetings, let us go
 [x] move purejs to web project as we can use code split to avoid a huge bundle size  
 [] add a TODO viewer that can show current project
-[] for settings in process panel, we can just spread it out as a horizontal items, user can scroll them from left to right
+[x] for settings in process panel, we can just spread it out as a horizontal items, user can scroll them from left to right
 [] add nature sound and white noise in this app, that sounds great, like freemind
-[] for each dynamic script, we should also load their i18n separately. related files: 1) Translation.go, 2) scan-entry.j
-s
-[] add a google statisic script 
-
+[] for each dynamic script, we should also load their i18n separately. related files: 1) Translation.go, 2) scan-entry.js
+[] add a google statisic script
 
 # low priorities
 

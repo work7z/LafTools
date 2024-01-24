@@ -26,6 +26,7 @@ import appToolInfoObj from "./info";
 export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-short" | "js-medium" | "css-short"
 
 export type ToolMetaInfo = {
+    outputLang?: string;
     description: string;
     infoURL: string;
     exampleType: ShowExampleType
