@@ -98,14 +98,16 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
                                 </Callout>
                             </div>
                             <div className={CSS_TW_LAYOUT_BORDER_LIGHTER + " min-w-full"}>
-                                <GenCodeMirror
-                                    language={'javascript'}
-                                    placeholder={''}
-                                    directValue={_.trim(o.template)}
-                                    lineWrap={true}
-                                    bigTextId={''}
-                                    key={""}
-                                ></GenCodeMirror>
+                                {
+                                    tabId == x.value && <GenCodeMirror
+                                        language={'javascript'}
+                                        placeholder={''}
+                                        directValue={_.trim(o.template)}
+                                        lineWrap={true}
+                                        bigTextId={''}
+                                        key={""}
+                                    ></GenCodeMirror>
+                                }
 
                             </div>
                         </div>}>

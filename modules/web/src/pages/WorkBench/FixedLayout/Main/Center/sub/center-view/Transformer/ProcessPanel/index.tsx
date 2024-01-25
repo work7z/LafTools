@@ -130,13 +130,20 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     let pdValue = 'p-2'
     let loadingStatic = false
     let toolHanlder = props.toolHandler
+
+    let v = exportUtils.useSelector((v) => {
+        return {
+            // show
+            bottom_hide: v.layout.menuHide.bottom,
+        };
+    });
     if (toolTabIndex == 'wiki') {
         pdValue = 'p-0'
         finalShowContent = <div className="w-full h-full overflow-auto">
             <iframe src={toolHanlder?.getMetaInfo().infoURL} className="w-full h-full border-none outline-none"></iframe>
         </div>
     } else if (toolTabIndex == "tools") {
-        finalShowContent = <FormGenPanel list={generalList}></FormGenPanel >
+        finalShowContent = <FormGenPanel fixSingleColumn={!v.bottom_hide} list={generalList}></FormGenPanel >
     } else if (toolTabIndex == "output") {
         pdValue = 'p-0'
         finalShowContent = <div className="w-full h-full overflow-auto">

@@ -224,6 +224,14 @@ export default (props: CommonTransformerProps) => {
     }
   }, [sessionId])
 
+  let v = exportUtils.useSelector((v) => {
+    return {
+      // show
+      bottom_hide: v.layout.menuHide.bottom,
+    };
+  });
+
+
   useEffect(() => {
     FN_GetDispatch()(
       RuntimeStatusSlice.actions.initAtOnceBySessionIdAndValue({
@@ -269,6 +277,20 @@ export default (props: CommonTransformerProps) => {
   if (loadError) {
     desc = `${Dot("RO4ZP", "An Error Occurred")}: \n${loadError}`
   }
+  let codeMirrorItem = <GenCodeMirror
+    lineWrap
+    placeholder={desc || Dot("xPHqP", "The description is not yet defined.")}
+    language="javascript"
+    key={inputBigTextId}
+    bigTextId={inputBigTextId}
+    onTextChange={(val) => {
+      fn_notifyTextChange(true)
+    }}
+  ></GenCodeMirror>
+  let processPanelItem = isCollapsed_config ? '' :
+    <Allotment.Pane>
+      <ProcessPanel crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
+    </Allotment.Pane>
   return (
     <div key={sessionId} className="w-full h-full relative">
       <ControlBar
@@ -283,34 +305,21 @@ export default (props: CommonTransformerProps) => {
         className="w-full overflow-auto "
       >
         <Allotment
-          vertical
-          className=""
+          vertical={v.bottom_hide}
+          key={v.bottom_hide + ""}
+        // onRef={e => {
+        //   gutils.defer(() => {
+        //     e && e.reset();
+        //   });
+        // }}
         >
           <Allotment.Pane>
-            <GenCodeMirror
-              lineWrap
-              placeholder={desc || Dot("xPHqP", "The description is not yet defined.")}
-              language="javascript"
-              key={inputBigTextId}
-              bigTextId={inputBigTextId}
-              onTextChange={(val) => {
-                fn_notifyTextChange(true)
-              }}
-            ></GenCodeMirror>
+            {codeMirrorItem}
           </Allotment.Pane>
-          {isCollapsed_config ? '' :
-            <Allotment.Pane>
-              <ProcessPanel crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
-            </Allotment.Pane>
+          {processPanelItem
           }
         </Allotment>
       </div>
-      {/* {
-        isFixedMode ? [
-          <TextTransformerOutput crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerOutput>,
-          <TextTransformerConfig crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></TextTransformerConfig>
-        ] : []
-      } */}
     </div>
   );
 };

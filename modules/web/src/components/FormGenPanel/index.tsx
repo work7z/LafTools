@@ -68,13 +68,16 @@ import FormGenElement, { FormGenType } from "../FormGenElement";
 export type FormGenItem = FormGroupProps & { genEleConfig: FormGenType }
 type PropFormGenPanel = {
     list: (FormGenItem)[]
+    fixSingleColumn?: boolean
 }
 export default (props: PropFormGenPanel) => {
-    let chunkItems = _.chunk(props.list, 3);
+    let chunkItems = props.fixSingleColumn ? [props.list] : _.chunk(props.list, 3);
     return <div className="flex  whitespace-break-spaces pure-g space-y-2">
         {
             chunkItems.map((eachChunkItem, eachChunkItemIdx) => {
-                return <div key={eachChunkItemIdx} className=" mb-2 pure-u-xxl-6-24 pure-u-xl-8-24 pure-u-sm-24-24 pure-u-12-24  ">
+                return <div key={eachChunkItemIdx} className={" mb-2  " + (
+                    props.fixSingleColumn ? " pure-u-24-24 " : " pure-u-xxl-6-24 pure-u-xl-8-24 pure-u-sm-24-24 pure-u-12-24  "
+                )}>
                     {
                         eachChunkItem.map((x, d) => {
                             return (
