@@ -1,4 +1,5 @@
 {
+    "R_S7_CLAo": "Beispiel: Um „TEST12345“ in Base32 zu kodieren, können Sie Bibliotheken wie base32-encode in Node.js oder integrierte Funktionen in anderen Sprachen wie Pythons base64.b32encode verwenden.",
     "a4s6x": "Wie funktioniert Base32?",
     "a8b7z": "Daher ist ein Auffüllen nur erforderlich, wenn die letzte zu kodierende Bitgruppe nicht durch 40 Bit teilbar ist (da 8 Base32-Zeichen 40 Bit darstellen). Das Auffüllen besteht aus null bis sechs „=“-Zeichen am Ende der codierten Zeichenfolge.",
     "b8g2k": "Nutzungsszenarien für Base32",
@@ -19,7 +20,6 @@
     "n3e7r": "Geschichte von Base32",
     "p9s5t": "Base32 wurde 2001 von Douglas Crockford entwickelt, der für seine Beiträge zu JavaScript bekannt ist. Es wurde als zuverlässigere Alternative zu bestehenden Kodierungen wie Base64 entwickelt, insbesondere für Situationen, in denen textbasierte Darstellungen von Binärdaten erforderlich sind.",
     "q2w5m": "Zweck der Verwendung von Base32?",
-    "r6tq9z": "<b>Beispiel:</b> Um „TEST12345“ in Base32 zu kodieren, können Sie Bibliotheken wie base32-encode in Node.js oder integrierte Funktionen in anderen Sprachen wie Pythons base64.b32encode verwenden.",
     "s5t0n": "Beim Auffüllen in Base32 werden „=“-Zeichen hinzugefügt, um sicherzustellen, dass der letzte Teil der codierten Daten immer noch ein Vielfaches von 8 Bits enthält. Im Gegensatz zu Base64 ist die Base32-Auffüllung jedoch minimal, da jedes Base32-Zeichen bereits 5 Bits codiert.",
     "t8z1v": "Wenn am Ende nicht genügend Bits übrig sind, um eine vollständige 5-Bit-Gruppe zu füllen, werden Füllzeichen „=“ hinzugefügt. Beispielsweise erfordert ein Byte zwei Base32-Zeichen und eine 3-Byte-Sequenz würde vier Base32-Zeichen erfordern.",
     "u3j9p": "Base32 wird häufig verwendet, wenn Sie eine kompakte Textdarstellung von Binärdaten benötigen, die ohne Informationsverlust eingegeben oder gedruckt werden kann, z. B. bei Dateiintegritätsprüfungen, Geocaching und der sicheren Passwortgenerierung.",

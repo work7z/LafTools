@@ -1,4 +1,5 @@
 {
+    "R_S7_CLAo": "Ejemplo: para codificar 'TEST12345' en Base32, puede usar bibliotecas como base32-encode en Node.js o funciones integradas en otros lenguajes como base64.b32encode de Python.",
     "a4s6x": "¿Cómo funciona Base32?",
     "a8b7z": "Por lo tanto, el relleno sólo es necesario si el último grupo de bits que se codifican no es divisible por 40 bits (ya que 8 caracteres Base32 representan 40 bits). El relleno constará de cero a seis caracteres '=\" al final de la cadena codificada.",
     "b8g2k": "Escenarios de uso para Base32",
@@ -19,7 +20,6 @@
     "n3e7r": "Historia de Base32",
     "p9s5t": "Base32 fue desarrollado por Douglas Crockford, conocido por sus contribuciones a JavaScript, en 2001. Fue creado como una alternativa más confiable a las codificaciones existentes como Base64, especialmente para situaciones que requieren representaciones de datos binarios basadas en texto.",
     "q2w5m": "¿Propósito de usar Base32?",
-    "r6tq9z": "<b>Ejemplo:</b> Para codificar 'TEST12345' en Base32, puede usar bibliotecas como base32-encode en Node.js o funciones integradas en otros lenguajes como base64.b32encode de Python.",
     "s5t0n": "El relleno en Base32 implica agregar caracteres '=\" para garantizar que el fragmento final de datos codificados todavía contenga un múltiplo de 8 bits. Sin embargo, a diferencia de Base64, el relleno de Base32 es mínimo porque cada carácter de Base32 ya codifica 5 bits.",
     "t8z1v": "Cuando no quedan suficientes bits al final para llenar un grupo completo de 5 bits, se agregan caracteres de relleno '=\". Por ejemplo, un byte requiere dos caracteres Base32 y una secuencia de 3 bytes necesitaría cuatro caracteres Base32.",
     "u3j9p": "Base32 se utiliza a menudo cuando se necesita una representación textual compacta de datos binarios que se puedan escribir o imprimir sin perder información, como en comprobaciones de integridad de archivos, geocaching y generación segura de contraseñas.",

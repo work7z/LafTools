@@ -89,6 +89,7 @@ import { EachLang } from "../../types/purejs-types-READ_ONLY";
 import IDUtils from "../../utils/IDUtils";
 import { useHistory } from "react-router-dom";
 import { getFormattedLang } from "../../i18n";
+import i18n from "../../lib/translation/i18n";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;
@@ -812,19 +813,21 @@ export const LocalUserPanel: React.FC<
   );
 };
 
-export let useGetI18nLangList = (): EachLang[] | undefined => {
-  let i18nQ = apiSlice.useGeti18nConfigQuery(
-    {},
-    { refetchOnMountOrArgChange: true }
-  );
-  let r = QueryUtils.validateResult(i18nQ, {
-    label: Dot("kjks1", "Retrieving i18n config from local server API"),
-  });
-  if (r) {
-    return undefined;
-  }
-  let arr: EachLang[] | undefined = i18nQ.data?.payload?.value || [];
-  return arr;
+export let useGetI18nLangList = (): EachLang[] => {
+  let a = i18n()
+  return a
+  // let i18nQ = apiSlice.useGeti18nConfigQuery(
+  //   {},
+  //   { refetchOnMountOrArgChange: true }
+  // );
+  // let r = QueryUtils.validateResult(i18nQ, {
+  //   label: Dot("kjks1", "Retrieving i18n config from local server API"),
+  // });
+  // if (r) {
+  //   return undefined;
+  // }
+  // let arr: EachLang[] | undefined = i18nQ.data?.payload?.value || [];
+  // return arr;
 };
 
 const LanguagePanel: React.FC<SelectPanelProps> = (props) => {

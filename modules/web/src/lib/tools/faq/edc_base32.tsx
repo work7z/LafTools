@@ -58,7 +58,7 @@ export default (): FAQItem[] => {
             answer: (
                 <p>
                     {Dot("j1b5k", "The most common operations involving Base32 include encoding binary data into a Base32 string and decoding a Base32 string back into its original binary format.")}<br />
-                    {Dot("r6tq9z", "<b>Example:</b> To encode 'TEST12345' in Base32, you can use libraries like base32-encode in Node.js, or built-in functions in other languages such as Python's base64.b32encode.")}
+                    {Dot("R_S7_CLAo", "Example: To encode 'TEST12345' in Base32, you can use libraries like base32-encode in Node.js, or built-in functions in other languages such as Python's base64.b32encode.")}
                 </p>
             )
         },
