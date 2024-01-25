@@ -43,17 +43,17 @@ export abstract class ToolHandler {
             return () => [];
         }
         let r = await o.ImportFAQ()
-        let r2 = r["default"] as any
+        let r2 = r.default
         return r2;
     }
-    getCode = async (): Promise<CodeImplMap | null> => {
+    getCode = async (): Promise<() => CodeImplMap | null> => {
         let o = appToolInfoObj[this.id]
         if (!o.ImportCode) {
-            return null;
+            return () => null;
         }
         let r = await o.ImportCode()
-        let r2 = r["default"] as any
-        return r2 as any;
+        let r2 = r.default
+        return r2;
     }
 }
 

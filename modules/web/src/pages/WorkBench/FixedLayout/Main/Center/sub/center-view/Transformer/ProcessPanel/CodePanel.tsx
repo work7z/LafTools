@@ -34,38 +34,35 @@ import GenCodeMirror from '../../../../../../../../../components/GenCodeMirror'
 
 export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) => {
     // props.toolHandler
-    let [code, onCode] = useState<CodeImplMap | null>(null)
+    let [fncode, onCode] = useState<{
+        fn: () => (CodeImplMap | null)
+    }>({
+        fn: () => null
+    })
     let { loading, progressText } = usePromiseWait({
         text: Dot("KcrRr", "Retrieving Code Implementation Data"),
         whenToStart: !_.isNil(props.toolHandler),
         promise: async () => {
-            onCode(null)
+            onCode({
+                fn: () => (null)
+            })
             if (!props.toolHandler) {
                 return;
             }
             let crt_obj = await props.toolHandler.getCode()
-            onCode(crt_obj)
+            onCode({
+                fn: crt_obj
+            })
         }
     }, [props.toolHandler])
     let [tabId, onTabId] = useState("java")
+    let code = fncode.fn()
     if (loading) {
         return <div className="p-2">{progressText}</div>
     }
     if (!code || _.isEmpty(code)) {
         return <div className="p-2">{Dot("iOEjZ", "No Available Code")}</div>
     }
-    //     <div className="flex justify-between items-center mb-2 mt-0">
-    //     <div>
-    //         {/* <b>
-    //             {Dot("Uzqjy","Implementation")}
-    //         </b>    </div> */}
-    //     <div>
-    //         {/* TODO: provide an option to configure if source code is required */}
-    //         {/* <a href={props.toolHandler?.getMetaInfo().infoURL} target='_blank'>
-    //             {Dot("U2ZNl", "Learn more on Wikipedia")}
-    //         </a> */}
-    //     </div>
-    // </div>
 
     return <div className='p-2'>
         <div className=''>

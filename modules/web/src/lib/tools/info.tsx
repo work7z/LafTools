@@ -28,9 +28,15 @@ import { CodeImplMap } from "./code/types";
 
 export type AppInfoType = {
     LabelFn: () => string;
-    ImportImpl?: () => Promise<ToolHandlerClass>
-    ImportFAQ?: () => Promise<FAQItem[]>
-    ImportCode?: () => Promise<CodeImplMap>
+    ImportImpl?: () => Promise<{
+        default: ToolHandlerClass
+    }>
+    ImportFAQ?: () => Promise<{
+        default: () => FAQItem[]
+    }>
+    ImportCode?: () => Promise<{
+        default: () => CodeImplMap
+    }>
     Description?: string;
 }
 let passInfo = (obj: AppInfoType): AppInfoType => {

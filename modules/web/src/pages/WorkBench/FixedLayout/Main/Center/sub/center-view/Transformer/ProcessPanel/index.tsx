@@ -204,7 +204,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
 
                     <Tab id="faq" icon="manual" title={"FAQ"} />
                     {
-                        toolHanlder?.getMetaInfo()?.hideCodePanel ? '' : <Tab id="code" icon="code" title={Dot("JQEVK", "Code")} />
+                        !toolHandler || toolHanlder?.getMetaInfo()?.hideCodePanel ? '' : <Tab id="code" icon="code" title={Dot("JQEVK", "Code")} />
                     }
                     {/* <Tab id="wiki" icon="globe" title={"Wiki"} /> */}
                     <Tab id="output" icon={

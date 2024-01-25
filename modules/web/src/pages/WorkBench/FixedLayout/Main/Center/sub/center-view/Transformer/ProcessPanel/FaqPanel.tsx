@@ -65,6 +65,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     if (!faqFn || faqArr.length == 0) {
         return <div className="p-2">{Dot("jgDoEq", "No FAQ Data")}</div>
     }
+    let infoURL = props.toolHandler?.getMetaInfo().infoURL
     return <div className='p-2'>
         <div className="flex justify-between items-center mb-2 mt-0">
             <div>
@@ -72,8 +73,11 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                     {Dot("xOJqG1", "Frequently Asked Questions", _.size(faqFn))}:
                 </b>    </div>
             <div>
-                <a href={props.toolHandler?.getMetaInfo().infoURL} target='_blank'>
-                    {Dot("U2ZNl", "Learn more on Wikipedia")}
+                <a href={infoURL} target='_blank'>
+                    {
+                        infoURL && infoURL.indexOf("wikipedia") > 0 ? Dot("U2ZNl", "Learn more on Wikipedia")
+                            : Dot("dQwjNbi0y", "Learn more on Documentation")
+                    }
                 </a>
             </div>
         </div>
