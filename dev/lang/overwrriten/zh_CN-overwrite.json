@@ -1389,6 +1389,7 @@
   "That Deleting Field Logically is a conceptual field in the web system, if you don't need the annotation, please turn it off.": "逻辑删除字段是Web系统中的一个概念字段，如果您不需要注解，请将其关闭。",
   "e.g. _flag": "e.g. _flag",
   "Beautify {0}": "格式化{0}",
+  "{0} Beautify": "{0}格式化",
   "e.g. is_": "e.g. is_",
   "Super Controller Class(Optional)": "父级的控制器类(Extend)(可选)",
   "Package and Extend": "包信息和扩展",

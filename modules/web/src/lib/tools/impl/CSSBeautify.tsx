@@ -6,6 +6,7 @@ import { ToolHandler, ToolMetaInfo } from "../handler.js";
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
         return {
+            hideCodePanel: true,
             exampleType: "css-short",
             description: Dot(
                 "FYRoL",

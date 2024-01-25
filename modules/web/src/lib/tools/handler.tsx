@@ -27,6 +27,7 @@ export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-s
 
 
 export type ToolMetaInfo = {
+    hideCodePanel?: boolean;
     description: string;
     infoURL: string;
     exampleType: ShowExampleType

@@ -203,7 +203,9 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                     <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(generalList)} />
 
                     <Tab id="faq" icon="manual" title={"FAQ"} />
-                    <Tab id="code" icon="code" title={Dot("JQEVK", "Code")} />
+                    {
+                        toolHanlder?.getMetaInfo()?.hideCodePanel ? '' : <Tab id="code" icon="code" title={Dot("JQEVK", "Code")} />
+                    }
                     {/* <Tab id="wiki" icon="globe" title={"Wiki"} /> */}
                     <Tab id="output" icon={
                         crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "tick"

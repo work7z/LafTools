@@ -58,22 +58,22 @@ let appToolInfoObj: {
         Label: Dot("e4Cd8t", "Base85")
     }),
     "CSSBeautify": passInfo({
-        Label: Dot("1Xe8x7", "CSS Beautify")
+        Label: Dot("1Xe8x7", "{0} Beautify", "CSS")
     }),
     "JSONBeautify": passInfo({
-        Label: Dot("1X8x7q", "JSON Beautify")
+        Label: Dot("1X8x7q", "{0} Beautify", "JSON")
     }),
     "JavaScriptBeautify": passInfo({
-        Label: Dot("ZWJ79W5LR", "JavaScript Beautify")
+        Label: Dot("ZWJ79W5LR", "{0} Beautify", "JavaScript")
     }),
     "XMLBeautify": passInfo({
-        Label: Dot("2Ul6y", "XML Beautify")
+        Label: Dot("2Ul6y", "{0} Beautify", "XML")
     }),
     "GenericCodeBeautify": passInfo({
-        Label: Dot("iNEhY", "Generic Code Beautify")
+        Label: Dot("iNEhY", "{0} Beautify", Dot("Vvt09V2Qo", "Generic Code"))
     }),
     "SQLBeautify": passInfo({
-        Label: Dot("-nE6n", "SQL Beautify")
+        Label: Dot("-nE6n", "{0} Beautify", "SQL")
     }),
     "md5": passInfo({
         Label: "MD5"
