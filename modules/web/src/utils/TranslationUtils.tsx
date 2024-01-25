@@ -23,6 +23,8 @@ import _ from "lodash";
 import { LANG_EN_US, LangDefinition } from "../types/constants";
 import { VER_FORGE_FORM } from "../types/constants";
 import { safeparse } from "./g_ref";
+import { FN_GetDispatch } from "../nocycle";
+import { ACTION_getLangData, loadDOT } from "../reducers/systemSlice";
 
 export const KEY_LANG_PACK_ZH_CN = "KEY_LANG_PACK_ZH_CN" + VER_FORGE_FORM;
 export const KEY_LANG_PACK_ZH_HK = "KEY_LANG_PACK_ZH_HK" + VER_FORGE_FORM;
@@ -106,12 +108,3 @@ const TranslationUtils = {
 
 export default TranslationUtils;
 export const Dot = TranslationUtils.Dot;
-
-/**
- * We dynamically load ts files, to reduce the bundle size of i18n files, we separately load them.
- * 
- * @param pathname 
- */
-export const loadDOT = (pathname: string): any => {
-  // load resources dynamically
-}

@@ -47,7 +47,7 @@ import AjaxUtils from "../utils/AjaxUtils";
 import forgeSlice from "./forgeSlice";
 import AlertUtils from "../utils/AlertUtils";
 import { logutils } from "../utils/LogUtils";
-import ALL_NOCYCLE, { IsDevMode } from "../nocycle";
+import ALL_NOCYCLE, { FN_GetDispatch, IsDevMode } from "../nocycle";
 import _ from "lodash";
 import ConcurrencyUtils from "../utils/ConcurrencyUtils";
 import { KEY_CONCURRENCY_SYSTEM_INIT } from "../types/constants";
@@ -87,6 +87,7 @@ interface SystemState {
   checkLoginStatusCount: number;
   SysInitStatus: InitStatus;
   LangIncrement: string;
+  LoadDotCount: number;
   MessageObjectKVMap: {};
   ClientWidth: number;
   ClientHeight: number;
@@ -104,6 +105,7 @@ let LangRefreshCount = 0;
 
 const initialState: SystemState = {
   RefreshID: 0,
+  LoadDotCount: 0,
   checkLoginStatusCount: 0,
   PageDataInitedMap: {},
   LoadingForPageData: false,
@@ -187,19 +189,22 @@ const systemSlice = createSlice({
     },
     updateLanguageValue: (
       state,
-      action: PayloadAction<{ lang: string; initKey: string, value: LangDefinition }>
+      action: PayloadAction<{ scopeId?: string, lang: string; initKey: string, value: LangDefinition }>
     ) => {
-      let b = newLangMap();
+      let var_newLangMap = newLangMap();
       let nextValue = action.payload.value;
-      let prevValue = b[action.payload.lang];
-      b[action.payload.lang] = nextValue;
-      TranslationUtils.LangMap = b;
-      if (IsDevMode() && !_.isEqual(prevValue, nextValue)) {
-        // LangRefreshCount++;
+      let prevValue = TranslationUtils.LangMap[action.payload.lang];
+      var_newLangMap[action.payload.lang] = !_.isEmpty(prevValue) ? _.merge(prevValue, nextValue) : nextValue;
+      TranslationUtils.LangMap = var_newLangMap;
+      // state.LangIncrement = `${Date.now()}`
+      if (action.payload.scopeId) {
+        // if it's scope id, then only reload those who subscribe to this scope id
+        state.LoadDotCount++
+      } else {
+        // if it's not a scope id request, then we can reload lang data globally
+        state.LangIncrement = `${action.payload.initKey}${Date.now()}${action.payload.lang}${_.size((nextValue))}${LangRefreshCount}`;
       }
-      state.LangIncrement = `${action.payload.lang}${_.size(
-        _.keys(nextValue)
-      )}${LangRefreshCount}`;
+      // TODO: hard code then
       if (action.payload.lang == "zh_CN") {
         localStorage.setItem(KEY_LANG_PACK_ZH_CN, JSON.stringify(nextValue));
       } else if (action.payload.lang == "zh_HK") {
@@ -237,8 +242,21 @@ export const ACTION_getExample = (): any => {
     //
   };
 };
+
+/**
+ * We dynamically load ts files, to reduce the bundle size of i18n files, we separately load them.
+ * 
+ * @param scopeID 
+ */
+export const loadDOT = (scopeID: string): any => {
+  // load lang data dynamically
+  FN_GetDispatch()(
+    ACTION_getLangData(scopeID)
+  )
+}
+
 let __load_language_map: { [key: string]: boolean } = {};
-export const ACTION_getLangData = (dynamicIdIfHave?: string): any => {
+export const ACTION_getLangData = (scopeIdIfHave?: string): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
     let currentLanguage = TranslationUtils.CurrentLanguage; //ALL_NOCYCLE.store?.getState().forge.Language;
     // debugger;
@@ -255,17 +273,18 @@ export const ACTION_getLangData = (dynamicIdIfHave?: string): any => {
       currentLanguage = LANG_EN_US;
       dispatch(forgeSlice.actions.updateLanguage({ lang: currentLanguage }));
     }
-    let initKey = (dynamicIdIfHave || '') + currentLanguage
+    let initKey = (scopeIdIfHave || '') + currentLanguage
     if (currentLanguage != LANG_EN_US) {
       if (!_.isEmpty(LANG_INIT_BEFORE_MAP[initKey]) && !IsDevMode()) {
         // do nothing
       } else {
         let e = await AjaxUtils.DoStaticRequest({
-          url: "/lang" + (dynamicIdIfHave ? `/${dynamicIdIfHave}/` : "/") + currentLanguage + ".json?t=" + Date.now(),
+          url: "/lang" + (scopeIdIfHave ? `/${scopeIdIfHave}/` : "/") + currentLanguage + ".json?t=" + Date.now(),
         });
         logutils.debug("e.data", e.data);
         dispatch(
           systemSlice.actions.updateLanguageValue({
+            scopeId: scopeIdIfHave,
             initKey: initKey,
             lang: currentLanguage,
             value: e.data,

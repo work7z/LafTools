@@ -32,12 +32,12 @@ import { logutils } from '../../../../../../../../../utils/LogUtils'
 
 export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     // props.toolHandler
-    let [faq, onFaq] = useState<FAQItem[]>([])
+    let [faq, onFaq] = useState<() => FAQItem[]>(() => [])
     let { loading, progressText } = usePromiseWait({
         text: Dot("jhDoE", "Retrieving FAQ Data"),
         whenToStart: !_.isNil(props.toolHandler),
         promise: async () => {
-            onFaq([])
+            onFaq(() => [])
             if (!props.toolHandler) {
                 return;
             }
@@ -49,7 +49,8 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     if (loading) {
         return <div className="p-2">{progressText}</div>
     }
-    if (!faq || faq.length == 0) {
+    let faqArr: FAQItem[] = typeof faq == "function" ? faq() : faq
+    if (!faq || faqArr.length == 0) {
         return <div className="p-2">{Dot("jgDoEq", "No FAQ Data")}</div>
     }
     return <div className='p-2'>
@@ -65,7 +66,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
             </div>
         </div>
         {
-            faq.map((x, i) => {
+            faqArr.map((x, i) => {
                 return <div key={i} className="transform transition-all hover:border-lime-600  dark:hover:border-lime-600  dark:border-slate-600 border-slate-200 border-[1px] rounded overflow-hidden shadow-md mb-2 px-4 py-4">
                     <div className="px-0 pb-2 font-bold text-md ">({i + 1}) {x.question}</div>
                     <div className="px-0 py-0">{x.answer}</div>

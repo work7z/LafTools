@@ -1,4 +1,6 @@
-import { Dot, loadDOT } from "../../../utils/TranslationUtils";
+import { loadDOT } from "../../../reducers/systemSlice";
+import { Dot } from "../../../utils/TranslationUtils";
+
 
 loadDOT("Etm4CCFq4")
 

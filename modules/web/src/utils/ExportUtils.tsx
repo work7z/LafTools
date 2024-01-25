@@ -26,6 +26,13 @@ import TokenUtils from "./TokenUtils";
 import TranslationUtils from "./TranslationUtils";
 
 const exportUtils = {
+  useLoadDotCountCpt: () => {
+    return exportUtils.useSelector(v => {
+      return {
+        a: v.system.LoadDotCount
+      }
+    })
+  },
   refresh_lang: (): any[] => {
     return [TranslationUtils.CurrentLanguage]
   },

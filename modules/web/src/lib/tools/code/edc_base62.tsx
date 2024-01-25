@@ -1,4 +1,6 @@
-import { Dot, loadDOT } from "../../../utils/TranslationUtils";
+import { loadDOT } from "../../../reducers/systemSlice";
+import { Dot } from "../../../utils/TranslationUtils";
+
 import { CodeImplMap } from "./types";
 
 loadDOT("QVC1DLGzr")
