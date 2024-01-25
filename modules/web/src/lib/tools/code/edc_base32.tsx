@@ -1,5 +1,7 @@
-import { Dot } from "../../../utils/TranslationUtils";
+import { Dot, loadDOT } from "../../../utils/TranslationUtils";
 import { CodeImplMap } from "./types";
+
+loadDOT("eQH3q_N-X")
 
 export default {
     "node.js": {

@@ -187,7 +187,7 @@ const systemSlice = createSlice({
     },
     updateLanguageValue: (
       state,
-      action: PayloadAction<{ lang: string; value: LangDefinition }>
+      action: PayloadAction<{ lang: string; initKey: string, value: LangDefinition }>
     ) => {
       let b = newLangMap();
       let nextValue = action.payload.value;
@@ -205,7 +205,7 @@ const systemSlice = createSlice({
       } else if (action.payload.lang == "zh_HK") {
         localStorage.setItem(KEY_LANG_PACK_ZH_HK, JSON.stringify(nextValue));
       }
-      LANG_INIT_BEFORE_MAP[action.payload.lang] = true;
+      LANG_INIT_BEFORE_MAP[action.payload.initKey] = true;
     },
   },
 });
@@ -238,7 +238,7 @@ export const ACTION_getExample = (): any => {
   };
 };
 let __load_language_map: { [key: string]: boolean } = {};
-export const ACTION_getLangData = (): any => {
+export const ACTION_getLangData = (dynamicIdIfHave?: string): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
     let currentLanguage = TranslationUtils.CurrentLanguage; //ALL_NOCYCLE.store?.getState().forge.Language;
     // debugger;
@@ -255,17 +255,18 @@ export const ACTION_getLangData = (): any => {
       currentLanguage = LANG_EN_US;
       dispatch(forgeSlice.actions.updateLanguage({ lang: currentLanguage }));
     }
+    let initKey = (dynamicIdIfHave || '') + currentLanguage
     if (currentLanguage != LANG_EN_US) {
-      if (!_.isEmpty(LANG_INIT_BEFORE_MAP[currentLanguage]) && !IsDevMode()) {
+      if (!_.isEmpty(LANG_INIT_BEFORE_MAP[initKey]) && !IsDevMode()) {
         // do nothing
       } else {
         let e = await AjaxUtils.DoStaticRequest({
-          // url: "/lang/" + currentLanguage + ".json?t=" + Date.now(),
-          url: "/lang/" + currentLanguage + ".json?t=" + Date.now(),
+          url: "/lang" + (dynamicIdIfHave ? `/${dynamicIdIfHave}/` : "/") + currentLanguage + ".json?t=" + Date.now(),
         });
         logutils.debug("e.data", e.data);
         dispatch(
           systemSlice.actions.updateLanguageValue({
+            initKey: initKey,
             lang: currentLanguage,
             value: e.data,
           })

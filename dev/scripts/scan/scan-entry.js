@@ -1,43 +1,43 @@
-let path = require('path');
-let fs = require('fs');
-let sh = require('shelljs');
-let _ = require('lodash');
-var cnchars = require('cn-chars');
-let os = require('os');
+let path = require("path");
+let fs = require("fs");
+let sh = require("shelljs");
+let _ = require("lodash");
+var cnchars = require("cn-chars");
+let os = require("os");
 
-var md5 = require('md5');
-const { exit } = require('process');
-let i18njson = require('../../../resources/public/purejs/app-i18n.json');
+var md5 = require("md5");
+const { exit } = require("process");
+let i18njson = require("../../../resources/public/purejs/app-i18n.json");
 
-console.log('i18njson', i18njson);
+console.log("i18njson", i18njson);
 // cross platform watch file
-let chokidar = require('chokidar');
+let chokidar = require("chokidar");
 
 function convertUnixPathToWindowsPath(v) {
-  v = path.normalize(v)
+  v = path.normalize(v);
   return v;
 }
 
 function sub_exp(idx) {
-  return '((?<![\\\\])[\'"`])((?:.(?!(?<![\\\\])\\1))*.?)\\' + idx;
+  return "((?<![\\\\])['\"`])((?:.(?!(?<![\\\\])\\1))*.?)\\" + idx;
 }
 
 let commonText = new RegExp(
-  'Dot\\s*\\(\\s*' + sub_exp(1) + '\\s*,\\s*' + sub_exp(3)
+  "Dot\\s*\\(\\s*" + sub_exp(1) + "\\s*,\\s*" + sub_exp(3),
 );
 
 // get env LAFTOOLS_ROOT
-let baseDIR = path.join(__dirname, '..', '..', '..');
-if (baseDIR == '') {
-  console.log('LAFTOOLS_ROOT could not be empty');
+let baseDIR = path.join(__dirname, "..", "..", "..");
+if (baseDIR == "") {
+  console.log("LAFTOOLS_ROOT could not be empty");
   exit(-1);
 } else {
-  console.log('LAFTOOLS: ', baseDIR);
+  console.log("LAFTOOLS: ", baseDIR);
   // exit(99)
 }
 // sleep
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 function readFileAsJSONMap(file) {
   return JSON.parse(file);
@@ -47,7 +47,7 @@ function getFile(file) {
     file,
     filepath: file,
     text: () => {
-      return fs.readFileSync(file, { encoding: 'utf-8' }).toString();
+      return fs.readFileSync(file, { encoding: "utf-8" }).toString();
     },
     lastModified: () => {
       return fs.statSync(file).mtimeMs.toString();
@@ -58,10 +58,10 @@ function getFile(file) {
   };
   return obj;
 }
-let overwrittenDir = path.join(baseDIR, ...`dev/lang/overwrriten`.split('/'));
+let overwrittenDir = path.join(baseDIR, ...`dev/lang/overwrriten`.split("/"));
 
-let webDIR = path.join(baseDIR, ...`modules/web`.split('/'));
-let nodeDIR = path.join(baseDIR, ...`modules/node`.split('/'));
+let webDIR = path.join(baseDIR, ...`modules/web`.split("/"));
+let nodeDIR = path.join(baseDIR, ...`modules/node`.split("/"));
 
 let loadingDOTMapObj = {
   // [key:string]: boolean
@@ -72,112 +72,116 @@ let loadingDOTMapObj = {
       id: ''
    }
    */
-}
+};
 
 // personal project for RYAN LAI, just ignore it please
 let privateProjects = [
   {
-    id: 'srv2',
-    type: 'go',
-    prefix: '.Dot(',
+    id: "srv2",
+    type: "go",
+    prefix: ".Dot(",
     target: `/home/jerrylai/mincontent/PersonalProjects/laftools-server2/resources/lang`,
     pattern: commonText,
     dir: `/home/jerrylai/mincontent/PersonalProjects/laftools-server2/core`,
   },
   {
-    type: 'ts',
-    id: 'denote-pal-2',
-    prefix: 'Dot(',
+    type: "ts",
+    id: "denote-pal-2",
+    prefix: "Dot(",
     pattern: commonText,
-    target: '/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/resources/lang2',
-    dir: '/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/java/com',
+    target:
+      "/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/resources/lang2",
+    dir: "/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/java/com",
   },
   {
-    id: 'portal-l',
-    type: 'ts',
-    prefix: 'Dot(',
+    id: "portal-l",
+    type: "ts",
+    prefix: "Dot(",
     pattern: commonText,
-    target: '/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal2/public/static/lang',
-    dir: '/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal2/src',
+    target:
+      "/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal2/public/static/lang",
+    dir: "/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal2/src",
   },
-
-]
+];
 
 let webItem = {
-  id: 'bprl',
-  type: 'ts',
-  prefix: 'Dot(',
+  id: "bprl",
+  type: "ts",
+  prefix: "Dot(",
   pattern: commonText,
   target: `${webDIR}/public/static/lang`,
   dir: `${webDIR}/src`,
-}
+};
 
-
-let searchItems = true ? [
-  webItem
-] : [
-  {
-    id: 'brl',
-    type: 'go',
-    prefix: '.Dot(',
-    target: `${baseDIR}/resources/lang`,
-    pattern: commonText,
-    dir: `${baseDIR}/core`,
-  },
-  webItem,
-  {
-    type: 'ts',
-    id: 'portal-sl',
-    prefix: 'Dot(',
-    pattern: commonText,
-    target: `${nodeDIR}/src/lang`,
-    dir: `${nodeDIR}/src`,
-  },
-  {
-    type: 'ts',
-    id: 'purejs',
-    prefix: 'Dot(',
-    pattern: commonText,
-    target: baseDIR + '/modules/purejs/src/lang',
-    dir: baseDIR + '/modules/purejs/src',
-  },
-  ...privateProjects
-].map(x => {
-  x.dir = convertUnixPathToWindowsPath(x.dir);
-  x.target = convertUnixPathToWindowsPath(x.target);
-  return x;
-});
-
-
+let searchItems = true
+  ? [webItem]
+  : [
+      {
+        id: "brl",
+        type: "go",
+        prefix: ".Dot(",
+        target: `${baseDIR}/resources/lang`,
+        pattern: commonText,
+        dir: `${baseDIR}/core`,
+      },
+      webItem,
+      {
+        type: "ts",
+        id: "portal-sl",
+        prefix: "Dot(",
+        pattern: commonText,
+        target: `${nodeDIR}/src/lang`,
+        dir: `${nodeDIR}/src`,
+      },
+      {
+        type: "ts",
+        id: "purejs",
+        prefix: "Dot(",
+        pattern: commonText,
+        target: baseDIR + "/modules/purejs/src/lang",
+        dir: baseDIR + "/modules/purejs/src",
+      },
+      ...privateProjects,
+    ].map((x) => {
+      x.dir = convertUnixPathToWindowsPath(x.dir);
+      x.target = convertUnixPathToWindowsPath(x.target);
+      return x;
+    });
 
 let langarr = [];
 
-i18njson.forEach(x => {
-  if (x.Value == 'en_US') {
+i18njson.forEach((x) => {
+  if (x.Value == "en_US") {
     return;
   }
   langarr.push(x.Value);
 });
 
-
-
-let processWithArg = async ({ eachRunItem, disableLoadingDot = false, allFiles }) => {
+let processWithArg = async ({
+  eachRunItem,
+  disableLoadingDot = false,
+  allFiles,
+}) => {
   let waitTranslateObj = {};
   // iterate all files
   for (let eachFile of allFiles) {
     let file = getFile(eachFile); // replace with appropriate function
     let text = file.text();
     if (!disableLoadingDot) {
-      let loadDOTIdx = text.indexOf("loadDOT(")
+      let loadDOTIdx = text.indexOf("loadDOT(");
       if (loadDOTIdx != -1) {
-        let nextPartIdx = text.substring(loadDOTIdx).indexOf(")")
-        let scopeID = text.substring(loadDOTIdx, loadDOTIdx + nextPartIdx).replace("loadDOT(", "").replace(")", "").replace(/"/g, "")
+        let nextPartIdx = text.substring(loadDOTIdx).indexOf(")");
+        let scopeID = text
+          .substring(loadDOTIdx, loadDOTIdx + nextPartIdx)
+          .replace("loadDOT(", "")
+          .replace(")", "")
+          .replace(/"/g, "");
         loadingDOTMapObj[file.filepath] = {
           eachRunItem,
           filepath: file.filepath,
           scopeID,
           targetDIR: eachRunItem.target,
-        }
+        };
         continue;
       }
     }
@@ -196,26 +200,27 @@ let processWithArg = async ({ eachRunItem, disableLoadingDot = false, allFiles }
     }
   }
 
-
   for (let eachLang of langarr) {
-    await sleep(1000)
+    await sleep(1000);
 
-    let outputLang = eachLang.replace('-', '_');
-    let isChinese = eachLang == 'zh_CN' || eachLang == 'zh_HK';
+    let outputLang = eachLang.replace("-", "_");
+    let isChinese = eachLang == "zh_CN" || eachLang == "zh_HK";
     let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
-    let a1 = `${overwrittenDir}/${isChinese ? 'zh_CN' : eachLang}-id-overwrite.json`;
+    let a1 = `${overwrittenDir}/${
+      isChinese ? "zh_CN" : eachLang
+    }-id-overwrite.json`;
     let overwrittenFile = a1;
     let idOverwriteJSONFile = getFile(a1); // replace with appropriate function
     let overwriteJSONFile = getFile(
-      `${overwrittenDir}/${isChinese ? 'zh_CN' : eachLang}-overwrite.json`
+      `${overwrittenDir}/${isChinese ? "zh_CN" : eachLang}-overwrite.json`,
     );
 
     if (!fs.existsSync(idOverwriteJSONFile.file)) {
-      fs.writeFileSync(idOverwriteJSONFile.file, '{}');
+      fs.writeFileSync(idOverwriteJSONFile.file, "{}");
     }
     if (!fs.existsSync(overwriteJSONFile.file)) {
-      fs.writeFileSync(overwriteJSONFile.file, '{}');
+      fs.writeFileSync(overwriteJSONFile.file, "{}");
     }
     let overwrritenMap = getFile(overwrittenFile).jsonmap();
     let lastModifiedForIdOverwriteJSONFile =
@@ -224,7 +229,7 @@ let processWithArg = async ({ eachRunItem, disableLoadingDot = false, allFiles }
     let waitTranslateObjStr = toJSON(waitTranslateObj);
     // console.log(waitTranslateObj);
 
-    let tmpTranslateDir = path.join(__dirname, 'tmp-translate-result');
+    let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
     if (!fs.existsSync(tmpTranslateDir)) {
       fs.mkdirSync(tmpTranslateDir);
     }
@@ -233,26 +238,27 @@ let processWithArg = async ({ eachRunItem, disableLoadingDot = false, allFiles }
 
     fs.writeFileSync(
       path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
-      waitTranslateObjStr
+      waitTranslateObjStr,
     );
     fs.writeFileSync(
-      path.join(
-        tmpTranslateDir,
-        `config-${eachRunItem.id}-${eachLang}.json`
-      ),
+      path.join(tmpTranslateDir, `config-${eachRunItem.id}-${eachLang}.json`),
       toJSON({
         id: eachRunItem.id,
-      })
+      }),
     );
 
     // execute a command
-    let cmd = `go run "${path.join(__dirname, 'translate-tools', 'bulktranslate.go')}" --id=${eachRunItem.id} --lg=${eachLang} --output="${outputLangFile}" `;
-    console.log('cmd is ', cmd);
+    let cmd = `go run "${path.join(
+      __dirname,
+      "translate-tools",
+      "bulktranslate.go",
+    )}" --id=${eachRunItem.id} --lg=${eachLang} --output="${outputLangFile}" `;
+    console.log("cmd is ", cmd);
     sh.exec(cmd);
 
     let resultFile = path.join(
       __dirname,
-      `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`
+      `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`,
     );
     if (fs.existsSync(resultFile)) {
       let resultJSON = getFile(resultFile).jsonmap();
@@ -262,38 +268,34 @@ let processWithArg = async ({ eachRunItem, disableLoadingDot = false, allFiles }
         }
       });
 
-      if (eachLang == 'zh_HK') {
+      if (eachLang == "zh_HK") {
         resultJSON = _.mapValues(resultJSON, (x, d, n) => {
           return _.chain(x)
-            .split('')
-            .map(xx => cnchars.toTraditionalChar(xx))
-            .join('')
+            .split("")
+            .map((xx) => cnchars.toTraditionalChar(xx))
+            .join("")
             .value();
         });
       }
       fs.writeFileSync(outputLangFile, toJSON(resultJSON));
     } else {
-      console.log('file not exists: ', resultFile);
+      console.log("file not exists: ", resultFile);
       process.exit(-1);
     }
 
-    console.log('------------------------------');
-
-
+    console.log("------------------------------");
   }
-}
+};
 // console.log ('searchItems', searchItems);
 
 if (true) {
 }
 
-let toJSON = obj => {
+let toJSON = (obj) => {
   return JSON.stringify(obj, null, 4);
 };
 
-let runStatusObj = {
-
-}
+let runStatusObj = {};
 
 let scan = async (eachRunItem) => {
   let triggerFn = async () => {
@@ -340,63 +342,61 @@ let scan = async (eachRunItem) => {
         return a.localeCompare(b);
       });
 
-
       await processWithArg({
         eachRunItem,
         allFiles,
         disableLoadingDot: false,
-      })
+      });
 
       // await sleep(3000);
     } catch (e) {
-      console.log('err', e);
+      console.log("err", e);
       await sleep(3000);
     }
-  }
+  };
   try {
-    await triggerFn()
+    await triggerFn();
   } catch (e) {
-    console.log('err', e)
+    console.log("err", e);
   }
 };
 for (let eachItem of searchItems) {
   // eachItem.dir=path.normalize(eachItem.dir)
   let existOrNot = fs.existsSync(eachItem.dir);
-  console.log('existOrNot', existOrNot, eachItem.dir);
+  console.log("existOrNot", existOrNot, eachItem.dir);
   if (existOrNot) {
-    console.log('enter');
+    console.log("enter");
 
     let triggerAllFn = _.debounce(async () => {
-      let eachRunItem = eachItem
+      let eachRunItem = eachItem;
       if (runStatusObj[eachRunItem.dir]) return;
-      runStatusObj[eachRunItem.dir] = '1'
+      runStatusObj[eachRunItem.dir] = "1";
 
       try {
         await scan(eachItem);
-        await sleep(1000)
+        await sleep(1000);
       } catch (e) {
-        console.log('err', e)
+        console.log("err", e);
       }
 
-      delete runStatusObj[eachRunItem.dir]
+      delete runStatusObj[eachRunItem.dir];
+    }, 1000);
 
-    }, 1000)
-
-    chokidar.watch(eachItem.dir).on('all', async (event, path) => {
+    chokidar.watch(eachItem.dir).on("all", async (event, path) => {
       // if new file is added or exist file is modified/delete
       // console.log('some file is changed', event, path);
-      if (event == 'add' || event == 'change' || event == 'unlink') {
+      if (event == "add" || event == "change" || event == "unlink") {
         let eachFile = path;
         if (
-          (eachFile + '').endsWith('go') ||
-          (eachFile + '').endsWith('ts') ||
-          (eachFile + '').endsWith('tsx') ||
-          (eachFile + '').endsWith('java') ||
-          (eachFile + '').endsWith('groovy') ||
-          (eachFile + '').endsWith('js')
+          (eachFile + "").endsWith("go") ||
+          (eachFile + "").endsWith("ts") ||
+          (eachFile + "").endsWith("tsx") ||
+          (eachFile + "").endsWith("java") ||
+          (eachFile + "").endsWith("groovy") ||
+          (eachFile + "").endsWith("js")
         ) {
-          console.log('some file is changed', event, path);
-          triggerAllFn()
+          console.log("some file is changed", event, path);
+          triggerAllFn();
         }
       }
     });
@@ -409,7 +409,7 @@ let entryForLoadingDOT = async () => {
   while (true) {
     _.forEach(loadingDOTMapObj, (loadEachObj, d, n) => {
       if (!alreadyRunLoadingDOTObj[d]) {
-        alreadyRunLoadingDOTObj[d] = 1
+        alreadyRunLoadingDOTObj[d] = 1;
         setTimeout(async () => {
           while (true) {
             // let example = loadingDOTMapObj[file.filepath] = {
@@ -417,12 +417,12 @@ let entryForLoadingDOT = async () => {
             //   scopeID,
             //   targetDIR: eachRunItem.target,
             // };
-            let { scopeID, targetDIR, filepath, eachRunItem } = loadEachObj
-            let dynDirName = path.join(targetDIR, scopeID)
+            let { scopeID, targetDIR, filepath, eachRunItem } = loadEachObj;
+            let dynDirName = path.join(targetDIR, scopeID);
             if (!fs.existsSync(dynDirName)) {
-              fs.mkdirSync(dynDirName)
+              fs.mkdirSync(dynDirName);
             }
-            console.log("Loading DOT", loadEachObj)
+            console.log("Loading DOT", loadEachObj.scopeID);
             await processWithArg({
               eachRunItem: {
                 type: eachRunItem.type,
@@ -434,14 +434,14 @@ let entryForLoadingDOT = async () => {
               },
               allFiles: [filepath],
               disableLoadingDot: true,
-            })
-            await sleep(1000)
+            });
+            await sleep(1000);
           }
-        })
+        });
       }
       return;
-    })
-    await sleep(1000)
+    });
+    await sleep(1000);
   }
-}
-(entryForLoadingDOT)()
+};
+entryForLoadingDOT();

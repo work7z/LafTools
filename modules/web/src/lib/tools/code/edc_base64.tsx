@@ -1,8 +1,8 @@
 
-import { Dot } from '../../../utils/TranslationUtils';
+import { Dot, loadDOT } from '../../../utils/TranslationUtils';
 import { CodeImplMap, CodeImplDetail, PopularLanguages } from './types'
 
-
+loadDOT("2y1Hd1Qaw")
 export default {
   "node.js": {
     template: `const input = 'TEST12345';

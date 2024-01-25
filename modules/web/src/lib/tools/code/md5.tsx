@@ -1,4 +1,6 @@
-import { Dot } from "../../../utils/TranslationUtils";
+import { Dot, loadDOT } from "../../../utils/TranslationUtils";
+
+loadDOT("Etm4CCFq4")
 
 export default {
     "node.js": {
