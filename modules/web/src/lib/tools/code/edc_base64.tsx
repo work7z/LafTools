@@ -1,21 +1,24 @@
 
-import { Dot, loadDOT } from '../../../utils/TranslationUtils';
+import { loadDOT } from '../../../reducers/systemSlice';
+import { Dot, } from '../../../utils/TranslationUtils';
 import { CodeImplMap, CodeImplDetail, PopularLanguages } from './types'
 
 loadDOT("2y1Hd1Qaw")
-export default {
-  "node.js": {
-    template: `const input = 'TEST12345';
+
+export default (): Partial<CodeImplMap> => {
+  return {
+    "node.js": {
+      template: `const input = 'TEST12345';
 const encodedData = Buffer.from(input, 'utf8').toString('base64');
 const decodedData = Buffer.from(encodedData, 'base64').toString('utf8');
 
 console.log('Encoded:', encodedData);
 console.log('Decoded:', decodedData);`,
-    howToRunItTips: <p>{Dot("h7rUq", "In Node.js, the built-in 'Buffer' class can handle Base64 encoding and decoding without requiring any external libraries. This code snippet encodes the string 'TEST12345' to Base64 and then decodes it back to the original string.")}</p>
-  },
+      howToRunItTips: <p>{Dot("h7rUq", "In Node.js, the built-in 'Buffer' class can handle Base64 encoding and decoding without requiring any external libraries. This code snippet encodes the string 'TEST12345' to Base64 and then decodes it back to the original string.")}</p>
+    },
 
-  "python": {
-    template: `import base64
+    "python": {
+      template: `import base64
 
 input_data = 'TEST12345'
 encoded_data = base64.b64encode(input_data.encode('utf-8'))
@@ -23,11 +26,11 @@ decoded_data = base64.b64decode(encoded_data).decode('utf-8')
 
 print('Encoded:', encoded_data.decode('utf-8'))
 print('Decoded:', decoded_data)`,
-    howToRunItTips: <p>{Dot("z9kVv", "Python has a built-in 'base64' module which provides methods for Base64 encoding and decoding. The input string is first converted to bytes using UTF-8 encoding before being encoded to Base64, and then decoded back to its original form.")}</p>
-  },
+      howToRunItTips: <p>{Dot("z9kVv", "Python has a built-in 'base64' module which provides methods for Base64 encoding and decoding. The input string is first converted to bytes using UTF-8 encoding before being encoded to Base64, and then decoded back to its original form.")}</p>
+    },
 
-  "java": {
-    template: `import java.util.Base64;
+    "java": {
+      template: `import java.util.Base64;
 
 public class Main {
     public static void main(String[] args) {
@@ -44,11 +47,11 @@ public class Main {
         System.out.println("Decoded: " + decodedString);
     }
 }`,
-    howToRunItTips: <p>{Dot("sKx5t", "Java's built-in 'java.util.Base64' class, available since Java 8, provides methods for Base64 encoding and decoding. The input string is converted to bytes using UTF-8 encoding, then encoded and decoded as needed.")}</p>
-  },
+      howToRunItTips: <p>{Dot("sKx5t", "Java's built-in 'java.util.Base64' class, available since Java 8, provides methods for Base64 encoding and decoding. The input string is converted to bytes using UTF-8 encoding, then encoded and decoded as needed.")}</p>
+    },
 
-  "csharp": {
-    template: `using System;
+    "csharp": {
+      template: `using System;
 using System.Text;
 
 class Program {
@@ -66,11 +69,11 @@ class Program {
         Console.WriteLine("Decoded: " + decodedString);
     }
 }`,
-    howToRunItTips: <p>{Dot("dWbBm", "C# includes the 'System.Convert' class with built-in methods ToBase64String and FromBase64String that allow you to encode and decode Base64 data. The input string is first converted to a byte array using UTF-8 encoding, then encoded and decoded accordingly.")}</p>
-  },
+      howToRunItTips: <p>{Dot("dWbBm", "C# includes the 'System.Convert' class with built-in methods ToBase64String and FromBase64String that allow you to encode and decode Base64 data. The input string is first converted to a byte array using UTF-8 encoding, then encoded and decoded accordingly.")}</p>
+    },
 
-  "cpp": {
-    template: `// C++ example requires OpenSSL library
+    "cpp": {
+      template: `// C++ example requires OpenSSL library
 #include <openssl/bio.h>
 #include <openssl/evp.h>
 #include <openssl/buffer.h>
@@ -127,22 +130,22 @@ int main() {
 
     return 0;
 }`,
-    howToRunItTips: <p>{Dot("gT6re", "C++ does not have a native Base64 implementation. This example uses OpenSSL library to perform Base64 encoding and decoding. To use OpenSSL, install it on your system and link against the appropriate libraries when compiling your program.")}</p>
-  },
+      howToRunItTips: <p>{Dot("gT6re", "C++ does not have a native Base64 implementation. This example uses OpenSSL library to perform Base64 encoding and decoding. To use OpenSSL, install it on your system and link against the appropriate libraries when compiling your program.")}</p>
+    },
 
-  "php": {
-    template: `<?php
+    "php": {
+      template: `<?php
 $input = 'TEST12345';
 $encodedData = base64_encode($input);
 $decodedData = base64_decode($encodedData);
 
 echo "Encoded: " . $encodedData . "\n";
 echo "Decoded: " . $decodedData . "\n";`,
-    howToRunItTips: <p>{Dot("jZvLJ", "PHP comes with built-in functions 'base64_encode()' and 'base64_decode()' for handling Base64 operations. These functions are readily available and require no additional setup or installation.")}</p>
-  },
+      howToRunItTips: <p>{Dot("jZvLJ", "PHP comes with built-in functions 'base64_encode()' and 'base64_decode()' for handling Base64 operations. These functions are readily available and require no additional setup or installation.")}</p>
+    },
 
-  "go": {
-    template: `package main
+    "go": {
+      template: `package main
 
 import (
 	"encoding/base64"
@@ -157,11 +160,11 @@ func main() {
 	fmt.Println("Encoded:", encodedData)
 	fmt.Println("Decoded:", string(decodedData))
 }`,
-    howToRunItTips: <p>{Dot("tR8pY", "Go provides a standard library package 'encoding/base64' with functions for Base64 encoding and decoding. No external dependencies are required; simply import this package into your Go program and call the appropriate functions.")}</p>
-  },
+      howToRunItTips: <p>{Dot("tR8pY", "Go provides a standard library package 'encoding/base64' with functions for Base64 encoding and decoding. No external dependencies are required; simply import this package into your Go program and call the appropriate functions.")}</p>
+    },
 
-  "rust": {
-    template: `use base64::{encode, decode};
+    "rust": {
+      template: `use base64::{encode, decode};
 
 fn main() {
     let input = "TEST12345".as_bytes();
@@ -171,11 +174,11 @@ fn main() {
     println!("Encoded: {}", encoded_data);
     println!("Decoded: {:?}", String::from_utf8(decoded_data).unwrap());
 }`,
-    howToRunItTips: <p>{Dot("eN4fM", "In Rust, you can use the 'base64' crate for Base64 encoding and decoding. Add 'base64 = \"1.x\"' to your Cargo.toml file under the [dependencies] section, run 'cargo build', and include the necessary imports in your code to utilize these functions.")}</p>
-  },
+      howToRunItTips: <p>{Dot("eN4fM", "In Rust, you can use the 'base64' crate for Base64 encoding and decoding. Add 'base64 = \"1.x\"' to your Cargo.toml file under the [dependencies] section, run 'cargo build', and include the necessary imports in your code to utilize these functions.")}</p>
+    },
 
-  "c": {
-    template: `// C example requires OpenSSL library
+    "c": {
+      template: `// C example requires OpenSSL library
 #include <stdio.h>
 #include <string.h>
 #include <openssl/bio.h>
@@ -234,15 +237,15 @@ int main() {
     base64_encode_decode(input);
     return 0;
 }`,
-    howToRunItTips: <p>{Dot("uW7eZ", "In C, there's no native Base64 implementation. This example uses OpenSSL library for Base64 encoding and decoding. To use this code snippet, install OpenSSL on your system and link against the appropriate libraries when compiling your program using a command similar to 'gcc -o base64_example base64_example.c -lssl -lcrypto'.")}</p>
-  },
+      howToRunItTips: <p>{Dot("uW7eZ", "In C, there's no native Base64 implementation. This example uses OpenSSL library for Base64 encoding and decoding. To use this code snippet, install OpenSSL on your system and link against the appropriate libraries when compiling your program using a command similar to 'gcc -o base64_example base64_example.c -lssl -lcrypto'.")}</p>
+    },
 
 
 
 
 
-  "ruby": {
-    template: `require 'base64'
+    "ruby": {
+      template: `require 'base64'
 
 input_data = 'TEST12345'
 encoded_data = Base64.strict_encode64(input_data)
@@ -250,11 +253,11 @@ decoded_data = Base64.decode64(encoded_data)
 
 puts "Encoded: #{encoded_data}"
 puts "Decoded: #{decoded_data}"`,
-    howToRunItTips: <p>{Dot("kZd9G", "Ruby has a built-in 'base64' library that provides methods for Base64 encoding and decoding. Include the library with 'require \"base64\"' in your script.")}</p>
-  },
+      howToRunItTips: <p>{Dot("kZd9G", "Ruby has a built-in 'base64' library that provides methods for Base64 encoding and decoding. Include the library with 'require \"base64\"' in your script.")}</p>
+    },
 
-  "swift": {
-    template: `import Foundation
+    "swift": {
+      template: `import Foundation
 
 let input = "TEST12345"
 let data = input.data(using: .utf8)!
@@ -263,11 +266,11 @@ let decodedData = Data(base64Encoded: encodedData)!.string(using: .utf8)!
 
 print("Encoded: \(encodedData)")
 print("Decoded: \(decodedData)")`,
-    howToRunItTips: <p>{Dot("jRzgS", "Swift's Foundation framework includes built-in methods for Base64 encoding and decoding. No external libraries are needed; simply import 'Foundation' to use these features.")}</p>
-  },
+      howToRunItTips: <p>{Dot("jRzgS", "Swift's Foundation framework includes built-in methods for Base64 encoding and decoding. No external libraries are needed; simply import 'Foundation' to use these features.")}</p>
+    },
 
-  "kotlin": {
-    template: `import android.util.Base64
+    "kotlin": {
+      template: `import android.util.Base64
 
 val input = "TEST12345".toByteArray(Charsets.UTF_8)
 val encodedData = Base64.encodeToString(input, Base64.DEFAULT)
@@ -275,13 +278,13 @@ val decodedData = String(Base64.decode(encodedData, Base64.DEFAULT), Charsets.UT
 
 println("Encoded: $encodedData")
 println("Decoded: $decodedData")`,
-    howToRunItTips: <p>{Dot("rLXJN", "In Kotlin, Android's built-in 'android.util.Base64' class can be used for Base64 encoding and decoding. This example assumes an Android environment; for non-Android Kotlin projects, consider using 'java.util.Base64'.")}</p>
-  },
+      howToRunItTips: <p>{Dot("rLXJN", "In Kotlin, Android's built-in 'android.util.Base64' class can be used for Base64 encoding and decoding. This example assumes an Android environment; for non-Android Kotlin projects, consider using 'java.util.Base64'.")}</p>
+    },
 
-  // ... Similar templates and tips for other languages ...
+    // ... Similar templates and tips for other languages ...
 
-  "scala": {
-    template: `import java.util.Base64
+    "scala": {
+      template: `import java.util.Base64
 
 val input = "TEST12345".getBytes("UTF-8")
 val encodedData = Base64.getEncoder.encodeToString(input)
@@ -289,11 +292,11 @@ val decodedData = new String(Base64.getDecoder.decode(encodedData), "UTF-8")
 
 println(s"Encoded: $encodedData")
 println(s"Decoded: $decodedData")`,
-    howToRunItTips: <p>{Dot("sBxHr", "Scala uses Java's built-in 'java.util.Base64' class for Base64 operations. Ensure you're running on a JVM platform with Java 8 or higher.")}</p>
-  },
+      howToRunItTips: <p>{Dot("sBxHr", "Scala uses Java's built-in 'java.util.Base64' class for Base64 operations. Ensure you're running on a JVM platform with Java 8 or higher.")}</p>
+    },
 
-  "perl": {
-    template: `use MIME::Base64;
+    "perl": {
+      template: `use MIME::Base64;
 
 my $input = "TEST12345";
 my $encodedData = encode_base64($input);
@@ -301,7 +304,8 @@ my $decodedData = decode_base64($encodedData);
 
 print "Encoded: $encodedData\n";
 print "Decoded: $decodedData\n";`,
-    howToRunItTips: <p>{Dot("fTt2N", "Perl requires the 'MIME::Base64' module for Base64 encoding and decoding. Install it by running 'cpan install MIME::Base64' if not already installed.")}</p>
-  },
+      howToRunItTips: <p>{Dot("fTt2N", "Perl requires the 'MIME::Base64' module for Base64 encoding and decoding. Install it by running 'cpan install MIME::Base64' if not already installed.")}</p>
+    },
 
-};
+  }
+}

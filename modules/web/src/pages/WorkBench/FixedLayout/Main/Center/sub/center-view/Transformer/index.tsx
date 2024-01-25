@@ -211,8 +211,7 @@ export default (props: CommonTransformerProps) => {
         window.clearInterval(timer)
         setLoadingStatic(false)
       } catch (e) {
-        debugger;
-        logutils.error('loading-Transformer', e)
+        logutils.debug('loading-Transformer', e)
         let anyError = gutils.getErrMsg(e)
         onLoadError(anyError)
         window.clearInterval(timer)

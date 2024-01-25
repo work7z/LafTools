@@ -113,40 +113,38 @@ let webItem = {
   dir: `${webDIR}/src`,
 };
 
-let searchItems = true
-  ? [webItem]
-  : [
-      {
-        id: "brl",
-        type: "go",
-        prefix: ".Dot(",
-        target: `${baseDIR}/resources/lang`,
-        pattern: commonText,
-        dir: `${baseDIR}/core`,
-      },
-      webItem,
-      {
-        type: "ts",
-        id: "portal-sl",
-        prefix: "Dot(",
-        pattern: commonText,
-        target: `${nodeDIR}/src/lang`,
-        dir: `${nodeDIR}/src`,
-      },
-      {
-        type: "ts",
-        id: "purejs",
-        prefix: "Dot(",
-        pattern: commonText,
-        target: baseDIR + "/modules/purejs/src/lang",
-        dir: baseDIR + "/modules/purejs/src",
-      },
-      ...privateProjects,
-    ].map((x) => {
-      x.dir = convertUnixPathToWindowsPath(x.dir);
-      x.target = convertUnixPathToWindowsPath(x.target);
-      return x;
-    });
+let searchItems = [
+  {
+    id: "brl",
+    type: "go",
+    prefix: ".Dot(",
+    target: `${baseDIR}/resources/lang`,
+    pattern: commonText,
+    dir: `${baseDIR}/core`,
+  },
+  webItem,
+  {
+    type: "ts",
+    id: "portal-sl",
+    prefix: "Dot(",
+    pattern: commonText,
+    target: `${nodeDIR}/src/lang`,
+    dir: `${nodeDIR}/src`,
+  },
+  {
+    type: "ts",
+    id: "purejs",
+    prefix: "Dot(",
+    pattern: commonText,
+    target: baseDIR + "/modules/purejs/src/lang",
+    dir: baseDIR + "/modules/purejs/src",
+  },
+  ...privateProjects,
+].map((x) => {
+  x.dir = convertUnixPathToWindowsPath(x.dir);
+  x.target = convertUnixPathToWindowsPath(x.target);
+  return x;
+});
 
 let langarr = [];
 

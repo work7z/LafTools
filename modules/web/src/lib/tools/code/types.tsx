@@ -50,5 +50,5 @@ export type CodeImplDetail = {
 }
 
 export type CodeImplMap = {
-    [key: string]: CodeImplDetail
+    [key in PopularLanguages]: CodeImplDetail
 }

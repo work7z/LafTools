@@ -1,10 +1,11 @@
 import { loadDOT } from "../../../reducers/systemSlice";
 import { Dot } from "../../../utils/TranslationUtils";
+import { CodeImplMap } from "./types";
 
 
 loadDOT("Etm4CCFq4")
 
-export default () => {
+export default (): Partial<CodeImplMap> => {
     return {
         "node.js": {
             template: `
@@ -167,6 +168,5 @@ echo getMD5($input);
                 </p>
             )
         },
-
     };
 }

@@ -31,9 +31,10 @@ import _ from 'lodash'
 import { AnchorButton, Button, Callout, Tabs } from '@blueprintjs/core'
 import { CodeImplDetail, CodeImplMap, program_languages } from '../../../../../../../../../lib/tools/code/types'
 import GenCodeMirror from '../../../../../../../../../components/GenCodeMirror'
+import exportUtils from '../../../../../../../../../utils/ExportUtils'
 
 export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) => {
-    // props.toolHandler
+    exportUtils.useLoadDotCountCpt()
     let [fncode, onCode] = useState<{
         fn: () => (CodeImplMap | null)
     }>({
@@ -100,7 +101,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
                                 <GenCodeMirror
                                     language={'javascript'}
                                     placeholder={''}
-                                    directValue={o.template}
+                                    directValue={_.trim(o.template)}
                                     lineWrap={true}
                                     bigTextId={''}
                                     key={""}

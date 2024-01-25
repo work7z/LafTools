@@ -100,7 +100,6 @@ export let usePromiseWait = (obj: {
                 onLoadError(null)
                 setLoadingProgressRate(0)
                 setLoadingStatic(true)
-                // await gutils.sleep(30000)
                 await obj.promise()
                 window.clearInterval(timer)
                 setLoadingStatic(false)

@@ -6,9 +6,11 @@ import { CodeImplDetail, CodeImplMap } from "./types";
 
 loadDOT("2HoJjVJXH")
 
-export default {
-    "node.js": {
-        template: `
+
+export default (): Partial<CodeImplMap> => {
+    return {
+        "node.js": {
+            template: `
       const base45 = require('@digitalbazaar/base45');
       
       // Encode example
@@ -20,18 +22,18 @@ export default {
       const decodedBuffer = base45.decode(encodedString);
       console.log(decodedBuffer.toString('utf8'));
     `,
-        howToRunItTips: (
-            <p>
-                {Dot("u9g6t", "To run this code, you need to install the '@digitalbazaar/base45' package.")}<br />
-                {Dot("z7n1m", "Use npm or yarn to install it by running `npm install @digitalbazaar/base45` or `yarn add @digitalbazaar/base45`.")}
-                <br />
-                {Dot("v5k3r", "This library provides a simple API for Base45 encoding and decoding in Node.js applications. After installation, copy the provided template into your script and execute it with Node.js interpreter.")}
-            </p>
-        )
-    },
+            howToRunItTips: (
+                <p>
+                    {Dot("u9g6t", "To run this code, you need to install the '@digitalbazaar/base45' package.")}<br />
+                    {Dot("z7n1m", "Use npm or yarn to install it by running `npm install @digitalbazaar/base45` or `yarn add @digitalbazaar/base45`.")}
+                    <br />
+                    {Dot("v5k3r", "This library provides a simple API for Base45 encoding and decoding in Node.js applications. After installation, copy the provided template into your script and execute it with Node.js interpreter.")}
+                </p>
+            )
+        },
 
-    "python": {
-        template: `
+        "python": {
+            template: `
       import base45
       
       # Encode example
@@ -44,18 +46,18 @@ export default {
       decoded_bytes = base45.a2b_base45(encoded_string)
       print(decoded_bytes.decode())
     `,
-        howToRunItTips: (
-            <p>
-                {Dot("x2c5e", "To use Base45 in Python, you'll need to install the 'base45' library.")}<br />
-                {Dot("d8w1b", "You can do this using pip by running `pip install base45` or `python -m pip install base45`.")}
-                <br />
-                {Dot("c6p4n", "After installing the library, copy the provided template into your Python script and run it. The library offers built-in functions for converting between bytes and Base45-encoded strings.")}
-            </p>
-        )
-    },
+            howToRunItTips: (
+                <p>
+                    {Dot("x2c5e", "To use Base45 in Python, you'll need to install the 'base45' library.")}<br />
+                    {Dot("d8w1b", "You can do this using pip by running `pip install base45` or `python -m pip install base45`.")}
+                    <br />
+                    {Dot("c6p4n", "After installing the library, copy the provided template into your Python script and run it. The library offers built-in functions for converting between bytes and Base45-encoded strings.")}
+                </p>
+            )
+        },
 
-    "java": {
-        template: `
+        "java": {
+            template: `
       import org.iso.base45.Base45;
 
       // Encode example
@@ -70,18 +72,18 @@ export default {
       String decoded = new String(decodedBytes, StandardCharsets.UTF_8);
       System.out.println(decoded);
     `,
-        howToRunItTips: (
-            <p>
-                {Dot("y3m7k", "For Java, utilize the 'iso-base45' library which can be included in your project as a Maven dependency.")}<br />
-                {Dot("f9t2z", "Add the following to your pom.xml file: `<dependency> <groupId>org.iso</groupId> <artifactId>iso-base45</artifactId> <version>...</version> </dependency>` where version is the latest release.")}
-                <br />
-                {Dot("q6n1r", "The library provides encoder and decoder classes that handle Base45 conversion. Once the dependency is added, copy the template code into a Java class and execute it.")}
-            </p>
-        )
-    },
+            howToRunItTips: (
+                <p>
+                    {Dot("y3m7k", "For Java, utilize the 'iso-base45' library which can be included in your project as a Maven dependency.")}<br />
+                    {Dot("f9t2z", "Add the following to your pom.xml file: `<dependency> <groupId>org.iso</groupId> <artifactId>iso-base45</artifactId> <version>...</version> </dependency>` where version is the latest release.")}
+                    <br />
+                    {Dot("q6n1r", "The library provides encoder and decoder classes that handle Base45 conversion. Once the dependency is added, copy the template code into a Java class and execute it.")}
+                </p>
+            )
+        },
 
-    "csharp": {
-        template: `
+        "csharp": {
+            template: `
       using Base45;
 
       // Encode example
@@ -96,18 +98,18 @@ export default {
       string decoded = System.Text.Encoding.UTF8.GetString(decodedBytes);
       Console.WriteLine(decoded);
     `,
-        howToRunItTips: (
-            <p>
-                {Dot("j9s5r", "For C#, you can use the 'Base45' library available on NuGet.")}<br />
-                {Dot("p6e3n", "To install it, run `Install-Package Base45` in the Package Manager Console or add the dependency via NuGet Package Manager.")}
-                <br />
-                {Dot("z8qm2t", "The library provides encoder and decoder classes for Base45 operations. Copy the template code into a C# console application and execute it after installing the package.")}
-            </p>
-        )
-    },
+            howToRunItTips: (
+                <p>
+                    {Dot("j9s5r", "For C#, you can use the 'Base45' library available on NuGet.")}<br />
+                    {Dot("p6e3n", "To install it, run `Install-Package Base45` in the Package Manager Console or add the dependency via NuGet Package Manager.")}
+                    <br />
+                    {Dot("z8qm2t", "The library provides encoder and decoder classes for Base45 operations. Copy the template code into a C# console application and execute it after installing the package.")}
+                </p>
+            )
+        },
 
-    "cpp": {
-        template: `
+        "cpp": {
+            template: `
       #include "base45.h"
 
       // Encode example
@@ -123,25 +125,25 @@ export default {
       std::string decoded(reinterpret_cast<char*>(decodedBytes.data()), decodedBytes.size());
       std::cout << decoded << std::endl;
     `,
-        howToRunItTips: (
-            <p>
-                {Dot("g4h7s", "For C++, you can use the 'base45-cpp' library which is available as a GitHub repository.")}<br />
-                {Dot("d2w6e", "Clone/download the repository and include the provided header file in your project. Compile and link against the source files according to the project's documentation.")}
-                <br />
-                {Dot("c1p3b", "Once integrated, copy the provided template into your C++ program and replace the placeholder with the actual encoded value before running the program.")}
-            </p>
-        ),
-        links: [
-            {
-                name: "base45-cpp GitHub Repository",
-                link: "https://github.com/hyperledger/aries-framework-javascript/tree/master/packages/base45"
-            }
-        ]
-    },
+            howToRunItTips: (
+                <p>
+                    {Dot("g4h7s", "For C++, you can use the 'base45-cpp' library which is available as a GitHub repository.")}<br />
+                    {Dot("d2w6e", "Clone/download the repository and include the provided header file in your project. Compile and link against the source files according to the project's documentation.")}
+                    <br />
+                    {Dot("c1p3b", "Once integrated, copy the provided template into your C++ program and replace the placeholder with the actual encoded value before running the program.")}
+                </p>
+            ),
+            links: [
+                {
+                    name: "base45-cpp GitHub Repository",
+                    link: "https://github.com/hyperledger/aries-framework-javascript/tree/master/packages/base45"
+                }
+            ]
+        },
 
 
-    "swift": {
-        template: `
+        "swift": {
+            template: `
       import Base45
 
       // Encode example
@@ -154,24 +156,24 @@ export default {
       let decoded = try! Base45.decode(encodedStr)
       print(String(data: decoded, encoding: .utf8)!)
     `,
-        howToRunItTips: (
-            <p>
-                {Dot("y9m3k", "For Swift, you can use the 'Base45' library available on GitHub.")}<br />
-                {Dot("f7t1z", "Add the library to your Xcode project manually or via a package manager like Swift Package Manager (SPM).")}
-                <br />
-                {Dot("q2n9r", "Once added, copy the provided template into a Swift file. Note that in this example, we're using a hypothetical scenario where you have the Base45 string's base64 representation; replace it with the actual encoded value before running the code.")}
-            </p>
-        ),
-        links: [
-            {
-                name: "Swift Base45 GitHub Repository",
-                link: "https://github.com/abarisain/Base45"
-            }
-        ]
-    },
+            howToRunItTips: (
+                <p>
+                    {Dot("y9m3k", "For Swift, you can use the 'Base45' library available on GitHub.")}<br />
+                    {Dot("f7t1z", "Add the library to your Xcode project manually or via a package manager like Swift Package Manager (SPM).")}
+                    <br />
+                    {Dot("q2n9r", "Once added, copy the provided template into a Swift file. Note that in this example, we're using a hypothetical scenario where you have the Base45 string's base64 representation; replace it with the actual encoded value before running the code.")}
+                </p>
+            ),
+            links: [
+                {
+                    name: "Swift Base45 GitHub Repository",
+                    link: "https://github.com/abarisain/Base45"
+                }
+            ]
+        },
 
-    "kotlin": {
-        template: `
+        "kotlin": {
+            template: `
       import com.bottlerocketstudios.barcode.core.base45.Base45
 
       // Encode example
@@ -184,15 +186,16 @@ export default {
       val decoded = Base45().decode(encodedStr.toByteArray())
       println(String(decoded, Charsets.UTF_8))
     `,
-        howToRunItTips: (
-            <p>
-                {Dot("j8s6r", "For Kotlin, you can use the 'barcode-core' library which includes Base45 functionality.")}<br />
-                {Dot("p5e9n", "Add the library as a dependency in your Gradle build script. For instance, in the app-level build.gradle file, add `implementation 'com.bottlerocketstudios:barcode-core:...'` with the latest version number.")}
-                <br />
-                {Dot("z3m1t", "After adding the dependency and syncing the project, copy the provided template into a Kotlin class, replacing the placeholder with the actual encoded value before running the code.")}
-            </p>
-        )
-    },
+            howToRunItTips: (
+                <p>
+                    {Dot("j8s6r", "For Kotlin, you can use the 'barcode-core' library which includes Base45 functionality.")}<br />
+                    {Dot("p5e9n", "Add the library as a dependency in your Gradle build script. For instance, in the app-level build.gradle file, add `implementation 'com.bottlerocketstudios:barcode-core:...'` with the latest version number.")}
+                    <br />
+                    {Dot("z3m1t", "After adding the dependency and syncing the project, copy the provided template into a Kotlin class, replacing the placeholder with the actual encoded value before running the code.")}
+                </p>
+            )
+        },
 
 
-} as CodeImplMap;
+    }
+}
