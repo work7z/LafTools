@@ -26,6 +26,10 @@
 [] add a google statisic script
 [] write a good code reader, with TODO viewer, planning, GitHub Page, etc...
 
+# desktop
+
+[] provide desktop version(tarui should be an ideal solution)
+
 # low priorities
 
 [] watch my package and notify users to install (or automatically? cool!)

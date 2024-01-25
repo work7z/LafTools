@@ -27,7 +27,7 @@ import { CodeImplMap } from "./code/types";
 
 
 export type AppInfoType = {
-    Label: string;
+    LabelFn: () => string;
     ImportImpl?: () => Promise<ToolHandlerClass>
     ImportFAQ?: () => Promise<FAQItem[]>
     ImportCode?: () => Promise<CodeImplMap>
@@ -40,56 +40,56 @@ let appToolInfoObj: {
     [key: string]: AppInfoType
 } = {
     "edc_base64": passInfo({
-        Label: Dot("gkC8t", "Base64")
+        LabelFn: () => Dot("gkC8t", "Base64")
     }),
     "edc_base32": passInfo({
-        Label: Dot("gkqC8t", "Base32")
+        LabelFn: () => Dot("gkqC8t", "Base32")
     }),
     "edc_base45": passInfo({
-        Label: Dot("gkdqqC8t", "Base45")
+        LabelFn: () => Dot("gkdqqC8t", "Base45")
     }),
     "edc_base58": passInfo({
-        Label: Dot("egkqC8t", "Base58")
+        LabelFn: () => Dot("egkqC8t", "Base58")
     }),
     "edc_base62": passInfo({
-        Label: Dot("egkqCd8t", "Base62")
+        LabelFn: () => Dot("egkqCd8t", "Base62")
     }),
     "edc_base85": passInfo({
-        Label: Dot("e4Cd8t", "Base85")
+        LabelFn: () => Dot("e4Cd8t", "Base85")
     }),
     "CSSBeautify": passInfo({
-        Label: Dot("1Xe8x7", "{0} Beautify", "CSS")
+        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", "CSS")
     }),
     "JSONBeautify": passInfo({
-        Label: Dot("1X8x7q", "{0} Beautify", "JSON")
+        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", "JSON")
     }),
     "JavaScriptBeautify": passInfo({
-        Label: Dot("ZWJ79W5LR", "{0} Beautify", "JavaScript")
+        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", "JavaScript")
     }),
     "XMLBeautify": passInfo({
-        Label: Dot("2Ul6y", "{0} Beautify", "XML")
+        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", "XML")
     }),
     "GenericCodeBeautify": passInfo({
-        Label: Dot("iNEhY", "{0} Beautify", Dot("Vvt09V2Qo", "Generic Code"))
+        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", Dot("Vvt09V2Qo", "Generic Code"))
     }),
     "SQLBeautify": passInfo({
-        Label: Dot("-nE6n", "{0} Beautify", "SQL")
+        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", "SQL")
     }),
     "md5": passInfo({
-        Label: "MD5"
+        LabelFn: () => "MD5"
     }),
     "md2": passInfo({
-        Label: "MD2"
+        LabelFn: () => "MD2"
     }),
     "md4": passInfo({
-        Label: "MD4"
+        LabelFn: () => "MD4"
     }),
     "md6": passInfo({
-        Label: "MD6"
+        LabelFn: () => "MD6"
     }),
     // Example
     "Example": passInfo({
-        Label: Dot("1X8x7", "Example")
+        LabelFn: () => Dot("1X8x7", "Example")
     }),
 }
 _.forEach(appToolInfoObj, (x, d, n) => {

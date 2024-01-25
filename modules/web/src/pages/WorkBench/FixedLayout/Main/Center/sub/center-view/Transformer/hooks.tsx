@@ -149,7 +149,7 @@ export let useExtsList = (fc: string): ListExtForTheCategoryRes[] => {
                     ChildrenAsInfo: (xx.ChildrenIdSet || []).map(xxx => {
                         return {
                             Id: xxx,
-                            Label: appToolInfoObj[xxx]?.Label || xxx,
+                            Label: appToolInfoObj[xxx]?.LabelFn(),
                             // Description: xxx.Description + ""
                         } as ExtensionInfo
                     })

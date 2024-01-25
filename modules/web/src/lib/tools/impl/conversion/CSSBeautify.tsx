@@ -59,7 +59,7 @@ class CSSBeautify extends Operation {
 
 
         this.id = 'cssbeautify'
-        this.name = Dot("z8_ZjYX4H", "Beautify {0}", "CSS");
+        this.name = Dot("Ol1ZcWomT", "{0} Beautify", "CSS");
         this.description = Dot(
             "md2aO2NaJITm",
             "Indents and prettifies Cascading Style Sheets (CSS) code, making it easier to read and understand.",
