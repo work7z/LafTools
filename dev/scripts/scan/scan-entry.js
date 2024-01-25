@@ -260,6 +260,7 @@ let processWithArg = async ({
       __dirname,
       `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`,
     );
+    // TODO: if there's no dynamic file was mentioned in the code, then we should clean them
     if (fs.existsSync(resultFile)) {
       let resultJSON = getFile(resultFile).jsonmap();
       _.forEach(overwrritenMap, (x, d, n) => {
