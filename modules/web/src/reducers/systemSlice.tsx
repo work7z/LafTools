@@ -203,13 +203,9 @@ const systemSlice = createSlice({
       } else {
         // if it's not a scope id request, then we can reload lang data globally
         state.LangIncrement = `${action.payload.initKey}${Date.now()}${action.payload.lang}${_.size((nextValue))}${LangRefreshCount}`;
+        localStorage.setItem(action.payload.lang, JSON.stringify(nextValue));
       }
-      // TODO: hard code then
-      if (action.payload.lang == "zh_CN") {
-        localStorage.setItem(KEY_LANG_PACK_ZH_CN, JSON.stringify(nextValue));
-      } else if (action.payload.lang == "zh_HK") {
-        localStorage.setItem(KEY_LANG_PACK_ZH_HK, JSON.stringify(nextValue));
-      }
+
       LANG_INIT_BEFORE_MAP[action.payload.initKey] = true;
     },
   },
@@ -248,7 +244,7 @@ export const ACTION_getExample = (): any => {
  * 
  * @param scopeID 
  */
-export const loadDOT = (scopeID: string): any => {
+export const loadDOT = async (scopeID: string): Promise<any> => {
   // load lang data dynamically
   FN_GetDispatch()(
     ACTION_getLangData(scopeID)

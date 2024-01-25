@@ -59,9 +59,7 @@ logutils.debug("Lanuch the page...");
 
 const WrapApp = () => {
   let dis = useDispatch();
-  useEffect(() => {
-    // InitUtils.InitAllWithDOM(dis);
-  }, [1]);
+
   let m1 = exportUtils.useSelector((val) => {
     return {
       LangIncrement: val.system.LangIncrement,

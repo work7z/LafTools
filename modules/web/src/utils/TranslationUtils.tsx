@@ -45,19 +45,20 @@ let crtNewLangMap = newLangMap();
 
 export const LANG_INIT_BEFORE_MAP: { [key: string]: boolean } = {};
 
-try {
-  let m1 = safeparse(localStorage.getItem(KEY_LANG_PACK_ZH_CN));
-  if (!_.isNil(m1) && _.isObject(m1)) {
-    crtNewLangMap.zh_CN = m1 as LangDefinition;
-  }
-  // do same for KEY_LANG_PACK_ZH_HK
-  let m2 = safeparse(localStorage.getItem(KEY_LANG_PACK_ZH_HK));
-  if (!_.isNil(m2) && _.isObject(m2)) {
-    crtNewLangMap.zh_HK = m2 as LangDefinition;
-  }
-} catch (e) {
-  // do nothing
-}
+// TODO: remove this hard code
+// try {
+//   let m1 = safeparse(localStorage.getItem(KEY_LANG_PACK_ZH_CN));
+//   if (!_.isNil(m1) && _.isObject(m1)) {
+//     crtNewLangMap.zh_CN = m1 as LangDefinition;
+//   }
+//   // do same for KEY_LANG_PACK_ZH_HK
+//   let m2 = safeparse(localStorage.getItem(KEY_LANG_PACK_ZH_HK));
+//   if (!_.isNil(m2) && _.isObject(m2)) {
+//     crtNewLangMap.zh_HK = m2 as LangDefinition;
+//   }
+// } catch (e) {
+//   // do nothing
+// }
 
 function formatResultWithReplacer(val = "", ...args) {
   if (_.isNil(args)) {

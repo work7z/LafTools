@@ -37,10 +37,10 @@ export abstract class ToolHandler {
     id: string = "";
     abstract getMetaInfo(): ToolMetaInfo;
     abstract getOperations(): Operation[];
-    getFAQ = async (): Promise<FAQItem[]> => {
+    getFAQ = async (): Promise<() => FAQItem[]> => {
         let o = appToolInfoObj[this.id]
         if (!o.ImportFAQ) {
-            return [];
+            return () => [];
         }
         let r = await o.ImportFAQ()
         let r2 = r["default"] as any

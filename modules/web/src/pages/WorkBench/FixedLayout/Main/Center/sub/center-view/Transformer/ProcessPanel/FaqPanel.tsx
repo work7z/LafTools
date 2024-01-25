@@ -29,35 +29,47 @@ import { FAQItem } from '../../../../../../../../../lib/tools/faq/types'
 import _ from 'lodash'
 import { AnchorButton, Button } from '@blueprintjs/core'
 import { logutils } from '../../../../../../../../../utils/LogUtils'
+import exportUtils from '../../../../../../../../../utils/ExportUtils'
 
 export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
+    let dotCount = exportUtils.useLoadDotCountCpt()
+    logutils.debug("dotCount", dotCount)
     // props.toolHandler
-    let [faq, onFaq] = useState<() => FAQItem[]>(() => [])
+    let [faqFn, onFaqFn] = useState<{
+        fn: () => FAQItem[]
+    }>({
+        fn: () => []
+    })
     let { loading, progressText } = usePromiseWait({
         text: Dot("jhDoE", "Retrieving FAQ Data"),
         whenToStart: !_.isNil(props.toolHandler),
         promise: async () => {
-            onFaq(() => [])
+            onFaqFn({
+                fn: () => []
+            })
             if (!props.toolHandler) {
                 return;
             }
             let crt_faq = await props.toolHandler.getFAQ()
-            onFaq(crt_faq)
+            crt_faq()
+            onFaqFn({
+                fn: crt_faq
+            })
         }
     }, [props.toolHandler, props.sessionId])
-    logutils.debug("faq-log", props.sessionId, faq)
+    logutils.debug("faq-log", props.sessionId, faqFn)
     if (loading) {
         return <div className="p-2">{progressText}</div>
     }
-    let faqArr: FAQItem[] = typeof faq == "function" ? faq() : faq
-    if (!faq || faqArr.length == 0) {
+    let faqArr: FAQItem[] = faqFn.fn()
+    if (!faqFn || faqArr.length == 0) {
         return <div className="p-2">{Dot("jgDoEq", "No FAQ Data")}</div>
     }
     return <div className='p-2'>
         <div className="flex justify-between items-center mb-2 mt-0">
             <div>
                 <b>
-                    {Dot("xOJqG1", "Frequently Asked Questions", _.size(faq))}:
+                    {Dot("xOJqG1", "Frequently Asked Questions", _.size(faqFn))}:
                 </b>    </div>
             <div>
                 <a href={props.toolHandler?.getMetaInfo().infoURL} target='_blank'>
