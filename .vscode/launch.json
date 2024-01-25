@@ -5,11 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "LafTools Backend Service",
+      "name": "Core",
       "type": "go",
       "request": "launch",
       "mode": "auto",
       "program": "${workspaceFolder}/core/app.go",
+      "console": "integratedTerminal",
+      "args": ["server"],
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Scan",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/dev/scripts/scan/scan-entry.js",
       "console": "integratedTerminal",
       "args": ["server"],
       "internalConsoleOptions": "neverOpen"
