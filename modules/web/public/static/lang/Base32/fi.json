@@ -1,4 +1,5 @@
 {
+    "R_S7_CLAo": "Esimerkki: Voit koodata TEST12345:n Base32:ssa käyttämällä kirjastoja, kuten base32-encodea Node.js:ssä, tai muiden kielten sisäänrakennettuja toimintoja, kuten Pythonin base64.b32encodea.",
     "a4s6x": "Miten Base32 toimii?",
     "a8b7z": "Siten täyttö on tarpeen vain, jos viimeinen koodattava bittiryhmä ei ole jaollinen 40 bitillä (koska 8 Base32-merkkiä edustaa 40 bittiä). Täyte koostuu nollasta kuuteen '='-merkistä koodatun merkkijonon lopussa.",
     "b8g2k": "Base32:n käyttöskenaariot",
@@ -19,7 +20,6 @@
     "n3e7r": "Base32:n historia",
     "p9s5t": "Base32:n kehitti JavaScript-panoksestaan ​​tunnettu Douglas Crockford vuonna 2001. Se luotiin luotettavammaksi vaihtoehdoksi olemassa oleville koodauksille, kuten Base64, erityisesti tilanteisiin, joissa tarvitaan binääritietojen tekstipohjaista esitystä.",
     "q2w5m": "Base32:n käyttötarkoitus?",
-    "r6tq9z": "<b>Esimerkki:</b> Voit koodata TEST12345:n Base32:ssa käyttämällä kirjastoja, kuten base32-encodea Node.js:ssä, tai muiden kielten sisäänrakennettuja toimintoja, kuten Pythonin base64.b32encodea.",
     "s5t0n": "Base32:n täyttö sisältää '='-merkkien lisäämisen sen varmistamiseksi, että koodatun datan viimeinen osa sisältää edelleen 8 bitin kerrannaisen. Toisin kuin Base64, Base32-täyte on kuitenkin minimaalinen, koska jokainen Base32-merkki koodaa jo 5 bittiä.",
     "t8z1v": "Kun lopussa ei ole tarpeeksi bittejä jäljellä täyttämään koko 5-bittinen ryhmä, lisätään täytemerkit '='. Esimerkiksi tavu vaatii kaksi Base32-merkkiä ja 3-tavuinen sarja neljä Base32-merkkiä.",
     "u3j9p": "Base32:ta käytetään usein, kun tarvitset kompaktin tekstiesityksen binääritiedoista, jotka voidaan kirjoittaa tai tulostaa menettämättä tietoja, kuten tiedostojen eheyden tarkistuksissa, geokätköilyssä ja suojatussa salasanan luonnissa.",

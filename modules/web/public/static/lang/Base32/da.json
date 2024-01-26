@@ -1,4 +1,5 @@
 {
+    "R_S7_CLAo": "Eksempel: For at kode 'TEST12345' i Base32 kan du bruge biblioteker som base32-encode i Node.js eller indbyggede funktioner på andre sprog såsom Pythons base64.b32encode.",
     "a4s6x": "Hvordan virker Base32?",
     "a8b7z": "Udfyldning er således kun nødvendig, hvis den sidste gruppe af bit, der kodes, ikke er delelig med 40 bit (da 8 Base32-tegn repræsenterer 40 bit). Padding vil bestå af nul til seks '='-tegn i slutningen af ​​den kodede streng.",
     "b8g2k": "Brugsscenarier for Base32",
@@ -19,7 +20,6 @@
     "n3e7r": "Historien om Base32",
     "p9s5t": "Base32 blev udviklet af Douglas Crockford, kendt for sine bidrag til JavaScript, i 2001. Det blev skabt som et mere pålideligt alternativ til eksisterende kodninger som Base64, især til situationer, der kræver tekstbaserede repræsentationer af binære data.",
     "q2w5m": "Formål med at bruge Base32?",
-    "r6tq9z": "<b>Eksempel:</b> For at kode 'TEST12345' i Base32, kan du bruge biblioteker som base32-encode i Node.js eller indbyggede funktioner på andre sprog såsom Pythons base64.b32encode.",
     "s5t0n": "Padding i Base32 involverer tilføjelse af '='-tegn for at sikre, at den sidste del af kodede data stadig indeholder et multiplum af 8 bit. I modsætning til Base64 er Base32-polstring dog minimal, fordi hvert Base32-tegn allerede koder for 5 bit.",
     "t8z1v": "Når der ikke er nok bit tilbage i slutningen til at fylde en hel 5-bit gruppe, tilføjes udfyldningstegn '='. For eksempel kræver en byte to Base32-tegn, og en 3-byte-sekvens kræver fire Base32-tegn.",
     "u3j9p": "Base32 bruges ofte, når du har brug for en kompakt tekstlig repræsentation af binære data, der kan skrives eller udskrives uden at miste information, som i filintegritetstjek, geocaching og sikker adgangskodegenerering.",
