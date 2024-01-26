@@ -45,7 +45,7 @@ class SQLBeautify extends Operation {
 
         this.name = "SQL Beautify";
         this.module = "Code";
-        this.description = "Indents and prettifies Structured Query Language (SQL) code.";
+        // this.description =;
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
@@ -55,6 +55,17 @@ class SQLBeautify extends Operation {
                 "value": "\\t"
             }
         ];
+
+        this.id = "sql-beautify";
+        this.name = Dot("json-beautify.name.0912", "Format SQL");
+        this.description = Dot(
+            "rE6fUsSGl",
+            "Indents and prettifies Structured Query Language (SQL) code."
+        )
+
+        this.exampleInput = 'SELECT * FROM table WHERE id = 1;'
+        this.exampleOutput = 'SELECT\n\t*\nFROM\n\ttable\nWHERE\n\tid = 1;'
+
     }
 
     /**

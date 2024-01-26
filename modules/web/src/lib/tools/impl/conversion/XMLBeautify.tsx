@@ -56,7 +56,7 @@ class XMLBeautify extends Operation {
         ];
 
         this.id = 'xml-beautify';
-        this.name = Dot("4MTe4GdXy", "Format and Beautify XML");
+        this.name = Dot("yMZW-GEgf", "Format XML");
         this.description = Dot(
             "xml-beautify.desc.2a5f9",
             "This operation formats XML data to improve readability by adding proper indentation, line breaks, and ensuring well-formed structure.",

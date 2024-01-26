@@ -1,6 +1,6 @@
 import { Dot } from "../../../utils/TranslationUtils.js";
 import Operation from "../../core/Operation.tsx";
-import fn from "./conversion/JSONBeautify.tsx";
+import fn from "./conversion/SQLBeautify.tsx";
 import { ToolHandler, ToolMetaInfo } from "../handler.js";
 
 export default class Base64Handler extends ToolHandler {
@@ -9,10 +9,10 @@ export default class Base64Handler extends ToolHandler {
             hideCodePanel: true,
             exampleType: "css-short",
             description: Dot(
-                "pzn2IpkDo",
-                "Indents and pretty prints JavaScript Object Notation (JSON) code.<br><br>Tags: json viewer, prettify, syntax highlighting",
+                "cMBqyyFae",
+                "Indents and prettifies Structured Query Language (SQL) code."
             ),
-            infoURL: "https://www.json.org/json-en.html",
+            infoURL: "https://en.wikipedia.org/wiki/SQL"
         }
     }
     getOperations(): Operation[] {
