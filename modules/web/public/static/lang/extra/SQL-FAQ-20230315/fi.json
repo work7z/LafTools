@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "Kuinka optimoin SQL-kyselyn suorituskyvyn?",
     "SQL-Purpose-003": "Sitä käytetään taulukoiden tietojen luomiseen, lukemiseen, päivittämiseen, poistamiseen ja kyselyihin sekä tietokantarakenteen ja käyttöoikeuksien hallintaan.",
     "SQL-Select-009": "Kuinka kirjoitan perus SELECT-käskyn?",
+    "SQL-Select-Example-0210": "Yksinkertainen SELECT-käsky hakee tiedot taulukosta. Esimerkiksi: {0}', 'SELECT sarake1, sarake2 FROM omasta_taulukosta;",
     "SQL-Transactions-013": "Mitä ovat transaktiot SQL:ssä?",
     "SQL-Transactions-Def-014": "Tapahtuma on looginen työyksikkö, joka sisältää yhden tai useamman SQL-käskyn. Se varmistaa, että kaikki sen sisällä olevat toiminnot suoritetaan onnistuneesti (atomicity), erillään muista tapahtumista ja kestävät jopa järjestelmävian sattuessa.",
+    "SQL-Transactions-Example-015": "Aloita tapahtuma käyttämällä START TRANSACTION -komentoa; vahvista muutokset komennolla COMMIT tai palauta edelliseen tilaan ROLLBACK-toiminnolla.",
     "SQL-Transactions-W3Schools": "SQL-tapahtumat W3Schoolsissa"
 }
