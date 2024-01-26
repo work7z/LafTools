@@ -28,11 +28,10 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import Operation from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "../../../../utils/GlobalUtils.tsx";
-import { InputOutputEditorLang } from "../../../purejs-types.tsx";
-
 import escodegen from "escodegen";
 import * as esprima from "esprima";
 import OperationError from "../../../core/errors/OperationError.mjs";
+import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 
 /**
  * JavaScript Beautify operation
@@ -47,7 +46,6 @@ class JavaScriptBeautify extends Operation {
 
         this.name = "JavaScript Beautify";
         this.module = "Code";
-        this.description = "Parses and pretty prints valid JavaScript code. Also works with JavaScript Object Notation (JSON).";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
@@ -72,6 +70,16 @@ class JavaScriptBeautify extends Operation {
                 "value": true
             }
         ];
+
+
+        this.id = 'jsbeautify'
+        this.name = Dot("6UICxHzVR.name", "Beautify {0}", "JavaScript");
+        this.description = Dot(
+            "WFUWzv_px",
+            "Parses and pretty prints valid JavaScript code. Also works with JavaScript Object Notation (JSON).",
+        );
+        this.exampleInput = "let a = 1; let b = 2; let obj = {a: 1, b: 2};"
+        this.exampleOutput = "let a = 1;\nlet b = 2; //;\nlet obj = {\n    a: 1,\n    b: 2\n};\n";
     }
 
     /**
@@ -115,6 +123,12 @@ class JavaScriptBeautify extends Operation {
         return result;
     }
 
+    getInputOutputEditorLang(): InputOutputEditorLang | null {
+        return {
+            inputLang: "javascript",
+            outputLang: "javascript",
+        }
+    }
 }
 
 export default JavaScriptBeautify;

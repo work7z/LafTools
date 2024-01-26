@@ -184,6 +184,8 @@ export default (props: GenCodeMirrorProp) => {
       height="100%"
       value={value}
       basicSetup={{
+        foldGutter: true,
+        highlightActiveLineGutter: true
       }}
       extensions={[
         langPack,

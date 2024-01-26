@@ -45,7 +45,6 @@ class XMLBeautify extends Operation {
 
         this.name = "XML Beautify";
         this.module = "Code";
-        this.description = "Indents and prettifies eXtensible Markup Language (XML) code.";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
@@ -55,6 +54,23 @@ class XMLBeautify extends Operation {
                 "value": "\\t"
             }
         ];
+
+        this.id = 'xml-beautify';
+        this.name = Dot("4MTe4GdXy", "Format and Beautify XML");
+        this.description = Dot(
+            "xml-beautify.desc.2a5f9",
+            "This operation formats XML data to improve readability by adding proper indentation, line breaks, and ensuring well-formed structure.",
+            ""
+        );
+        this.exampleInput = `<unformatted>    <data>        <item1>value1</item1><item2>value2</item2>    </data></unformatted>`;
+        this.exampleOutput = `<?xml version="1.0" encoding="UTF-8"?>
+<unformatted>
+    <data>
+        <item1>value1</item1>
+        <item2>value2</item2>
+    </data>
+</unformatted>`;
+
     }
 
     /**
@@ -65,6 +81,13 @@ class XMLBeautify extends Operation {
     run(input, args) {
         const indentStr = args[0];
         return vkbeautify.xml(input, indentStr);
+    }
+
+    getInputOutputEditorLang(): InputOutputEditorLang | null {
+        return {
+            inputLang: "xml",
+            outputLang: "xml"
+        }
     }
 
 }

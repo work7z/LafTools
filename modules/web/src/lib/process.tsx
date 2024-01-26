@@ -55,6 +55,10 @@ let LibIndex = {
           return eachValue
         }
         if (_.isArray(eachValue)) {
+          let p = _.get(eachValue, [0])
+          if (typeof p == 'string') {
+            return p
+          }
           return _.get(eachValue, [0, 'value'])
         }
         return eachValue;
@@ -72,6 +76,8 @@ let LibIndex = {
       if (inst.outputType == "byteArray") {
         result = Utils.byteArrayToChars(result);
       }
+      // consolidate the result
+      result = Utils.parseEscapedChars(result)
       return {
         result,
       };

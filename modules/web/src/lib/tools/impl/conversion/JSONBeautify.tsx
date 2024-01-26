@@ -33,6 +33,7 @@ import Utils from "../../../core/Utils.mjs";
 import gutils from "../../../../utils/GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 import OperationError from "../../../core/errors/OperationError.mjs";
+import _ from "lodash";
 
 /**
  * JSON Beautify operation
@@ -45,9 +46,8 @@ class JSONBeautify extends Operation {
     constructor() {
         super();
 
-        this.name = "JSON Beautify";
+        this.id = Dot("pZ4d616m-", "Beautify {0}", 'JSON');
         this.module = "Code";
-        this.description = "Indents and pretty prints JavaScript Object Notation (JSON) code.<br><br>Tags: json viewer, prettify, syntax highlighting";
         this.inputType = "string";
         this.outputType = "string";
         this.presentType = "html";
@@ -68,8 +68,25 @@ class JSONBeautify extends Operation {
                 value: true
             }
         ];
+        this.id = 'json-beautify'
+        this.name = Dot("json-beautify.text.93kq", "Beautify JSON Data")
+        this.description = Dot(
+            "json-beautify.desc.0912",
+            "This operation formats JSON data to improve readability by adding proper indentation, line breaks, and sorting keys consistently.",
+        )
+
+        this.exampleInput = '{"unformatted":true,"data":[{"key1":"value1"},{"key2":"value2"}]}'
+        this.exampleOutput = '{\n  "unformatted": true,\n  "data": [\n    {\n      "key1": "value1"\n    },\n    {\n      "key2": "value2"\n    }\n  ]\n}'
     }
 
+    getInputOutputEditorLang(): InputOutputEditorLang | null {
+        return {
+            inputLang: "json",
+            outputLang: "json",
+            // inputLang: "javascript",
+            // outputLang: "javascript",
+        }
+    }
     /**
      * @param {string} input
      * @param {Object[]} args

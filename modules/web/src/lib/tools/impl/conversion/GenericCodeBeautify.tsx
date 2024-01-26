@@ -42,12 +42,36 @@ class GenericCodeBeautify extends Operation {
     constructor() {
         super();
 
-        this.name = "Generic Code Beautify";
+        // this.name = "Generic Code Beautify";
         this.module = "Code";
-        this.description = "Attempts to pretty print C-style languages such as C, C++, C#, Java, PHP, JavaScript etc.<br><br>This will not do a perfect job, and the resulting code may not work any more. This operation is designed purely to make obfuscated or minified code more easy to read and understand.<br><br>Things which will not work properly:<ul><li>For loop formatting</li><li>Do-While loop formatting</li><li>Switch/Case indentation</li><li>Certain bit shift operators</li></ul>";
+        // this.description = ;
         this.inputType = "string";
         this.outputType = "string";
         this.args = [];
+
+
+        this.id = 'generic-code-beautify';
+        this.name = Dot("generic-code-beautify.text.091a", "Format and Beautify Generic Code");
+        this.description = Dot(
+            "generic-code-beautify.desc.2b3c",
+            "This operation formats code in various programming languages to improve readability by applying consistent indentation, line breaks, and adhering to language-specific style guidelines.",
+            ""
+        );
+        this.exampleInput = `// Example in JavaScript
+function unformattedCode() {
+var x=1;y=2;if(x>0){console.log('Hello World!');}
+}`;
+
+        this.exampleOutput = `// Example of beautified JavaScript code
+function unformattedCode() {
+    var x = 1;
+    y = 2;
+    if (x > 0) {
+        console.log('Hello World!');
+    }
+}`;
+
+
     }
 
     /**
@@ -181,6 +205,12 @@ class GenericCodeBeautify extends Operation {
         }
     }
 
+    getInputOutputEditorLang(): InputOutputEditorLang | null {
+        return {
+            inputLang: "javascript",
+            outputLang: "javascript"
+        }
+    }
 }
 
 export default GenericCodeBeautify;
