@@ -192,8 +192,8 @@ export let SidebarMenu = (props: TabNavProp): any => {
       },
       {
         desc: Dot(
-          "8veXac",
-          "Time is the most valuable resource, manage it wisely."
+          "DSEtLTxUU",
+          "Time is the currency of your life, spend it wisely."
         ),
         icon: "stopwatch",
         id: "stopwatch",
