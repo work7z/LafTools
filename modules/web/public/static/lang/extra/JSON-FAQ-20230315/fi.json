@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON on yleensä pienempi ja nopeampi jäsentää kuin XML, joten se on ihanteellinen asiakas-palvelin-viestintään, jossa kaistanleveys ja nopeus ovat ratkaisevia.",
+    "JSON-Basics-001": "Mikä on JSON?",
+    "JSON-Beautifier-Online": "Online JSON Formatter & Validator",
+    "JSON-Beautify-007": "Mikä on JSON Beautification?",
+    "JSON-Beautify-Def-008": "JSON-kauneus tarkoittaa prosessia, jossa JSON-tiedot muotoillaan luettavampaan muotoon, jossa on asianmukaiset sisennykset ja rivinvaihdot, mikä helpottaa analysointia ja virheenkorjausta.",
+    "JSON-Beautify-Example-009": "Ennen: '{\\\"avain\\\":\\\"arvo\\\",\\\"array\\\":[1,2,3]}', jälkeen: '{\\n \\\"avain\\\": \\\"arvo\\\", \\n \\\"taulukko\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (JavaScript Object Notation) on kevyt, tekstipohjainen tiedonsiirtomuoto, jota ihmisten on helppo lukea ja kirjoittaa ja koneiden jäsentää ja luoda.",
+    "JSON-Path-013": "Mikä on JSON-polku?",
+    "JSON-Path-Example-015": "$.store.book[0].title valitsee ensimmäisen kirjan nimen JSON-objektissa, jossa on kirjataulukkoa sisältävä kauppa.",
+    "JSON-Path-Explanation-014": "JSON-polku on kyselykieli, joka on samanlainen kuin XPath for XML, jonka avulla voit poimia tietoja JSON-asiakirjoista polun kaltaisella merkinnällä.",
+    "JSON-Path-Guide": "JSONPath – XPath JSONille",
+    "JSON-Purpose-003": "Sitä käytetään ensisijaisesti tiedon siirtämiseen palvelimen ja verkkosovelluksen välillä vaihtoehtona XML:lle JavaScriptin alkuperäisellä tuella JSON.parse()- ja JSON.stringify()-menetelmien kautta.",
+    "JSON-Syntax-004": "Mikä on JSONin perussyntaksi?",
+    "JSON-Syntax-Reference": "MDN Web Docs JSONissa",
+    "JSON-Value-Types-006": "Arvot voivat olla merkkijonoja, numeroita, booleaneja, taulukoita (hakasulkeissa",
+    "JSON-vs-XML-010": "Miten JSON verrataan XML:ään?",
+    "JSON-vs-XML-Article": "JSON- ja XML-vertailu",
+    "XML-Advantages-012": "XML tarjoaa enemmän rakenteellista joustavuutta ja tukee nimiavaruuksia, mikä voi olla hyödyllistä monimutkaisille asiakirjarakenteille ja järjestelmien yhteentoimivuudelle."
+}

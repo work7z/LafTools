@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON genellikle XML'den daha küçük ve ayrıştırılması daha hızlıdır; bu da onu bant genişliği ve hızın çok önemli olduğu istemci-sunucu iletişimi için ideal kılar.",
+    "JSON-Basics-001": "JSON nedir?",
+    "JSON-Beautifier-Online": "Çevrimiçi JSON Biçimlendirici ve Doğrulayıcı",
+    "JSON-Beautify-007": "JSON Güzelleştirme nedir?",
+    "JSON-Beautify-Def-008": "JSON güzelleştirme, JSON verilerinin uygun girintiler ve satır sonları ile insanlar tarafından daha okunabilir bir biçimde biçimlendirilmesi sürecini ifade eder, bu da analiz etmeyi ve hata ayıklamayı kolaylaştırır.",
+    "JSON-Beautify-Example-009": "Önce: '{\\\"anahtar\\\":\\\"değer\\\",\\\"dizi\\\":[1,2,3]}', Sonra: '{\\n \\\"anahtar\\\": \\\"değer\\\", \\n \\\"dizi\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (JavaScript Object Notation), insanların okuması ve yazması, makinelerin ise ayrıştırması ve oluşturması kolay, hafif, metin tabanlı bir veri değişim formatıdır.",
+    "JSON-Path-013": "JSON Yolu Nedir?",
+    "JSON-Path-Example-015": "$.store.book[0].title, kitaplar dizisini içeren bir mağazaya sahip bir JSON nesnesindeki ilk kitabın başlığını seçer.",
+    "JSON-Path-Explanation-014": "JSON Path, XML için XPath'a benzer bir sorgu dilidir ve yol benzeri bir gösterim kullanarak JSON belgelerinden veri çıkarmanıza olanak tanır.",
+    "JSON-Path-Guide": "JSONPath - JSON için XPath",
+    "JSON-Purpose-003": "Öncelikle, XML'e alternatif olarak bir sunucu ile web uygulaması arasında veri aktarımı yapmak için kullanılır ve JavaScript'te \"JSON.parse()\" ve \"JSON.stringify()\" yöntemleri aracılığıyla yerel destek sağlar.",
+    "JSON-Syntax-004": "JSON'un temel sözdizimi nedir?",
+    "JSON-Syntax-Reference": "JSON'da MDN Web Dokümanları",
+    "JSON-Value-Types-006": "Değerler dizeler, sayılar, boolean'lar, diziler (köşeli parantez içine alınmış) olabilir",
+    "JSON-vs-XML-010": "JSON XML'le nasıl karşılaştırılır?",
+    "JSON-vs-XML-Article": "JSON ve XML'i karşılaştırma",
+    "XML-Advantages-012": "XML daha fazla yapı esnekliği sağlar ve ad alanlarını destekler; bu da karmaşık belge yapıları ve sistemler arasında birlikte çalışabilirlik açısından faydalı olabilir."
+}

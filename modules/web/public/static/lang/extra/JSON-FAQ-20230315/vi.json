@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON thường nhỏ hơn và phân tích cú pháp nhanh hơn XML, khiến nó trở nên lý tưởng cho giao tiếp giữa máy khách và máy chủ trong đó băng thông và tốc độ là rất quan trọng.",
+    "JSON-Basics-001": "JSON là gì?",
+    "JSON-Beautifier-Online": "Trình định dạng và xác thực JSON trực tuyến",
+    "JSON-Beautify-007": "Làm đẹp JSON là gì?",
+    "JSON-Beautify-Def-008": "Làm đẹp JSON đề cập đến quá trình định dạng dữ liệu JSON thành dạng dễ đọc hơn với cách thụt lề và ngắt dòng thích hợp, giúp phân tích và gỡ lỗi dễ dàng hơn.",
+    "JSON-Beautify-Example-009": "Trước: '{\\\"key\\\":\\\"value\\\",\\\"array\\\":[1,2,3]}', Sau: '{\\n \\\"key\\\": \\\"value\\\", \\n \\\"mảng\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (Ký hiệu đối tượng JavaScript) là một định dạng trao đổi dữ liệu dựa trên văn bản, nhẹ, dễ đọc và viết, cũng như dễ dàng cho máy phân tích và tạo.",
+    "JSON-Path-013": "Đường dẫn JSON là gì?",
+    "JSON-Path-Example-015": "$.store.book[0].title chọn tiêu đề của cuốn sách đầu tiên trong đối tượng JSON có cửa hàng chứa mảng sách.",
+    "JSON-Path-Explanation-014": "Đường dẫn JSON là ngôn ngữ truy vấn tương tự XPath cho XML, cho phép bạn trích xuất dữ liệu từ tài liệu JSON bằng cách sử dụng ký hiệu giống đường dẫn.",
+    "JSON-Path-Guide": "JSONPath - XPath cho JSON",
+    "JSON-Purpose-003": "Nó chủ yếu được sử dụng để truyền dữ liệu giữa máy chủ và ứng dụng web thay thế cho XML, với sự hỗ trợ gốc bằng JavaScript thông qua các phương thức `JSON.parse()` và `JSON.stringify()`.",
+    "JSON-Syntax-004": "Cú pháp cơ bản của JSON là gì?",
+    "JSON-Syntax-Reference": "Tài liệu web MDN trên JSON",
+    "JSON-Value-Types-006": "Giá trị có thể là chuỗi, số, boolean, mảng (được đặt trong dấu ngoặc vuông",
+    "JSON-vs-XML-010": "JSON so sánh với XML như thế nào?",
+    "JSON-vs-XML-Article": "So sánh JSON và XML",
+    "XML-Advantages-012": "XML cung cấp nhiều tính linh hoạt hơn về cấu trúc và hỗ trợ các không gian tên, điều này có thể mang lại lợi ích cho các cấu trúc tài liệu phức tạp và khả năng tương tác giữa các hệ thống."
+}

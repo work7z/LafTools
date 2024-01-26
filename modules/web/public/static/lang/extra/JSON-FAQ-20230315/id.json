@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON umumnya lebih kecil dan lebih cepat untuk diurai dibandingkan XML, sehingga ideal untuk komunikasi klien-server di mana bandwidth dan kecepatan sangat penting.",
+    "JSON-Basics-001": "Apa itu JSON?",
+    "JSON-Beautifier-Online": "Pemformat & Validator JSON Online",
+    "JSON-Beautify-007": "Apa itu Kecantikan JSON?",
+    "JSON-Beautify-Def-008": "Kecantikan JSON mengacu pada proses memformat data JSON menjadi bentuk yang lebih mudah dibaca manusia dengan lekukan dan jeda baris yang tepat, sehingga lebih mudah untuk dianalisis dan di-debug.",
+    "JSON-Beautify-Example-009": "Sebelum: '{\\\"key\\\":\\\"value\\\",\\\"array\\\":[1,2,3]}', Setelah: '{\\n \\\"key\\\": \\\"value\\\", \\n \\\"array\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (JavaScript Object Notation) adalah format pertukaran data ringan berbasis teks yang mudah dibaca dan ditulis oleh manusia, serta mudah diurai dan dibuat oleh mesin.",
+    "JSON-Path-013": "Apa itu Jalur JSON?",
+    "JSON-Path-Example-015": "$.store.book[0].title memilih judul buku pertama dalam objek JSON dengan toko yang berisi array buku.",
+    "JSON-Path-Explanation-014": "JSON Path adalah bahasa kueri yang mirip dengan XPath untuk XML, memungkinkan Anda mengekstrak data dari dokumen JSON menggunakan notasi seperti jalur.",
+    "JSON-Path-Guide": "JSONPath - XPath untuk JSON",
+    "JSON-Purpose-003": "Ini terutama digunakan untuk mengirimkan data antara server dan aplikasi web sebagai alternatif XML, dengan dukungan asli dalam JavaScript melalui metode `JSON.parse()` dan `JSON.stringify()`.",
+    "JSON-Syntax-004": "Apa sintaks dasar JSON?",
+    "JSON-Syntax-Reference": "Dokumen Web MDN di JSON",
+    "JSON-Value-Types-006": "Nilai dapat berupa string, angka, boolean, array (diapit tanda kurung siku",
+    "JSON-vs-XML-010": "Bagaimana JSON dibandingkan dengan XML?",
+    "JSON-vs-XML-Article": "Membandingkan JSON dan XML",
+    "XML-Advantages-012": "XML memberikan lebih banyak fleksibilitas struktur dan mendukung namespace, yang dapat bermanfaat untuk struktur dokumen yang kompleks dan interoperabilitas antar sistem."
+}

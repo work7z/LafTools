@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON é geralmente menor e mais rápido de analisar que XML, tornando-o ideal para comunicação cliente-servidor onde largura de banda e velocidade são cruciais.",
+    "JSON-Basics-001": "O que é JSON?",
+    "JSON-Beautifier-Online": "Formatador e validador JSON on-line",
+    "JSON-Beautify-007": "O que é embelezamento JSON?",
+    "JSON-Beautify-Def-008": "O embelezamento JSON refere-se ao processo de formatação de dados JSON em um formato mais legível por humanos, com recuo e quebras de linha adequados, facilitando a análise e a depuração.",
+    "JSON-Beautify-Example-009": "Antes: '{\\\"key\\\":\\\"value\\\",\\\"array\\\":[1,2,3]}', Depois: '{\\n \\\"key\\\": \\\"value\\\", \\n \\\"matriz\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (JavaScript Object Notation) é um formato leve de intercâmbio de dados baseado em texto, fácil de ser lido e escrito por humanos e fácil de ser analisado e gerado por máquinas.",
+    "JSON-Path-013": "O que é caminho JSON?",
+    "JSON-Path-Example-015": "$.store.book[0].title seleciona o título do primeiro livro em um objeto JSON com uma loja que contém a matriz books.",
+    "JSON-Path-Explanation-014": "JSON Path é uma linguagem de consulta semelhante ao XPath para XML, permitindo extrair dados de documentos JSON usando uma notação semelhante a um caminho.",
+    "JSON-Path-Guide": "JSONPath - XPath para JSON",
+    "JSON-Purpose-003": "É usado principalmente para transmitir dados entre um servidor e uma aplicação web como uma alternativa ao XML, com suporte nativo em JavaScript através dos métodos `JSON.parse()` e `JSON.stringify()`.",
+    "JSON-Syntax-004": "Qual é a sintaxe básica do JSON?",
+    "JSON-Syntax-Reference": "Documentos da Web MDN em JSON",
+    "JSON-Value-Types-006": "Os valores podem ser strings, números, booleanos, matrizes (entre colchetes",
+    "JSON-vs-XML-010": "Como o JSON se compara ao XML?",
+    "JSON-vs-XML-Article": "Comparando JSON e XML",
+    "XML-Advantages-012": "XML fornece mais flexibilidade de estrutura e suporta namespaces, o que pode ser benéfico para estruturas de documentos complexas e interoperabilidade entre sistemas."
+}

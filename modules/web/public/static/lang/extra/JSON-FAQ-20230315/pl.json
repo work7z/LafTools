@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON jest na ogół mniejszy i szybszy do analizowania niż XML, co czyni go idealnym do komunikacji klient-serwer, gdzie przepustowość i szybkość mają kluczowe znaczenie.",
+    "JSON-Basics-001": "Co to jest JSON?",
+    "JSON-Beautifier-Online": "Internetowy formater i walidator JSON",
+    "JSON-Beautify-007": "Co to jest upiększanie JSON?",
+    "JSON-Beautify-Def-008": "Upiększanie JSON odnosi się do procesu formatowania danych JSON do postaci bardziej czytelnej dla człowieka z odpowiednimi wcięciami i podziałami wierszy, co ułatwia analizę i debugowanie.",
+    "JSON-Beautify-Example-009": "Przed: '{\\\"klucz\\\":\\\"wartość\\\",\\\"tablica\\\":[1,2,3]}', Po: '{\\n \\\"klucz\\\": \\\"wartość\\\", \\n \\\"tablica\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (JavaScript Object Notation) to lekki, tekstowy format wymiany danych, który jest łatwy do odczytu i zapisu dla ludzi oraz łatwy do analizowania i generowania przez maszyny.",
+    "JSON-Path-013": "Co to jest ścieżka JSON?",
+    "JSON-Path-Example-015": "$.store.book[0].title wybiera tytuł pierwszej książki w obiekcie JSON ze sklepem zawierającym tablicę książek.",
+    "JSON-Path-Explanation-014": "JSON Path to język zapytań podobny do XPath dla XML, umożliwiający wyodrębnianie danych z dokumentów JSON przy użyciu notacji przypominającej ścieżkę.",
+    "JSON-Path-Guide": "JSONPath — XPath dla JSON",
+    "JSON-Purpose-003": "Służy głównie do przesyłania danych pomiędzy serwerem a aplikacją internetową jako alternatywa dla XML, z natywną obsługą JavaScript za pomocą metod `JSON.parse()` i `JSON.stringify()`.",
+    "JSON-Syntax-004": "Jaka jest podstawowa składnia JSON?",
+    "JSON-Syntax-Reference": "Dokumenty internetowe MDN w formacie JSON",
+    "JSON-Value-Types-006": "Wartościami mogą być ciągi znaków, liczby, wartości logiczne i tablice (ujęte w nawiasy kwadratowe",
+    "JSON-vs-XML-010": "Jak JSON wypada w porównaniu z XML?",
+    "JSON-vs-XML-Article": "Porównanie JSON i XML",
+    "XML-Advantages-012": "XML zapewnia większą elastyczność struktury i obsługuje przestrzenie nazw, co może być korzystne w przypadku złożonych struktur dokumentów i interoperacyjności między systemami."
+}

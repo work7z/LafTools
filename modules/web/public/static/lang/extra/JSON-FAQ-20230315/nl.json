@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON is over het algemeen kleiner en sneller te parseren dan XML, waardoor het ideaal is voor client-server-communicatie waarbij bandbreedte en snelheid cruciaal zijn.",
+    "JSON-Basics-001": "Wat is JSON?",
+    "JSON-Beautifier-Online": "Online JSON-formatter en validator",
+    "JSON-Beautify-007": "Wat is JSON-verfraaiing?",
+    "JSON-Beautify-Def-008": "JSON-verfraaiing verwijst naar het proces waarbij JSON-gegevens worden opgemaakt in een voor mensen leesbare vorm met de juiste inspringing en regeleinden, waardoor het gemakkelijker wordt om te analyseren en fouten op te sporen.",
+    "JSON-Beautify-Example-009": "Voor: '{\\\"sleutel\\\":\\\"waarde\\\",\\\"array\\\":[1,2,3]}', Na: '{\\n \\\"sleutel\\\": \\\"waarde\\\", \\n \\\"matrix\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (JavaScript Object Notation) is een lichtgewicht, op tekst gebaseerd formaat voor gegevensuitwisseling dat gemakkelijk door mensen kan worden gelezen en geschreven, en door machines gemakkelijk kan worden geparseerd en gegenereerd.",
+    "JSON-Path-013": "Wat is JSON-pad?",
+    "JSON-Path-Example-015": "$.store.book[0].title selecteert de titel van het eerste boek in een JSON-object met een winkel die de boekenarray bevat.",
+    "JSON-Path-Explanation-014": "JSON Path is een querytaal die lijkt op XPath voor XML, waarmee u gegevens uit JSON-documenten kunt extraheren met behulp van een padachtige notatie.",
+    "JSON-Path-Guide": "JSONPath - XPath voor JSON",
+    "JSON-Purpose-003": "Het wordt voornamelijk gebruikt om gegevens tussen een server en een webapplicatie te verzenden als alternatief voor XML, met native ondersteuning in JavaScript via de methoden `JSON.parse()` en `JSON.stringify()`.",
+    "JSON-Syntax-004": "Wat is de basissyntaxis van JSON?",
+    "JSON-Syntax-Reference": "MDN-webdocumenten op JSON",
+    "JSON-Value-Types-006": "Waarden kunnen strings, getallen, booleans en arrays zijn (tussen vierkante haakjes).",
+    "JSON-vs-XML-010": "Hoe verhoudt JSON zich tot XML?",
+    "JSON-vs-XML-Article": "JSON en XML vergelijken",
+    "XML-Advantages-012": "XML biedt meer structuurflexibiliteit en ondersteunt naamruimten, wat gunstig kan zijn voor complexe documentstructuren en interoperabiliteit tussen systemen."
+}

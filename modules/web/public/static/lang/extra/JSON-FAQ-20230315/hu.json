@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "A JSON általában kisebb és gyorsabban elemezhető, mint az XML, így ideális az ügyfél-szerver kommunikációhoz, ahol a sávszélesség és a sebesség kulcsfontosságú.",
+    "JSON-Basics-001": "Mi az a JSON?",
+    "JSON-Beautifier-Online": "Online JSON formázó és érvényesítő",
+    "JSON-Beautify-007": "Mi az a JSON Beautification?",
+    "JSON-Beautify-Def-008": "A JSON-szépítés a JSON-adatok ember által olvashatóbb formázására utal, megfelelő behúzással és sortöréssel, megkönnyítve az elemzést és a hibakeresést.",
+    "JSON-Beautify-Example-009": "Előtte: '{\\\"kulcs\\\":\\\"érték\\\",\\\"tömb\\\":[1,2,3]}', Utána: '{\\n \\\"kulcs\\\": \\\"érték\\\", \\n \\\"tömb\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "A JSON (JavaScript Object Notation) egy könnyű, szövegalapú adatcsere-formátum, amely könnyen olvasható és írható az emberek számára, a gépek pedig könnyen értelmezhetők és generálhatók.",
+    "JSON-Path-013": "Mi az a JSON-útvonal?",
+    "JSON-Path-Example-015": "A $.store.book[0].title kiválasztja az első könyv címét egy JSON-objektumban egy könyvtömböt tartalmazó tárolóval.",
+    "JSON-Path-Explanation-014": "A JSON-útvonal az XML-hez készült XPath-hoz hasonló lekérdezési nyelv, amely lehetővé teszi az adatok kinyerését a JSON-dokumentumokból egy elérési út-szerű jelöléssel.",
+    "JSON-Path-Guide": "JSONPath – XPath JSON-hoz",
+    "JSON-Purpose-003": "Elsősorban adatok továbbítására szolgál a szerver és a webalkalmazás között az XML alternatívájaként, natív JavaScript-támogatással a \"JSON.parse()\" és a \"JSON.stringify()\" metódusokon keresztül.",
+    "JSON-Syntax-004": "Mi a JSON alapvető szintaxisa?",
+    "JSON-Syntax-Reference": "MDN Web Docs a JSON-on",
+    "JSON-Value-Types-006": "Az értékek lehetnek karakterláncok, számok, logikai értékek, tömbök (szögletes zárójelben",
+    "JSON-vs-XML-010": "Hogyan hasonlítható össze a JSON az XML-lel?",
+    "JSON-vs-XML-Article": "A JSON és az XML összehasonlítása",
+    "XML-Advantages-012": "Az XML nagyobb szerkezeti rugalmasságot biztosít, és támogatja a névtereket, ami előnyös lehet az összetett dokumentumszerkezetek és a rendszerek közötti együttműködés szempontjából."
+}

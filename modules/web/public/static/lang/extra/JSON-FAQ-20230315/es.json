@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON es generalmente más pequeño y más rápido de analizar que XML, lo que lo hace ideal para la comunicación cliente-servidor donde el ancho de banda y la velocidad son cruciales.",
+    "JSON-Basics-001": "¿Qué es JSON?",
+    "JSON-Beautifier-Online": "Formateador y validador JSON en línea",
+    "JSON-Beautify-007": "¿Qué es el embellecimiento JSON?",
+    "JSON-Beautify-Def-008": "El embellecimiento de JSON se refiere al proceso de formatear datos JSON en una forma más legible para humanos con sangría y saltos de línea adecuados, lo que facilita su análisis y depuración.",
+    "JSON-Beautify-Example-009": "Antes: '{\\\"key\\\":\\\"value\\\",\\\"array\\\":[1,2,3]}', Después: '{\\n \\\"key\\\": \\\"value\\\", \\n \\\"matriz\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (JavaScript Object Notation) es un formato ligero de intercambio de datos basado en texto que es fácil de leer y escribir para los humanos, y fácil de analizar y generar para las máquinas.",
+    "JSON-Path-013": "¿Qué es la ruta JSON?",
+    "JSON-Path-Example-015": "$.store.book[0].title selecciona el título del primer libro en un objeto JSON con una tienda que contiene una matriz de libros.",
+    "JSON-Path-Explanation-014": "JSON Path es un lenguaje de consulta similar a XPath para XML, que le permite extraer datos de documentos JSON utilizando una notación similar a una ruta.",
+    "JSON-Path-Guide": "JSONPath - XPath para JSON",
+    "JSON-Purpose-003": "Se utiliza principalmente para transmitir datos entre un servidor y una aplicación web como alternativa a XML, con soporte nativo en JavaScript a través de los métodos `JSON.parse()` y `JSON.stringify()`.",
+    "JSON-Syntax-004": "¿Cuál es la sintaxis básica de JSON?",
+    "JSON-Syntax-Reference": "Documentos web de MDN en JSON",
+    "JSON-Value-Types-006": "Los valores pueden ser cadenas, números, booleanos, matrices (entre corchetes",
+    "JSON-vs-XML-010": "¿Cómo se compara JSON con XML?",
+    "JSON-vs-XML-Article": "Comparando JSON y XML",
+    "XML-Advantages-012": "XML proporciona más flexibilidad estructural y admite espacios de nombres, lo que puede resultar beneficioso para estructuras de documentos complejas y la interoperabilidad entre sistemas."
+}

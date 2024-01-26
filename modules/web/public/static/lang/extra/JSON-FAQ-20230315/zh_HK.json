@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON 通常比 XML 更小且解析速度更快，因此非常適合頻寬和速度至關重要的客戶端伺服器通訊。",
+    "JSON-Basics-001": "什麼是 JSON？",
+    "JSON-Beautifier-Online": "線上 JSON 格式化程序和驗證程序",
+    "JSON-Beautify-007": "什麼是 JSON 美化？",
+    "JSON-Beautify-Def-008": "JSON 美化是指將 JSON 資料格式化為更易於人類閱讀的形式並具有適當的縮排和換行符的過程，使其更易於分析和調試。",
+    "JSON-Beautify-Example-009": "前： '{\\\"key\\\":\\\"value\\\",\\\"array\\\":[1,2,3]}'，之後： '{\\n \\\"key\\\": \\\"value\\\", \\n \\\"數組\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON（JavaScript 物件表示法）是一種輕量級、基於文字的資料交換格式，易於人類閱讀和編寫，也易於機器解析和生成。",
+    "JSON-Path-013": "什麼是 JSON 路徑？",
+    "JSON-Path-Example-015": "$.store.book[0].title 選擇 JSON 物件中第一本書的標題，該物件的商店包含 books 陣列。",
+    "JSON-Path-Explanation-014": "JSON Path 是一種類似 XML 的 XPath 的查詢語言，可讓您使用類似路徑的表示法從 JSON 文件中提取資料。",
+    "JSON-Path-Guide": "JSONPath - JSON 的 XPath",
+    "JSON-Purpose-003": "它主要用於在伺服器和 Web 應用程式之間傳輸數據，作為 XML 的替代方案，並透過「JSON.parse()」和「JSON.stringify()」方法在 JavaScript 中提供本機支援。",
+    "JSON-Syntax-004": "JSON 的基本語法是什麼？",
+    "JSON-Syntax-Reference": "JSON 上的 MDN Web 文檔",
+    "JSON-Value-Types-006": "值可以是字串、數字、布林值、陣列（用方括號括起來）",
+    "JSON-vs-XML-010": "JSON 與 XML 相比如何？",
+    "JSON-vs-XML-Article": "比較 JSON 和 XML",
+    "XML-Advantages-012": "XML 提供了更多的結構靈活性並支援命名空間，這有利於複雜的文件結構和跨系統的互通性。"
+}

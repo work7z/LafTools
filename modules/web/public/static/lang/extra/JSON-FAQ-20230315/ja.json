@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON は通常、XML よりも小さく、解析が速いため、帯域幅と速度が重要なクライアント/サーバー通信に最適です。",
+    "JSON-Basics-001": "JSONとは何ですか?",
+    "JSON-Beautifier-Online": "オンライン JSON フォーマッタおよびバリデータ",
+    "JSON-Beautify-007": "JSON の美化とは何ですか?",
+    "JSON-Beautify-Def-008": "JSON の美化とは、適切なインデントと改行を備えた人間が読みやすい形式に JSON データをフォーマットし、分析とデバッグを容易にするプロセスを指します。",
+    "JSON-Beautify-Example-009": "前: '{\\\"key\\\":\\\"value\\\",\\\"array\\\":[1,2,3]}'、後: '{\\n \\\"key\\\": \\\"value\\\", \\n \\\"配列\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (JavaScript Object Notation) は、人間が読み書きしやすく、マシンが解析して生成しやすい軽量のテキストベースのデータ交換形式です。",
+    "JSON-Path-013": "JSONパスとは何ですか?",
+    "JSON-Path-Example-015": "$.store.book[0].title は、books 配列を含むストアを含む JSON オブジェクト内の最初の本のタイトルを選択します。",
+    "JSON-Path-Explanation-014": "JSON Path は、XPath for XML に似たクエリ言語で、パスのような表記法を使用して JSON ドキュメントからデータを抽出できます。",
+    "JSON-Path-Guide": "JSONPath - JSON の XPath",
+    "JSON-Purpose-003": "これは主に、XML の代替としてサーバーと Web アプリケーションの間でデータを送信するために使用され、`JSON.parse()` および `JSON.stringify()` メソッドによる JavaScript のネイティブ サポートを備えています。",
+    "JSON-Syntax-004": "JSON の基本的な構文は何ですか?",
+    "JSON-Syntax-Reference": "JSON に関する MDN Web ドキュメント",
+    "JSON-Value-Types-006": "値は文字列、数値、ブール値、配列 (角かっこで囲まれたもの) にすることができます。",
+    "JSON-vs-XML-010": "JSON は XML とどう違うのでしょうか?",
+    "JSON-vs-XML-Article": "JSON と XML の比較",
+    "XML-Advantages-012": "XML は構造の柔軟性を高め、名前空間をサポートします。これは、複雑なドキュメント構造とシステム間の相互運用性に有益です。"
+}

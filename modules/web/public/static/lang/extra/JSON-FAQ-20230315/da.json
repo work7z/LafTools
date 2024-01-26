@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON er generelt mindre og hurtigere at parse end XML, hvilket gør den ideel til klient-server-kommunikation, hvor båndbredde og hastighed er afgørende.",
+    "JSON-Basics-001": "Hvad er JSON?",
+    "JSON-Beautifier-Online": "Online JSON Formatter & Validator",
+    "JSON-Beautify-007": "Hvad er JSON Beautification?",
+    "JSON-Beautify-Def-008": "JSON-forskønnelse refererer til processen med at formatere JSON-data til en mere menneskelig læsbar form med korrekt indrykning og linjeskift, hvilket gør det nemmere at analysere og fejlfinde.",
+    "JSON-Beautify-Example-009": "Før: '{\\\"nøgle\\\":\\\"værdi\\\",\\\"array\\\":[1,2,3]}', Efter: '{\\n \\\"nøgle\\\": \\\"værdi\\\", \\n \\\"array\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (JavaScript Object Notation) er et let, tekstbaseret dataudvekslingsformat, der er nemt for mennesker at læse og skrive, og nemt for maskiner at parse og generere.",
+    "JSON-Path-013": "Hvad er JSON Path?",
+    "JSON-Path-Example-015": "$.store.book[0].title vælger titlen på den første bog i et JSON-objekt med et lager, der indeholder bogmatrix.",
+    "JSON-Path-Explanation-014": "JSON Path er et forespørgselssprog, der ligner XPath til XML, hvilket giver dig mulighed for at udtrække data fra JSON-dokumenter ved hjælp af en stilignende notation.",
+    "JSON-Path-Guide": "JSONPath - XPath til JSON",
+    "JSON-Purpose-003": "Det bruges primært til at overføre data mellem en server og webapplikation som et alternativ til XML, med indbygget understøttelse i JavaScript via metoderne `JSON.parse()` og `JSON.stringify()`.",
+    "JSON-Syntax-004": "Hvad er den grundlæggende syntaks for JSON?",
+    "JSON-Syntax-Reference": "MDN Web Docs på JSON",
+    "JSON-Value-Types-006": "Værdier kan være strenge, tal, booleaner, arrays (omgivet af firkantede parenteser",
+    "JSON-vs-XML-010": "Hvordan er JSON sammenlignet med XML?",
+    "JSON-vs-XML-Article": "Sammenligning af JSON og XML",
+    "XML-Advantages-012": "XML giver mere strukturfleksibilitet og understøtter navnerum, hvilket kan være gavnligt for komplekse dokumentstrukturer og interoperabilitet på tværs af systemer."
+}

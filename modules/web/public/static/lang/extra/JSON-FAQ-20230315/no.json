@@ -1,0 +1,20 @@
+{
+    "JSON-Advantages-011": "JSON er generelt mindre og raskere å analysere enn XML, noe som gjør den ideell for klient-server-kommunikasjon der båndbredde og hastighet er avgjørende.",
+    "JSON-Basics-001": "Hva er JSON?",
+    "JSON-Beautifier-Online": "Online JSON Formatter & Validator",
+    "JSON-Beautify-007": "Hva er JSON Beautification?",
+    "JSON-Beautify-Def-008": "JSON-forskjønnelse refererer til prosessen med å formatere JSON-data til en mer lesbar form med riktig innrykk og linjeskift, noe som gjør det lettere å analysere og feilsøke.",
+    "JSON-Beautify-Example-009": "Før: '{\\\"nøkkel\\\":\\\"verdi\\\",\\\"array\\\":[1,2,3]}', Etter: '{\\n \\\"nøkkel\\\": \\\"verdi\\\", \\n \\\"matrise\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
+    "JSON-Def-002": "JSON (JavaScript Object Notation) er et lett, tekstbasert datautvekslingsformat som er enkelt for mennesker å lese og skrive, og enkelt for maskiner å analysere og generere.",
+    "JSON-Path-013": "Hva er JSON Path?",
+    "JSON-Path-Example-015": "$.store.book[0].title velger tittelen på den første boken i et JSON-objekt med et lager som inneholder bøker.",
+    "JSON-Path-Explanation-014": "JSON Path er et spørringsspråk som ligner på XPath for XML, som lar deg trekke ut data fra JSON-dokumenter ved å bruke en banelignende notasjon.",
+    "JSON-Path-Guide": "JSONPath - XPath for JSON",
+    "JSON-Purpose-003": "Den brukes først og fremst til å overføre data mellom en server og nettapplikasjon som et alternativ til XML, med innebygd støtte i JavaScript via metodene `JSON.parse()` og `JSON.stringify()`.",
+    "JSON-Syntax-004": "Hva er den grunnleggende syntaksen til JSON?",
+    "JSON-Syntax-Reference": "MDN Web Docs på JSON",
+    "JSON-Value-Types-006": "Verdier kan være strenger, tall, booleaner, matriser (omsluttet av hakeparenteser",
+    "JSON-vs-XML-010": "Hvordan er JSON sammenlignet med XML?",
+    "JSON-vs-XML-Article": "Sammenligner JSON og XML",
+    "XML-Advantages-012": "XML gir mer strukturfleksibilitet og støtter navnerom, noe som kan være fordelaktig for komplekse dokumentstrukturer og interoperabilitet på tvers av systemer."
+}
