@@ -25,6 +25,7 @@ import Operation from "./core/Operation.tsx";
 // import Chef from "./core/Chef.mjs";
 import Utils from "./core/Utils.mjs";
 import setupApp from "./setupApp.ts";
+import { sleep } from "../utils/SyncUtils.tsx";
 // import ToBase64 from "./core/impl/ToBase64.js";
 setupApp();
 
