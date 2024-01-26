@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "Hur optimerar jag SQL-frågeprestanda?",
     "SQL-Purpose-003": "Den används för att skapa, läsa, uppdatera, ta bort och fråga data i tabeller samt hantera databasstruktur och behörigheter.",
     "SQL-Select-009": "Hur skriver jag en grundläggande SELECT-sats?",
+    "SQL-Select-Example-0210": "En enkel SELECT-sats hämtar data från en tabell. Till exempel: {0}', 'SELECT column1, column2 FROM my_table;",
     "SQL-Transactions-013": "Vad är transaktioner i SQL?",
     "SQL-Transactions-Def-014": "En transaktion är en logisk arbetsenhet som innehåller en eller flera SQL-satser. Det säkerställer att alla operationer inom den slutförs framgångsrikt (atomicitet), isolerade från andra transaktioner och varaktiga även i händelse av systemfel.",
+    "SQL-Transactions-Example-015": "För att starta en transaktion, använd kommandot START TRANSACTION; commit ändringar med COMMIT eller rollback till föregående tillstånd med ROLLBACK.",
     "SQL-Transactions-W3Schools": "SQL-transaktioner på W3Schools"
 }

@@ -51,7 +51,7 @@ If the answer to any of the above is yes, then you should consider trying our to
 
 [在线预览](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-zhcn.png?raw=true)
-![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-dark-jan?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-dark-jan.png?raw=true)
 
 # 🍀 Getting Started
 
