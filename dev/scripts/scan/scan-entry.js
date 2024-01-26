@@ -417,7 +417,11 @@ let entryForLoadingDOT = async () => {
             //   targetDIR: eachRunItem.target,
             // };
             let { scopeID, targetDIR, filepath, eachRunItem } = loadEachObj;
-            let dynDirName = path.join(targetDIR, scopeID);
+            let extraDirName = path.join(targetDIR, "extra");
+            if (!fs.existsSync(extraDirName)) {
+              fs.mkdirSync(extraDirName);
+            }
+            let dynDirName = path.join(extraDirName, scopeID);
             if (!fs.existsSync(dynDirName)) {
               fs.mkdirSync(dynDirName);
             }
