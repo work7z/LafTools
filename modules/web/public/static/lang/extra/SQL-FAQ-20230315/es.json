@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "¿Cómo optimizo el rendimiento de las consultas SQL?",
     "SQL-Purpose-003": "Se utiliza para crear, leer, actualizar, eliminar y consultar datos en tablas, así como para administrar la estructura y los permisos de la base de datos.",
     "SQL-Select-009": "¿Cómo escribo una declaración SELECT básica?",
+    "SQL-Select-Example-0210": "Una instrucción SELECT simple recupera datos de una tabla. Por ejemplo: {0}', 'SELECCIONE columna1, columna2 DE mi_tabla;",
     "SQL-Transactions-013": "¿Qué son las transacciones en SQL?",
     "SQL-Transactions-Def-014": "Una transacción es una unidad lógica de trabajo que contiene una o más declaraciones SQL. Garantiza que todas las operaciones dentro de él se completen con éxito (atomicidad), estén aisladas de otras transacciones y sean duraderas incluso en caso de falla del sistema.",
+    "SQL-Transactions-Example-015": "Para iniciar una transacción, utilice el comando INICIAR TRANSACCIÓN; confirmar cambios con COMMIT o retroceder al estado anterior con ROLLBACK.",
     "SQL-Transactions-W3Schools": "Transacciones SQL en W3Schools"
 }

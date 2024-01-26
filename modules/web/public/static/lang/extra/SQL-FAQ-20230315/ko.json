@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "SQL 쿼리 성능을 최적화하려면 어떻게 해야 합니까?",
     "SQL-Purpose-003": "테이블의 데이터를 생성, 읽기, 업데이트, 삭제 및 쿼리하고 데이터베이스 구조 및 권한을 관리하는 데 사용됩니다.",
     "SQL-Select-009": "기본 SELECT 문을 어떻게 작성합니까?",
+    "SQL-Select-Example-0210": "간단한 SELECT 문은 테이블에서 데이터를 검색합니다. 예를 들면 다음과 같습니다. {0}', 'SELECT 컬럼1, 컬럼2 FROM my_table;",
     "SQL-Transactions-013": "SQL의 트랜잭션이란 무엇입니까?",
     "SQL-Transactions-Def-014": "트랜잭션은 하나 이상의 SQL 문을 포함하는 논리적 작업 단위입니다. 이는 내부의 모든 작업이 성공적으로 완료되고(원자성) 다른 트랜잭션과 격리되며 시스템 오류가 발생하는 경우에도 내구성을 보장합니다.",
+    "SQL-Transactions-Example-015": "트랜잭션을 시작하려면 START TRANSACTION 명령을 사용하십시오. COMMIT를 사용하여 변경 사항을 커밋하거나 ROLLBACK을 사용하여 이전 상태로 롤백합니다.",
     "SQL-Transactions-W3Schools": "W3Schools의 SQL 트랜잭션"
 }

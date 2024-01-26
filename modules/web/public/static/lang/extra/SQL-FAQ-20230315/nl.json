@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "Hoe optimaliseer ik de prestaties van SQL-query's?",
     "SQL-Purpose-003": "Het wordt gebruikt voor het maken, lezen, bijwerken, verwijderen en opvragen van gegevens in tabellen, en voor het beheren van de databasestructuur en machtigingen.",
     "SQL-Select-009": "Hoe schrijf ik een eenvoudige SELECT-instructie?",
+    "SQL-Select-Example-0210": "Een eenvoudige SELECT-instructie haalt gegevens uit een tabel op. Bijvoorbeeld: {0}', 'SELECT kolom1, kolom2 FROM mijn_tabel;",
     "SQL-Transactions-013": "Wat zijn transacties in SQL?",
     "SQL-Transactions-Def-014": "Een transactie is een logische werkeenheid die een of meer SQL-instructies bevat. Het zorgt ervoor dat alle operaties erin succesvol worden voltooid (atomiciteit), geïsoleerd van andere transacties en duurzaam zijn, zelfs in het geval van een systeemstoring.",
+    "SQL-Transactions-Example-015": "Om een ​​transactie te starten, gebruikt u het commando START TRANSACTION; wijzigingen doorvoeren met COMMIT of terugdraaien naar de vorige status met ROLLBACK.",
     "SQL-Transactions-W3Schools": "SQL-transacties op W3Schools"
 }

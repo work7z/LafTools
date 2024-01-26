@@ -51,7 +51,7 @@ If the answer to any of the above is yes, then you should consider trying our to
 
 [在线预览](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-zhcn.png?raw=true)
-![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-3.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/dev/images/preview-dark-jan?raw=true)
 
 # 🍀 Getting Started
 
@@ -175,7 +175,7 @@ This project is primarily inspired by the following musicians:
 - Stefanie Sun
 - David Tao
 - Jacky Cheung
-- Teresa Teng  
+- Teresa Teng
 - Jack Johnson
 
 Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.

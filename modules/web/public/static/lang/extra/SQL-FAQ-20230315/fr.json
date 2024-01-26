@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "Comment optimiser les performances des requêtes SQL ?",
     "SQL-Purpose-003": "Il est utilisé pour créer, lire, mettre à jour, supprimer et interroger des données dans des tables, ainsi que pour gérer la structure et les autorisations de la base de données.",
     "SQL-Select-009": "Comment écrire une instruction SELECT de base ?",
+    "SQL-Select-Example-0210": "Une simple instruction SELECT récupère les données d'une table. Par exemple : {0}', 'SELECT colonne1, colonne2 FROM ma_table ;",
     "SQL-Transactions-013": "Que sont les transactions en SQL ?",
     "SQL-Transactions-Def-014": "Une transaction est une unité de travail logique qui contient une ou plusieurs instructions SQL. Il garantit que toutes les opérations qu'il contient sont terminées avec succès (atomicité), isolées des autres transactions et durables même en cas de panne du système.",
+    "SQL-Transactions-Example-015": "Pour démarrer une transaction, utilisez la commande START TRANSACTION ; validez les modifications avec COMMIT ou revenez à l’état précédent avec ROLLBACK.",
     "SQL-Transactions-W3Schools": "Transactions SQL sur W3Schools"
 }

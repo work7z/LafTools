@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "如何最佳化 SQL 查詢效能？",
     "SQL-Purpose-003": "它用於建立、讀取、更新、刪除和查詢表中的資料以及管理資料庫結構和權限。",
     "SQL-Select-009": "如何寫出基本的 SELECT 語句？",
+    "SQL-Select-Example-0210": "一個簡單的 SELECT 語句從表中檢索資料。例如：{0}', '從 my_table 選擇列 1, 列 2;",
     "SQL-Transactions-013": "SQL 中的交易是什麼？",
     "SQL-Transactions-Def-014": "事務是包含一個或多個 SQL 語句的邏輯工作單元。它確保其中的所有操作都成功完成（原子性），與其他事務隔離，並且即使在系統故障的情況下也能持久。",
+    "SQL-Transactions-Example-015": "若要啟動事務，請使用 START TRANSACTION 命令；使用 COMMIT 提交更改或使用 ROLLBACK 回滾到先前的狀態。",
     "SQL-Transactions-W3Schools": "W3Schools 上的 SQL 事務"
 }

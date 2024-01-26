@@ -51,7 +51,7 @@ class GenericCodeBeautify extends Operation {
 
 
         this.id = 'generic-code-beautify';
-        this.name = Dot("generic-code-beautify.3text.091a", "Format Generic Code");
+        this.name = Dot("generic-NI-UFPTe0", "Beautify Generic Code");
         this.description = Dot(
             "generic-code-beautify.desc.2b3c",
             "This operation formats code in various programming languages to improve readability by applying consistent indentation, line breaks, and adhering to language-specific style guidelines.",

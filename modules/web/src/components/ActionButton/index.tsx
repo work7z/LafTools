@@ -46,6 +46,7 @@ export default (props: ActionButtonProps) => {
 
     let btn = <Button
         {...props}
+        title={''}
         className={" transition-colors " + " " + props.className}
         onMouseEnter={() => {
             setIsOpen(true)
