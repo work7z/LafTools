@@ -224,35 +224,21 @@ export default (): ToolCategory[] => {
             "GenericCodeBeautify",
             "SQLBeautify",
             // "fmt_html",
-            // "fmt_xml",
             // "fmt_yaml",
-            // "fmt_css",
-            // "fmt_css",
             // "fmt_less",
             // "fmt_sass",
             // "fmt_json",
             // "fmt_markdown",
-            // "fmt_javascript",
             // "fmt_typescript",
-            // "fmt_sql",
             // "fmt_graphql",
 
             //   {
             //     "name": "Code tidy",
             //     "ops": [
             //         "Syntax highlighter",
-            //         "Generic Code Beautify",
             //         "JavaScript Parser",
-            //         "JavaScript Beautify",
             //         "JavaScript Minify",
-            //         "JSON Beautify",
-            //         "JSON Minify",
-            //         "XML Beautify",
-            //         "XML Minify",
-            //         "SQL Beautify",
-            //         "SQL Minify",
-            //         "CSS Beautify",
-            //         "CSS Minify",
+
             //         "XPath expression",
             //         "JPath expression",
             //         "CSS selector",
@@ -274,6 +260,17 @@ export default (): ToolCategory[] => {
 
           ],
         },
+        {
+          Id: "code_minify",
+          Label: Dot("6MrfIfGc6", "Code Minify"),
+          Icon: "percentage",
+          ChildrenIdSet: [
+            "JSONMinify",
+            "XMLMinify",
+            "SQLMinify",
+            "CSSMinify",
+          ],
+        }
       ],
     },
     {

@@ -93,6 +93,18 @@ let appToolInfoObj: {
     "md6": passInfo({
         LabelFn: () => "MD6"
     }),
+    "JSONMinify": passInfo({
+        LabelFn: () => Dot("1Xe82x7", "{0} Minify", "JSON")
+    }),
+    "XMLMinify": passInfo({
+        LabelFn: () => Dot("1Xe82x7", "{0} Minify", "XML")
+    }),
+    "CSSMinify": passInfo({
+        LabelFn: () => Dot("1Xe82x7", "{0} Minify", "CSS")
+    }),
+    "SQLMinify": passInfo({
+        LabelFn: () => Dot("1Xe82x7", "{0} Minify", "SQL")
+    }),
     // Example
     "Example": passInfo({
         LabelFn: () => Dot("1X8x7", "Example")

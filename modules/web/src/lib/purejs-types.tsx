@@ -21,6 +21,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import { IconName } from "@blueprintjs/icons";
 import { AppToolKeyType } from "./tools/info";
 
 
@@ -110,7 +111,7 @@ export type ToolChildrenSetByInit = {
 export type ToolSubCategory = {
   Id: string;
   Label: TranslatePassArg;
-  Icon: string;
+  Icon: IconName;
   ChildrenIdSet: AppToolKeyType[]; // collect id only
   // ChildrenSetByInit?: ToolChildrenSetByInit[]; // this field is provided by program
 };
