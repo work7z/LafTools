@@ -161,42 +161,45 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     }
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
+    let shouldHideLeftTextInBar = v.bottom_hide
     return <div key={props.sessionId} className="h-full overflow-auto " style={{
         padding: '1px'
     }}>
         <Navbar>
             <Navbar.Group>
-                <Navbar.Heading >
+                {
+                    shouldHideLeftTextInBar ? '' : <Navbar.Heading >
 
-                    {/* Page: <strong>{''}</strong> */}
-                    <Icon intent={
-                        loadingStatic ? "success" :
-                            crtRuntimeStatus.processOK ? "success" :
-                                crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
-                    } icon={
-                        loadingStatic ? "changes" :
-                            crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" :
-                                crtRuntimeStatus.processText ? "tick" :
-                                    "console"} iconSize={20} className={"mr-2  " + (
-                                        crtRuntimeStatus.processing ? " animate-spin " : ""
-                                    )} />
-                    <span className={
-                        loadingStatic ? "" + (
-                            greenClz
-                        ) :
-                            crtRuntimeStatus.processOK ? greenClz :
-                                crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? loadingTextClz : "  "
-                    }>
-                        {
-                            loadingStatic ? Dot("y_9YqM", "Loading static resources...") :
-                                crtRuntimeStatus.processText ? crtRuntimeStatus.processText : Dot("z-o28we", "Process Panel")
-                            // crtRuntimeStatus.processError ? Dot("jOXj0", "Opps, something went wrong.") :
-                            //     crtRuntimeStatus.processing ?  : 
-                        }
-                    </span>
-                </Navbar.Heading>
+                        {/* Page: <strong>{''}</strong> */}
+                        <Icon intent={
+                            loadingStatic ? "success" :
+                                crtRuntimeStatus.processOK ? "success" :
+                                    crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
+                        } icon={
+                            loadingStatic ? "changes" :
+                                crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" :
+                                    crtRuntimeStatus.processText ? "tick" :
+                                        "console"} iconSize={20} className={"mr-2  " + (
+                                            crtRuntimeStatus.processing ? " animate-spin " : ""
+                                        )} />
+                        <span className={
+                            loadingStatic ? "" + (
+                                greenClz
+                            ) :
+                                crtRuntimeStatus.processOK ? greenClz :
+                                    crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? loadingTextClz : "  "
+                        }>
+                            {
+                                loadingStatic ? Dot("y_9YqM", "Loading static resources...") :
+                                    crtRuntimeStatus.processText ? crtRuntimeStatus.processText : Dot("z-o28we", "Process Panel")
+                                // crtRuntimeStatus.processError ? Dot("jOXj0", "Opps, something went wrong.") :
+                                //     crtRuntimeStatus.processing ?  : 
+                            }
+                        </span>
+                    </Navbar.Heading>
+                }
             </Navbar.Group>
-            <Navbar.Group align={Alignment.RIGHT}>
+            <Navbar.Group align={shouldHideLeftTextInBar ? Alignment.LEFT : Alignment.RIGHT}>
                 <Tabs
                     animate={true}
                     fill={true}

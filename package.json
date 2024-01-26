@@ -13,7 +13,7 @@
     "build-linux":"./pipeline/build-all.sh linux",
     "test-linux":"(cd $LAFTOOLS_ROOT/dist/os/linux-x64 && ./run.sh)",
     "push-docker":"./pipeline/push-docker.sh",
-    "build-docker":"npm run build-linux && npm run push-docker",
+    "build-docker":"./pipeline/build-docker.sh",
     "test-docker":"sudo docker run -p 0.0.0.0:39000:39000 codegentoolbox/laftools-linux-x64:insider"
   },
   "keywords": [

@@ -664,7 +664,7 @@ export const LocalUserPanel: React.FC<
       await ACTION_signInLocalAccount({
         localAccountObject: localAccountObject.current,
       })(dis);
-      AlertUtils.popOK(Dot("y3qjdd", "Your local password has been successfully verified."))
+      // AlertUtils.popOK(Dot("y3qjdd", "Your local password has been successfully verified."))
       props.notifyCreatedOK && props.notifyCreatedOK()
       onLoading(false)
       hist.push(URL_WORKBENCH)
