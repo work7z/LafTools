@@ -1,4 +1,5 @@
 {
+    "R_S7_CLAo": "Örnek: Base32'de 'TEST12345'i kodlamak için Node.js'deki base32-encode gibi kitaplıkları veya Python'un base64.b32encode'u gibi diğer dillerdeki yerleşik işlevleri kullanabilirsiniz.",
     "a4s6x": "Base32 nasıl çalışır?",
     "a8b7z": "Bu nedenle, doldurma yalnızca kodlanan son bit grubu 40 bit ile bölünemiyorsa gereklidir (çünkü 8 Base32 karakteri 40 biti temsil eder). Dolgu, kodlanmış dizenin sonunda sıfır ila altı '=' karakterinden oluşacaktır.",
     "b8g2k": "Base32 için kullanım senaryoları",
@@ -19,7 +20,6 @@
     "n3e7r": "Base32'nin Tarihçesi",
     "p9s5t": "Base32, JavaScript'e yaptığı katkılarla tanınan Douglas Crockford tarafından 2001 yılında geliştirildi. Özellikle ikili verilerin metin tabanlı temsillerini gerektiren durumlar için Base64 gibi mevcut kodlamalara daha güvenilir bir alternatif olarak oluşturuldu.",
     "q2w5m": "Base32'yi kullanmanın amacı?",
-    "r6tq9z": "<b>Örnek:</b> Base32'de 'TEST12345'i kodlamak için Node.js'deki base32-encode gibi kitaplıkları veya Python'un base64.b32encode'u gibi diğer dillerdeki yerleşik işlevleri kullanabilirsiniz.",
     "s5t0n": "Base32'deki dolgu, kodlanmış verilerin son yığınının hala 8 bitin katlarını içerdiğinden emin olmak için '=' karakterlerinin eklenmesini içerir. Ancak Base64'ten farklı olarak Base32 dolgusu minimum düzeydedir çünkü her Base32 karakteri zaten 5 bit kodlamaktadır.",
     "t8z1v": "Sonunda 5 bitlik bir grubu doldurmaya yetecek kadar bit kalmadığında, dolgu karakterleri '=' eklenir. Örneğin, bir bayt için iki Base32 karakteri gerekir ve 3 baytlık bir dizi için dört Base32 karakteri gerekir.",
     "u3j9p": "Base32 genellikle dosya bütünlüğü kontrolleri, geocaching ve güvenli şifre oluşturma gibi durumlarda bilgi kaybı olmadan yazılabilen veya yazdırılabilen ikili verilerin kompakt bir metinsel temsiline ihtiyaç duyduğunuzda kullanılır.",

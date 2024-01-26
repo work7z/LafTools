@@ -161,7 +161,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     }
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
-    let shouldHideLeftTextInBar = v.bottom_hide
+    let shouldHideLeftTextInBar = !v.bottom_hide // when bottom is not hide, then hide left text
     return <div key={props.sessionId} className="h-full overflow-auto " style={{
         padding: '1px'
     }}>

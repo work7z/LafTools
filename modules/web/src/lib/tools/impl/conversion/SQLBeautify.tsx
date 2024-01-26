@@ -25,22 +25,27 @@
  */
 
 import vkbeautify from "vkbeautify";
-import Operation from "../Operation.mjs";
+import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import Operation from "../../../core/Operation.tsx";
+import Utils from "../../../core/Utils.mjs";
+import gutils from "../../../../utils/GlobalUtils.tsx";
+import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 
 /**
- * XML Beautify operation
+ * SQL Beautify operation
  */
-class XMLBeautify extends Operation {
+class SQLBeautify extends Operation {
 
     /**
-     * XMLBeautify constructor
+     * SQLBeautify constructor
      */
     constructor() {
         super();
 
-        this.name = "XML Beautify";
+        this.name = "SQL Beautify";
         this.module = "Code";
-        this.description = "Indents and prettifies eXtensible Markup Language (XML) code.";
+        this.description = "Indents and prettifies Structured Query Language (SQL) code.";
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
@@ -59,9 +64,9 @@ class XMLBeautify extends Operation {
      */
     run(input, args) {
         const indentStr = args[0];
-        return vkbeautify.xml(input, indentStr);
+        return vkbeautify.sql(input, indentStr);
     }
 
 }
 
-export default XMLBeautify;
+export default SQLBeautify;

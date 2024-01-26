@@ -24,7 +24,12 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.mjs";
+import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import Operation from "../../../core/Operation.tsx";
+import Utils from "../../../core/Utils.mjs";
+import gutils from "../../../../utils/GlobalUtils.tsx";
+import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 
 /**
  * Generic Code Beautify operation
@@ -51,7 +56,7 @@ class GenericCodeBeautify extends Operation {
      * @returns {string}
      */
     run(input, args) {
-        const preservedTokens = [];
+        const preservedTokens: any[] = [];
         let code = input,
             t = 0,
             m;
@@ -120,13 +125,13 @@ class GenericCodeBeautify extends Operation {
                     level++;
                     break;
                 case "\n":
-                    if (i+1 >= code.length) break;
+                    if (i + 1 >= code.length) break;
 
-                    if (code[i+1] === "}") level--;
-                    indent = (level >= 0) ? Array(level*4+1).join(" ") : "";
+                    if (code[i + 1] === "}") level--;
+                    indent = (level >= 0) ? Array(level * 4 + 1).join(" ") : "";
 
-                    code = code.substring(0, i+1) + indent + code.substring(i+1);
-                    if (level > 0) i += level*4;
+                    code = code.substring(0, i + 1) + indent + code.substring(i + 1);
+                    if (level > 0) i += level * 4;
                     break;
             }
             i++;

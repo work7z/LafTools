@@ -26,9 +26,13 @@
  */
 
 import JSON5 from "json5";
-import OperationError from "../errors/OperationError.mjs";
-import Operation from "../Operation.mjs";
-import Utils from "../Utils.mjs";
+import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import Operation from "../../../core/Operation.tsx";
+import Utils from "../../../core/Utils.mjs";
+import gutils from "../../../../utils/GlobalUtils.tsx";
+import { InputOutputEditorLang } from "../../../purejs-types.tsx";
+import OperationError from "../../../core/errors/OperationError.mjs";
 
 /**
  * JSON Beautify operation
@@ -132,7 +136,7 @@ function sortKeys(o) {
     if (Array.isArray(o)) {
         return o.map(sortKeys);
     } else if ("[object Object]" === Object.prototype.toString.call(o)) {
-        return Object.keys(o).sort().reduce(function(a, k) {
+        return Object.keys(o).sort().reduce(function (a, k) {
             a[k] = sortKeys(o[k]);
             return a;
         }, {});

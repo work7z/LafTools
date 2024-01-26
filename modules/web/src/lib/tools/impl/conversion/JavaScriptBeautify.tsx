@@ -23,11 +23,16 @@
  * @copyright Crown Copyright 2016
  * @license Apache-2.0
  */
+import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import Operation from "../../../core/Operation.tsx";
+import Utils from "../../../core/Utils.mjs";
+import gutils from "../../../../utils/GlobalUtils.tsx";
+import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 
-import Operation from "../Operation.mjs";
-import OperationError from "../errors/OperationError.mjs";
 import escodegen from "escodegen";
 import * as esprima from "esprima";
+import OperationError from "../../../core/errors/OperationError.mjs";
 
 /**
  * JavaScript Beautify operation
@@ -77,7 +82,7 @@ class JavaScriptBeautify extends Operation {
     run(input, args) {
         const beautifyIndent = args[0] || "\\t",
             quotes = args[1].toLowerCase(),
-            [,, beautifySemicolons, beautifyComment] = args;
+            [, , beautifySemicolons, beautifyComment] = args;
         let result = "",
             AST;
 

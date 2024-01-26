@@ -1,4 +1,5 @@
 {
+    "R_S7_CLAo": "Příklad: Ke kódování 'TEST12345' v Base32 můžete použít knihovny jako base32-encode v Node.js nebo vestavěné funkce v jiných jazycích, jako je base64.b32encode Pythonu.",
     "a4s6x": "Jak Base32 funguje?",
     "a8b7z": "Výplň je tedy nutná pouze v případě, že poslední skupina kódovaných bitů není dělitelná 40 bity (protože 8 znaků Base32 představuje 40 bitů). Výplň se bude skládat z nula až šesti znaků '=' na konci zakódovaného řetězce.",
     "b8g2k": "Scénáře použití pro Base32",
@@ -19,7 +20,6 @@
     "n3e7r": "Historie Base32",
     "p9s5t": "Base32 byl vyvinut Douglasem Crockfordem, známým svými příspěvky k JavaScriptu, v roce 2001. Byl vytvořen jako spolehlivější alternativa k existujícím kódování, jako je Base64, zejména pro situace vyžadující textové reprezentace binárních dat.",
     "q2w5m": "Účel použití Base32?",
-    "r6tq9z": "<b>Příklad:</b> Ke kódování 'TEST12345' v Base32 můžete použít knihovny jako base32-encode v Node.js nebo vestavěné funkce v jiných jazycích, jako je base64.b32encode Pythonu.",
     "s5t0n": "Výplň v Base32 zahrnuje přidání znaků '=', aby bylo zajištěno, že poslední část zakódovaných dat stále obsahuje násobek 8 bitů. Na rozdíl od Base64 je však odsazení Base32 minimální, protože každý znak Base32 již kóduje 5 bitů.",
     "t8z1v": "Když na konci nezbývá dostatek bitů k vyplnění celé 5bitové skupiny, jsou přidány výplňové znaky '='. Například bajt vyžaduje dva znaky Base32 a 3bajtová sekvence by potřebovala čtyři znaky Base32.",
     "u3j9p": "Base32 se často používá, když potřebujete kompaktní textovou reprezentaci binárních dat, která lze psát nebo tisknout bez ztráty informací, jako je kontrola integrity souborů, geocaching a bezpečné generování hesel.",

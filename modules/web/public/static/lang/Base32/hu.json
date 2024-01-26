@@ -1,4 +1,5 @@
 {
+    "R_S7_CLAo": "Példa: A 'TEST12345' kódolásához a Base32-ben olyan könyvtárakat használhat, mint a base32-encode a Node.js-ben, vagy beépített függvényeket más nyelveken, például a Python base64.b32encode-ját.",
     "a4s6x": "Hogyan működik a Base32?",
     "a8b7z": "Így a kitöltésre csak akkor van szükség, ha az utolsó kódolt bitcsoport nem osztható 40 bittel (mivel 8 Base32 karakter 40 bitet jelent). A kitöltés nulla és hat „=” karakterből áll a kódolt karakterlánc végén.",
     "b8g2k": "A Base32 használati forgatókönyvei",
@@ -19,7 +20,6 @@
     "n3e7r": "A Base története32",
     "p9s5t": "A Base32-t a JavaScripthez való hozzájárulásáról ismert Douglas Crockford fejlesztette ki 2001-ben. A Base64-hez hasonló meglévő kódolások megbízhatóbb alternatívájaként hozták létre, különösen olyan helyzetekben, ahol a bináris adatok szöveges megjelenítésére van szükség.",
     "q2w5m": "A Base32 használatának célja?",
-    "r6tq9z": "<b>Példa:</b> A „TEST12345” Base32-ben való kódolásához használhat könyvtárakat, például a base32-encode-ot a Node.js-ben, vagy beépített függvényeket más nyelveken, például a Python base64.b32encode-ját.",
     "s5t0n": "A Base32 kitöltése magában foglalja az „=” karakterek hozzáadását annak biztosítására, hogy a kódolt adatok utolsó része továbbra is 8 bit többszörösét tartalmazza. A Base64-től eltérően azonban a Base32 kitöltése minimális, mivel minden Base32 karakter már 5 bitet kódol.",
     "t8z1v": "Ha nem marad elég bit a végén egy teljes 5 bites csoport kitöltéséhez, a rendszer hozzáadja a '=' kitöltő karaktereket. Például egy bájthoz két Base32 karakter, egy 3 bájtos sorozathoz pedig négy Base32 karakter szükséges.",
     "u3j9p": "A Base32-t gyakran használják, amikor szükség van a bináris adatok kompakt szöveges megjelenítésére, amely adatvesztés nélkül begépelhető vagy kinyomtatható, például a fájlok integritásának ellenőrzése, a geocaching és a biztonságos jelszógenerálás során.",

@@ -1,4 +1,5 @@
 {
+    "R_S7_CLAo": "Contoh: Untuk mengkodekan 'TEST12345' di Base32, Anda dapat menggunakan perpustakaan seperti base32-encode di Node.js, atau fungsi bawaan dalam bahasa lain seperti base64.b32encode Python.",
     "a4s6x": "Bagaimana cara kerja Base32?",
     "a8b7z": "Jadi, padding hanya diperlukan jika kelompok bit terakhir yang dikodekan tidak habis dibagi 40 bit (karena 8 karakter Base32 mewakili 40 bit). Padding akan terdiri dari nol hingga enam karakter '=' di akhir string yang disandikan.",
     "b8g2k": "Skenario penggunaan untuk Base32",
@@ -19,7 +20,6 @@
     "n3e7r": "Sejarah Base32",
     "p9s5t": "Base32 dikembangkan oleh Douglas Crockford, yang dikenal karena kontribusinya pada JavaScript, pada tahun 2001. Base32 dibuat sebagai alternatif yang lebih andal untuk pengkodean yang ada seperti Base64, terutama untuk situasi yang memerlukan representasi data biner berbasis teks.",
     "q2w5m": "Tujuan menggunakan Base32?",
-    "r6tq9z": "<b>Contoh:</b> Untuk mengkodekan 'TEST12345' di Base32, Anda dapat menggunakan perpustakaan seperti base32-encode di Node.js, atau fungsi bawaan dalam bahasa lain seperti base64.b32encode Python.",
     "s5t0n": "Padding di Base32 melibatkan penambahan karakter '=' untuk memastikan bahwa potongan akhir data yang disandikan masih berisi kelipatan 8 bit. Namun, tidak seperti Base64, padding Base32 minimal karena setiap karakter Base32 sudah mengkodekan 5 bit.",
     "t8z1v": "Ketika tidak ada cukup bit tersisa di akhir untuk mengisi grup 5-bit penuh, karakter padding '=' ditambahkan. Misalnya, satu byte memerlukan dua karakter Base32, dan urutan 3 byte memerlukan empat karakter Base32.",
     "u3j9p": "Base32 sering digunakan ketika Anda memerlukan representasi tekstual kompak dari data biner yang dapat diketik atau dicetak tanpa kehilangan informasi, seperti dalam pemeriksaan integritas file, geocaching, dan pembuatan kata sandi yang aman.",

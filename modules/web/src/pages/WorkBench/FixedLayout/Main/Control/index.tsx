@@ -113,6 +113,7 @@ import {
 } from "../../../../../types/workbench-hook";
 import {
   FN_ACTION_CloseMenu_ltr,
+  FN_ACTION_CloseMenu_ttm,
   FN_ACTION_OpenMenu_ltr,
   FN_ACTION_OpenMenu_ttm,
 } from "../../../../../actions/layout_action";
@@ -301,7 +302,7 @@ export let WB_ControllerBar = () => {
       } else {
         let dis = FN_GetDispatch();
         dis(
-          FN_ACTION_CloseMenu_ltr({
+          FN_ACTION_CloseMenu_ttm({
             menuRecordKey: "ttm",
             menuKey: "bottom",
           })
