@@ -196,9 +196,9 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                         " " + (
 
                             loadingStatic || crtRuntimeStatus.processOK ? "" + (
-                                "bg-lime-100 dark:bg-lime-600"
+                                "bg-lime-100 dark:bg-lime-600 "
                             ) :
-                                crtRuntimeStatus.processError ? "bg-yellow-200 dark:bg-yellow-400 " : crtRuntimeStatus.processing ? " bg-sky-200 dark:bg-sky-600 " : "  bg-zinc-100 "
+                                crtRuntimeStatus.processError ? "bg-yellow-200 dark:bg-yellow-400 " : crtRuntimeStatus.processing ? " bg-sky-200 dark:bg-sky-600 " : "  bg-zinc-100 dark:bg-zinc-500"
                         ) + ' ' + (
                             "   text-black dark:text-white absolute top-0 right-0 p-1 text-xs flex justify-between items-center"
                         )
