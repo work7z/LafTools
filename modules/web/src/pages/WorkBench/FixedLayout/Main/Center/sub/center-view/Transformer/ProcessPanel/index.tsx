@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import { Alignment, Button, ButtonProps, FormGroup, Icon, InputGroup, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, ButtonProps, FormGroup, Icon, IconName, InputGroup, Intent, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import FaqPanel from './FaqPanel'
 import CodePanel from './CodePanel'
@@ -162,39 +162,60 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
     let shouldHideLeftTextInBar = !v.bottom_hide // when bottom is not hide, then hide left text
-    return <div key={props.sessionId} className="h-full overflow-auto " style={{
+    let textIcon_f: Intent = loadingStatic ? "success" :
+        crtRuntimeStatus.processOK ? "success" :
+            crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
+    let icon_f: IconName = loadingStatic ? "changes" :
+        crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" :
+            crtRuntimeStatus.processText ? "tick" :
+                "console"
+    let clz_f = (
+        loadingStatic ? "" + (
+            greenClz
+        ) :
+            crtRuntimeStatus.processOK ? greenClz :
+                crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? loadingTextClz : "  "
+    )
+    let text_f = (
+        loadingStatic ? Dot("y_9YqM", "Loading static resources...") :
+            crtRuntimeStatus.processText ? crtRuntimeStatus.processText : Dot("z-o28we", "Process Panel")
+    )
+    let iconJSX = <Icon intent={textIcon_f} icon={icon_f} iconSize={shouldHideLeftTextInBar ? 12 : 20} className={(
+        shouldHideLeftTextInBar ? " mr-1  " : " mr-2  "
+    ) + (
+            crtRuntimeStatus.processing ? " animate-spin " : ""
+        )} />
+    return <div key={props.sessionId} className="h-full overflow-auto relative" style={{
         padding: '1px'
     }}>
         <Navbar>
             <Navbar.Group>
-                {
-                    shouldHideLeftTextInBar ? '' : <Navbar.Heading >
 
-                        {/* Page: <strong>{''}</strong> */}
-                        <Icon intent={
-                            loadingStatic ? "success" :
-                                crtRuntimeStatus.processOK ? "success" :
-                                    crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"
-                        } icon={
-                            loadingStatic ? "changes" :
-                                crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" :
-                                    crtRuntimeStatus.processText ? "tick" :
-                                        "console"} iconSize={20} className={"mr-2  " + (
-                                            crtRuntimeStatus.processing ? " animate-spin " : ""
-                                        )} />
-                        <span className={
-                            loadingStatic ? "" + (
-                                greenClz
+                {
+                    shouldHideLeftTextInBar ? <div className={
+                        " " + (
+
+                            loadingStatic || crtRuntimeStatus.processOK ? "" + (
+                                "bg-lime-100 dark:bg-lime-300"
                             ) :
-                                crtRuntimeStatus.processOK ? greenClz :
-                                    crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? loadingTextClz : "  "
+                                crtRuntimeStatus.processError ? "bg-yellow-200 " : crtRuntimeStatus.processing ? " bg-blue-300 dark:bg-blue-200 " : "  bg-zinc-100 "
+                        ) + ' ' + (
+                            "   text-black absolute top-0 right-0 p-1 text-xs flex justify-between items-center"
+                            // bg-yellow-200 
+                        )
+                    } style={{
+                    }}>{iconJSX}
+                        <span style={{
+                            fontSize: '9px',
+                            marginTop: '-1.5px'
+                        }}>
+                            {text_f}</span>
+                    </div> : <Navbar.Heading >
+                        {iconJSX}
+                        <span className={
+                            clz_f
                         }>
-                            {
-                                loadingStatic ? Dot("y_9YqM", "Loading static resources...") :
-                                    crtRuntimeStatus.processText ? crtRuntimeStatus.processText : Dot("z-o28we", "Process Panel")
-                                // crtRuntimeStatus.processError ? Dot("jOXj0", "Opps, something went wrong.") :
-                                //     crtRuntimeStatus.processing ?  : 
-                            }
+                            {text_f}
                         </span>
                     </Navbar.Heading>
                 }

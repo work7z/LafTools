@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "Hogyan optimalizálhatom az SQL lekérdezés teljesítményét?",
     "SQL-Purpose-003": "A táblázatokban lévő adatok létrehozására, olvasására, frissítésére, törlésére és lekérdezésére, valamint az adatbázis-struktúra és az engedélyek kezelésére szolgál.",
     "SQL-Select-009": "Hogyan írhatok egy alapvető SELECT utasítást?",
+    "SQL-Select-Example-0210": "Egy egyszerű SELECT utasítás adatokat kér le egy táblából. Például: {0}', 'SELECT oszlop1, oszlop 2 FROM my_table;",
     "SQL-Transactions-013": "Mik azok a tranzakciók az SQL-ben?",
     "SQL-Transactions-Def-014": "A tranzakció egy logikai munkaegység, amely egy vagy több SQL utasítást tartalmaz. Gondoskodik arról, hogy a benne lévő összes művelet sikeresen befejeződjön (atomitás), elkülönüljön a többi tranzakciótól, és rendszerhiba esetén is tartós legyen.",
+    "SQL-Transactions-Example-015": "Tranzakció indításához használja a TRANSACTION INDÍTÁSA parancsot; a változtatások véglegesítése a COMMIT gombbal, vagy visszaállítás az előző állapotba a ROLLBACK funkcióval.",
     "SQL-Transactions-W3Schools": "SQL-tranzakciók a W3Schools-on"
 }

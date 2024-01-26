@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "Bagaimana cara mengoptimalkan kinerja kueri SQL?",
     "SQL-Purpose-003": "Ini digunakan untuk membuat, membaca, memperbarui, menghapus, dan mengkueri data dalam tabel serta mengelola struktur dan izin database.",
     "SQL-Select-009": "Bagaimana cara menulis pernyataan SELECT dasar?",
+    "SQL-Select-Example-0210": "Pernyataan SELECT sederhana mengambil data dari tabel. Misalnya: {0}', 'PILIH kolom1, kolom2 DARI tabel_saya;",
     "SQL-Transactions-013": "Apa itu transaksi di SQL?",
     "SQL-Transactions-Def-014": "Transaksi adalah unit kerja logis yang berisi satu atau lebih pernyataan SQL. Ini memastikan bahwa semua operasi di dalamnya diselesaikan dengan sukses (atomisitas), terisolasi dari transaksi lain, dan tahan lama bahkan jika terjadi kegagalan sistem.",
+    "SQL-Transactions-Example-015": "Untuk memulai transaksi, gunakan perintah MULAI TRANSAKSI; melakukan perubahan dengan COMMIT atau kembalikan ke keadaan sebelumnya dengan ROLLBACK.",
     "SQL-Transactions-W3Schools": "Transaksi SQL di W3Schools"
 }

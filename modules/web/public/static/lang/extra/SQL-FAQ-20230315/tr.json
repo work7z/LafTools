@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "SQL sorgu performansını nasıl optimize edebilirim?",
     "SQL-Purpose-003": "Tablolardaki verileri oluşturmak, okumak, güncellemek, silmek ve sorgulamanın yanı sıra veritabanı yapısını ve izinlerini yönetmek için kullanılır.",
     "SQL-Select-009": "Temel bir SELECT ifadesini nasıl yazarım?",
+    "SQL-Select-Example-0210": "Basit bir SELECT ifadesi bir tablodan veri alır. Örneğin: {0}', 'Tablomdan sütun1, sütun2'yi SEÇİN;",
     "SQL-Transactions-013": "SQL'de işlemler nelerdir?",
     "SQL-Transactions-Def-014": "İşlem, bir veya daha fazla SQL ifadesi içeren mantıksal bir iş birimidir. Bünyesindeki tüm işlemlerin başarıyla tamamlanmasını (atomisite), diğer işlemlerden izole edilmesini ve sistem arızası durumunda bile dayanıklı olmasını sağlar.",
+    "SQL-Transactions-Example-015": "Bir işlemi başlatmak için İŞLEMİ BAŞLAT komutunu kullanın; COMMIT ile değişiklikleri gerçekleştirin veya ROLLBACK ile önceki duruma geri dönün.",
     "SQL-Transactions-W3Schools": "W3Schools'ta SQL İşlemleri"
 }

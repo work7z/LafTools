@@ -122,6 +122,7 @@ import GenTree, { TREE_ROOT_ID_PREFIX } from "../../../../../../../../../compone
 import { FnPureToolDefinition } from "../../../../../../../../../types/workbench-types";
 import WorkspaceSlice from "../../../../../../../../../reducers/workspaceSlice";
 import { useExtsList, useGetAppCategory, useGetCategoryList } from "../../../../sub/center-view/Transformer/hooks";
+import AlertUtils from "../../../../../../../../../utils/AlertUtils";
 
 export default (props: {
   activeOne: FnPureToolDefinition | undefined;
@@ -389,7 +390,8 @@ export default (props: {
                           intent="none"
                           // intent={hasRemarkThisOne ? "primary" : "none"}
                           onClick={(e) => {
-                            //
+                            gutils.stopE(e)
+                            AlertUtils.popNotSupport()
                           }}
                         />
                       </Tooltip>

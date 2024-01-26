@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "Jak mohu optimalizovat výkon dotazů SQL?",
     "SQL-Purpose-003": "Používá se k vytváření, čtení, aktualizaci, odstraňování a dotazování na data v tabulkách a také ke správě struktury databáze a oprávnění.",
     "SQL-Select-009": "Jak napíšu základní příkaz SELECT?",
+    "SQL-Select-Example-0210": "Jednoduchý příkaz SELECT načte data z tabulky. Například: {0}', 'SELECT sloupec1, sloupec2 FROM moje_tabulka;",
     "SQL-Transactions-013": "Co jsou transakce v SQL?",
     "SQL-Transactions-Def-014": "Transakce je logická jednotka práce, která obsahuje jeden nebo více příkazů SQL. Zajišťuje, že všechny operace v něm jsou úspěšně dokončeny (atomicita), izolovány od ostatních transakcí a odolné i v případě selhání systému.",
+    "SQL-Transactions-Example-015": "Chcete-li zahájit transakci, použijte příkaz START TRANSACTION; potvrďte změny pomocí COMMIT nebo návrat do předchozího stavu pomocí ROLLBACK.",
     "SQL-Transactions-W3Schools": "SQL transakce na W3Schools"
 }

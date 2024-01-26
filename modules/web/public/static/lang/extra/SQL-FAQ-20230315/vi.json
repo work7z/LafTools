@@ -25,7 +25,9 @@
     "SQL-Performance-Tuning-022": "Làm cách nào để tối ưu hóa hiệu suất truy vấn SQL?",
     "SQL-Purpose-003": "Nó được sử dụng để tạo, đọc, cập nhật, xóa và truy vấn dữ liệu trong bảng cũng như quản lý cấu trúc và quyền của cơ sở dữ liệu.",
     "SQL-Select-009": "Làm cách nào để viết câu lệnh CHỌN cơ bản?",
+    "SQL-Select-Example-0210": "Một câu lệnh SELECT đơn giản lấy dữ liệu từ một bảng. Ví dụ: {0}', 'CHỌN cột1, cột2 TỪ my_table;",
     "SQL-Transactions-013": "Giao dịch trong SQL là gì?",
     "SQL-Transactions-Def-014": "Giao dịch là một đơn vị công việc logic chứa một hoặc nhiều câu lệnh SQL. Nó đảm bảo rằng tất cả các hoạt động bên trong nó được hoàn thành thành công (tính nguyên tử), tách biệt với các giao dịch khác và bền vững ngay cả trong trường hợp hệ thống bị lỗi.",
+    "SQL-Transactions-Example-015": "Để bắt đầu giao dịch, hãy sử dụng lệnh BẮT ĐẦU GIAO DỊCH; cam kết các thay đổi bằng COMMIT hoặc quay trở lại trạng thái trước đó bằng ROLLBACK.",
     "SQL-Transactions-W3Schools": "Giao dịch SQL trên W3Schools"
 }
