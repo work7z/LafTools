@@ -193,12 +193,12 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
 
                 {
                     shouldHideLeftTextInBar ? <div className={
-                        " " + (
+                        "   " + (
 
                             loadingStatic || crtRuntimeStatus.processOK ? "" + (
-                                "bg-lime-100 dark:bg-lime-600 "
+                                "bg-lime-100 dark:bg-lime-800 "
                             ) :
-                                crtRuntimeStatus.processError ? "bg-yellow-200 dark:bg-yellow-600 " : crtRuntimeStatus.processing ? " bg-sky-200 dark:bg-sky-600 " : "  bg-zinc-100 dark:bg-zinc-500"
+                                crtRuntimeStatus.processError ? "bg-yellow-200 dark:bg-yellow-800 " : crtRuntimeStatus.processing ? " bg-sky-200 dark:bg-sky-800 " : "  bg-zinc-100 dark:bg-zinc-800"
                         ) + ' ' + (
                             "   text-black dark:text-white absolute top-0 right-0 p-1 text-xs flex justify-between items-center"
                         )

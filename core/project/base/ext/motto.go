@@ -27,6 +27,12 @@ import "laftools-go/core/handlers/context"
 func GetMottoList(ctx *context.WebContext) []func() string {
 	return []func() string{
 		func() string {
+			return ctx.Dot("q3VjkLMsP", "Friendship, exchange, cooperation and development")
+		},
+		func() string {
+			return ctx.Dot("71L3OI9T7", "To peruse peace, promote cooperation and seek development has become the theme of the current era.")
+		},
+		func() string {
 			return ctx.Dot("af3158", "Everything is determined... by forces over which we have no control. -Albert Einstein")
 		},
 		func() string {
