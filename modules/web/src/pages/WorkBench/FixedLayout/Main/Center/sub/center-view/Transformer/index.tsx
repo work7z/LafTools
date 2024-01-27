@@ -294,8 +294,8 @@ export default (props: CommonTransformerProps) => {
   if (loadError) {
     let solution = ''
     return <div className=" w-full h-full ">
-      <div className="w-full h-full overflow-auto  bg-blue-900 p-2">
-        <div className="bg-blue-800 w-full h-full rounded-lg p-8 shadow-lg space-y-4 text-white">
+      <div className="w-full h-full  bg-blue-900 p-2">
+        <div className="bg-blue-800 w-full h-full overflow-auto  rounded-lg p-8 shadow-lg space-y-4 text-white">
           {/* <FaBug className="text-red-500 w-16 h-16 mb-4" /> */}
           <h2 className="text-lg font-bold">{Dot("yt7kX2fPQ", "Caught an Unexpected Exception")}</h2>
           <p className="text-md">{loadError}</p>
@@ -313,9 +313,9 @@ export default (props: CommonTransformerProps) => {
           <div className="text-sm">{Dot("NvOqE3B9Vxd", "And below are the possible solutions you could refer to")}:</div>
           <pre className="text-xs whitespace-pre-wrap break-all">
             <OL className="list-item">
-              <li>{Dot("oFyrCkBfqy", "Raise an Issue for this error to let LafTools teams investigate it further.")}</li>
+              <li>{Dot("j5ttfMZZE", "Raise an Issue for this error to let LafTools team investigate it further.")}</li>
               <li>
-                {Dot("U5Eiy7ZRZ", "Send an email to our mailbox {0} to report this error if it's related to sensitive information.", 'work7z@outlook.com')}
+                {Dot("U5Eiy7ZRZ", "Send an email to LafTools team({0}) to report this error if it's related to sensitive information.", 'work7z@outlook.com')}
               </li>
             </OL>
           </pre>
