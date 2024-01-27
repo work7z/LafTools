@@ -30,6 +30,14 @@
   width: 50%;
 }
 
+.native-style {
+  ol,
+  ul {
+    list-style: inherit;
+    margin-left: 20px;
+  }
+}
+
 .flex-tab {
   .bp5-tab-panel {
     flex: 1;
