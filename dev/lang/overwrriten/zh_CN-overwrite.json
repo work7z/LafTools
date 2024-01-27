@@ -1390,7 +1390,7 @@
   "e.g. _flag": "e.g. _flag",
   "Beautify {0}": "格式化{0}",
   "{0} Beautify": "{0}格式化",
-  "{0} Minify": "{0}压缩简短",
+  "{0} Minify": "{0}压缩",
   "Code Minify": "代码压缩混淆",
   "e.g. is_": "e.g. is_",
   "Super Controller Class(Optional)": "父级的控制器类(Extend)(可选)",
