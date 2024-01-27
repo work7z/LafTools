@@ -126,26 +126,22 @@ export default (props: PassProp) => {
           data-tabid={tab.id}
           {...(!verticalMode && tabIdx == _.size(tabList) - 1
             ? {
-                id: eleId_subTab + "-last",
-              }
+              id: eleId_subTab + "-last",
+            }
             : {})}
-          className={` ${
-            verticalMode ? "" : " h-each-tab "
-          } each-tab  hover:bg-gray-300  whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${
-            isCurrent
-              ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] bg-white hover:bg-white dark:text-white dark:bg-gray-700  dark:hover:bg-gray-600  "
+          className={` transition-all duration-75 ${verticalMode ? "" : " h-each-tab "
+            } each-tab  hover:bg-gray-300  whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${isCurrent
+              ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] bg-white hover:bg-white dark:text-white dark:bg-zinc-800 dark:text-sky-400  dark:hover:bg-zinc-700  "
               : " dark:hover:bg-gray-600 "
-          } ${
-            verticalMode && isCurrent
+            } ${verticalMode && isCurrent
               ? ` border-t-light-blue-600 border-t-[3px] `
               : ""
-          }`}
+            }`}
         >
           <Icon
             icon={tab.icon as any}
-            className={`h-5 w-5  !inline-flex items-center justify-center ${
-              isCurrent ? "blue-svg" : "gray-svg"
-            }  `}
+            className={`h-5 w-5  !inline-flex items-center justify-center ${isCurrent ? "blue-svg" : "gray-svg"
+              }  `}
             style={{
               marginRight: "5px",
             }}
@@ -210,8 +206,8 @@ export default (props: PassProp) => {
             maxHeight: "300px",
             // minWidth: "300px",
           }}
-          ref={(e) => {}}
-          onScroll={(x) => {}}
+          ref={(e) => { }}
+          onScroll={(x) => { }}
         >
           {/*
           <InputGroup
@@ -332,9 +328,8 @@ export default (props: PassProp) => {
       </div>
       <div
         id={eleId_controlBar}
-        className={` absolute  right-0 top-0 h-full ${
-          shouldShowLeftRight ? "px-2 pr-1" : "px-0"
-        } common-border-left  ${commonBG}`}
+        className={` absolute  right-0 top-0 h-full ${shouldShowLeftRight ? "px-2 pr-1" : "px-0"
+          } common-border-left  ${commonBG}`}
         style={
           {
             // paddingLeft: '0'
@@ -345,35 +340,35 @@ export default (props: PassProp) => {
           {[
             ...(shouldShowLeftRight
               ? [
-                  {
-                    small: true,
-                    icon: "chevron-left",
-                    tooltip: Dot("sdfk1", "Scroll tabs to left"),
-                    disabled: crtTranslateX == 0,
-                    onClick: () => {
-                      onCrtTranslateX(crtTranslateX + moveStep);
-                    },
+                {
+                  small: true,
+                  icon: "chevron-left",
+                  tooltip: Dot("sdfk1", "Scroll tabs to left"),
+                  disabled: crtTranslateX == 0,
+                  onClick: () => {
+                    onCrtTranslateX(crtTranslateX + moveStep);
                   },
-                  {
-                    small: true,
-                    icon: "chevron-right",
-                    disabled: isItReachedToRightLimit,
-                    tooltip: Dot("sdfk13", "Scroll tabs to right"),
-                    onClick: () => {
-                      onCrtTranslateX(crtTranslateX - moveStep);
-                    },
+                },
+                {
+                  small: true,
+                  icon: "chevron-right",
+                  disabled: isItReachedToRightLimit,
+                  tooltip: Dot("sdfk13", "Scroll tabs to right"),
+                  onClick: () => {
+                    onCrtTranslateX(crtTranslateX - moveStep);
                   },
-                  {
-                    small: true,
-                    icon: "chevron-down",
-                    tooltip: Dot("R12bq", "List tabs that are not shown"),
-                    panel: (
-                      <PanelThatNotShown
-                        fn_format_each_tab={fn_format_each_tab}
-                      />
-                    ),
-                  },
-                ]
+                },
+                {
+                  small: true,
+                  icon: "chevron-down",
+                  tooltip: Dot("R12bq", "List tabs that are not shown"),
+                  panel: (
+                    <PanelThatNotShown
+                      fn_format_each_tab={fn_format_each_tab}
+                    />
+                  ),
+                },
+              ]
               : []),
 
             {

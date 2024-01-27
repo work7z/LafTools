@@ -177,6 +177,7 @@ This project is primarily inspired by the following musicians:
 - Jacky Cheung
 - Teresa Teng
 - Jack Johnson
+- Lovebugs
 
 Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
 
