@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "Pensirilan JSON ialah proses menukar objek JavaScript kepada rentetan JSON, manakala penyahsiran adalah sebaliknya - menukar rentetan JSON kembali menjadi objek JavaScript.",
     "JSON-Serialization-W3Schools": "Siri JSON pada W3Schools",
     "JSON-Syntax-004": "Apakah sintaks asas JSON?",
+    "JSON-Syntax-Example-f005": "Objek JSON terdiri daripada pasangan nilai kunci yang disertakan dalam pendakap kerinting {0}. Setiap kunci mestilah rentetan yang disertakan dalam petikan berganda, diikuti dengan titik bertindih, dan kemudian nilainya.",
     "JSON-Syntax-Reference": "Dokumen Web MDN pada JSON",
     "JSON-Value-Types-006": "Nilai boleh berupa rentetan, nombor, boolean, tatasusunan (disertakan dalam kurungan segi empat sama",
     "JSON-vs-XML-010": "Bagaimanakah JSON dibandingkan dengan XML?",

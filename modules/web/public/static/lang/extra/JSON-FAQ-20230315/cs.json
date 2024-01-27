@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "Serializace JSON je proces převodu objektu JavaScriptu na řetězec JSON, zatímco deseralizace je opačný – přeměna řetězce JSON zpět na objekt JavaScriptu.",
     "JSON-Serialization-W3Schools": "Serializace JSON na W3Schools",
     "JSON-Syntax-004": "Jaká je základní syntaxe JSON?",
+    "JSON-Syntax-Example-f005": "Objekt JSON se skládá z párů klíč–hodnota uzavřených ve složených závorkách {0}. Každý klíč musí být řetězec uzavřený do dvojitých uvozovek, za ním následuje dvojtečka a poté jeho hodnota.",
     "JSON-Syntax-Reference": "Webové dokumenty MDN na JSON",
     "JSON-Value-Types-006": "Hodnoty mohou být řetězce, čísla, booleovské hodnoty, pole (uzavřené v hranatých závorkách",
     "JSON-vs-XML-010": "Jak si stojí JSON ve srovnání s XML?",

@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "JSON-serialisering er processen med at konvertere et JavaScript-objekt til en JSON-streng, mens deserialisering er det omvendte - at omdanne en JSON-streng tilbage til et JavaScript-objekt.",
     "JSON-Serialization-W3Schools": "JSON-serialisering på W3Schools",
     "JSON-Syntax-004": "Hvad er den grundlæggende syntaks for JSON?",
+    "JSON-Syntax-Example-f005": "Et JSON-objekt består af nøgle-værdi-par omgivet af krøllede klammer {0}. Hver nøgle skal være en streng omsluttet af dobbelte anførselstegn, efterfulgt af et kolon og derefter dens værdi.",
     "JSON-Syntax-Reference": "MDN Web Docs på JSON",
     "JSON-Value-Types-006": "Værdier kan være strenge, tal, booleaner, arrays (omgivet af firkantede parenteser",
     "JSON-vs-XML-010": "Hvordan er JSON sammenlignet med XML?",

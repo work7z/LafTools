@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "JSON-serialisatie is het proces waarbij een JavaScript-object wordt omgezet in een JSON-string, terwijl deserialisatie het omgekeerde is: een JSON-string terugzetten in een JavaScript-object.",
     "JSON-Serialization-W3Schools": "JSON-serialisatie op W3Schools",
     "JSON-Syntax-004": "Wat is de basissyntaxis van JSON?",
+    "JSON-Syntax-Example-f005": "Een JSON-object bestaat uit sleutel-waardeparen tussen accolades {0}. Elke sleutel moet een tekenreeks zijn tussen dubbele aanhalingstekens, gevolgd door een dubbele punt en vervolgens de waarde ervan.",
     "JSON-Syntax-Reference": "MDN-webdocumenten op JSON",
     "JSON-Value-Types-006": "Waarden kunnen strings, getallen, booleans en arrays zijn (tussen vierkante haakjes).",
     "JSON-vs-XML-010": "Hoe verhoudt JSON zich tot XML?",

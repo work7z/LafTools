@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "JSON 序列化是將 JavaScript 物件轉換為 JSON 字串的過程，而反序列化則相反，將 JSON 字串轉換回 JavaScript 物件。",
     "JSON-Serialization-W3Schools": "W3Schools 上的 JSON 序列化",
     "JSON-Syntax-004": "JSON 的基本語法是什麼？",
+    "JSON-Syntax-Example-f005": "JSON 物件由括在大括號 {0} 中的鍵值對組成。每個鍵必須是用雙引號括起來的字串，後面跟著冒號，然後是其值。",
     "JSON-Syntax-Reference": "JSON 上的 MDN Web 文檔",
     "JSON-Value-Types-006": "值可以是字串、數字、布林值、陣列（用方括號括起來）",
     "JSON-vs-XML-010": "JSON 與 XML 相比如何？",

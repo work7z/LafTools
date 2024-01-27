@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "JSON serileştirme, bir JavaScript nesnesini bir JSON dizesine dönüştürme işlemidir; seri durumdan çıkarma ise bunun tersidir; JSON dizesini tekrar bir JavaScript nesnesine dönüştürür.",
     "JSON-Serialization-W3Schools": "W3Schools'ta JSON Serileştirmesi",
     "JSON-Syntax-004": "JSON'un temel sözdizimi nedir?",
+    "JSON-Syntax-Example-f005": "Bir JSON nesnesi, küme parantezleri {0} içine alınmış anahtar/değer çiftlerinden oluşur. Her anahtar, çift tırnak içine alınmış bir dize, ardından iki nokta üst üste ve ardından değeri olmalıdır.",
     "JSON-Syntax-Reference": "JSON'da MDN Web Dokümanları",
     "JSON-Value-Types-006": "Değerler dizeler, sayılar, boolean'lar, diziler (köşeli parantez içine alınmış) olabilir",
     "JSON-vs-XML-010": "JSON XML'le nasıl karşılaştırılır?",

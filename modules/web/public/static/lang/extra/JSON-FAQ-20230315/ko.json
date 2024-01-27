@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "JSON 직렬화는 JavaScript 개체를 JSON 문자열로 변환하는 프로세스인 반면, 역직렬화는 그 반대입니다. 즉, JSON 문자열을 다시 JavaScript 개체로 변환합니다.",
     "JSON-Serialization-W3Schools": "W3Schools의 JSON 직렬화",
     "JSON-Syntax-004": "JSON의 기본 구문은 무엇입니까?",
+    "JSON-Syntax-Example-f005": "JSON 객체는 중괄호 {0}로 묶인 키-값 쌍으로 구성됩니다. 각 키는 큰따옴표로 묶인 문자열, 그 뒤에 콜론, 그 값이 와야 합니다.",
     "JSON-Syntax-Reference": "JSON 기반 MDN 웹 문서",
     "JSON-Value-Types-006": "값은 문자열, 숫자, 부울, 배열(대괄호로 묶음)일 수 있습니다.",
     "JSON-vs-XML-010": "JSON은 XML과 어떻게 비교됩니까?",

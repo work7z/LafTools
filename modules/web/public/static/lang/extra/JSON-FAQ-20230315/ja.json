@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "JSON シリアル化は JavaScript オブジェクトを JSON 文字列に変換するプロセスですが、逆シリアル化はその逆で、JSON 文字列を JavaScript オブジェクトに戻します。",
     "JSON-Serialization-W3Schools": "W3Schools での JSON シリアル化",
     "JSON-Syntax-004": "JSON の基本的な構文は何ですか?",
+    "JSON-Syntax-Example-f005": "JSON オブジェクトは、中括弧 {0} で囲まれたキーと値のペアで構成されます。各キーは二重引用符で囲まれた文字列で、その後にコロン、その値が続く必要があります。",
     "JSON-Syntax-Reference": "JSON に関する MDN Web ドキュメント",
     "JSON-Value-Types-006": "値は文字列、数値、ブール値、配列 (角かっこで囲まれたもの) にすることができます。",
     "JSON-vs-XML-010": "JSON は XML とどう違うのでしょうか?",

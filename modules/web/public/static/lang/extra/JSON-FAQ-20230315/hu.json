@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "A JSON-szerializálás egy JavaScript-objektum JSON-karakterláncsá alakításának folyamata, míg a deszerializálás ennek fordítottja – a JSON-karakterlánc visszaállítása JavaScript-objektummá.",
     "JSON-Serialization-W3Schools": "JSON-szerializálás a W3Schools-on",
     "JSON-Syntax-004": "Mi a JSON alapvető szintaxisa?",
+    "JSON-Syntax-Example-f005": "A JSON-objektum kapcsos zárójelekbe zárt kulcs-érték párokból áll: {0}. Minden kulcsnak kettős idézőjelbe zárt karakterláncnak kell lennie, amelyet kettőspont követ, majd az értéke.",
     "JSON-Syntax-Reference": "MDN Web Docs a JSON-on",
     "JSON-Value-Types-006": "Az értékek lehetnek karakterláncok, számok, logikai értékek, tömbök (szögletes zárójelben",
     "JSON-vs-XML-010": "Hogyan hasonlítható össze a JSON az XML-lel?",

@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "JSON-serialisointi on prosessi, jossa JavaScript-objekti muunnetaan JSON-merkkijonoksi, kun taas deserialisointi on päinvastainen – JSON-merkkijonon muuttaminen takaisin JavaScript-objektiksi.",
     "JSON-Serialization-W3Schools": "JSON-sarjasointi W3Schoolsissa",
     "JSON-Syntax-004": "Mikä on JSONin perussyntaksi?",
+    "JSON-Syntax-Example-f005": "JSON-objekti koostuu avainarvopareista, jotka on suljettu aaltosulkeisiin {0}. Jokaisen avaimen on oltava lainausmerkkien sisällä oleva merkkijono, jota seuraa kaksoispiste ja sitten sen arvo.",
     "JSON-Syntax-Reference": "MDN Web Docs JSONissa",
     "JSON-Value-Types-006": "Arvot voivat olla merkkijonoja, numeroita, booleaneja, taulukoita (hakasulkeissa",
     "JSON-vs-XML-010": "Miten JSON verrataan XML:ään?",

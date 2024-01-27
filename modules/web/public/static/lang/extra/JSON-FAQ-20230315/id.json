@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "Serialisasi JSON adalah proses mengubah objek JavaScript menjadi string JSON, sedangkan deserialisasi adalah kebalikannya – mengubah string JSON kembali menjadi objek JavaScript.",
     "JSON-Serialization-W3Schools": "Serialisasi JSON di W3Schools",
     "JSON-Syntax-004": "Apa sintaks dasar JSON?",
+    "JSON-Syntax-Example-f005": "Objek JSON terdiri dari pasangan nilai kunci yang diapit kurung kurawal {0}. Setiap kunci harus berupa string yang diapit tanda kutip ganda, diikuti dengan titik dua, dan kemudian nilainya.",
     "JSON-Syntax-Reference": "Dokumen Web MDN di JSON",
     "JSON-Value-Types-006": "Nilai dapat berupa string, angka, boolean, array (diapit tanda kurung siku",
     "JSON-vs-XML-010": "Bagaimana JSON dibandingkan dengan XML?",

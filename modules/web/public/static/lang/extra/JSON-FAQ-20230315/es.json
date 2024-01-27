@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "La serialización JSON es el proceso de convertir un objeto JavaScript en una cadena JSON, mientras que la deserialización es lo contrario: convertir una cadena JSON nuevamente en un objeto JavaScript.",
     "JSON-Serialization-W3Schools": "Serialización JSON en W3Schools",
     "JSON-Syntax-004": "¿Cuál es la sintaxis básica de JSON?",
+    "JSON-Syntax-Example-f005": "Un objeto JSON consta de pares clave-valor encerrados entre llaves {0}. Cada clave debe ser una cadena entre comillas dobles, seguida de dos puntos y luego su valor.",
     "JSON-Syntax-Reference": "Documentos web de MDN en JSON",
     "JSON-Value-Types-006": "Los valores pueden ser cadenas, números, booleanos, matrices (entre corchetes",
     "JSON-vs-XML-010": "¿Cómo se compara JSON con XML?",

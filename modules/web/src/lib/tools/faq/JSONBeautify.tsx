@@ -22,7 +22,7 @@ export default (): FAQItem[] => {
             question: Dot("JSON-Syntax-004", "What is the basic syntax of JSON?"),
             answer: (
                 <p>
-                    {Dot("JSON-Syntax-Example-005", 'A JSON object consists of key-value pairs enclosed in curly braces "{ }". Each key must be a string enclosed in double quotes, followed by a colon, and then its value.')}
+                    {Dot("JSON-Syntax-Example-f005", 'A JSON object consists of key-value pairs enclosed in curly braces {0}. Each key must be a string enclosed in double quotes, followed by a colon, and then its value.', `"{ }"`)}
                     <br />
                     {Dot("JSON-Value-Types-006", "Values can be strings, numbers, booleans, arrays (enclosed in square brackets []), other objects, or null.")}
                 </p>

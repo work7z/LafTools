@@ -23,6 +23,7 @@
     "JSON-Serialization-Def-017": "Tuần tự hóa JSON là quá trình chuyển đổi một đối tượng JavaScript thành chuỗi JSON, trong khi quá trình giải tuần tự hóa thì ngược lại – biến chuỗi JSON trở lại thành đối tượng JavaScript.",
     "JSON-Serialization-W3Schools": "Tuần tự hóa JSON trên W3Schools",
     "JSON-Syntax-004": "Cú pháp cơ bản của JSON là gì?",
+    "JSON-Syntax-Example-f005": "Đối tượng JSON bao gồm các cặp khóa-giá trị được đặt trong dấu ngoặc nhọn {0}. Mỗi khóa phải là một chuỗi được đặt trong dấu ngoặc kép, theo sau là dấu hai chấm và sau đó là giá trị của nó.",
     "JSON-Syntax-Reference": "Tài liệu web MDN trên JSON",
     "JSON-Value-Types-006": "Giá trị có thể là chuỗi, số, boolean, mảng (được đặt trong dấu ngoặc vuông",
     "JSON-vs-XML-010": "JSON so sánh với XML như thế nào?",
