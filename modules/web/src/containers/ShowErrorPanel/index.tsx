@@ -62,7 +62,7 @@ export default (props: {
                 <pre className="text-xs whitespace-pre-wrap break-all">
                     <ul className="list-item ">
                         <li>{Dot("hAH_IjzGN", "This is an insider version, this part is still under development.")}
-                            <b>({Dot("cBVZolqWK", "90% Probability")})</b>
+                            <b>({'90%'})</b>
                         </li>
                         <li>{Dot("hGA96yTG4", "Some features are not supported in this platform. ")}</li>
                         <li>{Dot("BCySSDEKL", "There might be a compatibility issue with your current software version.")}</li>
