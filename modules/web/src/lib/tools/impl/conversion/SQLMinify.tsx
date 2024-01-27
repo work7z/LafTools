@@ -25,30 +25,29 @@
  */
 
 import vkbeautify from "vkbeautify";
-import Operation from "../Operation.tsx";
+import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import Operation from "../../../core/Operation.tsx";
+import Utils from "../../../core/Utils.mjs";
+import gutils from "../../../../utils/GlobalUtils.tsx";
+import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 
 /**
- * CSS Minify operation
+ * SQL Minify operation
  */
-class CSSMinify extends Operation {
+class SQLMinify extends Operation {
   /**
-   * CSSMinify constructor
+   * SQLMinify constructor
    */
   constructor() {
     super();
 
-    this.name = "CSS Minify";
+    this.name = "SQL Minify";
     this.module = "Code";
-    this.description = "Compresses Cascading Style Sheets (CSS) code.";
+    this.description = "Compresses Structured Query Language (SQL) code.";
     this.inputType = "string";
     this.outputType = "string";
-    this.args = [
-      {
-        name: "Preserve comments",
-        type: "boolean",
-        value: false,
-      },
-    ];
+    this.args = [];
   }
 
   /**
@@ -57,9 +56,8 @@ class CSSMinify extends Operation {
    * @returns {string}
    */
   run(input, args) {
-    const preserveComments = args[0];
-    return vkbeautify.cssmin(input, preserveComments);
+    return vkbeautify.sqlmin(input);
   }
 }
 
-export default CSSMinify;
+export default SQLMinify;

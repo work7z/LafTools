@@ -25,24 +25,35 @@
  */
 
 import vkbeautify from "vkbeautify";
-import Operation from "../Operation.tsx";
+import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import Operation from "../../../core/Operation.tsx";
+import Utils from "../../../core/Utils.mjs";
+import gutils from "../../../../utils/GlobalUtils.tsx";
+import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 
 /**
- * JSON Minify operation
+ * CSS Minify operation
  */
-class JSONMinify extends Operation {
+class CSSMinify extends Operation {
   /**
-   * JSONMinify constructor
+   * CSSMinify constructor
    */
   constructor() {
     super();
 
-    this.name = "JSON Minify";
+    this.name = "CSS Minify";
     this.module = "Code";
-    this.description = "Compresses JavaScript Object Notation (JSON) code.";
+    this.description = "Compresses Cascading Style Sheets (CSS) code.";
     this.inputType = "string";
     this.outputType = "string";
-    this.args = [];
+    this.args = [
+      {
+        name: "Preserve comments",
+        type: "boolean",
+        value: false,
+      },
+    ];
   }
 
   /**
@@ -51,9 +62,9 @@ class JSONMinify extends Operation {
    * @returns {string}
    */
   run(input, args) {
-    if (!input) return "";
-    return vkbeautify.jsonmin(input);
+    const preserveComments = args[0];
+    return vkbeautify.cssmin(input, preserveComments);
   }
 }
 
-export default JSONMinify;
+export default CSSMinify;

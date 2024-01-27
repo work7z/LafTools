@@ -270,21 +270,32 @@ export let WB_ControllerBar = () => {
       intent: Intent.NONE,
       id: "compute",
     },
-
-    // when the user click any menu, then
+    // item for Help 
     {
-      text: Dot("8LdRj", "Overview"),
-      icon: "panel-stats",
+      text: Dot("C3L9MmdDU7", "Handbook"),
+      icon: "map",
       onClick: () => { },
       active: false,
       disabled: false,
       tooltip: Dot(
-        "Mq9pdpT",
-        "List all relevant resources for the functional menu you selected."
+        "Mqq9pdpT",
+        "Help you to get started with LafTools."
       ),
       intent: Intent.NONE,
-      id: "overview",
-    },
+      id: "help",
+    }
+    // TODO: help menu can be added here. 
+    // when the user click any menu, then
+    // {
+    //   text: Dot("8LdRj", "Overview"),
+    //   icon: "panel-stats",
+    //   onClick: () => { },
+    //   active: false,
+    //   disabled: false,
+    //   tooltip: Dot( "Mq9pdpT","List all relevant resources for the functional menu you selected."),
+    //   intent: Intent.NONE,
+    //   id: "overview",
+    // },
   ].map((x) => {
     if (sq.b == x.id && !v.bottom_hide) {
       x.active = true;

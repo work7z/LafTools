@@ -1,3 +1,23 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Sat, 27 Jan 2024
+// Author:   
+// Description: 
+// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 
 import localforage from "localforage";
 import {
@@ -44,11 +64,15 @@ import { Dot } from "../../utils/TranslationUtils";
 import { loadDOT } from "../../reducers/systemSlice";
 import exportUtils from "../../utils/ExportUtils";
 
-loadDOT("showERROR")
 
 export default (props: {
     loadError: string
 }) => {
+
+    useEffect(() => {
+        loadDOT("showERROR")
+    }, [])
+
     exportUtils.useLoadDotCountCpt()
     let { loadError } = props;
     return <div className=" w-full h-full native-style">
@@ -73,7 +97,7 @@ export default (props: {
                 <div className="text-sm">{Dot("NvOqE3B9Vxd", "And below are the possible solutions you could refer to")}:</div>
                 <pre className="text-xs whitespace-pre-wrap break-all">
                     <ul className="list-item">
-                        <li>{Dot("j5ttfMZZE", "Raise an Issue for this error to let LafTools team investigate it further.")}</li>
+                        <li>{Dot("SETxuObyB", "Raise an Issue on GitHub for this error to let LafTools team investigate it further.")}</li>
                         <li>
                             {Dot("U5Eiy7ZRZ", "Send an email to LafTools team({0}) to report this error if it's related to sensitive information.", 'work7z@outlook.com')}
                         </li>

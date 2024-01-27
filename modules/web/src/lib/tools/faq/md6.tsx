@@ -22,11 +22,13 @@ import { loadDOT } from "../../../reducers/systemSlice";
 import { Dot } from "../../../utils/TranslationUtils";
 
 import { FAQItem } from "./types";
-import React from "react";
-
+import React, { useEffect } from "react";
+loadDOT("MD6")
 loadDOT("MD6")
 
+
 export default (): FAQItem[] => {
+
     return [
         {
             question: Dot("MD6-FAQ-001", "What is MD6?"),

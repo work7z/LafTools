@@ -102,6 +102,8 @@ export default (props: PassProps) => {
     let sessionMap = exportUtils.useSelector((state) => state.session.sessionTypeKVMap[sessionType]?.sessionMap)
     let activeSessionId = exportUtils.useSelector((state) => state.session.sessionTypeKVMap[sessionType]?.activeId)
     let sessionList = exportUtils.useSelector((state) => state.session.sessionTypeKVMap[sessionType]?.sessionList)
+    let crtSessionList = sessionList
+    let isCrtSessionEmpty = _.isEmpty(crtSessionList)
     if (sessionList == null || _.isEmpty(sessionList)) {
         sessionList = props.defaultSessionList;
     }
@@ -119,11 +121,10 @@ export default (props: PassProps) => {
                 item: {
                     sessionMap: props.defaultSessionMap,
                     activeId: props.defaultSessionId,
-                    sessionList: props.defaultSessionList,
                 }
             })
         )
-    }, [_.size(sessionList), activeSessionId])
+    }, [isCrtSessionEmpty, _.size(sessionList), activeSessionId])
     // render
     let Body = props.body;
     let [hoverId, onHoverId] = useState<string | null>(null)

@@ -24,9 +24,14 @@
  * @license Apache-2.0
  */
 
-import OperationError from "../errors/OperationError.mjs";
-import Operation from "../Operation.tsx";
+import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import Operation from "../../../core/Operation.tsx";
+import Utils from "../../../core/Utils.mjs";
+import gutils from "../../../../utils/GlobalUtils.tsx";
+import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 import * as terser from "terser";
+import OperationError from "../../../core/errors/OperationError.mjs";
 
 /**
  * JavaScript Minify operation
@@ -53,8 +58,8 @@ class JavaScriptMinify extends Operation {
    */
   async run(input, args) {
     const result = await terser.minify(input);
-    if (result.error) {
-      throw new OperationError(`Error minifying JavaScript. (${result.error})`);
+    if (result["error"]) {
+      throw new OperationError(`Error minifying JavaScript. (${result["error"]})`);
     }
     return result.code;
   }
