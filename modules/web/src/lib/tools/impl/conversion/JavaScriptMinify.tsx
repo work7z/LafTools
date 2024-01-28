@@ -45,10 +45,19 @@ class JavaScriptMinify extends Operation {
 
     this.name = "JavaScript Minify";
     this.module = "Code";
-    this.description = "Compresses JavaScript code.";
     this.inputType = "string";
     this.outputType = "string";
     this.args = [];
+
+
+    this.id = 'jsminify'
+    this.name = Dot("e3WgQaZlb", "Compresses {0}", "JavaScript");
+    this.description = Dot(
+      "ojCWEFdVe",
+      "Compresses JavaScript code, removing all unnecessary characters.",
+    );
+    this.exampleInput = "let a = 1; let b = 2; let obj = {a: 1, b: 2};"
+    this.exampleOutput = "let a = 1;\nlet b = 2; //;\nlet obj = {\n    a: 1,\n    b: 2\n};\n";
   }
 
   /**

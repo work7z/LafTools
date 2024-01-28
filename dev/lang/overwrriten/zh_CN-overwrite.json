@@ -1391,6 +1391,8 @@
   "Beautify {0}": "格式化{0}",
   "{0} Beautify": "{0}格式化",
   "{0} Minify": "{0}压缩",
+  "Minify {0}": "压缩{0}",
+  "Compresses {0}": "压缩{0}",
   "Code Minify": "代码压缩混淆",
   "e.g. is_": "e.g. is_",
   "Super Controller Class(Optional)": "父级的控制器类(Extend)(可选)",

@@ -44,10 +44,21 @@ class JSONMinify extends Operation {
 
     this.name = "JSON Minify";
     this.module = "Code";
-    this.description = "Compresses JavaScript Object Notation (JSON) code.";
     this.inputType = "string";
     this.outputType = "string";
     this.args = [];
+
+
+    this.id = 'json-minify'
+    this.name = Dot("meeMC1Uk7.text.93kq", "Minify {0}", "JSON")
+    this.description = Dot(
+      "EO6Qv5dCA",
+      "Minifies JSON code, reduce the bundle size of your JSON code."
+    )
+
+    this.exampleOutput = '{"unformatted":true,"data":[{"key1":"value1"},{"key2":"value2"}]}'
+    this.exampleInput = '{\n  "unformatted": true,\n  "data": [\n    {\n      "key1": "value1"\n    },\n    {\n      "key2": "value2"\n    }\n  ]\n}'
+
   }
 
   /**

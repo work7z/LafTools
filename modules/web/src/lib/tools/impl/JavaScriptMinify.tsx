@@ -1,19 +1,18 @@
 import { Dot } from "../../../utils/TranslationUtils.js";
 import Operation from "../../core/Operation.tsx";
-import fn from "./conversion/CSSMinify.tsx";
+import fn from "./conversion/JavaScriptMinify.tsx";
 import { ToolHandler, ToolMetaInfo } from "../handler.js";
 
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
         return {
             hideCodePanel: true,
-            exampleType: "css-short",
+            exampleType: "js-short",
             description: Dot(
-                "htTmvWjsS",
-                "Compresses Cascading Style Sheets (CSS) code."
+                "bsWpBA73s",
+                "Compresses JavaScript code.",
             ),
-            infoURL: // css wiki
-                "https://en.wikipedia.org/wiki/Cascading_Style_Sheets",
+            infoURL: "https://en.wikipedia.org/wiki/JavaScript",
         }
     }
     getOperations(): Operation[] {

@@ -44,10 +44,21 @@ class SQLMinify extends Operation {
 
     this.name = "SQL Minify";
     this.module = "Code";
-    this.description = "Compresses Structured Query Language (SQL) code.";
     this.inputType = "string";
     this.outputType = "string";
     this.args = [];
+
+
+
+    this.id = "sql-minify";
+    this.name = Dot("6wdtJ4vmg.name.0912", "Minify {0}", "SQL");
+    this.description = Dot(
+      "LxaEFHbfa",
+      "Minifies SQL code, reduce the bundle size of your SQL code.",
+    )
+    this.exampleInput = 'SELECT\n\t*\nFROM\n\ttable\nWHERE\n\tid = 1;'
+    this.exampleOutput = 'SELECT * FROM table WHERE id = 1;'
+
   }
 
   /**

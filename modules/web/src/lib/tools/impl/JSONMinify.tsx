@@ -1,6 +1,6 @@
 import { Dot } from "../../../utils/TranslationUtils.js";
 import Operation from "../../core/Operation.tsx";
-import fn from "./conversion/XMLBeautify.tsx";
+import fn from "./conversion/JSONMinify.tsx";
 import { ToolHandler, ToolMetaInfo } from "../handler.js";
 
 export default class Base64Handler extends ToolHandler {
@@ -9,11 +9,10 @@ export default class Base64Handler extends ToolHandler {
             hideCodePanel: true,
             exampleType: "css-short",
             description: Dot(
-                "hX1CWGAhl",
-                "Indents and prettifies eXtensible Markup Language (XML) code."
+                "NrQc8OJfZ",
+                "Compresses JavaScript Object Notation (JSON) code."
             ),
-            infoURL: // link for xml standard
-                "https://www.w3.org/TR/xml/"
+            infoURL: "https://www.json.org/json-en.html",
         }
     }
     getOperations(): Operation[] {

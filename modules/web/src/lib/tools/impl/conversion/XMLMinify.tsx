@@ -44,7 +44,6 @@ class XMLMinify extends Operation {
 
     this.name = "XML Minify";
     this.module = "Code";
-    this.description = "Compresses eXtensible Markup Language (XML) code.";
     this.inputType = "string";
     this.outputType = "string";
     this.args = [
@@ -54,6 +53,21 @@ class XMLMinify extends Operation {
         value: false,
       },
     ];
+
+    this.id = 'xml-minify';
+    this.name = Dot("yMZW-GEgf", "Format XML");
+    this.description = Dot(
+      "xml-bdeautify.desc.2a5f9",
+      "Minify XML Code"
+    );
+    this.exampleOutput = `<unformatted>    <data>        <item1>value1</item1><item2>value2</item2>    </data></unformatted>`;
+    this.exampleInput = `<?xml version="1.0" encoding="UTF-8"?>
+<unformatted>
+    <data>
+        <item1>value1</item1>
+        <item2>value2</item2>
+    </data>
+</unformatted>`;
   }
 
   /**

@@ -44,7 +44,6 @@ class CSSMinify extends Operation {
 
     this.name = "CSS Minify";
     this.module = "Code";
-    this.description = "Compresses Cascading Style Sheets (CSS) code.";
     this.inputType = "string";
     this.outputType = "string";
     this.args = [
@@ -54,6 +53,18 @@ class CSSMinify extends Operation {
         value: false,
       },
     ];
+
+
+
+    this.id = 'cssminify'
+    this.name = Dot("-nL_B5PoN", "Compresses {0}", "CSS");
+    this.description = Dot(
+      "Y__Zb1_4Q",
+      "Minifies Cascading Style Sheets (CSS) code, removing all unnecessary characters."
+    );
+    this.exampleOutput = "body{color:#fff;}"
+    this.exampleInput = "body {\n\tcolor: #fff;\n}";
+
   }
 
   /**
