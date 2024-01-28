@@ -266,6 +266,7 @@ export default (): ToolCategory[] => {
           Icon: "percentage",
           ChildrenIdSet: [
             "JSONMinify",
+            "JavaScriptMinify",
             "XMLMinify",
             "SQLMinify",
             "CSSMinify",
