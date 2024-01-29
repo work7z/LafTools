@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Read port value from properties file
 port=$(grep 'port' ./config/startup.properties | cut -d'=' -f2)
 
