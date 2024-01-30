@@ -4,7 +4,7 @@ let sh = require("shelljs");
 let _ = require("lodash");
 var cnchars = require("cn-chars");
 let os = require("os");
-
+var { searchItems, baseDIR } = require("./get-scan-items");
 var md5 = require("md5");
 const { exit } = require("process");
 let i18njson = require("../../../resources/public/purejs/app-i18n.json");
@@ -13,28 +13,6 @@ console.log("i18njson", i18njson);
 // cross platform watch file
 let chokidar = require("chokidar");
 
-function convertUnixPathToWindowsPath(v) {
-  v = path.normalize(v);
-  return v;
-}
-
-function sub_exp(idx) {
-  return "((?<![\\\\])['\"`])((?:.(?!(?<![\\\\])\\1))*.?)\\" + idx;
-}
-
-let commonText = new RegExp(
-  "Dot\\s*\\(\\s*" + sub_exp(1) + "\\s*,\\s*" + sub_exp(3),
-);
-
-// get env LAFTOOLS_ROOT
-let baseDIR = path.join(__dirname, "..", "..", "..");
-if (baseDIR == "") {
-  console.log("LAFTOOLS_ROOT could not be empty");
-  exit(-1);
-} else {
-  console.log("LAFTOOLS: ", baseDIR);
-  // exit(99)
-}
 // sleep
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -60,9 +38,6 @@ function getFile(file) {
 }
 let overwrittenDir = path.join(baseDIR, ...`dev/lang/overwrriten`.split("/"));
 
-let webDIR = path.join(baseDIR, ...`modules/web`.split("/"));
-let nodeDIR = path.join(baseDIR, ...`modules/node`.split("/"));
-
 let loadingDOTMapObj = {
   // [key:string]: boolean
   /**
@@ -73,78 +48,6 @@ let loadingDOTMapObj = {
    }
    */
 };
-
-// personal project for RYAN LAI, just ignore it please
-let privateProjects = [
-  {
-    id: "srv2",
-    type: "go",
-    prefix: ".Dot(",
-    target: `/home/jerrylai/mincontent/PersonalProjects/laftools-server2/resources/lang`,
-    pattern: commonText,
-    dir: `/home/jerrylai/mincontent/PersonalProjects/laftools-server2/core`,
-  },
-  {
-    type: "ts",
-    id: "denote-pal-2",
-    prefix: "Dot(",
-    pattern: commonText,
-    target:
-      "/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/resources/lang2",
-    dir: "/Users/jerrylai/Documents/PersonalProjects/denote-be/pal/work7z/src/main/java/com",
-  },
-  {
-    id: "portal-l",
-    type: "ts",
-    prefix: "Dot(",
-    pattern: commonText,
-    target:
-      "/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal2/public/static/lang",
-    dir: "/Users/jerrylai/mincontent/PersonalProjects/codegen-portal/portal2/src",
-  },
-];
-
-let webItem = {
-  id: "bprl",
-  type: "ts",
-  prefix: "Dot(",
-  pattern: commonText,
-  target: `${webDIR}/public/static/lang`,
-  dir: `${webDIR}/src`,
-};
-
-let searchItems = [
-  {
-    id: "brl",
-    type: "go",
-    prefix: ".Dot(",
-    target: `${baseDIR}/resources/lang`,
-    pattern: commonText,
-    dir: `${baseDIR}/core`,
-  },
-  webItem,
-  {
-    type: "ts",
-    id: "portal-sl",
-    prefix: "Dot(",
-    pattern: commonText,
-    target: `${nodeDIR}/src/lang`,
-    dir: `${nodeDIR}/src`,
-  },
-  {
-    type: "ts",
-    id: "purejs",
-    prefix: "Dot(",
-    pattern: commonText,
-    target: baseDIR + "/modules/purejs/src/lang",
-    dir: baseDIR + "/modules/purejs/src",
-  },
-  ...privateProjects,
-].map((x) => {
-  x.dir = convertUnixPathToWindowsPath(x.dir);
-  x.target = convertUnixPathToWindowsPath(x.target);
-  return x;
-});
 
 let langarr = [];
 
@@ -285,7 +188,6 @@ let processWithArg = async ({
     console.log("------------------------------");
   }
 };
-// console.log ('searchItems', searchItems);
 
 if (true) {
 }
