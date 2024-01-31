@@ -24,9 +24,14 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.tsx";
-import { toHex, TO_HEX_DELIM_OPTIONS } from "../lib/Hex.mjs";
-import Utils from "../Utils.mjs";
+import { toHex, TO_HEX_DELIM_OPTIONS } from "../../../core/lib/Hex.mjs";
+
+import Operation from "../../../core/Operation.tsx";
+import OperationError from "../../../core/errors/OperationError.mjs";
+import Utils from "../../../core/Utils.mjs";
+import { alphabetName, ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";
+import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 
 /**
  * To Hex operation
@@ -96,12 +101,12 @@ class ToHex extends Operation {
       delim = Utils.charRep(args[0] || "Space");
     }
 
-    const lineSize = args[1],
+    const lineSize: any = args[1],
       len = delim.length + commaLen;
 
-    const countLF = function (p) {
+    const countLF = function (p: number) {
       // Count the number of LFs from 0 upto p
-      return ((p / lineSize) | 0) - (p >= lineSize && p % lineSize === 0);
+      return ((p / lineSize) | 0) - (p as any >= lineSize as any && p % lineSize === 0);
     };
 
     pos[0].start = pos[0].start * (2 + len) + countLF(pos[0].start);
@@ -142,7 +147,7 @@ class ToHex extends Operation {
     const countLF = function (p) {
       // Count the number of LFs from 0 up to p
       const lineLength = width * lineSize;
-      return ((p / lineLength) | 0) - (p >= lineLength && p % lineLength === 0);
+      return ((p / lineLength) | 0) - (p >= lineLength as any && p % lineLength === 0);
     };
 
     pos[0].start =

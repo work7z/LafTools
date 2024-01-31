@@ -24,10 +24,14 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.tsx";
-import Utils from "../Utils.mjs";
-import OperationError from "../errors/OperationError.mjs";
-import { ENCODING_SCHEME, ENCODING_LOOKUP, FORMAT } from "../lib/BCD.mjs";
+import Operation from "../../../core/Operation.tsx";
+import Utils from "../../../core/Utils.mjs";
+import OperationError from "../../../core/errors/OperationError.mjs";
+import {
+  ENCODING_SCHEME,
+  ENCODING_LOOKUP,
+  FORMAT,
+} from "../../../core/lib/BCD.mjs";
 import BigNumber from "bignumber.js";
 
 /**

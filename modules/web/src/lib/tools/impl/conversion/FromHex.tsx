@@ -24,9 +24,14 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.tsx";
-import { fromHex, FROM_HEX_DELIM_OPTIONS } from "../lib/Hex.mjs";
-import Utils from "../Utils.mjs";
+import { fromHex, FROM_HEX_DELIM_OPTIONS } from "../../../core/lib/Hex.mjs";
+
+import Operation from "../../../core/Operation.tsx";
+import OperationError from "../../../core/errors/OperationError.mjs";
+import Utils from "../../../core/Utils.mjs";
+import { alphabetName, ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";
+import { Dot } from "../../../../utils/TranslationUtils";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 
 /**
  * From Hex operation
@@ -41,10 +46,16 @@ class FromHex extends Operation {
     this.name = "From Hex";
     this.module = "Default";
     this.description =
-      "Converts a hexadecimal byte string back into its raw value.<br><br>e.g. <code>ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a</code> becomes the UTF-8 encoded string <code>Γειά σου</code>";
+      Dot("gms7_9n5v", "Converts a hexadecimal byte string back into its raw value.");
     this.infoURL = "https://wikipedia.org/wiki/Hexadecimal";
     this.inputType = "string";
     this.outputType = "byteArray";
+
+
+    this.exampleInput = 'ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a'
+    this.exampleOutput = 'Γειά σου'
+
+
     this.args = [
       {
         name: "Delimiter",

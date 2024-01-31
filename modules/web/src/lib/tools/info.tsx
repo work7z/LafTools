@@ -105,9 +105,11 @@ let appToolInfoObj: {
     "SQLMinify": passInfo({
         LabelFn: () => Dot("1Xe82x7", "{0} Minify", "SQL")
     }),
-
     "JavaScriptMinify": passInfo({
         LabelFn: () => Dot("UVvJp-vtF", "{0} Minify", "JavaScript")
+    }),
+    hex: passInfo({
+        LabelFn: () => Dot("1Xe8wx7", "Hex String")
     }),
     // Example
     "Example": passInfo({
