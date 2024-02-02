@@ -5,6 +5,7 @@
     "Minify-Basics-001": "Wat is de betekenis van het verkleinen van code of bestanden?",
     "Minify-CLI-Usage-009": "De meeste van deze tools hebben zowel opdrachtregelinterfaces (CLI) als API's waarmee ontwikkelaars het minificatieproces tijdens de ontwikkeling en implementatie kunnen automatiseren.",
     "Minify-Def-002": "Minificatie is het proces waarbij de omvang van code (HTML, CSS, JavaScript, enz.) wordt verkleind door onnodige tekens zoals spaties, opmerkingen en regeleinden te verwijderen zonder de functionaliteit ervan te beïnvloeden.",
+    "Minify-Example-007k": "{0} kan bijvoorbeeld na verkleining {1} worden.",
     "Minify-How-Works-004": "Hoe werkt codeminificatie?",
     "Minify-Process-005": "Minifiers gebruiken algoritmen om de structuur van de broncode te analyseren, overbodige elementen te elimineren en waar mogelijk de namen van variabelen in te korten. Dit resulteert in een kleinere bestandsgrootte terwijl het oorspronkelijke gedrag van de code behouden blijft.",
     "Minify-Purpose-003": "Het primaire doel van minificatie is het verbeteren van de websiteprestaties en het verkorten van de laadtijden van pagina's door de hoeveelheid gegevens te verminderen die tussen server en client moet worden overgedragen.",

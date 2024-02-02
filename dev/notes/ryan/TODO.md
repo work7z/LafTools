@@ -25,6 +25,8 @@
 [] for each dynamic script, we should also load their i18n separately. related files: 1) Translation.go, 2) scan-entry.js
 [] add a google statisic script
 [] write a good code reader, with TODO viewer, planning, GitHub Page, etc...
+[] scroll menu, we should follow style like vscode, looks like a stackked parent folders(so cool!)
+[] we should provide a optional config for user to hide the text in sidebar when needed(some users complain this, let me do it quickly...)
 
 # desktop
 
