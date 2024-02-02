@@ -183,8 +183,24 @@ Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** i
 
 Thank you.
 
-Mar. 20th, 2021  
 Ryan Laf
+Mar. 20th, 2021
+
+# 🙏 Acknowledgements
+
+This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+
+1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
+1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
+1. [Lodash](https://github.com/lodash/lodash) - A modern JavaScript utility library delivering modularity, performance, & extras.
+1. [one-api](https://github.com/songquanpeng/one-api) - a OpenAI key management & redistribution system.
+
+There are other numerous open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without their contributions, LafTools would not have been possible, I sincerely appreciate their efforts.
+
+THANK YOU!
+
+Ryan Laf
+Feb. 2nd, 2023
 
 # 🪪 License
 
