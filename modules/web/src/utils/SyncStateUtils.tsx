@@ -107,7 +107,7 @@ let SyncStateUtils = {
     };
     let usingSyncLocationParam = def && !_.isNil(def.SyncLocationOnParameter)
     let replaceState: any = null;
-    if (usingSyncLocationParam) {
+    if (usingSyncLocationParam) { 
       // TODO: write the code to retrieve the state from url parameters
       replaceState = null;
       if (ALL_NOCYCLE.history && def.SyncLocationOnParameter) {
@@ -191,9 +191,11 @@ let SyncStateUtils = {
               if (ALL_NOCYCLE.history) {
                 let p = ALL_NOCYCLE.history.location
                 // let newPathname = p.pathname + "?v=" + ("" + Date.now()).substring(7) + "&" + Qs.stringify((
-                let newPathname = p.pathname + "?" + "" + Qs.stringify((
+                let prevObj = Qs.parse(p.search.replace("?", "")) || {};
+                // let newPathname = p.pathname +"?v=" + ("" + (prevObj.v||1)+1).substring(7) + "&" + Qs.stringify((
+                  let newPathname = p.pathname +"?v=" + ("" + (prevObj.v||1)+1).substring(7) + "&" + Qs.stringify((
                   _.pickBy({
-                    ...Qs.parse(p.search.replace("?", "")) || {},
+                    ...prevObj,
                     [def.SyncLocationOnParameter]: btoaUTF8((JSON.stringify({
                       ...newState,
                     }))),
@@ -214,7 +216,7 @@ let SyncStateUtils = {
               }
             }
           },
-          800
+          5
         );
       });
     }
