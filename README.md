@@ -181,9 +181,9 @@ This project is primarily inspired by the following musicians:
 
 Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
 
-Thank you.
+Thank you!
 
-Ryan Laf
+Ryan Laf   
 Mar. 20th, 2021
 
 # 🙏 Acknowledgements
@@ -197,9 +197,9 @@ This project would not have been possible without awesome open source projects w
 
 For sure, there are other numerous open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects, LafTools would not be possible, I sincerely appreciate their efforts.
 
-THANK YOU!
+Thank you!
 
-Ryan Laf
+Ryan Laf   
 Feb. 2nd, 2023
 
 # 🪪 License
