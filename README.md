@@ -195,7 +195,7 @@ This project would not have been possible without awesome open source projects w
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other numerous open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects, LafTools would not be possible, I sincerely appreciate their efforts.
+For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
 
 Thank you!
 

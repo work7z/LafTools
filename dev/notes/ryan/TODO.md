@@ -21,6 +21,7 @@
 [x] move purejs to web project as we can use code split to avoid a huge bundle size  
 [] add a TODO viewer that can show current project
 [x] for settings in process panel, we can just spread it out as a horizontal items, user can scroll them from left to right
+[] add one-api into this project, but for this moment, I'd like to develop ELB3.
 [] add nature sound and white noise in this app, that sounds great, like freemind
 [] for each dynamic script, we should also load their i18n separately. related files: 1) Translation.go, 2) scan-entry.js
 [] add a google statisic script
