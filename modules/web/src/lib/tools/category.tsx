@@ -56,7 +56,8 @@ export default (): ToolCategory[] => {
             "edc_base62",
             "edc_base64",
             "edc_base85",
-            "hex"
+            "hex",
+            "bcd"
             // "edc_url",
             // "edc_hex",
             // "edc_unicode",

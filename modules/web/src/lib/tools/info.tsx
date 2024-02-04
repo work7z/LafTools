@@ -45,6 +45,9 @@ let passInfo = (obj: AppInfoType): AppInfoType => {
 let appToolInfoObj: {
     [key: string]: AppInfoType
 } = {
+    "bcd": passInfo({
+        LabelFn: () => Dot("1Xe8x7qe", "BCD")
+    }),
     "edc_base64": passInfo({
         LabelFn: () => Dot("gkC8t", "Base64")
     }),
