@@ -69,6 +69,7 @@ class ToBase85 extends Operation {
             "Base85"
         );
         this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
+
         this.exampleOutput = "87cURD]i,\"Ebo80";
 
     }

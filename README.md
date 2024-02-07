@@ -28,13 +28,12 @@ Have you ever met the below issues while using those online tools?
 
 If the answer to any of the above is yes, then you should consider trying our toolbox. It offers the following features:
 
-- Fully open-source code with no malicious logic
-- Lightweight runtime (requires only 6MB of RAM)
-- Full platform support (including ARMv8)
-- Native AI support (similar to ChatGPT)
-- Highly integrated with a productive UI
-- Continuous addition of new tools in the future
-- Can be used over the web and with Docker
+- FOSS Forever
+- Lightweight Runtime   
+- Full platform support(including ARMv8) 
+- Full GPT-alike support
+- Highly integrated with productive UI 
+- Available Docker Images and Portable Edition
 - Extra helpers such as notes, manuals, etc...
 
 # 🌠 Preview

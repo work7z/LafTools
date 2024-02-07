@@ -24,6 +24,7 @@
  * @license Apache-2.0
  */
 
+import { Dot } from "../../../../utils/TranslationUtils.tsx";
 import Operation from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
@@ -46,8 +47,7 @@ class ToBCD extends Operation {
 
     this.name = "To BCD";
     this.module = "Default";
-    this.description =
-      "Binary-Coded Decimal (BCD) is a class of binary encodings of decimal numbers where each decimal digit is represented by a fixed number of bits, usually four or eight. Special bit patterns are sometimes used for a sign";
+    // this.description =;
     this.infoURL = "https://wikipedia.org/wiki/Binary-coded_decimal";
     this.inputType = "BigNumber";
     this.outputType = "string";
@@ -73,6 +73,10 @@ class ToBCD extends Operation {
         value: FORMAT,
       },
     ];
+
+    this.description = Dot("98KcL","Converts a decimal number to Binary-Coded Decimal (BCD).");
+    this.exampleInput="1234";
+    this.exampleOutput = "0001 0010 0011 0100";
   }
 
   /**
@@ -85,7 +89,7 @@ class ToBCD extends Operation {
     if (!input.integerValue(BigNumber.ROUND_DOWN).isEqualTo(input))
       throw new OperationError("Fractional values are not supported by BCD");
 
-    const encoding = ENCODING_LOOKUP[args[0]],
+    const encoding:any = ENCODING_LOOKUP[args[0]],
       packed = args[1],
       signed = args[2],
       outputFormat = args[3];
@@ -97,7 +101,7 @@ class ToBCD extends Operation {
       digits.shift();
     }
 
-    let nibbles = [];
+    let nibbles:any = [];
 
     digits.forEach((d) => {
       const n = parseInt(d, 10);
@@ -117,7 +121,7 @@ class ToBCD extends Operation {
       // 13 ("D") for - (debit)
     }
 
-    let bytes = [];
+    let bytes:any = [];
 
     if (packed) {
       let encoded = 0,

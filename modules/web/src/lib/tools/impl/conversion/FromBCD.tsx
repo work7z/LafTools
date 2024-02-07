@@ -24,6 +24,7 @@
  * @license Apache-2.0
  */
 
+import { Dot } from "../../../../utils/TranslationUtils.tsx";
 import Operation from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
@@ -46,9 +47,7 @@ class FromBCD extends Operation {
 
     this.name = "From BCD";
     this.module = "Default";
-    this.description =
-      "Binary-Coded Decimal (BCD) is a class of binary encodings of decimal numbers where each decimal digit is represented by a fixed number of bits, usually four or eight. Special bit patterns are sometimes used for a sign.";
-    this.infoURL = "https://wikipedia.org/wiki/Binary-coded_decimal";
+    this.description =Dot("0YKce","Converts a Binary-Coded Decimal (BCD) string to a decimal number.")
     this.inputType = "string";
     this.outputType = "BigNumber";
     this.args = [
@@ -80,6 +79,8 @@ class FromBCD extends Operation {
         args: ["8 4 2 1", true, false, "Nibbles"],
       },
     ];
+    this.exampleInput = "0001 0010 0011 0100";
+    this.exampleOutput = "1234";
   }
 
   /**
@@ -92,7 +93,7 @@ class FromBCD extends Operation {
       packed = args[1],
       signed = args[2],
       inputFormat = args[3],
-      nibbles = [];
+      nibbles:any = [];
 
     let output = "",
       byteArray;

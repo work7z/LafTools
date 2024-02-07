@@ -29,6 +29,10 @@
 [] scroll menu, we should follow style like vscode, looks like a stackked parent folders(so cool!)
 [] we should provide a optional config for user to hide the text in sidebar when needed(some users complain this, let me do it quickly...)
 
+# system design 
+[] using Next.js and sqlite3 to refactor LafTools
+
+
 # desktop
 
 [] provide desktop version(tarui should be an ideal solution)
