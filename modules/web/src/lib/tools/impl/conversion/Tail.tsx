@@ -24,9 +24,9 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.tsx";
-import Utils from "../Utils.mjs";
-import { INPUT_DELIM_OPTIONS } from "../lib/Delim.mjs";
+import Operation from "../../../core/Operation.tsx";
+import Utils from "../../../core/Utils.mjs";
+import { INPUT_DELIM_OPTIONS } from "../../../core/lib/Delim.mjs";
 
 /**
  * Tail operation
