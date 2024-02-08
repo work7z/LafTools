@@ -110,10 +110,6 @@ let RouteComponent = () => {
       if(hist.location.pathname.indexOf(URL_LOGIN)!=-1){
         hist.push(URL_WORKBENCH)
       }
-        // if(hist.location.pathname.indexOf(vars.URL_LOGIN)){
-        //   hist.push(URL_WORKBENCH)
-        // }
-
     }
   }, [queryAuthStatus.isFetching,isUserSignInNow])
 
@@ -129,8 +125,6 @@ let RouteComponent = () => {
         ></Route>
         <Route path={URL_WORKBENCH} exact component={FixedWorkBenchList}></Route>
         <Route path={URL_WORKBENCH_WORKSPACE+"/:workspaceId"} component={FixedWorkBench}></Route>
-        {/* <Route path={URL_WORKBENCH_WORKSPACE+"/:workspaceId"} component={FixedWorkBench}></Route> */}
-        
         <Route path={URL_ENTRY} component={Entry}></Route>
         <Route path={URL_REDIRECT} component={RedirectPage}></Route>
         <Redirect path="*" to={URL_REDIRECT}></Redirect>
