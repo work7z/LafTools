@@ -1,0 +1,1 @@
+export let COMMON_CLZ_ANCHOR_TEXT = 'text-gray-500 text-sm hover:underline'
