@@ -29,10 +29,10 @@ Have you ever met the below issues while using those online tools?
 If the answer to any of the above is yes, then you should consider trying our toolbox. It offers the following features:
 
 - FOSS Forever
-- Lightweight Runtime   
-- Full platform support(including ARMv8) 
+- Lightweight Runtime
+- Full platform support(including ARMv8)
 - Full GPT-alike support
-- Highly integrated with productive UI 
+- Highly integrated with productive UI
 - Available Docker Images and Portable Edition
 - Extra helpers such as notes, manuals, etc...
 
@@ -159,6 +159,7 @@ This project is primarily inspired by the following musicians:
 
 - Joe Pass
 - The Manhattan Transfer
+- Laura Shigihara
 - Asleep at the Wheel
 - Khalil Fong
 - Li Rong Hao
