@@ -23,10 +23,10 @@ export default () => {
         <CardPanel children={<div className='p-2'>
             <h1 className='text-lg font-semibold'>{Dot("Wpdsp3g5U", "Welcome to {0} Community!", "ELB3")}</h1>
             <div className='text-sm'>
-                <p dangerouslySetInnerHTML={{
+                <div dangerouslySetInnerHTML={{
                     __html: Dot("IcvP2d-QY", "Please {0} or {1} to join the discussion", `<a href='/login' class='anchor-text'>${Dot("CQ44pYZYj", "login")}</a>`, `<a class='anchor-text' href='/register' >${Dot("DYaOL4Yp7", "register")}</a>`)
                 }}>
-                </p>
+                </div>
             </div>
         </div>}>
         </CardPanel>
@@ -36,7 +36,6 @@ export default () => {
             <WeekDay></WeekDay>
         </div>}>
         </CardPanel>
-
 
         <LanguagePicker></LanguagePicker>
     </div>

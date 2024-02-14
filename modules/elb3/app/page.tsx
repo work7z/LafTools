@@ -14,18 +14,20 @@ import InnerHome from './home'
 import { usePathname } from 'next/navigation';
 import React, { } from "react";
 import { PageProps } from './__CORE__/types/pages'
+import getAuthInfo, { AuthInfo } from "./__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
 
 type SearchParamType = Partial<{
     tabs: string
 }>
 
+export type AuthInfoProps = {} & { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<{}, SearchParamType>
 
-export default function Home(props: { searchParams: SearchParamType }) {
+export default async function Home(props: { searchParams: SearchParamType }) {
     let { searchParams } = props
     let combindSearchProps: CombindSearchProps = {
         params: {},
-        searchParams
+        searchParams,
     }
     return <InnerHome combindSearchProps={combindSearchProps}></InnerHome>
 }

@@ -12,7 +12,9 @@ export default (props: { children?: any, }) => {
                 <span className="sr-only">Loading...</span>
             </div>
         </div>
-        {/* {props.children} */}
+        <div className="hover:cursor-not-allowed">
+            {props.children}
+        </div>
     </div>
     return <div>{props.children}</div>
 }

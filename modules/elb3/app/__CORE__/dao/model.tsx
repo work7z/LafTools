@@ -1,32 +1,59 @@
-import { Sequelize, DataTypes, Model, InferCreationAttributes, InferAttributes, CreationOptional } from 'sequelize';
-import { SystemConfig as SystemConfig } from "../../../../../config/types"
+import {
+    Sequelize, DataTypes, Model, InferCreationAttributes, InferAttributes, CreationOptional
+} from 'sequelize';
 import { DaoRef } from './index'
+import { isDevEnv } from '../hooks/env';
 
 export type UserRole = "webmaster" | "moderator" | "user"
 
-
-export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
+export class SMSCodeRecord extends Model<InferAttributes<SMSCodeRecord>, InferCreationAttributes<SMSCodeRecord>> {
     declare id: number;
-    declare uid: number; // member uid
-    declare username: string;
-    declare email: string;
+    declare userAcctId: string;
     declare phoneNumber: string;
-    declare source: string;
-    declare password: string;
-    declare role: UserRole;
-    declare avatarPath: string;
-    declare status: "normal" | "banned" | "deleted";
-    declare topicCount: number; // the number of topics that's sent by this user up to now
-    declare banReason: string | null; // the reason why this user is banned
-    declare banUntil: Date | null;
-    // settings
-    declare cityId: string; // city id, from fixed static data in node.js
-    declare goal: string; // goal, from fixed static data in node.js
-
-    // timestamps
+    declare code: string;
+    declare dateValue: string;
     declare createdAt: CreationOptional<Date> | null;
     declare updatedAt: CreationOptional<Date> | null;
     declare deleteAt: CreationOptional<Date> | null;
+}
+
+export class InvitationCode extends Model<InferAttributes<InvitationCode>, InferCreationAttributes<InvitationCode>> {
+    declare id: number | null;
+    declare code: string;
+    declare maxUseCount: number;
+    declare useCount: number;
+    declare expiredAt: Date;
+    declare createdAt: CreationOptional<Date> | null;
+    declare updatedAt: CreationOptional<Date> | null;
+    declare deleteAt: CreationOptional<Date> | null;
+}
+
+export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
+    declare id: number | null;
+    declare userAcctId: string; // unique text id, can not be changed
+    declare username?: string; // can be changed at any time, can be duplicate
+    declare uid?: number | null;
+    declare invitationCode: string;
+    declare phoneNumber: string;
+    declare vcode?: string;
+    declare email?: string;
+    declare source?: string;
+    declare password: string;
+    declare role: UserRole;
+    declare avatarPath?: string;
+    declare status: "newly-created" | "normal" | "banned" | "deleted";
+    declare topicCount: number; // the number of topics that's sent by this user up to now
+    declare replyCount: number;
+    declare banReason?: string | null; // the reason why this user is banned
+    declare banUntil?: Date | null;
+    // settings
+    declare cityId?: string; // city id, from fixed static data in node.js
+    declare goal?: string; // goal, from fixed static data in node.js
+
+    // timestamps
+    declare createdAt?: CreationOptional<Date> | null;
+    declare updatedAt?: CreationOptional<Date> | null;
+    declare deleteAt?: CreationOptional<Date> | null;
 }
 
 // model for UserToken
@@ -61,7 +88,7 @@ export class Block extends Model<InferAttributes<Block>, InferCreationAttributes
 export class Topic extends Model<InferAttributes<Topic>, InferCreationAttributes<Topic>> {
     declare id: number;
     declare title: string; // varchar(120)
-    declare userId: number;
+    declare userId: string;
     declare nodeId: string; // varchar(15)
     declare viewCount: number;
     declare favouriteCount: number;
@@ -146,37 +173,91 @@ export class ChatGroupHistory extends Model<InferAttributes<ChatGroupHistory>, I
 
 
 
-export default (daoRef: DaoRef) => {
+export default async (daoRef: DaoRef) => {
     let sequelize = daoRef.db
     // options
     sequelize.sync({ alter: true })
     // init model
-    User.init({
+    InvitationCode.init({
+        useCount: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        maxUseCount: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        expiredAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrementIdentity: true,
         },
-        uid: {
+        code: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deleteAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        }
+    }, {
+        sequelize,
+        paranoid: true,
+        modelName: "InvitationCode",
+        tableName: "invitation_code"
+    })
+    User.init({
+        replyCount: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        vcode: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        userAcctId: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+            autoIncrementIdentity: true,
+        },
+        uid: { // meaning user unique id. if it's null, then it's not an activated account.
             type: DataTypes.INTEGER,
             allowNull: true,
-            unique: true
+            // unique: true
         },
         username: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         phoneNumber: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         source: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
         },
         password: {
             type: DataTypes.STRING,
@@ -186,9 +267,13 @@ export default (daoRef: DaoRef) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        invitationCode: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         avatarPath: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         status: {
             type: DataTypes.STRING,
@@ -208,11 +293,11 @@ export default (daoRef: DaoRef) => {
         },
         cityId: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         goal: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -228,6 +313,7 @@ export default (daoRef: DaoRef) => {
         }
     }, {
         sequelize,
+        paranoid: true,
         modelName: "User",
         tableName: "user"
     })
@@ -259,6 +345,7 @@ export default (daoRef: DaoRef) => {
         }
     }, {
         sequelize,
+        paranoid: true,
         modelName: "UserToken",
         tableName: "user_token"
     })
@@ -282,6 +369,7 @@ export default (daoRef: DaoRef) => {
         }
     }, {
         sequelize,
+        paranoid: true,
         modelName: "UserLoginLog",
         tableName: "user_login_log"
     })
@@ -313,6 +401,7 @@ export default (daoRef: DaoRef) => {
         }
     }, {
         sequelize,
+        paranoid: true,
         modelName: "Block",
         tableName: "block"
     })
@@ -364,6 +453,7 @@ export default (daoRef: DaoRef) => {
         }
     }, {
         sequelize,
+        paranoid: true,
         modelName: "Topic",
         tableName: "topic"
     })
@@ -407,6 +497,7 @@ export default (daoRef: DaoRef) => {
         }
     }, {
         sequelize,
+        paranoid: true,
         modelName: "TopicContent",
         tableName: "topic_content"
     })
@@ -454,6 +545,7 @@ export default (daoRef: DaoRef) => {
         }
     }, {
         sequelize,
+        paranoid: true,
         modelName: "TopicComment",
         tableName: "topic_comment"
     })
@@ -489,7 +581,60 @@ export default (daoRef: DaoRef) => {
         }
     }, {
         sequelize,
+        paranoid: true,
         modelName: "Audit",
         tableName: "audit"
     })
+
+    SMSCodeRecord.init({
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        userAcctId: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        phoneNumber: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        code: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        dateValue: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deleteAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        }
+    }, {
+        sequelize,
+        paranoid: true,
+        modelName: "SMSCodeRecord",
+        tableName: "sms_code_record"
+    })
+
+    // setup dev env
+    if (isDevEnv()) {
+        let a = await InvitationCode.create({
+            code: "test100",
+            useCount: 0,
+            maxUseCount: 500,
+            expiredAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30) // expired after 30 days
+        },)
+        console.log('test invitation code', a.toJSON())
+    }
 }

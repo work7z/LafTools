@@ -1,4 +1,4 @@
-import { CombindSearchProps } from "./page"
+import { AuthInfoProps, CombindSearchProps } from "./page"
 import Image from "next/image";
 import type { Metadata, ResolvingMetadata } from "next";
 import Head from 'next/head'
@@ -30,13 +30,11 @@ export default (props: {
     let clzForUserLabel = "hover:underline  font-medium dark:text-slate-400"
 
     let activeTabs = searchParams.tabs
-    return <GrailLayoutWithUser combindSearchProps={combindSearchProps}>
-        <CardPanel className={''} style={{
+    return <GrailLayoutWithUser combindSearchProps={combindSearchProps} jsx_main={(p: AuthInfoProps) => {
+        return <CardPanel className={''} style={{
             flex: '1'
         }}>
-
             <NodeHorizontalBar activeId={activeTabs}></NodeHorizontalBar>
-
             <div className="px-4 py-3 flex justify-between items-center bg-gray-100 dark:bg-solarized-base03 dark:text-white  min-h-8 border-slate-200  dark:border-solarized-base02Light1  shadow-inner border-t border-b" >
                 <div className="space-x-4">
                     {
@@ -50,7 +48,7 @@ export default (props: {
                 {
                     /** write a topic list, with example value */
                     // _.fill(Array(10), 1).map((x, d) => {
-                    _.fill(Array(10), 1).map((x, d) => {
+                    _.fill(Array(0), 1).map((x, d) => {
                         let tLink = "/t/" + d
                         return <div className=" p-3 py-3 flex border-slate-100 border-b dark:border-solarized-base03 ">
                             <div className={" rounded flex text-2xl mr-1  font-semibold text-slate-700 items-center justify-center w-14 h-14  "}>
@@ -97,6 +95,6 @@ export default (props: {
                 }
             </div>
         </CardPanel>
-    </GrailLayoutWithUser>
+    }} />
 }
 

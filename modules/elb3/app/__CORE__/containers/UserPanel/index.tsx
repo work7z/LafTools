@@ -3,9 +3,13 @@ import RegularLink from "@/app/__CORE__/components/RegularLink"
 import { MoonIcon, Cog8ToothIcon, SunIcon } from '@heroicons/react/24/solid'
 
 import { Dot } from "@/app/__CORE__/utils/TranslationUtils"
-import { CombindSearchProps } from "../../../page"
+import { AuthInfoProps, CombindSearchProps } from "../../../page"
 import MoonSunControl from "./MoonSunControl"
 import _ from 'lodash'
+import VisiterGuideInfoPanel from "../VisiterGuideInfoPanel"
+import { fn_get_user_avatar } from "@/app/register/user-types"
+import CardPanel from "../../components/CardPanel"
+import { fn_getCardPanelForTelephoneFAQ } from "@/app/register/page"
 
 
 let EachInfoCell = (props: { href?: string, className?: string, name: string, content: any }) => {
@@ -15,50 +19,70 @@ let EachInfoCell = (props: { href?: string, className?: string, name: string, co
     </a>
 }
 
-export default (props: CombindSearchProps) => {
+export default (props: CombindSearchProps & AuthInfoProps) => {
     let notificationCtn = 0;
     let borderStyleClz = "  border-gray-200 dark:border-solarized-base02Light1  "
     let eachInfoCellClz = borderStyleClz + " border-r-[1px]"
-    return <div className="p-2">
-        <div className="flex ">
-            <img src={"/avatar/" + _.random(1, 100) + ".png"} className="w-12 h-12 rounded bg-zinc-100  text-xl flex justify-center items-center text-gray font-bold ">
-            </img>
-            <div className="flex-shrink flex-1 ml-2">
-                <div>
-                    <a href="/" className="text-gray-800 dark:text-slate-300 hover:underline font-bold">Min</a>
+    let joinedDate = props.authInfo.user?.createdAt
+    let diffDays = Math.max(joinedDate ? Math.floor((new Date().getTime() - new Date(joinedDate).getTime()) / (1000 * 60 * 60 * 24)) : 0, 1)
+    if (!props.authInfo.signedIn) {
+        return <VisiterGuideInfoPanel ></VisiterGuideInfoPanel>
+    }
+    let innerUserJSX = (
+        <CardPanel>
+            <div className="p-2">
+                <div className="flex ">
+                    <img src={fn_get_user_avatar(props)} className="w-12 h-12 rounded bg-zinc-100  text-xl flex justify-center items-center text-gray font-bold ">
+                    </img>
+                    <div className="flex-shrink flex-1 ml-2">
+                        <div>
+                            <a href="/" className="text-gray-800 dark:text-slate-300 hover:underline font-bold">{props.authInfo.user?.userAcctId}</a>
+                        </div>
+                        <div className="text-sm text-gray-600 dark:text-slate-300 mt-[-1px]">{Dot("hxCMxpW6Sq", "Joined {0} days ago", diffDays)}</div>
+                    </div>
                 </div>
-                <div className="text-sm text-gray-600 dark:text-slate-300 mt-[-1px]">{Dot("hxCMxpW6Sq", "Joined {0} days ago", 530)}</div>
-            </div>
-        </div>
-        <hr className={"mt-2 " + borderStyleClz}></hr>
-        <div className="flex flex-row   justify-around">
-            <EachInfoCell className={eachInfoCellClz} name={Dot("BqWGnXEzV", "City")} content={
-                '广州'
-            } />
-            <EachInfoCell className={eachInfoCellClz} name={Dot("jdbef_PBl", "Goal")} content={
-                'PETS3'
-            } />
-            <EachInfoCell name={Dot("Y0drdCSiu", "Topics")} content={
-                30
-            } />
-        </div>
-        <hr className={" mb-2  " + borderStyleClz}></hr>
-        <div className='flex flex-row  justify-between items-center '>
-            <div className="flex">
-                <img src={notificationCtn != 0 ? "/controls/email.png" : "/controls/city.png"} className={"w-5 mr-2 " + (
-                    notificationCtn != 0 ? "" : " opacity-60 "
-                )}></img>
-                <RegularLink href={'/notifications'} children={<span className={(notificationCtn != 0 ? ' text-yellow-500 dark:text-yellow-400  ' : '') + COMMON_CLZ_ANCHOR_TEXT}>{Dot("2RbUh6TyJ", "{0} Unread Notifications", notificationCtn)}</span>}>
-                </RegularLink>
-            </div>
-            <div className="flex space-x-1">
-                <MoonSunControl></MoonSunControl>
-                <RegularLink href="/settings" children={(
-                    <Cog8ToothIcon className="h-5 w-5 text-zinc-400 dark:text-zinc-400 "></Cog8ToothIcon>
-                )}></RegularLink>
-            </div>
-        </div>
-
-    </div >
+                <hr className={"mt-2 " + borderStyleClz}></hr>
+                <div className="flex flex-row   justify-around">
+                    <EachInfoCell className={eachInfoCellClz} name={Dot("BqWGnXEzV", "City")} content={
+                        props.authInfo?.user?.cityId || '未知'
+                    } />
+                    <EachInfoCell className={eachInfoCellClz} name={Dot("jdbef_PBl", "Goal")} content={
+                        props.authInfo?.user?.goal || '未知'
+                    } />
+                    <EachInfoCell name={Dot("Y0drdCSiu", "Topics")} content={
+                        props.authInfo?.user?.topicCount || 0
+                    } />
+                </div>
+                <hr className={" mb-2  " + borderStyleClz}></hr>
+                <div className='flex flex-row  justify-between items-center '>
+                    <div className="flex">
+                        <img src={notificationCtn != 0 ? "/controls/email.png" : "/controls/city.png"} className={"w-5 mr-2 " + (
+                            notificationCtn != 0 ? "" : " opacity-60 "
+                        )}></img>
+                        <RegularLink href={'/notifications'} children={<span className={(notificationCtn != 0 ? ' text-yellow-500 dark:text-yellow-400  ' : '') + COMMON_CLZ_ANCHOR_TEXT}>{Dot("2RbUh6TyJ", "{0} Unread Notifications", notificationCtn)}</span>}>
+                        </RegularLink>
+                    </div>
+                    <div className="flex space-x-1">
+                        <MoonSunControl></MoonSunControl>
+                        <RegularLink href="/settings" children={(
+                            <Cog8ToothIcon className="h-5 w-5 text-zinc-400 dark:text-zinc-400 "></Cog8ToothIcon>
+                        )}></RegularLink>
+                    </div>
+                </div>
+            </div >
+        </CardPanel>
+    )
+    let innerNoticeJSX = props.authInfo.user?.status == 'newly-created' ? (
+        [
+            <CardPanel>
+                <a href='/activation' className="text-sm p-2 text-center anchor-text flex w-full justify-center py-2">{Dot("VndKeCfb-", "Verify Telephone to Activate Account")}</a>
+            </CardPanel>,
+            ...fn_getCardPanelForTelephoneFAQ(),
+        ]
+    ) : ''
+    return <div className="space-y-2">
+        {innerUserJSX}
+        {innerNoticeJSX}
+    </div>
 }
 

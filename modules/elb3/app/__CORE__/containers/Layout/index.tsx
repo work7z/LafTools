@@ -15,12 +15,10 @@ export default function RootLayout(props: {
     let { children } = props;
     return (
         <html lang={getWebsiteLocale()}>
-            <body className={'  dark:bg-solarized-base03 dark:text-slate-300    ' + inter.className}>
+            <body className={' min-h-screen dark:bg-solarized-base03 dark:text-slate-300    ' + inter.className}>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                     <div className="w-full h-full">
-                        <TopNav></TopNav>
-                        <CenterPart children={children as any} />
-                        <Footer></Footer>
+                        {children}
                     </div>
                 </ThemeProvider>
             </body>

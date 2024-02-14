@@ -1,6 +1,6 @@
 import { Dot } from "../../utils/TranslationUtils"
 
-export default (props: { errorMsg: string[] }) => {
+export default (props: { noVCode?: boolean, errorMsg: string[] }) => {
     if (props.errorMsg.length === 0) return ''
     return (
         <div className="mb-4 bg-red-50 border border-red-200 text-sm text-red-800 rounded-lg p-4 dark:bg-red-800/10 dark:border-red-900 dark:text-red-500" role="alert">
@@ -23,6 +23,13 @@ export default (props: { errorMsg: string[] }) => {
                             }
                         </ul>
                     </div>
+                    {
+                        props.noVCode ? '' : (
+                            <div className='text-xs mt-6'>
+                                {Dot("ZaS8MP8cr", "Note: The verification code is refreshed, please adjust your form values and re-input the code to continue with.")}
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         </div>

@@ -1,7 +1,8 @@
 import { Dot } from "@/app/__CORE__/utils/TranslationUtils";
+import { AuthInfoProps } from "@/app/page";
 import React from "react";
 
-export default () => {
+export default (props: AuthInfoProps) => {
     let linksArr: { name: string, href: string }[] = [
         { name: Dot("Cz_qjjFw7", "About {0}", "ELB3"), href: "/about" },
         { name: Dot("CK5NCw519", "Community Story", "ELB3"), href: "/about" },
@@ -16,8 +17,9 @@ export default () => {
                     return <a target={!link.href.startsWith("/") ? "_blank" : ''} key={i} href={link.href} className=" font-semibold text-slate-500  dark:text-slate-400">{link.name}</a>
                 })
             }
-            <span className="">{Dot("ky6JphiKk", "{0} Online Users", 3012)}</span>
-            <span>{Dot("gmK3pKyRI", "{0} Peak Online Count", 1293)}</span>
+            <span className="">{Dot("ky6JphiKk", "{0} Online Users", props.authInfo.systemInfo.userOnlineCount)}</span>
+            <span>{Dot("gmK3pKyRI", "{0} Peak Online Count", props.authInfo.systemInfo.peakOnlineCount)}</span>
+            <span>{Dot("nIDKbSXTw", "{0} Users", props.authInfo.systemInfo.userCount)}{''}</span>
         </div>
         <div className="text-xs text-slate-500 font-serif  dark:text-slate-400">
             ELB3.com is derived from <i>English Learning Base</i> group that was founded on August 1st, 2021.  It is technically built with the FOSS project <a href="https://github.com/work7z/elb3" rel='nofollow' target='_blank' className="text-slate-600">ELB3</a> which is licensed under AGPL v3.0.
