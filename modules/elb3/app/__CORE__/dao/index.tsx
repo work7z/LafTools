@@ -51,6 +51,7 @@ let loadDAO = async (): Promise<DaoRef> => {
         let sequelize = new Sequelize(`${link}`, {
             dialect: 'mysql',
             dialectModule: require('mysql2'),
+            timezone: '+08:00'
         });
 
         try {

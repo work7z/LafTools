@@ -33,6 +33,7 @@ export default (props: AuthInfoProps) => {
                 </span>
             </a>
             <a className="hover:underline" href="/report">{Dot("aISK9iYc_", "Illegal Information Report")}</a>
+            <a className="hover:underline" href="/chooseLanguage">{"Select Language"}</a>
         </div>
     </div>
 }

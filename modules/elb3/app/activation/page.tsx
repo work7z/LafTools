@@ -10,5 +10,5 @@ export default (props: {
     combindSearchProps: CombindSearchProps
 }) => {
     let { combindSearchProps } = props;
-    return <GrailLayoutWithUser combindSearchProps={combindSearchProps} jsx_main={(p) => <ActivationPage {...p} />}></GrailLayoutWithUser>
+    return <GrailLayoutWithUser combindSearchProps={combindSearchProps} main={(p) => <ActivationPage {...p} />}></GrailLayoutWithUser>
 }

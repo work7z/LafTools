@@ -18,7 +18,7 @@ export default (props: {
                         </div>
                         <div className='space-y-2 text-xs'>
                             <div>
-                                {Dot("MnVqwid", "Hello, {0}. Nice to meet you! It is our pleasure to invite you to this community. ", p.authInfo.user?.userAcctId)}
+                                {Dot("MnVg5i", "Hello, nice to meet you! It is our pleasure to invite you to this community. ")}
                             </div>
                             <div>
                                 {Dot("Yc5uMym", "You may wonder what ELB3 stands for, in short, it is short for the non-profit WeChat group {0} which is an interesting platform for English enthusiasts and examinees to learn and appreciate the English!", 'English Learning Base 3')}{Dot("P1zxX2IQ5", "But for this website, it is a derivation of the original group and not limited to English learning, but also for other topics.")}

@@ -10,7 +10,7 @@ import CenterPart from "./__CORE__/containers/CenterPart";
 import CardPanel from './__CORE__/components/CardPanel'
 import NodeHorizontalBar from "./__CORE__/containers/TabGroupHorizontalBar";
 import _, { random } from "lodash";
-import UserPanel from "./__CORE__/containers/UserPanel";
+import UserPanel from "./__CORE__/containers/UserSideBar";
 import { useParams, useSearchParams } from "next/navigation";
 import { usePathname } from 'next/navigation';
 import React, { } from "react";
@@ -30,7 +30,7 @@ export default (props: {
     let clzForUserLabel = "hover:underline  font-medium dark:text-slate-400"
 
     let activeTabs = searchParams.tabs
-    return <GrailLayoutWithUser combindSearchProps={combindSearchProps} jsx_main={(p: AuthInfoProps) => {
+    return <GrailLayoutWithUser combindSearchProps={combindSearchProps} main={(p: AuthInfoProps) => {
         return <CardPanel className={''} style={{
             flex: '1'
         }}>

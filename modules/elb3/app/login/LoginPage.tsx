@@ -6,7 +6,7 @@ import { CombindSearchProps } from '@/app/page'
 import CardPanel from '@/app/__CORE__/components/CardPanel';
 import { PageProps } from '../__CORE__/types/pages';
 import { Dot } from '../__CORE__/utils/TranslationUtils';
-import VisiterGuideInfoPanel from '../__CORE__/containers/VisiterGuideInfoPanel';
+import VisiterGuideInfoPanel from '../__CORE__/containers/VisiterSidebar';
 import PasswordInput from '../__CORE__/components/PasswordInput'
 import UserInput from '../__CORE__/components/UsernameInput'
 import PhoneInput from '../__CORE__/components/PhoneInput'
@@ -16,22 +16,57 @@ import TwTabs from '../__CORE__/components/TwTabs'
 import '../__CORE__/script/preline-init'
 import { Metadata, ResolvingMetadata } from 'next';
 import LoadingWrapper from '../__CORE__/containers/LoadingWrapper';
+import { handleSignInUser } from '../register/action/userAction';
+import AlertErrorPanel from '../__CORE__/containers/AlertErrorPanel';
 export type LoginPageProps = PageProps<{}, { type: string }>
 
 // write LoginPage for including phone number and password
 export default function LoginPage(props: { loginPageProps: LoginPageProps }) {
     let { loginPageProps } = props;
     let [vcodeFactor, onVCodeFactor] = useState(0)
-    return <LoadingWrapper><div className=''>
+    let [errMsg, setErrMsg] = React.useState<string[]>([])
+    let [working, setWorking] = useState(false)
+    let [pw, setPw] = useState('')
+    let type = loginPageProps.searchParams.type || 'username'
+    return <LoadingWrapper><form className='' onSubmit={async (e) => {
+        e.preventDefault();
+        setErrMsg([])
+        // get form data 
+        let formData = new FormData(e.target as HTMLFormElement);
+        try {
+            setWorking(true)
+            let v = await handleSignInUser({
+                userAcctId: formData.get("userAcctId")?.toString() || '',
+                password: formData.get("password")?.toString() || '',
+                phoneNumber: formData.get("phoneNumber")?.toString() || '',
+                vcode: formData.get("vcode")?.toString() || '',
+                type: formData.get("type")?.toString() || '',
+            })
+            if (v.error) {
+                onVCodeFactor(Date.now())
+                setErrMsg([v.error || ''])
+                window.scrollTo(0, 0)
+                return;
+            };
+            location.href = '/'
+        } catch (e: any) {
+            setErrMsg([e.message || ''])
+            window.scrollTo(0, 0)
+        } finally {
+            setWorking(false)
+        }
+
+    }}>
         <CardPanel className='p-4 py-8'>
             <div className='mx-20 '>
                 <div className='text-2xl mb-4 font-bold'>
                     {Dot("yOwRB", "Sign In")}
                 </div>
+                <AlertErrorPanel errorMsg={errMsg}></AlertErrorPanel>
 
                 <div className='space-y-2 mt-4 max-w-md'>
                     <div className='mb-2'>
-                        <TwTabs paramName='type' activeId={loginPageProps.searchParams.type} tabs={
+                        <TwTabs paramName='type' activeId={type} tabs={
                             [
                                 {
                                     label: Dot("kO7kX", "Username"),
@@ -41,15 +76,14 @@ export default function LoginPage(props: { loginPageProps: LoginPageProps }) {
                                     label: Dot("nVqME", "Phone Number"),
                                     value: 'phoneNumber'
                                 },
-                                // {
-                                //     label: Dot("APPR7", "Email Address"),
-                                //     value: 'email'
-                                // },
                             ]
                         }></TwTabs>
                     </div>
+                    <div className='hidden'>
+                        <input name="type" value={type} ></input>
+                    </div>
                     {
-                        loginPageProps.searchParams.type == 'username' ? <UserInput name='user'></UserInput> :
+                        type == 'username' ? <UserInput checkIfHas name='userAcctId'></UserInput> :
                             <PhoneInput name='phoneNumber' />
                     }
                     <PasswordInput name='password'></PasswordInput>
@@ -67,7 +101,7 @@ export default function LoginPage(props: { loginPageProps: LoginPageProps }) {
                     </div>
                     <div className=' text-right text-sm space-x-2'>
                         <span>                        {Dot("newtoelb", "New to {0} Community?", 'ELB3')}</span>
-                        <a className='anchor-text text-sm' href="/reset-password">
+                        <a className='anchor-text text-sm' href="/register">
                             {Dot("9gzkh", "Create New Account", "")}
                         </a>
                     </div>
@@ -76,6 +110,6 @@ export default function LoginPage(props: { loginPageProps: LoginPageProps }) {
                 </div>
             </div>
         </CardPanel>
-    </div>
+    </form>
     </LoadingWrapper>
 }

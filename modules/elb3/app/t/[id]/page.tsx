@@ -8,7 +8,7 @@ import _ from 'lodash'
 export default function Page(props: PageProps<{ id: number }, {}>) {
     let { searchParams, params } = props;
     let combindSearchProps = props;
-    return <GrailLayoutWithUser combindSearchProps={combindSearchProps} jsx_main={(p) => {
+    return <GrailLayoutWithUser combindSearchProps={combindSearchProps} main={(p) => {
         return (
             <div className='space-y-2 flex-1'>
                 <CardPanel className={''} style={{

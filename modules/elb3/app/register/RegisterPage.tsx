@@ -6,7 +6,7 @@ import { CombindSearchProps } from '@/app/page'
 import CardPanel from '@/app/__CORE__/components/CardPanel';
 import { PageProps } from '../__CORE__/types/pages';
 import { Dot } from '../__CORE__/utils/TranslationUtils';
-import VisiterGuideInfoPanel from '../__CORE__/containers/VisiterGuideInfoPanel';
+import VisiterGuideInfoPanel from '../__CORE__/containers/VisiterSidebar';
 import PasswordInput from '../__CORE__/components/PasswordInput'
 import UserInput from '../__CORE__/components/UsernameInput'
 import PhoneInput from '../__CORE__/components/PhoneInput'
@@ -16,7 +16,7 @@ import TwTabs from '../__CORE__/components/TwTabs'
 import '../__CORE__/script/preline-init'
 import { Metadata, ResolvingMetadata } from 'next';
 import { getWebsiteName } from '../__CORE__/common/config';
-import create from './action/registerUser'
+import create from './action/userAction'
 import { useFormState } from 'react-dom'
 import LoadingWrapper from '../__CORE__/containers/LoadingWrapper';
 import AlertErrorPanel from '../__CORE__/containers/AlertErrorPanel';

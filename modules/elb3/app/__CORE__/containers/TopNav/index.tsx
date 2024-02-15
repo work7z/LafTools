@@ -7,11 +7,12 @@ import dynamic from 'next/dynamic'
 import HomeLink from "../../components/HomeLink";
 import SearchBar from "./SearchBar";
 import { useIsLoggedIn } from "../../hooks/user";
+import { AuthInfoProps } from "@/app/page";
 
 
-export let TopNav = () => {
+export let TopNav = (props: AuthInfoProps) => {
 
-    let isLoginIn = useIsLoggedIn()
+    let isLoginIn = props.authInfo.signedIn
 
     let links: { name: string, href: string }[] = isLoginIn ? [
         { name: Dot("UjkOS50wO", "Home"), href: "/" },

@@ -8,7 +8,7 @@ import CenterPart from "./__CORE__/containers/CenterPart";
 import CardPanel from './__CORE__/components/CardPanel'
 import NodeHorizontalBar from "./__CORE__/containers/TabGroupHorizontalBar";
 import _, { random } from "lodash";
-import UserPanel from "./__CORE__/containers/UserPanel";
+import UserPanel from "./__CORE__/containers/UserSideBar";
 import { useParams, useSearchParams } from "next/navigation";
 import InnerHome from './home'
 import { usePathname } from 'next/navigation';

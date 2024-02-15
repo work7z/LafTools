@@ -68,7 +68,7 @@ export class UserToken extends Model<InferAttributes<UserToken>, InferCreationAt
 
 // model for UserLoginLog
 export class UserLoginLog extends Model<InferAttributes<UserLoginLog>, InferCreationAttributes<UserLoginLog>> {
-    declare id: number;
+    declare id?: number;
     declare userId: number;
     declare loginIp: string;
     declare loginTime: Date;

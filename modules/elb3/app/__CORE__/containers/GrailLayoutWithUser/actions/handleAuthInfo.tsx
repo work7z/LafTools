@@ -9,7 +9,7 @@ import { randomUUID } from "crypto";
 import { header_ELB3_auth } from "@/app/register/web-types";
 import { redirect, usePathname } from "next/navigation";
 import { getSignatureFromStr } from "@/app/register/action/auth";
-import { Elb3AuthBody, getUserInfoByUserAcctId } from "@/app/register/action/registerUser";
+import { Elb3AuthBody, getUserInfoByUserAcctId } from "@/app/register/action/userAction";
 import { SystemInfoBody, fn_add_user_into_active, fn_get_system_info_from_redis } from "@/app/register/user-types";
 
 let getPathnameInRSC = () => {

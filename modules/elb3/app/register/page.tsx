@@ -5,7 +5,7 @@ import { AuthInfoProps, CombindSearchProps } from '@/app/page'
 import CardPanel from '@/app/__CORE__/components/CardPanel';
 import { PageProps } from '../__CORE__/types/pages';
 import { Dot } from '../__CORE__/utils/TranslationUtils';
-import VisiterGuideInfoPanel from '../__CORE__/containers/VisiterGuideInfoPanel';
+import VisiterGuideInfoPanel from '../__CORE__/containers/VisiterSidebar';
 import PasswordInput from '../__CORE__/components/PasswordInput'
 import UserInput from '../__CORE__/components/UsernameInput'
 import PhoneInput from '../__CORE__/components/PhoneInput'
@@ -21,27 +21,24 @@ import { contact_webmaster_email, contact_webmaster_wechat } from '../__CORE__/t
 export default function Page(props: RegisterPageProps) {
     let { searchParams, params } = props;
     let combindSearchProps = props;
-    return <GrailLayoutWithUser rightJSX={
-        (p: AuthInfoProps) =>
-            [
-                <VisiterGuideInfoPanel></VisiterGuideInfoPanel>,
-                <CardPanel className="mt-2" children={
-                    <div className='p-2 '>
-                        <h3 className='font-semibold mb-2'>{Dot("fcGTPc7HP", "Where can I get the invitation code?")}</h3>
-                        <div className='text-xs space-y-2'>
-                            <div>
-                                {Dot("9pBpiYcCy", "To prevent spam and advertisement, we require an invitation code to register your account.")}
+    return <GrailLayoutWithUser sidebarViewMode='visiter' extraInSidebar={p => <>
+        {
+            [<CardPanel className="mt-2" children={
+                <div className='p-2 '>
+                    <h3 className='font-semibold mb-2'>{Dot("fcGTPc7HP", "Where can I get the invitation code?")}</h3>
+                    <div className='text-xs space-y-2'>
+                        <div>
+                            {Dot("9pBpiYcCy", "To prevent spam and advertisement, we require an invitation code to register your account.")}
 
-                                {Dot("XIzgAAR", "Usually, an available invitation code can be provided from the webmaster or other users. ")}
-                                {Dot("dzIC7qPQ", "If you do wish to join us, please try to reach the webmaster on his email {0} or WeChat account {1} to get an invitation code.", contact_webmaster_email, contact_webmaster_wechat)}
-                            </div>
+                            {Dot("XIzgAAR", "Usually, an available invitation code can be provided from the webmaster or other users. ")}
+                            {Dot("dzIC7qPQ", "If you do wish to join us, please try to reach the webmaster on his email {0} or WeChat account {1} to get an invitation code.", contact_webmaster_email, contact_webmaster_wechat)}
                         </div>
                     </div>
-                }></CardPanel>,
-                ...fn_getCardPanelForTelephoneFAQ()
-
-            ]
-    } combindSearchProps={combindSearchProps} jsx_main={(p: AuthInfoProps) => {
+                </div>
+            }></CardPanel>,
+            ...fn_getCardPanelForTelephoneFAQ()]
+        }
+    </>} combindSearchProps={combindSearchProps} main={(p: AuthInfoProps) => {
         return (
             <div className='space-y-2 flex-1'>
                 <RegisterPage pageProps={props}></RegisterPage>
