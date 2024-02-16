@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { log } from 'console';
 import { RedisClientType, createClient } from 'redis';
-import { getELB3Root } from '../hooks/env';
+import { SystemEnvFlag, getELB3Root, getSysEnv, isDevEnv, isTestEnv } from '../hooks/env';
 import model from './model';
 
 
@@ -13,33 +13,19 @@ export type DaoRef = {
     redis: RedisClientType
 }
 
-export type SystemFlag = "dev" | "prod" | "test"
 
-
-export let crtRef: { flag: SystemFlag } = {
-    flag: 'test'
-}
-
-export let getConfigByFlag = (envFlag: SystemFlag = crtRef.flag): SystemConfig => {
+export let getConfigByFlag = (envFlag: SystemEnvFlag): SystemConfig => {
     let config = fs.readFileSync(path.join(getELB3Root(), 'config', envFlag + '.json'), { encoding: 'utf-8' })
     return JSON.parse(config) as SystemConfig
 }
-if (process.env.NODE_ENV === 'production') {
-    crtRef.flag = 'prod'
-}
-if (process.env.NODE_ENV === 'test') {
-    crtRef.flag = 'test'
-}
-if (process.env.NODE_ENV === 'development') {
-    crtRef.flag = 'dev'
-}
+
 let lock = false
 let refMap: { [key: string]: DaoRef } = {}
 let loadDAO = async (): Promise<DaoRef> => {
     console.log('initializing DAO Ref...')
     lock = true;
     try {
-        let envFlag: SystemFlag = crtRef.flag
+        let envFlag: SystemEnvFlag = getSysEnv()
         if (refMap[envFlag]) {
             return refMap[envFlag]
         }
@@ -48,9 +34,10 @@ let loadDAO = async (): Promise<DaoRef> => {
 
         let link = config.database.link
         log("connect to DB: " + link)
-        let sequelize = new Sequelize(`${link}`, {
+        let sequelize = new Sequelize(`${link}`, isTestEnv() ? {} : {
             dialect: 'mysql',
             dialectModule: require('mysql2'),
+            logging: console.log,
             timezone: '+08:00'
         });
 
@@ -73,6 +60,8 @@ let loadDAO = async (): Promise<DaoRef> => {
             redis: client as any,
             db: sequelize,
         }
+
+        console.log('established connection, setup model...')
 
         // 3. setup model 
         await model(r)
