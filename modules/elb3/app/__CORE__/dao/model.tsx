@@ -11,21 +11,34 @@ import { isDevEnv } from '../hooks/env';
 
 // model for chat group
 export class ChatGroup extends Model<InferAttributes<ChatGroup>, InferCreationAttributes<ChatGroup>> {
-    declare id: number;
+    declare id?: number;
     declare name: string;
-    declare messageCount: number;
-    declare firstMessageAt: Date;
-    declare lastMessageAt: Date;
+    declare totalMsgCount: number;
+    declare firstMessageAt?: Date;
+    declare lastMessageAt?: Date;
     declare createdAt: CreationOptional<Date> | null;
     declare updatedAt: CreationOptional<Date> | null;
     declare deleteAt: CreationOptional<Date> | null;
 }
 
 // model for chat group members 
-export class ChatGroupMember extends Model<InferAttributes<ChatGroupMember>, InferCreationAttributes<ChatGroupMember>> {
-    declare id: number;
-    declare groupId: number;
-    declare userId: number;
+export class ChatGroupUser extends Model<InferAttributes<ChatGroupUser>, InferCreationAttributes<ChatGroupUser>> {
+    declare id?: number;
+    declare wxUserId?: string;
+    declare wxUserAlias: string;
+    declare wxNickName: string;
+    declare msgCount: number;
+    declare firstMessageAt?: Date;
+    declare lastMessageAt?: Date;
+    declare createdAt: CreationOptional<Date> | null;
+    declare updatedAt: CreationOptional<Date> | null;
+    declare deleteAt: CreationOptional<Date> | null;
+}
+
+export class ChatGroupAliasMap extends Model<InferAttributes<ChatGroupAliasMap>, InferCreationAttributes<ChatGroupAliasMap>> {
+    declare id?: number;
+    declare groupUserId: number;
+    declare groupAlias: string;
     declare createdAt: CreationOptional<Date> | null;
     declare updatedAt: CreationOptional<Date> | null;
     declare deleteAt: CreationOptional<Date> | null;
@@ -33,11 +46,12 @@ export class ChatGroupMember extends Model<InferAttributes<ChatGroupMember>, Inf
 
 // model for chat group history
 export class ChatGroupHistory extends Model<InferAttributes<ChatGroupHistory>, InferCreationAttributes<ChatGroupHistory>> {
-    declare id: number;
+    declare id?: number;
     declare groupId: number;
-    declare userId: number;
-    declare type: string; // text, emoji, image, file, etc...
+    declare groupUserId: number;
+    declare type: string; // 10000 or other types
     declare content: string;
+    declare sentTime: Date;
     declare createdAt: CreationOptional<Date> | null;
     declare updatedAt: CreationOptional<Date> | null;
     declare deleteAt: CreationOptional<Date> | null;
@@ -650,6 +664,173 @@ export default async (daoRef: DaoRef) => {
         tableName: "audit"
     })
 
+    await ChatGroup.init({
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        totalMsgCount: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        firstMessageAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        lastMessageAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deleteAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        }
+    }, {
+        sequelize,
+        paranoid: true,
+        modelName: "ChatGroup",
+        tableName: "chat_group"
+    })
+    await ChatGroupUser.init({
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        wxUserId: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        wxUserAlias: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        wxNickName: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        msgCount: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        firstMessageAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        lastMessageAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deleteAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        }
+    }, {
+        sequelize,
+        paranoid: true,
+        modelName: "ChatGroupUser",
+        tableName: "chat_group_user"
+    })
+
+    await ChatGroupAliasMap.init({
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        groupUserId: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        groupAlias: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deleteAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        }
+    }, {
+        sequelize,
+        paranoid: true,
+        modelName: "ChatGroupAliasMap",
+        tableName: "chat_group_alias_map"
+    })
+
+    await ChatGroupHistory.init({
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        groupId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        groupUserId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        type: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        content: {
+            type: DataTypes.TEXT("long"),
+            allowNull: true
+        },
+        sentTime: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deleteAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        }
+    }, {
+        sequelize,
+        paranoid: true,
+        modelName: "ChatGroupHistory",
+        tableName: "chat_group_history"
+    })
+
     await SMSCodeRecord.init({
         id: {
             type: DataTypes.INTEGER,
@@ -691,161 +872,7 @@ export default async (daoRef: DaoRef) => {
         tableName: "sms_code_record"
     })
 
-    await ChatGroup.init({
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        messageCount: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        firstMessageAt: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        lastMessageAt: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        createdAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        },
-        updatedAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        },
-        deleteAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        }
-    }, {
-        sequelize,
-        paranoid: true,
-        modelName: "ChatGroup",
-        tableName: "chat_group"
-    })
 
-    await ChatGroupHistory.init({
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        groupId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        type: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        content: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        createdAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        },
-        updatedAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        },
-        deleteAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        }
-    }, {
-        sequelize,
-        paranoid: true,
-        modelName: "ChatGroupHistory",
-        tableName: "chat_group_history"
-    })
-
-    await ChatGroupMember.init({
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        groupId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        createdAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        },
-        updatedAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        },
-        deleteAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        }
-    }, {
-        sequelize,
-        paranoid: true,
-        modelName: "ChatGroupMember",
-        tableName: "chat_group_member"
-    })
-
-    await ChatGroupHistory.init({
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        groupId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        type: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        content: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        createdAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        },
-        updatedAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        },
-        deleteAt: {
-            type: DataTypes.DATE,
-            allowNull: true
-        }
-    }, {
-        sequelize,
-        paranoid: true,
-        modelName: "ChatGroupHistory",
-        tableName: "chat_group_history"
-    })
     await RawWXContact.init({
         id: {
             type: DataTypes.INTEGER,

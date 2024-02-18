@@ -1,13 +1,14 @@
 import fs from "fs";
 import path from "path";
 import loadDAO, { } from "../dao";
-import { RawFTSChatroom, RawGroupHistory, RawWXContact, User } from "../dao/model";
+import { ChatGroup, ChatGroupAliasMap, ChatGroupHistory, ChatGroupUser, RawFTSChatroom, RawGroupHistory, RawWXContact, User } from "../dao/model";
 import { expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { DataTypes, Model, Op } from 'sequelize'
 import { isTestEnv, markEnvAsDevForcibly } from "../hooks/env";
 import * as csv from 'fast-csv';
-import _ from "lodash";
+import _, { find } from "lodash";
+import moment from "moment";
 
 export type RawGroupMemberLogCount = {
   actualGroupAlias: string;
@@ -17,6 +18,155 @@ export type RawGroupMemberLogCount = {
   firstHelloTime: string;
   lastByeTime: string;
 }
+
+
+
+test('chat-raw2crt', async () => {
+  let checkUserIdObj = {}
+  try {
+    markEnvAsDevForcibly()
+    if (isTestEnv()) {
+      console.log('ignore test env')
+      return;
+    }
+    let daoRef = await loadDAO()
+    await ChatGroup.truncate({ force: true })
+    await ChatGroupUser.truncate({ force: true })
+    await ChatGroupHistory.truncate({ force: true })
+    await ChatGroupAliasMap.truncate({ force: true })
+    console.log(daoRef.db)
+    let offset = 0, limits = 1000;
+    // get chat group history batch records
+    while (true) {
+      let historyRecords = await RawGroupHistory.findAll({
+        offset,
+        limit: limits
+      })
+      if (historyRecords.length == 0) {
+        break;
+      }
+      offset += limits;
+      for (let eachRecord of historyRecords) {
+        let { groupName, sender, strTime, strContent } = eachRecord;
+        let actualStrTime: Date = moment(strTime, 'YYYY-MM-DD HH:mm:ss').toDate()
+        // check group name
+        let groupObj = await ChatGroup.findOne({
+          where: {
+            name: groupName
+          }
+        })
+        if (groupObj == null) {
+          groupObj = await ChatGroup.create({
+            name: groupName,
+            totalMsgCount: 0,
+            firstMessageAt: actualStrTime,
+          })
+        }
+        // check user
+        let expUserId = -1
+        let isNotEmptySender = !_.isEmpty(sender) && sender.indexOf('@chatroom') == -1
+        let findGroupUserObj: ChatGroupUser | null = null;
+        if (isNotEmptySender) {
+          let rawUserObj: RawWXContact | null = await RawWXContact.findOne({
+            where: {
+              [Op.or]: [
+                {
+                  UserName: sender
+                },
+                {
+                  Alias: sender
+                }
+              ]
+            }
+          })
+          if (rawUserObj != null) {
+            let findAlias = _.trim(rawUserObj.Alias) == '' ? rawUserObj.UserName : rawUserObj.Alias
+            findGroupUserObj = await ChatGroupUser.findOne({
+              where: {
+                wxUserAlias: findAlias,
+              }
+            })
+            if (findGroupUserObj == null) {
+              findGroupUserObj = await ChatGroupUser.create({
+                wxUserAlias: findAlias,
+                wxNickName: rawUserObj.NickName,
+                wxUserId: _.startsWith(rawUserObj.UserName, 'wxid_') ? rawUserObj.UserName : undefined,
+                msgCount: 0,
+                firstMessageAt: actualStrTime,
+              })
+            }
+          } else {
+            // throw new Error('no raw user for ' + sender)
+            expUserId = -2
+          }
+        }
+        if (!groupObj.id) {
+          throw new Error('no group id for ' + groupName)
+        }
+        if (findGroupUserObj) {
+          let getMinDate = (a?: Date, b?: Date) => {
+            if (a == null) {
+              return b;
+            }
+            if (b == null) {
+              return a;
+            }
+            return a < b ? a : b;
+          }
+          let getMaxDate = (a?: Date, b?: Date) => {
+            if (a == null) {
+              return b;
+            }
+            if (b == null) {
+              return a;
+            }
+            return a > b ? a : b;
+          }
+          // update msg count
+          await findGroupUserObj?.update({
+            msgCount: (findGroupUserObj?.msgCount || 0) + 1,
+            firstMessageAt: getMinDate(findGroupUserObj.firstMessageAt, actualStrTime),
+            lastMessageAt: getMaxDate(findGroupUserObj.lastMessageAt, actualStrTime),
+          })
+          // check user alias
+          if (checkUserIdObj[findGroupUserObj.wxUserAlias] == null) {
+            checkUserIdObj[findGroupUserObj.wxUserAlias] = 1
+            let rawChatRoomItems = await RawFTSChatroom.findAll({
+              where: {
+                c2alias: findGroupUserObj.wxUserAlias,
+              }
+            })
+            for (let eachItem of rawChatRoomItems) {
+              if (_.isEmpty(eachItem.c0groupRemark)) {
+                continue;
+              }
+              await ChatGroupAliasMap.create({
+                groupUserId: findGroupUserObj.id || -1,
+                groupAlias: eachItem.c0groupRemark,
+              })
+            }
+          }
+        }
+        if (groupObj) {
+          await groupObj?.update({
+            totalMsgCount: (groupObj?.totalMsgCount || 0) + 1,
+            lastMessageAt: actualStrTime,
+          })
+        }
+        await ChatGroupHistory.create({
+          groupId: groupObj.id,
+          groupUserId: findGroupUserObj ? findGroupUserObj.id || expUserId : expUserId,
+          sentTime: actualStrTime,
+          content: strContent,
+          type: eachRecord.type,
+        })
+      }
+    }
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+}, { timeout: 1000000 * 99 })
 
 test('chat2GetReport', async () => {
   try {
@@ -41,7 +191,14 @@ test('chat2GetReport', async () => {
       let { sender } = row;
       let o1 = await RawFTSChatroom.findOne({
         where: {
-          c2alias: sender
+          [Op.and]: {
+            c2alias: {
+              [Op.eq]: sender
+            },
+            c0groupRemark: {
+              [Op.ne]: ''
+            }
+          }
         }
       })
       if (o1 != null) {
@@ -51,30 +208,35 @@ test('chat2GetReport', async () => {
         // select min(username) from raw_wx_contact iwc where iwc.alias = a.c2alias or iwc.username = a.c2alias
         let o2 = await RawWXContact.findOne({
           where: {
-            [Op.or]: [
-              {
-                Alias: {
-                  [Op.eq]: row.sender
-                }
-              },
-              {
-                UserName: {
-                  [Op.eq]: row.sender
-                }
-              },
-            ]
+            UserName: row.sender
           }
         })
-        if (o2 == null) {
+        if (o2 == null || _.isEmpty(o2.Alias)) {
           actualGroupAlias = 'Unknown User'
         } else {
-          actualGroupAlias = o2.UserName
-          ackAnyGroupAlias = true;
+          let o3 = await RawFTSChatroom.findOne({
+            where: {
+              [Op.and]: {
+                c2alias: {
+                  [Op.eq]: o2.Alias
+                },
+                c0groupRemark: {
+                  [Op.ne]: ''
+                }
+              }
+            }
+          })
+          if (o3 != null) {
+            ackAnyGroupAlias = true;
+            actualGroupAlias = o3.c0groupRemark
+          } else {
+            actualGroupAlias = o2.NickName
+          }
         }
       }
 
       console.log('nickname', row.nickName)
-      console.log('username', actualGroupAlias)
+      console.log('username->', actualGroupAlias)
     }
   } catch (e) {
     console.log(e)
