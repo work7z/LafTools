@@ -1,4 +1,4 @@
-import { AuthInfoProps, CombindSearchProps } from "./page"
+import { AuthInfoProps, CombindSearchProps } from "./[lang]/page"
 import Image from "next/image";
 import type { Metadata, ResolvingMetadata } from "next";
 import Head from 'next/head'

@@ -1,6 +1,6 @@
 
 import { Inter } from "next/font/google";
-import { getWebsiteLocale as getWebsiteLocale } from "../../utils/TranslationUtils";
+import TranslationUtils, { getWebsiteLocale as getWebsiteLocale } from "../../utils/TranslationUtils";
 import { TopNav } from "../TopNav";
 import CenterPart from "../CenterPart";
 import Footer from "../Footer";
@@ -8,7 +8,6 @@ import { ThemeProvider } from "../../../theme-provider";
 
 
 const inter = Inter({ subsets: ["latin"] });
-
 export default function RootLayout(props: {
     children,
 }) {
@@ -21,6 +20,7 @@ export default function RootLayout(props: {
                         {children}
                     </div>
                 </ThemeProvider>
+                {/* <span id='i18nele' className="hidden" rel='nofollow'>                    {JSON.stringify(TranslationUtils.LangMap)}                </span> */}
             </body>
         </html>
     );

@@ -3,7 +3,7 @@ import { Dot } from "../../utils/TranslationUtils"
 import MoonSunControl from "../UserSideBar/MoonSunControl"
 import LanguagePicker from '../LanguagePicker'
 import moment from 'moment'
-import { AuthInfoProps } from "@/app/page"
+import { AuthInfoProps } from "@/app/[lang]/page"
 
 export let WeekDay = () => {
     let week = moment().week()

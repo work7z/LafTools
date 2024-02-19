@@ -1,3 +1,4 @@
+'use client'
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
 // Date: Fri, 29 Sep 2023
@@ -19,14 +20,24 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // SKIP_DOT
-import { cookies, headers } from 'next/headers';
+import { headers } from 'next/headers';
 import _ from "lodash";
 import { LANG_EN_US, LangDefinition } from "../types/constants";
-import { LocaleType, all_locales as all_locales, zhCNLocale } from '@/middleware';
+import { usePathname } from 'next/navigation'
+import { all_locales, zhCNLocale } from '@/middleware';
 
 let VER_FORGE_FORM = '0.0.1'
 export const KEY_LANG_PACK_ZH_CN = "KEY_LANG_PACK_ZH_CN" + VER_FORGE_FORM;
 export const KEY_LANG_PACK_ZH_HK = "KEY_LANG_PACK_ZH_HK" + VER_FORGE_FORM;
+
+
+let document = null;
+let sysLocale = zhCNLocale
+if (typeof window !== "undefined") {
+  let sysLang = window['document'].body.parentElement?.getAttribute("lang")
+  sysLocale = all_locales.find(x => x.langInHttp == sysLang) || sysLocale
+}
+
 
 interface LangMap {
   zh_CN: LangDefinition;
@@ -60,28 +71,16 @@ function formatResultWithReplacer(val = "", ...args) {
   return val;
 }
 
-
-export let getXLocaleStrInRSC = (): LocaleType => {
-  const headersList = headers();
-  const val = headersList.get('x-locale') || "";
-  let item = all_locales.find(x => x.langInHttp == val)
-  return item || zhCNLocale
-}
-
-export let getWebsiteLocale = () => {
-  let xlocale = getXLocaleStrInRSC()
-  return xlocale.langInHttp
-}
 export let getCurrentLang = () => {
-  let xlocale = getXLocaleStrInRSC()
-  return xlocale.langIni18n
+  return sysLocale.langIni18n
 }
 
 const TranslationUtils = {
   ForcbilyLanguage: "",
+  CurrentLanguage: sysLocale.langIni18n,
   IsChinese() {
     return (
-      getCurrentLang() == "zh_CN"
+      TranslationUtils.CurrentLanguage == "zh_CN"
     );
   },
   LangMap: crtNewLangMap,

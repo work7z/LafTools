@@ -1,6 +1,6 @@
 'use client'
 
-import { Dot } from "@/app/__CORE__/utils/TranslationUtils"
+import { Dot } from "@/app/__CORE__/utils/ClientTranslationUtils"
 import { useState } from "react"
 
 export default () => {

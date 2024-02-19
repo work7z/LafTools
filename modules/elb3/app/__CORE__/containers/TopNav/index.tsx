@@ -7,21 +7,25 @@ import dynamic from 'next/dynamic'
 import HomeLink from "../../components/HomeLink";
 import SearchBar from "./SearchBar";
 import { useIsLoggedIn } from "../../hooks/user";
-import { AuthInfoProps } from "@/app/page";
+import { AuthInfoProps } from "@/app/[lang]/page";
 
 
 export let TopNav = (props: AuthInfoProps) => {
 
     let isLoginIn = props.authInfo.signedIn
 
+    let homeItem = { name: Dot("UjkOS50wO", "Home"), href: "/" }
+    let chatGroupItem = { name: Dot("groupnote", "Memo"), href: "/group" }
     let links: { name: string, href: string }[] = isLoginIn ? [
-        { name: Dot("UjkOS50wO", "Home"), href: "/" },
-        { name: "Min", href: "/min" },
+        homeItem,
+        // { name: props.authInfo.user?.userAcctId || 'Unknown', href: "/min" },
+        chatGroupItem,
         { name: Dot("TV09-obNr", "Milestone"), href: "/milestone" },
         { name: Dot("geHXwByxy", "Settings"), href: "/settings" },
         { name: Dot("xhxY6iLDH", "Logout"), href: "/logout" },
     ] : [
-        { name: Dot("UjkOS50wO", "Home"), href: "/" },
+        homeItem,
+        chatGroupItem,
         { name: Dot("gTOv6abWT", "Login"), href: "/login" },
         { name: Dot("gTOv6adbWT", "Register"), href: "/register" },
     ]

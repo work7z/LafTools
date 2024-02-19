@@ -6,15 +6,14 @@ import { cookies, headers } from 'next/headers';
 import _ from "lodash";
 import { InvitationCode, User, UserRole, UserToken } from "@/app/__CORE__/dao/model";
 import { randomUUID } from "crypto";
-import { header_ELB3_auth } from "@/app/register/web-types";
+import { header_ELB3_auth } from "@/app/[lang]/register/web-types";
 import { redirect, usePathname } from "next/navigation";
-import { getSignatureFromStr } from "@/app/register/action/auth";
-import { Elb3AuthBody, getUserInfoByUserAcctId } from "@/app/register/action/userAction";
-import { SystemInfoBody, fn_add_user_into_active, fn_get_system_info_from_redis } from "@/app/register/user-types";
+import { getSignatureFromStr } from "@/app/[lang]/register/action/auth";
+import { Elb3AuthBody, getUserInfoByUserAcctId } from "@/app/[lang]/register/action/userAction";
+import { SystemInfoBody, fn_add_user_into_active, fn_get_system_info_from_redis } from "@/app/[lang]/register/user-types";
 
 let getPathnameInRSC = () => {
     const headersList = headers();
-    // read the custom x-url header
     const header_url = headersList.get('x-url') || "";
     return header_url
 }

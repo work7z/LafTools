@@ -1,5 +1,5 @@
 import { Dot } from "@/app/__CORE__/utils/TranslationUtils";
-import { AuthInfoProps } from "@/app/page";
+import { AuthInfoProps } from "@/app/[lang]/page";
 import React from "react";
 
 export default (props: AuthInfoProps) => {

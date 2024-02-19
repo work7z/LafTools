@@ -2,7 +2,7 @@
 
 import React from 'react';
 import '../../script/preline-init'
-import { Dot } from '../../utils/TranslationUtils';
+import { Dot } from '../../utils/ClientTranslationUtils';
 import os from 'os'
 import path from 'path';
 import { readFileSync } from 'fs';

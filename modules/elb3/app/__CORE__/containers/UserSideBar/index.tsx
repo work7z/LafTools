@@ -3,13 +3,13 @@ import RegularLink from "@/app/__CORE__/components/RegularLink"
 import { MoonIcon, Cog8ToothIcon, SunIcon } from '@heroicons/react/24/solid'
 
 import { Dot } from "@/app/__CORE__/utils/TranslationUtils"
-import { AuthInfoProps, CombindSearchProps } from "../../../page"
+import { AuthInfoProps, CombindSearchProps } from "../@/app/[lang]/page"
 import MoonSunControl from "./MoonSunControl"
 import _ from 'lodash'
 import VisiterSidebar, { SidebarProps } from "../VisiterSidebar"
-import { fn_get_user_avatar } from "@/app/register/user-types"
+import { fn_get_user_avatar } from "@/app/[lang]/register/user-types"
 import CardPanel from "../../components/CardPanel"
-import { fn_getCardPanelForTelephoneFAQ } from "@/app/register/page"
+import { fn_getCardPanelForTelephoneFAQ } from "@/app/[lang]/register/page"
 import LanguagePicker from "../LanguagePicker"
 
 

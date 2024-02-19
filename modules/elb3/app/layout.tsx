@@ -14,7 +14,8 @@ import Layout from './__CORE__/containers/Layout'
 import { Sequelize, DataTypes } from 'sequelize';
 import fs from 'fs'
 import PrelintInit from './__CORE__/script/preline-init'
-// import dbconn from '.../__CORE__/app/db/index'
+import { getWebsiteLocale } from "./__CORE__/utils/TranslationUtils";
+// import dbconn from '.@/app/__CORE__/app/db/index'
 
 export default async function RootLayout(props: {
   children,
@@ -24,6 +25,7 @@ export default async function RootLayout(props: {
     <Layout>
       {children}
       <PrelintInit></PrelintInit>
+
     </Layout>
   );
 }

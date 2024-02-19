@@ -1,5 +1,5 @@
 
-import { AuthInfoProps } from "@/app/page"
+import { AuthInfoProps } from "@/app/[lang]/page"
 import CardPanel from "../../components/CardPanel"
 import { Dot } from "../../utils/TranslationUtils"
 import MoonSunControl from "../UserSideBar/MoonSunControl"

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react';
-import { Dot } from '../../utils/TranslationUtils';
+import { Dot } from '../../utils/ClientTranslationUtils';
 import _ from 'lodash';
 export default (props: { name: string, noKeepValue?: boolean, defaultValue?: string, label: string, max?: number, type?: string, ph?: string, fn_svgJSX: (clz: string) => any }) => {
     let [value, setValue] = React.useState('')

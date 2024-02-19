@@ -1,4 +1,4 @@
-import { Dot } from "../../utils/TranslationUtils"
+import { Dot } from "../../utils/ClientTranslationUtils"
 
 export default (props: { noVCode?: boolean, errorMsg: string[] }) => {
     if (props.errorMsg.length === 0) return ''

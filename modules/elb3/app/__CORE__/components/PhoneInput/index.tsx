@@ -1,5 +1,6 @@
+
 import React, { useEffect } from 'react';
-import { Dot } from '../../utils/TranslationUtils';
+import { Dot } from '../../utils/ClientTranslationUtils';
 export default (props: { disabled?: boolean, name: string, defaultValue?: string, onChange?: (e: string) => any }) => {
 
     let [value, setValue] = React.useState('')
