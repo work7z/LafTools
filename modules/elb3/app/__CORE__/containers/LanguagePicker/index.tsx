@@ -57,28 +57,30 @@ export default (props: AuthInfoProps) => {
                         Choose Language{props.authInfo.signedIn ? '' : ''}
                     </button> */}
                     <h1 className="text-lg  font-semibold mb-4">
+                        {Dot("jRFk519Bj-", "This community is driven by a fully international free open source code project.")}
+                    </h1>
+                    <h1 className='text-md font-semibold mb-4'>
                         Currently, we are supporting the following languages:
                     </h1>
                     <div id="hs-basic-collapse-one" className=" hs-accordion-content w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-heading-one">
                         {
                             translationLangs.map(x => {
-                                return <div className='p-2 flex flex-row justify-between items-center hover:bg-slate-100 cursor-pointer transition-all'>
-                                    <a href={props.authInfo && props.authInfo.signedIn ? '/' + x.Value : '/login'}>    <div>{x.LabelByLang}{x.Value == 'en_US' ? '' : `(${x.LabelInEnglish})`}</div>
-                                    </a>
-                                </div>
+                                return <a href={'/' + x.Href + '/chooseLanguage'}>  <div className='p-2 flex flex-row justify-between items-center hover:bg-slate-100 cursor-pointer transition-all'>
+                                    <div>{x.LabelByLang}{x.Value == 'en_US' ? '' : `(${x.LabelInEnglish})`}</div>
+                                </div></a>
                             })
                         }
                     </div>
                     <p className="space-y-2 text-sm mt-8">
                         <div>
-                            Note that you can only choose the language after you sign in according to current system design.
+                            Note that you can choose the language though you have not signed in the system.
                         </div>
                     </p>
                 </div>
 
-            </div>
+            </ div>
 
 
-        </div>}></CardPanel>
+        </div>}></CardPanel >
     )
 }

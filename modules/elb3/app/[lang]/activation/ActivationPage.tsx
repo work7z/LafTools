@@ -11,8 +11,12 @@ import AlertErrorPanel from "@/app/__CORE__/containers/AlertErrorPanel";
 import VerifyCodeInput from "@/app/__CORE__/components/VerifyCodeInput";
 import GeneralInput from "@/app/__CORE__/components/GeneralInput";
 import { sendSMSCodeWithVerificationCode, verifySMSCode } from "../register/action/userAction";
+import { loadDOT, useTTT, useTTT2 } from "../register/i18n-types";
+
+let a = loadDOT("AsgwGFZlg")
 
 export default (p: AuthInfoProps) => {
+    a()
     let [errMsg, setErrMsg] = React.useState<string[]>([])
     let [vcodeFactor, onVCodeFactor] = useState(0)
     let dftPhoneNumber = p.authInfo.user?.phoneNumber || ''
@@ -25,7 +29,9 @@ export default (p: AuthInfoProps) => {
     let jsx_phoneInput = <PhoneInput onChange={e => {
         onPhoneNumber(e)
     }} name={"phoneNumber"} defaultValue={phoneNumber}></PhoneInput>
-
+    let [ttt] = useTTT({
+        smsCode: ''
+    })
     let inner = (
         <form className="space-y-2" onSubmit={async e => {
             e.preventDefault();
@@ -58,7 +64,7 @@ export default (p: AuthInfoProps) => {
                 onPhoneNumber(e)
             }} name={"phoneNumber"} defaultValue={phoneNumber}></PhoneInput>
 
-            <GeneralInput defaultValue={''} type="number" max={6} label={Dot("9YPgsPid2M", "SMS Code")} ph={Dot("Md1JbKBRx", "Enter six-digits SMS Code")} fn_svgJSX={
+            <GeneralInput defaultValue={''} type="number" max={6} label={ttt.smsCode || ''} ph={Dot("Md1JbKBRx", "Enter six-digits SMS Code")} fn_svgJSX={
                 (clz: string) =>
                 (
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={clz}>

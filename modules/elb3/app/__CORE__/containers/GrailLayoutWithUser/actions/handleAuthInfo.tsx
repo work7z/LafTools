@@ -11,6 +11,7 @@ import { redirect, usePathname } from "next/navigation";
 import { getSignatureFromStr } from "@/app/[lang]/register/action/auth";
 import { Elb3AuthBody, getUserInfoByUserAcctId } from "@/app/[lang]/register/action/userAction";
 import { SystemInfoBody, fn_add_user_into_active, fn_get_system_info_from_redis } from "@/app/[lang]/register/user-types";
+import { LocaleType } from "@/middleware";
 
 let getPathnameInRSC = () => {
     const headersList = headers();

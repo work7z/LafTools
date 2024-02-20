@@ -22,18 +22,16 @@ import LoadingWrapper from '@/app/__CORE__/containers/LoadingWrapper';
 import { cookies } from 'next/headers';
 import { getCookies } from 'cookies-next';
 import _ from 'lodash';
+import { fmtURL_Client } from '@/app/__CORE__/utils/ClientRouterHelpers';
+import { loadDOT, useTTT2 } from '../register/i18n-types';
 
 function deleteAllCookies() {
-    const cookies = document.cookie.split(";");
-
-    for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i];
-        const eqPos = cookie.indexOf("=");
-        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
+    document.cookie = ''
 }
+let a = loadDOT("AsgwGFZldg")
 export default (p: AuthInfoProps) => {
+    a()
+
     useEffect(() => {
         deleteAllCookies()
         localStorage.clear()

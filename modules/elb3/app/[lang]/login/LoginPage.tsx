@@ -5,7 +5,6 @@ import GrailLayoutWithUser from '@/app/__CORE__/containers/GrailLayoutWithUser'
 import { CombindSearchProps } from '@/app/[lang]/page'
 import CardPanel from '@/app/__CORE__/components/CardPanel';
 import { PageProps } from '@/app/__CORE__/types/pages';
-import { Dot } from '@/app/__CORE__/utils/ClientTranslationUtils';
 import VisiterGuideInfoPanel from '@/app/__CORE__/containers/VisiterSidebar';
 import PasswordInput from '@/app/__CORE__/components/PasswordInput'
 import UserInput from '@/app/__CORE__/components/UsernameInput'
@@ -18,7 +17,11 @@ import { Metadata, ResolvingMetadata } from 'next';
 import LoadingWrapper from '@/app/__CORE__/containers/LoadingWrapper';
 import { handleSignInUser } from '../register/action/userAction';
 import AlertErrorPanel from '@/app/__CORE__/containers/AlertErrorPanel';
+import { loadDOT, useTTT, useTTT2 } from '../register/i18n-types';
+import { Dot } from '@/app/__CORE__/utils/ClientTranslationUtils';
 export type LoginPageProps = PageProps<{}, { type: string }>
+
+let lt = loadDOT("c216jAeDW")
 
 // write LoginPage for including phone number and password
 export default function LoginPage(props: { loginPageProps: LoginPageProps }) {
@@ -27,6 +30,7 @@ export default function LoginPage(props: { loginPageProps: LoginPageProps }) {
     let [errMsg, setErrMsg] = React.useState<string[]>([])
     let [working, setWorking] = useState(false)
     let [pw, setPw] = useState('')
+    lt()
     let type = loginPageProps.searchParams.type || 'username'
     return <LoadingWrapper><form className='' onSubmit={async (e) => {
         e.preventDefault();

@@ -19,12 +19,12 @@ export type TabGroupType = {
 export let getGroupAndNodeData = (): TabGroupType[] => {
    let list: TabGroupType[] = [
       {
-         label: Dot("mBAtv", "Hottest"),
-         id: "hot",
+         label: Dot("ZCzH8", "Newest"),
+         id: "latest"
       },
       {
-         label: Dot("ZCzH8", "Latest"),
-         id: "latest"
+         label: Dot("GaySMPQHo", "Trending"),
+         id: "trending",
       },
       {
          label: "PETS",

@@ -6,6 +6,7 @@ import { log } from 'console';
 import { RedisClientType, createClient } from 'redis';
 import { SystemEnvFlag, getELB3Root, getSysEnv, isDevEnv, isTestEnv } from '../hooks/env';
 import model from './model';
+import refMap from './ref';
 
 
 export type DaoRef = {
@@ -20,7 +21,6 @@ export let getConfigByFlag = (envFlag: SystemEnvFlag): SystemConfig => {
 }
 
 let lock = false
-let refMap: { [key: string]: DaoRef } = {}
 let loadDAO = async (): Promise<DaoRef> => {
     console.log('initializing DAO Ref...')
     lock = true;
@@ -65,12 +65,15 @@ let loadDAO = async (): Promise<DaoRef> => {
 
         // 3. setup model 
         await model(r)
+
+        console.log('ok, setup the model')
         refMap[envFlag] = r;
 
         lock = false;
 
         return r
     } catch (e) {
+        console.log('failed, got errors', e)
         lock = false;
         throw e;
     }

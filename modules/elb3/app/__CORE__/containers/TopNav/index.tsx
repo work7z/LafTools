@@ -1,5 +1,5 @@
 import { getPureWebsiteName } from "@/app/__CORE__/common/config"
-import { Dot } from "@/app/__CORE__/utils/TranslationUtils"
+import { Dot, } from "@/app/__CORE__/utils/TranslationUtils"
 // import { Tooltip as ReactTooltip } from "react-tooltip";
 // import 'react-tooltip/dist/react-tooltip.css'
 import NoSsr from "@/app/__CORE__/components/NoSsr";
@@ -8,6 +8,7 @@ import HomeLink from "../../components/HomeLink";
 import SearchBar from "./SearchBar";
 import { useIsLoggedIn } from "../../hooks/user";
 import { AuthInfoProps } from "@/app/[lang]/page";
+import { fmtURL_Server as fmtURL_Server } from "../../utils/RouterHelpers";
 
 
 export let TopNav = (props: AuthInfoProps) => {
@@ -20,14 +21,14 @@ export let TopNav = (props: AuthInfoProps) => {
         homeItem,
         // { name: props.authInfo.user?.userAcctId || 'Unknown', href: "/min" },
         chatGroupItem,
-        { name: Dot("TV09-obNr", "Milestone"), href: "/milestone" },
-        { name: Dot("geHXwByxy", "Settings"), href: "/settings" },
-        { name: Dot("xhxY6iLDH", "Logout"), href: "/logout" },
+        { name: Dot("TV09-obNr", "Milestone"), href: fmtURL_Server("/milestone") },
+        { name: Dot("geHXwByxy", "Settings"), href: fmtURL_Server("/settings") },
+        { name: Dot("xhxY6iLDH", "Logout"), href: fmtURL_Server("/logout") },
     ] : [
         homeItem,
         chatGroupItem,
-        { name: Dot("gTOv6abWT", "Login"), href: "/login" },
-        { name: Dot("gTOv6adbWT", "Register"), href: "/register" },
+        { name: Dot("gTOv6abWT", "Login"), href: fmtURL_Server("/login") },
+        { name: Dot("gTOv6adbWT", "Register"), href: fmtURL_Server("/register") },
     ]
     return (
         <div className="border-b-2  dark:border-solarized-green dark:border-opacity-80  " >

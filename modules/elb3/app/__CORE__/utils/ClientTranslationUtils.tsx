@@ -32,7 +32,7 @@ export const KEY_LANG_PACK_ZH_HK = "KEY_LANG_PACK_ZH_HK" + VER_FORGE_FORM;
 
 
 let document = null;
-let sysLocale = zhCNLocale
+export let sysLocale = zhCNLocale
 if (typeof window !== "undefined") {
   let sysLang = window['document'].body.parentElement?.getAttribute("lang")
   sysLocale = all_locales.find(x => x.langInHttp == sysLang) || sysLocale
@@ -75,6 +75,8 @@ export let getCurrentLang = () => {
   return sysLocale.langIni18n
 }
 
+
+
 const TranslationUtils = {
   ForcbilyLanguage: "",
   CurrentLanguage: sysLocale.langIni18n,
@@ -89,10 +91,13 @@ const TranslationUtils = {
     let language = '';
     language = getCurrentLang()
 
-    if (language != 'en_US') {
-      let pmap = require("../../../public/static/lang/" + language + ".json")
-      TranslationUtils.LangMap[language] = pmap
+    if (!TranslationUtils.LangMap[language]) {
+      TranslationUtils.LangMap[language] = {}
     }
+    // if (language != 'en_US') {
+    //   let pmap = {} // require("../../../public/static/lang/" + language + ".json")
+    //   TranslationUtils.LangMap[language] = pmap
+    // }
     if (language == LANG_EN_US) {
       // do nothing
     } else {

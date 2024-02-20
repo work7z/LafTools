@@ -1,9 +1,13 @@
 'use client'
 
+import { loadDOT } from "@/app/[lang]/register/i18n-types"
 import { Dot } from "@/app/__CORE__/utils/ClientTranslationUtils"
 import { useState } from "react"
 
+let a = loadDOT("Q9l0BNwtm")
+
 export default () => {
+    a()
     let [value, setValue] = useState("")
     return <div className="text-sm ml-6">
         <input

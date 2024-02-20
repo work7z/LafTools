@@ -16,7 +16,8 @@ export let WeekDay = () => {
         "Happy Sunday",
         "Marvelous Monday",
     ]
-    return <div className="font-sans text-sm text-slate-500 dark:text-slate-300">{weekLabel[week - 1]}</div>
+    return <a className="anchor-text font-sans text-sm text-slate-500 dark:text-slate-300" href='/en/chooseLanguage'>Select Language</a>
+    // return <div className="font-sans text-sm text-slate-500 dark:text-slate-300">{weekLabel[week - 1]}</div>
 }
 
 export let WeekDayCardPanel = () => {

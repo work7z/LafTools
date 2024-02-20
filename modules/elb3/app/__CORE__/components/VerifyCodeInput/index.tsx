@@ -6,9 +6,12 @@ import { Dot } from '../../utils/ClientTranslationUtils';
 import os from 'os'
 import path from 'path';
 import { readFileSync } from 'fs';
+import { loadDOT } from '@/app/[lang]/register/i18n-types';
 
+let a = loadDOT("lAz69eiBk")
 
 export default (props: { codeImgBase64?: string, vcodeFactor: number }) => {
+    a()
     let [ts, onTS] = React.useState(Date.now())
     return (
         <div className="">

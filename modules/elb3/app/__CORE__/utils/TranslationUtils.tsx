@@ -68,6 +68,7 @@ export let getXLocaleStrInRSC = (): LocaleType => {
   return item || zhCNLocale
 }
 
+
 export let getWebsiteLocale = () => {
   let xlocale = getXLocaleStrInRSC()
   return xlocale.langInHttp

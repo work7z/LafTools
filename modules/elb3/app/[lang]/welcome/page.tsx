@@ -4,10 +4,8 @@ import GrailLayoutWithUser from "@/app/__CORE__/containers/GrailLayoutWithUser";
 import { Dot } from "@/app/__CORE__/utils/TranslationUtils";
 import { AuthInfoProps, CombindSearchProps } from "@/app/[lang]/page";
 
-export default (props: {
-    combindSearchProps: CombindSearchProps
-}) => {
-    let { combindSearchProps } = props;
+export default (props: CombindSearchProps) => {
+    let combindSearchProps = props;
     return <GrailLayoutWithUser combindSearchProps={combindSearchProps} main={
         (p: AuthInfoProps) =>
             <div className='space-y-2 flex-1'>

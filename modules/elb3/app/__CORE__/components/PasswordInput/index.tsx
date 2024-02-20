@@ -3,8 +3,12 @@
 import React, { useEffect } from 'react';
 import '../../script/preline-init'
 import { Dot } from '../../utils/ClientTranslationUtils';
+import { loadDOT, useTTT2 } from '@/app/[lang]/register/i18n-types';
+
+let a = loadDOT("jZs50tnTD")
 
 export default (props: { ph?: string, label?: string, strongMode?: boolean, name: string }) => {
+  a()
   let clz = `py-3 px-4 pl-11 block w-full border-gray-200  border-[1px] rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600`
   let [value, onValue] = React.useState('')
   let keyPW = 'passwordipt' + props.name;

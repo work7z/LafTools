@@ -1080,7 +1080,7 @@ export default async (daoRef: DaoRef) => {
     })
 
     // options
-    await sequelize.sync({ alter: true, force: false })
+    // await sequelize.sync({ alter: true, force: false })
 
     // setup dev env
     if (isDevEnv()) {

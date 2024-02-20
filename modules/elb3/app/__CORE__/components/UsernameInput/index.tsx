@@ -5,7 +5,10 @@ import { Dot } from '../../utils/ClientTranslationUtils';
 import { getUserInfoByUserAcctId } from '@/app/[lang]/register/action/userAction';
 import _ from 'lodash';
 import { checkIfStrOnlyHasAlphanumeric } from '@/app/[lang]/register/action/utils';
+import { loadDOT, useTTT2 } from '@/app/[lang]/register/i18n-types';
+let a = loadDOT("8O1oTYJ-Z")
 export default (props: { checkIfHas?: boolean, checkDuplicate?: boolean, name: string }) => {
+    a()
     let [value, setValue] = React.useState('')
     useEffect(() => {
         setValue(localStorage.getItem(props.name) || '')

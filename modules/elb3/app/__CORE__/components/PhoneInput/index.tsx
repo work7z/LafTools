@@ -1,7 +1,10 @@
 
 import React, { useEffect } from 'react';
 import { Dot } from '../../utils/ClientTranslationUtils';
+import { loadDOT, useTTT2 } from '@/app/[lang]/register/i18n-types';
+let a = loadDOT("BndmTuDXy")
 export default (props: { disabled?: boolean, name: string, defaultValue?: string, onChange?: (e: string) => any }) => {
+    a()
 
     let [value, setValue] = React.useState('')
     useEffect(() => {
@@ -13,7 +16,6 @@ export default (props: { disabled?: boolean, name: string, defaultValue?: string
             <label htmlFor="hs-leading-icon" className="block text-sm font-medium mb-2 dark:text-white">{Dot("-YjLGS", "Telephone Number")}</label>
             <div className="relative">
                 <input
-
                     disabled={props.disabled}
                     value={value} onChange={e => {
                         setValue(e.target.value)

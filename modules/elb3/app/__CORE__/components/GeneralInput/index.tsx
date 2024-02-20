@@ -3,7 +3,10 @@
 import React, { useEffect } from 'react';
 import { Dot } from '../../utils/ClientTranslationUtils';
 import _ from 'lodash';
+import { loadDOT, useTTT2 } from '@/app/[lang]/register/i18n-types';
+let a = loadDOT("q_WpNIGp5")
 export default (props: { name: string, noKeepValue?: boolean, defaultValue?: string, label: string, max?: number, type?: string, ph?: string, fn_svgJSX: (clz: string) => any }) => {
+    a()
     let [value, setValue] = React.useState('')
     useEffect(() => {
         if (!props.noKeepValue) {

@@ -6,9 +6,7 @@ import { Dot } from "@/app/__CORE__/utils/TranslationUtils";
 import { AuthInfoProps, CombindSearchProps } from "@/app/[lang]/page";
 import ActivationPage from "./ActivationPage";
 
-export default (props: {
-    combindSearchProps: CombindSearchProps
-}) => {
-    let { combindSearchProps } = props;
+export default (props: CombindSearchProps) => {
+    let combindSearchProps = props;
     return <GrailLayoutWithUser combindSearchProps={combindSearchProps} main={(p) => <ActivationPage {...p} />}></GrailLayoutWithUser>
 }
