@@ -3,7 +3,7 @@
 import { COMMON_CLZ_ANCHOR_TEXT } from "@/app/__CORE__/common/clz"
 import RegularLink from "@/app/__CORE__/components/RegularLink"
 import { MoonIcon, Cog8ToothIcon, SunIcon } from '@heroicons/react/24/solid'
-import { Dot } from "@/app/__CORE__/utils/ClientTranslationUtils"
+import { Dot } from "@/app/__CORE__/utils/cTranslationUtils"
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react"
 import { loadDOT } from "@/app/[lang]/register/i18n-types"

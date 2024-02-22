@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { Dot } from '../../utils/ClientTranslationUtils';
+import { Dot } from '../../utils/cTranslationUtils';
 import { loadDOT, useTTT2 } from '@/app/[lang]/register/i18n-types';
 let a = loadDOT("BndmTuDXy")
 export default (props: { disabled?: boolean, name: string, defaultValue?: string, onChange?: (e: string) => any }) => {

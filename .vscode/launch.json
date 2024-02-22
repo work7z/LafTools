@@ -22,6 +22,13 @@
       "console": "integratedTerminal",
       "args": ["server"],
       "internalConsoleOptions": "neverOpen"
-    }
+    },
+          {
+      "name": "Next.js: debug server-side",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/modules/web2",
+      "request": "launch",
+      "command": "npm run dev"
+    },
   ]
 }

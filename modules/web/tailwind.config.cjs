@@ -1,16 +1,14 @@
-const colors = require('tailwindcss/colors')
-
+const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
 
-
 const toRgba = (hexCode, opacity = 50) => {
-  let hex = hexCode.replace('#', '');
-  
+  let hex = hexCode.replace("#", "");
+
   if (hex.length === 3) {
-      hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
-  }    
-  
+    hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+  }
+
   const r = parseInt(hex.substring(0, 2), 16);
   const g = parseInt(hex.substring(2, 4), 16);
   const b = parseInt(hex.substring(4, 6), 16);
@@ -18,19 +16,19 @@ const toRgba = (hexCode, opacity = 50) => {
   return `rgba(${r},${g},${b},${opacity / 100})`;
 };
 
-const flattenColorPalette = (obj, sep='-') => Object.assign(
-{}, 
-...function _flatten(o, p='') { 
-  return [].concat(...Object.keys(o)
-    .map(k => 
-      typeof o[k] === 'object' ?
-        _flatten(o[k],k+sep) : 
-        ({[p+k]: o[k]})
-    )
+const flattenColorPalette = (obj, sep = "-") =>
+  Object.assign(
+    {},
+    ...(function _flatten(o, p = "") {
+      return [].concat(
+        ...Object.keys(o).map((k) =>
+          typeof o[k] === "object"
+            ? _flatten(o[k], k + sep)
+            : { [p + k]: o[k] },
+        ),
+      );
+    })(obj),
   );
-}(obj)
-);
-
 
 const patterns = [
   {
@@ -161,7 +159,8 @@ const patterns = [
     styles: {
       opacity: "var(--pattern-opacity, 0.4)",
       backgroundColor: "var(--pattern-bg-color, transparent)",
-      backgroundImage: "linear-gradient(45deg, var(--pattern-color) 50%, var(--pattern-bg-color, transparent) 50%)",
+      backgroundImage:
+        "linear-gradient(45deg, var(--pattern-color) 50%, var(--pattern-bg-color, transparent) 50%)",
       backgroundSize: "var(--pattern-size, 40px) var(--pattern-size, 40px)",
     },
   },
@@ -170,7 +169,8 @@ const patterns = [
     styles: {
       opacity: "var(--pattern-opacity, 0.4)",
       backgroundColor: "var(--pattern-bg-color, transparent)",
-      backgroundImage: "radial-gradient( ellipse farthest-corner at var(--pattern-size, 40px) var(--pattern-size, 40px), var(--pattern-color), var(--pattern-color) 50%, var(--pattern-bg-color, transparent) 50%)",
+      backgroundImage:
+        "radial-gradient( ellipse farthest-corner at var(--pattern-size, 40px) var(--pattern-size, 40px), var(--pattern-color), var(--pattern-color) 50%, var(--pattern-bg-color, transparent) 50%)",
       backgroundSize: "var(--pattern-size, 40px) var(--pattern-size, 40px)",
     },
   },
@@ -179,9 +179,12 @@ const patterns = [
     styles: {
       opacity: "var(--pattern-opacity, 0.4)",
       backgroundColor: "var(--pattern-bg-color, transparent)",
-      backgroundImage: "linear-gradient(var(--pattern-color) calc(var(--pattern-size, 40px) * 0.04), transparent calc(var(--pattern-size, 40px) * 0.04)), linear-gradient(90deg, var(--pattern-color) calc(var(--pattern-size, 40px) * 0.04), transparent calc(var(--pattern-size, 40px) * 0.04)), linear-gradient(var(--pattern-color) calc(var(--pattern-size, 40px) * 0.02), transparent calc(var(--pattern-size, 40px) * 0.02)), linear-gradient(90deg, var(--pattern-color) 2px, var(--pattern-bg-color, transparent) calc(var(--pattern-size, 40px) * 0.02))",
-      backgroundSize: "var(--pattern-size, 40px) var(--pattern-size, 40px), var(--pattern-size, 40px) var(--pattern-size, 40px), calc(var(--pattern-size, 40px) * 0.2) calc(var(--pattern-size, 40px) * 0.2), calc(var(--pattern-size, 40px) * 0.2) calc(var(--pattern-size, 40px) * 0.2)",
-      backgroundPosition: "calc(var(--pattern-size, 40px) * -0.04) calc(var(--pattern-size, 40px) * -0.04), calc(var(--pattern-size, 40px) * -0.04) calc(var(--pattern-size, 40px) * -0.04), calc(var(--pattern-size, 40px) * -0.02) calc(var(--pattern-size, 40px) * -0.02), calc(var(--pattern-size, 40px) * -0.02) calc(var(--pattern-size, 40px) * -0.02)",
+      backgroundImage:
+        "linear-gradient(var(--pattern-color) calc(var(--pattern-size, 40px) * 0.04), transparent calc(var(--pattern-size, 40px) * 0.04)), linear-gradient(90deg, var(--pattern-color) calc(var(--pattern-size, 40px) * 0.04), transparent calc(var(--pattern-size, 40px) * 0.04)), linear-gradient(var(--pattern-color) calc(var(--pattern-size, 40px) * 0.02), transparent calc(var(--pattern-size, 40px) * 0.02)), linear-gradient(90deg, var(--pattern-color) 2px, var(--pattern-bg-color, transparent) calc(var(--pattern-size, 40px) * 0.02))",
+      backgroundSize:
+        "var(--pattern-size, 40px) var(--pattern-size, 40px), var(--pattern-size, 40px) var(--pattern-size, 40px), calc(var(--pattern-size, 40px) * 0.2) calc(var(--pattern-size, 40px) * 0.2), calc(var(--pattern-size, 40px) * 0.2) calc(var(--pattern-size, 40px) * 0.2)",
+      backgroundPosition:
+        "calc(var(--pattern-size, 40px) * -0.04) calc(var(--pattern-size, 40px) * -0.04), calc(var(--pattern-size, 40px) * -0.04) calc(var(--pattern-size, 40px) * -0.04), calc(var(--pattern-size, 40px) * -0.02) calc(var(--pattern-size, 40px) * -0.02), calc(var(--pattern-size, 40px) * -0.02) calc(var(--pattern-size, 40px) * -0.02)",
     },
   },
 ];
@@ -208,18 +211,15 @@ const defaultSizes = {
   32: "8rem",
 };
 
-
-
 module.exports = {
   darkMode: "class",
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
       colors: {
-        'light-blue': colors.sky,
+        "light-blue": colors.sky,
         cyan: colors.cyan,
       },
-
     },
   },
   plugins: [
@@ -231,10 +231,10 @@ module.exports = {
       }));
       const opacities = theme("patterns.opacity", defaultOpacities);
       const sizes = theme("patterns.size", defaultSizes);
-    
+
       let utilities = {};
       let components = {};
-    
+
       allColors.forEach(({ name, values }) => {
         if (typeof values === "object") {
           Object.keys(values).forEach((value) => {
@@ -256,54 +256,54 @@ module.exports = {
           };
         }
       });
-    
+
       Object.keys(opacities).forEach((opacity) => {
         utilities[`.pattern-opacity-${opacity}`] = {
           "--pattern-opacity": opacities[opacity],
         };
       });
-    
+
       Object.keys(sizes).forEach((size) => {
         utilities[`.pattern-size-${size}`] = {
           "--pattern-size": sizes[size],
           "--pattern-size-half": `calc(${sizes[size]} / 2)`,
         };
       });
-    
+
       patterns.forEach(({ name: patternName, styles }) => {
         components[`.pattern-${patternName}`] = styles;
       });
-    
+
       addUtilities(utilities);
       addComponents(components);
     },
     function ({ addUtilities, theme }) {
       const utilities = {
-        '.bg-stripes': {
+        ".bg-stripes": {
           backgroundImage:
-            'linear-gradient(45deg, var(--stripes-color) 12.50%, transparent 12.50%, transparent 50%, var(--stripes-color) 50%, var(--stripes-color) 62.50%, transparent 62.50%, transparent 100%)',
-          backgroundSize: '5.66px 5.66px',
+            "linear-gradient(45deg, var(--stripes-color) 12.50%, transparent 12.50%, transparent 50%, var(--stripes-color) 50%, var(--stripes-color) 62.50%, transparent 62.50%, transparent 100%)",
+          backgroundSize: "5.66px 5.66px",
         },
-      }
+      };
 
       const addColor = (name, color) =>
-        (utilities[`.bg-stripes-${name}`] = { '--stripes-color': color })
+        (utilities[`.bg-stripes-${name}`] = { "--stripes-color": color });
 
-      const colors = flattenColorPalette(theme('backgroundColor'))
+      const colors = flattenColorPalette(theme("backgroundColor"));
       for (let name in colors) {
         try {
-          const [r, g, b, a] = toRgba(colors[name])
+          const [r, g, b, a] = toRgba(colors[name]);
           if (a !== undefined) {
-            addColor(name, colors[name])
+            addColor(name, colors[name]);
           } else {
-            addColor(name, `rgba(${r}, ${g}, ${b}, 0.4)`)
+            addColor(name, `rgba(${r}, ${g}, ${b}, 0.4)`);
           }
         } catch (_) {
-          addColor(name, colors[name])
+          addColor(name, colors[name]);
         }
       }
 
-      addUtilities(utilities)
+      addUtilities(utilities);
     },
   ],
-}
+};

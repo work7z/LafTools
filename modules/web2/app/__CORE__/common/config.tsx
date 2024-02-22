@@ -13,8 +13,7 @@ export const getWebsiteName = (subPage?: string) => {
     if (!subPage) {
         subPage = Dot("OBjaZqTvx", "Home")
         // professionals and engineers
-        // return Dot("7flKa","LafTools - The Leading All-In-One ToolBox for Programmers")
-        return Dot("7flKa","LafTools - The Omnipotent for all Professionals and Engineers")
+        return Dot("7flKa", "LafTools - The Omnipotent for all Professionals and Engineers")
     }
     if (subPage) {
         return `${subPage} - ${str}`

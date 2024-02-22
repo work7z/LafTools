@@ -5,7 +5,7 @@ import GrailLayoutWithUser from '@/app/__CORE__/containers/GrailLayoutWithUser'
 import { AuthInfoProps, CombindSearchProps } from '@/app/[lang]/page'
 import CardPanel from '@/app/__CORE__/components/CardPanel';
 import { PageProps } from '@/app/__CORE__/types/pages';
-import { Dot } from '@/app/__CORE__/utils/ClientTranslationUtils';
+import { Dot } from '@/app/__CORE__/utils/cTranslationUtils';
 import VisiterGuideInfoPanel from '@/app/__CORE__/containers/VisiterSidebar';
 import PasswordInput from '@/app/__CORE__/components/PasswordInput'
 import UserInput from '@/app/__CORE__/components/UsernameInput'
@@ -22,7 +22,7 @@ import LoadingWrapper from '@/app/__CORE__/containers/LoadingWrapper';
 import { cookies } from 'next/headers';
 import { getCookies } from 'cookies-next';
 import _ from 'lodash';
-import { fmtURL_Client } from '@/app/__CORE__/utils/ClientRouterHelpers';
+import { fmtURL_Client } from '@/app/__CORE__/utils/cRouteUtils';
 import { loadDOT, useTTT2 } from '../register/i18n-types';
 
 function deleteAllCookies() {

@@ -3,7 +3,7 @@
 
 import { LocaleType } from "@/middleware"
 import { getXLocaleStrInRSC } from "./TranslationUtils"
-import { sysLocale } from "./ClientTranslationUtils"
+import { sysLocale } from "./cTranslationUtils"
 
 
 export let getLocalePrefix_Client = (): LocaleType => {
@@ -15,5 +15,5 @@ export let fmtURL_Client = (str: string): string => {
         str = ''
     }
     let localePrefix = getLocalePrefix_Client().langInURL
-    return "/"+localePrefix + str
+    return "/" + localePrefix + str
 }

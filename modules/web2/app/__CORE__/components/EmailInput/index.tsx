@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react';
-import { Dot } from '../../utils/ClientTranslationUtils';
+import { Dot } from '../../utils/cTranslationUtils';
 import { loadDOT, useTTT2 } from '@/app/[lang]/register/i18n-types';
 let a = loadDOT("-bXvwz70W")
 export default (props: { name: string }) => {

@@ -22,18 +22,18 @@ export default function PrelineScript() {
 
 
   useEffect(() => {
-    import("preline/preline").then(x=>{
+    import("preline/preline").then(x => {
       setTimeout(() => {
         window.HSStaticMethods.autoInit();
-      }, 100);  
+      }, 100);
     })
   }, []);
 
   // useEffect(() => {
   // }, [path]);
   if (!mounted) {
-    return <span></span>;
+    return '';
   }
 
-  return <span></span>;
+  return '';
 }

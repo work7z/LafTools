@@ -1,8 +1,8 @@
 import { get } from "lodash"
 import { getI18nDynamically } from "./i18n-action"
 import { useEffect, useState } from "react"
-import { getLocalePrefix_Client } from "@/app/__CORE__/utils/ClientRouterHelpers"
-import TranslationUtils, { Dot } from "@/app/__CORE__/utils/ClientTranslationUtils"
+import { getLocalePrefix_Client } from "@/app/__CORE__/utils/cRouteUtils"
+import TranslationUtils, { Dot } from "@/app/__CORE__/utils/cTranslationUtils"
 
 export type ShareClienti18nKeys = {
     smsCode: string,

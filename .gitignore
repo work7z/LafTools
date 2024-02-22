@@ -1,5 +1,12 @@
 var/log/
 b3333*
+private.key
+*.key
+prod
+prod/**/*
+prod/*
+development.json
+production.json
 pnpm-lock.yaml
 pnpm-lock.yaml
 package-lock.json

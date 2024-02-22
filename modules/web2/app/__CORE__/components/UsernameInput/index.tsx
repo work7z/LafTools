@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { Dot } from '../../utils/ClientTranslationUtils';
+import { Dot } from '../../utils/cTranslationUtils';
 import { getUserInfoByUserAcctId } from '@/app/[lang]/register/action/userAction';
 import _ from 'lodash';
 import { checkIfStrOnlyHasAlphanumeric } from '@/app/[lang]/register/action/utils';

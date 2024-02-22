@@ -5,7 +5,7 @@ import CardPanel from "@/app/__CORE__/components/CardPanel";
 import PhoneInput from "@/app/__CORE__/components/PhoneInput";
 import GrailLayoutWithUser from "@/app/__CORE__/containers/GrailLayoutWithUser";
 import LoadingWrapper from "@/app/__CORE__/containers/LoadingWrapper";
-import { Dot } from "@/app/__CORE__/utils/ClientTranslationUtils";
+import { Dot } from "@/app/__CORE__/utils/cTranslationUtils";
 import { AuthInfoProps, CombindSearchProps } from "@/app/[lang]/page";
 import AlertErrorPanel from "@/app/__CORE__/containers/AlertErrorPanel";
 import VerifyCodeInput from "@/app/__CORE__/components/VerifyCodeInput";

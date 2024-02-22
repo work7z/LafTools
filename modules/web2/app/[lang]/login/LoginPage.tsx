@@ -18,7 +18,7 @@ import LoadingWrapper from '@/app/__CORE__/containers/LoadingWrapper';
 import { handleSignInUser } from '../register/action/userAction';
 import AlertErrorPanel from '@/app/__CORE__/containers/AlertErrorPanel';
 import { loadDOT, useTTT, useTTT2 } from '../register/i18n-types';
-import { Dot } from '@/app/__CORE__/utils/ClientTranslationUtils';
+import { Dot } from '@/app/__CORE__/utils/cTranslationUtils';
 export type LoginPageProps = PageProps<{}, { type: string }>
 
 let lt = loadDOT("c216jAeDW")

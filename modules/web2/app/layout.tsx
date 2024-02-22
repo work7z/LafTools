@@ -25,7 +25,6 @@ export default async function RootLayout(props: {
     <Layout>
       {children}
       <PrelintInit></PrelintInit>
-
     </Layout>
   );
 }

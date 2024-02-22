@@ -5,7 +5,7 @@ import GrailLayoutWithUser from '@/app/__CORE__/containers/GrailLayoutWithUser'
 import { CombindSearchProps } from '@/app/[lang]/page'
 import CardPanel from '@/app/__CORE__/components/CardPanel';
 import { PageProps } from '@/app/__CORE__/types/pages';
-import { Dot } from '@/app/__CORE__/utils/ClientTranslationUtils';
+import { Dot } from '@/app/__CORE__/utils/cTranslationUtils';
 import VisiterGuideInfoPanel from '@/app/__CORE__/containers/VisiterSidebar';
 import PasswordInput from '@/app/__CORE__/components/PasswordInput'
 import UserInput from '@/app/__CORE__/components/UsernameInput'

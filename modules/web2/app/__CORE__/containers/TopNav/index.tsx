@@ -8,7 +8,7 @@ import HomeLink from "../../components/HomeLink";
 import SearchBar from "./SearchBar";
 import { useIsLoggedIn } from "../../hooks/user";
 import { AuthInfoProps } from "@/app/[lang]/page";
-import { fmtURL_Server as fmtURL_Server } from "../../utils/RouterHelpers";
+import { fmtURL_Server as fmtURL_Server } from "../../utils/routeUtils";
 
 
 export let TopNav = (props: AuthInfoProps) => {

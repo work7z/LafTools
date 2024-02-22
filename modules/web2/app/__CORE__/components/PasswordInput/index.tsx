@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import '../../script/preline-init'
-import { Dot } from '../../utils/ClientTranslationUtils';
+import { Dot } from '../../utils/cTranslationUtils';
 import { loadDOT, useTTT2 } from '@/app/[lang]/register/i18n-types';
 
 let a = loadDOT("jZs50tnTD")

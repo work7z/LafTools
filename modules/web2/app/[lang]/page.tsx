@@ -15,19 +15,52 @@ import { usePathname } from 'next/navigation';
 import React, { } from "react";
 import { PageProps } from '@/app/__CORE__/types/pages'
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
+import { Dot } from "../__CORE__/utils/TranslationUtils";
+import Link from "next/link";
 
 
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
 
-export default async function Home(props:CombindSearchProps) {
-    return <div className='ph-2' style={{padding:'10px'}}>LafTools 在线工具箱</div>
-    return <InnerHome combindSearchProps={props}></InnerHome>
+export default async function Home(props: CombindSearchProps) {
+    let authInfo = await getAuthInfo()
+    return (
+        <main>
+            <div>this is main page</div>
+            <div className="p-10">
+                <ul>
+                    <li>
+                        <Link href={'/m1'}>m1 page</Link>
+                    </li>
+                    <li>
+                        <Link href={'/m2'}>m2 page</Link>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    )
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+
+export let rootMetaDataFn = async function (): Promise<Metadata> {
     return {
-        title: getWebsiteName(),
+        title: Dot("title-laftools", "LafTools - The Leading All-In-One ToolBox for Programmers"),
+        description: Dot("iZXig7E2JF", "LafTools offers a comprehensive suite of development utilities including codecs, formatters, image processing tools, and computer resource management solutions. Designed to streamline and enhance your development workflow, LafTools is your go-to resource for efficient, high-quality software development."),
+        keywords: [
+            Dot("jr_7Y98yZ", "LafTools"),
+            Dot("wi28h5_S2", "Codecs"),
+            Dot("Jbor69IBw", "Formatters"),
+            Dot("t8DUz20a-", "JSON Formatter"),
+            Dot("2S_7EVIsK", "JSON Validator"),
+            Dot("Ibzs2-Ho1", "XML Formatter"),
+            Dot("Ibzs2-Ho1", "XML Validator"),
+            Dot("Ibzs2-Ho1", "CSV Tools"),
+            Dot("9b_7a0feb", "MD5"),
+            Dot("9b_7a0fdf", "SHA256"),
+            Dot("9b_7a0fqwe", "Base64 Encoder"),
+            Dot("9b_7a0sdf", "Base64 Decoder"),
+        ]
     };
 }
 
+export let generateMetadata = rootMetaDataFn
