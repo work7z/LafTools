@@ -1,21 +1,13 @@
 {
   root: 'C:\\Users\\jerrylai\\hmproject\\laf-tools\\modules\\web2',
   registry: 'https://registry.npmmirror.com',
-  pkgs: [
-    {
-      name: '@types/nextjs-progressbar',
-      version: 'latest',
-      type: 'tag',
-      alias: undefined,
-      arg: [Result]
-    }
-  ],
+  pkgs: [],
   production: false,
   cacheStrict: false,
   cacheDir: 'C:\\Users\\jerrylai\\.npminstall_tarball',
   env: {
     npm_config_registry: 'https://registry.npmmirror.com',
-    npm_config_argv: '{"remain":[],"cooked":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\jerrylai\\\\.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","-S","@types/nextjs-progressbar"],"original":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\jerrylai\\\\.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","-S","@types/nextjs-progressbar"]}',
+    npm_config_argv: '{"remain":[],"cooked":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\jerrylai\\\\.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","-S","-D","--verbose"],"original":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\jerrylai\\\\.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","-S","-D","--verbose"]}',
     npm_config_user_agent: 'npminstall/7.12.0 npm/? node/v20.10.0 win32 x64',
     npm_config_cache: 'C:\\Users\\jerrylai\\.npminstall_tarball',
     NODE: 'C:\\Program Files\\nodejs\\node.exe',

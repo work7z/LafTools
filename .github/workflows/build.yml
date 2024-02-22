@@ -34,7 +34,7 @@ jobs:
         run: |
           npm i -g pnpm 
           npm i -g typescript
-          cd ./modules/web
+          cd ./modules/web2
           pnpm install --no-frozen-lockfile
           cd ../../
           cd ./pipeline

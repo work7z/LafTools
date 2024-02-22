@@ -22,6 +22,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install pnpm and dependencies
         run: |
-          cd modules/web
+          cd modules/web2
           npm i -g pnpm
           pnpm install --no-frozen-lockfile

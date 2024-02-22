@@ -21,5 +21,8 @@ import Link from "next/link";
 export default () => {
     return <div className="w-full h-full">
         <div>this is navigator</div>
+        <div>
+            <div>second</div>
+        </div>
     </div>
 }
