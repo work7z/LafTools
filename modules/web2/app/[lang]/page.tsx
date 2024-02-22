@@ -17,6 +17,7 @@ import { PageProps } from '@/app/__CORE__/types/pages'
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
 import { Dot } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
+import NavigatorPage from "./navigator";
 
 
 export type AuthInfoProps = { authInfo: AuthInfo }
@@ -26,17 +27,7 @@ export default async function Home(props: CombindSearchProps) {
     let authInfo = await getAuthInfo()
     return (
         <main>
-            <div>this is main page</div>
-            <div className="p-10">
-                <ul>
-                    <li>
-                        <Link href={'/m1'}>m1 page</Link>
-                    </li>
-                    <li>
-                        <Link href={'/m2'}>m2 page</Link>
-                    </li>
-                </ul>
-            </div>
+            <NavigatorPage></NavigatorPage>
         </main>
     )
 }
@@ -47,7 +38,6 @@ export let rootMetaDataFn = async function (): Promise<Metadata> {
         title: Dot("title-laftools", "LafTools - The Leading All-In-One ToolBox for Programmers"),
         description: Dot("iZXig7E2JF", "LafTools offers a comprehensive suite of development utilities including codecs, formatters, image processing tools, and computer resource management solutions. Designed to streamline and enhance your development workflow, LafTools is your go-to resource for efficient, high-quality software development."),
         keywords: [
-            Dot("jr_7Y98yZ", "LafTools"),
             Dot("wi28h5_S2", "Codecs"),
             Dot("Jbor69IBw", "Formatters"),
             Dot("t8DUz20a-", "JSON Formatter"),
@@ -59,7 +49,9 @@ export let rootMetaDataFn = async function (): Promise<Metadata> {
             Dot("9b_7a0fdf", "SHA256"),
             Dot("9b_7a0fqwe", "Base64 Encoder"),
             Dot("9b_7a0sdf", "Base64 Decoder"),
-        ]
+            Dot("q0zA1kML_", "Online Toolbox"),
+            Dot("jr_7Y98yZ", "LafTools"),
+        ],
     };
 }
 

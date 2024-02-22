@@ -2,6 +2,7 @@
 
 import _ from 'lodash';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
+import React from 'react';
 
 
 let colorList = [
@@ -26,6 +27,13 @@ let colorList = [
 let randomColor = _.get(colorList, _.random(0, _.size(colorList) - 1));
 
 export default (props) => {
+
+    let [show, setShow] = React.useState(false);
+    React.useEffect(() => {
+        setShow(true);
+    }, [])
+    if (!show) return <></>
+
     return <>
         <ProgressBar
             height="4px"

@@ -16,6 +16,7 @@ import fs from 'fs'
 import PrelintInit from './__CORE__/script/preline-init'
 import { getWebsiteLocale } from "./__CORE__/utils/TranslationUtils";
 import Client from "./client";
+import { getAppIcon } from "./__CORE__/config/imgconfig";
 
 // import dbconn from '.@/app/__CORE__/app/db/index'
 
@@ -40,7 +41,7 @@ export async function generateMetadata(
     title: getWebsiteName(),
     description: getWebDesc(),
     icons: [
-      "icon.png"
+      getAppIcon()
     ]
   };
 }

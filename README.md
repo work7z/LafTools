@@ -54,6 +54,10 @@ If the answer to any of the above is yes, then you should consider trying our to
 
 # 🍀 Getting Started
 
+## 0. Refactoring
+
+Recently, we are refactoring the architecture of LafTools based on next.js, below steps may changed as needed.
+
 ## 1. Setup System Environment
 
 For the sake of simplicity, let's say that you've cloned this repository to either `C:\\Users\jerry\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or simply execute them before running any command.
