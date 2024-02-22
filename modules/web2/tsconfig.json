@@ -12,6 +12,19 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    
+    /* Linting */
+    "noUnusedLocals": false,
+    "noUncheckedIndexedAccess": false,
+    "noUnusedParameters": false,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnusedLabels": true,
+    "alwaysStrict": false,
+    "noImplicitUseStrict": false,
+    "noImplicitAny": false,
+
     "plugins": [
       {
         "name": "next"
@@ -22,5 +35,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["app/node_modules"]
 }

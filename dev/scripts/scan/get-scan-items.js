@@ -32,6 +32,7 @@ if (baseDIR == "") {
 }
 
 let webDIR = path.join(baseDIR, ...`modules/web`.split("/"));
+let web2DIR = path.join(baseDIR, ...`modules/web2`.split("/"));
 let nodeDIR = path.join(baseDIR, ...`modules/node`.split("/"));
 
 // personal project for RYAN LAI, just ignore it please
@@ -73,6 +74,15 @@ let webItem = {
   dir: `${webDIR}/src`,
 };
 
+let web2Item = {
+  id: "bprl",
+  type: "ts",
+  prefix: "Dot(",
+  pattern: commonText,
+  target: `${web2DIR}/public/static/lang`,
+  dir: `${web2DIR}/app`,
+};
+
 let searchItems = [
   {
     id: "brl",
@@ -83,6 +93,7 @@ let searchItems = [
     dir: `${baseDIR}/core`,
   },
   webItem,
+  web2Item,
   {
     type: "ts",
     id: "portal-sl",
