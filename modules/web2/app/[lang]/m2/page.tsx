@@ -1,3 +1,3 @@
-export default () => {
-    return <div>m1 content {Date.now()}</div>
+export default async () => {
+    return <div>this is m2</div>
 }

@@ -1,11 +1,11 @@
 {
-  root: 'C:\\Users\\jerrylai\\hmproject\\elb3\\modules\\elb-web',
+  root: 'C:\\Users\\jerrylai\\hmproject\\laf-tools\\modules\\web2',
   registry: 'https://registry.npmmirror.com',
   pkgs: [
     {
-      name: '',
-      version: 'next/core-web-vitals',
-      type: 'git',
+      name: '@types/nextjs-progressbar',
+      version: 'latest',
+      type: 'tag',
       alias: undefined,
       arg: [Result]
     }
@@ -15,7 +15,7 @@
   cacheDir: 'C:\\Users\\jerrylai\\.npminstall_tarball',
   env: {
     npm_config_registry: 'https://registry.npmmirror.com',
-    npm_config_argv: '{"remain":[],"cooked":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\jerrylai\\\\.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","-S","next/core-web-vitals"],"original":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\jerrylai\\\\.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","-S","next/core-web-vitals"]}',
+    npm_config_argv: '{"remain":[],"cooked":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\jerrylai\\\\.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","-S","@types/nextjs-progressbar"],"original":["--fix-bug-versions","--china","--userconfig=C:\\\\Users\\\\jerrylai\\\\.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","-S","@types/nextjs-progressbar"]}',
     npm_config_user_agent: 'npminstall/7.12.0 npm/? node/v20.10.0 win32 x64',
     npm_config_cache: 'C:\\Users\\jerrylai\\.npminstall_tarball',
     NODE: 'C:\\Program Files\\nodejs\\node.exe',
@@ -49,8 +49,8 @@
     npm_config_sharp_binary_host: 'https://cdn.npmmirror.com/binaries/sharp',
     npm_config_sharp_libvips_binary_host: 'https://cdn.npmmirror.com/binaries/sharp-libvips',
     npm_config_robotjs_binary_host: 'https://cdn.npmmirror.com/binaries/robotjs',
-    npm_rootpath: 'C:\\Users\\jerrylai\\hmproject\\elb3\\modules\\elb-web',
-    INIT_CWD: 'C:\\Users\\jerrylai\\hmproject\\elb3\\modules\\elb-web'
+    npm_rootpath: 'C:\\Users\\jerrylai\\hmproject\\laf-tools\\modules\\web2',
+    INIT_CWD: 'C:\\Users\\jerrylai\\hmproject\\laf-tools\\modules\\web2'
   },
   binaryMirrors: {
     ENVS: {
@@ -185,7 +185,7 @@
   disableFallbackStore: false,
   workspacesMap: Map(0) {},
   enableWorkspace: false,
-  workspaceRoot: 'C:\\Users\\jerrylai\\hmproject\\elb3\\modules\\elb-web',
+  workspaceRoot: 'C:\\Users\\jerrylai\\hmproject\\laf-tools\\modules\\web2',
   isWorkspaceRoot: true,
   isWorkspacePackage: false,
   offline: false,

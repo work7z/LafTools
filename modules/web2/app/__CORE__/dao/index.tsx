@@ -5,29 +5,14 @@ import path from 'path'
 import { log } from 'console';
 import { RedisClientType, createClient } from 'redis';
 import { SystemEnvFlag, getELB3Root, getSysEnv, isDevEnv, isTestEnv } from '../hooks/env';
-import model, { DB_VERSION, InvitationCode } from './model';
+import model, { DB_VERSION, } from './model';
 import refMap from './ref';
 import kvUtils from '../utils/kvUtils';
 import { getAppDatabaseMainFile } from '../config/appdir';
 
-
-
 export type DaoRef = {
     db: Sequelize,
     redis: RedisClientType
-}
-
-export let getConfigByFlag = (envFlag: SystemEnvFlag): SystemConfig => {
-    return {
-        database: {
-            link: 'sqlite://' + getAppDatabaseMainFile(),
-        },
-        sms: {
-            appId: '',
-            secretId: '',
-            secretKey: ''
-        }
-    }
 }
 
 let lock = false
@@ -40,16 +25,12 @@ let loadDAO = async (): Promise<DaoRef> => {
             return refMap[envFlag]
         }
         log("envFlag", envFlag)
-        let config = getConfigByFlag(envFlag)
 
-        let link = config.database.link
-        log("connect to DB: " + link)
-        let sequelize = new Sequelize(`${link}`, isTestEnv() ? {} : {
+        let appDatabase = getAppDatabaseMainFile()
+        let sequelize = new Sequelize('', '', '', {
             dialect: 'sqlite',
-            // dialectModule: require('mysql2'),
-            logging: console.log,
-            // timezone: '+08:00'
-        });
+            storage: appDatabase,
+        })
 
         try {
             await sequelize.authenticate();
