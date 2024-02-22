@@ -4,7 +4,7 @@ import {
 import { DaoRef } from './index'
 import { isDevEnv } from '../hooks/env';
 
-export const DB_VERSION="v1"
+export const DB_VERSION = "v2"
 
 // chat group, chat group members, chat group history
 

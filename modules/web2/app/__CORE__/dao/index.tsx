@@ -8,6 +8,7 @@ import { SystemEnvFlag, getELB3Root, getSysEnv, isDevEnv, isTestEnv } from '../h
 import model, { DB_VERSION, InvitationCode } from './model';
 import refMap from './ref';
 import kvUtils from '../utils/kvUtils';
+import { getAppDatabaseMainFile } from '../config/appdir';
 
 
 
@@ -19,7 +20,7 @@ export type DaoRef = {
 export let getConfigByFlag = (envFlag: SystemEnvFlag): SystemConfig => {
     return {
         database: {
-            link: 'sqlite::memory:'
+            link: 'sqlite://' + getAppDatabaseMainFile(),
         },
         sms: {
             appId: '',
@@ -69,7 +70,7 @@ let loadDAO = async (): Promise<DaoRef> => {
         await model(r)
 
         // options
-        let setKey = "db-version"
+        let setKey = "sys-db-version"
         // check db version
         let currentVersion = await kvUtils.getKey(setKey)
         if (currentVersion !== DB_VERSION) {

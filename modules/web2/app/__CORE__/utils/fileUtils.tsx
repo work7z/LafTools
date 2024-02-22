@@ -1,6 +1,6 @@
-import * as fs from 'fs';
+import fs from 'fs';
 
-let fsutils = {
+export default let fsutils = {
     fileExists: (file: string) => {
         return fs.existsSync(file)
 
@@ -18,5 +18,3 @@ let fsutils = {
         return dir;
     },
 }
-
-export default fsutils;

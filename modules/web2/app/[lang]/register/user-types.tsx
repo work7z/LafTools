@@ -3,6 +3,8 @@ import { AuthInfoProps } from "@/app/[lang]/page";
 import dao from "@/app/__CORE__/dao";
 import { key_systemInfoGroup } from "./redis-types";
 import { User } from "@/app/__CORE__/dao/model";
+import kvUtils from "@/app/__CORE__/utils/kvUtils";
+import { getAppDataTestKVDir } from "@/app/__CORE__/config/appdir";
 
 export let fn_get_user_avatar = (authInfoProps: AuthInfoProps) => {
     let avatarPath = authInfoProps.authInfo?.user?.avatarPath
@@ -22,25 +24,26 @@ let launchBefore = false;
 export let fn_refresh_system_info_from_redis = async () => {
     let daoRef = await dao()
     let userCtn = await User.count()
-    await daoRef.redis.hSet(key_systemInfoGroup, 'userCount', userCtn)
+    // await kvUtils.setKey('userCount', userCtn + '')
+    // await daoRef.redis.hSet(key_systemInfoGroup, 'userCount', userCtn)
 }
 export let fn_get_system_info_from_redis = async (): Promise<SystemInfoBody> => {
     if (!launchBefore) {
         await fn_refresh_system_info_from_redis()
     }
     let daoRef = await dao()
-    let userCount = await daoRef.redis.hGet(key_systemInfoGroup, 'userCount')
-    let peakOnlineCount = await daoRef.redis.hGet(key_systemInfoGroup, 'peakOnlineCount')
-    let now = Date.now()
-    let prevTimePoint = now - (60 * 60 * 1000 * 3) // last 3 hours
-    let userOnlineCount = await daoRef.redis.zCount(key_active_user, prevTimePoint, now)
-    if (parseInt(peakOnlineCount || '1') < userOnlineCount) {
-        await daoRef.redis.hSet(key_systemInfoGroup, 'peakOnlineCount', userOnlineCount)
-    }
+    // let userCount = //  daoRef.redis.hGet(key_systemInfoGroup, 'userCount')
+    // let peakOnlineCount = await  // daoRef.redis.hGet(key_systemInfoGroup, 'peakOnlineCount')
+    // let now = Date.now()
+    // let prevTimePoint = now - (60 * 60 * 1000 * 3) // last 3 hours
+    // let userOnlineCount = await daoRef.redis.zCount(key_active_user, prevTimePoint, now)
+    // if (parseInt(peakOnlineCount || '1') < userOnlineCount) {
+    //     await daoRef.redis.hSet(key_systemInfoGroup, 'peakOnlineCount', userOnlineCount)
+    // }
     return {
-        userCount: parseInt(userCount + ''),
-        userOnlineCount: userOnlineCount,
-        peakOnlineCount: parseInt(peakOnlineCount || '1')
+        userCount: -1, // parseInt(userCount + ''),
+        userOnlineCount: -1, // userOnlineCount,
+        peakOnlineCount: -1 //parseInt(peakOnlineCount || '1')
     }
 }
 
