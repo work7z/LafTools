@@ -216,7 +216,7 @@ export default (props) => {
                                 // </ClosableText>
                             }
                             <ClosableText
-                                closeKey='QUxFMltus'
+                                closeKey='G6epZQCK-'
                                 text={Dot(
                                     "pqs7y3",
                                     "Kindly consider registering this webpage as a PWA to have full keymap support."
