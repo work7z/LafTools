@@ -37,7 +37,7 @@ func main() {
 	processArgs := os.Args[1:]
 	eachLang := ""
 	for _, eachArg := range processArgs {
-		fmt.Println("eachArg: ", eachArg)
+		// fmt.Println("eachArg: ", eachArg)
 		if eachArg[:5] == "--lg=" {
 			eachLang = eachArg[5:]
 			continue
@@ -66,9 +66,9 @@ func main() {
 	}
 	zhCNOverwrittenMap := make(map[string]string)
 	json.Unmarshal([]byte(zhCNOverwrittenFileContent), &zhCNOverwrittenMap)
-	fmt.Println(zhCNOverwrittenMap)
+	// fmt.Println(zhCNOverwrittenMap)
 	// normal flow
-	fmt.Println("id is ", id)
+	// fmt.Println("id is ", id)
 	// current dirname
 	log.InternalLog.SetFormatter(&logrus.TextFormatter{})
 	translateResultDir := getTranslateResultDir()
@@ -88,7 +88,7 @@ func main() {
 	crtResultMap := make(map[string]string)
 	// for each rawMap
 	for k, v := range rawMap {
-		fmt.Println("k: ", k+" -> v:", v)
+		// fmt.Println("k: ", k+" -> v:", v)
 		// get md5 for k+v
 		// if md5 file exists, skip
 		// if md5 file not exists, translate
@@ -98,20 +98,20 @@ func main() {
 		nocycle.MkdirDirWithStr(path.Join(cacheDir, eachLang))
 		md5FilePath := (path.Join(cacheDir, eachLang, md5Str))
 		var resultForCurrentLang string
-		fmt.Println("md5FilePath: ", md5FilePath)
+		// fmt.Println("md5FilePath: ", md5FilePath)
 		// TODO: oragnize below part as separtate json
 		isChinese := strings.Index(eachLang, "zh") == 0
 		if val, ok := outputJSONMap[k]; ok {
 			resultForCurrentLang = val
 		} else if nocycle.IsFileExist(md5FilePath) {
-			fmt.Println("result existed already")
+			// fmt.Println("result existed already")
 			result2, err2 := nocycle.ReadFileAsStr(md5FilePath)
 			if err2 != nil {
 				log.InternalLog.Panic("err", err2)
 			}
 			resultForCurrentLang = result2
 		} else {
-			fmt.Println("new text received, id: " + id)
+			// fmt.Println("new text received, id: " + id)
 			var resultForCurrentLang2 string = ""
 			for {
 				v_resultForCurrentLang2, err2 := translateNow(v, eachLang)
@@ -124,7 +124,7 @@ func main() {
 				}
 			}
 			resultForCurrentLang = resultForCurrentLang2
-			fmt.Println(resultForCurrentLang)
+			// fmt.Println(resultForCurrentLang)
 			nocycle.WriteStrIntoFile(md5FilePath, resultForCurrentLang)
 			if isChinese {
 				resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools", "LafTools工具箱")

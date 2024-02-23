@@ -61,22 +61,13 @@ i18njson.forEach((x) => {
 });
 
 let processWithArg = async ({
-  taskID,
+  taskID: _taskID,
   eachRunItem,
   disableLoadingDot = false,
   allFiles,
 }) => {
-  // let crtTaskId = latestTaskIdObj[eachRunItem.dir];
-  // if (crtTaskId != taskID && disableLoadingDot) {
-  //   console.log(
-  //     "quit now11",
-  //     crtTaskId,
-  //     taskID,
-  //     eachRunItem.dir,
-  //     latestTaskIdObj,
-  //   );
-  //   return;
-  // }
+  let taskID = _taskID;
+
   let waitTranslateObj = {};
   // iterate all files
   for (let eachFile of allFiles) {
@@ -127,112 +118,136 @@ let processWithArg = async ({
   }
   let waitArr = [];
   for (let eachLang of langarr) {
-    let a = (async () => {
-      let crtTaskId = latestTaskIdObj[eachRunItem.dir];
-      if (crtTaskId != taskID && disableLoadingDot) {
-        console.log(
-          "quit now 2",
-          crtTaskId,
-          taskID,
-          eachRunItem.dir,
-          latestTaskIdObj,
-        );
-        return;
-      }
+    await sleep(1000);
+    let crtTaskId = latestTaskIdObj[eachRunItem.dir];
+    // console.log(
+    //   "checking taskid",
+    //   crtTaskId,
+    //   taskID,
+    //   disableLoadingDot,
+    //   crtTaskId != taskID,
+    // );
+    if (crtTaskId != taskID) {
+      // console.log(
+      //   "quit now",
+      //   crtTaskId,
+      //   taskID,
+      //   eachRunItem.dir,
+      //   latestTaskIdObj,
+      // );
+      return;
+    }
+    let outputLang = eachLang.replace("-", "_");
+    let isChinese = eachLang == "zh_CN" || eachLang == "zh_HK";
+    let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
-      let outputLang = eachLang.replace("-", "_");
-      let isChinese = eachLang == "zh_CN" || eachLang == "zh_HK";
-      let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
+    let a1 = `${overwrittenDir}/${
+      isChinese ? "zh_CN" : eachLang
+    }-id-overwrite.json`;
+    let overwrittenFile = a1;
+    let idOverwriteJSONFile = getFile(a1); // replace with appropriate function
+    let overwriteJSONFile = getFile(
+      `${overwrittenDir}/${isChinese ? "zh_CN" : eachLang}-overwrite.json`,
+    );
 
-      let a1 = `${overwrittenDir}/${
-        isChinese ? "zh_CN" : eachLang
-      }-id-overwrite.json`;
-      let overwrittenFile = a1;
-      let idOverwriteJSONFile = getFile(a1); // replace with appropriate function
-      let overwriteJSONFile = getFile(
-        `${overwrittenDir}/${isChinese ? "zh_CN" : eachLang}-overwrite.json`,
-      );
+    if (!fs.existsSync(idOverwriteJSONFile.file)) {
+      fs.writeFileSync(idOverwriteJSONFile.file, "{}");
+    }
+    if (!fs.existsSync(overwriteJSONFile.file)) {
+      fs.writeFileSync(overwriteJSONFile.file, "{}");
+    }
+    let overwrritenMap = getFile(overwrittenFile).jsonmap();
+    let lastModifiedForIdOverwriteJSONFile =
+      idOverwriteJSONFile.lastModified() + overwriteJSONFile.lastModified();
 
-      if (!fs.existsSync(idOverwriteJSONFile.file)) {
-        fs.writeFileSync(idOverwriteJSONFile.file, "{}");
-      }
-      if (!fs.existsSync(overwriteJSONFile.file)) {
-        fs.writeFileSync(overwriteJSONFile.file, "{}");
-      }
-      let overwrritenMap = getFile(overwrittenFile).jsonmap();
-      let lastModifiedForIdOverwriteJSONFile =
-        idOverwriteJSONFile.lastModified() + overwriteJSONFile.lastModified();
+    let waitTranslateObjStr = toJSON(waitTranslateObj);
+    // console.log(waitTranslateObj);
 
-      let waitTranslateObjStr = toJSON(waitTranslateObj);
-      // console.log(waitTranslateObj);
+    let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
+    if (!fs.existsSync(tmpTranslateDir)) {
+      fs.mkdirSync(tmpTranslateDir);
+    }
 
-      let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
-      if (!fs.existsSync(tmpTranslateDir)) {
-        fs.mkdirSync(tmpTranslateDir);
-      }
+    // start iteratting all languages here
 
-      // start iteratting all languages here
+    fs.writeFileSync(
+      path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
+      waitTranslateObjStr,
+    );
+    fs.writeFileSync(
+      path.join(tmpTranslateDir, `config-${eachRunItem.id}-${eachLang}.json`),
+      toJSON({
+        id: eachRunItem.id,
+      }),
+    );
 
-      fs.writeFileSync(
-        path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
-        waitTranslateObjStr,
-      );
-      fs.writeFileSync(
-        path.join(tmpTranslateDir, `config-${eachRunItem.id}-${eachLang}.json`),
-        toJSON({
-          id: eachRunItem.id,
-        }),
-      );
+    // execute a command
+    let cmd = `go run "${path.join(
+      __dirname,
+      "translate-tools",
+      "bulktranslate.go",
+    )}" --id=${eachRunItem.id} --lg=${eachLang} --output="${outputLangFile}" `;
+    console.log("cmd----", cmd);
 
-      // execute a command
-      let cmd = `go run "${path.join(
-        __dirname,
-        "translate-tools",
-        "bulktranslate.go",
-      )}" --id=${
-        eachRunItem.id
-      } --lg=${eachLang} --output="${outputLangFile}" `;
-      console.log("cmd is ", cmd);
-      sh.exec(cmd);
+    sh.exec(cmd);
 
-      let resultFile = path.join(
-        __dirname,
-        `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`,
-      );
-      // TODO: if there's no dynamic file was mentioned in the code, then we should clean them
-      if (fs.existsSync(resultFile)) {
-        let resultJSON = getFile(resultFile).jsonmap();
-        _.forEach(overwrritenMap, (x, d, n) => {
-          if (resultJSON[d]) {
-            resultJSON[d] = x;
-          }
-        });
-
-        if (eachLang == "zh_HK") {
-          resultJSON = _.mapValues(resultJSON, (x, d, n) => {
-            return _.chain(x)
-              .split("")
-              .map((xx) => cnchars.toTraditionalChar(xx))
-              .join("")
-              .value();
-          });
+    let resultFile = path.join(
+      __dirname,
+      `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`,
+    );
+    // TODO: if there's no dynamic file was mentioned in the code, then we should clean them
+    if (fs.existsSync(resultFile)) {
+      let resultJSON = getFile(resultFile).jsonmap();
+      _.forEach(overwrritenMap, (x, d, n) => {
+        if (resultJSON[d]) {
+          resultJSON[d] = x;
         }
-        fs.writeFileSync(outputLangFile, toJSON(resultJSON));
-      } else {
-        console.log("file not exists: ", resultFile);
-        process.exit(-1);
-      }
+      });
 
-      console.log("------------------------------");
-    })();
-    await a;
-    waitArr.push(a);
+      if (eachLang == "zh_HK") {
+        resultJSON = _.mapValues(resultJSON, (x, d, n) => {
+          return _.chain(x)
+            .split("")
+            .map((xx) => cnchars.toTraditionalChar(xx))
+            .join("")
+            .value();
+        });
+      }
+      fs.writeFileSync(outputLangFile, toJSON(resultJSON));
+    } else {
+      console.log("file not exists: ", resultFile);
+      process.exit(-1);
+    }
+
+    console.log("------------------------------");
   }
   for (let eachItem of waitArr) {
     await eachItem;
   }
 };
-
+// iterate all files for dir.file, recursively
+let iterateFiles = (dir, done) => {
+  let results = [];
+  fs.readdir(dir, function (err, list) {
+    if (err) return done(err);
+    var pending = list.length;
+    if (!pending) return done(null, results);
+    list.forEach(function (file) {
+      file = path.resolve(dir, file);
+      fs.stat(file, function (err, stat) {
+        if (stat && stat.isDirectory()) {
+          iterateFiles(file, function (err, res) {
+            results = results.concat(res);
+            if (!--pending) done(null, results);
+          });
+        } else {
+          results.push(file);
+          if (!--pending) done(null, results);
+        }
+      });
+    });
+  });
+};
 let toJSON = (obj) => {
   return JSON.stringify(obj, null, 4);
 };
@@ -241,35 +256,14 @@ let runStatusObj = {};
 
 let scan = async (eachRunItem) => {
   let crtTaskId = latestTaskIdObj[eachRunItem.dir];
-  console.log("scaning", crtTaskId, eachRunItem.dir);
-  let triggerFn = async () => {
+  // console.log("scaning", crtTaskId, eachRunItem.dir);
+  let triggerFn = async (crtTaskId) => {
     try {
+      await sleep(10000);
+
       // get all dir
       let dir = getFile(eachRunItem.dir); // replace with appropriate function
 
-      // iterate all files for dir.file, recursively
-      let iterateFiles = (dir, done) => {
-        let results = [];
-        fs.readdir(dir, function (err, list) {
-          if (err) return done(err);
-          var pending = list.length;
-          if (!pending) return done(null, results);
-          list.forEach(function (file) {
-            file = path.resolve(dir, file);
-            fs.stat(file, function (err, stat) {
-              if (stat && stat.isDirectory()) {
-                iterateFiles(file, function (err, res) {
-                  results = results.concat(res);
-                  if (!--pending) done(null, results);
-                });
-              } else {
-                results.push(file);
-                if (!--pending) done(null, results);
-              }
-            });
-          });
-        });
-      };
       // get all files
       let allFiles = await new Promise((resolve, reject) => {
         iterateFiles(dir.file, (err, results) => {
@@ -292,15 +286,13 @@ let scan = async (eachRunItem) => {
         allFiles,
         disableLoadingDot: false,
       });
-
-      // await sleep(3000);
     } catch (e) {
       console.log("err", e);
       await sleep(3000);
     }
   };
   try {
-    await triggerFn();
+    await triggerFn(crtTaskId);
   } catch (e) {
     console.log("err", e);
   }
@@ -319,26 +311,30 @@ let r2 = async () => {
           let tsval = new Date().getTime() + "";
           console.log("changed now", tsval);
           latestTaskIdObj[eachItem.dir] = tsval;
+          // if (true) {
+          //   return;
+          // }
 
           let eachRunItem = eachItem;
-          if (runStatusObj[eachRunItem.dir]) return;
-          runStatusObj[eachRunItem.dir] = "1";
+          // if (runStatusObj[eachRunItem.dir]) return;
+          // runStatusObj[eachRunItem.dir] = "1";
 
-          try {
-            await scan(eachItem);
-            await sleep(1000);
-          } catch (e) {
-            console.log("err", e);
-          }
+          scan(eachItem);
+          // try {
+          //   await ;
+          //   // await sleep(1000);
+          // } catch (e) {
+          //   console.log("err", e);
+          // }
 
-          delete runStatusObj[eachRunItem.dir];
-        }, 1000);
+          // delete runStatusObj[eachRunItem.dir];
+        }, 0);
 
         chokidar.watch(eachItem.dir).on("all", async (event, path) => {
           // if new file is added or exist file is modified/delete
-          // console.log('some file is changed', event, path);
           if (event == "add" || event == "change" || event == "unlink") {
             let eachFile = path;
+            console.log("is changed", event, path);
             if (
               (eachFile + "").endsWith("go") ||
               (eachFile + "").endsWith("ts") ||
@@ -347,13 +343,26 @@ let r2 = async () => {
               (eachFile + "").endsWith("groovy") ||
               (eachFile + "").endsWith("js")
             ) {
-              console.log("some file is changed", event, path);
               triggerAllFn();
             }
           }
         });
+        // let lastContent = "";
+        // setInterval(() => {
+        //   console.log("xx-begin");
+        //   let updateFile = path.join(__dirname, "update.txt");
+        //   let crtContent = fs.readFileSync(updateFile, { encoding: "utf-8" });
+        //   console.log("xx-comparing", crtContent, lastContent);
+        //   if (crtContent != lastContent) {
+        //     lastContent = crtContent;
+        //     setTimeout(() => {
+        //       // triggerAllFn();
+        //     });
+        //   }
+        // }, 1000);
       }
     })();
+    await a;
     gwaitarr.push(a);
   }
   for (let eg of gwaitarr) {
@@ -386,7 +395,7 @@ let entryForLoadingDOT = async () => {
             if (!fs.existsSync(dynDirName)) {
               fs.mkdirSync(dynDirName);
             }
-            console.log("Loading DOT", loadEachObj.scopeID);
+            // console.log("Loading DOT", loadEachObj.scopeID);
             await processWithArg({
               taskID: crtTaskId,
               eachRunItem: {
