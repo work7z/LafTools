@@ -33,7 +33,7 @@ if (baseDIR == "") {
 
 let webDIR = path.join(baseDIR, ...`modules/web`.split("/"));
 let web2DIR = path.join(baseDIR, ...`modules/web2`.split("/"));
-let nodeDIR = path.join(baseDIR, ...`modules/node`.split("/"));
+// let nodeDIR = path.join(baseDIR, ...`modules/node`.split("/"));
 
 // personal project for RYAN LAI, just ignore it please
 let privateProjects = [
@@ -84,32 +84,32 @@ let web2Item = {
 };
 
 let searchItems = [
-  {
-    id: "brl",
-    type: "go",
-    prefix: ".Dot(",
-    target: `${baseDIR}/resources/lang`,
-    pattern: commonText,
-    dir: `${baseDIR}/core`,
-  },
-  webItem,
+  // {
+  //   id: "brl",
+  //   type: "go",
+  //   prefix: ".Dot(",
+  //   target: `${baseDIR}/resources/lang`,
+  //   pattern: commonText,
+  //   dir: `${baseDIR}/core`,
+  // },
+  // webItem,
   web2Item,
-  {
-    type: "ts",
-    id: "portal-sl",
-    prefix: "Dot(",
-    pattern: commonText,
-    target: `${nodeDIR}/src/lang`,
-    dir: `${nodeDIR}/src`,
-  },
-  {
-    type: "ts",
-    id: "purejs",
-    prefix: "Dot(",
-    pattern: commonText,
-    target: baseDIR + "/modules/purejs/src/lang",
-    dir: baseDIR + "/modules/purejs/src",
-  },
+  // {
+  //   type: "ts",
+  //   id: "portal-sl",
+  //   prefix: "Dot(",
+  //   pattern: commonText,
+  //   target: `${nodeDIR}/src/lang`,
+  //   dir: `${nodeDIR}/src`,
+  // },
+  // {
+  //   type: "ts",
+  //   id: "purejs",
+  //   prefix: "Dot(",
+  //   pattern: commonText,
+  //   target: baseDIR + "/modules/purejs/src/lang",
+  //   dir: baseDIR + "/modules/purejs/src",
+  // },
   ...privateProjects,
 ].map((x) => {
   x.dir = convertUnixPathToWindowsPath(x.dir);

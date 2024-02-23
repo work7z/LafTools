@@ -2,10 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.white-anchor-text{
+  @apply px-2 py-2 inline-flex hover:bg-cyan-800 text-xs transition-all duration-75 text-slate-100  hover:text-slate-50;
+
+}
 
 .anchor-text {
   @apply text-cyan-700 hover:text-cyan-500 hover:underline hover:cursor-pointer;
   transition: color 0.2s ease-in-out;
+}
+.flex-justify-between{
+  @apply flex justify-between;
+}
+.small-text{
+  font-size: 10px;
 }
 
 :root {

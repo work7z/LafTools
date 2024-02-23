@@ -308,6 +308,90 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("preline/plugin")],
+  plugins: [
+    function ({ addComponents, addUtilities, theme }) {
+      const colors = theme("colors", {});
+      const allColors = Object.keys(colors).map((key) => ({
+        name: key,
+        values: colors[key],
+      }));
+      const opacities = theme("patterns.opacity", defaultOpacities);
+      const sizes = theme("patterns.size", defaultSizes);
+
+      let utilities = {};
+      let components = {};
+
+      allColors.forEach(({ name, values }) => {
+        if (typeof values === "object") {
+          Object.keys(values).forEach((value) => {
+            utilities[`.pattern-${name}-${value}`] = {
+              "--pattern-color": values[value],
+              "--pattern-color-55": values[value] + "55",
+              "--pattern-color-77": values[value] + "77",
+            };
+            utilities[`.pattern-bg-${name}-${value}`] = {
+              "--pattern-bg-color": values[value],
+            };
+          });
+        } else {
+          utilities[`.pattern-${name}`] = {
+            "--pattern-color": values,
+          };
+          utilities[`.pattern-bg-${name}`] = {
+            "--pattern-bg-color": values,
+          };
+        }
+      });
+
+      Object.keys(opacities).forEach((opacity) => {
+        utilities[`.pattern-opacity-${opacity}`] = {
+          "--pattern-opacity": opacities[opacity],
+        };
+      });
+
+      Object.keys(sizes).forEach((size) => {
+        utilities[`.pattern-size-${size}`] = {
+          "--pattern-size": sizes[size],
+          "--pattern-size-half": `calc(${sizes[size]} / 2)`,
+        };
+      });
+
+      patterns.forEach(({ name: patternName, styles }) => {
+        components[`.pattern-${patternName}`] = styles;
+      });
+
+      addUtilities(utilities);
+      addComponents(components);
+    },
+    function ({ addUtilities, theme }) {
+      const utilities = {
+        ".bg-stripes": {
+          backgroundImage:
+            "linear-gradient(45deg, var(--stripes-color) 12.50%, transparent 12.50%, transparent 50%, var(--stripes-color) 50%, var(--stripes-color) 62.50%, transparent 62.50%, transparent 100%)",
+          backgroundSize: "5.66px 5.66px",
+        },
+      };
+
+      const addColor = (name, color) =>
+        (utilities[`.bg-stripes-${name}`] = { "--stripes-color": color });
+
+      const colors = flattenColorPalette(theme("backgroundColor"));
+      for (let name in colors) {
+        try {
+          const [r, g, b, a]: any = toRgba(colors[name]);
+          if (a !== undefined) {
+            addColor(name, colors[name]);
+          } else {
+            addColor(name, `rgba(${r}, ${g}, ${b}, 0.4)`);
+          }
+        } catch (_) {
+          addColor(name, colors[name]);
+        }
+      }
+
+      addUtilities(utilities);
+    },
+    require("preline/plugin"),
+  ],
 };
 export default config;

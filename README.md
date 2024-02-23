@@ -211,3 +211,5 @@ Feb. 2nd, 2023
 
 This project is protected under the GNU Affero General Public License.  
 Please see the LICENSE file for more details.
+
+In accordance with this agreement, if your website is publicly accessible, you must prominently display either the URL of this repository or our website, laf-tools.com, on your pages.
