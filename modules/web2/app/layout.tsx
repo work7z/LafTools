@@ -37,6 +37,8 @@ import PrelintInit from './__CORE__/script/preline-init'
 import { getWebsiteLocale } from "./__CORE__/utils/TranslationUtils";
 import Client from "./client";
 import { getAppIcon } from "./__CORE__/config/imgconfig";
+import { NextUIProvider } from "@nextui-org/react";
+import { Providers } from "./nextui-provider";
 
 // import dbconn from '.@/app/__CORE__/app/db/index'
 
@@ -46,7 +48,9 @@ export default async function RootLayout(props: {
   let { children } = props;
   return (
     <Layout>
-      {children}
+      <Providers>
+        {children}
+      </Providers>
       <PrelintInit></PrelintInit>
       <Client></Client>
     </Layout>

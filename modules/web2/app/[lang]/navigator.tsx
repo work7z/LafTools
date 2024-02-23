@@ -52,7 +52,6 @@ import {
     RadioGroup,
     MenuItem,
     Radio,
-    ButtonGroup,
     TextArea,
     HotkeysProvider,
     Intent,
@@ -74,7 +73,6 @@ import {
     Icon,
     Card,
     Elevation,
-    Button,
     Popover,
     Menu,
     MenuDivider,
@@ -90,6 +88,7 @@ import { fmtURL_Server } from "../__CORE__/utils/routeUtils";
 import { MoonIcon } from "@heroicons/react/24/solid";
 import LightDarkButton from "../__CORE__/components/LightDarkButton";
 import GitHubButton from "../__CORE__/components/GitHubButton";
+import { Button, ButtonGroup } from "@nextui-org/react";
 
 
 export type LabelHrefType = {
@@ -204,7 +203,7 @@ export default (props) => {
                         <div className="small-text">{Dot("forever-foss", "Forever FOSS!")}</div>
                     </h2>
                 </div>
-                <div className=" absolute right-0 bottom-[-3px] text-right ">
+                <div className=" absolute right-0 bottom-0  ">
                     <div className=" text-gray-600 dark:text-gray-400 ">
                         <div className="w-full space-y-[3px]">
                             {
@@ -216,37 +215,37 @@ export default (props) => {
                                 // </ClosableText>
                             }
 
-                            <ClosableText
+                            {/* <ClosableText
                                 closeKey='G6epZQCK-'
                                 text={Dot(
                                     "pqs7y3",
                                     "Kindly consider registering this webpage as a PWA to have full keymap support."
                                 )}
-                            ></ClosableText>
+                            ></ClosableText> */}
                             <ClosableText
                                 // goText={Dot("V2A74ySoN","View")}
                                 // goLink="/"
                                 closeKey='QUxFMltus'
-                                text={Dot(
+                                text={"[1] " + Dot(
                                     "C_qzLO7yw",
                                     "Please use Chrome, Firefox, or Edge for the best experience."
                                 )}
                             ></ClosableText>
                             <ClosableText
-                                goText={"OK"}
+                                goText={Dot("CqFdiBu6M", "View")}
                                 goLink="https://github.com/work7z/LafTools/"
                                 closeKey="L49HJwuJz"
-                                text={
-                                    Dot("giveastar", "Give us a star on GitHub if you like LafTools.")
+                                text={"[2] " +
+                                    Dot("giveas3tar", "Give us a star on GitHub if you like LafTools.")
                                 }
                             ></ClosableText>
-                            {/* <ClosableText
-                                goText={Dot("TY-RTyW_M", "View")}
+                            <ClosableText
+                                goText={Dot("Ezsn81tfc", "View")}
                                 goLink="https://sys.laf-tools.com"
                                 closeKey="XDp3Meed-"
-                                text={Dot("Fae1UXua7", "Learn more about LafTools and its .")}
+                                text={"[3]" + Dot("QvBKp9BBp", "Learn more about the development planning of LafTools.")}
                             >
-                            </ClosableText> */}
+                            </ClosableText>
                         </div>
                     </div>
                 </div>
@@ -272,6 +271,11 @@ export default (props) => {
                     }
                 </div>
             </div>
+        </div>
+        <div className={row_pad_clz}>
+            <Button color="primary">
+                Button
+            </Button>
         </div>
     </div>
 }

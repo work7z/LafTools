@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const colors = require("tailwindcss/colors");
+const { nextui } = require("@nextui-org/react");
 
 /** @type {import('tailwindcss').Config} */
 
@@ -216,6 +217,7 @@ const defaultSizes = {
 const config: Config = {
   // mode: "jit",
   content: [
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "node_modules/preline/dist/*.js",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -309,6 +311,7 @@ const config: Config = {
     },
   },
   plugins: [
+    nextui(),
     function ({ addComponents, addUtilities, theme }) {
       const colors = theme("colors", {});
       const allColors = Object.keys(colors).map((key) => ({

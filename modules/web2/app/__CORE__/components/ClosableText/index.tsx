@@ -53,7 +53,7 @@ export const ClosableText = (props: {
     <div className="flex flex-column">
       <div className="small-text flex-grow">
         {props.text}
-        {!props.goLink ? '[C1]' : !isClose ? true ? (
+        {!props.goLink ? '' : !isClose ? true ? (
           <a href={props.goLink || 'javascript:void(0);'} target='_blank' className="mr-[1px]">
             [{props.goText || Dot("4vdfwf", "OK")}]
           </a>

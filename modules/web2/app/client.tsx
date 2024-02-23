@@ -46,6 +46,10 @@ let colorList = [
 ]
 let randomColor = _.get(colorList, _.random(0, _.size(colorList) - 1));
 
+// 1. import `NextUIProvider` component
+import { NextUIProvider } from "@nextui-org/react";
+
+
 export default (props) => {
 
     let [show, setShow] = React.useState(false);
