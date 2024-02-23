@@ -32,15 +32,15 @@ export const ClosableText = (props: {
   text: string | JSX.Element;
 }) => {
   let [ctn, setCtn] = useState(0)
-  let isClose = localStorage.getItem(props.closeKey) != null;
+  let isClose = false // localStorage.getItem(props.closeKey) != null;
   let onClose = () => {
     localStorage.setItem(props.closeKey, "true");
     setCtn(ctn + 1)
   }
 
-  if (isClose) {
-    return <></>;
-  }
+  // if (isClose) {
+  //   return <></>;
+  // }
   let closeItem = <span
     onClick={() => {
       onClose();
@@ -53,9 +53,9 @@ export const ClosableText = (props: {
     <div className="flex flex-column">
       <div className="small-text flex-grow">
         {props.text}
-        {!isClose ? true ? (
+        {!props.goLink ? '[C1]' : !isClose ? true ? (
           <a href={props.goLink || 'javascript:void(0);'} target='_blank' className="mr-[1px]">
-            [{Dot("4vdfwf", "OK")}]
+            [{props.goText || Dot("4vdfwf", "OK")}]
           </a>
         ) : props.goLink ? (
           <span>

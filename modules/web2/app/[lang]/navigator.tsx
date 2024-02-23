@@ -215,20 +215,13 @@ export default (props) => {
                                 // >
                                 // </ClosableText>
                             }
+
                             <ClosableText
                                 closeKey='G6epZQCK-'
                                 text={Dot(
                                     "pqs7y3",
                                     "Kindly consider registering this webpage as a PWA to have full keymap support."
                                 )}
-                            ></ClosableText>
-                            <ClosableText
-                                goText={Dot("hMxHcm6pC", "View")}
-                                goLink="https://github.com/work7z/LafTools/"
-                                closeKey="L49HJwuJz"
-                                text={
-                                    Dot("giveastar", "Give us a star on GitHub if you like LafTools.")
-                                }
                             ></ClosableText>
                             <ClosableText
                                 // goText={Dot("V2A74ySoN","View")}
@@ -238,6 +231,14 @@ export default (props) => {
                                     "C_qzLO7yw",
                                     "Please use Chrome, Firefox, or Edge for the best experience."
                                 )}
+                            ></ClosableText>
+                            <ClosableText
+                                goText={"OK"}
+                                goLink="https://github.com/work7z/LafTools/"
+                                closeKey="L49HJwuJz"
+                                text={
+                                    Dot("giveastar", "Give us a star on GitHub if you like LafTools.")
+                                }
                             ></ClosableText>
                             {/* <ClosableText
                                 goText={Dot("TY-RTyW_M", "View")}
