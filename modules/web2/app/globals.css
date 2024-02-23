@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .white-anchor-text{
-  @apply px-2 py-2 inline-flex hover:bg-cyan-800 text-xs transition-all duration-75 text-slate-100  hover:text-slate-50;
+  @apply px-2 py-2 inline-flex hover:bg-cyan-800 text-xs transition-all duration-75 text-slate-100  hover:text-slate-50 dark:text-slate-300 dark:hover:text-slate-200;
 
 }
 

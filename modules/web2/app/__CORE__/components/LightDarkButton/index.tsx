@@ -26,7 +26,7 @@ import { MoonIcon, Cog8ToothIcon, SunIcon } from '@heroicons/react/24/solid'
 import { Dot } from "@/app/__CORE__/utils/cTranslationUtils"
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react"
-import { loadDOT } from "@/app/[lang]/register/i18n-types"
+import { loadDOT } from "../../dao/etc/types"
 
 let a = loadDOT("6xOX9cfLT")
 
@@ -50,7 +50,7 @@ export default (props: { labelMode?: boolean }) => {
                     setTheme('light')
                 }} />
             ) : (
-                <MoonIcon className=" cursor-pointer h-5 w-5 text-solarized-cyan" onClick={() => {
+                <MoonIcon className=" cursor-pointer h-5 w-5 text-solarized-cyan-400 mt-[2px] " onClick={() => {
                     setTheme('dark')
                 }} />
             )

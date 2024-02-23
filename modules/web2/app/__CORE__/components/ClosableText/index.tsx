@@ -25,6 +25,8 @@ import { Dot } from "../../utils/cTranslationUtils";
 
 // define a component that provide isClose, onClose, and text
 export const ClosableText = (props: {
+  goText?: string,
+  goLink?: string,
   closeKey: string,
   text: string | JSX.Element;
 }) => {
@@ -36,19 +38,27 @@ export const ClosableText = (props: {
   if (isClose) {
     return <></>;
   }
+  let closeItem = <span
+    onClick={() => {
+      onClose();
+    }}
+    className=" hover:underline cursor-pointer"
+  >
+    [{Dot("4vdfwf", "OK")}]
+  </span>
   return (
     <div className="flex flex-column">
       <div className="small-text flex-grow">
         {props.text}
-        {!isClose ? (
-          <span
-            onClick={() => {
-              onClose();
-            }}
-            className=" hover:underline cursor-pointer"
-          >
-            [{Dot("4vdfwf", "OK")}]
+        {!isClose ? props.goLink ? (
+          <span>
+            <a href={props.goLink} target='_blank' className="mr-[1px]">
+              [{props.goText || Dot("4vdfwf", "OK")}]
+            </a>
+            {closeItem}
           </span>
+        ) : (
+          closeItem
         ) : (
           ""
         )}

@@ -29,6 +29,9 @@ export let getLocalePrefix_Server = (): LocaleType => {
     return getXLocaleStrInRSC()
 }
 export let fmtURL_Server = (str: string): string => {
+    if (str.startsWith("/")) {
+        str = str.substring(1)
+    }
     let localePrefix = getLocalePrefix_Server().langInURL
-    return "/"+localePrefix + str
+    return "/" + localePrefix + str
 }

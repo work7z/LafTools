@@ -87,17 +87,23 @@ import { ClosableText } from "../__CORE__/components/ClosableText";
 import EnglishVersionBanner from "../__CORE__/components/EnglishVersionBanner";
 import { border_clz, row_pad_clz } from "./styles";
 import { fmtURL_Server } from "../__CORE__/utils/routeUtils";
+import { MoonIcon } from "@heroicons/react/24/solid";
+import LightDarkButton from "../__CORE__/components/LightDarkButton";
+import GitHubButton from "../__CORE__/components/GitHubButton";
 
 
 export type LabelHrefType = {
-    label: string,
+    label: string | JSX.Element,
     href: string
 }
 
 
 export default (props) => {
     let fmt_Category = (x: string) => {
-        return fmtURL_Server(`/category/${x}`)
+        return fmtURL_Server(`/${x}`)
+    }
+    let fmt_ToolSubPage = (x: string) => {
+        return fmtURL_Server(fmt_Category('tools') + '/' + x)
     }
     let leftNav: LabelHrefType[] = [
         {
@@ -119,6 +125,10 @@ export default (props) => {
     ]
     // TODO: update the /v2 to actual path
     let rightNav: LabelHrefType[] = [
+        // {
+        //     label: <LightDarkButton />,
+        //     href: 'javascript:void(0);'
+        // },
         {
             label: Dot("str.login", "Login"),
             href: '/v2/zh-hans/nav/form/sign-in'
@@ -150,28 +160,43 @@ export default (props) => {
             href: '/parsers'
         }
     ]
+    let rightCategoryArr: LabelHrefType[] = [
+        {
+            label: Dot("str.remarks", "Favorites"),
+            href: '/favorites',
+        },
+        {
+            label: Dot("str.mostused", "Frequently-Used"),
+            href: '/most-used',
+        }
+    ]
     let hostname = getXHostname()
     return <div className="">
         <div className={
             border_clz + ' py-2 '
         } style={{
         }}>
-            <div className={row_pad_clz + '  justify-between flex flex-row '}>
+            <div className={row_pad_clz + ' items-center justify-between flex flex-row '}>
                 <NavItem nav={leftNav}></NavItem>
-                <NavItem nav={rightNav}></NavItem>
+                <NavItem extraLeft={
+                    <div className="flex items-center">
+                        <LightDarkButton />
+                        <GitHubButton></GitHubButton>
+                    </div>
+                } nav={rightNav}></NavItem>
             </div>
         </div>
         {
             hostname == 'laf-tools.com' ? <EnglishVersionBanner></EnglishVersionBanner> : ''
         }
-        <div className={border_clz + " py-3 p-4 relative bg-slate-50"}>
+        <div className={border_clz + " py-3 p-4 relative bg-slate-50 dark:bg-slate-900"}>
             <div className={row_pad_clz + ' z-20 flex flex-row items-center relative'}>
                 <div className="mx-2 mr-3">
                     <img src={getAppIcon()} width={40}></img>
                 </div>
                 <div>
                     <h1 className="text-lg m-0">{Dot("OyZLZokUQ", "Empower Development with LafTools!")}</h1>
-                    <h2 className="text-xs  text-slate-600 mt-[-2px] mb-1 items-center m-0 space-x-1 flex flex-row ">
+                    <h2 className="text-xs  text-slate-600 dark:text-slate-300 mt-[-2px] mb-1 items-center m-0 space-x-1 flex flex-row ">
                         <div>laf-tools.com</div>
                         <div>•</div>
                         <div className="small-text">{Dot("quality-first", "Quality First")}</div>
@@ -179,7 +204,7 @@ export default (props) => {
                         <div className="small-text">{Dot("forever-foss", "Forever FOSS!")}</div>
                     </h2>
                 </div>
-                <div className=" absolute right-0 top-[-3px] text-right ">
+                <div className=" absolute right-0 bottom-[-3px] text-right ">
                     <div className=" text-gray-600 dark:text-gray-400 ">
                         <div className="w-full space-y-[3px]">
                             {
@@ -198,12 +223,29 @@ export default (props) => {
                                 )}
                             ></ClosableText>
                             <ClosableText
+                                goText={Dot("hMxHcm6pC", "View")}
+                                goLink="https://github.com/work7z/LafTools/"
+                                closeKey="L49HJwuJz"
+                                text={
+                                    Dot("giveastar", "Give us a star on GitHub if you like LafTools.")
+                                }
+                            ></ClosableText>
+                            <ClosableText
+                                // goText={Dot("V2A74ySoN","View")}
+                                // goLink="/"
                                 closeKey='QUxFMltus'
                                 text={Dot(
-                                    "1edeTuxV",
-                                    "Kindly use the latest version of Chrome or Edge for the best experience."
+                                    "C_qzLO7yw",
+                                    "Please use Chrome, Firefox, or Edge for the best experience."
                                 )}
                             ></ClosableText>
+                            {/* <ClosableText
+                                goText={Dot("TY-RTyW_M", "View")}
+                                goLink="https://sys.laf-tools.com"
+                                closeKey="XDp3Meed-"
+                                text={Dot("Fae1UXua7", "Learn more about LafTools and its .")}
+                            >
+                            </ClosableText> */}
                         </div>
                     </div>
                 </div>
@@ -212,7 +254,7 @@ export default (props) => {
                 <div className="absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-slate-300 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-30 pattern-size-8"></div>
             </div> */}
         </div>
-        <div className={border_clz + "  bg-cyan-600  "}>
+        <div className={border_clz + "  bg-cyan-600 dark:bg-cyan-900 "}>
             <div className={row_pad_clz + ' flex-justify-between '}>
                 <div>
                     {
@@ -221,10 +263,10 @@ export default (props) => {
                         })
                     }
                 </div>
-                <div>
+                <div className="flex flex-row items-center">
                     {
-                        leftCategoryArr.map(x => {
-                            return <Link href={x.href} className={" white-anchor-text    last:pr-0"}>{x.label}</Link>
+                        rightCategoryArr.map(x => {
+                            return <Link href={x.href} className={" white-anchor-text "}>{x.label}</Link>
                         })
                     }
                 </div>
