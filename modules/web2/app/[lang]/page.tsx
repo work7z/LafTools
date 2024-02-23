@@ -18,6 +18,7 @@ import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWith
 import { Dot } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
 import NavigatorPage from "./navigator";
+import { NextUIProvider } from "@nextui-org/react";
 
 
 export type AuthInfoProps = { authInfo: AuthInfo }

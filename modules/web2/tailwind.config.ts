@@ -311,7 +311,6 @@ const config: Config = {
     },
   },
   plugins: [
-    nextui(),
     function ({ addComponents, addUtilities, theme }) {
       const colors = theme("colors", {});
       const allColors = Object.keys(colors).map((key) => ({
@@ -394,6 +393,7 @@ const config: Config = {
 
       addUtilities(utilities);
     },
+    nextui(),
     // require("preline/plugin"),
   ],
 };

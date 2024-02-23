@@ -209,7 +209,22 @@ Feb. 2nd, 2023
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License.  
-Please see the LICENSE file for more details.
+## License in English
 
-In accordance with this agreement, if your website is publicly accessible, you must prominently display either the URL of this repository or our website, laf-tools.com, on your pages.
+This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+
+In addition, based on this AGPLv3 license, there's an additional condition which is that if your website is publicly accessible, you must prominently display either the URL of this repository or our website, laf-tools.com, on your pages.
+
+If you do not wish to comply with this License and its additional conditions, please obtain extra authorization by emailing work7z@outlook.com.
+
+We reserve the right to enforce legal actions against violations of this License.
+
+## 许可证 - 简体中文 (Simplified Chinese Version)
+
+这个项目受 GNU Affero General Public License 保护，查看 LICENSE 文件以获取更多详情。
+
+此外，基于这份协议，有一个附加条件，如果你的网站是对外公开的，你必须在页面显著位置标明本仓库的 URL 或者我们的网站 laf-tools.com。
+
+如果你不希望遵守本License以及其附加条件，请通过邮件work7z@outlook.com获取额外授权。
+
+我们保留对任何违反此License以及附件条件进行必要行动的相关合法权利。

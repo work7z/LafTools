@@ -120,7 +120,11 @@ export default (props) => {
         {
             label: Dot("ymyfghy1r", "Notes"),
             href: fmt_Category('/notes')
-        }
+        },
+        {
+            label: Dot("bWQunyU10", "AI Laboratory"),
+            href: fmt_Category('/ai-lab')
+        },
     ]
     // TODO: update the /v2 to actual path
     let rightNav: LabelHrefType[] = [
@@ -139,7 +143,7 @@ export default (props) => {
         {
             label: Dot("str.usercentre", "User Centre"),
             href: '/v2/zh-hans/nav/overview'
-        }
+        },
     ]
     let leftCategoryArr: LabelHrefType[] = [
         {
@@ -165,7 +169,7 @@ export default (props) => {
         {
             label: Dot("IEFy5k39X", "Generators"),
             href: '/generator'
-        }
+        },
     ]
     let rightCategoryArr: LabelHrefType[] = [
         {
