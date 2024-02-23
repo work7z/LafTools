@@ -126,7 +126,7 @@ export default (props) => {
         },
         {
             label: Dot("str.usercentre", "User Centre"),
-            href: '/user-centre'
+            href: 'https://sys.laf-tools.com'
         }
     ]
     let categoryArrs: LabelHrefType[] = [
@@ -155,9 +155,6 @@ export default (props) => {
             <div className={row_pad_clz + '  justify-between flex flex-row '}>
                 <NavItem nav={leftNav}></NavItem>
                 <NavItem nav={rightNav}></NavItem>
-                {
-                    Dot("qxLxs8dk-", "OK")
-                }
             </div>
         </div>
         <div className={border_clz + " py-3 p-4 relative bg-slate-50"}>
