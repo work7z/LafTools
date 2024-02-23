@@ -151,12 +151,20 @@ export default (props) => {
             href: '/codecs'
         },
         {
+            label: Dot("mhWk4dtid", "Encoding"),
+            href: '/encoding'
+        },
+        {
             label: Dot("str.converters", "Converters"),
             href: '/converters'
         },
         {
             label: Dot("str.parsers", "Parsers"),
             href: '/parsers'
+        },
+        {
+            label: Dot("IEFy5k39X", "Generators"),
+            href: '/generator'
         }
     ]
     let rightCategoryArr: LabelHrefType[] = [

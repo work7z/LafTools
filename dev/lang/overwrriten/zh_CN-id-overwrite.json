@@ -1,8 +1,8 @@
 {
   "title-laftools": "LafTools工具箱 - 专为高级程序员设计的极客工具箱",
   "str.codecs": "加密/解密",
-  "str.parsers": "格式解析",
-  "str.converters": "格式转换",
+  "str.parsers": "解析",
+  "str.converters": "转换",
   "OyZLZokUQ": "使用LafTools工具箱协同开发！",
   "str.formatter": "格式化",
   "str.encoderdecoder": "编码/解码",

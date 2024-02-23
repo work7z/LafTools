@@ -25,12 +25,13 @@ import { Dot } from "../../utils/cTranslationUtils";
 
 
 // define a component that provide isClose, onClose, and text
-export const ClosableText = (props: {
+export type ClosableTextProps = {
   goText?: string,
   goLink?: string,
   closeKey: string,
   text: string | JSX.Element;
-}) => {
+}
+export const ClosableText = (props: ClosableTextProps) => {
   let [ctn, setCtn] = useState(0)
   let isClose = false // localStorage.getItem(props.closeKey) != null;
   let onClose = () => {
