@@ -259,7 +259,7 @@ let scan = async (eachRunItem) => {
   // console.log("scaning", crtTaskId, eachRunItem.dir);
   let triggerFn = async (crtTaskId) => {
     try {
-      await sleep(10000);
+      await sleep(1000);
 
       // get all dir
       let dir = getFile(eachRunItem.dir); // replace with appropriate function

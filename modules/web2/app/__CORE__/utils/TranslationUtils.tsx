@@ -68,6 +68,22 @@ export let getXLocaleStrInRSC = (): LocaleType => {
   return item || zhCNLocale
 }
 
+export let getXHostname = (): string => {
+  const headersList = headers();
+  const val = headersList.get('x-hostname') || "";
+  return val;
+}
+export let getXNonCNUsers = (): boolean => {
+  const headersList = headers();
+  const val = headersList.get('x-noncn') || "";
+  return val == 'true';
+}
+export let getXSubPath = (): string => {
+  const headersList = headers();
+  const val = headersList.get('x-path') || "";
+  return val;
+}
+
 
 export let getWebsiteLocale = () => {
   let xlocale = getXLocaleStrInRSC()

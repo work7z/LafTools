@@ -64,6 +64,8 @@ export function middleware(request: NextRequest) {
   let finalLocaleObject: LocaleType = zhCNLocale; // by default, we use zh_CN
   const requestHeaders = new Headers(request.headers);
   const { pathname } = request.nextUrl;
+  requestHeaders.set("x-path", request.nextUrl.pathname);
+  requestHeaders.set("x-hostname", request.nextUrl.hostname);
   let handleLocaleSet = () => {
     requestHeaders.set("x-locale", finalLocaleObject.langInHttp);
   };

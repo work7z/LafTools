@@ -391,7 +391,7 @@ const config: Config = {
 
       addUtilities(utilities);
     },
-    require("preline/plugin"),
+    // require("preline/plugin"),
   ],
 };
 export default config;

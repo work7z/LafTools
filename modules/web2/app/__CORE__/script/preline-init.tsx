@@ -23,37 +23,38 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { IStaticMethods } from "preline/preline";
+// import { IStaticMethods } from "preline/preline";
 declare global {
   interface Window {
-    HSStaticMethods: IStaticMethods;
+    // HSStaticMethods: IStaticMethods;
   }
 }
 
 export default function PrelineScript() {
-  const path = usePathname();
+  // const path = usePathname();
 
 
-  let [mounted, setMount] = useState(false)
-  useEffect(() => {
-    setMount(true)
-  }, [])
+  // let [mounted, setMount] = useState(false)
+  // useEffect(() => {
+  //   setMount(true)
+  // }, [])
 
 
-
-  useEffect(() => {
-    import("preline/preline").then(x => {
-      setTimeout(() => {
-        window.HSStaticMethods.autoInit();
-      }, 100);
-    })
-  }, []);
 
   // useEffect(() => {
-  // }, [path]);
-  if (!mounted) {
-    return '';
-  }
+  //   import("preline/preline").then(x => {
+  //     setTimeout(() => {
+  //       window.HSStaticMethods.autoInit();
+  //     }, 100);
+  //   })
+  // }, []);
 
-  return '';
+  // // useEffect(() => {
+  // // }, [path]);
+  // if (!mounted) {
+  //   return '';
+  // }
+
+  // return '';
+  return ''
 }

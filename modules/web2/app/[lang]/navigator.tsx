@@ -36,7 +36,7 @@ import { usePathname } from 'next/navigation';
 import React, { } from "react";
 import { PageProps } from '@/app/__CORE__/types/pages'
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
-import { Dot } from "../__CORE__/utils/TranslationUtils";
+import { Dot, getXHostname } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
 
 import {
@@ -83,12 +83,11 @@ import {
 } from "@blueprintjs/core";
 import { NavItem } from "./navItem";
 import { getAppIcon } from "../__CORE__/config/imgconfig";
+import { ClosableText } from "../__CORE__/components/ClosableText";
+import EnglishVersionBanner from "../__CORE__/components/EnglishVersionBanner";
+import { border_clz, row_pad_clz } from "./styles";
+import { fmtURL_Server } from "../__CORE__/utils/routeUtils";
 
-// TODO: for application use, we can use iframe to simulate it (or just client import)
-
-let tw = (x) => x
-let row_pad_clz = tw`  app-minmax-size mx-auto `
-let border_clz = tw`  border-b-slate-300  border-b-[1px]  `
 
 export type LabelHrefType = {
     label: string,
@@ -97,39 +96,43 @@ export type LabelHrefType = {
 
 
 export default (props) => {
+    let fmt_Category = (x: string) => {
+        return fmtURL_Server(`/category/${x}`)
+    }
     let leftNav: LabelHrefType[] = [
         {
             label: Dot("G2dvTUljF", "Tools"),
-            href: '/tools'
+            href: fmt_Category('/tools')
         },
         {
             label: Dot("n28g4di0L", "Manuals"),
-            href: '/manuals'
+            href: fmt_Category('/manuals')
         },
         {
             label: Dot("AvsWiJHLZ", "Resources"),
-            href: '/resources',
+            href: fmt_Category('/resources'),
         },
         {
             label: Dot("ymyfghy1r", "Notes"),
-            href: '/notes'
+            href: fmt_Category('/notes')
         }
     ]
+    // TODO: update the /v2 to actual path
     let rightNav: LabelHrefType[] = [
         {
             label: Dot("str.login", "Login"),
-            href: '/login'
+            href: '/v2/zh-hans/nav/form/sign-in'
         },
         {
             label: Dot("str.register", "Register"),
-            href: '/register'
+            href: '/v2/zh-hans/nav/form/sign-up'
         },
         {
             label: Dot("str.usercentre", "User Centre"),
-            href: 'https://sys.laf-tools.com'
+            href: '/v2/zh-hans/nav/overview'
         }
     ]
-    let categoryArrs: LabelHrefType[] = [
+    let leftCategoryArr: LabelHrefType[] = [
         {
             label: Dot("str.formatter", "Formatters"),
             href: '/formatters'
@@ -147,6 +150,7 @@ export default (props) => {
             href: '/parsers'
         }
     ]
+    let hostname = getXHostname()
     return <div className="">
         <div className={
             border_clz + ' py-2 '
@@ -157,8 +161,11 @@ export default (props) => {
                 <NavItem nav={rightNav}></NavItem>
             </div>
         </div>
+        {
+            hostname == 'laf-tools.com' ? <EnglishVersionBanner></EnglishVersionBanner> : ''
+        }
         <div className={border_clz + " py-3 p-4 relative bg-slate-50"}>
-            <div className={row_pad_clz + ' z-20 flex flex-row items-center '}>
+            <div className={row_pad_clz + ' z-20 flex flex-row items-center relative'}>
                 <div className="mx-2 mr-3">
                     <img src={getAppIcon()} width={40}></img>
                 </div>
@@ -172,6 +179,34 @@ export default (props) => {
                         <div className="small-text">{Dot("forever-foss", "Forever FOSS!")}</div>
                     </h2>
                 </div>
+                <div className=" absolute right-0 top-[-3px] text-right ">
+                    <div className=" text-gray-600 dark:text-gray-400 ">
+                        <div className="w-full space-y-[3px]">
+                            {
+                                // <ClosableText closeKey={
+                                //     "JLKtYELFf"
+                                // }
+                                //     text={"Switch to English version of LafTools."}
+                                // >
+                                // </ClosableText>
+                            }
+                            <ClosableText
+                                closeKey='QUxFMltus'
+                                text={Dot(
+                                    "pqs7y3",
+                                    "Kindly consider registering this webpage as a PWA to have full keymap support."
+                                )}
+                            ></ClosableText>
+                            <ClosableText
+                                closeKey='QUxFMltus'
+                                text={Dot(
+                                    "1edeTuxV",
+                                    "Kindly use the latest version of Chrome or Edge for the best experience."
+                                )}
+                            ></ClosableText>
+                        </div>
+                    </div>
+                </div>
             </div>
             {/* <div>
                 <div className="absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-slate-300 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-30 pattern-size-8"></div>
@@ -181,15 +216,15 @@ export default (props) => {
             <div className={row_pad_clz + ' flex-justify-between '}>
                 <div>
                     {
-                        categoryArrs.map(x => {
+                        leftCategoryArr.map(x => {
                             return <Link href={x.href} className=" white-anchor-text    ">{x.label}</Link>
                         })
                     }
                 </div>
                 <div>
                     {
-                        categoryArrs.map(x => {
-                            return <Link href={x.href} className=" white-anchor-text    ">{x.label}</Link>
+                        leftCategoryArr.map(x => {
+                            return <Link href={x.href} className={" white-anchor-text    last:pr-0"}>{x.label}</Link>
                         })
                     }
                 </div>
