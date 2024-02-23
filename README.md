@@ -228,3 +228,23 @@ We reserve the right to enforce legal actions against violations of this License
 如果你不希望遵守这个许可证及其附加条件，请通过邮件 work7z@outlook.com 获取额外授权。
 
 我们保留对违反此许可证以及额外条件行为进行法律维权的权利。
+
+## Licence en français
+
+Ce projet est protégé par la Licence Publique Générale GNU Affero, veuillez consulter le fichier LICENSE pour plus de détails.
+
+De plus, sur la base de cette licence AGPLv3, il y a une condition supplémentaire qui est que si votre site web est accessible au public, vous devez afficher de manière proéminente le nom et l'URL de ce dépôt comme référence sur votre site web.
+
+Si vous ne souhaitez pas respecter cette Licence et ses conditions supplémentaires, veuillez obtenir une autorisation supplémentaire en envoyant un email à work7z@outlook.com.
+
+Nous nous réservons le droit d'engager des actions juridiques contre les violations de cette Licence et de ses conditions supplémentaires.
+
+## Лицензия на русском
+
+Этот проект защищен лицензией GNU Affero General Public License, подробности смотрите в файле LICENSE.
+
+Кроме того, на основе этой лицензии AGPLv3, есть дополнительное условие, которое заключается в том, что если ваш сайт доступен публично, вы должны заметно отображать имя и URL этого репозитория в качестве ссылки на вашем сайте.
+
+Если вы не желаете соблюдать эту Лицензию и ее дополнительные условия, пожалуйста, получите дополнительное разрешение, отправив электронное письмо на work7z@outlook.com.
+
+Мы оставляем за собой право предпринимать юридические действия против нарушений этой Лицензии и ее дополнительных условий.
