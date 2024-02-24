@@ -20,9 +20,9 @@
 
 'use client'
 
-import { loadDOT } from "@/app/[lang]/register/i18n-types"
-import { Dot } from "@/app/__CORE__/utils/cTranslationUtils"
+import { loadDOT } from "@/app/__CORE__/utils/i18n-types"
 import { useState } from "react"
+import { Dot } from "../../utils/cTranslationUtils"
 
 let a = loadDOT("Q9l0BNwtm")
 

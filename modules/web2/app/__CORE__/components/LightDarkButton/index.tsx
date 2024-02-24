@@ -26,7 +26,7 @@ import { MoonIcon, Cog8ToothIcon, SunIcon } from '@heroicons/react/24/solid'
 import { Dot } from "@/app/__CORE__/utils/cTranslationUtils"
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react"
-import { loadDOT } from "../../dao/etc/types"
+import { loadDOT } from "../../utils/i18n-types"
 
 let a = loadDOT("6xOX9cfLT")
 

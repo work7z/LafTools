@@ -177,9 +177,9 @@ export default (props: NavigatorPassProp) => {
                 </div>
             </div>
         </div>
-        <div className={' min-h-screen bg-slate-50 '}>
+        <div className={' min-h-screen bg-slate-50 dark:bg-slate-800'}>
             <div className={row_pad_clz}>
-                <div className="flex flex-row flex-wrap my-2 items-center justify-between">
+                <div className="flex flex-row flex-wrap py-2 items-center justify-between">
                     <div>
                         <SysBreadCrumbs />
                     </div>
@@ -190,8 +190,8 @@ export default (props: NavigatorPassProp) => {
                                 label: Dot("be-Favourite-it", "Add to Favourites")
                             },
                             {
-                                href: fmt_ToolSubPage('/share with friends'),
-                                label: Dot("share-with-friends", "Share with Friends")
+                                href: fmt_ToolSubPage('/share-this-page'),
+                                label: Dot("share-this-page", "Share this Page")
                             },
                             {
                                 href: GitHubRepoIssueLink,
