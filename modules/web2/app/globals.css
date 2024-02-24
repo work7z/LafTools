@@ -7,6 +7,13 @@
 
 }
 
+.g-card-header{
+  @apply  py-2 text-xs border-b-[1px] border-b-slate-200;
+}
+.a-no-underline{
+  
+}
+
 .anchor-text {
   @apply text-cyan-700 hover:text-cyan-500 hover:underline hover:cursor-pointer;
   transition: color 0.2s ease-in-out;
