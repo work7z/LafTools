@@ -219,17 +219,27 @@ If you do not wish to comply with this License and its additional conditions, pl
 
 We reserve the right to enforce legal actions against violations of this License and its additional conditions.
 
-## 许可证 - 简体中文 (Simplified Chinese Version)
+## 许可证 - 简体中文 (License in Simplified Chinese)
 
 本项目受 GNU Affero General Public License 保护，请查看 LICENSE 文件以获取更多详情。
 
-此外，基于这个 AGPLv3 许可证，有一个额外的条件，那就是如果你的网站是对外公开的，你必须在你的网站上显著位置显示本仓库的 名称 和 URL 作为参考。
+此外，基于这个 AGPLv3 许可证，有一个额外的条件，那就是如果你的网站是对外公开的，你必须在你的网站上显著位置显示本项目仓库的 名称 和 URL 作为参考（项目实际上已添加并存在，请不要移除这些关于本项目的授权，除非你已获得授权）。
 
 如果你不希望遵守这个许可证及其附加条件，请通过邮件 work7z@outlook.com 获取额外授权。
 
-我们保留对违反此许可证以及额外条件行为进行法律维权的权利。
+我们保留对违反此许可证以及额外条件之行为进行法律维权的权利。
 
-## Licence en français
+## 許可證 - 繁體中文（License in Tranditional Chinese）
+
+本專案已獲得 GNU Affero 通用公共授權。
+
+除此之外，基於AGPLv3，閣下還需要遵守一項外部條件，即需要在歸網站顯著位置標明本項目倉庫的 名稱 與 URL 作爲倉庫。（實際上，此信息已添加於本項目代碼和界面裏，請不要移除它們，除非閣下已獲得授權）
+
+如果您不想遵守條款和條件，請聯絡 work7z@outlook.com。
+
+我們保留拒絕任何不當行為的權利，並且任何附加條款和條件可能根據法律適用。
+
+## Licence en français(License in French)
 
 Ce projet est protégé par la Licence Publique Générale GNU Affero, veuillez consulter le fichier LICENSE pour plus de détails.
 
@@ -239,7 +249,7 @@ Si vous ne souhaitez pas respecter cette Licence et ses conditions supplémentai
 
 Nous nous réservons le droit d'engager des actions juridiques contre les violations de cette Licence et de ses conditions supplémentaires.
 
-## Лицензия на русском
+## Лицензия на русском (License in Russian)
 
 Этот проект защищен лицензией GNU Affero General Public License, подробности смотрите в файле LICENSE.
 
@@ -248,3 +258,13 @@ Nous nous réservons le droit d'engager des actions juridiques contre les violat
 Если вы не желаете соблюдать эту Лицензию и ее дополнительные условия, пожалуйста, получите дополнительное разрешение, отправив электронное письмо на work7z@outlook.com.
 
 Мы оставляем за собой право предпринимать юридические действия против нарушений этой Лицензии и ее дополнительных условий.
+
+## ライセンス
+
+このプロジェクトは GNU Affero General Public License の対象となっており、詳細については LICENSE ファイルを参照してください。
+
+さらに、この AGPLv3 ライセンスに基づいて、Web サイトが公開されている場合は、参考としてこのリポジトリの名前と URL を Web サイト上の目立つ位置に表示する必要があるという追加の条件があります。
+
+このライセンスとその追加条件に拘束されたくない場合は、work7z@outlook.com に電子メールを送信して追加の承認を取得してください。
+
+当社は、このライセンスおよ

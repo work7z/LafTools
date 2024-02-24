@@ -22,7 +22,6 @@
 import { AuthInfoProps } from "@/app/[lang]/page"
 import CardPanel from "../../components/CardPanel"
 import { Dot } from "../../utils/TranslationUtils"
-import MoonSunControl from "../UserSideBar/MoonSunControl"
 import React from 'react'
 import { AuthInfo } from "../GrailLayoutWithUser/actions/handleAuthInfo"
 
@@ -50,7 +49,7 @@ export let translationLangs: {
             ],
             "LabelByLang": "简体中文",
             "Value": "zh_CN",
-            "Href": "zh-hans",
+            "Href": "cn",
             "LabelInEnglish": "Simplified Chinese"
         },
         {
@@ -60,7 +59,7 @@ export let translationLangs: {
             ],
             "LabelByLang": "繁體中文",
             "Href": "zh-hant",
-            "Value": "zh_HK",
+            "Value": "hk",
             "LabelInEnglish": "Traditional Chinese"
         }
     ]

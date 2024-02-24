@@ -19,6 +19,7 @@ import { Dot } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
 import NavigatorPage from "./navigator";
 import { NextUIProvider } from "@nextui-org/react";
+import ToolPart from '@/app/__CORE__/containers/ToolPart'
 
 
 export type AuthInfoProps = { authInfo: AuthInfo }
@@ -28,7 +29,8 @@ export default async function Home(props: CombindSearchProps) {
     let authInfo = await getAuthInfo()
     return (
         <main>
-            <NavigatorPage></NavigatorPage>
+            
+            <NavigatorPage children={<ToolPart></ToolPart>}></NavigatorPage>
         </main>
     )
 }

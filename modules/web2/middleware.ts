@@ -14,7 +14,7 @@ export type LocaleType = {
 export let zhCNLocale: LocaleType = {
   langInHttpArr: ["zh-cn", "zh-sg", "zh-hans"],
   langInHttp: "zh-cn",
-  langInURL: "zh-hans",
+  langInURL: "cn",
   langIni18n: "zh_CN",
 };
 export let all_locales: LocaleType[] = [
@@ -28,7 +28,7 @@ export let all_locales: LocaleType[] = [
   {
     langInHttpArr: ["zh-hk", "zh-tw", "zh-mo", "zh-my"],
     langInHttp: "zh-hk",
-    langInURL: "zh-hant",
+    langInURL: "hk",
     langIni18n: "zh_HK",
   },
 ];

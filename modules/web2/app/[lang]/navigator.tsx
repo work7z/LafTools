@@ -38,47 +38,7 @@ import { PageProps } from '@/app/__CORE__/types/pages'
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
 import { Dot, getXHostname } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
-
-import {
-    Callout,
-    PanelStack,
-    ProgressBar,
-    AnchorButton,
-    Tooltip,
-    Dialog,
-    Drawer,
-    Overlay,
-    Alert,
-    RadioGroup,
-    MenuItem,
-    Radio,
-    TextArea,
-    HotkeysProvider,
-    Intent,
-    Position,
-    Toaster,
-    Checkbox,
-    NumericInput,
-    FormGroup,
-    HTMLSelect,
-    ControlGroup,
-    InputGroup,
-    Navbar,
-    NavbarHeading,
-    NonIdealState,
-    NavbarDivider,
-    NavbarGroup,
-    Alignment,
-    Classes,
-    Icon,
-    Card,
-    Elevation,
-    Popover,
-    Menu,
-    MenuDivider,
-    Tabs,
-    Tab,
-} from "@blueprintjs/core";
+import { Checkbox, Kbd } from "@nextui-org/react";
 import { NavItem } from "./navItem";
 import { getAppIcon } from "../__CORE__/config/imgconfig";
 import { ClosableText } from "../__CORE__/components/ClosableText";
@@ -89,99 +49,31 @@ import { MoonIcon } from "@heroicons/react/24/solid";
 import LightDarkButton from "../__CORE__/components/LightDarkButton";
 import GitHubButton from "../__CORE__/components/GitHubButton";
 import { Button } from '@nextui-org/button';
-import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
-
+import SysBreadCrumbs from './breadcrumbs'
+import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/breadcrumbs";
+import {
+    fn_leftNav,
+    fn_rightNav,
+    fn_leftCategoryArr,
+    fn_rightCategoryArr,
+    fmt_ToolSubPage
+} from './tool-definitions'
+import { GitHubRepoIssueLink } from "../__CORE__/types/constants";
 
 export type LabelHrefType = {
     label: string | JSX.Element,
     href: string
 }
+export type NavigatorPassProp = {
+    children: JSX.Element
+}
 
-
-export default (props) => {
-    let fmt_Category = (x: string) => {
-        return fmtURL_Server(`/${x}`)
-    }
-    let fmt_ToolSubPage = (x: string) => {
-        return fmtURL_Server(fmt_Category('tools') + '/' + x)
-    }
-    let leftNav: LabelHrefType[] = [
-        {
-            label: Dot("G2dvTUljF", "Tools"),
-            href: fmt_Category('/tools')
-        },
-        {
-            label: Dot("n28g4di0L", "Manuals"),
-            href: fmt_Category('/manuals')
-        },
-        {
-            label: Dot("AvsWiJHLZ", "Resources"),
-            href: fmt_Category('/resources'),
-        },
-        {
-            label: Dot("ymyfghy1r", "Notes"),
-            href: fmt_Category('/notes')
-        },
-        {
-            label: Dot("bWQunyU10", "AI Laboratory"),
-            href: fmt_Category('/ai-lab')
-        },
-    ]
-    // TODO: update the /v2 to actual path
-    let rightNav: LabelHrefType[] = [
-        // {
-        //     label: <LightDarkButton />,
-        //     href: 'javascript:void(0);'
-        // },
-        {
-            label: Dot("str.login", "Login"),
-            href: '/v2/zh-hans/nav/form/sign-in'
-        },
-        {
-            label: Dot("str.register", "Register"),
-            href: '/v2/zh-hans/nav/form/sign-up'
-        },
-        {
-            label: Dot("str.usercentre", "User Centre"),
-            href: '/v2/zh-hans/nav/overview'
-        },
-    ]
-    let leftCategoryArr: LabelHrefType[] = [
-        {
-            label: Dot("str.formatter", "Formatters"),
-            href: '/formatters'
-        },
-        {
-            label: Dot("str.codecs", "Codecs"),
-            href: '/codecs'
-        },
-        {
-            label: Dot("mhWk4dtid", "Encoding"),
-            href: '/encoding'
-        },
-        {
-            label: Dot("str.converters", "Converters"),
-            href: '/converters'
-        },
-        {
-            label: Dot("str.parsers", "Parsers"),
-            href: '/parsers'
-        },
-        {
-            label: Dot("IEFy5k39X", "Generators"),
-            href: '/generator'
-        },
-    ]
-    let rightCategoryArr: LabelHrefType[] = [
-        {
-            label: Dot("str.remarks", "Favorites"),
-            href: '/favorites',
-        },
-        {
-            label: Dot("str.mostused", "Frequently-Used"),
-            href: '/most-used',
-        }
-    ]
+export default (props: NavigatorPassProp) => {
+    let { children } = props;
+    let leftNav = fn_leftNav()
+    let rightNav = fn_rightNav()
+    let leftCategoryArr = fn_leftCategoryArr()
+    let rightCategoryArr = fn_rightCategoryArr()
     let hostname = getXHostname()
     return <div className="">
         <div className={
@@ -285,14 +177,36 @@ export default (props) => {
                 </div>
             </div>
         </div>
-        <div className={row_pad_clz}>
-            <Breadcrumbs>
-                <BreadcrumbItem href="/docs/components/button">Button</BreadcrumbItem>
-                <BreadcrumbItem href="/docs/components/breadcrumbs">Breadcrumbs</BreadcrumbItem>
-                <BreadcrumbItem href="/docs/components/card">Card</BreadcrumbItem>
-                <BreadcrumbItem href="/docs/components/checkbox">Checkbox</BreadcrumbItem>
-                <BreadcrumbItem href="/docs/components/code">Code</BreadcrumbItem>
-            </Breadcrumbs>
+        <div className={' min-h-screen bg-slate-50 '}>
+            <div className={row_pad_clz}>
+                <div className="flex flex-row flex-wrap my-2 items-center justify-between">
+                    <div>
+                        <SysBreadCrumbs />
+                    </div>
+                    <div>
+                        <NavItem nav={[
+                            {
+                                href: fmt_ToolSubPage('/favourite'),
+                                label: Dot("be-Favourite-it", "Add to Favourites")
+                            },
+                            {
+                                href: GitHubRepoIssueLink,
+                                label: Dot("BJbgR", "Report Issue")
+                            }
+                        ]}></NavItem>
+                    </div>
+                </div>
+
+                {children}
+            </div>
+            {/* <div>ok</div>
+            <div className="flex flex-col flex-wrap gap-4">
+
+            </div>
+
+            <div>
+                <Checkbox defaultSelected>Option</Checkbox>
+            </div> */}
         </div>
     </div>
 }

@@ -28,6 +28,8 @@
 [] write a good code reader, with TODO viewer, planning, GitHub Page, etc...
 [] scroll menu, we should follow style like vscode, looks like a stackked parent folders(so cool!)
 [] we should provide a optional config for user to hide the text in sidebar when needed(some users complain this, let me do it quickly...)
+[] new laf is better now, we should apply different bg colors into the navbars for tools, docs, AI lab
+
 
 # system design 
 [] using Next.js and sqlite3 to refactor LafTools

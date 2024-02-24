@@ -32,6 +32,7 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@heroicons/react": "^2.1.1",
     "@loadable/component": "^5.16.3",
+    "@nextui-org/breadcrumbs": "^2.0.4",
     "@nextui-org/button": "^2.0.26",
     "@nextui-org/react": "^2.2.9",
     "@nextui-org/theme": "^2.1.17",
