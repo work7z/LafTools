@@ -88,7 +88,8 @@ import { fmtURL_Server } from "../__CORE__/utils/routeUtils";
 import { MoonIcon } from "@heroicons/react/24/solid";
 import LightDarkButton from "../__CORE__/components/LightDarkButton";
 import GitHubButton from "../__CORE__/components/GitHubButton";
-import { Button, ButtonGroup } from "@nextui-org/react";
+import { Button } from '@nextui-org/button';
+import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 
 
 export type LabelHrefType = {
@@ -285,9 +286,13 @@ export default (props) => {
             </div>
         </div>
         <div className={row_pad_clz}>
-            <Button color="primary">
-                Button
-            </Button>
+            <Breadcrumbs>
+                <BreadcrumbItem href="/docs/components/button">Button</BreadcrumbItem>
+                <BreadcrumbItem href="/docs/components/breadcrumbs">Breadcrumbs</BreadcrumbItem>
+                <BreadcrumbItem href="/docs/components/card">Card</BreadcrumbItem>
+                <BreadcrumbItem href="/docs/components/checkbox">Checkbox</BreadcrumbItem>
+                <BreadcrumbItem href="/docs/components/code">Code</BreadcrumbItem>
+            </Breadcrumbs>
         </div>
     </div>
 }
