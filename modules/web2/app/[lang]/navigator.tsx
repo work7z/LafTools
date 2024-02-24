@@ -19,38 +19,18 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import Image from "next/image";
-import type { Metadata, ResolvingMetadata } from "next";
-import Head from 'next/head'
-import { Props } from "next/script";
-import { getWebsiteName } from "@/app/__CORE__/common/config";
-import { TopNav } from "@/app/__CORE__/containers/TopNav";
-import CenterPart from "@/app/__CORE__/containers/CenterPart";
-import CardPanel from '@/app/__CORE__/components/CardPanel'
-import NodeHorizontalBar from "@/app/__CORE__/containers/TabGroupHorizontalBar";
-import _, { random } from "lodash";
-import UserPanel from "@/app/__CORE__/containers/UserSideBar";
-import { useParams, useSearchParams } from "next/navigation";
-import InnerHome from '../home'
-import { usePathname } from 'next/navigation';
+import _ from "lodash";
 import React, { } from "react";
-import { PageProps } from '@/app/__CORE__/types/pages'
-import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
 import { Dot, getXHostname } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
-import { Checkbox, Kbd } from "@nextui-org/react";
 import { NavItem } from "./navItem";
 import { getAppIcon } from "../__CORE__/config/imgconfig";
 import { ClosableText } from "../__CORE__/components/ClosableText";
 import EnglishVersionBanner from "../__CORE__/components/EnglishVersionBanner";
 import { border_clz, row_pad_clz } from "./styles";
-import { fmtURL_Server } from "../__CORE__/utils/routeUtils";
-import { MoonIcon } from "@heroicons/react/24/solid";
 import LightDarkButton from "../__CORE__/components/LightDarkButton";
 import GitHubButton from "../__CORE__/components/GitHubButton";
-import { Button } from '@nextui-org/button';
 import SysBreadCrumbs from './breadcrumbs'
-import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/breadcrumbs";
 import {
     fn_leftNav,
     fn_rightNav,
@@ -77,13 +57,14 @@ export default (props: NavigatorPassProp) => {
     let hostname = getXHostname()
     return <div className="">
         <div className={
-            border_clz + ' py-2 '
+            border_clz + ' py-2 sticky top-0 bg-white dark:bg-slate-800 z-50'
         } style={{
         }}>
             <div className={row_pad_clz + ' items-center justify-between flex flex-row '}>
                 <NavItem nav={leftNav}></NavItem>
                 <NavItem extraLeft={
                     <div className="flex items-center">
+                        {/* <DownloadAppButton /> */}
                         <LightDarkButton />
                         <GitHubButton></GitHubButton>
                     </div>
@@ -148,7 +129,8 @@ export default (props: NavigatorPassProp) => {
                                 goText={Dot("Ezsn81tfc", "View")}
                                 goLink="https://sys.laf-tools.com"
                                 closeKey="XDp3Meed-"
-                                text={"[3]" + Dot("QvBKp9BBp", "Learn more about the development planning of LafTools.")}
+                                text={"[3] " + Dot("BQs6go-dk", "Free Download LafTools for Windows, Linux, and macOS.")}
+                            // Dot("QvBKp9BBp", "Learn more about the development planning of LafTools.")
                             >
                             </ClosableText>
                         </div>
@@ -159,7 +141,7 @@ export default (props: NavigatorPassProp) => {
                 <div className="absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-slate-300 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-30 pattern-size-8"></div>
             </div> */}
         </div>
-        <div className={border_clz + "  bg-cyan-600 dark:bg-cyan-900 "}>
+        <div className={border_clz + "  bg-cyan-600 dark:bg-cyan-950 "}>
             <div className={row_pad_clz + ' flex-justify-between '}>
                 <div>
                     {

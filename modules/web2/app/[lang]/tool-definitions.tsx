@@ -89,6 +89,10 @@ export let fn_leftCategoryArr = (): LabelHrefType[] => {
 export let fn_rightCategoryArr = () => {
     let rightCategoryArr: LabelHrefType[] = [
         {
+            label: Dot("download-local", "Free Download"),
+            href: '/download'
+        },
+        {
             label: Dot("str.remarks", "Favorites"),
             href: '/favorites',
         },

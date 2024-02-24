@@ -394,7 +394,7 @@ const config: Config = {
 
       addUtilities(utilities);
     },
-    nextui(),
+    nextui({}),
     // require("preline/plugin"),
   ],
 };
