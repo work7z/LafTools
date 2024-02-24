@@ -213,7 +213,7 @@ Feb. 2nd, 2023
 
 This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
 
-In addition, based on this AGPLv3 license, there's an additional condition which is that if your website is publicly accessible, you must prominently display the name and the URL of this repository as reference on your website.
+In addition, based on this AGPLv3 license, there's an additional condition which is that if your website is publicly accessible, you must prominently display the name and the URL of this repository and the official website laf-tools.com as reference on your website.
 
 If you do not wish to comply with this License and its additional conditions, please obtain extra authorization by emailing work7z@outlook.com.
 
@@ -223,7 +223,7 @@ We reserve the right to enforce legal actions against violations of this License
 
 本项目受 GNU Affero General Public License 保护，请查看 LICENSE 文件以获取更多详情。
 
-此外，基于这个 AGPLv3 许可证，有一个额外的条件，那就是如果你的网站是对外公开的，你必须在你的网站上显著位置显示本项目仓库的 名称 和 URL 作为参考（项目实际上已添加并存在，请不要移除这些关于本项目的授权，除非你已获得授权）。
+此外，基于这个 AGPLv3 许可证，有一个额外的条件，那就是如果你的网站是对外公开的，你必须在你的网站上显著位置显示本项目仓库和官网laf-tools.com的 名称 和 URL 作为参考（项目实际上已添加并存在，请不要移除这些关于本项目的授权，除非你已获得授权）。
 
 如果你不希望遵守这个许可证及其附加条件，请通过邮件 work7z@outlook.com 获取额外授权。
 
@@ -233,7 +233,7 @@ We reserve the right to enforce legal actions against violations of this License
 
 本專案已獲得 GNU Affero 通用公共授權。
 
-除此之外，基於AGPLv3，閣下還需要遵守一項外部條件，即需要在歸網站顯著位置標明本項目倉庫的 名稱 與 URL 作爲倉庫。（實際上，此信息已添加於本項目代碼和界面裏，請不要移除它們，除非閣下已獲得授權）
+除此之外，基於AGPLv3，閣下還需要遵守一項外部條件，即需要在歸網站顯著位置標明本項目倉庫和官網laf-tools.com的 名稱 與 URL 作爲參考。（實際上，此信息已添加於本項目代碼和界面裏，請不要移除它們，除非閣下已獲得授權）
 
 如果您不想遵守條款和條件，請聯絡 work7z@outlook.com。
 
