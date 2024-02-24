@@ -190,8 +190,12 @@ export default (props: NavigatorPassProp) => {
                                 label: Dot("be-Favourite-it", "Add to Favourites")
                             },
                             {
+                                href: fmt_ToolSubPage('/share with friends'),
+                                label: Dot("share-with-friends", "Share with Friends")
+                            },
+                            {
                                 href: GitHubRepoIssueLink,
-                                label: Dot("BJbgR", "Report Issue")
+                                label: Dot("BJbgR", "Report a Problem")
                             }
                         ]}></NavItem>
                     </div>
