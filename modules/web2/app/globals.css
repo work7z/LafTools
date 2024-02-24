@@ -8,7 +8,7 @@
 }
 
 .g-card-header{
-  @apply  py-2 text-xs border-b-[1px] border-b-slate-200;
+  @apply  py-2 text-xs border-b-[1px] border-b-slate-200 dark:border-b-slate-800;
 }
 .a-no-underline{
   

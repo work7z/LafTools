@@ -12,15 +12,14 @@ export let getCardsProps = (): CardProps => {
 }
 
 export default () => {
-    let secondaryPanelClzHeader = tw('bg-slate-50 g-card-header')
+    let secondaryPanelClzHeader = tw('bg-slate-50 g-card-header dark:bg-slate-700')
     return <div>
         <div className='flex flex-row space-x-2'>
             <div className='flex-1  space-y-2'>
                 <ToolsNavigator></ToolsNavigator>
                 <Card {...getCardsProps()} className=''>
-                    {/* <CardHeader className=' bg-lime-100 g-card-header '>{Dot("flpRJhnFp", "Get result from multiple hash algorithms at the same.")}</CardHeader> */}
                     <CardBody>
-                        <div>
+                        <div className='min-h-60'>
                             <div>item1</div>
                             <div>item1</div>
                             <div>item3</div>
@@ -41,7 +40,6 @@ export default () => {
             <div className='w-56  space-y-2'>
                 <Card {...getCardsProps()}>
                     <CardHeader className={secondaryPanelClzHeader}>{Dot("rzoFmjStq", "Relevant Tools")}</CardHeader>
-                    {/* <Divider /> */}
                     <CardBody>
                         <ul className={"list-disc ml-5"}>
                             <li>item1</li>

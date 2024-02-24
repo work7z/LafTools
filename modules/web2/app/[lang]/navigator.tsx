@@ -64,7 +64,6 @@ export default (props: NavigatorPassProp) => {
                 <NavItem nav={leftNav}></NavItem>
                 <NavItem extraLeft={
                     <div className="flex items-center">
-                        {/* <DownloadAppButton /> */}
                         <LightDarkButton />
                         <GitHubButton></GitHubButton>
                     </div>
@@ -185,14 +184,6 @@ export default (props: NavigatorPassProp) => {
 
                 {children}
             </div>
-            {/* <div>ok</div>
-            <div className="flex flex-col flex-wrap gap-4">
-
-            </div>
-
-            <div>
-                <Checkbox defaultSelected>Option</Checkbox>
-            </div> */}
         </div>
     </div>
 }
