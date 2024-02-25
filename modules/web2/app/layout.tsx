@@ -39,6 +39,10 @@ import ProgressBar from "./progressBar";
 import { getAppIcon } from "./__CORE__/config/imgconfig";
 import { NextUIProvider } from "@nextui-org/react";
 import { Providers } from "./nextui-provider";
+import Link from "next/link";
+import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/icons/lib/css/blueprint-icons.css";
+
 
 // import dbconn from '.@/app/__CORE__/app/db/index'
 
@@ -53,6 +57,7 @@ export default async function RootLayout(props: {
       </Providers>
       <PrelintInit></PrelintInit>
       <ProgressBar></ProgressBar>
+      <Link id='grouter' href='/about' className='hidden'></Link>
     </Layout>
   );
 }

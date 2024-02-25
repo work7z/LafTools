@@ -21,8 +21,6 @@
 import _ from 'lodash';
 import Page, { CombindSearchProps, generateMetadata } from './[lang]/page'
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
-import "@blueprintjs/core/lib/css/blueprint.css";
-import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 // import "purecss/build/pure.css";
 // import "purecss/build/grids-responsive-min.css";
 

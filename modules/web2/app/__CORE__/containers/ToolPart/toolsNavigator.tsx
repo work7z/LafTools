@@ -36,7 +36,7 @@ export default function App() {
     // get parameter in next.js
     let sp = getXSearchParams()
     return (
-        <div className="flex w-full mt-2 pl-2 flex-col bg-white dark:bg-black ">
+        <div className="flex w-full  pl-2 flex-col bg-white dark:bg-black ">
             <div className="border-b border-gray-200 dark:border-gray-700">
                 <nav className="flex space-x-2 justify-center" aria-label="Tabs" role="tablist">
                     {

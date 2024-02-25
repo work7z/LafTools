@@ -4,6 +4,7 @@ import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/rea
 import { border_clz, border_clz_all, tw } from '@/app/[lang]/styles';
 import { Dot } from '../../utils/TranslationUtils';
 import ToolsNavigator from './toolsNavigator';
+import TestBtn from './testbtn'
 
 export let getCardsProps = (): CardProps => {
     return {
@@ -16,11 +17,11 @@ export default () => {
     return <div>
         <div className='flex flex-row space-x-2'>
             <div className='flex-1  space-y-2'>
-                <Card {...getCardsProps()} className=''>
+                <Card {...getCardsProps()} className={border_clz_all}>
                     <ToolsNavigator></ToolsNavigator>
                     <CardBody>
                         <div className='min-h-60'>
-                            <button type='button'>click me</button>
+                            <TestBtn/>
                             <div>item1</div>
                             <div>item1</div>
                             <div>item3</div>
