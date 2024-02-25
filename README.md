@@ -207,6 +207,11 @@ Thank you!
 Ryan Laf  
 Feb. 2nd, 2023
 
+# FreeIcon Usages
+
+We would appreciate talent artists who provided below beautiful icons:
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+
 # 🪪 License
 
 ## License in English
@@ -268,3 +273,4 @@ Nous nous réservons le droit d'engager des actions juridiques contre les violat
 このライセンスとその追加条件に拘束されたくない場合は、work7z@outlook.com に電子メールを送信して追加の承認を取得してください。
 
 当社は、このライセンスおよ
+

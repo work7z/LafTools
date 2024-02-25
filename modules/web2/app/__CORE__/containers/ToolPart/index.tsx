@@ -5,6 +5,7 @@ import { border_clz, border_clz_all, tw } from '@/app/[lang]/styles';
 import { Dot } from '../../utils/TranslationUtils';
 import ToolsNavigator from './toolsNavigator';
 import TestBtn from './testbtn'
+import Link from 'next/link';
 
 export let getCardsProps = (): CardProps => {
     return {
@@ -40,6 +41,17 @@ export default () => {
                 </Card>
             </div>
             <div className='w-56  space-y-2'>
+            <Card {...getCardsProps()}>
+                    <CardHeader className={secondaryPanelClzHeader}>{Dot("ajsoz", "LafTools Experimental Edition")}</CardHeader>
+                    <CardBody>
+                        <Link className='flex flex-row items-center justify-center space-x-[1px] p-2  hover:border-purple-100 border-2' href='/client'>
+                            <img src='/controls/text-editor.png' className='w-5 '/>
+         <span className=''>
+         {Dot("D6WV6","Service Entry Point")}
+         </span>
+                            </Link>
+                    </CardBody>
+                </Card>
                 <Card {...getCardsProps()}>
                     <CardHeader className={secondaryPanelClzHeader}>{Dot("rzoFmjStq", "Relevant Tools")}</CardHeader>
                     <CardBody>
