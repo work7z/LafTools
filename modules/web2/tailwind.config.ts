@@ -219,7 +219,7 @@ const config: Config = {
   content: [
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-    // "node_modules/preline/dist/*.js",
+    "node_modules/preline/dist/*.js",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -395,7 +395,7 @@ const config: Config = {
       addUtilities(utilities);
     },
     nextui({}),
-    // require("preline/plugin"),
+    require("preline/plugin"),
   ],
 };
 export default config;

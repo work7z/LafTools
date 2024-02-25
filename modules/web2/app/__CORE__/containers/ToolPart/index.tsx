@@ -16,10 +16,11 @@ export default () => {
     return <div>
         <div className='flex flex-row space-x-2'>
             <div className='flex-1  space-y-2'>
-                <ToolsNavigator></ToolsNavigator>
                 <Card {...getCardsProps()} className=''>
+                    <ToolsNavigator></ToolsNavigator>
                     <CardBody>
                         <div className='min-h-60'>
+                            <button type='button'>click me</button>
                             <div>item1</div>
                             <div>item1</div>
                             <div>item3</div>

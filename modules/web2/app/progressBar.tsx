@@ -44,13 +44,13 @@ let colorList = [
     "#EC9A3C",
     "#5C255C"
 ]
-let randomColor = _.get(colorList, _.random(0, _.size(colorList) - 1));
 
 // 1. import `NextUIProvider` component
-import { NextUIProvider } from "@nextui-org/react";
+// import { NextUIProvider } from "@nextui-org/react";
 
 
 export default (props) => {
+    let randomColor = _.get(colorList, _.random(0, _.size(colorList) - 1));
 
     let [show, setShow] = React.useState(false);
     React.useEffect(() => {
@@ -63,7 +63,7 @@ export default (props) => {
             height="4px"
             color={randomColor}
             options={{ showSpinner: true }}
-            shallowRouting
+        // shallowRouting
         />
     </>
 }

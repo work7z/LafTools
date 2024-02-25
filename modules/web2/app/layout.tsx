@@ -35,7 +35,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 import fs from 'fs'
 import PrelintInit from './__CORE__/script/preline-init'
 import { getWebsiteLocale } from "./__CORE__/utils/TranslationUtils";
-import Client from "./client";
+import ProgressBar from "./progressBar";
 import { getAppIcon } from "./__CORE__/config/imgconfig";
 import { NextUIProvider } from "@nextui-org/react";
 import { Providers } from "./nextui-provider";
@@ -52,7 +52,7 @@ export default async function RootLayout(props: {
         {children}
       </Providers>
       <PrelintInit></PrelintInit>
-      <Client></Client>
+      <ProgressBar></ProgressBar>
     </Layout>
   );
 }

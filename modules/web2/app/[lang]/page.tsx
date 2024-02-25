@@ -25,11 +25,15 @@ import ToolPart from '@/app/__CORE__/containers/ToolPart'
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
 
+export let sleep  = (ms: number) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default async function Home(props: CombindSearchProps) {
     let authInfo = await getAuthInfo()
+    // await sleep(3000)   
     return (
         <main>
-            
             <NavigatorPage children={<ToolPart></ToolPart>}></NavigatorPage>
         </main>
     )

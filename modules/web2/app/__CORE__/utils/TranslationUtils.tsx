@@ -21,6 +21,7 @@
 // SKIP_DOT
 import { cookies, headers } from 'next/headers';
 import _ from "lodash";
+import Qs from 'query-string'
 import { LANG_EN_US, LangDefinition } from "../types/constants";
 import { LocaleType, all_locales as all_locales, zhCNLocale } from '@/middleware';
 
@@ -72,6 +73,11 @@ export let getXHostname = (): string => {
   const headersList = headers();
   const val = headersList.get('x-hostname') || "";
   return val;
+}
+export let getXSearchParams = (): {[key:string]:any} => {
+  const headersList = headers();
+  const val = headersList.get('x-search') || "";
+  return Qs.parse(val);
 }
 export let getXNonCNUsers = (): boolean => {
   const headersList = headers();

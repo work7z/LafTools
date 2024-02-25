@@ -85,7 +85,7 @@ export default (props: NavigatorPassProp) => {
                         <div>•</div>
                         <div className="small-text">{Dot("quality-first", "Quality First")}</div>
                         <div>•</div>
-                        <div className="small-text">{Dot("forever-foss", "Forever FOSS!")}</div>
+                        <div className="small-text">{Dot("forever-foss", "Forever FOSS")}</div>
                     </h2>
                 </div>
                 <div className=" absolute right-0 bottom-0  ">

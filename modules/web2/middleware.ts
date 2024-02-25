@@ -4,6 +4,7 @@ import type { NextRequest } from "next/server";
 import _ from "lodash";
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
+import queryString from "query-string";
 
 export type LocaleType = {
   langInHttp: string;
@@ -66,6 +67,9 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   requestHeaders.set("x-path", request.nextUrl.pathname);
   requestHeaders.set("x-hostname", request.nextUrl.hostname);
+  let a = request.nextUrl.search
+  requestHeaders.set("x-search",  a);
+
   let handleLocaleSet = () => {
     requestHeaders.set("x-locale", finalLocaleObject.langInHttp);
   };

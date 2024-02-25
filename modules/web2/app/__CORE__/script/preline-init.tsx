@@ -31,30 +31,29 @@ declare global {
 }
 
 export default function PrelineScript() {
-  // const path = usePathname();
+  const path = usePathname();
 
 
-  // let [mounted, setMount] = useState(false)
+  let [mounted, setMount] = useState(false)
+  useEffect(() => {
+    setMount(true)
+  }, [])
+
+
+
+  useEffect(() => {
+    import("preline/preline").then(x => {
+      setTimeout(() => {
+        window["HSStaticMethods"] && window["HSStaticMethods"].autoInit();
+      }, 100);
+    })
+  }, []);
+
   // useEffect(() => {
-  //   setMount(true)
-  // }, [])
+  // }, [path]);
+  if (!mounted) {
+    return '';
+  }
 
-
-
-  // useEffect(() => {
-  //   import("preline/preline").then(x => {
-  //     setTimeout(() => {
-  //       window.HSStaticMethods.autoInit();
-  //     }, 100);
-  //   })
-  // }, []);
-
-  // // useEffect(() => {
-  // // }, [path]);
-  // if (!mounted) {
-  //   return '';
-  // }
-
-  // return '';
-  return ''
+  return '';
 }
