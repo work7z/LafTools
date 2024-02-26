@@ -5,6 +5,7 @@ import _ from "lodash";
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import queryString from "query-string";
+import i18nItems, { I18nItem } from "./app/__CORE__/config/i18n";
 
 export type LocaleType = {
   langInHttp: string;
@@ -12,27 +13,22 @@ export type LocaleType = {
   langInURL: string;
   langIni18n: string;
 };
-export let zhCNLocale: LocaleType = {
-  langInHttpArr: ["zh-cn", "zh-sg", "zh-hans"],
-  langInHttp: "zh-cn",
-  langInURL: "cn",
-  langIni18n: "zh_CN",
+let zhCNI18nItem = i18nItems.find((x) => x.Value === "zh_CN");
+if (!zhCNI18nItem) {
+  throw new Error("zh_CN not found in i18nItems");
+}
+let convertI18nItemToLocale = (i18nItem: I18nItem): LocaleType => {
+  return {
+    langInHttpArr: i18nItem.LangInHttpLocaleCode || [],
+    langInHttp: _.first(i18nItem.LangInExplicitURL) || "unknown",
+    langInURL: i18nItem.LangInExplicitURL || "",
+    langIni18n: i18nItem.Value,
+  };
 };
-export let all_locales: LocaleType[] = [
-  {
-    langInHttpArr: ["en-US", "en-GB", "en-AU", "en-CA", "en-NZ", "en-ZA"],
-    langInHttp: "en-US",
-    langInURL: "en",
-    langIni18n: "en_US",
-  },
-  zhCNLocale,
-  {
-    langInHttpArr: ["zh-hk", "zh-tw", "zh-mo", "zh-my"],
-    langInHttp: "zh-hk",
-    langInURL: "hk",
-    langIni18n: "zh_HK",
-  },
-];
+export let zhCNLocale: LocaleType = convertI18nItemToLocale(zhCNI18nItem);
+export let all_locales: LocaleType[] = i18nItems.map((x) =>
+  convertI18nItemToLocale(x),
+);
 let defaultLocale = zhCNLocale; // default locale is zh_CN
 const locales_http = all_locales.map((x) => x.langInHttp);
 const rever_locales_http = all_locales
@@ -67,8 +63,8 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   requestHeaders.set("x-path", request.nextUrl.pathname);
   requestHeaders.set("x-hostname", request.nextUrl.hostname);
-  let a = request.nextUrl.search
-  requestHeaders.set("x-search",  a);
+  let a = request.nextUrl.search;
+  requestHeaders.set("x-search", a);
 
   let handleLocaleSet = () => {
     requestHeaders.set("x-locale", finalLocaleObject.langInHttp);

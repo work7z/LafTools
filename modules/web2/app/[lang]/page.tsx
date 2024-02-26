@@ -19,13 +19,13 @@ import { Dot } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
 import NavigatorPage from "./navigator";
 import { NextUIProvider } from "@nextui-org/react";
-import ToolPart from '@/app/__CORE__/containers/ToolPart'
+import ToolPart from '@/app/__CORE__/tranditional/ToolPart'
 
 
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
 
-export let sleep  = (ms: number) => {
+export let sleep = (ms: number) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 

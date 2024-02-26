@@ -9,7 +9,7 @@ export default async function ClientPage(props: CombindSearchProps) {
     let authInfo = await getAuthInfo()
     return (
         <main>
-            <div>this is client page</div>
+            <div>this is client page 2, hello welcome</div>
         </main>
     )
 }

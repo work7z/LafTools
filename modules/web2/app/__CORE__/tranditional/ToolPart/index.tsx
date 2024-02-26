@@ -1,7 +1,7 @@
 import React from 'react';
 import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, Tabs } from "@nextui-org/react";
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
-import { border_clz, border_clz_all, tw } from '@/app/[lang]/styles';
+import { border_clz, light_border_clz_all, tw } from '@/app/[lang]/styles';
 import { Dot } from '../../utils/TranslationUtils';
 import ToolsNavigator from './toolsNavigator';
 import TestBtn from './testbtn'
@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 export let getCardsProps = (): CardProps => {
     return {
-        radius: "none", shadow: "none", className: border_clz_all
+        radius: "none", shadow: "none", className: light_border_clz_all
     }
 }
 
@@ -18,11 +18,11 @@ export default () => {
     return <div>
         <div className='flex flex-row space-x-2'>
             <div className='flex-1  space-y-2'>
-                <Card {...getCardsProps()} className={border_clz_all}>
+                <Card {...getCardsProps()} className={light_border_clz_all}>
                     <ToolsNavigator></ToolsNavigator>
                     <CardBody>
                         <div className='min-h-60'>
-                            <TestBtn/>
+                            <TestBtn />
                             <div>item1</div>
                             <div>item1</div>
                             <div>item3</div>
@@ -40,16 +40,19 @@ export default () => {
                     </CardBody>
                 </Card>
             </div>
-            <div className='w-56  space-y-2'>
-            <Card {...getCardsProps()}>
-                    <CardHeader className={secondaryPanelClzHeader}>{Dot("ajsoz", "LafTools Experimental Edition")}</CardHeader>
+            <div className='w-64  space-y-2'>
+                <Card {...getCardsProps()}>
+                    <CardHeader className={secondaryPanelClzHeader}>{Dot("ajsozsd", "LafTools of Client Style")}</CardHeader>
                     <CardBody>
-                        <Link className='flex flex-row items-center justify-center space-x-[1px] p-2  hover:border-purple-100 border-2' href='/client'>
-                            <img src='/controls/text-editor.png' className='w-5 '/>
-         <span className=''>
-         {Dot("D6WV6","Service Entry Point")}
-         </span>
-                            </Link>
+                        {/* p-2  hover:border-purple-100 border-2 */}
+                        <Link className='flex flex-row items-center justify-center ' href='/client'>
+                            <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-gray-200 text-gray-500 hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500 dark:hover:border-blue-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                <img src='/controls/text-editor.png' className='w-5 h-5 mr-[2px] ' />
+                                <span className=''>
+                                    {Dot("_ssgsdks4", "Click to Have a Try")}
+                                </span>
+                            </button>
+                        </Link>
                     </CardBody>
                 </Card>
                 <Card {...getCardsProps()}>

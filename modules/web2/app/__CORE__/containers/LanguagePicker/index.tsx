@@ -24,6 +24,9 @@ import CardPanel from "../../components/CardPanel"
 import { Dot } from "../../utils/TranslationUtils"
 import React from 'react'
 import { AuthInfo } from "../GrailLayoutWithUser/actions/handleAuthInfo"
+import i18nItems from "../../config/i18n"
+
+
 
 export let translationLangs: {
     "Label": string[],
@@ -31,38 +34,12 @@ export let translationLangs: {
     "Value": string,
     "Href": string,
     "LabelInEnglish": string
-}[] = [
-        {
-            "Label": [
-                "f7akol",
-                "English"
-            ],
-            "LabelByLang": "English",
-            "Value": "en_US",
-            "Href": "en",
-            "LabelInEnglish": "English"
-        },
-        {
-            "Label": [
-                "spdh98",
-                "Simplified Chinese"
-            ],
-            "LabelByLang": "简体中文",
-            "Value": "zh_CN",
-            "Href": "cn",
-            "LabelInEnglish": "Simplified Chinese"
-        },
-        {
-            "Label": [
-                "7dm0d8",
-                "Traditional Chinese"
-            ],
-            "LabelByLang": "繁體中文",
-            "Href": "zh-hant",
-            "Value": "hk",
-            "LabelInEnglish": "Traditional Chinese"
-        }
-    ]
+}[] = i18nItems.map(x => {
+    return {
+        ...x,
+        Href: x.Value
+    }
+})
 
 export default (props: AuthInfoProps) => {
     return (
