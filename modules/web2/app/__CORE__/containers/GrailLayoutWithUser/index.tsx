@@ -29,7 +29,6 @@ import CenterPart from "../CenterPart";
 import CardPanel from '../../components/CardPanel'
 import NodeHorizontalBar from "../TabGroupHorizontalBar";
 import _, { random } from "lodash";
-import UserSideBar, { SidebarViewModeType } from "../UserSideBar";
 import { redirect, useParams, useSearchParams } from "next/navigation";
 import { usePathname } from 'next/navigation';
 import React, { } from "react";
@@ -37,7 +36,6 @@ import { AuthInfoProps, CombindSearchProps } from "@/app/[lang]/page";
 import { getCookie } from "cookies-next";
 import getAuthInfo, { AuthInfo } from "./actions/handleAuthInfo";
 import Footer from "../Footer";
-import VisiterSidebar from "../VisiterSidebar";
 // import { fn_getCardPanelForTelephoneFAQ } from "@/app/[lang]/register/page";
 import { Dot } from "../../utils/TranslationUtils";
 import LanguagePicker from "../LanguagePicker";
@@ -46,7 +44,7 @@ export type Jsx_fn_type = (props: AuthInfoProps) => any;
 
 export default async (props: {
     combindSearchProps: CombindSearchProps
-} & { sidebarViewMode?: SidebarViewModeType, main: Jsx_fn_type, sidebar?: Jsx_fn_type, extraInSidebar?: Jsx_fn_type }) => {
+} & { sidebarViewMode?: any, main: Jsx_fn_type, sidebar?: Jsx_fn_type, extraInSidebar?: Jsx_fn_type }) => {
     return ''
 }
 
