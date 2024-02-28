@@ -91,34 +91,35 @@ let RouteComponent = () => {
   let isUserSignInNow = (!queryAuthStatus.isFetching && queryAuthStatus.HasLogin);
 
   useEffect(() => {
-    if(queryAuthStatus.isFetching){
+    if (queryAuthStatus.isFetching) {
       return;
     }
     if (!isUserSignInNow) {
       // not sign in
       hist.push(URL_LOGIN)
-    }else{
+    } else {
       // sign in
-      if(queryAuthStatus.currentUser){
+      if (queryAuthStatus.currentUser) {
         FN_GetDispatch()(
           UserSlice.actions.updateUserObject({
             userConfig: queryAuthStatus.currentUser,
           })
-        );  
+        );
       }
 
-      if(hist.location.pathname.indexOf(URL_LOGIN)!=-1){
+      if (hist.location.pathname.indexOf(URL_LOGIN) != -1) {
         hist.push(URL_WORKBENCH)
       }
     }
-  }, [queryAuthStatus.isFetching,isUserSignInNow])
+  }, [queryAuthStatus.isFetching, isUserSignInNow])
 
   return (
     <div
       className={" " + (forgeObj.dark ? " bp5-dark dark " : " ")}
       key={forgeObj.lang}
     >
-      <Switch>
+      <FixedWorkBench />
+      {/* <Switch>
         <Route
           path={URL_LOGIN}
           component={SignInLocal}
@@ -128,7 +129,7 @@ let RouteComponent = () => {
         <Route path={URL_ENTRY} component={Entry}></Route>
         <Route path={URL_REDIRECT} component={RedirectPage}></Route>
         <Redirect path="*" to={URL_REDIRECT}></Redirect>
-      </Switch>
+      </Switch> */}
     </div>
   );
 };

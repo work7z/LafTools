@@ -39,6 +39,7 @@ import { Dot } from "./utils/TranslationUtils";
 import { GetUserActualClientLang, getFormattedLang } from "./i18n";
 import AlertUtils from "./utils/AlertUtils";
 import SystemLoadingBar from "./containers/SystemLoadingBar";
+import { fmtURL_Client } from "@/app/__CORE__/utils/cRouteUtils";
 
 function App() {
   let forgeObj = exportUtils.useSelector((val) => ({
@@ -128,13 +129,15 @@ function App() {
 
 
   let langInPath = getFormattedLang(GetUserActualClientLang())
-  let basename = "/app/" + langInPath
-
+  // let basename = "/app/" + langInPath
+  // let basename = fmtURL_Client("/client/" + langInPath)
+  let basename = fmtURL_Client("/client/")
 
   return (
     <HotkeysProvider>
 
-      <Router basename={basename}>
+      <Router basename={basename} >
+
         <HotkeysTarget2 hotkeys={hotkeys}>
           {({ handleKeyDown, handleKeyUp }) => {
             return (
@@ -157,7 +160,8 @@ function App() {
           }}
         </HotkeysTarget2>
       </Router>
-    </HotkeysProvider>
+    </HotkeysProvider >
+
   );
 }
 

@@ -90,20 +90,15 @@ export default () => {
         })
     }, [sysObj.HasError])
 
-    // if (!isEnvNotLoad) return <span></span>
-    // (okStatusListSize / _.size(statusList)) * 100
+    if (true) {
+        return ''
+    }
+
     return <LoadingBar
         progress={sysObj.HasError ? 60 : sysObj.ProgressBarValue || 1}
-        // color="lightblue"
-        // color="#007BFF"
-        // lightblue
-        // className="loading-bar-animated"
         waitingTime={1300}
         className="animated-loading-bar"
-        // color={sysObj.HasError ? "red" : forgeObj.dark ? "#00d6fff2" : "#00d6fff2"}
         color={sysObj.HasError ? "red" : randomColor}
         height={2}
-    // onLoaderFinished={() => setProgress(0)}
-    // ref={() => { }} 
     />
 }

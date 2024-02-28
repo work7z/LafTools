@@ -105,7 +105,7 @@ export const FinalRootApp = () => {
 // const root = createRoot(ele!);
 // root.render(<FinalRootApp />);
 
-logutils.debug("rendered.");
+// logutils.debug("rendered.");
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
@@ -113,4 +113,4 @@ logutils.debug("rendered.");
 // reportWebVitals();
 
 // init stuff
-fn_tailwindcss();
+// fn_tailwindcss();
