@@ -4,6 +4,11 @@
 
 cd $(dirname $0)/..
 
+if [ -z jq ]; then
+    echo "[E] jq is not installed, please install jq first."
+    exit 1
+fi
+
 distDir=./dist
 set +e
 source ./pipeline/env.sh
@@ -76,6 +81,7 @@ build-res(){
 }
 
 build-fe(){
+    set -e
     echo "[I] building fe"
     (
         cd ./modules/web
@@ -87,9 +93,10 @@ build-fe(){
         cd ./modules/web2
         [ ! -d node_modules ] && pnpm install
         npm run build
-        cp -a ./dist/ $LAFTOOLS_ROOT/dist/web2
+        cp -a ./.next/ $LAFTOOLS_ROOT/dist/web2
     )
     echo "[I] built fe"
+    set +e
 }
 
 build-be(){
