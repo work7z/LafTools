@@ -19,6 +19,7 @@ import Link from "next/link";
 import NavigatorPage from "./navigator";
 import { NextUIProvider } from "@nextui-org/react";
 import ToolPart from '@/app/[lang]/portal/src/tools'
+import { getAppIcon, getAppKeywords } from "../__CORE__/config/imgconfig";
 
 
 export type AuthInfoProps = { authInfo: AuthInfo }
@@ -41,23 +42,12 @@ export default async function Home(props: CombindSearchProps) {
 
 export let rootMetaDataFn = async function (): Promise<Metadata> {
     return {
+        icons: [
+            getAppIcon()
+        ],
         title: Dot("title-laftools", "LafTools - The Leading All-In-One ToolBox for Programmers"),
         description: Dot("iZXig7E2JF", "LafTools offers a comprehensive suite of development utilities including codecs, formatters, image processing tools, and computer resource management solutions. Designed to streamline and enhance your development workflow, LafTools is your go-to resource for efficient, high-quality software development."),
-        keywords: [
-            Dot("wi28h5_S2", "Codecs"),
-            Dot("Jbor69IBw", "Formatters"),
-            Dot("t8DUz20a-", "JSON Formatter"),
-            Dot("2S_7EVIsK", "JSON Validator"),
-            Dot("Ibzs2-Ho1", "XML Formatter"),
-            Dot("Ibzs2-Ho1", "XML Validator"),
-            Dot("Ibzs2-Ho1", "CSV Tools"),
-            Dot("9b_7a0feb", "MD5"),
-            Dot("9b_7a0fdf", "SHA256"),
-            Dot("9b_7a0fqwe", "Base64 Encoder"),
-            Dot("9b_7a0sdf", "Base64 Decoder"),
-            Dot("q0zA1kML_", "Online Toolbox"),
-            Dot("jr_7Y98yZ", "LafTools"),
-        ],
+        keywords: getAppKeywords(),
     };
 }
 
