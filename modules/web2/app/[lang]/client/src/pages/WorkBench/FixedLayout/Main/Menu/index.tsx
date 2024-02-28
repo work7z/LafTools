@@ -414,6 +414,8 @@ export let WB_MenuBar = (props: PassProp) => {
             />
           </Tooltip>
 
+
+
           <Popover
             placement="bottom-end"
             content={
@@ -546,6 +548,25 @@ export let WB_MenuBar = (props: PassProp) => {
               }}
             />
           </Tooltip> */}
+
+
+          <Tooltip
+            content={Dot("yFGDBGxv9d", "Try with Classical UI")}
+            position="bottom"
+          >
+            <Button
+              className={Classes.MINIMAL}
+              small={true}
+              // text="Software Updates"
+              intent={"none"}
+              // text={Dot("kPJ-A4", "Refresh")}
+              loading={var_3.LoadingForPageData}
+              icon={"desktop"}
+              onClick={() => {
+                dis(ACTION_callRefreshAll(true));
+              }}
+            />
+          </Tooltip>
           <Tooltip content={Dot("LqWaFd", "System Settings")} position="bottom">
             <Button
               className={Classes.MINIMAL}

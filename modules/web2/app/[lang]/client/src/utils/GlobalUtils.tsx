@@ -86,7 +86,9 @@ const gutils = {
     if (devVisibleOnly === true && !gutils.IsDevMode) {
       return;
     }
-    _.set(window, key, value);
+    // if (!_.isNil(window)) {
+    //   _.set(window, key, value);
+    // }
   },
   GetUserActualClientLang: GetUserActualClientLang,
   // GetUserActualClientLang(): string {

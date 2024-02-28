@@ -57,7 +57,18 @@ export default async function RootLayout(props: {
       </Providers>
       <PrelintInit></PrelintInit>
       <ProgressBar></ProgressBar>
-      <Link id='grouter' href='/about' className='hidden'></Link>
+      {/* web staticstic */}
+      <script dangerouslySetInnerHTML={{
+        __html: `
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?34e460a0d05b623e9032da256ff98807";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+`
+      }}></script>
     </Layout>
   );
 }

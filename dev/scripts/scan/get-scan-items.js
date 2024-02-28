@@ -81,6 +81,7 @@ let web2Item = {
   pattern: commonText,
   target: `${web2DIR}/public/static/lang`,
   dir: `${web2DIR}/app`,
+  exclude: ["[lang]/client"],
 };
 
 let searchItems = [

@@ -26,11 +26,12 @@ import { AxiosError } from "axios";
 import { uuid } from "./g_ref";
 
 let clientIdKey = "LafTools_CLIENT_ID";
-let clientId = localStorage.getItem(clientIdKey);
-if (_.isNil(clientId)) {
-  clientId = uuid();
-  localStorage.setItem(clientIdKey, clientId);
-}
+let clientId = 'default';
+// localStorage.getItem(clientIdKey);
+// if (_.isNil(clientId)) {
+//   clientId = uuid();
+//   localStorage.setItem(clientIdKey, clientId);
+// }
 
 const IDUtils = {
   PAGE_ID: uuid(),

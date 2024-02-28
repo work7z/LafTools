@@ -85,7 +85,7 @@ interface NoCycle {
   Fn_LastCloseAllTab?: () => any;
 }
 let ALL_NOCYCLE: NoCycle = {};
-_.set(window, "ALL_NOCYCLE", ALL_NOCYCLE);
+
 export type RootState2 = RootState;
 export const APPINFOJSON = appinfoJSON;
 
