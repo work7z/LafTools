@@ -180,9 +180,9 @@ export default () => {
       onAvaialble(true);
     })();
   }, [workspaceId]);
-  if (res) {
-    return res;
-  }
+  // if (res) {
+  //   return res;
+  // }
   // if (!available) {
   //   return (
   //     <p className="p-10  w-full h-full align-center justify-center">

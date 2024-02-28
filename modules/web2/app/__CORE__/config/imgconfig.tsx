@@ -21,14 +21,20 @@
 import { isDevEnv, isTestEnv } from "../hooks/env"
 import { Dot } from "../utils/TranslationUtils"
 
+export let formatStaticResource = (path: string): string => {
+    return `/static/${path}`
+}
+
 export let getAppIcon = (): string => {
-    if (isDevEnv()) {
-        return '/icon-dev.png'
-    }
-    if (isTestEnv()) {
-        return '/icon-uat.png'
-    }
-    return '/icon.png'
+    return formatStaticResource((() => {
+        if (isDevEnv()) {
+            return '/icon-dev.png'
+        }
+        if (isTestEnv()) {
+            return '/icon-uat.png'
+        }
+        return '/icon.png'
+    })())
 }
 
 export let getAppKeywords = (): string[] => {

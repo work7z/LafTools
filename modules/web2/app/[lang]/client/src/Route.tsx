@@ -91,26 +91,29 @@ let RouteComponent = () => {
   let isUserSignInNow = (!queryAuthStatus.isFetching && queryAuthStatus.HasLogin);
 
   useEffect(() => {
-    if (queryAuthStatus.isFetching) {
+    if (true) {
       return;
     }
-    if (!isUserSignInNow) {
-      // not sign in
-      hist.push(URL_LOGIN)
-    } else {
-      // sign in
-      if (queryAuthStatus.currentUser) {
-        FN_GetDispatch()(
-          UserSlice.actions.updateUserObject({
-            userConfig: queryAuthStatus.currentUser,
-          })
-        );
-      }
+    // if (queryAuthStatus.isFetching) {
+    //   return;
+    // }
+    // if (!isUserSignInNow) {
+    //   // not sign in
+    //   hist.push(URL_LOGIN)
+    // } else {
+    //   // sign in
+    //   if (queryAuthStatus.currentUser) {
+    //     FN_GetDispatch()(
+    //       UserSlice.actions.updateUserObject({
+    //         userConfig: queryAuthStatus.currentUser,
+    //       })
+    //     );
+    //   }
 
-      if (hist.location.pathname.indexOf(URL_LOGIN) != -1) {
-        hist.push(URL_WORKBENCH)
-      }
-    }
+    //   if (hist.location.pathname.indexOf(URL_LOGIN) != -1) {
+    //     hist.push(URL_WORKBENCH)
+    //   }
+    // }
   }, [queryAuthStatus.isFetching, isUserSignInNow])
 
   return (

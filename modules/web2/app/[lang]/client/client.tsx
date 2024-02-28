@@ -9,5 +9,4 @@ export default () => {
         <FinalRootApp />
     </div>
     return innerChild
-    // return <NoSsr2>{innerChild}</NoSsr2>
 }

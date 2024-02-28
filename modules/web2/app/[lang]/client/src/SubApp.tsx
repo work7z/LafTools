@@ -128,16 +128,14 @@ function App() {
   }, [])
 
 
-  let langInPath = getFormattedLang(GetUserActualClientLang())
+  // let langInPath = getFormattedLang(GetUserActualClientLang())
   // let basename = "/app/" + langInPath
   // let basename = fmtURL_Client("/client/" + langInPath)
   let basename = fmtURL_Client("/client/")
 
   return (
     <HotkeysProvider>
-
       <Router basename={basename} >
-
         <HotkeysTarget2 hotkeys={hotkeys}>
           {({ handleKeyDown, handleKeyUp }) => {
             return (

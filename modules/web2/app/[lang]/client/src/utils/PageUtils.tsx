@@ -48,18 +48,19 @@ const VAL_REQUEST_OBJ: Request = {
 };
 const PageUtils = {
   useUpdateTitle(title, eff: string[]) {
-    useEffect(() => {
-      let suffix = Dot("5srFq", "LafTools") + `(${APPINFOJSON.version})`;
-      let newTitle = "";
-      if (gutils.empty(title)) {
-        newTitle = suffix;
-      } else {
-        newTitle = title + " - " + suffix;
-      }
-      if (document.title != newTitle) {
-        document.title = newTitle + "";
-      }
-    }, [title + TranslationUtils.CurrentLanguage, ...eff]);
+    return;
+    // useEffect(() => {
+    //   let suffix = Dot("5srFq", "LafTools") + `(${APPINFOJSON.version})`;
+    //   let newTitle = "";
+    //   if (gutils.empty(title)) {
+    //     newTitle = suffix;
+    //   } else {
+    //     newTitle = title + " - " + suffix;
+    //   }
+    //   if (document.title != newTitle) {
+    //     document.title = newTitle + "";
+    //   }
+    // }, [title + TranslationUtils.CurrentLanguage, ...eff]);
   },
   // GetRoutePath(subPath: string): string {
   //   return "/app/en" + subPath;
@@ -68,9 +69,8 @@ const PageUtils = {
     _.merge(VAL_REQUEST_OBJ, newRequestObj);
   },
   GetBaseURL: (): string => {
-    return `${VAL_REQUEST_OBJ.UsingHTTPSProtocol ? `http` : `https`}://${
-      VAL_REQUEST_OBJ.Host
-    }:${VAL_REQUEST_OBJ.Port}${VAL_REQUEST_OBJ.BaseCtxAPI}`;
+    return `${VAL_REQUEST_OBJ.UsingHTTPSProtocol ? `http` : `https`}://${VAL_REQUEST_OBJ.Host
+      }:${VAL_REQUEST_OBJ.Port}${VAL_REQUEST_OBJ.BaseCtxAPI}`;
   },
   isFullScreen: (): boolean => {
     return document.fullscreenElement != null;
