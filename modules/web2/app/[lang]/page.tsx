@@ -19,7 +19,7 @@ import { Dot } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
 import NavigatorPage from "./navigator";
 import { NextUIProvider } from "@nextui-org/react";
-import ToolPart from '@/app/__CORE__/tranditional/ToolPart'
+import ToolPart from '@/app/[lang]/portal/src/tools'
 
 
 export type AuthInfoProps = { authInfo: AuthInfo }

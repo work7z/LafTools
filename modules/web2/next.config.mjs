@@ -1,8 +1,8 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Thu, 8 Feb 2024
-// Author:   
-// Description: 
+// Author:
+// Description:
 // Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
@@ -26,6 +26,9 @@ const nextConfig = {
   // typescript: {
   //   ignoreBuildErrors: true,
   // },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

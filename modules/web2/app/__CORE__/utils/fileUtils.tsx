@@ -20,7 +20,8 @@
 
 import fs from 'fs';
 
-export default let fsutils = {
+
+export default {
     fileExists: (file: string) => {
         return fs.existsSync(file)
 

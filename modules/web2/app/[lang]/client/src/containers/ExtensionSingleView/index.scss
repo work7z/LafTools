@@ -1,0 +1,85 @@
+// LafTools - The Leading All-In-One ToolBox for Programmers.
+// 
+// Date: Sat, 18 Nov 2023
+// Author: CodeGen ToolBox <work7z@outlook.com>
+// Description: 
+// Copyright (C) 2023 - Present, https://laf-tools.com and https://codegen.cc
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+@import "@blueprintjs/colors/lib/scss/colors";
+@import "../../styles/var.scss";
+
+$esv-height: 34px;
+
+.esv-w {
+  overflow: auto;
+  max-height: 100%;
+  .esv-title-w {
+    @include fn-make-bg-color-align();
+    @include fn-border-type("bottom");
+    height: $esv-height;
+    line-height: $esv-height;
+    padding: 0 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & > * {
+      height: 100%;
+    }
+  }
+  @mixin common-esv-item() {
+    padding: 8px;
+    overflow: auto;
+    margin: 8px;
+  }
+  .esv-content-w {
+    @include common-esv-item();
+    height: calc(100% - #{$esv-height});
+  }
+  .esv-extra-w {
+    @include common-esv-item();
+  }
+  .esv-footer-w {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    @include fn-border-type("top");
+    & > * {
+      margin-bottom: 3px;
+      &:last-child {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+.esv-content-layout-form {
+  .esv-content-process-button-group {
+    margin: 10px 0;
+    .esv-content-process-button-group-line-w {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      &:last-child {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}

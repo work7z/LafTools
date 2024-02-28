@@ -1,11 +1,23 @@
 import { deleteCookie, getCookie } from "cookies-next";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import _ from "lodash";
+// import _ from "lodash";
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import queryString from "query-string";
 import i18nItems, { I18nItem } from "./app/__CORE__/config/i18n";
+
+let _ = {
+  every: (a: any, b: any) => {
+    return a.every(b);
+  },
+  first: (a: any) => {
+    return a[0];
+  },
+  toLower: (a: any) => {
+    return a.toLowerCase();
+  },
+};
 
 export type LocaleType = {
   langInHttp: string;
@@ -105,5 +117,8 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: "/((?!api|static|.*\\..*|_next).*)",
   runtime: "experimental-edge", // for Edge API Routes only
-  unstable_allowDynamic: ["/node_modules/lodash/**"],
+  unstable_allowDynamic: [
+    "/node_modules/lodash/**",
+    "./node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/lodash.js",
+  ],
 };
