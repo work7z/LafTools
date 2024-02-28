@@ -20,7 +20,7 @@ if (!zhCNI18nItem) {
 let convertI18nItemToLocale = (i18nItem: I18nItem): LocaleType => {
   return {
     langInHttpArr: i18nItem.LangInHttpLocaleCode || [],
-    langInHttp: _.first(i18nItem.LangInExplicitURL) || "unknown",
+    langInHttp: _.first(i18nItem.LangInHttpLocaleCode) || "unknown",
     langInURL: i18nItem.LangInExplicitURL || "",
     langIni18n: i18nItem.Value,
   };

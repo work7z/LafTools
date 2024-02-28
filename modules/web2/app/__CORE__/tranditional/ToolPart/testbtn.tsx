@@ -8,9 +8,7 @@ import { useRouter } from 'next/navigation'
 
 export default () => {
     let r = useRouter()
-    
+
     return <button type='button' className='' onClick={e => {
-        // e.preventDefault()
-        // pushClient("/client")
     }}>click me</button>
 }

@@ -27,7 +27,7 @@ import { NavItem } from "./navItem";
 import { getAppIcon } from "../__CORE__/config/imgconfig";
 import { ClosableText } from "../__CORE__/components/ClosableText";
 import EnglishVersionBanner from "../__CORE__/components/EnglishVersionBanner";
-import { border_clz, row_pad_clz } from "./styles";
+import { border_clz, border_clz_top, row_pad_clz } from "./styles";
 import LightDarkButton from "../__CORE__/components/LightDarkButton";
 import GitHubButton from "../__CORE__/components/GitHubButton";
 import SysBreadCrumbs from './breadcrumbs'
@@ -39,6 +39,7 @@ import {
     fmt_ToolSubPage
 } from './tool-definitions'
 import { GitHubRepoIssueLink } from "../__CORE__/types/constants";
+import Footer from "../__CORE__/containers/Footer";
 
 export type LabelHrefType = {
     label: string | JSX.Element,
@@ -184,6 +185,15 @@ export default (props: NavigatorPassProp) => {
 
                 {children}
             </div>
+        </div>
+
+
+        {/** footer */}
+        <div className={
+            border_clz_top + " min-h-20 "
+        }>
+
+            <Footer />
         </div>
     </div>
 }

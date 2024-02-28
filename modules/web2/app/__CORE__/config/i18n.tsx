@@ -258,4 +258,8 @@ let i18nItems: I18nItem[] = [
   return x;
 })
 
+export let useGetI18nLangList = () => {
+  return i18nItems;
+}
+
 export default i18nItems;

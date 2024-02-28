@@ -59,20 +59,20 @@ import {
 } from "@blueprintjs/core";
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
-import { CSS_TEXT_ANCHOR_CSS } from "../../types/styles";
-import { getFormattedLang } from "../../i18n";
-import { useGetI18nLangList } from "../UserAskMultipleDialogs";
+import { CSS_TEXT_ANCHOR_CSS } from "@/app/[lang]/styles";
+import { useGetI18nLangList } from "../../config/i18n";
+import { getXSubPath } from "../../utils/TranslationUtils";
 
 interface PassProp { }
 export default (props: PassProp): any => {
   let i18n = useGetI18nLangList()
-  let splitArr = location.pathname.split("/")
+  let splitArr = getXSubPath().split("/").filter(x => x) // // location.pathname.split("/")
   return <div>
     <div className='bp5-text-muted space-x-2 '>
       {i18n?.map(x => {
         let m = [...splitArr]
-        m[2] = getFormattedLang(x.Value)
-        return <a className={CSS_TEXT_ANCHOR_CSS} href={m.join("/")}>{x.LabelByLang}</a>
+        m[2] = x.LangInExplicitURL || ''//getFormattedLang(x.Value)
+        return <a className={CSS_TEXT_ANCHOR_CSS} href={'/' + m.filter(x => x).join("/")}>{x.LabelByLang}</a>
       })}
     </div>
   </div>;

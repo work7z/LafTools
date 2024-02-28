@@ -6,6 +6,7 @@ import { Dot } from '../../utils/TranslationUtils';
 import ToolsNavigator from './toolsNavigator';
 import TestBtn from './testbtn'
 import Link from 'next/link';
+import { fmtURL_Server } from '../../utils/routeUtils';
 
 export let getCardsProps = (): CardProps => {
     return {
@@ -42,14 +43,14 @@ export default () => {
             </div>
             <div className='w-64  space-y-2'>
                 <Card {...getCardsProps()}>
-                    <CardHeader className={secondaryPanelClzHeader}>{Dot("ajsozsd", "LafTools of Client Style")}</CardHeader>
+                    <CardHeader className={secondaryPanelClzHeader}>{Dot("azsd", "Quick Navigation")}</CardHeader>
                     <CardBody>
                         {/* p-2  hover:border-purple-100 border-2 */}
-                        <Link className='flex flex-row items-center justify-center ' href='/client'>
+                        <Link className='flex flex-row items-center justify-center ' href={fmtURL_Server('/client')}>
                             <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-gray-200 text-gray-500 hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500 dark:hover:border-blue-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                                 <img src='/controls/text-editor.png' className='w-5 h-5 mr-[2px] ' />
                                 <span className=''>
-                                    {Dot("_ssgsdks4", "Click to Have a Try")}
+                                    {Dot("Jq7x3Igk0", "Try Client UI Style")}
                                 </span>
                             </button>
                         </Link>

@@ -33,5 +33,5 @@ export let fmtURL_Server = (str: string): string => {
         str = str.substring(1)
     }
     let localePrefix = getLocalePrefix_Server().langInURL
-    return "/" + localePrefix + str
+    return "/" + localePrefix + '/' + str
 }
