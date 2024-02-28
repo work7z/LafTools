@@ -20,7 +20,6 @@
 
 'use server'
 
-import { getImgBase64Result, } from "@/app/api/captcha/route";
 import { setCookie, getCookie, getCookies, deleteCookie } from 'cookies-next';
 import { cookies, headers } from 'next/headers';
 import _ from "lodash";
