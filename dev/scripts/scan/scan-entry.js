@@ -271,6 +271,25 @@ let scan = async (eachRunItem) => {
           if (err) {
             reject(err);
           } else {
+            console.log("checked the results", results);
+            if (eachRunItem.exclude) {
+              results = results.filter((x) => {
+                let tmpx = x.replace(/\\/g, "/");
+                let anyContaminated = false;
+                if (eachRunItem.exclude instanceof Array) {
+                  for (let eachExclude of eachRunItem.exclude) {
+                    if (tmpx.indexOf(eachExclude) != -1) {
+                      anyContaminated = true;
+                      break;
+                    }
+                  }
+                } else {
+                  throw new Error("unknown error" + eachRunItem);
+                }
+                return !anyContaminated;
+              });
+            }
+
             resolve(results);
           }
         });
@@ -329,7 +348,9 @@ let r2 = async () => {
           // }
 
           // delete runStatusObj[eachRunItem.dir];
-        }, 0);
+        }, 100);
+
+        triggerAllFn();
 
         chokidar.watch(eachItem.dir).on("all", async (event, path) => {
           // if new file is added or exist file is modified/delete
@@ -388,6 +409,9 @@ let entryForLoadingDOT = async () => {
             // };
             let { scopeID, targetDIR, filepath, eachRunItem } = loadEachObj;
             let crtTaskId = latestTaskIdObj[eachRunItem.dir];
+            if (!fs.existsSync(targetDIR)) {
+              fs.mkdirSync(targetDIR);
+            }
             let extraDirName = path.join(targetDIR, "extra");
             if (!fs.existsSync(extraDirName)) {
               fs.mkdirSync(extraDirName);

@@ -50,7 +50,7 @@ export default () => {
                             <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-gray-200 text-gray-500 hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500 dark:hover:border-blue-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                                 <img src='/controls/text-editor.png' className='w-5 h-5 mr-[2px] ' />
                                 <span className=''>
-                                    {Dot("try.laftools.ide", "Try with IDE-like UI")}
+                                    {Dot("tryYKTzUD-zVe", "Try with IDE-like UI")}
                                 </span>
                             </button>
                         </Link>

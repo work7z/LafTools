@@ -275,7 +275,7 @@ export const ACTION_getLangData = (scopeIdIfHave?: string): any => {
         // do nothing
       } else {
         let e = await AjaxUtils.DoStaticRequest({
-          url: "/lang" + (scopeIdIfHave ? `/extra/${scopeIdIfHave}/` : "/") + currentLanguage + ".json?t=" + Date.now(),
+          url: "/lang2client" + (scopeIdIfHave ? `/extra/${scopeIdIfHave}/` : "/") + currentLanguage + ".json?t=" + Date.now(),
         });
         logutils.debug("e.data", e.data);
         dispatch(

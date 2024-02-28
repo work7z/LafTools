@@ -65,14 +65,14 @@ let privateProjects = [
   },
 ];
 
-let webItem = {
-  id: "bprl",
-  type: "ts",
-  prefix: "Dot(",
-  pattern: commonText,
-  target: `${webDIR}/public/static/lang`,
-  dir: `${webDIR}/src`,
-};
+// let webItem = {
+//   id: "bprl",
+//   type: "ts",
+//   prefix: "Dot(",
+//   pattern: commonText,
+//   target: `${webDIR}/public/static/lang`,
+//   dir: `${webDIR}/src`,
+// };
 
 let web2Item = {
   id: "bprl",
@@ -94,15 +94,16 @@ let searchItems = [
   //   dir: `${baseDIR}/core`,
   // },
   // webItem,
-  web2Item,
   {
-    id: "bprl2",
+    id: "HKLVpZ71T",
     type: "ts",
     prefix: "Dot(",
     pattern: commonText,
-    target: `${web2DIR}/public/static/lang2`,
+    target: `${web2DIR}/public/static/lang2client`,
     dir: `${web2DIR}/app/[lang]/client`,
   },
+  web2Item,
+
   // {
   //   type: "ts",
   //   id: "portal-sl",
