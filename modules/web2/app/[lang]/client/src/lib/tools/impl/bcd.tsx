@@ -1,8 +1,8 @@
 
 import { Dot } from "../../../utils/TranslationUtils";
 import Operation from "../../core/Operation.tsx";
-import FromBCD from "./conversion/FromBCD.js";
-import TOBCD from "./conversion/ToBCD.js";
+import FromBCD from "./conversion/FromBCD.tsx";
+import TOBCD from "./conversion/ToBCD.tsx";
 import { ToolHandler, ToolMetaInfo } from "../handler";
 
 export default class Base64Handler extends ToolHandler {
