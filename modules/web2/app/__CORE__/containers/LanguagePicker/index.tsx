@@ -23,7 +23,6 @@ import { AuthInfoProps } from "@/app/[lang]/page"
 import CardPanel from "../../components/CardPanel"
 import { Dot } from "../../utils/TranslationUtils"
 import React from 'react'
-import { AuthInfo } from "../GrailLayoutWithUser/actions/handleAuthInfo"
 import i18nItems from "../../config/i18n"
 
 

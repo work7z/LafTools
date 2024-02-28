@@ -21,7 +21,7 @@
 import fs from 'fs';
 
 
-export default {
+let FileUtils = {
     fileExists: (file: string) => {
         return fs.existsSync(file)
 
@@ -39,3 +39,6 @@ export default {
         return dir;
     },
 }
+
+
+export default FileUtils

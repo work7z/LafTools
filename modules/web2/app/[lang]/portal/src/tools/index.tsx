@@ -2,11 +2,11 @@ import React from 'react';
 import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, Tabs } from "@nextui-org/react";
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import { border_clz, light_border_clz_all, tw } from '@/app/[lang]/styles';
-import { Dot } from '../../../__CORE__/utils/TranslationUtils';
+import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
 import ToolsNavigator from './toolsNavigator';
 import TestBtn from './testbtn'
 import Link from 'next/link';
-import { fmtURL_Server } from '../../../__CORE__/utils/routeUtils';
+import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
 
 export let getCardsProps = (): CardProps => {
     return {
