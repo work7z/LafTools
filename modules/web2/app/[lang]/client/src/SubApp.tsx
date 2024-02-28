@@ -22,7 +22,7 @@ import { useEffect } from "react";
 import exportUtils from "./utils/ExportUtils";
 import { HotkeysProvider, HotkeysTarget2 } from "@blueprintjs/core";
 import { BrowserRouter as Router } from "react-router-dom";
-
+import $ from 'jquery'
 import RouteComponent from "./Route";
 import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
 import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "./types/constants";

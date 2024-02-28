@@ -121,6 +121,7 @@ import { useGetI18nLangList } from "../../../../../containers/UserAskMultipleDia
 import TokenUtils from "../../../../../utils/TokenUtils";
 import { useCloudLoginStatus } from "../../../../../hook/login-hook";
 import { getFormattedLang } from "../../../../../i18n";
+import { fmtURL_Client } from "@/app/__CORE__/utils/cRouteUtils";
 
 type PassProp = {
   leftPart?: JSX.Element;
@@ -504,6 +505,25 @@ export let WB_MenuBar = (props: PassProp) => {
             />
           </Tooltip> */}
           <Tooltip
+            content={Dot("trywithclassicalwebui", "Try with Classical Web UI")}
+            position="bottom"
+          >
+            <AnchorButton
+              href={fmtURL_Client("/")}
+              className={Classes.MINIMAL}
+              small={true}
+              target="_blank"
+              // text="Software Updates"
+              intent={"none"}
+              // text={Dot("kPJ-A4", "Refresh")}
+              loading={var_3.LoadingForPageData}
+              icon={"desktop"}
+              onClick={() => {
+                dis(ACTION_callRefreshAll(true));
+              }}
+            />
+          </Tooltip>
+          <Tooltip
             content={Dot("iNqF1T", "Manage Cloud Account")}
             position="bottom"
           >
@@ -550,23 +570,7 @@ export let WB_MenuBar = (props: PassProp) => {
           </Tooltip> */}
 
 
-          <Tooltip
-            content={Dot("yFGDBGxv9d", "Try with Classical UI")}
-            position="bottom"
-          >
-            <Button
-              className={Classes.MINIMAL}
-              small={true}
-              // text="Software Updates"
-              intent={"none"}
-              // text={Dot("kPJ-A4", "Refresh")}
-              loading={var_3.LoadingForPageData}
-              icon={"desktop"}
-              onClick={() => {
-                dis(ACTION_callRefreshAll(true));
-              }}
-            />
-          </Tooltip>
+
           <Tooltip content={Dot("LqWaFd", "System Settings")} position="bottom">
             <Button
               className={Classes.MINIMAL}

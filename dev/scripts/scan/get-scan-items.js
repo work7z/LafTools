@@ -95,6 +95,14 @@ let searchItems = [
   // },
   // webItem,
   web2Item,
+  {
+    id: "bprl2",
+    type: "ts",
+    prefix: "Dot(",
+    pattern: commonText,
+    target: `${web2DIR}/public/static/lang2`,
+    dir: `${web2DIR}/app/[lang]/client`,
+  },
   // {
   //   type: "ts",
   //   id: "portal-sl",
