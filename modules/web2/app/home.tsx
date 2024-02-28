@@ -15,7 +15,7 @@ import { usePathname } from 'next/navigation';
 import React, { } from "react";
 import GrailLayoutWithUser from "./__CORE__/containers/GrailLayoutWithUser";
 
-x
+
 export default (props: {
     combindSearchProps: CombindSearchProps
 }) => {
