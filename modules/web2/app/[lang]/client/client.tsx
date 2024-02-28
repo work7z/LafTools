@@ -1,9 +1,13 @@
 'use client'
 
+import NoSsr2 from '@/app/__CORE__/components/NoSsr2'
 import { FinalRootApp } from './src/main'
 
+
 export default () => {
-    return <div className="w-full h-full">
+    let innerChild = <div className="w-full h-full">
         <FinalRootApp />
     </div>
+    return innerChild
+    // return <NoSsr2>{innerChild}</NoSsr2>
 }

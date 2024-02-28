@@ -28,7 +28,7 @@ import LanguageFlowList from "../LanguageFlowList";
 import MottoLine from "../MottoLine";
 
 export let FooterContent = () => {
-    return <div className="w-full">
+    return <div className="w-full bg-slate-100 dark:bg-slate-800 ">
 
         <div className=' text-center   w-8/12 space-y-3 mx-auto bp5-text-muted  break-words pt-8 flex flex-col pb-6 ' style={{
             minWidth: '50vw'
