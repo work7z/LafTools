@@ -113,8 +113,8 @@ const initialState: SystemState = {
   SysInitStatus: newSysInitStatus(),
   LangIncrement: "d",
   MessageObjectKVMap: {},
-  ClientWidth: window["innerWidth"],
-  ClientHeight: window["innerHeight"],
+  ClientWidth: -1,
+  ClientHeight: -1,
   IsWorkBenchPageAvailable: false,
   // LanguageInPath: GetUserActualClientLang()
 };

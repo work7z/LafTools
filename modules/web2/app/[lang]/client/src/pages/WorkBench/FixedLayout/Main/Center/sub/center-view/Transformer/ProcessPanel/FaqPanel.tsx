@@ -103,7 +103,8 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
             })
         }
         <div className="text-center mb-2 mt-4">
-            <AnchorButton target='_blank' minimal outlined href={`https://github.com/work7z/LafTools/blob/dev/modules/web/src/lib/tools/faq/${props.extId}.tsx`} intent="none" text={Dot("Ylq2X", "Error Correction")}></AnchorButton>
+            {/* modules\web2\app\[lang]\client\src\lib\tools\faq */}
+            <AnchorButton target='_blank' minimal outlined href={`https://github.com/work7z/LafTools/blob/dev/modules/web2/app/[lang]/client/src/lib/tools/faq/${props.extId}.tsx`} intent="none" text={Dot("Ylq2X", "Error Correction")}></AnchorButton>
         </div>
 
     </div>
