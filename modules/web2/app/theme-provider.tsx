@@ -20,9 +20,18 @@
 
 "use client"
 import * as React from "react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 import type { ThemeProviderProps } from "next-themes/dist/types";
 
+let CustomerInner = ({ children, ...props }: ThemeProviderProps) => {
+    const { theme, setTheme } = useTheme()
+    return <div className={"w-full h-full " + (
+        theme == 'dark' ? 'bp5-dark' : 'bp5-light'
+    )}>{children}</div>
+}
+
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-    return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+    return <NextThemesProvider  {...props}>
+        <CustomerInner>{children}</CustomerInner>
+    </NextThemesProvider>
 }

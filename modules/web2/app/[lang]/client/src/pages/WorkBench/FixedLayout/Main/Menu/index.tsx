@@ -122,6 +122,7 @@ import TokenUtils from "../../../../../utils/TokenUtils";
 import { useCloudLoginStatus } from "../../../../../hook/login-hook";
 import { getFormattedLang } from "../../../../../i18n";
 import { fmtURL_Client } from "@/app/__CORE__/utils/cRouteUtils";
+import { useTheme } from "next-themes";
 
 type PassProp = {
   leftPart?: JSX.Element;
@@ -370,6 +371,8 @@ export let WB_MenuBar = (props: PassProp) => {
     }), 18);
   }
   let cloudStatus = useCloudLoginStatus()
+  const { theme, setTheme } = useTheme();
+  let darkMode = theme == 'dark'
   return (
     <FixedMenuBar
       requiredPageIcon
@@ -385,12 +388,13 @@ export let WB_MenuBar = (props: PassProp) => {
               className={Classes.MINIMAL}
               small={true}
               // text="Software Updates"
-              intent={val_1.dark ? "primary" : "none"}
+              intent={darkMode ? "primary" : "none"}
               // title={Dot(`Spcfdee`, `Light or Dark Mode`)}
               text={""}
-              icon={val_1.dark ? "flash" : "moon"}
+              icon={darkMode ? "flash" : "moon"}
               onClick={() => {
-                dis(forgeSlice.actions.updateDarkMode({ isDark: !val_1.dark }));
+                setTheme(theme == 'dark' ? 'light' : 'dark')
+                // dis(forgeSlice.actions.updateDarkMode({ isDark: !val_1.dark }));
               }}
             />
           </Tooltip>

@@ -40,6 +40,7 @@ import { GetUserActualClientLang, getFormattedLang } from "./i18n";
 import AlertUtils from "./utils/AlertUtils";
 import SystemLoadingBar from "./containers/SystemLoadingBar";
 import { fmtURL_Client } from "@/app/__CORE__/utils/cRouteUtils";
+import { useTheme } from "next-themes";
 
 function App() {
   let forgeObj = exportUtils.useSelector((val) => ({
@@ -50,6 +51,7 @@ function App() {
   let systemObj = exportUtils.useSelector((val) => ({
     LoadSystemData: val.system.LoadSystemData,
   }));
+  let { theme, setTheme } = useTheme()
   let queryAuthStatus = AuthHookUtils.useQueryAuthStatus();
   let hotkeys = [
     {
@@ -57,31 +59,32 @@ function App() {
       global: true,
       label: Dot("H8fQ4", "Toggle to Light or Dark Mode"),
       onKeyDown: () => {
-        FN_GetDispatch()(
-          forgeSlice.actions.updateDarkMode({
-            isDark: !forgeObj.dark,
-          })
-        );
+        // FN_GetDispatch()(
+        // forgeSlice.actions.updateDarkMode({
+        //   isDark: !forgeObj.dark,
+        // })
+        // );
+        setTheme(theme == 'dark' ? 'light' : 'dark')
       },
     },
   ];
 
-  useEffect(() => {
-    let isDark = forgeObj.dark;
-    let rootClzForDark: string = CLZ_ROOT_DARK;
-    let rootClzForLight: string = CLZ_ROOT_LIGHT;
-    if (isDark) {
-      $("body,html")
-        .addClass(rootClzForDark)
-        .addClass("dark")
-        .removeClass(rootClzForLight);
-    } else {
-      $("body,html")
-        .removeClass(rootClzForDark)
-        .removeClass("dark")
-        .addClass(rootClzForLight);
-    }
-  }, [forgeObj.dark]);
+  // useEffect(() => {
+  //   let isDark = forgeObj.dark;
+  //   let rootClzForDark: string = CLZ_ROOT_DARK;
+  //   let rootClzForLight: string = CLZ_ROOT_LIGHT;
+  //   if (isDark) {
+  //     $("body,html")
+  //       .addClass(rootClzForDark)
+  //       .addClass("dark")
+  //       .removeClass(rootClzForLight);
+  //   } else {
+  //     $("body,html")
+  //       .removeClass(rootClzForDark)
+  //       .removeClass("dark")
+  //       .addClass(rootClzForLight);
+  //   }
+  // }, [forgeObj.dark]);
 
   let innerJSX: any;
   let isUserSignInNow =

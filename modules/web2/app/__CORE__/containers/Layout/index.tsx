@@ -25,6 +25,7 @@ import { TopNav } from "../TopNav";
 import CenterPart from "../CenterPart";
 import Footer from "../Footer";
 import { ThemeProvider } from "../../../theme-provider";
+import { useTheme } from "next-themes";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -35,7 +36,7 @@ export default function RootLayout(props: {
     return (
         <html lang={getWebsiteLocale()}>
             <body className={' min-h-screen dark:bg-slate-950 dark:text-slate-300    ' + inter.className}>
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem >
                     <div className="w-full h-full">
                         {children}
                     </div>
