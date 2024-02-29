@@ -274,18 +274,18 @@ export const ACTION_getLangData = (scopeIdIfHave?: string): any => {
       if (!_.isEmpty(LANG_INIT_BEFORE_MAP[initKey]) && !IsDevMode()) {
         // do nothing
       } else {
-        let e = await AjaxUtils.DoStaticRequest({
-          url: "/lang2client" + (scopeIdIfHave ? `/extra/${scopeIdIfHave}/` : "/") + currentLanguage + ".json?t=" + Date.now(),
-        });
-        logutils.debug("e.data", e.data);
-        dispatch(
-          systemSlice.actions.updateLanguageValue({
-            scopeId: scopeIdIfHave,
-            initKey: initKey,
-            lang: currentLanguage,
-            value: e.data,
-          })
-        );
+        // let e = await AjaxUtils.DoStaticRequest({
+        //   url: "/lang2client" + (scopeIdIfHave ? `/extra/${scopeIdIfHave}/` : "/") + currentLanguage + ".json?t=" + Date.now(),
+        // });
+        // logutils.debug("e.data", e.data);
+        // dispatch(
+        //   systemSlice.actions.updateLanguageValue({
+        //     scopeId: scopeIdIfHave,
+        //     initKey: initKey,
+        //     lang: currentLanguage,
+        //     value: e.data,
+        //   })
+        // );
       }
     }
     dispatch(systemSlice.actions.markLangStatus({ isOK: true }));

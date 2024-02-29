@@ -25,6 +25,7 @@ import _ from "lodash";
 import { LANG_EN_US, LangDefinition } from "../types/constants";
 import { usePathname } from 'next/navigation'
 import { all_locales, zhCNLocale } from '@/middleware';
+import { fmtURL_Client } from './cRouteUtils';
 
 let VER_FORGE_FORM = '0.0.1'
 export const KEY_LANG_PACK_ZH_CN = "KEY_LANG_PACK_ZH_CN" + VER_FORGE_FORM;
@@ -76,6 +77,10 @@ export let getCurrentLang = () => {
 }
 
 
+if (window['__LANG2CLIENT__']) {
+  let preLangMap = JSON.parse(window['__LANG2CLIENT__'])
+  crtNewLangMap[getCurrentLang()] = preLangMap
+}
 
 const TranslationUtils = {
   ForcbilyLanguage: "",
