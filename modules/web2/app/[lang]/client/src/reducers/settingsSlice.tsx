@@ -24,6 +24,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import SyncStateUtils from "../utils/SyncStateUtils";
 
 const initialState = {
+  updatePathCount: 0,
   showSideBarNavIconOnly: false,
 };
 
@@ -41,6 +42,9 @@ const settingsSlice = createSlice({
     }),
     updateShowSideBarNavIconOnly(state: settingsState, action: PayloadAction<boolean>) {
       state.showSideBarNavIconOnly = action.payload;
+    },
+    updatePathCount(state: settingsState, action: PayloadAction<number>) {
+      state.updatePathCount = action.payload;
     }
   },
 });

@@ -110,7 +110,7 @@ import {
   EachTabPanelProp,
   TabNavProp,
 } from "../../../../../../../types/workbench-types";
-import { useLeftTabsList } from "../../../../../../../types/workbench-hook";
+import { useLeftTabsList, useSearchQuery } from "../../../../../../../types/workbench-hook";
 import layoutSlice from "../../../../../../../reducers/layoutSlice";
 import GenTabs from "../../../../../../../components/GenVerticalTabs";
 
@@ -122,10 +122,9 @@ export let FunctionalMenu = (props: TabNavProp) => {
 
   const location = useLocation();
   const query = new URLSearchParams(location.search);
+  let sp = useSearchQuery()
   // Get individual query parameters
-  const functionalID = query.get("f") || "tools";
-
-  let activeId = functionalID;
+  let [activeId, onActiveId] = useState(sp.f || "tools");
 
   let currentActiveMenu = _.find(leftTabs, (x) => {
     return x.id == activeId;
@@ -156,14 +155,15 @@ export let FunctionalMenu = (props: TabNavProp) => {
         props.onItemClicked && props.onItemClicked(x, b1);
       }}
       onActiveIdChange={(x) => {
-        dis(statusSlice.actions.updatePlateId({ value: x.id }));
-        let finPathName = x.pathname;
-        if (RouteMem[x.id]) {
-          finPathName = RouteMem[x.id];
-        }
-        if (finPathName) {
-          hist.push(finPathName);
-        }
+        onActiveId(x.id);
+        // dis(statusSlice.actions.updatePlateId({ value: x.id }));
+        // let finPathName = x.pathname;
+        // if (RouteMem[x.id]) {
+        //   finPathName = RouteMem[x.id];
+        // }
+        // if (finPathName) {
+        //   hist.push(finPathName);
+        // }
       }}
       tabs={leftTabs}
     ></GenTabs>

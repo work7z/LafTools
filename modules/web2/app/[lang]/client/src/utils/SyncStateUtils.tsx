@@ -128,6 +128,7 @@ let SyncStateUtils = {
         }
       }
     } else {
+      // TODO: using KVStorageUtils to get the state
       let val = await AjaxUtils.DoLocalRequestWithNoThrow({
         url: "/sync/reducer/get?" + Qs.stringify(queryStr),
       });

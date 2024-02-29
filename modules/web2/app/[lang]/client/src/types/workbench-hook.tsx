@@ -67,7 +67,7 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../nocycle";
+import { APPINFOJSON, FN_GetDispatch, delayFN } from "../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -116,6 +116,8 @@ import _ from "lodash";
 import { URL_WORKBENCH_WORKSPACE } from "../types/constants";
 import { useParams } from "react-router-dom";
 import { EachTabPanelProp, PageQueryType } from "./workbench-types";
+import { fmtURL_Client } from "@/app/__CORE__/utils/cRouteUtils";
+import settingsSlice from "../reducers/settingsSlice";
 
 
 
@@ -226,7 +228,23 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
 
 
 export let useSearchQuery = (): PageQueryType => {
-  const location = useLocation();
+  let location = useLocation()
+  // let location = window['location']
+  // let [count, setCount] = useState(0);
+  // let m2 = exportUtils.useSelector(v => {
+  //   return {
+  //     a: v.settings.updatePathCount
+  //   }
+  // })
+  // useEffect(() => {
+  //   console.log('update', location.search)
+  //   setCount(count + 1)
+  //   FN_GetDispatch()(
+  //     settingsSlice.actions.updatePathCount(m2.a + 1)
+  //   )
+  // }, [
+  //   window.location.search
+  // ])
   const query = new URLSearchParams(location.search);
   let obj = {};
   query &&
@@ -258,6 +276,9 @@ export let useMergeParamWithWorkSpace = (): any => {
   const { workspaceId = "default" } = useParams() as any;
 
   return (obj) => {
-    return URL_WORKBENCH_WORKSPACE + "/" + workspaceId + "?" + mergeP(obj);
+    // return URL_WORKBENCH_WORKSPACE + "/" + workspaceId + "?" + mergeP(obj);
+    // fmtURL_Client("/client") 
+    return "/" + "?" + mergeP(obj)
+    // return "" + ;
   };
 };
