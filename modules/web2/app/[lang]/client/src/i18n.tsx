@@ -45,6 +45,9 @@ export let GetUserActualClientLang = function (): string {
   }
   if (prevLangValue) return prevLangValue
   // if url is specified, then forcebly use this once
+  if ((typeof location === 'undefined')) {
+    return TranslationUtils.CurrentLanguage;
+  }
   let matchResult = location.href.match(/\/app\/([^\/]+)/)
   if (matchResult) {
     let prevValue = matchResult[1]

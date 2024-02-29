@@ -234,6 +234,8 @@ let SyncStateUtils = {
   },
 };
 
-_.set(window, "SyncStateUtils", SyncStateUtils);
+if (typeof window !== 'undefined') {
+  _.set(window, "SyncStateUtils", SyncStateUtils);
+}
 
 export default SyncStateUtils;

@@ -176,6 +176,7 @@ func translateNow(text, targetLang string) (string, error) {
 		targetLang = "zh-hk"
 	}
 	time.Sleep(90 * time.Millisecond)
+	fmt.Println("translating: ", text, " to ", targetLang)
 	n, e := gt.Translate(text, "en", targetLang)
 	return n, e
 }

@@ -71,10 +71,11 @@ export let getIconPngFile = (): string => {
 
 let pkey = "txsyl";
 export let saveStrIntoCache = function (key: string, value: string) {
-  localStorage.setItem(pkey + key, value);
+  // localStorage.setItem(pkey + key, value);
 };
 export let getStrIntoCache = function (key: string): string | null {
-  return localStorage.getItem(pkey + key);
+  return ''
+  // return localStorage.getItem(pkey + key);
 };
 
 interface NoCycle {

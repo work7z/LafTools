@@ -64,7 +64,7 @@ i18njson.forEach((x) => {
 let processWithArg = async ({
   taskID: _taskID,
   eachRunItem,
-  disableLoadingDot = false,
+  disableLoadingDot = true,
   allFiles,
 }) => {
   let taskID = _taskID;
@@ -99,23 +99,18 @@ let processWithArg = async ({
     }
     let match;
     while ((match = eachRunItem.pattern.exec(text))) {
-      // let crtTaskId = latestTaskIdObj[eachRunItem.dir];
-      // if (crtTaskId != taskID) {
-      //   console.log("quit now3", crtTaskId, taskID, eachRunItem.dir);
-      //   return;
-      // }
-
       let key = match[2];
       let value = match[4];
-      // console.log('key is '+key, ', value is ',value)
       if (value) {
         if (!_.isNil(waitTranslateObj[key])) {
         }
         waitTranslateObj[key] = value;
       }
-      // substring
       text = text.substring(match.index + match[0].length);
     }
+  }
+  if (!disableLoadingDot) {
+    console.log("not disable loading Dot");
   }
   let waitArr = [];
   for (let eachLang of langarr) {
@@ -304,7 +299,7 @@ let scan = async (eachRunItem) => {
         taskID: crtTaskId,
         eachRunItem,
         allFiles,
-        disableLoadingDot: false,
+        disableLoadingDot: true,
       });
     } catch (e) {
       console.log("err", e);
@@ -432,7 +427,7 @@ let entryForLoadingDOT = async () => {
                 dir: null,
               },
               allFiles: [filepath],
-              disableLoadingDot: true,
+              disableLoadingDot: false,
             });
             await sleep(1000);
           }
