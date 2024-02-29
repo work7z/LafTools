@@ -35,7 +35,7 @@ import { RootState } from "../store";
 import INNER_CYCLE from "../innercycle";
 import { LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "../types/constants";
 import { debug } from "console";
-import TranslationUtils, { Dot } from "../utils/TranslationUtils";
+import TranslationUtils, { Dot } from "../utils/cTranslationUtils";
 import { VER_FORGE_FORM } from "../types/constants";
 import AjaxUtils from "../utils/AjaxUtils";
 import exportUtils from "../utils/ExportUtils";
@@ -185,7 +185,7 @@ INNER_CYCLE.CachedLanguage = initialState.Language;
 
 export const ACTION_UPDATE_LANG_AND_APPLY_CHANGE = (language: string): any => {
   return async (dispatch) => {
-    let prevPath = "/"+location.pathname.split('/').slice(3).join("/")
+    let prevPath = "/" + location.pathname.split('/').slice(3).join("/")
     dispatch(forgeSlice.actions.updateLanguage({ lang: language }));
     await ACTION_getLangData()(dispatch);
   };

@@ -22,7 +22,7 @@
 
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
 
-import { Dot } from "../../../../../../../../utils/TranslationUtils";
+import { Dot } from "../../../../../../../../utils/cTranslationUtils";
 import "allotment/dist/style.css";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import forgeSlice from "../../../../../../../../reducers/forgeSlice";

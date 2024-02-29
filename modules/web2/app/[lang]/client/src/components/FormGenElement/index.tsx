@@ -63,7 +63,7 @@ import {
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { LabelValuePair } from "../../types/constants";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import FormSwitch from "../FormSwitch";
 
 export type FormGenType = {
@@ -71,7 +71,7 @@ export type FormGenType = {
     inputProps?: InputGroupProps;
     selectList?: LabelValuePair[]
     value?: string;
-    onChange: (str:string)=>any
+    onChange: (str: string) => any
 }
 export default (props: { config: FormGenType }) => {
     let { config } = props;
@@ -79,7 +79,7 @@ export default (props: { config: FormGenType }) => {
         return <InputGroup {...config.inputProps}></InputGroup>
     }
     if (config.type == "select") {
-        return <HTMLSelect value={config.value} onChange={x=>{
+        return <HTMLSelect value={config.value} onChange={x => {
             config.onChange(x.target.value)
         }} options={config.selectList}></HTMLSelect>
     }
@@ -87,7 +87,7 @@ export default (props: { config: FormGenType }) => {
     //     return <RadioGroup ></RadioGroup>
     // }
     if (config.type == "switch") {
-        return <FormSwitch value={config.value||'false'} onChange={config.onChange} ></FormSwitch>
+        return <FormSwitch value={config.value || 'false'} onChange={config.onChange} ></FormSwitch>
     }
     return <div>not yet defined</div>
 }

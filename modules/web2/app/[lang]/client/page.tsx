@@ -6,13 +6,13 @@ import { PageProps } from '@/app/__CORE__/types/pages'
 // import Entry from "./client";
 import { Metadata } from "next/types";
 import { getAppIcon, getAppKeywords } from "@/app/__CORE__/config/imgconfig";
-import { Dot } from "./src/utils/TranslationUtils";
+// import {  } from "./src/utils/TranslationUtils";
 import { CombindSearchProps } from "../page";
 import dynamic from "next/dynamic";
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils";
-import { getXLocaleStrInRSC } from "@/app/__CORE__/utils/TranslationUtils";
+import { Dot, getXLocaleStrInRSC } from "@/app/__CORE__/utils/TranslationUtils";
 import { isDevEnv } from "@/app/__CORE__/hooks/env";
-
+import PassClientValue from './pass'
 const EntryWrapper = dynamic(() => import('./client'), { ssr: false })
 
 let cachedLangMap: { [key: string]: string } = {}
@@ -26,25 +26,33 @@ let getCachedValueIfNot = (key: string, fn: () => string) => {
 
 export default async function ClientPage(props: CombindSearchProps) {
     let xlocale = getXLocaleStrInRSC()
-    let xlocaleJSON = getCachedValueIfNot("langval-" + xlocale.langIni18n, () => {
-        return JSON.stringify(require("../../../public/static/lang2client/" + xlocale.langIni18n + ".json"))
-    })
+    // let xlocaleJSON = getCachedValueIfNot("langval-" + xlocale.langIni18n, () => {
+    //     return JSON.stringify(require("../../../public/static/lang2client/" + xlocale.langIni18n + ".json"))
+    // })
+    console.log('ok')
     return (
         <main>
             <EntryWrapper />
-            <script
+            {/* <PassClientValue xlocaleJSON={xlocaleJSON} /> */}
+            {/* <script
                 dangerouslySetInnerHTML={{
-                    __html: `window.__LANG2CLIENT__ = ${(JSON.stringify(xlocaleJSON))}`
-                }}></script>
+                    __html: `
+                    
+                    window.__LANG2CLIENT__ = ${((xlocaleJSON))};
+
+                    `
+                    // 
+                }}></script> */}
         </main>
     )
 }
 export let generateMetadata = async function (): Promise<Metadata> {
+    let title = Dot("QkJ-TOduip6z_", "LafTools IDE")
     return {
         icons: [
             getAppIcon()
         ],
-        title: Dot("QkJ-TOduip6z_", "LafTools IDE"),
+        title: title,
         description: Dot("8OqB7hN1s", "This page provides an IDE UI style for LafTools, a higher level of abstraction for LafTools."),
         keywords: [
             Dot("s-fxP80Dd", "LafTools IDE"),

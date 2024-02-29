@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import { Dot } from "../../../../utils/TranslationUtils.tsx";
+import { Dot } from "../../../../utils/cTranslationUtils.tsx";
 import Operation from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
@@ -47,7 +47,7 @@ class FromBCD extends Operation {
 
     this.name = "From BCD";
     this.module = "Default";
-    this.description =Dot("0YKce","Converts a Binary-Coded Decimal (BCD) string to a decimal number.")
+    this.description = Dot("0YKce", "Converts a Binary-Coded Decimal (BCD) string to a decimal number.")
     this.inputType = "string";
     this.outputType = "BigNumber";
     this.args = [
@@ -93,7 +93,7 @@ class FromBCD extends Operation {
       packed = args[1],
       signed = args[2],
       inputFormat = args[3],
-      nibbles:any = [];
+      nibbles: any = [];
 
     let output = "",
       byteArray;

@@ -65,7 +65,7 @@ import {
   VAL_CSS_MENU_TITLE_PANEL,
   VAL_CSS_TAB_TITLE_PANEL,
 } from "../../../../../types/workbench-types";
-import { Dot } from "../../../../../utils/TranslationUtils";
+import { Dot } from "../../../../../utils/cTranslationUtils";
 import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
 import _ from "lodash";

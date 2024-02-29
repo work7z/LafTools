@@ -29,7 +29,7 @@ import TranslationUtils, {
   KEY_LANG_PACK_ZH_HK,
   LANG_INIT_BEFORE_MAP,
   newLangMap,
-} from "../utils/TranslationUtils";
+} from "../utils/cTranslationUtils";
 import {
   IsLoadingType,
   IsOKType,
@@ -271,21 +271,24 @@ export const ACTION_getLangData = (scopeIdIfHave?: string): any => {
     }
     let initKey = (scopeIdIfHave || '') + currentLanguage
     if (currentLanguage != LANG_EN_US) {
-      if (!_.isEmpty(LANG_INIT_BEFORE_MAP[initKey]) && !IsDevMode()) {
+      if (LANG_INIT_BEFORE_MAP && !_.isEmpty(LANG_INIT_BEFORE_MAP[initKey]) && !IsDevMode()) {
         // do nothing
       } else {
-        // let e = await AjaxUtils.DoStaticRequest({
-        //   url: "/lang2client" + (scopeIdIfHave ? `/extra/${scopeIdIfHave}/` : "/") + currentLanguage + ".json?t=" + Date.now(),
-        // });
-        // logutils.debug("e.data", e.data);
-        // dispatch(
-        //   systemSlice.actions.updateLanguageValue({
-        //     scopeId: scopeIdIfHave,
-        //     initKey: initKey,
-        //     lang: currentLanguage,
-        //     value: e.data,
-        //   })
-        // );
+        let e = await AjaxUtils.DoStaticRequest({
+          url: "/lang2client" + (scopeIdIfHave ? `/extra/${scopeIdIfHave}/` : "/") + currentLanguage + ".json?t=" + Date.now(),
+        });
+        logutils.debug("e.data", e.data);
+        // let data2 = TranslationUtils.ExtraMap;
+        // console.log('data2', data2)
+        localStorage.setItem("lang-" + currentLanguage, JSON.stringify(e.data))
+        dispatch(
+          systemSlice.actions.updateLanguageValue({
+            scopeId: scopeIdIfHave,
+            initKey: initKey,
+            lang: currentLanguage,
+            value: e.data,
+          })
+        );
       }
     }
     dispatch(systemSlice.actions.markLangStatus({ isOK: true }));

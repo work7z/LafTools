@@ -22,7 +22,7 @@ import _ from "lodash";
 import gutils from "./GlobalUtils";
 import staticDevJson from "../static/dev.json";
 import PageUtils from "./PageUtils";
-import { Dot } from "./TranslationUtils";
+import { Dot } from "./cTranslationUtils";
 
 let hookStatusMap: { [key: string]: () => void | null } = {};
 

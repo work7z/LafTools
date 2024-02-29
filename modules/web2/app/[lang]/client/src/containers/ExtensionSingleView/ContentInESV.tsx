@@ -67,7 +67,7 @@ import _ from "lodash";
 import { useParams } from "react-router";
 import gutils from "../../utils/GlobalUtils";
 import { MapKV, PopoverButtonProp, ToolParamType } from "../../types/constants";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 
 import AjaxUtils from "../../utils/AjaxUtils";
 // import { ACTION_sendToolRequest } from "../../slice/toolSlice";

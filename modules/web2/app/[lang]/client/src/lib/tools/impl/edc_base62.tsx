@@ -1,5 +1,5 @@
 
-import { Dot } from "../../../utils/TranslationUtils.tsx";
+import { Dot } from "../../../utils/cTranslationUtils.tsx";
 import Operation from "../../core/Operation.tsx";
 import FromBase62 from "./conversion/FromBase62.tsx";
 import ToBase62 from "./conversion/ToBase62.tsx";

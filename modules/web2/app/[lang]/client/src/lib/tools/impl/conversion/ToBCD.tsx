@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import { Dot } from "../../../../utils/TranslationUtils.tsx";
+import { Dot } from "../../../../utils/cTranslationUtils.tsx";
 import Operation from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
@@ -74,8 +74,8 @@ class ToBCD extends Operation {
       },
     ];
 
-    this.description = Dot("98KcL","Converts a decimal number to Binary-Coded Decimal (BCD).");
-    this.exampleInput="1234";
+    this.description = Dot("98KcL", "Converts a decimal number to Binary-Coded Decimal (BCD).");
+    this.exampleInput = "1234";
     this.exampleOutput = "0001 0010 0011 0100";
   }
 
@@ -89,7 +89,7 @@ class ToBCD extends Operation {
     if (!input.integerValue(BigNumber.ROUND_DOWN).isEqualTo(input))
       throw new OperationError("Fractional values are not supported by BCD");
 
-    const encoding:any = ENCODING_LOOKUP[args[0]],
+    const encoding: any = ENCODING_LOOKUP[args[0]],
       packed = args[1],
       signed = args[2],
       outputFormat = args[3];
@@ -101,7 +101,7 @@ class ToBCD extends Operation {
       digits.shift();
     }
 
-    let nibbles:any = [];
+    let nibbles: any = [];
 
     digits.forEach((d) => {
       const n = parseInt(d, 10);
@@ -121,7 +121,7 @@ class ToBCD extends Operation {
       // 13 ("D") for - (debit)
     }
 
-    let bytes:any = [];
+    let bytes: any = [];
 
     if (packed) {
       let encoded = 0,

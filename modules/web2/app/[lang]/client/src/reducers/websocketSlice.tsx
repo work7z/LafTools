@@ -25,7 +25,7 @@ import RouteUtils from "../utils/RouteUtils";
 import PageUtils from "../utils/PageUtils";
 import { FN_GetDispatch } from "../nocycle";
 import AlertUtils from "../utils/AlertUtils";
-import { Dot } from "../utils/TranslationUtils";
+import { Dot } from "../utils/cTranslationUtils";
 import DateUtils from "../utils/DateUtils";
 import { URL_PREFIX_LOCAL } from "../types/constants";
 import AjaxUtils from "../utils/AjaxUtils";

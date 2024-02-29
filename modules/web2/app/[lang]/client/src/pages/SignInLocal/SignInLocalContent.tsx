@@ -59,7 +59,7 @@ import {
 } from "@blueprintjs/core";
 import gutils from "../../utils/GlobalUtils";
 import "./index.scss";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import { useHistory } from "react-router";
 import { useEffect, useRef, useState } from "react";
 import { CSS_TEXT_ANCHOR_CSS, LAFTOOLS_DEFAULT_USERNAME, URL_WORKBENCH, VAL_CSS_MENU_TITLE_PANEL } from "../../types/constants";

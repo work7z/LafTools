@@ -27,7 +27,7 @@
 import Operation from "../../../core/Operation.tsx";
 import BigNumber from "bignumber.js";
 import Utils from "../../../core/Utils.mjs";
-import { Dot } from "../../../../utils/TranslationUtils";
+import { Dot } from "../../../../utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 
 

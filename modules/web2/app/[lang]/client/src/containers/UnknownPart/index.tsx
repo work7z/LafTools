@@ -59,7 +59,7 @@ import {
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { CommonTransformerPassProp as CommonTransformerPassProp } from "../../types/workbench-types";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 
 interface PassProp { }
 

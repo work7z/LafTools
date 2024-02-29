@@ -61,7 +61,7 @@ import {
 } from "@blueprintjs/core";
 import React, { useEffect, useMemo, useState } from "react";
 import _ from "lodash";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import moment from "moment";
 import DateUtils from "../../utils/DateUtils";
 import { QueryStatus } from "@reduxjs/toolkit/dist/query";

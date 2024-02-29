@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { loadDOT } from "../../../reducers/systemSlice";
-import { Dot } from "../../../utils/TranslationUtils";
+import { Dot } from "../../../utils/cTranslationUtils";
 
 import { FAQItem } from "./types";
 import React, { useEffect } from "react";

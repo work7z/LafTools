@@ -29,7 +29,7 @@ import {
 } from "../containers/UserAskMultipleDialogs";
 import gutils from "../utils/GlobalUtils";
 import { PayloadValueData } from "../types/constants";
-import { Dot } from "../utils/TranslationUtils";
+import { Dot } from "../utils/cTranslationUtils";
 import TokenUtils from "../utils/TokenUtils";
 import { withPrefixOpenAPI } from "./func";
 

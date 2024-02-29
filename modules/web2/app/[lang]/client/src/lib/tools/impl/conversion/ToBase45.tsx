@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import { Dot } from "../../../../utils/TranslationUtils";
+import { Dot } from "../../../../utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import { ALPHABET, highlightToBase45, highlightFromBase45 } from "../../../core/lib/Base45.mjs";
 import Operation from "../../../core/Operation.tsx";

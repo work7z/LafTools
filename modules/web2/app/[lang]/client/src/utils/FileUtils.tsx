@@ -20,7 +20,7 @@
 
 import { logutils } from "./LogUtils";
 import _ from "lodash";
-import TranslationUtils, { Dot } from "./TranslationUtils";
+import TranslationUtils, { Dot } from "./cTranslationUtils";
 import QS from "querystring";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import gutils from "./GlobalUtils";

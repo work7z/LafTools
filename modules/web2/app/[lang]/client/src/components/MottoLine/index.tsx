@@ -60,7 +60,7 @@ import {
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import apiSlice from "../../reducers/apiSlice";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import { useParams } from "react-router";
 import { ToolParamType } from "../../types/constants";
 
@@ -69,10 +69,10 @@ function replaceAll(str: string, find: string, replace: string) {
 }
 
 interface BlinkProp {
-  singleLineMode?:boolean
+  singleLineMode?: boolean
 }
 export default (props: BlinkProp): any => {
-  let singleLineMode=props.singleLineMode
+  let singleLineMode = props.singleLineMode
   let toolParam = useParams() as ToolParamType;
   let mottoLineRes = apiSlice.useGetOneMottoQuery(
     {
@@ -84,7 +84,7 @@ export default (props: BlinkProp): any => {
   );
   let mottoLine: string | any = mottoLineRes?.data?.payload?.value;
   let p_mottoLine = mottoLine;
-  if(singleLineMode){
+  if (singleLineMode) {
     return <div>{p_mottoLine}</div>
   }
   if (mottoLine) {

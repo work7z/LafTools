@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import _ from 'lodash'
-import TranslationUtils from './utils/TranslationUtils'
+import TranslationUtils from './utils/cTranslationUtils'
 import i18nItems from '@/app/__CORE__/config/i18n'
 let appi18nJSON = i18nItems
 

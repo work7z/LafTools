@@ -74,7 +74,7 @@ export let getXHostname = (): string => {
   const val = headersList.get('x-hostname') || "";
   return val;
 }
-export let getXSearchParams = (): {[key:string]:any} => {
+export let getXSearchParams = (): { [key: string]: any } => {
   const headersList = headers();
   const val = headersList.get('x-search') || "";
   return Qs.parse(val);
@@ -115,7 +115,11 @@ const TranslationUtils = {
 
     if (language != 'en_US') {
       let pmap = require("../../../public/static/lang/" + language + ".json")
-      TranslationUtils.LangMap[language] = pmap
+      let pmap2 = require("../../../public/static/lang2client/" + language + ".json")
+      TranslationUtils.LangMap[language] = {
+        ...pmap,
+        ...pmap2,
+      }
     }
     if (language == LANG_EN_US) {
       // do nothing

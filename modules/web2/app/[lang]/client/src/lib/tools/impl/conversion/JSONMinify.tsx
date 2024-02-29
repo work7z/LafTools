@@ -25,7 +25,7 @@
  */
 
 import vkbeautify from "vkbeautify";
-import { Dot } from "../../../../utils/TranslationUtils";
+import { Dot } from "../../../../utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import Operation from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";

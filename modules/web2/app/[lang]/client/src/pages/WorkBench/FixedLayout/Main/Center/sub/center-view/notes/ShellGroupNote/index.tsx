@@ -21,7 +21,7 @@
 import { Allotment, AllotmentHandle } from "allotment";
 import gutils from "../../../../../../../../../utils/GlobalUtils";
 import { Alignment, Button, Tab, InputGroup, Navbar, Tabs, Tooltip, HotkeysTarget2, FormGroup, TagInput } from "@blueprintjs/core";
-import { Dot } from "../../../../../../../../../utils/TranslationUtils";
+import { Dot } from "../../../../../../../../../utils/cTranslationUtils";
 import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import TagList, {
     TagType,

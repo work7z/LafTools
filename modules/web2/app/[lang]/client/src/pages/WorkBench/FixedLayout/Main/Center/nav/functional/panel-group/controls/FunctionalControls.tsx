@@ -93,7 +93,7 @@ import {
 import PageUtils from "../../../../../../../../../utils/PageUtils";
 import TranslationUtils, {
   Dot,
-} from "../../../../../../../../../utils/TranslationUtils";
+} from "../../../../../../../../../utils/cTranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
 

@@ -59,7 +59,7 @@ import {
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import "./index.scss";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import AlertUtils from "../../utils/AlertUtils";
 
 interface PassProp {

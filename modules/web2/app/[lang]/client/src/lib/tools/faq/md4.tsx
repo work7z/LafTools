@@ -1,5 +1,5 @@
 import { loadDOT } from "../../../reducers/systemSlice";
-import { Dot } from "../../../utils/TranslationUtils";
+import { Dot } from "../../../utils/cTranslationUtils";
 
 import { FAQItem } from "./types";
 import React from "react";

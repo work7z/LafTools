@@ -26,7 +26,7 @@ import {
     FnPureToolDefinition,
 } from "../../../../../../../../types/workbench-types";
 import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
-import TranslationUtils, { Dot } from "../../../../../../../../utils/TranslationUtils";
+import TranslationUtils, { Dot } from "../../../../../../../../utils/cTranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
 import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";

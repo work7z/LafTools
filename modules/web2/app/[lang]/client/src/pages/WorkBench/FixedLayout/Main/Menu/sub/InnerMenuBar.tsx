@@ -36,7 +36,7 @@ import gutils from "../../../../../../utils/GlobalUtils";
 import _ from "lodash";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Dot } from "../../../../../../utils/TranslationUtils";
+import { Dot } from "../../../../../../utils/cTranslationUtils";
 import "allotment/dist/style.css";
 import {
   FixedMenuBarProp,
@@ -182,64 +182,64 @@ export let FixedMenuBar = (props: FixedMenuBarProp) => {
         {props.leftPart
           ? props.leftPart
           : _.map(props.menus, (x) => {
-              let isOpen = currentButton == x.id;
-              let BTag = x.routerLinkType
-                ? Button
-                : x.link
+            let isOpen = currentButton == x.id;
+            let BTag = x.routerLinkType
+              ? Button
+              : x.link
                 ? AnchorButton
                 : Button;
-              let innerBTag = (
-                <BTag
-                  // target={x.link && !x.routerLinkType ? "_blank" : undefined}
-                  href={x.link}
-                  small
-                  onClick={() => {
-                    if (x.routerLinkType) return;
-                    if (currentButton && isOpen) {
-                      goToMenuItem(null);
-                    } else {
-                      goToMenuItem(x.id);
-                    }
-                  }}
-                  onMouseEnter={() => {
-                    if (hasClickAnyButton) {
-                      goToMenuItem(x.id);
-                    }
-                  }}
-                  disabled={x.disabled}
-                  minimal
-                  text={Dot("CPW5r", x.label || Dot("6yOXx", "Unknown Name"))}
-                ></BTag>
-              );
-              // if (x.routerLinkType) {
-              //   debugger;
-              // }
-              return (
-                <Popover
-                  key={x.id}
-                  hasBackdrop={false}
-                  transitionDuration={0}
-                  minimal
-                  interactionKind={
-                    hasClickAnyButton ? "hover-target" : "click-target"
+            let innerBTag = (
+              <BTag
+                // target={x.link && !x.routerLinkType ? "_blank" : undefined}
+                href={x.link}
+                small
+                onClick={() => {
+                  if (x.routerLinkType) return;
+                  if (currentButton && isOpen) {
+                    goToMenuItem(null);
+                  } else {
+                    goToMenuItem(x.id);
                   }
-                  isOpen={isOpen}
-                  placement="bottom-start"
-                  content={
-                    <RegularMenu
-                      clzName="nav-same-menu"
-                      childrenNodes={x.children || []}
-                    ></RegularMenu>
+                }}
+                onMouseEnter={() => {
+                  if (hasClickAnyButton) {
+                    goToMenuItem(x.id);
                   }
-                >
-                  {x.routerLinkType ? (
-                    <Link to={x.link + ""}>{innerBTag}</Link>
-                  ) : (
-                    innerBTag
-                  )}
-                </Popover>
-              );
-            })}
+                }}
+                disabled={x.disabled}
+                minimal
+                text={Dot("CPW5r", x.label || Dot("6yOXx", "Unknown Name"))}
+              ></BTag>
+            );
+            // if (x.routerLinkType) {
+            //   debugger;
+            // }
+            return (
+              <Popover
+                key={x.id}
+                hasBackdrop={false}
+                transitionDuration={0}
+                minimal
+                interactionKind={
+                  hasClickAnyButton ? "hover-target" : "click-target"
+                }
+                isOpen={isOpen}
+                placement="bottom-start"
+                content={
+                  <RegularMenu
+                    clzName="nav-same-menu"
+                    childrenNodes={x.children || []}
+                  ></RegularMenu>
+                }
+              >
+                {x.routerLinkType ? (
+                  <Link to={x.link + ""}>{innerBTag}</Link>
+                ) : (
+                  innerBTag
+                )}
+              </Popover>
+            );
+          })}
       </div>
       <div>{props.rightShownContent}</div>
     </div>

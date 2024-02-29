@@ -31,6 +31,11 @@ let CustomerInner = ({ children, ...props }: ThemeProviderProps) => {
 }
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+    let [mounted, setMounted] = React.useState(false)
+    React.useEffect(() => {
+        setMounted(true)
+    }, [])
+    if (!mounted) return ''
     return <NextThemesProvider  {...props}>
         <CustomerInner>{children}</CustomerInner>
     </NextThemesProvider>

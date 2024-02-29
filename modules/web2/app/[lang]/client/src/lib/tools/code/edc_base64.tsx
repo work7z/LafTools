@@ -1,6 +1,6 @@
 
 import { loadDOT } from '../../../reducers/systemSlice';
-import { Dot, } from '../../../utils/TranslationUtils';
+import { Dot, } from '../../../utils/cTranslationUtils';
 import { CodeImplMap, CodeImplDetail, PopularLanguages } from './types'
 
 loadDOT("2y1Hd1Qaw")

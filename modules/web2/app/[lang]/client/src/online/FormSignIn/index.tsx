@@ -66,7 +66,7 @@ import AlertUtils from "../../utils/AlertUtils";
 import exportUtils from "../../utils/ExportUtils";
 import onlineAPISlice from "../../reducers/onlineAPISlice";
 import { CLZ_FORM_SINGLE_CLZ } from "../../types/styles";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import { URL_NAV_FORM_SIGN_UP, URL_NAV_FORM_USER_PASSWORD, getOnlineFullLink } from "../../types/online";
 import VerifyCodeFormGroup from "../../containers/VerifyCodeFormGroup";
 import OnlineHookUtils, { getPayloadValue } from "../../utils/OnlineHookUtils";

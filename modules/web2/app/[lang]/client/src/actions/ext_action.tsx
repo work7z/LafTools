@@ -29,7 +29,7 @@ import {
 import CacheUtils from "../utils/CacheUtils";
 import AjaxUtils from "../utils/AjaxUtils";
 import _ from "lodash";
-import { Dot } from "../utils/TranslationUtils";
+import { Dot } from "../utils/cTranslationUtils";
 import gutils from "../utils/GlobalUtils";
 import { FN_GetState } from "../nocycle";
 import { PayloadValueData } from "../types/constants";

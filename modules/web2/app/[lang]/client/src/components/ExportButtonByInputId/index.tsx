@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Button } from "@blueprintjs/core";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import { copy } from "../../nocycle";
 import { FN_GetActualTextValueByBigTextId } from "../../actions/bigtext_action";
 import AlertUtils from "../../utils/AlertUtils";

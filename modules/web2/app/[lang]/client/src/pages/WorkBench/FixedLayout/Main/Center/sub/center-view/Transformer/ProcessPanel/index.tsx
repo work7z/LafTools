@@ -28,7 +28,7 @@ import {
     VAL_CSS_CONTROL_PANEL,
 } from "../../../../../../../../../types/workbench-types";
 import { CommonTransformerPassProp } from "../../../../../../../../../types/workbench-types";
-import { Dot } from "../../../../../../../../../utils/TranslationUtils";
+import { Dot } from "../../../../../../../../../utils/cTranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../../nocycle";
 import BigTextSlice from "../../../../../../../../../reducers/bigTextSlice";
 import _, { set } from "lodash";

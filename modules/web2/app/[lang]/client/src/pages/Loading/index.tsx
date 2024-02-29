@@ -58,7 +58,7 @@ import {
   Button,
   SectionCard,
 } from "@blueprintjs/core";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import Blink from "../../components/Blink";
 import gutils from "../../utils/GlobalUtils";
 import eUtils from "../../utils/ExportUtils";

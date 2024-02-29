@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { getFormattedLang } from "../i18n";
-import TranslationUtils from "../utils/TranslationUtils";
+import TranslationUtils from "../utils/cTranslationUtils";
 
 export const URL_UI_PREFIX = "/v2";
 

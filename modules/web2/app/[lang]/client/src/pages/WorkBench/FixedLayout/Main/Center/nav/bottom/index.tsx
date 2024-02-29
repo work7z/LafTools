@@ -79,7 +79,7 @@ import _ from "lodash";
 import { SysTabPane } from "../../../../../../../components/SysTabPane";
 import { FN_ACTION_CloseMenu_ltr, FN_ACTION_CloseMenu_ttm } from "../../../../../../../actions/layout_action";
 import { useSearchQuery } from "../../../../../../../types/workbench-hook";
-import { Dot } from "../../../../../../../utils/TranslationUtils";
+import { Dot } from "../../../../../../../utils/cTranslationUtils";
 // import MultipleSessionLeftView from "../../../containers/MultipleSessionLeftView/index";
 import TextTranslator from "./Translator/TextTranslator";
 import MultipleSessionLeftView from "../../../../../../../containers/MultipleSessionLeftView";

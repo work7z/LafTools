@@ -21,7 +21,7 @@
 import { logutils } from "./LogUtils";
 
 import _ from "lodash";
-import { Dot } from "./TranslationUtils";
+import { Dot } from "./cTranslationUtils";
 import { AxiosError } from "axios";
 import { uuid } from "./g_ref";
 

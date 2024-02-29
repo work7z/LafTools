@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import _ from "lodash";
-import { Dot } from "./TranslationUtils";
+import { Dot } from "./cTranslationUtils";
 import ALL_NOCYCLE, { IsDevMode, copy, getErrMsg } from "../nocycle";
 import { fn } from "jquery";
 import { GetUserActualClientLang } from "../i18n";

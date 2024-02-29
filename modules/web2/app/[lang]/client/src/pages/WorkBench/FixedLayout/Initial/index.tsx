@@ -60,7 +60,7 @@ import {
   MenuDivider,
 } from "@blueprintjs/core";
 import { WB_MenuBar } from "../Main/Menu";
-import { Dot } from "../../../../utils/TranslationUtils";
+import { Dot } from "../../../../utils/cTranslationUtils";
 import MainPreSetup from "./Setup";
 
 export default () => {
@@ -81,7 +81,7 @@ export default () => {
           >
             {/* - Empowering Your Creativity */}
             {/* {Dotxx("nJAX6", "Welcome to {0}", Dot("CVUl0", "LafTools"))} */}
-            {Dot("XQxJB","My Workspaces")}
+            {Dot("XQxJB", "My Workspaces")}
           </div>
         }
       />

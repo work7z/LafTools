@@ -32,7 +32,7 @@ import {
     handleValueChange,
 } from "@blueprintjs/docs-theme";
 import gutils from "../../utils/GlobalUtils";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import exportUtils from "../../utils/ExportUtils";
 import { LANG_EN_US, LANG_ZH_CN, LANG_ZH_HK } from "../../types/constants";
 import forgeSlice, {

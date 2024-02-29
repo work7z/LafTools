@@ -59,7 +59,7 @@ import {
 } from "@blueprintjs/core";
 import React, { useEffect, useState, useMemo } from "react";
 import _ from "lodash";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 
 interface PasswordInputProps {
   strong?: boolean;

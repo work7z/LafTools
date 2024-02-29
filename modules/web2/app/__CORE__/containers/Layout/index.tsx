@@ -41,7 +41,6 @@ export default function RootLayout(props: {
                         {children}
                     </div>
                 </ThemeProvider>
-                {/* <span id='i18nele' className="hidden" rel='nofollow'>                    {JSON.stringify(TranslationUtils.LangMap)}                </span> */}
             </body>
         </html>
     );

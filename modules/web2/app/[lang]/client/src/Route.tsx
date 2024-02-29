@@ -44,7 +44,7 @@ import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT, URL_LOGIN, URL_REDIRECT, URL_WORKBENCH_W
 import InitSystemEnv from "./pages/Loading";
 import UserAskMultipleDialogs from "./containers/UserAskMultipleDialogs";
 import gutils from "./utils/GlobalUtils";
-import TranslationUtils from "./utils/TranslationUtils";
+import TranslationUtils from "./utils/cTranslationUtils";
 import PageUtils from "./utils/PageUtils";
 import { URL_ENTRY, URL_WORKBENCH } from "./types/constants";
 import RouteUtils from "./utils/RouteUtils";

@@ -20,7 +20,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import _ from "lodash";
-import { Dot } from "./TranslationUtils";
+import { Dot } from "./cTranslationUtils";
 import { Position, Toaster, ToastProps, Intent } from "@blueprintjs/core";
 import ALL_NOCYCLE, { FN_GetDispatch, copy, getErrMsg } from "../nocycle";
 import systemSlice, { MessagePackItem } from "../reducers/systemSlice";

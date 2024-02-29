@@ -59,7 +59,7 @@ import {
 } from "@blueprintjs/core";
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import exportUtils from "../../utils/ExportUtils";
 import forgeSlice from "../../reducers/forgeSlice";
 import { LafTools_DOC_HOME } from "../../types/constants";

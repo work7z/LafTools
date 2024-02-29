@@ -92,7 +92,7 @@ import {
 import PageUtils from "../../../../../../../../utils/PageUtils";
 import TranslationUtils, {
   Dot,
-} from "../../../../../../../../utils/TranslationUtils";
+} from "../../../../../../../../utils/cTranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment, AllotmentHandle } from "allotment";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
@@ -135,6 +135,7 @@ import EmptyToolMarks from "../common/EmptyPlaceHolderView";
 import CommonCenterView from "../common/CommonCenterView";
 
 export default () => {
+  let l2 = Dot("5Ih2u", "Tools Navigator")
   return <CommonCenterView
     extraHelpers={[
       {
@@ -146,6 +147,6 @@ export default () => {
         subLabel: Dot("HyIC_", "Slash Key (/)"),
       },
     ]}
-    emptyTitle={Dot("5Ih2u", "Tools Navigator")}
+    emptyTitle={l2}
     workspaceKey="tools" workspaceImplView={ToolInnerImplView}></CommonCenterView>
 };

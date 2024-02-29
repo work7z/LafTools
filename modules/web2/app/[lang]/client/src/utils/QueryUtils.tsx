@@ -66,7 +66,7 @@ import {
 } from "@blueprintjs/core";
 
 import _ from "lodash";
-import { Dot } from "./TranslationUtils";
+import { Dot } from "./cTranslationUtils";
 import gutils from "./GlobalUtils";
 import AlertUtils from "./AlertUtils";
 import { getAjaxResPayloadValue as getAjaxValueResInner } from "../nocycle";

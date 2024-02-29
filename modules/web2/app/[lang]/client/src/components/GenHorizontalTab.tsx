@@ -81,7 +81,7 @@ import React, {
 } from "react";
 import "allotment/dist/style.css";
 import { VAL_CSS_TAB_TITLE_PANEL } from "../types/workbench-types";
-import { Dot } from "../utils/TranslationUtils";
+import { Dot } from "../utils/cTranslationUtils";
 import exportUtils from "../utils/ExportUtils";
 import { CSS_TEXT_ANCHOR_CSS } from "../types/constants";
 

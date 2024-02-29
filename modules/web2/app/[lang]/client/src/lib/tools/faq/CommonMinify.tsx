@@ -1,5 +1,5 @@
 import { loadDOT } from "../../../reducers/systemSlice";
-import { Dot } from "../../../utils/TranslationUtils";
+import { Dot } from "../../../utils/cTranslationUtils";
 
 import { FAQItem } from "./types";
 import React from "react";
@@ -23,7 +23,7 @@ export default (): FAQItem[] => {
             answer: (
                 <p>
                     {Dot("Minify-Process-005", "Minifiers use algorithms to analyze the structure of source code, eliminate superfluous elements, and shorten variable names where possible. This results in a smaller file size while maintaining the original behavior of the code.")}<br />
-                    {Dot("Minify-Example-007k", 'For instance, {0} might become {1} after minification.',`"var myVariable = 10;"`,`"var a=10;"`)}
+                    {Dot("Minify-Example-007k", 'For instance, {0} might become {1} after minification.', `"var myVariable = 10;"`, `"var a=10;"`)}
                 </p>
             ),
             links: [

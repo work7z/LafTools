@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Tag } from "@blueprintjs/core"
-import { Dot } from "../../utils/TranslationUtils"
+import { Dot } from "../../utils/cTranslationUtils"
 import {
     Callout,
     PanelStack,

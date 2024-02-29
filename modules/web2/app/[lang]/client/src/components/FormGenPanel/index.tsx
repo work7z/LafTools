@@ -62,7 +62,7 @@ import {
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { LabelValuePair } from "../../types/constants";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import FormGenElement, { FormGenType } from "../FormGenElement";
 
 export type FormGenItem = FormGroupProps & { genEleConfig: FormGenType }

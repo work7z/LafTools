@@ -60,7 +60,7 @@ import {
 } from "@blueprintjs/core";
 import React, { useEffect, useMemo, useState } from "react";
 import _ from "lodash";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import moment from "moment";
 import DateUtils from "../../utils/DateUtils";
 import { QueryStatus } from "@reduxjs/toolkit/dist/query";
@@ -85,7 +85,7 @@ export default (props: {
     <Switch
       checked={props.value == 'true' ? true : false}
       onChange={(e) => {
-        props.onChange(props.value =='true'? 'false' : 'true');
+        props.onChange(props.value == 'true' ? 'false' : 'true');
       }}
       innerLabelChecked={Dot("O94Yx", "on")}
       innerLabel={Dot("k2SVY", "off")}

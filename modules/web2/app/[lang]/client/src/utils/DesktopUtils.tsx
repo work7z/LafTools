@@ -23,7 +23,7 @@ import apiSlice from "../reducers/apiSlice";
 import AjaxUtils from "./AjaxUtils";
 import AlertUtils from "./AlertUtils";
 import QueryUtils, { getAjaxValueRes } from "./QueryUtils";
-import { Dot } from "./TranslationUtils";
+import { Dot } from "./cTranslationUtils";
 
 export default {
   checkExistAndAskAndMkdir: async function (dir: string): Promise<boolean> {

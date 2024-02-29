@@ -44,7 +44,28 @@ interface LangMap {
   zh_CN: LangDefinition;
   zh_HK: LangDefinition;
 }
+
+export let getCurrentLang = () => {
+  return sysLocale.langIni18n
+}
+
 let newLangMap2 = (): LangMap => {
+  let locale = getCurrentLang()
+  let langJSONStr = localStorage.getItem("lang-" + locale)
+  if (langJSONStr) {
+    return {
+      zh_CN: {},
+      zh_HK: {},
+      [locale]: JSON.parse(langJSONStr),
+    } as any
+  }
+  // if (window['__LANG2CLIENT__']) {
+  //   let preLangMap = JSON.parse(window['__LANG2CLIENT__'])
+  //   let f = {
+  //     [getCurrentLang()]: preLangMap
+  //   }
+  //   return f as any
+  // }
   return {
     zh_CN: {},
     zh_HK: {},
@@ -72,15 +93,7 @@ function formatResultWithReplacer(val = "", ...args) {
   return val;
 }
 
-export let getCurrentLang = () => {
-  return sysLocale.langIni18n
-}
 
-
-if (window['__LANG2CLIENT__']) {
-  let preLangMap = JSON.parse(window['__LANG2CLIENT__'])
-  crtNewLangMap[getCurrentLang()] = preLangMap
-}
 
 const TranslationUtils = {
   ForcbilyLanguage: "",
@@ -91,11 +104,11 @@ const TranslationUtils = {
     );
   },
   LangMap: crtNewLangMap,
+  ExtraMap: {},
   RealtimeObj: {},
   Dot(id: string, enText: string, ...args: any[]): string {
     let language = '';
     language = getCurrentLang()
-
     if (!TranslationUtils.LangMap[language]) {
       TranslationUtils.LangMap[language] = {}
     }

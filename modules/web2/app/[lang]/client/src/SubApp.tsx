@@ -35,7 +35,7 @@ import InitUtils from "./utils/InitUtils";
 import { FN_GetDispatch, IsDevMode, getIconPngFile } from "./nocycle";
 import systemSlice from "./reducers/systemSlice";
 import forgeSlice from "./reducers/forgeSlice";
-import { Dot } from "./utils/TranslationUtils";
+import { Dot } from "./utils/cTranslationUtils";
 import { GetUserActualClientLang, getFormattedLang } from "./i18n";
 import AlertUtils from "./utils/AlertUtils";
 import SystemLoadingBar from "./containers/SystemLoadingBar";

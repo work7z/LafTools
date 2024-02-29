@@ -1,4 +1,4 @@
-import { Dot } from "../../../utils/TranslationUtils.tsx";
+import { Dot } from "../../../utils/cTranslationUtils.tsx";
 import Operation from "../../core/Operation.tsx";
 import fn from "./conversion/CSSMinify.tsx";
 import { ToolHandler, ToolMetaInfo } from "../handler.tsx";

@@ -23,7 +23,7 @@ import _ from "lodash";
 import { EachWorkSpace } from "../types/workbench-types";
 import apiSlice from "../reducers/apiSlice";
 import QueryUtils from "./QueryUtils";
-import { Dot } from "./TranslationUtils";
+import { Dot } from "./cTranslationUtils";
 import ALL_NOCYCLE, { FN_GetDispatch } from "../nocycle";
 import { URL_PREFIX_LOCAL, URL_WORKBENCH } from "../types/constants";
 import AlertUtils from "./AlertUtils";

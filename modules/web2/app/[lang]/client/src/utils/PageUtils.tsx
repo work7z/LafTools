@@ -22,7 +22,7 @@ import _ from "lodash";
 import gutils from "./GlobalUtils";
 import staticDevJson from "../static/dev.json";
 import { useHistory } from "react-router";
-import TranslationUtils, { Dot } from "./TranslationUtils";
+import TranslationUtils, { Dot } from "./cTranslationUtils";
 import { useEffect } from "react";
 import { APPINFOJSON } from "../nocycle";
 

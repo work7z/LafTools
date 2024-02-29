@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { OneOf } from "protobufjs";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import { ToolHandler, ToolHandlerClass } from "./handler";
 import { FAQItem } from './faq/types'
 import _ from "lodash";

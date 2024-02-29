@@ -20,7 +20,7 @@
 
 import { Button, ButtonProps, Intent, Placement, Tooltip } from "@blueprintjs/core"
 import { useRef, useState } from "react"
-import { Dot } from "../../utils/TranslationUtils"
+import { Dot } from "../../utils/cTranslationUtils"
 
 export type ActionButtonProps = ButtonProps & {
     doNotBeMinimalWhenTrigger?: boolean;

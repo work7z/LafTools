@@ -23,7 +23,7 @@ import { RootState } from "../store";
 import { useMemo } from "react";
 import _ from "lodash";
 import TokenUtils from "./TokenUtils";
-import TranslationUtils from "./TranslationUtils";
+import TranslationUtils from "./cTranslationUtils";
 
 const exportUtils = {
   useLoadDotCountCpt: () => {

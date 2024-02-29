@@ -69,7 +69,7 @@ import { CLZ_ROOT_DARK, CLZ_ROOT_LIGHT } from "../types/constants";
 import InitSystemEnv from "../pages/Loading";
 import UserAskMultipleDialogs from "../containers/UserAskMultipleDialogs";
 import gutils from "../utils/GlobalUtils";
-import TranslationUtils, { Dot } from "../utils/TranslationUtils";
+import TranslationUtils, { Dot } from "../utils/cTranslationUtils";
 import PageUtils from "../utils/PageUtils";
 import { URL_WORKBENCH } from "../types/constants";
 import RouteUtils from "../utils/RouteUtils";

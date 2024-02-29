@@ -21,7 +21,7 @@
 import { Alert, Dialog, Intent } from "@blueprintjs/core";
 import FormSignIn from "../../online/FormSignIn";
 import { Z_INDEX_CONFIRM } from "../../types/constants";
-import { Dot } from "../../utils/TranslationUtils";
+import { Dot } from "../../utils/cTranslationUtils";
 import exportUtils from "../../utils/ExportUtils";
 import { FN_GetDispatch } from "../../nocycle";
 import statusSlice from "../../reducers/statusSlice";

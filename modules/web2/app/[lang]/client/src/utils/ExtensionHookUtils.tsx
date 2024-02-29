@@ -60,7 +60,7 @@ import {
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router";
 import _ from "lodash";
-import { Dot } from "./TranslationUtils";
+import { Dot } from "./cTranslationUtils";
 import gutils from "./GlobalUtils";
 import ExtSlice, {
   ExtensionSessionParameter,
