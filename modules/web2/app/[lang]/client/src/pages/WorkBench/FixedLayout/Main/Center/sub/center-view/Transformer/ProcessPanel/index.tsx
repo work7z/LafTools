@@ -176,7 +176,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
             crtRuntimeStatus.processOK ? greenClz :
                 crtRuntimeStatus.processError ? "text-yellow-600" : crtRuntimeStatus.processing ? loadingTextClz : "  "
     )
-    let text_f = (
+    let maintext_f = (
         loadingStatic ? Dot("y_9YqM", "Loading static resources...") :
             crtRuntimeStatus.processText ? crtRuntimeStatus.processText : Dot("z-o28we", "Process Panel")
     )
@@ -208,13 +208,13 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                             fontSize: '9px',
                             marginTop: '-1.5px'
                         }}>
-                            {text_f}</span>
+                            {maintext_f}</span>
                     </div> : <Navbar.Heading >
                         {iconJSX}
                         <span className={
                             clz_f
                         }>
-                            {text_f}
+                            {maintext_f}
                         </span>
                     </Navbar.Heading>
                 }

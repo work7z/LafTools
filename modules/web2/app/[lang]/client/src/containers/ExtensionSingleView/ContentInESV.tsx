@@ -284,65 +284,6 @@ type HeightProp = {
   height: number;
 };
 
-const ProcessButtonGroup = (props: {
-  actions: PopoverButtonProp[];
-  controls: PopoverButtonProp[];
-}) => {
-  let action_rights: ButtonProps[] = [
-    // {
-    //   text: Dot("q6K7o", "Load From Notes"),
-    //   icon: "document-open",
-    //   intent: Intent.NONE,
-    // },
-  ];
-  let fn_format_buttons = (v, i) => {
-    if (_.isEmpty(v)) {
-      return <Divider></Divider>;
-    }
-    // if v.overlap is not empty, then wrap the button with overlap
-    if (!_.isEmpty(v.overlay)) {
-      return (
-        <Tooltip content={v.overlay} position={Position.BOTTOM}>
-          <Button small={true} {...v} />
-        </Tooltip>
-      );
-    }
-    return <Button small={true} {...v} />;
-  };
-  const [isEnable, setIsEnable] = useState(true);
-  return (
-    <div className="esv-content-process-button-group">
-      <div className="esv-content-process-button-group-line-w">
-        <div>
-          {_.isEmpty(props.actions) ? (
-            ""
-          ) : (
-            <ButtonGroup>{props.actions.map(fn_format_buttons)}</ButtonGroup>
-          )}
-        </div>
-        <div>
-          {/* <ButtonGroup>{action_rights.map(fn_format_buttons)}</ButtonGroup> */}
-          {/* {Dot("O02-W", "Not loading...")} */}
-        </div>
-      </div>
-      <div className="esv-content-process-button-group-line-w">
-        <div>
-          <ButtonGroup>{props.controls.map(fn_format_buttons)}</ButtonGroup>
-        </div>
-        <div>
-          {/* <Checkbox
-            checked={isEnable}
-            label={Dot("VjZCv", "Realtime Conversion")}
-            onChange={() => {
-              setIsEnable(!isEnable);
-            }}
-          /> */}
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const ContentInESV = (props: ContentProp) => {
   // const extInfo = ExtHookUtils.useExtInfo();
   // const extVM = ExtHookUtils.useExtVM();

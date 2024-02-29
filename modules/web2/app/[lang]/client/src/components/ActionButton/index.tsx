@@ -24,7 +24,9 @@ import { Dot } from "../../utils/cTranslationUtils"
 
 export type ActionButtonProps = ButtonProps & {
     doNotBeMinimalWhenTrigger?: boolean;
+    highlightOne?: boolean;
     extraButtonProps?: ButtonProps,
+    parentTriggered?: boolean;
     placement?: Placement,
     enableActionMode?: boolean,
     // text format
@@ -36,6 +38,8 @@ export type ActionButtonProps = ButtonProps & {
 
 export default (props: ActionButtonProps) => {
     let enableTextMode = true;
+    // let [parentTriggered, setParentTriggered] = useState(false)
+    let { parentTriggered } = props;
     let [triggered, setTrigger] = useState(false)
     let operaRef = useRef({
         copyTimestamp: 0,
@@ -43,7 +47,9 @@ export default (props: ActionButtonProps) => {
     })
     let title = triggered ? props.afterTitle : props.title
     let [isOpen, setIsOpen] = useState(false)
-
+    let isMinimal = props.extraButtonProps?.minimal || props.doNotBeMinimalWhenTrigger ? false : enableTextMode ? (
+        triggered ? true : false
+    ) : true
     let btn = <Button
         {...props}
         title={''}
@@ -75,11 +81,9 @@ export default (props: ActionButtonProps) => {
                 }
                 fn()
             }, props.lastingTime || 1200)
-        }} icon={triggered ? "tick" : props.icon} text={enableTextMode ? (
+        }} icon={triggered || (props.intent == 'primary' && props.highlightOne && parentTriggered) ? "tick" : props.icon} text={enableTextMode ? (
             triggered ? props.afterText : props.text
-        ) : ''} intent={triggered && props.afterIntent ? props.afterIntent : props.intent || "success"} minimal={props.doNotBeMinimalWhenTrigger ? false : enableTextMode ? (
-            triggered ? true : false
-        ) : true} {...(props.extraButtonProps || {})} ></Button>
+        ) : ''} intent={triggered && props.afterIntent ? props.afterIntent : props.intent || "success"} minimal={isMinimal} {...(props.extraButtonProps || {})} ></Button>
     return <Tooltip
         isOpen={isOpen}
         content={title} placement={props.placement || "bottom"} >

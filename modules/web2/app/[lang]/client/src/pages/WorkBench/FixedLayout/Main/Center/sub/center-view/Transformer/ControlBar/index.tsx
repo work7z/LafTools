@@ -35,6 +35,8 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
     let [loadExample, onLoadExample] = useState(false);
     let toolHandler = props.toolHandler
     let extVM = props.extVM
+    let crtRuntimeStatus = props.crtRuntimeStatus
+    let parentTriggered = crtRuntimeStatus.processOK || crtRuntimeStatus.processing;
     let operaList = toolHandler?.getOperations() || []
     let crtDefaultOperaId = props.crtDefaultOperaId
     let leftActions: ActionButtonProps[] = [
@@ -53,6 +55,8 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
                 afterText: x.name,
                 lastingTime: 800,
                 doNotBeMinimalWhenTrigger: true,
+                parentTriggered: parentTriggered,
+                highlightOne: isHighlightOne,
                 outlined: !isHighlightOne,
                 minimal: !isHighlightOne,
                 onClick: () => {
@@ -68,8 +72,8 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
                         props.onProcess()
                     }, 0)
                 },
-            }
-        }) as ActionButtonProps[],
+            } satisfies ActionButtonProps
+        }) satisfies ActionButtonProps[],
         {
             icon: 'document-open',
             text: Dot("2bqHk", "Load from File"),
