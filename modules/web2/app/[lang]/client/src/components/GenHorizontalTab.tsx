@@ -130,13 +130,13 @@ export default (props: PassProp) => {
             }
             : {})}
           className={` transition-all duration-75 ${verticalMode ? "" : " h-each-tab "
-            } each-tab  hover:bg-gray-300  whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${isCurrent
-              ? "border-b-light-blue-600 dark:text-slate-700 border-b-[3px] bg-white hover:bg-white dark:text-white dark:bg-zinc-800 dark:text-sky-400  dark:hover:bg-zinc-700  "
-              : " dark:hover:bg-gray-600 "
+            } each-tab  hover:bg-gray-200   whitespace-nowrap  flex h-full hover:cursor-default text-xs select-none items-center ml-0 py-1  last:border-r-[1px] dark:border-r-gray-600 last:border-r-gray-300 px-1  ${isCurrent
+              ? "border-b-sky-600  text-sky-700 border-b-[3px]  bg-white hover:bg-white   dark:!text-sky-400 dark:bg-sky-950   dark:hover:bg-sky-950  "
+              : " dark:hover:bg-gray-900   "
             } ${verticalMode && isCurrent
-              ? ` border-t-light-blue-600 border-t-[3px] `
+              ? ` border-t-sky-600 border-t-[3px] `
               : ""
-            }`}
+            } dark:text-slate-400`}
         >
           <Icon
             icon={tab.icon as any}

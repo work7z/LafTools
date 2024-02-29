@@ -82,6 +82,7 @@ import { StreamLanguage } from '@codemirror/language';
 
 
 import { EditorView } from "codemirror"
+import { useTheme } from "next-themes";
 // import { langs, langNames, loadLanguage } from '@uiw/codemirror-extensions-langs';
 // console.log('langNames', langs.mysql())
 
@@ -109,10 +110,18 @@ const langMap = {
   csharp: () => StreamLanguage.define(csharp),
   go: () => StreamLanguage.define(go),
 }
+export let useForgeObj = () => {
+  let { theme } = useTheme()
+  let forgeObj = {
+    dark: theme === "dark"
+  }
+  return forgeObj
+}
 export default (props: GenCodeMirrorProp) => {
-  let forgeObj = exportUtils.useSelector((val) => ({
-    dark: val.forge.DarkThemeMode,
-  }));
+  let forgeObj = useForgeObj()
+  // exportUtils.useSelector((val) => ({
+  //   dark: val.forge.DarkThemeMode,
+  // }));
   let bigTextId = props.bigTextId;
   let mRef = useRef({
     renderCtn: 0,
