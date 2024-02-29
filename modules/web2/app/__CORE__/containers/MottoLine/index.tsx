@@ -73,7 +73,7 @@ interface BlinkProp {
 }
 export default (props: BlinkProp): any => {
   let singleLineMode = props.singleLineMode
-  let mottoLine: string | JSX.Element = mottoList[_.random(0, mottoList.length - 1)]()
+  let mottoLine: string | JSX.Element = mottoList[_.random(0, mottoList.length - 1)]() || ''
   let p_mottoLine = mottoLine;
   if (singleLineMode) {
     return <div>{p_mottoLine}</div>

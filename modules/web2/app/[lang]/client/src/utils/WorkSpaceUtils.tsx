@@ -63,18 +63,20 @@ export let useReadCurrentWorkspaceItem = (): EachWorkSpace | undefined => {
 
 export let useWorkSpaceListGet = (): EachWorkSpace[] => {
   let v1 = exportUtils.refresh_v1()
-  let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({
-    ...v1
-  }, {
-    ...exportUtils.refresh_v2(),
-    ...exportUtils.refresh_v2_only_for_user(),
-  });
+  // let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery({
+  //   ...v1
+  // }, {
+  //   ...exportUtils.refresh_v2(),
+  //   ...exportUtils.refresh_v2_only_for_user(),
+  // });
   // let r = QueryUtils.validateResult(workspaceListRes, {
   //   label: Dot("RjCO3", "Workspace List"),
   // });
-  let allWorkspaces: EachWorkSpace[] =
-    workspaceListRes.data?.payload?.value?.WorkSpaces || [];
-  return allWorkspaces;
+  // let allWorkspaces: EachWorkSpace[] =
+  //   workspaceListRes.data?.payload?.value?.WorkSpaces || [];
+  // return allWorkspaces;
+  return [
+  ]
 };
 
 export let setupWorkspaceData = async () => {

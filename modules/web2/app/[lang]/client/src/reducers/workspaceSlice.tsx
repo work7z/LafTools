@@ -81,7 +81,7 @@ const WorkspaceSlice = createSlice({
       RunOnEnterWorkBench: true,
       RequireUserId: true,
       RequireWorkspaceId: true,
-      SyncLocationOnParameter: "wsp"
+      SyncLocationOnParameter: "workspace"
     }),
     markInitialized: (state, action: PayloadAction<WorkspaceStateKey>) => {
       state[action.payload].initialized = true;

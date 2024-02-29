@@ -114,6 +114,7 @@ const forgeSlice = createSlice({
       RunOnInit: true,
       RequireUserId: true,
       RequireWorkspaceId: true,
+      SyncLocationOnParameter: 'forge',
     }),
     updateFieldNameValue(
       state,

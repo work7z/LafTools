@@ -90,6 +90,7 @@ import IDUtils from "../../utils/IDUtils";
 import { useHistory } from "react-router-dom";
 import { getFormattedLang } from "../../i18n";
 import i18n from "../../lib/translation/i18n";
+import i18nItems from "@/app/__CORE__/config/i18n";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;
@@ -831,17 +832,7 @@ export let useGetI18nLangList = (): EachLang[] => {
 };
 
 const LanguagePanel: React.FC<SelectPanelProps> = (props) => {
-  let i18nQ = apiSlice.useGeti18nConfigQuery(
-    {},
-    { refetchOnMountOrArgChange: true }
-  );
-  let r = QueryUtils.validateResult(i18nQ, {
-    label: Dot("LM715", "Retrieving i18n config from local server API"),
-  });
-  if (r) {
-    return r;
-  }
-  let arr: EachLang[] | undefined = i18nQ.data?.payload?.value || [];
+  let arr = i18nItems
   return (
     <DialogBody className="docs-multistep-dialog-example-step">
       <p>{Dot("DrXAq", "Welcome to use LafTools! ")}</p>
@@ -850,15 +841,7 @@ const LanguagePanel: React.FC<SelectPanelProps> = (props) => {
         {arr.map((x) => {
           return <Radio label={x.LabelByLang} value={x.Value} key={x.Value} />;
         })}
-        {/* <Radio label={`English`} value={LANG_EN_US} />
-        <Radio label={"简体中文"} value={LANG_ZH_CN} />
-        <Radio label={"繁體中文"} value={LANG_ZH_HK} /> */}
       </RadioGroup>
-      {/* <select multiple  className="w-full ">
-        <option>A</option>
-        <option>B</option>
-        <option>C</option>
-      </select> */}
     </DialogBody>
   );
 };

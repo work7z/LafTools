@@ -37,11 +37,11 @@ const settingsSlice = createSlice({
       RunOnEnterWorkBench: true,
       RequireUserId: true,
       RequireWorkspaceId: true,
-      SyncLocationOnParameter: "settings"
+      SyncWithKVStorage: true,
     }),
-    updatesettings(state: settingsState, action: PayloadAction) {
-      //
-    },
+    updateShowSideBarNavIconOnly(state: settingsState, action: PayloadAction<boolean>) {
+      state.showSideBarNavIconOnly = action.payload;
+    }
   },
 });
 

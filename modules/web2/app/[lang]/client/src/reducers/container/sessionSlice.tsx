@@ -74,6 +74,7 @@ const SessionSlice = createSlice({
             RunOnInit: true,
             RequireUserId: true,
             RequireWorkspaceId: true,
+            SyncLocationOnParameter: "session"
         }),
         // update list by sessionType and SessionListItem[]
         updateSessionList: (state, action: PayloadAction<{ sessionType: string, list: SessionListItem[] }>) => {

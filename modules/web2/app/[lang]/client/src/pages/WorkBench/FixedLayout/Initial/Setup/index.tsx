@@ -223,10 +223,10 @@ let WorkSpaceListItem = (props: { refetch: any; item: EachWorkSpace }) => {
 };
 
 export default () => {
-  let workspaceListRes = apiSlice.useGetWorkspaceListByUserIdQuery(exportUtils.refresh_v1(), exportUtils.refresh_v2());
-  let r = QueryUtils.validateResult(workspaceListRes, {
-    label: Dot("RjCO3", "Workspace List"),
-  });
+  // let workspaceListRes = [] // apiSlice.useGetWorkspaceListByUserIdQuery(exportUtils.refresh_v1(), exportUtils.refresh_v2());
+  // let r = QueryUtils.validateResult(workspaceListRes, {
+  //   label: Dot("RjCO3", "Workspace List"),
+  // });
   let allWorkspaces: EachWorkSpace[] = useWorkSpaceListGet();
 
   let [filterText, onFilterText] = useState("");
@@ -328,7 +328,7 @@ export default () => {
                           }
                           let b = ACTION_callRefreshAll(false)
                           FN_GetDispatch()(b)
-                          workspaceListRes.refetch();
+                          // workspaceListRes.refetch();
                         } else {
                           AlertUtils.popError([
                             Dot("ICefi", "Cancelled"),
@@ -352,7 +352,7 @@ export default () => {
                   intent={Intent.SUCCESS}
                   onClick={() => {
                     // refresh workspace list
-                    workspaceListRes.refetch();
+                    // workspaceListRes.refetch();
                     AlertUtils.popRefresh();
                   }}
                 />
@@ -361,7 +361,6 @@ export default () => {
           }
         />
       </div>
-      {r}
       <div className="mt-2">
         {_.size(finalFilteredWorkspace) == 0 ? (
           <div className="w-full h-full text-center center">
@@ -374,7 +373,7 @@ export default () => {
           {finalFilteredWorkspace.map((x) => {
             return (
               <WorkSpaceListItem
-                refetch={workspaceListRes.refetch}
+                refetch={() => { }}
                 key={x.Id}
                 item={x}
               />

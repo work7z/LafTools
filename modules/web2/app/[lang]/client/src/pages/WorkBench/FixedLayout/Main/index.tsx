@@ -135,19 +135,6 @@ export default () => {
   const workspaceId = getWorkspaceIdFromPath();
   gutils.ExposureIt("workspaceId", workspaceId, true);
   // validate if workspaceId exist in system
-  // workspaceId
-  let idQueryRes = apiSlice.useGetWorkspaceOneByIdAndUserIdQuery(
-    {
-      Id: workspaceId,
-    },
-    {
-      refetchOnMountOrArgChange: true,
-    }
-  );
-  let res = QueryUtils.validateResult(idQueryRes, {
-    label: Dot("JfFHw", "Get Workspace Info Request"),
-    onlyErr: true,
-  });
   let hist = useHistory();
   // const [available, onAvaialble] = useState(false);
   let available = exportUtils.useSelector((val) => {
@@ -158,21 +145,21 @@ export default () => {
   let onAvaialble = (a: boolean) => {
     FN_GetDispatch()(systemSlice.actions.updateIsWorkBenchPageAvailable(a));
   };
-  let FetchedWorkspaceId = idQueryRes.data?.payload?.value?.Id;
-  useEffect(() => {
-    if (FetchedWorkspaceId == "") {
-      AlertUtils.win_alert({
-        id: "Un77m",
-        msg: Dot(
-          "0gywa",
-          "Workspace not found, you will be redirected to workspace index page."
-        ),
-        fn() { },
-      });
-      onAvaialble(false);
-      hist.replace(URL_WORKBENCH);
-    }
-  }, [FetchedWorkspaceId]);
+  // let FetchedWorkspaceId = 'default' //idQueryRes.data?.payload?.value?.Id;
+  // useEffect(() => {
+  //   if (FetchedWorkspaceId == "") {
+  //     AlertUtils.win_alert({
+  //       id: "Un77m",
+  //       msg: Dot(
+  //         "0gywa",
+  //         "Workspace not found, you will be redirected to workspace index page."
+  //       ),
+  //       fn() { },
+  //     });
+  //     onAvaialble(false);
+  //     hist.replace(URL_WORKBENCH);
+  //   }
+  // }, [FetchedWorkspaceId]);
   // setup
   useEffect(() => {
     (async () => {

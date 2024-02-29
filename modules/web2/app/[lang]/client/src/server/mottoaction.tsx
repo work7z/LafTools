@@ -1,0 +1,9 @@
+'use server'
+
+import mottoList from "@/app/__CORE__/config/motto"
+import _ from "lodash"
+
+export let getOneMotto = async (): Promise<string> => {
+    let idx = _.random(0, mottoList.length - 1)
+    return mottoList[idx]()
+}

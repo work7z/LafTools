@@ -66,47 +66,47 @@ export const apiSlice = createApi({
   }),
   endpoints: (build) => ({
     // workspace
-    getWorkspaceOneByIdAndUserId: build.query<
-      PayloadValueData<EachWorkSpace>,
-      { Id: string }
-    >({
-      query: (obj) => {
-        return {
-          url: "/workspace/users/one",
-          params: obj,
-        };
-      },
-    }),
-    GetWorkspaceListByUserId: build.query<
-      PayloadValueData<WorkSpaceStruct>,
-      any
-    >({
-      query: () => "/workspace/users/list",
-    }),
-    addWorkspaceForEachUser: build.mutation<
-      PayloadValueData<any>,
-      EachWorkSpace
-    >({
-      query: (arg) => {
-        return {
-          method: "POST",
-          url: "/workspace/users/add",
-          body: arg,
-        };
-      },
-    }),
-    deleteTheWorkspaceForEachUser: build.mutation<
-      PayloadValueData<any>,
-      EachWorkSpace
-    >({
-      query: (arg) => {
-        return {
-          method: "POST",
-          url: "/workspace/users/delete",
-          body: arg,
-        };
-      },
-    }),
+    // getWorkspaceOneByIdAndUserId: build.query<
+    //   PayloadValueData<EachWorkSpace>,
+    //   { Id: string }
+    // >({
+    //   query: (obj) => {
+    //     return {
+    //       url: "/workspace/users/one",
+    //       params: obj,
+    //     };
+    //   },
+    // }),
+    // GetWorkspaceListByUserId: build.query<
+    //   PayloadValueData<WorkSpaceStruct>,
+    //   any
+    // >({
+    //   query: () => "/workspace/users/list",
+    // }),
+    // addWorkspaceForEachUser: build.mutation<
+    //   PayloadValueData<any>,
+    //   EachWorkSpace
+    // >({
+    //   query: (arg) => {
+    //     return {
+    //       method: "POST",
+    //       url: "/workspace/users/add",
+    //       body: arg,
+    //     };
+    //   },
+    // }),
+    // deleteTheWorkspaceForEachUser: build.mutation<
+    //   PayloadValueData<any>,
+    //   EachWorkSpace
+    // >({
+    //   query: (arg) => {
+    //     return {
+    //       method: "POST",
+    //       url: "/workspace/users/delete",
+    //       body: arg,
+    //     };
+    //   },
+    // }),
     // openDirOnLocal: build.mutation<PayloadValueData<any>, { dir: string }>({
     //   query: (arg) => {
     //     return {
@@ -122,78 +122,77 @@ export const apiSlice = createApi({
       query: () => "/tool/exts/listCategory",
     }),
     // apis
-    getPing1: build.query({
-      query: () => "/ping",
-    }),
-    getPing2: build.query({
-      query: () => "/ping2",
-    }),
+    // getPing1: build.query({
+    //   query: () => "/ping",
+    // }),
+    // getPing2: build.query({
+    //   query: () => "/ping2",
+    // }),
     // visit
-    getGuiSystemInfo: build.query<
-      PayloadValueData<{
-        UserConfigFile: string;
-        UserConfigDir: string;
-        UserPWDir: string;
-      }>,
-      any
-    >({
-      query: () => withPrefixOpenAPI("/system/init/info"),
-    }),
-    geti18nConfig: build.query<PayloadValueData<EachLang[]>, any>({
-      query: () => withPrefixOpenAPI("/i18n/get"),
-    }),
+    // getGuiSystemInfo: build.query<
+    //   PayloadValueData<{
+    //     UserConfigFile: string;
+    //     UserConfigDir: string;
+    //     UserPWDir: string;
+    //   }>,
+    //   any
+    // >({
+    //   query: () => withPrefixOpenAPI("/system/init/info"),
+    // }),
+    // geti18nConfig: build.query<PayloadValueData<EachLang[]>, any>({
+    //   query: () => withPrefixOpenAPI("/i18n/get"),
+    // }),
     // visit
-    getVisitAdminInitInfo: build.query<
-      PayloadValueData<{ HasAdminInit: boolean; LastUpdatedTime: string }>,
-      any
-    >({
-      query: () => withPrefixOpenAPI("/admin/init/info"),
-    }),
-    postLocalPwCalc: build.mutation<
-      PayloadValueData<{ CalcPW: string }>,
-      { pw: string }
-    >({
-      query: (arg) => {
-        gutils.ExposureIt("MFmSE", arg, true);
-        let formData = arg;
-        return {
-          method: "POST",
-          url: withPrefixOpenAPI("/user/local/pw/calc"),
-          body: formData,
-        };
-      },
-    }),
+    // getVisitAdminInitInfo: build.query<
+    //   PayloadValueData<{ HasAdminInit: boolean; LastUpdatedTime: string }>,
+    //   any
+    // >({
+    //   query: () => withPrefixOpenAPI("/admin/init/info"),
+    // }),
+    // postLocalPwCalc: build.mutation<
+    //   PayloadValueData<{ CalcPW: string }>,
+    //   { pw: string }
+    // >({
+    //   query: (arg) => {
+    //     gutils.ExposureIt("MFmSE", arg, true);
+    //     let formData = arg;
+    //     return {
+    //       method: "POST",
+    //       url: withPrefixOpenAPI("/user/local/pw/calc"),
+    //       body: formData,
+    //     };
+    //   },
+    // }),
     // system
-    systemStats: build.query({
-      query: () => "/system/stats",
-    }),
-    getOneMotto: build.query<PayloadValueData<string>, any>({
-      query: () => "/system/getOneMotto",
-    }),
-    getUserObjByToken: build.query<
-      PayloadValueData<{ Found: boolean; Obj: UserConfig }>,
-      { userToken: string; refreshTokenStatus: number }
-    >({
-      query: (obj) => {
-        return {
-          method: "GET",
-          url: withPrefixOpenAPI("/user/one/getByToken"),
-          params: obj,
-        };
-      },
-      extraOptions: {},
-    }),
-
-    listUserNames: build.query<PayloadValueData<{ Usernames: string[] }>, {}>({
-      query: (obj) => {
-        return {
-          method: "GET",
-          url: withPrefixOpenAPI("/user/all/getUserNameList"),
-          params: obj,
-        };
-      },
-      extraOptions: {},
-    }),
+    // systemStats: build.query({
+    //   query: () => "/system/stats",
+    // }),
+    // getOneMotto: build.query<PayloadValueData<string>, any>({
+    //   query: () => "/system/getOneMotto",
+    // }),
+    // getUserObjByToken: build.query<
+    //   PayloadValueData<{ Found: boolean; Obj: UserConfig }>,
+    //   { userToken: string; refreshTokenStatus: number }
+    // >({
+    //   query: (obj) => {
+    //     return {
+    //       method: "GET",
+    //       url: withPrefixOpenAPI("/user/one/getByToken"),
+    //       params: obj,
+    //     };
+    //   },
+    //   extraOptions: {},
+    // }),
+    // listUserNames: build.query<PayloadValueData<{ Usernames: string[] }>, {}>({
+    //   query: (obj) => {
+    //     return {
+    //       method: "GET",
+    //       url: withPrefixOpenAPI("/user/all/getUserNameList"),
+    //       params: obj,
+    //     };
+    //   },
+    //   extraOptions: {},
+    // }),
 
     // send GET request /tool/exts/getExtDetail with parameter extId, and get the extension detail, the response is ExtensionVM
     getToolExtDetail: build.query<

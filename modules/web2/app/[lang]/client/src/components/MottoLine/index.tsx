@@ -63,8 +63,12 @@ import apiSlice from "../../reducers/apiSlice";
 import { Dot } from "../../utils/cTranslationUtils";
 import { useParams } from "react-router";
 import { ToolParamType } from "../../types/constants";
+import { getOneMotto } from "../../server/mottoaction";
 
 function replaceAll(str: string, find: string, replace: string) {
+  if (!str) {
+    return ''
+  }
   return str.replace(new RegExp(find, "g"), replace);
 }
 
@@ -74,15 +78,12 @@ interface BlinkProp {
 export default (props: BlinkProp): any => {
   let singleLineMode = props.singleLineMode
   let toolParam = useParams() as ToolParamType;
-  let mottoLineRes = apiSlice.useGetOneMottoQuery(
-    {
-      categoryId: toolParam.category,
-    },
-    {
-      refetchOnMountOrArgChange: true,
-    }
-  );
-  let mottoLine: string | any = mottoLineRes?.data?.payload?.value;
+  let [mottoLine, onMottoLine] = useState<any>("")
+  useEffect(() => {
+    getOneMotto().then((x) => {
+      onMottoLine(x)
+    })
+  }, [])
   let p_mottoLine = mottoLine;
   if (singleLineMode) {
     return <div>{p_mottoLine}</div>
@@ -143,10 +144,10 @@ export default (props: BlinkProp): any => {
       className="py-2 px-2 whitespace-break-spaces overflow-hidden bp5-text-muted bp5-text-small  h-full   "
       // title={mottoLine}
       onDoubleClick={() => {
-        mottoLineRes.refetch();
+        // mottoLineRes.refetch();
       }}
     >
-      {mottoLineRes.isLoading ? "thinking..." : mottoLine}
+      {mottoLine == '' ? "thinking..." : mottoLine}
     </div>
   );
 };

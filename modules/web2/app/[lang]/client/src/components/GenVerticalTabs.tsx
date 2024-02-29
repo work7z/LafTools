@@ -159,6 +159,14 @@ export default (props: PropGenTabs) => {
     };
   }, []);
 
+  let m = exportUtils.useSelector(v => {
+    return {
+      iconOnly: v.settings.showSideBarNavIconOnly
+    }
+  })
+
+
+
   let jsx_tabs = (
     <div
       className={"tab-title-panel-p" + " " + `tab-mode-${props.whichPart}`}
@@ -175,7 +183,7 @@ export default (props: PropGenTabs) => {
               className="focus:outline-none"
               outlined={false}
               icon={x.icon as any}
-              text={x.label}
+              text={m.iconOnly ? '' : x.label}
               loading={false}
               // intent={stObj.currentPlateId == x.id ? "primary" : "none"}
               intent={isCurrentActive ? (props.highlightIntent as any) : "none"}

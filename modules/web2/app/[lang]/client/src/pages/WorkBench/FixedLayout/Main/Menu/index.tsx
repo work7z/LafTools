@@ -123,6 +123,7 @@ import { useCloudLoginStatus } from "../../../../../hook/login-hook";
 import { getFormattedLang } from "../../../../../i18n";
 import { fmtURL_Client } from "@/app/__CORE__/utils/cRouteUtils";
 import { useTheme } from "next-themes";
+import settingsSlice from "@/app/[lang]/client/src/reducers/settingsSlice";
 
 type PassProp = {
   leftPart?: JSX.Element;
@@ -201,6 +202,12 @@ export let WB_MenuBar = (props: PassProp) => {
       // },
     });
   });
+
+  let m = exportUtils.useSelector(v => {
+    return {
+      iconOnly: v.settings.showSideBarNavIconOnly
+    }
+  })
 
   let menus: FixedMenuItem[] = [
     {
@@ -291,6 +298,15 @@ export let WB_MenuBar = (props: PassProp) => {
             // page show full screen or not
             PageUtils.toggleFullScreen();
           },
+        },
+        {
+          id: "view.navicononly",
+          label: m.iconOnly ? Dot("cU0YAMbxU", "Show Text in Sidebar") : Dot("w1ANqKoBf", "Hide Text in Sidebar"),
+          onClick: () => {
+            FN_GetDispatch()(
+              settingsSlice.actions.updateShowSideBarNavIconOnly(!m.iconOnly)
+            )
+          }
         },
       ],
     },
@@ -523,7 +539,6 @@ export let WB_MenuBar = (props: PassProp) => {
               loading={var_3.LoadingForPageData}
               icon={"desktop"}
               onClick={() => {
-                dis(ACTION_callRefreshAll(true));
               }}
             />
           </Tooltip>

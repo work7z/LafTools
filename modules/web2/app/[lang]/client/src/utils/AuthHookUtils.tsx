@@ -44,47 +44,51 @@ export type AuthStatus = {
 const AuthHookUtils = {
   vars,
   useQueryAuthStatus(): AuthStatus {
-    let currentUserObj = exportUtils.useSelector((val) => {
-      return {
-        userConfig: val.user.currentUser,
-        refreshTokenStatus: val.user.refreshTokenStatus,
-      };
-    });
-    let userToken = TokenUtils.getLocalUserToken();
-    const userObj = apiSlice.useGetUserObjByTokenQuery(
-      {
-        userToken: userToken || "",
-        refreshTokenStatus: currentUserObj.refreshTokenStatus,
-        ...exportUtils.refresh_v1()
-      },
-      {
-        refetchOnMountOrArgChange: true,
-      }
-    );
-    const dis = exportUtils.dispatch();
+    // let currentUserObj = exportUtils.useSelector((val) => {
+    //   return {
+    //     userConfig: val.user.currentUser,
+    //     refreshTokenStatus: val.user.refreshTokenStatus,
+    //   };
+    // });
+    // let userToken = TokenUtils.getLocalUserToken();
+    // const userObj = apiSlice.useGetUserObjByTokenQuery(
+    //   {
+    //     userToken: userToken || "",
+    //     refreshTokenStatus: currentUserObj.refreshTokenStatus,
+    //     ...exportUtils.refresh_v1()
+    //   },
+    //   {
+    //     refetchOnMountOrArgChange: true,
+    //   }
+    // );
+    // const dis = exportUtils.dispatch();
     // let hist = useHistory()
     // useEffect(() => {
     // }, [userObj]);
-
-    if (gutils.empty(userToken)) {
-      return {
-        isFetching: false,
-        HasLogin: false,
-        currentUser: undefined,
-      };
-    }
-    if (_.isNil(currentUserObj)) {
-      return {
-        isFetching: true,
-        HasLogin: false,
-        currentUser: undefined,
-      };
-    }
     return {
-      isFetching: userObj.isFetching,
-      HasLogin: userObj.isSuccess ? userObj.data.payload.value.Found : false,
-      currentUser: userObj?.data?.payload.value.Obj,
+      isFetching: true,
+      HasLogin: false,
+      currentUser: undefined,
     };
+    // if (gutils.empty(userToken)) {
+    //   return {
+    //     isFetching: false,
+    //     HasLogin: false,
+    //     currentUser: undefined,
+    //   };
+    // }
+    // if (_.isNil(currentUserObj)) {
+    //   return {
+    //     isFetching: true,
+    //     HasLogin: false,
+    //     currentUser: undefined,
+    //   };
+    // }
+    // return {
+    //   // isFetching: userObj.isFetching,
+    //   // HasLogin: userObj.isSuccess ? userObj.data.payload.value.Found : false,
+    //   // currentUser: userObj?.data?.payload.value.Obj,
+    // };
   },
 };
 

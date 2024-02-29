@@ -113,6 +113,7 @@ const ExtSlice = createSlice({
       RunOnEnterWorkBench: true,
       RequireUserId: true,
       RequireWorkspaceId: true,
+      SyncLocationOnParameter: 'ext',
     }),
     updateExtStatusMapPart: (
       state: ExtensionState,

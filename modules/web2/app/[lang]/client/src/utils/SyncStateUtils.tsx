@@ -50,6 +50,7 @@ type SyncDefinition = {
   RunOnEnterWorkBench?: boolean;
   RequireUserId: boolean;
   RequireWorkspaceId: boolean;
+  SyncWithKVStorage?: boolean; // some state is synced with KV storage where we use a utils to impl
   SyncLocationOnParameter?: string; // TODO: wait to be implemented. Once it's enabled, the config will be synced to url parameters
 };
 let syncReducerDefinitions: { [key: string]: SyncDefinition } = {};
