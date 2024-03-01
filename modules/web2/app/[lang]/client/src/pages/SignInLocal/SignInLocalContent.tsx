@@ -164,15 +164,17 @@ let InnerContent = () => {
     });
     let stepIdx = 1
     const [loadLeftPage, onloadLeftPage] = useState("");
-    const infoQueryObj = apiSlice.useGetVisitAdminInitInfoQuery(
-        {
-            stepIdx,
-            ...exportUtils.refresh_v1()
-        },
-        {
-            refetchOnMountOrArgChange: true,
-        }
-    );
+    // const infoQueryObj = apiSlice.useGetVisitAdminInitInfoQuery(
+    //     {
+    //         stepIdx,
+    //         ...exportUtils.refresh_v1()
+    //     },
+    //     {
+    //         refetchOnMountOrArgChange: true,
+    //     }
+    // );
+    const infoQueryObj: any = {}
+
 
     let showDoAdminStuff = !(
         infoQueryObj.isSuccess

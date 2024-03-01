@@ -377,14 +377,16 @@ export const AdministratorSetupPanel: React.FC<
     stepIdx: number;
   }
 > = (props) => {
-  const infoQueryObj = apiSlice.useGetVisitAdminInitInfoQuery(
-    {
-      stepIdx: props.stepIdx,
-    },
-    {
-      refetchOnMountOrArgChange: true,
-    }
-  );
+  const infoQueryObj: any = {}
+
+  // apiSlice.useGetVisitAdminInitInfoQuery(
+  //   {
+  //     stepIdx: props.stepIdx,
+  //   },
+  //   {
+  //     refetchOnMountOrArgChange: true,
+  //   }
+  // );
   let jsx_skipAdmin = (
     <DialogBody className="docs-multistep-dialog-example-step">
       <p>
@@ -639,10 +641,11 @@ export const LocalUserPanel: React.FC<
   }
 > = (props) => {
   let dis = exportUtils.dispatch();
-  let userQuery = apiSlice.useListUserNamesQuery(
-    exportUtils.refresh_v1(),
-    exportUtils.refresh_v2()
-  );
+  let userQuery: any = {}
+  // apiSlice.useListUserNamesQuery(
+  //   exportUtils.refresh_v1(),
+  //   exportUtils.refresh_v2()
+  // );
   let [loading, onLoading] = useState(false)
   let [loadLeftPage, onloadLeftPage] = useState("")
   let hist = useHistory()
