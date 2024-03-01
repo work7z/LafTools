@@ -124,7 +124,9 @@ export let FunctionalMenu = (props: TabNavProp) => {
   const query = new URLSearchParams(location.search);
   let sp = useSearchQuery()
   // Get individual query parameters
-  let [activeId, onActiveId] = useState(sp.f || "tools");
+  // let [activeId, onActiveId] = useState(sp.f || "tools");
+  let [___, onActiveId] = useState(sp.f || "tools");
+  let activeId = sp.f || 'tools'
 
   let currentActiveMenu = _.find(leftTabs, (x) => {
     return x.id == activeId;

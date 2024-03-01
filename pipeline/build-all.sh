@@ -83,12 +83,12 @@ build-res(){
 build-fe(){
     set -e
     echo "[I] building fe"
-    (
-        cd ./modules/web
-        [ ! -d node_modules ] && pnpm install
-        npm run build
-        cp -a ./dist/ $LAFTOOLS_ROOT/dist/web
-    )
+    # (
+    #     cd ./modules/web
+    #     [ ! -d node_modules ] && pnpm install
+    #     npm run build
+    #     cp -a ./dist/ $LAFTOOLS_ROOT/dist/web
+    # )
     (
         cd ./modules/web2
         [ ! -d node_modules ] && pnpm install

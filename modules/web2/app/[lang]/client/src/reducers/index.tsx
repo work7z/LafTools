@@ -37,6 +37,8 @@ import onlineAPISlice from "./onlineAPISlice";
 import RuntimeStatusSlice from "./runtimeStatusSlice";
 import SessionSlice from "./container/sessionSlice";
 import settingsSlice from "./settingsSlice";
+import LocalStateSlice from "./state/localStateSlice";
+import ParamStateSlice from "./state/paramStateSlice";
 
 export default {
   settings: settingsSlice,
@@ -59,4 +61,6 @@ export default {
   // main parts
   tool: ToolSlice,
   dialog: DialogSlice,
+  localState: LocalStateSlice,
+  paramState: ParamStateSlice
 };

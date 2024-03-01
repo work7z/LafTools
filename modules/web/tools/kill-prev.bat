@@ -1,1 +1,0 @@
-taskkill /F /IM bash.exe

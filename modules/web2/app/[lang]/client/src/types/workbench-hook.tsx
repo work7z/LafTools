@@ -118,6 +118,7 @@ import { useParams } from "react-router-dom";
 import { EachTabPanelProp, PageQueryType } from "./workbench-types";
 import { fmtURL_Client } from "@/app/__CORE__/utils/cRouteUtils";
 import settingsSlice from "../reducers/settingsSlice";
+import { useSearchParams } from "next/navigation";
 
 
 
@@ -228,6 +229,10 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
 
 
 export let useSearchQuery = (): PageQueryType => {
+  useSearchParams()
+  const [searchParams] = useSearchParams(); // Re-render every time any search param changes
+  const [page] = useSearchParams(); // Re-render only when `page` changes
+  console.log('page', page)
   let location = useLocation()
   // let location = window['location']
   // let [count, setCount] = useState(0);

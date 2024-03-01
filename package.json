@@ -4,17 +4,17 @@
   "description": "<p align=\"center\"> <img width=\"100\" src=\"https://github.com/work7z/LafTools/blob/dev/modules/web/public/static/icon.png?raw=true\"></img> <br> <span style=\"font-size:20px\">LafTools - The next generation of a versatile toolbox designed for programmers </span> <br><br> </p>",
   "scripts": {
     "win-clean": "taskkill /F /IM bash.exe",
-    "fe-web": "sh ./modules/web/start.sh",
+    "fe-web": "(cd ./modules/web2 && npm run dev)",
     "fe-css": "(cd ./modules/web && sh ./job-tailwind.sh)",
     "fe-extra": "go run ./core/app.go dev-extra --config $LAFTOOLS_ROOT/dev/config/laft-system-dev.json",
     "fe-build": "(cd ./modules/web && npm run build)",
-    "fe-scan":"(cd ./dev/scripts/scan/ && node ./scan-entry.js)",
-    "build-all":"./pipeline/build-all.sh",
-    "build-linux":"./pipeline/build-all.sh linux",
-    "test-linux":"(cd $LAFTOOLS_ROOT/dist/os/linux-x64 && ./run.sh)",
-    "push-docker":"./pipeline/push-docker.sh",
-    "build-docker":"./pipeline/build-docker.sh",
-    "test-docker":"sudo docker run -p 0.0.0.0:39000:39000 codegentoolbox/laftools-linux-x64:insider"
+    "fe-scan": "(cd ./dev/scripts/scan/ && node ./scan-entry.js)",
+    "build-all": "./pipeline/build-all.sh",
+    "build-linux": "./pipeline/build-all.sh linux",
+    "test-linux": "(cd $LAFTOOLS_ROOT/dist/os/linux-x64 && ./run.sh)",
+    "push-docker": "./pipeline/push-docker.sh",
+    "build-docker": "./pipeline/build-docker.sh",
+    "test-docker": "sudo docker run -p 0.0.0.0:39000:39000 codegentoolbox/laftools-linux-x64:insider"
   },
   "keywords": [
     "cipher",
