@@ -129,20 +129,21 @@ let SyncStateUtils = {
       }
     } else {
       // TODO: using KVStorageUtils to get the state
-      let val = await AjaxUtils.DoLocalRequestWithNoThrow({
-        url: "/sync/reducer/get?" + Qs.stringify(queryStr),
-      });
-      if (val.error) {
-        // if (IsDevMode()) {
-        //   AlertUtils.popError(val.error);
-        // }
-      }
-      if (val.response) {
-        let innerValue = getAjaxResPayloadValue(val);
-        if (innerValue) {
-          replaceState = innerValue;
-        }
-      }
+      // let val = {};
+      // //  await AjaxUtils.DoLocalRequestWithNoThrow({
+      // //   url: "/sync/reducer/get?" + Qs.stringify(queryStr),
+      // // });
+      // if (val.error) {
+      //   // if (IsDevMode()) {
+      //   //   AlertUtils.popError(val.error);
+      //   // }
+      // }
+      // if (val.response) {
+      //   let innerValue = getAjaxResPayloadValue(val);
+      //   if (innerValue) {
+      //     replaceState = innerValue;
+      //   }
+      // }
     }
     // replace state
     if (replaceState == null) {

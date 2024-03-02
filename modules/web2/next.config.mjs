@@ -19,9 +19,21 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /** @type {import('next').NextConfig} */
+
+// let API_URL = "https://api.laf-tools.com"; // TODO: api subdomain should be implemented in the future
+let API_URL = "https://laf-tools.com";
+
 const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["sequelize", "sequelize-typescript"],
+  },
+  rewrites: async () => {
+    return [
+      {
+        source: "/x-v2-api/:path*",
+        destination: `${API_URL}/x-v2-api/:path*`,
+      },
+    ];
   },
   // typescript: {
   //   ignoreBuildErrors: true,

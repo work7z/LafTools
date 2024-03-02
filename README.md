@@ -1,5 +1,5 @@
 <p align="center">
-<img width="100" src="https://github.com/work7z/LafTools/blob/dev/modules/web/public/static/icon.png?raw=true"></img>
+<img width="100" src="https://github.com/work7z/LafTools/blob/dev/modules/web2/public/static/icon.png?raw=true"></img>
 <br>
 <span style="font-size:20px">LafTools - The next generation of a versatile toolbox designed for programmers
 </span>

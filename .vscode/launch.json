@@ -23,8 +23,8 @@
       "args": ["server"],
       "internalConsoleOptions": "neverOpen"
     },
-          {
-      "name": "Next.js: debug server-side",
+    {
+      "name": "Dev",
       "type": "node-terminal",
       "cwd": "${workspaceFolder}/modules/web2",
       "request": "launch",
