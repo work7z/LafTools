@@ -3,21 +3,25 @@
 // const { translate } = require('bing-translate-api');
 import { translate } from 'bing-translate-api'
 import { Dot } from '../utils/TranslationUtils'
-
+let formatLang = (to: string) => {
+    if (to == 'en_US') {
+        to = 'en'
+    }
+    if (to == 'zh_CN') {
+        to = 'zh-hans'
+    }
+    if (to == 'zh_HK') {
+        to = 'zh-hant'
+    }
+    if (to == 'no') {
+        to = 'nb'
+    }
+    return to
+}
 export let translateText = async (text, from: string, to,): Promise<string> => {
     try {
-        if (to == 'en_US') {
-            to = 'en'
-        }
-        if (to == 'zh_CN') {
-            to = 'zh-hans'
-        }
-        if (to == 'zh_HK') {
-            to = 'zh-hant'
-        }
-        if (to == 'no') {
-            to = 'nb'
-        }
+        from = formatLang(from)
+        to = formatLang(to)
         let res = await translate(text, from, to)
         if (!res) {
             // ${ Dot("cOYuMrncv", "Unknown Translation failure") }
