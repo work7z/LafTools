@@ -30,6 +30,7 @@ export let getAjaxResPayloadValue = function <A extends { [key: string]: any }>(
 };
 
 export let getAjaxResPayloadValueAsString = function (r): string {
+  if (_.isString(r)) { return r }
   return r.response?.data?.payload?.value;
 };
 function isObject(item) {

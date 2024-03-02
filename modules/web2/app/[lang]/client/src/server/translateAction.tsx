@@ -1,3 +1,4 @@
+'use server'
 
 const { translate } = require('bing-translate-api');
 

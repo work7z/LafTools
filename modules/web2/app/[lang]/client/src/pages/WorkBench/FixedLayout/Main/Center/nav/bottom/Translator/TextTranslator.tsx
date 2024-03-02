@@ -37,6 +37,7 @@ import SessionSlice, { SessionAttr } from "../../../../../../../../reducers/cont
 import { EachLang } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import Blink from "../../../../../../../../components/Blink";
 import { ExportButtonByInputId } from "../../../../../../../../components/ExportButtonByInputId";
+import { translateText } from "@/app/[lang]/client/src/server/translateAction";
 
 type SrcTarget = "source" | "target";
 
@@ -113,32 +114,24 @@ export default (props: SessionViewProp) => {
     }
   })
   let fn_textChg = useCallback(async (val) => {
-    let sessionObj = FN_GetState().session.sessionTypeKVMap[sessionType]
-    if (!sessionObj) return;
-    let map = sessionObj.sessionMap
-    if (!map || !sessionId) return;
-    let sl = map[sessionId].T_SourceLang
-    let tl = map[sessionId].T_TargetLang
-    let r = await AjaxUtils.DoLocalRequestWithNoThrow({
-      url: "/translation/text/translate",
-      isPOST: true,
-      data: {
-        sessionId: sessionId,
-        SourceLang: sl,
-        TargetLang: tl,
-        Type: 'text',
-        Text: val,
-      },
-    })
-    if (r.error) {
-      AlertUtils.popError(r.error)
-      return
+    try {
+      let sessionObj = FN_GetState().session.sessionTypeKVMap[sessionType]
+      if (!sessionObj) return;
+      let map = sessionObj.sessionMap
+      if (!map || !sessionId) return;
+      let sl = map[sessionId].T_SourceLang
+      let tl = map[sessionId].T_TargetLang
+      let r = await translateText(val, tl);
+      debugger;
+      let ajaxResValue = r
+      FN_GetDispatch()(
+        FN_SetTextValueFromOutSideByBigTextId(textOutputId, ajaxResValue as string)
+      )
+      onLoad(false)
+    } catch (e: any) {
+      debugger;
+      AlertUtils.popError(e)
     }
-    let ajaxResValue = getAjaxResPayloadValueAsString(r)
-    FN_GetDispatch()(
-      FN_SetTextValueFromOutSideByBigTextId(textOutputId, ajaxResValue as string)
-    )
-    onLoad(false)
   }, [textInputId, sessionAttrOrNull, sessionAttrOrNull?.T_SourceLang, sessionAttrOrNull?.T_TargetLang])
   let refreshNow = async () => {
     onLoad(true)
