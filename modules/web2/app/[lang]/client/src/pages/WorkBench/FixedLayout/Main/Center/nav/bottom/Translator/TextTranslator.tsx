@@ -121,8 +121,7 @@ export default (props: SessionViewProp) => {
       if (!map || !sessionId) return;
       let sl = map[sessionId].T_SourceLang
       let tl = map[sessionId].T_TargetLang
-      debugger;
-      let r = await translateText(val, tl);
+      let r = await translateText(val, sl as string, tl);
       let ajaxResValue = r
       FN_GetDispatch()(
         FN_SetTextValueFromOutSideByBigTextId(textOutputId, ajaxResValue as string)

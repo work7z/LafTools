@@ -9,7 +9,7 @@ import { translateText } from './translateAction';
 
 test('Test Translation Utils', async () => {
     for (let eachItem of i18nItems) {
-        let v = await translateText('hello, this is a testing! 你好这个是测试', eachItem.Value)
+        let v = await translateText('hello, this is a testing!', 'en', eachItem.Value)
         console.log('result', v)
         // TODO: add cases to check result
     }
