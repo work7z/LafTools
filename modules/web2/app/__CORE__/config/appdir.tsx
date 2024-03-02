@@ -37,7 +37,7 @@ export let getAppDatabaseVerFile = () => {
 
 export let getAppDataTestKVDir = () => {
     if (!isDevEnv()) {
-        throw new Error('[ERROR:dyLeCZv0g]')
+        // throw new Error('[ERROR:dyLeCZv0g]')
     }
     return fsutils.mkdir(path.join(getAppDataInternalDir(), '_kv'))
 }

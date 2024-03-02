@@ -3,6 +3,7 @@
 // const { translate } = require('bing-translate-api');
 import { translate } from 'bing-translate-api'
 import { Dot } from '../utils/TranslationUtils'
+import _ from 'lodash'
 let formatLang = (to: string) => {
     if (to == 'en_US') {
         to = 'en'
@@ -19,6 +20,9 @@ let formatLang = (to: string) => {
     return to
 }
 export let translateText = async (text, from: string, to,): Promise<string> => {
+    if (_.trim(text) == '') {
+        return ''
+    }
     try {
         from = formatLang(from)
         to = formatLang(to)

@@ -128,7 +128,6 @@ export default (props: SessionViewProp) => {
       )
       onLoad(false)
     } catch (e: any) {
-      debugger;
       AlertUtils.popError(e)
     }
   }, [textInputId, sessionAttrOrNull, sessionAttrOrNull?.T_SourceLang, sessionAttrOrNull?.T_TargetLang])
