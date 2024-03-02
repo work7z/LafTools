@@ -105,5 +105,5 @@ export default ALL_NOCYCLE;
 
 export let IsDevMode = (): boolean =>
   // emmm.. hard code not cool, would u refine it?
-  location.href.indexOf("127.0.0.1:35000") != -1 ||
-  location.href.indexOf("localhost:35000") != -1;
+  location.href.indexOf("127.0.0.1:3000") != -1 ||
+  location.href.indexOf("localhost:3000") != -1;

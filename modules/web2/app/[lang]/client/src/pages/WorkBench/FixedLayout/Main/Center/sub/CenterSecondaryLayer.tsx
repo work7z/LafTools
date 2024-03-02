@@ -126,7 +126,7 @@ let mappings = {
 export let InnerCenterView = () => {
   let mp = useMergeParamWithWorkSpace();
   let sq = useSearchQuery();
-  let TargetEle = mappings[sq.f + ""] || OtherCenterView;
+  let TargetEle = mappings[sq.tl + ""] || OtherCenterView;
   return (
     <div className="w-full h-full">
       <TargetEle />

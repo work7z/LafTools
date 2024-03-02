@@ -22,6 +22,7 @@ import { Intent } from "@blueprintjs/core";
 import { ToolCategory, ExtensionVM } from "./purejs-types-READ_ONLY";
 import { ToolHandler, ToolMetaInfo } from "../lib/tools/handler";
 import Operation from "../lib/core/Operation.tsx";
+import { TabBottomType, TabLeftType, TabRightType } from "../reducers/state/paramStateSlice.tsx";
 
 export * from './constants';
 
@@ -39,9 +40,9 @@ export type CommonTransformerPassProp = {
 };
 export type PageQueryType = {
   fc: string;
-  f?: string;
-  e?: string;
-  b?: string;
+  tl?: TabLeftType;
+  tr?: TabRightType;
+  tb?: TabBottomType;
   tid?: string; // tool tab id
 };
 

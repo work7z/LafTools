@@ -229,6 +229,10 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
 
 
 export let useSearchQuery = (): PageQueryType => {
+
+
+
+
   useSearchParams()
   const [searchParams] = useSearchParams(); // Re-render every time any search param changes
   const [page] = useSearchParams(); // Re-render only when `page` changes

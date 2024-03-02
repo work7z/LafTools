@@ -90,7 +90,7 @@ import MultipleDictionary from "./Dictionary/MultipleDictionary";
 
 export default () => {
   let sq = useSearchQuery();
-  let bottomId = sq.b;
+  let bottomId = sq.tb;
   let fn_rightCtrl_common = (
     <Button
       onClick={() => {

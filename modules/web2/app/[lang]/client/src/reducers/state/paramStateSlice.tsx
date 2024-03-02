@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { startListening } from "../../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import queryString from "query-string";
+import _ from "lodash";
 
 
 // The slice state is initialized from the URL parameters if it's possible. 
@@ -22,6 +24,23 @@ const initialState: ParamStateState = {
     tr: "ai"
 };
 
+// catch if any error occurs
+try {
+    let paramQ = queryString.parseUrl(location.href).query;
+    if (!paramQ) {
+        paramQ = {}
+    }
+    console.log('process', location.href)
+    _.merge(initialState, paramQ)
+} catch (e) {
+    // TODO: report this error if it's possible
+    console.error('error', e)
+}
+
+export let syncStateToUrl = (state: ParamStateState) => {
+    let newUrl = queryString.stringifyUrl({ url: location.href, query: state });
+    window.history.pushState({}, '', newUrl);
+}
 
 const ParamStateSlice = createSlice({
     name: "paramState",

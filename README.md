@@ -78,7 +78,7 @@ export PATH=$PATH:$LAFTOOLS_ROOT\\dev\\source\\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Launch Go Service
+## 2. Launch Go Service (Refactoring)
 
 To run Go service in terminal, you can execute below command:
 
@@ -92,7 +92,7 @@ To debug Go service, we have configured it in VSCode, you can just follow below 
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module
+## 3. Launch FrontEnd Module (Moved to web2)
 
 ```bash
 # install required global library

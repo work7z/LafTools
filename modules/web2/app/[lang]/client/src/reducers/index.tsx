@@ -58,9 +58,9 @@ export default {
   test: testSlice,
   forge: forgeSlice,
   route: routeSlice,
-  // main parts
   tool: ToolSlice,
   dialog: DialogSlice,
+  // for settings/status
   localState: LocalStateSlice,
   paramState: ParamStateSlice
 };

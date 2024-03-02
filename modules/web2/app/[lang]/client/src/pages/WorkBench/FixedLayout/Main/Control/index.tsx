@@ -155,8 +155,8 @@ const SystemStatusBarItemElement = (props: SystemStatusBarItem) => {
 export let WB_ControllerBar = () => {
   let workspaceObj = useReadCurrentWorkspaceItem();
   let sq = useSearchQuery();
-  if (sq.b == undefined) {
-    sq.b = "overview";
+  if (sq.tb == undefined) {
+    sq.tb = "overview";
   }
   let v = exportUtils.useSelector((v) => {
     return {
@@ -297,7 +297,7 @@ export let WB_ControllerBar = () => {
     //   id: "overview",
     // },
   ].map((x) => {
-    if (sq.b == x.id && !v.bottom_hide) {
+    if (sq.tb == x.id && !v.bottom_hide) {
       x.active = true;
     }
     x.onClick = () => {

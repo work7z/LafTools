@@ -113,6 +113,7 @@ import {
 import { useLeftTabsList, useSearchQuery } from "../../../../../../../types/workbench-hook";
 import layoutSlice from "../../../../../../../reducers/layoutSlice";
 import GenTabs from "../../../../../../../components/GenVerticalTabs";
+import { TabLeftType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
 
 export let FunctionalMenu = (props: TabNavProp) => {
   let leftTabs: EachTabPanelProp[] = useLeftTabsList();
@@ -125,8 +126,10 @@ export let FunctionalMenu = (props: TabNavProp) => {
   let sp = useSearchQuery()
   // Get individual query parameters
   // let [activeId, onActiveId] = useState(sp.f || "tools");
-  let [___, onActiveId] = useState(sp.f || "tools");
-  let activeId = sp.f || 'tools'
+  let onActiveId = (x: TabLeftType) => {
+    // TODO:
+  }
+  let activeId = sp.tl || 'tools'
 
   let currentActiveMenu = _.find(leftTabs, (x) => {
     return x.id == activeId;
@@ -157,7 +160,7 @@ export let FunctionalMenu = (props: TabNavProp) => {
         props.onItemClicked && props.onItemClicked(x, b1);
       }}
       onActiveIdChange={(x) => {
-        onActiveId(x.id);
+        onActiveId(x.id as TabLeftType);
         // dis(statusSlice.actions.updatePlateId({ value: x.id }));
         // let finPathName = x.pathname;
         // if (RouteMem[x.id]) {

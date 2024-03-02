@@ -222,7 +222,7 @@ export let SidebarMenu = (props: TabNavProp): any => {
   //   return tmparr.map(fn_format_menu);
   // }, [val_memo_deps]);
 
-  let activeId = sq.e || _.get(mainTabs, "0.id");
+  let activeId = sq.tr || _.get(mainTabs, "0.id");
 
   let v = exportUtils.useSelector((v) => {
     return {
