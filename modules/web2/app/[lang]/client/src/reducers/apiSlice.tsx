@@ -208,18 +208,18 @@ export const apiSlice = createApi({
       },
     }),
     // send GET request /tool/category/exts/list with parameter categoryId
-    getToolCategoryExtsList: build.query<
-      PayloadListData<ListExtForTheCategoryRes>,
-      { categoryId: string }
-    >({
-      query: (obj) => {
-        return {
-          method: "GET",
-          url: "/tool/exts/listSubCategory",
-          params: obj,
-        };
-      },
-    }),
+    // getToolCategoryExtsList: build.query<
+    //   PayloadListData<ListExtForTheCategoryRes>,
+    //   { categoryId: string }
+    // >({
+    //   query: (obj) => {
+    //     return {
+    //       method: "GET",
+    //       url: "/tool/exts/listSubCategory",
+    //       params: obj,
+    //     };
+    //   },
+    // }),
   }),
 });
 

@@ -113,17 +113,11 @@ export let InnerToolPanel = (): any => {
   let sq = useSearchQuery();
   let categoryList = useGetCategoryList()
   let fc = sq.fc || _.get(categoryList, "[0].id", "all");
-  let extsListQuery = apiSlice.useGetToolCategoryExtsListQuery(
-    { categoryId: fc },
-    {
-      refetchOnMountOrArgChange: true,
-    },
-  );
   let activeOne = _.find(categoryList, (x) => x.Id == fc);
   let m_ws = useMergeParamWithWorkSpace();
   return (
     <FunctionalMenu_Panel
-      loading={extsListQuery.isLoading}
+      loading={false}
       crtLeftNavId={fc}
       leftNavList={
         _.map(categoryList, (x) => {
