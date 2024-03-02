@@ -1,8 +1,20 @@
 
 const { translate } = require('bing-translate-api');
 
-translate('你好，这是一个测试的内容啦，欢迎使用bing', null, 'en_US').then(res => {
+export let translateText = async (text, to): Promise<string> => {
+    if (to == 'en_US') {
+        to = 'en'
+    }
+    if (to == 'zh_CN') {
+        to = 'zh-hans'
+    }
+    if (to == 'zh_HK') {
+        to = 'zh-hant'
+    }
+    if (to == 'no') {
+        to = 'nb'
+    }
+    let res = await translate(text, null, to)
     console.log(res.translation);
-}).catch(err => {
-    console.error(err);
-});
+    return res.translation
+}
