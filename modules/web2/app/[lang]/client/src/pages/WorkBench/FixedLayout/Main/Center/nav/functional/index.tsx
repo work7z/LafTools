@@ -66,7 +66,7 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../../../../../nocycle";
+import { APPINFOJSON, FN_GetDispatch, delayFN } from "../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -113,7 +113,8 @@ import {
 import { useLeftTabsList, useSearchQuery } from "../../../../../../../types/workbench-hook";
 import layoutSlice from "../../../../../../../reducers/layoutSlice";
 import GenTabs from "../../../../../../../components/GenVerticalTabs";
-import { TabLeftType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
+import ParamStateSlice, { TabLeftType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
+import LocalStateSlice from "@/app/[lang]/client/src/reducers/state/localStateSlice";
 
 export let FunctionalMenu = (props: TabNavProp) => {
   let leftTabs: EachTabPanelProp[] = useLeftTabsList();
@@ -128,8 +129,11 @@ export let FunctionalMenu = (props: TabNavProp) => {
   // let [activeId, onActiveId] = useState(sp.f || "tools");
   let onActiveId = (x: TabLeftType) => {
     // TODO:
+    FN_GetDispatch()(
+      ParamStateSlice.actions.updateOneOfParamState({ l: x })
+    )
   }
-  let activeId = sp.tl || 'tools'
+  let activeId: TabLeftType = sp.l || 'tools'
 
   let currentActiveMenu = _.find(leftTabs, (x) => {
     return x.id == activeId;

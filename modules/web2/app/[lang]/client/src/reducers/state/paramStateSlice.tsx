@@ -11,17 +11,19 @@ import _ from "lodash";
 
 
 export type TabLeftType = "tools" | "notes" | "history" | "resources"
-export type TabBottomType = "terminal" | "dictionary" | "compute" | "help"
+export type TabBottomType = "terminal" | "dictionary" | "compute" | "help" | "overview" | "translation"
 export type TabRightType = "ai" | "todo" | "stopwatch"
-type ParamStateState = {
-    tl: TabLeftType, // tab left
-    tb: TabBottomType,
-    tr: TabRightType
+export type ParamStateState = {
+    l: TabLeftType, // tab left
+    b: TabBottomType, // bottom 
+    r: TabRightType, // right
+    fc?: string;
+    tid?: string; // tool tab id
 };
 const initialState: ParamStateState = {
-    tl: "tools",
-    tb: "terminal",
-    tr: "ai"
+    l: "tools",
+    b: "terminal",
+    r: "ai"
 };
 
 // catch if any error occurs
@@ -46,9 +48,10 @@ const ParamStateSlice = createSlice({
     name: "paramState",
     initialState,
     reducers: {
-        updateParamState(state: ParamStateState, action: PayloadAction) {
-            //
-        },
+        updateOneOfParamState: (state, action: PayloadAction<Partial<ParamStateState>>) => {
+            _.merge(state, action.payload)
+            syncStateToUrl(state)
+        }
     },
 });
 

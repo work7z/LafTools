@@ -66,7 +66,7 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../../../../../nocycle";
+import { APPINFOJSON, FN_GetDispatch, delayFN } from "../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -115,6 +115,7 @@ import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
 } from "../../../../../../../types/workbench-hook";
+import ParamStateSlice, { TabRightType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
 
 let RightPanelNoAvailablePanel = () => {
   let dis = exportUtils.dispatch();
@@ -222,7 +223,7 @@ export let SidebarMenu = (props: TabNavProp): any => {
   //   return tmparr.map(fn_format_menu);
   // }, [val_memo_deps]);
 
-  let activeId = sq.tr || _.get(mainTabs, "0.id");
+  let activeId = sq.r || _.get(mainTabs, "0.id");
 
   let v = exportUtils.useSelector((v) => {
     return {
@@ -239,6 +240,9 @@ export let SidebarMenu = (props: TabNavProp): any => {
       whichPart="right"
       activeId={v.right_hide ? "" : activeId + ""}
       onItemClicked={(a, b) => {
+        FN_GetDispatch()(
+          ParamStateSlice.actions.updateOneOfParamState({ r: a.id as TabRightType })
+        )
         props.onItemClicked && props.onItemClicked(a, b);
       }}
       onActiveIdChange={(x) => 1}
