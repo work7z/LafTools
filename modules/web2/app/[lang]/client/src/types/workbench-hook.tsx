@@ -121,8 +121,6 @@ import settingsSlice from "../reducers/settingsSlice";
 import { useSearchParams } from "next/navigation";
 import { ParamStateState, TabLeftType } from "../reducers/state/paramStateSlice";
 
-
-
 export let NoAvailableDataPanel = () => {
   return <div>{Dot("xs22XLF", "No available data for this item ID, please consider selecting other items.")}</div>;
 };

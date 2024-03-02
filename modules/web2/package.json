@@ -73,6 +73,7 @@
     "bcryptjs": "^2.4.3",
     "bfj": "7.0.2",
     "bignumber.js": "^9.1.1",
+    "bing-translate-api": "^4.0.0",
     "blakejs": "^1.2.1",
     "bootstrap": "4.6.2",
     "bootstrap-colorpicker": "^3.4.0",
