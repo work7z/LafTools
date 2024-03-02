@@ -108,7 +108,6 @@ import ToolExtensionTree from "./ToolExtensionTree";
 
 export let InnerToolPanel = (): any => {
 
-  let m_ws = useMergeParamWithWorkSpace();
   return (
     <div></div>
     // <FunctionalMenu_Panel

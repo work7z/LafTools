@@ -141,8 +141,6 @@ export let FunctionalMenu = (props: TabNavProp) => {
 
   PageUtils.useUpdateTitle(_.get(currentActiveMenu, "label"), [activeId]);
 
-  // let dis = exportUtils.dispatch();
-
   let v = exportUtils.useSelector((v) => {
     return {
       // show

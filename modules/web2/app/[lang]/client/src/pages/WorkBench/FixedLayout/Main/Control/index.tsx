@@ -122,6 +122,7 @@ import {
   useReadCurrentWorkspaceItem,
 } from "../../../../../utils/WorkSpaceUtils";
 import DesktopUtils from "../../../../../utils/DesktopUtils";
+import ParamStateSlice, { TabBottomType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
 
 const SystemStatusBarItemElement = (props: SystemStatusBarItem) => {
   let p_ws = useMergeParamWithWorkSpace();
@@ -133,8 +134,15 @@ const SystemStatusBarItemElement = (props: SystemStatusBarItem) => {
     >
       <Link
         to={p_ws({
-          b: props.id,
+          b: props.id as TabBottomType,
         })}
+        onClick={() => {
+          FN_GetDispatch()(
+            ParamStateSlice.actions.updateOneOfParamState({
+              b: props.id as TabBottomType,
+            })
+          )
+        }}
       >
         <Button
           minimal={true}
@@ -387,30 +395,10 @@ export let WB_ControllerBar = () => {
             }}
           ></Button>
         </Tooltip>
-        {/* <SystemStatusBarItemElement
-          onClick={() => {
-            //
-          }}
-          text={
-            Dot("BW3bpT", "Reading the file from disk...") ||
-            Dot("ZW1Dgz", "No Available Message")
-          }
-          id={""}
-          active={false}
-          disabled={false}
-          tooltip={Dot("ib135dq", "Your Status Message will be displayed here")}
-          intent={"none"}
-        /> */}
         {statusBarItemRight.map((item) => {
           return <SystemStatusBarItemElement key={item.id} {...item} />;
         })}
       </div>
     </div>
   );
-  // return (
-  //   <div className="fixed-wb-nav-foot-wrapper">
-  //     <div className="fixed-web-nav-foot-center">center</div>
-
-  //   </div>
-  // );
 };

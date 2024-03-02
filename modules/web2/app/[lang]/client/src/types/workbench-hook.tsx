@@ -119,6 +119,7 @@ import { EachTabPanelProp, PageQueryType } from "./workbench-types";
 import { fmtURL_Client } from "@/app/__CORE__/utils/cRouteUtils";
 import settingsSlice from "../reducers/settingsSlice";
 import { useSearchParams } from "next/navigation";
+import { ParamStateState, TabLeftType } from "../reducers/state/paramStateSlice";
 
 
 
@@ -220,7 +221,7 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
       return {
         ...x,
         pathname: func_mergeWithWS({
-          f: x.id,
+          l: x.id as TabLeftType,
         }),
       };
     });
@@ -273,24 +274,24 @@ export let useSearchQuery = (): PageQueryType => {
 };
 
 export let useMergeParameter = (): any => {
-  let hist = useHistory();
   let searchQ = useSearchQuery();
   // convert searchQ to object
   // merge with obj
   return (obj: Partial<PageQueryType>) => {
-    let mergeIt = _.merge(searchQ, obj);
+    let mergeIt = {
+      ...(searchQ || {}),
+      ...(obj || {})
+    }
     return qs.stringify(mergeIt);
   };
 };
 
-export let useMergeParamWithWorkSpace = (): any => {
+export let useMergeParamWithWorkSpace = (): (obj: Partial<ParamStateState>) => any => {
   let mergeP = useMergeParameter();
-  const { workspaceId = "default" } = useParams() as any;
 
-  return (obj) => {
-    // return URL_WORKBENCH_WORKSPACE + "/" + workspaceId + "?" + mergeP(obj);
-    // fmtURL_Client("/client") 
+  return (obj: Partial<ParamStateState>) => {
     return "/" + "?" + mergeP(obj)
+    // return "/" + "?" + qs.stringify(obj)
     // return "" + ;
   };
 };
