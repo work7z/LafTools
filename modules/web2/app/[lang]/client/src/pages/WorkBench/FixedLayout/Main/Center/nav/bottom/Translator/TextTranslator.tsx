@@ -113,7 +113,7 @@ export default (props: SessionViewProp) => {
       ...sessionObj.sessionMap[sessionId]
     }
   })
-  let fn_textChg = useCallback(async (val) => {
+  let fn_textChg = useCallback(_.debounce(async (val) => {
     try {
       let sessionObj = FN_GetState().session.sessionTypeKVMap[sessionType]
       if (!sessionObj) return;
@@ -130,7 +130,7 @@ export default (props: SessionViewProp) => {
     } catch (e: any) {
       AlertUtils.popError(e)
     }
-  }, [textInputId, sessionAttrOrNull, sessionAttrOrNull?.T_SourceLang, sessionAttrOrNull?.T_TargetLang])
+  }, 200), [textInputId, sessionAttrOrNull, sessionAttrOrNull?.T_SourceLang, sessionAttrOrNull?.T_TargetLang])
   let refreshNow = async () => {
     onLoad(true)
     await fn_textChg(FN_GetActualTextValueByBigTextId(textInputId))

@@ -157,7 +157,7 @@ export let SidebarMenu = (props: TabNavProp): any => {
   let fn_format_menu = (x) => {
     return {
       ...x,
-      pathname: mp_with_ws({ e: x.id }),
+      pathname: mp_with_ws({ r: x.id }),
       panel: x.panel || RightPanelNoAvailablePanel,
     };
   };
