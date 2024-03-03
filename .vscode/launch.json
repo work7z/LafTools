@@ -5,16 +5,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Core",
-      "type": "go",
-      "request": "launch",
-      "mode": "auto",
-      "program": "${workspaceFolder}/core/app.go",
-      "console": "integratedTerminal",
-      "args": ["server"],
-      "internalConsoleOptions": "neverOpen"
-    },
-    {
       "name": "Scan",
       "type": "node",
       "request": "launch",
@@ -29,6 +19,13 @@
       "cwd": "${workspaceFolder}/modules/web2",
       "request": "launch",
       "command": "npm run dev"
+    },
+    {
+      "name": "Build",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/modules/web2",
+      "request": "launch",
+      "command": "npm run build && npm run start"
     },
   ]
 }

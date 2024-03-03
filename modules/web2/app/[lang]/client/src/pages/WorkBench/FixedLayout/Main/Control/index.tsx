@@ -126,36 +126,44 @@ import ParamStateSlice, { TabBottomType } from "@/app/[lang]/client/src/reducers
 
 const SystemStatusBarItemElement = (props: SystemStatusBarItem) => {
   let p_ws = useMergeParamWithWorkSpace();
+  // let Target = ? ({children}) : 
+  let btn = <Button
+    minimal={true}
+    text={props.text}
+    small={true}
+    className="statusbar-item focus:outline-none"
+    icon={props.icon as any}
+    onClick={props.onClick}
+    active={props.active}
+    disabled={props.disabled}
+    intent={props.intent}
+  />
+  let fn_clk = () => {
+    FN_GetDispatch()(
+      ParamStateSlice.actions.updateOneOfParamState({
+        b: props.id as TabBottomType,
+      })
+    )
+  }
   return (
     <Tooltip
       content={props.tooltip}
       position={Position.BOTTOM}
       disabled={props.disabled}
     >
-      <Link
-        to={p_ws({
-          b: props.id as TabBottomType,
-        })}
-        onClick={() => {
-          FN_GetDispatch()(
-            ParamStateSlice.actions.updateOneOfParamState({
-              b: props.id as TabBottomType,
-            })
-          )
-        }}
-      >
-        <Button
-          minimal={true}
-          text={props.text}
-          small={true}
-          className="statusbar-item focus:outline-none"
-          icon={props.icon as any}
-          onClick={props.onClick}
-          active={props.active}
-          disabled={props.disabled}
-          intent={props.intent}
-        />
-      </Link>
+      {
+        props.disableLinkMode ? <span onClick={fn_clk}>
+          {btn}
+        </span> : <Link
+          to={p_ws({
+            b: props.id as TabBottomType,
+          })}
+          onClick={fn_clk}
+        >
+          {btn}
+        </Link>
+
+      }
     </Tooltip>
   );
 };
@@ -377,7 +385,7 @@ export let WB_ControllerBar = () => {
     >
       <div>
         {statusBarItemLeft.map((item) => {
-          return <SystemStatusBarItemElement key={item.id} {...item} />;
+          return <SystemStatusBarItemElement disableLinkMode={true} key={item.id} {...item} />;
         })}
       </div>
       <div>
@@ -396,7 +404,7 @@ export let WB_ControllerBar = () => {
           ></Button>
         </Tooltip>
         {statusBarItemRight.map((item) => {
-          return <SystemStatusBarItemElement key={item.id} {...item} />;
+          return <SystemStatusBarItemElement disableLinkMode={true} key={item.id} {...item} />;
         })}
       </div>
     </div>

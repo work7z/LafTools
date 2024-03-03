@@ -85,6 +85,7 @@ export const fn_GetAllPureMenuArr = (): FnPureToolDefinition[] => {
 };
 
 export type SystemStatusBarItem = {
+  disableLinkMode?: boolean;
   // define a struct for status bar
   text: string;
   icon?: string;
