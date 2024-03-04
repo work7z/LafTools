@@ -34,7 +34,7 @@ downloadNodeJSToRuntime(){
         # exit 1
     fi
 
-    if [ $fileExt == "tar.xz" ]; then
+    if [ $fileExt == "tar.gz" ]; then
         tar -xzvf $crtFile -C $crossPlatformDir
     elif [ $fileExt == "zip" ]; then
         unzip -o $crtFile -d $crossPlatformDir
