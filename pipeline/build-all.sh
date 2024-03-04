@@ -80,6 +80,9 @@ build-core(){
     cp -a ./parcel/scripts/$osScriptFile/* $platformDistDir
     cp -a ./parcel/scripts/root/* $platformDistDir
 
+    echo "[I] copying nodejs service..."
+    cp -a ./cross-platform/$platformName/ $platformDistDir
+
     echo "[I] built"
 }
 
