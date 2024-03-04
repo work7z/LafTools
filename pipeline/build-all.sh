@@ -14,6 +14,14 @@ set +e
 source ./pipeline/env.sh
 mode=$1
 
+crossPlatformDir=$LAFTOOLS_ROOT/cross-platform
+if [ ! -d $crossPlatformDir ]; then
+    echo "[I] downloading runtime nodejs"
+    ./pipeline/fetch-runtime-nodejs.sh
+else 
+    echo "[I] runtime nodejs already exists in $crossPlatformDir, skip downloading."
+fi
+
 echo "[I] $(date) Working..."
 echo "[I] PWD: $(pwd)"
 echo "[I] Removing dist dir: $distDir"
@@ -67,7 +75,7 @@ build-core(){
     echo "[I] copying resources and web..."
 
     cp -a ./dist/resources $platformDistDir
-    cp -a ./dist/web $platformDistDir
+    cp -a ./dist/web2 $platformDistDir
 
     cp -a ./parcel/scripts/$osScriptFile/* $platformDistDir
     cp -a ./parcel/scripts/root/* $platformDistDir
@@ -91,9 +99,14 @@ build-fe(){
     # )
     (
         cd ./modules/web2
-        [ ! -d node_modules ] && pnpm install
+        [ ! -d node_modules ] && npm i -S -D --verbose --force
         npm run build
-        cp -a ./.next/ $LAFTOOLS_ROOT/dist/web2
+        cd .next
+        cp -a ../public/ ./standalone/public
+        cp -a  ./static/ ./standalone/static
+        cd ..
+        [ -d $LAFTOOLS_ROOT/dist/web2 ] && rm -rf $LAFTOOLS_ROOT/dist/web2
+        cp -a ./.next/standalone/ $LAFTOOLS_ROOT/dist/web2
     )
     echo "[I] built fe"
     set +e

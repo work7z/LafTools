@@ -220,7 +220,7 @@
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
     "ssdeep.js": "0.0.3",
-    "state": "link:@types/@codemirror/state",
+    "state": "@types/@codemirror/state",
     "stream-browserify": "^3.0.0",
     "style-loader": "3.3.1",
     "tencentcloud-sdk-nodejs": "^4.0.794",
