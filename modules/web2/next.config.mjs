@@ -27,6 +27,8 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["sequelize", "sequelize-typescript"],
   },
+  output: "standalone",
+  // output: "standalone",
   rewrites: async () => {
     return [
       {
