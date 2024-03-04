@@ -1,6 +1,7 @@
 var/log/
 web-nouse
 b3333*
+corss-platform/**/*
 private.key
 *.key
 prod
