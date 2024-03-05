@@ -44,6 +44,8 @@ downloadNodeJSToRuntime(){
         exit 1
     fi
 
+    nodeDirName=$(ls $crossPlatformDir | grep node-v)
+    mv $crossPlatformDir/$nodeDirName $crossPlatformDir/node-dir
 }
 
 

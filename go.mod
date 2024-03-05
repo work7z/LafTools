@@ -22,8 +22,12 @@ require (
 )
 
 require (
+	github.com/apex/log v1.1.1 // indirect
 	github.com/creack/pty v1.1.9 // indirect
+	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/iamacarpet/go-winpty v1.0.4 // indirect
+	github.com/pkg/errors v0.8.1 // indirect
+	github.com/tj/node-prune v1.2.0 // indirect
 )
 
 require (

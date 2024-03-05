@@ -63,8 +63,9 @@ build-core(){
     [ -d $platformDistDir ] && rm -rf $platformDistDir
 
     mkdir -p $platformDistDir
+    mkdir -p $platformDistDir/bin
     echo "[I] building [$platformName]"
-    GOOS=$argGOOS GOARCH=$platformArch go build -o $platformDistDir/core.$platformExt core/app.go 
+    # GOOS=$argGOOS GOARCH=$platformArch go build -o $platformDistDir/core.$platformExt core/app.go 
 
     echo "[I] copying os-patch..."
 
@@ -74,14 +75,14 @@ build-core(){
 
     echo "[I] copying resources and web..."
 
-    cp -a ./dist/resources $platformDistDir
-    cp -a ./dist/web2 $platformDistDir
+    # cp -a ./dist/resources $platformDistDir
+    cp -a ./dist/web2 $platformDistDir/core
 
     cp -a ./parcel/scripts/$osScriptFile/* $platformDistDir
-    cp -a ./parcel/scripts/root/* $platformDistDir
+    # cp -a ./parcel/scripts/root/* $platformDistDir
 
     echo "[I] copying nodejs service..."
-    cp -a ./cross-platform/$platformName/ $platformDistDir
+    cp -a ./cross-platform/$platformName/node-dir $platformDistDir/bin/node
 
     echo "[I] built"
 }
@@ -102,11 +103,13 @@ build-fe(){
     # )
     (
         cd ./modules/web2
-        [ ! -d node_modules ] && npm i -S -D --verbose --force
+        # [ ! -d node_modules ] && npm install --production --verbose --force 
+        [ ! -d node_modules ] && npm install -S -D --verbose --force 
+        npm install -g node-prune
         npm run build
         cd .next
         cp -a ../public/ ./standalone/public
-        cp -a  ./static/ ./standalone/static
+        cp -a  ./static/ ./standalone/.next/static
         cd ..
         [ -d $LAFTOOLS_ROOT/dist/web2 ] && rm -rf $LAFTOOLS_ROOT/dist/web2
         cp -a ./.next/standalone/ $LAFTOOLS_ROOT/dist/web2
@@ -121,7 +124,7 @@ build-be(){
         build-core linux-arm64 arm64 "core/app_unix.go" linux
     else
         build-core windows-x64 amd64 "core/app_windows.go" windows
-        # build-core windows-arm64 arm64 "core/app_windows.go" windows
+        build-core windows-arm64 arm64 "core/app_windows.go" windows
         build-core linux-x64 amd64 "core/app_unix.go" linux
         build-core linux-arm64 arm64 "core/app_unix.go" linux
         build-core darwin-x64 amd64 "core/app_unix.go" darwin
@@ -173,7 +176,7 @@ package-all(){
         package-for linux-arm64
     else
         package-for windows-x64 zip
-        # package-for windows-arm64 zip
+        package-for windows-arm64 zip
         package-for linux-x64
         package-for linux-arm64
         package-for darwin-x64

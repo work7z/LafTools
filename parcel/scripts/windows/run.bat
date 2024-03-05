@@ -1,12 +1,7 @@
 @echo off
-setlocal
 
-:: Read port value from properties file
-for /F "tokens=1,2 delims==" %%a in (./config/startup.properties) do (
-    if "%%a"=="port" set "port=%%b"
-)
+REM Set HOSTNAME environment variable
+set HOSTNAME=127.0.0.1
 
-:: Use port as parameter to start service
-start /b "" ./core.bin server --root=%cd% --port=%port% --debug=false
-
-endlocal
+REM Start the server
+.\bin\node\node.exe .\core\server.js
