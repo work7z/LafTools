@@ -2,33 +2,33 @@
 import React from "react";
 import { Tabs, Tab, Card, CardBody, CardHeader } from "@nextui-org/react";
 import Link from "next/link";
-import { getXSearchParams } from "@/app/__CORE__/utils/TranslationUtils";
+import { Dot, getXSearchParams } from "@/app/__CORE__/utils/TranslationUtils";
 
 export default function App() {
     let tabs = [
         {
-            id: "JSON格式化",
-            label: "JSON格式化",
+            id: "jsonformatter",
+            label: Dot("pkprvdA2O", "JSON Formatter"),
             content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         },
         {
-            id: "music",
-            label: "MD5加密",
+            id: "md5",
+            label: Dot("eTJ2EDLfW", "MD5 Hash"),
             content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         },
         {
-            id: "videos",
-            label: "SHA1加密",
+            id: "sha1",
+            label: Dot("8RYY_Y4sb", "SHA1 Hash"),
             content: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
-            id: "images",
-            label: "SHA256加密",
+            id: "sha256",
+            label: Dot("HAdpbfboS", "SHA256 Hash"),
             content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         },
         {
-            id: "documents",
-            label: "SHA512加密",
+            id: "sha512",
+            label: Dot("fyA5IVtOU", "SHA512 Hash"),
             content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
         }
     ];

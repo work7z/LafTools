@@ -14,11 +14,11 @@ export default function App() {
     a()
     return (
         <Breadcrumbs size={"sm"}>
-        <BreadcrumbItem>{Dot("Ln0dR","Home")}</BreadcrumbItem>
-        <BreadcrumbItem>加密/解密</BreadcrumbItem>
-        <BreadcrumbItem>网络安全</BreadcrumbItem>
-        <BreadcrumbItem>摘要算法</BreadcrumbItem>
-        <BreadcrumbItem>MD5算法</BreadcrumbItem>
-    </Breadcrumbs>
-);
+            <BreadcrumbItem>{Dot("Ln0dR", "Home")}</BreadcrumbItem>
+            <BreadcrumbItem>{Dot("CnbkCMQnU", "Cyber Security")}</BreadcrumbItem>
+            <BreadcrumbItem>{Dot("JXKCXTd1w", "Encrypt/Decrypt")}</BreadcrumbItem>
+            <BreadcrumbItem>{Dot("tRwfVsJUY", "Hash")}</BreadcrumbItem>
+            <BreadcrumbItem>{Dot("lqy0o5WUr", "MD5 Algorithm")}</BreadcrumbItem>
+        </Breadcrumbs>
+    );
 }

@@ -70,9 +70,10 @@ export default (props: PassProp): any => {
   return <div>
     <div className='bp5-text-muted space-x-2 '>
       {i18n?.map(x => {
-        let m = [...splitArr]
-        m[2] = x.LangInExplicitURL || ''//getFormattedLang(x.Value)
-        return <a className={CSS_TEXT_ANCHOR_CSS} href={'/' + m.filter(x => x).join("/")}>{x.LabelByLang}</a>
+        // let m = [...splitArr]
+        // m[2] = x.LangInExplicitURL || ''//getFormattedLang(x.Value)
+        let hrefVal = '/' + x.LangInExplicitURL //+ m.filter(x => x).join("/")
+        return <a className={CSS_TEXT_ANCHOR_CSS} href={hrefVal}>{x.LabelByLang}</a>
       })}
     </div>
   </div>;
