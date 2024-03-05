@@ -7,5 +7,7 @@
 # ./core.bin server --root=$(pwd) --port=${port} --debug=false $@
 cd core
 HOSTNAME=127.0.0.1
+PORT=39899
+
 ./bin/node/bin/node ./core/server.js
 
