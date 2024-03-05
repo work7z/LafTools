@@ -384,26 +384,29 @@ class TerminalWrapper extends React.PureComponent<{ SessionId: string }, Termina
     };
 
     ___initTerm = async () => {
-        const { term } = this;
-        if (!term) { return; }
-        const wsUrl = getWSLink("/ws/pty/term");
-        const socket = new WebSocket(wsUrl);
-        socket.binaryType = "arraybuffer";
-        this.attachAddon = new AttachAddon(socket);
-        term.loadAddon(this.attachAddon);
-        this.mainSocket = socket;
-        await new Promise<void>((e, r) => {
-            if (!this.mainSocket) {
-                return;
-            }
-            this.mainSocket.onopen = () => {
-                socket.addEventListener("message", () => {
-                    this.___notifyOnData();
-                });
-                this._initialized = true;
-                e();
-            };
-        });
+        if (true) {
+            return;
+        }
+        // const { term } = this;
+        // if (!term) { return; }
+        // const wsUrl = getWSLink("/ws/pty/term");
+        // const socket = new WebSocket(wsUrl);
+        // socket.binaryType = "arraybuffer";
+        // this.attachAddon = new AttachAddon(socket);
+        // term.loadAddon(this.attachAddon);
+        // this.mainSocket = socket;
+        // await new Promise<void>((e, r) => {
+        //     if (!this.mainSocket) {
+        //         return;
+        //     }
+        //     this.mainSocket.onopen = () => {
+        //         socket.addEventListener("message", () => {
+        //             this.___notifyOnData();
+        //         });
+        //         this._initialized = true;
+        //         e();
+        //     };
+        // });
     };
 
     ___resumeHistory = async (term) => {
