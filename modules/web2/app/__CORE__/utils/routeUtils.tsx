@@ -23,12 +23,13 @@
 
 import { LocaleType } from "@/middleware"
 import { getXLocaleStrInRSC } from "./TranslationUtils"
-
+import _ from 'lodash'
 
 export let getLocalePrefix_Server = (): LocaleType => {
     return getXLocaleStrInRSC()
 }
 export let fmtURL_Server = (str: string): string => {
+    str = _.trim(str)
     if (str.startsWith("/")) {
         str = str.substring(1)
     }

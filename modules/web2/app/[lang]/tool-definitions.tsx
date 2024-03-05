@@ -3,10 +3,11 @@ import { Dot, getXHostname } from "../__CORE__/utils/TranslationUtils";
 import { LabelHrefType } from './navigator'
 
 export let fmt_Category = (x: string) => {
-    return fmtURL_Server(`/${x}`)
+    return fmtURL_Server(`${x}`)
 }
 export let fmt_ToolSubPage = (x: string) => {
-    return fmtURL_Server(fmt_Category('tools') + '/' + x)
+    if (x.startsWith('/')) x = x.slice(1)
+    return fmt_Category('tools' + '/' + x)
 }
 export let fn_leftNav = (): LabelHrefType[] => {
     let leftNav: LabelHrefType[] = [
@@ -83,22 +84,26 @@ export let fn_leftCategoryArr = (): LabelHrefType[] => {
             label: Dot("IEFy5k39X", "Generators"),
             href: '/generator'
         },
-    ]
+    ].map(x => {
+        x.href = fmtURL_Server(x.href)
+        x.href = fmtURL_Server('/')
+        return x
+    })
     return leftCategoryArr;
 }
 export let fn_rightCategoryArr = () => {
     let rightCategoryArr: LabelHrefType[] = [
         {
             label: Dot("download-local", "Free Download"),
-            href: '/download'
+            href: '/v2/'
         },
         {
             label: Dot("str.remarks", "Favorites"),
-            href: '/favorites',
+            href: fmtURL_Server('/'),
         },
         {
             label: Dot("str.mostused", "Frequently-Used"),
-            href: '/most-used',
+            href: fmtURL_Server('/'),
         }
     ]
     return rightCategoryArr

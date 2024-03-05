@@ -29,6 +29,7 @@ import TranslationUtils, {
   KEY_LANG_PACK_ZH_HK,
   LANG_INIT_BEFORE_MAP,
   newLangMap,
+  sysLocale,
 } from "../utils/cTranslationUtils";
 import {
   IsLoadingType,
@@ -254,7 +255,8 @@ export const loadDOT = async (scopeID: string): Promise<any> => {
 let __load_language_map: { [key: string]: boolean } = {};
 export const ACTION_getLangData = (scopeIdIfHave?: string): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
-    let currentLanguage = TranslationUtils.CurrentLanguage; //ALL_NOCYCLE.store?.getState().forge.Language;
+    let currentLanguage = sysLocale.langIni18n; //ALL_NOCYCLE.store?.getState().forge.Language;
+    // TranslationUtils.CurrentLanguage
     // debugger;
     if (
       !currentLanguage

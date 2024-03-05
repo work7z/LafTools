@@ -91,7 +91,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import PageUtils from "../../../../../utils/PageUtils";
-import TranslationUtils, { Dot } from "../../../../../utils/cTranslationUtils";
+import TranslationUtils, { Dot, sysLocale } from "../../../../../utils/cTranslationUtils";
 import "allotment/dist/style.css";
 import { Allotment } from "allotment";
 import exportUtils from "../../../../../utils/ExportUtils";
@@ -383,6 +383,7 @@ export let WB_MenuBar = (props: PassProp) => {
       return {
         label: x.LabelByLang,
         value: x.Value,
+        ...x,
       };
     }), 18);
   }
@@ -429,8 +430,6 @@ export let WB_MenuBar = (props: PassProp) => {
               icon={"refresh"}
               onClick={() => {
                 dis(ACTION_callRefreshAll(true));
-
-
               }}
             />
           </Tooltip>
@@ -450,11 +449,14 @@ export let WB_MenuBar = (props: PassProp) => {
                       onClick={() => {
 
 
-                        let newValue = x.value + "";
-                        let splitArr = location.pathname.split("/")
-                        let m = [...splitArr]
-                        m[2] = getFormattedLang(newValue)
-                        location.replace(m.join("/") + "" + location.search)
+                        // let newValue = x.value + "";
+                        // let splitArr = location.pathname.split("/")
+                        // let m = [...splitArr]
+                        // m[2] = getFormattedLang(newValue)
+                        // location.replace(m.join("/") + "" + location.search)
+                        location.href = "/" + getFormattedLang(x.value + "") + '/client'
+                        // alert()
+                        // debugger;
                         // location.reload()
 
 

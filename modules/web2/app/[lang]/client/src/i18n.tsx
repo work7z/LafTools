@@ -26,10 +26,12 @@ let appi18nJSON = i18nItems
 export let getFormattedLang = function (crtLang: string) {
   // let crtLang = TranslationUtils.CurrentLanguage
   if (crtLang == 'zh_CN') {
-    return 'zh-hans'
+    // return 'zh-hans'
+    return 'zh'
   }
   if (crtLang == 'zh_HK') {
-    return 'zh-hant'
+    // return 'zh-hant'
+    return 'hk'
   }
   if (crtLang == 'en_US') {
     return 'en'
