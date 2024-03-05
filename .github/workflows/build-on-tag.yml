@@ -55,6 +55,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist/your-asset-name.zip
-          asset_name: your-asset-name.zip
-          asset_content_type: application/zip
+          asset_path: /home/runner/work/LafTools/LafTools/dist/pkg/linux-x64.tar.gz
+          asset_name: linux-x64.tar.gz
+          asset_content_type: application/tar+gzip

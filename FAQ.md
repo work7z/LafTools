@@ -1,5 +1,3 @@
-
-
 # 🙋 Is it a free software?
 
 Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.
@@ -22,8 +20,6 @@ What you can do is to
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
 With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
-
-
 
 # ✉️ A Letter to CodeGen ToolBox Users
 
@@ -54,3 +50,9 @@ Thank you.
 
 Nov 18th, 2023  
 LafTools Team
+
+# Why the default port is 39899
+
+It's a magic number which is comprised of 3 + 98 + 99.
+
+But as LafTools's author, I prefer not to tell the story for now, haha.
