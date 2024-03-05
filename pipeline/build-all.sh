@@ -104,6 +104,7 @@ build-fe(){
     (
         cd ./modules/web2
         # [ ! -d node_modules ] && npm install --production --verbose --force 
+        
         [ ! -d node_modules ] && npm install -S -D --force 
         npm install -g node-prune
         npm run build
