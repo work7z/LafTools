@@ -266,7 +266,8 @@ export let WB_MenuBar = (props: PassProp) => {
           id: "SFnhx",
           label: Dot("aCkOP", "Exit"),
           onClick: () => {
-            hist.push(URL_WORKBENCH);
+            // hist.push(URL_WORKBENCH);
+            location.href = fmtURL_Client("/")
           },
         },
       ],

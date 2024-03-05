@@ -17,7 +17,7 @@ mode=$1
 crossPlatformDir=$LAFTOOLS_ROOT/cross-platform
 if [ ! -d $crossPlatformDir ]; then
     echo "[I] downloading runtime nodejs"
-    ./pipeline/fetch-runtime-nodejs.sh
+    ./pipeline/fetch-runtime-nodejs.sh &> /dev/null
 else 
     echo "[I] runtime nodejs already exists in $crossPlatformDir, skip downloading."
 fi
