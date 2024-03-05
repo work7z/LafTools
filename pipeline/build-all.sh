@@ -220,5 +220,7 @@ package-all
 docker-all
 # [END]
 
+echo "[I] location: `pwd` and dist dir: $distDir"
+
 
 echo "[I] $(date) Done."

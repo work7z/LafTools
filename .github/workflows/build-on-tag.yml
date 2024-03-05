@@ -31,10 +31,8 @@ jobs:
 
       - name: Run build script
         run: |
-          npm i -g pnpm 
           npm i -g typescript
           cd ./modules/web2
-          pnpm install --no-frozen-lockfile
           cd ../../
           cd ./pipeline
           chmod +x ./build-all.sh
