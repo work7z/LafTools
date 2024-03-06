@@ -62,7 +62,7 @@ Recently, we are refactoring the architecture of LafTools based on next.js, belo
 
 For the sake of simplicity, let's say that you've cloned this repository to either `C:\\Users\jerry\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or simply execute them before running any command.
 
-If you're using Windows OS, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
+If you're using Windows OS, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](./docs/CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
 
 **Env for Windows:**
 
@@ -153,8 +153,8 @@ Hopefully LafTools will make your daily tasks easier, reducing the need for over
 
 Below are further materials that you can have a look if you'd like to learn more detail about this project:
 
-- [FAQ](./FAQ.md)
-- [CONTRIBUTION](./CONTRIBUTION.md)
+- [FAQ](./docs/FAQ.md)
+- [CONTRIBUTION](./docs/CONTRIBUTION.md)
 - [For China Developers](dev/notes/common/issues.md)
 
 # 🎷 Inspiration
