@@ -262,7 +262,7 @@ export const ProcessTextArea = (props: {
   if (_.isNil(props.rightJSX)) {
     return mainJSX;
   }
-  let RightJSX = props.rightJSX;
+  let RightJSX: any = props.rightJSX;
   return (
     <div className="pure-g hp100">
       <div className="pure-u-18-24 hp100">{mainJSX}</div>

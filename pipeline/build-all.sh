@@ -126,8 +126,8 @@ build-fe(){
         # [ ! -d node_modules ] && npm install -S -D --force 
         [ -d node_modules ] && rm -rf node_modules
         rm -f *lock*
-        # [ ! -d node_modules ] && npm install --omit=dev --force 
-        [ ! -d node_modules ] && npm install -S -D --force 
+        [ ! -d node_modules ] && npm install --omit=dev --force 
+        # [ ! -d node_modules ] && npm install -S -D --force 
         # npm install -g node-prune
         # node-prune --production ./node_modules
         npm run build
