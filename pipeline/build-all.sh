@@ -86,6 +86,8 @@ build-bundle(){
         mkdir -p $platformDistDir
         if [ $bundleMode != "no-nodejs" ]; then
             mkdir -p $platformDistDir/bin
+        else
+            [ -d $platformDistDir/bin ] && rm -rf $platformDistDir/bin
         fi
         echo "[I] building [$platformName]"
         # GOOS=$argGOOS GOARCH=$platformArch go build -o $platformDistDir/core.$platformExt core/app.go 
