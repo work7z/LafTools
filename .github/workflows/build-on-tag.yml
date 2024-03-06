@@ -29,6 +29,10 @@ jobs:
       - name: Get dependencies
         run: go mod download
 
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
       - name: Run build script
         run: |
           npm i -g typescript
@@ -36,7 +40,7 @@ jobs:
           cd ../../
           cd ./pipeline
           chmod +x ./build-all.sh
-          ./build-all.sh
+          ./build-all.sh "${{steps.get_version.outputs.VERSION}}"
 
       - name: Create Release
         id: create_release
@@ -48,10 +52,6 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
       - name: Upload Release Asset for linux-x64
         uses: actions/upload-release-asset@v1

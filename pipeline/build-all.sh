@@ -1,8 +1,26 @@
 #!/bin/bash 
 # this script is created for building the project as an executable file.  
 
+crtVersion=$1
+
+if [ -z $crtVersion ]; then
+    echo "[E] crtVersion is required."
+    exit 1
+fi
 
 cd $(dirname $0)/..
+
+
+echo "
+import { AppInfoClz } from "./types"
+
+export default {
+  \"version\": \"$crtVersion\",
+  \"releaseDate\": \"$(date +%Y-%m-%d)\",
+  \"timestamp\": \"$(date +%s)\"
+} satisfies AppInfoClz
+" > ./modules/web2/app/[lang]/info.tsx
+
 
 if [ -z jq ]; then
     echo "[E] jq is not installed, please install jq first."
@@ -105,8 +123,12 @@ build-fe(){
         cd ./modules/web2
         # [ ! -d node_modules ] && npm install --production --verbose --force 
         
-        [ ! -d node_modules ] && npm install -S -D --force 
-        npm install -g node-prune
+        # [ ! -d node_modules ] && npm install -S -D --force 
+        [ -d node_modules ] && rm -rf node_modules
+        rm -f *lock*
+        [ ! -d node_modules ] && npm install --omit=dev --force 
+        # npm install -g node-prune
+        # node-prune --production ./node_modules
         npm run build
         cd .next
         cp -a ../public/ ./standalone/public
@@ -140,6 +162,7 @@ refining(){
     find ./dist -iname "*.command" -exec chmod 755 {} \;
     find ./dist -iname "ph" -exec rm -f {} \;
 }
+
 package-for(){
     platformName=$1
     packageType=$2
