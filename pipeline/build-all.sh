@@ -12,7 +12,7 @@ cd $(dirname $0)/..
 
 
 echo "
-import { AppInfoClz } from "./types"
+import { AppInfoClz } from \"./types\"
 
 export default {
   \"version\": \"$crtVersion\",
