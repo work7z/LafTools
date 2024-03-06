@@ -234,7 +234,7 @@ We reserve the right to enforce legal actions against violations of this License
 
 我们保留对违反此许可证以及额外条件之行为进行法律维权的权利。
 
-## 許可證 - 繁體中文（License in Tranditional Chinese）
+## 許可證 - 繁體中文（License in Traditional Chinese）
 
 本專案已獲得 GNU Affero 通用公共授權。
 

@@ -1,8 +1,14 @@
 @echo off
 
-REM Set HOSTNAME environment variable
+REM Set environment variables
 set HOSTNAME=127.0.0.1
 set PORT=39899
 
-REM Start the server
-.\bin\node\node.exe .\core\server.js
+REM Check if node binary exists
+if not exist .\bin\node\bin\node (
+    node .\core\server.js
+) else (
+    .\bin\node\bin\node .\core\server.js
+)
+
+pause

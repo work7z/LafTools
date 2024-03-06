@@ -1,9 +1,9 @@
 
-import { AppInfoClz } from "./types"
+    import { AppInfoClz } from "./types"
 
-export default {
-  "version": "v2.0.0",
-  "releaseDate": "2024-03-06",
-  "timestamp": "1709737620"
-} satisfies AppInfoClz
-
+    export default {
+    "version": "v2.0.7",
+    "releaseDate": "2024-03-07",
+    "timestamp": "1709742084"
+    } satisfies AppInfoClz
+    
