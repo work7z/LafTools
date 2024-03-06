@@ -142,7 +142,7 @@ export default (props: GenCodeMirrorProp) => {
     let m = val.bigtext.textKVStatusMap[bigTextId];
     let finalText = m?.value || "";
     if (!_.isNil(m?.internalValue)) {
-      finalText = m?.internalValue;
+      finalText = m?.internalValue || '';
     }
     return {
       bigText: finalText,

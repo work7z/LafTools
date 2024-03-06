@@ -37,7 +37,7 @@ export let FN_GetActualTextValueByBigTextId = (
     return "";
   }
   if (!_.isNil(stMap.internalValue)) {
-    return stMap.internalValue;
+    return stMap.internalValue || '';
   }
   return stMap.value;
 };

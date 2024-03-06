@@ -64,9 +64,9 @@ import { Dot } from "../../utils/cTranslationUtils";
 interface PasswordInputProps {
   strong?: boolean;
 }
-export default (props: PasswordInputProps & InputGroupProps): any => {
+export default (props: PasswordInputProps & InputGroupProps & { value?: string }): any => {
   const [showPassword, onShowPassword] = useState(false);
-  let [tmpValue, onTmpValue] = useState(props.value);
+  let [tmpValue, onTmpValue] = useState(props.value + '');
   const warnMsg = useMemo(() => {
     let password = tmpValue;
     if (_.isNil(password)) {
@@ -87,7 +87,7 @@ export default (props: PasswordInputProps & InputGroupProps): any => {
   const lockButton = (
     <Button
       small={props.small}
-      icon={showPassword ? "unlock" : "lock"}
+      icon={(showPassword ? "unlock" : "lock") as any}
       intent={
         props.strong && !_.isEmpty(warnMsg) ? Intent.WARNING : Intent.SUCCESS
       }
