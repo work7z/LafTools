@@ -8,6 +8,15 @@ if [ -z $crtVersion ]; then
     exit 1
 fi
 
+if [ "$TAG_MODE" = "true" ]; then
+    export LAFTOOLS_ROOT=/home/runner/work/LafTools/LafTools-tag
+    cp -a /home/runner/work/LafTools/LafTools /home/runner/work/LafTools/LafTools-tag
+fi
+
+echo "[I] LafTools is located at $LAFTOOLS_ROOT"
+cd $(dirname $0)/..
+distDir=./dist
+
 clean-bundle(){
     echo "[I] $(date) Working..."
     echo "[I] PWD: $(pwd)"
@@ -29,7 +38,6 @@ clean-bundle(){
 build-bundle(){
     bundleMode=$1
 
-    cd $(dirname $0)/..
 
     echo "
     import { AppInfoClz } from \"./types\"
@@ -47,7 +55,6 @@ build-bundle(){
         exit 1
     fi
 
-    distDir=./dist
     set +e
     source ./pipeline/env.sh
     mode=$1
@@ -103,8 +110,7 @@ build-bundle(){
         # cp -a ./dist/resources $platformDistDir
         cp -a ./dist/web2 $platformDistDir/core
 
-        cp -a ./parcel/scripts/$osScriptFile/* $platformDistDir
-        # cp -a ./parcel/scripts/root/* $platformDistDir
+        cp -a ./pipeline/parcel/scripts/$osScriptFile/* $platformDistDir
 
         if [ $bundleMode != "no-nodejs" ]; then
             echo "[I] copying nodejs service..."
@@ -221,7 +227,7 @@ build-bundle(){
         (
             cd $subDockerDir
             cp ../../pkg/*$platformName.tar.gz ./linux.tar.gz
-            cp $LAFTOOLS_ROOT/parcel/docker/* ./
+            cp $LAFTOOLS_ROOT/pipeline/parcel/docker/* ./
             # date +%Y%m%d-%s
             sudo docker build -t codegentoolbox/laftools-$platformName:insider -f ./Dockerfile .
         )

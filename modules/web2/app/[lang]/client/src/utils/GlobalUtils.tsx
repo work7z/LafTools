@@ -47,6 +47,9 @@ const gutils = {
     if (_.isNil(val)) {
       return 0;
     }
+    if (val == null) {
+      return 0
+    }
     let r = parseInt(val);
     if (_.isNaN(r)) {
       return 0;
@@ -107,6 +110,9 @@ const gutils = {
   // },
   safeparse(str: string | null) {
     if (_.isNil(str)) {
+      return null;
+    }
+    if (str == null) {
       return null;
     }
     try {

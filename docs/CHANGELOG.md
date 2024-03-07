@@ -1,1 +1,1 @@
-Please see ./dev/changelogs/*.log for further details.
+Please see ./devtools/changelogs/\*.log for further details.

@@ -34,6 +34,9 @@ export let safeparse = (str: string | null) => {
   if (_.isNil(str)) {
     return null;
   }
+  if (str == null) {
+    return null;
+  }
   try {
     return JSON.parse(str);
   } catch (err) {

@@ -1,24 +1,35 @@
 {
-  "Env": ["LAFTOOLS_ROOT"],
+  "Env": [
+    "LAFTOOLS_ROOT"
+  ],
   "LockFile": true,
   "OutputDir": "$LAFTOOLS_ROOT/var/log",
   "Jobs": [
     {
       "Name": "Copy Static Resources",
       "Type": "CopyStatic",
-      "Commands": ["bash", "$LAFTOOLS_ROOT/modules/web/job-syncstatic.sh"]
+      "Commands": [
+        "bash",
+        "$LAFTOOLS_ROOT/modules/web/job-syncstatic.sh"
+      ]
     },
     {
       "Name": "Run Tailwind DevTools",
       "Type": "RunCommand",
       "Disabled": true,
-      "Commands": ["bash", "$LAFTOOLS_ROOT/modules/web/job-tailwind.sh"]
+      "Commands": [
+        "bash",
+        "$LAFTOOLS_ROOT/modules/web/job-tailwind.sh"
+      ]
     },
     {
       "Id": "scan_and_translation",
       "Name": "Scan and Translation",
       "Type": "RunCommand",
-      "Commands": ["node", "$LAFTOOLS_ROOT/dev/scripts/scan/scan-entry.js"]
+      "Commands": [
+        "node",
+        "$LAFTOOLS_ROOT/devtools/scripts/scan/scan-entry.js"
+      ]
     },
     {
       "Name": "Add License Headers",

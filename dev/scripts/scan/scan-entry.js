@@ -39,7 +39,10 @@ function getFile(file) {
   return obj;
 }
 
-let overwrittenDir = path.join(baseDIR, ...`dev/lang/overwrriten`.split("/"));
+let overwrittenDir = path.join(
+  baseDIR,
+  ...`devtools/lang/overwrriten`.split("/"),
+);
 
 let loadingDOTMapObj = {
   // [key:string]: boolean

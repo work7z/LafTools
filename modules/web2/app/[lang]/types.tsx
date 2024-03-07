@@ -5,10 +5,10 @@ export type AppInfoClz = {
 }
 
 export type VersionReleaseRequirement = {
-    increUpdtMinVer: string | null, // e.g. incremental update minimal version, = 2.1.0
-    increPartsIfPosi: {
-        name: string,
-        to: string[],
-        lastUpdatedAt: number
+    consistentID: string | null, // e.g. if current consistent ID is not matched with one from new version, then we'd better do a full package release
+    partials: { // in App, not every parts need to be downloaded and released, instead, we can reuse existing local directory to speed up the release process by checking their version
+        id: string,
+        destination: string[],
+        partialConsistentID: string | null // if it's not matched, then need to do full package release.
     }[]
 }

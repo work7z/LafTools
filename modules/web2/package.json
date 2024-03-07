@@ -108,7 +108,6 @@
     "libyara-wasm": "^1.2.1",
     "localforage": "1.10.0",
     "lodash": "4.17.21",
-    "lodash-es": "4.17.21",
     "log4j": "1.0.0",
     "log4js": "6.9.1",
     "loglevel": "1.8.1",

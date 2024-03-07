@@ -1,17 +1,17 @@
 import { VersionReleaseRequirement } from "./types";
 
 let value: VersionReleaseRequirement = {
-    increUpdtMinVer: null,
-    increPartsIfPosi: [
+    consistentID: '20240307',
+    partials: [
         {
-            name: 'bin',
-            to: ['bin'],
-            lastUpdatedAt: 1
+            id: 'bin',
+            destination: ['bin'],
+            partialConsistentID: '20240307'
         },
         {
-            name: 'core',
-            to: ['bin'],
-            lastUpdatedAt: 1
+            id: 'core',
+            destination: ['bin'],
+            partialConsistentID: '20240307'
         },
     ]
 }

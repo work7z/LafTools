@@ -56,7 +56,7 @@ type wsPty struct {
 
 func getPtyDir() string {
 	if tools.IsDevMode {
-		return path.Join(tools.LafToolsAppBaseDir, "parcel/patch/windows-x64")
+		return path.Join(tools.LafToolsAppBaseDir, "pipeline/parcel/patch/windows-x64")
 	} else {
 		return ""
 	}

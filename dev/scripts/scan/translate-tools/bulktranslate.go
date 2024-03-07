@@ -58,7 +58,7 @@ func main() {
 	}
 	log.Ref().Info("LAFTOOLS_ROOT", LAFTOOLS_ROOT)
 	// zhCN
-	zhCNOverwrittenFile := path.Join(LAFTOOLS_ROOT, "dev", "lang", "overwrriten", "zh_CN-overwrite.json")
+	zhCNOverwrittenFile := path.Join(LAFTOOLS_ROOT, "devtools", "lang", "overwrriten", "zh_CN-overwrite.json")
 	zhCNOverwrittenFileContent, err := nocycle.ReadFileAsStr(zhCNOverwrittenFile)
 	if err != nil {
 		log.InternalLog.Panic("err", err)
@@ -161,7 +161,7 @@ func main() {
 }
 
 func getTranslateResultDir() string {
-	tmpDir := path.Join(LAFTOOLS_ROOT, "dev", "scripts", "scan", "tmp-translate-result")
+	tmpDir := path.Join(LAFTOOLS_ROOT, "devtools", "scripts", "scan", "tmp-translate-result")
 	os.MkdirAll(tmpDir, os.ModePerm)
 	return tmpDir
 }

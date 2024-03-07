@@ -13,9 +13,9 @@
 
 # 💡 Introduction
 
-You may wonder why we are determined to develop this toolbox as there are numerous tools can be used on the Internet.
+${Dot("LntxatKlt","You may wonder why we are determined to develop this toolbox as there are numerous tools can be used on the Internet.")}
 
-Indeed, most tools we have provided can be easily found on the Internet, such as codec, formatter, translation, QR Code, etc… However, it’s not the most comfortable and efficient approach to use these tools.
+${Dot("r5L9Hv8mS","Indeed, most tools we have provided can be easily found on the Internet, such as codec, formatter, translation, QR Code, etc… However, it’s not the most comfortable and efficient approach to use these tools.")}
 
 Have you ever met the below issues while using those online tools?
 

@@ -77,7 +77,7 @@ const TokenUtils = {
 // verify if its token mode
 setTimeout(() => {
   let b = window.location.href.match(/t=([A-Za-z0-9]+)/);
-  if (!_.isNil(b) && b[1]) {
+  if (!_.isNil(b) && b && b[1]) {
     let systemToken = _.trim(b[1]);
     let hasEntry = window.location.href.indexOf("/app/entry") != -1;
     if (hasEntry && systemToken) {

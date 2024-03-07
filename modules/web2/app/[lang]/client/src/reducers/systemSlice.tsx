@@ -136,10 +136,10 @@ const systemSlice = createSlice({
       }>
     ) => {
       if (!_.isNil(action.payload.ClientWidth)) {
-        state.ClientWidth = action.payload.ClientWidth;
+        state.ClientWidth = action.payload.ClientWidth || 0;
       }
       if (!_.isNil(action.payload.ClientHeight)) {
-        state.ClientHeight = action.payload.ClientHeight;
+        state.ClientHeight = action.payload.ClientHeight || 0;
       }
     },
     addNewMessageItem: (

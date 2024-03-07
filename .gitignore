@@ -52,7 +52,7 @@ yarn-error.log*
 
 
 modules/web/scan.sh
-dev/lang/overwrriten/duplicate.json
+devtools/lang/overwrriten/duplicate.json
 time-consumer
 *.bin
 __debug_bin

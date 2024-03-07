@@ -8,7 +8,7 @@
       "name": "Scan",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/dev/scripts/scan/scan-entry.js",
+      "program": "${workspaceFolder}/devtools/scripts/scan/scan-entry.js",
       "console": "integratedTerminal",
       "args": ["server"],
       "internalConsoleOptions": "neverOpen"

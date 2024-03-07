@@ -38,6 +38,9 @@ import QueryUtils from "./QueryUtils";
 export function getPayloadValue<T>(
   x: PayloadValueData<T> | undefined | null
 ): T | null {
+  if (x == null || x == undefined) {
+    return null;
+  }
   if (_.isNil(x)) {
     return null;
   }

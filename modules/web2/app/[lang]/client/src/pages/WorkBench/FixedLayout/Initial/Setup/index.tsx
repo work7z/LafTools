@@ -300,6 +300,7 @@ export default () => {
                             return;
                           }
                           iptIfHave = _.trim(iptIfHave + "");
+                          iptIfHave = iptIfHave + ""
                           let isLinux = iptIfHave.startsWith("/");
                           let t1 = await DesktopUtils.checkExistAndAskAndMkdir(
                             iptIfHave

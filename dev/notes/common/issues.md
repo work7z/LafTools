@@ -2,7 +2,7 @@
 
 ## Error: The specified module could not be found.
 
-It's a common issue in Windows OS, please install the runtime which can be found in dev/source/VC_redist.x64.exe
+It's a common issue in Windows OS, please install the runtime which can be found in devtools/source/VC_redist.x64.exe
 
 ## cannot download deps
 
