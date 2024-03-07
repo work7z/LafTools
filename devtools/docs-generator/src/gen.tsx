@@ -92,6 +92,7 @@ _.forEach(i18nItems, eachI18nItem => {
         _.forEach(tokesnReplace, (value, key) => {
             finalContent = finalContent.replace(new RegExp(value, 'g'), key)
         })
+        finalContent = finalContent.replace(/\$\{lang\}/g, lang)
 
         let rootDir = process.env.LAFTOOLS_ROOT || '';
         eachMarkdownFiles.destinations.forEach((eachDestination) => {
