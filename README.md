@@ -157,6 +157,11 @@ Below are further materials that you can have a look if you'd like to learn more
 - [CONTRIBUTION](./docs/CONTRIBUTION.md)
 - [For China Developers](devtools/notes/common/issues.md)
 
+# 💐 Icons
+
+We would appreciate talent artists who provided below beautiful icons:
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+
 # 🙏 Acknowledgements
 
 This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
@@ -172,11 +177,6 @@ Thank you!
 
 Ryan Laf  
 Feb. 2nd, 2023
-
-# FreeIcon Usages
-
-We would appreciate talent artists who provided below beautiful icons:
-<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
 # 🪪 License
 
