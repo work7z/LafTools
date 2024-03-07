@@ -14,7 +14,8 @@ if [ "$TAG_MODE" = "true" ]; then
 fi
 
 echo "[I] LafTools is located at $LAFTOOLS_ROOT"
-cd $(dirname $0)/..
+cd $LAFTOOLS_ROOT
+echo "[I] PWD: $(pwd)"
 distDir=./dist
 
 clean-bundle(){
