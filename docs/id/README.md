@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - Kotak peralatan serbaguna generasi berikutnya yang dirancang untuk pemrogram
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">Pratinjau LafTools Versi Insider</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

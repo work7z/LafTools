@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - A programozók számára tervezett sokoldalú eszköztár következő generációja
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">Tekintse meg a LafTools Insider verzióját</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

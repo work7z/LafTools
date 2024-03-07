@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - กล่องเครื่องมืออเนกประสงค์เจเนอเรชันถัดไปที่ออกแบบมาสำหรับโปรแกรมเมอร์
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">ดูตัวอย่าง LafTools เวอร์ชัน Insider</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

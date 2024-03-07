@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - Nová generace všestranného toolboxu určeného pro programátory
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">Náhled Insider verze LafTools</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

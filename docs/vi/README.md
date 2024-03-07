@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - Thế hệ tiếp theo của hộp công cụ đa năng được thiết kế dành cho lập trình viên
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">Xem trước phiên bản nội bộ của LafTools</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

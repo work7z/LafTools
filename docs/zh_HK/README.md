@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - 專為程式設計師設計的下一代多功能工具箱
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">預覽LafTools工具箱的 Insider 版本</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - 프로그래머를 위해 설계된 차세대 다목적 도구 상자
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">LafTools의 내부자 버전 미리보기</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

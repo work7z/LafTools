@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - Следующее поколение универсального набора инструментов, предназначенного для программистов.
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">Предварительный просмотр инсайдерской версии LafTools</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

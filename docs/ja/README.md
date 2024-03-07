@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - プログラマー向けに設計された次世代の多用途ツールボックス
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">LafTools の Insider バージョンをプレビューする</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

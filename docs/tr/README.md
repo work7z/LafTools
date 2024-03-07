@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - Programcılar için tasarlanmış yeni nesil çok yönlü araç kutusu
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">LafTools'un Insider Sürümünü Önizleyin</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

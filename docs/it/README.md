@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - La prossima generazione di un toolbox versatile progettato per i programmatori
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">Anteprima della versione Insider di LafTools</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

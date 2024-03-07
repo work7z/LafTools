@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - Monipuolisen työkalupakin seuraavan sukupolven ohjelmoijille
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">Esikatsele LafToolsin sisäpiiriversiota</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 

@@ -3,11 +3,11 @@
 <br>
 <span style="font-size:20px">LafTools - ${Dot("4BZFkrKZz","The next generation of a versatile toolbox designed for programmers")}
 </span>
-<center>
+<!-- <center>
 <div style="text-align:center;">
 <a target="_blank" href="http://cloud.laf-tools.com">${Dot("SSjHemio0","Preview the Insider Version of LafTools")}</a>
 </div>
-</center>
+</center> -->
 <br><br>
 </p>
 
