@@ -1,12 +1,14 @@
+<i>Note: Ezt az oldalt a LafTools belsőleg hozta létre.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
+
 # 🙋 Is it a free software?
 
-${Dot("-n\_-_sIlP","Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.")}
+Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.
 
-${Dot("tYuR4PCbV","While we strive to provide as many services as possible for free, some features do require payment. This is because we incur costs for servers, maintenance, and other operational aspects that are essential to keep our services running smoothly and reliably. By charging for premium services, we can cover these costs and continue to offer high-quality, sustainable services. We appreciate your understanding and support.")}
+Bár arra törekszünk, hogy a lehető legtöbb szolgáltatást ingyenesen biztosítsuk, bizonyos funkciókért fizetni kell. Ennek az az oka, hogy a szerverekkel, a karbantartással és más olyan üzemeltetési költségekkel kell számolnunk, amelyek elengedhetetlenek szolgáltatásaink zavartalan és megbízható működéséhez. A prémium szolgáltatások díjazásával fedezni tudjuk ezeket a költségeket, és továbbra is magas színvonalú, fenntartható szolgáltatásokat kínálunk. Köszönjük megértését és támogatását.
 
-${Dot("dwWA-7VQ3","Wait, actually there’s another option instead of just paying the bill.")}
+Várj, valójában van egy másik lehetőség a számla fizetése helyett.
 
-${Dot("GRsw21x8A","As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.")}
+Professzionális programozóként hozzájárulhat ehhez a projekthez, és lehívási kérelmet készíthet ehhez a projekthez, majd három hónapig ingyenes prémium tagságot szerezhet.
 
 What you can do is to
 
@@ -51,15 +53,15 @@ Thank you.
 Nov 18th, 2023  
 LafTools Team
 
-# ${Dot("6yjO-9dyy","Why the default port is 39899")}
+# Miért az alapértelmezett port a 39899?
 
-${Dot("vn8G5weVs","It's a magic number which is comprised of 3 + 98 + 99.")}
+Ez egy varázslatos szám, amely 3 + 98 + 99-ből áll.
 
-${Dot("JseUpWpV6","But as LafTools's author, I prefer not to tell the story for now, haha.")}
+De mint a LafTools szerzője, most inkább nem mesélem el a történetet, haha.
 
-# 🎷 ${Dot("m3wnIDvAF","Inspiration")}
+# 🎷 Ihlet
 
-${Dot("t5DDvnfna","This project is primarily inspired by the following musicians:")}
+Ezt a projektet elsősorban a következő zenészek inspirálták:
 
 - Joe Pass
 - The Manhattan Transfer
@@ -84,7 +86,7 @@ ${Dot("t5DDvnfna","This project is primarily inspired by the following musicians
 - Harry Styles(As It Was)
 - Lovebugs
 
-${Dot("ZdiGcIi8j","Specifically, the performance of **Satin Doll** by the virtuoso **Joe Pass** in 'An Evening With Joe Pass' (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.")}
+Pontosabban a ** teljesítménye
 
 Thank you!
 

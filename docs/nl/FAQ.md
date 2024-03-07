@@ -1,12 +1,14 @@
+<i>Note: Deze pagina wordt intern gegenereerd vanuit LafTools.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
+
 # 🙋 Is it a free software?
 
-${Dot("-n\_-_sIlP","Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.")}
+Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.
 
-${Dot("tYuR4PCbV","While we strive to provide as many services as possible for free, some features do require payment. This is because we incur costs for servers, maintenance, and other operational aspects that are essential to keep our services running smoothly and reliably. By charging for premium services, we can cover these costs and continue to offer high-quality, sustainable services. We appreciate your understanding and support.")}
+Hoewel we ernaar streven zoveel mogelijk diensten gratis aan te bieden, is voor sommige functies wel betaling vereist. Dit komt omdat wij kosten maken voor servers, onderhoud en andere operationele aspecten die essentieel zijn om onze diensten soepel en betrouwbaar te laten draaien. Door premiumdiensten in rekening te brengen, kunnen we deze kosten dekken en hoogwaardige, duurzame diensten blijven aanbieden. Wij waarderen uw begrip en steun.
 
-${Dot("dwWA-7VQ3","Wait, actually there’s another option instead of just paying the bill.")}
+Wacht, eigenlijk is er nog een andere optie in plaats van alleen de rekening te betalen.
 
-${Dot("GRsw21x8A","As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.")}
+Als professionele programmeur kunt u bijdragen aan dit project en een pull-request voor dit project aanmaken. Vervolgens kunt u een gratis premium lidmaatschap voor drie maanden verkrijgen.
 
 What you can do is to
 
@@ -51,15 +53,15 @@ Thank you.
 Nov 18th, 2023  
 LafTools Team
 
-# ${Dot("6yjO-9dyy","Why the default port is 39899")}
+# Waarom de standaardpoort 39899 is
 
-${Dot("vn8G5weVs","It's a magic number which is comprised of 3 + 98 + 99.")}
+Het is een magisch getal dat bestaat uit 3 + 98 + 99.
 
-${Dot("JseUpWpV6","But as LafTools's author, I prefer not to tell the story for now, haha.")}
+Maar als auteur van LafTools vertel ik het verhaal voorlopig liever niet, haha.
 
-# 🎷 ${Dot("m3wnIDvAF","Inspiration")}
+# 🎷 Inspiratie
 
-${Dot("t5DDvnfna","This project is primarily inspired by the following musicians:")}
+Dit project is voornamelijk geïnspireerd door de volgende muzikanten:
 
 - Joe Pass
 - The Manhattan Transfer
@@ -84,7 +86,7 @@ ${Dot("t5DDvnfna","This project is primarily inspired by the following musicians
 - Harry Styles(As It Was)
 - Lovebugs
 
-${Dot("ZdiGcIi8j","Specifically, the performance of **Satin Doll** by the virtuoso **Joe Pass** in 'An Evening With Joe Pass' (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.")}
+In het bijzonder de prestaties van **
 
 Thank you!
 

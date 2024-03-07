@@ -1,12 +1,14 @@
+<i>Note: 該頁面是由LafTools工具箱內部產生的。</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  繁體中文  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
+
 # 🙋 Is it a free software?
 
-${Dot("-n\_-_sIlP","Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.")}
+Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.
 
-${Dot("tYuR4PCbV","While we strive to provide as many services as possible for free, some features do require payment. This is because we incur costs for servers, maintenance, and other operational aspects that are essential to keep our services running smoothly and reliably. By charging for premium services, we can cover these costs and continue to offer high-quality, sustainable services. We appreciate your understanding and support.")}
+雖然我們努力免費提供盡可能多的服務，但某些功能確實需要付費。這是因為我們會產生伺服器、維護和其他營運方面的成本，這些成本對於維持我們的服務平穩可靠地運作至關重要。透過對優質服務收費，我們可以彌補這些成本並繼續提供高品質、永續的服務。感謝您的理解與支持。
 
-${Dot("dwWA-7VQ3","Wait, actually there’s another option instead of just paying the bill.")}
+等等，其實除了付帳之外還有另一個選擇。
 
-${Dot("GRsw21x8A","As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.")}
+作為專業程式設計師，您可以為該專案做出貢獻並為該專案建立拉取請求，然後您可以獲得三個月的免費高級會員資格。
 
 What you can do is to
 
@@ -51,15 +53,15 @@ Thank you.
 Nov 18th, 2023  
 LafTools Team
 
-# ${Dot("6yjO-9dyy","Why the default port is 39899")}
+# 為什麼預設連接埠是39899
 
-${Dot("vn8G5weVs","It's a magic number which is comprised of 3 + 98 + 99.")}
+這是一個神奇的數字，由 3 + 98 + 99 組成。
 
-${Dot("JseUpWpV6","But as LafTools's author, I prefer not to tell the story for now, haha.")}
+但身為LafTools工具箱的作者，我暫時不想講這個故事，哈哈。
 
-# 🎷 ${Dot("m3wnIDvAF","Inspiration")}
+# 🎷 靈感
 
-${Dot("t5DDvnfna","This project is primarily inspired by the following musicians:")}
+這個項目主要受到以下音樂家的啟發：
 
 - Joe Pass
 - The Manhattan Transfer
@@ -84,7 +86,7 @@ ${Dot("t5DDvnfna","This project is primarily inspired by the following musicians
 - Harry Styles(As It Was)
 - Lovebugs
 
-${Dot("ZdiGcIi8j","Specifically, the performance of **Satin Doll** by the virtuoso **Joe Pass** in 'An Evening With Joe Pass' (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.")}
+具體來說，**的表現
 
 Thank you!
 

@@ -1,12 +1,14 @@
+<i>Note: Diese Seite wird intern von LafTools generiert.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  Deutsch  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
+
 # 🙋 Is it a free software?
 
-${Dot("-n\_-_sIlP","Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.")}
+Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.
 
-${Dot("tYuR4PCbV","While we strive to provide as many services as possible for free, some features do require payment. This is because we incur costs for servers, maintenance, and other operational aspects that are essential to keep our services running smoothly and reliably. By charging for premium services, we can cover these costs and continue to offer high-quality, sustainable services. We appreciate your understanding and support.")}
+Obwohl wir bestrebt sind, so viele Dienste wie möglich kostenlos anzubieten, sind einige Funktionen kostenpflichtig. Dies liegt daran, dass uns Kosten für Server, Wartung und andere betriebliche Aspekte entstehen, die für den reibungslosen und zuverlässigen Betrieb unserer Dienste unerlässlich sind. Indem wir Premium-Dienste in Rechnung stellen, können wir diese Kosten decken und weiterhin qualitativ hochwertige, nachhaltige Dienste anbieten. Wir danken Ihnen für Ihr Verständnis und Ihre Unterstützung.
 
-${Dot("dwWA-7VQ3","Wait, actually there’s another option instead of just paying the bill.")}
+Moment, es gibt tatsächlich eine andere Möglichkeit, als nur die Rechnung zu bezahlen.
 
-${Dot("GRsw21x8A","As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.")}
+Als professioneller Programmierer können Sie zu diesem Projekt beitragen und einen Pull-Request für dieses Projekt erstellen. Anschließend erhalten Sie eine kostenlose Premium-Mitgliedschaft für drei Monate.
 
 What you can do is to
 
@@ -51,15 +53,15 @@ Thank you.
 Nov 18th, 2023  
 LafTools Team
 
-# ${Dot("6yjO-9dyy","Why the default port is 39899")}
+# Warum der Standardport 39899 ist
 
-${Dot("vn8G5weVs","It's a magic number which is comprised of 3 + 98 + 99.")}
+Es ist eine magische Zahl, die aus 3 + 98 + 99 besteht.
 
-${Dot("JseUpWpV6","But as LafTools's author, I prefer not to tell the story for now, haha.")}
+Aber als Autor von LafTools möchte ich die Geschichte vorerst lieber nicht erzählen, haha.
 
-# 🎷 ${Dot("m3wnIDvAF","Inspiration")}
+# 🎷 Inspiration
 
-${Dot("t5DDvnfna","This project is primarily inspired by the following musicians:")}
+Dieses Projekt ist in erster Linie von folgenden Musikern inspiriert:
 
 - Joe Pass
 - The Manhattan Transfer
@@ -84,7 +86,7 @@ ${Dot("t5DDvnfna","This project is primarily inspired by the following musicians
 - Harry Styles(As It Was)
 - Lovebugs
 
-${Dot("ZdiGcIi8j","Specifically, the performance of **Satin Doll** by the virtuoso **Joe Pass** in 'An Evening With Joe Pass' (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.")}
+Insbesondere die Leistung von **
 
 Thank you!
 

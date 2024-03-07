@@ -1,12 +1,14 @@
+<i>Note: Halaman ini dihasilkan daripada LafTools secara dalaman.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
+
 # 🙋 Is it a free software?
 
-${Dot("-n\_-_sIlP","Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.")}
+Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.
 
-${Dot("tYuR4PCbV","While we strive to provide as many services as possible for free, some features do require payment. This is because we incur costs for servers, maintenance, and other operational aspects that are essential to keep our services running smoothly and reliably. By charging for premium services, we can cover these costs and continue to offer high-quality, sustainable services. We appreciate your understanding and support.")}
+Walaupun kami berusaha untuk menyediakan sebanyak mungkin perkhidmatan secara percuma, sesetengah ciri memerlukan pembayaran. Ini kerana kami menanggung kos untuk pelayan, penyelenggaraan dan aspek operasi lain yang penting untuk memastikan perkhidmatan kami berjalan lancar dan boleh dipercayai. Dengan mengenakan bayaran untuk perkhidmatan premium, kami boleh menampung kos ini dan terus menawarkan perkhidmatan yang berkualiti tinggi dan mampan. Kami menghargai pemahaman dan sokongan anda.
 
-${Dot("dwWA-7VQ3","Wait, actually there’s another option instead of just paying the bill.")}
+Tunggu, sebenarnya ada pilihan lain dan bukannya hanya membayar bil.
 
-${Dot("GRsw21x8A","As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.")}
+Sebagai pengaturcara profesional, anda boleh menyumbang kepada projek ini dan membuat permintaan tarik untuk projek ini, kemudian anda boleh mendapatkan keahlian premium percuma selama tiga bulan.
 
 What you can do is to
 
@@ -51,15 +53,15 @@ Thank you.
 Nov 18th, 2023  
 LafTools Team
 
-# ${Dot("6yjO-9dyy","Why the default port is 39899")}
+# Mengapa port lalai ialah 39899
 
-${Dot("vn8G5weVs","It's a magic number which is comprised of 3 + 98 + 99.")}
+Ia adalah nombor ajaib yang terdiri daripada 3 + 98 + 99.
 
-${Dot("JseUpWpV6","But as LafTools's author, I prefer not to tell the story for now, haha.")}
+Tetapi sebagai penulis LafTools, saya lebih suka untuk tidak bercerita buat masa ini, haha.
 
-# 🎷 ${Dot("m3wnIDvAF","Inspiration")}
+# 🎷 Inspirasi
 
-${Dot("t5DDvnfna","This project is primarily inspired by the following musicians:")}
+Projek ini diilhamkan terutamanya oleh pemuzik berikut:
 
 - Joe Pass
 - The Manhattan Transfer
@@ -84,7 +86,7 @@ ${Dot("t5DDvnfna","This project is primarily inspired by the following musicians
 - Harry Styles(As It Was)
 - Lovebugs
 
-${Dot("ZdiGcIi8j","Specifically, the performance of **Satin Doll** by the virtuoso **Joe Pass** in 'An Evening With Joe Pass' (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.")}
+Secara khusus, prestasi **
 
 Thank you!
 

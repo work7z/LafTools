@@ -1,12 +1,14 @@
+<i>Note: Trang này được tạo từ nội bộ LafTools.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
+
 # 🙋 Is it a free software?
 
-${Dot("-n\_-_sIlP","Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.")}
+Yes, it is open-source software, and you can use it following the terms of the license. However, please note that being open-source does not necessarily mean it's entirely free of charge. While most tools can be used for free, some may incur charges related to API usage and server costs.
 
-${Dot("tYuR4PCbV","While we strive to provide as many services as possible for free, some features do require payment. This is because we incur costs for servers, maintenance, and other operational aspects that are essential to keep our services running smoothly and reliably. By charging for premium services, we can cover these costs and continue to offer high-quality, sustainable services. We appreciate your understanding and support.")}
+Mặc dù chúng tôi cố gắng cung cấp miễn phí nhiều dịch vụ nhất có thể nhưng một số tính năng vẫn yêu cầu thanh toán. Điều này là do chúng tôi phải chịu chi phí cho máy chủ, bảo trì và các khía cạnh vận hành khác cần thiết để giữ cho dịch vụ của chúng tôi hoạt động trơn tru và đáng tin cậy. Bằng cách tính phí các dịch vụ cao cấp, chúng tôi có thể trang trải các chi phí này và tiếp tục cung cấp các dịch vụ bền vững, chất lượng cao. Chúng tôi đánh giá cao sự hiểu biết và hỗ trợ của bạn.
 
-${Dot("dwWA-7VQ3","Wait, actually there’s another option instead of just paying the bill.")}
+Đợi đã, thực ra có một lựa chọn khác thay vì chỉ thanh toán hóa đơn.
 
-${Dot("GRsw21x8A","As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.")}
+Là một lập trình viên chuyên nghiệp, bạn có thể đóng góp cho dự án này và tạo một yêu cầu kéo cho dự án này, sau đó bạn có thể nhận được tư cách thành viên cao cấp miễn phí trong ba tháng.
 
 What you can do is to
 
@@ -51,15 +53,15 @@ Thank you.
 Nov 18th, 2023  
 LafTools Team
 
-# ${Dot("6yjO-9dyy","Why the default port is 39899")}
+# Tại sao cổng mặc định là 39899
 
-${Dot("vn8G5weVs","It's a magic number which is comprised of 3 + 98 + 99.")}
+Đó là một con số kỳ diệu bao gồm 3 + 98 + 99.
 
-${Dot("JseUpWpV6","But as LafTools's author, I prefer not to tell the story for now, haha.")}
+Nhưng với tư cách là tác giả của LafTools, tôi không muốn kể câu chuyện vào lúc này, haha.
 
-# 🎷 ${Dot("m3wnIDvAF","Inspiration")}
+# 🎷 Cảm hứng
 
-${Dot("t5DDvnfna","This project is primarily inspired by the following musicians:")}
+Dự án này chủ yếu được lấy cảm hứng từ các nhạc sĩ sau:
 
 - Joe Pass
 - The Manhattan Transfer
@@ -84,7 +86,7 @@ ${Dot("t5DDvnfna","This project is primarily inspired by the following musicians
 - Harry Styles(As It Was)
 - Lovebugs
 
-${Dot("ZdiGcIi8j","Specifically, the performance of **Satin Doll** by the virtuoso **Joe Pass** in 'An Evening With Joe Pass' (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.")}
+Cụ thể, hiệu suất của **
 
 Thank you!
 
