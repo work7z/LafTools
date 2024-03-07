@@ -262,6 +262,6 @@ build-bundle(){
 
 clean-bundle
 build-bundle "with-nodejs"
-build-bundle "no-nodejs"
+# build-bundle "no-nodejs"
 
 echo "[I] $(date) Done."
