@@ -1,5 +1,5 @@
 <p align="center">
-<img width="100" src="https://github.com/work7z/LafTools/blob/devtools/modules/web2/public/static/icon.png?raw=true"></img>
+<img width="100" src="https://github.com/work7z/LafTools/blob/dev/modules/web2/public/static/icon.png?raw=true"></img>
 <br>
 <span style="font-size:20px">LafTools - The next generation of a versatile toolbox designed for programmers
 </span>
@@ -43,14 +43,14 @@ If the answer to any of the above is yes, then you should consider trying our to
 ### Preview(English):
 
 [Online Preview](http://cloud.laf-tools.com)
-![](https://github.com/work7z/LafTools/blob/devtools/devtools/images/preview-enus.png?raw=true)
-![](https://github.com/work7z/LafTools/blob/devtools/devtools/images/preview-1.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-enus.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-1.png?raw=true)
 
 ### Preview(Simplified Chinese|简体中文):
 
 [在线预览](http://cloud.laf-tools.com)
-![](https://github.com/work7z/LafTools/blob/devtools/devtools/images/preview-zhcn.png?raw=true)
-![](https://github.com/work7z/LafTools/blob/devtools/devtools/images/preview-dark-jan.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-zhcn.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark-jan.png?raw=true)
 
 # 🍀 Getting Started
 
