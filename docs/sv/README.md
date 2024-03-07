@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Den här sidan är genererad från LafTools internt.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Introduktion
 
@@ -40,7 +40,7 @@ Om svaret på något av ovanstående är ja, bör du överväga att prova vår v
 
 > LafTools är fortfarande under utveckling, dess användargränssnitt, beroenden eller förutsättningar kan ändras vid behov.
 
-### Preview(English):
+### Förhandsvisning:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. Starta Go Service (refaktorering)
 
-To run Go service in terminal, you can execute below command:
+För att köra Go-tjänst i terminal kan du köra följande kommando:
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 För att felsöka Go-tjänsten har vi konfigurerat den i VSCode, du kan bara följa nedanstående steg:
 
-1. Enter Visual Studio Code
+1. Ange Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. Starta FrontEnd-modul (Flyttad till web2)
 
 ```bash
-# install required global library
+# installera det globala biblioteket
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# installera projektdeps
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # Det är endast för Windows, det kommer att stänga alla terminaler och tidigare processer.
 
-# run web service on terminal 1
+# kör webbtjänst på terminal 1
 npm run fe-web
 
-# run CSS processor on terminal 2
+# kör CSS-processor på terminal 2
 npm run fe-css
 
-# run extra jobs on terminal 3
+# köra extrajobb på terminal 3
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+Observera att du kan använda '&'-symbolen för bakgrundsexekvering om du inte vill köra dessa kommandon alternativt i separata terminalinstanser.
 
-## 4. Start Developing
+## 4. Börja utveckla
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+När Go-tjänsten körs bör du kunna se en länk utskriven i terminalen. Nu, kopiera denna URL och klistra in den i din webbläsare för att börja utveckla, låt oss köra!
 
-Example:
+Exempel:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. Bygga
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 Vad är det med namnet?
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+Namnet på det här projektet är inspirerat av 'Laffin' At Life', en klassisk countrylåt från 1987 av Chet Atkins som också har en speciell plats i författarens hjärta.
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+Förhoppningsvis kommer LafTools att göra dina dagliga sysslor enklare, minska behovet av övertid och hjälpa dig att upprätthålla en hälsosam balans mellan arbete och privatliv, låt oss bara njut av livet!
 
-# 📑 Other Materials
+# 📑 Andra material
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+Nedan finns ytterligare material som du kan ta en titt på om du vill veta mer om detta projekt:
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/sv/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [FAQ](/docs/sv/FAQ.md)
+- [BIDRAG](/docs/sv/CONTRIBUTION.md)
+- [För utvecklare i Kina](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+Vi skulle uppskatta talangartister som tillhandahåller nedanstående vackra ikoner:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 Erkännanden
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+Detta projekt hade inte varit möjligt utan fantastiska projekt med öppen källkod som jag personligen skulle vilja uttrycka min djupaste tacksamhet till:
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+För visst finns det andra projekt med öppen källkod som har gynnat och underlättat detta projekt, som jag inte kunde beskriva i den här delen; Utan dessa projekt och dessa talangutvecklares insatser hade LafTools inte varit möjligt.
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+2 februari 2023
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+Detta projekt är skyddat under GNU Affero General Public License, se LICENS-filen för mer information.

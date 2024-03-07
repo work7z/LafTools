@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Tato stránka je generována interně z LafTools.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Úvod
 
@@ -40,7 +40,7 @@ Pokud je odpověď na kteroukoli z výše uvedených otázek ano, měli byste zv
 
 > LafTools je stále ve vývoji, jeho uživatelské rozhraní, závislosti nebo předpoklady se mohou podle potřeby měnit.
 
-### Preview(English):
+### Náhled:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. Spustit službu Go (refaktoring)
 
-To run Go service in terminal, you can execute below command:
+Chcete-li spustit službu Go v terminálu, můžete provést následující příkaz:
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 Chcete-li ladit službu Go, nakonfigurovali jsme ji ve VSCode, stačí postupovat podle následujících kroků:
 
-1. Enter Visual Studio Code
+1. Zadejte Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. Spustit modul FrontEnd (přesunuto na web2)
 
 ```bash
-# install required global library
+# nainstalovat požadovanou globální knihovnu
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# nainstalovat zast
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # Je pouze pro Windows, zavře všechny terminály a předchozí procesy.
 
-# run web service on terminal 1
+# spustit webovou službu na terminálu 1
 npm run fe-web
 
-# run CSS processor on terminal 2
+# spusťte CSS procesor na terminálu 2
 npm run fe-css
 
-# run extra jobs on terminal 3
+# spustit další úlohy na terminálu 3
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+Všimněte si, že můžete použít symbol '&' pro provádění na pozadí, pokud nechcete alternativně spouštět tyto příkazy v samostatných instancích terminálu.
 
-## 4. Start Developing
+## 4. Začněte se vyvíjet
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+Jakmile je služba Go spuštěna, měli byste být schopni vidět vytištěný odkaz v terminálu. Nyní zkopírujte tuto adresu URL a vložte ji do svého prohlížeče, abyste mohli začít vyvíjet, jdeme na to!
 
-Example:
+Příklad:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. Stavět
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 Jak je to se jménem?
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+Název tohoto projektu je inspirován „Laffin' At Life“, klasickou country písní z roku 1987 od Cheta Atkinse, která má také zvláštní místo v srdci autora.
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+Doufejme, že LafTools vám usnadní každodenní úkoly, sníží potřebu přesčasů a pomůže vám udržet zdravou rovnováhu mezi pracovním a soukromým životem.
 
-# 📑 Other Materials
+# 📑 Jiné materiály
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+Níže jsou uvedeny další materiály, které si můžete prohlédnout, pokud se chcete o tomto projektu dozvědět více podrobností:
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/cs/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [FAQ](/docs/cs/FAQ.md)
+- [PŘÍSPĚVEK](/docs/cs/CONTRIBUTION.md)
+- [Pro čínské vývojáře](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+Ocenili bychom talentované umělce, kteří poskytli níže krásné ikony:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 Poděkování
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+Tento projekt by nebyl možný bez úžasných open source projektů, kterým bych rád osobně vyjádřil své nejhlubší poděkování:
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+Jistě existují další projekty s otevřeným zdrojovým kódem, které tomuto projektu prospěly a usnadnily jej, což jsem v této části nemohl podrobně popsat; Bez těchto projektů a úsilí těchto talentovaných vývojářů by LafTools nebylo možné.
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+2. února 2023
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+Tento projekt je chráněn pod licencí GNU Affero General Public License, další podrobnosti naleznete v souboru LICENSE.

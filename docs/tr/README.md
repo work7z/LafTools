@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Bu sayfa dahili olarak LafTools'tan oluşturulmuştur.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 giriiş
 
@@ -40,7 +40,7 @@ Yukarıdakilerden herhangi birine cevabınız evet ise araç kutumuzu denemeyi d
 
 > LafTools hala geliştirilme aşamasındadır; kullanıcı arayüzü, bağımlılıkları veya önkoşulları gerektiği gibi değiştirilebilir.
 
-### Preview(English):
+### Ön izleme:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. Go Hizmetini Başlatın (Yeniden Düzenleme)
 
-To run Go service in terminal, you can execute below command:
+Go hizmetini terminalde çalıştırmak için aşağıdaki komutu çalıştırabilirsiniz:
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 Go hizmetinde hata ayıklamak için onu VSCode'da yapılandırdık, aşağıdaki adımları takip etmeniz yeterlidir:
 
-1. Enter Visual Studio Code
+1. Visual Studio Code girin
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. FrontEnd Modülünü Başlatın (web2'ye taşındı)
 
 ```bash
-# install required global library
+# gerekli global kütüphaneyi yükleyin
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# proje bölümlerini yükle
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # Yalnızca Windows içindir, tüm terminalleri ve önceki işlemleri kapatacaktır.
 
-# run web service on terminal 1
+# terminal 1'de web hizmetini çalıştırın
 npm run fe-web
 
-# run CSS processor on terminal 2
+# CSS işlemcisini terminal 2'de çalıştırın
 npm run fe-css
 
-# run extra jobs on terminal 3
+# terminal 3'te ekstra işler çalıştırın
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+Bu komutları alternatif olarak ayrı terminal örneklerinde çalıştırmak istemiyorsanız, arka planda çalıştırmak için '&' sembolünü kullanabileceğinizi unutmayın.
 
-## 4. Start Developing
+## 4. Geliştirmeye Başlayın
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+Go hizmeti çalışmaya başladığında terminalde bir bağlantının yazdırıldığını görebilmeniz gerekir. Şimdi bu URL'yi kopyalayıp tarayıcınıza yapıştırarak geliştirmeye başlayın, hadi başlayalım!
 
-Example:
+Örnek:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. İnşa etmek
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 İsmin nesi var?
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+Bu projenin adı, Chet Atkins'in 1987 tarihli, yazarın kalbinde de özel bir yere sahip olan klasik country şarkısı 'Laffin' At Life'dan esinlenilmiştir.
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+LafTools'un günlük görevlerinizi kolaylaştıracağını, fazla mesai ihtiyacını azaltacağını ve sağlıklı bir iş-yaşam dengesini korumanıza yardımcı olacağını umuyoruz, bırakın hayatta biraz sohbet edelim!
 
-# 📑 Other Materials
+# 📑 Diğer materyaller
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+Bu proje hakkında daha fazla ayrıntı öğrenmek istiyorsanız aşağıda göz atabileceğiniz diğer materyaller bulunmaktadır:
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/tr/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [SSS](/docs/tr/FAQ.md)
+- [KATKI](/docs/tr/CONTRIBUTION.md)
+- [Çin Geliştiricileri için](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+Aşağıdaki güzel simgeleri sunan yetenekli sanatçıları takdir ediyoruz:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 Teşekkür
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+Bu proje, kişisel olarak en derin minnettarlığımı ifade etmek istediğim muhteşem açık kaynak projeleri olmasaydı mümkün olamazdı:
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+Elbette bu projeye fayda sağlayan ve kolaylaştıran, bu bölümde detaylandıramayacağım başka açık kaynaklı projeler de var; Bu projeler ve yetenek geliştiricilerin çabaları olmasaydı LafTools mümkün olmazdı.
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+2 Şubat 2023
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+Bu proje GNU Affero Genel Kamu Lisansı kapsamında korunmaktadır; daha fazla ayrıntı için lütfen LİSANS dosyasına bakın.

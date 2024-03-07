@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Cette page est générée à partir de LafTools en interne.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  Français  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Introduction
 
@@ -40,7 +40,7 @@ Si la réponse à l’une des questions ci-dessus est oui, vous devriez alors en
 
 > LafTools est encore en développement, son interface utilisateur, ses dépendances ou ses prérequis peuvent être modifiés selon les besoins.
 
-### Aperçu (anglais):
+### Aperçu:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -103,10 +103,10 @@ npm run win-clean # C'est pour Windows uniquement, cela fermera tous les termina
 # exécuter le service Web sur le terminal 1
 npm run fe-web
 
-# run CSS processor on terminal 2
+# exécuter le processeur CSS sur le terminal 2
 npm run fe-css
 
-# run extra jobs on terminal 3
+# exécuter des tâches supplémentaires sur le terminal 3
 npm run fe-extra
 
 ```
@@ -137,9 +137,9 @@ cd pipeline
 
 # 🌱 C'est quoi ce nom ?
 
-#### _Les outils pour Laffin' At Life_
+#### _The Tools for Laffin' At Life_
 
-Le nom de ce projet est inspiré de « Laffin' At Life », une chanson country classique de 1987 de Chet Atkins qui occupe également une place particulière dans le cœur de l'auteur.
+Le nom de ce projet est inspiré de « Laffin' At Life », une chanson country classique de 1987 de Chet Atkins qui occupe également une place particulière dans le cœur de l'auteur.
 
 Espérons que LafTools facilitera vos tâches quotidiennes, en réduisant le besoin d'heures supplémentaires et en vous aidant à maintenir un équilibre sain entre vie professionnelle et vie privée. Laissez-nous simplement profiter de la vie !
 
@@ -147,9 +147,9 @@ Espérons que LafTools facilitera vos tâches quotidiennes, en réduisant le bes
 
 Vous trouverez ci-dessous d'autres documents que vous pouvez consulter si vous souhaitez en savoir plus sur ce projet :
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/fr/CONTRIBUTION.md)
-- [Pour les développeurs chinois](devtools/notes/common/issues.md)
+- [FAQ](/docs/fr/FAQ.md)
+- [CONTRIBUTION](/docs/fr/CONTRIBUTION.md)
+- [Pour les développeurs chinois](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 

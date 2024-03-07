@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Эта страница создается внутри LafTools.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Введение
 
@@ -40,7 +40,7 @@
 
 > LafTools все еще находится в стадии разработки, его пользовательский интерфейс, зависимости или предварительные требования могут быть изменены по мере необходимости.
 
-### Preview(English):
+### Предварительный просмотр:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. Запуск службы Go (рефакторинг)
 
-To run Go service in terminal, you can execute below command:
+Чтобы запустить службу Go в терминале, вы можете выполнить следующую команду:
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 Чтобы отладить службу Go, мы настроили ее в VSCode, вы можете просто выполнить следующие шаги:
 
-1. Enter Visual Studio Code
+1. Введите Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. Запустить модуль FrontEnd (перемещен в web2)
 
 ```bash
-# install required global library
+# установить необходимую глобальную библиотеку
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# установить описания проекта
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # Это только для Windows, оно закроет все терминалы и предыдущие процессы.
 
-# run web service on terminal 1
+# запустить веб-сервис на терминале 1
 npm run fe-web
 
-# run CSS processor on terminal 2
+# запустить процессор CSS на терминале 2
 npm run fe-css
 
-# run extra jobs on terminal 3
+# запустить дополнительные задания на терминале 3
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+Обратите внимание, что вы можете использовать символ «&» для фонового выполнения, если вы не хотите альтернативно запускать эти команды в отдельных экземплярах терминала.
 
-## 4. Start Developing
+## 4. Начать разработку
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+После запуска службы Go вы сможете увидеть ссылку, распечатанную в терминале. Теперь скопируйте этот URL-адрес и вставьте его в свой браузер, чтобы начать разработку, поехали!
 
-Example:
+Пример:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. Строить
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 Что с именем?
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+Название этого проекта навеяно «Laffin' At Life», классической кантри-песней Чета Аткинса 1987 года, которая также занимает особое место в сердце автора.
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+Надеемся, что LafTools облегчит ваши повседневные задачи, уменьшит необходимость в сверхурочной работе и поможет вам поддерживать здоровый баланс между работой и личной жизнью, давайте просто посмеяться над жизнью!
 
-# 📑 Other Materials
+# 📑 Другие материалы
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+Ниже приведены дополнительные материалы, с которыми вы можете ознакомиться, если хотите узнать больше об этом проекте:
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/ru/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [Часто задаваемые вопросы](/docs/ru/FAQ.md)
+- [ВКЛАД](/docs/ru/CONTRIBUTION.md)
+- [Для китайских разработчиков](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+Мы будем признательны талантливым художникам, предоставившим ниже красивые иконки:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 Благодарности
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+Этот проект был бы невозможен без замечательных проектов с открытым исходным кодом, которым я хотел бы лично выразить глубочайшую благодарность:
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+Конечно, есть и другие проекты с открытым исходным кодом, которые принесли пользу и облегчили этот проект, о которых я не мог подробно рассказать в этой части; Без этих проектов и усилий этих талантливых разработчиков создание LafTools было бы невозможно.
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+2 февраля 2023 г.
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+Этот проект защищен Генеральной общественной лицензией GNU Affero. Более подробную информацию см. в файле ЛИЦЕНЗИИ.

@@ -40,7 +40,7 @@ ${Dot("U6zkVUPTq","If the answer to any of the above is yes, then you should con
 
 > ${Dot("bIE-DVqmU","LafTools is still under development, its UI, dependencies or prerequisites may changed as needed.")}
 
-### ${Dot("Dh60DyO0O","Preview(English)")}:
+### ${Dot("Gez25D19n","Preview")}:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview${extraLang}.png?raw=true)
@@ -137,9 +137,9 @@ cd pipeline
 
 # 🌱 ${Dot("I-Zaii3HZ","What's with the name?")}
 
-#### _${Dot("i0bt7fhna","The Tools for Laffin' At Life")}_
+#### _The Tools for Laffin' At Life_
 
-${Dot("3fcXzYtfK","The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.")}
+${Dot("3cXzYtfK","The name of this project is inspired by {0}, a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.","Laffin' At Life")}
 
 ${Dot("b3c7e3r77","Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!")}
 

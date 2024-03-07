@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: 이 페이지는 LafTools에서 내부적으로 생성됩니다.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 소개
 
@@ -40,7 +40,7 @@
 
 > LafTools는 아직 개발 중이므로 필요에 따라 UI, 종속성 또는 전제 조건이 변경될 수 있습니다.
 
-### Preview(English):
+### 시사:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. Go 서비스 출시(리팩토링)
 
-To run Go service in terminal, you can execute below command:
+터미널에서 Go 서비스를 실행하려면 아래 명령을 실행할 수 있습니다.
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 Go 서비스를 디버깅하려면 VSCode에서 구성했습니다. 아래 단계를 따르면 됩니다.
 
-1. Enter Visual Studio Code
+1. Visual Studio Code을(를) 입력하세요
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. FrontEnd 모듈 실행(web2로 이동)
 
 ```bash
-# install required global library
+# 필요한 전역 라이브러리 설치
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# 프로젝트 뎁스 설치
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # Windows 전용이며 모든 터미널과 이전 프로세스를 닫습니다.
 
-# run web service on terminal 1
+# 터미널 1에서 웹 서비스 실행
 npm run fe-web
 
-# run CSS processor on terminal 2
+# 터미널 2에서 CSS 프로세서 실행
 npm run fe-css
 
-# run extra jobs on terminal 3
+# 터미널 3에서 추가 작업 실행
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+별도의 터미널 인스턴스에서 이러한 명령을 실행하지 않으려는 경우 백그라운드 실행에 '&' 기호를 사용할 수 있습니다.
 
-## 4. Start Developing
+## 4. 개발 시작
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+Go 서비스가 실행되면 터미널에 링크가 인쇄되는 것을 볼 수 있습니다. 이제 이 URL을 복사하여 브라우저에 붙여넣고 개발을 시작하세요.
 
-Example:
+예:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. 짓다
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 이름이 뭐예요?
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+이 프로젝트의 이름은 저자의 마음 속에 특별한 자리를 차지한 Chet Atkins의 1987년 클래식 컨트리 노래인 'Laffin' At Life'에서 영감을 받았습니다.
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+LafTools가 귀하의 일상 업무를 더 쉽게 만들고 초과 근무의 필요성을 줄이고 건강한 일과 삶의 균형을 유지하는 데 도움이 되기를 바랍니다. 인생을 즐겁게 보내세요!
 
-# 📑 Other Materials
+# 📑 기타 재료
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+다음은 이 프로젝트에 대해 더 자세히 알아보고 싶은 경우 살펴볼 수 있는 추가 자료입니다.
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/ko/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [자주하는 질문](/docs/ko/FAQ.md)
+- [기부금](/docs/ko/CONTRIBUTION.md)
+- [중국 개발자의 경우](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+아래의 아름다운 아이콘을 제공해 주신 재능 있는 아티스트에게 감사드립니다.
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 감사의 말
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+이 프로젝트는 멋진 오픈 소스 프로젝트가 없었다면 불가능했을 것입니다. 개인적으로 깊은 감사를 표하고 싶습니다.
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+확실히 이 프로젝트에 도움이 되고 촉진된 다른 오픈 소스 프로젝트가 있지만 이 부분에서는 자세히 설명할 수 없습니다. 이러한 프로젝트와 인재 개발자들의 노력이 없었다면 LafTools는 불가능했을 것입니다.
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+2023년 2월 2일
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+이 프로젝트는 GNU Affero General Public License에 따라 보호됩니다. 자세한 내용은 LICENSE 파일을 참조하세요.

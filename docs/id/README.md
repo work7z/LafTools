@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Halaman ini dihasilkan dari LafTools secara internal.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Perkenalan
 
@@ -40,7 +40,7 @@ Jika jawaban di atas adalah ya, Anda harus mempertimbangkan untuk mencoba kotak 
 
 > LafTools masih dalam pengembangan, UI, dependensi, atau prasyaratnya dapat diubah sesuai kebutuhan.
 
-### Preview(English):
+### Pratinjau:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. Luncurkan Layanan Go (Refactoring)
 
-To run Go service in terminal, you can execute below command:
+Untuk menjalankan layanan Go di terminal, Anda dapat menjalankan perintah di bawah ini:
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 Untuk men-debug layanan Go, kami telah mengkonfigurasinya di VSCode, Anda cukup mengikuti langkah-langkah di bawah ini:
 
-1. Enter Visual Studio Code
+1. Masukkan Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. Luncurkan Modul FrontEnd (Dipindahkan ke web2)
 
 ```bash
-# install required global library
+# instal perpustakaan global yang diperlukan
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# instal deps proyek
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # Ini hanya untuk Windows, ini akan menutup semua terminal dan proses sebelumnya.
 
-# run web service on terminal 1
+# jalankan layanan web di terminal 1
 npm run fe-web
 
-# run CSS processor on terminal 2
+# jalankan prosesor CSS di terminal 2
 npm run fe-css
 
-# run extra jobs on terminal 3
+# menjalankan pekerjaan tambahan di terminal 3
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+Perhatikan bahwa Anda dapat menggunakan simbol '&' untuk eksekusi latar belakang jika Anda tidak ingin menjalankan perintah ini di terminal terpisah.
 
-## 4. Start Developing
+## 4. Mulai Berkembang
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+Setelah layanan Go berjalan, Anda akan melihat tautan tercetak di terminal. Sekarang, salin URL ini dan tempel ke browser Anda untuk mulai mengembangkan, ayo!
 
-Example:
+Contoh:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. Membangun
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 Ada apa dengan namanya?
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+Nama proyek ini terinspirasi dari Laffin' At Life, lagu country klasik tahun 1987 karya Chet Atkins yang juga mendapat tempat spesial di hati penulisnya.
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+Semoga LafTools dapat mempermudah tugas sehari-hari Anda, mengurangi kebutuhan lembur dan membantu Anda menjaga keseimbangan kehidupan kerja yang sehat, mari kita bermalas-malasan dalam hidup!
 
-# 📑 Other Materials
+# 📑 Bahan Lainnya
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+Di bawah ini adalah materi lebih lanjut yang dapat Anda lihat jika Anda ingin mempelajari lebih detail tentang proyek ini:
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/id/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [Pertanyaan Umum](/docs/id/FAQ.md)
+- [KONTRIBUSI](/docs/id/CONTRIBUTION.md)
+- [Untuk Pengembang Tiongkok](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+Kami sangat menghargai seniman berbakat yang menyediakan ikon-ikon indah di bawah ini:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 Ucapan Terima Kasih
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+Proyek ini tidak akan mungkin terwujud tanpa proyek open source yang luar biasa. Saya secara pribadi ingin mengucapkan terima kasih yang sebesar-besarnya kepada:
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+Yang pasti, ada proyek open source lain yang memberikan manfaat dan memfasilitasi proyek ini, yang tidak dapat saya jelaskan secara rinci di bagian ini; Tanpa proyek-proyek ini dan upaya para pengembang bakat ini, LafTools tidak akan mungkin terwujud.
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+2 Februari 2023
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+Proyek ini dilindungi di bawah Lisensi Publik Umum GNU Affero, silakan lihat file LISENSI untuk lebih jelasnya.

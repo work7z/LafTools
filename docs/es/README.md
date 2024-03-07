@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Esta página se genera internamente desde LafTools.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  Español  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Introducción
 
@@ -40,7 +40,7 @@ Si la respuesta a cualquiera de las preguntas anteriores es sí, entonces deber�
 
 > LafTools aún está en desarrollo, su interfaz de usuario, dependencias o requisitos previos pueden cambiar según sea necesario.
 
-### Vista previa (inglés):
+### Avance:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -103,10 +103,10 @@ npm run win-clean # Es solo para Windows, cerrará todas las terminales y proces
 # ejecutar servicio web en la terminal 1
 npm run fe-web
 
-# run CSS processor on terminal 2
+# ejecutar el procesador CSS en la terminal 2
 npm run fe-css
 
-# run extra jobs on terminal 3
+# ejecutar trabajos adicionales en la terminal 3
 npm run fe-extra
 
 ```
@@ -137,7 +137,7 @@ cd pipeline
 
 # 🌱 ¿Qué pasa con el nombre?
 
-#### _Las herramientas para relajarse en la vida_
+#### _The Tools for Laffin' At Life_
 
 El nombre de este proyecto está inspirado en 'Laffin' At Life', una canción country clásica de 1987 de Chet Atkins que también tiene un lugar especial en el corazón del autor.
 
@@ -147,9 +147,9 @@ Con suerte, LafTools facilitará sus tareas diarias, reducirá la necesidad de h
 
 A continuación se muestran más materiales que puede consultar si desea conocer más detalles sobre este proyecto:
 
-- [Preguntas más frecuentes](./docs/FAQ.md)
-- [CONTRIBUCIÓN](./docs/es/CONTRIBUTION.md)
-- [Para desarrolladores chinos](devtools/notes/common/issues.md)
+- [Preguntas más frecuentes](/docs/es/FAQ.md)
+- [CONTRIBUCIÓN](/docs/es/CONTRIBUTION.md)
+- [Para desarrolladores chinos](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 

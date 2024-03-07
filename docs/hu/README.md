@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Ezt az oldalt a LafTools belsőleg hozta létre.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Bevezetés
 
@@ -40,7 +40,7 @@ Ha a fentiek bármelyikére igen a válasz, akkor fontolja meg eszköztárunk ki
 
 > A LafTools még fejlesztés alatt áll, felhasználói felülete, függőségei vagy előfeltételei szükség szerint módosulhatnak.
 
-### Preview(English):
+### Előnézet:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. Go szolgáltatás indítása (újrafaktorálás)
 
-To run Go service in terminal, you can execute below command:
+A Go szolgáltatás terminálban való futtatásához hajtsa végre az alábbi parancsot:
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 A Go szolgáltatás hibakereséséhez a VSCode-ban konfiguráltuk, csak kövesse az alábbi lépéseket:
 
-1. Enter Visual Studio Code
+1. Írja be a következőt: Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. FrontEnd Module indítása (áthelyezve a web2-be)
 
 ```bash
-# install required global library
+# telepítse a szükséges globális könyvtárat
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# projekt deps telepítése
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # Csak Windowshoz készült, bezárja az összes terminált és korábbi folyamatokat.
 
-# run web service on terminal 1
+# futtassa a webszolgáltatást az 1-es terminálon
 npm run fe-web
 
-# run CSS processor on terminal 2
+# futtassa a CSS processzort a 2-es terminálon
 npm run fe-css
 
-# run extra jobs on terminal 3
+# többletfeladatok futtatása a 3-as terminálon
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+Ne feledje, hogy használhatja az '&' szimbólumot a háttérben történő végrehajtáshoz, ha nem kívánja ezeket a parancsokat különálló terminálpéldányokban futtatni.
 
-## 4. Start Developing
+## 4. Kezdje el a fejlesztést
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+Ha a Go szolgáltatás fut, látnia kell a terminálban kinyomtatott hivatkozást. Most másolja ki ezt az URL-t, és illessze be böngészőjébe a fejlesztés megkezdéséhez, gyerünk!
 
-Example:
+Példa:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. Épít
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 Mi van a névvel?
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+A projekt nevét Chet Atkins 1987-es klasszikus countrydala, a „Laffin' At Life” ihlette, amely szintén különleges helyet foglal el a szerző szívében.
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+Remélhetőleg a LafTools megkönnyíti mindennapi feladatait, csökkenti a túlórák szükségességét, és segít fenntartani a munka és a magánélet egészséges egyensúlyát, hadd lazuljunk az életen!
 
-# 📑 Other Materials
+# 📑 Más anyagok
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+Az alábbiakban további anyagok találhatók, amelyeket megtekinthet, ha többet szeretne megtudni erről a projektről:
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/hu/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [GYIK](/docs/hu/FAQ.md)
+- [HOZZÁJÁRULÁS](/docs/hu/CONTRIBUTION.md)
+- [Kínai fejlesztőknek](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+Nagyra értékelnénk azokat a tehetséges művészeket, akik az alábbi gyönyörű ikonokat mutatták be:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 Köszönetnyilvánítás
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+Ez a projekt nem jöhetett volna létre fantasztikus nyílt forráskódú projektek nélkül, amelyekért személyesen szeretném kifejezni legmélyebb hálámat:
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+Az biztos, hogy vannak más nyílt forráskódú projektek is, amelyek hasznot húztak ennek a projektnek, és ezeket ebben a részben nem tudtam részletezni; E projektek és a tehetségfejlesztők erőfeszítései nélkül a LafTools nem jöhetett volna létre.
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+2023. február 2
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+Ezt a projektet a GNU Affero General Public License védi, további részletekért tekintse meg a LICENC fájlt.

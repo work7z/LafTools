@@ -93,7 +93,7 @@ let docsGENItem = {
   prefix: "Dot(",
   pattern: commonText,
   target: `${docsGeneratorDIR}/lang`,
-  dir: `${docsGeneratorDIR}/files`,
+  dir: `${docsGeneratorDIR}`,
 };
 let searchItems = [
   // {

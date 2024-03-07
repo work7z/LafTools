@@ -77,7 +77,7 @@ _.forEach(i18nItems, eachI18nItem => {
             fileContent = noteForGenKey + '\n\n' + fileContent
         }
 
-        fileContent = fileContent.replace(noteForGenKey, `<i>Note: \${Dot("1TTiUC3Jy","This page is generated from LafTools internally")}.</i>`)
+        fileContent = fileContent.replace(noteForGenKey, `<i>Note: \${Dot("Y-TXjTruC","This page is generated from LafTools internally.")}</i> <br/> ${_.chain(i18nItems).take(7).map(x => x.Value == lang ? `${x.LabelByLang}` : `[${x.LabelByLang}](/docs/${x.Value})`).join("  |  ").value()} | [More](/docs/) <br/>`)
 
         let arr = []
 

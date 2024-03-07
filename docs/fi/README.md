@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Tämä sivu on luotu sisäisesti LafToolsista.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Johdanto
 
@@ -40,7 +40,7 @@ Jos vastaus johonkin yllä olevista on kyllä, sinun kannattaa kokeilla työkalu
 
 > LafTools on edelleen kehitteillä, sen käyttöliittymä, riippuvuudet tai edellytykset voivat muuttua tarpeen mukaan.
 
-### Preview(English):
+### Esikatselu:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. Käynnistä Go-palvelu (refaktorointi)
 
-To run Go service in terminal, you can execute below command:
+Suorittaaksesi Go-palvelun terminaalissa, voit suorittaa alla olevan komennon:
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 Go-palvelun virheenkorjausta varten olemme määrittäneet sen VSCodessa, voit seurata alla olevia ohjeita:
 
-1. Enter Visual Studio Code
+1. Kirjoita Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. Käynnistä FrontEnd-moduuli (siirretty web2:een)
 
 ```bash
-# install required global library
+# asenna vaadittu globaali kirjasto
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# asenna projektideps
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # Se on vain Windowsille, se sulkee kaikki päätteet ja aiemmat prosessit.
 
-# run web service on terminal 1
+# suorita verkkopalvelu terminaalissa 1
 npm run fe-web
 
-# run CSS processor on terminal 2
+# Suorita CSS-prosessori terminaalissa 2
 npm run fe-css
 
-# run extra jobs on terminal 3
+# suorittaa ylimääräisiä töitä terminaalissa 3
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+Huomaa, että voit käyttää &-symbolia taustasuoritukseen, jos et halua vaihtoehtoisesti suorittaa näitä komentoja erillisissä pääte-esiintymissä.
 
-## 4. Start Developing
+## 4. Aloita kehittäminen
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+Kun Go-palvelu on käynnissä, sinun pitäisi nähdä linkki tulostettuna terminaaliin. Aloita kehittäminen kopioimalla tämä URL-osoite ja liittämällä se selaimeesi.
 
-Example:
+Esimerkki:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. Rakentaa
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 Mitä nimeä vaivaa?
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+Tämän projektin nimi on saanut inspiraationsa Chet Atkinsin klassisesta kantrilaulusta 'Laffin' At Life' vuodelta 1987, jolla on myös erityinen paikka kirjoittajan sydämessä.
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+Toivottavasti LafTools tekee päivittäisistä tehtävistäsi helpompaa, vähentää ylitöiden tarvetta ja auttaa sinua ylläpitämään tervettä työ- ja perhe-elämän tasapainoa, anna meidän vain levätä elämässä!
 
-# 📑 Other Materials
+# 📑 Muut materiaalit
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+Alla on muita materiaaleja, joita voit katsoa, ​​jos haluat saada lisätietoja tästä projektista:
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/fi/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [FAQ](/docs/fi/FAQ.md)
+- [AMOITUS](/docs/fi/CONTRIBUTION.md)
+- [Kiinan kehittäjille](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+Arvostamme lahjakkaita taiteilijoita, jotka toimittivat alla kauniita kuvakkeita:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 Kiitokset
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+Tämä projekti ei olisi ollut mahdollinen ilman mahtavia avoimen lähdekoodin projekteja, joista haluan henkilökohtaisesti ilmaista syvimmän kiitokseni:
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+Varmasti on muitakin avoimen lähdekoodin projekteja, jotka ovat hyötyneet ja helpottaneet tätä projektia, joita en tässä osiossa pystynyt erittelemään; Ilman näitä projekteja ja lahjakkuuksien kehittäjien ponnisteluja LafTools ei olisi ollut mahdollinen.
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+2. helmikuuta 2023
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+Tämä projekti on suojattu GNU Affero General Public License -lisenssillä, katso lisätietoja LICENSE-tiedostosta.

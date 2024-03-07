@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: 该页面是由LafTools工具箱内部生成的。</i> <br/> [English](/docs/en_US)  |  简体中文  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 介绍
 
@@ -40,7 +40,7 @@
 
 > LafTools工具箱仍在开发中，其 UI、依赖项或先决条件可能会根据需要进行更改。
 
-### 预览（英文）:
+### 预览:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-zh_CN.png?raw=true)
@@ -103,10 +103,10 @@ npm run win-clean # 它仅适用于 Windows，它将关闭所有终端和以前�
 # 在终端 1 上运行 Web 服务
 npm run fe-web
 
-# run CSS processor on terminal 2
+# 在终端 2 上运行 CSS 处理器
 npm run fe-css
 
-# run extra jobs on terminal 3
+# 在终端 3 上运行额外作业
 npm run fe-extra
 
 ```
@@ -137,7 +137,7 @@ cd pipeline
 
 # 🌱 名字是怎么回事？
 
-#### _拉芬生活的工具_
+#### _The Tools for Laffin' At Life_
 
 该项目的名称灵感来自于切特·阿特金斯 (Chet Atkins) 于 1987 年创作的一首经典乡村歌曲《Laffin' At Life》，这首歌曲在作者心中也占有特殊的地位。
 
@@ -147,9 +147,9 @@ cd pipeline
 
 如果您想了解有关该项目的更多详细信息，可以查看以下更多材料：
 
-- [常见问题](./docs/FAQ.md)
-- [贡献](./docs/zh_CN/CONTRIBUTION.md)
-- [对于中国开发者](devtools/notes/common/issues.md)
+- [常见问题](/docs/zh_CN/FAQ.md)
+- [贡献](/docs/zh_CN/CONTRIBUTION.md)
+- [对于中国开发者](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 

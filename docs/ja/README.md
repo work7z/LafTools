@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: このページは LafTools から内部的に生成されます。</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  日本語 | [More](/docs/) <br/>
 
 # 💡 導入
 
@@ -40,7 +40,7 @@
 
 > LafTools はまだ開発中であるため、その UI、依存関係、または前提条件は必要に応じて変更される可能性があります。
 
-### Preview(English):
+### プレビュー:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. Go サービスの起動 (リファクタリング)
 
-To run Go service in terminal, you can execute below command:
+ターミナルで Go サービスを実行するには、以下のコマンドを実行できます。
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 Go サービスをデバッグするには、VSCode で構成しました。次の手順に従うだけです。
 
-1. Enter Visual Studio Code
+1. Visual Studio Codeを入力してください
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. フロントエンドモジュールの起動 (web2 に移動)
 
 ```bash
-# install required global library
+# 必要なグローバル ライブラリをインストールする
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# プロジェクトdepsをインストールする
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # これは Windows 専用で、すべてのターミナルと以前のプロセスを閉じます。
 
-# run web service on terminal 1
+# ターミナル 1 で Web サービスを実行する
 npm run fe-web
 
-# run CSS processor on terminal 2
+# 端末 2 で CSS プロセッサを実行する
 npm run fe-css
 
-# run extra jobs on terminal 3
+# ターミナル 3 で追加のジョブを実行する
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+これらのコマンドを別の端末インスタンスで実行したくない場合は、「&」記号を使用してバックグラウンドで実行できることに注意してください。
 
-## 4. Start Developing
+## 4. 開発を開始する
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+Go サービスが実行されると、ターミナルにリンクが印刷されるのが確認できるはずです。この URL をコピーしてブラウザに貼り付けて、開発を開始します。さあ、始めましょう。
 
-Example:
+例:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. 建てる
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 名前は何ですか？
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+このプロジェクトの名前は、チェット アトキンスによる 1987 年の古典的なカントリー ソング「Laffin' At Life」からインスピレーションを受けており、作者の心の中で特別な場所を占めています。
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+LafTools があなたの日常業務を簡素化し、残業の必要性を減らし、健康的なワークライフバランスの維持に役立つことを願っています。ただ、人生をのんびり過ごしましょう!
 
-# 📑 Other Materials
+# 📑 その他の素材
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+このプロジェクトについてさらに詳しく知りたい場合は、以下の資料を参照してください。
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/ja/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [よくある質問](/docs/ja/FAQ.md)
+- [貢献](/docs/ja/CONTRIBUTION.md)
+- [中国の開発者向け](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+以下の美しいアイコンを提供してくださった才能あるアーティストに感謝します。
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 謝辞
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+このプロジェクトは、素晴らしいオープンソース プロジェクトがなければ実現しなかったでしょう。私は個人的に以下の方々に深く感謝の意を表したいと思います。
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+確かに、このプロジェクトに利益をもたらし、促進した他のオープンソース プロジェクトもありますが、このパートでは詳しく説明しませんでした。これらのプロジェクトと人材開発者の努力がなければ、LafTools は不可能でした。
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+2023 年 2 月 2 日
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+このプロジェクトは GNU Affero General Public License の下で保護されています。詳細については、LICENSE ファイルを参照してください。

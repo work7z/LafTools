@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Diese Seite wird intern von LafTools generiert.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  Deutsch  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Einführung
 
@@ -40,7 +40,7 @@ Wenn die Antwort auf eine der oben genannten Fragen „Ja“ lautet, sollten Sie
 
 > LafTools befindet sich noch in der Entwicklung, seine Benutzeroberfläche, Abhängigkeiten oder Voraussetzungen können sich bei Bedarf ändern.
 
-### Vorschau (Englisch):
+### Vorschau:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -103,10 +103,10 @@ npm run win-clean # Es ist nur für Windows und schließt alle Terminals und vor
 # Führen Sie den Webdienst auf Terminal 1 aus
 npm run fe-web
 
-# run CSS processor on terminal 2
+# Führen Sie den CSS-Prozessor auf Terminal 2 aus
 npm run fe-css
 
-# run extra jobs on terminal 3
+# Führen Sie zusätzliche Jobs auf Terminal 3 aus
 npm run fe-extra
 
 ```
@@ -137,9 +137,9 @@ cd pipeline
 
 # 🌱 Was ist mit dem Namen?
 
-#### _Die Werkzeuge für Laffin' At Life_
+#### _The Tools for Laffin' At Life_
 
-Der Name dieses Projekts ist von „Laffin‘ At Life“ inspiriert, einem klassischen Country-Song aus dem Jahr 1987 von Chet Atkins, der ebenfalls einen besonderen Platz im Herzen des Autors einnimmt.
+Der Name dieses Projekts ist von „Laffin' At Life“ inspiriert, einem klassischen Country-Song aus dem Jahr 1987 von Chet Atkins, der ebenfalls einen besonderen Platz im Herzen des Autors einnimmt.
 
 Wir hoffen, dass LafTools Ihre täglichen Aufgaben erleichtert, Überstunden reduziert und Ihnen dabei hilft, eine gesunde Work-Life-Balance aufrechtzuerhalten. Lassen Sie uns einfach im Leben herumtollen!
 
@@ -147,9 +147,9 @@ Wir hoffen, dass LafTools Ihre täglichen Aufgaben erleichtert, Überstunden red
 
 Nachfolgend finden Sie weitere Materialien, die Sie sich ansehen können, wenn Sie mehr Details über dieses Projekt erfahren möchten:
 
-- [FAQ](./docs/FAQ.md)
-- [BEITRAG](./docs/de/CONTRIBUTION.md)
-- [Für chinesische Entwickler](devtools/notes/common/issues.md)
+- [FAQ](/docs/de/FAQ.md)
+- [BEITRAG](/docs/de/CONTRIBUTION.md)
+- [Für chinesische Entwickler](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 

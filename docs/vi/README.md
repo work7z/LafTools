@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: Trang này được tạo từ nội bộ LafTools.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Giới thiệu
 
@@ -40,7 +40,7 @@ Nếu câu trả lời cho bất kỳ câu hỏi nào ở trên là có thì b�
 
 > LafTools vẫn đang được phát triển, giao diện người dùng, các phần phụ thuộc hoặc điều kiện tiên quyết của nó có thể thay đổi khi cần thiết.
 
-### Preview(English):
+### Xem trước:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. Khởi chạy dịch vụ Go (Tái cấu trúc)
 
-To run Go service in terminal, you can execute below command:
+Để chạy dịch vụ Go trong terminal, bạn có thể thực hiện lệnh bên dưới:
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 Để gỡ lỗi dịch vụ Go, chúng tôi đã định cấu hình nó trong VSCode, bạn chỉ cần làm theo các bước dưới đây:
 
-1. Enter Visual Studio Code
+1. Nhập Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. Khởi chạy Mô-đun FrontEnd (Đã chuyển sang web2)
 
 ```bash
-# install required global library
+# cài đặt thư viện toàn cầu cần thiết
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# cài đặt dự án
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # Nó chỉ dành cho Windows, nó sẽ đóng tất cả các thiết bị đầu cuối và các quy trình trước đó.
 
-# run web service on terminal 1
+# chạy dịch vụ web trên terminal 1
 npm run fe-web
 
-# run CSS processor on terminal 2
+# chạy bộ xử lý CSS trên thiết bị đầu cuối 2
 npm run fe-css
 
-# run extra jobs on terminal 3
+# chạy thêm công việc trên terminal 3
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+Lưu ý rằng bạn có thể sử dụng biểu tượng '&' để thực thi ở chế độ nền nếu bạn không muốn chạy các lệnh này trong các phiên bản đầu cuối riêng biệt.
 
-## 4. Start Developing
+## 4. Bắt đầu phát triển
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+Khi dịch vụ Go đang chạy, bạn sẽ có thể thấy một liên kết được in ra trong thiết bị đầu cuối. Bây giờ, hãy sao chép URL này và dán vào trình duyệt của bạn để bắt đầu phát triển, bắt đầu nào!
 
-Example:
+Ví dụ:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. Xây dựng
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 Có chuyện gì với cái tên vậy?
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+Tên của dự án này được lấy cảm hứng từ Laffin' At Life, một bài hát đồng quê cổ điển từ năm 1987 của Chet Atkins cũng có một vị trí đặc biệt trong trái tim tác giả.
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+Hy vọng rằng LafTools sẽ giúp công việc hàng ngày của bạn trở nên dễ dàng hơn, giảm nhu cầu làm thêm giờ và giúp bạn duy trì sự cân bằng lành mạnh giữa công việc và cuộc sống, chúng ta hãy cùng tận hưởng cuộc sống!
 
-# 📑 Other Materials
+# 📑 Vật liệu khác
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+Dưới đây là các tài liệu khác mà bạn có thể xem nếu muốn tìm hiểu thêm chi tiết về dự án này:
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/vi/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [Câu hỏi thường gặp](/docs/vi/FAQ.md)
+- [SỰ ĐÓNG GÓP](/docs/vi/CONTRIBUTION.md)
+- [Dành cho nhà phát triển Trung Quốc](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+Chúng tôi đánh giá cao những nghệ sĩ tài năng đã cung cấp các biểu tượng đẹp dưới đây:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 Sự nhìn nhận
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+Dự án này sẽ không thể thực hiện được nếu không có các dự án nguồn mở tuyệt vời mà cá nhân tôi muốn bày tỏ lòng biết ơn sâu sắc nhất tới:
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+Chắc chắn, có những dự án nguồn mở khác đã mang lại lợi ích và tạo điều kiện thuận lợi cho dự án này, điều mà tôi không thể trình bày chi tiết trong phần này; Nếu không có những dự án này và nỗ lực của những nhà phát triển tài năng này, LafTools sẽ không thể tồn tại được.
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+Ngày 2 tháng 2 năm 2023
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+Dự án này được bảo vệ theo Giấy phép Công cộng GNU Affero, vui lòng xem tệp GIẤY PHÉP để biết thêm chi tiết.

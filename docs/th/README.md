@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: หน้านี้สร้างขึ้นจาก LafTools ภายใน</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 การแนะนำ
 
@@ -40,7 +40,7 @@
 
 > LafTools ยังอยู่ระหว่างการพัฒนา UI การขึ้นต่อกัน หรือข้อกำหนดเบื้องต้นอาจเปลี่ยนแปลงได้ตามความจำเป็น
 
-### Preview(English):
+### ดูตัวอย่าง:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -74,7 +74,7 @@ export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 
 ## 2. เปิดตัวบริการ Go (การปรับโครงสร้างใหม่)
 
-To run Go service in terminal, you can execute below command:
+หากต้องการเรียกใช้บริการ Go ในเทอร์มินัล คุณสามารถดำเนินการคำสั่งด้านล่าง:
 
 ```shell
 go run ./core/app.go server
@@ -82,42 +82,42 @@ go run ./core/app.go server
 
 ในการแก้ไขข้อบกพร่องของบริการ Go เราได้กำหนดค่าไว้ใน VSCode คุณสามารถทำตามขั้นตอนด้านล่าง:
 
-1. Enter Visual Studio Code
+1. ป้อน Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. เปิดตัวโมดูล FrontEnd (ย้ายไปที่ web2)
 
 ```bash
-# install required global library
+# ติดตั้งไลบรารีส่วนกลางที่จำเป็น
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# ติดตั้ง deps โครงการ
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # มีไว้สำหรับ Windows เท่านั้น โดยจะปิดเทอร์มินัลและกระบวนการก่อนหน้าทั้งหมด
 
-# run web service on terminal 1
+# เรียกใช้บริการเว็บบนเทอร์มินัล 1
 npm run fe-web
 
-# run CSS processor on terminal 2
+# รันโปรเซสเซอร์ CSS บนเทอร์มินัล 2
 npm run fe-css
 
-# run extra jobs on terminal 3
+# รันงานพิเศษบนเทอร์มินัล 3
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+โปรดทราบว่าคุณสามารถใช้สัญลักษณ์ '&' สำหรับการดำเนินการในเบื้องหลังได้ หากคุณไม่ต้องการเรียกใช้คำสั่งเหล่านี้ในอินสแตนซ์เทอร์มินัลที่แยกจากกัน
 
-## 4. Start Developing
+## 4. เริ่มการพัฒนา
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+เมื่อบริการ Go ทำงาน คุณควรจะเห็นลิงก์ที่พิมพ์ออกมาในเทอร์มินัล ตอนนี้ คัดลอก URL นี้และวางลงในเบราว์เซอร์ของคุณเพื่อเริ่มพัฒนา ลุยเลย!
 
-Example:
+ตัวอย่าง:
 
 ```output
 -----------------------------------------------
@@ -128,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. สร้าง
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 ชื่ออะไรคะ?
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+ชื่อของโปรเจ็กต์นี้ได้รับแรงบันดาลใจจาก Laffin' At Life ซึ่งเป็นเพลงคันทรีคลาสสิกจากปี 1987 ของ Chet Atkins ซึ่งมีความพิเศษอยู่ในใจของผู้แต่งด้วย
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+หวังว่า LafTools จะทำให้งานประจำวันของคุณง่ายขึ้น ลดความจำเป็นในการทำงานล่วงเวลา และช่วยให้คุณรักษาสมดุลระหว่างชีวิตและการทำงานที่ดี ให้เราละทิ้งชีวิตกันเถอะ!
 
-# 📑 Other Materials
+# 📑 วัสดุอื่นๆ
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+ด้านล่างนี้เป็นเอกสารเพิ่มเติมที่คุณสามารถดูได้หากต้องการเรียนรู้รายละเอียดเพิ่มเติมเกี่ยวกับโครงการนี้:
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/th/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [คำถามที่พบบ่อย](/docs/th/FAQ.md)
+- [ผลงาน](/docs/th/CONTRIBUTION.md)
+- [สำหรับนักพัฒนาชาวจีน](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+เราขอขอบคุณศิลปินที่มีพรสวรรค์ที่ให้ไอคอนที่สวยงามด้านล่าง:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 รับทราบ
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+โครงการนี้คงเป็นไปไม่ได้หากไม่มีโครงการโอเพ่นซอร์สที่ยอดเยี่ยม ซึ่งฉันอยากจะแสดงความขอบคุณอย่างสุดซึ้งเป็นการส่วนตัวต่อ:
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+แน่นอนว่ายังมีโครงการโอเพ่นซอร์สอื่น ๆ ที่เป็นประโยชน์และสนับสนุนโครงการนี้ ซึ่งฉันไม่สามารถให้รายละเอียดได้ในส่วนนี้ หากไม่มีโครงการเหล่านี้และความพยายามของนักพัฒนาที่มีความสามารถเหล่านี้ LafTools คงเป็นไปไม่ได้
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+2 กุมภาพันธ์ 2023
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+โครงการนี้ได้รับการคุ้มครองภายใต้สัญญาอนุญาตสาธารณะทั่วไปของ GNU โปรดดูไฟล์ใบอนุญาตสำหรับรายละเอียดเพิ่มเติม

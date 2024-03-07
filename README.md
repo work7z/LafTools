@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i>
+<i>Note: This page is generated from LafTools internally.</i> <br/> English  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja) | [More](/docs/) <br/>
 
 # 💡 Introduction
 
@@ -40,7 +40,7 @@ If the answer to any of the above is yes, then you should consider trying our to
 
 > LafTools is still under development, its UI, dependencies or prerequisites may changed as needed.
 
-### Preview(English):
+### Preview:
 
 [Online Preview](http://cloud.laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
@@ -56,7 +56,7 @@ Recently, we are refactoring the architecture of LafTools based on next.js, belo
 
 For the sake of simplicity, let's say that you've cloned this repository to either `C:\Usersjerry\project\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or simply execute them before running any command.
 
-If you're using Windows OS, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](./docs/${lang}/CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
+If you're using Windows OS, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](/docs/${lang}/CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
 
 **Env for Windows:**
 
@@ -139,7 +139,7 @@ cd pipeline
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+The name of this project is inspired by {0}, a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
 
 Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
 
@@ -147,9 +147,9 @@ Hopefully LafTools will make your daily tasks easier, reducing the need for over
 
 Below are further materials that you can have a look if you'd like to learn more detail about this project:
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/en_US/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [FAQ](/docs/en_US/FAQ.md)
+- [CONTRIBUTION](/docs/en_US/CONTRIBUTION.md)
+- [For China Developers](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
