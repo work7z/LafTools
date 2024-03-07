@@ -56,3 +56,37 @@ LafTools Team
 It's a magic number which is comprised of 3 + 98 + 99.
 
 But as LafTools's author, I prefer not to tell the story for now, haha.
+
+# 🎷 Inspiration
+
+This project is primarily inspired by the following musicians:
+
+- Joe Pass
+- The Manhattan Transfer
+- Laura Shigihara
+- Asleep at the Wheel
+- Khalil Fong
+- Li Rong Hao
+- Chet Atkins
+- Les Paul
+- Tommy Emmanuel
+- Martin Taylor
+- Frédéric Chopin
+- Claude Debussy
+- Oscar Peterson
+- Hugo Strasser
+- Jay Chou
+- Stefanie Sun
+- David Tao
+- Jacky Cheung
+- Teresa Teng
+- Jack Johnson
+- Harry Styles(As It Was)
+- Lovebugs
+
+Specifically, the performance of **"Satin Doll"** by the virtuoso **Joe Pass** in "An Evening With Joe Pass" (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.
+
+Thank you!
+
+Ryan Laf  
+Mar. 20th, 2021
