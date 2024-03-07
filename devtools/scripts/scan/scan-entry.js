@@ -9,6 +9,7 @@ var md5 = require("md5");
 const { exit } = require("process");
 let i18njson = require("../../../resources/public/purejs/app-i18n.json");
 
+let laftoolsRoot = process.env.LAFTOOLS_ROOT;
 console.log("i18njson", i18njson);
 // cross platform watch file
 let chokidar = require("chokidar");
@@ -359,6 +360,7 @@ let r2 = async () => {
               (eachFile + "").endsWith("go") ||
               (eachFile + "").endsWith("ts") ||
               (eachFile + "").endsWith("tsx") ||
+              (eachFile + "").endsWith("md") ||
               (eachFile + "").endsWith("java") ||
               (eachFile + "").endsWith("groovy") ||
               (eachFile + "").endsWith("js")

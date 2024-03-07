@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 export type FileInfo = {
+  root: boolean;
   fileName: string;
   comments: string;
   destinations: string[];
@@ -9,9 +10,10 @@ export type FileInfo = {
 
 let markdownFiles: FileInfo[] = [
   {
+    root: true,
     fileName: "README.md",
     comments: "This is the main file",
-    destinations: ["/", "/docs"],
+    destinations: ["/docs"],
   },
 ];
 

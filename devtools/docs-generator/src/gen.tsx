@@ -3,26 +3,111 @@ import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
 console.log('idx', idx)
+import i18nItems from './i18n-copy'
 
 let rootDir = process.env.LAFTOOLS_ROOT;
 console.log("rootDir", rootDir);
 let markdownFiles = idx;
 let filesDir = path.join(__dirname, '..', 'files')
 let tokesnReplace = {
-    "```": "@@@THREEBAKCTICK"
+    "`": "@@BAKCTICK@@"
 }
-_.forEach(markdownFiles, (item) => {
-    console.log("handling... " + item.fileName);
-    let filePath = path.join(filesDir, item.fileName);
-    let fileContent = fs.readFileSync(filePath, 'utf8');
-    _.forEach(tokesnReplace, (value, key) => {
-        fileContent = fileContent.replace(new RegExp(key, 'g'), value)
-    });
-    console.log('fileContent: ', fileContent)
-    let jsScript = `
+
+let pngSupportList = {
+    'zh_CN': 1
+}
+
+_.forEach(i18nItems, eachI18nItem => {
+    let language = eachI18nItem.Value;
+    let pmap = {};
+    if (language != 'en_US') {
+        pmap = require(path.join(__dirname, '..', 'lang', language + '.json'))
+    }
+    let LangMap = {
+        [language]: pmap
+    }
+    function formatResultWithReplacer(val = "", ...args) {
+        if (_.isNil(args)) {
+            args = [];
+        }
+        for (let index in args) {
+            let tval = args[index];
+            while (true) {
+                let p = "{" + index + "}";
+                val = (val + "").replace(p, tval);
+                if (val.indexOf(p) == -1) {
+                    break;
+                }
+            }
+        }
+        return val;
+    }
+    let Dot = function (id: string, enText: string, ...args: any[]): string {
+        if (language == 'en_US') {
+            return enText
+        }
+        let langmap = LangMap;
+        let o = langmap[language];
+        if (_.isNil(o)) {
+            return enText;
+        }
+        let preText = o[id];
+        if (!_.isNil(preText)) {
+            enText = preText;
+        }
+
+        let finResult = formatResultWithReplacer(enText, ...args);
+        return finResult;
+    }
+
+    _.forEach(markdownFiles, (eachMarkdownFiles) => {
+        console.log("handling... " + eachMarkdownFiles.fileName);
+        let filePath = path.join(filesDir, eachMarkdownFiles.fileName);
+        let fileContent = fs.readFileSync(filePath, 'utf8');
+        _.forEach(tokesnReplace, (value, key) => {
+            fileContent = fileContent.replace(new RegExp(key, 'g'), value)
+        });
+
+        // do NOT remove extraLang which is used in eval function
+        let extraLang = pngSupportList[eachI18nItem.Value] ? '-' + eachI18nItem.Value : ''
+        let lang = eachI18nItem.Value
+
+        let noteForGenKey = "NOTE_FOR_GEN"
+        if (fileContent.indexOf(noteForGenKey) == -1) {
+            fileContent = noteForGenKey + '\n\n' + fileContent
+        }
+
+        fileContent = fileContent.replace(noteForGenKey, `<i>Note: \${Dot("1TTiUC3Jy","This page is generated from LafTools internally")}.</i>`)
+
+        let arr = []
+
+        let jsScript = `
         let text = \`${fileContent}\`
-        console.log(text)
+        arr.push(text)
     `
-    // eval(jsScript)
-    console.log(jsScript)
-});
+        eval(jsScript)
+        console.log('generated for the language ', language)
+        let finalContent: string = arr[0]
+
+        _.forEach(tokesnReplace, (value, key) => {
+            finalContent = finalContent.replace(new RegExp(value, 'g'), key)
+        })
+
+        let rootDir = process.env.LAFTOOLS_ROOT || '';
+        eachMarkdownFiles.destinations.forEach((eachDestination) => {
+            let parentDir = path.join(rootDir, eachDestination, eachI18nItem.Value)
+            if (!fs.existsSync(parentDir)) {
+                fs.mkdirSync(parentDir);
+            }
+            let destinationPath = path.join(parentDir, eachMarkdownFiles.fileName);
+            console.log('destinationPath: ', destinationPath)
+            fs.writeFileSync(destinationPath, finalContent, 'utf8');
+        });
+
+        if (eachMarkdownFiles.root) {
+            if (language == 'en_US') {
+                fs.writeFileSync(path.join(rootDir, eachMarkdownFiles.fileName), finalContent);
+            }
+        }
+    });
+})

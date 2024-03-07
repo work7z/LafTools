@@ -120,6 +120,6 @@
     "noImplicitUseStrict": false,
     "noImplicitAny": false,
   },
-  "include": ["./src/**/*.ts","./*.tsx","./src/**/*.tsx", "src/ws-test.js", "src/index.ts"],
+  "include": ["./src/**/*.ts","./*.tsx","./src/**/*.tsx", "src/ws-test.js", "src/index.ts","../../../modules/web2/app/__CORE__/config/i18n.tsx"],
   "exclude": ["node_modules"]
 }

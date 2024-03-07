@@ -117,7 +117,7 @@ func main() {
 				v_resultForCurrentLang2, err2 := translateNow(v, eachLang)
 				resultForCurrentLang2 = v_resultForCurrentLang2
 				if err2 != nil {
-					log.InternalLog.Warn("err", err2)
+					log.InternalLog.Warn("err now ", err2)
 					nocycle.Sleep(10000)
 				} else {
 					break
@@ -176,7 +176,7 @@ func translateNow(text, targetLang string) (string, error) {
 	if targetLang == "zh_HK" {
 		targetLang = "zh-hk"
 	}
-	time.Sleep(90 * time.Millisecond)
+	time.Sleep(100 * time.Millisecond)
 	fmt.Println("translating: ", text, " to ", targetLang)
 	n, e := gt.Translate(text, "en", targetLang)
 	return n, e

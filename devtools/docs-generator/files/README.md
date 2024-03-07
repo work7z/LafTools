@@ -11,58 +11,52 @@
 <br><br>
 </p>
 
+NOTE_FOR_GEN
+
 # 💡 ${Dot("JjpQy-eIq","Introduction")}
 
-${Dot("iIq02l4vX","You may wonder why we are determined to develop this toolbox as there are numerous tools can be used on the Internet.")}
-
-${Dot("ciP9qXH1I","Indeed, most tools we have provided can be easily found on the Internet, such as codec, formatter, translation, QR Code, etc… However, it’s not the most comfortable and efficient approach to use these tools.")}
+${Dot("iIq02l4vX","You may wonder why we are determined to develop this toolbox as there are numerous tools can be used on the Internet.")} ${Dot("ciP9qXH1I","Indeed, most tools we have provided can be easily found on the Internet, such as codec, formatter, translation, QR Code, etc… However, it is not the most comfortable and efficient approach to use these tools.")}
 
 ${Dot("YqgCZdzaS","Have you ever met the below issues while using those online tools?")}
 
 - ${Dot("AKCG4Sy8U","No Offline Accessibility.")}
 - ${Dot("iQxHIHZIL","No Global Dark Theme.")}
-- No Productive UI style.
-- Poor Network Performance.
-- Upsetting Advertisements
-- Data Leakage Issue.
+- ${Dot("LM-o4Yk6h","No Productive UI style.")}
+- ${Dot("w5PSqC7jG","Poor Network Performance.")}
+- ${Dot("mpQMZfbv6","Upsetting Advertisements.")}
+- ${Dot("rR22PTMZc","Data Leakage Issue.")}
 
-If the answer to any of the above is yes, then you should consider trying our toolbox. It offers the following features:
+${Dot("U6zkVUPTq","If the answer to any of the above is yes, then you should consider trying our toolbox. It offers the following features:")}
 
-- FOSS Forever
-- Lightweight Runtime
-- Full platform support(including ARMv8)
-- Full GPT-alike support
-- Highly integrated with productive UI
-- Available Docker Images and Portable Edition
-- Extra helpers such as notes, manuals, etc...
+- ${Dot("Ed4z058Cr","FOSS Forever")}
+- ${Dot("Jh-LM4MG","Lightweight Runtime")}
+- ${Dot("RXAzQfM2L","Full platform support(including ARMv8)")}
+- ${Dot("4hth-woPf","Full GPT-alike support")}
+- ${Dot("iz4ROzL3","Highly integrated with productive UI")}
+- ${Dot("HIAvRJazO","Available Docker Images and Portable Edition")}
+- ${Dot("yVPMfvWhi","Extra helpers such as notes, manuals, etc...")}
 
-# 🌠 Preview
+# 🌠 ${Dot("OjKP47hFt","Preview")}
 
-> LafTools is still under development, its UI, dependencies or prerequisites may changed as needed.
+> ${Dot("bIE-DVqmU","LafTools is still under development, its UI, dependencies or prerequisites may changed as needed.")}
 
-### Preview(English):
+### ${Dot("Dh60DyO0O","Preview(English)")}:
 
 [Online Preview](http://cloud.laf-tools.com)
-![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-enus.png?raw=true)
-![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-1.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview${extraLang}.png?raw=true)
+![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark${extraLang}.png?raw=true)
 
-### Preview(Simplified Chinese|简体中文):
+# 🍀 ${Dot("AOKa_f9CC","Getting Started")}
 
-[在线预览](http://cloud.laf-tools.com)
-![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-zhcn.png?raw=true)
-![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark-jan.png?raw=true)
+## 0. ${Dot("71DMQ0cOr","Refactoring")}
 
-# 🍀 Getting Started
+${Dot("5B9rXHCzi","Recently, we are refactoring the architecture of LafTools based on next.js, below steps may changed as needed.")}
 
-## 0. Refactoring
+## 1. ${Dot("lmVW9z9oh","Setup System Environment")}
 
-Recently, we are refactoring the architecture of LafTools based on next.js, below steps may changed as needed.
+${Dot("dcOe3EU4U","For the sake of simplicity, let's say that you've cloned this repository to either `C:\\Users\jerry\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or simply execute them before running any command.")}
 
-## 1. Setup System Environment
-
-For the sake of simplicity, let's say that you've cloned this repository to either `C:\\Users\jerry\\project\\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or simply execute them before running any command.
-
-If you're using Windows OS, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](./docs/CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
+${Dot("PLhTRM7EV","If you're using Windows OS, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](/docs/${lang}/CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.")}
 
 **Env for Windows:**
 
@@ -78,52 +72,52 @@ export PATH=$PATH:$LAFTOOLS_ROOT\\dev\\source\\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Launch Go Service (Refactoring)
+## 2. ${Dot("RV6qQL8ox","Launch Go Service (Refactoring)")}
 
-To run Go service in terminal, you can execute below command:
+${Dot("KFgTmafOWE4U","To run Go service in terminal, you can execute below command:")}
 
 ```shell
 go run ./core/app.go server
 ```
 
-To debug Go service, we have configured it in VSCode, you can just follow below steps:
+${Dot("Yay3_x9EV","To debug Go service, we have configured it in VSCode, you can just follow below steps:")}
 
-1. Enter Visual Studio Code
+1. ${Dot("wWRCQygDC","Enter {0}",'Visual Studio Code')}
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
-## 3. Launch FrontEnd Module (Moved to web2)
+## 3. ${Dot("Fuacz5atn","Launch FrontEnd Module (Moved to web2)")}
 
 ```bash
-# install required global library
+# ${Dot("uh8JUYWzH","install required global library")}
 npm i -g pnpm ts-node typescript
 
-# install project deps
+# ${Dot("YCteaVxTx","install project deps")}
 cd $LAFTOOLS_ROOT && pnpm install
 cd $LAFTOOLS_ROOT/modules/web && pnpm install
 cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
 
-npm run win-clean # It's for Windows Only, it will close all terminals and previous processes.
+npm run win-clean # ${Dot("0Guf1oGfh","It's for Windows Only, it will close all terminals and previous processes.")}
 
-# run web service on [Terminal - 1]
+# ${Dot("8Yv_neS0T","run web service on terminal 1")}
 npm run fe-web
 
-# run CSS processor on [Terminal - 2]
+# ${Dot("XHqxsRy9v","run CSS processor on terminal 2")}
 npm run fe-css
 
-# run extra jobs on [Terminal - 3]
+# ${Dot("fp-FSQcA-","run extra jobs on terminal 3")}
 npm run fe-extra
 
 ```
 
-Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.
+${Dot("hO_WdaThV","Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.")}
 
-## 4. Start Developing
+## 4. ${Dot("mfVQaqTiZ","Start Developing")}
 
-Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!
+${Dot("O3eQBXxwY","Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!")}
 
-Example:
+${Dot("eNQDoICED","Example")}:
 
 ```output
 -----------------------------------------------
@@ -134,50 +128,50 @@ http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
 -----------------------------------------------
 ```
 
-## 5. Build
+## 5. ${Dot("QYPc87A2j","Build")}
 
 ```bash
 cd pipeline
 ./build-all.sh
 ```
 
-# 🌱 What's with the name?
+# 🌱 ${Dot("I-Zaii3HZ","What's with the name?")}
 
-#### _The Tools for Laffin' At Life_
+#### _${Dot("i0bt7fhna","The Tools for Laffin' At Life")}_
 
-The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+${Dot("3fcXzYtfK","The name of this project is inspired by 'Laffin' At Life', a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.")}
 
-Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
+${Dot("b3c7e3r77","Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!")}
 
-# 📑 Other Materials
+# 📑 ${Dot("wieewa7cq","Other Materials")}
 
-Below are further materials that you can have a look if you'd like to learn more detail about this project:
+${Dot("i2fk8l8pB","Below are further materials that you can have a look if you'd like to learn more detail about this project:")}
 
-- [FAQ](./docs/FAQ.md)
-- [CONTRIBUTION](./docs/CONTRIBUTION.md)
-- [For China Developers](devtools/notes/common/issues.md)
+- [${Dot("Wyi852ml4","FAQ")}](/docs/${lang}/FAQ.md)
+- [${Dot("65xgSMWmS","CONTRIBUTION")}](/docs/${lang}/CONTRIBUTION.md)
+- [${Dot("uavuXKo4x","For China Developers")}](/devtools/notes/common/issues.md)
 
 # 💐 Icons
 
-We would appreciate talent artists who provided below beautiful icons:
+${Dot("eI8YT-N_a","We would appreciate talent artists who provided below beautiful icons:")}
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 
-# 🙏 Acknowledgements
+# 🙏 ${Dot("QzssXokGC","Acknowledgements")}
 
-This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:
+${Dot("oM2NCFSQ1","This project would not have been possible without awesome open source projects which I would like to personally express my deepest gratitude to:")}
 
 1. [Blueprint UI](https://blueprintjs.com/) - a React-based UI toolkit.
 1. [CyberChef](https://github.com/gchq/CyberChef/tree/master) - a web app for encryption, encoding, compression and data analysis.
 1. [Lodash](https://github.com/lodash/lodash) - a modern JavaScript utility library delivering modularity, performance, & extras.
 1. [one-api](https://github.com/songquanpeng/one-api) - an OpenAI key management & redistribution system.
 
-For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.
+${Dot("vWi9Y_HJ6","For sure, there are other open source projects that have benefited and facilitated this project, which I couldn't detail in this part; Without these projects and these talent developers' efforts, LafTools would not have been possible.")}
 
 Thank you!
 
 Ryan Laf  
-Feb. 2nd, 2023
+${Dot("lzYX0DiPc","Feb. 2nd, 2023")}
 
 # 🪪 License
 
-This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.
+${Dot("R1RzDLneG","This project is protected under the GNU Affero General Public License, please see the LICENSE file for more details.")}

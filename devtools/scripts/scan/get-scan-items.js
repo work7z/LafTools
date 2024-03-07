@@ -31,8 +31,12 @@ if (baseDIR == "") {
   // exit(99)
 }
 
-let webDIR = path.join(baseDIR, ...`modules/web`.split("/"));
+// let webDIR = path.join(baseDIR, ...`modules/web`.split("/"));
 let web2DIR = path.join(baseDIR, ...`modules/web2`.split("/"));
+let docsGeneratorDIR = path.join(
+  baseDIR,
+  ...`devtools/docs-generator/`.split("/"),
+);
 // let nodeDIR = path.join(baseDIR, ...`modules/node`.split("/"));
 
 // personal project for RYAN LAI, just ignore it please
@@ -83,7 +87,14 @@ let web2Item = {
   dir: `${web2DIR}/app`,
   exclude: ["[lang]/client"],
 };
-
+let docsGENItem = {
+  id: "nlt3KDLEX",
+  type: "ts",
+  prefix: "Dot(",
+  pattern: commonText,
+  target: `${docsGeneratorDIR}/lang`,
+  dir: `${docsGeneratorDIR}/files`,
+};
 let searchItems = [
   // {
   //   id: "brl",
@@ -102,6 +113,7 @@ let searchItems = [
     target: `${web2DIR}/public/static/lang2client`,
     dir: `${web2DIR}/app/[lang]/client`,
   },
+  docsGENItem,
   web2Item,
 
   // {

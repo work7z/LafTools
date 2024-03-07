@@ -14,6 +14,6 @@
     },
     "scripts": {
         "dev": "sh ./pipeline/dev.sh",
-        "build": "tsc --outDir ./dist && node ./dist/gen.js"
+        "build": "tsc --jsx react --outDir ./dist && node ./dist/gen.js"
     }
 }
