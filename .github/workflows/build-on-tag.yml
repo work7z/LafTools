@@ -55,9 +55,6 @@ jobs:
           draft: false
           prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || contains(github.ref, 'rc') }}
 
-      - name: Repack linux x64
-        run: cp /home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz /home/runner/work/LafTools/LafTools-tag/linux-pack
-
       - name: Execute SSH command
         uses: appleboy/ssh-action@master
         with:
@@ -70,16 +67,15 @@ jobs:
             ls -la 
             mkdir -p /home/appuser/LafTools-dist
 
-      - name: Copy file via SSH
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.APP_SSH_HOST }}
-          port: ${{ secrets.APP_SSH_PORT }}
-          username: ${{ secrets.APP_SSH_USERNAME }}
-          key: ${{ secrets.APP_SSH_KEY }}
-          source: "/home/runner/work/LafTools/LafTools-tag/linux-pack"
-          target: "/home/appuser/LafTools-dist/"
-          strip_components: 1
+      - name: Install sshpass
+        run: sudo apt-get install sshpass -y
+
+      - name: Upload file via SFTP
+        run: |
+          sshpass -p ${{ secrets.APP_SSH_PASSWORD }} sftp -o StrictHostKeyChecking=no -P ${{ secrets.APP_SSH_PORT }} ${{ secrets.APP_SSH_USERNAME }}@${{ secrets.APP_SSH_HOST }} <<EOF
+          put /home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz /home/appuser/LafTools-dist/
+          exit
+          EOF
 
       - name: Upload Release Asset for linux-x64
         uses: actions/upload-release-asset@v1
