@@ -72,7 +72,7 @@ jobs:
 
       - name: Upload file via SFTP
         run: |
-          sshpass -p ${{ secrets.APP_SSH_PASSWORD }} sftp -o StrictHostKeyChecking=no -P ${{ secrets.APP_SSH_PORT }} ${{ secrets.APP_SSH_USERNAME }}@${{ secrets.APP_SSH_HOST }} <<EOF
+          sshpass -p ${{ secrets.APP_SSH_PASSWORD }} sftp -P ${{ secrets.APP_SSH_PORT }} ${{ secrets.APP_SSH_USERNAME }}@${{ secrets.APP_SSH_HOST }} <<EOF
           put /home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz /home/appuser/LafTools-dist/
           exit
           EOF
