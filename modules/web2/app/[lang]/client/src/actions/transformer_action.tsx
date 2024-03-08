@@ -20,14 +20,14 @@
 
 import { FN_GetDispatch, FN_GetState } from "../nocycle";
 import RuntimeStatusSlice from "../reducers/runtimeStatusSlice";
-import LibProcessEntryPoint from '../lib/process'
+import LibProcessEntryPoint from '@/app/[lang]/client/src/impl/tools/process'
 import { ExtensionVM } from "../types/purejs-types-READ_ONLY";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "./bigtext_action";
 import gutils from "../utils/GlobalUtils";
 import _ from "lodash";
 import moment from "moment";
-import Operation from "../lib/core/Operation.tsx";
-import { ToolHandler } from "../lib/tools/handler";
+// import { ToolHandler } from "@/app/[lang]/client/src/impl/tools/handler";
+import { ToolHandler } from "@/app/[lang]/client/src/impl/tools/handler";
 import { CommonTransformerPassProp } from "../types/workbench-types";
 import { logutils } from "../utils/LogUtils";
 window["moment"] = moment

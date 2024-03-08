@@ -20,8 +20,8 @@
 
 import { Intent } from "@blueprintjs/core";
 import { ToolCategory, ExtensionVM } from "./purejs-types-READ_ONLY";
-import { ToolHandler, ToolMetaInfo } from "../lib/tools/handler";
-import Operation from "../lib/core/Operation.tsx";
+import { ToolHandler, ToolMetaInfo } from "../impl/tools/handler";
+import Operation from "../impl/core/Operation.tsx";
 import { ParamStateState, TabBottomType, TabLeftType, TabRightType } from "../reducers/state/paramStateSlice.tsx";
 
 export * from './constants';

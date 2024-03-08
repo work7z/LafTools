@@ -89,7 +89,7 @@ import { EachLang } from "../../types/purejs-types-READ_ONLY";
 import IDUtils from "../../utils/IDUtils";
 import { useHistory } from "react-router-dom";
 import { getFormattedLang } from "../../i18n";
-import i18n from "../../lib/translation/i18n";
+import i18n from "@/app/[lang]/client/src/impl/translation/i18n";
 import i18nItems from "@/app/__CORE__/config/i18n";
 
 export interface MultistepDialogExampleState {

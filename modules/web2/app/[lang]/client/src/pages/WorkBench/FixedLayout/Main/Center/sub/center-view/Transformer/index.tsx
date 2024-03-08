@@ -46,13 +46,12 @@ import ControlBar from "./ControlBar/index.tsx";
 import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
 import ProcessPanel from "./ProcessPanel/index.tsx";
-import LibProcessEntryPoint from '../../../../../../../../lib/process.ts'
 import { ACTION_Transformer_Process_Text, ACTION_Transformer_Process_Text_Delay } from "../../../../../../../../actions/transformer_action";
-import Operation from "../../../../../../../../lib/core/Operation.tsx";
+import Operation from "../../../../../../../../impl/core/Operation.tsx";
 import gutils from "../../../../../../../../utils/GlobalUtils";
-import appToolInfoObj, { AppInfoType } from "../../../../../../../../lib/tools/info";
+import appToolInfoObj, { AppInfoType } from "../../../../../../../../impl/tools/info";
 import { getInitValueForRuntimeStatus } from './init.tsx'
-import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../lib/tools/handler";
+import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../impl/tools/handler";
 import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
 import ShowErrorPanel from "../../../../../../../../containers/ShowErrorPanel/index.tsx";
 
