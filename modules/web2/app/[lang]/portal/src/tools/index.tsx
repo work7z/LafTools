@@ -3,11 +3,10 @@ import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, T
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import { border_clz, light_border_clz_all, tw } from '@/app/[lang]/styles';
 import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
-import ToolsNavigator from './toolsNavigator';
-import TestBtn from './testbtn'
+import ToolsNavigator from './navigator';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-
+import ExtensionView from './extensionView'
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -21,12 +20,9 @@ export default () => {
             <div className='flex-1  space-y-2'>
                 <Card {...getCardsProps()} className={light_border_clz_all}>
                     <ToolsNavigator></ToolsNavigator>
-                    <CardBody>
-                        <div className='min-h-60'>
-                            <TestBtn />
-                            <div>item1</div>
-                            <div>item1</div>
-                            <div>item3</div>
+                    <CardBody className='p-0'>
+                        <div className='w-full h-full'>
+                            <ExtensionView />
                         </div>
                     </CardBody>
                 </Card>

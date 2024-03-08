@@ -66,10 +66,7 @@ export let getErrMsg = function (_e): string {
   }
   return e.message;
 };
-export let getIconPngFile = (): string => {
-  return IsDevMode() ? "icon-dev.png" : "icon.png";
-};
-
+export * from './server'
 let pkey = "txsyl";
 export let saveStrIntoCache = function (key: string, value: string) {
   // localStorage.setItem(pkey + key, value);
@@ -108,3 +105,7 @@ export let IsDevMode = (): boolean =>
   // emmm.. hard code not cool, would u refine it?
   location.href.indexOf("127.0.0.1:3000") != -1 ||
   location.href.indexOf("localhost:3000") != -1;
+
+export let getIconPngFile = (): string => {
+  return IsDevMode() ? "icon-dev.png" : "icon.png";
+};

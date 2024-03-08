@@ -23,7 +23,6 @@
 
 import { IconName } from "@blueprintjs/icons";
 import { AppToolKeyType } from "./tools/info";
-import { I18nItem } from "@/app/__CORE__/config/i18n";
 
 
 export type NodeReq = {

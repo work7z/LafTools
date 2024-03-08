@@ -8,9 +8,6 @@ import { useRouter } from 'next/navigation'
 
 let TestBtn = () => {
     let r = useRouter()
-
-    return <button type='button' className='' onClick={e => {
-
-    }}>click me</button>
+    return <div className='bg-red-50 w-full h-full'>this is full tool panel</div>
 }
 export default TestBtn;

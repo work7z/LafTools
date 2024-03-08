@@ -33,9 +33,7 @@ import _ from "lodash";
 export default (): ToolCategory[] => {
   let appCategory: ToolCategory[] = [
     {
-      Id: "all", // should have no all in this field
-      // Label: Dot("M6MrW", "Good"),
-      // Dot("dkjk12","this is test")
+      Id: "all",
       Label: Dot("cPS6q", "All Tools"),
       SubCategories: [],
     },

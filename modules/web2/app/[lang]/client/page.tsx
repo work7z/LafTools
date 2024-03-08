@@ -13,7 +13,8 @@ import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils";
 import { Dot, getXLocaleStrInRSC } from "@/app/__CORE__/utils/TranslationUtils";
 import { isDevEnv } from "@/app/__CORE__/hooks/env";
 import PassClientValue from './pass'
-const EntryWrapper = dynamic(() => import('./client'), { ssr: false })
+import PageLoadingEffect from "@/app/__CORE__/containers/PageLoadingEffect";
+const EntryWrapper = dynamic(() => import('./client'), { ssr: false, loading: () => <PageLoadingEffect /> })
 
 let cachedLangMap: { [key: string]: string } = {}
 let getCachedValueIfNot = (key: string, fn: () => string) => {
@@ -32,16 +33,6 @@ export default async function ClientPage(props: CombindSearchProps) {
     return (
         <main>
             <EntryWrapper />
-            {/* <PassClientValue xlocaleJSON={xlocaleJSON} /> */}
-            {/* <script
-                dangerouslySetInnerHTML={{
-                    __html: `
-                    
-                    window.__LANG2CLIENT__ = ${((xlocaleJSON))};
-
-                    `
-                    // 
-                }}></script> */}
         </main>
     )
 }
