@@ -54,7 +54,7 @@ Recently, we are refactoring the architecture of LafTools based on next.js, belo
 
 ## 1. Setup System Environment
 
-For the sake of simplicity, let's say that you've cloned this repository to either {0} on Windows or {1} on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or simply execute them before running any command.
+For the sake of simplicity, let's say that you've cloned this repository to either `C:\Usersjerry\project\laftools-repo` on Windows or `/Users/jerry/projects/laftools-repo` on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or simply execute them before running any command.
 
 If you're using Windows OS, please ensure that all commands are executed in git-bash, learn more please refer to [CONTRIBUTION](/docs/en_US/CONTRIBUTION.md). Apart from this, it is recommended to avoid using any whitespace or non-English characters in the file path where this project is located.
 
@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 To debug Go service, we have configured it in VSCode, you can just follow below steps:
 
-1. Enter {0}
+1. Enter Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
@@ -139,7 +139,7 @@ cd pipeline
 
 #### _The Tools for Laffin' At Life_
 
-The name of this project is inspired by {0}, a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
+The name of this project is inspired by Laffin' At Life, a classic country song from 1987 by Chet Atkins that also has a special place in the author's heart.
 
 Hopefully LafTools will make your daily tasks easier, reducing the need for overtime and helping you maintain a healthy work-life balance, let us just laffin' at life!
 

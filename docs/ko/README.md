@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 Go 서비스를 디버깅하려면 VSCode에서 구성했습니다. 아래 단계를 따르면 됩니다.
 
-1. Visual Studio Code을(를) 입력하세요
+1. Enter Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

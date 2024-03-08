@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 For å feilsøke Go-tjenesten har vi konfigurert den i VSCode, du kan bare følge trinnene nedenfor:
 
-1. Skriv inn Visual Studio Code
+1. Enter Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

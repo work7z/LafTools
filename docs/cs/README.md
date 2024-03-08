@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 Chcete-li ladit službu Go, nakonfigurovali jsme ji ve VSCode, stačí postupovat podle následujících kroků:
 
-1. Zadejte Visual Studio Code
+1. Enter Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

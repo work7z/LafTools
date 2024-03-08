@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 Para depurar el servicio Go, lo hemos configurado en VSCode, simplemente puede seguir los pasos a continuación:
 
-1. Introduzca Visual Studio Code
+1. Enter Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

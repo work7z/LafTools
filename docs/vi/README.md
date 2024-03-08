@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 Để gỡ lỗi dịch vụ Go, chúng tôi đã định cấu hình nó trong VSCode, bạn chỉ cần làm theo các bước dưới đây:
 
-1. Nhập Visual Studio Code
+1. Enter Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

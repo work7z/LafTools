@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 Go-palvelun virheenkorjausta varten olemme määrittäneet sen VSCodessa, voit seurata alla olevia ohjeita:
 
-1. Kirjoita Visual Studio Code
+1. Enter Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 Go サービスをデバッグするには、VSCode で構成しました。次の手順に従うだけです。
 
-1. Visual Studio Codeを入力してください
+1. Enter Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

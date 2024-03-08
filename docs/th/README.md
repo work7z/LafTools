@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 ในการแก้ไขข้อบกพร่องของบริการ Go เราได้กำหนดค่าไว้ใน VSCode คุณสามารถทำตามขั้นตอนด้านล่าง:
 
-1. ป้อน Visual Studio Code
+1. Enter Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

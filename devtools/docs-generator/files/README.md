@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 ${Dot("Yay3_x9EV","To debug Go service, we have configured it in VSCode, you can just follow below steps:")}
 
-1. ${Dot("wWRCQygDC","Enter {0}",'Visual Studio Code')}
+1. ${Dot("qxRmL73lC","Enter {0}","Visual Studio Code")}
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
