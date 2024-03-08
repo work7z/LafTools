@@ -1,4 +1,4 @@
-<i>Note: 該頁面是由LafTools工具箱內部產生的。</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  繁體中文  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
+<i>Note: 該頁面是由LafTools工具箱內部產生的。</i> <br/> [English](/docs/en_US/FAQ.md)  |  [简体中文](/docs/zh_CN/FAQ.md)  |  繁體中文  |  [Deutsch](/docs/de/FAQ.md)  |  [Español](/docs/es/FAQ.md)  |  [Français](/docs/fr/FAQ.md)  |  [日本語](/docs/ja/FAQ.md)  |  [한국어](/docs/ko/FAQ.md) | [More](/docs/) <br/>
 
 # 🙋 Is it a free software?
 

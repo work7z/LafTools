@@ -19,6 +19,24 @@ test('isNewVersion should return true if new version is greater than current ver
     const result = VerCompareUtils.isNewVersion(currentVersion, newVersion);
     expect(result).toBe(true);
 });
+test('isNewVersion FZIavIOwI', () => {
+    const currentVersion = '2.0.0';
+    const newVersion = '2.0.10';
+    const result = VerCompareUtils.isNewVersion(currentVersion, newVersion);
+    expect(result).toBe(true);
+});
+test('isNewVersion NMxzna31n', () => {
+    const currentVersion = '2.0.1';
+    const newVersion = '2.0.10';
+    const result = VerCompareUtils.isNewVersion(currentVersion, newVersion);
+    expect(result).toBe(true);
+});
+test('isNewVersion z9Au6E0z1', () => {
+    const currentVersion = '2.0.1';
+    const newVersion = '2.0.23';
+    const result = VerCompareUtils.isNewVersion(currentVersion, newVersion);
+    expect(result).toBe(true);
+});
 
 test('isNewVersion should return false if new version is not greater than current version', () => {
     const currentVersion = '2.0.0';
