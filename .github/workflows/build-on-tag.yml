@@ -55,6 +55,9 @@ jobs:
           draft: false
           prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || contains(github.ref, 'rc') }}
 
+      - name: Repack linux x64
+        run: cp /home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz /home/runner/work/LafTools/LafTools-tag/linux-pack
+
       - name: Execute SSH command
         uses: appleboy/ssh-action@master
         with:
@@ -74,7 +77,7 @@ jobs:
           port: ${{ secrets.APP_SSH_PORT }}
           username: ${{ secrets.APP_SSH_USERNAME }}
           key: ${{ secrets.APP_SSH_KEY }}
-          source: "/home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz"
+          source: "/home/runner/work/LafTools/LafTools-tag/linux-pack"
           target: "/home/appuser/LafTools-dist/"
           strip_components: 1
 
