@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 Go hizmetinde hata ayıklamak için onu VSCode'da yapılandırdık, aşağıdaki adımları takip etmeniz yeterlidir:
 
-1. Enter Visual Studio Code
+1. Visual Studio Code girin
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

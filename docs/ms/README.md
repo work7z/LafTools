@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 Untuk menyahpepijat perkhidmatan Go, kami telah mengkonfigurasinya dalam VSCode, anda hanya boleh mengikuti langkah-langkah di bawah:
 
-1. Enter Visual Studio Code
+1. Masukkan Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

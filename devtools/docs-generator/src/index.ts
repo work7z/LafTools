@@ -16,6 +16,12 @@ let markdownFiles: FileInfo[] = [
     destinations: ["/docs"],
   },
   {
+    root: true,
+    fileName: "SECURITY.md",
+    comments: "This is the security file",
+    destinations: ["/docs"],
+  },
+  {
     root: false,
     fileName: "CONTRIBUTION.md",
     comments: "This is the contribution file",

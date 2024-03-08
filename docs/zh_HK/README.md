@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 為了調試Go服務，我們已經在VSCode中配置了它，您可以按照以下步驟操作：
 
-1. Enter Visual Studio Code
+1. 輸入Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 

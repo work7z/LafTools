@@ -82,7 +82,7 @@ go run ./core/app.go server
 
 Aby debugować usługę Go, skonfigurowaliśmy ją w VSCode, możesz po prostu wykonać poniższe kroki:
 
-1. Enter Visual Studio Code
+1. Wpisz Visual Studio Code
 2. Click "Run and Debug" on your sidebar
 3. Click "Run" button.
 
