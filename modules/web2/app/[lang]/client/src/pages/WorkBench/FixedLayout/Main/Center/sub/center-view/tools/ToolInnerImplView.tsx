@@ -142,8 +142,8 @@ export let getSessionId = (tabId: string | null | undefined): string => {
   if (!tabId) { return "unknown" }
   return tabId + "-s";
 }
-
-export default () => {
+export type ToolInnerImplProps = {}
+export default (props: ToolInnerImplProps) => {
   let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
   let s = exportUtils.useSelector((v) => {
     return {

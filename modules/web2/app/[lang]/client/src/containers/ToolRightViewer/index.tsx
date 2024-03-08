@@ -72,42 +72,11 @@ import {
   useHistory,
   Redirect,
 } from "react-router-dom";
-// import ExtensionSingleView from "../ExtensionSingleView";
 import { PassToolViewerProp } from "../../types/workbench-types";
 
 type PassProp = PassToolViewerProp;
 
 export default (props: PassProp): any => {
-  // const param = useParams() as ToolParamType;
-  // let toolParam = param;
-  // if (_.isNil(props.findCurrentPureItem)) {
-  //   return (
-  //     <NonIdealState
-  //       icon="warning-sign"
-  //       title={Dot(
-  //         "UU_7h",
-  //         "Please click any category item on the left first menu, the current category is empty or invalid."
-  //       )}
-  //     ></NonIdealState>
-  //   );
-  // }
-  // if (_.isNil(param.extId)) {
-  //   return (
-  //     <NonIdealState
-  //       icon="warning-sign"
-  //       title={Dot(
-  //         "9a335",
-  //         "Please click any extension item on the left first menu, the current one is empty or invalid."
-  //       )}
-  //     ></NonIdealState>
-  //   );
-  // }
-
-  // return (
-  //   <div className="w100 h100">
-  //     <ExtensionSingleView extId={toolParam.extId + ""} />
-  //   </div>
-  // );
   return <div></div>
 
 };

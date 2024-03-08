@@ -148,5 +148,6 @@ export default () => {
       },
     ]}
     emptyTitle={l2}
-    workspaceKey="tools" workspaceImplView={ToolInnerImplView}></CommonCenterView>
+    workspaceKey="tools"
+    workspaceImplView={ToolInnerImplView} />
 };

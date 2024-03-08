@@ -22,10 +22,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { startListening } from "../listenerMiddleware";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import ExtHookUtils, { ExtQuickAllType } from "../utils/ExtensionHookUtils";
-import {
-  ExtVMContext,
-  PropExtSessionContext,
-} from "../containers/ExtensionSingleView";
 import CacheUtils from "../utils/CacheUtils";
 import AjaxUtils from "../utils/AjaxUtils";
 import _ from "lodash";

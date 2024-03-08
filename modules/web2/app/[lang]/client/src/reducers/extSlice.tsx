@@ -20,10 +20,6 @@
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ExtensionAction, ExtensionVM, ValueRes } from "../types/purejs-types-READ_ONLY";
-import {
-  ExtVMContext,
-  PropExtSessionContext,
-} from "../containers/ExtensionSingleView";
 import CacheUtils from "../utils/CacheUtils";
 import statusSlice from "./statusSlice";
 import AjaxUtils from "../utils/AjaxUtils";

@@ -136,7 +136,7 @@ import EmptyToolMarks, { NavSubItem } from "./EmptyPlaceHolderView";
 export default (props: {
     emptyTitle: string;
     workspaceKey: WorkspaceStateKey,
-    workspaceImplView: () => JSX.Element,
+    workspaceImplView: (props: any) => JSX.Element,
     extraHelpers: NavSubItem[]
 }) => {
     let { workspaceKey, workspaceImplView } = props;

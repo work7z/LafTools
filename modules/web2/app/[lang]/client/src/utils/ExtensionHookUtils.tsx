@@ -72,141 +72,141 @@ import ExtSlice, {
 } from "../reducers/extSlice";
 import exportUtils from "./ExportUtils";
 import { shallowEqual } from "react-redux";
-import {
-  ExtSessionContext,
-  ExtVMContext,
-  PropExtSessionContext,
-  PropExtVMContext,
-} from "../containers/ExtensionSingleView";
+// import {
+//   ExtSessionContext,
+//   ExtVMContext,
+//   PropExtSessionContext,
+//   PropExtVMContext,
+// } from "../containers/ExtensionSingleView";
 import { logutils } from "./LogUtils";
 import { FN_GetState } from "../nocycle";
 import BigTextSlice from "../reducers/bigTextSlice";
 
 const ExtHookUtils = {
-  useExtStatusData(): ExtensionStatusData | null {
-    let extInfo = ExtHookUtils.useExtInfo();
-    let sessionId = extInfo.sessionId;
-    let crtMap = exportUtils.useSelector((v) => {
-      return {
-        item_map: v.ext.extStatusMap[sessionId] as ExtensionStatusData,
-      };
-    });
-    // logutils.debug("crtMap2", { crtMap, sessionId });
-    if (!_.isNil(crtMap.item_map)) {
-      return crtMap.item_map as ExtensionStatusData;
-    }
-    return null;
-  },
-  useExtInfo(): PropExtSessionContext {
-    let ctx = useContext(ExtSessionContext);
-    return ctx;
-  },
-  useExtVM(): PropExtVMContext {
-    let ctx = useContext(ExtVMContext);
-    return ctx;
-  },
-  useExtOperator() {
-    let dis = exportUtils.dispatch();
+  // useExtStatusData(): ExtensionStatusData | null {
+  //   let extInfo = ExtHookUtils.useExtInfo();
+  //   let sessionId = extInfo.sessionId;
+  //   let crtMap = exportUtils.useSelector((v) => {
+  //     return {
+  //       item_map: v.ext.extStatusMap[sessionId] as ExtensionStatusData,
+  //     };
+  //   });
+  //   // logutils.debug("crtMap2", { crtMap, sessionId });
+  //   if (!_.isNil(crtMap.item_map)) {
+  //     return crtMap.item_map as ExtensionStatusData;
+  //   }
+  //   return null;
+  // },
+  // useExtInfo(): PropExtSessionContext {
+  //   let ctx = useContext(ExtSessionContext);
+  //   return ctx;
+  // },
+  // useExtVM(): PropExtVMContext {
+  //   let ctx = useContext(ExtVMContext);
+  //   return ctx;
+  // },
+  // useExtOperator() {
+  //   let dis = exportUtils.dispatch();
 
-    let extOp = {
-      initExtStatusMap: ({ sessionId, extId }) => {
-        extOp.updateExtStatusMap(
-          fn_renew_createDefaultExtStatusData({
-            extId,
-            sessionId,
-          }),
-          {}
-        );
-      },
-      updateExtStatusMap(
-        statusData: ExtensionStatusData,
-        extraKVMap: { [key: string]: string }
-      ) {
-        dis(ExtSlice.actions.updateExtStatusMap(statusData));
-        // iterate key and value for extraKVMap
-        for (let key in extraKVMap) {
-          let value = extraKVMap[key];
-          dis(
-            BigTextSlice.actions.updatebigtext({
-              key,
-              value,
-            })
-          );
-        }
-      },
-    };
-    return extOp;
-  },
-  useQuickAll(): ExtQuickAllType {
-    let dis = exportUtils.dispatch();
-    let exOp = ExtHookUtils.useExtOperator();
-    let { sessionId, extId } = ExtHookUtils.useExtInfo();
-    let fromExtData = function <T, K extends keyof ExtensionStatusData>(
-      fieldName: K
-    ): T {
-      let crtMap = exportUtils.useSelector((v) => {
-        let b = v.ext.extStatusMap[sessionId];
-        if (b) {
-          let thatValue = b[fieldName];
-          return {
-            item_map: thatValue,
-            ctn: _.size(v.ext.extStatusMap),
-          };
-        } else {
-          return {
-            item_map: null,
-            ctn: 0,
-          };
-        }
-      }, shallowEqual);
-      return crtMap.item_map as T;
-    };
-    let toExtData = function <T, K extends keyof ExtensionStatusData>(
-      fieldName: K,
-      fieldValue: T
-    ): void {
-      dis(
-        ExtSlice.actions.updateExtStatusMapPart({
-          sessionId: sessionId,
-          fieldName: fieldName,
-          fieldValue: fieldValue,
-        })
-      );
-    };
+  //   let extOp = {
+  //     initExtStatusMap: ({ sessionId, extId }) => {
+  //       extOp.updateExtStatusMap(
+  //         fn_renew_createDefaultExtStatusData({
+  //           extId,
+  //           sessionId,
+  //         }),
+  //         {}
+  //       );
+  //     },
+  //     updateExtStatusMap(
+  //       statusData: ExtensionStatusData,
+  //       extraKVMap: { [key: string]: string }
+  //     ) {
+  //       dis(ExtSlice.actions.updateExtStatusMap(statusData));
+  //       // iterate key and value for extraKVMap
+  //       for (let key in extraKVMap) {
+  //         let value = extraKVMap[key];
+  //         dis(
+  //           BigTextSlice.actions.updatebigtext({
+  //             key,
+  //             value,
+  //           })
+  //         );
+  //       }
+  //     },
+  //   };
+  //   return extOp;
+  // },
+  // useQuickAll(): ExtQuickAllType {
+  //   let dis = exportUtils.dispatch();
+  //   let exOp = ExtHookUtils.useExtOperator();
+  //   let { sessionId, extId } = ExtHookUtils.useExtInfo();
+  //   let fromExtData = function <T, K extends keyof ExtensionStatusData>(
+  //     fieldName: K
+  //   ): T {
+  //     let crtMap = exportUtils.useSelector((v) => {
+  //       let b = v.ext.extStatusMap[sessionId];
+  //       if (b) {
+  //         let thatValue = b[fieldName];
+  //         return {
+  //           item_map: thatValue,
+  //           ctn: _.size(v.ext.extStatusMap),
+  //         };
+  //       } else {
+  //         return {
+  //           item_map: null,
+  //           ctn: 0,
+  //         };
+  //       }
+  //     }, shallowEqual);
+  //     return crtMap.item_map as T;
+  //   };
+  //   let toExtData = function <T, K extends keyof ExtensionStatusData>(
+  //     fieldName: K,
+  //     fieldValue: T
+  //   ): void {
+  //     dis(
+  //       ExtSlice.actions.updateExtStatusMapPart({
+  //         sessionId: sessionId,
+  //         fieldName: fieldName,
+  //         fieldValue: fieldValue,
+  //       })
+  //     );
+  //   };
 
-    return {
-      getAllExtData: function (): ExtensionStatusData {
-        return FN_GetState().ext.extStatusMap[sessionId];
-      },
-      getBigTextIdByPropName: function (propName: string): string | null {
-        let crtMap = exportUtils.useSelector((v) => {
-          let b = v.ext.extStatusMap[sessionId];
-          if (b && b.bigtextKIMap) {
-            let thatValue = b.bigtextKIMap[propName];
-            return {
-              value: thatValue,
-              ctn: _.size(v.ext.extStatusMap.bigtextKIMap),
-            };
-          } else {
-            return {
-              value: null,
-              ctn: 0,
-            };
-          }
-        }, shallowEqual);
-        return crtMap.value as string;
-      },
-      exOp: exOp,
-      sessionId: sessionId,
-      fromExtData,
-      toExtData,
-    };
-  },
+  //   return {
+  //     getAllExtData: function (): ExtensionStatusData {
+  //       return FN_GetState().ext.extStatusMap[sessionId];
+  //     },
+  //     getBigTextIdByPropName: function (propName: string): string | null {
+  //       let crtMap = exportUtils.useSelector((v) => {
+  //         let b = v.ext.extStatusMap[sessionId];
+  //         if (b && b.bigtextKIMap) {
+  //           let thatValue = b.bigtextKIMap[propName];
+  //           return {
+  //             value: thatValue,
+  //             ctn: _.size(v.ext.extStatusMap.bigtextKIMap),
+  //           };
+  //         } else {
+  //           return {
+  //             value: null,
+  //             ctn: 0,
+  //           };
+  //         }
+  //       }, shallowEqual);
+  //       return crtMap.value as string;
+  //     },
+  //     exOp: exOp,
+  //     sessionId: sessionId,
+  //     fromExtData,
+  //     toExtData,
+  //   };
+  // },
 };
 export type ExtQuickAllType = {
   getBigTextIdByPropName: (o: string) => string | null;
   getAllExtData: () => ExtensionStatusData;
-  exOp: ReturnType<typeof ExtHookUtils.useExtOperator>;
+  // exOp: ReturnType<typeof ExtHookUtils.useExtOperator>;
   sessionId: string;
   fromExtData: <T, K extends keyof ExtensionStatusData>(
     fieldName: K
