@@ -75,7 +75,8 @@ jobs:
           username: ${{ secrets.APP_SSH_USERNAME }}
           key: ${{ secrets.APP_SSH_KEY }}
           source: "/home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz"
-          target: "/home/appuser/LafTools-dist/LafTools-latest-linux-x64.tar.gz"
+          target: "/home/appuser/LafTools-dist/"
+          strip_components: 1
 
       - name: Upload Release Asset for linux-x64
         uses: actions/upload-release-asset@v1
