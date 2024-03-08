@@ -230,7 +230,7 @@ build-bundle(){
             cp ../../pkg/*$platformName.tar.gz ./linux.tar.gz
             cp $LAFTOOLS_ROOT/pipeline/parcel/docker/* ./
             # date +%Y%m%d-%s
-            sudo docker build -t codegentoolbox/laftools-$platformName:insider -f ./Dockerfile .
+            docker build -t codegentoolbox/laftools-$platformName:insider -f ./Dockerfile .
         )
     }
 
@@ -253,7 +253,7 @@ build-bundle(){
     # package as zip and tar.gz
     package-all
     # build docker images
-    docker-all
+    
     # [END]
 
     echo "[I] location: `pwd` and dist dir: $distDir"
