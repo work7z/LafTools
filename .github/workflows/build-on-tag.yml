@@ -55,17 +55,6 @@ jobs:
           draft: false
           prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || contains(github.ref, 'rc') }}
 
-      - name: Copy file via SSH
-        if: steps.runbuildscript.outputs.exit_code == 0
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.APP_SSH_HOST }}
-          port: ${{ secrets.APP_SSH_PORT }}
-          username: ${{ secrets.APP_SSH_USERNAME }}
-          key: ${{ secrets.APP_SSH_KEY }}
-          source: "/home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz"
-          target: "/home/appuser/LafTools-${{steps.get_version.outputs.VERSION}}-linux-x64.tar.gz"
-
       - name: Execute SSH command
         uses: appleboy/ssh-action@master
         with:
@@ -77,6 +66,16 @@ jobs:
             echo 'Running some command'
             ls -la 
             mkdir -p /home/appuser/LafTools-dist
+
+      - name: Copy file via SSH
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.APP_SSH_HOST }}
+          port: ${{ secrets.APP_SSH_PORT }}
+          username: ${{ secrets.APP_SSH_USERNAME }}
+          key: ${{ secrets.APP_SSH_KEY }}
+          source: "/home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz"
+          target: "/home/appuser/LafTools-dist/LafTools-${{steps.get_version.outputs.VERSION}}-linux-x64.tar.gz"
 
       - name: Upload Release Asset for linux-x64
         uses: actions/upload-release-asset@v1
