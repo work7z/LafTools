@@ -103,7 +103,7 @@ if (typeof window !== "undefined") {
 
 const TranslationUtils = {
   ForcbilyLanguage: "",
-  // CurrentLanguage: ,
+  CurrentLanguage: getCurrentLang(),
   getCurrentLang,
   IsChinese() {
     return (
