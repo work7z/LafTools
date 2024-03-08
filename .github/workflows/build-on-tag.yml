@@ -67,15 +67,19 @@ jobs:
             ls -la 
             mkdir -p /home/appuser/LafTools-dist
 
-      - name: Install sshpass
-        run: sudo apt-get install sshpass -y
+      - name: Write SSH key to file
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.APP_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
 
       - name: Upload file via SFTP
         run: |
-          sshpass -p ${{ secrets.APP_SSH_PASSWORD }} sftp -P ${{ secrets.APP_SSH_PORT }} ${{ secrets.APP_SSH_USERNAME }}@${{ secrets.APP_SSH_HOST }} <<EOF
-          put /home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz /home/appuser/LafTools-dist/
+          sftp -o StrictHostKeyChecking=no -P ${{ secrets.APP_SSH_PORT }} ${{ secrets.APP_SSH_USERNAME }}@${{ secrets.APP_SSH_HOST }} <<EOF
+            put /home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz /home/appuser/LafTools-dist/LafTools-${{steps.get_version.outputs.VERSION}}-linux-x64.tar.gz
           exit
           EOF
+          rm ~/.ssh/id_rsa -rf
 
       - name: Upload Release Asset for linux-x64
         uses: actions/upload-release-asset@v1

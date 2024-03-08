@@ -34,17 +34,6 @@ jobs:
         run: echo "Hello World" > /home/runner/work/LafTools/LafTools/abcd |
           tar -czvf /home/runner/work/LafTools/LafTools/linux-x64.tar.gz /home/runner/work/LafTools/LafTools/abcd
 
-      - name: Copy file via SSH
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.APP_SSH_HOST }}
-          port: ${{ secrets.APP_SSH_PORT }}
-          username: ${{ secrets.APP_SSH_USERNAME }}
-          key: ${{ secrets.APP_SSH_KEY }}
-          source: "/home/runner/work/LafTools/LafTools/abcd"
-          target: "/home/appuser/LafTools-dist/"
-          strip_components: 1
-
       - name: Write SSH key to file
         run: |
           mkdir -p ~/.ssh
@@ -60,3 +49,4 @@ jobs:
             put /home/runner/work/LafTools/LafTools/linux-x64.tar.gz /home/appuser/LafTools-dist/
           exit
           EOF
+          rm ~/.ssh/id_rsa -rf
