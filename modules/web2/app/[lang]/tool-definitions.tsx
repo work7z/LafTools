@@ -44,15 +44,15 @@ export let fn_rightNav = (): LabelHrefType[] => {
         // },
         {
             label: Dot("str.login", "Login"),
-            href: '/v2/zh-hans/nav/form/sign-in'
+            href: 'https://my.laf-tools.com/v2/zh-hans/nav/form/sign-in'
         },
         {
             label: Dot("str.register", "Register"),
-            href: '/v2/zh-hans/nav/form/sign-up'
+            href: 'https://my.laf-tools.com/v2/zh-hans/nav/form/sign-up'
         },
         {
             label: Dot("str.usercentre", "User Centre"),
-            href: '/v2/zh-hans/nav/overview'
+            href: 'https://my.laf-tools.com'
         },
     ]
     return rightNav
