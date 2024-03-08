@@ -94,13 +94,20 @@ function formatResultWithReplacer(val = "", ...args) {
 }
 
 
+if (typeof window !== "undefined") {
+  window['sysLocale'] = sysLocale
+}
+// export let getCurrentLang = () => {
+//   return sysLocale.langIni18n
+// }
 
 const TranslationUtils = {
   ForcbilyLanguage: "",
-  CurrentLanguage: sysLocale.langIni18n,
+  // CurrentLanguage: ,
+  getCurrentLang,
   IsChinese() {
     return (
-      TranslationUtils.CurrentLanguage == "zh_CN"
+      getCurrentLang() == "zh_CN"
     );
   },
   LangMap: crtNewLangMap,

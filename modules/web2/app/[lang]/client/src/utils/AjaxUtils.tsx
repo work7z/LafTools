@@ -63,7 +63,7 @@ const AjaxUtils = {
       "X-LOCAL-PAGE-ID": IDUtils.PAGE_ID,
       "X-LOCAL-CLIENT-ID": IDUtils.CLIENT_ID,
       "X-LOCAL-WORKSPACE-ID": getWorkspaceIdFromPath(),
-      "X-LOCAL-USER-LANG": TranslationUtils.CurrentLanguage,
+      "X-LOCAL-USER-LANG": TranslationUtils.getCurrentLang(),
       "X-LOCAL-USER-TOKEN": TokenUtils.getLocalUserToken(),
       "X-LOCAL-ADMIN-TOKEN": TokenUtils.getSystemInitToken(),
       "X-LOCAL-USER-ID": TokenUtils.getLocalUserId(),
@@ -74,9 +74,9 @@ const AjaxUtils = {
       ...AjaxUtils.getHeaders(),
       // cloud required
       "X-Work7z-Res-Type": "JSON",
-      "X-Local-User-Lang": TranslationUtils.CurrentLanguage,
+      "X-Local-User-Lang": TranslationUtils.getCurrentLang(),
       "X-WORK7Z-TOKEN": "N/A",
-      "X-WORK7Z-LANG": TranslationUtils.CurrentLanguage,
+      "X-WORK7Z-LANG": TranslationUtils.getCurrentLang(),
     }
   },
   getQSStr(obj: CommonRequest): string {

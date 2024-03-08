@@ -24,10 +24,8 @@ import i18nItems from '@/app/__CORE__/config/i18n'
 let appi18nJSON = i18nItems
 
 export let getFormattedLang = function (crtLang: string) {
-  // let crtLang = TranslationUtils.CurrentLanguage
   if (crtLang == 'zh_CN') {
-    // return 'zh-hans'
-    return 'zh'
+    return 'cn'
   }
   if (crtLang == 'zh_HK') {
     // return 'zh-hant'
@@ -48,7 +46,7 @@ export let GetUserActualClientLang = function (): string {
   if (prevLangValue) return prevLangValue
   // if url is specified, then forcebly use this once
   if ((typeof location === 'undefined')) {
-    return TranslationUtils.CurrentLanguage;
+    return TranslationUtils.getCurrentLang();
   }
   let matchResult = location.href.match(/\/app\/([^\/]+)/)
   if (matchResult) {

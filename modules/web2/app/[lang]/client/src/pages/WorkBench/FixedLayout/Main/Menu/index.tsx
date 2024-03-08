@@ -476,7 +476,7 @@ export let WB_MenuBar = (props: PassProp) => {
                         // });
                       }}
                       intent={
-                        x.value == TranslationUtils.CurrentLanguage
+                        x.value == TranslationUtils.getCurrentLang()
                           ? "primary"
                           : "none"
                       }
@@ -489,7 +489,7 @@ export let WB_MenuBar = (props: PassProp) => {
             <Tooltip
               content={
                 Dot("LWaeFqd", "Switch to your preferred language") +
-                (TranslationUtils.CurrentLanguage != "en_US"
+                (TranslationUtils.getCurrentLang() != "en_US"
                   ? "(Language)"
                   : "")
               }

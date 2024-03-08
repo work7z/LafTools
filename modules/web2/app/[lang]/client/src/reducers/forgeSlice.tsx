@@ -80,7 +80,7 @@ if (initialState.VerForgeForm != VER_FORGE_FORM) {
 
 let syncWithTransationUtils = (state: ForgeState) => {
   // TranslationUtils.CurrentLanguage = state.Language;
-  TranslationUtils.CurrentLanguage = GetUserActualClientLang();
+  // TranslationUtils.getCurrentLang() = GetUserActualClientLang();
 };
 
 let onlySaveIntoForgeWithoutSet = (state: ForgeState) => {

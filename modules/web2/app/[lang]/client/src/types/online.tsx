@@ -28,7 +28,7 @@ export const URL_LANDING_PAGE = `/landing-page`;
 // current
 
 export let getOnlineFullLink = (subLink: string): string => {
-    let l = getFormattedLang(TranslationUtils.CurrentLanguage)
+    let l = getFormattedLang(TranslationUtils.getCurrentLang())
     return `https://laf-tools.com/v2/${l}${subLink}`
 }
 let URL_NAV_PORTAL = '/nav'
