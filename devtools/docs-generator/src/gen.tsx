@@ -44,12 +44,12 @@ _.forEach(i18nItems, eachI18nItem => {
     }
     let Dot = function (id: string, enText: string, ...args: any[]): string {
         if (language == 'en_US') {
-            return enText
+            return formatResultWithReplacer(enText, ...args);
         }
         let langmap = LangMap;
         let o = langmap[language];
         if (_.isNil(o)) {
-            return enText;
+            return formatResultWithReplacer(enText, ...args);
         }
         let preText = o[id];
         if (!_.isNil(preText)) {

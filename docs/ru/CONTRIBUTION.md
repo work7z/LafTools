@@ -1,22 +1,22 @@
 <i>Note: Эта страница создается внутри LafTools.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
 
-## Pre-requisites
+## Предварительные условия
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+Прежде чем приступить к разработке этого проекта, убедитесь, что у вас установлены следующие SDK и программное обеспечение. Обратите пристальное внимание на указанные версии, чтобы избежать проблем с совместимостью. Некоторые версии могут работать, но рекомендуется использовать перечисленные ниже.
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - Необходимо выбрать «Use Git and optional Unix....» при установке.
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+Прежде чем изменять исходный код, вам следует прочитать приведенные ниже разделы, чтобы изучить архитектуру и технические детали.
 
-## How to launch project?
+## Как запустить проект?
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+Чтобы избежать написания дублирующихся частей, прочтите [README.md](../README.md) об этом разделе. Он включает в себя полное руководство по установке deps и запуску внешнего и внутреннего проекта.
 
-## How to build project?
+## Как построить проект?
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -24,9 +24,9 @@ We fully opened the source project of this project, to build this project, you c
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## Расширения VSCode для разработчиков
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+Если вы собираетесь развивать этот проект, вот несколько замечательных расширений, которые могут вам пригодиться. Обратите внимание, что этот раздел, безусловно, не представляет интереса.
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## Разработка && Создание на основе VSCode
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+Если вы собираетесь разработать или построить этот проект, обратите внимание, что сначала вам следует выполнить следующие шаги, иначе вы получите неисключенные ошибки.
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. Установите путь выполнения терминала как Git Bash.
+2. Установите окружение в вашей системе: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. Установите dlv и gopls для серверной службы Go при первом ее запуске.
 
-## Technologies
+## Технологии
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+Чтобы начать разработку, пожалуйста, проверьте, знакомы ли вы с технологиями, которые мы используем. В противном случае нет необходимости изучать их все, ничего страшного, если вы знакомы только с технологиями F/E или B/E. У нас есть модульные тесты и рабочий процесс запросов на внесение изменений, чтобы убедиться, что ваши изменения внесены правильно.
 
-We’re looking forward to your contribution.
+Мы с нетерпением ждем вашего вклада.
 
-For Front-end development:
+Для фронтенд-разработки:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+Для Back-end разработки:
 
 - Go
 - Node.js
 
-For desktop/client development:
+Для разработки десктопов/клиентов:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+Чтобы написать нашу документацию кратко, мы не будем подробно останавливаться на деталях этой третьей библиотеки, пожалуйста, прочитайте исходный код для получения более подробной информации.
 
 ## Architecture
 

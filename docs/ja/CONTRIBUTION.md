@@ -1,22 +1,22 @@
 <i>Note: このページは LafTools から内部的に生成されます。</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  日本語  |  [한국어](/docs/ko) | [More](/docs/) <br/>
 
-## Pre-requisites
+## 前提条件
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+このプロジェクトの開発を開始する前に、次の SDK とソフトウェアがインストールされていることを確認してください。互換性の問題を避けるために、指定されたバージョンに細心の注意を払ってください。一部のバージョンは動作する可能性がありますが、以下にリストされているバージョンが推奨されます。
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - 選択する必要があります
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+ソース コードを変更する前に、以下のセクションを読んでアーキテクチャと技術的な詳細を学ぶ必要があります。
 
-## How to launch project?
+## プロジェクトを立ち上げるにはどうすればいいですか?
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+重複した部分の記述を避けるために、このセクションについては [README.md](../README.md) をお読みください。deps のインストール方法とフロントエンドおよびバックエンド プロジェクトの実行方法に関する完全なガイドラインが含まれています。
 
-## How to build project?
+## プロジェクトを構築するにはどうすればよいですか?
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -24,9 +24,9 @@ We fully opened the source project of this project, to build this project, you c
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## 開発用の VSCode 拡張機能
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+このプロジェクトを開発する場合は、役立つ可能性のある素晴らしい拡張機能をいくつか紹介しますので、ご確認ください。このセクションはまったく興味のないものであることに注意してください。
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## VSCode での開発と構築
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+このプロジェクトを開発またはビルドする場合は、最初に以下の手順を完了する必要があることに注意してください。そうしないと、例外なくエラーが発生します。
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. ターミナルの実行パスを Git Bash として設定します
+2. システムに環境を設定する: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. Go バックエンド サービスを最初に起動するときに、そのサービス用の dlv と gopls をインストールします。
 
-## Technologies
+## テクノロジー
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+開発を始めるには、私たちが使用するテクノロジーに精通しているかどうかを確認してください。そうでない場合は、すべてを学ぶ必要はありません。F/E または B/E テクノロジーに精通しているだけであれば問題ありません。変更が適切に行われたことを確認するための単体テストとプル リクエスト ワークフローがあります。
 
-We’re looking forward to your contribution.
+皆様のご投稿をお待ちしております。
 
-For Front-end development:
+フロントエンド開発向け:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+バックエンド開発向け:
 
 - Go
 - Node.js
 
-For desktop/client development:
+デスクトップ/クライアント開発用:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+ドキュメントを簡潔に書くために、ここでは 3 番目のライブラリについて詳しく説明しません。詳細については、ソース コードを読んでください。
 
 ## Architecture
 

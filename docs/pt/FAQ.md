@@ -10,28 +10,28 @@ Espere, na verdade há outra opção em vez de apenas pagar a conta.
 
 Como programador profissional, você pode contribuir para este projeto e criar uma solicitação pull para ele, então você poderá obter uma assinatura premium gratuita por três meses.
 
-What you can do is to
+O que você pode fazer é
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- Adicionar teste de unidade
+- Adicionar novas ferramentas
+- Aprimore as ferramentas existentes
+- Resolva qualquer problema de aplicativo
+- Melhore o desempenho
+- Implementação Técnica
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+Com cobertura total de testes e esforços da comunidade LafTools, estamos firmemente convencidos de que o software pode crescer mais rápido e mais forte.
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ Uma carta aos usuários do CodeGen ToolBox
 
-Greetings from the CodeGen ToolBox team.
+Saudações da equipe CodeGen ToolBox.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+No meio deste inverno frio, temos o prazer de anunciar que CodeGen ToolBox lançou todo o seu código-fonte e foi renomeado para LafTools para um nome de produto mais conciso e específico. Deste ponto em diante, nossa equipe também será conhecida como Equipe LafTools.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+Apesar de nosso software agora ser totalmente de código aberto, continuamos comprometidos em servir nossos usuários premium como antes. Estamos profundamente gratos a todos aqueles que nos demonstraram a sua confiança sem reservas e apoio generoso ao actualizarem para a nossa conta premium. Fique tranquilo, seus serviços pagos não serão afetados e estamos continuamente explorando maneiras de aprimorar este produto.
 
-Our decision to completely open our source code was driven by the following reasons::
+Nossa decisão de abrir completamente nosso código-fonte foi motivada pelos seguintes motivos:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ Este projeto é inspirado principalmente nos seguintes músicos:
 - Harry Styles(As It Was)
 - Lovebugs
 
-Especificamente, o desempenho de **
+Especificamente, a performance de **Satin Doll** do virtuoso **Joe Pass** em 'An Evening With Joe Pass' (1994) tem sido uma fonte de força e confiança para mim, capacitando-me para enfrentar qualquer dilema na vida. .
 
 Thank you!
 

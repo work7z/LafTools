@@ -54,7 +54,7 @@ Gần đây, chúng tôi đang tái cấu trúc kiến ​​trúc của LafTool
 
 ## 1. Thiết lập môi trường hệ thống
 
-Để đơn giản, giả sử bạn đã sao chép kho lưu trữ này vào `C:\\Users\jerry\\project\\laftools-repo` trên Windows hoặc `/Users/jerry/projects/laftools-repo` trên Linux/MacOS, thì bạn nên khai báo env và đặt cấu hình bên dưới trong tệp của mình **~/.bashrc** hoặc chỉ cần thực thi chúng trước khi chạy bất kỳ lệnh nào.
+Để đơn giản, giả sử bạn đã sao chép kho lưu trữ này sang `C:\Usersjerry\project\laftools-repo` trên Windows hoặc `/Users/jerry/projects/laftools-repo` trên Linux/MacOS, thì bạn nên khai báo env và đặt config bên dưới trong tệp của mình **~/.bashrc* * hoặc đơn giản là thực thi chúng trước khi chạy bất kỳ lệnh nào.
 
 Nếu bạn đang sử dụng HĐH Windows, vui lòng đảm bảo rằng tất cả các lệnh được thực thi trong git-bash, tìm hiểu thêm vui lòng tham khảo [ĐÓNG GÓP](./docs/CONTRIBUTION.md). Ngoài ra, bạn nên tránh sử dụng bất kỳ khoảng trắng hoặc ký tự không phải tiếng Anh nào trong đường dẫn tệp chứa dự án này.
 

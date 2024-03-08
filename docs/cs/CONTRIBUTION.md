@@ -1,22 +1,22 @@
 <i>Note: Tato stránka je generována interně z LafTools.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
 
-## Pre-requisites
+## Předpoklady
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+Než začnete vyvíjet tento projekt, ujistěte se, že máte nainstalované následující sady SDK a software. Věnujte zvýšenou pozornost specifikovaným verzím, abyste předešli problémům s kompatibilitou. Některé verze mohou fungovat, ale ty uvedené níže jsou doporučené.
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - Při instalaci je třeba vybrat 'Use Git and optional Unix....'.
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+Před úpravou zdrojového kódu byste si měli přečíst níže uvedené sekce, kde se dozvíte o architektuře a technických detailech.
 
-## How to launch project?
+## Jak spustit projekt?
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+Abyste se vyhnuli psaní duplicitních částí, přečtěte si prosím [README.md](../README.md) o této části, obsahuje kompletní pokyny pro instalaci deps a spuštění frontendového a backendového projektu.
 
-## How to build project?
+## Jak postavit projekt?
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -24,9 +24,9 @@ We fully opened the source project of this project, to build this project, you c
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## Rozšíření VSCode pro Dev
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+Pokud se chystáte vyvinout tento projekt, zde je několik úžasných rozšíření, která můžete zkontrolovat, že by mohla být užitečná. Všimněte si, že tato sekce vás jistě nezajímá.
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## Dev && Build na VSCode
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+Pokud se chystáte vyvíjet nebo stavět tento projekt, mějte na paměti, že byste měli nejprve provést níže uvedené kroky, jinak se zobrazí neočekávané chyby.
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. Nastavte cestu provádění terminálu jako Git Bash
+2. Nastavte env ve vašem systému: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. Nainstalujte dlv a gopls pro backendovou službu Go při prvním spuštění.
 
-## Technologies
+## Technologie
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+Chcete-li začít s vývojem, zkontrolujte, zda jste obeznámeni s technologiemi, které používáme. Pokud ne, nemusíte se je všechny učit, je to v pořádku, pokud znáte pouze technologie F/E nebo B/E, máme testy jednotek a pracovní postup požadavků na stažení, abychom zajistili správné provedení vašich změn.
 
-We’re looking forward to your contribution.
+Těšíme se na váš příspěvek.
 
-For Front-end development:
+Pro vývoj front-endu:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+Pro vývoj back-endu:
 
 - Go
 - Node.js
 
-For desktop/client development:
+Pro vývoj desktopů/klientů:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+Abychom mohli naše dokumenty napsat stručně, nebudeme zde podrobně rozebírat každý detail o této 3. knihovně, pro další podrobnosti si laskavě přečtěte zdrojový kód.
 
 ## Architecture
 

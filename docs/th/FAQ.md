@@ -10,28 +10,28 @@ Yes, it is open-source software, and you can use it following the terms of the l
 
 ในฐานะโปรแกรมเมอร์มืออาชีพ คุณสามารถมีส่วนร่วมในโปรเจ็กต์นี้และสร้างคำขอดึงสำหรับโปรเจ็กต์นี้ได้ จากนั้นคุณจะได้รับสิทธิ์เป็นสมาชิกระดับพรีเมียมฟรีเป็นเวลาสามเดือน
 
-What you can do is to
+สิ่งที่คุณสามารถทำได้ก็คือ
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- เพิ่มการทดสอบหน่วย
+- เพิ่มเครื่องมือใหม่
+- ปรับปรุงเครื่องมือที่มีอยู่
+- แก้ไขปัญหาแอปใด ๆ
+- เพิ่มประสิทธิภาพ
+- การดำเนินการทางเทคนิค
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+ด้วยความครอบคลุมการทดสอบเต็มรูปแบบและความพยายามจากชุมชน LafTools เราเชื่อมั่นว่าซอฟต์แวร์สามารถเติบโตได้เร็วและแข็งแกร่งยิ่งขึ้น
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ จดหมายถึงผู้ใช้ CodeGen ToolBox
 
-Greetings from the CodeGen ToolBox team.
+คำทักทายจากทีมงาน CodeGen ToolBox
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+ท่ามกลางฤดูหนาวที่หนาวเย็นนี้ เรารู้สึกตื่นเต้นที่จะประกาศว่า CodeGen ToolBox ได้เปิดตัวซอร์สโค้ดทั้งหมดและเปลี่ยนชื่อเป็น LafTools เพื่อให้ชื่อผลิตภัณฑ์ที่กระชับและเฉพาะเจาะจงมากขึ้น จากจุดนี้เป็นต้นไป ทีมของเราจะถูกเรียกว่าทีม LafTools
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+แม้ว่าซอฟต์แวร์ของเราจะเป็นโอเพ่นซอร์สโดยสมบูรณ์ แต่เรายังคงมุ่งมั่นที่จะให้บริการผู้ใช้ระดับพรีเมียมเหมือนเมื่อก่อน เรารู้สึกขอบคุณอย่างสุดซึ้งต่อผู้ที่แสดงความไว้วางใจและการสนับสนุนอย่างล้นหลามแก่เราด้วยการอัปเกรดเป็นบัญชีพรีเมียมของเรา โปรดวางใจได้ว่าบริการแบบชำระเงินของคุณจะไม่ได้รับผลกระทบ และเรากำลังสำรวจวิธีปรับปรุงผลิตภัณฑ์นี้อย่างต่อเนื่อง
 
-Our decision to completely open our source code was driven by the following reasons::
+การตัดสินใจของเราในการเปิดซอร์สโค้ดของเราอย่างสมบูรณ์นั้นเกิดจากเหตุผลดังต่อไปนี้:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ LafTools Team
 - Harry Styles(As It Was)
 - Lovebugs
 
-โดยเฉพาะผลการดำเนินงานของ **
+โดยเฉพาะอย่างยิ่ง การแสดง **Satin Doll** โดยอัจฉริยะ **Joe Pass** ใน 'An Evening With Joe Pass' (1994) เป็นแหล่งความเข้มแข็งและความมั่นใจสำหรับฉัน ช่วยให้ฉันเผชิญกับภาวะที่กลืนไม่เข้าคายไม่ออกในชีวิต .
 
 Thank you!
 

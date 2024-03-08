@@ -115,7 +115,7 @@ export default (props: PassProp) => {
 
   let sq = useSearchQuery();
 
-  let fc = sq.fc || _.get(categoryList, "[0].id", "all");
+  let fc = sq.ls || _.get(categoryList, "[0].id", "all");
 
   let isAllFC = fc == "all";
 

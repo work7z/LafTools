@@ -1,22 +1,22 @@
 <i>Note: 이 페이지는 LafTools에서 내부적으로 생성됩니다.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  한국어 | [More](/docs/) <br/>
 
-## Pre-requisites
+## 전제조건
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+이 프로젝트 개발을 시작하기 전에 다음 SDK와 소프트웨어가 설치되어 있는지 확인하십시오. 호환성 문제를 방지하려면 지정된 버전에 세심한 주의를 기울이십시오. 일부 버전은 작동할 수 있지만 아래 나열된 버전이 권장됩니다.
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - 설치 시 'Use Git and optional Unix....'을(를) 선택해야 합니다.
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+소스 코드를 수정하기 전에 아래 섹션을 읽어 아키텍처와 기술 세부 사항을 알아보세요.
 
-## How to launch project?
+## 프로젝트를 시작하는 방법은 무엇입니까?
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+중복된 부분을 작성하지 않으려면 이 섹션에 대한 [README.md](../README.md)를 읽어보세요. 여기에는 deps를 설치하고 프런트엔드 및 백엔드 프로젝트를 실행하는 방법에 대한 전체 지침이 포함되어 있습니다.
 
-## How to build project?
+## 프로젝트를 빌드하는 방법?
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -24,9 +24,9 @@ We fully opened the source project of this project, to build this project, you c
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## 개발자용 VSCode 확장
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+이 프로젝트를 개발하려는 경우 도움이 될 수 있는 몇 가지 멋진 확장 기능을 확인해 보세요. 이 섹션은 전혀 관심이 없다는 점에 유의하세요.
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## VSCode에서 개발 및 빌드
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+이 프로젝트를 개발하거나 빌드하려는 경우 아래 단계를 먼저 완료해야 합니다. 그렇지 않으면 예외 없는 오류가 발생합니다.
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. 터미널 실행 경로를 Git Bash로 설정하세요.
+2. 시스템에 환경 설정: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. Go 백엔드 서비스를 처음 시작할 때 dlv 및 gopls를 설치하십시오.
 
-## Technologies
+## 기술
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+개발을 시작하려면 우리가 사용하는 기술에 대해 잘 알고 있는지 확인하세요. 그렇지 않다면 모두 배울 필요는 없습니다. F/E 또는 B/E 기술에만 익숙하더라도 괜찮습니다. 변경 사항이 제대로 수행되었는지 확인하기 위한 단위 테스트와 풀 요청 워크플로가 있습니다.
 
-We’re looking forward to your contribution.
+우리는 귀하의 기여를 기대하고 있습니다.
 
-For Front-end development:
+프론트엔드 개발을 위한:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+백엔드 개발용:
 
 - Go
 - Node.js
 
-For desktop/client development:
+데스크탑/클라이언트 개발용:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+문서를 간결하게 작성하기 위해 여기에서는 세 번째 라이브러리에 대한 모든 세부 사항을 자세히 설명하지 않을 것입니다. 자세한 내용은 소스 코드를 읽어보시기 바랍니다.
 
 ## Architecture
 

@@ -10,28 +10,28 @@ Yes, it is open-source software, and you can use it following the terms of the l
 
 プロのプログラマーとして、このプロジェクトに貢献し、このプロジェクトのプル リクエストを作成すると、3 か月間無料のプレミアム メンバーシップを取得できます。
 
-What you can do is to
+あなたにできることは、
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- 単体テストの追加
+- 新しいツールの追加
+- 既存のツールを強化する
+- アプリの問題を解決する
+- パフォーマンスの向上
+- 技術的な実装
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+完全なテスト範囲と LafTools コミュニティの取り組みにより、私たちはソフトウェアがより速く、より強力に成長できると確信しています。
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ CodeGen ToolBox ユーザーへの手紙
 
-Greetings from the CodeGen ToolBox team.
+CodeGen ToolBox チームからのご挨拶。
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+この寒い冬の真っ只中に、CodeGen ToolBox のソース コード全体がリリースされ、より簡潔で具体的な製品名を求めて LafTools に名前が変更されたことを発表できることを嬉しく思います。この時点から、私たちのチームは LafTools チームとしても知られます。
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+当社のソフトウェアは完全にオープンソースになりましたが、当社はこれまでと同様にプレミアム ユーザーにサービスを提供することに引き続き取り組んでいます。プレミアム アカウントにアップグレードすることで、私たちに無条件の信頼と寛大なサポートを示してくださった皆様に深く感謝いたします。ご安心ください。有料サービスは引き続き影響を受けません。当社はこの製品を強化する方法を継続的に模索しています。
 
-Our decision to completely open our source code was driven by the following reasons::
+ソース コードを完全にオープンにするという決定は、次の理由によって行われました。:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ LafTools Team
 - Harry Styles(As It Was)
 - Lovebugs
 
-具体的には**の性能
+特に、「ジョー・パスとの夕べ」（1994年）での名手**ジョー・パス**による**サテン・ドール**のパフォーマンスは、私にとって強さと自信の源であり、人生のどんなジレンマにも立ち向かう力を与えてくれました。 。
 
 Thank you!
 

@@ -180,7 +180,7 @@ export default (props: CommonTransformerProps) => {
   useEffect(() => {
     let tmp_loadingProgressRate = 0
     let loopFn = () => {
-      let maxVal = 98.16;
+      let maxVal = 98.161709;
       if (tmp_loadingProgressRate >= maxVal) {
         clearInterval(timer)
         return

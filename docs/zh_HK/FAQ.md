@@ -10,28 +10,28 @@ Yes, it is open-source software, and you can use it following the terms of the l
 
 作為專業程式設計師，您可以為該專案做出貢獻並為該專案建立拉取請求，然後您可以獲得三個月的免費高級會員資格。
 
-What you can do is to
+您能做的是
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- 新增單元測試
+- 新增工具
+- 增強現有工具
+- 解決任何應用程式問題
+- 提升績效
+- 技術實施
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+憑藉完整的測試覆蓋率和LafTools工具箱社群的努力，我們堅信該軟體可以發展得更快、更強大。
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ 致 CodeGen工具箱 用戶的信
 
-Greetings from the CodeGen ToolBox team.
+來自 CodeGen工具箱 團隊的問候。
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+在這個寒冷的冬天，我們很高興地宣布CodeGen工具箱已經發布了其全部原始碼，並已更名為LafTools工具箱，以獲得更簡潔和具體的產品名稱。從現在起，我們的團隊也將被稱為LafTools工具箱團隊。
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+儘管我們的軟體現在完全開源，但我們仍然致力於像以前一樣為我們的高級用戶提供服務。我們非常感謝那些透過升級到我們的高級帳戶向我們表示毫無保留的信任和慷慨支持的人。請放心，您的付費服務將不受影響，我們正在不斷探索增強該產品的方法。
 
-Our decision to completely open our source code was driven by the following reasons::
+我們決定完全開放原始碼是出於以下原因:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ LafTools Team
 - Harry Styles(As It Was)
 - Lovebugs
 
-具體來說，**的表現
+具體來說，演奏家**喬·帕斯**在《與喬·帕斯的夜晚》（1994）中演奏的**緞子娃娃**給了我力量和信心的源泉，讓我能夠面對生活中的任何困境。 。
 
 Thank you!
 

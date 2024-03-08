@@ -7,7 +7,7 @@ Before you start developing this project, please ensure that you have the follow
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - Need to select '{0}' in installation.
 - Visual Studio Code
 
 Before modifying the source code, you should read the below sections to learn the architecture and technical details.

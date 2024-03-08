@@ -10,28 +10,28 @@ Tunggu, sebenarnya ada pilihan lain selain hanya membayar tagihan.
 
 Sebagai programmer profesional, Anda dapat berkontribusi pada proyek ini dan membuat permintaan tarik untuk proyek ini, lalu Anda dapat memperoleh keanggotaan premium gratis selama tiga bulan.
 
-What you can do is to
+Yang dapat Anda lakukan adalah melakukannya
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- Tambahkan Tes Unit
+- Tambahkan Alat Baru
+- Tingkatkan Alat yang Ada
+- Selesaikan Masalah Aplikasi Apa Pun
+- Tingkatkan Kinerja
+- Teknis Implementasi
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+Dengan cakupan pengujian penuh dan upaya dari komunitas LafTools, kami sangat yakin bahwa perangkat lunak ini dapat berkembang lebih cepat dan lebih kuat.
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ Surat untuk Pengguna CodeGen ToolBox
 
-Greetings from the CodeGen ToolBox team.
+Salam dari tim CodeGen ToolBox.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+Di tengah musim dingin ini, kami sangat gembira mengumumkan bahwa CodeGen ToolBox telah merilis seluruh kode sumbernya dan telah diganti namanya menjadi LafTools untuk nama produk yang lebih ringkas dan spesifik. Mulai saat ini, tim kami juga akan dikenal sebagai Tim LafTools.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+Meskipun perangkat lunak kami sekarang sepenuhnya open source, kami tetap berkomitmen untuk melayani pengguna premium kami seperti sebelumnya. Kami sangat berterima kasih kepada mereka yang telah menunjukkan kepercayaan penuh dan dukungan mereka dengan meningkatkan ke akun premium kami. Yakinlah, layanan berbayar Anda tidak akan terpengaruh, dan kami terus mencari cara untuk menyempurnakan produk ini.
 
-Our decision to completely open our source code was driven by the following reasons::
+Keputusan kami untuk membuka kode sumber sepenuhnya didorong oleh alasan berikut:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ Proyek ini terutama terinspirasi oleh musisi berikut:
 - Harry Styles(As It Was)
 - Lovebugs
 
-Secara khusus, kinerja **
+Secara khusus, penampilan **Satin Doll** oleh virtuoso **Joe Pass** dalam 'An Evening With Joe Pass' (1994) telah menjadi sumber kekuatan dan kepercayaan diri bagi saya, memberdayakan saya untuk menghadapi dilema apa pun dalam hidup. .
 
 Thank you!
 

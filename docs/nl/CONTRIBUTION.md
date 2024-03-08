@@ -1,22 +1,22 @@
 <i>Note: Deze pagina wordt intern gegenereerd vanuit LafTools.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
 
-## Pre-requisites
+## Vereisten
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+Voordat u dit project gaat ontwikkelen, moet u ervoor zorgen dat de volgende SDK's en software zijn geïnstalleerd. Let goed op de gespecificeerde versies om compatibiliteitsproblemen te voorkomen. Sommige versies werken mogelijk, maar de onderstaande versies worden aanbevolen.
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - Moet 'Use Git and optional Unix....' selecteren tijdens de installatie.
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+Voordat u de broncode wijzigt, dient u de onderstaande secties te lezen om de architectuur en technische details te leren kennen.
 
-## How to launch project?
+## Hoe project lanceren?
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+Om te voorkomen dat u dubbele delen schrijft, leest u [README.md](../README.md) over deze sectie. Het bevat een volledige richtlijn voor het installeren van deps en het uitvoeren van frontend- en backend-projecten.
 
-## How to build project?
+## Hoe project bouwen?
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -24,9 +24,9 @@ We fully opened the source project of this project, to build this project, you c
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## VSCode-extensies voor ontwikkelaar
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+Als u dit project gaat ontwikkelen, zijn hier enkele geweldige extensies die u kunt controleren en die nuttig kunnen zijn. Merk op dat dit gedeelte zeker niet interessant is.
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## Ontwikkel && Bouw op VSCode
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+Als u dit project gaat ontwikkelen of bouwen, houd er dan rekening mee dat u eerst de onderstaande stappen moet voltooien, anders ontvangt u niet-uitgezonderde fouten.
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. Stel uw terminaluitvoeringspad in als Git Bash
+2. Stel een omgeving in uw systeem in: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. Installeer dlv en gopls voor de Go-backend-service wanneer u deze voor het eerst start.
 
-## Technologies
+## Technologieën
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+Om te beginnen met ontwikkelen, controleer of u bekend bent met de technologieën die we gebruiken. U hoeft ze niet allemaal te leren, anders is het geen probleem als u alleen bekend bent met F/E- of B/E-technologieën. We hebben unit-tests en een pull-request-workflow om ervoor te zorgen dat uw wijzigingen correct worden uitgevoerd.
 
-We’re looking forward to your contribution.
+Wij kijken uit naar uw bijdrage.
 
-For Front-end development:
+Voor front-end ontwikkeling:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+Voor back-endontwikkeling:
 
 - Go
 - Node.js
 
-For desktop/client development:
+Voor desktop-/clientontwikkeling:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+Om onze documenten beknopt te schrijven, zullen we hier niet ingaan op elk detail over die derde bibliotheek. Lees alstublieft de broncode voor meer details.
 
 ## Architecture
 

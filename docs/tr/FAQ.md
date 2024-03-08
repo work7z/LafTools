@@ -10,28 +10,28 @@ Durun, aslında sadece faturayı ödemek yerine başka bir seçenek daha var.
 
 Profesyonel bir programcı olarak bu projeye katkıda bulunup bu proje için pull request oluşturabilir, ardından üç ay boyunca ücretsiz premium üyelik elde edebilirsiniz.
 
-What you can do is to
+Yapabileceğin şey şu:
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- Birim Testi Ekle
+- Yeni Araçlar Ekle
+- Mevcut Araçları Geliştirin
+- Herhangi Bir Uygulama Sorununu Çözün
+- Performansı arttırmak
+- Teknik Uygulama
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+Tam test kapsamı ve LafTools topluluğunun çabaları sayesinde yazılımın daha hızlı ve daha güçlü büyüyebileceğine kesinlikle inanıyoruz.
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ CodeGen ToolBox Kullanıcılarına Mektup
 
-Greetings from the CodeGen ToolBox team.
+CodeGen ToolBox ekibinden selamlar.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+Bu soğuk kışın ortasında, CodeGen ToolBox'un kaynak kodunun tamamını yayınladığını ve daha kısa ve spesifik bir ürün adı için LafTools olarak yeniden adlandırıldığını duyurmaktan heyecan duyuyoruz. Bu noktadan itibaren ekibimiz aynı zamanda LafTools Ekibi olarak da anılacaktır.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+Yazılımımız artık tamamen açık kaynak olmasına rağmen, premium kullanıcılarımıza daha önce olduğu gibi hizmet vermeye kararlıyız. Premium hesabımıza geçerek bize kayıtsız şartsız güvenlerini ve cömert desteklerini gösterenlere derinden minnettarız. Ücretli hizmetlerinizin etkilenmeyeceğinden emin olabilirsiniz ve sürekli olarak bu ürünü geliştirmenin yollarını araştırıyoruz.
 
-Our decision to completely open our source code was driven by the following reasons::
+Kaynak kodumuzu tamamen açma kararımız aşağıdaki nedenlerden kaynaklandı:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ Bu proje öncelikle aşağıdaki müzisyenlerden esinlenmiştir:
 - Harry Styles(As It Was)
 - Lovebugs
 
-Özellikle **'nin performansı
+Özellikle, usta **Joe Pass**'in 'An Evening With Joe Pass' (1994) filmindeki **Satin Doll** performansı benim için bir güç ve güven kaynağı oldu ve hayattaki her türlü ikilemle yüzleşmemde bana güç verdi. .
 
 Thank you!
 

@@ -54,7 +54,7 @@ Recentemente, stiamo eseguendo il refactoring dell'architettura di LafTools basa
 
 ## 1. Imposta l'ambiente di sistema
 
-Per semplicità, supponiamo che tu abbia clonato questo repository in `C:\\Users\jerry\\project\\laftools-repo` su Windows o `/Users/jerry/projects/laftools-repo` su Linux/MacOS, dovresti dichiarare env e impostare la configurazione di seguito nel tuo file **~/.bashrc**, o semplicemente eseguirli prima di eseguire qualsiasi comando.
+Per semplicità, supponiamo che tu abbia clonato questo repository su `C:\Usersjerry\project\laftools-repo` su Windows o `/Users/jerry/projects/laftools-repo` su Linux/MacOS, quindi dovresti dichiarare env e impostare config di seguito nel tuo file **~/.bashrc* *, o semplicemente eseguirli prima di eseguire qualsiasi comando.
 
 Se utilizzi il sistema operativo Windows, assicurati che tutti i comandi siano eseguiti in git-bash, per ulteriori informazioni fai riferimento a [CONTRIBUTION](./docs/CONTRIBUTION.md). Oltre a ciò, si consiglia di evitare di utilizzare spazi bianchi o caratteri non inglesi nel percorso del file in cui si trova questo progetto.
 

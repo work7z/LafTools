@@ -10,28 +10,28 @@ Yes, it is open-source software, and you can use it following the terms of the l
 
 Как профессиональный программист, вы можете внести свой вклад в этот проект и создать запрос на включение для этого проекта, после чего вы сможете получить бесплатное премиум-членство на три месяца.
 
-What you can do is to
+Что вы можете сделать, так это
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- Добавить модульный тест
+- Добавить новые инструменты
+- Улучшение существующих инструментов
+- Решите любую проблему с приложением
+- Повышение производительности
+- Техническая реализация
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+Благодаря полному тестированию и усилиям сообщества LafTools мы твердо убеждены, что это программное обеспечение может расти быстрее и сильнее.
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ Письмо пользователям CodeGen ToolBox
 
-Greetings from the CodeGen ToolBox team.
+Приветствую команду CodeGen ToolBox.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+В разгар этой холодной зимы мы рады сообщить, что CodeGen ToolBox опубликовал весь исходный код и был переименован в LafTools для более краткого и конкретного названия продукта. С этого момента наша команда будет также называться LafTools Team.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+Несмотря на то, что наше программное обеспечение теперь полностью с открытым исходным кодом, мы по-прежнему стремимся обслуживать наших премиум-пользователей, как и раньше. Мы глубоко благодарны тем, кто оказал нам безоговорочное доверие и щедрую поддержку, перейдя на наш премиум-аккаунт. Будьте уверены, это не повлияет на ваши платные услуги, и мы постоянно ищем пути улучшения этого продукта.
 
-Our decision to completely open our source code was driven by the following reasons::
+Наше решение полностью открыть исходный код было вызвано следующими причинами::
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ LafTools Team
 - Harry Styles(As It Was)
 - Lovebugs
 
-В частности, производительность **
+В частности, исполнение **Атласной куклы** виртуозом **Джо Пассом** в «Вечере с Джо Пассом» (1994) стало для меня источником силы и уверенности, давая мне возможность противостоять любой жизненной дилемме. .
 
 Thank you!
 

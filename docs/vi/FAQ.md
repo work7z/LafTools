@@ -10,28 +10,28 @@ Mặc dù chúng tôi cố gắng cung cấp miễn phí nhiều dịch vụ nh�
 
 Là một lập trình viên chuyên nghiệp, bạn có thể đóng góp cho dự án này và tạo một yêu cầu kéo cho dự án này, sau đó bạn có thể nhận được tư cách thành viên cao cấp miễn phí trong ba tháng.
 
-What you can do is to
+Những gì bạn có thể làm là
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- Thêm bài kiểm tra đơn vị
+- Thêm công cụ mới
+- Tăng cường các công cụ hiện có
+- Giải quyết mọi vấn đề về ứng dụng
+- Nang cao hieu suat
+- Triển khai kỹ thuật
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+Với phạm vi thử nghiệm đầy đủ và những nỗ lực từ cộng đồng LafTools, chúng tôi tin chắc rằng phần mềm có thể phát triển nhanh hơn và mạnh mẽ hơn.
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ Thư gửi người dùng CodeGen ToolBox
 
-Greetings from the CodeGen ToolBox team.
+Lời chào từ nhóm CodeGen ToolBox.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+Giữa mùa đông lạnh giá này, chúng tôi vui mừng thông báo rằng CodeGen ToolBox đã phát hành toàn bộ mã nguồn và đã được đổi tên thành LafTools để có tên sản phẩm ngắn gọn và cụ thể hơn. Từ thời điểm này trở đi, nhóm của chúng tôi còn được gọi là Nhóm LafTools.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+Mặc dù phần mềm của chúng tôi hiện là nguồn mở hoàn toàn nhưng chúng tôi vẫn cam kết phục vụ người dùng cao cấp như trước đây. Chúng tôi vô cùng biết ơn những người đã cho chúng tôi thấy sự tin tưởng tuyệt đối và sự hỗ trợ hào phóng bằng cách nâng cấp lên tài khoản trả phí của chúng tôi. Hãy yên tâm, các dịch vụ trả phí của bạn sẽ không bị ảnh hưởng và chúng tôi liên tục tìm cách cải tiến sản phẩm này.
 
-Our decision to completely open our source code was driven by the following reasons::
+Quyết định mở hoàn toàn mã nguồn của chúng tôi được thúc đẩy bởi những lý do sau:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ Dự án này chủ yếu được lấy cảm hứng từ các nhạc sĩ sau:
 - Harry Styles(As It Was)
 - Lovebugs
 
-Cụ thể, hiệu suất của **
+Cụ thể, màn trình diễn **Satin Doll** của nghệ sĩ điêu luyện **Joe Pass** trong phim 'An Evening With Joe Pass' (1994) đã tiếp thêm sức mạnh và sự tự tin cho tôi, tiếp thêm sức mạnh cho tôi để đối mặt với mọi tình huống khó xử trong cuộc sống. .
 
 Thank you!
 

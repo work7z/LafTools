@@ -1,22 +1,22 @@
 <i>Note: หน้านี้สร้างขึ้นจาก LafTools ภายใน</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
 
-## Pre-requisites
+## ข้อกำหนดเบื้องต้น
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+ก่อนที่คุณจะเริ่มพัฒนาโครงการนี้ โปรดตรวจสอบให้แน่ใจว่าคุณได้ติดตั้ง SDK และซอฟต์แวร์ต่อไปนี้แล้ว โปรดใส่ใจกับเวอร์ชันที่ระบุอย่างใกล้ชิดเพื่อหลีกเลี่ยงปัญหาความเข้ากันได้ บางเวอร์ชันอาจใช้งานได้ แต่แนะนำให้ใช้เวอร์ชันด้านล่างนี้
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - ต้องเลือก 'Use Git and optional Unix....' ในการติดตั้ง
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+ก่อนที่จะแก้ไขซอร์สโค้ด คุณควรอ่านส่วนด้านล่างเพื่อเรียนรู้สถาปัตยกรรมและรายละเอียดทางเทคนิค
 
-## How to launch project?
+## จะเปิดตัวโครงการอย่างไร?
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+เพื่อหลีกเลี่ยงการเขียนส่วนที่ซ้ำกัน โปรดอ่าน [README.md](../README.md) เกี่ยวกับส่วนนี้ โดยจะมีแนวทางฉบับสมบูรณ์สำหรับวิธีติดตั้ง deps และเรียกใช้โปรเจ็กต์ส่วนหน้าและส่วนหลัง
 
-## How to build project?
+## จะสร้างโครงการได้อย่างไร?
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -24,9 +24,9 @@ We fully opened the source project of this project, to build this project, you c
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## ส่วนขยาย VSCode สำหรับ Dev
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+หากคุณกำลังจะพัฒนาโครงการนี้ ต่อไปนี้เป็นส่วนขยายที่ยอดเยี่ยมสำหรับคุณที่จะตรวจสอบว่าอาจเป็นประโยชน์ โปรดทราบว่าส่วนนี้ไม่น่าสนใจอย่างแน่นอน
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## Dev && สร้างบน VSCode
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+หากคุณกำลังจะพัฒนาหรือสร้างโปรเจ็กต์นี้ โปรดทราบว่าคุณควรทำตามขั้นตอนด้านล่างให้เสร็จสิ้นก่อน มิฉะนั้น คุณจะได้รับข้อผิดพลาดที่ยกเว้น
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. ตั้งค่าเส้นทางการดำเนินการเทอร์มินัลของคุณเป็น Git Bash
+2. ตั้งค่า env ในระบบของคุณ: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. ติดตั้ง dlv และ gopls สำหรับบริการแบ็กเอนด์ Go เมื่อคุณเปิดใช้งานในตอนแรก
 
-## Technologies
+## เทคโนโลยี
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+หากต้องการเริ่มพัฒนา โปรดตรวจสอบว่าคุณคุ้นเคยกับเทคโนโลยีที่เราใช้หรือไม่ ไม่จำเป็นต้องเรียนรู้ทั้งหมด หากไม่ ก็ไม่เป็นไรหากคุณคุ้นเคยกับเทคโนโลยี F/E หรือ B/E เท่านั้น เรามีเวิร์กโฟลว์การทดสอบหน่วยและคำขอดึงข้อมูลเพื่อให้แน่ใจว่าการเปลี่ยนแปลงของคุณเสร็จสิ้นอย่างถูกต้อง
 
-We’re looking forward to your contribution.
+เรากำลังรอคอยการมีส่วนร่วมของคุณ
 
-For Front-end development:
+สำหรับการพัฒนาส่วนหน้า:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+สำหรับการพัฒนา Back-end:
 
 - Go
 - Node.js
 
-For desktop/client development:
+สำหรับการพัฒนาเดสก์ท็อป/ไคลเอ็นต์:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+เพื่อเขียนเอกสารของเราอย่างกระชับ เราจะไม่ลงรายละเอียดทุกรายละเอียดเกี่ยวกับไลบรารีที่ 3 ที่นี่ โปรดอ่านซอร์สโค้ดเพื่อดูรายละเอียดเพิ่มเติม
 
 ## Architecture
 

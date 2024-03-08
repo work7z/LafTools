@@ -1,22 +1,22 @@
 <i>Note: Ezt az oldalt a LafTools belsőleg hozta létre.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
 
-## Pre-requisites
+## Előfeltételek
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+Mielőtt elkezdené a projekt fejlesztését, győződjön meg arról, hogy a következő SDK-k és szoftverek telepítve vannak. A kompatibilitási problémák elkerülése érdekében fokozottan ügyeljen a megadott verziókra. Egyes verziók működhetnek, de az alábbiakban felsoroltak ajánlottak.
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - A telepítés során ki kell választani a(z) „Use Git and optional Unix....” elemet.
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+A forráskód módosítása előtt olvassa el az alábbi szakaszokat, hogy megismerje az architektúrát és a műszaki részleteket.
 
-## How to launch project?
+## Hogyan indítsuk el a projektet?
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+Az ismétlődő részek írásának elkerülése érdekében olvassa el a [README.md](../README.md) fájlt erről a részről, amely teljes útmutatót tartalmaz a dep-ek telepítéséhez, valamint a frontend és a backend projektek futtatásához.
 
-## How to build project?
+## Hogyan építsünk projektet?
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -24,9 +24,9 @@ We fully opened the source project of this project, to build this project, you c
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## VSCode kiterjesztések a Dev
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+Ha fejleszteni kívánja ezt a projektet, itt van néhány nagyszerű bővítmény, amellyel ellenőrizheti, hogy hasznosak lehetnek. Ne feledje, hogy ez a rész biztosan nem érdekes.
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## Fejlesztő és építés VSCode-ra
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+Ha ezt a projektet fejleszti vagy építi, vegye figyelembe, hogy először végre kell hajtania az alábbi lépéseket, ellenkező esetben kivételes hibákat fog kapni.
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. Állítsa be a terminál végrehajtási útvonalát Git Bash-ként
+2. Állítson be egy env-t a rendszerben: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. Telepítse a dlv-t és a gopls-t a Go háttérszolgáltatáshoz, amikor először indítja el.
 
-## Technologies
+## Technológiák
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+A fejlesztés megkezdéséhez ellenőrizze, hogy ismeri-e az általunk használt technológiákat. Nem kell mindegyiket megtanulni, ha nem, akkor rendben van, ha csak az F/E vagy B/E technológiákat ismeri, egységtesztekkel és lekérési munkafolyamattal biztosítjuk a változtatások megfelelő végrehajtását.
 
-We’re looking forward to your contribution.
+Várjuk hozzájárulását.
 
-For Front-end development:
+Front-end fejlesztéshez:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+Háttérfejlesztéshez:
 
 - Go
 - Node.js
 
-For desktop/client development:
+Asztali/kliens fejlesztéshez:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+Ahhoz, hogy dokumentumainkat tömören írjuk le, itt nem részletezünk a 3. könyvtár minden részletét, kérjük, olvassa el a forráskódot a további részletekért.
 
 ## Architecture
 

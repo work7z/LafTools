@@ -10,28 +10,28 @@ Yes, it is open-source software, and you can use it following the terms of the l
 
 전문 프로그래머로서 귀하는 이 프로젝트에 기여하고 이 프로젝트에 대한 풀 요청을 생성할 수 있으며, 그러면 3개월 동안 무료 프리미엄 멤버십을 얻을 수 있습니다.
 
-What you can do is to
+당신이 할 수 있는 일은
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- 단위 테스트 추가
+- 새 도구 추가
+- 기존 도구 강화
+- 모든 앱 문제 해결
+- 성능 향상
+- 기술적 구현
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+LafTools 커뮤니티의 전체 테스트 범위와 노력을 통해 우리는 소프트웨어가 더 빠르고 강력하게 성장할 수 있다고 확신합니다.
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ CodeGen ToolBox 사용자에게 보내는 편지
 
-Greetings from the CodeGen ToolBox team.
+CodeGen ToolBox 팀에서 인사드립니다.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+추운 겨울 가운데, CodeGen ToolBox가 전체 소스 코드를 공개하고 보다 간결하고 구체적인 제품 이름을 위해 LafTools로 이름이 변경되었음을 알려드리게 되어 기쁩니다. 이 시점부터 우리 팀은 LafTools 팀으로도 알려지게 됩니다.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+우리 소프트웨어는 이제 완전히 오픈 소스임에도 불구하고 이전과 마찬가지로 프리미엄 사용자에게 서비스를 제공하기 위해 최선을 다하고 있습니다. 프리미엄 계정으로 업그레이드하여 아낌없는 신뢰와 아낌없는 지원을 보내주신 분들께 깊은 감사를 드립니다. 귀하의 유료 서비스는 영향을 받지 않으니 안심하시기 바랍니다. 당사는 이 제품을 개선하기 위한 방법을 지속적으로 모색하고 있습니다.
 
-Our decision to completely open our source code was driven by the following reasons::
+소스 코드를 완전히 공개하기로 결정한 이유는 다음과 같습니다.:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ LafTools Team
 - Harry Styles(As It Was)
 - Lovebugs
 
-구체적으로 **의 성능
+특히 'An Evening With Joe Pass'(1994)에서 거장 **Joe Pass**의 **Satin Doll** 연주는 나에게 힘과 자신감의 원천이 되었으며, 인생의 어떤 딜레마에도 직면할 수 있는 힘을 주었습니다. .
 
 Thank you!
 

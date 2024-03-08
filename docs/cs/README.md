@@ -54,7 +54,7 @@ Nedávno refaktorujeme architekturu LafTools založenou na next.js, níže uvede
 
 ## 1. Nastavení prostředí systému
 
-Pro zjednodušení řekněme, že jste toto úložiště naklonovali buď do `C:\\Users\jerry\\project\\laftools-repo` ve Windows nebo `/Users/jerry/projects/laftools-repo` na Linux/MacOS, pak byste měli deklarovat env a nastavit konfiguraci níže ve vašem souboru **~/.bashrc**, nebo je jednoduše spustit před spuštěním jakéhokoli příkazu.
+Pro zjednodušení řekněme, že jste toto úložiště naklonovali buď do `C:\Usersjerry\project\laftools-repo` na Windows nebo `/Users/jerry/projects/laftools-repo` na Linux/MacOS, pak byste měli deklarovat env a nastavit konfiguraci níže ve vašem souboru **~/.bashrc* *, nebo je jednoduše spusťte před spuštěním jakéhokoli příkazu.
 
 Pokud používáte operační systém Windows, ujistěte se, že jsou všechny příkazy prováděny v git-bash, další informace naleznete v [PŘÍSPĚVEK](./docs/CONTRIBUTION.md). Kromě toho se doporučuje nepoužívat žádné mezery nebo neanglické znaky v cestě k souboru, kde je tento projekt umístěn.
 

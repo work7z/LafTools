@@ -54,7 +54,7 @@ Ostatnio refaktoryzujemy architekturę LafTools w oparciu o next.js, poniższe k
 
 ## 1. Skonfiguruj środowisko systemowe
 
-Dla uproszczenia załóżmy, że sklonowałeś to repozytorium do `C:\\Users\jerry\\project\\laftools-repo` w systemie Windows lub `/Users/jerry/projects/laftools-repo` w systemie Windows Linux/MacOS, powinieneś zadeklarować env i ustawić konfigurację poniżej w swoim pliku **~/.bashrc** lub po prostu wykonać je przed uruchomieniem dowolnego polecenia.
+Dla uproszczenia załóżmy, że sklonowałeś to repozytorium do `C:\Usersjerry\project\laftools-repo` w systemie Windows lub `/Users/jerry/projects/laftools-repo` w systemie Linux/MacOS, następnie powinieneś zadeklarować env i ustawić konfigurację poniżej w swoim pliku **~/.bashrc* * lub po prostu wykonaj je przed uruchomieniem dowolnego polecenia.
 
 Jeśli używasz systemu operacyjnego Windows, upewnij się, że wszystkie polecenia są wykonywane w git-bash. Więcej informacji znajdziesz w [WKŁAD](./docs/CONTRIBUTION.md). Poza tym zaleca się unikanie używania spacji lub znaków innych niż angielskie w ścieżce pliku, w którym znajduje się ten projekt.
 

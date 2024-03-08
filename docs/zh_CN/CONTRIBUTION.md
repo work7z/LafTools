@@ -1,22 +1,22 @@
 <i>Note: 该页面是由LafTools工具箱内部生成的。</i> <br/> [English](/docs/en_US)  |  简体中文  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
 
-## Pre-requisites
+## 先决条件
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+在开始开发此项目之前，请确保您已安装以下 SDK 和软件。请密切注意指定的版本，以避免任何兼容性问题。某些版本可能有效，但建议使用下面列出的版本。
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - 需要选择
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+在修改源代码之前，您应该阅读以下部分以了解架构和技术细节。
 
-## How to launch project?
+## 如何启动项目？
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+为了避免编写重复的部分，请阅读 [README.md](../README.md) 关于本节，它包含如何安装 deps 以及运行前端和后端项目的完整指南。
 
-## How to build project?
+## 如何构建项目？
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -24,9 +24,9 @@ We fully opened the source project of this project, to build this project, you c
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## 面向开发的 VSCode 扩展
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+如果您要开发这个项目，这里有一些很棒的扩展供您检查，可能会有所帮助。请注意，这部分肯定没有什么意义。
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## 在 VSCode 上开发和构建
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+如果您要开发或构建此项目，请注意您应该首先完成以下步骤，否则，您将收到异常错误。
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. 将终端执行路径设置为 Git Bash
+2. 在您的系统中设置一个环境: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. 首次启动 Go 后端服务时，请安装 dlv 和 gopls。
 
-## Technologies
+## 技术
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+要开始开发，请检查您是否熟悉我们使用的技术。如果不会，则无需全部学习，如果您只熟悉 F/E 或 B/E 技术也没关系，我们有单元测试和拉取请求工作流程来确保您的更改正确完成。
 
-We’re looking forward to your contribution.
+我们期待您的贡献。
 
-For Front-end development:
+用于前端开发:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+用于后端开发:
 
 - Go
 - Node.js
 
-For desktop/client development:
+用于桌面/客户端开发:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+为了简洁地编写我们的文档，我们不会在这里详细说明第三个库的每个细节，请阅读源代码以获取更多详细信息。
 
 ## Architecture
 

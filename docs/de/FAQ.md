@@ -10,28 +10,28 @@ Moment, es gibt tatsächlich eine andere Möglichkeit, als nur die Rechnung zu b
 
 Als professioneller Programmierer können Sie zu diesem Projekt beitragen und einen Pull-Request für dieses Projekt erstellen. Anschließend erhalten Sie eine kostenlose Premium-Mitgliedschaft für drei Monate.
 
-What you can do is to
+Was Sie tun können, ist
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- Unit-Test hinzufügen
+- Neue Tools hinzufügen
+- Vorhandene Tools verbessern
+- Lösen Sie jedes App-Problem
+- Performance steigern
+- Technische Umsetzung
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+Mit umfassender Testabdeckung und den Bemühungen der LafTools-Community sind wir fest davon überzeugt, dass die Software schneller und stärker wachsen kann.
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ Ein Brief an CodeGen ToolBox-Benutzer
 
-Greetings from the CodeGen ToolBox team.
+Grüße vom CodeGen ToolBox-Team.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+Mitten in diesem kalten Winter freuen wir uns, Ihnen mitteilen zu können, dass CodeGen ToolBox seinen gesamten Quellcode veröffentlicht hat und für einen prägnanteren und spezifischeren Produktnamen in LafTools umbenannt wurde. Ab diesem Zeitpunkt wird unser Team auch als LafTools-Team bekannt sein.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+Obwohl unsere Software jetzt vollständig Open Source ist, bleiben wir weiterhin bestrebt, unsere Premium-Benutzer wie bisher zu bedienen. Wir sind denjenigen zutiefst dankbar, die uns durch das Upgrade auf unser Premium-Konto ihr uneingeschränktes Vertrauen und ihre großzügige Unterstützung entgegengebracht haben. Seien Sie versichert, Ihre kostenpflichtigen Dienste bleiben davon unberührt und wir suchen kontinuierlich nach Möglichkeiten, dieses Produkt zu verbessern.
 
-Our decision to completely open our source code was driven by the following reasons::
+Unsere Entscheidung, unseren Quellcode vollständig zu öffnen, wurde aus folgenden Gründen bestimmt:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ Dieses Projekt ist in erster Linie von folgenden Musikern inspiriert:
 - Harry Styles(As It Was)
 - Lovebugs
 
-Insbesondere die Leistung von **
+Insbesondere die Aufführung von „Satin Doll“ durch den Virtuosen „Joe Pass“ in „Ein Abend mit Joe Pass“ (1994) war für mich eine Quelle der Kraft und des Selbstvertrauens und gab mir die Kraft, jedes Dilemma im Leben zu meistern .
 
 Thank you!
 

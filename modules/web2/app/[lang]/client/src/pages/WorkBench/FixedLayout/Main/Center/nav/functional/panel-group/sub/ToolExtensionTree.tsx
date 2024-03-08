@@ -130,7 +130,7 @@ export default (props: {
   let category = useGetAppCategory()
   let sq = useSearchQuery();
   const [updateMemStatus, onUpdateMemStatus] = useState(0);
-  let fc = sq.fc || "all";
+  let fc = sq.ls || "all";
 
   let dis = exportUtils.dispatch();
 

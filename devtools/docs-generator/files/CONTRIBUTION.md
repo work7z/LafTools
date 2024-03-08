@@ -1,30 +1,30 @@
-## Pre-requisites
+## ${Dot("rc-t_w7ZT","Pre-requisites")}
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+${Dot("yUKNjcJ-g","Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.")}
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - ${Dot("LaHP146JT","Need to select '{0}' in installation.",'Use Git and optional Unix....')}
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+${Dot("NDoU_oqcQ","Before modifying the source code, you should read the below sections to learn the architecture and technical details.")}
 
-## How to launch project?
+## ${Dot("Iocng1pgj","How to launch project?")}
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+${Dot("NDFiDRovU","To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.")}
 
-## How to build project?
+## ${Dot("87tcHKswW","How to build project?")}
 
-We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
+${Dot("KJ6nzIXH\_","We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:")}
 
 ```bash
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## ${Dot("8cP7DzHaJ","VSCode Extensions for Dev")}
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+${Dot("u83_QqYGL","If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.")}
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -40,39 +40,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## ${Dot("S7lHDz-L9","Dev && Build on VSCode")}
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+${Dot("bTR5eip5g","If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.")}
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=\${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. ${Dot("fHQ6PD-kK","Set your terminal execution path as Git Bash")}
+2. ${Dot("dMrwVkWnW","Set an env in your system")}: LAFTOOLS_ROOT=\${Your Actual Project Root}.
+3. ${Dot("X8s6RyLpu","Install dlv and gopls for Go backend service when you launch it firstly.")}
 
-## Technologies
+## ${Dot("ULh1VwBBF","Technologies")}
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+${Dot("U1gJu8LgD","To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.")}
 
-We’re looking forward to your contribution.
+${Dot("3Ub27GXz-","We’re looking forward to your contribution.")}
 
-For Front-end development:
+${Dot("uJVSxvkJR","For Front-end development")}:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+${Dot("tT06fofiK","For Back-end development")}:
 
 - Go
 - Node.js
 
-For desktop/client development:
+${Dot("63Dt4r9-M","For desktop/client development")}:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+${Dot("Yr43vMALO","To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.")}
 
 ## Architecture
 

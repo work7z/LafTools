@@ -175,6 +175,7 @@ export type FocusableProp = {
 export type MenuDropDownListItem = {
   icon?: string;
   label: string;
+  onClick?: () => any;
   pathname?: string;
   value: string;
 };

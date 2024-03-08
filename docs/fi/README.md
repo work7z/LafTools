@@ -54,7 +54,7 @@ Olemme äskettäin muokkaamassa LafToolsin arkkitehtuuria next.js:n perusteella,
 
 ## 1. Määritä järjestelmäympäristö
 
-Oletetaan yksinkertaisuuden vuoksi, että olet kloonannut tämän arkiston joko `C:\\Users\jerry\\project\\laftools-repo`:ksi Windowsissa tai `/Users/jerry/projects/laftools-repo`. Linux/MacOS, sinun tulee ilmoittaa env ja määrittää asetukset alla tiedostossasi **~/.bashrc** tai yksinkertaisesti suorittaa ne ennen minkään komennon suorittamista.
+Oletetaan yksinkertaisuuden vuoksi, että olet kloonannut tämän arkiston joko osoitteeseen `C:\Usersjerry\project\laftools-repo` Windowsissa tai `/Users/jerry/projects/laftools-repo` Linuxissa/MacOS:ssä, niin sinun tulee ilmoittaa env ja asettaa asetukset alla tiedostossasi **~/.bashrc* * tai yksinkertaisesti suorita ne ennen minkään komennon suorittamista.
 
 Jos käytät Windows-käyttöjärjestelmää, varmista, että kaikki komennot suoritetaan git-bashissa. Lisätietoja on kohdassa [CONTRIBUTION](./docs/CONTRIBUTION.md). Tämän lisäksi on suositeltavaa välttää välilyöntien tai muiden kuin englanninkielisten merkkien käyttöä tiedostopolussa, jossa tämä projekti sijaitsee.
 

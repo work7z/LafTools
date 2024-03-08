@@ -54,7 +54,7 @@ Onlangs hebben we de architectuur van LafTools opnieuw ingericht op basis van ne
 
 ## 1. Systeemomgeving instellen
 
-Laten we voor de eenvoud zeggen dat je deze repository hebt gekloond naar `C:\\Users\jerry\\project\\laftools-repo` op Windows of `/Users/jerry/projects/laftools-repo` op Linux/MacOS, dan moet u env declareren en config hieronder instellen in uw bestand **~/.bashrc**, of ze eenvoudigweg uitvoeren voordat u een opdracht uitvoert.
+Laten we voor de eenvoud zeggen dat je deze repository hebt gekloond naar `C:\Usersjerry\project\laftools-repo` op Windows of naar `/Users/jerry/projects/laftools-repo` op Linux/MacOS, dan moet je env declareren en config hieronder instellen in je bestand **~/.bashrc* *, of voer ze eenvoudigweg uit voordat u een opdracht uitvoert.
 
 Als je Windows OS gebruikt, zorg er dan voor dat alle commando's worden uitgevoerd in git-bash. Voor meer informatie raadpleeg je [CONTRIBUTION](./docs/CONTRIBUTION.md). Daarnaast wordt aanbevolen om geen spaties of niet-Engelse tekens te gebruiken in het bestandspad waar dit project zich bevindt.
 

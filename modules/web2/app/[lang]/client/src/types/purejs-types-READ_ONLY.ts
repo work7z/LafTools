@@ -1,1 +1,1 @@
-export * from "../lib/purejs-types";
+export * from "@/app/[lang]/lib/purejs-types";

@@ -10,28 +10,28 @@ Počkejte, ve skutečnosti existuje jiná možnost namísto pouhého placení ú
 
 Jako profesionální programátor můžete přispět k tomuto projektu a vytvořit žádost o stažení pro tento projekt, poté můžete získat bezplatné prémiové členství na tři měsíce.
 
-What you can do is to
+Co můžete udělat, je
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- Přidat test jednotky
+- Přidat nové nástroje
+- Vylepšení existujících nástrojů
+- Vyřešte jakýkoli problém s aplikací
+- Zvýšit výkon
+- Technická realizace
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+S plným testovacím pokrytím a úsilím komunity LafTools jsme pevně přesvědčeni, že software může růst rychleji a silnější.
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ Dopis uživatelům CodeGen ToolBox
 
-Greetings from the CodeGen ToolBox team.
+Zdraví vás tým CodeGen ToolBox.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+Uprostřed této chladné zimy s potěšením oznamujeme, že CodeGen ToolBox vydal celý svůj zdrojový kód a byl přejmenován na LafTools pro výstižnější a konkrétnější název produktu. Od tohoto okamžiku bude náš tým také známý jako tým LafTools.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+Navzdory tomu, že náš software je nyní plně open source, zůstáváme odhodláni sloužit našim prémiovým uživatelům jako dříve. Jsme hluboce vděční těm, kteří nám projevili svou bezvýhradnou důvěru a velkorysou podporu přechodem na náš prémiový účet. Ujišťujeme vás, že vaše placené služby zůstanou nedotčeny a my neustále hledáme způsoby, jak tento produkt vylepšit.
 
-Our decision to completely open our source code was driven by the following reasons::
+Naše rozhodnutí zcela otevřít náš zdrojový kód bylo řízeno následujícími důvody:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ Tento projekt je primárně inspirován následujícími hudebníky:
 - Harry Styles(As It Was)
 - Lovebugs
 
-Konkrétně výkon **
+Konkrétně výkon **Satin Doll** od virtuosa **Joe Pass** ve filmu „Večer s Joem Passem“ (1994) pro mě byl zdrojem síly a sebevědomí, který mi umožnil čelit jakémukoli životnímu dilematu. .
 
 Thank you!
 

@@ -1,22 +1,22 @@
 <i>Note: Denne siden er generert fra LafTools internt.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
 
-## Pre-requisites
+## Forutsetninger
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+Før du begynner å utvikle dette prosjektet, sørg for at du har følgende SDK-er og programvare installert. Vær nøye med de spesifiserte versjonene for å unngå kompatibilitetsproblemer. Noen versjoner kan fungere, men de som er oppført nedenfor anbefales.
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - Må velge 'Use Git and optional Unix....' i installasjonen.
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+Før du endrer kildekoden, bør du lese delene nedenfor for å lære arkitekturen og de tekniske detaljene.
 
-## How to launch project?
+## Hvordan starte prosjektet?
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+For å unngå å skrive dupliserte deler, vennligst les [README.md](../README.md) om denne delen, den inkluderer komplette retningslinjer for hvordan du installerer deps og kjører frontend- og backend-prosjekter.
 
-## How to build project?
+## Hvordan bygge et prosjekt?
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -26,7 +26,7 @@ We fully opened the source project of this project, to build this project, you c
 
 ## VSCode Extensions for Dev
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+Hvis du skal utvikle dette prosjektet, her er noen fantastiske utvidelser du kan sjekke som kan være nyttige. Vær oppmerksom på at denne delen ikke er interessant.
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## Dev && Bygg på VSCode
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+Hvis du skal utvikle eller bygge dette prosjektet, vær oppmerksom på at du bør fullføre trinnene nedenfor først, ellers vil du motta uunntatte feil.
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. Angi terminalkjøringsbanen din som Git Bash
+2. Sett en env i systemet ditt: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. Installer dlv og gopls for Go backend-tjenesten når du starter den først.
 
-## Technologies
+## teknologier
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+For å begynne å utvikle, vennligst sjekk om du er kjent med teknologiene vi bruker. Du trenger ikke å lære dem alle hvis ikke, det er greit hvis du bare er kjent med F/E- eller B/E-teknologier, vi har enhetstester og arbeidsflyt for pull-forespørsel for å sikre at endringene dine blir gjort riktig.
 
-We’re looking forward to your contribution.
+Vi ser frem til ditt bidrag.
 
-For Front-end development:
+For front-end utvikling:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+For Back-end utvikling:
 
 - Go
 - Node.js
 
-For desktop/client development:
+For desktop/klientutvikling:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+For å skrive dokumentene våre kortfattet, vil vi ikke utdype alle detaljer om det tredje biblioteket her, vennligst les kildekoden for ytterligere detaljer.
 
 ## Architecture
 

@@ -8,28 +8,28 @@ ${Dot("dwWA-7VQ3","Wait, actually there’s another option instead of just payin
 
 ${Dot("GRsw21x8A","As a professional programmer, you can contribute to this project and create a pull request for this project, then you could obtain a free premium membership for three months.")}
 
-What you can do is to
+${Dot("jAvavtnEc","What you can do is to")}
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- ${Dot("da_aWBXgP","Add Unit Test")}
+- ${Dot("PY4JFUmj-","Add New Tools")}
+- ${Dot("Xf3EU68eM","Enhance Exist Tools")}
+- ${Dot("hSkql9KkU","Solve Any App Issue")}
+- ${Dot("ESGtCBcda","Enhance Performance")}
+- ${Dot("KeghfSmf3","Technical Implementation")}
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+${Dot("wpHo8Hk7c","With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.")}
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ ${Dot("SLw68ZfFk","A Letter to CodeGen ToolBox Users")}
 
-Greetings from the CodeGen ToolBox team.
+${Dot("WG394suhJ","Greetings from the CodeGen ToolBox team.")}
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+${Dot("8vlKzdCwh","In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.")}
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+${Dot("cx1to4p5d","Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.")}
 
-Our decision to completely open our source code was driven by the following reasons::
+${Dot("S6LLDipNm","Our decision to completely open our source code was driven by the following reasons")}:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -84,7 +84,7 @@ ${Dot("t5DDvnfna","This project is primarily inspired by the following musicians
 - Harry Styles(As It Was)
 - Lovebugs
 
-${Dot("ZdiGcIi8j","Specifically, the performance of **Satin Doll** by the virtuoso **Joe Pass** in 'An Evening With Joe Pass' (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.")}
+${Dot("ZdiIi8j","Specifically, the performance of **Satin Doll** by the virtuoso **Joe Pass** in 'An Evening With Joe Pass' (1994) has been a source of strength and confidence for me, empowering me to face any dilemma in life.")}
 
 Thank you!
 

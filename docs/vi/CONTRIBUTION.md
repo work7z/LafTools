@@ -1,22 +1,22 @@
 <i>Note: Trang này được tạo từ nội bộ LafTools.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
 
-## Pre-requisites
+## Điều kiện tiên quyết
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+Trước khi bạn bắt đầu phát triển dự án này, hãy đảm bảo rằng bạn đã cài đặt các SDK và phần mềm sau. Hãy chú ý đến các phiên bản được chỉ định để tránh mọi vấn đề về khả năng tương thích. Một số phiên bản có thể hoạt động nhưng những phiên bản được liệt kê bên dưới được khuyến nghị.
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - Cần chọn 'Use Git and optional Unix....' khi cài đặt.
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+Trước khi sửa đổi mã nguồn, bạn nên đọc các phần bên dưới để tìm hiểu kiến ​​trúc và chi tiết kỹ thuật.
 
-## How to launch project?
+## Làm thế nào để khởi động dự án?
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+Để tránh viết các phần trùng lặp, vui lòng đọc [README.md](../README.md) về phần này, nó bao gồm hướng dẫn đầy đủ về cách cài đặt deps và chạy dự án giao diện người dùng và phụ trợ.
 
-## How to build project?
+## Làm thế nào để xây dựng dự án?
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -24,9 +24,9 @@ We fully opened the source project of this project, to build this project, you c
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## Tiện ích mở rộng VSCode dành cho nhà phát triển
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+Nếu bạn định phát triển dự án này, đây là một số tiện ích mở rộng tuyệt vời để bạn kiểm tra xem chúng có hữu ích không. Lưu ý rằng phần này chắc chắn không được quan tâm.
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## Phát triển && Xây dựng trên VSCode
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+Nếu bạn định phát triển hoặc xây dựng dự án này, hãy lưu ý rằng bạn nên hoàn thành các bước dưới đây trước, nếu không, bạn sẽ gặp phải các lỗi không thể loại trừ.
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. Đặt đường dẫn thực thi thiết bị đầu cuối của bạn là Git Bash
+2. Đặt env trong hệ thống của bạn: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. Cài đặt dlv và gopls cho dịch vụ phụ trợ Go khi bạn khởi chạy nó lần đầu tiên.
 
-## Technologies
+## Công nghệ
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+Để bắt đầu phát triển, vui lòng kiểm tra xem bạn có quen thuộc với các công nghệ chúng tôi sử dụng hay không. Nếu không, không cần phải tìm hiểu tất cả chúng, cũng không sao nếu bạn chỉ quen với công nghệ F/E hoặc B/E, chúng tôi có các bài kiểm tra đơn vị và quy trình yêu cầu kéo để đảm bảo các thay đổi của bạn được thực hiện đúng cách.
 
-We’re looking forward to your contribution.
+Chúng tôi rất mong nhận được sự đóng góp của bạn.
 
-For Front-end development:
+Dành cho phát triển Front-end:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+Dành cho phát triển Back-end:
 
 - Go
 - Node.js
 
-For desktop/client development:
+Để phát triển máy tính để bàn/máy khách:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+Để viết tài liệu của chúng tôi một cách chính xác, chúng tôi sẽ không trình bày chi tiết từng chi tiết về thư viện thứ 3 đó ở đây, vui lòng đọc mã nguồn để biết thêm chi tiết.
 
 ## Architecture
 

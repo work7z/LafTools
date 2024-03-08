@@ -10,28 +10,28 @@ Várj, valójában van egy másik lehetőség a számla fizetése helyett.
 
 Professzionális programozóként hozzájárulhat ehhez a projekthez, és lehívási kérelmet készíthet ehhez a projekthez, majd három hónapig ingyenes prémium tagságot szerezhet.
 
-What you can do is to
+Amit tehetsz, az az
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- Egységteszt hozzáadása
+- Új eszközök hozzáadása
+- A meglévő eszközök javítása
+- Oldja meg az alkalmazással kapcsolatos problémákat
+- Növelje a teljesítményt
+- Műszaki megvalósítás
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+A teljes tesztkörrel és a LafTools közösség erőfeszítéseivel szilárdan meg vagyunk győződve arról, hogy a szoftver gyorsabban és erősebben fejlődhet.
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ Levél a CodeGen ToolBox felhasználóinak
 
-Greetings from the CodeGen ToolBox team.
+Üdvözlet a CodeGen ToolBox csapata.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+A hideg tél közepette örömmel jelentjük be, hogy a CodeGen ToolBox kiadta a teljes forráskódját, és átnevezték LafTools-ra a tömörebb és konkrétabb terméknév érdekében. Innentől kezdve csapatunk LafTools Team néven is lesz ismert.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+Annak ellenére, hogy szoftverünk ma már teljesen nyílt forráskódú, továbbra is elkötelezettek vagyunk prémium felhasználóink ​​kiszolgálása iránt, mint korábban. Mélyen hálásak vagyunk azoknak, akik fenntartás nélküli bizalmukat és nagylelkű támogatásukat tanúsították felénk a prémium fiókunkra való frissítéssel. Biztos lehet benne, hogy fizetős szolgáltatásai változatlanok maradnak, és folyamatosan kutatjuk a termék fejlesztésének módjait.
 
-Our decision to completely open our source code was driven by the following reasons::
+A forráskód teljes megnyitására vonatkozó döntésünket a következő okok indokolták:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ Ezt a projektet elsősorban a következő zenészek inspirálták:
 - Harry Styles(As It Was)
 - Lovebugs
 
-Pontosabban a ** teljesítménye
+Pontosabban, a virtuóz **Joe Pass** **Satin Doll** előadása az „An Evening With Joe Pass”-ban (1994) erő és magabiztosság forrása volt számomra, és képessé tett arra, hogy az élet bármely dilemmájával szembenézzek. .
 
 Thank you!
 

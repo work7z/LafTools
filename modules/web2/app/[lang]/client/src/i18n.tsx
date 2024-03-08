@@ -53,10 +53,10 @@ export let GetUserActualClientLang = function (): string {
   let matchResult = location.href.match(/\/app\/([^\/]+)/)
   if (matchResult) {
     let prevValue = matchResult[1]
-    if (prevValue == 'zh-hans') {
+    if (prevValue == 'zh-hans' || prevValue == 'zh-cn' || prevValue == 'zh') {
       prevValue = 'zh_CN'
     }
-    if (prevValue == 'zh-hant') {
+    if (prevValue == 'zh-hant' || prevValue == 'zh-tw' || prevValue == 'hk') {
       prevValue = 'zh_HK'
     }
     if (prevValue == 'en') {

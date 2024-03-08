@@ -66,7 +66,7 @@ import {
   Table,
   Regions,
 } from "@blueprintjs/table";
-import { APPINFOJSON, delayFN } from "../../../../../../../../../nocycle";
+import { APPINFOJSON, FN_GetDispatch, delayFN } from "../../../../../../../../../nocycle";
 
 import React, { useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
@@ -106,13 +106,14 @@ import {
 } from "../../../../../../../../../types/workbench-hook";
 import ToolExtensionTree from "../sub/ToolExtensionTree";
 import { useGetCategoryList } from "../../../../sub/center-view/Transformer/hooks";
+import ParamStateSlice from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
 
 // console.log(Dot("1j62a","Do this in other time"))
 
 export let InnerToolPanel = (): any => {
   let sq = useSearchQuery();
   let categoryList = useGetCategoryList()
-  let fc = sq.fc || _.get(categoryList, "[0].id", "all");
+  let fc = sq.ls || _.get(categoryList, "[0].id", "all");
   let activeOne = _.find(categoryList, (x) => x.Id == fc);
   let m_ws = useMergeParamWithWorkSpace();
   return (
@@ -122,10 +123,17 @@ export let InnerToolPanel = (): any => {
       leftNavList={
         _.map(categoryList, (x) => {
           return {
+            onClick: () => {
+              FN_GetDispatch()(
+                ParamStateSlice.actions.updateOneOfParamState({
+                  ls: x.Id,
+                })
+              )
+            },
             label: x.Label + `(${x.TotalCount})`,
             value: x.Id,
             pathname: m_ws({
-              fc: x.Id,
+              ls: x.Id,
             }),
           };
         }) || []

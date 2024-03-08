@@ -54,7 +54,7 @@
 
 ## 1. 시스템 환경 설정
 
-단순화를 위해 이 저장소를 Windows의 `C:\\Users\jerry\\project\\laftools-repo` 또는 Windows의 `/Users/jerry/projects/laftools-repo`에 복제했다고 가정해 보겠습니다. Linux/MacOS의 경우 **~/.bashrc** 파일에서 아래에 env를 선언하고 구성을 설정하거나 명령을 실행하기 전에 간단히 실행해야 합니다.
+단순화를 위해 이 저장소를 Windows의 `C:\Usersjerry\project\laftools-repo` 또는 Linux/MacOS의 `/Users/jerry/projects/laftools-repo`에 복제했다고 가정하고 **~/.bashrc* 파일에서 env를 선언하고 아래 구성을 설정해야 합니다. * 또는 명령을 실행하기 전에 간단히 실행하십시오.
 
 Windows OS를 사용하는 경우 모든 명령이 git-bash에서 실행되는지 확인하세요. 자세한 내용은 [CONTRIBUTION](./docs/CONTRIBUTION.md)을 참조하세요. 이 외에도 이 프로젝트가 있는 파일 경로에는 공백이나 영어가 아닌 문자를 사용하지 않는 것이 좋습니다.
 

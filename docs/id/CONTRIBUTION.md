@@ -1,22 +1,22 @@
 <i>Note: Halaman ini dihasilkan dari LafTools secara internal.</i> <br/> [English](/docs/en_US)  |  [简体中文](/docs/zh_CN)  |  [繁體中文](/docs/zh_HK)  |  [Deutsch](/docs/de)  |  [Español](/docs/es)  |  [Français](/docs/fr)  |  [日本語](/docs/ja)  |  [한국어](/docs/ko) | [More](/docs/) <br/>
 
-## Pre-requisites
+## Prasyarat
 
-Before you start developing this project, please ensure that you have the following SDKs and software installed. Pay close attention to the versions specified to avoid any compatibility issues. Some versions may work, but the ones listed below are recommended.
+Sebelum Anda mulai mengembangkan proyek ini, pastikan Anda telah menginstal SDK dan perangkat lunak berikut. Perhatikan baik-baik versi yang ditentukan untuk menghindari masalah kompatibilitas. Beberapa versi mungkin berfungsi, namun versi yang tercantum di bawah ini direkomendasikan.
 
 - Node v20.9.0
 - Go 1.21.1
 - Git Bash(for Windows)
-  - Need to select "Use Git and optional Unix...." in installation.
+  - Perlu memilih 'Use Git and optional Unix....' dalam pemasangan.
 - Visual Studio Code
 
-Before modifying the source code, you should read the below sections to learn the architecture and technical details.
+Sebelum memodifikasi kode sumber, Anda harus membaca bagian di bawah ini untuk mempelajari arsitektur dan detail teknisnya.
 
-## How to launch project?
+## Bagaimana cara meluncurkan proyek?
 
-To avoid writing duplicate parts, please read [README.md](../README.md) about this section, it includes complete guideline for how to install deps and run frontend and backend project.
+Untuk menghindari penulisan bagian yang duplikat, harap baca [README.md](../README.md) tentang bagian ini, ini mencakup panduan lengkap tentang cara menginstal deps dan menjalankan proyek frontend dan backend.
 
-## How to build project?
+## Bagaimana cara membangun proyek?
 
 We fully opened the source project of this project, to build this project, you can trigger below commands in Git-Bash:
 
@@ -24,9 +24,9 @@ We fully opened the source project of this project, to build this project, you c
 ./pipeline/build-all.sh
 ```
 
-## VSCode Extensions for Dev
+## Ekstensi VSCode untuk Pengembang
 
-If you are going to develop this project, here are some awesome extensions for you to check that might be helpful. Note that this section is surely of no interest.
+Jika Anda akan mengembangkan proyek ini, berikut adalah beberapa ekstensi luar biasa untuk Anda periksa yang mungkin berguna. Perhatikan bahwa bagian ini jelas tidak menarik.
 
 1. Prettier - Code formatter
 2. TODO Highlight
@@ -42,39 +42,39 @@ If you are going to develop this project, here are some awesome extensions for y
 12. Go Asm
 13. Go Doc
 
-## Dev && Build on VSCode
+## Kembangkan && Bangun di VSCode
 
-If you are going to develop or build this project, note that you should complete below steps first, otherwise, you will receive unexcepted errors.
+Jika Anda akan mengembangkan atau membangun proyek ini, perhatikan bahwa Anda harus menyelesaikan langkah-langkah di bawah ini terlebih dahulu, jika tidak, Anda akan menerima kesalahan yang tidak terkecuali.
 
-1. Set your terminal execution path as Git Bash
-2. Set an env in your system: LAFTOOLS_ROOT=${Your Actual Project Root}.
-3. Install dlv and gopls for Go backend service when you launch it firstly.
+1. Tetapkan jalur eksekusi terminal Anda sebagai Git Bash
+2. Tetapkan env di sistem Anda: LAFTOOLS_ROOT=${Your Actual Project Root}.
+3. Instal dlv dan gopls untuk layanan backend Go saat Anda meluncurkannya terlebih dahulu.
 
-## Technologies
+## Teknologi
 
-To start developing, please check if you are familiar with the technologies we use. No need to learn all of them if not, it’s ok if you are only familiar with F/E or B/E technologies, we have unit tests and pull request workflow to ensure your changes are done properly.
+Untuk mulai mengembangkan, periksa apakah Anda sudah familiar dengan teknologi yang kami gunakan. Tidak perlu mempelajari semuanya jika belum, tidak masalah jika Anda hanya familiar dengan teknologi F/E atau B/E, kami memiliki pengujian unit dan alur kerja permintaan tarik untuk memastikan perubahan Anda dilakukan dengan benar.
 
-We’re looking forward to your contribution.
+Kami menantikan kontribusi Anda.
 
-For Front-end development:
+Untuk pengembangan Front-end:
 
 - React
 - TypeScript
 - BluePrint.js
 - Tailwind.css
 
-For Back-end development:
+Untuk pengembangan Back-end:
 
 - Go
 - Node.js
 
-For desktop/client development:
+Untuk pengembangan desktop/klien:
 
 - Wails.io
 - Electron
 - Browser Extension
 
-To write our docs concisely, we will not elaborate on every detail about that 3rd library here, kindly read the source code for further details.
+Untuk menulis dokumen kami secara ringkas, kami tidak akan menguraikan setiap detail tentang perpustakaan ke-3 tersebut di sini, silakan baca kode sumber untuk detail lebih lanjut.
 
 ## Architecture
 

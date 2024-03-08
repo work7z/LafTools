@@ -10,28 +10,28 @@ Vent, faktisk er der en anden mulighed i stedet for bare at betale regningen.
 
 Som professionel programmør kan du bidrage til dette projekt og oprette en pull-anmodning for dette projekt, så kan du opnå et gratis premium-medlemskab i tre måneder.
 
-What you can do is to
+Det du kan gøre er at
 
-- Add Unit Test
-- Add New Tools
-- Enhance Exist Tools
-- Solve Any App Issue
-- Enhance Performance
-- Technical Implementation
+- Tilføj enhedstest
+- Tilføj nye værktøjer
+- Forbedre Exist-værktøjer
+- Løs ethvert app-problem
+- Forbedre ydeevne
+- Teknisk implementering
 
 Learn more kindly refer to [Contribution](CONTRIBUTION.md)
 
-With full test coverage and efforts from the LafTools community, we are firmly convinced that the software can grow faster and stronger.
+Med fuld testdækning og indsats fra LafTools-fællesskabet er vi fast overbevist om, at softwaren kan vokse hurtigere og stærkere.
 
-# ✉️ A Letter to CodeGen ToolBox Users
+# ✉️ Et brev til CodeGen ToolBox-brugere
 
-Greetings from the CodeGen ToolBox team.
+Hilsen fra CodeGen ToolBox-teamet.
 
-In the midst of this cold winter, we are thrilled to announce that CodeGen ToolBox has released its entire source code and has been renamed to LafTools for a more concise and specific product name. From this point forward, our team will also be known as the LafTools Team.
+Midt i denne kolde vinter er vi glade for at kunne meddele, at CodeGen ToolBox har frigivet hele sin kildekode og er blevet omdøbt til LafTools for et mere kortfattet og specifikt produktnavn. Fra dette tidspunkt vil vores team også blive kendt som LafTools Team.
 
-Despite our software now being fully open source, we remain committed to serving our premium users as before. We are deeply grateful to those who have shown us their unreserved trust and generous support by upgrading to our premium account. Rest assured, your paid services will remain unaffected, and we are continually exploring ways to enhance this product.
+På trods af at vores software nu er fuldt åben kildekode, er vi fortsat forpligtet til at betjene vores premium-brugere som før. Vi er dybt taknemmelige for dem, der har vist os deres uforbeholdne tillid og generøse støtte ved at opgradere til vores premium-konto. Du kan være sikker på, at dine betalte tjenester forbliver upåvirket, og vi undersøger løbende måder at forbedre dette produkt på.
 
-Our decision to completely open our source code was driven by the following reasons::
+Vores beslutning om helt at åbne vores kildekode var drevet af følgende årsager:
 
 - To conduct a security reviews
 - To demonstrate the void of malicious logic or backdoors
@@ -86,7 +86,7 @@ Dette projekt er primært inspireret af følgende musikere:
 - Harry Styles(As It Was)
 - Lovebugs
 
-Specifikt ydeevnen af ​​**
+Specifikt har opførelsen af ​​**Satin Doll** af den virtuose **Joe Pass** i 'An Evening With Joe Pass' (1994) været en kilde til styrke og selvtillid for mig, som har givet mig mulighed for at møde ethvert dilemma i livet .
 
 Thank you!
 

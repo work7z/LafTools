@@ -226,14 +226,15 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
                 <Menu>
                   {props.leftNavList.map((x) => {
                     let isCrt = x.value == activeId;
+                    let onclk = x.onClick ? x.onClick : (e) => {
+                      // e.stopPropagation();
+                      //
+                    };
                     let menuItem = (
                       <MenuItem
                         key={x.value}
                         text={x.label}
-                        onClick={(e) => {
-                          // e.stopPropagation();
-                          //
-                        }}
+                        onClick={onclk}
                         intent={isCrt ? "primary" : "none"}
                       />
                     );

@@ -1,14 +1,17 @@
 # .codeqlignore
 
 # ignore prettier
+
 modules/node/src/lib/prettier/**
-modules/node/src/lib/prettier/*
+modules/node/src/lib/prettier/\*
 modules/web/src/lib/core
 modules/web/src/lib/core/**
-modules/web/src/lib/core/*
-modules/web/src/lib/core/*.mjs
-modules/web/src/lib/core/**/*.mjs
-modules/web/src/lib/core/*.mjs
-modules/web2/app/[lang]/client/src/lib/core/**/*
-modules/web2/app/[lang]/client/src/lib/core/**/*.mjs
-modules/web2/app/[lang]/client/src/lib/core/*.mjs
+modules/web/src/lib/core/_
+modules/web/src/lib/core/_.mjs
+modules/web/src/lib/core/**/_.mjs
+modules/web/src/lib/core/_.mjs
+modules/web2/app/[lang]/client/src/lib/core/**/_
+modules/web2/app/[lang]/client/src/lib/core/\*\*/_.mjs
+modules/web2/app/[lang]/client/src/lib/core/_.mjs
+modules/web2/app/[lang]/\*\*/_.mjs
+modules/web2/app/\*_/_.mjs

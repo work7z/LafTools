@@ -54,7 +54,7 @@ Son zamanlarda LafTools'un mimarisini next.js'ye dayalı olarak yeniden düzenli
 
 ## 1. Sistem Ortamını Kurma
 
-Basitleştirmek adına, bu depoyu Windows'ta `C:\\Users\jerry\\project\\laftools-repo`ya veya Windows'ta `/Users/jerry/projects/laftools-repo`ya kopyaladığınızı varsayalım. Linux/MacOS kullanıyorsanız, **~/.bashrc** dosyanızda env'yi bildirmeli ve aşağıdaki set config'i belirtmeli veya herhangi bir komutu çalıştırmadan önce bunları çalıştırmalısınız.
+Basitlik adına, bu depoyu Windows'ta `C:\Usersjerry\project\laftools-repo`'a veya Linux/MacOS'ta `/Users/jerry/projects/laftools-repo`'e kopyaladığınızı varsayalım, ardından env'yi bildirmeli ve **~/.bashrc* dosyanızda aşağıdaki config'i ayarlamalısınız. * veya herhangi bir komutu çalıştırmadan önce bunları yürütün.
 
 Windows işletim sistemi kullanıyorsanız lütfen tüm komutların git-bash'ta yürütüldüğünden emin olun, daha fazla bilgi için lütfen [CONTRIBUTION](./docs/CONTRIBUTION.md) adresine bakın. Bunun dışında bu projenin bulunduğu dosya yolunda boşluk veya İngilizce olmayan karakterlerin kullanılmaması tavsiye edilir.
 
