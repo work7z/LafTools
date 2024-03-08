@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      LAFTOOLS_ROOT: /home/runner/work/LafTools/LafTools
+      LAFTOOLS_ROOT: /home/runner/work/LafTools/LafTools-tag
       TAG_MODE: true
 
     steps:
@@ -52,7 +52,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           draft: false
-          prerelease: false
+          prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || contains(github.ref, 'rc') }}
 
       - name: Upload Release Asset for linux-x64
         uses: actions/upload-release-asset@v1
@@ -60,7 +60,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /home/runner/work/LafTools/LafTools/dist/pkg/linux-x64.tar.gz
+          asset_path: /home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz
           asset_name: LafTools-${{steps.get_version.outputs.VERSION}}-linux-x64.tar.gz
           asset_content_type: application/tar+gzip
 
@@ -70,7 +70,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /home/runner/work/LafTools/LafTools/dist/pkg/linux-arm64.tar.gz
+          asset_path: /home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-arm64.tar.gz
           asset_name: LafTools-${{steps.get_version.outputs.VERSION}}-linux-arm64.tar.gz
           asset_content_type: application/tar+gzip
 
@@ -80,7 +80,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /home/runner/work/LafTools/LafTools/dist/pkg/darwin-x64.tar.gz
+          asset_path: /home/runner/work/LafTools/LafTools-tag/dist/pkg/darwin-x64.tar.gz
           asset_name: LafTools-${{steps.get_version.outputs.VERSION}}-darwin-x64.tar.gz
           asset_content_type: application/tar+gzip
 
@@ -90,7 +90,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /home/runner/work/LafTools/LafTools/dist/pkg/darwin-arm64.tar.gz
+          asset_path: /home/runner/work/LafTools/LafTools-tag/dist/pkg/darwin-arm64.tar.gz
           asset_name: LafTools-${{steps.get_version.outputs.VERSION}}-darwin-arm64.tar.gz
           asset_content_type: application/tar+gzip
 
@@ -100,7 +100,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /home/runner/work/LafTools/LafTools/dist/pkg/windows-x64.zip
+          asset_path: /home/runner/work/LafTools/LafTools-tag/dist/pkg/windows-x64.zip
           asset_name: LafTools-${{steps.get_version.outputs.VERSION}}-windows-x64.zip
           asset_content_type: application/zip
 
@@ -110,6 +110,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /home/runner/work/LafTools/LafTools/dist/pkg/windows-arm64.zip
+          asset_path: /home/runner/work/LafTools/LafTools-tag/dist/pkg/windows-arm64.zip
           asset_name: LafTools-${{steps.get_version.outputs.VERSION}}-windows-arm64.zip
           asset_content_type: application/zip
