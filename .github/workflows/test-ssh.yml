@@ -1,0 +1,31 @@
+name: Build on Commit
+
+on:
+  push:
+    branches: [dev]
+    tags-ignore: ["*"]
+  pull_request:
+    branches: [dev]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      LAFTOOLS_ROOT: /home/runner/work/LafTools/LafTools
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Execute SSH command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.APP_SSH_HOST }}
+          port: ${{ secrets.APP_SSH_PORT }}
+          username: ${{ secrets.APP_SSH_USERNAME }}
+          key: ${{ secrets.APP_SSH_KEY }}
+          script: |
+            echo 'Running some command'
+            ls -la 
+            mkdir -p /home/appuser/LafTools-dist
