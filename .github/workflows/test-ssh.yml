@@ -1,4 +1,4 @@
-name: Build on Commit
+name: Test SSH Conn
 
 on:
   push:
