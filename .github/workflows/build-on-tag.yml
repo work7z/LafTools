@@ -35,6 +35,7 @@ jobs:
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
       - name: Run build script
+        id: runbuildscript
         run: |
           npm i -g typescript
           cd ./modules/web2
@@ -55,6 +56,7 @@ jobs:
           prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || contains(github.ref, 'rc') }}
 
       - name: Copy file via SSH
+        if: steps.runbuildscript.outputs.exit_code == 0
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.APP_SSH_HOST }}

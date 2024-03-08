@@ -30,9 +30,8 @@ export default () => {
                     <CardHeader className={secondaryPanelClzHeader}>{Dot("FAQ", "Frequently Asked Questions")}</CardHeader>
                     <CardBody>
                         <div>
-                            <div>item1</div>
-                            <div>item1</div>
-                            <div>item3</div>
+                            <p>{Dot("n2QhB0O8_", "LafTools is still under development, please give us a star to subsrible latest update on GitHub.")}</p>
+                            <a href={'https://github.com/work7z/LafTools'}>{Dot("wYsKTq7nK", "Click me to view the source code")}</a>
                         </div>
                     </CardBody>
                 </Card>

@@ -142,7 +142,7 @@ export default ExtSlice;
 export type ProcessAction = {
   actionId: ExtensionAction;
   mute?: boolean;
-  extInfo?: PropExtSessionContext;
+  extInfo?: any // PropExtSessionContext;
 };
 
 export const fn_call_convert_with_action = (obj: {

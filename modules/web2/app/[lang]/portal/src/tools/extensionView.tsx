@@ -8,6 +8,6 @@ import { useRouter } from 'next/navigation'
 
 let TestBtn = () => {
     let r = useRouter()
-    return <div className='bg-red-50 w-full h-full'>this is full tool panel</div>
+    return <div className=' w-full h-full'>this is full tool panel</div>
 }
 export default TestBtn;
