@@ -233,10 +233,10 @@ build-bundle(){
             cp $LAFTOOLS_ROOT/pipeline/parcel/docker/* ./
             find . -iname "*.sh" -exec chmod 755 {} \;
             ls -ahlrt
-            docker build -t codegentoolbox/laftools-$platformName:$crtVersion -f ./Dockerfile .
-            docker push codegentoolbox/laftools-$platformName:$crtVersion
+            docker build -t codegentoolbox/laftools-$platformName:devops -f ./Dockerfile .
+            docker push codegentoolbox/laftools-$platformName:devops
             if [ $platformName == "linux-x64" ]; then
-                docker save codegentoolbox/laftools-$platformName:$crtVersion > $LAFTOOLS_ROOT/dkout.tmp
+                docker save codegentoolbox/laftools-$platformName:devops > $LAFTOOLS_ROOT/dkout.tmp 
                 zip -r $LAFTOOLS_ROOT/pipeline-server.zip $LAFTOOLS_ROOT/pipeline/server
                 gzip $LAFTOOLS_ROOT/dkout.tmp
                 echo "[I] docker output file: $LAFTOOLS_ROOT/dkout.tmp.gz, size is $(du -sh $LAFTOOLS_ROOT/dkout.tmp.gz | awk '{print $1}')"
