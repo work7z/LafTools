@@ -240,10 +240,8 @@ build-bundle(){
             echo "[E] docker command is not available, will ignore this part. To run it, please install docker first."
             return;
         fi
-        if [[ "$mode" = "linux" ]]; then
-            dockerize-laftools linux-x64
-            dockerize-laftools linux-arm64
-        fi
+        dockerize-laftools linux-x64
+        dockerize-laftools linux-arm64
     }
 
 

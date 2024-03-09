@@ -56,7 +56,7 @@ Recentemente, estamos refatorando a arquitetura do LafTools com base em next.js.
 
 Para simplificar, digamos que você clonou este repositório para `C:\Usersjerry\project\laftools-repo` no Windows ou `/Users/jerry/projects/laftools-repo` no Linux/MacOS, então você deve declarar env e definir config abaixo em seu arquivo **~/.bashrc* *, ou simplesmente execute-os antes de executar qualquer comando.
 
-Se você estiver usando o sistema operacional Windows, certifique-se de que todos os comandos sejam executados no git-bash. Para saber mais, consulte [CONTRIBUTION](./docs/CONTRIBUTION.md). Além disso, é recomendável evitar o uso de espaços em branco ou caracteres que não sejam do inglês no caminho do arquivo onde este projeto está localizado.
+Se você estiver usando o sistema operacional Windows, certifique-se de que todos os comandos sejam executados no git-bash. Para saber mais, consulte [CONTRIBUIÇÃO](/docs/pt/CONTRIBUTION.md). Além disso, é recomendável evitar o uso de espaços em branco ou caracteres que não sejam do inglês no caminho do arquivo onde este projeto está localizado.
 
 **Env for Windows:**
 

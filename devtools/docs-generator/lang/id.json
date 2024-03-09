@@ -38,7 +38,7 @@
     "NDoU_oqcQ": "Sebelum memodifikasi kode sumber, Anda harus membaca bagian di bawah ini untuk mempelajari arsitektur dan detail teknisnya.",
     "O3eQBXxwY": "Setelah layanan Go berjalan, Anda akan melihat tautan tercetak di terminal. Sekarang, salin URL ini dan tempel ke browser Anda untuk mulai mengembangkan, ayo!",
     "OjKP47hFt": "Pratinjau",
-    "PLhTRM7EV": "Jika Anda menggunakan OS Windows, pastikan semua perintah dijalankan di git-bash, pelajari lebih lanjut silakan lihat [KONTRIBUSI](./docs/CONTRIBUTION.md). Selain itu, disarankan untuk menghindari penggunaan spasi atau karakter non-Inggris di jalur file tempat proyek ini berada.",
+    "PLhTRM7Eqwk": "Jika Anda menggunakan OS Windows, pastikan semua perintah dijalankan di git-bash, pelajari lebih lanjut silakan merujuk ke [KONTRIBUSI]({0}). Selain itu, disarankan untuk menghindari penggunaan spasi atau karakter non-Inggris di jalur file tempat proyek ini berada.",
     "PU08fL8dT": "Buka Masalah secara langsung (harap sembunyikan informasi sensitif dan detail proyek Anda)",
     "PY4JFUmj-": "Tambahkan Alat Baru",
     "QYPc87A2j": "Membangun",

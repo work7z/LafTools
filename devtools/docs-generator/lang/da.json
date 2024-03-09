@@ -38,7 +38,7 @@
     "NDoU_oqcQ": "Før du ændrer kildekoden, bør du læse nedenstående afsnit for at lære arkitekturen og de tekniske detaljer.",
     "O3eQBXxwY": "Når Go-tjenesten kører, bør du kunne se et link udskrevet i terminalen. Kopier nu denne URL og indsæt den i din browser for at begynde at udvikle, lad os gå!",
     "OjKP47hFt": "Forhåndsvisning",
-    "PLhTRM7EV": "Hvis du bruger Windows OS, skal du sørge for, at alle kommandoer udføres i git-bash, få mere at vide, se venligst [BIDRAG](./docs/CONTRIBUTION.md). Bortset fra dette anbefales det at undgå at bruge mellemrum eller ikke-engelske tegn i filstien, hvor dette projekt er placeret.",
+    "PLhTRM7Eqwk": "Hvis du bruger Windows OS, skal du sørge for, at alle kommandoer udføres i git-bash, læs mere, se venligst [BIDRAG]({0}). Bortset fra dette anbefales det at undgå at bruge mellemrum eller ikke-engelske tegn i filstien, hvor dette projekt er placeret.",
     "PU08fL8dT": "Åbn udgave direkte (skjul venligst følsomme oplysninger og dine projektdetaljer)",
     "PY4JFUmj-": "Tilføj nye værktøjer",
     "QYPc87A2j": "Byg",

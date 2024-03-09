@@ -38,7 +38,7 @@
     "NDoU_oqcQ": "Ennen lähdekoodin muokkaamista sinun tulee lukea alla olevat osiot oppiaksesi arkkitehtuurista ja teknisistä yksityiskohdista.",
     "O3eQBXxwY": "Kun Go-palvelu on käynnissä, sinun pitäisi nähdä linkki tulostettuna terminaaliin. Aloita kehittäminen kopioimalla tämä URL-osoite ja liittämällä se selaimeesi.",
     "OjKP47hFt": "Esikatselu",
-    "PLhTRM7EV": "Jos käytät Windows-käyttöjärjestelmää, varmista, että kaikki komennot suoritetaan git-bashissa. Lisätietoja on kohdassa [CONTRIBUTION](./docs/CONTRIBUTION.md). Tämän lisäksi on suositeltavaa välttää välilyöntien tai muiden kuin englanninkielisten merkkien käyttöä tiedostopolussa, jossa tämä projekti sijaitsee.",
+    "PLhTRM7Eqwk": "Jos käytät Windows-käyttöjärjestelmää, varmista, että kaikki komennot suoritetaan git-bashissa. Lisätietoja on kohdassa [CONTRIBUTION]({0}). Tämän lisäksi on suositeltavaa välttää välilyöntien tai muiden kuin englanninkielisten merkkien käyttöä tiedostopolussa, jossa tämä projekti sijaitsee.",
     "PU08fL8dT": "Avaa numero suoraan (piilota arkaluontoiset tiedot ja projektisi tiedot)",
     "PY4JFUmj-": "Lisää uusia työkaluja",
     "QYPc87A2j": "Rakentaa",

@@ -56,7 +56,7 @@ Baru-baru ini, kami memfaktorkan semula seni bina LafTools berdasarkan next.js, 
 
 Demi kesederhanaan, katakan anda telah mengklon repositori ini sama ada `C:\Usersjerry\project\laftools-repo` pada Windows atau `/Users/jerry/projects/laftools-repo` pada Linux/MacOS, maka anda harus mengisytiharkan env dan tetapkan konfigurasi di bawah dalam fail anda **~/.bashrc* *, atau hanya laksanakannya sebelum menjalankan sebarang arahan.
 
-Jika anda menggunakan OS Windows, sila pastikan semua arahan dilaksanakan dalam git-bash, ketahui lebih lanjut sila rujuk [CONTRIBUTION](./docs/CONTRIBUTION.md). Selain daripada ini, adalah disyorkan untuk mengelak daripada menggunakan sebarang ruang putih atau aksara bukan bahasa Inggeris dalam laluan fail di mana projek ini terletak.
+Jika anda menggunakan OS Windows, sila pastikan semua arahan dilaksanakan dalam git-bash, ketahui lebih lanjut sila rujuk [SUMBANGAN](/docs/ms/CONTRIBUTION.md). Selain daripada ini, adalah disyorkan untuk mengelak daripada menggunakan sebarang ruang putih atau aksara bukan bahasa Inggeris dalam laluan fail di mana projek ini terletak.
 
 **Env for Windows:**
 

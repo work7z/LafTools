@@ -38,7 +38,7 @@
     "NDoU_oqcQ": "Przed modyfikacją kodu źródłowego powinieneś przeczytać poniższe sekcje, aby poznać architekturę i szczegóły techniczne.",
     "O3eQBXxwY": "Po uruchomieniu usługi Go powinieneś zobaczyć link wydrukowany w terminalu. Teraz skopiuj ten adres URL i wklej go do przeglądarki, aby rozpocząć programowanie, chodźmy!",
     "OjKP47hFt": "Zapowiedź",
-    "PLhTRM7EV": "Jeśli używasz systemu operacyjnego Windows, upewnij się, że wszystkie polecenia są wykonywane w git-bash. Więcej informacji znajdziesz w [WKŁAD](./docs/CONTRIBUTION.md). Poza tym zaleca się unikanie używania spacji lub znaków innych niż angielskie w ścieżce pliku, w którym znajduje się ten projekt.",
+    "PLhTRM7Eqwk": "Jeśli używasz systemu operacyjnego Windows, upewnij się, że wszystkie polecenia są wykonywane w git-bash. Więcej informacji znajdziesz w [WKŁAD]({0}). Poza tym zaleca się unikanie używania spacji lub znaków innych niż angielskie w ścieżce pliku, w którym znajduje się ten projekt.",
     "PU08fL8dT": "Otwórz problem bezpośrednio (ukryj poufne informacje i szczegóły projektu)",
     "PY4JFUmj-": "Dodaj nowe narzędzia",
     "QYPc87A2j": "Zbudować",

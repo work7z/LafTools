@@ -38,7 +38,7 @@
     "NDoU_oqcQ": "Innan du ändrar källkoden bör du läsa avsnitten nedan för att lära dig arkitekturen och tekniska detaljer.",
     "O3eQBXxwY": "När Go-tjänsten körs bör du kunna se en länk utskriven i terminalen. Nu, kopiera denna URL och klistra in den i din webbläsare för att börja utveckla, låt oss köra!",
     "OjKP47hFt": "Förhandsvisning",
-    "PLhTRM7EV": "Om du använder Windows OS, se till att alla kommandon körs i git-bash, läs mer se [CONTRIBUTION](./docs/CONTRIBUTION.md). Bortsett från detta rekommenderas det att undvika att använda blanksteg eller icke-engelska tecken i filsökvägen där detta projekt finns.",
+    "PLhTRM7Eqwk": "Om du använder Windows OS, se till att alla kommandon körs i git-bash, läs mer se [BIDRAG]({0}). Bortsett från detta rekommenderas det att undvika att använda blanksteg eller icke-engelska tecken i filsökvägen där detta projekt finns.",
     "PU08fL8dT": "Öppna ärendet direkt (dölj känslig information och din projektdetalj)",
     "PY4JFUmj-": "Lägg till nya verktyg",
     "QYPc87A2j": "Bygga",

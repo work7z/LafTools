@@ -56,7 +56,7 @@ Baru-baru ini, kami melakukan refactoring arsitektur LafTools berdasarkan next.j
 
 Demi kesederhanaan, katakanlah Anda telah mengkloning repositori ini ke `C:\Usersjerry\project\laftools-repo` di Windows atau `/Users/jerry/projects/laftools-repo` di Linux/MacOS, maka Anda harus mendeklarasikan env dan menyetel config di bawah ini dalam file Anda **~/.bashrc* *, atau jalankan saja sebelum menjalankan perintah apa pun.
 
-Jika Anda menggunakan OS Windows, pastikan semua perintah dijalankan di git-bash, pelajari lebih lanjut silakan lihat [KONTRIBUSI](./docs/CONTRIBUTION.md). Selain itu, disarankan untuk menghindari penggunaan spasi atau karakter non-Inggris di jalur file tempat proyek ini berada.
+Jika Anda menggunakan OS Windows, pastikan semua perintah dijalankan di git-bash, pelajari lebih lanjut silakan merujuk ke [KONTRIBUSI](/docs/id/CONTRIBUTION.md). Selain itu, disarankan untuk menghindari penggunaan spasi atau karakter non-Inggris di jalur file tempat proyek ini berada.
 
 **Env for Windows:**
 

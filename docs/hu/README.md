@@ -56,7 +56,7 @@ A közelmúltban a LafTools next.js-en alapuló architektúráját átdolgoztuk,
 
 Az egyszerűség kedvéért tegyük fel, hogy klónozta ezt a tárolót a következőre: `C:\Usersjerry\project\laftools-repo` Windows rendszeren vagy `/Users/jerry/projects/laftools-repo` Linux/MacOS rendszeren, majd deklarálja az env-t, és állítsa be a konfigurációt alább a **~/.bashrc* fájlban. *, vagy egyszerűen futtassa őket, mielőtt bármilyen parancsot futtatna.
 
-Ha Windows operációs rendszert használ, győződjön meg arról, hogy az összes parancsot a git-bash-ben hajtja végre. További információ: [CONTRIBUTION](./docs/CONTRIBUTION.md). Ezen kívül ajánlatos kerülni a szóközök vagy nem angol karakterek használatát a fájl elérési útjában, ahol a projekt található.
+Ha Windows operációs rendszert használ, győződjön meg arról, hogy az összes parancsot a git-bash-ban hajtja végre. További információért olvassa el a [KÖZREHAJTÁS](/docs/hu/CONTRIBUTION.md) részt. Ezen kívül ajánlatos kerülni a szóközök vagy nem angol karakterek használatát a fájl elérési útjában, ahol a projekt található.
 
 **Env for Windows:**
 

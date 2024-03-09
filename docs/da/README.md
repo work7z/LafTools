@@ -56,7 +56,7 @@ For nylig har vi omstruktureret arkitekturen af ​​LafTools baseret på next.
 
 Lad os for nemheds skyld sige, at du har klonet dette lager til enten `C:\Usersjerry\project\laftools-repo` på Windows eller `/Users/jerry/projects/laftools-repo` på Linux/MacOS, så skal du erklære env og indstille config nedenfor i din fil **~/.bashrc* *, eller blot udføre dem, før du kører en kommando.
 
-Hvis du bruger Windows OS, skal du sørge for, at alle kommandoer udføres i git-bash, få mere at vide, se venligst [BIDRAG](./docs/CONTRIBUTION.md). Bortset fra dette anbefales det at undgå at bruge mellemrum eller ikke-engelske tegn i filstien, hvor dette projekt er placeret.
+Hvis du bruger Windows OS, skal du sørge for, at alle kommandoer udføres i git-bash, læs mere, se venligst [BIDRAG](/docs/da/CONTRIBUTION.md). Bortset fra dette anbefales det at undgå at bruge mellemrum eller ikke-engelske tegn i filstien, hvor dette projekt er placeret.
 
 **Env for Windows:**
 

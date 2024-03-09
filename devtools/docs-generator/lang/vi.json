@@ -38,7 +38,7 @@
     "NDoU_oqcQ": "Trước khi sửa đổi mã nguồn, bạn nên đọc các phần bên dưới để tìm hiểu kiến ​​trúc và chi tiết kỹ thuật.",
     "O3eQBXxwY": "Khi dịch vụ Go đang chạy, bạn sẽ có thể thấy một liên kết được in ra trong thiết bị đầu cuối. Bây giờ, hãy sao chép URL này và dán vào trình duyệt của bạn để bắt đầu phát triển, bắt đầu nào!",
     "OjKP47hFt": "Xem trước",
-    "PLhTRM7EV": "Nếu bạn đang sử dụng HĐH Windows, vui lòng đảm bảo rằng tất cả các lệnh được thực thi trong git-bash, tìm hiểu thêm vui lòng tham khảo [ĐÓNG GÓP](./docs/CONTRIBUTION.md). Ngoài ra, bạn nên tránh sử dụng bất kỳ khoảng trắng hoặc ký tự không phải tiếng Anh nào trong đường dẫn tệp chứa dự án này.",
+    "PLhTRM7Eqwk": "Nếu bạn đang sử dụng HĐH Windows, vui lòng đảm bảo rằng tất cả các lệnh được thực thi trong git-bash, tìm hiểu thêm vui lòng tham khảo [ĐÓNG GÓP]({0}). Ngoài ra, bạn nên tránh sử dụng bất kỳ khoảng trắng hoặc ký tự không phải tiếng Anh nào trong đường dẫn tệp chứa dự án này.",
     "PU08fL8dT": "Mở vấn đề trực tiếp (vui lòng ẩn thông tin nhạy cảm và chi tiết dự án của bạn)",
     "PY4JFUmj-": "Thêm công cụ mới",
     "QYPc87A2j": "Xây dựng",

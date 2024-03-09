@@ -56,7 +56,7 @@
 
 為了簡單起見，假設您已將此儲存庫克隆到 Windows 上的 `C:\Usersjerry\project\laftools-repo` 或 Linux/MacOS 上的 `/Users/jerry/projects/laftools-repo`，那麼您應該在檔案 **~/.bashrc* 中聲明 env 並在下方設定設定* ，或者只是在運行任何命令之前執行它們。
 
-如果您使用的是 Windows 作業系統，請確保所有指令都在 git-bash 中執行，以了解更多資訊請參閱 [CONTRIBUTION](./docs/CONTRIBUTION.md)。除此之外，建議避免在該項目所在的檔案路徑中使用任何空格或非英文字元。
+如果您使用的是 Windows 作業系統，請確保所有命令都在 git-bash 中執行，以了解更多資訊請參閱 [貢獻](/docs/zh_HK/CONTRIBUTION.md)。除此之外，建議避免在該項目所在的檔案路徑中使用任何空格或非英文字元。
 
 **Env for Windows:**
 

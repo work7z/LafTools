@@ -56,7 +56,7 @@ Son zamanlarda LafTools'un mimarisini next.js'ye dayalı olarak yeniden düzenli
 
 Basitlik adına, bu depoyu Windows'ta `C:\Usersjerry\project\laftools-repo`'a veya Linux/MacOS'ta `/Users/jerry/projects/laftools-repo`'e kopyaladığınızı varsayalım, ardından env'yi bildirmeli ve **~/.bashrc* dosyanızda aşağıdaki config'i ayarlamalısınız. * veya herhangi bir komutu çalıştırmadan önce bunları yürütün.
 
-Windows işletim sistemi kullanıyorsanız lütfen tüm komutların git-bash'ta yürütüldüğünden emin olun, daha fazla bilgi için lütfen [CONTRIBUTION](./docs/CONTRIBUTION.md) adresine bakın. Bunun dışında bu projenin bulunduğu dosya yolunda boşluk veya İngilizce olmayan karakterlerin kullanılmaması tavsiye edilir.
+Windows işletim sistemi kullanıyorsanız lütfen tüm komutların git-bash'ta yürütüldüğünden emin olun, daha fazla bilgi için lütfen [CONTRIBUTION](/docs/tr/CONTRIBUTION.md) konusuna bakın. Bunun dışında bu projenin bulunduğu dosya yolunda boşluk veya İngilizce olmayan karakterlerin kullanılmaması tavsiye edilir.
 
 **Env for Windows:**
 

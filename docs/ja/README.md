@@ -56,7 +56,7 @@
 
 わかりやすくするために、このリポジトリを Windows の `C:\Usersjerry\project\laftools-repo` または Linux/MacOS の `/Users/jerry/projects/laftools-repo` にクローンしたとします。その後、ファイル **~/.bashrc* で env を宣言し、以下の構成を設定する必要があります。 *、またはコマンドを実行する前に単にそれらを実行します。
 
-Windows OS を使用している場合は、すべてのコマンドが git-bash で実行されていることを確認してください。詳細については、[CONTRIBUTION](./docs/CONTRIBUTION.md) を参照してください。これとは別に、このプロジェクトが配置されているファイル パスでは空白文字や英語以外の文字を使用しないことをお勧めします。
+Windows OS を使用している場合は、すべてのコマンドが git-bash で実行されていることを確認してください。詳細については、[貢献](/docs/ja/CONTRIBUTION.md) を参照してください。これとは別に、このプロジェクトが配置されているファイル パスでは空白文字や英語以外の文字を使用しないことをお勧めします。
 
 **Env for Windows:**
 

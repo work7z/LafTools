@@ -38,7 +38,7 @@
     "NDoU_oqcQ": "A forráskód módosítása előtt olvassa el az alábbi szakaszokat, hogy megismerje az architektúrát és a műszaki részleteket.",
     "O3eQBXxwY": "Ha a Go szolgáltatás fut, látnia kell a terminálban kinyomtatott hivatkozást. Most másolja ki ezt az URL-t, és illessze be böngészőjébe a fejlesztés megkezdéséhez, gyerünk!",
     "OjKP47hFt": "Előnézet",
-    "PLhTRM7EV": "Ha Windows operációs rendszert használ, győződjön meg arról, hogy az összes parancsot a git-bash-ben hajtja végre. További információ: [CONTRIBUTION](./docs/CONTRIBUTION.md). Ezen kívül ajánlatos kerülni a szóközök vagy nem angol karakterek használatát a fájl elérési útjában, ahol a projekt található.",
+    "PLhTRM7Eqwk": "Ha Windows operációs rendszert használ, győződjön meg arról, hogy az összes parancsot a git-bash-ban hajtja végre. További információért olvassa el a [KÖZREHAJTÁS]({0}) részt. Ezen kívül ajánlatos kerülni a szóközök vagy nem angol karakterek használatát a fájl elérési útjában, ahol a projekt található.",
     "PU08fL8dT": "Nyissa meg közvetlenül a problémát (kérjük, rejtse el a bizalmas információkat és a projekt részleteit)",
     "PY4JFUmj-": "Új eszközök hozzáadása",
     "QYPc87A2j": "Épít",

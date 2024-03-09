@@ -38,7 +38,7 @@
     "NDoU_oqcQ": "Před úpravou zdrojového kódu byste si měli přečíst níže uvedené sekce, kde se dozvíte o architektuře a technických detailech.",
     "O3eQBXxwY": "Jakmile je služba Go spuštěna, měli byste být schopni vidět vytištěný odkaz v terminálu. Nyní zkopírujte tuto adresu URL a vložte ji do svého prohlížeče, abyste mohli začít vyvíjet, jdeme na to!",
     "OjKP47hFt": "Náhled",
-    "PLhTRM7EV": "Pokud používáte operační systém Windows, ujistěte se, že jsou všechny příkazy prováděny v git-bash, další informace naleznete v [PŘÍSPĚVEK](./docs/CONTRIBUTION.md). Kromě toho se doporučuje nepoužívat žádné mezery nebo neanglické znaky v cestě k souboru, kde je tento projekt umístěn.",
+    "PLhTRM7Eqwk": "Pokud používáte operační systém Windows, ujistěte se, že jsou všechny příkazy prováděny v git-bash, další informace naleznete v [PŘÍSPĚVEK]({0}). Kromě toho se doporučuje nepoužívat žádné mezery nebo neanglické znaky v cestě k souboru, kde je tento projekt umístěn.",
     "PU08fL8dT": "Otevřít problém přímo (skryjte citlivé informace a podrobnosti o vašem projektu)",
     "PY4JFUmj-": "Přidat nové nástroje",
     "QYPc87A2j": "Stavět",

@@ -56,7 +56,7 @@ Nylig refaktoriserer vi arkitekturen til LafTools basert på next.js, trinnene n
 
 For enkelhets skyld, la oss si at du har klonet dette depotet til enten `C:\Usersjerry\project\laftools-repo` på Windows eller `/Users/jerry/projects/laftools-repo` på Linux/MacOS, så bør du erklære env og angi config nedenfor i filen **~/.bashrc* *, eller bare kjør dem før du kjører en kommando.
 
-Hvis du bruker Windows OS, vennligst sørg for at alle kommandoer utføres i git-bash, les mer, se [BIDRAG](./docs/CONTRIBUTION.md). Bortsett fra dette, anbefales det å unngå å bruke mellomrom eller ikke-engelske tegn i filbanen der dette prosjektet er plassert.
+Hvis du bruker Windows OS, sørg for at alle kommandoer utføres i git-bash, les mer, se [BIDRAG](/docs/no/CONTRIBUTION.md). Bortsett fra dette, anbefales det å unngå å bruke mellomrom eller ikke-engelske tegn i filbanen der dette prosjektet er plassert.
 
 **Env for Windows:**
 

@@ -38,7 +38,7 @@
     "NDoU_oqcQ": "Bevor Sie den Quellcode ändern, sollten Sie die folgenden Abschnitte lesen, um mehr über die Architektur und die technischen Details zu erfahren.",
     "O3eQBXxwY": "Sobald der Go-Dienst ausgeführt wird, sollte im Terminal ein ausgedruckter Link angezeigt werden. Kopieren Sie nun diese URL und fügen Sie sie in Ihren Browser ein, um mit der Entwicklung zu beginnen. Los geht's!",
     "OjKP47hFt": "Vorschau",
-    "PLhTRM7EV": "Wenn Sie ein Windows-Betriebssystem verwenden, stellen Sie bitte sicher, dass alle Befehle in git-bash ausgeführt werden. Weitere Informationen finden Sie unter [CONTRIBUTION](./docs/CONTRIBUTION.md). Darüber hinaus wird empfohlen, im Dateipfad, in dem sich dieses Projekt befindet, keine Leerzeichen oder nicht-englischen Zeichen zu verwenden.",
+    "PLhTRM7Eqwk": "Wenn Sie ein Windows-Betriebssystem verwenden, stellen Sie bitte sicher, dass alle Befehle in Git-Bash ausgeführt werden. Weitere Informationen finden Sie unter [BEITRAG]({0}). Darüber hinaus wird empfohlen, im Dateipfad, in dem sich dieses Projekt befindet, keine Leerzeichen oder nicht-englischen Zeichen zu verwenden.",
     "PU08fL8dT": "Öffnen Sie das Problem direkt (bitte verbergen Sie vertrauliche Informationen und Ihre Projektdetails)",
     "PY4JFUmj-": "Neue Tools hinzufügen",
     "QYPc87A2j": "Bauen",

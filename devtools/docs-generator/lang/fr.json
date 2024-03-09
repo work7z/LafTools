@@ -38,7 +38,7 @@
     "NDoU_oqcQ": "Avant de modifier le code source, vous devez lire les sections ci-dessous pour connaître l'architecture et les détails techniques.",
     "O3eQBXxwY": "Une fois le service Go exécuté, vous devriez pouvoir voir un lien imprimé dans le terminal. Maintenant, copiez cette URL et collez-la dans votre navigateur pour commencer le développement, c'est parti !",
     "OjKP47hFt": "Aperçu",
-    "PLhTRM7EV": "Si vous utilisez le système d'exploitation Windows, assurez-vous que toutes les commandes sont exécutées dans git-bash. Pour en savoir plus, veuillez vous référer à [CONTRIBUTION](./docs/CONTRIBUTION.md). En dehors de cela, il est recommandé d’éviter d’utiliser des espaces ou des caractères non anglais dans le chemin du fichier où se trouve ce projet.",
+    "PLhTRM7Eqwk": "Si vous utilisez le système d'exploitation Windows, assurez-vous que toutes les commandes sont exécutées dans git-bash. Pour en savoir plus, veuillez vous référer à [CONTRIBUTION]({0}). En dehors de cela, il est recommandé d’éviter d’utiliser des espaces ou des caractères non anglais dans le chemin du fichier où se trouve ce projet.",
     "PU08fL8dT": "Ouvrir le problème directement (veuillez masquer les informations sensibles et les détails de votre projet)",
     "PY4JFUmj-": "Ajouter de nouveaux outils",
     "QYPc87A2j": "Construire",
