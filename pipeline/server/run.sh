@@ -8,10 +8,10 @@ if [ -z $crtVersion ]; then
 fi
 
 cd ~/LafTools-dist
-ctn=$(ls | wc -l)
-if [ $ctn -gt 5 ]; then
-    ls -rt  | grep dkout | head -n 1  | xargs -I {} rm {}
-fi
+# ctn=$(ls | wc -l)
+# if [ $ctn -gt 5 ]; then
+#     ls -rt  | grep dkout | head -n 1  | xargs -I {} rm {}
+# fi
 
 version=$1
 runtimeDir=/home/$(whoami)/runtime
@@ -46,6 +46,6 @@ mv $targetPkg m.tmp.gz
 gunzip ./m.tmp.gz
 docker load -i ./m.tmp
 docker stop laft-inst2
-docker rm laft-inst2
+docker ps -a | grep laft-inst2 | awk '{print $1}' | xargs -I {} docker rm {}
 docker run --name laft-inst2 -d -p 0.0.0.0:80:39899 codegentoolbox/laftools-linux-x64:$crtVersion
 docker logs -f laft-inst2
