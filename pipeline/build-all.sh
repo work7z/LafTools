@@ -165,6 +165,8 @@ build-bundle(){
 
     refining(){
         echo "[I] refining resources.."
+        find ./parcel -iname "*.bin" -exec chmod 755 {} \;
+        find ./pipeline -iname "*.bin" -exec chmod 755 {} \;
         find ./dist -iname "*.bin" -exec chmod 755 {} \;
         find ./dist -iname "*.sh" -exec chmod 755 {} \;
         find ./dist -iname "*.command" -exec chmod 755 {} \;

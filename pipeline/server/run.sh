@@ -2,6 +2,10 @@
 #!/bin/bash
 
 crtVersion=$1
+if [ -z $crtVersion ]; then
+    echo "[E] crtVersion is required."
+    exit 1
+fi
 
 cd ~/LafTools-dist
 ctn=$(ls | wc -l)

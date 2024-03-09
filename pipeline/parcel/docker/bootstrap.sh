@@ -9,4 +9,4 @@ export NO_PROXY=172.17.0.1,localhost
 
 echo -e "\033[32m[√] 已开启代理\033[0m"
 tar -xzvf /opt/app/linux.tar.gz
-./run.sh --mode=docker,online 
+./run.sh 
