@@ -231,6 +231,7 @@ build-bundle(){
             cp ../../pkg/*$platformName.tar.gz ./linux.tar.gz
             cp $LAFTOOLS_ROOT/pipeline/parcel/docker/* ./
             docker build -t codegentoolbox/laftools-$platformName:$crtVersion -f ./Dockerfile .
+            docker push codegentoolbox/laftools-$platformName:$crtVersion
         )
     }
 
