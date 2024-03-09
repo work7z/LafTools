@@ -31,26 +31,26 @@ import { FN_GetDispatch } from "../nocycle";
 let anyFileChangeCtn = 0;
 
 export default () => {
-  if (gutils.IsDevMode()) {
-    // regulary retrieve and apply for this page
-    let moniteResources = hmrJSON.Files;
-    let ws = connectToWebSocket({ subLink: "/ws/dev-hmr" });
-    ws.onmessage = (e) => {
-      anyFileChangeCtn++;
-      moniteResources.forEach((eachPath) => {
-        (async () => {
-          // do reload
-          // alert("got chagned");
-          if (eachPath.endsWith("css")) {
-            let optRes = await axios.get(eachPath);
-            let cssValue = optRes.data;
-            $("#dynamic-css").text(cssValue);
-          } else if (eachPath.endsWith("json")) {
-            //
-            FN_GetDispatch()(ACTION_getLangData());
-          }
-        })();
-      });
-    };
-  }
+  // if (gutils.IsDevMode()) {
+  //   // regulary retrieve and apply for this page
+  //   let moniteResources = hmrJSON.Files;
+  //   let ws = connectToWebSocket({ subLink: "/ws/dev-hmr" });
+  //   ws.onmessage = (e) => {
+  //     anyFileChangeCtn++;
+  //     moniteResources.forEach((eachPath) => {
+  //       (async () => {
+  //         // do reload
+  //         // alert("got chagned");
+  //         if (eachPath.endsWith("css")) {
+  //           let optRes = await axios.get(eachPath);
+  //           let cssValue = optRes.data;
+  //           $("#dynamic-css").text(cssValue);
+  //         } else if (eachPath.endsWith("json")) {
+  //           //
+  //           FN_GetDispatch()(ACTION_getLangData());
+  //         }
+  //       })();
+  //     });
+  //   };
+  // }
 };

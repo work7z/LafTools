@@ -137,6 +137,7 @@ import QueryUtils from "../../../../../../../../utils/QueryUtils";
 import UnknownPart from "../../../../../../../../containers/UnknownPart";
 import { ExtensionVM } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import LoadingText from "../../../../../../../../components/LoadingText";
+import ToolSingleView from "./ToolSingleView";
 
 export let getSessionId = (tabId: string | null | undefined): string => {
   if (!tabId) { return "unknown" }
@@ -144,7 +145,6 @@ export let getSessionId = (tabId: string | null | undefined): string => {
 }
 export type ToolInnerImplProps = {}
 export default (props: ToolInnerImplProps) => {
-  let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
   let s = exportUtils.useSelector((v) => {
     return {
       tabs: v.workspace.tools.tabs,
@@ -152,57 +152,6 @@ export default (props: ToolInnerImplProps) => {
     };
   });
 
-  let sessionId = getSessionId(s.tabId);
   let extId = s.tabId || 'unknown'
-
-  // let extQ = apiSlice.useGetToolExtDetailQuery({
-  //   extId: extId,
-  //   val_extensionIdRefreshMap_id: 1,
-  // })
-  // let r = QueryUtils.validateResult(extQ, {
-  //   label: Dot("tEiv_", "Retrieving Extension Detail"),
-  // })
-  // if (r) {
-  //   return r;
-  // }
-
-  // let val_ExtensionVM: ExtensionVM = getAjaxResPayloadValue(extQ);
-  // if (!val_ExtensionVM || !val_ExtensionVM.Layout) {
-  //   return <div>Unknown Extension: {extId}</div>
-  // }
-  let val_ExtensionVM: ExtensionVM = {
-    Layout: 'form'
-  };
-
-  if (!val_ExtensionVM) {
-    return <LoadingText></LoadingText>
-  }
-
-  let layoutMappings = {
-    form: TextTransformer
-  }
-  let UnknownPartWrap = (p: CommonTransformerPassProp) => {
-    return <UnknownPart {...p} reason={Dot("d-qPr", "Unknown layout: {0}", val_ExtensionVM.Layout)} />
-  }
-  let PickupPanel = layoutMappings[val_ExtensionVM.Layout || 'form'] || UnknownPartWrap
-  let commonPassProp: CommonTransformerPassProp = {
-    extId: extId,
-    extVM: val_ExtensionVM,
-    sessionId,
-    inputBigTextId: s.tabId + "-i",
-    outputBigTextId: s.tabId + "-o",
-  };
-
-  let finalPanel = <PickupPanel {...commonPassProp}></PickupPanel>;
-
-  return (
-    <div
-      className="full-editor-p"
-      style={{
-        height: calcH,
-      }}
-    >
-      {finalPanel}
-    </div>
-  );
+  return <ToolSingleView extId={extId} />
 };

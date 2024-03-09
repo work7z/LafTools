@@ -56,6 +56,9 @@ export default (props: SessionViewProp) => {
     // TODO: recover the history of terminal
     let sessionType = props.sessionType
     let sessionId = props.sessionId;
+    return <p className="w-full h-full p-2">
+        {Dot("B5NLBB_Je", "For the sake of security, the terminal is not available now. Kindly stay tuned for the updates, thanks!")}
+    </p>
     return <div className="w-full h-full">
         <TerminalWrapper SessionId={sessionId} />
     </div>

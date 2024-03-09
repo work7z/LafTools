@@ -53,42 +53,12 @@ import {
   Redirect,
 } from "react-router-dom";
 import SystemLoadingBar from "./containers/SystemLoadingBar/index.tsx";
-ALL_NOCYCLE.store = store;
-
+import './init.tsx'
+import { useConstructedKeyAndInit } from "./init.tsx";
 logutils.debug("Lanuch the page...");
 
 const WrapApp = () => {
-  let dis = useDispatch();
-
-  let m1 = exportUtils.useSelector((val) => {
-    return {
-      LangIncrement: val.system.LangIncrement,
-    };
-  });
-  let constructedKey = `${m1.LangIncrement}`;
-
-  // listen system light/dark mode changes
-
-  useEffect(() => {
-    let matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
-
-    function handleColorScheme(e) {
-      let isDarkMode = e.matches;
-      dis(
-        forgeSlice.actions.updateDarkMode({
-          isDark: isDarkMode ? true : false,
-        })
-      );
-
-    }
-
-    // Call the function once to handle the current color scheme
-    // handleColorScheme(matchMedia);
-
-    // Listen for changes
-    matchMedia.addListener(handleColorScheme);
-  }, []);
-
+  let constructedKey = useConstructedKeyAndInit();
   return <SubApp key={constructedKey} />;
 };
 

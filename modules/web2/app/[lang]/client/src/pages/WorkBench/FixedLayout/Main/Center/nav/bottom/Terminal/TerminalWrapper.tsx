@@ -344,17 +344,17 @@ class TerminalWrapper extends React.PureComponent<{ SessionId: string }, Termina
         if (true) {
             return;
         }
-        const wsUrl = getWSLink('/ws/pty/opt', this.getConcatParams());
-        const socket = new WebSocket(wsUrl);
-        this.optSocket = socket;
-        // alert("Inited");
-        await new Promise<void>((e) => {
-            if (this.optSocket) {
-                this.optSocket.onopen = () => {
-                    e();
-                };
-            }
-        });
+        // const wsUrl = getWSLink('/ws/pty/opt', this.getConcatParams());
+        // const socket = new WebSocket(wsUrl);
+        // this.optSocket = socket;
+        // // alert("Inited");
+        // await new Promise<void>((e) => {
+        //     if (this.optSocket) {
+        //         this.optSocket.onopen = () => {
+        //             e();
+        //         };
+        //     }
+        // });
     };
 
     ___onResizeTerminal = async (size) => {

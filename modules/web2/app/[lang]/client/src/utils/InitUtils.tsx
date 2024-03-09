@@ -49,7 +49,7 @@ import { P_ACTION_createSystemWS } from "../reducers/websocketSlice";
 const InitUtils = {
   InitAllWithDOMAfterLoginIn: async (dispatch) => {
     P_ACTION_readForgeFromServerViaAPI();
-    P_ACTION_createSystemWS();
+    // P_ACTION_createSystemWS();
   },
 };
 export default InitUtils;
