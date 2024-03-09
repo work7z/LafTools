@@ -1,6 +1,8 @@
 # Last Updated: 2024/03/09
 #!/bin/bash
 
+crtVersion=$1
+
 cd ~/LafTools-dist
 ctn=$(ls | wc -l)
 if [ $ctn -gt 5 ]; then
@@ -41,5 +43,5 @@ gunzip ./m.tmp.gz
 docker load -i ./m.tmp
 docker stop laft-inst2
 docker rm laft-inst2
-docker run --name laft-inst2 -d -p 0.0.0.0:80:39899 codegentoolbox/laftools-linux-x64:insider
+docker run --name laft-inst2 -d -p 0.0.0.0:80:39899 codegentoolbox/laftools-linux-x64:$crtVersion
 docker logs -f laft-inst2
