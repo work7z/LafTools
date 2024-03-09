@@ -18,16 +18,22 @@ if [ -z "$version" ]; then
     exit 1
 fi
 
-targetPkg=$(ls -t ~/LafTools-dist | grep linux | grep $version | head -n 1)
+targetPkg=$(ls -t ~/LafTools-dist | grep dkout | grep $version | head -n 1)
 if [ -z "$targetPkg" ]; then
     echo "No package found for version $version"
     exit 1
 fi
 
-tar -xzvf $targetPkg -C $runtimeDir/pre-release
-pm2 stop goapp
+cp $targetPkg $runtimeDir/pre-release
 rm -rf $runtimeDir/release/*
 mv $runtimeDir/pre-release/* $runtimeDir/release
 
 cd ~/runtime/release
-pm2 start ./run.sh --name goapp
+
+mv $targetPkg m.tmp.gz
+gunzip ./m.tmp.gz
+docker load -i ./m.tmp
+docker stop laft-inst2
+docker rm laft-inst2
+docker run --name laft-inst2 -d -p 0.0.0.0:80:39899 codegentoolbox/laftools-linux-x64:insider
+docker logs -f laft-inst2
