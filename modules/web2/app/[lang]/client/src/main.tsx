@@ -53,8 +53,8 @@ import {
   Redirect,
 } from "react-router-dom";
 import SystemLoadingBar from "./containers/SystemLoadingBar/index.tsx";
-import './init.tsx'
-import { useConstructedKeyAndInit } from "./init.tsx";
+import './initapp.tsx'
+import { useConstructedKeyAndInit } from "./initapp.tsx";
 logutils.debug("Lanuch the page...");
 
 const WrapApp = () => {

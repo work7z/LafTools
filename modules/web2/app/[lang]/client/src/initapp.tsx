@@ -1,22 +1,22 @@
-import ALL_NOCYCLE from "./nocycle";
+import ALL_NOCYCLE from "./nocycle.tsx";
 
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider, useDispatch } from "react-redux";
-import SubApp from "./SubApp";
-import reportWebVitals from "./reportWebVitals";
+import SubApp from "./SubApp.tsx";
+import reportWebVitals from "./reportWebVitals.ts";
 import { store, RootState } from "./store/index";
-import gutils from "./utils/GlobalUtils";
+import gutils from "./utils/GlobalUtils.tsx";
 import "purecss/build/pure.css";
 import "purecss/build/grids-responsive-min.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "./system.scss";
 
-import { logutils } from "./utils/LogUtils";
+import { logutils } from "./utils/LogUtils.tsx";
 import PageUtils from "./utils/PageUtils.tsx";
-import InitUtils from "./utils/InitUtils";
-import exportUtils from "./utils/ExportUtils";
+import InitUtils from "./utils/InitUtils.tsx";
+import exportUtils from "./utils/ExportUtils.tsx";
 import fn_tailwindcss from "./hmr/hmr-reload-resources.tsx";
 import forgeSlice from "./reducers/forgeSlice.tsx";
 

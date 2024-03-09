@@ -21,7 +21,6 @@ import { NextUIProvider } from "@nextui-org/react";
 import ToolPart from '@/app/[lang]/portal/src/tools'
 import { getAppIcon, getAppKeywords } from "../__CORE__/config/imgconfig";
 
-
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
 

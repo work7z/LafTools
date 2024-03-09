@@ -7,6 +7,7 @@ import ToolsNavigator from './navigator';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
 import ExtensionView from './extensionView'
+import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -21,9 +22,7 @@ export default () => {
                 <Card {...getCardsProps()} className={light_border_clz_all}>
                     <ToolsNavigator></ToolsNavigator>
                     <CardBody className='p-0'>
-                        <div className='w-full h-full'>
-                            <ExtensionView />
-                        </div>
+                        <ExtensionView />
                     </CardBody>
                 </Card>
                 <Card {...getCardsProps()}>

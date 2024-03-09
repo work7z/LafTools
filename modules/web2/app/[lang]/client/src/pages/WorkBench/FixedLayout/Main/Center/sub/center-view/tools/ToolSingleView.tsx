@@ -122,9 +122,10 @@ import { getSessionId } from "./ToolInnerImplView";
 
 export type ToolSingleViewProps = {
     extId: string,
+    disableClientMode?: boolean
 }
 export default (props: ToolSingleViewProps) => {
-    let calcH = `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
+    let calcH = props.disableClientMode ? '100%' : `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
     let { extId } = props;
     let sessionId = getSessionId(extId);
     let val_ExtensionVM: ExtensionVM = {
