@@ -162,6 +162,7 @@ build-bundle(){
             build-core darwin-arm64 arm64 "core/app_unix.go" darwin
         fi
     }
+            # /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}/home/runner/work/LafTools/LafTools-tag/pipeline/server/run.sh ${{steps.get_version.outputs.VERSION}}
 
     refining(){
         echo "[I] refining resources.."
