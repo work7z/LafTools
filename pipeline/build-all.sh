@@ -231,11 +231,13 @@ build-bundle(){
             cp ../../pkg/*$platformName.tar.gz ./linux.tar.gz
             cp $LAFTOOLS_ROOT/pipeline/parcel/docker/* ./
             docker build -t codegentoolbox/laftools-$platformName:$crtVersion -f ./Dockerfile .
-            docker save codegentoolbox/laftools-$platformName:$crtVersion > $LAFTOOLS_ROOT/dkout.tmp
-            gzip $LAFTOOLS_ROOT/dkout.tmp
             docker push codegentoolbox/laftools-$platformName:$crtVersion
-            zip -r $LAFTOOLS_ROOT/pipeline-server.zip $LAFTOOLS_ROOT/pipeline/server
-            echo "[I] docker output file: $LAFTOOLS_ROOT/dkout.tmp.gz, size is $(du -sh $LAFTOOLS_ROOT/dkout.tmp.gz | awk '{print $1}')"
+            if [ $platformName == "linux-x64" ]; then
+                docker save codegentoolbox/laftools-$platformName:$crtVersion > $LAFTOOLS_ROOT/dkout.tmp
+                zip -r $LAFTOOLS_ROOT/pipeline-server.zip $LAFTOOLS_ROOT/pipeline/server
+                gzip $LAFTOOLS_ROOT/dkout.tmp
+                echo "[I] docker output file: $LAFTOOLS_ROOT/dkout.tmp.gz, size is $(du -sh $LAFTOOLS_ROOT/dkout.tmp.gz | awk '{print $1}')"
+            fi
         )
     }
 

@@ -1,6 +1,12 @@
 # Last Updated: 2024/03/09
 #!/bin/bash
-$(dirname $0)/cleanup.sh
+
+cd ~/LafTools-dist
+ctn=$(ls | wc -l)
+if [ $ctn -gt 5 ]; then
+    ls -rt  | grep dkout | head -n 1  | xargs -I {} rm {}
+fi
+
 version=$1
 runtimeDir=/home/$(whoami)/runtime
 if [ ! -d "$runtimeDir" ]; then
@@ -28,8 +34,8 @@ cp $targetPkg $runtimeDir/pre-release
 rm -rf $runtimeDir/release/*
 mv $runtimeDir/pre-release/* $runtimeDir/release
 
+set -e
 cd ~/runtime/release
-
 mv $targetPkg m.tmp.gz
 gunzip ./m.tmp.gz
 docker load -i ./m.tmp
