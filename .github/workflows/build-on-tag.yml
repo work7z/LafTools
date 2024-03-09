@@ -96,6 +96,7 @@ jobs:
             echo 'unzip pipeline server'
             unzip /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}.zip -d /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}
             chmod +x /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}/home/runner/work/LafTools/LafTools-tag/pipeline/server/run.sh
+            /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}/home/runner/work/LafTools/LafTools-tag/pipeline/server/run.sh ${{steps.get_version.outputs.VERSION}}
 
       - name: Upload Release Asset for linux-x64
         uses: actions/upload-release-asset@v1

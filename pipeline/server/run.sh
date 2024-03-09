@@ -45,7 +45,7 @@ cd ~/runtime/release
 mv $targetPkg m.tmp.gz
 gunzip ./m.tmp.gz
 docker load -i ./m.tmp
-docker stop laft-inst2
-docker ps -a | grep laft-inst2 | awk '{print $1}' | xargs -I {} docker rm {}
-docker run --name laft-inst2 -d -p 0.0.0.0:80:39899 codegentoolbox/laftools-linux-x64:$crtVersion
-docker logs -f laft-inst2
+docker stop laft-inst3
+docker ps -a | grep laft-inst3 | awk '{print $1}' | xargs -I {} docker rm {}
+docker run --name laft-inst3 -d -p 0.0.0.0:81:39899 codegentoolbox/laftools-linux-x64:$crtVersion
+docker logs -f laft-inst3

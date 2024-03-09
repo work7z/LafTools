@@ -162,11 +162,9 @@ build-bundle(){
             build-core darwin-arm64 arm64 "core/app_unix.go" darwin
         fi
     }
-            # /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}/home/runner/work/LafTools/LafTools-tag/pipeline/server/run.sh ${{steps.get_version.outputs.VERSION}}
 
     refining(){
         echo "[I] refining resources.."
-        find ./parcel -iname "*.bin" -exec chmod 755 {} \;
         find ./pipeline -iname "*.bin" -exec chmod 755 {} \;
         find ./dist -iname "*.bin" -exec chmod 755 {} \;
         find ./dist -iname "*.sh" -exec chmod 755 {} \;
@@ -233,6 +231,8 @@ build-bundle(){
             cd $subDockerDir
             cp ../../pkg/*$platformName.tar.gz ./linux.tar.gz
             cp $LAFTOOLS_ROOT/pipeline/parcel/docker/* ./
+            find . -iname "*.sh" -exec chmod 755 {} \;
+            ls -ahlrt
             docker build -t codegentoolbox/laftools-$platformName:$crtVersion -f ./Dockerfile .
             docker push codegentoolbox/laftools-$platformName:$crtVersion
             if [ $platformName == "linux-x64" ]; then
