@@ -44,4 +44,4 @@ jobs:
           cd ../../
           cd ./pipeline
           chmod +x ./build-all.sh
-          ./build-all.sh "t1.0.0"
+          ./build-all.sh "v0.0.0-beta"

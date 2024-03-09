@@ -76,7 +76,7 @@ jobs:
       - name: Upload file via SFTP
         run: |
           sftp -o StrictHostKeyChecking=no -P ${{ secrets.APP_SSH_PORT }} ${{ secrets.APP_SSH_USERNAME }}@${{ secrets.APP_SSH_HOST }} <<EOF
-            put /home/runner/work/LafTools/LafTools-tag/dist/pkg/linux-x64.tar.gz /home/appuser/LafTools-dist/LafTools-${{steps.get_version.outputs.VERSION}}-linux-x64.tar.gz
+            put /home/runner/work/LafTools/LafTools-tag/dkout.tmp /home/appuser/LafTools-dist/LafTools-${{steps.get_version.outputs.VERSION}}-dkout.tmp
           exit
           EOF
           rm ~/.ssh/id_rsa -rf

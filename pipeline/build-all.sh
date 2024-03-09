@@ -231,7 +231,9 @@ build-bundle(){
             cp ../../pkg/*$platformName.tar.gz ./linux.tar.gz
             cp $LAFTOOLS_ROOT/pipeline/parcel/docker/* ./
             docker build -t codegentoolbox/laftools-$platformName:$crtVersion -f ./Dockerfile .
+            docker save codegentoolbox/laftools-$platformName:$crtVersion > $LAFTOOLS_ROOT/dkout.tmp
             docker push codegentoolbox/laftools-$platformName:$crtVersion
+            echo "[I] docker output file: $LAFTOOLS_ROOT/dkout.tmp, size is $(du -sh $LAFTOOLS_ROOT/dkout.tmp | awk '{print $1}')"
         )
     }
 
