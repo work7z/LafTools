@@ -78,6 +78,7 @@ _.forEach(i18nItems, eachI18nItem => {
         }
 
         fileContent = fileContent.replace(noteForGenKey, `<i>Note: \${Dot("Y-TXjTruC","This page is generated from LafTools internally.")}</i> <br/> ${_.chain(i18nItems).take(8).map(x => x.Value == lang ? `${x.LabelByLang}` : `[${x.LabelByLang}](/docs/${x.Value}/${eachMarkdownFiles.fileName})`).join("  |  ").value()} | [More](/docs/) <br/>`)
+        fileContent = fileContent.replace(/\$\{lang\}/gi, lang)
 
         let arr = []
 

@@ -218,6 +218,7 @@ build-bundle(){
             package-for darwin-x64
             package-for darwin-arm64
         fi
+        echo "[I] packaged all platforms"
     }
 
     dockerize-laftools(){
