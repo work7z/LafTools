@@ -341,6 +341,9 @@ class TerminalWrapper extends React.PureComponent<{ SessionId: string }, Termina
     }
 
     ___initOpt = async () => {
+        if (true) {
+            return;
+        }
         const wsUrl = getWSLink('/ws/pty/opt', this.getConcatParams());
         const socket = new WebSocket(wsUrl);
         this.optSocket = socket;
