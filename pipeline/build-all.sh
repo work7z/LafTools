@@ -229,12 +229,16 @@ build-bundle(){
             cd $subDockerDir
             cp ../../pkg/*$platformName.tar.gz ./linux.tar.gz
             cp $LAFTOOLS_ROOT/pipeline/parcel/docker/* ./
-            # date +%Y%m%d-%s
-            docker build -t codegentoolbox/laftools-$platformName:insider -f ./Dockerfile .
+            docker build -t codegentoolbox/laftools-$platformName:$crtVersion -f ./Dockerfile .
         )
     }
 
     docker-all(){
+        # check if docker command is available
+        if [ -z $(which docker) ]; then
+            echo "[E] docker command is not available, will ignore this part. To run it, please install docker first."
+            return;
+        fi
         if [[ "$mode" = "linux" ]]; then
             dockerize-laftools linux-x64
             dockerize-laftools linux-arm64
@@ -253,6 +257,7 @@ build-bundle(){
     # package as zip and tar.gz
     package-all
     # build docker images
+    docker-all
     
     # [END]
 
