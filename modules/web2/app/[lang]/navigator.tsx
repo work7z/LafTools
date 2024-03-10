@@ -26,7 +26,7 @@ import Link from "next/link";
 import { NavItem } from "./navItem";
 import { getAppIcon } from "../__CORE__/config/imgconfig";
 import { ClosableText } from "../__CORE__/components/ClosableText";
-import EnglishVersionBanner from "../__CORE__/components/EnglishVersionBanner";
+import RedirectToOtherBanner from "../__CORE__/components/RedirectToOtherBanner/index";
 import { border_clz, border_clz_top, row_pad_clz } from "./styles";
 import LightDarkButton from "../__CORE__/components/LightDarkButton";
 import GitHubButton from "../__CORE__/components/GitHubButton";
@@ -71,9 +71,7 @@ export default (props: NavigatorPassProp) => {
                 } nav={rightNav}></NavItem>
             </div>
         </div>
-        {
-            hostname == 'laf-tools.com' ? <EnglishVersionBanner></EnglishVersionBanner> : ''
-        }
+        <RedirectToOtherBanner></RedirectToOtherBanner>
         <div className={border_clz + " py-3 p-4 relative bg-slate-50 dark:bg-slate-900"}>
             <div className={row_pad_clz + ' z-20 flex flex-row items-center relative'}>
                 <div className="mx-2 mr-3">
@@ -159,7 +157,7 @@ export default (props: NavigatorPassProp) => {
                 </div>
             </div>
         </div>
-        <div className={' min-h-screen bg-slate-50 dark:bg-slate-800'}>
+        <div className={' min-h-screen bg-slate-50 dark:bg-slate-800 pb-10'}>
             <div className={row_pad_clz}>
                 <div className="flex flex-row flex-wrap py-2 items-center justify-between">
                     <div>
