@@ -13,6 +13,13 @@
 
 NOTE_FOR_GEN
 
+# ${Dot("\_6C-FTONT","Quick View")}
+
+${Dot("hD3CkluSd","To quickly use these functions, we're providing stable online websites for users in different locale to use. No worries, you can still download the release package to your local and use them for free.")}
+
+- ${Dot("72TTQ7cuT","United State")} [laftools.dev](https://laftools.dev)
+- ${Dot("Xm60tkeLe","China Mainland")} [laf-tools.com](https://laf-tools.com)
+
 # 💡 ${Dot("JjpQy-eIq","Introduction")}
 
 ${Dot("iIq02l4vX","You may wonder why we are determined to develop this toolbox as there are numerous tools can be used on the Internet.")} ${Dot("ciP9qXH1I","Indeed, most tools we have provided can be easily found on the Internet, such as codec, formatter, translation, QR Code, etc… However, it is not the most comfortable and efficient approach to use these tools.")}

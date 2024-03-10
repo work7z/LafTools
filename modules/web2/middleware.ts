@@ -26,8 +26,12 @@ export type LocaleType = {
   langIni18n: string;
 };
 let zhCNI18nItem = i18nItems.find((x) => x.Value === "zh_CN");
+let enUSI18nItem = i18nItems.find((x) => x.Value === "en_US");
 if (!zhCNI18nItem) {
   throw new Error("zh_CN not found in i18nItems");
+}
+if (!enUSI18nItem) {
+  throw new Error("en_US not found in i18nItems");
 }
 let convertI18nItemToLocale = (i18nItem: I18nItem): LocaleType => {
   return {
@@ -38,10 +42,11 @@ let convertI18nItemToLocale = (i18nItem: I18nItem): LocaleType => {
   };
 };
 export let zhCNLocale: LocaleType = convertI18nItemToLocale(zhCNI18nItem);
+export let enUSLocale: LocaleType = convertI18nItemToLocale(enUSI18nItem);
 export let all_locales: LocaleType[] = i18nItems.map((x) =>
   convertI18nItemToLocale(x),
 );
-let defaultLocale = zhCNLocale; // default locale is zh_CN
+let defaultLocale = enUSLocale; // default locale is zh_CN
 const locales_http = all_locales.map((x) => x.langInHttp);
 const rever_locales_http = all_locales
   .map((x) => x.langInHttpArr)
