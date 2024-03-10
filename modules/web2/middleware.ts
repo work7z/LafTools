@@ -75,11 +75,13 @@ function getLocale(request: NextRequest) {
 
 export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
-  let finalLocaleObject: LocaleType = zhCNLocale; // by default, we use zh_CN
   const requestHeaders = new Headers(request.headers);
   const { pathname } = request.nextUrl;
   requestHeaders.set("x-path", request.nextUrl.pathname);
-  requestHeaders.set("x-hostname", request.nextUrl.hostname);
+  let thatHostname = request.nextUrl.hostname;
+  requestHeaders.set("x-hostname", thatHostname);
+  let finalLocaleObject: LocaleType =
+    thatHostname == "laf-tools.com" ? zhCNLocale : defaultLocale; // zhCNLocale; // by default, we use zh_CN
   let a = request.nextUrl.search;
   requestHeaders.set("x-search", a);
 
