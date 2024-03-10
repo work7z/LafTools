@@ -1,4 +1,4 @@
-name: Build on Tags
+name: Build on Tags for CN
 
 on:
   push:
@@ -55,43 +55,43 @@ jobs:
           draft: false
           prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') || contains(github.ref, 'rc') }}
 
-      - name: Execute SSH command
+      - name: US Release 1
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.APP_SSH_HOST }}
-          port: ${{ secrets.APP_SSH_PORT }}
-          username: ${{ secrets.APP_SSH_USERNAME }}
-          key: ${{ secrets.APP_SSH_KEY }}
+          host: ${{ secrets.US_APP_SSH_HOST }}
+          port: ${{ secrets.US_APP_SSH_PORT }}
+          username: ${{ secrets.US_APP_SSH_USERNAME }}
+          key: ${{ secrets.US_APP_SSH_KEY }}
           script: |
             echo 'Running some command'
             ls -la 
             mkdir -p /home/appuser/LafTools-dist
 
-      - name: Write SSH key to file
+      - name: US Release 2
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.APP_SSH_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.US_APP_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-      - name: Upload file via SFTP
+      - name: US Release 3
         run: |
-          sftp -o StrictHostKeyChecking=no -P ${{ secrets.APP_SSH_PORT }} ${{ secrets.APP_SSH_USERNAME }}@${{ secrets.APP_SSH_HOST }} <<EOF
+          sftp -o StrictHostKeyChecking=no -P ${{ secrets.US_APP_SSH_PORT }} ${{ secrets.US_APP_SSH_USERNAME }}@${{ secrets.US_APP_SSH_HOST }} <<EOF
             put /home/runner/work/LafTools/LafTools-tag/dkout.tmp.gz /home/appuser/LafTools-dist/LafTools-${{steps.get_version.outputs.VERSION}}-dkout.tmp.gz
           exit
           EOF
-          sftp -o StrictHostKeyChecking=no -P ${{ secrets.APP_SSH_PORT }} ${{ secrets.APP_SSH_USERNAME }}@${{ secrets.APP_SSH_HOST }} <<EOF
+          sftp -o StrictHostKeyChecking=no -P ${{ secrets.US_APP_SSH_PORT }} ${{ secrets.US_APP_SSH_USERNAME }}@${{ secrets.US_APP_SSH_HOST }} <<EOF
             put /home/runner/work/LafTools/LafTools-tag/pipeline-server.zip /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}.zip
           exit
           EOF
           rm ~/.ssh/id_rsa -rf
 
-      - name: Execute SSH command
+      - name: US Release 4
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.APP_SSH_HOST }}
-          port: ${{ secrets.APP_SSH_PORT }}
-          username: ${{ secrets.APP_SSH_USERNAME }}
-          key: ${{ secrets.APP_SSH_KEY }}
+          host: ${{ secrets.US_APP_SSH_HOST }}
+          port: ${{ secrets.US_APP_SSH_PORT }}
+          username: ${{ secrets.US_APP_SSH_USERNAME }}
+          key: ${{ secrets.US_APP_SSH_KEY }}
           script: |
             echo 'unzip pipeline server'
             unzip /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}.zip -d /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}
@@ -157,3 +157,46 @@ jobs:
           asset_path: /home/runner/work/LafTools/LafTools-tag/dist/pkg/windows-arm64.zip
           asset_name: LafTools-${{steps.get_version.outputs.VERSION}}-windows-arm64.zip
           asset_content_type: application/zip
+
+      - name: CN Release 1
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.APP_SSH_HOST }}
+          port: ${{ secrets.APP_SSH_PORT }}
+          username: ${{ secrets.APP_SSH_USERNAME }}
+          key: ${{ secrets.APP_SSH_KEY }}
+          script: |
+            echo 'Running some command'
+            ls -la 
+            mkdir -p /home/appuser/LafTools-dist
+
+      - name: CN Release 2
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.APP_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: CN Release 3
+        run: |
+          sftp -o StrictHostKeyChecking=no -P ${{ secrets.APP_SSH_PORT }} ${{ secrets.APP_SSH_USERNAME }}@${{ secrets.APP_SSH_HOST }} <<EOF
+            put /home/runner/work/LafTools/LafTools-tag/dkout.tmp.gz /home/appuser/LafTools-dist/LafTools-${{steps.get_version.outputs.VERSION}}-dkout.tmp.gz
+          exit
+          EOF
+          sftp -o StrictHostKeyChecking=no -P ${{ secrets.APP_SSH_PORT }} ${{ secrets.APP_SSH_USERNAME }}@${{ secrets.APP_SSH_HOST }} <<EOF
+            put /home/runner/work/LafTools/LafTools-tag/pipeline-server.zip /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}.zip
+          exit
+          EOF
+          rm ~/.ssh/id_rsa -rf
+
+      - name: CN Release 4
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.APP_SSH_HOST }}
+          port: ${{ secrets.APP_SSH_PORT }}
+          username: ${{ secrets.APP_SSH_USERNAME }}
+          key: ${{ secrets.APP_SSH_KEY }}
+          script: |
+            echo 'unzip pipeline server'
+            unzip /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}.zip -d /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}
+            chmod +x /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}/home/runner/work/LafTools/LafTools-tag/pipeline/server/run.sh
+            /home/appuser/LafTools-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}/home/runner/work/LafTools/LafTools-tag/pipeline/server/run.sh ${{steps.get_version.outputs.VERSION}}
