@@ -233,9 +233,14 @@ build-bundle(){
             cp $LAFTOOLS_ROOT/pipeline/parcel/docker/* ./
             find . -iname "*.sh" -exec chmod 755 {} \;
             ls -ahlrt
-            docker build -t codegentoolbox/laftools-$platformName:devops -f ./Dockerfile .
-            docker push codegentoolbox/laftools-$platformName:devops
+            echo "[I] push images to docker"
+            docker build -t codegentoolbox/laftools-$platformName:$crtVersion -f ./Dockerfile .
+            if [ $TAG_MODE == "true" ]; then
+                docker push codegentoolbox/laftools-$platformName:$crtVersion
+            fi
             if [ $platformName == "linux-x64" ]; then
+                echo "[I] building other tag"
+                docker build -t codegentoolbox/laftools-$platformName:devops -f ./Dockerfile .
                 docker save codegentoolbox/laftools-$platformName:devops > $LAFTOOLS_ROOT/dkout.tmp 
                 zip -r $LAFTOOLS_ROOT/pipeline-server.zip $LAFTOOLS_ROOT/pipeline/server
                 gzip $LAFTOOLS_ROOT/dkout.tmp
