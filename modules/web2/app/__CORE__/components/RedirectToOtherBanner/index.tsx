@@ -35,8 +35,8 @@ export default (props) => {
         return (
             <div className={" bg-yellow-100 text-black p-1 text-xs text-center  border-b-[1px] " + border_clz}>
                 <div className="space-x-2">
-                    <span className="">
-                        Switch to English version of LafTools
+                    <span className="font-semibold">
+                        切换至更稳定快速的国内版(Switch to CN region)
                     </span>
                     <a href={regionUtils.getCNHosts()[0]}>Redirect</a>
                     <a href="#" onClick={() => {
