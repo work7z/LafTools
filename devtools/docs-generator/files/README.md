@@ -15,12 +15,12 @@ NOTE_FOR_GEN
 
 # 🪄 ${Dot("\_6C-FTONT","Quick View")}
 
-${Dot("hDekkSd","To quickly use these functions, we're providing stable online websites for users in different locale to use. Except for minor tools that might need support from your local system, most tools are available in our online websites.")}
+${Dot("hDekxkSd","To quickly use these functions, we've provided stable online website in multiple regions for you to use. Most tools are available in our online websites except for some tools replying in abilities in OS.")}
 
 ${Dot("hDdekkSd","Noted We have provided two LafTools online websites for different regions to enhance user experience. If you encounter instability while accessing, please ensure you have selected the correct website for your region. If the problem persists, do not hesitate to let us know. Thank you!")}
 
 - 🇺🇸 ${Dot("usvss","United State")}: [laftools.dev](https://laftools.dev)
-- 🇨🇳 ${Dot("cnvss","China Mainland Only")}: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 ${Dot("cnvss","China Mainland")}: [laf-tools.com](https://laf-tools.com)
 
 # 💡 ${Dot("JjpQy-eIq","Introduction")}
 
