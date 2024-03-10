@@ -21,7 +21,7 @@
 export const GithubRepoLink = 'https://github.com/work7z/LafTools'
 export const GitHubRepoIssueLink = 'https://github.com/work7z/LafTools/issues'
 export const AuthorEmail = 'work7z@outlook.com'
-export const LafTools_HOME = "https://laf-tools.com";
+export const LafTools_HOME = "https://laftools.dev";
 export const LafTools_DOC_HOME = `${LafTools_HOME}/documentation/view?id=welcome`;
 export type LangDefinition = { [key: string]: string };
 export const SQ = "'";

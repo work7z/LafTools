@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -36,34 +36,36 @@
  * @param {string} scheme
  * @returns {byteArray}
  */
-export function bitOp (input, key, func, nullPreserving, scheme) {
-    if (!key || !key.length) key = [0];
-    const result = [];
-    let x = null,
-        k = null,
-        o = null;
+export function bitOp(input, key, func, nullPreserving, scheme) {
+  if (!key || !key.length) key = [0];
+  const result = [];
+  let x = null,
+    k = null,
+    o = null;
 
-    for (let i = 0; i < input.length; i++) {
-        k = key[i % key.length];
-        if (scheme === "Cascade") k = input[i + 1] || 0;
-        o = input[i];
-        x = nullPreserving && (o === 0 || o === k) ? o : func(o, k);
-        result.push(x);
-        if (scheme &&
-            scheme !== "Standard" &&
-            !(nullPreserving && (o === 0 || o === k))) {
-            switch (scheme) {
-                case "Input differential":
-                    key[i % key.length] = o;
-                    break;
-                case "Output differential":
-                    key[i % key.length] = x;
-                    break;
-            }
-        }
+  for (let i = 0; i < input.length; i++) {
+    k = key[i % key.length];
+    if (scheme === "Cascade") k = input[i + 1] || 0;
+    o = input[i];
+    x = nullPreserving && (o === 0 || o === k) ? o : func(o, k);
+    result.push(x);
+    if (
+      scheme &&
+      scheme !== "Standard" &&
+      !(nullPreserving && (o === 0 || o === k))
+    ) {
+      switch (scheme) {
+        case "Input differential":
+          key[i % key.length] = o;
+          break;
+        case "Output differential":
+          key[i % key.length] = x;
+          break;
+      }
     }
+  }
 
-    return result;
+  return result;
 }
 
 /**
@@ -74,9 +76,8 @@ export function bitOp (input, key, func, nullPreserving, scheme) {
  * @returns {number}
  */
 export function xor(operand, key) {
-    return operand ^ key;
+  return operand ^ key;
 }
-
 
 /**
  * NOT bitwise calculation.
@@ -85,9 +86,8 @@ export function xor(operand, key) {
  * @returns {number}
  */
 export function not(operand, _) {
-    return ~operand & 0xff;
+  return ~operand & 0xff;
 }
-
 
 /**
  * AND bitwise calculation.
@@ -97,9 +97,8 @@ export function not(operand, _) {
  * @returns {number}
  */
 export function and(operand, key) {
-    return operand & key;
+  return operand & key;
 }
-
 
 /**
  * OR bitwise calculation.
@@ -109,9 +108,8 @@ export function and(operand, key) {
  * @returns {number}
  */
 export function or(operand, key) {
-    return operand | key;
+  return operand | key;
 }
-
 
 /**
  * ADD bitwise calculation.
@@ -121,9 +119,8 @@ export function or(operand, key) {
  * @returns {number}
  */
 export function add(operand, key) {
-    return (operand + key) % 256;
+  return (operand + key) % 256;
 }
-
 
 /**
  * SUB bitwise calculation.
@@ -133,12 +130,18 @@ export function add(operand, key) {
  * @returns {number}
  */
 export function sub(operand, key) {
-    const result = operand - key;
-    return (result < 0) ? 256 + result : result;
+  const result = operand - key;
+  return result < 0 ? 256 + result : result;
 }
-
 
 /**
  * Delimiter options for bitwise operations
  */
-export const BITWISE_OP_DELIMS = ["Hex", "Decimal", "Binary", "Base64", "UTF8", "Latin1"];
+export const BITWISE_OP_DELIMS = [
+  "Hex",
+  "Decimal",
+  "Binary",
+  "Base64",
+  "UTF8",
+  "Latin1",
+];

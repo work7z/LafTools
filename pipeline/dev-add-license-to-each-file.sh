@@ -92,7 +92,7 @@ cat <<EOF >"${file}.agpl"
 // Date: $t_date
 // Author: $(git log --follow --pretty="format:%an <%ae>" -- "$file" | sort | uniq | sed  's/jerry549@icloud.com/work7z@outlook.com/g' | sed 's/CodeGen ToolBox/LafTools Team/g' | sed -i ':a;N;$!ba;s/\n/ /g' filename)  
 // Description: 
-// Copyright (C) $(date +%Y) - Present, https://laf-tools.com and https://codegen.cc
+// Copyright (C) $(date +%Y) - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as

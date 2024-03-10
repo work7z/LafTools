@@ -64,7 +64,7 @@ import {
 
 export * from './styles'
 
-export const LafTools_HOME = "https://laf-tools.com";
+export const LafTools_HOME = "https://laftools.dev";
 export const LafTools_DOC_HOME = `${LafTools_HOME}/documentation/view?id=welcome`;
 export const SQ = "'";
 export const DQ = '"';

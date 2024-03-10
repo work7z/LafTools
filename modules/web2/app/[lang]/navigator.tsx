@@ -3,7 +3,7 @@
 // Date: Thu, 22 Feb 2024
 // Author:   
 // Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -40,6 +40,7 @@ import {
 } from './tool-definitions'
 import { GitHubRepoIssueLink } from "../__CORE__/types/constants";
 import Footer from "../__CORE__/containers/Footer";
+import PossiblePathname from "../__CORE__/components/PossiblePathname";
 
 export type LabelHrefType = {
     label: string | JSX.Element,
@@ -79,8 +80,13 @@ export default (props: NavigatorPassProp) => {
                 </div>
                 <div>
                     <h1 className="text-lg m-0">{Dot("OyZLZokUQ", "Empower Development with LafTools!")}</h1>
-                    <h2 className="text-xs  text-slate-600 dark:text-slate-300 mt-[-2px] mb-1 items-center m-0 space-x-1 flex flex-row ">
-                        <div>laf-tools.com</div>
+                    <h2 className="text-xs pl-[2px] text-slate-600 dark:text-slate-300 mt-[-2px] mb-1 items-center m-0 space-x-1 flex flex-row ">
+                        <div>{
+                            getXHostname() == 'localhost' || getXHostname() == '127.0.0.1' ? (
+                                <PossiblePathname />
+                            ) : getXHostname()
+                            // laftools.dev
+                        }</div>
                         <div>•</div>
                         <div className="small-text">{Dot("quality-first", "Quality First")}</div>
                         <div>•</div>
@@ -125,7 +131,7 @@ export default (props: NavigatorPassProp) => {
                             ></ClosableText>
                             <ClosableText
                                 goText={Dot("Ezsn81tfc", "View")}
-                                goLink="https://sys.laf-tools.com"
+                                goLink="https://sys.laftools.dev"
                                 closeKey="XDp3Meed-"
                                 text={"[3] " + Dot("BQs6go-dk", "Free Download LafTools for Windows, Linux, and macOS.")}
                             // Dot("QvBKp9BBp", "Learn more about the development planning of LafTools.")

@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -41,28 +41,31 @@ import CryptoJS from "crypto-js";
  * @returns {string}
  */
 export function affineEncode(input, args) {
-    const alphabet = "abcdefghijklmnopqrstuvwxyz",
-        a = args[0],
-        b = args[1];
-    let output = "";
+  const alphabet = "abcdefghijklmnopqrstuvwxyz",
+    a = args[0],
+    b = args[1];
+  let output = "";
 
-    if (!/^\+?(0|[1-9]\d*)$/.test(a) || !/^\+?(0|[1-9]\d*)$/.test(b)) {
-        throw new OperationError("The values of a and b can only be integers.");
-    }
+  if (!/^\+?(0|[1-9]\d*)$/.test(a) || !/^\+?(0|[1-9]\d*)$/.test(b)) {
+    throw new OperationError("The values of a and b can only be integers.");
+  }
 
-    for (let i = 0; i < input.length; i++) {
-        if (alphabet.indexOf(input[i]) >= 0) {
-            // Uses the affine function ax+b % m = y (where m is length of the alphabet)
-            output += alphabet[((a * alphabet.indexOf(input[i])) + b) % 26];
-        } else if (alphabet.indexOf(input[i].toLowerCase()) >= 0) {
-            // Same as above, accounting for uppercase
-            output += alphabet[((a * alphabet.indexOf(input[i].toLowerCase())) + b) % 26].toUpperCase();
-        } else {
-            // Non-alphabetic characters
-            output += input[i];
-        }
+  for (let i = 0; i < input.length; i++) {
+    if (alphabet.indexOf(input[i]) >= 0) {
+      // Uses the affine function ax+b % m = y (where m is length of the alphabet)
+      output += alphabet[(a * alphabet.indexOf(input[i]) + b) % 26];
+    } else if (alphabet.indexOf(input[i].toLowerCase()) >= 0) {
+      // Same as above, accounting for uppercase
+      output +=
+        alphabet[
+          (a * alphabet.indexOf(input[i].toLowerCase()) + b) % 26
+        ].toUpperCase();
+    } else {
+      // Non-alphabetic characters
+      output += input[i];
     }
-    return output;
+  }
+  return output;
 }
 
 /**
@@ -73,16 +76,16 @@ export function affineEncode(input, args) {
  * @param {string} keyword - Must be upper case
  * @returns {string}
  */
-export function genPolybiusSquare (keyword) {
-    const alpha = "ABCDEFGHIKLMNOPQRSTUVWXYZ",
-        polArray = `${keyword}${alpha}`.split("").unique(),
-        polybius = [];
+export function genPolybiusSquare(keyword) {
+  const alpha = "ABCDEFGHIKLMNOPQRSTUVWXYZ",
+    polArray = `${keyword}${alpha}`.split("").unique(),
+    polybius = [];
 
-    for (let i = 0; i < 5; i++) {
-        polybius[i] = polArray.slice(i*5, i*5 + 5);
-    }
+  for (let i = 0; i < 5; i++) {
+    polybius[i] = polArray.slice(i * 5, i * 5 + 5);
+  }
 
-    return polybius;
+  return polybius;
 }
 
 /**
@@ -92,11 +95,11 @@ export function genPolybiusSquare (keyword) {
  * @constant
  */
 export const format = {
-    "Hex":     CryptoJS.enc.Hex,
-    "Base64":  CryptoJS.enc.Base64,
-    "UTF8":    CryptoJS.enc.Utf8,
-    "UTF16":   CryptoJS.enc.Utf16,
-    "UTF16LE": CryptoJS.enc.Utf16LE,
-    "UTF16BE": CryptoJS.enc.Utf16BE,
-    "Latin1":  CryptoJS.enc.Latin1,
+  Hex: CryptoJS.enc.Hex,
+  Base64: CryptoJS.enc.Base64,
+  UTF8: CryptoJS.enc.Utf8,
+  UTF16: CryptoJS.enc.Utf16,
+  UTF16LE: CryptoJS.enc.Utf16LE,
+  UTF16BE: CryptoJS.enc.Utf16BE,
+  Latin1: CryptoJS.enc.Latin1,
 };

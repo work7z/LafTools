@@ -145,8 +145,8 @@ let AboutThisSoftware = () => {
       </p>
       <p>{Dot("QLKzF", "It's packed with features that cater to the needs of both novice and experienced developers, making it a must-have tool in any programmer's arsenal.")}</p>
       <p>
-        {Dot("hRFxV", "For more information, please visit our website")}         <a href="https://laf-tools.com" target="_blank">
-          laf-tools.com
+        {Dot("hRFxV", "For more information, please visit our website")}         <a href="https://laftools.dev" target="_blank">
+          laftools.dev
         </a>
       </p>
       <h3><b>{Dot("aked6", "References")}</b></h3>
@@ -339,7 +339,7 @@ export let WB_MenuBar = (props: PassProp) => {
         {
           id: "help.website",
           label: Dot("WPrTW", "Official Website"),
-          link: "https://laf-tools.com",
+          link: "https://laftools.dev",
         },
         {
           id: "help.github",

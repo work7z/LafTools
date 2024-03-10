@@ -811,7 +811,7 @@ export const LocalUserPanel: React.FC<
         <p>
           {Dot("_LFF3", "Should you encounter any issue or have any suggestion while using LafTools, please feel free to contact us via EMail or GitHub at any time, we are willing to enhance it.")}
         </p>
-        <p><a href={'https://laf-tools.com'} target="_blank">https://laf-tools.com</a></p>
+        <p><a href={'https://laftools.dev'} target="_blank">https://laftools.dev</a></p>
       </Callout>
     </DialogBody>
   );
@@ -897,12 +897,12 @@ const ConfirmPanel: React.FC<ConfirmPanelProps> = (props) => (
         </li>
         <li>
           {Dot("oNg3f", "Official Website")}:{" "}
-          <LinkHref link="https://laf-tools.com" />
+          <LinkHref link="https://laftools.dev" />
         </li>
         <li>
           {Dot("f5bLC", "Documentation")}:
           <LinkHref
-            link="https://laf-tools.com/documentation/view?id=welcome"
+            link="https://laftools.dev/documentation/view?id=welcome"
             label={Dot("OSHOI", "Welcome Page")}
           />
         </li>

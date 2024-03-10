@@ -133,7 +133,7 @@ export default (props: PassProp): any => {
             )}
           </p>
           <ul>
-            <li>{t(`x0123123`, "")}: https://laf-tools.com</li>
+            <li>{t(`x0123123`, "")}: https://laftools.dev</li>
           </ul>
         </SectionCard>
       </Section> */}

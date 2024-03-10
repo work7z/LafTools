@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,22 +30,21 @@ import DishType from "./DishType.mjs";
  * Translation methods for ArrayBuffer Dishes
  */
 class DishByteArray extends DishType {
+  /**
+   * convert the given value to a ArrayBuffer
+   */
+  static toArrayBuffer() {
+    DishByteArray.checkForValue(this.value);
+    this.value = new Uint8Array(this.value).buffer;
+  }
 
-    /**
-     * convert the given value to a ArrayBuffer
-     */
-    static toArrayBuffer() {
-        DishByteArray.checkForValue(this.value);
-        this.value = new Uint8Array(this.value).buffer;
-    }
-
-    /**
-     * convert the given value from a ArrayBuffer
-     */
-    static fromArrayBuffer() {
-        DishByteArray.checkForValue(this.value);
-        this.value = Array.prototype.slice.call(new Uint8Array(this.value));
-    }
+  /**
+   * convert the given value from a ArrayBuffer
+   */
+  static fromArrayBuffer() {
+    DishByteArray.checkForValue(this.value);
+    this.value = Array.prototype.slice.call(new Uint8Array(this.value));
+  }
 }
 
 export default DishByteArray;

@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -29,9 +29,9 @@
 import forge from "node-forge";
 
 export const MD_ALGORITHMS = {
-    "SHA-1": forge.md.sha1,
-    "MD5": forge.md.md5,
-    "SHA-256": forge.md.sha256,
-    "SHA-384": forge.md.sha384,
-    "SHA-512": forge.md.sha512,
+  "SHA-1": forge.md.sha1,
+  MD5: forge.md.md5,
+  "SHA-256": forge.md.sha256,
+  "SHA-384": forge.md.sha384,
+  "SHA-512": forge.md.sha512,
 };

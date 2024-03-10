@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -45,18 +45,22 @@ export function removeEXIF(jpeg) {
   // Convert binaryArray to char string
   jpeg = Utils.byteArrayToChars(jpeg);
   if (jpeg.slice(0, 2) != "\xff\xd8") {
-    throw ("Given data is not jpeg.");
+    throw "Given data is not jpeg.";
   }
 
   var segments = splitIntoSegments(jpeg);
-  if (segments[1].slice(0, 2) == "\xff\xe1" &&
-    segments[1].slice(4, 10) == "Exif\x00\x00") {
+  if (
+    segments[1].slice(0, 2) == "\xff\xe1" &&
+    segments[1].slice(4, 10) == "Exif\x00\x00"
+  ) {
     segments = [segments[0]].concat(segments.slice(2));
-  } else if (segments[2].slice(0, 2) == "\xff\xe1" &&
-    segments[2].slice(4, 10) == "Exif\x00\x00") {
+  } else if (
+    segments[2].slice(0, 2) == "\xff\xe1" &&
+    segments[2].slice(4, 10) == "Exif\x00\x00"
+  ) {
     segments = segments.slice(0, 2).concat(segments.slice(3));
   } else {
-    throw ("Exif not found.");
+    throw "Exif not found.";
   }
 
   var new_data = segments.join("");
@@ -65,11 +69,11 @@ export function removeEXIF(jpeg) {
   new_data = Utils.strToCharcode(new_data);
 
   return new_data;
-};
+}
 
 function splitIntoSegments(data) {
   if (data.slice(0, 2) != "\xff\xd8") {
-    throw ("Given data isn't JPEG.");
+    throw "Given data isn't JPEG.";
   }
 
   var head = 2;
@@ -86,15 +90,15 @@ function splitIntoSegments(data) {
     }
 
     if (head >= data.length) {
-      throw ("Wrong JPEG data.");
+      throw "Wrong JPEG data.";
     }
   }
   return segments;
 }
 
 function unpack(mark, str) {
-  if (typeof(str) != "string") {
-    throw ("'unpack' error. Got invalid type argument.");
+  if (typeof str != "string") {
+    throw "'unpack' error. Got invalid type argument.";
   }
   var l = 0;
   for (var markPointer = 1; markPointer < mark.length; markPointer++) {
@@ -105,12 +109,17 @@ function unpack(mark, str) {
     } else if (mark[markPointer].toLowerCase() == "l") {
       l += 4;
     } else {
-      throw ("'unpack' error. Got invalid mark.");
+      throw "'unpack' error. Got invalid mark.";
     }
   }
 
   if (l != str.length) {
-    throw ("'unpack' error. Mismatch between symbol and string length. " + l + ":" + str.length);
+    throw (
+      "'unpack' error. Mismatch between symbol and string length. " +
+      l +
+      ":" +
+      str.length
+    );
   }
 
   var littleEndian;
@@ -119,7 +128,7 @@ function unpack(mark, str) {
   } else if (mark[0] == ">") {
     littleEndian = false;
   } else {
-    throw ("'unpack' error.");
+    throw "'unpack' error.";
   }
   var unpacked = [];
   var strPointer = 0;
@@ -129,12 +138,12 @@ function unpack(mark, str) {
   var length = null;
   var sliced = "";
 
-  while (c = mark[p]) {
+  while ((c = mark[p])) {
     if (c.toLowerCase() == "b") {
       length = 1;
       sliced = str.slice(strPointer, strPointer + length);
       val = sliced.charCodeAt(0);
-      if ((c == "b") && (val >= 0x80)) {
+      if (c == "b" && val >= 0x80) {
         val -= 0x100;
       }
     } else if (c == "H") {
@@ -143,23 +152,23 @@ function unpack(mark, str) {
       if (littleEndian) {
         sliced = sliced.split("").reverse().join("");
       }
-      val = sliced.charCodeAt(0) * 0x100 +
-        sliced.charCodeAt(1);
+      val = sliced.charCodeAt(0) * 0x100 + sliced.charCodeAt(1);
     } else if (c.toLowerCase() == "l") {
       length = 4;
       sliced = str.slice(strPointer, strPointer + length);
       if (littleEndian) {
         sliced = sliced.split("").reverse().join("");
       }
-      val = sliced.charCodeAt(0) * 0x1000000 +
+      val =
+        sliced.charCodeAt(0) * 0x1000000 +
         sliced.charCodeAt(1) * 0x10000 +
         sliced.charCodeAt(2) * 0x100 +
         sliced.charCodeAt(3);
-      if ((c == "l") && (val >= 0x80000000)) {
+      if (c == "l" && val >= 0x80000000) {
         val -= 0x100000000;
       }
     } else {
-      throw ("'unpack' error. " + c);
+      throw "'unpack' error. " + c;
     }
 
     unpacked.push(val);

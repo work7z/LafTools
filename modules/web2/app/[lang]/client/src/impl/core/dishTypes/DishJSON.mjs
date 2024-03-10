@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,22 +31,24 @@ import Utils from "../Utils.mjs";
  * Translation methods for JSON dishes
  */
 class DishJSON extends DishType {
+  /**
+   * convert the given value to a ArrayBuffer
+   */
+  static toArrayBuffer() {
+    DishJSON.checkForValue(this.value);
+    this.value =
+      this.value !== undefined
+        ? Utils.strToArrayBuffer(JSON.stringify(this.value, null, 4))
+        : new ArrayBuffer();
+  }
 
-    /**
-     * convert the given value to a ArrayBuffer
-     */
-    static toArrayBuffer() {
-        DishJSON.checkForValue(this.value);
-        this.value = this.value !== undefined ? Utils.strToArrayBuffer(JSON.stringify(this.value, null, 4)) : new ArrayBuffer;
-    }
-
-    /**
-     * convert the given value from a ArrayBuffer
-     */
-    static fromArrayBuffer() {
-        DishJSON.checkForValue(this.value);
-        this.value = JSON.parse(Utils.arrayBufferToStr(this.value));
-    }
+  /**
+   * convert the given value from a ArrayBuffer
+   */
+  static fromArrayBuffer() {
+    DishJSON.checkForValue(this.value);
+    this.value = JSON.parse(Utils.arrayBufferToStr(this.value));
+  }
 }
 
 export default DishJSON;

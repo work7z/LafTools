@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -22,8 +22,4 @@ import OperationError from "./OperationError.mjs";
 import DishError from "./DishError.mjs";
 import ExcludedOperationError from "./ExcludedOperationError.mjs";
 
-export {
-    OperationError,
-    DishError,
-    ExcludedOperationError,
-};
+export { OperationError, DishError, ExcludedOperationError };

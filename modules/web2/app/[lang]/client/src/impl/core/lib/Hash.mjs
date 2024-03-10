@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,7 +30,6 @@
 import Utils from "../Utils.mjs";
 import CryptoApi from "crypto-api/src/crypto-api.mjs";
 
-
 /**
  * Generic hash function.
  *
@@ -39,10 +38,9 @@ import CryptoApi from "crypto-api/src/crypto-api.mjs";
  * @param {Object} [options={}]
  * @returns {string}
  */
-export function runHash(name, input, options={}) {
-    const msg = Utils.arrayBufferToStr(input, false),
-        hasher = CryptoApi.getHasher(name, options);
-    hasher.update(msg);
-    return CryptoApi.encoder.toHex(hasher.finalize());
+export function runHash(name, input, options = {}) {
+  const msg = Utils.arrayBufferToStr(input, false),
+    hasher = CryptoApi.getHasher(name, options);
+  hasher.update(msg);
+  return CryptoApi.encoder.toHex(hasher.finalize());
 }
-

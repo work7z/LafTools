@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -24,7 +24,6 @@
  * @license Apache-2.0
  */
 
-
 import DishType from "./DishType.mjs";
 import Utils from "../Utils.mjs";
 
@@ -32,22 +31,23 @@ import Utils from "../Utils.mjs";
  * Translation methods for string dishes
  */
 class DishString extends DishType {
+  /**
+   * convert the given value to a ArrayBuffer
+   */
+  static toArrayBuffer() {
+    DishString.checkForValue(this.value);
+    this.value = this.value
+      ? Utils.strToArrayBuffer(this.value)
+      : new ArrayBuffer();
+  }
 
-    /**
-     * convert the given value to a ArrayBuffer
-     */
-    static toArrayBuffer() {
-        DishString.checkForValue(this.value);
-        this.value = this.value ? Utils.strToArrayBuffer(this.value) : new ArrayBuffer;
-    }
-
-    /**
-     * convert the given value from a ArrayBuffer
-     */
-    static fromArrayBuffer() {
-        DishString.checkForValue(this.value);
-        this.value = this.value ? Utils.arrayBufferToStr(this.value) : "";
-    }
+  /**
+   * convert the given value from a ArrayBuffer
+   */
+  static fromArrayBuffer() {
+    DishString.checkForValue(this.value);
+    this.value = this.value ? Utils.arrayBufferToStr(this.value) : "";
+  }
 }
 
 export default DishString;

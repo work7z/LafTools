@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,9 +35,8 @@
  * @returns {number}
  */
 export function caseInsensitiveSort(a, b) {
-    return a.toLowerCase().localeCompare(b.toLowerCase());
+  return a.toLowerCase().localeCompare(b.toLowerCase());
 }
-
 
 /**
  * Comparison operation for sorting of IPv4 addresses.
@@ -47,17 +46,17 @@ export function caseInsensitiveSort(a, b) {
  * @returns {number}
  */
 export function ipSort(a, b) {
-    let a_ = a.split("."),
-        b_ = b.split(".");
+  let a_ = a.split("."),
+    b_ = b.split(".");
 
-    a_ = a_[0] * 0x1000000 + a_[1] * 0x10000 + a_[2] * 0x100 + a_[3] * 1;
-    b_ = b_[0] * 0x1000000 + b_[1] * 0x10000 + b_[2] * 0x100 + b_[3] * 1;
+  a_ = a_[0] * 0x1000000 + a_[1] * 0x10000 + a_[2] * 0x100 + a_[3] * 1;
+  b_ = b_[0] * 0x1000000 + b_[1] * 0x10000 + b_[2] * 0x100 + b_[3] * 1;
 
-    if (isNaN(a_) && !isNaN(b_)) return 1;
-    if (!isNaN(a_) && isNaN(b_)) return -1;
-    if (isNaN(a_) && isNaN(b_)) return a.localeCompare(b);
+  if (isNaN(a_) && !isNaN(b_)) return 1;
+  if (!isNaN(a_) && isNaN(b_)) return -1;
+  if (isNaN(a_) && isNaN(b_)) return a.localeCompare(b);
 
-    return a_ - b_;
+  return a_ - b_;
 }
 
 /**
@@ -69,22 +68,23 @@ export function ipSort(a, b) {
  * @returns {number}
  */
 export function numericSort(a, b) {
-    const a_ = a.split(/([^\d]+)/),
-        b_ = b.split(/([^\d]+)/);
+  const a_ = a.split(/([^\d]+)/),
+    b_ = b.split(/([^\d]+)/);
 
-    for (let i = 0; i < a_.length && i < b.length; ++i) {
-        if (isNaN(a_[i]) && !isNaN(b_[i])) return 1; // Numbers after non-numbers
-        if (!isNaN(a_[i]) && isNaN(b_[i])) return -1;
-        if (isNaN(a_[i]) && isNaN(b_[i])) {
-            const ret = a_[i].localeCompare(b_[i]); // Compare strings
-            if (ret !== 0) return ret;
-        }
-        if (!isNaN(a_[i]) && !isNaN(b_[i])) { // Compare numbers
-            if (a_[i] - b_[i] !== 0) return a_[i] - b_[i];
-        }
+  for (let i = 0; i < a_.length && i < b.length; ++i) {
+    if (isNaN(a_[i]) && !isNaN(b_[i])) return 1; // Numbers after non-numbers
+    if (!isNaN(a_[i]) && isNaN(b_[i])) return -1;
+    if (isNaN(a_[i]) && isNaN(b_[i])) {
+      const ret = a_[i].localeCompare(b_[i]); // Compare strings
+      if (ret !== 0) return ret;
     }
+    if (!isNaN(a_[i]) && !isNaN(b_[i])) {
+      // Compare numbers
+      if (a_[i] - b_[i] !== 0) return a_[i] - b_[i];
+    }
+  }
 
-    return a.localeCompare(b);
+  return a.localeCompare(b);
 }
 
 /**
@@ -96,32 +96,33 @@ export function numericSort(a, b) {
  * @returns {number}
  */
 export function hexadecimalSort(a, b) {
-    let a_ = a.split(/([^\da-f]+)/i),
-        b_ = b.split(/([^\da-f]+)/i);
+  let a_ = a.split(/([^\da-f]+)/i),
+    b_ = b.split(/([^\da-f]+)/i);
 
-    a_ = a_.map(v => {
-        const t = parseInt(v, 16);
-        return isNaN(t) ? v : t;
-    });
+  a_ = a_.map((v) => {
+    const t = parseInt(v, 16);
+    return isNaN(t) ? v : t;
+  });
 
-    b_ = b_.map(v => {
-        const t = parseInt(v, 16);
-        return isNaN(t) ? v : t;
-    });
+  b_ = b_.map((v) => {
+    const t = parseInt(v, 16);
+    return isNaN(t) ? v : t;
+  });
 
-    for (let i = 0; i < a_.length && i < b.length; ++i) {
-        if (isNaN(a_[i]) && !isNaN(b_[i])) return 1; // Numbers after non-numbers
-        if (!isNaN(a_[i]) && isNaN(b_[i])) return -1;
-        if (isNaN(a_[i]) && isNaN(b_[i])) {
-            const ret = a_[i].localeCompare(b_[i]); // Compare strings
-            if (ret !== 0) return ret;
-        }
-        if (!isNaN(a_[i]) && !isNaN(b_[i])) { // Compare numbers
-            if (a_[i] - b_[i] !== 0) return a_[i] - b_[i];
-        }
+  for (let i = 0; i < a_.length && i < b.length; ++i) {
+    if (isNaN(a_[i]) && !isNaN(b_[i])) return 1; // Numbers after non-numbers
+    if (!isNaN(a_[i]) && isNaN(b_[i])) return -1;
+    if (isNaN(a_[i]) && isNaN(b_[i])) {
+      const ret = a_[i].localeCompare(b_[i]); // Compare strings
+      if (ret !== 0) return ret;
     }
+    if (!isNaN(a_[i]) && !isNaN(b_[i])) {
+      // Compare numbers
+      if (a_[i] - b_[i] !== 0) return a_[i] - b_[i];
+    }
+  }
 
-    return a.localeCompare(b);
+  return a.localeCompare(b);
 }
 
 /**
@@ -132,6 +133,5 @@ export function hexadecimalSort(a, b) {
  * @returns {number}
  */
 export function lengthSort(a, b) {
-    return a.length - b.length;
+  return a.length - b.length;
 }
-

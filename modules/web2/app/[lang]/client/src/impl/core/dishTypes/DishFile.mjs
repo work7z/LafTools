@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,32 +31,31 @@ import Utils, { isNodeEnvironment } from "../Utils.mjs";
  * Translation methods for file Dishes
  */
 class DishFile extends DishType {
-
-    /**
-     * convert the given value to an ArrayBuffer
-     * @param {File} value
-     */
-    static toArrayBuffer() {
-        DishFile.checkForValue(this.value);
-        if (isNodeEnvironment()) {
-            this.value = Utils.readFileSync(this.value);
-        } else {
-            return new Promise((resolve, reject) => {
-                Utils.readFile(this.value)
-                    .then(v => this.value = v.buffer)
-                    .then(resolve)
-                    .catch(reject);
-            });
-        }
+  /**
+   * convert the given value to an ArrayBuffer
+   * @param {File} value
+   */
+  static toArrayBuffer() {
+    DishFile.checkForValue(this.value);
+    if (isNodeEnvironment()) {
+      this.value = Utils.readFileSync(this.value);
+    } else {
+      return new Promise((resolve, reject) => {
+        Utils.readFile(this.value)
+          .then((v) => (this.value = v.buffer))
+          .then(resolve)
+          .catch(reject);
+      });
     }
+  }
 
-    /**
-     * convert the given value from an ArrayBuffer
-     */
-    static fromArrayBuffer() {
-        DishFile.checkForValue(this.value);
-        this.value = new File(this.value, "unknown");
-    }
+  /**
+   * convert the given value from an ArrayBuffer
+   */
+  static fromArrayBuffer() {
+    DishFile.checkForValue(this.value);
+    this.value = new File(this.value, "unknown");
+  }
 }
 
 export default DishFile;

@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,10 +31,14 @@ var zlibAndGzip = require("zlibjs/bin/zlib_and_gzip.min.js");
 
 const Zlib = zlibAndGzip.Zlib;
 
-export const COMPRESSION_TYPE = ["Dynamic Huffman Coding", "Fixed Huffman Coding", "None (Store)"];
+export const COMPRESSION_TYPE = [
+  "Dynamic Huffman Coding",
+  "Fixed Huffman Coding",
+  "None (Store)",
+];
 export const INFLATE_BUFFER_TYPE = ["Adaptive", "Block"];
 export const ZLIB_COMPRESSION_TYPE_LOOKUP = {
-    "Fixed Huffman Coding":   Zlib.Deflate.CompressionType.FIXED,
-    "Dynamic Huffman Coding": Zlib.Deflate.CompressionType.DYNAMIC,
-    "None (Store)":           Zlib.Deflate.CompressionType.NONE,
+  "Fixed Huffman Coding": Zlib.Deflate.CompressionType.FIXED,
+  "Dynamic Huffman Coding": Zlib.Deflate.CompressionType.DYNAMIC,
+  "None (Store)": Zlib.Deflate.CompressionType.NONE,
 };

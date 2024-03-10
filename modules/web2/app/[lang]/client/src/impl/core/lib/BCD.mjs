@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,13 +30,13 @@
  * BCD encoding schemes.
  */
 export const ENCODING_SCHEME = [
-    "8 4 2 1",
-    "7 4 2 1",
-    "4 2 2 1",
-    "2 4 2 1",
-    "8 4 -2 -1",
-    "Excess-3",
-    "IBM 8 4 2 1",
+  "8 4 2 1",
+  "7 4 2 1",
+  "4 2 2 1",
+  "2 4 2 1",
+  "8 4 -2 -1",
+  "Excess-3",
+  "IBM 8 4 2 1",
 ];
 
 /**
@@ -53,13 +53,13 @@ export const ENCODING_SCHEME = [
  * has not yet been added for this.
  */
 export const ENCODING_LOOKUP = {
-    "8 4 2 1":     [0,  1,  2,  3,  4,  5,  6,  7,  8,  9],
-    "7 4 2 1":     [0,  1,  2,  3,  4,  5,  6,  8,  9,  10],
-    "4 2 2 1":     [0,  1,  4,  5,  8,  9,  12, 13, 14, 15],
-    "2 4 2 1":     [0,  1,  2,  3,  4,  11, 12, 13, 14, 15],
-    "8 4 -2 -1":   [0,  7,  6,  5,  4,  11, 10, 9,  8,  15],
-    "Excess-3":    [3,  4,  5,  6,  7,  8,  9,  10, 11, 12],
-    "IBM 8 4 2 1": [10, 1,  2,  3,  4,  5,  6,  7,  8,  9],
+  "8 4 2 1": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "7 4 2 1": [0, 1, 2, 3, 4, 5, 6, 8, 9, 10],
+  "4 2 2 1": [0, 1, 4, 5, 8, 9, 12, 13, 14, 15],
+  "2 4 2 1": [0, 1, 2, 3, 4, 11, 12, 13, 14, 15],
+  "8 4 -2 -1": [0, 7, 6, 5, 4, 11, 10, 9, 8, 15],
+  "Excess-3": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  "IBM 8 4 2 1": [10, 1, 2, 3, 4, 5, 6, 7, 8, 9],
 };
 
 /**

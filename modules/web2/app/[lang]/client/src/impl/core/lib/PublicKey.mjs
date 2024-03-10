@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -36,25 +36,24 @@ import { toHex, fromHex } from "./Hex.mjs";
  * @returns {string}
  */
 export function formatDnObj(dnObj, indent) {
-    let output = "";
+  let output = "";
 
-    const maxKeyLen = dnObj.array.reduce((max, item) => {
-        return item[0].type.length > max ? item[0].type.length : max;
-    }, 0);
+  const maxKeyLen = dnObj.array.reduce((max, item) => {
+    return item[0].type.length > max ? item[0].type.length : max;
+  }, 0);
 
-    for (let i = 0; i < dnObj.array.length; i++) {
-        if (!dnObj.array[i].length) continue;
+  for (let i = 0; i < dnObj.array.length; i++) {
+    if (!dnObj.array[i].length) continue;
 
-        const key = dnObj.array[i][0].type;
-        const value = dnObj.array[i][0].value;
-        const str = `${key.padEnd(maxKeyLen, " ")} = ${value}\n`;
+    const key = dnObj.array[i][0].type;
+    const value = dnObj.array[i][0].value;
+    const str = `${key.padEnd(maxKeyLen, " ")} = ${value}\n`;
 
-        output += str.padStart(indent + str.length, " ");
-    }
+    output += str.padStart(indent + str.length, " ");
+  }
 
-    return output.slice(0, -1);
+  return output.slice(0, -1);
 }
-
 
 /**
  * Formats byte strings by adding line breaks and delimiters.
@@ -65,18 +64,18 @@ export function formatDnObj(dnObj, indent) {
  * @returns {string}
  */
 export function formatByteStr(byteStr, length, indent) {
-    byteStr = toHex(fromHex(byteStr), ":");
-    length = length * 3;
-    let output = "";
+  byteStr = toHex(fromHex(byteStr), ":");
+  length = length * 3;
+  let output = "";
 
-    for (let i = 0; i < byteStr.length; i += length) {
-        const str = byteStr.slice(i, i + length) + "\n";
-        if (i === 0) {
-            output += str;
-        } else {
-            output += str.padStart(indent + str.length, " ");
-        }
+  for (let i = 0; i < byteStr.length; i += length) {
+    const str = byteStr.slice(i, i + length) + "\n";
+    if (i === 0) {
+      output += str;
+    } else {
+      output += str.padStart(indent + str.length, " ");
     }
+  }
 
-    return output.slice(0, output.length-1);
+  return output.slice(0, output.length - 1);
 }

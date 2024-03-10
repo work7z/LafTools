@@ -51,7 +51,7 @@ Pokud je odpověď na kteroukoli z výše uvedených otázek ano, měli byste zv
 
 ### Náhled:
 
-[Online Preview](http://cloud.laf-tools.com)
+[Online Preview](http://laftools.dev)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 

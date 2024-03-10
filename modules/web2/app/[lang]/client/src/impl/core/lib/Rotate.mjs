@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -28,7 +28,6 @@
  * @todo Support for UTF16
  */
 
-
 /**
  * Runs rotation operations across the input data.
  *
@@ -38,17 +37,16 @@
  * @returns {byteArray}
  */
 export function rot(data, amount, algo) {
-    const result = [];
-    for (let i = 0; i < data.length; i++) {
-        let b = data[i];
-        for (let j = 0; j < amount; j++) {
-            b = algo(b);
-        }
-        result.push(b);
+  const result = [];
+  for (let i = 0; i < data.length; i++) {
+    let b = data[i];
+    for (let j = 0; j < amount; j++) {
+      b = algo(b);
     }
-    return result;
+    result.push(b);
+  }
+  return result;
 }
-
 
 /**
  * Rotate right bitwise op.
@@ -57,8 +55,8 @@ export function rot(data, amount, algo) {
  * @returns {byte}
  */
 export function rotr(b) {
-    const bit = (b & 1) << 7;
-    return (b >> 1) | bit;
+  const bit = (b & 1) << 7;
+  return (b >> 1) | bit;
 }
 
 /**
@@ -68,10 +66,9 @@ export function rotr(b) {
  * @returns {byte}
  */
 export function rotl(b) {
-    const bit = (b >> 7) & 1;
-    return ((b << 1) | bit) & 0xFF;
+  const bit = (b >> 7) & 1;
+  return ((b << 1) | bit) & 0xff;
 }
-
 
 /**
  * Rotates a byte array to the right by a specific amount as a whole, so that bits are wrapped
@@ -82,21 +79,20 @@ export function rotl(b) {
  * @returns {byteArray}
  */
 export function rotrCarry(data, amount) {
-    const result = [];
-    let carryBits = 0,
-        newByte;
+  const result = [];
+  let carryBits = 0,
+    newByte;
 
-    amount = amount % 8;
-    for (let i = 0; i < data.length; i++) {
-        const oldByte = data[i] >>> 0;
-        newByte = (oldByte >> amount) | carryBits;
-        carryBits = (oldByte & (Math.pow(2, amount)-1)) << (8-amount);
-        result.push(newByte);
-    }
-    result[0] |= carryBits;
-    return result;
+  amount = amount % 8;
+  for (let i = 0; i < data.length; i++) {
+    const oldByte = data[i] >>> 0;
+    newByte = (oldByte >> amount) | carryBits;
+    carryBits = (oldByte & (Math.pow(2, amount) - 1)) << (8 - amount);
+    result.push(newByte);
+  }
+  result[0] |= carryBits;
+  return result;
 }
-
 
 /**
  * Rotates a byte array to the left by a specific amount as a whole, so that bits are wrapped
@@ -107,17 +103,17 @@ export function rotrCarry(data, amount) {
  * @returns {byteArray}
  */
 export function rotlCarry(data, amount) {
-    const result = [];
-    let carryBits = 0,
-        newByte;
+  const result = [];
+  let carryBits = 0,
+    newByte;
 
-    amount = amount % 8;
-    for (let i = data.length-1; i >= 0; i--) {
-        const oldByte = data[i];
-        newByte = ((oldByte << amount) | carryBits) & 0xFF;
-        carryBits = (oldByte >> (8-amount)) & (Math.pow(2, amount)-1);
-        result[i] = (newByte);
-    }
-    result[data.length-1] = result[data.length-1] | carryBits;
-    return result;
+  amount = amount % 8;
+  for (let i = data.length - 1; i >= 0; i--) {
+    const oldByte = data[i];
+    newByte = ((oldByte << amount) | carryBits) & 0xff;
+    carryBits = (oldByte >> (8 - amount)) & (Math.pow(2, amount) - 1);
+    result[i] = newByte;
+  }
+  result[data.length - 1] = result[data.length - 1] | carryBits;
+  return result;
 }

@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -34,16 +34,16 @@
  * @returns {string}
  */
 export function replaceVariableNames(input, replacer) {
-    const tokenRegex = /\\"|"(?:\\"|[^"])*"|(\b[a-z0-9\-_]+\b)/ig;
+  const tokenRegex = /\\"|"(?:\\"|[^"])*"|(\b[a-z0-9\-_]+\b)/gi;
 
-    return input.replace(tokenRegex, (...args) => {
-        const match = args[0],
-            quotes = args[1];
+  return input.replace(tokenRegex, (...args) => {
+    const match = args[0],
+      quotes = args[1];
 
-        if (!quotes) {
-            return match;
-        } else {
-            return replacer(match);
-        }
-    });
+    if (!quotes) {
+      return match;
+    } else {
+      return replacer(match);
+    }
+  });
 }

@@ -51,7 +51,7 @@ Jika jawapan kepada mana-mana di atas adalah ya, maka anda harus mempertimbangka
 
 ### Pratonton:
 
-[Online Preview](http://cloud.laf-tools.com)
+[Online Preview](http://laftools.dev)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 

@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,7 +31,7 @@ import jsQR from "jsqr";
 import qr from "qr-image";
 import Utils from "../Utils.mjs";
 // // import jimp from "jimp";
-var jimp = require('jimp')
+var jimp = require("jimp");
 
 /**
  * Parses a QR code image from an image
@@ -41,32 +41,32 @@ var jimp = require('jimp')
  * @returns {string}
  */
 export async function parseQrCode(input, normalise) {
-    let image;
-    try {
-        image = await jimp.read(input);
-    } catch (err) {
-        throw new OperationError(`Error opening image. (${err})`);
-    }
+  let image;
+  try {
+    image = await jimp.read(input);
+  } catch (err) {
+    throw new OperationError(`Error opening image. (${err})`);
+  }
 
-    try {
-        if (normalise) {
-            image.rgba(false);
-            image.background(0xFFFFFFFF);
-            image.normalize();
-            image.greyscale();
-            image = await image.getBufferAsync(jimp.MIME_JPEG);
-            image = await jimp.read(image);
-        }
-    } catch (err) {
-        throw new OperationError(`Error normalising image. (${err})`);
+  try {
+    if (normalise) {
+      image.rgba(false);
+      image.background(0xffffffff);
+      image.normalize();
+      image.greyscale();
+      image = await image.getBufferAsync(jimp.MIME_JPEG);
+      image = await jimp.read(image);
     }
+  } catch (err) {
+    throw new OperationError(`Error normalising image. (${err})`);
+  }
 
-    const qrData = jsQR(image.bitmap.data, image.getWidth(), image.getHeight());
-    if (qrData) {
-        return qrData.data;
-    } else {
-        throw new OperationError("Could not read a QR code from the image.");
-    }
+  const qrData = jsQR(image.bitmap.data, image.getWidth(), image.getHeight());
+  if (qrData) {
+    return qrData.data;
+  } else {
+    throw new OperationError("Could not read a QR code from the image.");
+  }
 }
 
 /**
@@ -79,36 +79,42 @@ export async function parseQrCode(input, normalise) {
  * @param {string} errorCorrection
  * @returns {ArrayBuffer}
  */
-export function generateQrCode(input, format, moduleSize, margin, errorCorrection) {
-    const formats = ["SVG", "EPS", "PDF", "PNG"];
-    if (!formats.includes(format.toUpperCase())) {
-        throw new OperationError("Unsupported QR code format.");
-    }
+export function generateQrCode(
+  input,
+  format,
+  moduleSize,
+  margin,
+  errorCorrection,
+) {
+  const formats = ["SVG", "EPS", "PDF", "PNG"];
+  if (!formats.includes(format.toUpperCase())) {
+    throw new OperationError("Unsupported QR code format.");
+  }
 
-    let qrImage;
-    try {
-        qrImage = qr.imageSync(input, {
-            type: format,
-            size: moduleSize,
-            margin: margin,
-            "ec_level": errorCorrection.charAt(0).toUpperCase()
-        });
-    } catch (err) {
-        throw new OperationError(`Error generating QR code. (${err})`);
-    }
+  let qrImage;
+  try {
+    qrImage = qr.imageSync(input, {
+      type: format,
+      size: moduleSize,
+      margin: margin,
+      ec_level: errorCorrection.charAt(0).toUpperCase(),
+    });
+  } catch (err) {
+    throw new OperationError(`Error generating QR code. (${err})`);
+  }
 
-    if (!qrImage) {
-        throw new OperationError("Error generating QR code.");
-    }
+  if (!qrImage) {
+    throw new OperationError("Error generating QR code.");
+  }
 
-    switch (format) {
-        case "SVG":
-        case "EPS":
-        case "PDF":
-            return Utils.strToArrayBuffer(qrImage);
-        case "PNG":
-            return qrImage.buffer;
-        default:
-            throw new OperationError("Unsupported QR code format.");
-    }
+  switch (format) {
+    case "SVG":
+    case "EPS":
+    case "PDF":
+      return Utils.strToArrayBuffer(qrImage);
+    case "PNG":
+      return qrImage.buffer;
+    default:
+      throw new OperationError("Unsupported QR code format.");
+  }
 }

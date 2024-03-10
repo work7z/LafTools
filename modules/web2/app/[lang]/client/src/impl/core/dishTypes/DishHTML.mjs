@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,16 +31,18 @@ import Utils from "../Utils.mjs";
  * Translation methods for HTML Dishes
  */
 class DishHTML extends DishString {
-
-    /**
-     * convert the given value to a ArrayBuffer
-     * @param {String} value
-     */
-    static toArrayBuffer() {
-        DishHTML.checkForValue(this.value);
-        this.value = this.value ? Utils.strToArrayBuffer(Utils.unescapeHtml(Utils.stripHtmlTags(this.value, true))) : new ArrayBuffer;
-    }
-
+  /**
+   * convert the given value to a ArrayBuffer
+   * @param {String} value
+   */
+  static toArrayBuffer() {
+    DishHTML.checkForValue(this.value);
+    this.value = this.value
+      ? Utils.strToArrayBuffer(
+          Utils.unescapeHtml(Utils.stripHtmlTags(this.value, true)),
+        )
+      : new ArrayBuffer();
+  }
 }
 
 export default DishHTML;

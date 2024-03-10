@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -27,74 +27,74 @@
 import DishType from "./DishType.mjs";
 import Utils, { isNodeEnvironment } from "../Utils.mjs";
 
-
 /**
  * Translation methods for ListFile Dishes
  */
 class DishListFile extends DishType {
+  /**
+   * convert the given value to a ArrayBuffer
+   */
+  static async toArrayBuffer() {
+    DishListFile.checkForValue(this.value);
 
-    /**
-     * convert the given value to a ArrayBuffer
-     */
-    static async toArrayBuffer() {
-        DishListFile.checkForValue(this.value);
-
-        if (isNodeEnvironment()) {
-            this.value = this.value.map(file => Uint8Array.from(file.data));
-        } else {
-            this.value = await DishListFile.concatenateTypedArraysWithTypedElements(...this.value);
-        }
+    if (isNodeEnvironment()) {
+      this.value = this.value.map((file) => Uint8Array.from(file.data));
+    } else {
+      this.value = await DishListFile.concatenateTypedArraysWithTypedElements(
+        ...this.value,
+      );
     }
+  }
 
-    /**
-     * convert the given value from a ArrayBuffer
-     */
-    static fromArrayBuffer() {
-        DishListFile.checkForValue(this.value);
-        this.value = [new File(this.value, "unknown")];
+  /**
+   * convert the given value from a ArrayBuffer
+   */
+  static fromArrayBuffer() {
+    DishListFile.checkForValue(this.value);
+    this.value = [new File(this.value, "unknown")];
+  }
+
+  /**
+   * Concatenates a list of typed elements together.
+   *
+   * @param {Uint8Array[]} arrays
+   * @returns {Uint8Array}
+   */
+  static async concatenateTypedArraysWithTypedElements(...arrays) {
+    let totalLength = 0;
+    for (const arr of arrays) {
+      totalLength += arr.size;
     }
+    const myArray = new Uint8Array(totalLength);
 
-    /**
-     * Concatenates a list of typed elements together.
-     *
-     * @param {Uint8Array[]} arrays
-     * @returns {Uint8Array}
-     */
-    static async concatenateTypedArraysWithTypedElements(...arrays) {
-        let totalLength = 0;
-        for (const arr of arrays) {
-            totalLength += arr.size;
-        }
-        const myArray = new Uint8Array(totalLength);
-
-        let offset = 0;
-        for (const arr of arrays) {
-            const data = await Utils.readFile(arr);
-            myArray.set(data, offset);
-            offset += data.length;
-        }
-        return myArray;
+    let offset = 0;
+    for (const arr of arrays) {
+      const data = await Utils.readFile(arr);
+      myArray.set(data, offset);
+      offset += data.length;
     }
+    return myArray;
+  }
 
-    /**
-     * Concatenates a list of Uint8Arrays together
-     *
-     * @param {Uint8Array[]} arrays
-     * @returns {Uint8Array}
-     */
-    static concatenateTypedArrays(...arrays) {
-        let totalLength = 0;
-        for (const arr of arrays) {
-            totalLength += arr.length;
-        }
-        const result = new Uint8Array(totalLength);
-        let offset = 0;
-        for (const arr of arrays) {
-            result.set(arr, offset);
-            offset += arr.length;
-        }
-        return result;
+  /**
+   * Concatenates a list of Uint8Arrays together
+   *
+   * @param {Uint8Array[]} arrays
+   * @returns {Uint8Array}
+   */
+  static concatenateTypedArrays(...arrays) {
+    let totalLength = 0;
+    for (const arr of arrays) {
+      totalLength += arr.length;
     }
+    const result = new Uint8Array(totalLength);
+    let offset = 0;
+    for (const arr of arrays) {
+      result.set(arr, offset);
+      offset += arr.length;
+    }
+    return result;
+  }
 }
 
 export default DishListFile;

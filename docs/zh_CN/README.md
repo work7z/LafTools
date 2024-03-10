@@ -51,7 +51,7 @@
 
 ### 预览:
 
-[Online Preview](http://cloud.laf-tools.com)
+[Online Preview](http://laf-tools.com)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-zh_CN.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark-zh_CN.png?raw=true)
 

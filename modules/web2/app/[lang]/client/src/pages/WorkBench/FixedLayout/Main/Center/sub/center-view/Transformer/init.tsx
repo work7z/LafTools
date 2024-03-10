@@ -3,7 +3,7 @@
 // Date: Fri, 19 Jan 2024
 // Author: Ryan Laf <get>
 // Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -20,13 +20,13 @@
 
 import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 
-export let getInitValueForRuntimeStatus = ():ToolDefaultOutputType=>{
-    return {
-        latestViewPanelId: "tools",
-        toolTabIndex: "tools",
-        collapseConfig: false,
-        collapseOutput: false,
-        ignoreEmptyStr:"true",
-        autoRun: "true"
-      }
+export let getInitValueForRuntimeStatus = (): ToolDefaultOutputType => {
+  return {
+    latestViewPanelId: "tools",
+    toolTabIndex: "tools",
+    collapseConfig: false,
+    collapseOutput: false,
+    ignoreEmptyStr: "true",
+    autoRun: "true"
+  }
 }

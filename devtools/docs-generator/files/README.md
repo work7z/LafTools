@@ -51,7 +51,7 @@ ${Dot("U6zkVUPTq","If the answer to any of the above is yes, then you should con
 
 ### ${Dot("Gez25D19n","Preview")}:
 
-[Online Preview](http://cloud.laf-tools.com)
+[Online Preview](http://${previewURL})
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview${extraLang}.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark${extraLang}.png?raw=true)
 

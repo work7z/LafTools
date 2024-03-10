@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -24,7 +24,6 @@
  * @license Apache-2.0
  */
 
-
 import DishType from "./DishType.mjs";
 import Utils from "../Utils.mjs";
 
@@ -32,22 +31,26 @@ import Utils from "../Utils.mjs";
  * Translation methods for number dishes
  */
 class DishNumber extends DishType {
+  /**
+   * convert the given value to a ArrayBuffer
+   */
+  static toArrayBuffer() {
+    DishNumber.checkForValue(this.value);
+    this.value =
+      typeof this.value === "number"
+        ? Utils.strToArrayBuffer(this.value.toString())
+        : new ArrayBuffer();
+  }
 
-    /**
-     * convert the given value to a ArrayBuffer
-     */
-    static toArrayBuffer() {
-        DishNumber.checkForValue(this.value);
-        this.value = typeof this.value === "number" ? Utils.strToArrayBuffer(this.value.toString()) : new ArrayBuffer;
-    }
-
-    /**
-     * convert the given value from a ArrayBuffer
-     */
-    static fromArrayBuffer() {
-        DishNumber.checkForValue(this.value);
-        this.value = this.value ? parseFloat(Utils.arrayBufferToStr(this.value)) : 0;
-    }
+  /**
+   * convert the given value from a ArrayBuffer
+   */
+  static fromArrayBuffer() {
+    DishNumber.checkForValue(this.value);
+    this.value = this.value
+      ? parseFloat(Utils.arrayBufferToStr(this.value))
+      : 0;
+  }
 }
 
 export default DishNumber;

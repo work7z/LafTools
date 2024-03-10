@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -32,27 +32,28 @@ import BigNumber from "bignumber.js";
  * translation methods for BigNumber Dishes
  */
 class DishBigNumber extends DishType {
+  /**
+   * convert the given value to a ArrayBuffer
+   * @param {BigNumber} value
+   */
+  static toArrayBuffer() {
+    DishBigNumber.checkForValue(this.value);
+    this.value = BigNumber.isBigNumber(this.value)
+      ? Utils.strToArrayBuffer(this.value.toFixed())
+      : new ArrayBuffer();
+  }
 
-    /**
-     * convert the given value to a ArrayBuffer
-     * @param {BigNumber} value
-     */
-    static toArrayBuffer() {
-        DishBigNumber.checkForValue(this.value);
-        this.value = BigNumber.isBigNumber(this.value) ? Utils.strToArrayBuffer(this.value.toFixed()) : new ArrayBuffer;
+  /**
+   * convert the given value from a ArrayBuffer
+   */
+  static fromArrayBuffer() {
+    DishBigNumber.checkForValue(this.value);
+    try {
+      this.value = new BigNumber(Utils.arrayBufferToStr(this.value));
+    } catch (err) {
+      this.value = new BigNumber(NaN);
     }
-
-    /**
-     * convert the given value from a ArrayBuffer
-     */
-    static fromArrayBuffer() {
-        DishBigNumber.checkForValue(this.value);
-        try {
-            this.value = new BigNumber(Utils.arrayBufferToStr(this.value));
-        } catch (err) {
-            this.value = new BigNumber(NaN);
-        }
-    }
+  }
 }
 
 export default DishBigNumber;

@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -27,20 +27,20 @@
  * @license Apache-2.0
  */
 class OperationError extends Error {
-    /**
-     * Standard error constructor. Adds no new behaviour.
-     *
-     * @param args - Standard error args
-     */
-    constructor(...args) {
-        super(...args);
+  /**
+   * Standard error constructor. Adds no new behaviour.
+   *
+   * @param args - Standard error args
+   */
+  constructor(...args) {
+    super(...args);
 
-        this.type = "OperationError";
+    this.type = "OperationError";
 
-        if (Error.captureStackTrace) {
-            Error.captureStackTrace(this, OperationError);
-        }
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, OperationError);
     }
+  }
 }
 
 export default OperationError;

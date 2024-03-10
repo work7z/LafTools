@@ -3,7 +3,7 @@
 // Date: Sun, 7 Jan 2024
 // Author: Ryan Laf <work7z@outlook.com>
 // Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -134,7 +134,7 @@ export let FooterContent = () => {
         </div>
         <div>
             <b>
-                <a className={CSS_TEXT_ANCHOR_CSS} href="https://laf-tools.com" target='_blank'>{''} {
+                <a className={CSS_TEXT_ANCHOR_CSS} href="https://laftools.dev" target='_blank'>{''} {
 
                     Dot("ZbD3F", "{0}, crafted by the LafTools team", "LafTools@" + APPINFOJSON.version + "")
                     // Dot("rK6cx", "{0}, designed and developed by the LafTools team", "LafTools@" + APPINFOJSON.version + "")
@@ -144,7 +144,7 @@ export let FooterContent = () => {
             </b>
         </div>
         {/* <div>
-        LafTools <a href="https://laf-tools.com">https://laf-tools.com</a>
+        LafTools <a href="https://laftools.dev">https://laftools.dev</a>
     </div> */}
     </div>
 }

@@ -51,7 +51,7 @@ Se a resposta a alguma das perguntas acima for sim, você deve considerar experi
 
 ### Visualização:
 
-[Online Preview](http://cloud.laf-tools.com)
+[Online Preview](http://laftools.dev)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 

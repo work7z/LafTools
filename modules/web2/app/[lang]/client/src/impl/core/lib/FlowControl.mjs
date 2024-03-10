@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -34,7 +34,7 @@
  * @returns {number}
  */
 export function getLabelIndex(name, state) {
-    return state.opList.findIndex((operation) => {
-        return (operation.name === "Label") && (name === operation.ingValues[0]);
-    });
+  return state.opList.findIndex((operation) => {
+    return operation.name === "Label" && name === operation.ingValues[0];
+  });
 }

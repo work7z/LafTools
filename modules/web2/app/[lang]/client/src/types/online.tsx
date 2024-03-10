@@ -3,7 +3,7 @@
 // Date: Sat, 6 Jan 2024
 // Author: LafTools Team - FX <work7z@outlook.com>
 // Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -29,7 +29,7 @@ export const URL_LANDING_PAGE = `/landing-page`;
 
 export let getOnlineFullLink = (subLink: string): string => {
     let l = getFormattedLang(TranslationUtils.getCurrentLang())
-    return `https://laf-tools.com/v2/${l}${subLink}`
+    return `https://laftools.dev/v2/${l}${subLink}`
 }
 let URL_NAV_PORTAL = '/nav'
 export const URL_NAV_USER_CENTRE = `${URL_NAV_PORTAL}/user/centre`;

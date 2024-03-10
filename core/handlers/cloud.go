@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sat, 6 Jan 2024
 // Author: LafTools Team - FX <work7z@outlook.com>
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,11 +30,11 @@ import (
 )
 
 func proxyToCloud(c *gin.Context) {
-	// reverse proxy to this request to https://laf-tools.com
+	// reverse proxy to this request to https://laftools.dev
 
 	// define
-	// var mainhost = "https://laf-tools.com"
-	var mainhost = "https://laf-tools.com" //  "http://192.168.1.3:8080"
+	// var mainhost = "https://laftools.dev"
+	var mainhost = "https://laftools.dev" //  "http://192.168.1.3:8080"
 	// var prefix = config.CLOUD_URL_APP_CLOUD_PREFIX
 	// process proxy
 	allPath := c.Request.URL.Path

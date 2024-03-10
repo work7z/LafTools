@@ -51,7 +51,7 @@ Hvis svaret på noget af ovenstående er ja, så bør du overveje at prøve vore
 
 ### Forhåndsvisning:
 
-[Online Preview](http://cloud.laf-tools.com)
+[Online Preview](http://laftools.dev)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 

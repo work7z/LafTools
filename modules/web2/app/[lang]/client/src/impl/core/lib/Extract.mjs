@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -38,47 +38,55 @@
  * @param {boolean} [unique=false] - Whether to unique the results
  * @returns {string}
  */
-export function search(input, searchRegex, removeRegex=null, sortBy=null, unique=false) {
-    let results = [];
-    let match;
+export function search(
+  input,
+  searchRegex,
+  removeRegex = null,
+  sortBy = null,
+  unique = false,
+) {
+  let results = [];
+  let match;
 
-    while ((match = searchRegex.exec(input))) {
-        // Moves pointer when an empty string is matched (prevents infinite loop)
-        if (match.index === searchRegex.lastIndex) {
-            searchRegex.lastIndex++;
-        }
-
-        if (removeRegex && removeRegex.test(match[0]))
-            continue;
-
-        results.push(match[0]);
+  while ((match = searchRegex.exec(input))) {
+    // Moves pointer when an empty string is matched (prevents infinite loop)
+    if (match.index === searchRegex.lastIndex) {
+      searchRegex.lastIndex++;
     }
 
-    if (sortBy) {
-        results = results.sort(sortBy);
-    }
+    if (removeRegex && removeRegex.test(match[0])) continue;
 
-    if (unique) {
-        results = results.unique();
-    }
+    results.push(match[0]);
+  }
 
-    return results;
+  if (sortBy) {
+    results = results.sort(sortBy);
+  }
+
+  if (unique) {
+    results = results.unique();
+  }
+
+  return results;
 }
-
 
 /**
  * URL regular expression
  */
 const protocol = "[A-Z]+://",
-    hostname = "[-\\w]+(?:\\.\\w[-\\w]*)+",
-    port = ":\\d+",
-    path = "/[^.!,?\"<>\\[\\]{}\\s\\x7F-\\xFF]*" +
-        "(?:[.!,?]+[^.!,?\"<>\\[\\]{}\\s\\x7F-\\xFF]+)*";
+  hostname = "[-\\w]+(?:\\.\\w[-\\w]*)+",
+  port = ":\\d+",
+  path =
+    '/[^.!,?"<>\\[\\]{}\\s\\x7F-\\xFF]*' +
+    '(?:[.!,?]+[^.!,?"<>\\[\\]{}\\s\\x7F-\\xFF]+)*';
 
-export const URL_REGEX = new RegExp(protocol + hostname + "(?:" + port + ")?(?:" + path + ")?", "ig");
-
+export const URL_REGEX = new RegExp(
+  protocol + hostname + "(?:" + port + ")?(?:" + path + ")?",
+  "ig",
+);
 
 /**
  * Domain name regular expression
  */
-export const DOMAIN_REGEX = /\b((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b/ig;
+export const DOMAIN_REGEX =
+  /\b((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b/gi;

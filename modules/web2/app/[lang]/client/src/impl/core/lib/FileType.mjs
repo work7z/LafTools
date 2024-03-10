@@ -1,9 +1,9 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
-// 
+//
 // Date: Sun, 14 Jan 2024
-// Second Author: Ryan Laf 
-// Description: 
-// Copyright (C) 2024 - Present, https://laf-tools.com and https://codegen.cc
+// Second Author: Ryan Laf
+// Description:
+// Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -26,9 +26,8 @@
  * @license Apache-2.0
  *
  */
-import {FILE_SIGNATURES} from "./FileSignatures.mjs";
-import {sendStatusMessage} from "../Utils.mjs";
-
+import { FILE_SIGNATURES } from "./FileSignatures.mjs";
+import { sendStatusMessage } from "../Utils.mjs";
 
 /**
  * Checks whether a signature matches a buffer.
@@ -40,22 +39,21 @@ import {sendStatusMessage} from "../Utils.mjs";
  * @param {number} [offset=0] Where in the buffer to start searching from
  * @returns {boolean}
  */
-function signatureMatches(sig, buf, offset=0) {
-    // Using a length check seems to be more performant than `sig instanceof Array`
-    if (sig.length) {
-        // sig is an Array - return true if any of them match
-        // The following `reduce` method is nice, but performance matters here, so we
-        // opt for a faster, if less elegant, for loop.
-        // return sig.reduce((acc, s) => acc || bytesMatch(s, buf, offset), false);
-        for (let i = 0; i < sig.length; i++) {
-            if (bytesMatch(sig[i], buf, offset)) return true;
-        }
-        return false;
-    } else {
-        return bytesMatch(sig, buf, offset);
+function signatureMatches(sig, buf, offset = 0) {
+  // Using a length check seems to be more performant than `sig instanceof Array`
+  if (sig.length) {
+    // sig is an Array - return true if any of them match
+    // The following `reduce` method is nice, but performance matters here, so we
+    // opt for a faster, if less elegant, for loop.
+    // return sig.reduce((acc, s) => acc || bytesMatch(s, buf, offset), false);
+    for (let i = 0; i < sig.length; i++) {
+      if (bytesMatch(sig[i], buf, offset)) return true;
     }
+    return false;
+  } else {
+    return bytesMatch(sig, buf, offset);
+  }
 }
-
 
 /**
  * Checks whether a set of bytes match the given buffer.
@@ -67,29 +65,25 @@ function signatureMatches(sig, buf, offset=0) {
  * @param {number} [offset=0] Where in the buffer to start searching from
  * @returns {boolean}
  */
-function bytesMatch(sig, buf, offset=0) {
-    for (const sigoffset in sig) {
-        const pos = parseInt(sigoffset, 10) + offset;
-        switch (typeof sig[sigoffset]) {
-            case "number": // Static check
-                if (buf[pos] !== sig[sigoffset])
-                    return false;
-                break;
-            case "object": // Array of options
-                if (sig[sigoffset].indexOf(buf[pos]) < 0)
-                    return false;
-                break;
-            case "function": // More complex calculation
-                if (!sig[sigoffset](buf[pos]))
-                    return false;
-                break;
-            default:
-                throw new Error(`Unrecognised signature type at offset ${sigoffset}`);
-        }
+function bytesMatch(sig, buf, offset = 0) {
+  for (const sigoffset in sig) {
+    const pos = parseInt(sigoffset, 10) + offset;
+    switch (typeof sig[sigoffset]) {
+      case "number": // Static check
+        if (buf[pos] !== sig[sigoffset]) return false;
+        break;
+      case "object": // Array of options
+        if (sig[sigoffset].indexOf(buf[pos]) < 0) return false;
+        break;
+      case "function": // More complex calculation
+        if (!sig[sigoffset](buf[pos])) return false;
+        break;
+      default:
+        throw new Error(`Unrecognised signature type at offset ${sigoffset}`);
     }
-    return true;
+  }
+  return true;
 }
-
 
 /**
  * Given a buffer, detects magic byte sequences at specific positions and returns the
@@ -103,36 +97,35 @@ function bytesMatch(sig, buf, offset=0) {
  * @returns {string} type.mime - Mime type
  * @returns {string} [type.desc] - Description
  */
-export function detectFileType(buf, categories=Object.keys(FILE_SIGNATURES)) {
-    if (buf instanceof ArrayBuffer) {
-        buf = new Uint8Array(buf);
+export function detectFileType(buf, categories = Object.keys(FILE_SIGNATURES)) {
+  if (buf instanceof ArrayBuffer) {
+    buf = new Uint8Array(buf);
+  }
+
+  if (!(buf && buf.length > 1)) {
+    return [];
+  }
+
+  const matchingFiles = [];
+  const signatures = {};
+
+  for (const cat in FILE_SIGNATURES) {
+    if (categories.includes(cat)) {
+      signatures[cat] = FILE_SIGNATURES[cat];
     }
+  }
 
-    if (!(buf && buf.length > 1)) {
-        return [];
-    }
+  for (const cat in signatures) {
+    const category = signatures[cat];
 
-    const matchingFiles = [];
-    const signatures = {};
-
-    for (const cat in FILE_SIGNATURES) {
-        if (categories.includes(cat)) {
-            signatures[cat] = FILE_SIGNATURES[cat];
-        }
-    }
-
-    for (const cat in signatures) {
-        const category = signatures[cat];
-
-        category.forEach(filetype => {
-            if (signatureMatches(filetype.signature, buf)) {
-                matchingFiles.push(filetype);
-            }
-        });
-    }
-    return matchingFiles;
+    category.forEach((filetype) => {
+      if (signatureMatches(filetype.signature, buf)) {
+        matchingFiles.push(filetype);
+      }
+    });
+  }
+  return matchingFiles;
 }
-
 
 /**
  * Given a buffer, searches for magic byte sequences at all possible positions and returns
@@ -148,49 +141,55 @@ export function detectFileType(buf, categories=Object.keys(FILE_SIGNATURES)) {
  * @returns {string} foundFiles.fileDetails.mime - Mime type
  * @returns {string} [foundFiles.fileDetails.desc] - Description
  */
-export function scanForFileTypes(buf, categories=Object.keys(FILE_SIGNATURES)) {
-    if (!(buf && buf.length > 1)) {
-        return [];
+export function scanForFileTypes(
+  buf,
+  categories = Object.keys(FILE_SIGNATURES),
+) {
+  if (!(buf && buf.length > 1)) {
+    return [];
+  }
+
+  const foundFiles = [];
+  const signatures = {};
+
+  for (const cat in FILE_SIGNATURES) {
+    if (categories.includes(cat)) {
+      signatures[cat] = FILE_SIGNATURES[cat];
     }
+  }
 
-    const foundFiles = [];
-    const signatures = {};
+  for (const cat in signatures) {
+    const category = signatures[cat];
 
-    for (const cat in FILE_SIGNATURES) {
-        if (categories.includes(cat)) {
-            signatures[cat] = FILE_SIGNATURES[cat];
-        }
-    }
+    for (let i = 0; i < category.length; i++) {
+      const filetype = category[i];
+      const sigs = filetype.signature.length
+        ? filetype.signature
+        : [filetype.signature];
 
-    for (const cat in signatures) {
-        const category = signatures[cat];
-
-        for (let i = 0; i < category.length; i++) {
-            const filetype = category[i];
-            const sigs = filetype.signature.length ? filetype.signature : [filetype.signature];
-
-            sigs.forEach(sig => {
-                let pos = 0;
-                while ((pos = locatePotentialSig(buf, sig, pos)) >= 0) {
-                    if (bytesMatch(sig, buf, pos)) {
-                        sendStatusMessage(`Found potential signature for ${filetype.name} at pos ${pos}`);
-                        foundFiles.push({
-                            offset: pos,
-                            fileDetails: filetype
-                        });
-                    }
-                    pos++;
-                }
+      sigs.forEach((sig) => {
+        let pos = 0;
+        while ((pos = locatePotentialSig(buf, sig, pos)) >= 0) {
+          if (bytesMatch(sig, buf, pos)) {
+            sendStatusMessage(
+              `Found potential signature for ${filetype.name} at pos ${pos}`,
+            );
+            foundFiles.push({
+              offset: pos,
+              fileDetails: filetype,
             });
+          }
+          pos++;
         }
+      });
     }
+  }
 
-    // Return found files in order of increasing offset
-    return foundFiles.sort((a, b) => {
-        return a.offset - b.offset;
-    });
+  // Return found files in order of increasing offset
+  return foundFiles.sort((a, b) => {
+    return a.offset - b.offset;
+  });
 }
-
 
 /**
  * Fastcheck function to quickly scan the buffer for the first byte in a signature.
@@ -201,27 +200,26 @@ export function scanForFileTypes(buf, categories=Object.keys(FILE_SIGNATURES)) {
  * @returns {number} The position of the match or -1 if one cannot be found.
  */
 function locatePotentialSig(buf, sig, offset) {
-    // Find values for first key and value in sig
-    const k = parseInt(Object.keys(sig)[0], 10);
-    const v = Object.values(sig)[0];
-    switch (typeof v) {
-        case "number":
-            return buf.indexOf(v, offset + k) - k;
-        case "object":
-            for (let i = offset + k; i < buf.length; i++) {
-                if (v.indexOf(buf[i]) >= 0) return i - k;
-            }
-            return -1;
-        case "function":
-            for (let i = offset + k; i < buf.length; i++) {
-                if (v(buf[i])) return i - k;
-            }
-            return -1;
-        default:
-            throw new Error("Unrecognised signature type");
-    }
+  // Find values for first key and value in sig
+  const k = parseInt(Object.keys(sig)[0], 10);
+  const v = Object.values(sig)[0];
+  switch (typeof v) {
+    case "number":
+      return buf.indexOf(v, offset + k) - k;
+    case "object":
+      for (let i = offset + k; i < buf.length; i++) {
+        if (v.indexOf(buf[i]) >= 0) return i - k;
+      }
+      return -1;
+    case "function":
+      for (let i = offset + k; i < buf.length; i++) {
+        if (v(buf[i])) return i - k;
+      }
+      return -1;
+    default:
+      throw new Error("Unrecognised signature type");
+  }
 }
-
 
 /**
  * Detects whether the given buffer is a file of the type specified.
@@ -231,25 +229,24 @@ function locatePotentialSig(buf, sig, offset) {
  * @returns {string|false} The mime type or false if the type does not match
  */
 export function isType(type, buf) {
-    const types = detectFileType(buf);
+  const types = detectFileType(buf);
 
-    if (!types.length) return false;
+  if (!types.length) return false;
 
-    if (typeof type === "string") {
-        return types.reduce((acc, t) => {
-            const mime = t.mime.startsWith(type) ? t.mime : false;
-            return acc || mime;
-        }, false);
-    } else if (type instanceof RegExp) {
-        return types.reduce((acc, t) => {
-            const mime = type.test(t.mime) ? t.mime : false;
-            return acc || mime;
-        }, false);
-    } else {
-        throw new Error("Invalid type input.");
-    }
+  if (typeof type === "string") {
+    return types.reduce((acc, t) => {
+      const mime = t.mime.startsWith(type) ? t.mime : false;
+      return acc || mime;
+    }, false);
+  } else if (type instanceof RegExp) {
+    return types.reduce((acc, t) => {
+      const mime = type.test(t.mime) ? t.mime : false;
+      return acc || mime;
+    }, false);
+  } else {
+    throw new Error("Invalid type input.");
+  }
 }
-
 
 /**
  * Detects whether the given buffer contains an image file.
@@ -258,9 +255,8 @@ export function isType(type, buf) {
  * @returns {string|false} The mime type or false if the type does not match
  */
 export function isImage(buf) {
-    return isType("image", buf);
+  return isType("image", buf);
 }
-
 
 /**
  * Attempts to extract a file from a data stream given its offset and extractor function.
@@ -274,14 +270,22 @@ export function isImage(buf) {
  * @returns {File}
  */
 export function extractFile(bytes, fileDetail, offset) {
-    if (fileDetail.extractor) {
-        sendStatusMessage(`Attempting to extract ${fileDetail.name} at pos ${offset}...`);
-        const fileData = fileDetail.extractor(bytes, offset);
-        const ext = fileDetail.extension.split(",")[0];
-        return new File([fileData], `extracted_at_0x${offset.toString(16)}.${ext}`, {
-            type: fileDetail.mime
-        });
-    }
+  if (fileDetail.extractor) {
+    sendStatusMessage(
+      `Attempting to extract ${fileDetail.name} at pos ${offset}...`,
+    );
+    const fileData = fileDetail.extractor(bytes, offset);
+    const ext = fileDetail.extension.split(",")[0];
+    return new File(
+      [fileData],
+      `extracted_at_0x${offset.toString(16)}.${ext}`,
+      {
+        type: fileDetail.mime,
+      },
+    );
+  }
 
-    throw new Error(`No extraction algorithm available for "${fileDetail.mime}" files`);
+  throw new Error(
+    `No extraction algorithm available for "${fileDetail.mime}" files`,
+  );
 }

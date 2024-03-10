@@ -3,7 +3,7 @@
 // Date: Sun, 14 Jan 2024
 // Second Author: Ryan Laf
 // Description:
-// Copyright (C) 2024 - Present, Laf-Tools.com and Codegen.cc
+// Copyright (C) 2024 - Present, laftools.dev and Codegen.cc
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as published by
