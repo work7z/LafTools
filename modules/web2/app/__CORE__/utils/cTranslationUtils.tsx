@@ -141,5 +141,9 @@ const TranslationUtils = {
   },
 };
 
+if (typeof window !== "undefined") {
+  window['c1_TranslationUtils'] = TranslationUtils
+}
+
 export default TranslationUtils;
 export const Dot = TranslationUtils.Dot;

@@ -68,7 +68,7 @@ i18njson.forEach((x) => {
 let processWithArg = async ({
   taskID: _taskID,
   eachRunItem,
-  disableLoadingDot = true,
+  handleFurtherLoadingDOT = true,
   allFiles,
 }) => {
   let taskID = _taskID;
@@ -76,14 +76,9 @@ let processWithArg = async ({
   let waitTranslateObj = {};
   // iterate all files
   for (let eachFile of allFiles) {
-    // let crtTaskId = latestTaskIdObj[eachRunItem.dir];
-    // if (crtTaskId != taskID) {
-    //   console.log("quit now1", crtTaskId, taskID, eachRunItem.dir);
-    //   return;
-    // }
     let file = getFile(eachFile); // replace with appropriate function
     let text = file.text();
-    if (!disableLoadingDot) {
+    if (handleFurtherLoadingDOT) {
       let loadDOTIdx = text.indexOf("loadDOT(");
       if (loadDOTIdx != -1) {
         let nextPartIdx = text.substring(loadDOTIdx).indexOf(")");
@@ -113,28 +108,14 @@ let processWithArg = async ({
       text = text.substring(match.index + match[0].length);
     }
   }
-  if (!disableLoadingDot) {
+  if (!handleFurtherLoadingDOT) {
     console.log("not disable loading Dot");
   }
   let waitArr = [];
   for (let eachLang of langarr) {
     await sleep(1000);
     let crtTaskId = latestTaskIdObj[eachRunItem.dir];
-    // console.log(
-    //   "checking taskid",
-    //   crtTaskId,
-    //   taskID,
-    //   disableLoadingDot,
-    //   crtTaskId != taskID,
-    // );
-    if (crtTaskId != taskID) {
-      // console.log(
-      //   "quit now",
-      //   crtTaskId,
-      //   taskID,
-      //   eachRunItem.dir,
-      //   latestTaskIdObj,
-      // );
+    if (crtTaskId != taskID && handleFurtherLoadingDOT) {
       return;
     }
     let outputLang = eachLang.replace("-", "_");
@@ -303,7 +284,7 @@ let scan = async (eachRunItem) => {
         taskID: crtTaskId,
         eachRunItem,
         allFiles,
-        disableLoadingDot: true,
+        handleFurtherLoadingDOT: true,
       });
     } catch (e) {
       console.log("err", e);
@@ -402,11 +383,6 @@ let entryForLoadingDOT = async () => {
         alreadyRunLoadingDOTObj[d] = 1;
         setTimeout(async () => {
           while (true) {
-            // let example = loadingDOTMapObj[file.filepath] = {
-            //   filepath: file.filepath,
-            //   scopeID,
-            //   targetDIR: eachRunItem.target,
-            // };
             let { scopeID, targetDIR, filepath, eachRunItem } = loadEachObj;
             let crtTaskId = latestTaskIdObj[eachRunItem.dir];
             if (!fs.existsSync(targetDIR)) {
@@ -432,7 +408,7 @@ let entryForLoadingDOT = async () => {
                 dir: null,
               },
               allFiles: [filepath],
-              disableLoadingDot: false,
+              handleFurtherLoadingDOT: false,
             });
             await sleep(1000);
           }

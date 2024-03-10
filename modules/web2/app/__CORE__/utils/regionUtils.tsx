@@ -16,8 +16,8 @@ let regionUtils = {
         return this.getUSHosts().includes(host)
     },
     isCurrentUserPossibleChinese(): boolean {
-        let arr = navigator.languages.map(x => x.toLowerCase())
-        return arr.includes("zh-cn") || arr.includes("zh-hk") || arr.includes("zh-tw") || arr.includes("zh")
+        let arr = navigator.languages
+        return arr.includes("zh-CN")
     }
 }
 

@@ -64,15 +64,6 @@ export default () => {
         SysInitStatus: val.system.SysInitStatus,
         ProgressBarValue: val.system.SysInitStatus.ProgressBarValue,
     }));
-    const dis = exportUtils.dispatch();
-
-    let run_init = () => {
-        dis(ACTION_callInitAllDataAtOnceFromInitSystemEnv());
-    };
-
-    useEffect(() => {
-        run_init();
-    }, [1]);
 
     // let statusList = [
     //     sysObj.SysInitStatus.IsLangPacksOK,

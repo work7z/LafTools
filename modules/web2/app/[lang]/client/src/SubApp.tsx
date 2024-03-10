@@ -69,23 +69,6 @@ function App() {
     },
   ];
 
-  // useEffect(() => {
-  //   let isDark = forgeObj.dark;
-  //   let rootClzForDark: string = CLZ_ROOT_DARK;
-  //   let rootClzForLight: string = CLZ_ROOT_LIGHT;
-  //   if (isDark) {
-  //     $("body,html")
-  //       .addClass(rootClzForDark)
-  //       .addClass("dark")
-  //       .removeClass(rootClzForLight);
-  //   } else {
-  //     $("body,html")
-  //       .removeClass(rootClzForDark)
-  //       .removeClass("dark")
-  //       .addClass(rootClzForLight);
-  //   }
-  // }, [forgeObj.dark]);
-
   let innerJSX: any;
   let isUserSignInNow =
     !forgeObj.HasUserSelectedOption ||

@@ -84,14 +84,6 @@ const InitSystemEnv = () => {
   }));
   const dis = eUtils.dispatch();
 
-  let run_init = () => {
-    dis(ACTION_callInitAllDataAtOnceFromInitSystemEnv());
-  };
-
-  useEffect(() => {
-    run_init();
-  }, [1]);
-
   return (
     <div className="pure-g">
       <div className="pure-u-3-5 marginauto">

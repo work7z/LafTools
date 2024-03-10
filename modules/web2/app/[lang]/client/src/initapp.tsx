@@ -1,6 +1,6 @@
-import ALL_NOCYCLE from "./nocycle.tsx";
+import ALL_NOCYCLE, { FN_GetDispatch } from "./nocycle.tsx";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider, useDispatch } from "react-redux";
 import SubApp from "./SubApp.tsx";
@@ -34,8 +34,14 @@ import {
     Redirect,
 } from "react-router-dom";
 import SystemLoadingBar from "./containers/SystemLoadingBar/index.tsx";
+import { ACTION_callInitAllDataAtOnceFromInitSystemEnv } from "./reducers/systemSlice.tsx";
+import _ from "lodash";
 
 ALL_NOCYCLE.store = store;
+
+let callInitOnce = _.once(() => {
+    FN_GetDispatch()(ACTION_callInitAllDataAtOnceFromInitSystemEnv());
+})
 
 export let useConstructedKeyAndInit = () => {
     let dis = useDispatch();
@@ -62,12 +68,14 @@ export let useConstructedKeyAndInit = () => {
 
         }
 
-        // Call the function once to handle the current color scheme
-        // handleColorScheme(matchMedia);
-
         // Listen for changes
         matchMedia.addListener(handleColorScheme);
     }, []);
+
+    useEffect(() => {
+        callInitOnce()
+    }, [1]);
+
 
     return constructedKey
 }
