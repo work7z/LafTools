@@ -13,6 +13,15 @@
 
 <i>Note: Ezt az oldalt a LafTools belsőleg hozta létre.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+A funkciók gyors használatához stabil online webhelyeket biztosítunk a különböző nyelvű felhasználók számára. A kisebb eszközök kivételével, amelyek támogatást igényelhetnek a helyi rendszertől, a legtöbb eszköz elérhető az interneten.
+
+Megjegyzés: A felhasználói élmény javítása érdekében két LafTools online webhelyet biztosítunk a különböző régiók számára. Ha instabilitást tapasztal a hozzáférés során, győződjön meg arról, hogy a régiójának megfelelő webhelyet választotta ki. Ha a probléma továbbra is fennáll, ne habozzon jelezni nekünk. Köszönöm!
+
+- 🇺🇸 Egyesült Államok: [laftools.dev](https://laftools.dev)
+- 🇨🇳 Csak Kína szárazföldi része: [laf-tools.com](https://laf-tools.com)
+
 # 💡 Bevezetés
 
 Felmerülhet benned a kérdés, miért vagyunk eltökéltek ennek az eszköztárnak a fejlesztése mellett, mivel az interneten számos eszköz használható. Valójában a legtöbb általunk biztosított eszköz könnyen megtalálható az interneten, például kodek, formázó, fordítás, QR-kód stb. Ezeknek az eszközöknek azonban nem ez a legkényelmesebb és leghatékonyabb módja.
@@ -46,7 +55,7 @@ Ha a fentiek bármelyikére igen a válasz, akkor fontolja meg eszköztárunk ki
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 Elkezdeni
+# 🚀 Elkezdeni
 
 ## 0. Refaktorálás
 

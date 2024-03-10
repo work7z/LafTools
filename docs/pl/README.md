@@ -13,6 +13,15 @@
 
 <i>Note: Ta strona jest generowana wewnętrznie przez LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+Aby szybko korzystać z tych funkcji, udostępniamy stabilne witryny internetowe użytkownikom w różnych lokalizacjach. Z wyjątkiem drobnych narzędzi, które mogą wymagać wsparcia z systemu lokalnego, większość narzędzi jest dostępna w Internecie.
+
+Uwaga Udostępniliśmy dwie witryny internetowe LafTools dla różnych regionów, aby poprawić komfort użytkowania. Jeśli podczas uzyskiwania dostępu napotkasz niestabilność, upewnij się, że wybrałeś witrynę właściwą dla swojego regionu. Jeśli problem będzie się powtarzał, nie wahaj się nas o tym poinformować. Dziękuję!
+
+- 🇺🇸 Zjednoczone państwo: [laftools.dev](https://laftools.dev)
+- 🇨🇳 Tylko Chiny kontynentalne: [laf-tools.com](https://laf-tools.com)
+
 # 💡 Wstęp
 
 Możesz się zastanawiać, dlaczego jesteśmy zdeterminowani opracować ten zestaw narzędzi, skoro w Internecie można korzystać z wielu narzędzi. Rzeczywiście, większość narzędzi, które udostępniliśmy, można łatwo znaleźć w Internecie, takich jak kodek, formater, tłumaczenie, kod QR itp. Jednak korzystanie z tych narzędzi nie jest najwygodniejszym i najskuteczniejszym podejściem.
@@ -46,7 +55,7 @@ Jeśli odpowiedź na którekolwiek z powyższych pytań brzmi „tak”, powinie
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 Pierwsze kroki
+# 🚀 Pierwsze kroki
 
 ## 0. Refaktoryzacja
 

@@ -13,6 +13,15 @@
 
 <i>Note: Diese Seite wird intern von LafTools generiert.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  Deutsch  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+Um diese Funktionen schnell nutzen zu können, stellen wir stabile Online-Websites für Benutzer in verschiedenen Regionen zur Verfügung. Mit Ausnahme kleinerer Tools, die möglicherweise Unterstützung von Ihrem lokalen System benötigen, sind die meisten Tools im Internet verfügbar.
+
+Hinweis: Wir haben zwei LafTools-Online-Websites für verschiedene Regionen bereitgestellt, um die Benutzererfahrung zu verbessern. Wenn Sie beim Zugriff auf Instabilität stoßen, stellen Sie bitte sicher, dass Sie die richtige Website für Ihre Region ausgewählt haben. Wenn das Problem weiterhin besteht, zögern Sie nicht, uns dies mitzuteilen. Danke schön!
+
+- 🇺🇸 Vereinigter Staat: [laftools.dev](https://laftools.dev)
+- 🇨🇳 Nur auf dem chinesischen Festland: [laf-tools.com](https://laf-tools.com)
+
 # 💡 Einführung
 
 Sie fragen sich vielleicht, warum wir entschlossen sind, diese Toolbox zu entwickeln, da es im Internet zahlreiche Tools gibt, die verwendet werden können. Tatsächlich sind die meisten von uns bereitgestellten Tools wie Codec, Formatierer, Übersetzung, QR-Code usw. leicht im Internet zu finden. Allerdings ist die Verwendung dieser Tools nicht die bequemste und effizienteste.
@@ -46,7 +55,7 @@ Wenn die Antwort auf eine der oben genannten Fragen „Ja“ lautet, sollten Sie
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 Erste Schritte
+# 🚀 Erste Schritte
 
 ## 0. Refactoring
 

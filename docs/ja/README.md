@@ -13,6 +13,15 @@
 
 <i>Note: このページは LafTools から内部的に生成されます。</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  日本語  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+これらの機能をすぐに使用できるように、さまざまなロケールのユーザーが使用できる安定したオンライン Web サイトを提供しています。ローカル システムからのサポートが必要なマイナー ツールを除いて、ほとんどのツールはインターネットで入手できます。
+
+ユーザー エクスペリエンスを向上させるために、さまざまな地域に 2 つの LafTools オンライン Web サイトを提供しました。アクセス中に不安定が発生した場合は、お住まいの地域に適した Web サイトを選択していることを確認してください。問題が解決しない場合は、ご遠慮なくお知らせください。ありがとう！
+
+- 🇺🇸 合衆国: [laftools.dev](https://laftools.dev)
+- 🇨🇳 中国本土のみ: [laf-tools.com](https://laf-tools.com)
+
 # 💡 導入
 
 インターネット上には多数のツールが使用できるのに、なぜこのツールボックスを開発することにしたのか疑問に思われるかもしれません。 実際、コーデック、フォーマッタ、翻訳、QR コードなど、当社が提供するほとんどのツールはインターネット上で簡単に見つけることができます。しかし、これらのツールを使用することは、最も快適で効率的なアプローチではありません。
@@ -46,7 +55,7 @@
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 はじめる
+# 🚀 はじめる
 
 ## 0. リファクタリング
 

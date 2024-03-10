@@ -13,12 +13,14 @@
 
 NOTE_FOR_GEN
 
-# ${Dot("\_6C-FTONT","Quick View")}
+# 🪄 ${Dot("\_6C-FTONT","Quick View")}
 
-${Dot("hD3CkluSd","To quickly use these functions, we're providing stable online websites for users in different locale to use. No worries, you can still download the release package to your local and use them for free.")}
+${Dot("hDekkSd","To quickly use these functions, we're providing stable online websites for users in different locale to use. Except for minor tools that might need support from your local system, most tools are available in our online websites.")}
 
-- ${Dot("72TTQ7cuT","United State")} [laftools.dev](https://laftools.dev)
-- ${Dot("Xm60tkeLe","China Mainland")} [laf-tools.com](https://laf-tools.com)
+${Dot("hDdekkSd","Noted We have provided two LafTools online websites for different regions to enhance user experience. If you encounter instability while accessing, please ensure you have selected the correct website for your region. If the problem persists, do not hesitate to let us know. Thank you!")}
+
+- 🇺🇸 ${Dot("usvss","United State")}: [laftools.dev](https://laftools.dev)
+- 🇨🇳 ${Dot("cnvss","China Mainland Only")}: [laf-tools.com](https://laf-tools.com)
 
 # 💡 ${Dot("JjpQy-eIq","Introduction")}
 
@@ -53,7 +55,7 @@ ${Dot("U6zkVUPTq","If the answer to any of the above is yes, then you should con
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview${extraLang}.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark${extraLang}.png?raw=true)
 
-# 🍀 ${Dot("AOKa_f9CC","Getting Started")}
+# 🚀 ${Dot("AOKa_f9CC","Getting Started")}
 
 ## 0. ${Dot("71DMQ0cOr","Refactoring")}
 

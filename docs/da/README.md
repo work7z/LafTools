@@ -13,6 +13,15 @@
 
 <i>Note: Denne side er genereret fra LafTools internt.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+For hurtigt at bruge disse funktioner tilbyder vi stabile onlinewebsteder, som brugere i forskellige lande kan bruge. Bortset fra mindre værktøjer, der muligvis har brug for support fra dit lokale system, er de fleste værktøjer tilgængelige på internettet.
+
+Bemærket Vi har leveret to LafTools online-websteder til forskellige regioner for at forbedre brugeroplevelsen. Hvis du støder på ustabilitet under adgangen, skal du sikre dig, at du har valgt det korrekte websted for din region. Hvis problemet fortsætter, så tøv ikke med at give os besked. Tak skal du have!
+
+- 🇺🇸 forenet stat: [laftools.dev](https://laftools.dev)
+- 🇨🇳 Kun Kinas fastland: [laf-tools.com](https://laf-tools.com)
+
 # 💡 Introduktion
 
 Du undrer dig måske over, hvorfor vi er fast besluttet på at udvikle denne værktøjskasse, da der er mange værktøjer, der kan bruges på internettet. Faktisk kan de fleste værktøjer, vi har leveret, nemt findes på internettet, såsom codec, formatering, oversættelse, QR-kode osv... Det er dog ikke den mest komfortable og effektive tilgang til at bruge disse værktøjer.
@@ -46,7 +55,7 @@ Hvis svaret på noget af ovenstående er ja, så bør du overveje at prøve vore
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 Kom godt i gang
+# 🚀 Kom godt i gang
 
 ## 0. Refaktorering
 

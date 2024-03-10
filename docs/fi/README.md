@@ -13,6 +13,15 @@
 
 <i>Note: Tämä sivu on luotu sisäisesti LafToolsista.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+Jotta voimme käyttää näitä toimintoja nopeasti, tarjoamme vakaita verkkosivustoja eri kielillä olevien käyttäjien käyttöön. Pieniä työkaluja lukuun ottamatta, jotka saattavat tarvita tukea paikalliselta järjestelmältäsi, useimmat työkalut ovat saatavilla Internetissä.
+
+Huomattu Olemme tarjonneet kaksi LafTools-verkkosivustoa eri alueille parantaaksemme käyttökokemusta. Jos kohtaat epävakautta käyttäessäsi, varmista, että olet valinnut alueellesi sopivan verkkosivuston. Jos ongelma jatkuu, älä epäröi kertoa meille. Kiitos!
+
+- 🇺🇸 Yhdysvallat: [laftools.dev](https://laftools.dev)
+- 🇨🇳 Vain Manner-Kiina: [laf-tools.com](https://laf-tools.com)
+
 # 💡 Johdanto
 
 Saatat ihmetellä, miksi olemme päättäneet kehittää tätä työkalupakkia, koska Internetissä voidaan käyttää lukuisia työkaluja. Useimmat tarjoamamme työkalut, kuten koodekki, muotoilija, käännös, QR-koodi jne., ovat todellakin helposti löydettävissä Internetistä... Se ei kuitenkaan ole mukavin ja tehokkain tapa käyttää näitä työkaluja.
@@ -46,7 +55,7 @@ Jos vastaus johonkin yllä olevista on kyllä, sinun kannattaa kokeilla työkalu
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 Päästä alkuun
+# 🚀 Päästä alkuun
 
 ## 0. Refaktorointi
 

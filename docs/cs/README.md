@@ -13,6 +13,15 @@
 
 <i>Note: Tato stránka je generována interně z LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+Pro rychlé použití těchto funkcí poskytujeme stabilní online webové stránky pro uživatele v různých národních prostředích. Kromě menších nástrojů, které mohou vyžadovat podporu z vašeho místního systému, je většina nástrojů dostupná na internetu.
+
+Poznámka Poskytli jsme dvě online webové stránky LafTools pro různé regiony, abychom zlepšili uživatelskou zkušenost. Pokud se při přístupu setkáte s nestabilitou, ujistěte se, že jste vybrali správnou webovou stránku pro váš region. Pokud problém přetrvává, neváhejte a dejte nám vědět. Děkuji!
+
+- 🇺🇸 spojený stát: [laftools.dev](https://laftools.dev)
+- 🇨🇳 Pouze pevninská Čína: [laf-tools.com](https://laf-tools.com)
+
 # 💡 Úvod
 
 Možná se divíte, proč jsme se rozhodli vyvinout tuto sadu nástrojů, protože na internetu lze použít mnoho nástrojů. Většinu nástrojů, které poskytujeme, lze skutečně snadno najít na internetu, jako je kodek, formátovač, překlad, QR kód atd... Není to však nejpohodlnější a nejefektivnější přístup k používání těchto nástrojů.
@@ -46,7 +55,7 @@ Pokud je odpověď na kteroukoli z výše uvedených otázek ano, měli byste zv
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 Začínáme
+# 🚀 Začínáme
 
 ## 0. Refaktoring
 

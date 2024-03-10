@@ -13,6 +13,15 @@
 
 <i>Note: Trang này được tạo từ nội bộ LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+Để nhanh chóng sử dụng các chức năng này, chúng tôi đang cung cấp các trang web trực tuyến ổn định cho người dùng ở các địa phương khác nhau sử dụng. Ngoại trừ những công cụ nhỏ có thể cần sự hỗ trợ từ hệ thống cục bộ của bạn, hầu hết các công cụ đều có sẵn trên Internet.
+
+Lưu ý Chúng tôi đã cung cấp hai trang web trực tuyến LafTools cho các khu vực khác nhau để nâng cao trải nghiệm người dùng. Nếu bạn gặp phải tình trạng mất ổn định khi truy cập, vui lòng đảm bảo rằng bạn đã chọn đúng trang web cho khu vực của mình. Nếu vấn đề vẫn tiếp diễn, đừng ngần ngại cho chúng tôi biết. Cảm ơn!
+
+- 🇺🇸 cộng hòa Liên bang: [laftools.dev](https://laftools.dev)
+- 🇨🇳 Chỉ Trung Quốc đại lục: [laf-tools.com](https://laf-tools.com)
+
 # 💡 Giới thiệu
 
 Bạn có thể thắc mắc tại sao chúng tôi quyết tâm phát triển hộp công cụ này vì có rất nhiều công cụ có thể được sử dụng trên Internet. Thật vậy, hầu hết các công cụ chúng tôi cung cấp đều có thể dễ dàng tìm thấy trên Internet, chẳng hạn như codec, bộ định dạng, dịch thuật, Mã QR, v.v… Tuy nhiên, đây không phải là cách tiếp cận thoải mái và hiệu quả nhất để sử dụng những công cụ này.
@@ -46,7 +55,7 @@ Nếu câu trả lời cho bất kỳ câu hỏi nào ở trên là có thì b�
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 Bắt đầu
+# 🚀 Bắt đầu
 
 ## 0. Tái cấu trúc
 

@@ -47,4 +47,4 @@ docker load -i ./m.tmp
 docker ps -a | grep laft-inst3 | awk '{print $1}' | xargs -I {} docker stop {}
 docker ps -a | grep laft-inst3 | awk '{print $1}' | xargs -I {} docker rm {}
 docker run --name laft-inst3 -d -p 0.0.0.0:80:39899 codegentoolbox/laftools-linux-x64:devops
-docker logs -f laft-inst3
+timeout 60 docker logs -f laft-inst3

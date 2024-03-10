@@ -13,6 +13,15 @@
 
 <i>Note: Bu sayfa dahili olarak LafTools'tan oluşturulmuştur.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+Bu işlevleri hızlı bir şekilde kullanabilmek için, farklı yerel ayarlardaki kullanıcıların kullanabileceği istikrarlı çevrimiçi web siteleri sağlıyoruz. Yerel sisteminizin desteğine ihtiyaç duyabilecek küçük araçlar dışında çoğu araç İnternette mevcuttur.
+
+Kullanıcı deneyimini geliştirmek amacıyla farklı bölgeler için iki LafTools çevrimiçi web sitesi sağladık. Erişim sırasında istikrarsızlıkla karşılaşırsanız lütfen bölgeniz için doğru web sitesini seçtiğinizden emin olun. Sorun devam ederse bize bildirmekten çekinmeyin. Teşekkür ederim!
+
+- 🇺🇸 Birleşik Devlet: [laftools.dev](https://laftools.dev)
+- 🇨🇳 Yalnızca Çin Anakarası: [laf-tools.com](https://laf-tools.com)
+
 # 💡 giriiş
 
 İnternette kullanılabilecek çok sayıda araç varken neden bu araç kutusunu geliştirmeye kararlı olduğumuzu merak edebilirsiniz. Aslında sunduğumuz codec, formatlayıcı, çeviri, QR Code vb. gibi araçların çoğu internette kolaylıkla bulunabilir. Ancak bu araçları kullanmak en rahat ve verimli yaklaşım değildir.
@@ -46,7 +55,7 @@ Yukarıdakilerden herhangi birine cevabınız evet ise araç kutumuzu denemeyi d
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 Başlarken
+# 🚀 Başlarken
 
 ## 0. Yeniden düzenleme
 

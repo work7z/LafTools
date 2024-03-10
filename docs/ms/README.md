@@ -13,6 +13,15 @@
 
 <i>Note: Halaman ini dihasilkan daripada LafTools secara dalaman.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+Untuk menggunakan fungsi ini dengan pantas, kami menyediakan tapak web dalam talian yang stabil untuk digunakan oleh pengguna di tempat yang berbeza. Kecuali alat kecil yang mungkin memerlukan sokongan daripada sistem setempat anda, kebanyakan alatan tersedia di Internet.
+
+Tercatat Kami telah menyediakan dua laman web dalam talian LafTools untuk wilayah yang berbeza untuk meningkatkan pengalaman pengguna. Jika anda menghadapi ketidakstabilan semasa mengakses, sila pastikan anda telah memilih tapak web yang betul untuk wilayah anda. Jika masalah berterusan, jangan teragak-agak untuk memberitahu kami. Terima kasih!
+
+- 🇺🇸 Amerika Syarikat: [laftools.dev](https://laftools.dev)
+- 🇨🇳 Tanah Besar China Sahaja: [laf-tools.com](https://laf-tools.com)
+
 # 💡 pengenalan
 
 Anda mungkin tertanya-tanya mengapa kami bertekad untuk membangunkan kotak alat ini kerana terdapat banyak alat yang boleh digunakan di Internet. Sememangnya, kebanyakan alatan yang kami sediakan boleh didapati dengan mudah di Internet, seperti codec, pemformat, terjemahan, Kod QR, dll... Walau bagaimanapun, ia bukanlah pendekatan yang paling selesa dan cekap untuk menggunakan alatan ini.
@@ -46,7 +55,7 @@ Jika jawapan kepada mana-mana di atas adalah ya, maka anda harus mempertimbangka
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 Bermula
+# 🚀 Bermula
 
 ## 0. Pemfaktoran semula
 

@@ -13,6 +13,15 @@
 
 <i>Note: 該頁面是由LafTools工具箱內部產生的。</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  繁體中文  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
+# 🪄 Quick View
+
+為了快速使用這些功能，我們提供了穩定的線上網站供不同地區的使用者使用。除了可能需要本機系統支援的小工具外，大多數工具都可以在 Internet 上取得。
+
+註：我們為不同地區提供了兩個LafTools工具箱線上網站，以增強使用者體驗。如果您在訪問時遇到不穩定的情況，請確保您選擇了適合您所在地區的正確網站。如果問題仍然存在，請隨時告訴我們。謝謝您！
+
+- 🇺🇸 海外版: [laftools.dev](https://laftools.dev)
+- 🇨🇳 國內版: [laf-tools.com](https://laf-tools.com)
+
 # 💡 介紹
 
 您可能想知道為什麼我們決心開發這個工具箱，因為網路上有很多工具可以使用。 確實，我們提供的大多數工具都可以在互聯網上輕鬆找到，例如編解碼器、格式化程式、翻譯、二維碼等……但是，使用這些工具並不是最舒適和最有效的方法。
@@ -46,7 +55,7 @@
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview.png?raw=true)
 ![](https://github.com/work7z/LafTools/blob/dev/devtools/images/preview-dark.png?raw=true)
 
-# 🍀 入門
+# 🚀 入門
 
 ## 0. 重構
 
