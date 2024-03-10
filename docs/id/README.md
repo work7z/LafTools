@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-Untuk menggunakan fungsi-fungsi ini dengan cepat, kami menyediakan situs web online yang stabil untuk digunakan oleh pengguna di lokasi berbeda. Kecuali alat-alat kecil yang mungkin memerlukan dukungan dari sistem lokal Anda, sebagian besar alat tersedia di Internet.
+To quickly use these functions, we've provided stable online website in CN and US region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 Tercatat Kami telah menyediakan dua situs web online LafTools untuk wilayah berbeda untuk meningkatkan pengalaman pengguna. Jika Anda mengalami ketidakstabilan saat mengakses, pastikan Anda telah memilih situs web yang benar untuk wilayah Anda. Jika masalah terus berlanjut, jangan ragu untuk memberi tahu kami. Terima kasih!
 

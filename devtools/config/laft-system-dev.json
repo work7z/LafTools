@@ -6,23 +6,6 @@
   "OutputDir": "$LAFTOOLS_ROOT/var/log",
   "Jobs": [
     {
-      "Name": "Copy Static Resources",
-      "Type": "CopyStatic",
-      "Commands": [
-        "bash",
-        "$LAFTOOLS_ROOT/modules/web/job-syncstatic.sh"
-      ]
-    },
-    {
-      "Name": "Run Tailwind DevTools",
-      "Type": "RunCommand",
-      "Disabled": true,
-      "Commands": [
-        "bash",
-        "$LAFTOOLS_ROOT/modules/web/job-tailwind.sh"
-      ]
-    },
-    {
       "Id": "scan_and_translation",
       "Name": "Scan and Translation",
       "Type": "RunCommand",
@@ -37,14 +20,6 @@
       "Commands": [
         "bash",
         "$LAFTOOLS_ROOT/pipeline/dev-add-license-to-each-file.sh"
-      ]
-    },
-    {
-      "Name": "Build Purejs Project",
-      "Type": "RunCommand",
-      "Commands": [
-        "bash",
-        "$LAFTOOLS_ROOT/modules/purejs/pipeline/job-sync-build-tsx.sh"
       ]
     }
   ]

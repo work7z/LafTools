@@ -1880,7 +1880,7 @@
   "Analyzed. Found {0} classes in the result. ": "分析完成。在结果中找到了{0}个类。",
   "Since v1.5.7, LafTools Online ToolBox will temporarily not support saving your data on the cloud, instead, we will save your data on your browser side. It means that you can enjoy complete features without having to sign in. Please be noted it didn't mean there's any security issue, the main reason is we need to ensure there's no illicit information being stored in our cloud database, and we have to accompany to the regulation of CSP . Don't worry, there's no data loss or breach issue, if you have your own data stored on Cloud ToolBox previously, and you want to retrieve them back, please contact us via E-Mail, and then we will provide it to you.": "从1.5.7版开始，LafTools在线工具箱将暂时不支持将您的数据保存在云上，而是将您的数据保存在您的浏览器数据上。这意味着您无需登录即可享受完整的功能。请注意，这并不意味着存在任何安全问题，主要原因是我们需要确保没有非法信息存储在我们的云数据库中，并且我们必须要遵守国内云服务商的监管要求。请不要担心，没有数据丢失或泄露的问题，如果您之前在云工具箱中存储了自己的数据，并且您想找回它们，请通过电子邮件联系我们，经过用户凭证校验核实，我们会提供给您。",
   "LafTools is working on it, moments please": "LafTools正在处理中，请稍等片刻",
-  "Quality First": "专注编程领域",
+  "High Quality First": "专注编程领域",
   "Forever FOSS!": "免费/安全/开源",
   "Cool! Everything is OK.": "太棒了！配置一切都很好。",
   "Flushed.": "已将结果输出",

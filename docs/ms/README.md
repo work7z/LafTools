@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-Untuk menggunakan fungsi ini dengan pantas, kami menyediakan tapak web dalam talian yang stabil untuk digunakan oleh pengguna di tempat yang berbeza. Kecuali alat kecil yang mungkin memerlukan sokongan daripada sistem setempat anda, kebanyakan alatan tersedia di Internet.
+To quickly use these functions, we've provided stable online website in CN and US region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 Tercatat Kami telah menyediakan dua laman web dalam talian LafTools untuk wilayah yang berbeza untuk meningkatkan pengalaman pengguna. Jika anda menghadapi ketidakstabilan semasa mengakses, sila pastikan anda telah memilih tapak web yang betul untuk wilayah anda. Jika masalah berterusan, jangan teragak-agak untuk memberitahu kami. Terima kasih!
 

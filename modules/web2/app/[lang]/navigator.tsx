@@ -88,7 +88,7 @@ export default (props: NavigatorPassProp) => {
                             // laftools.dev
                         }</div>
                         <div>•</div>
-                        <div className="small-text">{Dot("quality-first", "Quality First")}</div>
+                        <div className="small-text">{Dot("quality-first", "High Quality First")}</div>
                         <div>•</div>
                         <div className="small-text">{Dot("forever-foss", "Forever FOSS")}</div>
                     </h2>

@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-Jotta voimme käyttää näitä toimintoja nopeasti, tarjoamme vakaita verkkosivustoja eri kielillä olevien käyttäjien käyttöön. Pieniä työkaluja lukuun ottamatta, jotka saattavat tarvita tukea paikalliselta järjestelmältäsi, useimmat työkalut ovat saatavilla Internetissä.
+To quickly use these functions, we've provided stable online website in CN and US region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 Huomattu Olemme tarjonneet kaksi LafTools-verkkosivustoa eri alueille parantaaksemme käyttökokemusta. Jos kohtaat epävakautta käyttäessäsi, varmista, että olet valinnut alueellesi sopivan verkkosivuston. Jos ongelma jatkuu, älä epäröi kertoa meille. Kiitos!
 

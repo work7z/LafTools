@@ -13,6 +13,14 @@
       "args": ["server"],
       "internalConsoleOptions": "neverOpen"
     },
+    // npm run fe-extra 
+    {
+      "name": "Extra Jobs",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}",
+      "request": "launch",
+      "command": "npm run fe-extra"
+    },
     {
       "name": "Dev web2",
       "type": "node-terminal",

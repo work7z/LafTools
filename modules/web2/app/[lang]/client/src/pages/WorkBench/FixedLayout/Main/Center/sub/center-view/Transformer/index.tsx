@@ -245,30 +245,11 @@ export default (props: CommonTransformerProps) => {
     return <LoadingText></LoadingText>
   }
   if (loadingStatic) {
-    // let progressedRect = '▬'
-    // let progressedRectEmpty = '▭'
-    // let showTextSize = 50
-    // let progressedRectWidth = showTextSize
-    // let progressedRectEmptyWidth = showTextSize
-    // let progressedRectWidthRate = loadingProgressRate / 100 * progressedRectWidth
-    // let progressedRectEmptyWidthRate = progressedRectWidth - progressedRectWidthRate
-    // let progressedRectWithText = progressedRect.repeat(progressedRectWidthRate)
-    // let progressedRectEmptyWithText = progressedRectEmpty.repeat(progressedRectEmptyWidthRate)
-    // let loadingBarWithText = progressedRectWithText + progressedRectEmptyWithText
-    // "Loading resources, please be patient..."
-    // "Retrieving static resources, hold on..."
-    // "Fetching resources, please wait..."
-    // "Static resources are being loaded, please stand by..."
-    // "We're getting the resources ready for you, hang tight..."
-    // (loadingBarWithText) + '\n' +
     let pre = loadingProgressRate.toFixed(2)
     let b = pre.split('.')
     if (b.length == 1) {
       pre += '.00'
     }
-    // if (b[0].length == 1) {
-    //   pre = '0' + pre
-    // }
     desc = Dot("OqqGx2qg", "Loading the static resources, please wait...") + "\n" + (
       Dot("AkXgF", "In Progress: {0}%", pre)
     ) + "\n" + (

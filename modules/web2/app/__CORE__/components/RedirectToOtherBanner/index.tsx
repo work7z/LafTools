@@ -23,27 +23,40 @@ export let useLocalStorage = (key: string, initialValue: string): ReturnType => 
     return [value, setLocalStorageValue]
 }
 
+export let BannerWithText = (props: { link: string, text: string, onClick: any }) => {
+    return <div className={" bg-yellow-100 text-black p-1 text-xs text-center  border-b-[1px] " + border_clz}>
+        <div className="space-x-2">
+            <span className="font-semibold">
+                {props.text}
+            </span>
+            <a href={props.link}>Redirect</a>
+            <a href="#" onClick={() => {
+                props.onClick()
+            }}>Close</a>
+        </div>
+    </div>
+}
+
 export default (props) => {
 
-    let [read, setRead] = useLocalStorage("read-en-rntgFr", "false")
+    let [read, setRead] = useLocalStorage("readendtgFr", "false")
 
     if (read == 'true') {
         return ''
     }
-
-    if (regionUtils.isCurrentUserPossibleChinese() && regionUtils.isUSHost()) {
+    let isCNUser = regionUtils.isCurrentUserPossibleChinese()
+    if (!isCNUser && regionUtils.isCNHost()) {
         return (
-            <div className={" bg-yellow-100 text-black p-1 text-xs text-center  border-b-[1px] " + border_clz}>
-                <div className="space-x-2">
-                    <span className="font-semibold">
-                        切换至更稳定快速的国内版(Switch to CN region)
-                    </span>
-                    <a href={regionUtils.getCNHosts()[0]}>Redirect</a>
-                    <a href="#" onClick={() => {
-                        setRead("true")
-                    }}>Close</a>
-                </div>
-            </div>
+            <BannerWithText link={regionUtils.getUSHosts()[0]} text={"Switch to US region (Recommended)"} onClick={() => {
+                setRead("true")
+            }}></BannerWithText>
+        )
+    }
+    if (isCNUser && regionUtils.isUSHost()) {
+        return (
+            <BannerWithText link={regionUtils.getCNHosts()[0]} text={"切换至国内版，速度更快！(Switch to CN region)"} onClick={() => {
+                setRead("true")
+            }}></BannerWithText>
         )
     } else {
         return ''

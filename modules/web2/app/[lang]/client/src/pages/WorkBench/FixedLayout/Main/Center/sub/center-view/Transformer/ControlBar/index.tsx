@@ -177,6 +177,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
             icon: "console",
             intent: isColl ? "none" : "success",
             className: isColl ? "" : "btn-lime",
+            title: Dot("RzegarVx1", "Whehter to show output results separately"),
             onClick() {
                 onColl_output(!isCollapsed_output);
                 onColl_config(!isCollapsed_config);

@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-これらの機能をすぐに使用できるように、さまざまなロケールのユーザーが使用できる安定したオンライン Web サイトを提供しています。ローカル システムからのサポートが必要なマイナー ツールを除いて、ほとんどのツールはインターネットで入手できます。
+To quickly use these functions, we've provided stable online website in CN and US region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 ユーザー エクスペリエンスを向上させるために、さまざまな地域に 2 つの LafTools オンライン Web サイトを提供しました。アクセス中に不安定が発生した場合は、お住まいの地域に適した Web サイトを選択していることを確認してください。問題が解決しない場合は、ご遠慮なくお知らせください。ありがとう！
 

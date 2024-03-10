@@ -3,7 +3,7 @@ import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, T
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import { border_clz, light_border_clz_all, tw } from '@/app/[lang]/styles';
 import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
-import ToolsNavigator from './navigator';
+import ToolNav from './toolNav';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
 import ExtensionView from './extensionView'
@@ -20,7 +20,7 @@ export default () => {
         <div className='flex flex-row space-x-2'>
             <div className='flex-1  space-y-2'>
                 <Card {...getCardsProps()} className={light_border_clz_all}>
-                    <ToolsNavigator></ToolsNavigator>
+                    <ToolNav></ToolNav>
                     <CardBody className='p-0'>
                         <ExtensionView />
                     </CardBody>

@@ -24,7 +24,6 @@ export let useLocalStorage = (key: string, initialValue: string): ReturnType => 
 }
 
 export default (props) => {
-    debugger;
     if (regionUtils.isCurrentUserPossibleChinese()) {
         return regionUtils.getCNHosts()[0]
     } else {

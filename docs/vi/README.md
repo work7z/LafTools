@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-Để nhanh chóng sử dụng các chức năng này, chúng tôi đang cung cấp các trang web trực tuyến ổn định cho người dùng ở các địa phương khác nhau sử dụng. Ngoại trừ những công cụ nhỏ có thể cần sự hỗ trợ từ hệ thống cục bộ của bạn, hầu hết các công cụ đều có sẵn trên Internet.
+To quickly use these functions, we've provided stable online website in CN and US region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 Lưu ý Chúng tôi đã cung cấp hai trang web trực tuyến LafTools cho các khu vực khác nhau để nâng cao trải nghiệm người dùng. Nếu bạn gặp phải tình trạng mất ổn định khi truy cập, vui lòng đảm bảo rằng bạn đã chọn đúng trang web cho khu vực của mình. Nếu vấn đề vẫn tiếp diễn, đừng ngần ngại cho chúng tôi biết. Cảm ơn!
 

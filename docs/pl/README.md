@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-Aby szybko korzystać z tych funkcji, udostępniamy stabilne witryny internetowe użytkownikom w różnych lokalizacjach. Z wyjątkiem drobnych narzędzi, które mogą wymagać wsparcia z systemu lokalnego, większość narzędzi jest dostępna w Internecie.
+To quickly use these functions, we've provided stable online website in CN and US region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 Uwaga Udostępniliśmy dwie witryny internetowe LafTools dla różnych regionów, aby poprawić komfort użytkowania. Jeśli podczas uzyskiwania dostępu napotkasz niestabilność, upewnij się, że wybrałeś witrynę właściwą dla swojego regionu. Jeśli problem będzie się powtarzał, nie wahaj się nas o tym poinformować. Dziękuję!
 
