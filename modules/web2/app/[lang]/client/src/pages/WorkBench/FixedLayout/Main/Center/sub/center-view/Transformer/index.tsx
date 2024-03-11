@@ -55,6 +55,7 @@ import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../
 import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
 import ShowErrorPanel from "../../../../../../../../containers/ShowErrorPanel/index.tsx";
 import { useDispatch } from "react-redux";
+import Sidemenu from "./SideMenu/sidemenu.tsx";
 
 export type AppOptViewMode = "fixed" | "float"
 
@@ -299,7 +300,9 @@ export default (props: CommonTransformerProps) => {
       </Allotment>
     </div>
   </>
-  let app_left_jsx = <div>this is sidebar</div>
+  let app_left_jsx = <Sidemenu
+    crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}
+  />
   return (
     <div key={sessionId} className="w-full h-full relative">
       <Allotment vertical={false}>
