@@ -15,9 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've provided stable online website in CN and US region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
-
-Kullanıcı deneyimini geliştirmek amacıyla farklı bölgeler için iki LafTools çevrimiçi web sitesi sağladık. Erişim sırasında istikrarsızlıkla karşılaşırsanız lütfen bölgeniz için doğru web sitesini seçtiğinizden emin olun. Sorun devam ederse bize bildirmekten çekinmeyin. Teşekkür ederim!
+Bu işlevleri hızlı bir şekilde kullanabilmeniz için, CN ve ABD bölgesinde kullanmanız için istikrarlı bir çevrimiçi web sitesi sağladık. Belirli işletim sistemi özelliklerine dayanan bazı araçlar dışında çoğu araç çevrimiçi web sitelerimizde mevcuttur.
 
 - 🇺🇸 Birleşik Devlet: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Yalnızca Çin Anakarası: [laf-tools.com](https://laf-tools.com)

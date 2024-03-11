@@ -15,9 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've provided stable online website in CN and US region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
-
-Huomattu Olemme tarjonneet kaksi LafTools-verkkosivustoa eri alueille parantaaksemme käyttökokemusta. Jos kohtaat epävakautta käyttäessäsi, varmista, että olet valinnut alueellesi sopivan verkkosivuston. Jos ongelma jatkuu, älä epäröi kertoa meille. Kiitos!
+Jotta voit käyttää näitä toimintoja nopeasti, olemme tarjonneet sinulle vakaan online-sivuston CN:n ja Yhdysvaltojen alueella. Useimmat työkalut ovat saatavilla online-sivustoillamme lukuun ottamatta joitakin työkaluja, jotka perustuvat tiettyihin käyttöjärjestelmän ominaisuuksiin.
 
 - 🇺🇸 Yhdysvallat: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Vain Manner-Kiina: [laf-tools.com](https://laf-tools.com)

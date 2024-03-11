@@ -241,7 +241,7 @@ export const ACTION_getExample = (): any => {
 };
 
 /**
- * We dynamically load ts files, to reduce the bundle size of i18n files, we separately load them.
+ * We dynamically load ts files, to reduce the bundleF size of i18n files, we separately load them.
  * 
  * @param scopeID 
  */
@@ -280,8 +280,6 @@ export const ACTION_getLangData = (scopeIdIfHave?: string): any => {
           url: "/lang2client" + (scopeIdIfHave ? `/extra/${scopeIdIfHave}/` : "/") + currentLanguage + ".json?t=" + Date.now(),
         });
         logutils.debug("e.data", e.data);
-        // let data2 = TranslationUtils.ExtraMap;
-        // console.log('data2', data2)
         localStorage.setItem("lang-" + currentLanguage, JSON.stringify(e.data))
         dispatch(
           systemSlice.actions.updateLanguageValue({

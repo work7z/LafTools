@@ -17,8 +17,6 @@ NOTE_FOR_GEN
 
 ${Dot("hDekdxkSd","To quickly use these functions, we've provided stable online website in CN and US region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.")}
 
-${Dot("hDdekkSd","Noted We have provided two LafTools online websites for different regions to enhance user experience. If you encounter instability while accessing, please ensure you have selected the correct website for your region. If the problem persists, do not hesitate to let us know. Thank you!")}
-
 - 🇺🇸 ${Dot("usvss","United State")}: [laftools.dev](https://laftools.dev)
 - 🇨🇳 ${Dot("cnvss","China Mainland")}: [laf-tools.com](https://laf-tools.com)
 

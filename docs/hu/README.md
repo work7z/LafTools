@@ -15,9 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've provided stable online website in CN and US region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
-
-Megjegyzés: A felhasználói élmény javítása érdekében két LafTools online webhelyet biztosítunk a különböző régiók számára. Ha instabilitást tapasztal a hozzáférés során, győződjön meg arról, hogy a régiójának megfelelő webhelyet választotta ki. Ha a probléma továbbra is fennáll, ne habozzon jelezni nekünk. Köszönöm!
+A funkciók gyors használatához stabil online webhelyet biztosítunk a CN és az Egyesült Államok régiójában. A legtöbb eszköz elérhető online webhelyeinken, kivéve néhány olyan eszközt, amelyek az operációs rendszer adott képességeire támaszkodnak.
 
 - 🇺🇸 Egyesült Államok: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Csak Kína szárazföldi része: [laf-tools.com](https://laf-tools.com)

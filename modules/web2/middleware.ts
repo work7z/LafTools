@@ -81,7 +81,7 @@ export function middleware(request: NextRequest) {
   let thatHostname = request.nextUrl.hostname;
   requestHeaders.set("x-hostname", thatHostname);
   let finalLocaleObject: LocaleType =
-    thatHostname == "laf-tools.com" ? zhCNLocale : defaultLocale; // zhCNLocale; // by default, we use zh_CN
+    thatHostname == "laf-tools.com" ? zhCNLocale : enUSLocale; // zhCNLocale; // by default, we use zh_CN
   let a = request.nextUrl.search;
   requestHeaders.set("x-search", a);
 

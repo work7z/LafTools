@@ -46,10 +46,6 @@ let getCachedValueIfNot = (key: string, fn: () => string) => {
 }
 
 export default async function ClientPage(props: CombindSearchProps) {
-    let xlocale = getXLocaleStrInRSC()
-    // let xlocaleJSON = getCachedValueIfNot("langval-" + xlocale.langIni18n, () => {
-    //     return JSON.stringify(require("../../../public/static/lang2client/" + xlocale.langIni18n + ".json"))
-    // })
     return (
         <main>
             <EntryWrapper />

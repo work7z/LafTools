@@ -39,6 +39,10 @@ export let useTTT2 = function (ltID: string): (id: string, enText: string, ...ar
     // let [mapData, onMapData] = useState({})
     let [ctn, onCtn] = useState(0)
     useInitFunctionOnceOnly(() => {
+        if (crtLabelI18n === 'en_US') {
+            onCtn(ctn + 1)
+            return;
+        }
         fetch(`/static/lang/extra/${ltID}/${crtLabelI18n}.json?t=${Date.now()}`).then((v) => v.json()).then((v) => {
             // window['ok2'] = v;
             if (!TranslationUtils.LangMap[crtLabelI18n]) {
