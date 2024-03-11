@@ -51,7 +51,6 @@ const RuntimeStatusSlice = createSlice({
       action: PayloadAction<{ sessionId: string; value: ToolDefaultOutputType }>
     ) => {
       let { sessionId, value } = action.payload;
-      debugger;
       if (!state.toolOutputStatusMap[sessionId]) {
         state.toolOutputStatusMap[sessionId] = value;
       } else {

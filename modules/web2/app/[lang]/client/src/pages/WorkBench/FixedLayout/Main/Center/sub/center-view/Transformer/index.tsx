@@ -54,6 +54,7 @@ import { getInitValueForRuntimeStatus } from './init.tsx'
 import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../impl/tools/handler";
 import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
 import ShowErrorPanel from "../../../../../../../../containers/ShowErrorPanel/index.tsx";
+import { useDispatch } from "react-redux";
 
 export type AppOptViewMode = "fixed" | "float"
 
@@ -118,7 +119,6 @@ export default (props: CommonTransformerProps) => {
     return arr.map(x => `[${x.title}]\n${x.subTitle}`).join("\n\n")
   }
   let desc = fn_format_description(commonPassProp.toolHandler?.getMetaInfo().description)
-  // process fn
   logutils.debug("commonPassProp", commonPassProp)
   let fn_notifyTextChange = (fromTextInputEvent: boolean) => {
     if (fromTextInputEvent && crtRuntimeStatus?.autoRun != 'true') {
@@ -167,12 +167,10 @@ export default (props: CommonTransformerProps) => {
       console.error("fn_notifyTextChange failed")
     }
   }
-  // let crtOptMode: TextOptMode = "fixed"
   let crtOptMode: AppOptViewMode = ((): AppOptViewMode => {
     return "float"
   })()
   let isFixedMode = crtOptMode === "fixed"
-  let isFloatMode = !isFixedMode
   let [loadingStatic, setLoadingStatic] = useState(true)
   let [loadError, onLoadError] = useState<string | null>(null)
   let [loadingProgressRate, setLoadingProgressRate] = useState(0)
@@ -193,8 +191,6 @@ export default (props: CommonTransformerProps) => {
         // for CyberChef LEGACY CODE BEGIN
         window["_hash"] = null;
         // for CyberChef LEGACY CODE END
-
-
         onLoadError(null)
         setLoadingProgressRate(0)
         setLoadingStatic(true)
@@ -226,18 +222,18 @@ export default (props: CommonTransformerProps) => {
 
   let v = exportUtils.useSelector((v) => {
     return {
-      // show
       bottom_hide: v.layout.menuHide.bottom,
     };
   });
 
-
+  let dis = useDispatch()
   useEffect(() => {
-    FN_GetDispatch()(
-      RuntimeStatusSlice.actions.initAtOnceBySessionIdAndValue({
-        sessionId,
-        value: getInitValueForRuntimeStatus(),
-      }),
+    let b = RuntimeStatusSlice.actions.initAtOnceBySessionIdAndValue({
+      sessionId,
+      value: getInitValueForRuntimeStatus(),
+    })
+    dis(
+      b
     )
   }, [sessionId])
   let isCollapsed_config = fn_coll_config(sessionId);

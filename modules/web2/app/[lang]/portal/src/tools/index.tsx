@@ -23,10 +23,10 @@ import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, T
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import { border_clz, light_border_clz_all, tw } from '@/app/[lang]/styles';
 import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
-import ToolNav from './toolNav';
+import ToolNav from './nav';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ExtensionView from './extensionView'
+import ToolView from './view'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 export let getCardsProps = (): CardProps => {
     return {
@@ -42,7 +42,7 @@ export default () => {
                 <Card {...getCardsProps()} className={light_border_clz_all}>
                     <ToolNav></ToolNav>
                     <CardBody className='p-0'>
-                        <ExtensionView />
+                        <ToolView />
                     </CardBody>
                 </Card>
                 <Card {...getCardsProps()}>

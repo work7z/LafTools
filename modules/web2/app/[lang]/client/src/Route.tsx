@@ -62,9 +62,6 @@ import UserSlice from "./reducers/userSlice";
 import loadable from "@loadable/component";
 import LoadingText from "./components/LoadingText/index.js";
 
-// const LoadableComponent = loadable(() => import("./pages/WorkBench/FixedLayout/Main"), {
-//   fallback: <LoadingText/>
-// });
 
 gutils.ExposureIt("$", $);
 gutils.ExposureIt("gutils", gutils);

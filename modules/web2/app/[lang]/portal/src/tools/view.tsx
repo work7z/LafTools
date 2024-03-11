@@ -27,10 +27,12 @@ import { useRouter } from 'next/navigation'
 import ToolSingleView from '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/Center/sub/center-view/tools/ToolSingleView'
 import { Provider, useDispatch } from "react-redux";
 import { store } from '@/app/[lang]/client/src/store'
+import '@/app/[lang]/client/src/initapp'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp'
 import { VAL_CSS_MENU_TITLE_PANEL, border_clz, light_border_clz_all, tw } from '@/app/[lang]/styles'
 import { loadDOT } from '@/app/__CORE__/utils/i18n-types'
 import { Dot } from '@/app/__CORE__/utils/cTranslationUtils'
+import SmallScreenDetecter from '@/app/[lang]/client/src/SmallScreenDetecter'
 
 export type ExtensionViewProps = {
 
@@ -79,9 +81,10 @@ let Wrapper = (props: ExtensionViewProps) => {
 }
 
 export default (props: ExtensionViewProps) => {
-    return <div className='w-full h-full p-[5px] relative bg-slate-50 dark:bg-gray-700'>
+    return <div className='w-full h-full p-[5px] relative bg-slate-50 dark:bg-gray-900'>
         <Provider store={store}>
             <Wrapper {...props} />
+            <SmallScreenDetecter />
         </Provider>
     </div>
 }

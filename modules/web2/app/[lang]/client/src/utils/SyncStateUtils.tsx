@@ -146,25 +146,25 @@ let SyncStateUtils = {
       // }
     }
     // replace state
-    if (replaceState == null) {
-      let fn = _.get(SyncStateUtils.rootObj, [
-        eachReducerName,
-        "getInitialState",
-      ]) as any;
-      if (fn) {
-        replaceState = fn();
-      }
-    }
-    let t =
-      SyncStateUtils.rootObj &&
-      (SyncStateUtils.rootObj[eachReducerName] as any);
-    let replaceWithLatestState = _.get(
-      t,
-      "actions.replaceWithLatestState"
-    ) as any;
-    if (replaceWithLatestState) {
-      FN_GetDispatch()(replaceWithLatestState({ newState: replaceState }));
-    }
+    // if (replaceState == null) {
+    //   let fn = _.get(SyncStateUtils.rootObj, [
+    //     eachReducerName,
+    //     "getInitialState",
+    //   ]) as any;
+    //   if (fn) {
+    //     replaceState = fn();
+    //   }
+    // }
+    // let t =
+    //   SyncStateUtils.rootObj &&
+    //   (SyncStateUtils.rootObj[eachReducerName] as any);
+    // let replaceWithLatestState = _.get(
+    //   t,
+    //   "actions.replaceWithLatestState"
+    // ) as any;
+    // if (replaceWithLatestState) {
+    //   FN_GetDispatch()(replaceWithLatestState({ newState: replaceState }));
+    // }
   },
   notifyChanges(state, action_type: string) {
     // check if action_type starts with any one of the syncedReducerNames

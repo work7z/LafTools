@@ -142,13 +142,15 @@ func HandleExtraAction(cmd *cobra.Command, args []string) {
 
 			err := cmd.Start()
 			if err != nil {
-				log.InternalLog.Fatal(err)
+				log.InternalLog.Warn(err)
+				// log.InternalLog.Fatal(err)
 				// os.Exit(99)
 			}
 
 			err = cmd.Wait()
 			if err != nil {
-				log.InternalLog.Fatal(err)
+				log.InternalLog.Warn(err)
+				// log.InternalLog.Fatal(err)
 				// os.Exit(99)
 			}
 

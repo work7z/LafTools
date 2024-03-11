@@ -101,7 +101,6 @@ import exportUtils from "../../../../../../../../utils/ExportUtils";
 import forgeSlice, {
     ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
 } from "../../../../../../../../reducers/forgeSlice";
-import { ACTION_callRefreshAll } from "../../../../../../../../reducers/systemSlice";
 import {
     ID_FILES,
     ID_HISTORY as ID_MANUAL,
@@ -151,10 +150,6 @@ export default (props: ToolSingleViewProps) => {
     let val_ExtensionVM: ExtensionVM = {
         Layout: 'form'
     };
-
-    if (!val_ExtensionVM) {
-        return <LoadingText></LoadingText>
-    }
 
     let layoutMappings = {
         form: TextTransformer

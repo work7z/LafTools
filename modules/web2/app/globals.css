@@ -57,7 +57,9 @@
   font-size: 17px;
   font-family: unset;
 }
-
+body {
+  min-width: 1280px;
+}
 .app-minmax-size{
   /* min-width: 820px; */
   @apply lg:max-w-[1280px] max-w-[1200px];

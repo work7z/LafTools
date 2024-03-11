@@ -41,6 +41,7 @@ import AlertUtils from "./utils/AlertUtils";
 import SystemLoadingBar from "./containers/SystemLoadingBar";
 import { fmtURL_Client } from "@/app/__CORE__/utils/cRouteUtils";
 import { useTheme } from "next-themes";
+import SmallScreenDetecter from "./SmallScreenDetecter";
 
 function App() {
   let forgeObj = exportUtils.useSelector((val) => ({
@@ -103,16 +104,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    // if window size smaller than 1000, then alert
-    if (window.innerWidth < 800) {
-      AlertUtils.win_alert({
-        id: "3QF1S",
-        msg: Dot("8qzWJu", "Sorry, currently we haven't supported small screen device yet, please use PC to visit this page.")
-      })
-    }
-  }, [])
-
 
   // let langInPath = getFormattedLang(GetUserActualClientLang())
   // let basename = "/app/" + langInPath
@@ -137,6 +128,7 @@ function App() {
                 onKeyUp={handleKeyUp}
                 style={{ width: "100%", height: "100%" }}
               >
+                <SmallScreenDetecter />
                 <RouteComponent></RouteComponent>
                 <SystemAlertOrPrompt></SystemAlertOrPrompt>
               </div>
