@@ -49,7 +49,7 @@ export let BannerWithText = (props: { link: string, text: string, onClick: any }
             <span className="font-semibold">
                 {props.text}
             </span>
-            <a href={props.link}>Redirect</a>
+            <a href={'https://' + props.link}>Redirect</a>
             <a href="#" onClick={() => {
                 props.onClick()
             }}>Close</a>
@@ -74,7 +74,7 @@ export default (props) => {
     }
     if (isCNUser && regionUtils.isUSHost()) {
         return (
-            <BannerWithText link={regionUtils.getCNHosts()[0]} text={"切换至国内版，速度更快！(Switch to CN region)"} onClick={() => {
+            <BannerWithText link={regionUtils.getCNHosts()[0]} text={"切换至国内版，速度更快更稳定！(Switch to CN region)"} onClick={() => {
                 setRead("true")
             }}></BannerWithText>
         )

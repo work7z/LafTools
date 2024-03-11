@@ -61,11 +61,9 @@ body {
   min-width: 1280px;
 }
 .app-minmax-size{
-  /* min-width: 820px; */
-  @apply lg:max-w-[1280px] max-w-[1200px];
-  /* margin: 0 200px; */
-  /* @apply w-16 md:w-32 lg:w-48; */
-  /* @apply max-w-16 md:max-w-32 lg:w-48; */
+  @apply md:max-w-[1000px];
+  @apply xl:max-w-[1280px];
+  @apply 2xl:max-w-[1530px];
 }
 
 body {

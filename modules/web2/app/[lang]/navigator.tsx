@@ -163,7 +163,7 @@ export default (props: NavigatorPassProp) => {
                 </div>
             </div>
         </div>
-        <div className={' min-h-screen bg-slate-50 dark:bg-slate-800 pb-10'}>
+        <div className={'  bg-slate-50 dark:bg-slate-800 pb-10'}>
             <div className={row_pad_clz}>
                 <div className="flex flex-row flex-wrap py-2 items-center justify-between">
                     <div>

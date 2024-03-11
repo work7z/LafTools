@@ -49,7 +49,7 @@ let ToolTitlebar = (props) => {
     }}>
         <div>
             <a href="#">
-                {Dot("crZZ_WXlw", "View Relevant")}
+                {/* {Dot("crZZ_WXlw", "View Relevant")} */}
             </a>
         </div>
         <div className={`font-semibold top-[50%] translate-y-[-50%] absolute left-[50%] translate-x-[-50%]`}>
@@ -57,7 +57,7 @@ let ToolTitlebar = (props) => {
         </div>
         <div>
             <a href="#">
-                {Dot("438yFc2HZ", "Float this Tool")}
+                {/* {Dot("438yFc2HZ", "Float this Tool")} */}
             </a>
         </div>
     </div>
@@ -66,7 +66,7 @@ let ToolTitlebar = (props) => {
 let Wrapper = (props: ExtensionViewProps) => {
     d()
     let constructedKey = useConstructedKeyAndInit()
-    return <div className='w-full h-[650px]' >
+    return <div className='w-full h-[650px] xl:h-[800px]' >
         <ToolTitlebar extId="edc_base64" />
         <div
             style={{

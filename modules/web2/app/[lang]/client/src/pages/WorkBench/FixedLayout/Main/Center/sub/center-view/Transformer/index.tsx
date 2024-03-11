@@ -236,7 +236,7 @@ export default (props: CommonTransformerProps) => {
       b
     )
   }, [sessionId])
-  let isCollapsed_config = fn_coll_config(sessionId);
+  let disableSeparateOutputMode = fn_coll_config(sessionId);
   if (!crtRuntimeStatus) {
     return <LoadingText></LoadingText>
   }
@@ -264,42 +264,52 @@ export default (props: CommonTransformerProps) => {
       fn_notifyTextChange(true)
     }}
   ></GenCodeMirror>
+  let isCollapsed_config = disableSeparateOutputMode
+  // let processPanelItem = <Allotment.Pane>
+  //   <ProcessPanel disableSeparateOutputMode={disableSeparateOutputMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
+  // </Allotment.Pane>
+
   let processPanelItem = isCollapsed_config ? '' :
     <Allotment.Pane>
-      <ProcessPanel crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
+      <ProcessPanel disableSeparateOutputMode={false} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
     </Allotment.Pane>
   if (loadError) {
     return <ShowErrorPanel loadError={loadError}></ShowErrorPanel>
   }
+  let app_right_jsx = <>
+    <ControlBar
+      onProcess={() => {
+        fn_notifyTextChange(false)
+      }}
+      crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ControlBar>
+    <div
+      style={{
+        height: bodyHeight,
+      }}
+      className="w-full overflow-auto "
+    >
+      <Allotment
+        vertical={v.bottom_hide}
+        key={v.bottom_hide + ""}
+      >
+        <Allotment.Pane>
+          {codeMirrorItem}
+        </Allotment.Pane>
+        {processPanelItem}
+      </Allotment>
+    </div>
+  </>
+  let app_left_jsx = <div>this is sidebar</div>
   return (
     <div key={sessionId} className="w-full h-full relative">
-      <ControlBar
-        onProcess={() => {
-          fn_notifyTextChange(false)
-        }}
-        crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ControlBar>
-      <div
-        style={{
-          height: bodyHeight,
-        }}
-        className="w-full overflow-auto "
-      >
-        <Allotment
-          vertical={v.bottom_hide}
-          key={v.bottom_hide + ""}
-        // onRef={e => {
-        //   gutils.defer(() => {
-        //     e && e.reset();
-        //   });
-        // }}
-        >
-          <Allotment.Pane>
-            {codeMirrorItem}
-          </Allotment.Pane>
-          {processPanelItem
-          }
-        </Allotment>
-      </div>
+      <Allotment vertical={false}>
+        <Allotment.Pane preferredSize={230}>
+          {app_left_jsx}
+        </Allotment.Pane>
+        <Allotment.Pane>
+          {app_right_jsx}
+        </Allotment.Pane>
+      </Allotment>
     </div>
   );
 };

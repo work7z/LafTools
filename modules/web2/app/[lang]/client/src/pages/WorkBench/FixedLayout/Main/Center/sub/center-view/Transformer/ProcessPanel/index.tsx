@@ -49,7 +49,7 @@ import FormGenPanel, { FormGenItem } from "../../../../../../../../../components
 import Operation from "../../../../../../../../../impl/core/Operation.tsx";
 import { logutils } from "../../../../../../../../../utils/LogUtils";
 
-export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
+export default (props: { disableSeparateOutputMode: boolean } & CommonTransformerPassProp & TransformerWithRuntime) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
     let toolTabIndex = crtRuntimeStatus.toolTabIndex || "output"
     let sessionId = props.sessionId;
@@ -159,6 +159,13 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     } else if (toolTabIndex == 'code') {
         finalShowContent = <CodePanel {...props}></CodePanel>
     }
+    // useEffect(() => {
+    //     if (props.disableSeparateOutputMode) {
+    //         if (toolTabIndex == 'output') {
+    //             FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: "tools" }))
+    //         }
+    //     }
+    // }, [props.disableSeparateOutputMode, toolTabIndex])
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
     let shouldHideLeftTextInBar = !v.bottom_hide // when bottom is not hide, then hide left text
@@ -185,6 +192,8 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     ) + (
             crtRuntimeStatus.processing ? " animate-spin " : ""
         )} />
+
+
     return <div key={props.sessionId} className="h-full overflow-auto relative" style={{
         padding: '1px'
     }}>
@@ -236,11 +245,11 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
                     {
                         !toolHandler || toolHanlder?.getMetaInfo()?.hideCodePanel ? '' : <Tab id="code" icon="code" title={Dot("JQEVK", "Code")} />
                     }
-                    {/* <Tab id="wiki" icon="globe" title={"Wiki"} /> */}
-                    <Tab id="output" icon={
-                        crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "tick"
-                    } title={Dot("FjYbR", "Output")} />
-                    {/* <Tab id="history" icon="history" title={Dot("sHoxxW", "History")} /> */}
+                    {
+                        props.disableSeparateOutputMode ? '' : <Tab id="output" icon={
+                            crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "tick"
+                        } title={Dot("FjYbR", "Output")} />
+                    }
                 </Tabs>
             </Navbar.Group>
         </Navbar>
