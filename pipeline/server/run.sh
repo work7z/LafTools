@@ -2,10 +2,16 @@
 #!/bin/bash
 
 crtVersion=$1
+defaultLocale=$2
+portMapTo=$3
 if [ -z $crtVersion ]; then
     echo "[E] crtVersion is required."
     exit 1
 fi
+
+echo "[I] crtVersion: $crtVersion"
+echo "[I] defaultLocale: $defaultLocale"
+echo "[I] portMapTo: $portMapTo"
 
 cd ~/LafTools-dist
 # ctn=$(ls | wc -l)
@@ -44,9 +50,10 @@ cd ~/runtime/release
 mv $targetPkg m.tmp.gz
 gunzip ./m.tmp.gz
 docker load -i ./m.tmp
-docker ps -a | grep laft-inst3 | awk '{print $1}' | xargs -I {} docker stop {}
-docker ps -a | grep laft-inst3 | awk '{print $1}' | xargs -I {} docker rm {}
-docker run --name laft-inst3 -d -p 0.0.0.0:80:39899 codegentoolbox/laftools-linux-x64:devops
-timeout 60 docker logs -f laft-inst3
+containerName=laft-inst3
+docker ps -a | grep $containerName | awk '{print $1}' | xargs -I {} docker stop {}
+docker ps -a | grep $containerName | awk '{print $1}' | xargs -I {} docker rm {}
+docker run -e DFTLOCALE=$defaultLocale --name $containerName -d -p 0.0.0.0:$portMapTo:39899 codegentoolbox/laftools-linux-x64:devops 
+timeout 60 docker logs -f $containerName
 
 exit 0

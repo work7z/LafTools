@@ -1,12 +1,15 @@
 import { deleteCookie, getCookie } from "cookies-next";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-// import _ from "lodash";
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import queryString from "query-string";
 import i18nItems, { I18nItem } from "./app/__CORE__/config/i18n";
 
+let DFTLOCALE = process.env.DFTLOCALE;
+if (!DFTLOCALE) {
+  DFTLOCALE = "en_US";
+}
 let _ = {
   every: (a: any, b: any) => {
     return a.every(b);
@@ -27,11 +30,12 @@ export type LocaleType = {
 };
 let zhCNI18nItem = i18nItems.find((x) => x.Value === "zh_CN");
 let enUSI18nItem = i18nItems.find((x) => x.Value === "en_US");
-if (!zhCNI18nItem) {
-  throw new Error("zh_CN not found in i18nItems");
+let dftI18nItem = i18nItems.find((x) => x.Value === DFTLOCALE);
+if (!zhCNI18nItem || !enUSI18nItem) {
+  throw new Error("regular item not found, please check " + "");
 }
-if (!enUSI18nItem) {
-  throw new Error("en_US not found in i18nItems");
+if (!dftI18nItem) {
+  throw new Error("dft item not found, please check " + "");
 }
 let convertI18nItemToLocale = (i18nItem: I18nItem): LocaleType => {
   return {
@@ -43,11 +47,11 @@ let convertI18nItemToLocale = (i18nItem: I18nItem): LocaleType => {
 };
 export let zhCNLocale: LocaleType = convertI18nItemToLocale(zhCNI18nItem);
 export let enUSLocale: LocaleType = convertI18nItemToLocale(enUSI18nItem);
+export let dftLocale: LocaleType = convertI18nItemToLocale(dftI18nItem);
 export let all_locales: LocaleType[] = i18nItems.map((x) =>
   convertI18nItemToLocale(x),
 );
-let defaultLocale = enUSLocale; // default locale is zh_CN
-const locales_http = all_locales.map((x) => x.langInHttp);
+let defaultLocale = dftLocale; // default locale is passed from env
 const rever_locales_http = all_locales
   .map((x) => x.langInHttpArr)
   .reverse()
@@ -80,8 +84,7 @@ export function middleware(request: NextRequest) {
   requestHeaders.set("x-path", request.nextUrl.pathname);
   let thatHostname = request.nextUrl.hostname;
   requestHeaders.set("x-hostname", thatHostname);
-  let finalLocaleObject: LocaleType =
-    thatHostname == "laf-tools.com" ? zhCNLocale : enUSLocale; // zhCNLocale; // by default, we use zh_CN
+  let finalLocaleObject: LocaleType = dftLocale;
   let a = request.nextUrl.search;
   requestHeaders.set("x-search", a);
 
