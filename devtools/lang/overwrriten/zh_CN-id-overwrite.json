@@ -1,4 +1,6 @@
 {
+  "actions.list": "更多操作",
+  "workflow.label": "工作转换流",
   "usvss": "海外版",
   "cnvss": "国内版",
   "try.laftools.ide": "使用IDE风格的LafTools",
