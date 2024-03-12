@@ -65,7 +65,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
     if (!faqFn || faqArr.length == 0) {
         return <div className="p-2">{Dot("jgDoEq", "No FAQ Data")}</div>
     }
-    let infoURL = props.toolHandler?.getMetaInfo().infoURL
+    let infoURL = props.toolHandler?.getOperations()[0].getOptDetail()?.infoURL
     return <div className='p-2'>
         <div className="flex justify-between items-center mb-2 mt-0">
             <div>

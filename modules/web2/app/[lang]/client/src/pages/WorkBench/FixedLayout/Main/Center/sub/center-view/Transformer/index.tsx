@@ -49,9 +49,9 @@ import ProcessPanel from "./ProcessPanel/index.tsx";
 import { ACTION_Transformer_Process_Text, ACTION_Transformer_Process_Text_Delay } from "../../../../../../../../actions/transformer_action";
 import Operation from "../../../../../../../../impl/core/Operation.tsx";
 import gutils from "../../../../../../../../utils/GlobalUtils";
-import appToolInfoObj, { AppInfoType } from "../../../../../../../../impl/tools/info";
+import appToolInfoObj, { AppInfoType } from "../../../../../../../../impl/tools/d_meta.tsx";
 import { getInitValueForRuntimeStatus } from './init.tsx'
-import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../impl/tools/handler";
+import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../impl/tools/r_handler.tsx";
 import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
 import ShowErrorPanel from "../../../../../../../../containers/ShowErrorPanel/index.tsx";
 import { useDispatch } from "react-redux";
@@ -86,8 +86,8 @@ export default (props: CommonTransformerProps) => {
     }
   ): CommonTransformerPassProp => {
     let { crtRuntimeStatus, operaList } = obj;
-    let crtDefaultOperaId = crtRuntimeStatus && crtRuntimeStatus.defaultOperationId || (operaList && operaList[0] && operaList[0].id)
-    let crtDefaultOpera = _.find(operaList, x => x.id === crtDefaultOperaId)
+    let crtDefaultOperaId = crtRuntimeStatus && crtRuntimeStatus.defaultOperationId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id)
+    let crtDefaultOpera = _.find(operaList, x => x.getOptDetail()?.id === crtDefaultOperaId)
     return {
       ...props,
       toolHandler: operaRef.current,
@@ -103,6 +103,7 @@ export default (props: CommonTransformerProps) => {
   });
   let extVM = props.extVM
   let fn_format_description = (desc: string | undefined): string => {
+    let optDetail = commonPassProp.crtDefaultOpera?.getOptDetail()
     let arr: TitleSubPair[] = [
       {
         title: Dot("wcl1K", "Usage"),
@@ -114,7 +115,7 @@ export default (props: CommonTransformerProps) => {
       },
       {
         title: Dot("SYSq1", "Example"),
-        subTitle: Dot("GR7jK", "Type") + ": " + commonPassProp.crtDefaultOpera?.name + "\n" + Dot("vh9j4", "Input") + ": " + (commonPassProp.crtDefaultOpera?.exampleInput) + "\n" + Dot("dGKMx", "Output") + ": " + commonPassProp.crtDefaultOpera?.exampleOutput + ""
+        subTitle: Dot("GR7jK", "Type") + ": " + commonPassProp.crtDefaultOpera?.name + "\n" + Dot("vh9j4", "Input") + ": " + (optDetail?.exampleInput) + "\n" + Dot("dGKMx", "Output") + ": " + optDetail?.exampleOutput + ""
       }
     ]
     return arr.map(x => `[${x.title}]\n${x.subTitle}`).join("\n\n")
@@ -279,6 +280,7 @@ export default (props: CommonTransformerProps) => {
   }
   let app_right_jsx = <>
     <ControlBar
+      loadingStatic={loadingStatic}
       onProcess={() => {
         fn_notifyTextChange(false)
       }}

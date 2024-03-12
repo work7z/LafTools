@@ -25,7 +25,7 @@ import SyncStateUtils from "../utils/SyncStateUtils";
 import { ToolDefaultOutputType, Val_ToolTabIndex } from "../types/purejs-types-EXPORT";
 import _ from "lodash";
 import { Dot } from "../utils/cTranslationUtils";
-import { ProcessReturnType } from "../impl/tools/process";
+import { ProcessReturnType } from "../impl/tools/r_process";
 
 type RuntimeStatusState = {
   toolOutputStatusMap: {

@@ -42,9 +42,9 @@ import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSl
 
 import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ExtensionInfo, ToolCategory, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
-import fn_AppCategory from "@/app/[lang]/client/src/impl/tools/category/client";
+import fn_AppCategory from "@/app/[lang]/client/src/impl/tools/d_category";
 import { ListExtForTheCategoryRes } from "../../../../../../../../reducers/apiSlice";
-import appToolInfoObj from "@/app/[lang]/client/src/impl/tools/info";
+import appToolInfoObj from "@/app/[lang]/client/src/impl/tools/d_meta";
 import ActionButton from "../../../../../../../../components/ActionButton";
 import gutils from "../../../../../../../../utils/GlobalUtils";
 

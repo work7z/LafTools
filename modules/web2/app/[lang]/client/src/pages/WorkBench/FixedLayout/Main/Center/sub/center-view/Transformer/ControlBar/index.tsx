@@ -28,7 +28,7 @@ import CopyButton from "../../../../../../../../../components/CopyButton";
 import { ActionButtonProps } from "../../../../../../../../../components/ActionButton";
 
 
-let TextTransformerControl = (props: TextTransformerProps & TransformerWithRuntime & {
+let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransformerProps & TransformerWithRuntime & {
     onProcess: () => any;
 }) => {
     let { inputBigTextId } = props;
@@ -43,16 +43,19 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
         ...(
             operaList
         ).map(x => {
-            let isHighlightOne = x.id == crtDefaultOperaId;
+            let optDetail = x.getOptDetail()
+            let crtId = optDetail?.id;
+            let crtDesc = optDetail?.description
+            let crtName = optDetail?.name || x.name
+            let isHighlightOne = crtId == crtDefaultOperaId;
             return {
-                text: x.name,
+                text: crtName,
                 icon: 'derive-column',
                 intent: "primary",
-                title: x.description,
-                // afterTitle: Dot("CASef", "Okay, the operation is triggerred."),
-                afterTitle: x.description + "[" + Dot("gU1O2", "Triggerred") + "]",
+                title: crtDesc,
+                afterTitle: crtDesc + "[" + Dot("gU1O2", "Triggerred") + "]",
                 enableActionMode: true,
-                afterText: x.name,
+                afterText: crtName,
                 lastingTime: 800,
                 doNotBeMinimalWhenTrigger: true,
                 parentTriggered: parentTriggered,
@@ -64,7 +67,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
                         RuntimeStatusSlice.actions.updateValueInStatusMap({
                             sessionId,
                             obj: {
-                                defaultOperationId: x.id
+                                defaultOperationId: crtId
                             }
                         })
                     )
@@ -97,7 +100,7 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
             onClick: async () => {
                 try {
                     onLoadExample(true);
-                    let val: string = props.crtDefaultOpera?.exampleInput || ''
+                    let val: string = props.crtDefaultOpera?.getOptDetail()?.exampleInput || ''
                     if (_.isEmpty(val)) {
                         let r = await AjaxUtils.DoStaticRequest({
                             url: "/example/" + toolHandler?.getMetaInfo()?.exampleType + ".txt",
@@ -119,6 +122,11 @@ let TextTransformerControl = (props: TextTransformerProps & TransformerWithRunti
             },
         },
     ];
+    if (props.loadingStatic) {
+        leftActions.forEach(x => {
+            x.loading = true;
+        })
+    }
     let sessionId = props.sessionId;
     let isCollapsed_config = fn_coll_config(sessionId);
     let isCollapsed_output = fn_coll_output(sessionId);

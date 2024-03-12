@@ -21,7 +21,7 @@
 import Operation from "../core/Operation.tsx";
 import { CodeImplMap } from "./code/types.tsx";
 import { FAQItem } from "./faq/types.tsx";
-import appToolInfoObj from "./info.tsx";
+import appToolInfoObj from "./d_meta.tsx";
 
 export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-short" | "js-medium" | "css-short"
 
@@ -29,8 +29,7 @@ export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-s
 export type ToolMetaInfo = {
     hideCodePanel?: boolean;
     description: string;
-    infoURL: string;
-    exampleType: ShowExampleType
+    exampleType?: ShowExampleType
 }
 
 export abstract class ToolHandler {

@@ -26,7 +26,7 @@ import type {
   NodeReq,
   NodeRes,
   FlushIdValuePair,
-} from "../../purejs-types";
+} from "../purejs-types";
 import _ from "lodash";
 
 
@@ -69,12 +69,11 @@ export default (): ToolCategory[] => {
             "md2",
             "md4",
             "md5",
-            "md6"
-            // "sha1",
-            // "sha224",
-            // "sha256",
-            // "sha384",
-            // "sha512",
+            "md6",
+            "SHA0",
+            "SHA1",
+            "SHA2",
+            "SHA3",
           ],
         },
         {

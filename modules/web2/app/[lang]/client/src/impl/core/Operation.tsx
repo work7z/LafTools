@@ -39,12 +39,7 @@ export default abstract class Operation {
   checks: any[] = [];
 
   public name: string = "";
-  public id: string = "";
   public module: string = "";
-  public description: string = "";
-  public exampleInput: string = "";
-  public exampleOutput: string = "";
-  public infoURL: string | null = null;
 
   public abstract getOptDetail(): OptDetail | null;
 

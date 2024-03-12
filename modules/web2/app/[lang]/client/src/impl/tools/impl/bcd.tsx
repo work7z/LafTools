@@ -3,7 +3,7 @@ import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import Operation from "../../core/Operation.tsx";
 import FromBCD from "./conversion/FromBCD.tsx";
 import TOBCD from "./conversion/ToBCD.tsx";
-import { ToolHandler, ToolMetaInfo } from "../handler.tsx";
+import { ToolHandler, ToolMetaInfo } from "../r_handler.tsx";
 
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
@@ -13,7 +13,6 @@ export default class Base64Handler extends ToolHandler {
                 "6cOPZ",
                 "Binary-Coded Decimal (BCD) is a class of binary encodings of decimal numbers where each decimal digit is represented by a fixed number of bits, usually four or eight. Special bit patterns are sometimes used for a sign"
             ),
-            infoURL: 'https://wikipedia.org/wiki/Binary-coded_decimal'
         }
     }
     getOperations(): Operation[] {

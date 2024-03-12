@@ -1,7 +1,7 @@
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils.tsx";
 import Operation from "../../core/Operation.tsx";
 import fn from "./conversion/JavaScriptBeautify.tsx";
-import { ToolHandler, ToolMetaInfo } from "../handler.tsx";
+import { ToolHandler, ToolMetaInfo } from "../r_handler.tsx";
 
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
@@ -12,7 +12,6 @@ export default class Base64Handler extends ToolHandler {
                 "IxAJswoSh",
                 "Parses and pretty prints valid JavaScript code. Also works with JavaScript Object Notation (JSON).",
             ),
-            infoURL: "https://en.wikipedia.org/wiki/JavaScript",
         }
     }
     getOperations(): Operation[] {

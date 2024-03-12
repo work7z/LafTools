@@ -20,14 +20,14 @@
 
 import { FN_GetDispatch, FN_GetState } from "../nocycle";
 import RuntimeStatusSlice from "../reducers/runtimeStatusSlice";
-import LibProcessEntryPoint from '@/app/[lang]/client/src/impl/tools/process'
+import LibProcessEntryPoint from '@/app/[lang]/client/src/impl/tools/r_process'
 import { ExtensionVM } from "../types/purejs-types-READ_ONLY";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "./bigtext_action";
 import gutils from "../utils/GlobalUtils";
 import _ from "lodash";
 import moment from "moment";
 // import { ToolHandler } from "@/app/[lang]/client/src/impl/tools/handler";
-import { ToolHandler } from "@/app/[lang]/client/src/impl/tools/handler";
+import { ToolHandler } from "@/app/[lang]/client/src/impl/tools/r_handler";
 import { CommonTransformerPassProp } from "../types/workbench-types";
 import { logutils } from "../utils/LogUtils";
 window["moment"] = moment
@@ -57,8 +57,8 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
             logutils.warn("no available crtRuntimeStatus")
             return;
         }; // no runtime status
-        let crtDefaultOperaId = crtRuntimeStatus && crtRuntimeStatus.defaultOperationId || (operaList && operaList[0] && operaList[0].id)
-        let crtDefaultOpera = _.find(operaList, x => x.id === crtDefaultOperaId)
+        let crtDefaultOperaId = crtRuntimeStatus && crtRuntimeStatus.defaultOperationId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id || '')
+        let crtDefaultOpera = _.find(operaList, x => x.getOptDetail()?.id === crtDefaultOperaId)
         let beginTime = new Date().getTime()
         let checkId = _.uniqueId("")
         tmpLog[sessionId] = checkId

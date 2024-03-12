@@ -38,7 +38,7 @@ class FromBase32 extends Operation {
             infoURL: "https://en.wikipedia.org/wiki/Base32",
             // new
             id: 'frombase32',
-            name: Dot("rVqlu", "Decode {0}", "Base64"),
+            name: Dot("rVdu", "Decode {0}", "Base32"),
             description: Dot(
                 "JiUE8",
                 "This operation decodes data from an ASCII {0} string back into its raw format.",
@@ -60,7 +60,6 @@ class FromBase32 extends Operation {
 
         this.name = "From Base32";
         this.module = "Default";
-        this.description = "";
         this.inputType = "string";
         this.outputType = "byteArray";
 

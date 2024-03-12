@@ -26,6 +26,7 @@ import Operation from "../core/Operation.tsx";
 import Utils from "../core/Utils.mjs";
 import setupApp from "../setupApp.ts";
 import { sleep } from "@/app/[lang]/client/src/utils//SyncUtils.tsx";
+import DishBigNumber from "../core/dishTypes/DishBigNumber.mjs";
 // import ToBase64 from "./core/impl/ToBase64.js";
 setupApp();
 
@@ -33,6 +34,7 @@ export type ProcessReturnType = {
   result: string;
   error?: string;
 };
+
 
 let LibIndex = {
   process: async (
@@ -48,6 +50,14 @@ let LibIndex = {
       let input: any = originalValue;
       if (inst.inputType == "ArrayBuffer") {
         input = Utils.strToArrayBuffer(input);
+      }
+      if (inst.inputType == 'BigNumber') {
+        let arrayBuffer = Utils.strToArrayBuffer(input);
+        let pObj = {
+          value: arrayBuffer
+        }
+        DishBigNumber.fromArrayBuffer.bind(pObj)();
+        input = pObj.value;
       }
       // TODO: arg value should be coming from a model not form, it's just more convenient for now
       let argsValueArr = _.map(inst.args, (arg) => {
@@ -67,6 +77,7 @@ let LibIndex = {
       if (_.isNil(argsValueArr)) {
         argsValueArr = []
       }
+
       let result = inst.run(input, argsValueArr);
       if (inst.outputType == "ArrayBuffer") {
         result = Utils.arrayBufferToStr(result);
@@ -91,6 +102,5 @@ let LibIndex = {
     }
   },
 };
-// let ipt = Utils.strToArrayBuffer(originalValue);
 
 export default LibIndex;

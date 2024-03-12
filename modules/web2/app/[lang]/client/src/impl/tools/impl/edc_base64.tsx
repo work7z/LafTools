@@ -23,7 +23,7 @@ import Operation from "../../core/Operation.tsx";
 import FromBase64 from "./conversion/FromBase64";
 import ToBase64 from "./conversion/ToBase64";
 
-import { ToolHandler, ToolMetaInfo } from "../handler.tsx";
+import { ToolHandler, ToolMetaInfo } from "../r_handler.tsx";
 
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
@@ -33,7 +33,6 @@ export default class Base64Handler extends ToolHandler {
                 "0Ceqru",
                 "Base64 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers.",
             ),
-            infoURL: 'https://wikipedia.org/wiki/Base64'
         }
     }
     getOperations(): Operation[] {

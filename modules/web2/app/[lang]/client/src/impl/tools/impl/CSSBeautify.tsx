@@ -1,7 +1,7 @@
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils.tsx";
 import Operation from "../../core/Operation.tsx";
 import fn from "./conversion/CSSBeautify.tsx";
-import { ToolHandler, ToolMetaInfo } from "../handler.tsx";
+import { ToolHandler, ToolMetaInfo } from "../r_handler.tsx";
 
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
@@ -12,7 +12,6 @@ export default class Base64Handler extends ToolHandler {
                 "FYRoL",
                 "Indents and prettifies Cascading Style Sheets (CSS) code.",
             ),
-            infoURL: "https://developer.mozilla.org/en-US/docs/Web/CSS",
         }
     }
     getOperations(): Operation[] {

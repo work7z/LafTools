@@ -117,9 +117,10 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
                     )
                 },
                 selectList: (operList || []).map(x => {
+                    let optDetail = x.getOptDetail()
                     return {
-                        label: x.name,
-                        value: x.id
+                        label: optDetail?.name,
+                        value: optDetail?.id
                     } as LabelValuePair
                 })
             }
@@ -140,7 +141,7 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
     if (toolTabIndex == 'wiki') {
         pdValue = 'p-0'
         finalShowContent = <div className="w-full h-full overflow-auto">
-            <iframe src={toolHanlder?.getMetaInfo().infoURL} className="w-full h-full border-none outline-none"></iframe>
+            <iframe src={toolHanlder?.getOperations()[0].getOptDetail()?.infoURL} className="w-full h-full border-none outline-none"></iframe>
         </div>
     } else if (toolTabIndex == "tools") {
         finalShowContent = <FormGenPanel fixSingleColumn={!v.bottom_hide} list={generalList}></FormGenPanel >

@@ -1,7 +1,7 @@
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils.tsx";
 import Operation from "../../core/Operation.tsx";
 import fn from "./conversion/XMLMinify.tsx";
-import { ToolHandler, ToolMetaInfo } from "../handler.tsx";
+import { ToolHandler, ToolMetaInfo } from "../r_handler.tsx";
 
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
@@ -12,8 +12,6 @@ export default class Base64Handler extends ToolHandler {
                 "B-GCloBBt",
                 "Compresses eXtensible Markup Language (XML) code."
             ),
-            infoURL: // link for xml standard
-                "https://www.w3.org/TR/xml/"
         }
     }
     getOperations(): Operation[] {

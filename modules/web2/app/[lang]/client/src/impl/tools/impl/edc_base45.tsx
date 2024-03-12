@@ -3,7 +3,7 @@ import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils.tsx";
 import Operation from "../../core/Operation.tsx";
 import FromBase45 from "./conversion/FromBase45.tsx";
 import ToBase45 from "./conversion/ToBase45.tsx";
-import { ToolHandler, ToolMetaInfo } from "../handler.tsx";
+import { ToolHandler, ToolMetaInfo } from "../r_handler.tsx";
 
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
@@ -13,7 +13,6 @@ export default class Base64Handler extends ToolHandler {
                 "ciZV21",
                 "Base45 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers. The high number base results in shorter strings than with the decimal or hexadecimal system. Base45 is optimized for usage with QR codes.",
             ),
-            infoURL: 'https://wikipedia.org/wiki/List_of_numeral_systems'
         }
     }
     getOperations(): Operation[] {

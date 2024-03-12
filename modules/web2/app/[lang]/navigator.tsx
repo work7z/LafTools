@@ -57,6 +57,9 @@ export default (props: NavigatorPassProp) => {
     let leftCategoryArr = fn_leftCategoryArr()
     let rightCategoryArr = fn_rightCategoryArr()
     let hostname = getXHostname()
+    let isLocalname = (hostname: string) => {
+        return hostname == "localhost" || hostname == "127.0.0.1" || hostname == '0.0.0.0'
+    }
     return <div className="">
         <div className={
             border_clz + ' py-2 sticky top-0 bg-white dark:bg-slate-800 z-50'
@@ -81,12 +84,13 @@ export default (props: NavigatorPassProp) => {
                 <div>
                     <h1 className="text-lg m-0">{Dot("OyZLZokUQ", "Empower Development with LafTools!")}</h1>
                     <h2 className="text-xs pl-[2px] text-slate-600 dark:text-slate-300 mt-[-2px] mb-1 items-center m-0 space-x-1 flex flex-row ">
-                        <div>{
-                            getXHostname() == 'localhost' || getXHostname() == '127.0.0.1' ? (
-                                <PossiblePathname />
-                            ) : getXHostname()
-                            // laftools.dev
-                        }</div>
+                        <div>
+                            <PossiblePathname />
+                            {/* {
+                            isLocalname(hostname) ? (
+                            ) : hostname */}
+                            {/* } */}
+                        </div>
                         <div>•</div>
                         <div className="small-text">{Dot("quality-first", "High Quality First")}</div>
                         <div>•</div>

@@ -20,7 +20,7 @@
 
 import { OneOf } from "protobufjs";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
-import { ToolHandler, ToolHandlerClass } from "./handler";
+import { ToolHandler, ToolHandlerClass } from "./r_handler";
 import { FAQItem } from './faq/types'
 import _ from "lodash";
 import { CodeImplMap } from "./code/types";
@@ -42,9 +42,7 @@ export type AppInfoType = {
 let passInfo = (obj: AppInfoType): AppInfoType => {
     return obj;
 }
-let appToolInfoObj: {
-    [key: string]: AppInfoType
-} = {
+let appToolInfoObj = {
     "bcd": passInfo({
         LabelFn: () => Dot("1Xe8x7qe", "BCD")
     }),
@@ -114,11 +112,39 @@ let appToolInfoObj: {
     hex: passInfo({
         LabelFn: () => Dot("1Xe8wx7", "Hex String")
     }),
+    SHA0: passInfo({
+        LabelFn: () => "SHA-0"
+    }),
+    SHA1: passInfo({
+        LabelFn: () => "SHA-1"
+    }),
+    SHA2: passInfo({
+        LabelFn: () => "SHA-2"
+    }),
+    SHA3: passInfo({
+        LabelFn: () => "SHA-3"
+    }),
+    Tail: passInfo({
+        LabelFn: () => "Tail"
+    }),
+    RemoveWhitespace: passInfo({
+        LabelFn: () => Dot("1X8x7dqw", "Remove Whitespace")
+    }),
+    RemoveLineNumbers: passInfo({
+        LabelFn: () => Dot("1fd8x7dqw", "Remove Line Numbers")
+    }),
+    Reverse: passInfo({
+        LabelFn: () => Dot("-bk4oM9kj", "Reverse")
+    }),
+    CSVToJSON: passInfo({
+        LabelFn: () => Dot("1X8x7dqw", "CSV to JSON")
+    }),
     // Example
     "Example": passInfo({
         LabelFn: () => Dot("1X8x7", "Example")
     }),
-}
+} satisfies Record<string, AppInfoType>
+
 _.forEach(appToolInfoObj, (x, d, n) => {
     x.ImportImpl = () => import(`./impl/${d}.tsx`)
     x.ImportFAQ = () => import(`./faq/${d}.tsx`)
