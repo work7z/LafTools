@@ -1,4 +1,5 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
+
 // 
 // Date: Sat, 24 Feb 2024
 // Author:   
@@ -19,6 +20,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 export let tw = (x) => x
+
+export let CSS_BG_COLOR_WHITE = tw(` bg-white dark:bg-black `)
+
 export let row_pad_clz = tw`  app-minmax-size mx-auto `
 export let border_clz_top = tw`  border-t-slate-300 dark:border-t-slate-800 border-t-[1px]  `
 export let border_clz = tw`  border-b-slate-300 dark:border-b-slate-800 border-b-[1px]  `

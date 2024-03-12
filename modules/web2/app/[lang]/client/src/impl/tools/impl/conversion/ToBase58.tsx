@@ -26,7 +26,7 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import { ALPHABET_OPTIONS } from "../../../core/lib/Base58.mjs";
@@ -35,6 +35,20 @@ import { ALPHABET_OPTIONS } from "../../../core/lib/Base58.mjs";
  * To Base58 operation
  */
 class ToBase58 extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            id: 'base58',
+            infoURL: 'https://en.wikipedia.org/wiki/Base58',
+            name: Dot("M3qytc", "Encode {0}", "Base58"),
+            description: Dot(
+                "BGdd7dP9",
+                "This operation encodes raw data into an ASCII {0} string.",
+                "Base58"
+            ),
+            exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+            exampleOutput: "2NEpo7TZRRrLZSi2U",
+        }
+    }
 
     /**
      * ToBase58 constructor
@@ -43,16 +57,6 @@ class ToBase58 extends Operation {
         super();
 
         this.module = "Default";
-
-        this.id = 'base58'
-        this.name = Dot("M3qytc", "Encode {0}", "Base58");
-        this.description = Dot(
-            "BGdd7dP9",
-            "This operation encodes raw data into an ASCII {0} string.",
-            "Base58"
-        );
-        this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-        this.exampleOutput = "2NEpo7TZRRrLZSi2U";
 
 
         this.inputType = "ArrayBuffer";

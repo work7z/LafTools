@@ -26,13 +26,27 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import { runHash } from "../../../core/lib/Hash.mjs";
 
 /**
  * MD4 operation
  */
 class MD4 extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      id: 'md4',
+      name: Dot("md4.text.192d3", "Generate {0} Hash", "MD4"),
+      description: Dot(
+        "md4.desc.1039",
+        "This operation hashes data into an {0} hash.",
+        "MD4"
+      ),
+      infoURL: 'https://en.wikipedia.org/wiki/MD4',
+      exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+      exampleOutput: "b2a5cc34fc21a764ae2fad94d56fadf6",
+    }
+  }
   /**
    * MD4 constructor
    */
@@ -44,17 +58,6 @@ class MD4 extends Operation {
     this.inputType = "ArrayBuffer";
     this.outputType = "string";
     this.args = [];
-
-
-    this.id = 'md4'
-    this.name = Dot("md4.text.192d3", "Generate {0} Hash", "MD4");
-    this.description = Dot(
-      "md4.desc.1039",
-      "This operation hashes data into an {0} hash.",
-      "MD4"
-    );
-    this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD
-    this.exampleOutput = "b2a5cc34fc21a764ae2fad94d56fadf6";
 
   }
 

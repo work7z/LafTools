@@ -26,7 +26,7 @@
 
 import { toHex, TO_HEX_DELIM_OPTIONS } from "../../../core/lib/Hex.mjs";
 
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
 import { alphabetName, ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";
@@ -37,17 +37,24 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
  * To Hex operation
  */
 class ToHex extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      name: "To Hex",
+      id: 'tohex',
+      description:
+        "Converts the input string to hexadecimal bytes separated by the specified delimiter.<br><br>e.g. The UTF-8 encoded string <code>ÎÎµÎ¹Î¬ ÏÎ¿Ï</code> becomes <code>ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a</code>",
+      infoURL: "https://wikipedia.org/wiki/Hexadecimal",
+      exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+      exampleOutput: "ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a",
+    }
+  }
   /**
    * ToHex constructor
    */
   constructor() {
     super();
 
-    this.name = "To Hex";
     this.module = "Default";
-    this.description =
-      "Converts the input string to hexadecimal bytes separated by the specified delimiter.<br><br>e.g. The UTF-8 encoded string <code>Γειά σου</code> becomes <code>ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a</code>";
-    this.infoURL = "https://wikipedia.org/wiki/Hexadecimal";
     this.inputType = "ArrayBuffer";
     this.outputType = "string";
     this.args = [

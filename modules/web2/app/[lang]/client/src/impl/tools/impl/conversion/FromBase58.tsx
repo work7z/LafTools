@@ -26,7 +26,7 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import { ALPHABET_OPTIONS } from "../../../core/lib/Base58.mjs";
@@ -35,6 +35,26 @@ import { ALPHABET_OPTIONS } from "../../../core/lib/Base58.mjs";
  * From Base58 operation
  */
 class FromBase58 extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            infoURL: "https://en.wikipedia.org/wiki/Base58",
+            // new
+            id: 'frombase58',
+            name: Dot("L9qbQku", "Decode {0}", "Base58"),
+            description: Dot(
+                "JdqidUE8",
+                "This operation decodes data from an ASCII string (with an alphabet of your choosing, presets included) back into its raw form.",
+            ),
+            // example for base58
+
+            exampleOutput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+            exampleInput: "2NEpo7TZRRrLZSi2U",
+
+            // new
+
+
+        }
+    }
 
     /**
      * FromBase58 constructor
@@ -60,21 +80,6 @@ class FromBase58 extends Operation {
             }
         ];
 
-
-
-        // new
-        this.id = 'frombase58'
-        this.name = Dot("L9qbQku", "Decode {0}", "Base58");
-        this.description = Dot(
-            "JdqidUE8",
-            "This operation decodes data from an ASCII string (with an alphabet of your choosing, presets included) back into its raw form.",
-        );
-        // example for base58
-
-        this.exampleOutput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-        this.exampleInput = "2NEpo7TZRRrLZSi2U";
-
-        // new
 
 
 

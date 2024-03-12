@@ -24,14 +24,27 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import JSSHA3 from "js-sha3";
-import OperationError from "../errors/OperationError.mjs";
+import OperationError from "../../../core/errors/OperationError.mjs";
+import { Dot } from "@/app/__CORE__/utils/cTranslationUtils.tsx";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./constants.tsx";
 
 /**
  * SHA3 operation
  */
 class SHA3 extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      description:
+        Dot("OMrIvzpf5", "The SHA-3 (Secure Hash Algorithm 3) hash functions were released by NIST on August 5, 2015. Although part of the same series of standards, SHA-3 is internally quite different from the MD5-like structure of SHA-1 and SHA-2.<br><br>SHA-3 is a subset of the broader cryptographic primitive family Keccak designed by Guido Bertoni, Joan Daemen, Micha\xebl Peeters, and Gilles Van Assche, building upon RadioGat\xfan."),
+      infoURL: "https://wikipedia.org/wiki/SHA-3",
+      id: "sha3",
+      name: "SHA3",
+      exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+      exampleOutput: "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db022587179b985c200",
+    }
+  }
   /**
    * SHA3 constructor
    */
@@ -40,9 +53,6 @@ class SHA3 extends Operation {
 
     this.name = "SHA3";
     this.module = "Crypto";
-    this.description =
-      "The SHA-3 (Secure Hash Algorithm 3) hash functions were released by NIST on August 5, 2015. Although part of the same series of standards, SHA-3 is internally quite different from the MD5-like structure of SHA-1 and SHA-2.<br><br>SHA-3 is a subset of the broader cryptographic primitive family Keccak designed by Guido Bertoni, Joan Daemen, Micha\xebl Peeters, and Gilles Van Assche, building upon RadioGat\xfan.";
-    this.infoURL = "https://wikipedia.org/wiki/SHA-3";
     this.inputType = "ArrayBuffer";
     this.outputType = "string";
     this.args = [

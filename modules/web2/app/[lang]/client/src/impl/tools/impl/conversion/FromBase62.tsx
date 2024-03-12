@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import BigNumber from "bignumber.js";
 import Utils from "../../../core/Utils.mjs";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
@@ -35,6 +35,27 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
  * From Base62 operation
  */
 class FromBase62 extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            infoURL: "https://en.wikipedia.org/wiki/Base62",
+            // new
+            id: 'frombase58',
+            name: Dot("L9bQku", "Decode {0}", "Base62"),
+            description: Dot(
+                "JdqiUE8",
+                "This operation decodes data from an ASCII string (with an alphabet of your choosing, presets included) back into its raw form.",
+            ),
+            // example for from base62
+
+            exampleOutput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+            exampleInput: "T8dgcjRGkZ3aysdN",
+
+            // new
+
+
+
+        }
+    }
 
     /**
      * FromBase62 constructor
@@ -55,23 +76,6 @@ class FromBase62 extends Operation {
                 value: "0-9A-Za-z"
             }
         ];
-
-
-
-        // new
-        this.id = 'frombase58'
-        this.name = Dot("L9bQku", "Decode {0}", "Base62");
-        this.description = Dot(
-            "JdqiUE8",
-            "This operation decodes data from an ASCII string (with an alphabet of your choosing, presets included) back into its raw form.",
-        );
-        // example for from base62
-
-        this.exampleOutput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-        this.exampleInput = "T8dgcjRGkZ3aysdN";
-
-        // new
-
 
 
 

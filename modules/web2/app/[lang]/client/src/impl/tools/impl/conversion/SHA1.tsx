@@ -1,8 +1,7 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 //
 // Date: Sun, 14 Jan 2024
-// Author: LafTools Team - FX <work7z@outlook.com>
-// Ryan Laf <work7z@outlook.com>
+// Second Author: Ryan Laf
 // Description:
 // Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
 //
@@ -25,36 +24,32 @@
  * @license Apache-2.0
  */
 
-import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
-import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import { Dot } from "../../../../utils/cTranslationUtils.tsx";
 import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import { runHash } from "../../../core/lib/Hash.mjs";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./constants.tsx";
 
 /**
- * MD2 operation
+ * SHA1 operation
  */
-class MD2 extends Operation {
+class SHA1 extends Operation {
   public getOptDetail(): OptDetail | null {
     return {
-      infoURL: 'https://en.wikipedia.org/wiki/MD2_(cryptography)',
-      id: 'md2',
-      name: Dot("md2.text.192d3", "Generate {0} Hash", "MD2"),
-      description: Dot(
-        "md2.desc.1039",
-        "This operation hashes data into an {0} hash.",
-        "MD2"
-      ),
+      name: "SHA1",
+      id: 'sha1',
       exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
-      exampleOutput: "315f7c67223f01fb7cab4b95100e872e",
+      exampleOutput: "2ef7bde608ce5404e97d5f042f95f89f1c232871",
+      description:
+        Dot("B_ekZSOiu", "The SHA (Secure Hash Algorithm) hash functions were designed by the NSA. SHA-1 is the most established of the existing SHA hash functions and it is used in a variety of security applications and protocols.<br><br>However, SHA-1's collision resistance has been weakening as new attacks are discovered or improved. The message digest algorithm consists, by default, of 80 rounds."),
+      infoURL: "https://wikipedia.org/wiki/SHA-1"
     }
   }
   /**
-   * MD2 constructor
+   * SHA1 constructor
    */
   constructor() {
     super();
 
-    this.name = "MD2";
     this.module = "Crypto";
     this.inputType = "ArrayBuffer";
     this.outputType = "string";
@@ -62,12 +57,10 @@ class MD2 extends Operation {
       {
         name: "Rounds",
         type: "number",
-        value: 18,
-        min: 0,
+        value: 80,
+        min: 16,
       },
     ];
-
-
   }
 
   /**
@@ -76,8 +69,8 @@ class MD2 extends Operation {
    * @returns {string}
    */
   run(input, args) {
-    return runHash("md2", input, { rounds: args[0] });
+    return runHash("sha1", input, { rounds: args[0] });
   }
 }
 
-export default MD2;
+export default SHA1;

@@ -24,22 +24,32 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.tsx";
-import Utils from "../Utils.mjs";
+import { Dot } from "../../../../utils/cTranslationUtils.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
+import Utils from "../../../core/Utils.mjs";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./constants.tsx";
 
 /**
  * Reverse operation
  */
 class Reverse extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      id: 'reverse',
+      name: "Reverse",
+      infoURL: "https://en.wikipedia.org/wiki/Reverse_Polish_notation",
+      description: Dot("wmuD_KXJ2", "Reverses the input string."),
+      exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+      exampleOutput: "dlroW olleH",
+    }
+  }
   /**
    * Reverse constructor
    */
   constructor() {
     super();
 
-    this.name = "Reverse";
     this.module = "Default";
-    this.description = "Reverses the input string.";
     this.inputType = "byteArray";
     this.outputType = "byteArray";
     this.args = [
@@ -60,9 +70,9 @@ class Reverse extends Operation {
   run(input, args) {
     let i;
     if (args[0] === "Line") {
-      const lines = [];
-      let line = [],
-        result = [];
+      const lines: any = [];
+      let line: any = [],
+        result: any = [];
       for (i = 0; i < input.length; i++) {
         if (input[i] === 0x0a) {
           lines.push(line);

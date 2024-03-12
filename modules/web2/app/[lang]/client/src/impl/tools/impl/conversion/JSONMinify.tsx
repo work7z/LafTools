@@ -27,7 +27,7 @@
 import vkbeautify from "vkbeautify";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
@@ -36,6 +36,21 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * JSON Minify operation
  */
 class JSONMinify extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+
+      infoURL: 'https://www.json.org/',
+      id: 'json-minify',
+      name: Dot("meeMC1Uk7.text.93kq", "Minify {0}", "JSON"),
+      description: Dot(
+        "EO6Qv5dCA",
+        "Minifies JSON code, reduce the bundle size of your JSON code."
+      ),
+
+      exampleOutput: '{"unformatted":true,"data":[{"key1":"value1"},{"key2":"value2"}]}',
+      exampleInput: '{\n  "unformatted": true,\n  "data": [\n    {\n      "key1": "value1"\n    },\n    {\n      "key2": "value2"\n    }\n  ]\n}'
+    }
+  }
   /**
    * JSONMinify constructor
    */
@@ -47,17 +62,6 @@ class JSONMinify extends Operation {
     this.inputType = "string";
     this.outputType = "string";
     this.args = [];
-
-
-    this.id = 'json-minify'
-    this.name = Dot("meeMC1Uk7.text.93kq", "Minify {0}", "JSON")
-    this.description = Dot(
-      "EO6Qv5dCA",
-      "Minifies JSON code, reduce the bundle size of your JSON code."
-    )
-
-    this.exampleOutput = '{"unformatted":true,"data":[{"key1":"value1"},{"key2":"value2"}]}'
-    this.exampleInput = '{\n  "unformatted": true,\n  "data": [\n    {\n      "key1": "value1"\n    },\n    {\n      "key2": "value2"\n    }\n  ]\n}'
 
   }
 

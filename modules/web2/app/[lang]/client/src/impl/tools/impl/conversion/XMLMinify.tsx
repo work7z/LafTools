@@ -27,7 +27,7 @@
 import vkbeautify from "vkbeautify";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
@@ -36,13 +36,31 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * XML Minify operation
  */
 class XMLMinify extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      id: 'xml-minify',
+      name: Dot("yMZW-GEgf", "Format XML"),
+      infoURL: 'https://en.wikipedia.org/wiki/XML',
+      description: Dot(
+        "xml-bdeautify.desc.2a5f9",
+        "Minify XML Code"
+      ),
+      exampleOutput: `<unformatted>    <data>        <item1>value1</item1><item2>value2</item2>    </data></unformatted>`,
+      exampleInput: `<?xml version:"1.0" encoding:"UTF-8"?>
+<unformatted>
+    <data>
+        <item1>value1</item1>
+        <item2>value2</item2>
+    </data>
+</unformatted>`,
+    }
+  }
   /**
    * XMLMinify constructor
    */
   constructor() {
     super();
 
-    this.name = "XML Minify";
     this.module = "Code";
     this.inputType = "string";
     this.outputType = "string";
@@ -54,20 +72,6 @@ class XMLMinify extends Operation {
       },
     ];
 
-    this.id = 'xml-minify';
-    this.name = Dot("yMZW-GEgf", "Format XML");
-    this.description = Dot(
-      "xml-bdeautify.desc.2a5f9",
-      "Minify XML Code"
-    );
-    this.exampleOutput = `<unformatted>    <data>        <item1>value1</item1><item2>value2</item2>    </data></unformatted>`;
-    this.exampleInput = `<?xml version="1.0" encoding="UTF-8"?>
-<unformatted>
-    <data>
-        <item1>value1</item1>
-        <item2>value2</item2>
-    </data>
-</unformatted>`;
   }
 
   /**

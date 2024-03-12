@@ -24,22 +24,30 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.tsx";
+import { Dot } from "../../../../utils/cTranslationUtils.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 
 /**
  * Remove whitespace operation
  */
 class RemoveWhitespace extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      id: 'removewhitespace',
+      name: Dot("U-SKci0LP", "Remove whitespace"),
+      infoURL: "https://en.wikipedia.org/wiki/Whitespace_character",
+      description: Dot("8hlgTVznY", "Optionally removes all spaces, carriage returns, line feeds, tabs and form feeds from the input data.<br><br>This operation also supports the removal of full stops which are sometimes used to represent non-printable bytes in ASCII output."),
+      exampleInput: "Hello, world!",
+      exampleOutput: "Hello,world!",
+    }
+  }
   /**
    * RemoveWhitespace constructor
    */
   constructor() {
     super();
 
-    this.name = "Remove whitespace";
     this.module = "Default";
-    this.description =
-      "Optionally removes all spaces, carriage returns, line feeds, tabs and form feeds from the input data.<br><br>This operation also supports the removal of full stops which are sometimes used to represent non-printable bytes in ASCII output.";
     this.inputType = "string";
     this.outputType = "string";
     this.args = [

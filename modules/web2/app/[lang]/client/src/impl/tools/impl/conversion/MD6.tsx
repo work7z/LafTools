@@ -26,7 +26,7 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import NodeMD6 from "node-md6";
 
@@ -34,6 +34,20 @@ import NodeMD6 from "node-md6";
  * MD6 operation
  */
 class MD6 extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      infoURL: 'https://en.wikipedia.org/wiki/MD6',
+      id: 'md6',
+      name: Dot("md6.text.192d3", "Generate {0} Hash", "MD6"),
+      description: Dot(
+        "md6.desc.1039",
+        "This operation hashes data into an {0} hash.",
+        "MD6"
+      ),
+      exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+      exampleOutput: "6270a6d976267aa1224ac8d905dec46a96f6b62f6b6e9bb8085c2e946c1eb576",
+    }
+  }
   /**
    * MD6 constructor
    */
@@ -62,15 +76,6 @@ class MD6 extends Operation {
       },
     ];
 
-    this.id = 'md6'
-    this.name = Dot("md6.text.192d3", "Generate {0} Hash", "MD6");
-    this.description = Dot(
-      "md6.desc.1039",
-      "This operation hashes data into an {0} hash.",
-      "MD6"
-    );
-    this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD
-    this.exampleOutput = "6270a6d976267aa1224ac8d905dec46a96f6b62f6b6e9bb8085c2e946c1eb576";
   }
 
   /**

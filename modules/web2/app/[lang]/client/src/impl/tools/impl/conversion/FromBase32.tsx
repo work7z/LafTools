@@ -26,13 +26,31 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 
 /**
  * From Base32 operation
  */
 class FromBase32 extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            infoURL: "https://en.wikipedia.org/wiki/Base32",
+            // new
+            id: 'frombase32',
+            name: Dot("rVqlu", "Decode {0}", "Base64"),
+            description: Dot(
+                "JiUE8",
+                "This operation decodes data from an ASCII {0} string back into its raw format.",
+                "Base32"
+            ),
+            // example for base32
+            exampleInput: "JBSWY3DPEBLW64TMMQQQ::::",
+            exampleOutput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+            // new
+
+        }
+    }
 
     /**
      * FromBase32 constructor
@@ -45,22 +63,6 @@ class FromBase32 extends Operation {
         this.description = "";
         this.inputType = "string";
         this.outputType = "byteArray";
-
-
-
-        // new
-        this.id = 'frombase32'
-        this.name = Dot("rVqlu", "Decode {0}", "Base64");
-        this.description = Dot(
-            "JiUE8",
-            "This operation decodes data from an ASCII {0} string back into its raw format.",
-            "Base32"
-        );
-        // example for base32
-        this.exampleInput = "JBSWY3DPEBLW64TMMQQQ====";
-        this.exampleOutput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-        // new
-
 
 
         this.args = [

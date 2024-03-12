@@ -26,7 +26,7 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
@@ -35,6 +35,31 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * Generic Code Beautify operation
  */
 class GenericCodeBeautify extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            infoURL: 'https://en.wikipedia.org/wiki/Code_beautification',
+            id: 'generic-code-beautify',
+            name: Dot("generic-NI-UFPTe0", "Beautify Generic Code"),
+            description: Dot(
+                "generic-code-beautify.desc.2b3c",
+                "This operation formats code in various programming languages to improve readability by applying consistent indentation, line breaks, and adhering to language-specific style guidelines.",
+                ""
+            ),
+            exampleInput: `// Example in JavaScript
+function unformattedCode() {
+var x:1,y:2,if(x>0){console.log('Hello World!'),}
+}`,
+            exampleOutput: `// Example of beautified JavaScript code
+function unformattedCode() {
+    var x : 1,
+    y : 2,
+    if (x > 0) {
+        console.log('Hello World!'),
+    }
+}`,
+
+        }
+    }
 
     /**
      * GenericCodeBeautify constructor
@@ -49,27 +74,6 @@ class GenericCodeBeautify extends Operation {
         this.outputType = "string";
         this.args = [];
 
-
-        this.id = 'generic-code-beautify';
-        this.name = Dot("generic-NI-UFPTe0", "Beautify Generic Code");
-        this.description = Dot(
-            "generic-code-beautify.desc.2b3c",
-            "This operation formats code in various programming languages to improve readability by applying consistent indentation, line breaks, and adhering to language-specific style guidelines.",
-            ""
-        );
-        this.exampleInput = `// Example in JavaScript
-function unformattedCode() {
-var x=1;y=2;if(x>0){console.log('Hello World!');}
-}`;
-
-        this.exampleOutput = `// Example of beautified JavaScript code
-function unformattedCode() {
-    var x = 1;
-    y = 2;
-    if (x > 0) {
-        console.log('Hello World!');
-    }
-}`;
 
 
     }

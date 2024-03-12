@@ -27,7 +27,7 @@
 import vkbeautify from "vkbeautify";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
@@ -36,6 +36,19 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * SQL Minify operation
  */
 class SQLMinify extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      id: "sql-minify",
+      name: Dot("6wdtJ4vmg.name.0912", "Minify {0}", "SQL"),
+      description: Dot(
+        "LxaEFHbfa",
+        "Minifies SQL code, reduce the bundle size of your SQL code.",
+      ),
+      exampleInput: 'SELECT\n\t*\nFROM\n\ttable\nWHERE\n\tid = 1;',
+      exampleOutput: 'SELECT * FROM table WHERE id = 1;',
+      infoURL: "https://wiki.postgresql.org/wiki/Minifying_SQL",
+    }
+  }
   /**
    * SQLMinify constructor
    */
@@ -48,16 +61,6 @@ class SQLMinify extends Operation {
     this.outputType = "string";
     this.args = [];
 
-
-
-    this.id = "sql-minify";
-    this.name = Dot("6wdtJ4vmg.name.0912", "Minify {0}", "SQL");
-    this.description = Dot(
-      "LxaEFHbfa",
-      "Minifies SQL code, reduce the bundle size of your SQL code.",
-    )
-    this.exampleInput = 'SELECT\n\t*\nFROM\n\ttable\nWHERE\n\tid = 1;'
-    this.exampleOutput = 'SELECT * FROM table WHERE id = 1;'
 
   }
 

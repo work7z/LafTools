@@ -26,13 +26,27 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import { runHash } from "../../../core/lib/Hash.mjs";
 
 /**
  * MD5 operation
  */
 class MD5 extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      infoURL: 'https://en.wikipedia.org/wiki/MD5',
+      id: 'md5',
+      name: Dot("md5.textiDjMIo", "Generate {0} Hash", "MD5"),
+      description: Dot(
+        "md5.desc.rxsHq",
+        "This operation hashes data into an {0} hash.",
+        "MD5"
+      ),
+      exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+      exampleOutput: "ed076287532e86365e841e92bfc50d8c"
+    }
+  }
   /**
    * MD5 constructor
    */
@@ -46,15 +60,6 @@ class MD5 extends Operation {
     this.outputType = "string";
     this.args = [];
 
-    this.id = 'md5'
-    this.name = Dot("md5.textiDjMIo", "Generate {0} Hash", "MD5");
-    this.description = Dot(
-      "md5.desc.rxsHq",
-      "This operation hashes data into an {0} hash.",
-      "MD5"
-    );
-    this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD
-    this.exampleOutput = "ed076287532e86365e841e92bfc50d8c"
   }
 
   /**

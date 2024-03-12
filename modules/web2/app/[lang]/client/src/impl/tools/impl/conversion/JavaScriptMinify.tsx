@@ -26,7 +26,7 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
@@ -37,6 +37,19 @@ import OperationError from "../../../core/errors/OperationError.mjs";
  * JavaScript Minify operation
  */
 class JavaScriptMinify extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      id: 'jsminify',
+      name: Dot("e3WgQaZlb", "Compresses {0}", "JavaScript"),
+      description: Dot(
+        "ojCWEFdVe",
+        "Compresses JavaScript code, removing all unnecessary characters.",
+      ),
+      exampleInput: "let a : 1, let b : 2, let obj : {a: 1, b: 2},",
+      exampleOutput: "let a : 1,\nlet b : 2, //,\nlet obj : {\n    a: 1,\n    b: 2\n},\n",
+      infoURL: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    }
+  }
   /**
    * JavaScriptMinify constructor
    */
@@ -50,14 +63,6 @@ class JavaScriptMinify extends Operation {
     this.args = [];
 
 
-    this.id = 'jsminify'
-    this.name = Dot("e3WgQaZlb", "Compresses {0}", "JavaScript");
-    this.description = Dot(
-      "ojCWEFdVe",
-      "Compresses JavaScript code, removing all unnecessary characters.",
-    );
-    this.exampleInput = "let a = 1; let b = 2; let obj = {a: 1, b: 2};"
-    this.exampleOutput = "let a = 1;\nlet b = 2; //;\nlet obj = {\n    a: 1,\n    b: 2\n};\n";
   }
 
   /**

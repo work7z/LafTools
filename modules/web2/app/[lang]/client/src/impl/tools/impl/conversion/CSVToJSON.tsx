@@ -24,26 +24,34 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.tsx";
-import OperationError from "../errors/OperationError.mjs";
-import Utils from "../Utils.mjs";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
+import OperationError from "../../../core/errors/OperationError.mjs";
+import Utils from "../../../core/Utils.mjs";
+import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
+
 
 /**
  * CSV to JSON operation
  */
 class CSVToJSON extends Operation {
+  public getOptDetail(): OptDetail | null {
+
+    return {
+      id: "CSVToJSON",
+      name: Dot("tZINaUR4b", "CSV to JSON"),
+      description: Dot("raTAuBwBz", "Converts a CSV file to JSON format."),
+      infoURL: "https://wikipedia.org/wiki/Comma-separated_values",
+      exampleInput: '"Name, Age\\nJohn, 25\\nJane, 24"',
+      exampleOutput: '[{"Name": "John", "Age": "25"}, {"Name": "Jane", "Age": "24"}]',
+    }
+  }
   /**
    * CSVToJSON constructor
    */
   constructor() {
     super();
-
-    this.name = "CSV to JSON";
-    this.module = "Default";
-    this.description = "Converts a CSV file to JSON format.";
-    this.infoURL = "https://wikipedia.org/wiki/Comma-separated_values";
-    this.inputType = "string";
     this.outputType = "JSON";
+    this.inputType = "string";
     this.args = [
       {
         name: "Cell delimiters",
@@ -61,6 +69,7 @@ class CSVToJSON extends Operation {
         value: ["Array of dictionaries", "Array of arrays"],
       },
     ];
+
   }
 
   /**

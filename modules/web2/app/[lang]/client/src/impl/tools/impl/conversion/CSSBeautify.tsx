@@ -27,7 +27,7 @@
 import vkbeautify from "vkbeautify";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
@@ -36,6 +36,19 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * CSS Beautify operation
  */
 class CSSBeautify extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            id: 'cssbeautify',
+            name: Dot("Ol1ZcWomT", "{0} Beautify", "CSS"),
+            description: Dot(
+                "md2aO2NaJITm",
+                "Indents and prettifies Cascading Style Sheets (CSS) code, making it easier to read and understand.",
+            ),
+            infoURL: "https://www.w3.org/Style/CSS/",
+            exampleInput: "body{color:#fff;}",
+            exampleOutput: "body {\n\tcolor: #fff;\n}"
+        }
+    }
 
     /**
      * CSSBeautify constructor
@@ -43,9 +56,7 @@ class CSSBeautify extends Operation {
     constructor() {
         super();
 
-        this.name = "CSS Beautify";
         this.module = "Code";
-        // this.description = ;
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
@@ -55,17 +66,6 @@ class CSSBeautify extends Operation {
                 "value": "\\t"
             }
         ];
-
-
-
-        this.id = 'cssbeautify'
-        this.name = Dot("Ol1ZcWomT", "{0} Beautify", "CSS");
-        this.description = Dot(
-            "md2aO2NaJITm",
-            "Indents and prettifies Cascading Style Sheets (CSS) code, making it easier to read and understand.",
-        );
-        this.exampleInput = "body{color:#fff;}"
-        this.exampleOutput = "body {\n\tcolor: #fff;\n}";
 
     }
 

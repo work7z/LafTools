@@ -24,44 +24,43 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.tsx";
-import { runHash } from "../lib/Hash.mjs";
+import { Dot } from "../../../../utils/cTranslationUtils.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 
 /**
- * SHA0 operation
+ * Remove line numbers operation
  */
-class SHA0 extends Operation {
+class RemoveLineNumbers extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      id: 'removelinenumbers',
+      name: Dot("OrCD8PqwH", "Remove line numbers"),
+      infoURL: "https://en.wikipedia.org/wiki/Line_number",
+      description: Dot("Vc40-vfod", "Removes line numbers from the output if they can be trivially detected."),
+      exampleInput: "1. Hello\n2. World",
+      exampleOutput: "Hello\nWorld",
+    }
+  }
   /**
-   * SHA0 constructor
+   * RemoveLineNumbers constructor
    */
   constructor() {
     super();
 
-    this.name = "SHA0";
-    this.module = "Crypto";
-    this.description =
-      "SHA-0 is a retronym applied to the original version of the 160-bit hash function published in 1993 under the name 'SHA'. It was withdrawn shortly after publication due to an undisclosed 'significant flaw' and replaced by the slightly revised version SHA-1. The message digest algorithm consists, by default, of 80 rounds.";
-    this.infoURL = "https://wikipedia.org/wiki/SHA-1#SHA-0";
-    this.inputType = "ArrayBuffer";
+    this.module = "Default";
+    this.inputType = "string";
     this.outputType = "string";
-    this.args = [
-      {
-        name: "Rounds",
-        type: "number",
-        value: 80,
-        min: 16,
-      },
-    ];
+    this.args = [];
   }
 
   /**
-   * @param {ArrayBuffer} input
+   * @param {string} input
    * @param {Object[]} args
    * @returns {string}
    */
   run(input, args) {
-    return runHash("sha0", input, { rounds: args[0] });
+    return input.replace(/^[ \t]{0,5}\d+[\s:|\-,.)\]]/gm, "");
   }
 }
 
-export default SHA0;
+export default RemoveLineNumbers;

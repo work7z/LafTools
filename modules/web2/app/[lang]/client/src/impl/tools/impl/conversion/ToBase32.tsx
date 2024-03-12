@@ -26,13 +26,29 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 
 /**
  * To Base32 operation
  */
 class ToBase32 extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            // new
+            id: 'tobase32',
+            infoURL: "https://wikipedia.org/wiki/Base32",
+            name: Dot("M3ytc", "Encode {0}", "Base32"),
+            description: Dot(
+                "BGd7dP9",
+                "This operation encodes raw data into an ASCII {0} string.",
+                "Base32"
+            ),
+            exampleOutput: "JBSWY3DPEBLW64TMMQQQ::::",
+            exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+            // new
+        }
+    }
 
     /**
      * ToBase32 constructor
@@ -40,22 +56,9 @@ class ToBase32 extends Operation {
     constructor() {
         super();
 
-        this.name = "To Base32";
         this.module = "Default";
-        this.infoURL = "https://wikipedia.org/wiki/Base32";
         this.inputType = "ArrayBuffer";
         this.outputType = "string";
-        // new
-        this.name = Dot("M3ytc", "Encode {0}", "Base32");
-        this.description = Dot(
-            "BGd7dP9",
-            "This operation encodes raw data into an ASCII {0} string.",
-            "Base32"
-        );
-
-        this.exampleOutput = "JBSWY3DPEBLW64TMMQQQ====";
-        this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-        // new
         this.args = [
             {
                 name: "Alphabet",

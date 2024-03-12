@@ -25,7 +25,7 @@
  */
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import escodegen from "escodegen";
@@ -37,6 +37,19 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * JavaScript Beautify operation
  */
 class JavaScriptBeautify extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            id: 'jsbeautify',
+            infoURL: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+            name: Dot("6UICxHzVR.name", "Beautify {0}", "JavaScript"),
+            description: Dot(
+                "WFUWzv_px",
+                "Parses and pretty prints valid JavaScript code. Also works with JavaScript Object Notation (JSON).",
+            ),
+            exampleInput: "let a : 1, let b : 2, let obj : {a: 1, b: 2},",
+            exampleOutput: "let a : 1,\nlet b : 2, //,\nlet obj : {\n    a: 1,\n    b: 2\n},\n",
+        }
+    }
 
     /**
      * JavaScriptBeautify constructor
@@ -72,14 +85,6 @@ class JavaScriptBeautify extends Operation {
         ];
 
 
-        this.id = 'jsbeautify'
-        this.name = Dot("6UICxHzVR.name", "Beautify {0}", "JavaScript");
-        this.description = Dot(
-            "WFUWzv_px",
-            "Parses and pretty prints valid JavaScript code. Also works with JavaScript Object Notation (JSON).",
-        );
-        this.exampleInput = "let a = 1; let b = 2; let obj = {a: 1, b: 2};"
-        this.exampleOutput = "let a = 1;\nlet b = 2; //;\nlet obj = {\n    a: 1,\n    b: 2\n};\n";
     }
 
     /**

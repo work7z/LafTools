@@ -27,13 +27,29 @@
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import { ALPHABET, highlightToBase45, highlightFromBase45 } from "../../../core/lib/Base45.mjs";
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 
 /**
  * To Base45 operation
  */
 class ToBase45 extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            // new
+            infoURL: 'https://datatracker.ietf.org/doc/draft-faltstrom-base45/',
+            id: 'base45',
+            name: Dot("M3ytc", "Encode {0}", "Base45"),
+            description: Dot(
+                "BGd7dP9",
+                "This operation encodes raw data into an ASCII {0} string.",
+                "Base45"
+            ),
+            exampleOutput: "%69 VD82EI2B.KESTC",
+            exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+            // new
+        }
+    }
 
     /**
      * ToBase45 constructor
@@ -51,21 +67,6 @@ class ToBase45 extends Operation {
                 value: ALPHABET
             }
         ];
-
-        // new
-        this.id = 'base45'
-        this.name = Dot("M3ytc", "Encode {0}", "Base45");
-        this.description = Dot(
-            "BGd7dP9",
-            "This operation encodes raw data into an ASCII {0} string.",
-            "Base45"
-        );
-
-        this.exampleOutput = "%69 VD82EI2B.KESTC";
-        this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-
-        // new
-
 
         this.highlight = highlightToBase45;
         this.highlightReverse = highlightFromBase45;

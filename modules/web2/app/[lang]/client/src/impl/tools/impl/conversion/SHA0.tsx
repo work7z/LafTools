@@ -24,24 +24,33 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation.tsx";
-import { runHash } from "../lib/Hash.mjs";
+import { Dot } from "@/app/__CORE__/utils/cTranslationUtils.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
+import { runHash } from "../../../core/lib/Hash.mjs";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./constants.tsx";
 
 /**
- * SHA1 operation
+ * SHA0 operation
  */
-class SHA1 extends Operation {
+class SHA0 extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      name: "SHA0",
+      id: 'sha0',
+      description:
+        Dot("LgJAz6Xwr", "SHA-0 is a retronym applied to the original version of the 160-bit hash function published in 1993 under the name 'SHA'. It was withdrawn shortly after publication due to an undisclosed 'significant flaw' and replaced by the slightly revised version SHA-1. The message digest algorithm consists, by default, of 80 rounds."),
+      infoURL: "https://wikipedia.org/wiki/SHA-1#SHA-0",
+      exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+      exampleOutput: "2ef7bde608ce5404e97d5f042f95f89f1c232871"
+    }
+  }
   /**
-   * SHA1 constructor
+   * SHA0 constructor
    */
   constructor() {
     super();
 
-    this.name = "SHA1";
     this.module = "Crypto";
-    this.description =
-      "The SHA (Secure Hash Algorithm) hash functions were designed by the NSA. SHA-1 is the most established of the existing SHA hash functions and it is used in a variety of security applications and protocols.<br><br>However, SHA-1's collision resistance has been weakening as new attacks are discovered or improved. The message digest algorithm consists, by default, of 80 rounds.";
-    this.infoURL = "https://wikipedia.org/wiki/SHA-1";
     this.inputType = "ArrayBuffer";
     this.outputType = "string";
     this.args = [
@@ -60,8 +69,8 @@ class SHA1 extends Operation {
    * @returns {string}
    */
   run(input, args) {
-    return runHash("sha1", input, { rounds: args[0] });
+    return runHash("sha0", input, { rounds: args[0] });
   }
 }
 
-export default SHA1;
+export default SHA0;

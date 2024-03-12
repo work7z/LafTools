@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
 import { ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";
@@ -35,6 +35,28 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
  * From Base85 operation
  */
 class FromBase85 extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+
+
+            // new
+            id: 'frombase85',
+            infoURL: "https://en.wikipedia.org/wiki/Ascii85",
+            name: Dot("rVqlu", "Decode {0}", "Base85"),
+            description: Dot(
+                "wj3VS",
+                "This operation decodes data from an ASCII {0} string back into its raw format.",
+                "Base85"
+            ),
+
+
+
+            exampleOutput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+            exampleInput: "87cURD]i,\"Ebo80",
+            // new
+
+        }
+    }
 
     /**
      * From Base85 constructor
@@ -50,22 +72,6 @@ class FromBase85 extends Operation {
         this.outputType = "byteArray";
 
 
-
-
-        // new
-        this.id = 'frombase85'
-        this.name = Dot("rVqlu", "Decode {0}", "Base85");
-        this.description = Dot(
-            "wj3VS",
-            "This operation decodes data from an ASCII {0} string back into its raw format.",
-            "Base85"
-        );
-
-
-
-        this.exampleOutput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-        this.exampleInput = "87cURD]i,\"Ebo80";
-        // new
 
 
 

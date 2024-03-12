@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
 import { alphabetName, ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";
@@ -35,6 +35,20 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
  * To Base85 operation
  */
 class ToBase85 extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            id: 'tobase85',
+            infoURL: 'https://en.wikipedia.org/wiki/Ascii85',
+            name: Dot("M3ytc", "Encode {0}", "Base85"),
+            description: Dot(
+                "nodBw",
+                "This operation encodes raw data into an ASCII {0} string.",
+                "Base85"
+            ),
+            exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+            exampleOutput: "87cURD]i,\"Ebo80",
+        }
+    }
 
     /**
      * To Base85 constructor
@@ -42,8 +56,6 @@ class ToBase85 extends Operation {
     constructor() {
         super();
 
-        this.id = 'tobase85'
-        this.name = "To Base85";
         this.module = "Default";
         this.inputType = "ArrayBuffer";
         this.outputType = "string";
@@ -60,17 +72,6 @@ class ToBase85 extends Operation {
             }
         ];
 
-
-        this.id = 'tobase85'
-        this.name = Dot("M3ytc", "Encode {0}", "Base85");
-        this.description = Dot(
-            "nodBw",
-            "This operation encodes raw data into an ASCII {0} string.",
-            "Base85"
-        );
-        this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-
-        this.exampleOutput = "87cURD]i,\"Ebo80";
 
     }
 

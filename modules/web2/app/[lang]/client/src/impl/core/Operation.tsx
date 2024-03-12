@@ -19,8 +19,15 @@
 import { InputOutputEditorLang } from "../purejs-types";
 import Dish from "./Dish.mjs";
 import Ingredient from "./Ingredient.mjs";
-
-export default class Operation {
+export type OptDetail = {
+  exampleInput: string;
+  exampleOutput: string;
+  infoURL: string;
+  description: string;
+  id: string;
+  name: string
+}
+export default abstract class Operation {
   private _inputType: number = -1;
   private _outputType: number = -1;
   private _presentType: number = -1;
@@ -38,6 +45,8 @@ export default class Operation {
   public exampleInput: string = "";
   public exampleOutput: string = "";
   public infoURL: string | null = null;
+
+  public abstract getOptDetail(): OptDetail | null;
 
   /**
    * Runs the operation.
@@ -153,6 +162,7 @@ export default class Operation {
       this._ingList[i].value = val;
     });
   }
+
 
   get ingValues(): any[] {
     return this._ingList.map((ing) => ing.value);

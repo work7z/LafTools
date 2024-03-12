@@ -27,7 +27,7 @@
 import vkbeautify from "vkbeautify";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
@@ -36,6 +36,26 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * XML Beautify operation
  */
 class XMLBeautify extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            id: 'xml-beautify',
+            name: Dot("yMZW-GEgf", "Format XML"),
+            infoURL: 'https://en.wikipedia.org/wiki/XML',
+            description: Dot(
+                "xml-beautify.desc.2a5f9",
+                "This operation formats XML data to improve readability by adding proper indentation, line breaks, and ensuring well-formed structure.",
+                ""
+            ),
+            exampleInput: `<unformatted>    <data>        <item1>value1</item1><item2>value2</item2>    </data></unformatted>`,
+            exampleOutput: `<?xml version:"1.0" encoding:"UTF-8"?>
+<unformatted>
+    <data>
+        <item1>value1</item1>
+        <item2>value2</item2>
+    </data>
+</unformatted>`,
+        }
+    }
 
     /**
      * XMLBeautify constructor
@@ -43,7 +63,6 @@ class XMLBeautify extends Operation {
     constructor() {
         super();
 
-        this.name = "XML Beautify";
         this.module = "Code";
         this.inputType = "string";
         this.outputType = "string";
@@ -54,22 +73,6 @@ class XMLBeautify extends Operation {
                 "value": "\\t"
             }
         ];
-
-        this.id = 'xml-beautify';
-        this.name = Dot("yMZW-GEgf", "Format XML");
-        this.description = Dot(
-            "xml-beautify.desc.2a5f9",
-            "This operation formats XML data to improve readability by adding proper indentation, line breaks, and ensuring well-formed structure.",
-            ""
-        );
-        this.exampleInput = `<unformatted>    <data>        <item1>value1</item1><item2>value2</item2>    </data></unformatted>`;
-        this.exampleOutput = `<?xml version="1.0" encoding="UTF-8"?>
-<unformatted>
-    <data>
-        <item1>value1</item1>
-        <item2>value2</item2>
-    </data>
-</unformatted>`;
 
     }
 

@@ -26,13 +26,28 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import { ALPHABET_OPTIONS, fromBase64 } from "../../../core/lib/Base64.mjs";
 
 /**
  * From Base64 operation
  */
 class FromBase64 extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      // new
+      id: 'frombase64',
+      infoURL: "https://en.wikipedia.org/wiki/Base64",
+      name: Dot("rVqlu", "Decode {0}", "Base64"),
+      description: Dot(
+        "1k_44",
+        "This operation decodes data from an ASCII Base64 string back into its raw format.",
+      ),
+      exampleInput: "SGVsbG8gV29ybGQh",
+      exampleOutput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+      // new
+    }
+  }
   /**
    * FromBase64 constructor
    */
@@ -42,18 +57,7 @@ class FromBase64 extends Operation {
     this.module = "Default";
 
 
-    // new
-    this.id = 'frombase64'
-    this.name = Dot("rVqlu", "Decode {0}", "Base64");
-    this.description = Dot(
-      "1k_44",
-      "This operation decodes data from an ASCII Base64 string back into its raw format.",
-    );
-    this.exampleInput = "SGVsbG8gV29ybGQh";
-    this.exampleOutput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-    // new
 
-    this.infoURL = "";
     this.inputType = "string";
     this.outputType = "byteArray";
     this.args = [

@@ -26,13 +26,26 @@
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import { toBase64, ALPHABET_OPTIONS } from "../../../core/lib/Base64.mjs";
 
 /**
  * To Base64 operation
  */
 class ToBase64 extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      id: 'tobase64',
+      name: Dot("M3ytc", "Encode {0}", "Base64"),
+      description: Dot(
+        "BGd7P9",
+        "This operation encodes raw data into an ASCII Base64 string.",
+      ),
+      exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+      exampleOutput: "SGVsbG8gV29ybGQh",
+      infoURL: "https://en.wikipedia.org/wiki/Base64",
+    }
+  }
   /**
    * ToBase64 constructor
    */
@@ -40,15 +53,6 @@ class ToBase64 extends Operation {
     super();
 
     this.module = "Default";
-    this.id = 'tobase64'
-    this.name = Dot("M3ytc", "Encode {0}", "Base64");
-    this.description = Dot(
-      "BGd7P9",
-      "This operation encodes raw data into an ASCII Base64 string.",
-    );
-    this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-    this.exampleOutput = "SGVsbG8gV29ybGQh";
-    this.id = 'tobase85'
     this.inputType = "ArrayBuffer";
     this.outputType = "string";
     this.args = [

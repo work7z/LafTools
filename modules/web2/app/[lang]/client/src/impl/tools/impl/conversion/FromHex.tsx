@@ -26,7 +26,7 @@
 
 import { fromHex, FROM_HEX_DELIM_OPTIONS } from "../../../core/lib/Hex.mjs";
 
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
 import { alphabetName, ALPHABET_OPTIONS } from "../../../core/lib/Base85.mjs";
@@ -37,23 +37,26 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
  * From Hex operation
  */
 class FromHex extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      name: Dot("5RPdtVff3", "From Hex"),
+      description:
+        Dot("gms7_9n5v", "Converts a hexadecimal byte string back into its raw value."),
+      infoURL: "https://wikipedia.org/wiki/Hexadecimal",
+      exampleInput: 'ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a',
+      exampleOutput: 'ÎÎµÎ¹Î¬ ÏÎ¿Ï',
+      id: 'fromhex'
+    }
+  }
   /**
    * FromHex constructor
    */
   constructor() {
     super();
 
-    this.name = "From Hex";
     this.module = "Default";
-    this.description =
-      Dot("gms7_9n5v", "Converts a hexadecimal byte string back into its raw value.");
-    this.infoURL = "https://wikipedia.org/wiki/Hexadecimal";
-    this.inputType = "string";
-    this.outputType = "byteArray";
-
-
-    this.exampleInput = 'ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a'
-    this.exampleOutput = 'Γειά σου'
+    this.inputType = "string"
+    this.outputType = "byteArray"
 
 
     this.args = [

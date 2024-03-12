@@ -24,7 +24,7 @@
  * @license Apache-2.0
  */
 
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import BigNumber from "bignumber.js";
 import Utils from "../../../core/Utils.mjs";
 import { toHexFast } from "../../../core/lib/Hex.mjs";
@@ -35,6 +35,21 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
  * To Base62 operation
  */
 class ToBase62 extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            id: 'tobase62',
+            name: Dot("M3ytc", "Encode {0}", "Base62"),
+            description: Dot(
+                "BGd7dP9",
+                "This operation encodes raw data into an ASCII {0} string.",
+                "Base62"
+            ),
+            infoURL: "https://en.wikipedia.org/wiki/Base62",
+            exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
+            exampleOutput: "T8dgcjRGkZ3aysdN",
+
+        }
+    }
 
     /**
      * ToBase62 constructor
@@ -42,20 +57,8 @@ class ToBase62 extends Operation {
     constructor() {
         super();
 
-        this.id = 'tobase62'
-        this.name = "To Base62";
         this.module = "Default";
 
-
-
-        this.name = Dot("M3ytc", "Encode {0}", "Base62");
-        this.description = Dot(
-            "BGd7dP9",
-            "This operation encodes raw data into an ASCII {0} string.",
-            "Base62"
-        );
-        this.exampleInput = TEXT_INPUT_EXAMPLE_HELLO_WORLD;
-        this.exampleOutput = "T8dgcjRGkZ3aysdN";
 
 
 

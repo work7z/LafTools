@@ -61,7 +61,7 @@ body {
   min-width: 1280px;
 }
 .app-minmax-size{
-  @apply md:max-w-[1000px];
+  @apply md:max-w-[1280px];
   @apply xl:max-w-[1280px];
   @apply 2xl:max-w-[1530px];
 }

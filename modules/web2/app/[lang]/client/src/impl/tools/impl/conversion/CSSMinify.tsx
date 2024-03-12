@@ -27,7 +27,7 @@
 import vkbeautify from "vkbeautify";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
@@ -36,13 +36,25 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * CSS Minify operation
  */
 class CSSMinify extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      infoURL: "https://www.w3.org/Style/CSS/",
+      id: 'cssminify',
+      name: Dot("-nL_B5PoN", "Compresses {0}", "CSS"),
+      description: Dot(
+        "Y__Zb1_4Q",
+        "Minifies Cascading Style Sheets (CSS) code, removing all unnecessary characters."
+      ),
+      exampleOutput: "body{color:#fff;}",
+      exampleInput: "body {\n\tcolor: #fff;\n}",
+    }
+  }
   /**
    * CSSMinify constructor
    */
   constructor() {
     super();
 
-    this.name = "CSS Minify";
     this.module = "Code";
     this.inputType = "string";
     this.outputType = "string";
@@ -54,16 +66,6 @@ class CSSMinify extends Operation {
       },
     ];
 
-
-
-    this.id = 'cssminify'
-    this.name = Dot("-nL_B5PoN", "Compresses {0}", "CSS");
-    this.description = Dot(
-      "Y__Zb1_4Q",
-      "Minifies Cascading Style Sheets (CSS) code, removing all unnecessary characters."
-    );
-    this.exampleOutput = "body{color:#fff;}"
-    this.exampleInput = "body {\n\tcolor: #fff;\n}";
 
   }
 

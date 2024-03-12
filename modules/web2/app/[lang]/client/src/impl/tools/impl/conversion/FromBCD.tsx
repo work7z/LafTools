@@ -25,7 +25,7 @@
  */
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils.tsx";
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import {
@@ -39,15 +39,22 @@ import BigNumber from "bignumber.js";
  * From BCD operation
  */
 class FromBCD extends Operation {
+  public getOptDetail(): OptDetail | null {
+    return {
+      id: "frombcd",
+      name: "From BCD",
+      description: Dot("0YKce", "Converts a Binary-Coded Decimal (BCD) string to a decimal number."),
+      exampleInput: "0001 0010 0011 0100",
+      exampleOutput: "1234",
+      infoURL: "https://en.wikipedia.org/wiki/Binary-coded_decimal",
+    }
+  }
   /**
    * FromBCD constructor
    */
   constructor() {
     super();
-
-    this.name = "From BCD";
-    this.module = "Default";
-    this.description = Dot("0YKce", "Converts a Binary-Coded Decimal (BCD) string to a decimal number.")
+    this.module = "Default"
     this.inputType = "string";
     this.outputType = "BigNumber";
     this.args = [
@@ -79,8 +86,6 @@ class FromBCD extends Operation {
         args: ["8 4 2 1", true, false, "Nibbles"],
       },
     ];
-    this.exampleInput = "0001 0010 0011 0100";
-    this.exampleOutput = "1234";
   }
 
   /**

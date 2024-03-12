@@ -28,7 +28,7 @@
 import JSON5 from "json5";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
@@ -39,6 +39,19 @@ import _ from "lodash";
  * JSON Beautify operation
  */
 class JSONBeautify extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            id: 'json-beautify',
+            name: Dot("json-beautify.text.93kq", "Beautify JSON Data"),
+            description: Dot(
+                "json-beautify.desc.0912",
+                "This operation formats JSON data to improve readability by adding proper indentation, line breaks, and sorting keys consistently.",
+            ),
+            infoURL: 'https://www.json.org/json-en.html',
+            exampleInput: '{"unformatted":true,"data":[{"key1":"value1"},{"key2":"value2"}]}',
+            exampleOutput: '{\n  "unformatted": true,\n  "data": [\n    {\n      "key1": "value1"\n    },\n    {\n      "key2": "value2"\n    }\n  ]\n}'
+        }
+    }
 
     /**
      * JSONBeautify constructor
@@ -68,15 +81,6 @@ class JSONBeautify extends Operation {
                 value: true
             }
         ];
-        this.id = 'json-beautify'
-        this.name = Dot("json-beautify.text.93kq", "Beautify JSON Data")
-        this.description = Dot(
-            "json-beautify.desc.0912",
-            "This operation formats JSON data to improve readability by adding proper indentation, line breaks, and sorting keys consistently.",
-        )
-
-        this.exampleInput = '{"unformatted":true,"data":[{"key1":"value1"},{"key2":"value2"}]}'
-        this.exampleOutput = '{\n  "unformatted": true,\n  "data": [\n    {\n      "key1": "value1"\n    },\n    {\n      "key2": "value2"\n    }\n  ]\n}'
     }
 
     getInputOutputEditorLang(): InputOutputEditorLang | null {

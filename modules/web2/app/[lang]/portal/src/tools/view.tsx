@@ -29,16 +29,16 @@ import { Provider, useDispatch } from "react-redux";
 import { store } from '@/app/[lang]/client/src/store'
 import '@/app/[lang]/client/src/initapp'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp'
-import { VAL_CSS_MENU_TITLE_PANEL, border_clz, light_border_clz_all, tw } from '@/app/[lang]/styles'
+import { CSS_BG_COLOR_WHITE, VAL_CSS_MENU_TITLE_PANEL, border_clz, light_border_clz_all, tw } from '@/app/[lang]/styles'
 import { loadDOT } from '@/app/__CORE__/utils/i18n-types'
 import { Dot } from '@/app/__CORE__/utils/cTranslationUtils'
 import SmallScreenDetecter from '@/app/[lang]/client/src/SmallScreenDetecter'
+import ClientWrapper from '../wrapper/clientWrapper'
 
 export type ExtensionViewProps = {
 
 }
 
-let CSS_BG_COLOR_WHITE = tw(` bg-white dark:bg-black `)
 
 let d = loadDOT("1RH8bum7S")
 let ToolTitlebar = (props) => {
@@ -63,7 +63,7 @@ let ToolTitlebar = (props) => {
     </div>
 }
 
-let Wrapper = (props: ExtensionViewProps) => {
+let ToolInnerView = (props: ExtensionViewProps) => {
     d()
     let constructedKey = useConstructedKeyAndInit()
     return <div className='w-full h-[650px] xl:h-[800px]' >
@@ -81,10 +81,9 @@ let Wrapper = (props: ExtensionViewProps) => {
 }
 
 export default (props: ExtensionViewProps) => {
-    return <div className='w-full h-full p-[5px] relative bg-slate-50 dark:bg-gray-900'>
-        <Provider store={store}>
-            <Wrapper {...props} />
-            <SmallScreenDetecter />
-        </Provider>
-    </div>
+    return <ClientWrapper children={
+        <div className='w-full h-full p-[5px] relative bg-slate-50 dark:bg-gray-900'>
+            <ToolInnerView {...props} />
+        </div>
+    } />
 }

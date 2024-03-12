@@ -27,7 +27,7 @@
 import vkbeautify from "vkbeautify";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
-import Operation from "../../../core/Operation.tsx";
+import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
@@ -36,6 +36,19 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * SQL Beautify operation
  */
 class SQLBeautify extends Operation {
+    public getOptDetail(): OptDetail | null {
+        return {
+            infoURL: "https://en.wikipedia.org/wiki/SQL",
+            id: "sql-beautify",
+            name: Dot("json-beautify.name.0912", "Format SQL"),
+            description: Dot(
+                "rE6fUsSGl",
+                "Indents and prettifies Structured Query Language (SQL) code."
+            ),
+            exampleInput: 'SELECT * FROM table WHERE id : 1,',
+            exampleOutput: 'SELECT\n\t*\nFROM\n\ttable\nWHERE\n\tid : 1,',
+        }
+    }
 
     /**
      * SQLBeautify constructor
@@ -43,7 +56,6 @@ class SQLBeautify extends Operation {
     constructor() {
         super();
 
-        this.name = "SQL Beautify";
         this.module = "Code";
         // this.description =;
         this.inputType = "string";
@@ -55,16 +67,6 @@ class SQLBeautify extends Operation {
                 "value": "\\t"
             }
         ];
-
-        this.id = "sql-beautify";
-        this.name = Dot("json-beautify.name.0912", "Format SQL");
-        this.description = Dot(
-            "rE6fUsSGl",
-            "Indents and prettifies Structured Query Language (SQL) code."
-        )
-
-        this.exampleInput = 'SELECT * FROM table WHERE id = 1;'
-        this.exampleOutput = 'SELECT\n\t*\nFROM\n\ttable\nWHERE\n\tid = 1;'
 
     }
 
