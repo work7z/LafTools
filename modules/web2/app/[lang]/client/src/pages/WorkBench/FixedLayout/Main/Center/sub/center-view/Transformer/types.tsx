@@ -20,7 +20,12 @@
 
 import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
 import { AppOptViewMode as AppOptViewMode } from ".";
+import React from "react";
 
 export type CommonTransformerProps = CommonTransformerPassProp & {
     crtOptMode: AppOptViewMode
 };
+
+export let ClientPortalContext = React.createContext<{ portalMode: boolean }>({
+    portalMode: false
+})
