@@ -59,7 +59,6 @@ class JSONBeautify extends Operation {
     constructor() {
         super();
 
-        this.id = Dot("pZ4d616m-", "Beautify {0}", 'JSON');
         this.module = "Code";
         this.inputType = "string";
         this.outputType = "string";
