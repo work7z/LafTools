@@ -21,7 +21,7 @@
 'use client'
 
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 import { pushClient } from '@/app/__CORE__/utils/clientUtils'
 import { useRouter } from 'next/navigation'
 import ToolSingleView from '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/Center/sub/center-view/tools/ToolSingleView'
@@ -34,6 +34,7 @@ import { loadDOT } from '@/app/__CORE__/utils/i18n-types'
 import { Dot } from '@/app/__CORE__/utils/cTranslationUtils'
 import SmallScreenDetecter from '@/app/[lang]/client/src/SmallScreenDetecter'
 import ClientWrapper from '../wrapper/clientWrapper'
+import { ClientPortalContext } from '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/types'
 
 export type ExtensionViewProps = {
 
@@ -66,13 +67,16 @@ let ToolTitlebar = (props) => {
 let ToolInnerView = (props: ExtensionViewProps) => {
     d()
     let constructedKey = useConstructedKeyAndInit()
-    return <div className='w-full h-[650px] xl:h-[800px]' >
+    // h - [650px] xl: h - [800px]
+    let clientContext = useContext(ClientPortalContext)
+
+    return <div className='w-full min-h-[500px]' >
         <ToolTitlebar extId="edc_base64" />
         <div
             style={{
-                height: `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
+                height: clientContext.portalMode ? 'auto' : `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
             }}
-            className={' w-full   rounded-sm shadow-sm' + light_border_clz_all + CSS_BG_COLOR_WHITE}
+            className={' w-full   rounded-sm shadow-sm' + light_border_clz_all + ' ' + CSS_BG_COLOR_WHITE}
             key={constructedKey}
         >
             <ToolSingleView disableClientMode extId={'edc_base64'} />

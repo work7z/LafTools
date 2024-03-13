@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Alignment, Button, ButtonProps, Navbar, OL, Tab, Tabs, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, ButtonProps, Navbar, OL, PortalContext, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
   VAL_CSS_TAB_TITLE_PANEL,
@@ -56,7 +56,7 @@ import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
 import ShowErrorPanel from "../../../../../../../../containers/ShowErrorPanel/index.tsx";
 import { useDispatch } from "react-redux";
 import Sidemenu from "./SideMenu/sidemenu.tsx";
-import { CSS_BG_COLOR_WHITE } from "@/app/[lang]/styles.tsx";
+import { CSS_BG_COLOR_WHITE, border_clz, border_clz_common } from "@/app/[lang]/styles.tsx";
 
 export type AppOptViewMode = "fixed" | "float"
 
@@ -291,14 +291,14 @@ export default (props: CommonTransformerProps) => {
 
   let clientPortalContext = useContext(ClientPortalContext)
 
-  let app_right_t_jsx = <>
-    <Allotment.Pane>
-      {codeMirrorItem}
-    </Allotment.Pane>
-  </>
-  let app_right_b_jsx = <>
-    {processPanelItem}
-  </>
+  let app_right_t_jsx = codeMirrorItem
+  let app_right_b_jsx = processPanelItem
+
+  if (clientPortalContext.portalMode) {
+    app_right_t_jsx = <div className='h-[350px]'>{app_right_t_jsx}</div>
+    app_right_b_jsx = <div className='min-h-[350px]'>{app_right_b_jsx}</div>
+  }
+
   let app_right_jsx = <>
     <ControlBar
       loadingStatic={loadingStatic}
@@ -312,32 +312,64 @@ export default (props: CommonTransformerProps) => {
       }}
       className="w-full overflow-auto "
     >
-      <Allotment
-        vertical={v.bottom_hide}
-        key={v.bottom_hide + ""}
-      >
-        {app_right_t_jsx}
-        {app_right_b_jsx}
-      </Allotment>
+      {
+        clientPortalContext.portalMode ? (
+          <div className="w-full ">
+            {app_right_t_jsx}
+            {app_right_b_jsx}
+          </div>
+        ) : (
+          <Allotment
+            vertical={v.bottom_hide}
+            key={v.bottom_hide + ""}
+          >
+            <Allotment.Pane>
+              {app_right_t_jsx}
+            </Allotment.Pane>
+            {app_right_b_jsx}
+          </Allotment>
+        )
+      }
     </div>
   </>
   let app_left_jsx = <Sidemenu
     crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}
   />
-  let transformerFullScreenClzIfNeeded = fullScreen ? " w-screen h-screen fixed left-0 top-0 z-[9999] " + CSS_BG_COLOR_WHITE : " w-full h-full relative "
+  let transformerFullScreenClzIfNeeded = " w-full h-full relative "
+  if (fullScreen) {
+    transformerFullScreenClzIfNeeded = " w-screen h-screen fixed left-0 top-0 z-[9999] " + CSS_BG_COLOR_WHITE
+  }
+  if (clientPortalContext.portalMode) {
+    transformerFullScreenClzIfNeeded = 'w-full h-auto '
+  }
 
+  let defaultLeftWidth = 250
   return (
     <div key={sessionId} className={
       " " + transformerFullScreenClzIfNeeded
-    }>
-      <Allotment vertical={false}>
-        <Allotment.Pane preferredSize={230}>
-          {app_left_jsx}
-        </Allotment.Pane>
-        <Allotment.Pane>
-          {app_right_jsx}
-        </Allotment.Pane>
-      </Allotment>
+    } style={{
+    }}>
+      {
+        clientPortalContext.portalMode ? <div className='w-full flex flex-row'>
+          <div className={border_clz_common + ' border-r-[1px] '} style={{
+            width: defaultLeftWidth + 'px'
+          }}>{app_left_jsx}</div>
+          <div style={{
+            width: `calc(100% - ${defaultLeftWidth}px)`
+          }}>
+            {app_right_jsx}
+          </div>
+        </div> :
+          <Allotment vertical={false} style={{
+          }}>
+            <Allotment.Pane preferredSize={300} >
+              {app_left_jsx}
+            </Allotment.Pane>
+            <Allotment.Pane>
+              {app_right_jsx}
+            </Allotment.Pane>
+          </Allotment>
+      }
     </div>
   );
 };

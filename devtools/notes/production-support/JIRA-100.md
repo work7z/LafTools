@@ -6,14 +6,14 @@ actual: yet the tooltip keeps shaking
 
 date: Mar 13, 2024
 
-solved: not yet
+solved: solved (Mar 13, 2024)
 
 env: beta
 
-possible cause:
+possible cause(confirmed):
 
 ```css
 .bp5-overlay {
-  /* position:fixed; */
+  position: fixed;
 }
 ```
