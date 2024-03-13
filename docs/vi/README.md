@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-Để sử dụng nhanh các chức năng này, chúng tôi đã cung cấp trang web trực tuyến ổn định ở khu vực CN và Hoa Kỳ để bạn sử dụng. Hầu hết các công cụ đều có sẵn trên các trang web trực tuyến của chúng tôi ngoại trừ một số công cụ dựa trên khả năng cụ thể của hệ điều hành.
+To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 - 🇺🇸 cộng hòa Liên bang: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Chỉ Trung Quốc đại lục: [laf-tools.com](https://laf-tools.com)

@@ -60,7 +60,9 @@ export let FooterContent = () => {
                         },
                         {
                             label: Dot("13pmE", "Support Us"),
-                            link: "javascript:void(0);",
+                            // link: "javascript:void(0);",
+                            // link: "javascript:void(0);",
+                            link: "https://github.com/work7z/LafTools/",
                             onClick: () => {
                                 // AlertUtils.win_alert({
                                 //     id: "W1z_B",

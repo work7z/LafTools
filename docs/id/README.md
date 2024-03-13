@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-Untuk menggunakan fungsi ini dengan cepat, kami telah menyediakan situs web online yang stabil di CN dan wilayah AS untuk Anda gunakan. Sebagian besar alat tersedia di situs web online kami kecuali beberapa alat yang mengandalkan kemampuan OS tertentu.
+To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 - 🇺🇸 Amerika Serikat: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Khusus Tiongkok Daratan: [laf-tools.com](https://laf-tools.com)

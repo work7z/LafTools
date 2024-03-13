@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-Para usar essas funções rapidamente, fornecemos um site on-line estável na região CN e nos EUA para você usar. A maioria das ferramentas está disponível em nossos sites on-line, exceto algumas ferramentas que dependem de recursos específicos do sistema operacional.
+To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 - 🇺🇸 Estado unido: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Apenas China Continental: [laf-tools.com](https://laf-tools.com)

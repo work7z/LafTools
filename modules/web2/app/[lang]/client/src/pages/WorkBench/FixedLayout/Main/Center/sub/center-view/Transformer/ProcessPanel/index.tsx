@@ -149,6 +149,7 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
         pdValue = 'p-0'
         finalShowContent = <div className="w-full h-full overflow-auto">
             <GenCodeMirror
+                readOnly
                 lineWrap
                 language={props.crtDefaultOpera?.getInputOutputEditorLang()?.outputLang || "text"}
                 placeholder={Dot("y_9YM", "Output will be displayed here.")}

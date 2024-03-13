@@ -87,6 +87,7 @@ import { useTheme } from "next-themes";
 // console.log('langNames', langs.mysql())
 
 type GenCodeMirrorProp = {
+  readOnly?: boolean;
   bigTextId: string;
   lineWrap?: boolean;
   language?: string;
@@ -190,6 +191,7 @@ export default (props: GenCodeMirrorProp) => {
       style={{
         height: "100%",
       }}
+      readOnly={props.readOnly}
       height="100%"
       value={value}
       basicSetup={{

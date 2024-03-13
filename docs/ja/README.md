@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-これらの機能をすぐに使用できるように、CN および米国地域で使用できる安定したオンライン Web サイトを提供しました。特定の OS 機能に依存する一部のツールを除き、ほとんどのツールはオンライン Web サイトで入手できます。
+To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 - 🇺🇸 合衆国: [laftools.dev](https://laftools.dev)
 - 🇨🇳 中国本土のみ: [laf-tools.com](https://laf-tools.com)

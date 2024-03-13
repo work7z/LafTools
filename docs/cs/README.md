@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-Pro rychlé použití těchto funkcí jsme pro vás poskytli stabilní online web v regionu CN a USA. Většina nástrojů je k dispozici na našich online webových stránkách s výjimkou některých nástrojů, které se spoléhají na konkrétní funkce operačního systému.
+To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 - 🇺🇸 spojený stát: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Pouze pevninská Čína: [laf-tools.com](https://laf-tools.com)

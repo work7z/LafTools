@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-For raskt å bruke disse funksjonene, har vi levert et stabilt nettsted på nett i CN og USA som du kan bruke. De fleste verktøyene er tilgjengelige på nettsidene våre, bortsett fra noen verktøy som er avhengige av spesifikke OS-funksjoner.
+To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 - 🇺🇸 forent stat: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Kun fastlandet i Kina: [laf-tools.com](https://laf-tools.com)

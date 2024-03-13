@@ -194,27 +194,27 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             intent: isColl ? "none" : "success",
             className: isColl ? "" : "btn-lime",
             // title: Dot("RzegarVx1", "Whether to show output results separately"),
-            title: isColl ? Dot("RzycF1QPq", "Hide Output Panel") : Dot("RzegarVx1", "Show Output Panel"),
+            title: isColl ? Dot("UTeZ46gI4", "Hide Output Panel") : Dot("7zlGIUGvj", "Show Output Panel"),
             onClick() {
                 onColl_output(!isCollapsed_output);
                 onColl_config(!isCollapsed_config);
             }
         },
-        {
-            // icon: 'publish-function',
-            // icon: 'remove-row-top',
-            icon: 'page-layout',
-            intent: "none",
-            title: fullScreen ? Dot("QAJ1Y27b7", "Disable Full Screen Mode") : Dot("9O7RAAblf", "Enable Full Screen Mode"),
-            onClick: () => {
-                let newFullScreen = fullScreen == "true" ? "false" : "true";
-                FN_GetDispatch()(
-                    ParamStateSlice.actions.updateOneOfParamState({
-                        fs: newFullScreen
-                    })
-                );
-            }
-        }
+        // {
+        //     // icon: 'publish-function',
+        //     // icon: 'remove-row-top',
+        //     icon: 'page-layout',
+        //     intent: "none",
+        //     title: fullScreen ? Dot("QAJ1Y27b7", "Disable Full Screen Mode") : Dot("9O7RAAblf", "Enable Full Screen Mode"),
+        //     onClick: () => {
+        //         let newFullScreen = fullScreen == "true" ? "false" : "true";
+        //         FN_GetDispatch()(
+        //             ParamStateSlice.actions.updateOneOfParamState({
+        //                 fs: newFullScreen
+        //             })
+        //         );
+        //     }
+        // }
         // {
         //     icon: "export",
         //     intent: isCollapsed_output ? "none" : "success",
