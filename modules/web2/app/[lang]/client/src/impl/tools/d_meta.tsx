@@ -125,10 +125,10 @@ let appToolInfoObj = {
         LabelFn: () => "SHA-3"
     }),
     Tail: passInfo({
-        LabelFn: () => "Tail"
+        LabelFn: () => Dot("tail", "Tail")
     }),
     RemoveWhitespace: passInfo({
-        LabelFn: () => Dot("1X8x7dqw", "Remove Whitespace")
+        LabelFn: () => Dot("remove-whitespace", "Remove Whitespace")
     }),
     RemoveLineNumbers: passInfo({
         LabelFn: () => Dot("1fd8x7dqw", "Remove Line Numbers")

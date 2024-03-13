@@ -78,11 +78,11 @@ function getLocale(request: NextRequest) {
 }
 
 export function middleware(request: NextRequest) {
-  // Check if there is any supported locale in the pathname
+  let req = request;
   const requestHeaders = new Headers(request.headers);
   const { pathname } = request.nextUrl;
   requestHeaders.set("x-path", request.nextUrl.pathname);
-  let thatHostname = request.nextUrl.hostname;
+  const thatHostname = req.headers["x-forwarded-host"] || req.nextUrl.hostname;
   requestHeaders.set("x-hostname", thatHostname);
   let finalLocaleObject: LocaleType = dftLocale;
   let a = request.nextUrl.search;

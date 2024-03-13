@@ -272,9 +272,19 @@ export default (): ToolCategory[] => {
       ],
     },
     {
-      Id: "translater",
-      Label: Dot("-Yo129I", "Text Tools"),
+      Id: "text-tools",
+      Label: Dot("-Yo1q29Iq", "Text Tools"),
       SubCategories: [
+        {
+          Id: "plain_text",
+          Label: Dot("OJd-7SdMC", "Text Manipulation"),
+          Icon: "array-string",
+          ChildrenIdSet: [
+            "Tail",
+            "RemoveLineNumbers",
+            "RemoveWhitespace"
+          ]
+        },
         {
           Id: "quick_diff",
           Label: Dot("yfYeg", "Quick Differenciate"),

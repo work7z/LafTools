@@ -535,7 +535,7 @@ export let WB_MenuBar = (props: PassProp) => {
               href={fmtURL_Client("/")}
               className={Classes.MINIMAL}
               small={true}
-              target="_blank"
+              // target="_blank"
               // text="Software Updates"
               intent={"none"}
               // text={Dot("kPJ-A4", "Refresh")}
