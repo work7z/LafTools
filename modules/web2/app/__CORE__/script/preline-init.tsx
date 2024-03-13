@@ -44,7 +44,9 @@ export default function PrelineScript() {
   useEffect(() => {
     import("preline/preline").then(x => {
       setTimeout(() => {
-        window["HSStaticMethods"] && window["HSStaticMethods"].autoInit();
+        if (window["HSStaticMethods"] && window["HSStaticMethods"].autoInit) {
+          window["HSStaticMethods"].autoInit();
+        }
       }, 100);
     })
   }, []);

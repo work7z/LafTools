@@ -31,7 +31,7 @@ import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
@@ -39,7 +39,7 @@ import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../..
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 
-import { CommonTransformerProps } from "./types";
+import { ClientPortalContext, CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType as ToolCurrentRuntimeStatus } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TransformerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
 import ControlBar from "./ControlBar/index.tsx";
@@ -289,7 +289,16 @@ export default (props: CommonTransformerProps) => {
     return <ShowErrorPanel loadError={loadError}></ShowErrorPanel>
   }
 
+  let clientPortalContext = useContext(ClientPortalContext)
 
+  let app_right_t_jsx = <>
+    <Allotment.Pane>
+      {codeMirrorItem}
+    </Allotment.Pane>
+  </>
+  let app_right_b_jsx = <>
+    {processPanelItem}
+  </>
   let app_right_jsx = <>
     <ControlBar
       loadingStatic={loadingStatic}
@@ -307,10 +316,8 @@ export default (props: CommonTransformerProps) => {
         vertical={v.bottom_hide}
         key={v.bottom_hide + ""}
       >
-        <Allotment.Pane>
-          {codeMirrorItem}
-        </Allotment.Pane>
-        {processPanelItem}
+        {app_right_t_jsx}
+        {app_right_b_jsx}
       </Allotment>
     </div>
   </>

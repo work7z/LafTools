@@ -26,6 +26,9 @@ export type CommonTransformerProps = CommonTransformerPassProp & {
     crtOptMode: AppOptViewMode
 };
 
-export let ClientPortalContext = React.createContext<{ portalMode: boolean }>({
+export type ClientPortalInfo = {
+    portalMode: boolean
+}
+export let ClientPortalContext = React.createContext<ClientPortalInfo>({
     portalMode: false
 })
