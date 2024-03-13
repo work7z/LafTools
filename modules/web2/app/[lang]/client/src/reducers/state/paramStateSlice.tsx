@@ -34,6 +34,8 @@ export type TabLeftType = "tools" | "notes" | "history" | "resources"
 export type TabBottomType = "terminal" | "dictionary" | "compute" | "help" | "overview" | "translation"
 export type TabRightType = "ai" | "todo" | "stopwatch"
 export type ParamStateState = {
+    // full screen or not
+    fs: string; // true or false
     // left
     l: TabLeftType, // tab left
     ls?: string; // left sub
@@ -44,6 +46,7 @@ export type ParamStateState = {
     tid?: string; // tool tab id
 };
 const initialState: ParamStateState = {
+    fs: 'false',
     l: "tools",
     b: "terminal",
     r: "ai"

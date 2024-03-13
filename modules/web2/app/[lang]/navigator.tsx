@@ -149,19 +149,20 @@ export default (props: NavigatorPassProp) => {
                 <div className="absolute left-0 top-0 w-full h-full pattern-cross  dark:pattern-cross pattern-slate-300 dark:pattern-gray-700 pattern-bg-transparent pattern-opacity-30 pattern-size-8"></div>
             </div> */}
         </div>
-        <div className={border_clz + "  bg-cyan-600 dark:bg-cyan-950 "}>
+        {/* bg-cyan-600 dark:bg-cyan-950 */}
+        <div className={border_clz + "   dark:bg-sky-900 bg-sky-600 "}>
             <div className={row_pad_clz + ' flex-justify-between '}>
                 <div>
                     {
                         leftCategoryArr.map(x => {
-                            return <Link href={x.href} className=" white-anchor-text    ">{x.label}</Link>
+                            return <Link href={x.href} className=" white-anchor-text anchor-text-for-blue    ">{x.label}</Link>
                         })
                     }
                 </div>
                 <div className="flex flex-row items-center">
                     {
                         rightCategoryArr.map(x => {
-                            return <Link href={x.href} className={" white-anchor-text "}>{x.label}</Link>
+                            return <Link href={x.href} className={" white-anchor-text anchor-text-for-blue "}>{x.label}</Link>
                         })
                     }
                 </div>

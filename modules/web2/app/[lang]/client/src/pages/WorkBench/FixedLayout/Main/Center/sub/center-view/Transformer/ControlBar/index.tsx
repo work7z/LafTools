@@ -26,12 +26,20 @@ import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, control
 import gutils from "../../../../../../../../../utils/GlobalUtils";
 import CopyButton from "../../../../../../../../../components/CopyButton";
 import { ActionButtonProps } from "../../../../../../../../../components/ActionButton";
+import ParamStateSlice from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
 
 
 let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransformerProps & TransformerWithRuntime & {
     onProcess: () => any;
 }) => {
     let { inputBigTextId } = props;
+
+    let { fullScreen } = exportUtils.useSelector(v => {
+        return {
+            fullScreen: v.paramState.fs
+        }
+    })
+
     let [loadExample, onLoadExample] = useState(false);
     let toolHandler = props.toolHandler
     let extVM = props.extVM
@@ -171,28 +179,42 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                 AlertUtils.popNotSupport()
             }
         },
-        {
-            icon: "gantt-chart",
-            intent: "none" as any,
-            className: "none",
-            text: "",
-            title: Dot("i8q8tb", "Configure WorkFlow for Input"),
-            onClick: () => {
-                AlertUtils.popNotSupport()
-            }
-        },
+        // {
+        //     icon: "gantt-chart",
+        //     intent: "none" as any,
+        //     className: "none",
+        //     text: "",
+        //     title: Dot("i8q8tb", "Configure WorkFlow for Input"),
+        //     onClick: () => {
+        //         AlertUtils.popNotSupport()
+        //     }
+        // },
         {
             icon: "console",
             intent: isColl ? "none" : "success",
             className: isColl ? "" : "btn-lime",
             // title: Dot("RzegarVx1", "Whether to show output results separately"),
-            title: Dot("RzegsarVx1", "Whether to show the process panel"),
+            title: isColl ? Dot("RzycF1QPq", "Hide Output Panel") : Dot("RzegarVx1", "Show Output Panel"),
             onClick() {
                 onColl_output(!isCollapsed_output);
                 onColl_config(!isCollapsed_config);
             }
         },
-
+        {
+            // icon: 'publish-function',
+            // icon: 'remove-row-top',
+            icon: 'page-layout',
+            intent: "none",
+            title: fullScreen ? Dot("QAJ1Y27b7", "Disable Full Screen Mode") : Dot("9O7RAAblf", "Enable Full Screen Mode"),
+            onClick: () => {
+                let newFullScreen = fullScreen == "true" ? "false" : "true";
+                FN_GetDispatch()(
+                    ParamStateSlice.actions.updateOneOfParamState({
+                        fs: newFullScreen
+                    })
+                );
+            }
+        }
         // {
         //     icon: "export",
         //     intent: isCollapsed_output ? "none" : "success",
@@ -217,7 +239,13 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
     ];
     return (
         <div
-            className="w-full using-edge-ui-bg flex border-b-[1px] dark:border-gray-600 px-1  flex-column items-center justify-between"
+            className={
+                " w-full using-edge-ui-bg flex border-b-[1px] dark:border-gray-600 px-1  flex-column items-center justify-between "
+                +
+                (
+                    ''
+                )
+            }
             style={{
                 height: controlBarHeight,
             }}

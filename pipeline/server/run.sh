@@ -29,8 +29,12 @@ fi
 if [ ! -d "$runtimeDir/pre-release" ]; then
   mkdir -p $runtimeDir/pre-release
 fi
-if [ ! -d "$runtimeDir/release" ]; then
-  mkdir -p $runtimeDir/release
+targetReleaseDIR=$runtimeDir/release
+if [ $containerName = "laft-pre-inst" ]; then
+  targetReleaseDIR=$runtimeDir/release-p
+fi
+if [ ! -d "$targetReleaseDIR" ]; then
+  mkdir -p $targetReleaseDIR
 fi
 
 if [ -z "$version" ]; then
@@ -45,10 +49,12 @@ if [ -z "$targetPkg" ]; then
 fi
 
 cp $targetPkg $runtimeDir/pre-release
-rm -rf $runtimeDir/release/*
-mv $runtimeDir/pre-release/* $runtimeDir/release
+if [ "" != "$targetReleaseDIR" ]; then
+  rm -rf $targetReleaseDIR/*
+fi
+mv $runtimeDir/pre-release/* $targetReleaseDIR
 
-cd ~/runtime/release
+cd $targetReleaseDIR
 mv $targetPkg m.tmp.gz
 gunzip ./m.tmp.gz
 docker load -i ./m.tmp

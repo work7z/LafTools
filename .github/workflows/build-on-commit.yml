@@ -67,11 +67,11 @@ jobs:
       - name: US Pre Release 3
         run: |
           sftp -o StrictHostKeyChecking=no -P ${{ secrets.US_APP_SSH_PORT }} ${{ secrets.US_APP_SSH_USERNAME }}@${{ secrets.US_APP_SSH_HOST }} <<EOF
-            put /home/runner/work/LafTools/LafTools/dkout.tmp.gz /home/appuser/LafTools-pre-dist/LafTools-${{steps.get_version.outputs.VERSION}}-dkout.tmp.gz
+            put /home/runner/work/LafTools/LafTools/dkout.tmp.gz /home/appuser/LafTools-pre-dist/LafTools-v1.9.9-beta-dkout.tmp.gz
           exit
           EOF
           sftp -o StrictHostKeyChecking=no -P ${{ secrets.US_APP_SSH_PORT }} ${{ secrets.US_APP_SSH_USERNAME }}@${{ secrets.US_APP_SSH_HOST }} <<EOF
-            put /home/runner/work/LafTools/LafTools/pipeline-server.zip /home/appuser/LafTools-pre-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}.zip
+            put /home/runner/work/LafTools/LafTools/pipeline-server.zip /home/appuser/LafTools-pre-dist/pipeline-server-v1.9.9-beta.zip
           exit
           EOF
           rm ~/.ssh/id_rsa -rf
@@ -85,6 +85,6 @@ jobs:
           key: ${{ secrets.US_APP_SSH_KEY }}
           script: |
             echo 'unzip pipeline server'
-            unzip /home/appuser/LafTools-pre-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}.zip -d /home/appuser/LafTools-pre-dist/pipeline-server-${{steps.get_version.outputs.VERSION}} &> /dev/null
-            chmod +x /home/appuser/LafTools-pre-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}/home/runner/work/LafTools/LafTools/pipeline/server/run.sh
-            /home/appuser/LafTools-pre-dist/pipeline-server-${{steps.get_version.outputs.VERSION}}/home/runner/work/LafTools/LafTools/pipeline/server/run.sh ${{steps.get_version.outputs.VERSION}} en_US 9000 LafTools-pre-dist laft-pre-inst
+            unzip /home/appuser/LafTools-pre-dist/pipeline-server-v1.9.9-beta.zip -d /home/appuser/LafTools-pre-dist/pipeline-server-v1.9.9-beta &> /dev/null
+            chmod +x /home/appuser/LafTools-pre-dist/pipeline-server-v1.9.9-beta/home/runner/work/LafTools/LafTools/pipeline/server/run.sh
+            /home/appuser/LafTools-pre-dist/pipeline-server-v1.9.9-beta/home/runner/work/LafTools/LafTools/pipeline/server/run.sh v1.9.9-beta en_US 9000 LafTools-pre-dist laft-pre-inst

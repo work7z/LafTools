@@ -56,6 +56,7 @@ import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
 import ShowErrorPanel from "../../../../../../../../containers/ShowErrorPanel/index.tsx";
 import { useDispatch } from "react-redux";
 import Sidemenu from "./SideMenu/sidemenu.tsx";
+import { CSS_BG_COLOR_WHITE } from "@/app/[lang]/styles.tsx";
 
 export type AppOptViewMode = "fixed" | "float"
 
@@ -228,6 +229,14 @@ export default (props: CommonTransformerProps) => {
     };
   });
 
+  let { fullScreen } = exportUtils.useSelector(v => {
+    return {
+      // fullScreen: v.paramState.fs
+      fullScreen: false // v.paramState.fs 
+      // not yet implemented fullScreen 
+    }
+  })
+
   let dis = useDispatch()
   useEffect(() => {
     let b = RuntimeStatusSlice.actions.initAtOnceBySessionIdAndValue({
@@ -242,6 +251,7 @@ export default (props: CommonTransformerProps) => {
   if (!crtRuntimeStatus) {
     return <LoadingText></LoadingText>
   }
+
   if (loadingStatic) {
     let pre = loadingProgressRate.toFixed(2)
     let b = pre.split('.')
@@ -278,6 +288,8 @@ export default (props: CommonTransformerProps) => {
   if (loadError) {
     return <ShowErrorPanel loadError={loadError}></ShowErrorPanel>
   }
+
+
   let app_right_jsx = <>
     <ControlBar
       loadingStatic={loadingStatic}
@@ -305,8 +317,12 @@ export default (props: CommonTransformerProps) => {
   let app_left_jsx = <Sidemenu
     crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}
   />
+  let transformerFullScreenClzIfNeeded = fullScreen ? " w-screen h-screen fixed left-0 top-0 z-[9999] " + CSS_BG_COLOR_WHITE : " w-full h-full relative "
+
   return (
-    <div key={sessionId} className="w-full h-full relative">
+    <div key={sessionId} className={
+      " " + transformerFullScreenClzIfNeeded
+    }>
       <Allotment vertical={false}>
         <Allotment.Pane preferredSize={230}>
           {app_left_jsx}
