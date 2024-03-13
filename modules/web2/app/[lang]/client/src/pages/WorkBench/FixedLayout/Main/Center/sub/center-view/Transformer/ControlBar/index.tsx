@@ -26,7 +26,7 @@ import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, control
 import gutils from "../../../../../../../../../utils/GlobalUtils";
 import CopyButton from "../../../../../../../../../components/CopyButton";
 import { ActionButtonProps } from "../../../../../../../../../components/ActionButton";
-import ParamStateSlice from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
+import ParamStateSlice, { TrueFalseType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
 
 
 let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransformerProps & TransformerWithRuntime & {
@@ -34,9 +34,10 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
 }) => {
     let { inputBigTextId } = props;
 
-    let { fullScreen } = exportUtils.useSelector(v => {
+    let { fullScreen, hideSideBar } = exportUtils.useSelector(v => {
         return {
-            fullScreen: v.paramState.fs
+            fullScreen: v.paramState.fs,
+            hideSideBar: v.paramState.hsr,
         }
     })
 
@@ -48,6 +49,23 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
     let operaList = toolHandler?.getOperations() || []
     let crtDefaultOperaId = props.crtDefaultOperaId
     let leftActions: ActionButtonProps[] = [
+        {
+            icon: hideSideBar == 'false' ? 'menu-closed' : 'menu-open',//'remove-column-left',
+            className: '',// "btn-green",
+            // intent: "success",
+            intent: "none",
+            minimal: true,
+            title: hideSideBar == 'false' ?
+                Dot("5_EPRncIx", "Hide Left Navigator") : Dot("qm6Fy9AB2", "Show Left Navigator"),
+            onClick: () => {
+                let newVal: TrueFalseType = hideSideBar == "true" ? "false" : "true";
+                FN_GetDispatch()(
+                    ParamStateSlice.actions.updateOneOfParamState({
+                        hsr: newVal
+                    })
+                );
+            }
+        },
         ...(
             operaList
         ).map(x => {

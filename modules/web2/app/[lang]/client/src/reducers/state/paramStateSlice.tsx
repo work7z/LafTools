@@ -33,9 +33,10 @@ import _ from "lodash";
 export type TabLeftType = "tools" | "notes" | "history" | "resources"
 export type TabBottomType = "terminal" | "dictionary" | "compute" | "help" | "overview" | "translation"
 export type TabRightType = "ai" | "todo" | "stopwatch"
+export type TrueFalseType = "true" | "false"
 export type ParamStateState = {
-    // full screen or not
-    fs: string; // true or false
+    hsr: TrueFalseType;// show sidebar or not
+    fs: TrueFalseType; // full screen or not, true or false
     // left
     l: TabLeftType, // tab left
     ls?: string; // left sub
@@ -46,6 +47,7 @@ export type ParamStateState = {
     tid?: string; // tool tab id
 };
 const initialState: ParamStateState = {
+    hsr: 'false',
     fs: 'false',
     l: "tools",
     b: "terminal",

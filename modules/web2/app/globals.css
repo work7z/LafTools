@@ -110,6 +110,10 @@ body {
 .btn-lime {
   @apply !bg-cyan-600 hover:!bg-cyan-900;
 }
+.btn-green{
+  @apply !bg-blue-600 hover:!bg-emerald-900;
+}
+
 
 .btn-cyan {
   /* @apply !text-white !bg-green-700 hover:!bg-purple-900 ; */
@@ -165,7 +169,6 @@ div,
 }
 
 /** laf-tools small tree END */
-
 
 .small-close-btn svg {
   @apply fill-gray-300 w-2

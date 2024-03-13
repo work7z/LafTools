@@ -228,10 +228,10 @@ export default (props: CommonTransformerProps) => {
       bottom_hide: v.layout.menuHide.bottom,
     };
   });
-
-  let { fullScreen } = exportUtils.useSelector(v => {
+  let { fullScreen, hideSideBar } = exportUtils.useSelector(v => {
     return {
       // fullScreen: v.paramState.fs
+      hideSideBar: v.paramState.hsr,
       fullScreen: false // v.paramState.fs 
       // not yet implemented fullScreen 
     }
@@ -350,25 +350,26 @@ export default (props: CommonTransformerProps) => {
     } style={{
     }}>
       {
-        clientPortalContext.portalMode ? <div className='w-full flex flex-row'>
-          <div className={border_clz_common + ' border-r-[1px] '} style={{
-            width: defaultLeftWidth + 'px'
-          }}>{app_left_jsx}</div>
-          <div style={{
-            width: `calc(100% - ${defaultLeftWidth}px)`
-          }}>
-            {app_right_jsx}
-          </div>
-        </div> :
-          <Allotment vertical={false} style={{
-          }}>
-            <Allotment.Pane preferredSize={300} >
-              {app_left_jsx}
-            </Allotment.Pane>
-            <Allotment.Pane>
+        hideSideBar == 'true' ? app_right_jsx :
+          clientPortalContext.portalMode ? <div className='w-full flex flex-row'>
+            <div className={border_clz_common + ' border-r-[1px] '} style={{
+              width: defaultLeftWidth + 'px'
+            }}>{app_left_jsx}</div>
+            <div style={{
+              width: `calc(100% - ${defaultLeftWidth}px)`
+            }}>
               {app_right_jsx}
-            </Allotment.Pane>
-          </Allotment>
+            </div>
+          </div> :
+            <Allotment vertical={false} style={{
+            }}>
+              <Allotment.Pane preferredSize={300} >
+                {app_left_jsx}
+              </Allotment.Pane>
+              <Allotment.Pane>
+                {app_right_jsx}
+              </Allotment.Pane>
+            </Allotment>
       }
     </div>
   );
