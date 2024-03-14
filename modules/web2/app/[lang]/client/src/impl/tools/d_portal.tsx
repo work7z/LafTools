@@ -10,6 +10,11 @@ export type PortalDefinitionTbabGroup = {
     id: string,
     label: string
 }
+export type SEOMetaData = {
+    seoTitle?: string;
+    seoDescription?: string;
+    seoKeywords?: string[]
+}
 export type PortalDefinitionType = SEOMetaData & {
     label: string,
     id: string,
@@ -18,6 +23,18 @@ export type PortalDefinitionType = SEOMetaData & {
 export let getToolSubCategory = (): PortalDefinitionType[] => {
     let toolsPortalDefinitions: PortalDefinitionType[] = [
         {
+            seoTitle: Dot("format.code.seo", "Format {0} Code", 'JSON/JS/YAML/CSS/C#/SQL'),
+            seoKeywords: [
+                Dot("formatjavascript", "Format JavaScript"),
+                Dot("formatjson", "Format JSON"),
+                Dot("formatyaml", "Format YAML"),
+                Dot("formatcss", "Format CSS"),
+                Dot("formatcsharp", "Format YAML"),
+                "preittier",
+                "formatter",
+                "lint"
+            ],
+            seoDescription: Dot("seo.description.format", "Efficiently format your code online with our free tool. Supports multiple languages including JSON, JS, YAML, CSS, C#, and SQL. Improve readability and maintain a consistent coding style across your project."),
             label: Dot("str.formatter", "Formatters"),
             id: 'formatters',
             subTabs: [
@@ -54,6 +71,20 @@ export let getToolSubCategory = (): PortalDefinitionType[] => {
         {
             label: Dot("str.codecs", "Codecs"),
             id: 'codecs',
+            seoTitle: Dot("codecs.seo", "Online Codecs - Base64, URL Encoder, MD5, SHA1, SHA256, SHA512"),
+            seoKeywords: [
+                "base64",
+                "url encoder",
+                "md5",
+                "sha1",
+                "sha256",
+                "sha512",
+                "online codecs",
+                "free codecs",
+                "secure codecs"
+            ],
+            seoDescription: Dot("seo.description.codecs", "Use our free online codecs to encode and decode your data. Supports Base64, URL Encoder, MD5, SHA1, SHA256, SHA512."),
+
             subTabs: [
                 {
                     id: 'base64',
@@ -82,6 +113,19 @@ export let getToolSubCategory = (): PortalDefinitionType[] => {
             ]
         },
         {
+            seoTitle: Dot("encoding.seo", "Online Encoding Tools - URL Encoder, Base64, Escape, Unescape, Encode URI, Decode URI"),
+            seoKeywords: [
+                "url encoder",
+                "base64",
+                "escape",
+                "unescape",
+                "encode uri",
+                "decode uri",
+                "online encoding",
+                "free encoding",
+                "secure encoding"
+            ],
+            seoDescription: Dot("seo.description.encoding", "Use our free online encoding tools to encode and decode your data. Supports URL Encoder, Base64, Escape, Unescape, Encode URI, Decode URI."),
             label: Dot("mhWk4ddtid", "Encoding"),
             id: 'encoding',
             subTabs: [
@@ -113,6 +157,18 @@ export let getToolSubCategory = (): PortalDefinitionType[] => {
         },
         {
             label: Dot("str.converters", "Converters"),
+            seoTitle: Dot("converters.seo", "Online Data Converters - JSON to XML, JSON to CSV, JSON to YAML, XML to JSON, YAML to JSON"),
+            seoKeywords: [
+                "json to xml",
+                "json to csv",
+                "json to yaml",
+                "xml to json",
+                "yaml to json",
+                "online converters",
+                "free converters",
+                "secure converters"
+            ],
+            seoDescription: Dot("seo.description.converters", "Use our free online converters to convert your data between different formats. Supports JSON to XML, JSON to CSV, JSON to YAML, XML to JSON, YAML to JSON."),
             id: 'converters',
             subTabs: [
                 {
@@ -140,6 +196,14 @@ export let getToolSubCategory = (): PortalDefinitionType[] => {
         {
             label: Dot("str.parsers", "Parsers"),
             id: 'parsers',
+            seoTitle: Dot("parsers.seo", "Online SQL Parser"),
+            seoKeywords: [
+                "sql parser",
+                "online sql parser",
+                "free sql parser",
+                "secure sql parser"
+            ],
+            seoDescription: Dot("seo.description.parsers", "Use our free online SQL parser to parse your SQL queries and improve your database performance."),
             subTabs: [
                 {
                     id: 'sqlparser',
@@ -148,6 +212,16 @@ export let getToolSubCategory = (): PortalDefinitionType[] => {
             ]
         },
         {
+            seoTitle: Dot("generators.seo", "Online Generators - UUID Generator, GUID Generator, Random Generator"),
+            seoKeywords: [
+                "uuid generator",
+                "guid generator",
+                "random generator",
+                "online generators",
+                "free generators",
+                "secure generators"
+            ],
+            seoDescription: Dot("seo.description.generators", "Use our free online generators to generate UUIDs, GUIDs, and random values for your applications."),
             label: Dot("IEFy5k39X", "Generators"),
             id: 'generator',
             subTabs: [
@@ -165,16 +239,9 @@ export let getToolSubCategory = (): PortalDefinitionType[] => {
                 },
             ]
         },
-    ].map(x => {
-        return x
-    })
+    ]
     return toolsPortalDefinitions;
 }
-export type SEOMetaData = {
-    seoTitle?: string;
-    seoDescription?: string;
-    seoKeywords?: string[]
-} & LabelHrefType
 export type TopMainCategoryNavList = SEOMetaData & LabelHrefType
 export let getCategoryList = (): TopMainCategoryNavList[] => {
     let leftNav: TopMainCategoryNavList[] = [

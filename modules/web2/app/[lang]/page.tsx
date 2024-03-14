@@ -42,6 +42,7 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
             keywords: getAppKeywords(),
         } satisfies Metadata, obj)
     };
+    let result = fn({})
     let title: string[] = [];
     let topCategoryNavList = getCategoryList()
     let topCategoryNavItem = topCategoryNavList.find(x => x.id == props.params.category)
@@ -52,14 +53,20 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
     let subCategory = props.params.subCategory;
     let toolsPortalDefinitons = getToolSubCategory()
     if (_.isEmpty(subCategory)) {
-        title.push(topCategoryNavItem.seoTitle + "")
-    } else {
-        let targetSubCategory = toolsPortalDefinitons.find(x => x.id == subCategory)
-        let targetSubCategoryLabel = targetSubCategory?.seoTitle || targetSubCategory?.label
-        targetSubCategoryLabel && title.push(targetSubCategoryLabel)
+        subCategory = toolsPortalDefinitons[0].id
     }
-    return fn({
-        title: title.reverse().join(" - ")
-    })
+    let targetSubCategory = toolsPortalDefinitons.find(x => x.id == subCategory)
+    if (_.isEmpty(targetSubCategory)) {
+        notFound()
+    }
+    targetSubCategory?.seoTitle && title.push(targetSubCategory?.label + " | " + targetSubCategory?.seoTitle)
+    result.keywords = targetSubCategory?.seoKeywords ? [
+        ...(targetSubCategory?.subTabs || []).map(x => x.label),
+        ...targetSubCategory?.seoKeywords,
+    ] : []
+    result.title = (
+        title.reverse().join(" - ")
+    )
+    return result;
 }
 
