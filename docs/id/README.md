@@ -163,6 +163,7 @@ Di bawah ini adalah materi lebih lanjut yang dapat Anda lihat jika Anda ingin me
 Kami sangat menghargai seniman berbakat yang menyediakan ikon-ikon indah di bawah ini:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 Ucapan Terima Kasih
 

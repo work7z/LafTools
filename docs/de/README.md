@@ -163,6 +163,7 @@ Nachfolgend finden Sie weitere Materialien, die Sie sich ansehen können, wenn S
 Wir würden uns über talentierte Künstler freuen, die die folgenden wunderschönen Symbole zur Verfügung gestellt haben:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 Danksagungen
 

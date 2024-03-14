@@ -163,6 +163,7 @@ Di seguito sono riportati ulteriori materiali a cui puoi dare un'occhiata se des
 Apprezzeremmo gli artisti di talento che fornissero di seguito bellissime icone:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 Ringraziamenti
 

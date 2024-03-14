@@ -163,6 +163,7 @@ Nedenfor er yderligere materialer, som du kan se, hvis du gerne vil vide mere om
 Vi ville sætte pris på talentkunstnere, der leverede nedenstående smukke ikoner:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 Anerkendelser
 

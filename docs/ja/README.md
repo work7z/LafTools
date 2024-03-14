@@ -163,6 +163,7 @@ LafTools があなたの日常業務を簡素化し、残業の必要性を減�
 以下の美しいアイコンを提供してくださった才能あるアーティストに感謝します。
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 謝辞
 

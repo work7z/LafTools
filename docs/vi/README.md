@@ -163,6 +163,7 @@ Dưới đây là các tài liệu khác mà bạn có thể xem nếu muốn t�
 Chúng tôi đánh giá cao những nghệ sĩ tài năng đã cung cấp các biểu tượng đẹp dưới đây:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 Sự nhìn nhận
 

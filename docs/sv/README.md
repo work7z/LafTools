@@ -163,6 +163,7 @@ Nedan finns ytterligare material som du kan ta en titt på om du vill veta mer o
 Vi skulle uppskatta talangartister som tillhandahåller nedanstående vackra ikoner:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 Erkännanden
 

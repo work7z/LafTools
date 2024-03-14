@@ -163,6 +163,7 @@ LafTools가 귀하의 일상 업무를 더 쉽게 만들고 초과 근무의 필
 아래의 아름다운 아이콘을 제공해 주신 재능 있는 아티스트에게 감사드립니다.
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 감사의 말
 

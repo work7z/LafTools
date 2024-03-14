@@ -163,6 +163,7 @@ Bu proje hakkında daha fazla ayrıntı öğrenmek istiyorsanız aşağıda göz
 Aşağıdaki güzel simgeleri sunan yetenekli sanatçıları takdir ediyoruz:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 Teşekkür
 

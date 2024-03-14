@@ -163,6 +163,7 @@ cd pipeline
 เราขอขอบคุณศิลปินที่มีพรสวรรค์ที่ให้ไอคอนที่สวยงามด้านล่าง:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 รับทราบ
 

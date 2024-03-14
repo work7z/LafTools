@@ -163,6 +163,7 @@ Alla on muita materiaaleja, joita voit katsoa, ​​jos haluat saada lisätieto
 Arvostamme lahjakkaita taiteilijoita, jotka toimittivat alla kauniita kuvakkeita:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fund" title="fund icons">Fund icons created by Freepik - Flaticon</a>
 
 # 🙏 Kiitokset
 
