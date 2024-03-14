@@ -20,8 +20,8 @@ import NavigatorPage from "./navigator";
 import { NextUIProvider } from "@nextui-org/react";
 import ToolPart from '@/app/[lang]/portal/src/tools'
 import { getAppIcon, getAppKeywords } from "../../__CORE__/config/imgconfig";
-import { toolMetaDataFn } from "../page";
-import Tools from './go/page'
+import { generateMetadata as toolMetaDataFn } from "../page";
+import Tools from './go/[subCategory]/page'
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
 
@@ -39,4 +39,4 @@ export default async function Home(props: CombindSearchProps) {
 }
 
 
-export let generateMetadata = toolMetaDataFn
+export { generateMetadata } from '@/app/[lang]/page'

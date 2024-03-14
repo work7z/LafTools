@@ -20,6 +20,7 @@
 
 import Link from "next/link"
 import { LabelHrefType } from "./navigator"
+import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils"
 
 export let NavItem = (props: {
     nav: LabelHrefType[],
@@ -31,7 +32,7 @@ export let NavItem = (props: {
         {props.extraLeft}
         {
             leftNav.map(x => {
-                return <Link href={x.href || x.id || ''} className={
+                return <Link href={x.href || fmtURL_Server([x.id || '']) || ''} className={
                     "text-xs text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 duration-100 "
                 }>{x.label}</Link>
             })

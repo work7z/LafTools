@@ -32,7 +32,7 @@ import LightDarkButton from "../../__CORE__/components/LightDarkButton";
 import GitHubButton from "../../__CORE__/components/GitHubButton";
 import SysBreadCrumbs from './breadcrumbs'
 import {
-    fn_leftNav,
+    fn_TopMainCategoryNav,
     fn_rightNav,
     fn_leftCategoryArr,
     fn_rightCategoryArr,
@@ -53,7 +53,7 @@ export type NavigatorPassProp = {
 
 export default (props: NavigatorPassProp) => {
     let { children } = props;
-    let leftNav = fn_leftNav()
+    let leftNav = fn_TopMainCategoryNav()
     let rightNav = fn_rightNav()
     let leftCategoryArr = fn_leftCategoryArr()
     let rightCategoryArr = fn_rightCategoryArr()

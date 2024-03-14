@@ -42,13 +42,13 @@ export default function PrelineScript() {
 
 
   useEffect(() => {
-    import("preline/preline").then(x => {
-      setTimeout(() => {
-        if (window["HSStaticMethods"] && window["HSStaticMethods"].autoInit) {
-          window["HSStaticMethods"].autoInit();
-        }
-      }, 100);
-    })
+    // import("preline/preline").then(x => {
+    //   setTimeout(() => {
+    //     if (window["HSStaticMethods"] && window["HSStaticMethods"].autoInit) {
+    //       window["HSStaticMethods"].autoInit();
+    //     }
+    //   }, 100);
+    // })
   }, []);
 
   // useEffect(() => {

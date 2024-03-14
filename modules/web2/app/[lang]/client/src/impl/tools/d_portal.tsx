@@ -1,8 +1,10 @@
 'use server'
 
 import { LabelHrefType } from "@/app/[lang]/tools/navigator"
+import { getAppIcon, getAppKeywords } from "@/app/__CORE__/config/imgconfig"
 import { Dot } from "@/app/__CORE__/utils/TranslationUtils"
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils"
+import { Metadata } from "next"
 
 export type PortalDefinitionTbabGroup = {
     id: string,
@@ -170,7 +172,7 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
     return toolsPortalDefinitions;
 }
 
-export let fn_leftNav = (): LabelHrefType[] => {
+export let fn_TopMainCategoryNav = (): LabelHrefType[] => {
     let leftNav: LabelHrefType[] = [
         {
             label: Dot("G2dvTUljF", "Tools"),
@@ -236,3 +238,4 @@ export let fn_rightCategoryArr = () => {
     ]
     return rightCategoryArr
 }
+

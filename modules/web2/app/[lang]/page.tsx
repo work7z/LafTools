@@ -24,8 +24,7 @@ import Tools, { CombindSearchProps } from '@/app/[lang]/tools/page'
 export default async function Home(props: CombindSearchProps) {
     return <Tools {...props} />
 }
-
-export let toolMetaDataFn = async function (): Promise<Metadata> {
+export let generateMetadata = async function (): Promise<Metadata> {
     return {
         icons: [
             getAppIcon()
@@ -35,4 +34,3 @@ export let toolMetaDataFn = async function (): Promise<Metadata> {
         keywords: getAppKeywords(),
     };
 }
-export let generateMetadata = toolMetaDataFn

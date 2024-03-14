@@ -30,10 +30,9 @@
 [] we should provide a optional config for user to hide the text in sidebar when needed(some users complain this, let me do it quickly...)
 [] new laf is better now, we should apply different bg colors into the navbars for tools, docs, AI lab
 
+# system design
 
-# system design 
 [] using Next.js and sqlite3 to refactor LafTools
-
 
 # desktop
 
@@ -54,3 +53,4 @@
 # server
 
 [] remove inactive CRT_USER keys in Redis DB
+[] TODO: for web UI, when I switched to other tab, its previous tool should be presented.
