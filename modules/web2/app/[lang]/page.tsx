@@ -8,7 +8,7 @@ import CenterPart from "@/app/__CORE__/containers/CenterPart";
 import CardPanel from '@/app/__CORE__/components/CardPanel'
 import NodeHorizontalBar from "@/app/__CORE__/containers/TabGroupHorizontalBar";
 import _, { random } from "lodash";
-import { useParams, useSearchParams } from "next/navigation";
+import { notFound, useParams, useSearchParams } from "next/navigation";
 import InnerHome from '../home'
 import { usePathname } from 'next/navigation';
 import React, { } from "react";
@@ -20,12 +20,18 @@ import { NextUIProvider } from "@nextui-org/react";
 import ToolPart from '@/app/[lang]/portal/src/tools'
 import { getAppIcon, getAppKeywords } from "../__CORE__/config/imgconfig";
 
-import Tools, { CombindSearchProps } from '@/app/[lang]/tools/page'
+import SubCategoryPage, { CombindSearchProps } from '@/app/[lang]/[category]/page'
 import { satisfies } from "semver";
+import { getCategoryList as getCategoryList, getToolSubCategory, PortalDefinitionTbabGroup } from "./[category]/types";
 export default async function Home(props: CombindSearchProps) {
-    return <Tools {...props} />
+    return <SubCategoryPage {...props} />
 }
-export let generateMetadata = async function (obj: CombindSearchProps): Promise<Metadata> {
+export type CategorySearchProps = PageProps<{
+    subCategory: string,
+    category: string,
+}, {}>;
+export let generateMetadata = async function (props: CategorySearchProps): Promise<Metadata> {
+    // fn
     let fn = (obj: Partial<Metadata>) => {
         return _.merge({
             icons: [
@@ -36,6 +42,24 @@ export let generateMetadata = async function (obj: CombindSearchProps): Promise<
             keywords: getAppKeywords(),
         } satisfies Metadata, obj)
     };
-    let subPath = getXSubPath()
-    return fn({})
+    let title: string[] = [];
+    let topCategoryNavList = getCategoryList()
+    let topCategoryNavItem = topCategoryNavList.find(x => x.id == props.params.category)
+    if (_.isNil(topCategoryNavItem)) {
+        notFound()
+    }
+    title.push(Dot("laftoolstitle", "Free Online LafTools"))
+    let subCategory = props.params.subCategory;
+    let toolsPortalDefinitons = getToolSubCategory()
+    if (_.isEmpty(subCategory)) {
+        title.push(topCategoryNavItem.seoTitle + "")
+    } else {
+        let targetSubCategory = toolsPortalDefinitons.find(x => x.id == subCategory)
+        let targetSubCategoryLabel = targetSubCategory?.seoTitle || targetSubCategory?.label
+        targetSubCategoryLabel && title.push(targetSubCategoryLabel)
+    }
+    return fn({
+        title: title.reverse().join(" - ")
+    })
 }
+

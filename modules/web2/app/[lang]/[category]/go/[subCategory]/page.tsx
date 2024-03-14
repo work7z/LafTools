@@ -19,9 +19,9 @@ import Link from "next/link";
 import { NextUIProvider } from "@nextui-org/react";
 import ToolPart from '@/app/[lang]/portal/src/tools'
 import { getAppIcon, getAppKeywords } from "../../../../__CORE__/config/imgconfig";
-import Tools, { generateMetadata as toolMetaDataFn } from '@/app/[lang]/page'
+import Tools, { CategorySearchProps, generateMetadata as toolMetaDataFn } from '@/app/[lang]/page'
 import NavigatorPage from "../../navigator";
-import { getToolsPortalDefinitions } from "../../types";
+import { getToolSubCategory } from "../../types";
 
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
@@ -30,14 +30,21 @@ export let sleep = (ms: number) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export default async function Home(props: CombindSearchProps) {
+export default async function Home(props: CategorySearchProps) {
     let { subCategory } = props.params
     if (_.isEmpty(subCategory)) {
-        subCategory = getToolsPortalDefinitions()[0].id
+        subCategory = getToolSubCategory()[0].id
+        props = {
+            ...props,
+            params: {
+                ...props.params,
+                subCategory
+            }
+        }
     }
     return (
         <main>
-            <NavigatorPage children={<ToolPart subCategory={subCategory}></ToolPart>}></NavigatorPage>
+            <NavigatorPage {...props} children={<ToolPart subCategory={subCategory}></ToolPart>}></NavigatorPage>
         </main>
     )
 }

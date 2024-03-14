@@ -21,7 +21,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import ToolPart from '@/app/[lang]/portal/src/tools'
 import { getAppIcon, getAppKeywords } from "../../__CORE__/config/imgconfig";
 import { generateMetadata as toolMetaDataFn } from "../page";
-import Tools from './go/[subCategory]/page'
+import SubCategoryPage from './go/[subCategory]/page'
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
 
@@ -30,10 +30,9 @@ export let sleep = (ms: number) => {
 }
 
 export default async function Home(props: CombindSearchProps) {
-    let authInfo = await getAuthInfo()
     return (
         <main>
-            <Tools {...props} />
+            <SubCategoryPage {...props} />
         </main>
     )
 }

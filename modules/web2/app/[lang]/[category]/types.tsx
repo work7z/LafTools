@@ -20,7 +20,7 @@
 
 import { fmtURL_Server } from '../../__CORE__/utils/routeUtils'
 import { Dot, getXHostname } from "../../__CORE__/utils/TranslationUtils";
-import { PortalDefinitionType, getToolsPortalDefinitions } from '../client/src/impl/tools/d_portal';
+import { PortalDefinitionType, getToolSubCategory } from '../client/src/impl/tools/d_portal';
 import { LabelHrefType } from './navigator'
 
 export * from "@/app/[lang]/client/src/impl/tools/d_portal";

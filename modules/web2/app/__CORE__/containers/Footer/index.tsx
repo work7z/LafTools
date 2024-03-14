@@ -23,7 +23,7 @@ import { Dot } from "@/app/__CORE__/utils/TranslationUtils";
 import { AuthInfoProps } from "@/app/[lang]/page";
 import React from "react";
 import { CSS_TEXT_ANCHOR_CSS } from "@/app/[lang]/styles";
-import APPINFOJSON from '@/app/[lang]/tools/info'
+import APPINFOJSON from '@/app/[lang]/[category]/info'
 import LanguageFlowList from "../LanguageFlowList";
 import MottoLine from "../MottoLine";
 

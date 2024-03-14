@@ -1,6 +1,6 @@
 'use server'
 
-import { LabelHrefType } from "@/app/[lang]/tools/navigator"
+import { LabelHrefType } from "@/app/[lang]/[category]/navigator"
 import { getAppIcon, getAppKeywords } from "@/app/__CORE__/config/imgconfig"
 import { Dot } from "@/app/__CORE__/utils/TranslationUtils"
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils"
@@ -10,13 +10,12 @@ export type PortalDefinitionTbabGroup = {
     id: string,
     label: string
 }
-export type PortalDefinitionType = {
+export type PortalDefinitionType = SEOMetaData & {
     label: string,
     id: string,
     subTabs?: PortalDefinitionTbabGroup[]
-
 }
-export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
+export let getToolSubCategory = (): PortalDefinitionType[] => {
     let toolsPortalDefinitions: PortalDefinitionType[] = [
         {
             label: Dot("str.formatter", "Formatters"),
@@ -171,9 +170,14 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
     })
     return toolsPortalDefinitions;
 }
-
-export let fn_TopMainCategoryNav = (): LabelHrefType[] => {
-    let leftNav: LabelHrefType[] = [
+export type SEOMetaData = {
+    seoTitle?: string;
+    seoDescription?: string;
+    seoKeywords?: string[]
+} & LabelHrefType
+export type TopMainCategoryNavList = SEOMetaData & LabelHrefType
+export let getCategoryList = (): TopMainCategoryNavList[] => {
+    let leftNav: TopMainCategoryNavList[] = [
         {
             label: Dot("G2dvTUljF", "Tools"),
             id: 'tools'
@@ -217,8 +221,8 @@ export let fn_rightNav = (): LabelHrefType[] => {
     return rightNav
 }
 
-export let fn_leftCategoryArr = (): PortalDefinitionType[] => {
-    let leftCategoryArr: PortalDefinitionType[] = getToolsPortalDefinitions()
+export let getSubCategoryList = (): PortalDefinitionType[] => {
+    let leftCategoryArr: PortalDefinitionType[] = getToolSubCategory()
     return leftCategoryArr;
 }
 export let fn_rightCategoryArr = () => {

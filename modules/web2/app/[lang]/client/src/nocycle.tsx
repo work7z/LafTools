@@ -20,7 +20,7 @@
 
 import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
 import { RootState } from "./store";
-import appinfoJSON from "../../tools/info";
+import appinfoJSON from "../../[category]/info";
 import { Dispatch } from "react";
 import _ from "lodash";
 import { useHistory } from "react-router-dom";

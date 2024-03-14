@@ -32,9 +32,9 @@ import LightDarkButton from "../../__CORE__/components/LightDarkButton";
 import GitHubButton from "../../__CORE__/components/GitHubButton";
 import SysBreadCrumbs from './breadcrumbs'
 import {
-    fn_TopMainCategoryNav,
+    getCategoryList as getCategoryList,
     fn_rightNav,
-    fn_leftCategoryArr,
+    getSubCategoryList,
     fn_rightCategoryArr,
     fmtURL_ToolSubPage
 } from './types'
@@ -42,34 +42,35 @@ import { GitHubRepoIssueLink } from "../../__CORE__/types/constants";
 import Footer from "../../__CORE__/containers/Footer";
 import PossiblePathname from "../../__CORE__/components/PossiblePathname";
 import { URL_SUBCATEGORY_GO_PATH } from "../url";
-
+import { CategorySearchProps } from "../page";
 export type LabelHrefType = {
     label: string | JSX.Element,
     id?: string,
     href?: string
 }
-export type NavigatorPassProp = {
+export type NavigatorPassProp = CategorySearchProps & {
     children: JSX.Element
 }
 
 export default (props: NavigatorPassProp) => {
     let { children } = props;
-    let leftNav = fn_TopMainCategoryNav()
+    let categoryList = getCategoryList()
     let rightNav = fn_rightNav()
-    let leftCategoryArr = fn_leftCategoryArr()
+    let leftCategoryArr = getSubCategoryList()
     let rightCategoryArr = fn_rightCategoryArr()
     let hostname = getXHostname()
     let isLocalname = (hostname: string) => {
         return hostname == "localhost" || hostname == "127.0.0.1" || hostname == '0.0.0.0'
     }
+    let subCategory = props.params.subCategory
     return <div className="">
         <div className={
             border_clz + ' py-2 sticky top-0 bg-white dark:bg-slate-800 z-50'
         } style={{
         }}>
             <div className={row_pad_clz + ' items-center justify-between flex flex-row '}>
-                <NavItem nav={leftNav}></NavItem>
-                <NavItem extraLeft={
+                <NavItem activeId={props.params.category || categoryList[0].id} {...props} nav={categoryList}></NavItem>
+                <NavItem {...props} extraLeft={
                     <div className="flex items-center">
                         <LightDarkButton />
                         <GitHubButton></GitHubButton>
@@ -130,7 +131,11 @@ export default (props: NavigatorPassProp) => {
                 <div>
                     {
                         leftCategoryArr.map(x => {
-                            return <Link href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, x.id])} className=" white-anchor-text anchor-text-for-blue    ">{x.label}</Link>
+                            return <Link href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, x.id])} className={
+                                " white-anchor-text anchor-text-for-blue    " + (
+                                    x.id == subCategory ? ' active ' : ''
+                                )
+                            }>{x.label}</Link>
                         })
                     }
                 </div>
@@ -150,7 +155,7 @@ export default (props: NavigatorPassProp) => {
                         <SysBreadCrumbs />
                     </div>
                     <div>
-                        <NavItem nav={[
+                        <NavItem {...props} nav={[
                             {
                                 href: fmtURL_ToolSubPage(['opt?action=favourite']),
                                 label: Dot("be-Favourite-it", "Add to Favourites")

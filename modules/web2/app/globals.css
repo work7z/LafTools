@@ -8,10 +8,14 @@
     @apply px-2 py-2 inline-flex  text-xs transition-all duration-75 text-white  hover:text-slate-50 dark:text-slate-300 dark:hover:text-slate-200;
 }
 /* anchor style */
-.anchor-text-for-blue{
-  @apply hover:bg-sky-800 dark:hover:bg-sky-700;
+.anchor-text-for-blue:hover {
+  @apply bg-sky-800 dark:bg-sky-700;
 }
 
+.anchor-text-for-blue.active {
+  @apply bg-sky-700 dark:bg-sky-600;
+  /* @apply bg-sky-600 dark:bg-sky-600 bg-opacity-90; */
+}
 .g-card-header{
   @apply  py-2 text-xs border-b-[1px] border-b-slate-200 dark:border-b-slate-800;
 }

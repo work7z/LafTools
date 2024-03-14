@@ -228,6 +228,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        sky: {},
         solarized: {
           "light-blue": colors.sky,
           cyan: colors.cyan,

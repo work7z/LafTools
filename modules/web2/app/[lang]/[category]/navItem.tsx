@@ -19,10 +19,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Link from "next/link"
-import { LabelHrefType } from "./navigator"
+import { LabelHrefType, NavigatorPassProp } from "./navigator"
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils"
 
-export let NavItem = (props: {
+export let NavItem = (props: NavigatorPassProp & {
+    activeId?: string,
     nav: LabelHrefType[],
     extraLeft?: any
 }) => {
@@ -33,7 +34,10 @@ export let NavItem = (props: {
         {
             leftNav.map(x => {
                 return <Link href={x.href || fmtURL_Server([x.id || '']) || ''} className={
-                    "text-xs text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 duration-100 "
+                    "  text-xs text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 duration-100 " + (
+                        // props.activeId && props.activeId == x.id ? ' underline-offset-1 ' : ''
+                        ''
+                    )
                 }>{x.label}</Link>
             })
         }
