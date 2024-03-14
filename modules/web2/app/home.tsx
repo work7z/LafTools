@@ -1,4 +1,3 @@
-import { AuthInfoProps, CombindSearchProps } from "./[lang]/page"
 import Image from "next/image";
 import type { Metadata, ResolvingMetadata } from "next";
 import Head from 'next/head'
@@ -14,6 +13,7 @@ import { useParams, useSearchParams } from "next/navigation";
 import { usePathname } from 'next/navigation';
 import React, { } from "react";
 import GrailLayoutWithUser from "./__CORE__/containers/GrailLayoutWithUser";
+import { AuthInfoProps, CombindSearchProps } from "./[lang]/[category]/page";
 
 
 export default (props: {

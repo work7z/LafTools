@@ -19,7 +19,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import { AuthInfoProps } from "@/app/[lang]/page"
 import CardPanel from "../../components/CardPanel"
 import { Dot } from "../../utils/TranslationUtils"
 import React from 'react'
@@ -40,7 +39,7 @@ export let translationLangs: {
     }
 })
 
-export default (props: AuthInfoProps) => {
+export default (props: any) => {
     return (
         <CardPanel children={<div className='p-2 pl-4 text-xs'>
 

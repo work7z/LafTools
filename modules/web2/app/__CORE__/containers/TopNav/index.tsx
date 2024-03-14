@@ -31,7 +31,7 @@ import { fmtURL_Server as fmtURL_Server } from "../../utils/routeUtils";
 import { getAppIcon } from "../../config/imgconfig";
 
 
-export let TopNav = (props: AuthInfoProps) => {
+export let TopNav = (props: any) => {
 
     let isLoginIn = props.authInfo.signedIn
 

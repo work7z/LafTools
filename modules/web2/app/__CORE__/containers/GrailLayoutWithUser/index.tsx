@@ -32,13 +32,14 @@ import _, { random } from "lodash";
 import { redirect, useParams, useSearchParams } from "next/navigation";
 import { usePathname } from 'next/navigation';
 import React, { } from "react";
-import { AuthInfoProps, CombindSearchProps } from "@/app/[lang]/page";
 import { getCookie } from "cookies-next";
 import getAuthInfo, { AuthInfo } from "./actions/handleAuthInfo";
 import Footer from "../Footer";
 // import { fn_getCardPanelForTelephoneFAQ } from "@/app/[lang]/register/page";
 import { Dot } from "../../utils/TranslationUtils";
 import LanguagePicker from "../LanguagePicker";
+import { AuthInfoProps } from "@/app/[lang]/[category]/page";
+import { CombindSearchProps } from "@/app/[lang]/[category]/opt/page";
 
 export type Jsx_fn_type = (props: AuthInfoProps) => any;
 

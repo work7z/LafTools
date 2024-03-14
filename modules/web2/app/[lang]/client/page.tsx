@@ -27,13 +27,13 @@ import { PageProps } from '@/app/__CORE__/types/pages'
 import { Metadata } from "next/types";
 import { getAppIcon, getAppKeywords } from "@/app/__CORE__/config/imgconfig";
 // import {  } from "./src/utils/TranslationUtils";
-import { CombindSearchProps } from "../page";
 import dynamic from "next/dynamic";
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils";
 import { Dot, getXLocaleStrInRSC } from "@/app/__CORE__/utils/TranslationUtils";
 import { isDevEnv } from "@/app/__CORE__/hooks/env";
 import PassClientValue from './pass'
 import PageLoadingEffect from "@/app/__CORE__/containers/PageLoadingEffect";
+import { CombindSearchProps } from "../[category]/page";
 const EntryWrapper = dynamic(() => import('./client'), { ssr: false, loading: () => <PageLoadingEffect /> })
 
 let cachedLangMap: { [key: string]: string } = {}
