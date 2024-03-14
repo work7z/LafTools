@@ -33,7 +33,7 @@ export default function App() {
     let m = getToolsPortalDefinitions()
     let targetId = sp["id"]
     m.forEach(x => {
-        if (x.href.replace("/", "") == targetId) {
+        if (x.id == targetId) {
             tabs = x.subTabs || []
         }
     })

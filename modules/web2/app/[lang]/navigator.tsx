@@ -155,7 +155,7 @@ export default (props: NavigatorPassProp) => {
                 <div>
                     {
                         leftCategoryArr.map(x => {
-                            return <Link href={x.href} className=" white-anchor-text anchor-text-for-blue    ">{x.label}</Link>
+                            return <Link href={fmt_ToolSubPage(x.id)} className=" white-anchor-text anchor-text-for-blue    ">{x.label}</Link>
                         })
                     }
                 </div>

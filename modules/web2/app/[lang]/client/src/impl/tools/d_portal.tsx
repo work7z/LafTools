@@ -8,7 +8,9 @@ export type PortalDefinitionTbabGroup = {
     id: string,
     label: string
 }
-export type PortalDefinitionType = LabelHrefType & {
+export type PortalDefinitionType = {
+    label: string,
+    id: string,
     subTabs?: PortalDefinitionTbabGroup[]
 
 }
@@ -16,7 +18,7 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
     let toolsPortalDefinitions: PortalDefinitionType[] = [
         {
             label: Dot("str.formatter", "Formatters"),
-            href: '/formatters',
+            id: 'formatters',
             subTabs: [
                 {
                     id: "jsonformatter",
@@ -50,7 +52,7 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
         },
         {
             label: Dot("str.codecs", "Codecs"),
-            href: '/codecs',
+            id: 'codecs',
             subTabs: [
                 {
                     id: 'base64',
@@ -58,7 +60,7 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
                 },
                 {
                     id: "urlencoder",
-                    label: Dot("mhWk4dtid", "URL Encoder"),
+                    label: Dot("mdhWk4dtid", "URL Encoder"),
                 },
                 {
                     id: "md5",
@@ -79,12 +81,12 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
             ]
         },
         {
-            label: Dot("mhWk4dtid", "Encoding"),
-            href: '/encoding',
+            label: Dot("mhWk4ddtid", "Encoding"),
+            id: '/encoding',
             subTabs: [
                 {
                     id: "urlencoder",
-                    label: Dot("mhWk4dtid", "URL Encoder"),
+                    label: Dot("mhWk4dtqid", "URL Encoder"),
                 },
                 {
                     id: 'base64',
@@ -110,7 +112,7 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
         },
         {
             label: Dot("str.converters", "Converters"),
-            href: '/converters',
+            id: '/converters',
             subTabs: [
                 {
                     id: 'json2xml',
@@ -136,7 +138,7 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
         },
         {
             label: Dot("str.parsers", "Parsers"),
-            href: '/parsers',
+            id: '/parsers',
             subTabs: [
                 {
                     id: 'sqlparser',
@@ -146,7 +148,7 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
         },
         {
             label: Dot("IEFy5k39X", "Generators"),
-            href: '/generator',
+            id: '/generator',
             subTabs: [
                 {
                     id: 'uuid',
@@ -163,7 +165,6 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
             ]
         },
     ].map(x => {
-        x.href = fmtURL_Server(x.href)
         return x
     })
     return toolsPortalDefinitions;

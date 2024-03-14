@@ -169,6 +169,7 @@ let processWithArg = async ({
       "bulktranslate.go",
     )}" --id=${eachRunItem.id} --lg=${eachLang} --output="${outputLangFile}" `;
     console.log("cmd----", cmd);
+    await sleep(1000);
 
     sh.exec(cmd);
 

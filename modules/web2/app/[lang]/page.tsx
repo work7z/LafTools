@@ -16,28 +16,14 @@ import { PageProps } from '@/app/__CORE__/types/pages'
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
 import { Dot } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
-import NavigatorPage from "./navigator";
 import { NextUIProvider } from "@nextui-org/react";
 import ToolPart from '@/app/[lang]/portal/src/tools'
 import { getAppIcon, getAppKeywords } from "../__CORE__/config/imgconfig";
 
-export type AuthInfoProps = { authInfo: AuthInfo }
-export type CombindSearchProps = PageProps<any, any>
-
-export let sleep = (ms: number) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
+import Tools, { CombindSearchProps } from './tools/page'
 export default async function Home(props: CombindSearchProps) {
-    let authInfo = await getAuthInfo()
-    // await sleep(3000)   
-    return (
-        <main>
-            <NavigatorPage children={<ToolPart></ToolPart>}></NavigatorPage>
-        </main>
-    )
+    return <Tools {...props} />
 }
-
 
 export let rootMetaDataFn = async function (): Promise<Metadata> {
     return {
@@ -49,5 +35,4 @@ export let rootMetaDataFn = async function (): Promise<Metadata> {
         keywords: getAppKeywords(),
     };
 }
-
 export let generateMetadata = rootMetaDataFn
