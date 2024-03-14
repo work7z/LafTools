@@ -105,18 +105,19 @@ export default (props: CommonTransformerProps) => {
   let extVM = props.extVM
   let fn_format_description = (desc: string | undefined): string => {
     let optDetail = commonPassProp.crtDefaultOpera?.getOptDetail()
+
     let arr: TitleSubPair[] = [
       {
         title: Dot("wcl1K", "Usage"),
         subTitle: Dot("rT34qnO", "Enter text for processing. The result will display in the output editor.")
       },
       {
-        title: Dot("8eeL1Kk", "About", commonPassProp.crtDefaultOpera?.name),
+        title: Dot("8eeL1Kk", "About", optDetail?.name),
         subTitle: desc?.replace(/\\n/g, '\n') + ""
       },
       {
         title: Dot("SYSq1", "Example"),
-        subTitle: Dot("GR7jK", "Type") + ": " + commonPassProp.crtDefaultOpera?.name + "\n" + Dot("vh9j4", "Input") + ": " + (optDetail?.exampleInput) + "\n" + Dot("dGKMx", "Output") + ": " + optDetail?.exampleOutput + ""
+        subTitle: Dot("GR7jK", "Type") + ": " + optDetail?.name + "\n" + Dot("vh9j4", "Input") + ": " + (optDetail?.exampleInput) + "\n" + Dot("dGKMx", "Output") + ": " + optDetail?.exampleOutput + ""
       }
     ]
     return arr.map(x => `[${x.title}]\n${x.subTitle}`).join("\n\n")

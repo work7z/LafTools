@@ -29,7 +29,7 @@ export default async function Home(props: CombindSearchProps) {
 export type CategorySearchProps = PageProps<{
     subCategory: string,
     category: string,
-}, {}>;
+}, { id: string }>;
 export let generateMetadata = async function (props: CategorySearchProps): Promise<Metadata> {
     // fn
     let fn = (obj: Partial<Metadata>) => {
@@ -59,13 +59,25 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
     if (_.isEmpty(targetSubCategory)) {
         notFound()
     }
-    targetSubCategory?.seoTitle && title.push(targetSubCategory?.label + " | " + targetSubCategory?.seoTitle)
+    targetSubCategory?.seoTitle && title.push(targetSubCategory?.seoTitle)
+
+    let searchToolId = props.searchParams.id;
+    if (!searchToolId) {
+        searchToolId = targetSubCategory.subTabs![0].id
+    }
+    let searchToolItem = (targetSubCategory.subTabs || []).find(x => x.id == searchToolId)
+    if (!searchToolItem) {
+        notFound()
+    }
+    title.push(searchToolItem.label + " - " + targetSubCategory.label)
+
+    // keywords
     result.keywords = targetSubCategory?.seoKeywords ? [
         ...(targetSubCategory?.subTabs || []).map(x => x.label),
         ...targetSubCategory?.seoKeywords,
     ] : []
     result.title = (
-        title.reverse().join(" - ")
+        title.reverse().join(" | ")
     )
     return result;
 }
