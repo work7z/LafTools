@@ -21,6 +21,7 @@ import ToolPart from '@/app/[lang]/portal/src/tools'
 import { getAppIcon, getAppKeywords } from "../../../../__CORE__/config/imgconfig";
 import Tools, { generateMetadata as toolMetaDataFn } from '@/app/[lang]/page'
 import NavigatorPage from "../../navigator";
+import { getToolsPortalDefinitions } from "../../types";
 
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
@@ -30,14 +31,16 @@ export let sleep = (ms: number) => {
 }
 
 export default async function Home(props: CombindSearchProps) {
-    let authInfo = await getAuthInfo()
+    let { subCategory } = props.params
+    if (_.isEmpty(subCategory)) {
+        subCategory = getToolsPortalDefinitions()[0].id
+    }
     return (
         <main>
-            <NavigatorPage children={<ToolPart></ToolPart>}></NavigatorPage>
+            <NavigatorPage children={<ToolPart subCategory={subCategory}></ToolPart>}></NavigatorPage>
         </main>
     )
 }
 
 
-// export let generateMetadata = toolMetaDataFn
 export { generateMetadata } from '@/app/[lang]/page'

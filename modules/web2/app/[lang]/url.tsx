@@ -1,0 +1,1 @@
+export let URL_SUBCATEGORY_GO_PATH = "go"

@@ -34,19 +34,21 @@ export let getCardsProps = (): CardProps => {
         radius: "none", shadow: "none", className: light_border_clz_all
     }
 }
-
-export default () => {
+export type ToolProp = {
+    subCategory: string
+}
+export default (props: ToolProp) => {
+    let subCategory = props.subCategory
     let secondaryPanelClzHeader = tw('bg-slate-50 g-card-header dark:bg-slate-700')
     return <div>
         <div className='flex flex-row space-x-2'>
             <div className='flex-1  space-y-2'>
                 <Card {...getCardsProps()} className={light_border_clz_all}>
-                    <ToolNav></ToolNav>
+                    <ToolNav {...props}></ToolNav>
                     <CardBody className='p-0'>
                         <ToolView />
                     </CardBody>
                 </Card>
-
             </div>
             <div className='w-64  space-y-2'>
                 <Card {...getCardsProps()}>

@@ -41,6 +41,7 @@ import {
 import { GitHubRepoIssueLink } from "../../__CORE__/types/constants";
 import Footer from "../../__CORE__/containers/Footer";
 import PossiblePathname from "../../__CORE__/components/PossiblePathname";
+import { URL_SUBCATEGORY_GO_PATH } from "../url";
 
 export type LabelHrefType = {
     label: string | JSX.Element,
@@ -129,7 +130,7 @@ export default (props: NavigatorPassProp) => {
                 <div>
                     {
                         leftCategoryArr.map(x => {
-                            return <Link href={fmtURL_ToolSubPage(['go', x.id])} className=" white-anchor-text anchor-text-for-blue    ">{x.label}</Link>
+                            return <Link href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, x.id])} className=" white-anchor-text anchor-text-for-blue    ">{x.label}</Link>
                         })
                     }
                 </div>

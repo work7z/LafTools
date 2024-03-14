@@ -14,23 +14,28 @@ import { usePathname } from 'next/navigation';
 import React, { } from "react";
 import { PageProps } from '@/app/__CORE__/types/pages'
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
-import { Dot } from "../__CORE__/utils/TranslationUtils";
+import { Dot, getXSubPath } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
 import { NextUIProvider } from "@nextui-org/react";
 import ToolPart from '@/app/[lang]/portal/src/tools'
 import { getAppIcon, getAppKeywords } from "../__CORE__/config/imgconfig";
 
 import Tools, { CombindSearchProps } from '@/app/[lang]/tools/page'
+import { satisfies } from "semver";
 export default async function Home(props: CombindSearchProps) {
     return <Tools {...props} />
 }
-export let generateMetadata = async function (): Promise<Metadata> {
-    return {
-        icons: [
-            getAppIcon()
-        ],
-        title: Dot("title-laftools", "LafTools - The Leading All-In-One ToolBox for Programmers"),
-        description: Dot("iZXig7E2JF", "LafTools offers a comprehensive suite of development utilities including codecs, formatters, image processing tools, and computer resource management solutions. Designed to streamline and enhance your development workflow, LafTools is your go-to resource for efficient, high-quality software development."),
-        keywords: getAppKeywords(),
+export let generateMetadata = async function (obj: CombindSearchProps): Promise<Metadata> {
+    let fn = (obj: Partial<Metadata>) => {
+        return _.merge({
+            icons: [
+                getAppIcon()
+            ],
+            title: Dot("title-laftools", "LafTools - The Leading All-In-One ToolBox for Programmers"),
+            description: Dot("iZXig7E2JF", "LafTools offers a comprehensive suite of development utilities including codecs, formatters, image processing tools, and computer resource management solutions. Designed to streamline and enhance your development workflow, LafTools is your go-to resource for efficient, high-quality software development."),
+            keywords: getAppKeywords(),
+        } satisfies Metadata, obj)
     };
+    let subPath = getXSubPath()
+    return fn({})
 }
