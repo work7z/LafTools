@@ -11,6 +11,7 @@ require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/google/uuid v1.3.1
 	github.com/gorilla/websocket v1.5.0
+	github.com/iamacarpet/go-winpty v1.0.4
 	github.com/mattn/go-sqlite3 v1.14.18
 	github.com/natefinch/atomic v1.0.1
 	github.com/samber/lo v1.38.1
@@ -18,17 +19,10 @@ require (
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.8.4
 	golang.org/x/crypto v0.17.0
-	google.golang.org/protobuf v1.31.0
+	google.golang.org/protobuf v1.33.0
 )
 
-require (
-	github.com/apex/log v1.1.1 // indirect
-	github.com/creack/pty v1.1.9 // indirect
-	github.com/dustin/go-humanize v1.0.0 // indirect
-	github.com/iamacarpet/go-winpty v1.0.4 // indirect
-	github.com/pkg/errors v0.8.1 // indirect
-	github.com/tj/node-prune v1.2.0 // indirect
-)
+require github.com/creack/pty v1.1.9 // indirect
 
 require (
 	github.com/bas24/googletranslatefree v0.0.0-20231117033553-f5859fe54d30
