@@ -83,3 +83,4 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
     return result;
 }
 
+export type { CombindSearchProps, AuthInfoProps } from './[category]/page'
