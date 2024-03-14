@@ -105,16 +105,16 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
         }) satisfies ActionButtonProps[],
         {
             icon: 'document-open',
-            text: Dot("2bqHk", "Load from File"),
+            text: Dot("2bdqHk", "File"),
             intent: "none",
-            title: Dot("NNfJo", "Load Data from File"),
+            title: Dot("NNfdo", "Load Data from File as input"),
             onClick: () => {
                 AlertUtils.popNotSupport()
             }
         },
         {
             icon: 'color-fill',
-            text: Dot("IWUH5", "Show Example"),
+            text: Dot("IdfUH5", "Example"),
             intent: "none",
             className: "",
             enableActionMode: true,
@@ -218,6 +218,14 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                 onColl_config(!isCollapsed_config);
             }
         },
+        {
+            icon: 'search',
+            intent: 'none',
+            title: Dot("6SypzjeRz", "Quickly search tools that you need"),
+            onClick: () => {
+                AlertUtils.popNotSupport()
+            }
+        }
         // {
         //     // icon: 'publish-function',
         //     // icon: 'remove-row-top',

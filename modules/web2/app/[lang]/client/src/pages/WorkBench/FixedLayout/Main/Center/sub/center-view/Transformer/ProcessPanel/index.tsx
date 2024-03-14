@@ -99,32 +99,32 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
                 },
             }
         },
-        {
-            label: Dot("6AumW", "Default Action"),
-            helperText: Dot("nxJC7", "The default action to be executed when the transformer is performed."),
-            genEleConfig: {
-                type: "select",
-                value: crtRuntimeStatus.defaultOperationId,
-                onChange(newVal) {
-                    // debugger
-                    FN_GetDispatch()(
-                        RuntimeStatusSlice.actions.updateValueInStatusMap({
-                            sessionId,
-                            obj: {
-                                defaultOperationId: newVal
-                            }
-                        })
-                    )
-                },
-                selectList: (operList || []).map(x => {
-                    let optDetail = x.getOptDetail()
-                    return {
-                        label: optDetail?.name,
-                        value: optDetail?.id
-                    } as LabelValuePair
-                })
-            }
-        }
+        // {
+        //     label: Dot("6AumW", "Default Action"),
+        //     helperText: Dot("nxJC7", "The default action to be executed when the transformer is performed."),
+        //     genEleConfig: {
+        //         type: "select",
+        //         value: crtRuntimeStatus.defaultOperationId,
+        //         onChange(newVal) {
+        //             // debugger
+        //             FN_GetDispatch()(
+        //                 RuntimeStatusSlice.actions.updateValueInStatusMap({
+        //                     sessionId,
+        //                     obj: {
+        //                         defaultOperationId: newVal
+        //                     }
+        //                 })
+        //             )
+        //         },
+        //         selectList: (operList || []).map(x => {
+        //             let optDetail = x.getOptDetail()
+        //             return {
+        //                 label: optDetail?.name,
+        //                 value: optDetail?.id
+        //             } as LabelValuePair
+        //         })
+        //     }
+        // }
     ]
     // generalList = [...generalList, ...generalList, ...generalList, ...generalList]
     let finalShowContent = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>

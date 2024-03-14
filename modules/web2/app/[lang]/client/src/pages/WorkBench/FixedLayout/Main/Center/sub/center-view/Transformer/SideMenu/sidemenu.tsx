@@ -18,6 +18,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
     let [defaultTab, setDefaultTab] = useState<"workflow" | "actions">("workflow")
     return <div>
         <SegmentedControl
+            // fill
             options={[
                 {
                     label: Dot("workflow.label", "Workflow"),

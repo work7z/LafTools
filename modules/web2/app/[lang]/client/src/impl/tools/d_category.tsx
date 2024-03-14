@@ -282,7 +282,8 @@ export default (): ToolCategory[] => {
           ChildrenIdSet: [
             "Tail",
             "RemoveLineNumbers",
-            "RemoveWhitespace"
+            "RemoveWhitespace",
+            "Reverse"
           ]
         },
         {

@@ -134,7 +134,7 @@ let appToolInfoObj = {
         LabelFn: () => Dot("1fd8x7dqw", "Remove Line Numbers")
     }),
     Reverse: passInfo({
-        LabelFn: () => Dot("-bk4oM9kj", "Reverse")
+        LabelFn: () => Dot("reverse.text", "Reverse Text")
     }),
     CSVToJSON: passInfo({
         LabelFn: () => Dot("1X8x7dqw", "CSV to JSON")

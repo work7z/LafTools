@@ -69,7 +69,10 @@ body {
   @apply xl:max-w-[1280px];
   @apply 2xl:max-w-[1530px];
 }
-
+.bp5-toast-container{
+  position: fixed!important;
+  z-index: 9999!important;
+}
 body {
  font-family: "Helvetica Neue",
     "Luxi Sans",

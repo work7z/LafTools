@@ -20,6 +20,7 @@
 
 import { fmtURL_Server } from '../__CORE__/utils/routeUtils'
 import { Dot, getXHostname } from "../__CORE__/utils/TranslationUtils";
+import { PortalDefinitionType, getToolsPortalDefinitions } from './client/src/impl/tools/d_portal';
 import { LabelHrefType } from './navigator'
 
 export let fmt_Category = (x: string) => {
@@ -78,37 +79,8 @@ export let fn_rightNav = (): LabelHrefType[] => {
     return rightNav
 }
 
-export let fn_leftCategoryArr = (): LabelHrefType[] => {
-    let leftCategoryArr: LabelHrefType[] = [
-        {
-            label: Dot("str.formatter", "Formatters"),
-            href: '/formatters'
-        },
-        {
-            label: Dot("str.codecs", "Codecs"),
-            href: '/codecs'
-        },
-        {
-            label: Dot("mhWk4dtid", "Encoding"),
-            href: '/encoding'
-        },
-        {
-            label: Dot("str.converters", "Converters"),
-            href: '/converters'
-        },
-        {
-            label: Dot("str.parsers", "Parsers"),
-            href: '/parsers'
-        },
-        {
-            label: Dot("IEFy5k39X", "Generators"),
-            href: '/generator'
-        },
-    ].map(x => {
-        x.href = fmtURL_Server(x.href)
-        x.href = fmtURL_Server('/')
-        return x
-    })
+export let fn_leftCategoryArr = (): PortalDefinitionType[] => {
+    let leftCategoryArr: PortalDefinitionType[] = getToolsPortalDefinitions()
     return leftCategoryArr;
 }
 export let fn_rightCategoryArr = () => {
