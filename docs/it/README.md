@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
+Per utilizzare rapidamente queste funzioni, abbiamo implementato un sito Web online stabile nelle regioni degli Stati Uniti e della Carolina del Nord affinché tu possa utilizzarlo. La maggior parte degli strumenti sono disponibili nei nostri siti Web online, ad eccezione di alcuni strumenti che si basano su funzionalità specifiche del sistema operativo.
 
 - 🇺🇸 stato unito: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Solo Cina continentale: [laf-tools.com](https://laf-tools.com)
@@ -162,6 +162,7 @@ Di seguito sono riportati ulteriori materiali a cui puoi dare un'occhiata se des
 
 Apprezzeremmo gli artisti di talento che fornissero di seguito bellissime icone:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
 
 # 🙏 Ringraziamenti
 

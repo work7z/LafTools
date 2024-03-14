@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
+Jotta voit käyttää näitä toimintoja nopeasti, olemme ottaneet käyttöön vakaan online-sivuston Yhdysvalloissa ja CN-alueella. Useimmat työkalut ovat saatavilla online-sivustoillamme lukuun ottamatta joitakin työkaluja, jotka perustuvat tiettyihin käyttöjärjestelmän ominaisuuksiin.
 
 - 🇺🇸 Yhdysvallat: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Vain Manner-Kiina: [laf-tools.com](https://laf-tools.com)
@@ -162,6 +162,7 @@ Alla on muita materiaaleja, joita voit katsoa, ​​jos haluat saada lisätieto
 
 Arvostamme lahjakkaita taiteilijoita, jotka toimittivat alla kauniita kuvakkeita:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
 
 # 🙏 Kiitokset
 

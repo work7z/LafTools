@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
+これらの機能をすぐに使用できるように、安定したオンライン Web サイトを米国および中国地域に展開しました。特定の OS 機能に依存する一部のツールを除き、ほとんどのツールはオンライン Web サイトで入手できます。
 
 - 🇺🇸 合衆国: [laftools.dev](https://laftools.dev)
 - 🇨🇳 中国本土のみ: [laf-tools.com](https://laf-tools.com)
@@ -162,6 +162,7 @@ LafTools があなたの日常業務を簡素化し、残業の必要性を減�
 
 以下の美しいアイコンを提供してくださった才能あるアーティストに感謝します。
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
 
 # 🙏 謝辞
 

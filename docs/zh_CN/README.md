@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
+为了快速使用这些功能，我们在美国和中国地区部署了稳定的在线网站供您使用。除了一些依赖特定操作系统功能的工具外，大多数工具都可以在我们的在线网站上找到。
 
 - 🇺🇸 海外版: [laftools.dev](https://laftools.dev)
 - 🇨🇳 国内版: [laf-tools.com](https://laf-tools.com)
@@ -162,6 +162,7 @@ cd pipeline
 
 我们非常感谢提供以下精美图标的才华横溢的艺术家：
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
 
 # 🙏 致谢
 

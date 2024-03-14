@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
+A funkciók gyors használatához stabil online webhelyet állítottunk be az Egyesült Államokban és a CN régióban. A legtöbb eszköz elérhető online webhelyeinken, kivéve néhány olyan eszközt, amelyek az operációs rendszer adott képességeire támaszkodnak.
 
 - 🇺🇸 Egyesült Államok: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Csak Kína szárazföldi része: [laf-tools.com](https://laf-tools.com)
@@ -162,6 +162,7 @@ Az alábbiakban további anyagok találhatók, amelyeket megtekinthet, ha többe
 
 Nagyra értékelnénk azokat a tehetséges művészeket, akik az alábbi gyönyörű ikonokat mutatták be:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
 
 # 🙏 Köszönetnyilvánítás
 

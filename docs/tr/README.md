@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
+Bu işlevleri hızlı bir şekilde kullanabilmeniz için, ABD ve CN bölgesinde kullanmanız için istikrarlı bir çevrimiçi web sitesi kurduk. Belirli işletim sistemi özelliklerine dayanan bazı araçlar dışında çoğu araç çevrimiçi web sitelerimizde mevcuttur.
 
 - 🇺🇸 Birleşik Devlet: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Yalnızca Çin Anakarası: [laf-tools.com](https://laf-tools.com)
@@ -162,6 +162,7 @@ Bu proje hakkında daha fazla ayrıntı öğrenmek istiyorsanız aşağıda göz
 
 Aşağıdaki güzel simgeleri sunan yetenekli sanatçıları takdir ediyoruz:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
 
 # 🙏 Teşekkür
 

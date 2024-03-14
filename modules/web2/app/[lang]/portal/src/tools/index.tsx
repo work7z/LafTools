@@ -51,15 +51,24 @@ export default () => {
                 <Card {...getCardsProps()}>
                     <CardHeader className={secondaryPanelClzHeader}>{Dot("azsd", "Quick Navigation")}</CardHeader>
                     <CardBody>
-                        {/* p-2  hover:border-purple-100 border-2 */}
-                        <Link className='flex flex-row items-center justify-center ' href={fmtURL_Server('/client')}>
-                            <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-gray-200 text-gray-500 hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500 dark:hover:border-blue-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                <img src='/controls/text-editor.png' className='w-5 h-5 mr-[2px] ' />
-                                <span className=''>
-                                    {Dot("kUSuP_S-Y", "Try with Client UI")}
-                                </span>
-                            </button>
-                        </Link>
+                        <div className='space-y-2'>
+                            <Link className='flex flex-row items-center justify-center ' href={fmtURL_Server('/client')}>
+                                <button type="button" className="w-full justify-center py-2 inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-gray-300 text-gray-600 hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500 dark:hover:border-blue-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                    <img src='/controls/program.png' className='w-5 h-5 mr-[2px] ' />
+                                    <span className=''>
+                                        {Dot("kUSuP_S-Y", "Try with Client UI")}
+                                    </span>
+                                </button>
+                            </Link>
+                            <a className='flex flex-row items-center justify-center ' href={'https://my.laf-tools.com'}>
+                                <button type="button" className="py-2 w-full   justify-center inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-gray-300 text-gray-600 hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500 dark:hover:border-blue-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                    <img src='/controls/help.png' className='w-5 h-5 mr-[2px] ' />
+                                    <span className=''>
+                                        {Dot("smi-8G-AQ", "Fundraising Plan")}
+                                    </span>
+                                </button>
+                            </a>
+                        </div>
                     </CardBody>
                 </Card>
                 <Card {...getCardsProps()}>

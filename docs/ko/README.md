@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
+이러한 기능을 빠르게 사용할 수 있도록 미국과 CN 지역에 안정적인 온라인 웹사이트를 배포했습니다. 특정 OS 기능에 의존하는 일부 도구를 제외하고 대부분의 도구는 온라인 웹사이트에서 사용할 수 있습니다.
 
 - 🇺🇸 미국: [laftools.dev](https://laftools.dev)
 - 🇨🇳 중국 본토만 해당: [laf-tools.com](https://laf-tools.com)
@@ -162,6 +162,7 @@ LafTools가 귀하의 일상 업무를 더 쉽게 만들고 초과 근무의 필
 
 아래의 아름다운 아이콘을 제공해 주신 재능 있는 아티스트에게 감사드립니다.
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
 
 # 🙏 감사의 말
 

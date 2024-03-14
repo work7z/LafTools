@@ -15,7 +15,7 @@
 
 # 🪄 Quick View
 
-To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
+Untuk menggunakan fungsi ini dengan pantas, kami telah menggunakan tapak web dalam talian yang stabil di rantau AS dan CN untuk anda gunakan. Kebanyakan alat tersedia di tapak web dalam talian kami kecuali beberapa alat yang bergantung pada keupayaan OS tertentu.
 
 - 🇺🇸 Amerika Syarikat: [laftools.dev](https://laftools.dev)
 - 🇨🇳 Tanah Besar China Sahaja: [laf-tools.com](https://laf-tools.com)
@@ -162,6 +162,7 @@ Di bawah ialah bahan lanjut yang boleh anda lihat jika anda ingin mengetahui leb
 
 Kami akan menghargai artis berbakat yang menyediakan ikon cantik di bawah:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
 
 # 🙏 Ucapan terima kasih
 

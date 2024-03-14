@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i> <br/> English  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: This page is generated from LafTools internally.</i> <br/> English | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -162,6 +162,8 @@ Below are further materials that you can have a look if you'd like to learn more
 
 We would appreciate talent artists who provided below beautiful icons:
 <a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by umartvurdu - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ide" title="ide icons">Ide icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/help" title="help icons">Help icons created by Freepik - Flaticon</a>
 
 # 🙏 Acknowledgements
 
