@@ -25,10 +25,6 @@ import Tools, { generateMetadata as toolMetaDataFn } from '@/app/[lang]/page'
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
 
-export let sleep = (ms: number) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 export default async function Home(props: CombindSearchProps) {
     let authInfo = await getAuthInfo()
     notFound()
@@ -40,9 +36,9 @@ export default async function Home(props: CombindSearchProps) {
 }
 
 
-export let generateMetadata = async function (): Promise<Metadata> {
+export let generateMetadata = async function (props): Promise<Metadata> {
     return {
-        ...toolMetaDataFn(),
+        ...toolMetaDataFn(props as any),
         title: Dot("N9bCERU1Q", "Internal Operation Page for LafTools"),
         keywords: [],
     };

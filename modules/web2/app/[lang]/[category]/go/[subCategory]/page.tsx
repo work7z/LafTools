@@ -26,9 +26,6 @@ import { getToolSubCategory } from "../../types";
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
 
-export let sleep = (ms: number) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 export default async function Home(props: CategorySearchProps) {
     let { subCategory } = props.params
