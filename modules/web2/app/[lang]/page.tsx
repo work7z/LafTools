@@ -47,7 +47,8 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
     let topCategoryNavList = getCategoryList()
     let topCategoryNavItem = topCategoryNavList.find(x => x.id == props.params.category)
     if (_.isNil(topCategoryNavItem)) {
-        notFound()
+        // notFound()
+        topCategoryNavItem = topCategoryNavList[0]
     }
     title.push(Dot("laftoolstitle", "Free Online LafTools"))
     let subCategory = props.params.subCategory;
