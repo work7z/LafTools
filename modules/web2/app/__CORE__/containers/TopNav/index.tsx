@@ -27,7 +27,6 @@ import dynamic from 'next/dynamic'
 import HomeLink from "../../components/HomeLink";
 import SearchBar from "./SearchBar";
 import { useIsLoggedIn } from "../../hooks/user";
-import { AuthInfoProps } from "@/app/[lang]/page";
 import { fmtURL_Server as fmtURL_Server } from "../../utils/routeUtils";
 import { getAppIcon } from "../../config/imgconfig";
 
@@ -38,19 +37,7 @@ export let TopNav = (props: AuthInfoProps) => {
 
     let homeItem = { name: Dot("UjkOS50wO", "Home"), href: "/" }
     let chatGroupItem = { name: Dot("groupnote", "Memo"), href: "/group" }
-    let links: { name: string, href: string }[] = isLoginIn ? [
-        homeItem,
-        // { name: props.authInfo.user?.userAcctId || 'Unknown', href: "/min" },
-        chatGroupItem,
-        { name: Dot("TV09-obNr", "Milestone"), href: fmtURL_Server("/milestone") },
-        { name: Dot("geHXwByxy", "Settings"), href: fmtURL_Server("/settings") },
-        { name: Dot("xhxY6iLDH", "Logout"), href: fmtURL_Server("/logout") },
-    ] : [
-        homeItem,
-        chatGroupItem,
-        { name: Dot("gTOv6abWT", "Login"), href: fmtURL_Server("/login") },
-        { name: Dot("gTOv6adbWT", "Register"), href: fmtURL_Server("/register") },
-    ]
+    let links: { name: string, href: string }[] = []
     return (
         <div className="border-b-2  dark:border-solarized-green dark:border-opacity-80  " >
             <div className="flex items-center justify-between flex-wrap p-4 border-b-slate-300  mx-auto app-minmax-size pl-6  " style={{

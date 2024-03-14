@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
-// Date: Wed, 6 Mar 2024
+// Date: Sat, 24 Feb 2024
 // Author:   
 // Description: 
 // Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
@@ -18,17 +18,18 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-export type AppInfoClz = {
-    version: string,
-    releaseDate: string,
-    timestamp: string
+import { fmtURL_Server } from '../../__CORE__/utils/routeUtils'
+import { Dot, getXHostname } from "../../__CORE__/utils/TranslationUtils";
+import { PortalDefinitionType, getToolsPortalDefinitions } from '../client/src/impl/tools/d_portal';
+import { LabelHrefType } from './navigator'
+
+export * from "@/app/[lang]/client/src/impl/tools/d_portal";
+
+
+export let fmtURL_Category = (x: string[]) => {
+    return fmtURL_Server(x)
 }
 
-export type VersionReleaseRequirement = {
-    consistentID: string | null, // e.g. if current consistent ID is not matched with one from new version, then we'd better do a full package release
-    partials: { // in App, not every parts need to be downloaded and released, instead, we can reuse existing local directory to speed up the release process by checking their version
-        id: string,
-        destination: string[],
-        partialConsistentID: string | null // if it's not matched, then need to do full package release.
-    }[]
+export let fmtURL_ToolSubPage = (x: string[]) => {
+    return fmtURL_Category(['tools', ...x])
 }

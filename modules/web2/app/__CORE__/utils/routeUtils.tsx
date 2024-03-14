@@ -28,11 +28,7 @@ import _ from 'lodash'
 export let getLocalePrefix_Server = (): LocaleType => {
     return getXLocaleStrInRSC()
 }
-export let fmtURL_Server = (str: string): string => {
-    str = _.trim(str)
-    if (str.startsWith("/")) {
-        str = str.substring(1)
-    }
+export let fmtURL_Server = (str: string[]): string => {
     let localePrefix = getLocalePrefix_Server().langInURL
-    return "/" + localePrefix + '/' + str
+    return '/' + ([localePrefix, ...str].filter(x => x != '' && !_.isNil(x)).join('/'))
 }

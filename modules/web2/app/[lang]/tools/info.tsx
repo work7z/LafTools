@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
-// Date: Fri, 23 Feb 2024
+// Date: Wed, 6 Mar 2024
 // Author:   
 // Description: 
 // Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
@@ -18,23 +18,12 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Link from "next/link"
-import { LabelHrefType } from "./navigator"
 
-export let NavItem = (props: {
-    nav: LabelHrefType[],
-    extraLeft?: any
-}) => {
-    let { nav } = props
-    let leftNav = nav
-    return <div className={' flex flex-row items-center  space-x-4 font-xs '}>
-        {props.extraLeft}
-        {
-            leftNav.map(x => {
-                return <Link href={x.href} className={
-                    "text-xs text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 duration-100 "
-                }>{x.label}</Link>
-            })
-        }
-    </div>
-}
+import { AppInfoClz } from "../ctypes"
+
+export default {
+    "version": "v2.1.26",
+    "releaseDate": "2024-03-07",
+    "timestamp": "1709819731"
+} satisfies AppInfoClz
+

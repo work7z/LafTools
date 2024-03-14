@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import info from '@/app/[lang]/info'
+import info from '@/app/[lang]/tools/info'
 // write a full page component that has loading animation
 // import ExtraLoadingBar from './ExtraLoadingBar'
 import { getIconPngFileWithoutClient as getIconPngFileWithoutClient } from "@/app/[lang]/client/src/noclient";

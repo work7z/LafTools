@@ -1,6 +1,6 @@
 'use server'
 
-import { LabelHrefType } from "@/app/[lang]/navigator"
+import { LabelHrefType } from "@/app/[lang]/tools/navigator"
 import { Dot } from "@/app/__CORE__/utils/TranslationUtils"
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils"
 
@@ -82,7 +82,7 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
         },
         {
             label: Dot("mhWk4ddtid", "Encoding"),
-            id: '/encoding',
+            id: 'encoding',
             subTabs: [
                 {
                     id: "urlencoder",
@@ -90,29 +90,29 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
                 },
                 {
                     id: 'base64',
-                    label: Dot("2Y2Y2Y2Y2", "Base64"),
+                    label: Dot("2Y2Y2Yd2Y2", "Base64"),
                 },
                 {
                     id: 'escape',
-                    label: Dot("2Y2Y2Y2Y2", "Escape"),
+                    label: Dot("2Y2Y2qY2Y2", "Escape"),
                 },
                 {
                     id: 'unescape',
-                    label: Dot("2Y2Y2Y2Y2", "Unescape"),
+                    label: Dot("2Y2Y2wY2Y2", "Unescape"),
                 },
                 {
                     id: 'encodeuri',
-                    label: Dot("2Y2Y2Y2Y2", "Encode URI"),
+                    label: Dot("2Y2eY2Y2Y2", "Encode URI"),
                 },
                 {
                     id: 'decodeuri',
-                    label: Dot("2Y2Y2Y2Y2", "Decode URI"),
+                    label: Dot("2Y2Ye2Y2Y2", "Decode URI"),
                 },
             ]
         },
         {
             label: Dot("str.converters", "Converters"),
-            id: '/converters',
+            id: 'converters',
             subTabs: [
                 {
                     id: 'json2xml',
@@ -138,7 +138,7 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
         },
         {
             label: Dot("str.parsers", "Parsers"),
-            id: '/parsers',
+            id: 'parsers',
             subTabs: [
                 {
                     id: 'sqlparser',
@@ -148,19 +148,19 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
         },
         {
             label: Dot("IEFy5k39X", "Generators"),
-            id: '/generator',
+            id: 'generator',
             subTabs: [
                 {
                     id: 'uuid',
-                    label: Dot("qwe", "UUID Generator"),
+                    label: Dot("qwwqee", "UUID Generator"),
                 },
                 {
                     id: 'guid',
-                    label: Dot("eeqw", "GUID Generator"),
+                    label: Dot("qeeqw", "GUID Generator"),
                 },
                 {
                     id: 'random',
-                    label: Dot("eqw", "Random Generator"),
+                    label: Dot("eqwwew", "Random Generator"),
                 },
             ]
         },
@@ -168,4 +168,71 @@ export let getToolsPortalDefinitions = (): PortalDefinitionType[] => {
         return x
     })
     return toolsPortalDefinitions;
+}
+
+export let fn_leftNav = (): LabelHrefType[] => {
+    let leftNav: LabelHrefType[] = [
+        {
+            label: Dot("G2dvTUljF", "Tools"),
+            id: 'tools'
+        },
+        {
+            label: Dot("n28g4di0L", "Manuals"),
+            id: 'manuals'
+        },
+        {
+            label: Dot("AvsWiJHLZ", "Resources"),
+            id: 'resources',
+        },
+        {
+            label: Dot("ymyfghy1r", "Notes"),
+            id: ('notes')
+        },
+        {
+            label: Dot("bWQunyU10", "AI Laboratory"),
+            id: ('ai-lab')
+        },
+    ]
+
+    return leftNav
+}
+// TODO: update the /v2 to actual path
+export let fn_rightNav = (): LabelHrefType[] => {
+    let rightNav: LabelHrefType[] = [
+        {
+            label: Dot("str.login", "Login"),
+            href: 'https://my.laftools.dev/v2/zh-hans/nav/form/sign-in'
+        },
+        {
+            label: Dot("str.register", "Register"),
+            href: 'https://my.laftools.dev/v2/zh-hans/nav/form/sign-up'
+        },
+        {
+            label: Dot("str.usercentre", "User Centre"),
+            href: 'https://my.laftools.dev'
+        },
+    ]
+    return rightNav
+}
+
+export let fn_leftCategoryArr = (): PortalDefinitionType[] => {
+    let leftCategoryArr: PortalDefinitionType[] = getToolsPortalDefinitions()
+    return leftCategoryArr;
+}
+export let fn_rightCategoryArr = () => {
+    let rightCategoryArr: LabelHrefType[] = [
+        {
+            label: Dot("download-local", "Free Download"),
+            href: '/v2/'
+        },
+        {
+            label: Dot("str.remarks", "Favorites"),
+            href: fmtURL_Server(['/']),
+        },
+        {
+            label: Dot("str.mostused", "Frequently-Used"),
+            href: fmtURL_Server(['/']),
+        }
+    ]
+    return rightCategoryArr
 }

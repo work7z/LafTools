@@ -26,8 +26,6 @@ import { Dot, getXSearchParams } from "@/app/__CORE__/utils/TranslationUtils";
 import { PortalDefinitionTbabGroup, PortalDefinitionType, getToolsPortalDefinitions } from "@/app/[lang]/client/src/impl/tools/d_portal";
 
 export default function App() {
-
-    // get parameter in next.js
     let sp = getXSearchParams()
     let tabs: PortalDefinitionTbabGroup[] = [];
     let m = getToolsPortalDefinitions()
