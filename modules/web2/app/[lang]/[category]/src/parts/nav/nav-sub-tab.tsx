@@ -28,10 +28,13 @@ import { ToolProp } from "../tools";
 import _ from "lodash";
 import { fmtURL_ToolSubPage } from "@/app/[lang]/[category]/types";
 import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
+import { CrtToolProp } from "../tools/main-part";
 
-export default function (props: ToolProp) {
+export default function (props: CrtToolProp) {
     let subCategory = props.subCategory
-    let sp = getXSearchParams()
+    let sp = {
+        id: props.params.id
+    }
 
     let tabs: PortalDefinitionTbabGroup[] = [];
     let toolsPortalDefinitions = getToolSubCategory()
@@ -48,7 +51,7 @@ export default function (props: ToolProp) {
                 <nav className="flex space-x-2 justify-center" aria-label="Tabs" role="tablist">
                     {
                         tabs.map(x => {
-                            return <Link key={x.id} href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, subCategory, '?id=' + x.id])}>
+                            return <Link key={x.id} href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, subCategory, '' + x.id])}>
                                 <button type="button" className={
                                     ((targetTabId) == x.id ? "active " : ' ') +
                                     'hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 '

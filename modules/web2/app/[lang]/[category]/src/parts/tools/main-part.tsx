@@ -30,6 +30,7 @@ import ToolView from './inner'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import Sidebar from './main-sidebar';
+import { ToolProp } from '.';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -37,13 +38,11 @@ export let getCardsProps = (): CardProps => {
 }
 
 
-export type ToolProp = {
-    subCategory: string
-}
-export default (props: ToolProp) => {
+export type CrtToolProp = ToolProp
+export default (props: CrtToolProp) => {
     return <div className='flex-1  space-y-2'>
         <Card {...getCardsProps()} className={light_border_clz_all}>
-            <SubTabNav {...props}></SubTabNav>
+            <SubTabNav  {...props}></SubTabNav>
             <ToolView />
         </Card>
     </div>

@@ -59,7 +59,7 @@ export default async function Home(props: CategorySearchProps) {
     }
     return (
         <main>
-            <NavigatorPage {...props} children={<ToolPart subCategory={subCategory}></ToolPart>}></NavigatorPage>
+            <NavigatorPage {...props} children={<ToolPart {...props} subCategory={subCategory} />}></NavigatorPage>
         </main>
     )
 }

@@ -29,7 +29,8 @@ export default async function Home(props: CombindSearchProps) {
 export type CategorySearchProps = PageProps<{
     subCategory: string,
     category: string,
-}, { id: string }>;
+    id: string
+}, {}>;
 export let generateMetadata = async function (props: CategorySearchProps): Promise<Metadata> {
     // fn
     let fn = (obj: Partial<Metadata>) => {

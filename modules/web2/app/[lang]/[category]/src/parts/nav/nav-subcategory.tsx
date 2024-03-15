@@ -64,7 +64,7 @@ export default (props: NavigatorPassProp) => {
                         return <div id={`navbindid-${x.id}`} style={{
                             display: 'none'
                         }} className={
-                            'absolute  z-50 left-2 top-2 min-h-48 min-w-10 transition-all duration-75 bg-opacity-75  bg-sky-700 dark:bg-sky-600 text-white dark:text-slate-200 p-2 '
+                            'absolute  z-50 left-2 top-2 min-h-48 min-w-10 transition-all duration-75 bg-opacity-95  bg-sky-700 dark:bg-sky-600 text-white dark:text-slate-200 p-2 '
                         }>this is {x.id}/{x.label}</div>
                     })
                 }
