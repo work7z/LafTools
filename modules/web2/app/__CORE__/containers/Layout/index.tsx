@@ -26,6 +26,7 @@ import CenterPart from "../CenterPart";
 import Footer from "../Footer";
 import { ThemeProvider } from "../../../theme-provider";
 import { useTheme } from "next-themes";
+import Script from 'next/script'
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -35,6 +36,22 @@ export default function RootLayout(props: {
     let { children } = props;
     return (
         <html lang={getWebsiteLocale()}>
+            <head>
+                {/** in online LafTools only */}
+                <Script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=G-C3NXGY8E7J"
+                />
+                <Script id="google-analytics">
+                    {`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C3NXGY8E7J');
+          `}
+                </Script>
+            </head>
             <body className={' min-h-screen dark:bg-slate-950 dark:text-slate-300    ' + inter.className}>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem >
                     <div className="w-full h-full">
