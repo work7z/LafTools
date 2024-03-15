@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
-// Date: Thu, 14 Mar 2024
+// Date: Wed, 6 Mar 2024
 // Author:   
 // Description: 
 // Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
@@ -18,4 +18,35 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-export let URL_SUBCATEGORY_GO_PATH = "go"
+import { fmtURL_Server } from "../utils/routeUtils";
+
+
+
+export * from "@/app/[lang]/client/src/impl/tools/d_portal";
+
+
+export let fmtURL_Category = (x: string[]) => {
+    return fmtURL_Server(x)
+}
+
+export let fmtURL_ToolSubPage = (x: string[]) => {
+    return fmtURL_Category(['tools', ...x])
+}
+
+
+export type SystemConfig = {
+    database: {
+        link: string
+    },
+    sms: {
+        appId: string,
+        secretId: string,
+        secretKey: string
+    }
+}
+
+
+export type PageProps<T, K> = {
+    params: T,
+    searchParams: K
+}

@@ -29,7 +29,7 @@ import { Provider, useDispatch } from "react-redux";
 import { store } from '@/app/[lang]/client/src/store'
 import '@/app/[lang]/client/src/initapp'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp'
-import { VAL_CSS_MENU_TITLE_PANEL, border_clz, light_border_clz_all, tw } from '@/app/[lang]/styles'
+import { VAL_CSS_MENU_TITLE_PANEL, border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles'
 import { loadDOT } from '@/app/__CORE__/utils/i18n-types'
 import { Dot } from '@/app/__CORE__/utils/cTranslationUtils'
 import SmallScreenDetecter from '@/app/[lang]/client/src/SmallScreenDetecter'

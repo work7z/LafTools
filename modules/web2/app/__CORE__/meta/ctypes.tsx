@@ -18,6 +18,12 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+
+import React from "react";
+import { CommonTransformerPassProp } from "../../[lang]/client/src/types/workbench-types";
+import { AppOptViewMode } from "../../[lang]/client/src/pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer";
+
+
 export type AppInfoClz = {
     version: string,
     releaseDate: string,
@@ -32,4 +38,16 @@ export type VersionReleaseRequirement = {
         partialConsistentID: string | null // if it's not matched, then need to do full package release.
     }[]
 }
+
+
+export type CommonTransformerProps = CommonTransformerPassProp & {
+    crtOptMode: AppOptViewMode
+};
+
+export type ClientPortalInfo = {
+    portalMode: boolean
+}
+export let ClientPortalContext = React.createContext<ClientPortalInfo>({
+    portalMode: false
+})
 

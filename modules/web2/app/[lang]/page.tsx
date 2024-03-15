@@ -12,12 +12,12 @@ import { notFound, useParams, useSearchParams } from "next/navigation";
 import InnerHome from '../home'
 import { usePathname } from 'next/navigation';
 import React, { } from "react";
-import { PageProps } from '@/app/__CORE__/types/pages'
+import { PageProps } from '@/app/__CORE__/meta/pages'
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
 import { Dot, getXSubPath, isChineseByXLocal } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
 import { NextUIProvider } from "@nextui-org/react";
-import ToolPart from '@/app/[lang]/[category]/go/[subCategory]/part/tools'
+
 import { getAppIcon, getAppKeywords } from "../__CORE__/config/imgconfig";
 
 import SubCategoryPage, { CombindSearchProps } from '@/app/[lang]/[category]/page'

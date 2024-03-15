@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
-// Date: Wed, 6 Mar 2024
+// Date: Thu, 14 Mar 2024
 // Author:   
 // Description: 
 // Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
@@ -17,4 +17,6 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-export * from './ctypes'
+
+export let URL_SUBCATEGORY_GO_PATH = "go"
+

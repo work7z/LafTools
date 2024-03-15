@@ -22,7 +22,7 @@
 import _ from "lodash";
 import React, { } from "react";
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
-import { PageProps } from '@/app/__CORE__/types/pages'
+import { PageProps } from '@/app/__CORE__/meta/pages'
 // import Entry from "./client";
 import { Metadata } from "next/types";
 import { getAppIcon, getAppKeywords } from "@/app/__CORE__/config/imgconfig";

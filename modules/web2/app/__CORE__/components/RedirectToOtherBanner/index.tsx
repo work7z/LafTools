@@ -20,7 +20,7 @@
 
 'use client'
 
-import { border_clz } from "@/app/[lang]/styles"
+import { border_clz } from "@/app/__CORE__/meta/styles"
 import { useState } from "react"
 import regionUtils from "../../utils/regionUtils"
 import TranslationUtils from "../../utils/cTranslationUtils"

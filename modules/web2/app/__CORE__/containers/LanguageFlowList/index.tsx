@@ -59,7 +59,7 @@ import {
 } from "@blueprintjs/core";
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
-import { CSS_TEXT_ANCHOR_CSS } from "@/app/[lang]/styles";
+import { CSS_TEXT_ANCHOR_CSS } from "@/app/__CORE__/meta/styles";
 import { useGetI18nLangList } from "../../config/i18n";
 import { getXSubPath } from "../../utils/TranslationUtils";
 

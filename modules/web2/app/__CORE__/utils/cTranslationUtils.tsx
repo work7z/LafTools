@@ -22,7 +22,7 @@
 // SKIP_DOT
 import { headers } from 'next/headers';
 import _ from "lodash";
-import { LANG_EN_US, LangDefinition } from "../types/constants";
+import { LANG_EN_US, LangDefinition } from "../meta/constants";
 import { usePathname } from 'next/navigation'
 import { all_locales, zhCNLocale } from '@/middleware';
 import { fmtURL_Client } from './cRouteUtils';

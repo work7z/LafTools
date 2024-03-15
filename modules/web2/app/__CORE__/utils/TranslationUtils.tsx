@@ -22,7 +22,7 @@
 import { cookies, headers } from 'next/headers';
 import _ from "lodash";
 import Qs from 'query-string'
-import { LANG_EN_US, LangDefinition } from "../types/constants";
+import { LANG_EN_US, LangDefinition } from "../meta/constants";
 import { LocaleType, all_locales as all_locales, zhCNLocale } from '@/middleware';
 
 let VER_FORGE_FORM = '0.0.1'

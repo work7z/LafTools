@@ -61,7 +61,7 @@ import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { Dot } from "../../utils/TranslationUtils";
 import { useParams } from "react-router";
-import { ToolParamType } from "../../types/constants";
+import { ToolParamType } from "../../meta/constants";
 import mottoList from "../../config/motto";
 
 function replaceAll(str: string, find: string, replace: string) {

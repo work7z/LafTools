@@ -22,11 +22,9 @@
 
 import React from "react";
 import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
-import { Dot } from "../../__CORE__/utils/cTranslationUtils";
-import { NavItem } from "./navItem";
-import { GitHubRepoIssueLink } from "../../__CORE__/types/constants";
-import { fmtURL_ToolSubPage } from "./types";
-import { loadDOT } from "../../__CORE__/utils/i18n-types";
+import { NavItem } from "./nav-sub-category-item";
+import { Dot } from "@/app/__CORE__/utils/cTranslationUtils";
+import { loadDOT } from "@/app/__CORE__/utils/i18n-types";
 
 let a = loadDOT("EiVD4")
 

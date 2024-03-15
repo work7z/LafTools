@@ -20,7 +20,7 @@
 
 'use server'
 
-import { LabelHrefType } from "@/app/[lang]/[category]/navigator"
+import { LabelHrefType } from "@/app/[lang]/[category]/src/parts"
 import { getAppIcon, getAppKeywords } from "@/app/__CORE__/config/imgconfig"
 import { Dot } from "@/app/__CORE__/utils/TranslationUtils"
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils"

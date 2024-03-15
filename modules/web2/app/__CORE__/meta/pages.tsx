@@ -1,6 +1,6 @@
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
-// Date: Wed, 6 Mar 2024
+// Date: Thu, 22 Feb 2024
 // Author:   
 // Description: 
 // Copyright (C) 2024 - Present, https://laftools.dev and https://codegen.cc
@@ -18,12 +18,4 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-    import { AppInfoClz } from "./types"
-
-    export default {
-    "version": "v1.9.9",
-    "releaseDate": "2024-03-15",
-    "timestamp": "1710437835"
-    } satisfies AppInfoClz
-    
+export * from './common'

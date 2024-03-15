@@ -56,7 +56,7 @@ import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
 import ShowErrorPanel from "../../../../../../../../containers/ShowErrorPanel/index.tsx";
 import { useDispatch } from "react-redux";
 import Sidemenu from "./SideMenu/sidemenu.tsx";
-import { CSS_BG_COLOR_WHITE, border_clz, border_clz_common } from "@/app/[lang]/styles.tsx";
+import { CSS_BG_COLOR_WHITE, border_clz, border_clz_common } from "@/app/__CORE__/meta/styles.tsx";
 
 export type AppOptViewMode = "fixed" | "float"
 

@@ -2,15 +2,15 @@
 import React from 'react';
 import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, Tabs } from "@nextui-org/react";
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
-import { border_clz, light_border_clz_all, tw } from '@/app/[lang]/styles';
+import { border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles';
 import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
-import Nav from './sub-category-nav';
+import Nav from './nav-sub-category';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './tool-view'
+import ToolView from './view-tool'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from './cpt-fundrasing-btn';
-import { ToolProp, getCardsProps } from '.';
+import { ToolProp, getCardsProps } from './part-tool';
 
 export default (props: ToolProp) => {
     let subCategory = props.subCategory

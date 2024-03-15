@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import { AppInfoClz } from "../ctypes"
+import { AppInfoClz } from "../../__CORE__/meta/ctypes"
 
 export default {
     "version": "v2.1.26",
