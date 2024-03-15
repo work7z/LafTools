@@ -39,7 +39,7 @@ import { NextUIProvider } from "@nextui-org/react";
 
 import { getAppIcon, getAppKeywords } from "../../../../__CORE__/config/imgconfig";
 import Tools, { CategorySearchProps, generateMetadata as toolMetaDataFn } from '@/app/[lang]/page'
-import ToolPart from '../../src/parts/tool'
+import ToolPart from '../../src/parts/tools'
 import NavigatorPage from '../../src/parts/index'
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>

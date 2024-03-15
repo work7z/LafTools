@@ -50,7 +50,6 @@ import { fmtURL_ToolSubPage } from "@/app/__CORE__/meta/common";
 import NavTop from "./nav/nav-top";
 import NavSubCategory from './nav/nav-subcategory'
 import NavBanner from "./nav/nav-banner";
-import Main from "./main";
 export type LabelHrefType = {
     label: string | JSX.Element,
     id?: string,
@@ -62,12 +61,33 @@ export type NavigatorPassProp = CategorySearchProps & {
 
 export default (props: NavigatorPassProp) => {
     let { children } = props;
-    return <div className="">
-        <NavTop {...props} />
-        <RedirectToOtherBanner></RedirectToOtherBanner>
-        <NavBanner {...props} />
-        <NavSubCategory {...props}></NavSubCategory>
-        <Main {...props} />
-        <Footer />
-    </div>
+    return (
+        <div className={'  bg-slate-50 dark:bg-slate-800 pb-10'}>
+            <div className={row_pad_clz}>
+                <div className="flex flex-row flex-wrap py-2 items-center justify-between">
+                    <div>
+                        <SysBreadCrumbs />
+                    </div>
+                    <div>
+                        <NavCategory {...props} nav={[
+                            {
+                                href: fmtURL_ToolSubPage(['opt?action=favourite']),
+                                label: Dot("be-Favourite-it", "Add to Favourites")
+                            },
+                            {
+                                href: fmtURL_ToolSubPage(['opt?action=share-this-page']),
+                                label: Dot("share-this-page", "Share this Page")
+                            },
+                            {
+                                href: GitHubRepoIssueLink,
+                                label: Dot("BJbgR", "Report a Problem")
+                            }
+                        ]}></NavCategory>
+                    </div>
+                </div>
+                {children}
+            </div>
+        </div>
+
+    )
 }

@@ -4,10 +4,10 @@ import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, T
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import { border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles';
 import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
-import Nav from '../nav/nav-sub-category';
+import Nav from '../nav/nav-sub-tab';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './view'
+import ToolView from './inner'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import { ToolProp, getCardsProps } from '.';

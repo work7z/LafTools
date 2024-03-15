@@ -23,14 +23,13 @@ import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, T
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import { border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles';
 import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
-import Nav from '../nav/nav-sub-category';
+import SubTabNav from '../nav/nav-sub-tab';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './view'
+import ToolView from './inner'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import Sidebar from './main-sidebar';
-import Main from './main-part';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -42,10 +41,10 @@ export type ToolProp = {
     subCategory: string
 }
 export default (props: ToolProp) => {
-    return <div>
-        <div className='flex flex-row space-x-2'>
-            <Main {...props} />
-            <Sidebar {...props} />
-        </div>
+    return <div className='flex-1  space-y-2'>
+        <Card {...getCardsProps()} className={light_border_clz_all}>
+            <SubTabNav {...props}></SubTabNav>
+            <ToolView />
+        </Card>
     </div>
 }

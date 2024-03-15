@@ -22,7 +22,7 @@ import Link from "next/link"
 import { LabelHrefType, NavigatorPassProp } from ".."
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils"
 
-export let NavItem = (props: NavigatorPassProp & {
+export let NavCategory = (props: NavigatorPassProp & {
     activeId?: string,
     nav: LabelHrefType[],
     extraLeft?: any
@@ -39,11 +39,6 @@ export let NavItem = (props: NavigatorPassProp & {
                         ''
                     )
                 }>{x.label}</Link>
-            })
-        }
-        {
-            leftNav.map(x => {
-                return <div data-shownavid={x.id || ''}>floating for {x.label}</div>
             })
         }
     </div>

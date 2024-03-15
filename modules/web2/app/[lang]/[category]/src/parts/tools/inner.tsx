@@ -35,6 +35,7 @@ import { Dot } from '@/app/__CORE__/utils/cTranslationUtils'
 import SmallScreenDetecter from '@/app/[lang]/client/src/SmallScreenDetecter'
 import ClientWrapper from '../../common/clientWrapper'
 import { ClientPortalContext } from '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/types'
+import { CardBody } from '@nextui-org/react'
 
 export type ExtensionViewProps = {
 
@@ -85,9 +86,11 @@ let ToolInnerView = (props: ExtensionViewProps) => {
 }
 
 export default (props: ExtensionViewProps) => {
-    return <ClientWrapper children={
-        <div className='w-full h-full p-[5px] relative bg-slate-50 dark:bg-gray-900'>
-            <ToolInnerView {...props} />
-        </div>
-    } />
+    return <CardBody className='p-0'>
+        <ClientWrapper children={
+            <div className='w-full h-full p-[5px] relative bg-slate-50 dark:bg-gray-900'>
+                <ToolInnerView {...props} />
+            </div>
+        } />
+    </CardBody>
 }
