@@ -40,13 +40,14 @@ build-bundle(){
     bundleMode=$1
 
 
-targetFile=./modules/web2/app/[lang]/[category]/info.tsx
-if [ ! -f $targetFile ]; then
-    echo "[E] $targetFile is not found."
-    exit 1
-fi
+    targetFile=./modules/web2/app/[lang]/[category]/info.tsx
+    if [ ! -f $targetFile ]; then
+        echo "[E] $targetFile is not found."
+        exit 1
+    fi
+
     echo "
-    import { AppInfoClz } from \"./types\"
+    import { AppInfoClz } from \"./ctypes\"
 
     export default {
     \"version\": \"$crtVersion\",

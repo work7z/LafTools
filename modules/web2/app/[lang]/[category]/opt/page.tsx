@@ -37,7 +37,7 @@ import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWith
 import { Dot } from "../../../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
 import { NextUIProvider } from "@nextui-org/react";
-import ToolPart from '@/app/[lang]/portal/src/tools'
+import ToolPart from '@/app/[lang]/[category]/go/[subCategory]/part/tools'
 import { getAppIcon, getAppKeywords } from "../../../__CORE__/config/imgconfig";
 import Tools, { generateMetadata as toolMetaDataFn } from '@/app/[lang]/page'
 

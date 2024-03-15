@@ -38,10 +38,10 @@ import { Dot } from "../../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
 import NavigatorPage from "./navigator";
 import { NextUIProvider } from "@nextui-org/react";
-import ToolPart from '@/app/[lang]/portal/src/tools'
+import ToolPart from '@/app/[lang]/[category]/go/[subCategory]/part/tools'
 import { getAppIcon, getAppKeywords } from "../../__CORE__/config/imgconfig";
 import { generateMetadata as toolMetaDataFn } from "../page";
-import SubCategoryPage from './go/[subCategory]/page'
+import EntryPage from './go/[subCategory]/page'
 export type AuthInfoProps = { authInfo: AuthInfo }
 export type CombindSearchProps = PageProps<any, any>
 
@@ -52,7 +52,7 @@ export let sleep = (ms: number) => {
 export default async function Home(props: CombindSearchProps) {
     return (
         <main>
-            <SubCategoryPage {...props} />
+            <EntryPage {...props} />
         </main>
     )
 }

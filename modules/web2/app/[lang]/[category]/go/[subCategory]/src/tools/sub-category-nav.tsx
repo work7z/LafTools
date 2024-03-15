@@ -32,7 +32,7 @@ import { URL_SUBCATEGORY_GO_PATH } from "@/app/[lang]/url";
 export default function (props: ToolProp) {
     let subCategory = props.subCategory
     let sp = getXSearchParams()
-    // tabs
+
     let tabs: PortalDefinitionTbabGroup[] = [];
     let toolsPortalDefinitions = getToolSubCategory()
     toolsPortalDefinitions.forEach(x => {
