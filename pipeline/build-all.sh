@@ -40,6 +40,11 @@ build-bundle(){
     bundleMode=$1
 
 
+targetFile=./modules/web2/app/[lang]/[category]/info.tsx
+if [ ! -f $targetFile ]; then
+    echo "[E] $targetFile is not found."
+    exit 1
+fi
     echo "
     import { AppInfoClz } from \"./types\"
 
@@ -48,7 +53,7 @@ build-bundle(){
     \"releaseDate\": \"$(date +%Y-%m-%d)\",
     \"timestamp\": \"$(date +%s)\"
     } satisfies AppInfoClz
-    " > ./modules/web2/app/[lang]/info.tsx
+    " > $targetFile
 
 
     if [ -z jq ]; then
