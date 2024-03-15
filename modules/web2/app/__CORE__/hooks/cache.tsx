@@ -22,7 +22,10 @@ import { useEffect } from "react";
 import _ from 'lodash'
 
 let cacheIdObj: { [key: string]: boolean } = {}
-
+// listen when the page is shallow routed
+// window.addEventListener('popstate', (e) => {
+//     cacheIdObj = {}
+// })
 export let useInitFunctionOnceOnly = (fn: () => void, keyarr: string[]) => {
     let key = keyarr.join('-')
     let callInitOnce = _.once(fn);

@@ -63,6 +63,7 @@ export default (props) => {
             height="4px"
             color={randomColor}
             options={{ showSpinner: true }}
+
         // shallowRouting
         />
     </>

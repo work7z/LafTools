@@ -67,7 +67,7 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
     }
     targetSubCategory && targetSubCategory?.seoTitle && title.push(targetSubCategory?.seoTitle)
 
-    let searchToolId = props.searchParams.id;
+    let searchToolId = props.params.id;
     if (!searchToolId) {
         if (!targetSubCategory) {
             notFound()
