@@ -22,7 +22,7 @@
 
 import React from "react";
 import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
-import { NavItem } from "./nav-sub-category-item";
+import { NavItem } from "../nav/nav-category";
 import { Dot } from "@/app/__CORE__/utils/cTranslationUtils";
 import { loadDOT } from "@/app/__CORE__/utils/i18n-types";
 

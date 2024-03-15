@@ -23,14 +23,14 @@ import _ from "lodash";
 import React, { } from "react";
 import { Dot, getXHostname } from "@/app/__CORE__/utils/TranslationUtils";
 import Link from "next/link";
-import { NavItem } from "./nav-sub-category-item";
+import { NavItem } from "./nav/nav-category";
 import { getAppIcon } from "@/app/__CORE__/config/imgconfig";
 import { ClosableText } from "@/app/__CORE__/components/ClosableText";
 import RedirectToOtherBanner from "@/app/__CORE__/components/RedirectToOtherBanner/index";
 import { border_clz, border_clz_top, row_pad_clz } from "@/app/__CORE__/meta/styles";
 import LightDarkButton from "@/app/__CORE__/components/LightDarkButton";
 import GitHubButton from "@/app/__CORE__/components/GitHubButton";
-import SysBreadCrumbs from './cpt-breadcrumbs'
+import SysBreadCrumbs from './cpt/cpt-breadcrumbs'
 // import {
 
 // } from '../../../../../../types'

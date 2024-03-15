@@ -23,12 +23,12 @@ import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, T
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import { border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles';
 import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
-import SubCategoryNav from './nav-sub-category';
+import SubCategoryNav from '../nav/nav-sub-category';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './tool/view'
+import ToolView from './view'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
-import FundrasingPlanBtn from './cpt-fundrasing-btn';
+import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import Sidebar from './main-sidebar';
 export let getCardsProps = (): CardProps => {
     return {

@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Link from "next/link"
-import { LabelHrefType, NavigatorPassProp } from "."
+import { LabelHrefType, NavigatorPassProp } from ".."
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils"
 
 export let NavItem = (props: NavigatorPassProp & {
