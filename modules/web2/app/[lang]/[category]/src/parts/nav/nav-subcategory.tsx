@@ -29,6 +29,7 @@ import { CategorySearchProps } from "@/app/[lang]/page";
 import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
 import { fmtURL_ToolSubPage } from "@/app/__CORE__/meta/common";
 import { NavigatorPassProp } from "..";
+import PreinitNavbind from "../js/preinit-navbind";
 
 export default (props: NavigatorPassProp) => {
     let leftCategoryArr = getSubCategoryList()
@@ -41,7 +42,7 @@ export default (props: NavigatorPassProp) => {
                     {
                         leftCategoryArr.map(x => {
                             return <Link data-navid={x.id} href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, x.id])} className={
-                                " white-anchor-text anchor-text-for-blue    " + (
+                                " white-anchor-text anchor-text-for-blue cursor-pointer   " + (
                                     x.id == subCategory ? ' active ' : ''
                                 )
                             }>{x.label}</Link>
@@ -51,19 +52,24 @@ export default (props: NavigatorPassProp) => {
                 <div className="flex flex-row items-center">
                     {
                         rightCategoryArr.map(x => {
-                            return <Link href={x.href + ""} className={" white-anchor-text anchor-text-for-blue "}>{x.label}</Link>
+                            return <Link href={x.href + ""} className={" white-anchor-text anchor-text-for-blue cursor-pointer "}>{x.label}</Link>
                         })
                     }
                 </div>
             </div>
             {/* overlap */}
-            <div>
+            <div className="">
                 {
                     leftCategoryArr.map(x => {
-                        return <div data-bindnavid={x.id} className='absolute left-2 top-2'>this is {x.id}/{x.label}</div>
+                        return <div id={`navbindid-${x.id}`} style={{
+                            display: 'none'
+                        }} className={
+                            'absolute  z-50 left-2 top-2 min-h-48 min-w-10 transition-all duration-75 bg-opacity-75  bg-sky-700 dark:bg-sky-600 text-white dark:text-slate-200 p-2 '
+                        }>this is {x.id}/{x.label}</div>
                     })
                 }
             </div>
+            <PreinitNavbind />
         </div>
 
     )
