@@ -47,7 +47,8 @@ build-bundle(){
     fi
 
     echo "
-    import { AppInfoClz } from \"./ctypes\"
+import { AppInfoClz } from \"@/app/__CORE__/meta/common\"
+
 
     export default {
     \"version\": \"$crtVersion\",
