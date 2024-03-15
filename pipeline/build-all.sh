@@ -47,7 +47,7 @@ build-bundle(){
     fi
 
     echo "
-import { AppInfoClz } from \"@/app/__CORE__/meta/common\"
+import { AppInfoClz } from \"@/app/__CORE__/meta/ctypes\"
 
 
     export default {
