@@ -26,7 +26,6 @@ import { getWebsiteName } from "@/app/__CORE__/common/config";
 import { TopNav } from "@/app/__CORE__/containers/TopNav";
 import CenterPart from "@/app/__CORE__/containers/CenterPart";
 import CardPanel from '@/app/__CORE__/components/CardPanel'
-import NodeHorizontalBar from "@/app/__CORE__/containers/TabGroupHorizontalBar";
 import _, { random } from "lodash";
 import { useParams, useSearchParams } from "next/navigation";
 import InnerHome from '../../../../home'

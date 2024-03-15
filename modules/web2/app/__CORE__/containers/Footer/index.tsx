@@ -25,6 +25,7 @@ import { CSS_TEXT_ANCHOR_CSS } from "@/app/[lang]/styles";
 import APPINFOJSON from '@/app/[lang]/[category]/info'
 import LanguageFlowList from "../LanguageFlowList";
 import MottoLine from "../MottoLine";
+import { isCensorShipForWebsiteMode } from "@/app/[lang]/page";
 
 export let FooterContent = () => {
     return <div className="w-full bg-slate-100 dark:bg-slate-800 ">
@@ -39,6 +40,10 @@ export let FooterContent = () => {
             <div className='space-x-3'>
                 {
                     [
+                        isCensorShipForWebsiteMode() ? {
+                            label: '粤ICP备2022042390号',
+                            link: 'https://beian.miit.gov.cn/'
+                        } : null,
                         {
                             label: Dot("V6U_f", "Terms of Service"),
                             link: "https://codegen.cc/main/license/main"
@@ -85,8 +90,8 @@ export let FooterContent = () => {
                                 // })
                             }
                         }
-                    ].map(x => {
-                        // onClick = { x.onClick } 
+                    ].filter(x => x).map(x => {
+                        if (!x) { return '' }
                         return <a href={x.link} className={CSS_TEXT_ANCHOR_CSS} target={x.onClick ? '' : '_blank'}>{x.label}</a>
                     })
                 }

@@ -14,7 +14,7 @@ import { usePathname } from 'next/navigation';
 import React, { } from "react";
 import { PageProps } from '@/app/__CORE__/types/pages'
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
-import { Dot, getXSubPath } from "../__CORE__/utils/TranslationUtils";
+import { Dot, getXSubPath, isChineseByXLocal } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
 import { NextUIProvider } from "@nextui-org/react";
 import ToolPart from '@/app/[lang]/portal/src/tools'
@@ -88,7 +88,14 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
     result.title = (
         title.reverse().join(" | ")
     )
+    if (isCensorShipForWebsiteMode()) {
+        result.title = 'LafTools工具箱'
+    }
     return result;
+}
+
+export let isCensorShipForWebsiteMode = () => {
+    return true && isChineseByXLocal();
 }
 
 export type { CombindSearchProps, AuthInfoProps } from './[category]/page'
