@@ -35,6 +35,7 @@ export type TabBottomType = "terminal" | "dictionary" | "compute" | "help" | "ov
 export type TabRightType = "ai" | "todo" | "stopwatch"
 export type TrueFalseType = "true" | "false"
 export type ParamStateState = {
+    ltr: TrueFalseType; // left 2 right for editor
     hsr: TrueFalseType;// show sidebar or not
     fs: TrueFalseType; // full screen or not, true or false
     // left
@@ -47,6 +48,7 @@ export type ParamStateState = {
     tid?: string; // tool tab id
 };
 const initialState: ParamStateState = {
+    ltr: 'false',
     hsr: 'false',
     fs: 'false',
     l: "tools",

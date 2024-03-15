@@ -54,7 +54,11 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
     let subCategory = props.params.subCategory;
     let toolsPortalDefinitons = getToolSubCategory()
     if (_.isEmpty(subCategory)) {
-        subCategory = toolsPortalDefinitons[0].id
+        if (toolsPortalDefinitons.length == 0) {
+            notFound()
+        } else {
+            subCategory = toolsPortalDefinitons[0].id
+        }
     }
     let targetSubCategory = toolsPortalDefinitons.find(x => x.id == subCategory)
     if (_.isEmpty(targetSubCategory)) {
@@ -64,7 +68,11 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
 
     let searchToolId = props.searchParams.id;
     if (!searchToolId) {
-        searchToolId = targetSubCategory.subTabs![0].id
+        if (targetSubCategory.subTabs?.length == 0) {
+            notFound()
+        } else {
+            searchToolId = targetSubCategory.subTabs![0].id
+        }
     }
     let searchToolItem = (targetSubCategory.subTabs || []).find(x => x.id == searchToolId)
     if (!searchToolItem) {

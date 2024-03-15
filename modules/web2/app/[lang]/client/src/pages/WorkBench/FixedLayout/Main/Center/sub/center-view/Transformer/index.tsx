@@ -65,6 +65,19 @@ export type TitleSubPair = {
   subTitle: string
 }
 
+export let useShouldVerticalModeOrNot = () => {
+  let v = exportUtils.useSelector((v) => {
+    return {
+      bottom_hide: v.layout.menuHide.bottom,
+      ltr: v.paramState.ltr == 'true',
+    };
+  });
+  if (v.ltr) {
+    return false;
+  }
+  return v.bottom_hide;
+}
+
 export default (props: CommonTransformerProps) => {
   let sessionId = props.sessionId;
   let bodyHeight = `calc(100% - ${controlBarHeight}px)`;
@@ -224,11 +237,8 @@ export default (props: CommonTransformerProps) => {
     }
   }, [sessionId])
 
-  let v = exportUtils.useSelector((v) => {
-    return {
-      bottom_hide: v.layout.menuHide.bottom,
-    };
-  });
+  let shouldVerticalMode = useShouldVerticalModeOrNot()
+
   let { fullScreen, hideSideBar } = exportUtils.useSelector(v => {
     return {
       // fullScreen: v.paramState.fs
@@ -278,9 +288,6 @@ export default (props: CommonTransformerProps) => {
     }}
   ></GenCodeMirror>
   let isCollapsed_config = disableSeparateOutputMode
-  // let processPanelItem = <Allotment.Pane>
-  //   <ProcessPanel disableSeparateOutputMode={disableSeparateOutputMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
-  // </Allotment.Pane>
 
   let processPanelItem = isCollapsed_config ? '' :
     <Allotment.Pane>
@@ -296,9 +303,14 @@ export default (props: CommonTransformerProps) => {
   let app_right_b_jsx = processPanelItem
 
   if (clientPortalContext.portalMode) {
-    app_right_t_jsx = <div className='h-[350px]'>{app_right_t_jsx}</div>
-    app_right_b_jsx = <div className='min-h-[350px]'>{app_right_b_jsx}</div>
+    app_right_t_jsx = <div className={
+      shouldVerticalMode ? 'h-[350px]' : ' h-[700px] ' + ' align-top w-1/2 inline-block ' + border_clz_common + ' border-r-[1px] '
+    }>{app_right_t_jsx}</div>
+    app_right_b_jsx = <div className={
+      shouldVerticalMode ? 'min-h-[350px]' : ' min-h-[700px] ' + ' align-top w-1/2 inline-block '
+    }>{app_right_b_jsx}</div>
   }
+
 
   let app_right_jsx = <>
     <ControlBar
@@ -315,14 +327,14 @@ export default (props: CommonTransformerProps) => {
     >
       {
         clientPortalContext.portalMode ? (
-          <div className="w-full ">
+          <div className="w-full">
             {app_right_t_jsx}
             {app_right_b_jsx}
           </div>
         ) : (
           <Allotment
-            vertical={v.bottom_hide}
-            key={v.bottom_hide + ""}
+            vertical={shouldVerticalMode}
+            key={shouldVerticalMode + ""}
           >
             <Allotment.Pane>
               {app_right_t_jsx}

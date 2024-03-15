@@ -48,9 +48,12 @@ import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, control
 import FormGenPanel, { FormGenItem } from "../../../../../../../../../components/FormGenPanel";
 import Operation from "../../../../../../../../../impl/core/Operation.tsx";
 import { logutils } from "../../../../../../../../../utils/LogUtils";
+import { useShouldVerticalModeOrNot } from "../index.tsx";
 
 export default (props: { disableSeparateOutputMode: boolean } & CommonTransformerPassProp & TransformerWithRuntime) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
+    let shouldVert = useShouldVerticalModeOrNot()
+
     let toolTabIndex = crtRuntimeStatus.toolTabIndex || "output"
     let sessionId = props.sessionId;
     let extVM = props.extVM
@@ -132,19 +135,13 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
     let loadingStatic = false
     let toolHanlder = props.toolHandler
 
-    let v = exportUtils.useSelector((v) => {
-        return {
-            // show
-            bottom_hide: v.layout.menuHide.bottom,
-        };
-    });
     if (toolTabIndex == 'wiki') {
         pdValue = 'p-0'
         finalShowContent = <div className="w-full h-full overflow-auto">
             <iframe src={toolHanlder?.getOperations()[0].getOptDetail()?.infoURL} className="w-full h-full border-none outline-none"></iframe>
         </div>
     } else if (toolTabIndex == "tools") {
-        finalShowContent = <FormGenPanel fixSingleColumn={!v.bottom_hide} list={generalList}></FormGenPanel >
+        finalShowContent = <FormGenPanel fixSingleColumn={!shouldVert} list={generalList}></FormGenPanel >
     } else if (toolTabIndex == "output") {
         pdValue = 'p-0'
         finalShowContent = <div className="w-full h-full overflow-auto">
@@ -170,7 +167,7 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
     // }, [props.disableSeparateOutputMode, toolTabIndex])
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
-    let shouldHideLeftTextInBar = !v.bottom_hide // when bottom is not hide, then hide left text
+    let shouldHideLeftTextInBar = !shouldVert // when bottom is not hide, then hide left text
     let textIcon_f: Intent = loadingStatic ? "success" :
         crtRuntimeStatus.processOK ? "success" :
             crtRuntimeStatus.processError ? "warning" : crtRuntimeStatus.processing ? "primary" : "none"

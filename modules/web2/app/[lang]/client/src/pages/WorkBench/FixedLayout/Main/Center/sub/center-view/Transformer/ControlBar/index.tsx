@@ -12,7 +12,7 @@ import BigTextSlice from "../../../../../../../../../reducers/bigTextSlice";
 import _ from "lodash";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import AjaxUtils from "../../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../../components/SysTabPane";
@@ -20,13 +20,14 @@ import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../..
 import exportUtils from "../../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../../reducers/runtimeStatusSlice";
 
-import { CommonTransformerProps } from "../types";
+import { ClientPortalContext, CommonTransformerProps } from "../types";
 import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../../types/purejs-types-READ_ONLY";
 import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button } from "../hooks";
 import gutils from "../../../../../../../../../utils/GlobalUtils";
 import CopyButton from "../../../../../../../../../components/CopyButton";
 import { ActionButtonProps } from "../../../../../../../../../components/ActionButton";
 import ParamStateSlice, { TrueFalseType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
+import { useShouldVerticalModeOrNot } from "..";
 
 
 let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransformerProps & TransformerWithRuntime & {
@@ -174,7 +175,9 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
         );
     };
     let isColl = isCollapsed_config
-
+    let clientPortalContext = useContext(ClientPortalContext)
+    let portalMode = clientPortalContext.portalMode
+    let shouldVerticalMode = useShouldVerticalModeOrNot()
     let rightActions: ActionButtonProps[] = [
         // {
         //     // icon: "duplicate",
@@ -219,6 +222,18 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             }
         },
         {
+            icon: "rect-width",
+            intent: shouldVerticalMode ? "none" : "success",
+            className: shouldVerticalMode ? "" : "btn-lime",
+            title: shouldVerticalMode ? Dot("y7LSbS5l4", "Switch to Vertical Mode") : Dot("7zlGdIUGvj", "Switch to Horizontal Mode"),
+            onClick() {
+                FN_GetDispatch()(
+                    ParamStateSlice.actions.updateOneOfParamState({
+                        ltr: shouldVerticalMode ? 'true' : 'false',
+                    })
+                );
+            }
+        }, {
             icon: 'search',
             intent: 'none',
             title: Dot("6SypzjeRz", "Quickly search tools that you need"),
