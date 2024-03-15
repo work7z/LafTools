@@ -61,14 +61,17 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
         }
     }
     let targetSubCategory = toolsPortalDefinitons.find(x => x.id == subCategory)
-    if (_.isEmpty(targetSubCategory)) {
+    if (!targetSubCategory) {
         notFound()
     }
-    targetSubCategory?.seoTitle && title.push(targetSubCategory?.seoTitle)
+    targetSubCategory && targetSubCategory?.seoTitle && title.push(targetSubCategory?.seoTitle)
 
     let searchToolId = props.searchParams.id;
     if (!searchToolId) {
-        if (targetSubCategory.subTabs?.length == 0) {
+        if (!targetSubCategory) {
+            notFound()
+        }
+        if (!targetSubCategory.subTabs || targetSubCategory.subTabs?.length == 0) {
             notFound()
         } else {
             searchToolId = targetSubCategory.subTabs![0].id
