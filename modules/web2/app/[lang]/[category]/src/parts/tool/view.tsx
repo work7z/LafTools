@@ -33,7 +33,7 @@ import { CSS_BG_COLOR_WHITE, VAL_CSS_MENU_TITLE_PANEL, border_clz, light_border_
 import { loadDOT } from '@/app/__CORE__/utils/i18n-types'
 import { Dot } from '@/app/__CORE__/utils/cTranslationUtils'
 import SmallScreenDetecter from '@/app/[lang]/client/src/SmallScreenDetecter'
-import ClientWrapper from '../common/clientWrapper'
+import ClientWrapper from '../../common/clientWrapper'
 import { ClientPortalContext } from '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/types'
 
 export type ExtensionViewProps = {

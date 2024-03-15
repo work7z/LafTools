@@ -24,7 +24,7 @@ import { Tabs, Tab, Card, CardBody, CardHeader } from "@nextui-org/react";
 import Link from "next/link";
 import { Dot, getXSearchParams } from "@/app/__CORE__/utils/TranslationUtils";
 import { PortalDefinitionTbabGroup, PortalDefinitionType, getToolSubCategory } from "@/app/[lang]/client/src/impl/tools/d_portal";
-import { ToolProp } from "./part-tool";
+import { ToolProp } from "./tool";
 import _ from "lodash";
 import { fmtURL_ToolSubPage } from "@/app/[lang]/[category]/types";
 import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";

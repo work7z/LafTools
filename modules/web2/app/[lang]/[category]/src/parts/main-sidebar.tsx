@@ -7,10 +7,10 @@ import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
 import Nav from './nav-sub-category';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './view-tool'
+import ToolView from './tool/view'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from './cpt-fundrasing-btn';
-import { ToolProp, getCardsProps } from './part-tool';
+import { ToolProp, getCardsProps } from './tool';
 
 export default (props: ToolProp) => {
     let subCategory = props.subCategory
