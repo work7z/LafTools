@@ -25,6 +25,7 @@ import { getAppIcon, getAppKeywords } from "@/app/__CORE__/config/imgconfig"
 import { Dot } from "@/app/__CORE__/utils/TranslationUtils"
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils"
 import { Metadata } from "next"
+import { cache } from "react"
 
 export type PortalDefinitionTbabGroup = {
     id: string,
@@ -40,7 +41,7 @@ export type PortalDefinitionType = SEOMetaData & {
     id: string,
     subTabs?: PortalDefinitionTbabGroup[]
 }
-export let getToolSubCategory = (): PortalDefinitionType[] => {
+export let getToolSubCategory = cache((): PortalDefinitionType[] => {
     let toolsPortalDefinitions: PortalDefinitionType[] = [
         {
             seoTitle: Dot("format.code.seo", "Format {0} Code", 'JSON/JS/YAML/CSS/C#/SQL'),
@@ -261,9 +262,9 @@ export let getToolSubCategory = (): PortalDefinitionType[] => {
         },
     ]
     return toolsPortalDefinitions;
-}
+})
 export type TopMainCategoryNavList = SEOMetaData & LabelHrefType
-export let getCategoryList = (): TopMainCategoryNavList[] => {
+export let getCategoryList = cache((): TopMainCategoryNavList[] => {
     let leftNav: TopMainCategoryNavList[] = [
         {
             label: Dot("G2dvTUljF", "Tools"),
@@ -288,23 +289,26 @@ export let getCategoryList = (): TopMainCategoryNavList[] => {
     ]
 
     return leftNav
-}
-// TODO: update the /v2 to actual path
+})
+
 export let fn_rightNav = (): LabelHrefType[] => {
     let rightNav: LabelHrefType[] = [
         {
             label: Dot("str.login", "Login"),
-            href: 'https://my.laftools.dev/v2/zh-hans/nav/form/sign-in'
+            href: 'https://my.laf-tools.com/v2/zh-hans/nav/form/sign-in'
         },
         {
             label: Dot("str.register", "Register"),
-            href: 'https://my.laftools.dev/v2/zh-hans/nav/form/sign-up'
+            href: 'https://my.laf-tools.com/v2/zh-hans/nav/form/sign-up'
         },
         {
             label: Dot("str.usercentre", "User Centre"),
-            href: 'https://my.laftools.dev'
+            href: 'https://my.laf-tools.com'
         },
-    ]
+    ].map(x => {
+        x.href = 'https://codegen.cc'
+        return x
+    })
     return rightNav
 }
 

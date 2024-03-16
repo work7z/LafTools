@@ -8,7 +8,7 @@ import { NavCategory as NavCategory } from "../nav/nav-category";
 import { getAppIcon } from "@/app/__CORE__/config/imgconfig";
 import { ClosableText } from "@/app/__CORE__/components/ClosableText";
 import RedirectToOtherBanner from "@/app/__CORE__/components/RedirectToOtherBanner/index";
-import { border_clz, border_clz_top, row_pad_clz } from "@/app/__CORE__/meta/styles";
+import { CSS_BG_COLOR_WHITE, border_clz, border_clz_top, light_border_clz_all, row_pad_clz } from "@/app/__CORE__/meta/styles";
 import LightDarkButton from "@/app/__CORE__/components/LightDarkButton";
 import GitHubButton from "@/app/__CORE__/components/GitHubButton";
 import SysBreadCrumbs from '../cpt/cpt-breadcrumbs'
@@ -64,7 +64,7 @@ export default (props: NavigatorPassProp) => {
                         return <div id={`navbindid-${x.id}`} style={{
                             display: 'none'
                         }} className={
-                            'absolute  z-50 left-2 top-2 min-h-48 min-w-10 transition-all duration-75 bg-opacity-95  bg-sky-700 dark:bg-sky-600 text-white dark:text-slate-200 p-2 '
+                            'absolute  z-50 left-2 top-2 min-h-48 min-w-10 transition-all duration-75 shadow-xl rounded-sm p-2 ' + CSS_BG_COLOR_WHITE + ' ' + light_border_clz_all
                         }>this is {x.id}/{x.label}</div>
                     })
                 }

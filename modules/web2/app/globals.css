@@ -27,6 +27,14 @@
   @apply text-cyan-700 hover:text-cyan-500 hover:underline hover:cursor-pointer;
   transition: color 0.2s ease-in-out;
 }
+.gray-list-item ::marker{ 
+  color: red;
+}
+.black-anchor-text {
+  @apply text-zinc-500 hover:text-sky-800 hover:underline hover:cursor-pointer;
+  transition: color 0.2s ease-in-out;
+}
+
 .flex-justify-between{
   @apply flex justify-between;
 }

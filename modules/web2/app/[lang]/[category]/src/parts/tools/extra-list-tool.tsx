@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from 'react';
+import React, { cache } from 'react';
 import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, Tabs } from "@nextui-org/react";
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import { border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles';
@@ -31,19 +31,29 @@ import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import Sidebar from './main-sidebar';
 import { ToolProp } from '.';
-import ExtraListTool from './extra-list-tool';
-import PkgToolMain from './pkg-tool-main'
-import PkgToolExtra from './pkg-tool-extra'
-export let getCardsProps = (): CardProps => {
-    return {
-        radius: "none", shadow: "none", className: light_border_clz_all
-    }
-}
+import { getCardsProps } from './main-part';
+import { fmtURL_ToolSubPage, getToolSubCategory } from '../../../types';
 
-export type CrtToolProp = ToolProp
-export default (props: CrtToolProp) => {
+export default (props: ToolProp) => {
+    let subCategory = getToolSubCategory()
     return <div className='flex-1  space-y-2'>
-        <PkgToolMain {...props} />
-        <PkgToolExtra {...props} />
+        {
+            subCategory.map(x => {
+                return <Card {...getCardsProps()} className={light_border_clz_all + ' py-4 '} key={x.id} >
+                    <h1 className='m-0  text-[15px] mb-3 font-semibold mx-3 border-l-sky-500 border-l-4 px-2 '>{x.label}</h1>
+                    <ul className='space-y-[4px]  block px-9 '>
+                        {
+                            (x.subTabs || []).map(xx => {
+                                return <li className=' gray-list-item  w-1/4 xl:w-1/5 list-item list-disc  float-left'>
+                                    <Link className='black-anchor-text   list-disc  text-left ' href={fmtURL_ToolSubPage([x.id, xx.id])} key={xx.id}>
+                                        {xx.label}
+                                    </Link>
+                                </li>
+                            })
+                        }
+                    </ul>
+                </Card>
+            })
+        }
     </div>
 }

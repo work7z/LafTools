@@ -32,8 +32,6 @@ import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import Sidebar from './main-sidebar';
 import { ToolProp } from '.';
 import ExtraListTool from './extra-list-tool';
-import PkgToolMain from './pkg-tool-main'
-import PkgToolExtra from './pkg-tool-extra'
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -42,8 +40,5 @@ export let getCardsProps = (): CardProps => {
 
 export type CrtToolProp = ToolProp
 export default (props: CrtToolProp) => {
-    return <div className='flex-1  space-y-2'>
-        <PkgToolMain {...props} />
-        <PkgToolExtra {...props} />
-    </div>
+    return <ExtraListTool {...props} />
 }
