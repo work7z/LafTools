@@ -1,3 +1,4 @@
+'use client'
 // LafTools - The Leading All-In-One ToolBox for Programmers.
 // 
 // Date: Wed, 28 Feb 2024
@@ -22,19 +23,10 @@ import React from 'react';
 import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, Tabs } from "@nextui-org/react";
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import { border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles';
-import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
-import SubTabNav from '../nav/nav-sub-tab';
-import Link from 'next/link';
-import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './inner'
-import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
-import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import Sidebar from './main-sidebar';
 import { ToolProp } from '.';
 import ExtraListTool from './extra-list-tool';
-import PkgToolMain from './pkg-tool-main'
-import PkgToolExtra from './pkg-tool-extra'
-import PkgRecentUsedTool from './pkg-recent-used-tool';
+import { Dot } from '@/app/__CORE__/utils/cTranslationUtils';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -43,9 +35,11 @@ export let getCardsProps = (): CardProps => {
 
 export type CrtToolProp = ToolProp
 export default (props: CrtToolProp) => {
-    return <div className='flex-1  space-y-2'>
-        <PkgToolMain {...props} />
-        <PkgRecentUsedTool {...props} />
-        <PkgToolExtra {...props} />
-    </div>
+    return <Card {...getCardsProps()} className={light_border_clz_all} >
+        <div className='px-2 py-2 text-xs'>
+            <span>
+                {Dot("OUQHhPFC5", "You recently used these tools:")}
+            </span>
+        </div>
+    </Card >
 }

@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: 该页面是由LafTools工具箱内部生成的。</i> <br/> [English](/docs/en_US/README.md)  |  简体中文  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: 该页面是由LafTools工具箱内部生成的。</i> <br/> [English](/docs/en_US/README.md) | 简体中文 | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -22,7 +22,7 @@
 
 # 💡 介绍
 
-您可能想知道为什么我们决心开发这个工具箱，因为互联网上有很多工具可以使用。 确实，我们提供的大多数工具都可以在互联网上轻松找到，例如编解码器、格式化程序、翻译、二维码等……但是，使用这些工具并不是最舒适和最有效的方法。
+您可能想知道为什么我们决心开发这个工具箱，因为互联网上有很多工具可以使用。 确实，我们提供的大多数工具都可以在互联网上轻松找到，例如编解码器、格式化、翻译、二维码等……但是，使用这些工具并不是最舒适和最有效的方法。
 
 您在使用这些在线工具时是否遇到过以下问题？
 
@@ -61,7 +61,7 @@
 
 ## 1. 设置系统环境
 
-为了简单起见，假设您已将此仓库克隆到 Windows 上的 `C:\Usersjerry\project\laftools-repo` 或 Linux/MacOS 上的 `/Users/jerry/projects/laftools-repo`，那么您应该在文件 **~/.bashrc* 中声明 env 并在下面设置配置*，或者只是在运行任何命令之前执行它们。
+为了简单起见，假设您已将此仓库克隆到 Windows 上的 `C:\Usersjerry\project\laftools-repo` 或 Linux/MacOS 上的 `/Users/jerry/projects/laftools-repo`，那么您应该在文件 \*_~/.bashrc_ 中声明 env 并在下面设置配置\*，或者只是在运行任何命令之前执行它们。
 
 如果您使用的是 Windows 操作系统，请确保所有命令都在 git-bash 中执行，了解更多信息请参阅 [贡献](/docs/zh_CN/CONTRIBUTION.md)。除此之外，建议避免在该项目所在的文件路径中使用任何空格或非英文字符。
 

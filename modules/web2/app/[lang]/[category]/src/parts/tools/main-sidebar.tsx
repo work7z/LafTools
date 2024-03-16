@@ -12,7 +12,7 @@ import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import { ToolProp, getCardsProps } from '.';
 import CptCalendar from '../cpt/cpt-calendar';
-
+import SidebarQuickaccess from './sidebar-quickaccess';
 export default (props: ToolProp) => {
     let subCategory = props.subCategory
     let secondaryPanelClzHeader = tw('bg-slate-50 g-card-header dark:bg-slate-700')
@@ -35,10 +35,9 @@ export default (props: ToolProp) => {
             </CardBody>
         </Card>
         <Card {...getCardsProps()}>
-            <CardHeader className={secondaryPanelClzHeader}>{Dot("8HcQxKgho", "Quick Access")}</CardHeader>
+            <CardHeader className={secondaryPanelClzHeader}>{Dot("8HcQxKgho", "Quick Access")}({Dot("09m6vG51A", "in development")})</CardHeader>
             <CardBody>
-                <div>
-                </div>
+                <SidebarQuickaccess />
             </CardBody>
         </Card>
         {/* <Card {...getCardsProps()}>

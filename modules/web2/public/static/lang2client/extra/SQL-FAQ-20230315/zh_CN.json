@@ -2,7 +2,7 @@
     "MySQL-Performance-Tuning": "MySQL 性能调优技巧",
     "OWASP-SQL-Injection": "OWASP SQL 注入指南",
     "SQL-Basics-001": "什么是 SQL？",
-    "SQL-Beautifier-Example": "在线 SQL 格式化程序",
+    "SQL-Beautifier-Example": "在线 SQL 格式化",
     "SQL-Beautify-006": "什么是SQL美化？",
     "SQL-Beautify-Def-007": "SQL 美化是通过应用一致的缩进、间距和大小写约定来格式化 SQL 代码以提高可读性的过程。",
     "SQL-Beautify-Purpose-008": "就像通用代码美化器一样，它可以帮助开发人员更轻松地理解复杂查询并保持 SQL 脚本或项目的一致性。",

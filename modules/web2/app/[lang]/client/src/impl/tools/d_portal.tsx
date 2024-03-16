@@ -29,6 +29,7 @@ import { cache } from "react"
 
 export type PortalDefinitionTbabGroup = {
     id: string,
+    toolId?: string,
     label: string
 }
 export type SEOMetaData = {

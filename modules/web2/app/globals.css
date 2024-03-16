@@ -31,7 +31,7 @@
   @apply border-sky-500 transition-all duration-75;
 }
 .mark-st-wrapper:hover .mark-title{
-  @apply border-cyan-500 text-cyan-500;
+  @apply border-cyan-500 text-cyan-600 dark:text-cyan-400;
 }
 .gray-list-item{
   @apply text-zinc-500 hover:text-sky-800;

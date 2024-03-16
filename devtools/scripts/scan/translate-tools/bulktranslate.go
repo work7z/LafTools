@@ -139,8 +139,9 @@ func main() {
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "存储库", "仓库")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "LafTools工具箱 ", "LafTools工具箱")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "CodeGen ToolBox", "CodeGen工具箱")
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "你", "您") // 您们? 您们的? haha, it's too courtesy and full of etiquette in Chinese, but it's ok for this App at least.
-			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "发生器", "生成器") // 您们? 您们的? haha, it's too courtesy and full of etiquette in Chinese, but it's ok for this App at least.
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "你", "您")       // 您们? 您们的? haha, it's too courtesy and full of etiquette in Chinese, but it's ok for this App at least.
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "生成器", "生成器")   // 您们? 您们的? haha, it's too courtesy and full of etiquette in Chinese, but it's ok for this App at least.
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "格式化程序", "格式化") // 您们? 您们的? haha, it's too courtesy and full of etiquette in Chinese, but it's ok for this App at least.
 			// check if resultForCurrentLang match [a-zA-Z] 到 [a-zA-Z]
 			m1 := regexp2.MustCompile(`[a-zA-Z] 到 [a-zA-Z]`, 0)
 			m1b, _ := m1.MatchString(resultForCurrentLang)
