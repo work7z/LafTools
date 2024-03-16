@@ -11,6 +11,7 @@ import ToolView from './inner'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import { ToolProp, getCardsProps } from '.';
+import CptCalendar from '../cpt/cpt-calendar';
 
 export default (props: ToolProp) => {
     let subCategory = props.subCategory
@@ -18,7 +19,7 @@ export default (props: ToolProp) => {
 
     return <div className='w-64  space-y-2'>
         <Card {...getCardsProps()}>
-            <CardHeader className={secondaryPanelClzHeader}>{Dot("azsd", "Quick Navigation")}</CardHeader>
+            <CardHeader className={secondaryPanelClzHeader}>{Dot("ob1q-I7s-", "About LafTools")}</CardHeader>
             <CardBody>
                 <div className='space-y-2'>
                     <Link className='flex flex-row items-center justify-center ' href={fmtURL_Server(['client'])}>
@@ -34,15 +35,13 @@ export default (props: ToolProp) => {
             </CardBody>
         </Card>
         <Card {...getCardsProps()}>
-            <CardHeader className={secondaryPanelClzHeader}>{Dot("FAQ", "Frequently Asked Questions")}</CardHeader>
+            <CardHeader className={secondaryPanelClzHeader}>{Dot("8HcQxKgho", "Quick Access")}</CardHeader>
             <CardBody>
                 <div>
-                    <p>{Dot("n2QhB0O8_", "LafTools is still under development, please give us a star to subsrible latest update on GitHub.")}</p>
-                    <a target="_blank" href={'https://github.com/work7z/LafTools'}>{Dot("wYsKTq7nK", "Click me to view the source code")}</a>
                 </div>
             </CardBody>
         </Card>
-        <Card {...getCardsProps()}>
+        {/* <Card {...getCardsProps()}>
             <CardHeader className={secondaryPanelClzHeader}>{Dot("rzoFmjStq", "Relevant Tools")}</CardHeader>
             <CardBody>
                 <ul className={"list-disc ml-5"}>
@@ -51,20 +50,19 @@ export default (props: ToolProp) => {
                     <li>item3</li>
                 </ul>
             </CardBody>
-        </Card>
-        <Card {...getCardsProps()}>
+        </Card> */}
+        {/* <Card {...getCardsProps()}>
             <CardHeader className={secondaryPanelClzHeader}>{Dot("dO6b2Tkqwe", "Recently Used Tools")}</CardHeader>
             <CardBody>
                 <div>used tools</div>
             </CardBody>
-        </Card>
+        </Card> */}
         <Card {...getCardsProps()}>
-            <CardHeader className={secondaryPanelClzHeader}>{Dot("lDXWMq43S", "Today Calendar")}</CardHeader>
+            <CardHeader className={secondaryPanelClzHeader}>{Dot("announcement", "Announcement")}</CardHeader>
             <CardBody>
                 <div>
-                    <div>item1</div>
-                    <div>item1</div>
-                    <div>item3</div>
+                    <p>{Dot("n2QhB0O8_", "LafTools is still under development, please give us a star to subsrible latest update on GitHub.")}</p>
+                    <a target="_blank" href={'https://github.com/work7z/LafTools'}>{Dot("wYsKTq7nK", "Click me to view the source code")}</a>
                 </div>
             </CardBody>
         </Card>

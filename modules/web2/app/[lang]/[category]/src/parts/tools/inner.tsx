@@ -68,7 +68,6 @@ let ToolTitlebar = (props) => {
 let ToolInnerView = (props: ExtensionViewProps) => {
     d()
     let constructedKey = useConstructedKeyAndInit()
-    // h - [650px] xl: h - [800px]
     let clientContext = useContext(ClientPortalContext)
 
     return <div className='w-full min-h-[500px]' >

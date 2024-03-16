@@ -38,6 +38,7 @@ export type SEOMetaData = {
 }
 export type PortalDefinitionType = SEOMetaData & {
     label: string,
+    longLabel: string,
     id: string,
     subTabs?: PortalDefinitionTbabGroup[]
 }
@@ -57,6 +58,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
             ],
             seoDescription: Dot("seo.description.format", "Efficiently format your code online with our free tool. Supports multiple languages including JSON, JS, YAML, CSS, C#, and SQL. Improve readability and maintain a consistent coding style across your project."),
             label: Dot("str.formatter", "Formatters"),
+            longLabel: Dot("str.formatters.long", "Quick Code Formatters"),
             id: 'formatters',
             subTabs: [
                 {
@@ -91,6 +93,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
         },
         {
             label: Dot("str.codecs", "Codecs"),
+            longLabel: Dot("str.codecs.long", "Encryption and Decryption Tools"),
             id: 'codecs',
             seoTitle: Dot("codecs.seo", "Online Codecs - Base64, URL Encoder, MD5, SHA1, SHA256, SHA512"),
             seoKeywords: [
@@ -105,7 +108,6 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
                 "secure codecs"
             ],
             seoDescription: Dot("seo.description.codecs", "Use our free online codecs to encode and decode your data. Supports Base64, URL Encoder, MD5, SHA1, SHA256, SHA512."),
-
             subTabs: [
                 {
                     id: 'base64',
@@ -148,6 +150,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
             ],
             seoDescription: Dot("seo.description.encoding", "Use our free online encoding tools to encode and decode your data. Supports URL Encoder, Base64, Escape, Unescape, Encode URI, Decode URI."),
             label: Dot("mhWk4ddtid", "Encoding"),
+            longLabel: Dot("mhWk4ddtid.long", "Encoding and Decoding Tools"),
             id: 'encoding',
             subTabs: [
                 {
@@ -178,6 +181,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
         },
         {
             label: Dot("str.converters", "Converters"),
+            longLabel: Dot("HxTXHD3lc", "Convert Data Between Different Formats"),
             seoTitle: Dot("converters.seo", "Online Data Converters - JSON to XML, JSON to CSV, JSON to YAML, XML to JSON, YAML to JSON"),
             seoKeywords: [
                 "json to xml",
@@ -216,6 +220,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
         },
         {
             label: Dot("str.parsers", "Parsers"),
+            longLabel: Dot("str.parsers.long", "Parse and Analyze Common Data Formats"),
             id: 'parsers',
             seoTitle: Dot("parsers.seo", "Online SQL Parser"),
             seoKeywords: [
@@ -244,6 +249,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
             ],
             seoDescription: Dot("seo.description.generators", "Use our free online generators to generate UUIDs, GUIDs, and random values for your applications."),
             label: Dot("IEFy5k39X", "Generators"),
+            longLabel: Dot("IEFy5k39X.long", "Generate Code, UUIDs, GUIDs, and Random Values"),
             id: 'generator',
             subTabs: [
                 {

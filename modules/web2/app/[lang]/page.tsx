@@ -93,7 +93,7 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
         title.reverse().join(" | ")
     )
     if (isCensorShipForWebsiteMode()) {
-        result.title = 'LafTools工具箱'
+        result.title = 'LafTools程序员工具箱'
     }
     return result;
 }

@@ -55,3 +55,5 @@ export const VAL_CSS_MENU_TITLE_PANEL = 30;
 export let CSS_TW_LAYOUT_BORDER_Y = " border-gray-300 dark:border-gray-600 border-y-2 "
 
 // ---------------
+
+export let CSS_TW_GRAY_TEXT = tw` text-gray-500 dark:text-gray-400 `
