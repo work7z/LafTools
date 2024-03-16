@@ -77,6 +77,7 @@ export default (props: ToolProp) => {
             </CardBody>
         </Card> */}
         <Card {...getCardsProps()}>
+            {Dot("H8SSzas5P", "test item")}
             <CardHeader className={secondaryPanelClzHeader}>{Dot("announcement", "Announcement")}</CardHeader>
             <CardBody>
                 <div>

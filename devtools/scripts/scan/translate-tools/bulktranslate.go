@@ -56,7 +56,7 @@ func main() {
 		outputJSONMapStr, _ := nocycle.ReadFileAsStr(outputJSONFile)
 		json.Unmarshal([]byte(outputJSONMapStr), &outputJSONMap)
 	}
-	log.Ref().Info("LAFTOOLS_ROOT", LAFTOOLS_ROOT)
+	// log.Ref().Info("LAFTOOLS_ROOT", LAFTOOLS_ROOT)
 	// zhCN
 	zhCNOverwrittenFile := path.Join(LAFTOOLS_ROOT, "devtools", "lang", "overwrriten", "zh_CN-overwrite.json")
 	zhCNOverwrittenFileContent, err := nocycle.ReadFileAsStr(zhCNOverwrittenFile)
@@ -83,7 +83,7 @@ func main() {
 	configJSONPathStr, _ := nocycle.ReadFileAsBytes(configJsonPath)
 	json.Unmarshal(rawJSONPathStr, &rawMap)
 	json.Unmarshal(configJSONPathStr, &configMap)
-	log.Ref().Debug(rawMap)
+	// log.Ref().Debug(rawMap)
 	cacheDir := nocycle.MkdirDirWithStr(path.Join(translateResultDir, "cache", id))
 	crtResultMap := make(map[string]string)
 	// for each rawMap
@@ -108,6 +108,7 @@ func main() {
 			result2, err2 := nocycle.ReadFileAsStr(md5FilePath)
 			if err2 != nil {
 				log.InternalLog.Panic("err", err2)
+				nocycle.Sleep(3000)
 			}
 			resultForCurrentLang = result2
 		} else {
@@ -117,8 +118,8 @@ func main() {
 				v_resultForCurrentLang2, err2 := translateNow(v, eachLang)
 				resultForCurrentLang2 = v_resultForCurrentLang2
 				if err2 != nil {
-					log.InternalLog.Warn("err now ", err2)
-					nocycle.Sleep(2000)
+					log.InternalLog.Warn("Translation ERROR!!!!!")
+					nocycle.Sleep(20000)
 				} else {
 					break
 				}
@@ -167,7 +168,7 @@ func main() {
 
 	nocycle.WriteBytesIntoFile(crtResultMapJsonPath, crtResultMapJson)
 
-	fmt.Println("Done.")
+	// fmt.Println("Done.")
 }
 
 func getTranslateResultDir() string {

@@ -108,100 +108,109 @@ let processWithArg = async ({
       text = text.substring(match.index + match[0].length);
     }
   }
-  if (!handleFurtherLoadingDOT) {
-    console.log("not disable loading Dot");
-  }
   let waitArr = [];
   for (let eachLang of langarr) {
     await sleep(1000);
-    let crtTaskId = latestTaskIdObj[eachRunItem.dir];
-    if (crtTaskId != taskID && handleFurtherLoadingDOT) {
-      return;
-    }
-    let outputLang = eachLang.replace("-", "_");
-    let isChinese = eachLang == "zh_CN" || eachLang == "zh_HK";
-    let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
-    let a1 = `${overwrittenDir}/${
-      isChinese ? "zh_CN" : eachLang
-    }-id-overwrite.json`;
-    let overwrittenFile = a1;
-    let idOverwriteJSONFile = getFile(a1); // replace with appropriate function
-    let overwriteJSONFile = getFile(
-      `${overwrittenDir}/${isChinese ? "zh_CN" : eachLang}-overwrite.json`,
-    );
-
-    if (!fs.existsSync(idOverwriteJSONFile.file)) {
-      fs.writeFileSync(idOverwriteJSONFile.file, "{}");
-    }
-    if (!fs.existsSync(overwriteJSONFile.file)) {
-      fs.writeFileSync(overwriteJSONFile.file, "{}");
-    }
-    let overwrritenMap = getFile(overwrittenFile).jsonmap();
-    let lastModifiedForIdOverwriteJSONFile =
-      idOverwriteJSONFile.lastModified() + overwriteJSONFile.lastModified();
-
-    let waitTranslateObjStr = toJSON(waitTranslateObj);
-    // console.log(waitTranslateObj);
-
-    let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
-    if (!fs.existsSync(tmpTranslateDir)) {
-      fs.mkdirSync(tmpTranslateDir);
-    }
-
-    // start iteratting all languages here
-
-    fs.writeFileSync(
-      path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
-      waitTranslateObjStr,
-    );
-    fs.writeFileSync(
-      path.join(tmpTranslateDir, `config-${eachRunItem.id}-${eachLang}.json`),
-      toJSON({
-        id: eachRunItem.id,
-      }),
-    );
-
-    // execute a command
-    let cmd = `go run "${path.join(
-      __dirname,
-      "translate-tools",
-      "bulktranslate.go",
-    )}" --id=${eachRunItem.id} --lg=${eachLang} --output="${outputLangFile}" `;
-    // console.log("cmd----", cmd);
-    // await sleep(1000);
-
-    sh.exec(cmd);
-
-    let resultFile = path.join(
-      __dirname,
-      `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`,
-    );
-    // TODO: if there's no dynamic file was mentioned in the code, then we should clean them
-    if (fs.existsSync(resultFile)) {
-      let resultJSON = getFile(resultFile).jsonmap();
-      _.forEach(overwrritenMap, (x, d, n) => {
-        if (resultJSON[d]) {
-          resultJSON[d] = x;
-        }
-      });
-
-      if (eachLang == "zh_HK") {
-        resultJSON = _.mapValues(resultJSON, (x, d, n) => {
-          return _.chain(x)
-            .split("")
-            .map((xx) => cnchars.toTraditionalChar(xx))
-            .join("")
-            .value();
-        });
+    let prun_fn = (async (eachLang) => {
+      await sleep(60000 * 10);
+      let crtTaskId = latestTaskIdObj[eachRunItem.dir];
+      if (crtTaskId != taskID && handleFurtherLoadingDOT) {
+        return;
       }
-      fs.writeFileSync(outputLangFile, toJSON(resultJSON));
-    } else {
-      console.log("file not exists: ", resultFile);
-      process.exit(-1);
-    }
+      let outputLang = eachLang.replace("-", "_");
+      let isChinese = eachLang == "zh_CN" || eachLang == "zh_HK";
+      let outputLangFile = path.join(eachRunItem.target, `${outputLang}.json`);
 
-    console.log("------------------------------");
+      let a1 = `${overwrittenDir}/${
+        isChinese ? "zh_CN" : eachLang
+      }-id-overwrite.json`;
+      let overwrittenFile = a1;
+      let idOverwriteJSONFile = getFile(a1); // replace with appropriate function
+      let overwriteJSONFile = getFile(
+        `${overwrittenDir}/${isChinese ? "zh_CN" : eachLang}-overwrite.json`,
+      );
+
+      if (!fs.existsSync(idOverwriteJSONFile.file)) {
+        fs.writeFileSync(idOverwriteJSONFile.file, "{}");
+      }
+      if (!fs.existsSync(overwriteJSONFile.file)) {
+        fs.writeFileSync(overwriteJSONFile.file, "{}");
+      }
+      let overwrritenMap = getFile(overwrittenFile).jsonmap();
+      let lastModifiedForIdOverwriteJSONFile =
+        idOverwriteJSONFile.lastModified() + overwriteJSONFile.lastModified();
+
+      let waitTranslateObjStr = toJSON(waitTranslateObj);
+      // console.log(waitTranslateObj);
+
+      let tmpTranslateDir = path.join(__dirname, "tmp-translate-result");
+      if (!fs.existsSync(tmpTranslateDir)) {
+        fs.mkdirSync(tmpTranslateDir);
+      }
+
+      // start iteratting all languages here
+
+      fs.writeFileSync(
+        path.join(tmpTranslateDir, `raw-${eachRunItem.id}-${eachLang}.json`),
+        waitTranslateObjStr,
+      );
+      fs.writeFileSync(
+        path.join(tmpTranslateDir, `config-${eachRunItem.id}-${eachLang}.json`),
+        toJSON({
+          id: eachRunItem.id,
+        }),
+      );
+
+      // execute a command
+      let cmd = `go run "${path.join(
+        __dirname,
+        "translate-tools",
+        "bulktranslate.go",
+      )}" --id=${
+        eachRunItem.id
+      } --lg=${eachLang} --output="${outputLangFile}" `;
+      // console.log("cmd----", cmd);
+      // await sleep(1000);
+
+      sh.exec(cmd);
+
+      let resultFile = path.join(
+        __dirname,
+        `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`,
+      );
+      console.log("handling " + `${eachRunItem.id} - ${eachLang}`);
+      // TODO: if there's no dynamic file was mentioned in the code, then we should clean them
+      if (fs.existsSync(resultFile)) {
+        let resultJSON = getFile(resultFile).jsonmap();
+        _.forEach(overwrritenMap, (x, d, n) => {
+          if (resultJSON[d]) {
+            resultJSON[d] = x;
+          }
+        });
+
+        if (eachLang == "zh_HK") {
+          resultJSON = _.mapValues(resultJSON, (x, d, n) => {
+            return _.chain(x)
+              .split("")
+              .map((xx) => cnchars.toTraditionalChar(xx))
+              .join("")
+              .value();
+          });
+        }
+        fs.writeFileSync(outputLangFile, toJSON(resultJSON));
+      } else {
+        console.log("file not exists: ", resultFile);
+        process.exit(-1);
+      }
+    })(eachLang);
+    let href = prun_fn(eachLang);
+    if (eachLang == "zh_CN" || eachLang == "zh_HK") {
+      await href;
+    } else {
+      // let other language to run in parallel(no rush)
+    }
+    // console.log("------------------------------");
   }
   for (let eachItem of waitArr) {
     await eachItem;
@@ -351,19 +360,6 @@ let r2 = async () => {
             }
           }
         });
-        // let lastContent = "";
-        // setInterval(() => {
-        //   console.log("xx-begin");
-        //   let updateFile = path.join(__dirname, "update.txt");
-        //   let crtContent = fs.readFileSync(updateFile, { encoding: "utf-8" });
-        //   console.log("xx-comparing", crtContent, lastContent);
-        //   if (crtContent != lastContent) {
-        //     lastContent = crtContent;
-        //     setTimeout(() => {
-        //       // triggerAllFn();
-        //     });
-        //   }
-        // }, 1000);
       }
     })();
     await a;
@@ -397,7 +393,7 @@ let entryForLoadingDOT = async () => {
             if (!fs.existsSync(dynDirName)) {
               fs.mkdirSync(dynDirName);
             }
-            // console.log("Loading DOT", loadEachObj.scopeID);
+            await sleep(3000);
             await processWithArg({
               taskID: crtTaskId,
               eachRunItem: {
@@ -411,7 +407,6 @@ let entryForLoadingDOT = async () => {
               allFiles: [filepath],
               handleFurtherLoadingDOT: false,
             });
-            await sleep(1000);
           }
         });
       }
