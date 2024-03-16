@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "<p align=\"center\"> <img width=\"100\" src=\"https://github.com/work7z/LafTools/blob/dev/modules/web/public/static/icon.png?raw=true\"></img> <br> <span style=\"font-size:20px\">LafTools - The next generation of a versatile toolbox designed for programmers </span> <br><br> </p>",
   "scripts": {
+    "build-docs": "./devtools/docs-generator/pipeline/build.sh",
     "win-clean": "taskkill /F /IM bash.exe",
     "fe-web": "(cd ./modules/web2 && npm run dev)",
     "fe-css": "(cd ./modules/web && sh ./job-tailwind.sh)",

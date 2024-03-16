@@ -54,7 +54,7 @@ let ToolTitlebar = (props) => {
                 {/* {Dot("crZZ_WXlw", "View Relevant")} */}
             </a>
         </div>
-        <div className={`font-semibold top-[50%] translate-y-[-50%] absolute left-[50%] translate-x-[-50%]`}>
+        <div id="tool-current-title" className={`font-semibold top-[50%] translate-y-[-50%] absolute left-[50%] translate-x-[-50%]`}>
             {Dot("lje4Xk6ai", "Base64 Encoder")}
         </div>
         <div>
