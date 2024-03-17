@@ -9,17 +9,6 @@ var md5 = require("md5");
 const { exit } = require("process");
 let i18njson = require("../../../resources/public/purejs/app-i18n.json");
 
-// get --langlist= from argv, and get it as value
-let argv = process.argv;
-let langlist = null;
-for (let i = 0; i < argv.length; i++) {
-  let eachArg = argv[i];
-  if (eachArg.startsWith("--langlist=")) {
-    langlist = eachArg.replace("--langlist=", "").split(",");
-    break;
-  }
-}
-
 let laftoolsRoot = process.env.LAFTOOLS_ROOT;
 console.log("i18njson", i18njson);
 // cross platform watch file
@@ -73,11 +62,6 @@ i18njson.forEach((x) => {
   if (x.Value == "en_US") {
     return;
   }
-  if (langlist && langlist.length > 0) {
-    if (langlist.indexOf(x.Value) == -1) {
-      return;
-    }
-  }
   langarr.push(x.Value);
 });
 
@@ -126,14 +110,14 @@ let processWithArg = async ({
   }
   let waitArr = [];
   for (let eachLang of langarr) {
-    // await sleep(1000);
+    await sleep(1000);
 
     let prun_fn = async (eachLang) => {
-      // if (eachLang == "zh_CN" || eachLang == "zh_HK") {
-      //   // do nothing
-      // } else {
-      //   await sleep(60000 * 10);
-      // }
+      if (eachLang == "zh_CN" || eachLang == "zh_HK") {
+        // do nothing
+      } else {
+        await sleep(60000 * 10);
+      }
       let crtTaskId = latestTaskIdObj[eachRunItem.dir];
       if (crtTaskId != taskID && handleFurtherLoadingDOT) {
         return;
@@ -199,9 +183,7 @@ let processWithArg = async ({
         __dirname,
         `tmp-translate-result/result-${eachRunItem.id}-${eachLang}.json`,
       );
-      console.log(
-        "handling " + `${eachRunItem.dir || eachRunItem.id} - ${eachLang}`,
-      );
+      console.log("handling " + `${eachRunItem.id} - ${eachLang}`);
       // TODO: if there's no dynamic file was mentioned in the code, then we should clean them
       if (fs.existsSync(resultFile)) {
         let resultJSON = getFile(resultFile).jsonmap();
@@ -227,11 +209,11 @@ let processWithArg = async ({
       }
     };
     let href = await prun_fn(eachLang);
-    // if (eachLang == "zh_CN" || eachLang == "zh_HK") {
-    // } else {
-    //   // let other language to run in parallel(no rush)
-    // }
-    // await href;
+    if (eachLang == "zh_CN" || eachLang == "zh_HK") {
+      await href;
+    } else {
+      // let other language to run in parallel(no rush)
+    }
     // console.log("------------------------------");
   }
   for (let eachItem of waitArr) {
@@ -272,7 +254,7 @@ let scan = async (eachRunItem) => {
   // console.log("scaning", crtTaskId, eachRunItem.dir);
   let triggerFn = async (crtTaskId) => {
     try {
-      // await sleep(1000);
+      await sleep(1000);
 
       // get all dir
       let dir = getFile(eachRunItem.dir); // replace with appropriate function
@@ -330,43 +312,58 @@ let scan = async (eachRunItem) => {
   }
 };
 
-let mainEntry = async () => {
+let r2 = async () => {
   let gwaitarr = [];
   for (let eachItem of searchItems) {
     let a = (async () => {
       let existOrNot = fs.existsSync(eachItem.dir);
-      // console.log("existOrNot", existOrNot, eachItem.dir);
+      console.log("existOrNot", existOrNot, eachItem.dir);
       if (existOrNot) {
-        console.log("handling dir", eachItem.dir + "....");
+        console.log("enter");
 
-        let triggerAllFn = async () => {
+        let triggerAllFn = _.debounce(async () => {
           let tsval = new Date().getTime() + "";
           console.log("changed now", tsval);
           latestTaskIdObj[eachItem.dir] = tsval;
+          // if (true) {
+          //   return;
+          // }
 
-          await scan(eachItem);
-        };
+          let eachRunItem = eachItem;
+          // if (runStatusObj[eachRunItem.dir]) return;
+          // runStatusObj[eachRunItem.dir] = "1";
 
-        await triggerAllFn();
+          scan(eachItem);
+          // try {
+          //   await ;
+          //   // await sleep(1000);
+          // } catch (e) {
+          //   console.log("err", e);
+          // }
 
-        // chokidar.watch(eachItem.dir).on("all", async (event, path) => {
-        //   // if new file is added or exist file is modified/delete
-        //   if (event == "add" || event == "change" || event == "unlink") {
-        //     let eachFile = path;
-        //     console.log("is changed", event, path);
-        //     if (
-        //       (eachFile + "").endsWith("go") ||
-        //       (eachFile + "").endsWith("ts") ||
-        //       (eachFile + "").endsWith("tsx") ||
-        //       (eachFile + "").endsWith("md") ||
-        //       (eachFile + "").endsWith("java") ||
-        //       (eachFile + "").endsWith("groovy") ||
-        //       (eachFile + "").endsWith("js")
-        //     ) {
-        //       triggerAllFn();
-        //     }
-        //   }
-        // });
+          // delete runStatusObj[eachRunItem.dir];
+        }, 100);
+
+        triggerAllFn();
+
+        chokidar.watch(eachItem.dir).on("all", async (event, path) => {
+          // if new file is added or exist file is modified/delete
+          if (event == "add" || event == "change" || event == "unlink") {
+            let eachFile = path;
+            console.log("is changed", event, path);
+            if (
+              (eachFile + "").endsWith("go") ||
+              (eachFile + "").endsWith("ts") ||
+              (eachFile + "").endsWith("tsx") ||
+              (eachFile + "").endsWith("md") ||
+              (eachFile + "").endsWith("java") ||
+              (eachFile + "").endsWith("groovy") ||
+              (eachFile + "").endsWith("js")
+            ) {
+              triggerAllFn();
+            }
+          }
+        });
       }
     })();
     await a;
@@ -376,59 +373,50 @@ let mainEntry = async () => {
     await eg;
   }
 };
+r2();
 
 let alreadyRunLoadingDOTObj = {};
 // handling loadDOT logic
 let entryForLoadingDOT = async () => {
-  // while (true) {
-  // }
-  let allKeys = _.keys(loadingDOTMapObj);
-  for (let loadEachObjIdx of allKeys) {
-    let loadEachObj = loadingDOTMapObj[loadEachObjIdx];
-    let { scopeID, targetDIR, filepath, eachRunItem } = loadEachObj;
-    let crtTaskId = latestTaskIdObj[eachRunItem.dir];
-    if (!fs.existsSync(targetDIR)) {
-      fs.mkdirSync(targetDIR);
-    }
-    let extraDirName = path.join(targetDIR, "extra");
-    if (!fs.existsSync(extraDirName)) {
-      fs.mkdirSync(extraDirName);
-    }
-    let dynDirName = path.join(extraDirName, scopeID);
-    if (!fs.existsSync(dynDirName)) {
-      fs.mkdirSync(dynDirName);
-    }
-    // await sleep(3000);
-    await processWithArg({
-      taskID: crtTaskId,
-      eachRunItem: {
-        type: eachRunItem.type,
-        id: eachRunItem.id + scopeID,
-        prefix: eachRunItem.prefix,
-        pattern: eachRunItem.pattern,
-        target: dynDirName,
-        dir: null,
-      },
-      allFiles: [filepath],
-      handleFurtherLoadingDOT: false,
+  while (true) {
+    _.forEach(loadingDOTMapObj, (loadEachObj, d, n) => {
+      if (!alreadyRunLoadingDOTObj[d]) {
+        alreadyRunLoadingDOTObj[d] = 1;
+        setTimeout(async () => {
+          while (true) {
+            let { scopeID, targetDIR, filepath, eachRunItem } = loadEachObj;
+            let crtTaskId = latestTaskIdObj[eachRunItem.dir];
+            if (!fs.existsSync(targetDIR)) {
+              fs.mkdirSync(targetDIR);
+            }
+            let extraDirName = path.join(targetDIR, "extra");
+            if (!fs.existsSync(extraDirName)) {
+              fs.mkdirSync(extraDirName);
+            }
+            let dynDirName = path.join(extraDirName, scopeID);
+            if (!fs.existsSync(dynDirName)) {
+              fs.mkdirSync(dynDirName);
+            }
+            await sleep(3000);
+            await processWithArg({
+              taskID: crtTaskId,
+              eachRunItem: {
+                type: eachRunItem.type,
+                id: eachRunItem.id + scopeID,
+                prefix: eachRunItem.prefix,
+                pattern: eachRunItem.pattern,
+                target: dynDirName,
+                dir: null,
+              },
+              allFiles: [filepath],
+              handleFurtherLoadingDOT: false,
+            });
+          }
+        });
+      }
+      return;
     });
+    await sleep(1000);
   }
-  // _.forEach(loadingDOTMapObj, (loadEachObj, d, n) => {
-  //   if (!alreadyRunLoadingDOTObj[d]) {
-  //     alreadyRunLoadingDOTObj[d] = 1;
-  //     setTimeout(async () => {
-  //       while (true) {}
-  //     });
-  //   }
-  //   return;
-  // });
-  // await sleep(1000);
 };
-
-let rootEntry = async () => {
-  console.log("handling mainentry...");
-  await mainEntry();
-  console.log("handling loadingDOT...");
-  await entryForLoadingDOT();
-};
-rootEntry();
+entryForLoadingDOT();

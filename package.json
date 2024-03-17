@@ -10,6 +10,7 @@
     "fe-extra": "go run ./core/app.go dev-extra --config $LAFTOOLS_ROOT/devtools/config/laft-system-dev.json",
     "fe-build": "(cd ./modules/web && npm run build)",
     "fe-scan": "(cd ./devtools/scripts/scan/ && node ./scan-entry.js)",
+    "fe-scan-zh": "(cd ./devtools/scripts/scan/ && node ./scan-entry.js --langlist=zh_CN )",
     "build-all": "./pipeline/build-all.sh",
     "build-linux": "./pipeline/build-all.sh linux",
     "test-linux": "(cd $LAFTOOLS_ROOT/dist/os/linux-x64 && ./run.sh)",
