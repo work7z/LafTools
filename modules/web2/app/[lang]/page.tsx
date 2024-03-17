@@ -82,11 +82,11 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
     if (!searchToolItem) {
         notFound()
     }
-    title.push(searchToolItem.label + " - " + targetSubCategory.label)
+    title.push(searchToolItem.extraLabel + " - " + targetSubCategory.label)
 
     // keywords
     result.keywords = targetSubCategory?.seoKeywords ? [
-        ...(targetSubCategory?.subTabs || []).map(x => x.label),
+        ...(targetSubCategory?.subTabs || []).map(x => x.extraLabel),
         ...targetSubCategory?.seoKeywords,
     ] : []
     result.title = (

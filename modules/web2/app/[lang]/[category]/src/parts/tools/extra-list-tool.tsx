@@ -50,7 +50,7 @@ export default (props: ToolProp) => {
                             (x.subTabs || []).map(xx => {
                                 return <li className=' gray-list-item  w-1/4 xl:w-1/5 list-item list-disc  float-left'>
                                     <Link className='black-anchor-text   list-disc  text-left ' href={fmtURL_ToolSubPage([x.id, xx.id])} key={xx.id}>
-                                        {xx.label}
+                                        {xx.extraLabel}
                                     </Link>
                                 </li>
                             })

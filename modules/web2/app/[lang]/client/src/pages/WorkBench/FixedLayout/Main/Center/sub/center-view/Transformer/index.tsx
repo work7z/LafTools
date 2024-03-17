@@ -57,6 +57,9 @@ import ShowErrorPanel from "../../../../../../../../containers/ShowErrorPanel/in
 import { useDispatch } from "react-redux";
 import Sidemenu from "./SideMenu/sidemenu.tsx";
 import { CSS_BG_COLOR_WHITE, border_clz, border_clz_common } from "@/app/__CORE__/meta/styles.tsx";
+import COMMON_FN_REF from "@/app/[lang]/client/src/impl/tools/common_ref.tsx";
+
+COMMON_FN_REF.Dot = Dot
 
 export type AppOptViewMode = "fixed" | "float"
 

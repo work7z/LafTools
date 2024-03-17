@@ -31,7 +31,6 @@ let VER_FORGE_FORM = '0.0.1'
 export const KEY_LANG_PACK_ZH_CN = "KEY_LANG_PACK_ZH_CN" + VER_FORGE_FORM;
 export const KEY_LANG_PACK_ZH_HK = "KEY_LANG_PACK_ZH_HK" + VER_FORGE_FORM;
 
-
 let document = null;
 export let sysLocale = zhCNLocale
 if (typeof window !== "undefined") {

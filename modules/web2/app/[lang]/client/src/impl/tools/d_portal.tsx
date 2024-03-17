@@ -26,11 +26,15 @@ import { Dot } from "@/app/__CORE__/utils/TranslationUtils"
 import { fmtURL_Server } from "@/app/__CORE__/utils/routeUtils"
 import { Metadata } from "next"
 import { cache } from "react"
+import appToolInfoObj, { AppToolKeyType } from "./d_meta"
+import COMMON_FN_REF from "./common_ref"
+
+COMMON_FN_REF.Dot = Dot
 
 export type PortalDefinitionTbabGroup = {
-    id: string,
-    toolId?: string,
-    label: string
+    id: string, // sub tab id, will be used in the URL as path variable (:id)
+    toolId?: AppToolKeyType, // it's coming from d_meta
+    extraLabel?: string // overwrite the label from tool definition if needed
 }
 export type SEOMetaData = {
     seoTitle?: string;
@@ -64,32 +68,40 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
             subTabs: [
                 {
                     id: "jsonformatter",
-                    label: Dot("pkprvdA2O", "JSON Formatter"),
+                    toolId: "JSONBeautify",
+                    // defaultLabel: Dot("pkprvdA2O", "JSON Formatter"),
                 },
                 {
                     id: 'javascriptformatter',
-                    label: Dot("2Y2Y2qY2", "JavaScript Formatter"),
+                    toolId: 'JavaScriptBeautify',
+                    // label: Dot("2Y2Y2qY2", "JavaScript Formatter"),
                 },
                 {
                     id: "xmlformatter",
-                    label: Dot("v2YyGqwy2Yh", "XML Formatter"),
+                    toolId: 'XMLBeautify',
+                    // label: Dot("v2YyGqwy2Yh", "XML Formatter"),
                 },
                 {
                     id: 'yamlformatter',
-                    label: Dot("h2Y2Y2Yeq2Y", "YAML Formatter"),
+                    // toolId: 'YAMLBeautify',
+                    // label: Dot("h2Y2Y2Yeq2Y", "YAML Formatter"),
                 },
                 {
                     id: 'cssformatter',
-                    label: Dot("2Yd2Y2Y2Y2", "CSS Formatter"),
+                    toolId: 'CSSBeautify',
+                    // label: Dot("2Yd2Y2Y2Y2", "CSS Formatter"),
                 },
                 {
                     id: 'htmlformatter',
-                    label: Dot("2Y2eqY2Y2Y2", "HTML Formatter"),
+                    // toolId: 'HTMLBeautify',
+                    // label: Dot("2Y2eqY2Y2Y2", "HTML Formatter"),
                 },
                 {
                     id: 'sqlformatter',
-                    label: Dot("2Y2Y2eqY2Y2", "SQL Formatter"),
-                }
+                    toolId: "SQLBeautify",
+                    // label: Dot("2Y2Y2eqY2Y2", "SQL Formatter"),
+                },
+                // add new items for JSONMinify, XMLMinify, CSSMinify, SQLMInify, JavaScriptMinify also
             ]
         },
         {
@@ -112,27 +124,34 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
             subTabs: [
                 {
                     id: 'base64',
-                    label: Dot("2Y2Y2Y2Y2", "Base64"),
+                    toolId: 'edc_base64',
+                    // label: Dot("2Y2Y2Y2Y2", "Base64"),
                 },
                 {
                     id: "urlencoder",
-                    label: Dot("mdhWk4dtid", "URL Encoder"),
+                    // toolId: "edc_urlencoder",
+                    // label: Dot("mdhWk4dtid", "URL Encoder"),
                 },
                 {
                     id: "md5",
-                    label: Dot("eTJ2EDLfW", "MD5 Hash"),
+                    toolId: "md5",
+                    // label: Dot("eTJ2EDLfW", "MD5 Hash"),
                 },
                 {
                     id: "sha1",
-                    label: Dot("8RYY_Y4sb", "SHA1 Hash"),
+                    toolId: "SHA1",
+                    // label: Dot("8RYY_Y4sb", "SHA1 Hash"),
                 },
                 {
                     id: "sha256",
-                    label: Dot("HAdpbfboS", "SHA256 Hash"),
+                    toolId: "SHA2", // provide extra configuration
+                    // label: Dot("HAdpbfboS", "SHA256 Hash"),
                 },
                 {
                     id: "sha512",
-                    label: Dot("fyA5IVtOU", "SHA512 Hash"),
+                    toolId: "SHA3",
+                    // toolId: 'sha3'
+                    // label: Dot("fyA5IVtOU", "SHA512 Hash"),
                 },
             ]
         },
@@ -155,29 +174,56 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
             id: 'encoding',
             subTabs: [
                 {
-                    id: "urlencoder",
-                    label: Dot("mhWk4dtqid", "URL Encoder"),
-                },
-                {
                     id: 'base64',
-                    label: Dot("2Y2Y2Yd2Y2", "Base64"),
+                    toolId: 'edc_base64',
+                    // label: Dot("2Y2Y2Yd2Y2", "Base64"),
                 },
                 {
                     id: 'escape',
-                    label: Dot("2Y2Y2qY2Y2", "Escape"),
+                    // toolId: 'escape',
+                    extraLabel: Dot("2Y2Y2qY2Y2", "Escape"),
                 },
                 {
                     id: 'unescape',
-                    label: Dot("2Y2Y2wY2Y2", "Unescape"),
+                    // toolId: 'unescape',
+                    extraLabel: Dot("2Y2Y2wY2Y2", "Unescape"),
                 },
                 {
                     id: 'encodeuri',
-                    label: Dot("2Y2eY2Y2Y2", "Encode URI"),
+                    // toolId: 'encodeuri',
+                    extraLabel: Dot("2Y2eY2Y2Y2", "Encode URI"),
                 },
                 {
                     id: 'decodeuri',
-                    label: Dot("2Y2Ye2Y2Y2", "Decode URI"),
+                    // toolId: 'decodeuri',
+                    extraLabel: Dot("2Y2Ye2Y2Y2", "Decode URI"),
                 },
+                {
+                    id: "urlencoder",
+                    // toolId: "urlencoder",
+                    extraLabel: Dot("mhWk4dtqid", "URL Encoder"),
+                },
+                {
+                    id: 'base32',
+                    toolId: 'edc_base32',
+                },
+                {
+                    id: 'base45',
+                    toolId: 'edc_base45',
+                },
+                {
+                    id: 'base58',
+                    toolId: 'edc_base58',
+                },
+                {
+                    id: 'base62',
+                    toolId: 'edc_base62',
+                },
+                {
+                    id: 'base85',
+                    toolId: 'edc_base85',
+                },
+
             ]
         },
         {
@@ -199,23 +245,23 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
             subTabs: [
                 {
                     id: 'json2xml',
-                    label: Dot("json2xml.t", "JSON to XML")
+                    extraLabel: Dot("json2xml.t", "JSON to XML")
                 },
                 {
                     id: 'json2csv',
-                    label: Dot("json2csv.t", "JSON to CSV")
+                    extraLabel: Dot("json2csv.t", "JSON to CSV")
                 },
                 {
                     id: 'json2yaml',
-                    label: Dot("json2yaml.t", "JSON to YAML")
+                    extraLabel: Dot("json2yaml.t", "JSON to YAML")
                 },
                 {
                     id: 'xml2json',
-                    label: Dot("xml2json.t", "XML to JSON")
+                    extraLabel: Dot("xml2json.t", "XML to JSON")
                 },
                 {
                     id: 'yaml2json',
-                    label: Dot("yaml2json.t", "YAML to JSON")
+                    extraLabel: Dot("yaml2json.t", "YAML to JSON")
                 },
             ]
         },
@@ -234,7 +280,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
             subTabs: [
                 {
                     id: 'sqlparser',
-                    label: Dot("2Yq2eqY2Y2", "SQL Parser"),
+                    extraLabel: Dot("2Yq2eqY2Y2", "SQL Parser"),
                 },
             ]
         },
@@ -255,19 +301,30 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
             subTabs: [
                 {
                     id: 'uuid',
-                    label: Dot("qwwqee", "UUID Generator"),
+                    extraLabel: Dot("qwwqee", "UUID Generator"),
                 },
                 {
                     id: 'guid',
-                    label: Dot("qeeqw", "GUID Generator"),
+                    extraLabel: Dot("qeeqw", "GUID Generator"),
                 },
                 {
                     id: 'random',
-                    label: Dot("eqwwew", "Random Generator"),
+                    extraLabel: Dot("eqwwew", "Random Generator"),
                 },
             ]
         },
     ]
+    toolsPortalDefinitions.forEach(x => {
+        x.subTabs = (x.subTabs || []).map(x => {
+            if (!x.extraLabel && x.toolId) {
+                let obj = appToolInfoObj[x.toolId]
+                if (obj) {
+                    x.extraLabel = obj.LabelFn(Dot)
+                }
+            }
+            return x;
+        })
+    })
     return toolsPortalDefinitions;
 })
 export type TopMainCategoryNavList = SEOMetaData & LabelHrefType

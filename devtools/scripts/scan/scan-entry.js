@@ -112,8 +112,12 @@ let processWithArg = async ({
   for (let eachLang of langarr) {
     await sleep(1000);
 
-    let prun_fn = (async (eachLang) => {
-      await sleep(60000 * 10);
+    let prun_fn = async (eachLang) => {
+      if (eachLang == "zh_CN" || eachLang == "zh_HK") {
+        // do nothing
+      } else {
+        await sleep(60000 * 10);
+      }
       let crtTaskId = latestTaskIdObj[eachRunItem.dir];
       if (crtTaskId != taskID && handleFurtherLoadingDOT) {
         return;
@@ -203,8 +207,8 @@ let processWithArg = async ({
         console.log("file not exists: ", resultFile);
         process.exit(-1);
       }
-    })(eachLang);
-    let href = prun_fn(eachLang);
+    };
+    let href = await prun_fn(eachLang);
     if (eachLang == "zh_CN" || eachLang == "zh_HK") {
       await href;
     } else {
@@ -261,7 +265,7 @@ let scan = async (eachRunItem) => {
           if (err) {
             reject(err);
           } else {
-            console.log("checked the results", results);
+            // console.log("checked the results", results);
             if (eachRunItem.exclude) {
               results = results.filter((x) => {
                 let tmpx = x.replace(/\\/g, "/");

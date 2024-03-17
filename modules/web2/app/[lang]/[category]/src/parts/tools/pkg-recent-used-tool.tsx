@@ -29,6 +29,7 @@ import ExtraListTool from './extra-list-tool';
 import { Dot } from '@/app/__CORE__/utils/cTranslationUtils';
 import _ from 'lodash';
 import gutils from '@/app/[lang]/client/src/utils/GlobalUtils';
+import { loadDOT } from '@/app/__CORE__/utils/i18n-types';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -37,8 +38,11 @@ export let getCardsProps = (): CardProps => {
 
 export type CrtToolProp = ToolProp
 let recentToolStorageKey = "tyoZa-kdM"
+export type TitleLinkType = { title: string, link: string }
+let d = loadDOT("D4tscXwgV")
 export default (props: CrtToolProp) => {
-    const [tools, setTools] = React.useState<{ title: string, link: string }[]>([])
+    d()
+    const [tools, setTools] = React.useState<TitleLinkType[]>([])
     useEffect(() => {
         let value = localStorage.getItem(recentToolStorageKey) || '[]'
         let storage = gutils.safeparse(value)
@@ -52,7 +56,15 @@ export default (props: CrtToolProp) => {
             if (ele) {
                 let crtTitle = ele.innerText
                 let crtLink = window.location.href
-                localStorage.setItem(recentToolStorageKey, JSON.stringify([{ title: crtTitle, link: crtLink }, ...newTools]))
+                let newResults: TitleLinkType[] = [{ title: crtTitle, link: crtLink }, ...newTools]
+                let pObj = {}
+                localStorage.setItem(recentToolStorageKey, JSON.stringify(newResults.filter(x => {
+                    if (pObj[x.title]) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                })))
             }
         }, 3500)
 
@@ -61,7 +73,7 @@ export default (props: CrtToolProp) => {
     return <Card {...getCardsProps()} className={light_border_clz_all} >
         <div className='px-2 py-2 text-xs'>
             <span>
-                {Dot("OUQHhPFC5", "You recently used these tools:")}
+                {Dot("OUQHhPFdkC5", "You recently used these tools:")}
             </span>
             <span>
                 {

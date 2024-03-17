@@ -19,7 +19,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { OneOf } from "protobufjs";
-import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
+import CommonRef, { DotType } from "./common_ref";
 import { ToolHandler, ToolHandlerClass } from "./r_handler";
 import { FAQItem } from './faq/types'
 import _ from "lodash";
@@ -27,7 +27,7 @@ import { CodeImplMap } from "./code/types";
 
 
 export type AppInfoType = {
-    LabelFn: () => string;
+    LabelFn: (Dot: DotType) => string;
     ImportImpl?: () => Promise<{
         default: ToolHandlerClass
     }>
@@ -37,111 +37,110 @@ export type AppInfoType = {
     ImportCode?: () => Promise<{
         default: () => CodeImplMap
     }>
-    Description?: string;
 }
 let passInfo = (obj: AppInfoType): AppInfoType => {
     return obj;
 }
 let appToolInfoObj = {
     "bcd": passInfo({
-        LabelFn: () => Dot("1Xe8x7qe", "BCD")
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7qe", "BCD")
     }),
     "edc_base64": passInfo({
-        LabelFn: () => Dot("gkC8t", "Base64")
+        LabelFn: (Dot: DotType) => Dot("gkC8t", "Base64")
     }),
     "edc_base32": passInfo({
-        LabelFn: () => Dot("gkqC8t", "Base32")
+        LabelFn: (Dot: DotType) => Dot("gkqC8t", "Base32")
     }),
     "edc_base45": passInfo({
-        LabelFn: () => Dot("gkdqqC8t", "Base45")
+        LabelFn: (Dot: DotType) => Dot("gkdqqC8t", "Base45")
     }),
     "edc_base58": passInfo({
-        LabelFn: () => Dot("egkqC8t", "Base58")
+        LabelFn: (Dot: DotType) => Dot("egkqC8t", "Base58")
     }),
     "edc_base62": passInfo({
-        LabelFn: () => Dot("egkqCd8t", "Base62")
+        LabelFn: (Dot: DotType) => Dot("egkqCd8t", "Base62")
     }),
     "edc_base85": passInfo({
-        LabelFn: () => Dot("e4Cd8t", "Base85")
+        LabelFn: (Dot: DotType) => Dot("e4Cd8t", "Base85")
     }),
     "CSSBeautify": passInfo({
-        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", "CSS")
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "CSS")
     }),
     "JSONBeautify": passInfo({
-        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", "JSON")
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "JSON")
     }),
     "JavaScriptBeautify": passInfo({
-        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", "JavaScript")
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "JavaScript")
     }),
     "XMLBeautify": passInfo({
-        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", "XML")
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "XML")
     }),
     "GenericCodeBeautify": passInfo({
-        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", Dot("Vvt09V2Qo", "Generic Code"))
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", Dot("Vvt09V2Qo", "Generic Code"))
     }),
     "SQLBeautify": passInfo({
-        LabelFn: () => Dot("1Xe8x7", "{0} Beautify", "SQL")
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "SQL")
     }),
     "md5": passInfo({
-        LabelFn: () => "MD5"
+        LabelFn: (Dot: DotType) => "MD5"
     }),
     "md2": passInfo({
-        LabelFn: () => "MD2"
+        LabelFn: (Dot: DotType) => "MD2"
     }),
     "md4": passInfo({
-        LabelFn: () => "MD4"
+        LabelFn: (Dot: DotType) => "MD4"
     }),
     "md6": passInfo({
-        LabelFn: () => "MD6"
+        LabelFn: (Dot: DotType) => "MD6"
     }),
     "JSONMinify": passInfo({
-        LabelFn: () => Dot("1Xe82x7", "{0} Minify", "JSON")
+        LabelFn: (Dot: DotType) => Dot("1Xe82x7", "{0} Minify", "JSON")
     }),
     "XMLMinify": passInfo({
-        LabelFn: () => Dot("1Xe82x7", "{0} Minify", "XML")
+        LabelFn: (Dot: DotType) => Dot("1Xe82x7", "{0} Minify", "XML")
     }),
     "CSSMinify": passInfo({
-        LabelFn: () => Dot("1Xe82x7", "{0} Minify", "CSS")
+        LabelFn: (Dot: DotType) => Dot("1Xe82x7", "{0} Minify", "CSS")
     }),
     "SQLMinify": passInfo({
-        LabelFn: () => Dot("1Xe82x7", "{0} Minify", "SQL")
+        LabelFn: (Dot: DotType) => Dot("1Xe82x7", "{0} Minify", "SQL")
     }),
     "JavaScriptMinify": passInfo({
-        LabelFn: () => Dot("UVvJp-vtF", "{0} Minify", "JavaScript")
+        LabelFn: (Dot: DotType) => Dot("UVvJp-vtF", "{0} Minify", "JavaScript")
     }),
     hex: passInfo({
-        LabelFn: () => Dot("1Xe8wx7", "Hex String")
+        LabelFn: (Dot: DotType) => Dot("1Xe8wx7", "Hex String")
     }),
     SHA0: passInfo({
-        LabelFn: () => "SHA-0"
+        LabelFn: (Dot: DotType) => "SHA-0"
     }),
     SHA1: passInfo({
-        LabelFn: () => "SHA-1"
+        LabelFn: (Dot: DotType) => "SHA-1"
     }),
     SHA2: passInfo({
-        LabelFn: () => "SHA-2"
+        LabelFn: (Dot: DotType) => "SHA-2"
     }),
     SHA3: passInfo({
-        LabelFn: () => "SHA-3"
+        LabelFn: (Dot: DotType) => "SHA-3"
     }),
     Tail: passInfo({
-        LabelFn: () => Dot("tail", "Tail")
+        LabelFn: (Dot: DotType) => Dot("tail", "Tail")
     }),
     RemoveWhitespace: passInfo({
-        LabelFn: () => Dot("remove-whitespace", "Remove Whitespace")
+        LabelFn: (Dot: DotType) => Dot("remove-whitespace", "Remove Whitespace")
     }),
     RemoveLineNumbers: passInfo({
-        LabelFn: () => Dot("1fd8x7dqw", "Remove Line Numbers")
+        LabelFn: (Dot: DotType) => Dot("1fd8x7dqw", "Remove Line Numbers")
     }),
     Reverse: passInfo({
-        LabelFn: () => Dot("reverse.text", "Reverse Text")
+        LabelFn: (Dot: DotType) => Dot("reverse.text", "Reverse Text")
     }),
     CSVToJSON: passInfo({
-        LabelFn: () => Dot("1X8x7dqw", "CSV to JSON")
+        LabelFn: (Dot: DotType) => Dot("1X8x7dqw", "CSV to JSON")
     }),
     // Example
     "Example": passInfo({
-        LabelFn: () => Dot("1X8x7", "Example")
+        LabelFn: (Dot: DotType) => Dot("1X8x7", "Example")
     }),
 } satisfies Record<string, AppInfoType>
 

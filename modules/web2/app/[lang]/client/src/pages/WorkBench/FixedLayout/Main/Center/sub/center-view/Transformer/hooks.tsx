@@ -47,6 +47,9 @@ import { ListExtForTheCategoryRes } from "../../../../../../../../reducers/apiSl
 import appToolInfoObj from "@/app/[lang]/client/src/impl/tools/d_meta";
 import ActionButton from "../../../../../../../../components/ActionButton";
 import gutils from "../../../../../../../../utils/GlobalUtils";
+import COMMON_FN_REF from "@/app/[lang]/client/src/impl/tools/common_ref";
+
+COMMON_FN_REF.Dot = Dot
 
 export let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 export let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -148,7 +151,7 @@ export let useExtsList = (fc: string): ListExtForTheCategoryRes[] => {
                     ChildrenAsInfo: (xx.ChildrenIdSet || []).map(xxx => {
                         return {
                             Id: xxx,
-                            Label: appToolInfoObj[xxx]?.LabelFn(),
+                            Label: appToolInfoObj[xxx]?.LabelFn(Dot),
                             // Description: xxx.Description + ""
                         } as ExtensionInfo
                     })
