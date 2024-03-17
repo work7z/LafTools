@@ -34,6 +34,7 @@ import { ToolProp } from '.';
 import { getCardsProps } from './main-part';
 import { fmtURL_ToolSubPage, getToolSubCategory } from '../../../types';
 import _ from 'lodash';
+import { URL_SUBCATEGORY_GO_PATH } from '@/app/__CORE__/meta/url';
 
 export default (props: ToolProp) => {
     let subCategory = getToolSubCategory()
@@ -49,7 +50,7 @@ export default (props: ToolProp) => {
                         {
                             (x.subTabs || []).map(xx => {
                                 return <li className=' gray-list-item  w-1/4 xl:w-1/5 list-item list-disc  float-left'>
-                                    <Link className='black-anchor-text   list-disc  text-left ' href={fmtURL_ToolSubPage([x.id, xx.id])} key={xx.id}>
+                                    <Link className='black-anchor-text   list-disc  text-left ' href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, x.id, xx.id])} key={xx.id}>
                                         {xx.label}
                                     </Link>
                                 </li>

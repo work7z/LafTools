@@ -83,6 +83,7 @@ class XMLBeautify extends Operation {
      */
     run(input, args) {
         const indentStr = args[0];
+
         return vkbeautify.xml(input, indentStr);
     }
 
