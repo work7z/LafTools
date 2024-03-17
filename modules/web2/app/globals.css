@@ -36,8 +36,11 @@
 .gray-list-item{
   @apply text-zinc-500 hover:text-sky-800;
 }
+.gray-list-item:hover{
+  list-style: square;
+}
 .black-anchor-text {
-  @apply text-zinc-500 hover:text-sky-800 hover:underline hover:cursor-pointer;
+  @apply text-zinc-500 hover:text-cyan-600 hover:underline hover:cursor-pointer;
   transition: color 0.2s ease-in-out;
 }
 

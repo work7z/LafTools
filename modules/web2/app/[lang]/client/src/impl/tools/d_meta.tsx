@@ -150,6 +150,7 @@ _.forEach(appToolInfoObj, (x, d, n) => {
     x.ImportCode = () => import(`./code/${d}.tsx`)
 })
 
-export type AppToolKeyType = keyof typeof appToolInfoObj; // "a" | "b"
+export type AppToolKeyType = keyof typeof appToolInfoObj;
 
 export default appToolInfoObj
+

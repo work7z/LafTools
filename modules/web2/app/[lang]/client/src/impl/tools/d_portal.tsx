@@ -69,37 +69,37 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
                 {
                     id: "jsonformatter",
                     toolId: "JSONBeautify",
-                    // defaultLabel: Dot("pkprvdA2O", "JSON Formatter"),
+                    extraLabel: Dot("pkprvdA2O", "JSON Formatter"),
                 },
                 {
                     id: 'javascriptformatter',
                     toolId: 'JavaScriptBeautify',
-                    // label: Dot("2Y2Y2qY2", "JavaScript Formatter"),
+                    extraLabel: Dot("2Y2Y2qY2", "JavaScript Formatter"),
                 },
                 {
                     id: "xmlformatter",
                     toolId: 'XMLBeautify',
-                    // label: Dot("v2YyGqwy2Yh", "XML Formatter"),
+                    extraLabel: Dot("v2YyGqwy2Yh", "XML Formatter"),
                 },
                 {
                     id: 'yamlformatter',
                     // toolId: 'YAMLBeautify',
-                    // label: Dot("h2Y2Y2Yeq2Y", "YAML Formatter"),
+                    extraLabel: Dot("h2Y2Y2Yeq2Y", "YAML Formatter"),
                 },
                 {
                     id: 'cssformatter',
                     toolId: 'CSSBeautify',
-                    // label: Dot("2Yd2Y2Y2Y2", "CSS Formatter"),
+                    extraLabel: Dot("2Yd2Y2Y2Y2", "CSS Formatter"),
                 },
                 {
                     id: 'htmlformatter',
                     // toolId: 'HTMLBeautify',
-                    // label: Dot("2Y2eqY2Y2Y2", "HTML Formatter"),
+                    extraLabel: Dot("2Y2eqY2Y2Y2", "HTML Formatter"),
                 },
                 {
                     id: 'sqlformatter',
                     toolId: "SQLBeautify",
-                    // label: Dot("2Y2Y2eqY2Y2", "SQL Formatter"),
+                    extraLabel: Dot("2Y2Y2eqY2Y2", "SQL Formatter"),
                 },
                 // add new items for JSONMinify, XMLMinify, CSSMinify, SQLMInify, JavaScriptMinify also
             ]
@@ -125,33 +125,33 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
                 {
                     id: 'base64',
                     toolId: 'edc_base64',
-                    // label: Dot("2Y2Y2Y2Y2", "Base64"),
+                    extraLabel: Dot("2Y2Y2Y2Y2", "Base64"),
                 },
                 {
                     id: "urlencoder",
                     // toolId: "edc_urlencoder",
-                    // label: Dot("mdhWk4dtid", "URL Encoder"),
+                    extraLabel: Dot("mdhWk4dtid", "URL Encoder"),
                 },
                 {
                     id: "md5",
                     toolId: "md5",
-                    // label: Dot("eTJ2EDLfW", "MD5 Hash"),
+                    extraLabel: Dot("eTJ2EDLfW", "MD5 Hash"),
                 },
                 {
                     id: "sha1",
                     toolId: "SHA1",
-                    // label: Dot("8RYY_Y4sb", "SHA1 Hash"),
+                    extraLabel: Dot("8RYY_Y4sb", "SHA1 Hash"),
                 },
                 {
                     id: "sha256",
                     toolId: "SHA2", // provide extra configuration
-                    // label: Dot("HAdpbfboS", "SHA256 Hash"),
+                    extraLabel: Dot("HAdpbfboS", "SHA256 Hash"),
                 },
                 {
                     id: "sha512",
                     toolId: "SHA3",
                     // toolId: 'sha3'
-                    // label: Dot("fyA5IVtOU", "SHA512 Hash"),
+                    extraLabel: Dot("fyA5IVtOU", "SHA512 Hash"),
                 },
             ]
         },
@@ -176,7 +176,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
                 {
                     id: 'base64',
                     toolId: 'edc_base64',
-                    // label: Dot("2Y2Y2Yd2Y2", "Base64"),
+                    extraLabel: Dot("2Y2Y2Yd2Y2", "Base64"),
                 },
                 {
                     id: 'escape',
