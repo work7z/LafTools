@@ -26,7 +26,7 @@ import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
 import SubTabNav from '../nav/nav-sub-tab';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './inner'
+import ToolView from './view-tools'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import Sidebar from './main-sidebar';
@@ -50,7 +50,7 @@ export default (props: ToolProp) => {
                             (x.subTabs || []).map(xx => {
                                 return <li className=' gray-list-item  w-1/4 xl:w-1/5 list-item list-disc  float-left'>
                                     <Link className='black-anchor-text   list-disc  text-left ' href={fmtURL_ToolSubPage([x.id, xx.id])} key={xx.id}>
-                                        {xx.extraLabel}
+                                        {xx.label}
                                     </Link>
                                 </li>
                             })

@@ -36,10 +36,10 @@ import SmallScreenDetecter from '@/app/[lang]/client/src/SmallScreenDetecter'
 import ClientWrapper from '../../common/clientWrapper'
 import { ClientPortalContext } from '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/types'
 import { CardBody } from '@nextui-org/react'
+import { CategorySearchProps, ToolSearchDetail } from '@/app/[lang]/page'
+import NotYetOkie from '@/app/[lang]/client/src/components/NotYetOkie'
 
-export type ExtensionViewProps = {
-
-}
+export type ExtensionViewProps = ToolSearchDetail & CategorySearchProps
 
 
 let d = loadDOT("1RH8bum7S")
@@ -69,9 +69,17 @@ let ToolInnerView = (props: ExtensionViewProps) => {
     d()
     let constructedKey = useConstructedKeyAndInit()
     let clientContext = useContext(ClientPortalContext)
-
+    let toolId = props.searchToolItem.toolId
+    let body: JSX.Element = <div>not implemented yet</div>
+    if (!toolId) {
+        body = <div className='w-full min-h-[500px]'>
+            <div>{Dot("QJUcHZ3bD", "Sorry, it is still in progress, please kindly stay tuned by staring our Github repo.")}</div>
+        </div>
+    } else {
+        body = <ToolSingleView disableClientMode extId={toolId} />
+    }
     return <div className='w-full min-h-[500px]' >
-        <ToolTitlebar extId="edc_base64" />
+        <ToolTitlebar extId={toolId || "edc_base64"} />
         <div
             style={{
                 height: clientContext.portalMode ? 'auto' : `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
@@ -79,7 +87,7 @@ let ToolInnerView = (props: ExtensionViewProps) => {
             className={' w-full   rounded-sm shadow-sm' + light_border_clz_all + ' ' + CSS_BG_COLOR_WHITE}
             key={constructedKey}
         >
-            <ToolSingleView disableClientMode extId={'edc_base64'} />
+            {body}
         </div>
     </div>
 }

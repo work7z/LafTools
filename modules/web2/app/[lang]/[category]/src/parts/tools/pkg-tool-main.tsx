@@ -26,22 +26,27 @@ import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
 import SubTabNav from '../nav/nav-sub-tab';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './inner'
+import ToolView from './view-tools'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import Sidebar from './main-sidebar';
 import { ToolProp } from '.';
 import ExtraListTool from './extra-list-tool';
+import { notFound } from 'next/navigation';
+import { ToolSearchDetail } from '@/app/[lang]/page';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
     }
 }
 
-export type CrtToolProp = ToolProp
+export type CrtToolProp = ToolProp & ToolSearchDetail
+
 export default (props: CrtToolProp) => {
+    let id = props.params.id
+
     return <Card {...getCardsProps()} className={light_border_clz_all} >
         <SubTabNav  {...props}></SubTabNav>
-        <ToolView />
+        <ToolView {...props} />
     </Card >
 }

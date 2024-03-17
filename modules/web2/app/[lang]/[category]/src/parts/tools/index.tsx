@@ -25,7 +25,7 @@ import { border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles
 import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './inner'
+import ToolView from './view-tools'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import Sidebar from './main-sidebar';

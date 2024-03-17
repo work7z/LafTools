@@ -12,7 +12,7 @@ import { notFound, useParams, useSearchParams } from "next/navigation";
 import InnerHome from '../home'
 import { usePathname } from 'next/navigation';
 import React, { } from "react";
-import { PageProps } from '@/app/__CORE__/meta/pages'
+import { PageProps, PortalDefinitionType, TopMainCategoryNavList } from '@/app/__CORE__/meta/pages'
 import getAuthInfo, { AuthInfo } from "@/app/__CORE__/containers/GrailLayoutWithUser/actions/handleAuthInfo";
 import { Dot, getXSubPath, isChineseByXLocal } from "../__CORE__/utils/TranslationUtils";
 import Link from "next/link";
@@ -31,27 +31,19 @@ export type CategorySearchProps = PageProps<{
     category: string,
     id: string
 }, {}>;
-export let generateMetadata = async function (props: CategorySearchProps): Promise<Metadata> {
-    // fn
-    let fn = (obj: Partial<Metadata>) => {
-        return _.merge({
-            icons: [
-                getAppIcon()
-            ],
-            title: Dot("title-laftools", "LafTools - The Leading All-In-One ToolBox for Programmers"),
-            description: Dot("iZXig7E2JF", "LafTools offers a comprehensive suite of development utilities including codecs, formatters, image processing tools, and computer resource management solutions. Designed to streamline and enhance your development workflow, LafTools is your go-to resource for efficient, high-quality software development."),
-            keywords: getAppKeywords(),
-        } satisfies Metadata, obj)
-    };
-    let result = fn({})
-    let title: string[] = [];
+
+export type ToolSearchDetail = {
+    searchToolItem: PortalDefinitionTbabGroup,
+    targetSubCategory: PortalDefinitionType,
+    topCategoryNavItem: TopMainCategoryNavList
+}
+export let getSearchDetailBySearchProps = (props: CategorySearchProps): ToolSearchDetail => {
     let topCategoryNavList = getCategoryList()
     let topCategoryNavItem = topCategoryNavList.find(x => x.id == props.params.category)
     if (_.isNil(topCategoryNavItem)) {
         // notFound()
         topCategoryNavItem = topCategoryNavList[0]
     }
-    title.push(Dot("laftoolstitle", "Free Online LafTools"))
     let subCategory = props.params.subCategory;
     let toolsPortalDefinitons = getToolSubCategory()
     if (_.isEmpty(subCategory)) {
@@ -65,7 +57,6 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
     if (!targetSubCategory) {
         notFound()
     }
-    targetSubCategory && targetSubCategory?.seoTitle && title.push(targetSubCategory?.seoTitle)
 
     let searchToolId = props.params.id;
     if (!searchToolId) {
@@ -82,13 +73,39 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
     if (!searchToolItem) {
         notFound()
     }
-    title.push(searchToolItem.extraLabel + " - " + targetSubCategory.label)
+    return {
+        searchToolItem,
+        targetSubCategory,
+        topCategoryNavItem,
+    }
+}
 
+export let generateMetadata = async function (props: CategorySearchProps): Promise<Metadata> {
+    // fn
+    let fn = (obj: Partial<Metadata>) => {
+        return _.merge({
+            icons: [
+                getAppIcon()
+            ],
+            title: Dot("title-laftools", "LafTools - The Leading All-In-One ToolBox for Programmers"),
+            description: Dot("iZXig7E2JF", "LafTools offers a comprehensive suite of development utilities including codecs, formatters, image processing tools, and computer resource management solutions. Designed to streamline and enhance your development workflow, LafTools is your go-to resource for efficient, high-quality software development."),
+            keywords: getAppKeywords(),
+        } satisfies Metadata, obj)
+    };
+    let result = fn({})
+    let title: string[] = [];
+
+    let { searchToolItem, targetSubCategory, topCategoryNavItem } = getSearchDetailBySearchProps(props)
+
+    // title push
+    targetSubCategory && targetSubCategory?.seoTitle && title.push(targetSubCategory?.seoTitle)
+    title.push(Dot("laftoolstitle", "Free Online LafTools"))
+    title.push(searchToolItem.label + " - " + targetSubCategory.label)
     // keywords
-    result.keywords = targetSubCategory?.seoKeywords ? [
-        ...(targetSubCategory?.subTabs || []).map(x => x.extraLabel),
+    result.keywords = (targetSubCategory?.seoKeywords ? [
+        ...(targetSubCategory?.subTabs || []).map(x => x.label || 'N/A'),
         ...targetSubCategory?.seoKeywords,
-    ] : []
+    ] : []) || []
     result.title = (
         title.reverse().join(" | ")
     )

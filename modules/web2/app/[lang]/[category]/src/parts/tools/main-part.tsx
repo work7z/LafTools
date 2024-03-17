@@ -26,7 +26,7 @@ import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
 import SubTabNav from '../nav/nav-sub-tab';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './inner'
+import ToolView from './view-tools'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import Sidebar from './main-sidebar';
@@ -35,6 +35,7 @@ import ExtraListTool from './extra-list-tool';
 import PkgToolMain from './pkg-tool-main'
 import PkgToolExtra from './pkg-tool-extra'
 import PkgRecentUsedTool from './pkg-recent-used-tool';
+import { getSearchDetailBySearchProps } from '@/app/[lang]/page';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -43,8 +44,9 @@ export let getCardsProps = (): CardProps => {
 
 export type CrtToolProp = ToolProp
 export default (props: CrtToolProp) => {
+    let searchDetail = getSearchDetailBySearchProps(props)
     return <div className='flex-1  space-y-2'>
-        <PkgToolMain {...props} />
+        <PkgToolMain {...props} {...searchDetail} />
         <PkgRecentUsedTool {...props} />
         <PkgToolExtra {...props} />
     </div>
