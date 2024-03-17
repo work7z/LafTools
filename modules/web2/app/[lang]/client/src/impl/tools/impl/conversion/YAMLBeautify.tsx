@@ -83,8 +83,11 @@ class YamlBeautify extends Operation {
   run(input, args) {
     const indentStr = args[0];
 
+
+
     return vkbeautify.yaml(input, indentStr);
   }
+
 }
 
-export default XMLBeautify;
+export default YamlBeautify;

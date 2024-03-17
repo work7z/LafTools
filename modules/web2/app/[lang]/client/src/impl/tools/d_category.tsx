@@ -220,6 +220,7 @@ export default (): ToolCategory[] => {
             "XMLBeautify",
             "GenericCodeBeautify",
             "SQLBeautify",
+            "YAMLBeautify",
             // "fmt_html",
             // "fmt_yaml",
             // "fmt_less",
