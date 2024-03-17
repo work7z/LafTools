@@ -95,7 +95,7 @@ let ToolInnerView = (props: ExtensionViewProps) => {
 export default (props: ExtensionViewProps) => {
     return <CardBody className='p-0'>
         <ClientWrapper children={
-            <div className='w-full h-full p-[5px] relative bg-slate-50 dark:bg-gray-900'>
+            <div className='w-full h-full p-[5px] min-h-[300px] relative bg-slate-50 dark:bg-gray-900'>
                 <ToolInnerView {...props} />
             </div>
         } />

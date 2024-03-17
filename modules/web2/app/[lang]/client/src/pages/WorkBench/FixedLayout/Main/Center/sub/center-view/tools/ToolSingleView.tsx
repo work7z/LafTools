@@ -173,6 +173,7 @@ export default (props: ToolSingleViewProps) => {
             className="full-editor-p relative"
             style={{
                 height: calcH,
+                minHeight: '300px'
             }}
         >
             {finalPanel}

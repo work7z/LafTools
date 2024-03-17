@@ -44,6 +44,10 @@
   transition: color 0.2s ease-in-out;
 }
 
+.mxauto-tab [role="tablist"]{
+  @apply mx-auto;
+}
+
 .flex-justify-between{
   @apply flex justify-between;
 }

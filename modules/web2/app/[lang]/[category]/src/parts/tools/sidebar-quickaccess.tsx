@@ -22,6 +22,9 @@
 import React, { cache } from 'react';
 import _ from 'lodash';
 import { loadDOT } from '@/app/__CORE__/utils/i18n-types';
+import { Button, ButtonGroup } from "@nextui-org/react";
+import { border_clz } from '@/app/__CORE__/meta/styles';
+import { Dot } from '@/app/__CORE__/utils/cTranslationUtils';
 
 let d = loadDOT("g2m9MYK-u")
 
@@ -35,12 +38,57 @@ export let IconLabel = (props: { icon: string, label: string }) => {
     </a>
 }
 
+export let getQuickAccessList = () => {
+    //  <IconLabel icon='translation.png' label={Dot("mWljvLU5c", "Translation")} />
+    //         <IconLabel icon='to-do-list.png' label={Dot("QDhYHZeBO", "TODO")} />
+    //         <IconLabel icon='stopwatch.png' label={Dot("BRrOAMTG7", "Timer")} />
+    //         <IconLabel icon='dictionary.png' label={Dot("BRrOAMTG7", "Timer")} />
+    return [
+        {
+            id: 'translation',
+            icon: 'translation.png',
+            label: Dot("mWljvLU5c", "Translation")
+        },
+        {
+            id: 'todo',
+            icon: 'to-do-list.png',
+            label: Dot("QDhYHZeBO", "TODO")
+        },
+        {
+            id: 'stopwatch',
+            icon: 'stopwatch.png',
+            label: Dot("BRrOAMTG7", "Timer")
+        },
+        {
+            id: 'dictionary',
+            icon: 'dictionary.png',
+            label: Dot("8TA2AYbhv", "Dictionary")
+        }
+    ]
+}
+
+
 export default (props) => {
     let Dot = d()
-    return <div className='flex flex-row space-x-1'>
-        <IconLabel icon='translation.png' label={Dot("mWljvLU5c", "Translation")} />
-        <IconLabel icon='to-do-list.png' label={Dot("QDhYHZeBO", "TODO")} />
-        <IconLabel icon='stopwatch.png' label={Dot("BRrOAMTG7", "Timer")} />
-        <IconLabel icon='dictionary.png' label={Dot("BRrOAMTG7", "Timer")} />
+    let quickAccessList = getQuickAccessList()
+    return <div className='space-y-2'>
+        <div className='text-xs'>
+            {Dot("o1ikM3T4c", "Programmer's Helpers")}:
+        </div>
+        <div className='flex flex-row space-x-1'>
+            {quickAccessList.map(x => {
+                return <IconLabel key={x.id} icon={x.icon} label={x.label} />
+            })}
+        </div>
+        <div className='mt-4' style={{
+            marginTop: '14px'
+        }}>
+            <Button onClick={(e) => {
+                // scroll to page bottom
+                window.scrollTo(0, document.body.scrollHeight);
+            }} color="primary" variant='ghost' size='sm' fullWidth >
+                {Dot("mFsDijzjI", "Jump to Quick Access")}
+            </Button>
+        </div>
     </div>
 }

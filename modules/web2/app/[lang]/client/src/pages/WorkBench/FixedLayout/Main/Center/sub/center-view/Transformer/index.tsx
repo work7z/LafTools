@@ -263,7 +263,9 @@ export default (props: CommonTransformerProps) => {
   }, [sessionId])
   let disableSeparateOutputMode = fn_coll_config(sessionId);
   if (!crtRuntimeStatus) {
-    return <LoadingText></LoadingText>
+    return <div className="w-full h-full">
+      <LoadingText></LoadingText>
+    </div>
   }
 
   if (loadingStatic) {

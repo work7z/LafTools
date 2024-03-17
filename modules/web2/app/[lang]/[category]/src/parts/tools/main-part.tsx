@@ -36,6 +36,7 @@ import PkgToolMain from './pkg-tool-main'
 import PkgToolExtra from './pkg-tool-extra'
 import PkgRecentUsedTool from './pkg-recent-used-tool';
 import { getSearchDetailBySearchProps } from '@/app/[lang]/page';
+import PkgQuickaccess from './pkg-quickaccess';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -45,9 +46,10 @@ export let getCardsProps = (): CardProps => {
 export type CrtToolProp = ToolProp
 export default (props: CrtToolProp) => {
     let searchDetail = getSearchDetailBySearchProps(props)
-    return <div className='flex-1  space-y-2'>
+    return <div className='flex-1  space-y-2 '>
         <PkgToolMain {...props} {...searchDetail} />
         <PkgRecentUsedTool {...props} />
         <PkgToolExtra {...props} />
+        <PkgQuickaccess {...props} />
     </div>
 }
