@@ -43,7 +43,7 @@ export type ExtensionViewProps = ToolSearchDetail & CategorySearchProps
 
 
 let d = loadDOT("1RH8bum7S")
-let ToolTitlebar = (props) => {
+let ToolTitlebar = (props: { title: string }) => {
     d()
     return <div className={CSS_BG_COLOR_WHITE + ' relative w-full flex flex-row justify-between px-[2px] items-center text-sm ' + light_border_clz_all + " border-b-0 "} style={{
         borderBottom: 'none',
@@ -55,7 +55,7 @@ let ToolTitlebar = (props) => {
             </a>
         </div>
         <div id="tool-current-title" className={`font-semibold top-[50%] translate-y-[-50%] absolute left-[50%] translate-x-[-50%]`}>
-            {Dot("lje4Xk6ai", "Base64 Encoder")}
+            {props.title}
         </div>
         <div>
             <a href="#">
@@ -79,7 +79,7 @@ let ToolInnerView = (props: ExtensionViewProps) => {
         body = <ToolSingleView disableClientMode extId={toolId} />
     }
     return <div className='w-full min-h-[500px]' >
-        <ToolTitlebar extId={toolId || "edc_base64"} />
+        <ToolTitlebar title={props.searchToolItem.label || 'N/A'} />
         <div
             style={{
                 height: clientContext.portalMode ? 'auto' : `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`

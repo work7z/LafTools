@@ -45,8 +45,8 @@ class SQLBeautify extends Operation {
                 "rE6fUsSGl",
                 "Indents and prettifies Structured Query Language (SQL) code."
             ),
-            exampleInput: 'SELECT * FROM table WHERE id : 1,',
-            exampleOutput: 'SELECT\n\t*\nFROM\n\ttable\nWHERE\n\tid : 1,',
+            exampleInput: 'SELECT * FROM table WHERE id = 1',
+            exampleOutput: 'SELECT\n\t*\nFROM\n\ttable\nWHERE\n\tid = 1',
         }
     }
 
