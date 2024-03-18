@@ -83,7 +83,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
                 },
                 {
                     id: 'yamlformatter',
-                    // toolId: 'YAMLBeautify',
+                    toolId: 'YAMLBeautify',
                     label: Dot("h2Y2Y2Yeq2Y", "YAML Formatter"),
                 },
                 {

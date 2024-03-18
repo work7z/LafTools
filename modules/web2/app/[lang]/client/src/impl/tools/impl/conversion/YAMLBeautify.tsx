@@ -29,6 +29,8 @@ import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
+import prettier from "prettier/esm/standalone.mjs";
+import parserYaml from "prettier/esm/parser-yaml.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 
@@ -38,7 +40,7 @@ class YamlBeautify extends Operation {
   public getOptDetail(): OptDetail | null {
     return {
       id: 'yaml-beautify',
-      name: Dot("yMZW-GEgf", "Format YAML"),
+      name: Dot("yaml.format.btn", "Format YAML"),
       infoURL: 'https://en.wikipedia.org/wiki/YAML',
       description: Dot(
         "yaml-beautify.desc.2a5f9",
@@ -47,8 +49,8 @@ class YamlBeautify extends Operation {
       ),
       exampleInput: `unformatted:
   data:
-    item1: value1
-    item2: value2`,
+    item1:  value1
+    item2:   value2`,
       exampleOutput: `unformatted:
   data:
     item1: value1
@@ -83,9 +85,13 @@ class YamlBeautify extends Operation {
   run(input, args) {
     const indentStr = args[0];
 
-
-
-    return vkbeautify.yaml(input, indentStr);
+    let exts = {
+      parser: "yaml",
+      plugins: [parserYaml],
+    }
+    debugger;
+    let results = prettier.format(input, exts);
+    return results;
   }
 
 }

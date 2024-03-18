@@ -15,6 +15,7 @@ export default class YamlHandler extends ToolHandler {
                 "0MO3jj.yaml",
                 "YAML (YAML Ain't Markup Language) is a human-readable data serialization format that takes concepts from programming languages such as C, Perl, and Python, and ideas from XML and the data format of electronic mail (RFC 2822)."
             ),
+            hideCodePanel: true,
         }
     }
     getOperations(): Operation[] {

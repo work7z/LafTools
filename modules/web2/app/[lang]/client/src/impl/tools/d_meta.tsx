@@ -76,7 +76,7 @@ let appToolInfoObj = {
         LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "XML")
     }),
     "YAMLBeautify": passInfo({
-        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "YAML")
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "YAML"),
     }),
     "GenericCodeBeautify": passInfo({
         LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", Dot("Vvt09V2Qo", "Generic Code"))
