@@ -31,12 +31,12 @@ import _ from 'lodash';
 import gutils from '@/app/[lang]/client/src/utils/GlobalUtils';
 import { loadDOT } from '@/app/__CORE__/utils/i18n-types';
 import { getQuickAccessList } from './sidebar-quickaccess';
+import ContentQuickaccess from './content-quickaccess';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
     }
 }
-
 export type CrtToolProp = ToolProp
 let recentToolStorageKey = "tyoZa-kdM"
 export type TitleLinkType = { title: string, link: string }
@@ -62,8 +62,7 @@ export default (props: CrtToolProp) => {
                             <Tab key={x.id} title={x.label}>
                                 <Card>
                                     <CardBody className='min-h-[500px]'>
-                                        this is {x.label}<br />
-                                        {Dot("I6JxFZ8Uy", "Sorry, this part is still in progress.")}
+                                        <ContentQuickaccess id={x.id} />
                                     </CardBody>
                                 </Card>
                             </Tab>

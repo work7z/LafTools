@@ -41,7 +41,7 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             hideSideBar: v.paramState.hsr,
         }
     })
-
+    let shouldVerticalMode = useShouldVerticalModeOrNot()
     let [loadExample, onLoadExample] = useState(false);
     let toolHandler = props.toolHandler
     let extVM = props.extVM
@@ -106,6 +106,27 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             } satisfies ActionButtonProps
         }) satisfies ActionButtonProps[],
         {
+            icon: shouldVerticalMode ? 'swap-vertical' : 'swap-horizontal',
+            text: Dot("PkIRx3hFD", "Swap"),
+            intent: 'none',
+            enableActionMode: true,
+            afterText: Dot("eg18QOMrM", "Swapped"),
+            afterIntent: 'success',
+            // outlined: true,
+            title: Dot("4M4U_9uBm", "Swap Input and Output"),
+            afterTitle: Dot("XuAHhgkpA", "Okay, the input and output are swapped."),
+            onClick: async () => {
+                let inputValue = FN_GetActualTextValueByBigTextId(inputBigTextId);
+                let outputValue = FN_GetActualTextValueByBigTextId(props.outputBigTextId);
+                FN_GetDispatch()(
+                    FN_SetTextValueFromOutSideByBigTextId(inputBigTextId, outputValue),
+                );
+                FN_GetDispatch()(
+                    FN_SetTextValueFromOutSideByBigTextId(props.outputBigTextId, inputValue),
+                )
+            }
+        },
+        {
             icon: 'document-open',
             // outlined: true,
             text: Dot("2bdqHk", "File"),
@@ -151,28 +172,7 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                 }
             },
         },
-        {
-            icon: 'exchange',
-            text: '',
-            intent: 'none',
-            enableActionMode: true,
-            afterText: "", // Dot("eg18QOMrM", "Swapped"),
-            afterIntent: 'success',
-            outlined: true,
-            title: Dot("4M4U_9uBm", "Swap Input and Output"),
-            afterTitle: Dot("XuAHhgkpA", "Okay, the input and output are swapped."),
-            onClick: async () => {
-                let inputValue = FN_GetActualTextValueByBigTextId(inputBigTextId);
-                let outputValue = FN_GetActualTextValueByBigTextId(props.outputBigTextId);
-                debugger;
-                FN_GetDispatch()(
-                    FN_SetTextValueFromOutSideByBigTextId(inputBigTextId, outputValue),
-                );
-                FN_GetDispatch()(
-                    FN_SetTextValueFromOutSideByBigTextId(props.outputBigTextId, inputValue),
-                )
-            }
-        }
+
     ];
     if (props.loadingStatic) {
         leftActions.forEach(x => {
@@ -202,7 +202,6 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
     let isColl = isCollapsed_config
     let clientPortalContext = useContext(ClientPortalContext)
     let portalMode = clientPortalContext.portalMode
-    let shouldVerticalMode = useShouldVerticalModeOrNot()
     let rightActions: ActionButtonProps[] = [
         // {
         //     // icon: "duplicate",

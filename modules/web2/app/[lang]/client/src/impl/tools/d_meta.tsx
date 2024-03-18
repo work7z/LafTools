@@ -84,6 +84,46 @@ let appToolInfoObj = {
     "SQLBeautify": passInfo({
         LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "SQL")
     }),
+    "HTMLBeautify": passInfo({
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "HTML")
+    }),
+    "MarkdownBeautify": passInfo({
+        // {
+        //     parser: "markdown",
+        //     plugins: [parserMarkdown],
+        // },
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "Markdown")
+    }),
+    "TypeScriptBeautify": passInfo({
+        // ext: {
+        //     parser: "typescript",
+        //     plugins: [parserTypescript],
+        // },
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "TypeScript")
+    }),
+    // GraphqlBeautify
+    "GraphQLBeautify": passInfo({
+        // ext: {
+        //     parser: "graphql",
+        //     plugins: [parserGraphql],
+        // },
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "GraphQL")
+    }),
+    "SCSSBeautify": passInfo({
+        // {
+        //     parser: "scss"|"less"|"css",
+        //     plugins: [parserPostcss],
+        // }
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "SCSS")
+    }),
+    "LessBeautify": passInfo({
+        // {
+        //     parser: "scss"|"less"|"css",
+        //     plugins: [parserPostcss],
+        // }
+        LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "Less")
+    }),
+
     "md5": passInfo({
         LabelFn: (Dot: DotType) => "MD5"
     }),

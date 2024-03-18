@@ -18,7 +18,7 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+'use client'
 import React, { cache } from 'react';
 import _ from 'lodash';
 import { loadDOT } from '@/app/__CORE__/utils/i18n-types';
@@ -39,10 +39,7 @@ export let IconLabel = (props: { icon: string, label: string }) => {
 }
 
 export let getQuickAccessList = () => {
-    //  <IconLabel icon='translation.png' label={Dot("mWljvLU5c", "Translation")} />
-    //         <IconLabel icon='to-do-list.png' label={Dot("QDhYHZeBO", "TODO")} />
-    //         <IconLabel icon='stopwatch.png' label={Dot("BRrOAMTG7", "Timer")} />
-    //         <IconLabel icon='dictionary.png' label={Dot("BRrOAMTG7", "Timer")} />
+    d()
     return [
         {
             id: 'translation',
@@ -85,7 +82,11 @@ export default (props) => {
         }}>
             <Button onClick={(e) => {
                 // scroll to page bottom
-                window.scrollTo(0, document.body.scrollHeight);
+                // window.scrollTo(0, document.body.scrollHeight);
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
             }} color="primary" variant='ghost' size='sm' fullWidth >
                 {Dot("mFsDijzjI", "Jump to Quick Access")}
             </Button>

@@ -24,7 +24,6 @@
  * @license Apache-2.0
  */
 
-import vkbeautify from "vkbeautify";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
 import Operation, { OptDetail } from "../../../core/Operation.tsx";

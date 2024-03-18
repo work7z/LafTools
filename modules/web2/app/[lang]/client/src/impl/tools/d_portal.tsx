@@ -77,6 +77,11 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
                     label: Dot("2Y2Y2qY2", "JavaScript Formatter"),
                 },
                 {
+                    id: 'htmlformatter',
+                    toolId: 'HTMLBeautify',
+                    label: Dot("2Y2eqY2Y2Y2", "HTML Formatter"),
+                },
+                {
                     id: "xmlformatter",
                     toolId: 'XMLBeautify',
                     label: Dot("v2YyGqwy2Yh", "XML Formatter"),
@@ -92,16 +97,72 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
                     label: Dot("2Yd2Y2Y2Y2", "CSS Formatter"),
                 },
                 {
-                    id: 'htmlformatter',
-                    // toolId: 'HTMLBeautify',
-                    label: Dot("2Y2eqY2Y2Y2", "HTML Formatter"),
-                },
-                {
                     id: 'sqlformatter',
                     toolId: "SQLBeautify",
                     label: Dot("2Y2Y2eqY2Y2", "SQL Formatter"),
                 },
-                // add new items for JSONMinify, XMLMinify, CSSMinify, SQLMInify, JavaScriptMinify also
+                // do same for JSONMinify, JavaScriptMinify, HTMLMinify, XMLMinify, YAMLMinify, CSSMinify, SQLMinify, remember to add affix to the id of Dot
+                {
+                    id: "jsonminify",
+                    toolId: "JSONMinify",
+                    label: Dot("pkprdvdA2O", "JSON Minifier"),
+                },
+                {
+                    id: "xmlminify",
+                    toolId: 'XMLMinify',
+                    label: Dot("v2wy2Yh", "XML Minifier"),
+                },
+                {
+                    id: 'javascriptminify',
+                    toolId: 'JavaScriptMinify',
+                    label: Dot("2Y2Y2qdqY2", "JavaScript Minifier"),
+                },
+                {
+                    id: 'htmlminify',
+                    // toolId: 'HTMLMinify',
+                    label: Dot("2Y2eq2", "HTML Minifier"),
+                },
+                {
+                    id: 'yamlminify',
+                    // toolId: 'YAMLMinify',
+                    label: Dot("h2Y2Y2Yeqdqw2Y", "YAML Minifier"),
+                },
+                {
+                    id: 'cssminify',
+                    toolId: 'CSSMinify',
+                    label: Dot("2Ye2Y2Y2", "CSS Minifier"),
+                },
+                {
+                    id: 'sqlminify',
+                    toolId: "SQLMinify",
+                    label: Dot("2Y2YY2", "SQL Minifier"),
+                },
+                // do same for MarkdownBeautify, TypeScriptBeautify, GraphQLBeautify, SCSSBeautify, LessBeautify
+                {
+                    id: 'markdownformatter',
+                    toolId: "MarkdownBeautify",
+                    label: Dot("2Y2Y2qYd2Y2", "Markdown Formatter"),
+                },
+                {
+                    id: 'typescriptformatter',
+                    toolId: "TypeScriptBeautify",
+                    label: Dot("2Y2Y2qqY2Y2", "TypeScript Formatter"),
+                },
+                {
+                    id: 'graphqlformatter',
+                    toolId: "GraphQLBeautify",
+                    label: Dot("2Ye2dqeY2qY2Y2", "GraphQL Formatter"),
+                },
+                {
+                    id: 'scssformatter',
+                    toolId: "SCSSBeautify",
+                    label: Dot("2Y2Y2eeeqY2Y2", "{0} Formatter", "SCSS"),
+                },
+                {
+                    id: 'lessformatter',
+                    toolId: "LessBeautify",
+                    label: Dot("2Ye2Yqw2qY2Y2", "{0} Formatter", "LESS"),
+                },
             ]
         },
         {

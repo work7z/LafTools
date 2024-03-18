@@ -40,7 +40,7 @@ export default function (props: CrtToolProp) {
     let toolsPortalDefinitions = getToolSubCategory()
     toolsPortalDefinitions.forEach(x => {
         if (x.id == subCategory) {
-            tabs = x.subTabs || []
+            tabs = _.take(x.subTabs || [], 9)
         }
     })
     let targetTabId = sp["id"] || _.get(tabs, [0, 'id'])
