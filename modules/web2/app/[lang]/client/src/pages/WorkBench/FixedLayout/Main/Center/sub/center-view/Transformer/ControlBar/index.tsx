@@ -53,6 +53,7 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
         {
             icon: hideSideBar == 'false' ? 'menu-closed' : 'menu-open',//'remove-column-left',
             className: '',// "btn-green",
+            // outlined: true,
             // intent: "success",
             intent: "none",
             minimal: true,
@@ -106,6 +107,7 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
         }) satisfies ActionButtonProps[],
         {
             icon: 'document-open',
+            // outlined: true,
             text: Dot("2bdqHk", "File"),
             intent: "none",
             title: Dot("NNfdo", "Load Data from File as input"),
@@ -122,6 +124,7 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             afterText: Dot("OO0qPN", "Example Loaded"),
             afterIntent: "none",
             title: Dot("5lW8qp", "Show an example for this tool"),
+            // outlined: true,
             afterTitle: Dot("OeO0PeN", "Okay, the example is displayed in the input editor."),
             loading: loadExample,
             onClick: async () => {
@@ -148,6 +151,28 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                 }
             },
         },
+        {
+            icon: 'exchange',
+            text: '',
+            intent: 'none',
+            enableActionMode: true,
+            afterText: "", // Dot("eg18QOMrM", "Swapped"),
+            afterIntent: 'success',
+            outlined: true,
+            title: Dot("4M4U_9uBm", "Swap Input and Output"),
+            afterTitle: Dot("XuAHhgkpA", "Okay, the input and output are swapped."),
+            onClick: async () => {
+                let inputValue = FN_GetActualTextValueByBigTextId(inputBigTextId);
+                let outputValue = FN_GetActualTextValueByBigTextId(props.outputBigTextId);
+                debugger;
+                FN_GetDispatch()(
+                    FN_SetTextValueFromOutSideByBigTextId(inputBigTextId, outputValue),
+                );
+                FN_GetDispatch()(
+                    FN_SetTextValueFromOutSideByBigTextId(props.outputBigTextId, inputValue),
+                )
+            }
+        }
     ];
     if (props.loadingStatic) {
         leftActions.forEach(x => {
