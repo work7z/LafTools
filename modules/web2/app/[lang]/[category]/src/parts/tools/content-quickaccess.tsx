@@ -29,7 +29,7 @@ export default (props: { id: string }) => {
         return 'this is stopwatch'
     }
     if (id == 'dictionary') {
-        return 'this is dictionary'
+        return <iframe src={'https://dict.youdao.com/result?word=hello&lang=en'} className='w-full h-[1200px]'></iframe>
     }
     return ''
 }
