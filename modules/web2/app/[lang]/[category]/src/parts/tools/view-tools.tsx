@@ -29,7 +29,7 @@ import { Provider, useDispatch } from "react-redux";
 import { store } from '@/app/[lang]/client/src/store'
 import '@/app/[lang]/client/src/initapp'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp'
-import { CSS_BG_COLOR_WHITE, VAL_CSS_MENU_TITLE_PANEL, border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles'
+import { CSS_BG_COLOR_WHITE, VAL_CSS_MENU_TITLE_PANEL, VAL_MENU_LEFT_PANEL_WIDTH, border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles'
 import { loadDOT } from '@/app/__CORE__/utils/i18n-types'
 import { Dot } from '@/app/__CORE__/utils/cTranslationUtils'
 import SmallScreenDetecter from '@/app/[lang]/client/src/SmallScreenDetecter'
@@ -38,6 +38,7 @@ import { ClientPortalContext } from '@/app/[lang]/client/src/pages/WorkBench/Fix
 import { CardBody } from '@nextui-org/react'
 import { CategorySearchProps, ToolSearchDetail } from '@/app/[lang]/page'
 import NotYetOkie from '@/app/[lang]/client/src/components/NotYetOkie'
+import exportUtils from '@/app/[lang]/client/src/utils/ExportUtils'
 
 export type ExtensionViewProps = ToolSearchDetail & CategorySearchProps
 
@@ -45,7 +46,16 @@ export type ExtensionViewProps = ToolSearchDetail & CategorySearchProps
 let d = loadDOT("1RH8bum7S")
 let ToolTitlebar = (props: { title: string }) => {
     d()
-    return <div className={CSS_BG_COLOR_WHITE + ' relative w-full flex flex-row justify-between px-[2px] items-center text-sm ' + light_border_clz_all + " border-b-0 "} style={{
+
+    let { fullScreen, hideSideBar } = exportUtils.useSelector(v => {
+        return {
+            // fullScreen: v.paramState.fs
+            hideSideBar: v.paramState.hsr,
+            fullScreen: false // v.paramState.fs 
+            // not yet implemented fullScreen 
+        }
+    })
+    let rightMainTitle = <div className={CSS_BG_COLOR_WHITE + ' relative w-full flex flex-row justify-between px-[2px] items-center text-sm ' + light_border_clz_all + " border-b-0 "} style={{
         borderBottom: 'none',
         height: VAL_CSS_MENU_TITLE_PANEL
     }}>
@@ -63,6 +73,24 @@ let ToolTitlebar = (props: { title: string }) => {
             </a>
         </div>
     </div>
+    if (hideSideBar == 'true') {
+        return rightMainTitle
+    } else {
+        return <div className={' w-full flex flex-row'} style={{
+            borderBottom: 'none',
+            height: VAL_CSS_MENU_TITLE_PANEL
+        }}>
+            <div className={CSS_BG_COLOR_WHITE + ` w-full italic text-xs justify-center flex flex-row items-center ` + light_border_clz_all} style={{ borderRight: 'none', borderBottom: 'none', width: VAL_MENU_LEFT_PANEL_WIDTH + 'px' }}>
+                <span>
+                    {Dot("ULpCU0JWm", "Manage My Tools")}
+                </span>
+            </div>
+            <div className='flex-1'>
+                {rightMainTitle}
+            </div>
+        </div>
+    }
+    return rightMainTitle
 }
 
 let ToolInnerView = (props: ExtensionViewProps) => {

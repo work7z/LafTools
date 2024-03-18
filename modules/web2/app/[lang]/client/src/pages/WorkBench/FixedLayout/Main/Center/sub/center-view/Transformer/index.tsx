@@ -23,6 +23,7 @@ import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
   VAL_CSS_TAB_TITLE_PANEL,
   VAL_CSS_CONTROL_PANEL,
+  VAL_MENU_LEFT_PANEL_WIDTH,
 } from "../../../../../../../../types/workbench-types";
 import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
 import { Dot } from "../../../../../../../../utils/cTranslationUtils";
@@ -361,7 +362,7 @@ export default (props: CommonTransformerProps) => {
     transformerFullScreenClzIfNeeded = 'w-full h-auto '
   }
 
-  let defaultLeftWidth = 250
+  let defaultLeftWidth = VAL_MENU_LEFT_PANEL_WIDTH
   return (
     <div key={sessionId} className={
       " " + transformerFullScreenClzIfNeeded
