@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "prettier": "^2.5.1",
     "@astronautlabs/amf": "^0.0.6",
     "@blu3r4y/lzma": "^2.3.3",
     "@blueprintjs/colors": "^5.0.6",
