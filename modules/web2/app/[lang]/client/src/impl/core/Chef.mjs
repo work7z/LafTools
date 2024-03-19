@@ -90,8 +90,8 @@ class Chef {
       this.dish.type === Dish.HTML
         ? Dish.HTML
         : options?.returnType
-          ? options.returnType
-          : Dish.ARRAY_BUFFER;
+        ? options.returnType
+        : Dish.ARRAY_BUFFER;
 
     return {
       dish: rawDish,

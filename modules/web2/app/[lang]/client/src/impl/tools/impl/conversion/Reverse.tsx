@@ -27,7 +27,7 @@
 import { Dot } from "../../../../utils/cTranslationUtils.tsx";
 import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
-import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./constants.tsx";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./_constants.tsx";
 
 /**
  * Reverse operation

@@ -44,9 +44,10 @@ export let useLocalStorage = (key: string, initialValue: string): ReturnType => 
 }
 
 export default (props) => {
-    if (regionUtils.isCurrentUserPossibleChinese()) {
-        return regionUtils.getCNHosts()[0]
-    } else {
-        return regionUtils.getUSHosts()[0]
-    }
+    return regionUtils.getUSHosts()[0]
+    // if (regionUtils.isCurrentUserPossibleChinese()) {
+    //     return regionUtils.getCNHosts()[0]
+    // } else {
+    //     return regionUtils.getUSHosts()[0]
+    // }
 }

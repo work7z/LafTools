@@ -104,7 +104,9 @@ class Dish {
       case "list<file>":
         return Dish.LIST_FILE;
       default:
-        throw new DishError("Invalid data type string. No matching enum.");
+        throw new DishError(
+          "Invalid data type string. No matching enum. " + typeStr,
+        );
     }
   }
 
@@ -135,7 +137,9 @@ class Dish {
       case Dish.LIST_FILE:
         return "List<File>";
       default:
-        throw new DishError("Invalid data type enum. No matching type.");
+        throw new DishError(
+          "Invalid data type enum. No matching type. " + typeEnum,
+        );
     }
   }
 

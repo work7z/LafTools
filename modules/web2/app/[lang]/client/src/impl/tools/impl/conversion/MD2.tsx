@@ -26,7 +26,7 @@
  */
 
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
-import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
 import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import { runHash } from "../../../core/lib/Hash.mjs";
 

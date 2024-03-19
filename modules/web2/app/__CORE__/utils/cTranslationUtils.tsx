@@ -50,6 +50,13 @@ export let getCurrentLang = () => {
 
 let newLangMap2 = (): LangMap => {
   let locale = getCurrentLang()
+  if (typeof window == "undefined") {
+    return {
+      zh_CN: {},
+      zh_HK: {},
+      [locale]: {}
+    }
+  }
   let langJSONStr = localStorage.getItem("lang-" + locale)
   if (langJSONStr) {
     return {

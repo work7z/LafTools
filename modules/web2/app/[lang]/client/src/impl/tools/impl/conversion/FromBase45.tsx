@@ -29,7 +29,7 @@ import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import OperationError from "../../../core/errors/OperationError.mjs";
 import Utils from "../../../core/Utils.mjs";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
-import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
 
 
 /**

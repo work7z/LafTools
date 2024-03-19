@@ -27,7 +27,7 @@
 import { Dot } from "@/app/__CORE__/utils/cTranslationUtils.tsx";
 import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import { runHash } from "../../../core/lib/Hash.mjs";
-import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./constants.tsx";
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./_constants.tsx";
 
 /**
  * SHA0 operation

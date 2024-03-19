@@ -29,7 +29,7 @@ import BigNumber from "bignumber.js";
 import Utils from "../../../core/Utils.mjs";
 import { toHexFast } from "../../../core/lib/Hex.mjs";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
-import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './constants.tsx'
+import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
 
 /**
  * To Base62 operation
