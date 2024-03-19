@@ -23,7 +23,7 @@ import React from 'react';
 import { Autocomplete, AutocompleteItem, CardProps, Listbox, ListboxItem, Tab, Tabs } from "@nextui-org/react";
 import { Card, Divider, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import { border_clz, light_border_clz_all, tw } from '@/app/__CORE__/meta/styles';
-import { Dot } from '@/app/__CORE__/utils/TranslationUtils';
+import { Dot, getHStr } from '@/app/__CORE__/utils/TranslationUtils';
 import Nav from '../nav/nav-sub-tab';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
@@ -91,6 +91,7 @@ export default (props: ToolProp) => {
                     <p>{Dot("BP2jBlIE0", "Some links are still unavailable as LafTools is still under development, please give us a star to subsrible latest update on GitHub.")}</p>
                     <a target="_blank" href={'https://github.com/work7z/LafTools'}>{Dot("wYsKTq7nK", "Click me to view the source code")}</a>
                 </div>
+                <div>Debug: {getHStr()}</div>
             </CardBody>
         </Card>
     </div>

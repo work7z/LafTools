@@ -79,6 +79,11 @@ export let getXHostname = (): string => {
   const val = headersList.get('x-hostname') || "";
   return val;
 }
+export let getHStr = (): string => {
+  const headersList = headers();
+  const val = headersList.get('x-hstr') || "";
+  return val;
+}
 export let getXSearchParams = (): { [key: string]: any } => {
   const headersList = headers();
   const val = headersList.get('x-search') || "";

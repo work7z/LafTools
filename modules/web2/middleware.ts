@@ -81,6 +81,23 @@ export function middleware(request: NextRequest) {
   let req = request;
   const requestHeaders = new Headers(request.headers);
   const { pathname } = request.nextUrl;
+
+  // FIXME: just debugging
+  let h = "";
+  let hStr = JSON.stringify({
+    h3: h,
+    a: request.nextUrl.origin,
+    b: request.nextUrl.pathname,
+    c: request.nextUrl.search,
+    d: request.nextUrl.href,
+    e: request.nextUrl.host,
+    f: request.nextUrl.hostname,
+    g: request.nextUrl.port,
+    h: request.nextUrl.protocol,
+    h2: request.headers["X-Forwarded-Host"],
+  });
+  requestHeaders.set("x-hstr", hStr);
+
   requestHeaders.set("x-path", request.nextUrl.pathname);
   const thatHostname = req.headers["x-forwarded-host"] || req.nextUrl.hostname;
   requestHeaders.set("x-hostname", thatHostname);
