@@ -42,7 +42,8 @@ import {
     getCategoryList as getCategoryList,
     fn_rightNav,
     getSubCategoryList,
-    fn_rightCategoryArr
+    fn_rightCategoryArr,
+    PortalDefinitionTbabGroup
 
 } from "@/app/[lang]/client/src/impl/tools/d_portal";
 import { CategorySearchProps } from "@/app/[lang]/page";
@@ -84,8 +85,10 @@ export default (props: NavigatorPassProp) => {
                         return <div id={`navbindid-${x.id}`} style={{
                             display: 'none'
                         }} className={
-                            'absolute  z-50 left-2 top-2 min-h-48 min-w-10 transition-all duration-75 shadow-xl rounded-sm p-2 ' + CSS_BG_COLOR_WHITE + ' ' + light_border_clz_all
-                        }>this is {x.id}/{x.label}</div>
+                            'absolute z-50 '
+                        }>
+                            <OverlapSubTabsPanelView subTabs={x.subTabs} subCategoryId={x.id} />
+                        </div>
                     })
                 }
             </div>
@@ -93,4 +96,13 @@ export default (props: NavigatorPassProp) => {
         </div>
 
     )
+}
+
+export let OverlapSubTabsPanelView = (props: { subTabs: PortalDefinitionTbabGroup[] | undefined, subCategoryId: string }) => {
+    let { subTabs } = props;
+    return <div className={'w-[450px]  left-2 top-2  min-w-10 transition-all duration-75 shadow-xl rounded-sm p-2 ' + CSS_BG_COLOR_WHITE + ' ' + light_border_clz_all}>
+        {(subTabs || []).map(xx => {
+            return <a className=' text-xs black-anchor-text inline-block w-1/3 text-center rounded-sm  py-2 hover:bg-slate-200 dark:hover:bg-slate-600' href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, props.subCategoryId, xx.id])}>{xx.label}</a>
+        })}
+    </div>
 }

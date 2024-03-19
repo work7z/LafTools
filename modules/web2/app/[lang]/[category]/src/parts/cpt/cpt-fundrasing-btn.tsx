@@ -36,7 +36,7 @@ export default () => {
         // } else {
         //     location.reload()
         // }
-    }} className='flex flex-row items-center justify-center ' href={"https://github.com/work7z/LafTools"}>
+    }} target='_blank' className='flex flex-row items-center justify-center ' href={"https://github.com/work7z/LafTools"}>
         {/* <button type="button" className="py-2 w-full   justify-center inline-flex items-center gap-x-2 text-xs font-semibold rounded-lg border border-gray-300 text-gray-600 hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500 dark:hover:border-blue-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"> */}
         <Button color='secondary' fullWidth size='sm' variant='bordered'>
             <img src='/controls/help.png' className='w-5 h-5 mr-[2px] ' />

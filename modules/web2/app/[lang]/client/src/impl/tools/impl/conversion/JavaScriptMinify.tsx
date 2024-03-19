@@ -45,8 +45,8 @@ class JavaScriptMinify extends Operation {
         "ojCWEFdVe",
         "Compresses JavaScript code, removing all unnecessary characters.",
       ),
-      exampleInput: "let a : 1, let b : 2, let obj : {a: 1, b: 2},",
-      exampleOutput: "let a : 1,\nlet b : 2, //,\nlet obj : {\n    a: 1,\n    b: 2\n},\n",
+      exampleInput: "let a = 1; let b = 2; let obj = {a: 1, b: 2};",
+      exampleOutput: "let a = 1;\nlet b = 2; //;\nlet obj = {\n    a: 1,\n    b: 2\n};\n",
       infoURL: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
     }
   }
