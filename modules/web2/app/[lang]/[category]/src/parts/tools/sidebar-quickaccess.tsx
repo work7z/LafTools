@@ -69,9 +69,6 @@ export let QuickAccess = (props) => {
     let Dot = d()
     let quickAccessList = getQuickAccessList()
     return <div className='space-y-2'>
-        <div className='text-xs'>
-            {Dot("o1ikM3T4c", "Programmer's Helpers")}:
-        </div>
         <div className='flex flex-row space-x-1'>
             {quickAccessList.map(x => {
                 return <IconLabel key={x.id} icon={x.icon} label={x.label} />

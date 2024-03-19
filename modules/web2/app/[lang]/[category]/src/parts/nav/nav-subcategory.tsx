@@ -56,6 +56,7 @@ export default (props: NavigatorPassProp) => {
     let leftCategoryArr = getSubCategoryList()
     let rightCategoryArr = fn_rightCategoryArr()
     let subCategory = props.params.subCategory
+    let currentSubTabId = props.params.id
     return (
         <div className={border_clz + "   dark:bg-sky-900 bg-sky-600 "}>
             <div className={row_pad_clz + ' flex-justify-between '}>
@@ -87,7 +88,7 @@ export default (props: NavigatorPassProp) => {
                         }} className={
                             'absolute z-50 '
                         }>
-                            <OverlapSubTabsPanelView subTabs={x.subTabs} subCategoryId={x.id} />
+                            <OverlapSubTabsPanelView currentSubTabId={currentSubTabId} subTabs={x.subTabs} subCategoryId={x.id} />
                         </div>
                     })
                 }
@@ -98,11 +99,13 @@ export default (props: NavigatorPassProp) => {
     )
 }
 
-export let OverlapSubTabsPanelView = (props: { subTabs: PortalDefinitionTbabGroup[] | undefined, subCategoryId: string }) => {
+export let OverlapSubTabsPanelView = (props: { currentSubTabId: string, subTabs: PortalDefinitionTbabGroup[] | undefined, subCategoryId: string }) => {
     let { subTabs } = props;
     return <div className={'w-[450px]  left-2 top-2  min-w-10 transition-all duration-75 shadow-xl rounded-sm p-2 ' + CSS_BG_COLOR_WHITE + ' ' + light_border_clz_all}>
         {(subTabs || []).map(xx => {
-            return <a className=' text-xs black-anchor-text inline-block w-1/3 text-center rounded-sm  py-2 hover:bg-slate-200 dark:hover:bg-slate-600' href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, props.subCategoryId, xx.id])}>{xx.label}</a>
+            return <a className={' text-xs black-anchor-text inline-block w-1/3 text-center rounded-sm  py-2 hover:bg-slate-200 dark:hover:bg-slate-600 ' + (
+                xx.id == props.currentSubTabId ? ' bg-slate-200 dark:bg-slate-600 ' : ''
+            )} href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, props.subCategoryId, xx.id])}>{xx.label}</a>
         })}
     </div>
 }

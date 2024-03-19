@@ -43,23 +43,23 @@ export default function (props: CrtToolProp) {
             subTabs = _.take(x.subTabs || [], 7)
         }
     })
-    let targetTabId = sp["id"]
+    let currentSubTabId = sp["id"]
     // if it's not empty and not included in subTabs, then set it to more
-    if (!_.isEmpty(targetTabId)) {
+    if (!_.isEmpty(currentSubTabId)) {
         let found = false
         subTabs.every(x => {
-            if (x.id == targetTabId) {
+            if (x.id == currentSubTabId) {
                 found = true
             }
             return !found
         })
         if (!found) {
-            targetTabId = 'more'
+            currentSubTabId = 'more'
         }
     }
     // defaults to id
-    if (_.isEmpty(targetTabId) && subTabs.length > 0) {
-        targetTabId = subTabs[0].id
+    if (_.isEmpty(currentSubTabId) && subTabs.length > 0) {
+        currentSubTabId = subTabs[0].id
     }
 
     subTabs = [
@@ -84,7 +84,7 @@ export default function (props: CrtToolProp) {
                             }
                             return <Link {...extraProps} key={x.id} href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, subCategory, '' + x.id])}>
                                 <button type="button" className={
-                                    ((targetTabId) == x.id ? "active " : ' ') +
+                                    ((currentSubTabId) == x.id ? "active " : ' ') +
                                     'hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-blue-500 '
                                     // " hs-tab-active:bg-white hs-tab-active:border-b-transparent hs-tab-active:text-blue-600 dark:hs-tab-active:bg-gray-800 dark:hs-tab-active:border-b-gray-800 dark:hs-tab-active:text-white -mb-px py-3 px-4 inline-flex items-center gap-x-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-t-lg hover:text-gray-700 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                                 } id="card-type-tab-item-2" data-hs-tab="#card-type-tab-2" aria-controls="card-type-tab-2" role="tab">

@@ -61,7 +61,9 @@ export default (props: ToolProp) => {
             </CardBody>
         </Card>
         <Card {...getCardsProps()}>
-            <CardHeader className={secondaryPanelClzHeader}>{Dot("8HcQxKgho", "Quick Access")}({Dot("09m6vG51A", "in development")})</CardHeader>
+            {/* {Dot("8HcQxKgho", "Quick Access")} */}
+            <CardHeader className={secondaryPanelClzHeader}>
+                {Dot("o1ikM3T4c", "Programmer's Helpers")}({Dot("09m6vG51A", "in development")})</CardHeader>
             <CardBody>
                 <SidebarQuickaccess />
             </CardBody>

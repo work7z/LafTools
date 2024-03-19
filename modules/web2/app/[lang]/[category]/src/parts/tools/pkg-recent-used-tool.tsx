@@ -58,14 +58,14 @@ export default (props: CrtToolProp) => {
                 let crtLink = window.location.href
                 let newResults: TitleLinkType[] = [{ title: crtTitle, link: crtLink }, ...newTools]
                 let pObj = {}
-                let filterValue = newResults.filter(x => {
+                let filterValue = _.take(newResults.filter(x => {
                     if (pObj[x.title]) {
                         return false;
                     } else {
                         pObj[x.title] = true
                         return true;
                     }
-                })
+                }), 16)
                 localStorage.setItem(recentToolStorageKey, JSON.stringify(filterValue))
             }
         }, 3500)
