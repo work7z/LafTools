@@ -267,7 +267,7 @@ export let WB_MenuBar = (props: PassProp) => {
           label: Dot("aCkOP", "Exit"),
           onClick: () => {
             // hist.push(URL_WORKBENCH);
-            location.href = fmtURL_Client("/")
+            location.href = fmtURL_Client([])
           },
         },
       ],
@@ -532,7 +532,7 @@ export let WB_MenuBar = (props: PassProp) => {
             position="bottom"
           >
             <AnchorButton
-              href={fmtURL_Client("/")}
+              href={fmtURL_Client([])}
               className={Classes.MINIMAL}
               small={true}
               // target="_blank"

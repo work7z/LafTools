@@ -44,7 +44,7 @@ import {
     fn_rightCategoryArr
 
 } from "@/app/[lang]/client/src/impl/tools/d_portal";
-import { CategorySearchProps } from "@/app/[lang]/page";
+import { CategorySearchProps, ToolSearchDetail, getSearchDetailBySearchProps } from "@/app/[lang]/page";
 import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
 import { fmtURL_ToolSubPage } from "@/app/__CORE__/meta/common";
 import NavTop from "./nav/nav-top";
@@ -60,13 +60,14 @@ export type NavigatorPassProp = CategorySearchProps & {
 }
 
 export default (props: NavigatorPassProp) => {
+    let toolSearchDetail: ToolSearchDetail = getSearchDetailBySearchProps(props)
     let { children } = props;
     return (
         <div className={'  bg-slate-50 dark:bg-slate-800 pb-10'}>
             <div className={row_pad_clz}>
                 <div className="flex flex-row flex-wrap py-2 items-center justify-between">
                     <div>
-                        <SysBreadCrumbs />
+                        <SysBreadCrumbs toolSearchDetail={toolSearchDetail} />
                     </div>
                     <div>
                         <NavCategory {...props} nav={[

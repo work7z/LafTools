@@ -65,7 +65,7 @@ export default (props: CrtToolProp) => {
                         pObj[x.title] = true
                         return true;
                     }
-                }), 16)
+                }), 25)
                 localStorage.setItem(recentToolStorageKey, JSON.stringify(filterValue))
             }
         }, 3500)

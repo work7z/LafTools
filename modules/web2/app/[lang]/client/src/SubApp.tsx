@@ -105,10 +105,7 @@ function App() {
   }, []);
 
 
-  // let langInPath = getFormattedLang(GetUserActualClientLang())
-  // let basename = "/app/" + langInPath
-  // let basename = fmtURL_Client("/client/" + langInPath)
-  let basename = fmtURL_Client("/client/")
+  let basename = fmtURL_Client(["/client/"])
 
   return (
     <HotkeysProvider>

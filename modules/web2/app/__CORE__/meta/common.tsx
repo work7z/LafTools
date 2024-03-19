@@ -18,7 +18,9 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import { fmtURL_Client } from "../utils/cRouteUtils";
 import { fmtURL_Server } from "../utils/routeUtils";
+import { URL_TOOL_CATEGORY } from "./url";
 
 
 
@@ -30,7 +32,7 @@ export let fmtURL_Category = (x: string[]) => {
 }
 
 export let fmtURL_ToolSubPage = (x: string[]) => {
-    return fmtURL_Category(['tools', ...x])
+    return fmtURL_Category([URL_TOOL_CATEGORY, ...x])
 }
 
 

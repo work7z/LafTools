@@ -79,7 +79,7 @@ export default function (props: CrtToolProp) {
                             let extraProps = {}
                             if (x.id == 'more') {
                                 extraProps = {
-                                    'data-navid': 'formatters'
+                                    'data-navid': props.subCategory
                                 }
                             }
                             return <Link {...extraProps} key={x.id} href={fmtURL_ToolSubPage([URL_SUBCATEGORY_GO_PATH, subCategory, '' + x.id])}>

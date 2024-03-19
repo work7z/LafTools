@@ -87,8 +87,8 @@ export default (props: ToolProp) => {
         <Card {...getCardsProps()}>
             <CardHeader className={secondaryPanelClzHeader}>{Dot("announcement", "Announcement")}</CardHeader>
             <CardBody>
-                <div>
-                    <p>{Dot("n2QhB0O8_", "LafTools is still under development, please give us a star to subsrible latest update on GitHub.")}</p>
+                <div className='text-xs'>
+                    <p>{Dot("BP2jBlIE0", "Some links are still unavailable as LafTools is still under development, please give us a star to subsrible latest update on GitHub.")}</p>
                     <a target="_blank" href={'https://github.com/work7z/LafTools'}>{Dot("wYsKTq7nK", "Click me to view the source code")}</a>
                 </div>
             </CardBody>
