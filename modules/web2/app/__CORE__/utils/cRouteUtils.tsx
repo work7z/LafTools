@@ -24,6 +24,7 @@
 import { LocaleType } from "@/middleware"
 import { getXLocaleStrInRSC } from "./TranslationUtils"
 import { sysLocale } from "./cTranslationUtils"
+import _ from "lodash"
 
 
 export let getLocalePrefix_Client = (): LocaleType => {
