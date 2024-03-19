@@ -161,7 +161,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
                 {
                     id: 'lessformatter',
                     toolId: "LessBeautify",
-                    label: Dot("2Ye2Yqw2qY2Y2", "{0} Formatter", "LESS"),
+                    label: Dot("2Ye2Yqw2qY2Y2", "{0} Formatter", "Less"),
                 },
             ]
         },

@@ -37,10 +37,10 @@ export default function (props: { toolSearchDetail: ToolSearchDetail }) {
     return (
         <Breadcrumbs size={"sm"}>
             <BreadcrumbItem href={fmtURL_Client([])}>{Dot("Ln0dR", "Home")}</BreadcrumbItem>
-            <BreadcrumbItem href={fmtURL_ToolSubPageClient([URL_TOOL_CATEGORY])}>{Dot("thAvhgee7", "Universal Tools")}</BreadcrumbItem>
-            <BreadcrumbItem href={fmtURL_ToolSubPageClient([URL_TOOL_CATEGORY, URL_SUBCATEGORY_GO_PATH, props.toolSearchDetail.targetSubCategory.id])}>{props.toolSearchDetail.targetSubCategory.label}</BreadcrumbItem>
+            <BreadcrumbItem href={fmtURL_ToolSubPageClient([])}>{Dot("thAvhgee7", "Universal Tools")}</BreadcrumbItem>
+            <BreadcrumbItem href={fmtURL_ToolSubPageClient([URL_SUBCATEGORY_GO_PATH, props.toolSearchDetail.targetSubCategory.id])}>{props.toolSearchDetail.targetSubCategory.label}</BreadcrumbItem>
             <BreadcrumbItem href={
-                fmtURL_ToolSubPageClient([URL_TOOL_CATEGORY, URL_SUBCATEGORY_GO_PATH, props.toolSearchDetail.targetSubCategory.id, props.toolSearchDetail.searchToolItem.id])
+                fmtURL_ToolSubPageClient([URL_SUBCATEGORY_GO_PATH, props.toolSearchDetail.targetSubCategory.id, props.toolSearchDetail.searchToolItem.id])
             }>{props.toolSearchDetail.searchToolItem.label}</BreadcrumbItem>
         </Breadcrumbs>
     );
