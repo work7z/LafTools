@@ -9,7 +9,7 @@ test('1+1=2', async () => {
     expect(1 + 1).toBe(2)
 })
 
-test('test chef process', async () => {
+test('test-chef-process', async () => {
     let test: any = {
         name: "To Base64: nothing",
         input: "",
