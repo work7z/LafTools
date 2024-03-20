@@ -41,7 +41,7 @@ let LibIndex = {
   process: async (
     originalValue: string,
     param: {
-      operations: Operation[];
+      recipeConfigs: RecipeConfig[];
       extVM: ExtensionVM;
       extId: string;
     },
@@ -50,30 +50,7 @@ let LibIndex = {
 
 
       let inputValue: string = originalValue
-      let recipeConfig: RecipeConfig[] = []
-      for (let eachOp of param.operations) {
-        let argsValueArr = _.map(eachOp.args, (arg) => {
-          let eachValue = _.get(arg, 'value')
-          if (_.isString(eachValue)) {
-            return eachValue
-          }
-          if (_.isArray(eachValue)) {
-            let p = _.get(eachValue, [0]) // TODO: select type
-            if (typeof p == 'string') {
-              return p
-            }
-            return _.get(eachValue, [0, 'value'])
-          }
-          return eachValue;
-        })
-        if (_.isNil(argsValueArr)) {
-          argsValueArr = []
-        }
-        recipeConfig.push({
-          op: eachOp,
-          args: argsValueArr
-        })
-      }
+      let recipeConfig: RecipeConfig[] = param.recipeConfigs
 
       const chef = new Chef();
       const result = await chef.bake(

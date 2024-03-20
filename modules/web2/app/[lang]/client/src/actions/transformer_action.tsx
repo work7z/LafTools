@@ -20,7 +20,7 @@
 
 import { FN_GetDispatch, FN_GetState } from "../nocycle";
 import RuntimeStatusSlice from "../reducers/runtimeStatusSlice";
-import LibProcessEntryPoint from '@/app/[lang]/client/src/impl/tools/r_process'
+import LibProcessEntryPoint, { RecipeConfig } from '@/app/[lang]/client/src/impl/tools/r_process'
 import { ExtensionVM } from "../types/purejs-types-READ_ONLY";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "./bigtext_action";
 import gutils from "../utils/GlobalUtils";
@@ -30,6 +30,8 @@ import moment from "moment";
 import { ToolHandler } from "@/app/[lang]/client/src/impl/tools/r_handler";
 import { CommonTransformerPassProp } from "../types/workbench-types";
 import { logutils } from "../utils/LogUtils";
+import MD5 from "../impl/tools/impl/conversion/MD5";
+import Operation from "../impl/core/Operation";
 window["moment"] = moment
 
 type PassType = {
@@ -75,10 +77,36 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
                 return;
             }
             // processing
+            let recipeConfigs: RecipeConfig[] = []
+            // new MD5()
+            let operaList: Operation[] = [crtDefaultOpera,]
+            for (let eachOp of operaList) {
+                let argsValueArr = _.map(eachOp.args, (arg) => {
+                    let eachValue = _.get(arg, 'value')
+                    if (_.isString(eachValue)) {
+                        return eachValue
+                    }
+                    if (_.isArray(eachValue)) {
+                        let p = _.get(eachValue, [0]) // TODO: select type
+                        if (typeof p == 'string') {
+                            return p
+                        }
+                        return _.get(eachValue, [0, 'value'])
+                    }
+                    return eachValue;
+                })
+                if (_.isNil(argsValueArr)) {
+                    argsValueArr = []
+                }
+                recipeConfigs.push({
+                    op: eachOp,
+                    args: argsValueArr
+                })
+            }
             let processedNewValue = await LibProcessEntryPoint.process(originalValue, {
                 extVM,
                 extId,
-                operations: [crtDefaultOpera]
+                recipeConfigs: recipeConfigs,
             });
             // after process
             if (processedNewValue.error) {
