@@ -49,7 +49,9 @@ import FormGenPanel, { FormGenItem } from "../../../../../../../../../components
 import Operation from "../../../../../../../../../impl/core/Operation.tsx";
 import { logutils } from "../../../../../../../../../utils/LogUtils";
 import { useShouldVerticalModeOrNot } from "../index.tsx";
-
+export let ifnil = (v1: any, v2: any) => {
+    return v1 === undefined || v1 === null ? v2 : v1
+}
 export default (props: { disableSeparateOutputMode: boolean } & CommonTransformerPassProp & TransformerWithRuntime) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
     let shouldVert = useShouldVerticalModeOrNot()
@@ -60,30 +62,10 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
     let actions = extVM?.Actions
     let toolHandler = props.toolHandler
     let operList = toolHandler?.getOperations() || []
-    let arr: any[] = []
-    for (let i = 0; i < 100; i++) {
-        arr.push(<div>test {i}</div>)
-    }
+    let { crtDefaultOpera } = props;
+
     logutils.debug("autorun-crtRuntimeStatus", crtRuntimeStatus)
     let generalList: FormGenItem[] = [
-        {
-            label: Dot("FQzhg", "Ignore Empty Input"),
-            helperText: Dot("crD7I", "To configure whether the transformation should ignore the empty input text whose length is zero."),
-            genEleConfig: {
-                type: "switch",
-                value: crtRuntimeStatus.ignoreEmptyStr,
-                onChange(newVal) {
-                    FN_GetDispatch()(
-                        RuntimeStatusSlice.actions.updateValueInStatusMap({
-                            sessionId,
-                            obj: {
-                                ignoreEmptyStr: newVal
-                            }
-                        })
-                    )
-                },
-            }
-        },
         {
             label: Dot("YquQqTXq", "Auto Run?"),
             helperText: Dot("Ye3TXses", "To configure whether the transformation will be executed automatically when the input text is changed."),
@@ -102,34 +84,106 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
                 },
             }
         },
-        // {
-        //     label: Dot("6AumW", "Default Action"),
-        //     helperText: Dot("nxJC7", "The default action to be executed when the transformer is performed."),
-        //     genEleConfig: {
-        //         type: "select",
-        //         value: crtRuntimeStatus.defaultOperationId,
-        //         onChange(newVal) {
-        //             // debugger
-        //             FN_GetDispatch()(
-        //                 RuntimeStatusSlice.actions.updateValueInStatusMap({
-        //                     sessionId,
-        //                     obj: {
-        //                         defaultOperationId: newVal
-        //                     }
-        //                 })
-        //             )
-        //         },
-        //         selectList: (operList || []).map(x => {
-        //             let optDetail = x.getOptDetail()
-        //             return {
-        //                 label: optDetail?.name,
-        //                 value: optDetail?.id
-        //             } as LabelValuePair
-        //         })
-        //     }
-        // }
+        {
+            label: Dot("FQzhg", "Ignore Empty Input"),
+            helperText: Dot("crD7I", "To configure whether the transformation should ignore the empty input text whose length is zero."),
+            genEleConfig: {
+                type: "switch",
+                value: crtRuntimeStatus.ignoreEmptyStr,
+                onChange(newVal) {
+                    FN_GetDispatch()(
+                        RuntimeStatusSlice.actions.updateValueInStatusMap({
+                            sessionId,
+                            obj: {
+                                ignoreEmptyStr: newVal
+                            }
+                        })
+                    )
+                },
+            }
+        },
     ]
-    // generalList = [...generalList, ...generalList, ...generalList, ...generalList]
+    // add generalList
+    if (crtDefaultOpera) {
+        let config = crtDefaultOpera.getOptDetail().config
+        let args = config.args
+        let checks = config.checks
+        _.forEach(args, (eachArg) => {
+            let { type, name, value: _srcVal } = eachArg;
+            if (type == 'boolean') {
+                let value = ifnil(crtRuntimeStatus[name], _srcVal)
+                generalList.push({
+                    label: name,
+                    genEleConfig: {
+                        type: "switch",
+                        value: value,
+                        onChange(newVal) {
+                            FN_GetDispatch()(
+                                RuntimeStatusSlice.actions.updateValueInStatusMap({
+                                    sessionId,
+                                    obj: {
+                                        [name]: newVal
+                                    }
+                                })
+                            )
+                        },
+                    }
+                })
+            } else if (type == 'option') {
+                let value = crtRuntimeStatus[name] || _srcVal[0]
+                generalList.push({
+                    label: name,
+                    genEleConfig: {
+                        type: "select",
+                        value: value,
+                        selectList: _.map(_srcVal, (eachValue) => {
+                            return {
+                                label: eachValue,
+                                value: eachValue
+                            }
+                        }),
+                        onChange(newVal) {
+                            FN_GetDispatch()(
+                                RuntimeStatusSlice.actions.updateValueInStatusMap({
+                                    sessionId,
+                                    obj: {
+                                        [name]: newVal
+                                    }
+                                })
+                            )
+                        },
+                    }
+                })
+            } else if (type == 'binaryShortString') {
+                let value = ifnil(crtRuntimeStatus[name], _srcVal)
+                let onchg = (e) => {
+                    FN_GetDispatch()(
+                        RuntimeStatusSlice.actions.updateValueInStatusMap({
+                            sessionId,
+                            obj: {
+                                [name]: e.target.value
+                            }
+                        })
+                    )
+                }
+                generalList.push({
+                    label: name,
+                    genEleConfig: {
+                        type: "input",
+                        inputProps: {
+                            value: value,
+                            onChange: onchg
+                        },
+                        value: value,
+                        onChange: onchg
+                    },
+                })
+            }
+        });
+
+    }
+
+
     let finalShowContent = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
     let pdValue = 'p-2'
     let loadingStatic = false

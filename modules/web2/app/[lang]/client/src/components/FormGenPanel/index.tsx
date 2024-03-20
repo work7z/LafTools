@@ -72,17 +72,21 @@ type PropFormGenPanel = {
 }
 export default (props: PropFormGenPanel) => {
     let chunkItems = props.fixSingleColumn ? [props.list] : _.chunk(props.list, 3);
-    return <div className="flex  whitespace-break-spaces pure-g space-y-2">
+    return <div className="flex  whitespace-break-spaces pure-g  ">
         {
             chunkItems.map((eachChunkItem, eachChunkItemIdx) => {
                 return <div key={eachChunkItemIdx} className={" mb-2  " + (
-                    props.fixSingleColumn ? " pure-u-24-24 " : " pure-u-xxl-6-24 pure-u-xl-8-24 pure-u-sm-24-24 pure-u-12-24  "
+                    props.fixSingleColumn ? " pure-u-24-24 " : " p-2 pure-u-xxl-6-24 pure-u-xl-8-24 pure-u-sm-24-24 pure-u-12-24  "
                 )}>
                     {
                         eachChunkItem.map((x, d) => {
+                            let innerCtn = <FormGenElement label={x.label + ""} config={x.genEleConfig}></FormGenElement>
+                            if (x.genEleConfig.type == 'switch') {
+                                return <div>{innerCtn}</div>
+                            }
                             return (
                                 <FormGroup key={d} {...x}>
-                                    <FormGenElement config={x.genEleConfig}></FormGenElement>
+                                    {innerCtn}
                                 </FormGroup>
                             )
                         })
@@ -91,5 +95,6 @@ export default (props: PropFormGenPanel) => {
                 </div>
             })
         }
+        <div>{Dot("8MHkguRv3", "text translation is still under development...")}</div>
     </div>
 }

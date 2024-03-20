@@ -73,7 +73,7 @@ export type FormGenType = {
     value?: string;
     onChange: (str: string) => any
 }
-export default (props: { config: FormGenType }) => {
+export default (props: { label?: string, config: FormGenType }) => {
     let { config } = props;
     if (config.type == "input") {
         return <InputGroup {...config.inputProps}></InputGroup>
@@ -87,7 +87,20 @@ export default (props: { config: FormGenType }) => {
     //     return <RadioGroup ></RadioGroup>
     // }
     if (config.type == "switch") {
-        return <FormSwitch value={config.value || 'false'} onChange={config.onChange} ></FormSwitch>
+        let chk = (config.value || 'false') == 'true'
+        return (
+            <Checkbox checked={chk} onChange={x => {
+                // config.onChange
+                config.onChange(!chk ? 'true' : 'false')
+            }}>
+                {props.label || 'N/A'}
+            </Checkbox>
+        )
+        // return <Checkbox checked={config.value == 'true'} onChange={x => {
+        //     config.onChange(x.target.checked ? 'true' : 'false')
+        // }
+        // ></Checkbox>
+        // return <FormSwitch value={config.value || 'false'} onChange={config.onChange} ></FormSwitch>
     }
     return <div>not yet defined</div>
 }

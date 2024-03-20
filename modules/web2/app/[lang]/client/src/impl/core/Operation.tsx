@@ -19,6 +19,29 @@
 import { InputOutputEditorLang } from "../purejs-types";
 import Dish from "./Dish.mjs";
 import Ingredient from "./Ingredient.mjs";
+interface Argument {
+  name: string;
+  type: string;
+  value: any | string | string[];
+}
+
+interface Check {
+  pattern: string;
+  flags: string;
+  args: string[];
+}
+
+interface ModuleConfig {
+  module: string;
+  description: string;
+  infoURL: string | null;
+  inputType: string;
+  outputType: string;
+  flowControl: boolean;
+  manualBake: boolean;
+  args?: Argument[];
+  checks?: Check[];
+}
 export type OptDetail = {
   exampleInput: string;
   exampleOutput: string;
@@ -26,7 +49,7 @@ export type OptDetail = {
   description: string;
   id: string;
   name: string;
-  config: any
+  config: ModuleConfig
 }
 export default abstract class Operation {
   private _inputType: number = -1;
