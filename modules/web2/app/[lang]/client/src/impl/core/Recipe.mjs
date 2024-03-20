@@ -212,7 +212,6 @@ class Recipe {
 
     for (let i = startFrom; i < this.opList.length; i++) {
       op = this.opList[i];
-      op = ToBase64;
       log.debug(`[${i}] ${op.name} ${JSON.stringify(op.ingValues)}`);
       if (op.disabled) {
         log.debug("Operation is disabled, skipping");

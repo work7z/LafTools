@@ -11,9 +11,9 @@ test('1+1=2', async () => {
 
 test('test-chef-process', async () => {
     let test: any = {
-        name: "To Base64: nothing",
-        input: "",
-        expectedOutput: "",
+        name: "To Base64: test",
+        input: "hello, world",
+        expectedOutput: "aGVsbG8sIHdvcmxk",
         recipeConfig: [
             {
                 op: 'To Base64',
@@ -86,7 +86,8 @@ test('test-chef-process', async () => {
 
     }
 
-    console.log(ret)
+    console.log('ret: ', ret)
+    console.log('results: ', result)
 
     expect(1 + 1).toBe(2)
 })
