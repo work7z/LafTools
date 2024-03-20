@@ -96,7 +96,6 @@ import TranslationUtils, {
     Dot,
 } from "../../../../../../../../utils/cTranslationUtils";
 import "allotment/dist/style.css";
-import { Allotment, AllotmentHandle } from "allotment";
 import exportUtils from "../../../../../../../../utils/ExportUtils";
 import forgeSlice, {
     ACTION_UPDATE_LANG_AND_APPLY_CHANGE,
@@ -145,7 +144,7 @@ export type ToolSingleViewProps = {
 }
 export default (props: ToolSingleViewProps) => {
     let { needFullPageSupport = false } = props;
-    let calcH = props.needFullPageSupport ? '100%' : `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
+    let calcH = props.needFullPageSupport ? '100%' : `100%`// `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
     let { extId } = props;
     let sessionId = getSessionId(extId);
     let val_ExtensionVM: ExtensionVM = {

@@ -33,7 +33,7 @@ import { CSS_BG_COLOR_WHITE, VAL_CSS_MENU_TITLE_PANEL, VAL_MENU_LEFT_PANEL_WIDTH
 import { loadDOT } from '@/app/__CORE__/utils/i18n-types'
 import { Dot } from '@/app/__CORE__/utils/cTranslationUtils'
 import SmallScreenDetecter from '@/app/[lang]/client/src/SmallScreenDetecter'
-import ClientWrapper from '../../common/clientWrapper'
+import ClientWrapper, { getAppToolHeight } from '../../common/clientWrapper'
 import { ClientPortalContext } from '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/types'
 import { CardBody } from '@nextui-org/react'
 import { CategorySearchProps, ToolSearchDetail } from '@/app/[lang]/page'
@@ -44,54 +44,7 @@ export type ExtensionViewProps = ToolSearchDetail & CategorySearchProps
 
 
 let d = loadDOT("1RH8bum7S")
-let ToolTitlebar = (props: { title: string }) => {
-    d()
 
-    let { fullScreen, hideSideBar } = exportUtils.useSelector(v => {
-        return {
-            // fullScreen: v.paramState.fs
-            hideSideBar: v.paramState.hsr,
-            fullScreen: false // v.paramState.fs 
-            // not yet implemented fullScreen 
-        }
-    })
-    let rightMainTitle = <div className={CSS_BG_COLOR_WHITE + ' relative w-full flex flex-row justify-between px-[2px] items-center text-sm ' + light_border_clz_all + " border-b-0 "} style={{
-        borderBottom: 'none',
-        height: VAL_CSS_MENU_TITLE_PANEL
-    }}>
-        <div>
-            <a href="#">
-                {/* {Dot("crZZ_WXlw", "View Relevant")} */}
-            </a>
-        </div>
-        <div id="tool-current-title" className={`font-semibold top-[50%] translate-y-[-50%] absolute left-[50%] translate-x-[-50%]`}>
-            {props.title}
-        </div>
-        <div>
-            <a href="#">
-                {/* {Dot("438yFc2HZ", "Float this Tool")} */}
-            </a>
-        </div>
-    </div>
-    if (hideSideBar == 'true') {
-        return rightMainTitle
-    } else {
-        return <div className={' w-full flex flex-row'} style={{
-            borderBottom: 'none',
-            height: VAL_CSS_MENU_TITLE_PANEL
-        }}>
-            <div className={CSS_BG_COLOR_WHITE + ` w-full italic text-xs justify-center flex flex-row items-center ` + light_border_clz_all} style={{ borderRight: 'none', borderBottom: 'none', width: VAL_MENU_LEFT_PANEL_WIDTH + 'px' }}>
-                <span>
-                    {Dot("ULpCU0JWm", "Manage My Tools")}
-                </span>
-            </div>
-            <div className='flex-1'>
-                {rightMainTitle}
-            </div>
-        </div>
-    }
-    return rightMainTitle
-}
 
 let ToolInnerView = (props: ExtensionViewProps) => {
     d()
@@ -107,18 +60,10 @@ let ToolInnerView = (props: ExtensionViewProps) => {
     } else {
         body = <ToolSingleView needFullPageSupport={needFullPage} extId={toolId} />
     }
-    // min - h - [500px] 
-    return <div className='w-full h-[800px]' >
-        <ToolTitlebar title={props.searchToolItem.label || 'N/A'} />
-        <div
-            style={{
-                height: needFullPage ? 'auto' : `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
-            }}
-            className={' w-full   rounded-sm shadow-sm' + light_border_clz_all + ' ' + CSS_BG_COLOR_WHITE}
-            key={constructedKey}
-        >
-            {body}
-        </div>
+    return <div className='w-full ' style={{
+        height: `${clientContext.appToolHeight}px`
+    }} key={constructedKey}>
+        {body}
     </div>
 }
 

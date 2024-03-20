@@ -36,11 +36,15 @@ import SmallScreenDetecter from '@/app/[lang]/client/src/SmallScreenDetecter'
 import { ClientPortalContext } from '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/types';
 
 let d = loadDOT("1RH8bdqw")
+export let getAppToolHeight = () => {
+    return 800
+}
 
 export default (props: { children: any }) => {
     d()
     return <div className='w-full h-full'>
         <ClientPortalContext.Provider value={{
+            appToolHeight: getAppToolHeight(),
             portalMode: true
         }}>
             <Provider store={store}>

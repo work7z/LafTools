@@ -57,7 +57,7 @@ import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
 import ShowErrorPanel from "../../../../../../../../containers/ShowErrorPanel/index.tsx";
 import { useDispatch } from "react-redux";
 import Sidemenu from "./SideMenu/sidemenu.tsx";
-import { CSS_BG_COLOR_WHITE, border_clz, border_clz_common } from "@/app/__CORE__/meta/styles.tsx";
+import { CSS_BG_COLOR_WHITE, VAL_CSS_MENU_TITLE_PANEL, border_clz, border_clz_common, light_border_clz_all } from "@/app/__CORE__/meta/styles.tsx";
 import COMMON_FN_REF from "@/app/[lang]/client/src/impl/tools/common_ref.tsx";
 
 COMMON_FN_REF.Dot = Dot
@@ -81,6 +81,49 @@ export let useShouldVerticalModeOrNot = () => {
   }
   return v.bottom_hide;
 }
+let ToolTitlebar = (props: { title: string }) => {
+  let { fullScreen, hideSideBar } = exportUtils.useSelector(v => {
+    return {
+      // fullScreen: v.paramState.fs
+      hideSideBar: v.paramState.hsr,
+      fullScreen: false // v.paramState.fs 
+      // not yet implemented fullScreen 
+    }
+  })
+  let mainTitle = <div className={CSS_BG_COLOR_WHITE + ' relative w-full flex flex-row justify-between px-[2px] items-center text-sm ' + light_border_clz_all + " "} style={{
+    borderTop: 'none',
+    borderRight: 'none',
+    height: VAL_CSS_MENU_TITLE_PANEL
+  }}>
+    <div>
+      <a href="#">
+        {/* {Dot("crZZ_WXlw", "View Relevant")} */}
+      </a>
+    </div>
+    <div id="tool-current-title" className={`font-semibold top-[50%] translate-y-[-50%] absolute left-[50%] translate-x-[-50%]`}>
+      {props.title}
+    </div>
+    <div>
+      <a href="#">
+        {/* {Dot("438yFc2HZ", "Float this Tool")} */}
+      </a>
+    </div>
+  </div>
+  return <div className={' w-full flex flex-row'} style={{
+    borderBottom: 'none',
+    height: VAL_CSS_MENU_TITLE_PANEL
+  }}>
+    {mainTitle}
+    {/* <div className={CSS_BG_COLOR_WHITE + ` w-full italic text-xs justify-center flex flex-row items-center ` + light_border_clz_all} style={{ borderRight: 'none', borderBottom: 'none', width: VAL_MENU_LEFT_PANEL_WIDTH + 'px' }}>
+      <span>
+        {Dot("ULpCU0JWm", "Manage My Tools")}
+      </span>
+    </div>
+    <div className='flex-1'>
+      {rightMainTitle}
+    </div> */}
+  </div>
+}
 
 export default (props: CommonTransformerProps) => {
   let sessionId = props.sessionId;
@@ -90,6 +133,7 @@ export default (props: CommonTransformerProps) => {
   let extId = props.extId
   let operaRef = useRef<ToolHandler | undefined>(undefined)
   let metaInfo = operaRef.current?.getMetaInfo()
+
   let operaList = operaRef.current?.getOperations()
   let crtRuntimeStatus = exportUtils.useSelector((x) => {
     let v = x.runtimeStatus.toolOutputStatusMap[sessionId];
@@ -303,10 +347,11 @@ export default (props: CommonTransformerProps) => {
     return <ShowErrorPanel loadError={loadError}></ShowErrorPanel>
   }
 
-  // let clientPortalContext = useContext(ClientPortalContext) // TODO: in future, we will enable it
+  let clientPortalContext = useContext(ClientPortalContext) // TODO: in future, we will enable it
 
   let app_right_t_jsx = codeMirrorItem
   let app_right_b_jsx = processPanelItem
+
 
   if (props.needFullPageSupport) {
     app_right_t_jsx = <div className={
@@ -363,33 +408,64 @@ export default (props: CommonTransformerProps) => {
   }
 
   let defaultLeftWidth = VAL_MENU_LEFT_PANEL_WIDTH
-  return (
-    <div key={sessionId} className={
-      " " + transformerFullScreenClzIfNeeded
-    } style={{
-    }}>
-      {
-        hideSideBar == 'true' ? app_right_jsx :
-          props.needFullPageSupport ? <div className='w-full flex flex-row'>
-            <div className={border_clz_common + ' border-r-[1px] '} style={{
-              width: defaultLeftWidth + 'px'
-            }}>{app_left_jsx}</div>
-            <div style={{
-              width: `calc(100% - ${defaultLeftWidth}px)`
-            }}>
-              {app_right_jsx}
-            </div>
-          </div> :
-            <Allotment vertical={false} style={{
-            }}>
-              <Allotment.Pane preferredSize={300} >
-                {app_left_jsx}
-              </Allotment.Pane>
-              <Allotment.Pane>
+
+  let infoObj: AppInfoType = appToolInfoObj[props.extId || '']
+
+  let body = <div key={sessionId} className={
+    " " + transformerFullScreenClzIfNeeded
+  } style={{
+  }}>
+    {
+      props.needFullPageSupport ? <div className='w-full flex flex-row'>
+        <div className={border_clz_common + ' border-r-[1px] '} style={{
+          width: defaultLeftWidth + 'px'
+        }}>{app_left_jsx}</div>
+        <div style={{
+          width: `calc(100% - ${defaultLeftWidth}px)`
+        }}>
+          {app_right_jsx}
+        </div>
+      </div> :
+        <Allotment vertical={false} style={{
+        }}>
+
+          {
+            hideSideBar == 'true' ? '' : <Allotment.Pane preferredSize={280} >
+              {app_left_jsx}
+            </Allotment.Pane>
+          }
+          <Allotment.Pane>
+            <div className="w-full h-full flex flex-col">
+              <ToolTitlebar title={infoObj.LabelFn(Dot) || 'N/A'} />
+              <div style={{
+                flex: '1',
+                // height: (clientPortalContext.appToolHeight - VAL_CSS_TAB_TITLE_PANEL) + 'px'
+                // height: clientPortalContext.appToolHeight ? clientPortalContext.appToolHeight : `calc(100vh - ${VAL_CSS_TAB_TITLE_PANEL}px)`
+                // height: `calc(100vh - ${VAL_CSS_TAB_TITLE_PANEL}px)`
+              }}>
                 {app_right_jsx}
-              </Allotment.Pane>
-            </Allotment>
-      }
+              </div>
+            </div>
+          </Allotment.Pane>
+        </Allotment>
+    }
+  </div>
+  let needFullPageSupport = props.needFullPageSupport
+  let constructedKey = 'xmGBxtFdi'
+  return (
+    <div className="w-full h-full">
+      {/* <ToolTitlebar title={extVM?.Info?.Label || 'N/A'} /> */}
+      <div
+        style={{
+          height: '100% '
+          // height: needFullPageSupport ? 'auto' : clientPortalContext.portalMode ? '100%' : `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
+        }
+        }
+        className={' w-full   rounded-sm shadow-sm' + light_border_clz_all + ' ' + CSS_BG_COLOR_WHITE}
+        key={constructedKey}
+      >
+        {body}
+      </div>
     </div>
-  );
+  )
 };

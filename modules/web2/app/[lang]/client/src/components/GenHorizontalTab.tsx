@@ -297,7 +297,7 @@ export default (props: PassProp) => {
         let rect = e?.getBoundingClientRect();
         rect && onPWidth(rect?.width);
       }}
-      className={`w-full h-full relative border-b-2    border-b-gray-300 dark:border-b-gray-600  ${commonBG} `}
+      className={`w-full h-full relative     border-b-gray-300 dark:border-b-gray-600  ${commonBG} `}
     >
       <div
         className={` flex space-x-0 h-full   w-full  `}

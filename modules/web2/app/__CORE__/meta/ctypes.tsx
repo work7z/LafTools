@@ -45,9 +45,11 @@ export type CommonTransformerProps = CommonTransformerPassProp & {
 };
 
 export type ClientPortalInfo = {
-    portalMode: boolean
+    portalMode: boolean,
+    appToolHeight: number
 }
 export let ClientPortalContext = React.createContext<ClientPortalInfo>({
-    portalMode: false
+    portalMode: false,
+    appToolHeight: 0
 })
 

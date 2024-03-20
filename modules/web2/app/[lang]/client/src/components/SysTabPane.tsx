@@ -105,6 +105,7 @@ import { type } from "jquery";
 import apiSlice from "../reducers/apiSlice";
 import { SysTabPaneProp } from "../types/workbench-types";
 import Blink from "./Blink";
+import '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/index.scss'
 import { CSS_TEXT_ANCHOR_CSS } from "../types/constants";
 
 export let SysTabPane = (props: {} & SysTabPaneProp) => {
@@ -133,26 +134,25 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
       icon: crtObject?.icon as any,
     }
     : {};
-  let jsx_btn =
-    true || hasMultipleList ? (
-      <Button
-        small
-        className={
-          "bp5-popover-dismiss  bp3-popover-dismiss " +
-          (!hasMultipleList
-            ? "hover:!bg-transparent hover:!cursor-default"
-            : "")
-        }
-        minimal
-        {...extraProps}
-        text={crtObjLabel}
-        rightIcon={hasMultipleList ? "caret-down" : undefined}
-      ></Button>
-    ) : (
-      <span className="p-2">{crtObjLabel}</span>
-    );
+  let jsx_btn = (
+    <Button
+      small
+      className={
+        "bp5-popover-dismiss  bp3-popover-dismiss " +
+        (!hasMultipleList
+          ? "hover:!bg-transparent hover:!cursor-default"
+          : "")
+      }
+      minimal
+      {...extraProps}
+      text={crtObjLabel}
+      rightIcon={hasMultipleList ? "caret-down" : undefined}
+    ></Button>
+  )
+  // true || hasMultipleList ?  : (
+  //   <span className="p-2">{crtObjLabel}</span>
+  // );
 
-  // const [refId, onRefId] = useState(_.uniqueId(""));
   const [showPop, onShowPop] = useState(false);
 
   const [focusCrt, onFocusCrt] = useState(false);
@@ -194,11 +194,6 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
     <div
       className={
         ` ${focusCrt ? ` wp-focus-p ` : ""} ` + " sys-tab-pane-wp "
-        // props.hasOpacityWhenUnfocus
-        //   ? focusCrt
-        //     ? "  "
-        //     : " opacity-60 "
-        //   : ""
       }
       id={refId}
       onClick={() => { }}
