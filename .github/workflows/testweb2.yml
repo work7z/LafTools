@@ -24,5 +24,5 @@ jobs:
         run: |
           cd modules/web2
           npm i -g pnpm
-          npm i -S -D --verbose --force
+          npm i -S -D --force
           npx vitest run

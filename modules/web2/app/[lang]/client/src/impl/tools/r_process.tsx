@@ -52,9 +52,26 @@ let LibIndex = {
       let inputValue: string = originalValue
       let recipeConfig: RecipeConfig[] = []
       for (let eachOp of param.operations) {
+        let argsValueArr = _.map(eachOp.args, (arg) => {
+          let eachValue = _.get(arg, 'value')
+          if (_.isString(eachValue)) {
+            return eachValue
+          }
+          if (_.isArray(eachValue)) {
+            let p = _.get(eachValue, [0]) // TODO: select type
+            if (typeof p == 'string') {
+              return p
+            }
+            return _.get(eachValue, [0, 'value'])
+          }
+          return eachValue;
+        })
+        if (_.isNil(argsValueArr)) {
+          argsValueArr = []
+        }
         recipeConfig.push({
           op: eachOp,
-          args: eachOp.args
+          args: argsValueArr
         })
       }
 

@@ -92,20 +92,22 @@ class Recipe {
     // }
     let newOpList = [];
     for (let item of this.opList) {
+      let willPushItem = null;
       if (item instanceof Operation) {
-        newOpList.push(item);
+        willPushItem = item;
       } else if (item.name instanceof Operation) {
-        newOpList.push(item.name);
+        willPushItem = item.name;
       } else {
         let formattedName = item.name.replace(/ /g, "");
         let clz = await AppOperationMap[formattedName]();
         console.log("clz", clz["default"]);
         const op = new clz["default"](); // new modules[o.module][o.name]();
-        op.ingValues = item.ingValues;
-        op.breakpoint = item.breakpoint;
-        op.disabled = item.disabled;
-        newOpList.push(op);
+        willPushItem = op;
       }
+      willPushItem.ingValues = item.ingValues;
+      willPushItem.breakpoint = item.breakpoint;
+      willPushItem.disabled = item.disabled;
+      newOpList.push(willPushItem);
     }
     this.opList = newOpList;
   }
@@ -296,11 +298,12 @@ class Recipe {
   async present(dish) {
     if (!this.lastRunOp) return;
 
-    const output = await this.lastRunOp.present(
-      await dish.get(this.lastRunOp.outputType),
-      this.lastRunOp.ingValues,
-    );
-    dish.set(output, this.lastRunOp.presentType);
+    // FIXME: not only string will be prsented but also other types like HTML, canvas, file, etc.
+    // const output = await this.lastRunOp.present(
+    //   await dish.get(this.lastRunOp.outputType),
+    //   this.lastRunOp.ingValues,
+    // );
+    // dish.set(output, this.lastRunOp.presentType);
   }
 
   /**

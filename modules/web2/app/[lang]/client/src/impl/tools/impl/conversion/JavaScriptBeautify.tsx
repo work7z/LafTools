@@ -128,6 +128,7 @@ class JavaScriptBeautify extends Operation {
      * @returns {string}
      */
     run(input, args) {
+        console.log('args', args)
         const beautifyIndent = args[0] || "\\t",
             quotes = args[1].toLowerCase(),
             [, , beautifySemicolons, beautifyComment] = args;
