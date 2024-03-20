@@ -143,6 +143,7 @@ import { AppInfoClz } from \"@/app/__CORE__/meta/ctypes\"
             rm -f *lock*
             [ ! -d node_modules ] && npm install --omit=dev --force 
             # [ ! -d node_modules ] && npm install -S -D --force 
+            rm ./vite.config.ts
             npm run build
             cd .next
             cp -a ../public/ ./standalone/public
