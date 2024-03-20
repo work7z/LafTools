@@ -16,7 +16,7 @@ test('test-chef-process', async () => {
         expectedOutput: "aGVsbG8sIHdvcmxk",
         recipeConfig: [
             {
-                op: 'To Base64',
+                op: new ToBase64(),
                 args: ["A-Za-z0-9+/="],
             },
         ],
