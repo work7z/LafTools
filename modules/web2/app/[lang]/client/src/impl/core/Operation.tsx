@@ -19,19 +19,19 @@
 import { InputOutputEditorLang } from "../purejs-types";
 import Dish from "./Dish.mjs";
 import Ingredient from "./Ingredient.mjs";
-interface Argument {
+type Argument = any & {
   name: string;
   type: string;
   value: any | string | string[];
 }
 
-interface Check {
+type Check = any & {
   pattern: string;
   flags: string;
-  args: string[];
+  args: any[];
 }
 
-interface ModuleConfig {
+type ModuleConfig = any & {
   module: string;
   description: string;
   infoURL: string | null;
