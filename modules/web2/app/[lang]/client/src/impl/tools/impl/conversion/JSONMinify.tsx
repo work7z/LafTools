@@ -36,9 +36,18 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * JSON Minify operation
  */
 class JSONMinify extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
-
+      config: {
+        "module": "Code",
+        "description": "Compresses JavaScript Object Notation (JSON) code.",
+        "infoURL": null,
+        "inputType": "string",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": []
+      },
       infoURL: 'https://www.json.org/',
       id: 'json-minify',
       name: Dot("meeMC1Uk7.text.93kq", "Minify {0}", "JSON"),

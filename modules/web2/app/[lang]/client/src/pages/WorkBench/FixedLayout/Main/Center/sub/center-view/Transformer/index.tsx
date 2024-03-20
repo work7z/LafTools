@@ -303,12 +303,12 @@ export default (props: CommonTransformerProps) => {
     return <ShowErrorPanel loadError={loadError}></ShowErrorPanel>
   }
 
-  let clientPortalContext = useContext(ClientPortalContext)
+  // let clientPortalContext = useContext(ClientPortalContext) // TODO: in future, we will enable it
 
   let app_right_t_jsx = codeMirrorItem
   let app_right_b_jsx = processPanelItem
 
-  if (clientPortalContext.portalMode) {
+  if (props.needFullPageSupport) {
     app_right_t_jsx = <div className={
       shouldVerticalMode ? 'h-[350px]' : ' h-[700px] ' + ' align-top w-1/2 inline-block ' + border_clz_common + ' border-r-[1px] '
     }>{app_right_t_jsx}</div>
@@ -332,7 +332,7 @@ export default (props: CommonTransformerProps) => {
       className="w-full overflow-auto "
     >
       {
-        clientPortalContext.portalMode ? (
+        props.needFullPageSupport ? (
           <div className="w-full">
             {app_right_t_jsx}
             {app_right_b_jsx}
@@ -358,7 +358,7 @@ export default (props: CommonTransformerProps) => {
   if (fullScreen) {
     transformerFullScreenClzIfNeeded = " w-screen h-screen fixed left-0 top-0 z-[9999] " + CSS_BG_COLOR_WHITE
   }
-  if (clientPortalContext.portalMode) {
+  if (props.needFullPageSupport) {
     transformerFullScreenClzIfNeeded = 'w-full h-auto '
   }
 
@@ -370,7 +370,7 @@ export default (props: CommonTransformerProps) => {
     }}>
       {
         hideSideBar == 'true' ? app_right_jsx :
-          clientPortalContext.portalMode ? <div className='w-full flex flex-row'>
+          props.needFullPageSupport ? <div className='w-full flex flex-row'>
             <div className={border_clz_common + ' border-r-[1px] '} style={{
               width: defaultLeftWidth + 'px'
             }}>{app_left_jsx}</div>

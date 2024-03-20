@@ -26,6 +26,7 @@ import Operation from "../core/Operation.tsx";
 import Utils from "../core/Utils.mjs";
 import setupApp from "../setupApp.ts";
 import DishBigNumber from "../core/dishTypes/DishBigNumber.mjs";
+import Chef from "../core/Chef.mjs";
 // import ToBase64 from "./core/impl/ToBase64.js";
 setupApp();
 
@@ -34,64 +35,49 @@ export type ProcessReturnType = {
   error?: string;
 };
 
+export type RecipeConfig = { op: Operation, args: string[] }
 
 let LibIndex = {
   process: async (
     originalValue: string,
     param: {
-      operation: Operation;
-      extVM: ExtensionVM | undefined;
-      extId: string | undefined;
+      operations: Operation[];
+      extVM: ExtensionVM;
+      extId: string;
     },
   ): Promise<ProcessReturnType> => {
     try {
-      let inst = param.operation;
-      let input: any = originalValue;
-      if (inst.inputType == "ArrayBuffer") {
-        input = Utils.strToArrayBuffer(input);
-      }
-      if (inst.inputType == 'BigNumber') {
-        let arrayBuffer = Utils.strToArrayBuffer(input);
-        let pObj = {
-          value: arrayBuffer
-        }
-        DishBigNumber.fromArrayBuffer.bind(pObj)();
-        input = pObj.value;
-      }
-      // TODO: arg value should be coming from a model not form, it's just more convenient for now
-      let argsValueArr = _.map(inst.args, (arg) => {
-        let eachValue = _.get(arg, 'value')
-        if (_.isString(eachValue)) {
-          return eachValue
-        }
-        if (_.isArray(eachValue)) {
-          let p = _.get(eachValue, [0])
-          if (typeof p == 'string') {
-            return p
-          }
-          return _.get(eachValue, [0, 'value'])
-        }
-        return eachValue;
-      })
-      if (_.isNil(argsValueArr)) {
-        argsValueArr = []
+
+
+      let inputValue: string = originalValue
+      let recipeConfig: RecipeConfig[] = []
+      for (let eachOp of param.operations) {
+        recipeConfig.push({
+          op: eachOp,
+          args: eachOp.args
+        })
       }
 
-      let result = inst.run(input, argsValueArr);
-      if (inst.outputType == "ArrayBuffer") {
-        result = Utils.arrayBufferToStr(result);
+      const chef = new Chef();
+      const result = await chef.bake(
+        inputValue,
+        recipeConfig,
+        { returnType: "string" }
+      );
+
+      if (result.error) {
+        return {
+          result: "",
+          error: result.error.displayStr
+        }
+      } else {
+        return {
+          result: result.result,
+        }
       }
-      if (inst.outputType == "string") {
-        // do nothing
-      }
-      if (inst.outputType == "byteArray") {
-        result = Utils.byteArrayToChars(result);
-      }
-      // consolidate the result
-      result = Utils.parseEscapedChars(result)
-      return {
-        result,
-      };
+
+
+
     } catch (e) {
       console.log("err", e);
       return {

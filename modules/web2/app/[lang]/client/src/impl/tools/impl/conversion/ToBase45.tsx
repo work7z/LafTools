@@ -34,9 +34,24 @@ import Utils from "../../../core/Utils.mjs";
  * To Base45 operation
  */
 class ToBase45 extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
-            // new
+            config: {
+                "module": "Default",
+                "description": "Base45 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers. The high number base results in shorter strings than with the decimal or hexadecimal system. Base45 is optimized for usage with QR codes.",
+                "infoURL": "https://wikipedia.org/wiki/List_of_numeral_systems",
+                "inputType": "ArrayBuffer",
+                "outputType": "string",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Alphabet",
+                        "type": "string",
+                        "value": "0-9A-Z $%*+\\-./:"
+                    }
+                ]
+            },
             infoURL: 'https://datatracker.ietf.org/doc/draft-faltstrom-base45/',
             id: 'base45',
             name: Dot("M3ytc", "Encode {0}", "Base45"),
@@ -47,7 +62,7 @@ class ToBase45 extends Operation {
             ),
             exampleOutput: "%69 VD82EI2B.KESTC",
             exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
-            // new
+
         }
     }
 

@@ -33,9 +33,258 @@ import { ALPHABET_OPTIONS, fromBase64 } from "../../../core/lib/Base64.mjs";
  * From Base64 operation
  */
 class FromBase64 extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
-      // new
+      config: {
+        "module": "Default",
+        "description": "Base64 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers.<br><br>This operation decodes data from an ASCII Base64 string back into its raw format.<br><br>e.g. <code>aGVsbG8=</code> becomes <code>hello</code>",
+        "infoURL": "https://wikipedia.org/wiki/Base64",
+        "inputType": "string",
+        "outputType": "byteArray",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Alphabet",
+            "type": "editableOption",
+            "value": [
+              {
+                "name": "Standard (RFC 4648): A-Za-z0-9+/=",
+                "value": "A-Za-z0-9+/="
+              },
+              {
+                "name": "URL safe (RFC 4648 §5): A-Za-z0-9-_",
+                "value": "A-Za-z0-9-_"
+              },
+              {
+                "name": "Filename safe: A-Za-z0-9+-=",
+                "value": "A-Za-z0-9+\\-="
+              },
+              {
+                "name": "itoa64: ./0-9A-Za-z=",
+                "value": "./0-9A-Za-z="
+              },
+              {
+                "name": "XML: A-Za-z0-9_.",
+                "value": "A-Za-z0-9_."
+              },
+              {
+                "name": "y64: A-Za-z0-9._-",
+                "value": "A-Za-z0-9._-"
+              },
+              {
+                "name": "z64: 0-9a-zA-Z+/=",
+                "value": "0-9a-zA-Z+/="
+              },
+              {
+                "name": "Radix-64 (RFC 4880): 0-9A-Za-z+/=",
+                "value": "0-9A-Za-z+/="
+              },
+              {
+                "name": "Uuencoding: [space]-_",
+                "value": " -_"
+              },
+              {
+                "name": "Xxencoding: +-0-9A-Za-z",
+                "value": "+\\-0-9A-Za-z"
+              },
+              {
+                "name": "BinHex: !-,-0-689@A-NP-VX-Z[`a-fh-mp-r",
+                "value": "!-,-0-689@A-NP-VX-Z[`a-fh-mp-r"
+              },
+              {
+                "name": "ROT13: N-ZA-Mn-za-m0-9+/=",
+                "value": "N-ZA-Mn-za-m0-9+/="
+              },
+              {
+                "name": "UNIX crypt: ./0-9A-Za-z",
+                "value": "./0-9A-Za-z"
+              },
+              {
+                "name": "Atom128: /128GhIoPQROSTeUbADfgHijKLM+n0pFWXY456xyzB7=39VaqrstJklmNuZvwcdEC",
+                "value": "/128GhIoPQROSTeUbADfgHijKLM+n0pFWXY456xyzB7=39VaqrstJklmNuZvwcdEC"
+              },
+              {
+                "name": "Megan35: 3GHIJKLMNOPQRSTUb=cdefghijklmnopWXYZ/12+406789VaqrstuvwxyzABCDEF5",
+                "value": "3GHIJKLMNOPQRSTUb=cdefghijklmnopWXYZ/12+406789VaqrstuvwxyzABCDEF5"
+              },
+              {
+                "name": "Zong22: ZKj9n+yf0wDVX1s/5YbdxSo=ILaUpPBCHg8uvNO4klm6iJGhQ7eFrWczAMEq3RTt2",
+                "value": "ZKj9n+yf0wDVX1s/5YbdxSo=ILaUpPBCHg8uvNO4klm6iJGhQ7eFrWczAMEq3RTt2"
+              },
+              {
+                "name": "Hazz15: HNO4klm6ij9n+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTts/MRGYbdxSo=ILaUpPBC5",
+                "value": "HNO4klm6ij9n+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTts/MRGYbdxSo=ILaUpPBC5"
+              }
+            ]
+          },
+          {
+            "name": "Remove non-alphabet chars",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "name": "Strict mode",
+            "type": "boolean",
+            "value": false
+          }
+        ],
+        "checks": [
+          {
+            "pattern": "^\\s*(?:[A-Z\\d+/]{4})+(?:[A-Z\\d+/]{2}==|[A-Z\\d+/]{3}=)?\\s*$",
+            "flags": "i",
+            "args": [
+              "A-Za-z0-9+/=",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*[A-Z\\d\\-_]{20,}\\s*$",
+            "flags": "i",
+            "args": [
+              "A-Za-z0-9-_",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*(?:[A-Z\\d+\\-]{4}){5,}(?:[A-Z\\d+\\-]{2}==|[A-Z\\d+\\-]{3}=)?\\s*$",
+            "flags": "i",
+            "args": [
+              "A-Za-z0-9+\\-=",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*(?:[A-Z\\d./]{4}){5,}(?:[A-Z\\d./]{2}==|[A-Z\\d./]{3}=)?\\s*$",
+            "flags": "i",
+            "args": [
+              "./0-9A-Za-z=",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*[A-Z\\d_.]{20,}\\s*$",
+            "flags": "i",
+            "args": [
+              "A-Za-z0-9_.",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*(?:[A-Z\\d._]{4}){5,}(?:[A-Z\\d._]{2}--|[A-Z\\d._]{3}-)?\\s*$",
+            "flags": "i",
+            "args": [
+              "A-Za-z0-9._-",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*(?:[A-Z\\d+/]{4}){5,}(?:[A-Z\\d+/]{2}==|[A-Z\\d+/]{3}=)?\\s*$",
+            "flags": "i",
+            "args": [
+              "0-9a-zA-Z+/=",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*(?:[A-Z\\d+/]{4}){5,}(?:[A-Z\\d+/]{2}==|[A-Z\\d+/]{3}=)?\\s*$",
+            "flags": "i",
+            "args": [
+              "0-9A-Za-z+/=",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^[ !\"#$%&'()*+,\\-./\\d:;<=>?@A-Z[\\\\\\]^_]{20,}$",
+            "flags": "",
+            "args": [
+              " -_",
+              false,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*[A-Z\\d+\\-]{20,}\\s*$",
+            "flags": "i",
+            "args": [
+              "+\\-0-9A-Za-z",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*[!\"#$%&'()*+,\\-0-689@A-NP-VX-Z[`a-fh-mp-r]{20,}\\s*$",
+            "flags": "",
+            "args": [
+              "!-,-0-689@A-NP-VX-Z[`a-fh-mp-r",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*(?:[N-ZA-M\\d+/]{4}){5,}(?:[N-ZA-M\\d+/]{2}==|[N-ZA-M\\d+/]{3}=)?\\s*$",
+            "flags": "i",
+            "args": [
+              "N-ZA-Mn-za-m0-9+/=",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*[A-Z\\d./]{20,}\\s*$",
+            "flags": "i",
+            "args": [
+              "./0-9A-Za-z",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*(?:[A-Z=\\d\\+/]{4}){5,}(?:[A-Z=\\d\\+/]{2}CC|[A-Z=\\d\\+/]{3}C)?\\s*$",
+            "flags": "i",
+            "args": [
+              "/128GhIoPQROSTeUbADfgHijKLM+n0pFWXY456xyzB7=39VaqrstJklmNuZvwcdEC",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*(?:[A-Z=\\d\\+/]{4}){5,}(?:[A-Z=\\d\\+/]{2}55|[A-Z=\\d\\+/]{3}5)?\\s*$",
+            "flags": "i",
+            "args": [
+              "3GHIJKLMNOPQRSTUb=cdefghijklmnopWXYZ/12+406789VaqrstuvwxyzABCDEF5",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*(?:[A-Z=\\d\\+/]{4}){5,}(?:[A-Z=\\d\\+/]{2}22|[A-Z=\\d\\+/]{3}2)?\\s*$",
+            "flags": "i",
+            "args": [
+              "ZKj9n+yf0wDVX1s/5YbdxSo=ILaUpPBCHg8uvNO4klm6iJGhQ7eFrWczAMEq3RTt2",
+              true,
+              false
+            ]
+          },
+          {
+            "pattern": "^\\s*(?:[A-Z=\\d\\+/]{4}){5,}(?:[A-Z=\\d\\+/]{2}55|[A-Z=\\d\\+/]{3}5)?\\s*$",
+            "flags": "i",
+            "args": [
+              "HNO4klm6ij9n+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTts/MRGYbdxSo=ILaUpPBC5",
+              true,
+              false
+            ]
+          }
+        ]
+      },
       id: 'frombase64',
       infoURL: "https://en.wikipedia.org/wiki/Base64",
       name: Dot("rVqlu", "Decode {0}", "Base64"),
@@ -45,7 +294,7 @@ class FromBase64 extends Operation {
       ),
       exampleInput: "SGVsbG8gV29ybGQh",
       exampleOutput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
-      // new
+
     }
   }
   /**

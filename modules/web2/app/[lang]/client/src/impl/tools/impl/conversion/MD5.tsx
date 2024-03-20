@@ -33,8 +33,18 @@ import { runHash } from "../../../core/lib/Hash.mjs";
  * MD5 operation
  */
 class MD5 extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Crypto",
+        "description": "MD5 (Message-Digest 5) is a widely used hash function. It has been used in a variety of security applications and is also commonly used to check the integrity of files.<br><br>However, MD5 is not collision resistant and it isn't suitable for applications like SSL/TLS certificates or digital signatures that rely on this property.",
+        "infoURL": "https://wikipedia.org/wiki/MD5",
+        "inputType": "ArrayBuffer",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": []
+      },
       infoURL: 'https://en.wikipedia.org/wiki/MD5',
       id: 'md5',
       name: Dot("md5.textiDjMIo", "Generate {0} Hash", "MD5"),

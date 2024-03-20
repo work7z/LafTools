@@ -78,7 +78,7 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
             let processedNewValue = await LibProcessEntryPoint.process(originalValue, {
                 extVM,
                 extId,
-                operation: crtDefaultOpera
+                operations: [crtDefaultOpera]
             });
             // after process
             if (processedNewValue.error) {

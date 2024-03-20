@@ -99,18 +99,20 @@ let ToolInnerView = (props: ExtensionViewProps) => {
     let clientContext = useContext(ClientPortalContext)
     let toolId = props.searchToolItem.toolId
     let body: JSX.Element = <div>not implemented yet</div>
+    let needFullPage = clientContext.portalMode && false; // TODO: for now, we just only use fixed height to support drafting border
     if (!toolId) {
         body = <div className='w-full min-h-[500px]'>
             <div>{Dot("QJUcHZ3bD", "Sorry, it is still in progress, please kindly stay tuned by staring our Github repo.")}</div>
         </div>
     } else {
-        body = <ToolSingleView disableClientMode extId={toolId} />
+        body = <ToolSingleView needFullPageSupport={needFullPage} extId={toolId} />
     }
-    return <div className='w-full min-h-[500px]' >
+    // min - h - [500px] 
+    return <div className='w-full h-[800px]' >
         <ToolTitlebar title={props.searchToolItem.label || 'N/A'} />
         <div
             style={{
-                height: clientContext.portalMode ? 'auto' : `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
+                height: needFullPage ? 'auto' : `calc(100% - ${VAL_CSS_MENU_TITLE_PANEL}px)`
             }}
             className={' w-full   rounded-sm shadow-sm' + light_border_clz_all + ' ' + CSS_BG_COLOR_WHITE}
             key={constructedKey}

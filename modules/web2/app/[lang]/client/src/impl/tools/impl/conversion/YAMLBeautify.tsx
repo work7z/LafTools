@@ -36,8 +36,25 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 
 // provide YamlBeautify as simliar as XMLBeautify, including the impl code
 class YamlBeautify extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        // provide yaml config 
+        "module": "Code",
+        "description": "Indents and prettifies YAML code.",
+        "infoURL": null,
+        "inputType": "string",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Indent string",
+            "type": "binaryShortString",
+            "value": "  "
+          }
+        ]
+      },
       id: 'yaml-beautify',
       name: Dot("yaml.format.btn", "Format YAML"),
       infoURL: 'https://en.wikipedia.org/wiki/YAML',

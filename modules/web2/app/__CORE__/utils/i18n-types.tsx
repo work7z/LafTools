@@ -38,7 +38,7 @@ export let useTTT2 = function (ltID: string): (id: string, enText: string, ...ar
     let crtLabelI18n = getLocalePrefix_Client().langIni18n
     // let [mapData, onMapData] = useState({})
     let [ctn, onCtn] = useState(0)
-    useInitFunctionOnceOnly(() => {
+    useEffect(() => {
         if (crtLabelI18n === 'en_US') {
             onCtn(ctn + 1)
             return;

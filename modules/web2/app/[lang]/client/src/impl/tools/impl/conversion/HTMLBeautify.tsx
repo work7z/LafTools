@@ -35,8 +35,24 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * XML Beautify operation
  */
 class XMLBeautify extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Code",
+                "description": "Indents and prettifies HTML code.",
+                "infoURL": null,
+                "inputType": "string",
+                "outputType": "string",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Indent string",
+                        "type": "binaryShortString",
+                        "value": "\\t"
+                    }
+                ]
+            },
             id: 'html-beautify',
             name: Dot("yMZW-figFKwrYO", "Format HTML"),
             infoURL: 'https://en.wikipedia.org/wiki/HTML',

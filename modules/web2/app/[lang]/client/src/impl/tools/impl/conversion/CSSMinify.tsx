@@ -36,8 +36,24 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * CSS Minify operation
  */
 class CSSMinify extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Code",
+        "description": "Compresses Cascading Style Sheets (CSS) code.",
+        "infoURL": null,
+        "inputType": "string",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Preserve comments",
+            "type": "boolean",
+            "value": false
+          }
+        ]
+      },
       infoURL: "https://www.w3.org/Style/CSS/",
       id: 'cssminify',
       name: Dot("-nL_B5PoN", "Compresses {0}", "CSS"),

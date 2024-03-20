@@ -34,8 +34,29 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./_constants.tsx";
  * SHA3 operation
  */
 class SHA3 extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Crypto",
+        "description": "The SHA-3 (Secure Hash Algorithm 3) hash functions were released by NIST on August 5, 2015. Although part of the same series of standards, SHA-3 is internally quite different from the MD5-like structure of SHA-1 and SHA-2.<br><br>SHA-3 is a subset of the broader cryptographic primitive family Keccak designed by Guido Bertoni, Joan Daemen, Michaël Peeters, and Gilles Van Assche, building upon RadioGatún.",
+        "infoURL": "https://wikipedia.org/wiki/SHA-3",
+        "inputType": "ArrayBuffer",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Size",
+            "type": "option",
+            "value": [
+              "512",
+              "384",
+              "256",
+              "224"
+            ]
+          }
+        ]
+      },
       description:
         Dot("OMrIvzpf5", "The SHA-3 (Secure Hash Algorithm 3) hash functions were released by NIST on August 5, 2015. Although part of the same series of standards, SHA-3 is internally quite different from the MD5-like structure of SHA-1 and SHA-2.<br><br>SHA-3 is a subset of the broader cryptographic primitive family Keccak designed by Guido Bertoni, Joan Daemen, Micha\xebl Peeters, and Gilles Van Assche, building upon RadioGat\xfan."),
       infoURL: "https://wikipedia.org/wiki/SHA-3",

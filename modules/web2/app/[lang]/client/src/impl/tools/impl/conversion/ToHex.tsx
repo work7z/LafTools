@@ -37,8 +37,41 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
  * To Hex operation
  */
 class ToHex extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Default",
+        "description": "Converts the input string to hexadecimal bytes separated by the specified delimiter.<br><br>e.g. The UTF-8 encoded string <code>Γειά σου</code> becomes <code>ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a</code>",
+        "infoURL": "https://wikipedia.org/wiki/Hexadecimal",
+        "inputType": "ArrayBuffer",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Delimiter",
+            "type": "option",
+            "value": [
+              "Space",
+              "Percent",
+              "Comma",
+              "Semi-colon",
+              "Colon",
+              "Line feed",
+              "CRLF",
+              "0x",
+              "0x with comma",
+              "\\x",
+              "None"
+            ]
+          },
+          {
+            "name": "Bytes per line",
+            "type": "number",
+            "value": 0
+          }
+        ]
+      },
       name: "To Hex",
       id: 'tohex',
       description:

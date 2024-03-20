@@ -35,8 +35,42 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
  * To Base85 operation
  */
 class ToBase85 extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Default",
+                "description": "Base85 (also called Ascii85) is a notation for encoding arbitrary byte data. It is usually more efficient that Base64.<br><br>This operation encodes data in an ASCII string (with an alphabet of your choosing, presets included).<br><br>e.g. <code>hello world</code> becomes <code>BOu!rD]j7BEbo7</code><br><br>Base85 is commonly used in Adobe's PostScript and PDF file formats.<br><br><strong>Options</strong><br><u>Alphabet</u><ul><li>Standard - The standard alphabet, referred to as Ascii85</li><li>Z85 (ZeroMQ) - A string-safe variant of Base85, which avoids quote marks and backslash characters</li><li>IPv6 - A variant of Base85 suitable for encoding IPv6 addresses (RFC 1924)</li></ul><u>Include delimiter</u><br>Adds a '<~' and '~>' delimiter to the start and end of the data. This is standard for Adobe's implementation of Base85.",
+                "infoURL": "https://wikipedia.org/wiki/Ascii85",
+                "inputType": "ArrayBuffer",
+                "outputType": "string",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Alphabet",
+                        "type": "editableOption",
+                        "value": [
+                            {
+                                "name": "Standard",
+                                "value": "!-u"
+                            },
+                            {
+                                "name": "Z85 (ZeroMQ)",
+                                "value": "0-9a-zA-Z.\\-:+=^!/*?&<>()[]{}@%$#"
+                            },
+                            {
+                                "name": "IPv6",
+                                "value": "0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Include delimeter",
+                        "type": "boolean",
+                        "value": false
+                    }
+                ]
+            },
             id: 'tobase85',
             infoURL: 'https://en.wikipedia.org/wiki/Ascii85',
             name: Dot("M3ytc", "Encode {0}", "Base85"),

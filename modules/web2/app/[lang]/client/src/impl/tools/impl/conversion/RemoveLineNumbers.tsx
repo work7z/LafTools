@@ -31,8 +31,18 @@ import Operation, { OptDetail } from "../../../core/Operation.tsx";
  * Remove line numbers operation
  */
 class RemoveLineNumbers extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Default",
+        "description": "Removes line numbers from the output if they can be trivially detected.",
+        "infoURL": null,
+        "inputType": "string",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": []
+      },
       id: 'removelinenumbers',
       name: Dot("OrCD8PqwH", "Remove line numbers"),
       infoURL: "https://en.wikipedia.org/wiki/Line_number",

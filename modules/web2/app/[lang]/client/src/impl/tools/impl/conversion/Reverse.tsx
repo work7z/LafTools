@@ -33,8 +33,29 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./_constants.tsx";
  * Reverse operation
  */
 class Reverse extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Default",
+        "description": "Reverses the input string.",
+        "infoURL": null,
+        "inputType": "byteArray",
+        "outputType": "byteArray",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "By",
+            "type": "option",
+            "value": [
+              "Byte",
+              "Character",
+              "Line"
+            ],
+            "defaultIndex": 1
+          }
+        ]
+      },
       id: 'reverse',
       name: "Reverse",
       infoURL: "https://en.wikipedia.org/wiki/Reverse_Polish_notation",

@@ -61,9 +61,13 @@ class Recipe {
    */
   _parseConfig(recipeConfig) {
     recipeConfig.forEach((c) => {
+      let module =
+        c.op instanceof Operation
+          ? c.op.getOptDetail().config
+          : OperationConfig[c.op].module;
       this.opList.push({
         name: c.op, // name -> Operation or name
-        module: OperationConfig[c.op].module,
+        module: module,
         ingValues: c.args,
         breakpoint: c.breakpoint,
         disabled: c.disabled || c.op === "Comment",
@@ -90,6 +94,8 @@ class Recipe {
     for (let item of this.opList) {
       if (item instanceof Operation) {
         newOpList.push(item);
+      } else if (item.name instanceof Operation) {
+        newOpList.push(item.name);
       } else {
         let formattedName = item.name.replace(/ /g, "");
         let clz = await AppOperationMap[formattedName]();

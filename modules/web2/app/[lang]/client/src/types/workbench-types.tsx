@@ -27,6 +27,7 @@ import { ParamStateState, TabBottomType, TabLeftType, TabRightType } from "../re
 export * from './constants';
 
 export type CommonTransformerPassProp = {
+  needFullPageSupport: boolean,
   extId?: string;
   extVM?: ExtensionVM;
   inputBigTextId: string;

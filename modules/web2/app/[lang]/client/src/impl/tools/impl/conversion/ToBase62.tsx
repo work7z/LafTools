@@ -35,8 +35,24 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
  * To Base62 operation
  */
 class ToBase62 extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Default",
+                "description": "Base62 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers. The high number base results in shorter strings than with the decimal or hexadecimal system.",
+                "infoURL": "https://wikipedia.org/wiki/List_of_numeral_systems",
+                "inputType": "ArrayBuffer",
+                "outputType": "string",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Alphabet",
+                        "type": "string",
+                        "value": "0-9A-Za-z"
+                    }
+                ]
+            },
             id: 'tobase62',
             name: Dot("M3ytc", "Encode {0}", "Base62"),
             description: Dot(

@@ -141,10 +141,11 @@ import { getSessionId } from "./ToolInnerImplView";
 
 export type ToolSingleViewProps = {
     extId: string,
-    disableClientMode?: boolean
+    needFullPageSupport?: boolean
 }
 export default (props: ToolSingleViewProps) => {
-    let calcH = props.disableClientMode ? '100%' : `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
+    let { needFullPageSupport = false } = props;
+    let calcH = props.needFullPageSupport ? '100%' : `calc(100% - ${VAL_CSS_TAB_TITLE_PANEL}px - 2px)`;
     let { extId } = props;
     let sessionId = getSessionId(extId);
     let val_ExtensionVM: ExtensionVM = {
@@ -164,6 +165,7 @@ export default (props: ToolSingleViewProps) => {
         sessionId: props.extId,
         inputBigTextId: extId + "-i",
         outputBigTextId: extId + "-o",
+        needFullPageSupport
     };
 
     let finalPanel = <PickupPanel {...commonPassProp}></PickupPanel>;

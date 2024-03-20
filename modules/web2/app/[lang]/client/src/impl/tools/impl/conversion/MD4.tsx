@@ -33,8 +33,18 @@ import { runHash } from "../../../core/lib/Hash.mjs";
  * MD4 operation
  */
 class MD4 extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Crypto",
+        "description": "The MD4 (Message-Digest 4) algorithm is a cryptographic hash function developed by Ronald Rivest in 1990. The digest length is 128 bits. The algorithm has influenced later designs, such as the MD5, SHA-1 and RIPEMD algorithms.<br><br>The security of MD4 has been severely compromised.",
+        "infoURL": "https://wikipedia.org/wiki/MD4",
+        "inputType": "ArrayBuffer",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": []
+      },
       id: 'md4',
       name: Dot("md4.text.192d3", "Generate {0} Hash", "MD4"),
       description: Dot(

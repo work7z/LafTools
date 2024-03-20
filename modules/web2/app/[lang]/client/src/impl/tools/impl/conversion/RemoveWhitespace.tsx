@@ -31,8 +31,49 @@ import Operation, { OptDetail } from "../../../core/Operation.tsx";
  * Remove whitespace operation
  */
 class RemoveWhitespace extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Default",
+        "description": "Optionally removes all spaces, carriage returns, line feeds, tabs and form feeds from the input data.<br><br>This operation also supports the removal of full stops which are sometimes used to represent non-printable bytes in ASCII output.",
+        "infoURL": null,
+        "inputType": "string",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Spaces",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "name": "Carriage returns (\\r)",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "name": "Line feeds (\\n)",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "name": "Tabs",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "name": "Form feeds (\\f)",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "name": "Full stops",
+            "type": "boolean",
+            "value": false
+          }
+        ]
+      },
       id: 'removewhitespace',
       name: Dot("U-SKci0LP", "Remove whitespace"),
       infoURL: "https://en.wikipedia.org/wiki/Whitespace_character",

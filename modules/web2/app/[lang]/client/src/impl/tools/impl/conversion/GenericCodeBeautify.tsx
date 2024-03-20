@@ -35,8 +35,18 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * Generic Code Beautify operation
  */
 class GenericCodeBeautify extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Code",
+                "description": "Attempts to pretty print C-style languages such as C, C++, C#, Java, PHP, JavaScript etc.<br><br>This will not do a perfect job, and the resulting code may not work any more. This operation is designed purely to make obfuscated or minified code more easy to read and understand.<br><br>Things which will not work properly:<ul><li>For loop formatting</li><li>Do-While loop formatting</li><li>Switch/Case indentation</li><li>Certain bit shift operators</li></ul>",
+                "infoURL": null,
+                "inputType": "string",
+                "outputType": "string",
+                "flowControl": false,
+                "manualBake": false,
+                "args": []
+            },
             infoURL: 'https://en.wikipedia.org/wiki/Code_beautification',
             id: 'generic-code-beautify',
             name: Dot("generic-NI-UFPTe0", "Beautify Generic Code"),

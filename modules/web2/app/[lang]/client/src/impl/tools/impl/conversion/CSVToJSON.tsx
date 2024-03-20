@@ -34,9 +34,38 @@ import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
  * CSV to JSON operation
  */
 class CSVToJSON extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
 
     return {
+      config: {
+        "module": "Default",
+        "description": "Converts a CSV file to JSON format.",
+        "infoURL": "https://wikipedia.org/wiki/Comma-separated_values",
+        "inputType": "string",
+        "outputType": "JSON",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Cell delimiters",
+            "type": "binaryShortString",
+            "value": ","
+          },
+          {
+            "name": "Row delimiters",
+            "type": "binaryShortString",
+            "value": "\\r\\n"
+          },
+          {
+            "name": "Format",
+            "type": "option",
+            "value": [
+              "Array of dictionaries",
+              "Array of arrays"
+            ]
+          }
+        ]
+      },
       id: "CSVToJSON",
       name: Dot("tZINaUR4b", "CSV to JSON"),
       description: Dot("raTAuBwBz", "Converts a CSV file to JSON format."),

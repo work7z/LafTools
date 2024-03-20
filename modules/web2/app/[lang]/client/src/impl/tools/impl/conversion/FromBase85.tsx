@@ -35,11 +35,70 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
  * From Base85 operation
  */
 class FromBase85 extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Default",
+                "description": "Base85 (also called Ascii85) is a notation for encoding arbitrary byte data. It is usually more efficient that Base64.<br><br>This operation decodes data from an ASCII string (with an alphabet of your choosing, presets included).<br><br>e.g. <code>BOu!rD]j7BEbo7</code> becomes <code>hello world</code><br><br>Base85 is commonly used in Adobe's PostScript and PDF file formats.",
+                "infoURL": "https://wikipedia.org/wiki/Ascii85",
+                "inputType": "string",
+                "outputType": "byteArray",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Alphabet",
+                        "type": "editableOption",
+                        "value": [
+                            {
+                                "name": "Standard",
+                                "value": "!-u"
+                            },
+                            {
+                                "name": "Z85 (ZeroMQ)",
+                                "value": "0-9a-zA-Z.\\-:+=^!/*?&<>()[]{}@%$#"
+                            },
+                            {
+                                "name": "IPv6",
+                                "value": "0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Remove non-alphabet chars",
+                        "type": "boolean",
+                        "value": true
+                    },
+                    {
+                        "name": "All-zero group char",
+                        "type": "binaryShortString",
+                        "value": "z",
+                        "maxLength": 1
+                    }
+                ],
+                "checks": [
+                    {
+                        "pattern": "^\\s*(?:<~)?[\\s!-uz]*[!-uz]{15}[\\s!-uz]*(?:~>)?\\s*$",
+                        "args": [
+                            "!-u"
+                        ]
+                    },
+                    {
+                        "pattern": "^[\\s0-9a-zA-Z.\\-:+=^!/*?&<>()[\\]{}@%$#]*[0-9a-zA-Z.\\-:+=^!/*?&<>()[\\]{}@%$#]{15}[\\s0-9a-zA-Z.\\-:+=^!/*?&<>()[\\]{}@%$#]*$",
+                        "args": [
+                            "0-9a-zA-Z.\\-:+=^!/*?&<>()[]{}@%$#"
+                        ]
+                    },
+                    {
+                        "pattern": "^[\\s0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~]*[0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~]{15}[\\s0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~]*$",
+                        "args": [
+                            "0-9A-Za-z!#$%&()*+\\-;<=>?@^_`{|}~"
+                        ]
+                    }
+                ]
+            },
 
 
-            // new
             id: 'frombase85',
             infoURL: "https://en.wikipedia.org/wiki/Ascii85",
             name: Dot("rVqlu", "Decode {0}", "Base85"),
@@ -53,7 +112,7 @@ class FromBase85 extends Operation {
 
             exampleOutput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
             exampleInput: "87cURD]i,\"Ebo80",
-            // new
+
 
         }
     }

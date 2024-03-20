@@ -33,8 +33,37 @@ import { INPUT_DELIM_OPTIONS } from "../../../core/lib/Delim.mjs";
  * Tail operation
  */
 class Tail extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Default",
+        "description": "Like the UNIX tail utility.<br>Gets the last n lines.<br>Optionally you can select all lines after line n by entering a negative value for n.<br>The delimiter can be changed so that instead of lines, fields (i.e. commas) are selected instead.",
+        "infoURL": "https://wikipedia.org/wiki/Tail_(Unix)",
+        "inputType": "string",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Delimiter",
+            "type": "option",
+            "value": [
+              "Line feed",
+              "CRLF",
+              "Space",
+              "Comma",
+              "Semi-colon",
+              "Colon",
+              "Nothing (separate chars)"
+            ]
+          },
+          {
+            "name": "Number",
+            "type": "number",
+            "value": 10
+          }
+        ]
+      },
       description: Dot("2Va7Txc-V", "Like the UNIX tail utility.<br>Gets the last n lines.<br>Optionally you can select all lines after line n by entering a negative value for n.<br>The delimiter can be changed so that instead of lines, fields (i.e. commas) are selected instead."),
       infoURL: "https://wikipedia.org/wiki/Tail_(Unix)",
       id: 'tail',

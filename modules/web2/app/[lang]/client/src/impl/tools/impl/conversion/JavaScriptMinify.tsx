@@ -37,8 +37,18 @@ import OperationError from "../../../core/errors/OperationError.mjs";
  * JavaScript Minify operation
  */
 class JavaScriptMinify extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Code",
+        "description": "Compresses JavaScript code.",
+        "infoURL": null,
+        "inputType": "string",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": []
+      },
       id: 'jsminify',
       name: Dot("e3WgQaZlb", "Compresses {0}", "JavaScript"),
       description: Dot(

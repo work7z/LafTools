@@ -34,8 +34,34 @@ import NodeMD6 from "node-md6";
  * MD6 operation
  */
 class MD6 extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Crypto",
+        "description": "The MD6 (Message-Digest 6) algorithm is a cryptographic hash function. It uses a Merkle tree-like structure to allow for immense parallel computation of hashes for very long inputs.",
+        "infoURL": "https://wikipedia.org/wiki/MD6",
+        "inputType": "string",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Size",
+            "type": "number",
+            "value": 256
+          },
+          {
+            "name": "Levels",
+            "type": "number",
+            "value": 64
+          },
+          {
+            "name": "Key",
+            "type": "string",
+            "value": ""
+          }
+        ]
+      },
       infoURL: 'https://en.wikipedia.org/wiki/MD6',
       id: 'md6',
       name: Dot("md6.text.192d3", "Generate {0} Hash", "MD6"),
@@ -75,7 +101,6 @@ class MD6 extends Operation {
         value: "",
       },
     ];
-
   }
 
   /**

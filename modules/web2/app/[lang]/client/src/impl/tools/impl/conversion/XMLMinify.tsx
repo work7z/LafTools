@@ -36,8 +36,24 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * XML Minify operation
  */
 class XMLMinify extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Code",
+        "description": "Compresses eXtensible Markup Language (XML) code.",
+        "infoURL": null,
+        "inputType": "string",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Preserve comments",
+            "type": "boolean",
+            "value": false
+          }
+        ]
+      },
       id: 'xml-minify',
       name: Dot("yMZW-GEgf", "Format XML"),
       infoURL: 'https://en.wikipedia.org/wiki/XML',

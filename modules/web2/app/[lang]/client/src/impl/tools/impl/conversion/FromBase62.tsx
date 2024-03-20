@@ -35,10 +35,26 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
  * From Base62 operation
  */
 class FromBase62 extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Default",
+                "description": "Base62 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers. The high number base results in shorter strings than with the decimal or hexadecimal system.",
+                "infoURL": "https://wikipedia.org/wiki/List_of_numeral_systems",
+                "inputType": "string",
+                "outputType": "byteArray",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Alphabet",
+                        "type": "string",
+                        "value": "0-9A-Za-z"
+                    }
+                ]
+            },
             infoURL: "https://en.wikipedia.org/wiki/Base62",
-            // new
+
             id: 'frombase58',
             name: Dot("L9bQku", "Decode {0}", "Base62"),
             description: Dot(
@@ -50,7 +66,7 @@ class FromBase62 extends Operation {
             exampleOutput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
             exampleInput: "T8dgcjRGkZ3aysdN",
 
-            // new
+
 
 
 

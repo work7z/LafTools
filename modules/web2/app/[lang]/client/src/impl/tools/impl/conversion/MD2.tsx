@@ -34,8 +34,25 @@ import { runHash } from "../../../core/lib/Hash.mjs";
  * MD2 operation
  */
 class MD2 extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Crypto",
+        "description": "The MD2 (Message-Digest 2) algorithm is a cryptographic hash function developed by Ronald Rivest in 1989. The algorithm is optimized for 8-bit computers.<br><br>Although MD2 is no longer considered secure, even as of 2014, it remains in use in public key infrastructures as part of certificates generated with MD2 and RSA. The message digest algorithm consists, by default, of 18 rounds.",
+        "infoURL": "https://wikipedia.org/wiki/MD2_(cryptography)",
+        "inputType": "ArrayBuffer",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Rounds",
+            "type": "number",
+            "value": 18,
+            "min": 0
+          }
+        ]
+      },
       infoURL: 'https://en.wikipedia.org/wiki/MD2_(cryptography)',
       id: 'md2',
       name: Dot("md2.text.192d3", "Generate {0} Hash", "MD2"),

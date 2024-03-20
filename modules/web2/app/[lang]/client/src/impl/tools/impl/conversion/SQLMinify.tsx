@@ -36,8 +36,18 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * SQL Minify operation
  */
 class SQLMinify extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Code",
+        "description": "Compresses Structured Query Language (SQL) code.",
+        "infoURL": null,
+        "inputType": "string",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": []
+      },
       id: "sql-minify",
       name: Dot("6wdtJ4vmg.name.0912", "Minify {0}", "SQL"),
       description: Dot(

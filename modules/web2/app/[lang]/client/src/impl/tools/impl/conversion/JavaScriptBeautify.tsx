@@ -37,8 +37,43 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * JavaScript Beautify operation
  */
 class JavaScriptBeautify extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Code",
+                "description": "Parses and pretty prints valid JavaScript code. Also works with JavaScript Object Notation (JSON).",
+                "infoURL": null,
+                "inputType": "string",
+                "outputType": "string",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Indent string",
+                        "type": "binaryShortString",
+                        "value": "\\t"
+                    },
+                    {
+                        "name": "Quotes",
+                        "type": "option",
+                        "value": [
+                            "Auto",
+                            "Single",
+                            "Double"
+                        ]
+                    },
+                    {
+                        "name": "Semicolons before closing braces",
+                        "type": "boolean",
+                        "value": true
+                    },
+                    {
+                        "name": "Include comments",
+                        "type": "boolean",
+                        "value": true
+                    }
+                ]
+            },
             id: 'jsbeautify',
             infoURL: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
             name: Dot("6UICxHzVR.name", "Beautify {0}", "JavaScript"),

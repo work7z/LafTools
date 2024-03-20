@@ -36,8 +36,24 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * SQL Beautify operation
  */
 class SQLBeautify extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Code",
+                "description": "Indents and prettifies Structured Query Language (SQL) code.",
+                "infoURL": null,
+                "inputType": "string",
+                "outputType": "string",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Indent string",
+                        "type": "binaryShortString",
+                        "value": "\\t"
+                    }
+                ]
+            },
             infoURL: "https://en.wikipedia.org/wiki/SQL",
             id: "sql-beautify",
             name: Dot("json-beautify.name.0912", "Format SQL"),

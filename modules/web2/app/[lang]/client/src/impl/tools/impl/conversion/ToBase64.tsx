@@ -33,8 +33,93 @@ import { toBase64, ALPHABET_OPTIONS } from "../../../core/lib/Base64.mjs";
  * To Base64 operation
  */
 class ToBase64 extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Default",
+        "description": "Base64 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers.<br><br>This operation encodes raw data into an ASCII Base64 string.<br><br>e.g. <code>hello</code> becomes <code>aGVsbG8=</code>",
+        "infoURL": "https://wikipedia.org/wiki/Base64",
+        "inputType": "ArrayBuffer",
+        "outputType": "string",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Alphabet",
+            "type": "editableOption",
+            "value": [
+              {
+                "name": "Standard (RFC 4648): A-Za-z0-9+/=",
+                "value": "A-Za-z0-9+/="
+              },
+              {
+                "name": "URL safe (RFC 4648 §5): A-Za-z0-9-_",
+                "value": "A-Za-z0-9-_"
+              },
+              {
+                "name": "Filename safe: A-Za-z0-9+-=",
+                "value": "A-Za-z0-9+\\-="
+              },
+              {
+                "name": "itoa64: ./0-9A-Za-z=",
+                "value": "./0-9A-Za-z="
+              },
+              {
+                "name": "XML: A-Za-z0-9_.",
+                "value": "A-Za-z0-9_."
+              },
+              {
+                "name": "y64: A-Za-z0-9._-",
+                "value": "A-Za-z0-9._-"
+              },
+              {
+                "name": "z64: 0-9a-zA-Z+/=",
+                "value": "0-9a-zA-Z+/="
+              },
+              {
+                "name": "Radix-64 (RFC 4880): 0-9A-Za-z+/=",
+                "value": "0-9A-Za-z+/="
+              },
+              {
+                "name": "Uuencoding: [space]-_",
+                "value": " -_"
+              },
+              {
+                "name": "Xxencoding: +-0-9A-Za-z",
+                "value": "+\\-0-9A-Za-z"
+              },
+              {
+                "name": "BinHex: !-,-0-689@A-NP-VX-Z[`a-fh-mp-r",
+                "value": "!-,-0-689@A-NP-VX-Z[`a-fh-mp-r"
+              },
+              {
+                "name": "ROT13: N-ZA-Mn-za-m0-9+/=",
+                "value": "N-ZA-Mn-za-m0-9+/="
+              },
+              {
+                "name": "UNIX crypt: ./0-9A-Za-z",
+                "value": "./0-9A-Za-z"
+              },
+              {
+                "name": "Atom128: /128GhIoPQROSTeUbADfgHijKLM+n0pFWXY456xyzB7=39VaqrstJklmNuZvwcdEC",
+                "value": "/128GhIoPQROSTeUbADfgHijKLM+n0pFWXY456xyzB7=39VaqrstJklmNuZvwcdEC"
+              },
+              {
+                "name": "Megan35: 3GHIJKLMNOPQRSTUb=cdefghijklmnopWXYZ/12+406789VaqrstuvwxyzABCDEF5",
+                "value": "3GHIJKLMNOPQRSTUb=cdefghijklmnopWXYZ/12+406789VaqrstuvwxyzABCDEF5"
+              },
+              {
+                "name": "Zong22: ZKj9n+yf0wDVX1s/5YbdxSo=ILaUpPBCHg8uvNO4klm6iJGhQ7eFrWczAMEq3RTt2",
+                "value": "ZKj9n+yf0wDVX1s/5YbdxSo=ILaUpPBCHg8uvNO4klm6iJGhQ7eFrWczAMEq3RTt2"
+              },
+              {
+                "name": "Hazz15: HNO4klm6ij9n+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTts/MRGYbdxSo=ILaUpPBC5",
+                "value": "HNO4klm6ij9n+J2hyf0gzA8uvwDEq3X1Q7ZKeFrWcVTts/MRGYbdxSo=ILaUpPBC5"
+              }
+            ]
+          }
+        ]
+      },
       id: 'tobase64',
       name: Dot("M3ytc", "Encode {0}", "Base64"),
       description: Dot(

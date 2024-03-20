@@ -37,7 +37,7 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
  * From Hex operation
  */
 class FromHex extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
       name: Dot("5RPdtVff3", "From Hex"),
       description:
@@ -45,7 +45,108 @@ class FromHex extends Operation {
       infoURL: "https://wikipedia.org/wiki/Hexadecimal",
       exampleInput: 'ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a',
       exampleOutput: 'ÎÎµÎ¹Î¬ ÏÎ¿Ï',
-      id: 'fromhex'
+      id: 'fromhex',
+      config: {
+        "module": "Default",
+        "description": "Converts a hexadecimal byte string back into its raw value.<br><br>e.g. <code>ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a</code> becomes the UTF-8 encoded string <code>Γειά σου</code>",
+        "infoURL": "https://wikipedia.org/wiki/Hexadecimal",
+        "inputType": "string",
+        "outputType": "byteArray",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Delimiter",
+            "type": "option",
+            "value": [
+              "Auto",
+              "Space",
+              "Percent",
+              "Comma",
+              "Semi-colon",
+              "Colon",
+              "Line feed",
+              "CRLF",
+              "0x",
+              "0x with comma",
+              "\\x",
+              "None"
+            ]
+          }
+        ],
+        "checks": [
+          {
+            "pattern": "^(?:[\\dA-F]{2})+$",
+            "flags": "i",
+            "args": [
+              "None"
+            ]
+          },
+          {
+            "pattern": "^[\\dA-F]{2}(?: [\\dA-F]{2})*$",
+            "flags": "i",
+            "args": [
+              "Space"
+            ]
+          },
+          {
+            "pattern": "^[\\dA-F]{2}(?:,[\\dA-F]{2})*$",
+            "flags": "i",
+            "args": [
+              "Comma"
+            ]
+          },
+          {
+            "pattern": "^[\\dA-F]{2}(?:;[\\dA-F]{2})*$",
+            "flags": "i",
+            "args": [
+              "Semi-colon"
+            ]
+          },
+          {
+            "pattern": "^[\\dA-F]{2}(?::[\\dA-F]{2})*$",
+            "flags": "i",
+            "args": [
+              "Colon"
+            ]
+          },
+          {
+            "pattern": "^[\\dA-F]{2}(?:\\n[\\dA-F]{2})*$",
+            "flags": "i",
+            "args": [
+              "Line feed"
+            ]
+          },
+          {
+            "pattern": "^[\\dA-F]{2}(?:\\r\\n[\\dA-F]{2})*$",
+            "flags": "i",
+            "args": [
+              "CRLF"
+            ]
+          },
+          {
+            "pattern": "^(?:0x[\\dA-F]{2})+$",
+            "flags": "i",
+            "args": [
+              "0x"
+            ]
+          },
+          {
+            "pattern": "^0x[\\dA-F]{2}(?:,0x[\\dA-F]{2})*$",
+            "flags": "i",
+            "args": [
+              "0x with comma"
+            ]
+          },
+          {
+            "pattern": "^(?:\\\\x[\\dA-F]{2})+$",
+            "flags": "i",
+            "args": [
+              "\\x"
+            ]
+          }
+        ]
+      }
     }
   }
   /**

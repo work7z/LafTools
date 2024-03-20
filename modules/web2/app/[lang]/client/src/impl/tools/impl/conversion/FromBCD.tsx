@@ -39,8 +39,63 @@ import BigNumber from "bignumber.js";
  * From BCD operation
  */
 class FromBCD extends Operation {
-  public getOptDetail(): OptDetail | null {
+  public getOptDetail(): OptDetail {
     return {
+      config: {
+        "module": "Default",
+        "description": "Binary-Coded Decimal (BCD) is a class of binary encodings of decimal numbers where each decimal digit is represented by a fixed number of bits, usually four or eight. Special bit patterns are sometimes used for a sign.",
+        "infoURL": "https://wikipedia.org/wiki/Binary-coded_decimal",
+        "inputType": "string",
+        "outputType": "BigNumber",
+        "flowControl": false,
+        "manualBake": false,
+        "args": [
+          {
+            "name": "Scheme",
+            "type": "option",
+            "value": [
+              "8 4 2 1",
+              "7 4 2 1",
+              "4 2 2 1",
+              "2 4 2 1",
+              "8 4 -2 -1",
+              "Excess-3",
+              "IBM 8 4 2 1"
+            ]
+          },
+          {
+            "name": "Packed",
+            "type": "boolean",
+            "value": true
+          },
+          {
+            "name": "Signed",
+            "type": "boolean",
+            "value": false
+          },
+          {
+            "name": "Input format",
+            "type": "option",
+            "value": [
+              "Nibbles",
+              "Bytes",
+              "Raw"
+            ]
+          }
+        ],
+        "checks": [
+          {
+            "pattern": "^(?:\\d{4} ){3,}\\d{4}$",
+            "flags": "",
+            "args": [
+              "8 4 2 1",
+              true,
+              false,
+              "Nibbles"
+            ]
+          }
+        ]
+      },
       id: "frombcd",
       name: "From BCD",
       description: Dot("0YKce", "Converts a Binary-Coded Decimal (BCD) string to a decimal number."),

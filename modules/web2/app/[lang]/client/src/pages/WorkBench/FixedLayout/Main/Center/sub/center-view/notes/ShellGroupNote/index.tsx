@@ -332,10 +332,8 @@ export default () => {
                         <div className=" pt-4  transform p-2 ">
                             {
                                 showCreatePanel ? <Button onClick={() => {
-                                    // new create
                                     onShowCreatePanel(false)
                                 }} text={Dot("tiaiB", "Cancel")} large intent="danger" minimal outlined fill  > </Button> : <Button onClick={() => {
-                                    // new create
                                     onShowCreatePanel(true)
                                 }} text={Dot("fEr5j", "Create New Script")} large intent="success" fill  > </Button>
                             }

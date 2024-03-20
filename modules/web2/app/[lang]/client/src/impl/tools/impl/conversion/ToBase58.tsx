@@ -35,8 +35,33 @@ import { ALPHABET_OPTIONS } from "../../../core/lib/Base58.mjs";
  * To Base58 operation
  */
 class ToBase58 extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Default",
+                "description": "Base58 (similar to Base64) is a notation for encoding arbitrary byte data. It differs from Base64 by removing easily misread characters (i.e. l, I, 0 and O) to improve human readability.<br><br>This operation encodes data in an ASCII string (with an alphabet of your choosing, presets included).<br><br>e.g. <code>hello world</code> becomes <code>StV1DL6CwTryKyV</code><br><br>Base58 is commonly used in cryptocurrencies (Bitcoin, Ripple, etc).",
+                "infoURL": "https://wikipedia.org/wiki/Base58",
+                "inputType": "ArrayBuffer",
+                "outputType": "string",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Alphabet",
+                        "type": "editableOption",
+                        "value": [
+                            {
+                                "name": "Bitcoin",
+                                "value": "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+                            },
+                            {
+                                "name": "Ripple",
+                                "value": "rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz"
+                            }
+                        ]
+                    }
+                ]
+            },
             id: 'base58',
             infoURL: 'https://en.wikipedia.org/wiki/Base58',
             name: Dot("M3qytc", "Encode {0}", "Base58"),

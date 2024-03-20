@@ -39,8 +39,34 @@ import _ from "lodash";
  * JSON Beautify operation
  */
 class JSONBeautify extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Code",
+                "description": "Indents and pretty prints JavaScript Object Notation (JSON) code.<br><br>Tags: json viewer, prettify, syntax highlighting",
+                "infoURL": null,
+                "inputType": "string",
+                "outputType": "html",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Indent string",
+                        "type": "binaryShortString",
+                        "value": "    "
+                    },
+                    {
+                        "name": "Sort Object Keys",
+                        "type": "boolean",
+                        "value": false
+                    },
+                    {
+                        "name": "Formatted",
+                        "type": "boolean",
+                        "value": true
+                    }
+                ]
+            },
             id: 'json-beautify',
             name: Dot("json-beautify.text.93kq", "Beautify JSON Data"),
             description: Dot(

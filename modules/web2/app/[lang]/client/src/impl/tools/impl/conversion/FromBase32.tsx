@@ -33,10 +33,41 @@ import Utils from "../../../core/Utils.mjs";
  * From Base32 operation
  */
 class FromBase32 extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Default",
+                "description": "Base32 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers. It uses a smaller set of characters than Base64, usually the uppercase alphabet and the numbers 2 to 7.",
+                "infoURL": "https://wikipedia.org/wiki/Base32",
+                "inputType": "string",
+                "outputType": "byteArray",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Alphabet",
+                        "type": "binaryString",
+                        "value": "A-Z2-7="
+                    },
+                    {
+                        "name": "Remove non-alphabet chars",
+                        "type": "boolean",
+                        "value": true
+                    }
+                ],
+                "checks": [
+                    {
+                        "pattern": "^(?:[A-Z2-7]{8})+(?:[A-Z2-7]{2}={6}|[A-Z2-7]{4}={4}|[A-Z2-7]{5}={3}|[A-Z2-7]{7}={1})?$",
+                        "flags": "",
+                        "args": [
+                            "A-Z2-7=",
+                            false
+                        ]
+                    }
+                ]
+            },
             infoURL: "https://en.wikipedia.org/wiki/Base32",
-            // new
+
             id: 'frombase32',
             name: Dot("rVdu", "Decode {0}", "Base32"),
             description: Dot(
@@ -47,7 +78,7 @@ class FromBase32 extends Operation {
             // example for base32
             exampleInput: "JBSWY3DPEBLW64TMMQQQ::::",
             exampleOutput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
-            // new
+
 
         }
     }

@@ -33,9 +33,24 @@ import Utils from "../../../core/Utils.mjs";
  * To Base32 operation
  */
 class ToBase32 extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
-            // new
+            config: {
+                "module": "Default",
+                "description": "Base32 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers. It uses a smaller set of characters than Base64, usually the uppercase alphabet and the numbers 2 to 7.",
+                "infoURL": "https://wikipedia.org/wiki/Base32",
+                "inputType": "ArrayBuffer",
+                "outputType": "string",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Alphabet",
+                        "type": "binaryString",
+                        "value": "A-Z2-7="
+                    }
+                ]
+            },
             id: 'tobase32',
             infoURL: "https://wikipedia.org/wiki/Base32",
             name: Dot("M3ytc", "Encode {0}", "Base32"),
@@ -46,7 +61,7 @@ class ToBase32 extends Operation {
             ),
             exampleOutput: "JBSWY3DPEBLW64TMMQQQ::::",
             exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
-            // new
+
         }
     }
 

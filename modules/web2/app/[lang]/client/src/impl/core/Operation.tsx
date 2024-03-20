@@ -25,7 +25,8 @@ export type OptDetail = {
   infoURL: string;
   description: string;
   id: string;
-  name: string
+  name: string;
+  config: any
 }
 export default abstract class Operation {
   private _inputType: number = -1;
@@ -41,7 +42,7 @@ export default abstract class Operation {
   public name: string = "";
   public module: string = "";
 
-  public abstract getOptDetail(): OptDetail | null;
+  public abstract getOptDetail(): OptDetail;
 
   /**
    * Runs the operation.

@@ -36,8 +36,24 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
  * CSS Beautify operation
  */
 class CSSBeautify extends Operation {
-    public getOptDetail(): OptDetail | null {
+    public getOptDetail(): OptDetail {
         return {
+            config: {
+                "module": "Code",
+                "description": "Indents and prettifies Cascading Style Sheets (CSS) code.",
+                "infoURL": null,
+                "inputType": "string",
+                "outputType": "string",
+                "flowControl": false,
+                "manualBake": false,
+                "args": [
+                    {
+                        "name": "Indent string",
+                        "type": "binaryShortString",
+                        "value": "\\t"
+                    }
+                ]
+            },
             id: 'cssbeautify',
             name: Dot("Ol1ZcWomT", "{0} Beautify", "CSS"),
             description: Dot(
