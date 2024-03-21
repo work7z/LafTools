@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">LafTools'un Insider Sürümünü Önizleyin</a>
+<a target="_blank" href="http://cloud.laftools.cn">LafTools'un Insider Sürümünü Önizleyin</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: Bu sayfa dahili olarak LafTools'tan oluşturulmuştur.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Bu sayfa dahili olarak LafTools'tan oluşturulmuştur.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 Bu işlevleri hızlı bir şekilde kullanabilmeniz için, ABD ve CN bölgesinde kullanmanız için istikrarlı bir çevrimiçi web sitesi kurduk. Belirli işletim sistemi özelliklerine dayanan bazı araçlar dışında çoğu araç çevrimiçi web sitelerimizde mevcuttur.
 
 - 🇺🇸 Birleşik Devlet: [laftools.dev](https://laftools.dev)
-- 🇨🇳 Yalnızca Çin Anakarası: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 Yalnızca Çin Anakarası: [laftools.cn](https://laftools.cn)
 
 # 💡 giriiş
 
@@ -61,7 +61,7 @@ Son zamanlarda LafTools'un mimarisini next.js'ye dayalı olarak yeniden düzenli
 
 ## 1. Sistem Ortamını Kurma
 
-Basitlik adına, bu depoyu Windows'ta `C:\Usersjerry\project\laftools-repo`'a veya Linux/MacOS'ta `/Users/jerry/projects/laftools-repo`'e kopyaladığınızı varsayalım, ardından env'yi bildirmeli ve **~/.bashrc* dosyanızda aşağıdaki config'i ayarlamalısınız. * veya herhangi bir komutu çalıştırmadan önce bunları yürütün.
+Basitlik adına, bu depoyu Windows'ta `C:\Usersjerry\project\laftools-repo`'a veya Linux/MacOS'ta `/Users/jerry/projects/laftools-repo`'e kopyaladığınızı varsayalım, ardından env'yi bildirmeli ve \*_~/.bashrc_ dosyanızda aşağıdaki config'i ayarlamalısınız. \* veya herhangi bir komutu çalıştırmadan önce bunları yürütün.
 
 Windows işletim sistemi kullanıyorsanız lütfen tüm komutların git-bash'ta yürütüldüğünden emin olun, daha fazla bilgi için lütfen [CONTRIBUTION](/docs/tr/CONTRIBUTION.md) konusuna bakın. Bunun dışında bu projenin bulunduğu dosya yolunda boşluk veya İngilizce olmayan karakterlerin kullanılmaması tavsiye edilir.
 

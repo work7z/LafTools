@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">Preview the Insider Version of LafTools</a>
+<a target="_blank" href="http://cloud.laftools.cn">Preview the Insider Version of LafTools</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: This page is generated from LafTools internally.</i> <br/> English  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: This page is generated from LafTools internally.</i> <br/> English | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.
 
 - 🇺🇸 United State: [laftools.dev](https://laftools.dev)
-- 🇨🇳 China Mainland: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 China Mainland: [laftools.cn](https://laftools.cn)
 
 # 💡 Introduction
 

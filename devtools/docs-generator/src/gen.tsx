@@ -71,7 +71,7 @@ _.forEach(i18nItems, eachI18nItem => {
         // do NOT remove extraLang which is used in eval function
         let extraLang = pngSupportList[eachI18nItem.Value] ? '-' + eachI18nItem.Value : ''
         let lang = eachI18nItem.Value
-        let previewURL = eachI18nItem.Value != 'zh_CN' ? 'laftools.dev' : 'laf-tools.com'
+        let previewURL = eachI18nItem.Value != 'zh_CN' ? 'laftools.dev' : 'laftools.cn'
 
         let noteForGenKey = "NOTE_FOR_GEN"
         if (fileContent.indexOf(noteForGenKey) == -1) {

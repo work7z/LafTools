@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">Vista previa de la versión Insider de LafTools</a>
+<a target="_blank" href="http://cloud.laftools.cn">Vista previa de la versión Insider de LafTools</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: Esta página se genera internamente desde LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  Español  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Esta página se genera internamente desde LafTools.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | Español | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 Para utilizar rápidamente estas funciones, hemos implementado un sitio web estable en línea en la región de EE. UU. y CN para que usted lo utilice. La mayoría de las herramientas están disponibles en nuestros sitios web en línea, excepto algunas herramientas que dependen de capacidades específicas del sistema operativo.
 
 - 🇺🇸 estado unido: [laftools.dev](https://laftools.dev)
-- 🇨🇳 Solo China continental: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 Solo China continental: [laftools.cn](https://laftools.cn)
 
 # 💡 Introducción
 
@@ -61,7 +61,7 @@ Recientemente, estamos refactorizando la arquitectura de LafTools basada en next
 
 ## 1. Configurar el entorno del sistema
 
-En aras de la simplicidad, digamos que ha clonado este repositorio en `C:\Usersjerry\project\laftools-repo` en Windows o en `/Users/jerry/projects/laftools-repo` en Linux/MacOS, luego debe declarar env y establecer la configuración a continuación en su archivo **~/.bashrc* *, o simplemente ejecutarlos antes de ejecutar cualquier comando.
+En aras de la simplicidad, digamos que ha clonado este repositorio en `C:\Usersjerry\project\laftools-repo` en Windows o en `/Users/jerry/projects/laftools-repo` en Linux/MacOS, luego debe declarar env y establecer la configuración a continuación en su archivo \*_~/.bashrc_ \*, o simplemente ejecutarlos antes de ejecutar cualquier comando.
 
 Si está utilizando el sistema operativo Windows, asegúrese de que todos los comandos se ejecuten en git-bash. Para obtener más información, consulte [CONTRIBUCIÓN](/docs/es/CONTRIBUTION.md). Aparte de esto, se recomienda evitar el uso de espacios en blanco o caracteres que no estén en inglés en la ruta del archivo donde se encuentra este proyecto.
 

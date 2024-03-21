@@ -29,6 +29,7 @@ import {
 } from "../../../../../../../../../types/workbench-types";
 import { CommonTransformerPassProp } from "../../../../../../../../../types/workbench-types";
 import { Dot } from "../../../../../../../../../utils/cTranslationUtils";
+import { Allotment, AllotmentHandle } from "allotment";
 import { FN_GetDispatch } from "../../../../../../../../../nocycle";
 import BigTextSlice from "../../../../../../../../../reducers/bigTextSlice";
 import _, { set } from "lodash";
@@ -38,7 +39,7 @@ import { useEffect, useRef, useState } from "react";
 import AjaxUtils from "../../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../../components/SysTabPane";
-import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER, LabelValuePair } from "../../../../../../../../../types/constants";
+import { CSS_NAV_BP_TAB_HEIGHT, CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER, LabelValuePair } from "../../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../../reducers/runtimeStatusSlice";
 
@@ -56,7 +57,10 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
     let crtRuntimeStatus = props.crtRuntimeStatus
     let shouldVert = useShouldVerticalModeOrNot()
 
-    let toolTabIndex = crtRuntimeStatus.toolTabIndex || "output"
+    let toolTabIndex = crtRuntimeStatus.toolTabIndex || 'tools'
+    if (toolTabIndex == 'output') {
+        toolTabIndex = 'tools'
+    }
     let sessionId = props.sessionId;
     let extVM = props.extVM
     let actions = extVM?.Actions
@@ -184,21 +188,27 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
     }
 
 
-    let finalShowContent = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
+    let finalShowContent_l = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
+    let finalShowContent_r = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
     let pdValue = 'p-2'
     let loadingStatic = false
     let toolHanlder = props.toolHandler
-
     if (toolTabIndex == 'wiki') {
         pdValue = 'p-0'
-        finalShowContent = <div className="w-full h-full overflow-auto">
+        finalShowContent_l = <div className="w-full h-full overflow-auto">
             <iframe src={toolHanlder?.getOperations()[0].getOptDetail()?.infoURL} className="w-full h-full border-none outline-none"></iframe>
         </div>
     } else if (toolTabIndex == "tools") {
-        finalShowContent = <FormGenPanel fixSingleColumn={!shouldVert} list={generalList}></FormGenPanel >
+        finalShowContent_l = <FormGenPanel fixSingleColumn={!shouldVert} list={generalList}></FormGenPanel >
     } else if (toolTabIndex == "output") {
-        pdValue = 'p-0'
-        finalShowContent = <div className="w-full h-full overflow-auto">
+    } else if (toolTabIndex == "faq") {
+        finalShowContent_l = <FaqPanel key={sessionId} {...props}></FaqPanel>
+    } else if (toolTabIndex == 'code') {
+        finalShowContent_l = <CodePanel {...props}></CodePanel>
+    }
+
+    finalShowContent_r = (
+        <div className="w-full h-full overflow-auto">
             <GenCodeMirror
                 readOnly
                 lineWrap
@@ -207,11 +217,8 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
                 bigTextId={props.outputBigTextId}
             ></GenCodeMirror>
         </div>
-    } else if (toolTabIndex == "faq") {
-        finalShowContent = <FaqPanel key={sessionId} {...props}></FaqPanel>
-    } else if (toolTabIndex == 'code') {
-        finalShowContent = <CodePanel {...props}></CodePanel>
-    }
+    )
+
     // useEffect(() => {
     //     if (props.disableSeparateOutputMode) {
     //         if (toolTabIndex == 'output') {
@@ -228,7 +235,7 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
     let icon_f: IconName = loadingStatic ? "changes" :
         crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "refresh" :
             crtRuntimeStatus.processText ? "tick" :
-                "console"
+                "export"
     let clz_f = (
         loadingStatic ? "" + (
             greenClz
@@ -238,21 +245,115 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
     )
     let maintext_f = (
         loadingStatic ? Dot("y_9YqM", "Loading static resources...") :
-            crtRuntimeStatus.processText ? crtRuntimeStatus.processText : Dot("z-o28we", "Process Panel")
+            crtRuntimeStatus.processText ? crtRuntimeStatus.processText : Dot("z-o2ssde", "Result Viewer")
     )
-    let iconJSX = <Icon intent={textIcon_f} icon={icon_f} iconSize={shouldHideLeftTextInBar ? 12 : 20} className={(
+    let iconJSX = <Icon intent={textIcon_f} icon={icon_f} iconSize={20} className={(
         shouldHideLeftTextInBar ? " mr-1  " : " mr-2  "
     ) + (
             crtRuntimeStatus.processing ? " animate-spin " : ""
         )} />
+    let jsx_left_setting_or_faq = (
+        <div className='h-full p-[1px]'>
+            <Navbar>
 
+                <Navbar.Group align={Alignment.LEFT}>
+                    <Tabs
+                        animate={true}
+                        fill={true}
+                        id="navbar"
+                        large={false}
+                        onChange={(v) => {
+                            FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: v as Val_ToolTabIndex }))
+                        }}
+                        selectedTabId={toolTabIndex}
+                    >
+                        <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(generalList)} />
+
+                        <Tab id="faq" icon="manual" title={"FAQ"} />
+                        {
+                            !toolHandler || toolHanlder?.getMetaInfo()?.hideCodePanel ? '' : <Tab id="code" icon="code" title={Dot("JQEVK", "Code")} />
+                        }
+                    </Tabs>
+                </Navbar.Group>
+            </Navbar>
+            <div style={{ height: `calc(100% - ${CSS_NAV_BP_TAB_HEIGHT}px)`, overflow: 'auto' }} className={pdValue}>
+                {finalShowContent_l}
+            </div>
+        </div>
+    )
+    let jsx_right_output_or_somethingelse = (
+        <div className='h-full p-[1px]'>
+            <Navbar>
+                <Navbar.Group>
+                    <Navbar.Heading >
+                        {iconJSX}
+                        <span className={
+                            clz_f
+                        }>
+                            {maintext_f}
+                        </span>
+                    </Navbar.Heading>
+                    {/* <div className={
+                        "   " + (
+
+                            loadingStatic || crtRuntimeStatus.processOK ? "" + (
+                                "bg-lime-100 dark:bg-lime-800 "
+                            ) :
+                                crtRuntimeStatus.processError ? "bg-yellow-200 dark:bg-yellow-800 " : crtRuntimeStatus.processing ? " bg-sky-200 dark:bg-sky-800 " : "  bg-zinc-100 dark:bg-zinc-800"
+                        ) + ' ' + (
+                            "   text-black dark:text-white absolute top-0 right-0 p-1 text-xs flex justify-between items-center"
+                        )
+                    } style={{
+                    }}>{iconJSX}
+                        <span style={{
+                            fontSize: '9px',
+                            marginTop: '-1.5px'
+                        }}>
+                            {maintext_f}</span>
+                    </div> */}
+                </Navbar.Group>
+                <Navbar.Group align={Alignment.RIGHT}>
+                    <Tabs
+                        animate={true}
+                        fill={true}
+                        // id="navbar"
+                        large={false}
+                        onChange={(v) => {
+                            // FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: v as Val_ToolTabIndex }))
+                        }}
+                        selectedTabId={'output'}
+                    >
+                        {
+                            props.disableSeparateOutputMode ? '' : <Tab id="output" icon={
+                                crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "generate"
+                            } title={Dot("output.text.btn", "Output")} />
+                        }
+                    </Tabs>
+                </Navbar.Group>
+            </Navbar>
+            <div style={{ height: `calc(100% - ${CSS_NAV_BP_TAB_HEIGHT})`, overflow: 'auto' }} className={'p-0'}>
+                {finalShowContent_r}
+            </div>
+
+        </div>
+
+    )
+    return <div key={props.sessionId} className="w-full h-full">
+        <Allotment vertical={!shouldVert}>
+            <Allotment.Pane>
+                {jsx_left_setting_or_faq}
+            </Allotment.Pane>
+            <Allotment.Pane>
+                {jsx_right_output_or_somethingelse}
+            </Allotment.Pane>
+        </Allotment>
+    </div>
 
     return <div key={props.sessionId} className="h-full overflow-auto relative" style={{
         padding: '1px'
     }}>
         <Navbar>
             <Navbar.Group>
-
                 {
                     shouldHideLeftTextInBar ? <div className={
                         "   " + (
@@ -306,8 +407,8 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
                 </Tabs>
             </Navbar.Group>
         </Navbar>
-        <div style={{ height: `calc(100% - 51px)`, overflow: 'auto' }} className={pdValue}>
-            {finalShowContent}
+        <div style={{ height: `calc(100% - ${CSS_NAV_BP_TAB_HEIGHT})`, overflow: 'auto' }} className={pdValue}>
+            {finalShowContent_l}
         </div>
     </div>
 }

@@ -116,7 +116,8 @@ export let generateMetadata = async function (props: CategorySearchProps): Promi
 }
 
 export let isCensorShipForWebsiteMode = () => {
-    return true && isChineseByXLocal();
+    return false
+    // return true && isChineseByXLocal();
 }
 
 export type { CombindSearchProps, AuthInfoProps } from './[category]/page'

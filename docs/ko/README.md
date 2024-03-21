@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">LafTools의 내부자 버전 미리보기</a>
+<a target="_blank" href="http://cloud.laftools.cn">LafTools의 내부자 버전 미리보기</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: 이 페이지는 LafTools에서 내부적으로 생성됩니다.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  한국어 | [More](/docs/) <br/>
+<i>Note: 이 페이지는 LafTools에서 내부적으로 생성됩니다.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | 한국어 | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 이러한 기능을 빠르게 사용할 수 있도록 미국과 CN 지역에 안정적인 온라인 웹사이트를 배포했습니다. 특정 OS 기능에 의존하는 일부 도구를 제외하고 대부분의 도구는 온라인 웹사이트에서 사용할 수 있습니다.
 
 - 🇺🇸 미국: [laftools.dev](https://laftools.dev)
-- 🇨🇳 중국 본토만 해당: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 중국 본토만 해당: [laftools.cn](https://laftools.cn)
 
 # 💡 소개
 
@@ -61,7 +61,7 @@
 
 ## 1. 시스템 환경 설정
 
-단순화를 위해 이 저장소를 Windows의 `C:\Usersjerry\project\laftools-repo` 또는 Linux/MacOS의 `/Users/jerry/projects/laftools-repo`에 복제했다고 가정하고 **~/.bashrc* 파일에서 env를 선언하고 아래 구성을 설정해야 합니다. * 또는 명령을 실행하기 전에 간단히 실행하십시오.
+단순화를 위해 이 저장소를 Windows의 `C:\Usersjerry\project\laftools-repo` 또는 Linux/MacOS의 `/Users/jerry/projects/laftools-repo`에 복제했다고 가정하고 \*_~/.bashrc_ 파일에서 env를 선언하고 아래 구성을 설정해야 합니다. \* 또는 명령을 실행하기 전에 간단히 실행하십시오.
 
 Windows OS를 사용하는 경우 모든 명령이 git-bash에서 실행되는지 확인하세요. 자세한 내용은 [CONTRIBUTION](/docs/ko/CONTRIBUTION.md)을 참조하세요. 이 외에도 이 프로젝트가 있는 파일 경로에는 공백이나 영어가 아닌 문자를 사용하지 않는 것이 좋습니다.
 

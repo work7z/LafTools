@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">Forhåndsvisning af Insider-versionen af ​​LafTools</a>
+<a target="_blank" href="http://cloud.laftools.cn">Forhåndsvisning af Insider-versionen af ​​LafTools</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: Denne side er genereret fra LafTools internt.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Denne side er genereret fra LafTools internt.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 For hurtigt at bruge disse funktioner har vi implementeret en stabil online hjemmeside i USA og CN-regionen, som du kan bruge. De fleste værktøjer er tilgængelige på vores online-websteder med undtagelse af nogle værktøjer, der er afhængige af specifikke OS-funktioner.
 
 - 🇺🇸 forenet stat: [laftools.dev](https://laftools.dev)
-- 🇨🇳 Kun Kinas fastland: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 Kun Kinas fastland: [laftools.cn](https://laftools.cn)
 
 # 💡 Introduktion
 
@@ -61,7 +61,7 @@ For nylig har vi omstruktureret arkitekturen af ​​LafTools baseret på next.
 
 ## 1. Opsæt systemmiljø
 
-Lad os for nemheds skyld sige, at du har klonet dette lager til enten `C:\Usersjerry\project\laftools-repo` på Windows eller `/Users/jerry/projects/laftools-repo` på Linux/MacOS, så skal du erklære env og indstille config nedenfor i din fil **~/.bashrc* *, eller blot udføre dem, før du kører en kommando.
+Lad os for nemheds skyld sige, at du har klonet dette lager til enten `C:\Usersjerry\project\laftools-repo` på Windows eller `/Users/jerry/projects/laftools-repo` på Linux/MacOS, så skal du erklære env og indstille config nedenfor i din fil \*_~/.bashrc_ \*, eller blot udføre dem, før du kører en kommando.
 
 Hvis du bruger Windows OS, skal du sørge for, at alle kommandoer udføres i git-bash, læs mere, se venligst [BIDRAG](/docs/da/CONTRIBUTION.md). Bortset fra dette anbefales det at undgå at bruge mellemrum eller ikke-engelske tegn i filstien, hvor dette projekt er placeret.
 

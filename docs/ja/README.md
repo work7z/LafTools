@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">LafTools の Insider バージョンをプレビューする</a>
+<a target="_blank" href="http://cloud.laftools.cn">LafTools の Insider バージョンをプレビューする</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: このページは LafTools から内部的に生成されます。</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  日本語  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: このページは LafTools から内部的に生成されます。</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | 日本語 | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 これらの機能をすぐに使用できるように、安定したオンライン Web サイトを米国および中国地域に展開しました。特定の OS 機能に依存する一部のツールを除き、ほとんどのツールはオンライン Web サイトで入手できます。
 
 - 🇺🇸 合衆国: [laftools.dev](https://laftools.dev)
-- 🇨🇳 中国本土のみ: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 中国本土のみ: [laftools.cn](https://laftools.cn)
 
 # 💡 導入
 
@@ -61,7 +61,7 @@
 
 ## 1. システム環境のセットアップ
 
-わかりやすくするために、このリポジトリを Windows の `C:\Usersjerry\project\laftools-repo` または Linux/MacOS の `/Users/jerry/projects/laftools-repo` にクローンしたとします。その後、ファイル **~/.bashrc* で env を宣言し、以下の構成を設定する必要があります。 *、またはコマンドを実行する前に単にそれらを実行します。
+わかりやすくするために、このリポジトリを Windows の `C:\Usersjerry\project\laftools-repo` または Linux/MacOS の `/Users/jerry/projects/laftools-repo` にクローンしたとします。その後、ファイル \*_~/.bashrc_ で env を宣言し、以下の構成を設定する必要があります。 \*、またはコマンドを実行する前に単にそれらを実行します。
 
 Windows OS を使用している場合は、すべてのコマンドが git-bash で実行されていることを確認してください。詳細については、[貢献](/docs/ja/CONTRIBUTION.md) を参照してください。これとは別に、このプロジェクトが配置されているファイル パスでは空白文字や英語以外の文字を使用しないことをお勧めします。
 

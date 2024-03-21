@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">Xem trước phiên bản nội bộ của LafTools</a>
+<a target="_blank" href="http://cloud.laftools.cn">Xem trước phiên bản nội bộ của LafTools</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: Trang này được tạo từ nội bộ LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Trang này được tạo từ nội bộ LafTools.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 Để sử dụng nhanh các chức năng này, chúng tôi đã triển khai trang web trực tuyến ổn định tại khu vực US và CN để bạn sử dụng. Hầu hết các công cụ đều có sẵn trên các trang web trực tuyến của chúng tôi ngoại trừ một số công cụ dựa trên khả năng cụ thể của hệ điều hành.
 
 - 🇺🇸 cộng hòa Liên bang: [laftools.dev](https://laftools.dev)
-- 🇨🇳 Chỉ Trung Quốc đại lục: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 Chỉ Trung Quốc đại lục: [laftools.cn](https://laftools.cn)
 
 # 💡 Giới thiệu
 
@@ -61,7 +61,7 @@ Gần đây, chúng tôi đang tái cấu trúc kiến ​​trúc của LafTool
 
 ## 1. Thiết lập môi trường hệ thống
 
-Để đơn giản, giả sử bạn đã sao chép kho lưu trữ này sang `C:\Usersjerry\project\laftools-repo` trên Windows hoặc `/Users/jerry/projects/laftools-repo` trên Linux/MacOS, thì bạn nên khai báo env và đặt config bên dưới trong tệp của mình **~/.bashrc* * hoặc đơn giản là thực thi chúng trước khi chạy bất kỳ lệnh nào.
+Để đơn giản, giả sử bạn đã sao chép kho lưu trữ này sang `C:\Usersjerry\project\laftools-repo` trên Windows hoặc `/Users/jerry/projects/laftools-repo` trên Linux/MacOS, thì bạn nên khai báo env và đặt config bên dưới trong tệp của mình \*_~/.bashrc_ \* hoặc đơn giản là thực thi chúng trước khi chạy bất kỳ lệnh nào.
 
 Nếu bạn đang sử dụng HĐH Windows, vui lòng đảm bảo rằng tất cả các lệnh được thực thi trong git-bash, tìm hiểu thêm vui lòng tham khảo [ĐÓNG GÓP](/docs/vi/CONTRIBUTION.md). Ngoài ra, bạn nên tránh sử dụng bất kỳ khoảng trắng hoặc ký tự không phải tiếng Anh nào trong đường dẫn tệp chứa dự án này.
 

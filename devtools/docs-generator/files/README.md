@@ -5,7 +5,7 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">${Dot("SSjHemio0","Preview the Insider Version of LafTools")}</a>
+<a target="_blank" href="http://cloud.laftools.cn">${Dot("SSjHemio0","Preview the Insider Version of LafTools")}</a>
 </div>
 </center> -->
 <br><br>
@@ -18,7 +18,7 @@ NOTE_FOR_GEN
 ${Dot("hDdqkdxkSd","To quickly use these functions, we've deployed stable online website in US and CN region for you to use. Most tools are available in our online websites except for some tools that rely on specific OS capablities.")}
 
 - 🇺🇸 ${Dot("usvss","United State")}: [laftools.dev](https://laftools.dev)
-- 🇨🇳 ${Dot("cnvss","China Mainland")}: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 ${Dot("cnvss","China Mainland")}: [laftools.cn](https://laftools.cn)
 
 # 💡 ${Dot("JjpQy-eIq","Introduction")}
 

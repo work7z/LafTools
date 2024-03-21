@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">預覽LafTools工具箱的 Insider 版本</a>
+<a target="_blank" href="http://cloud.laftools.cn">預覽LafTools工具箱的 Insider 版本</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: 該頁面是由LafTools工具箱內部產生的。</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  繁體中文  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: 該頁面是由LafTools工具箱內部產生的。</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | 繁體中文 | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 為了快速使用這些功能，我們在美國和中國地區部署了穩定的線上網站供您使用。除了一些依賴特定作業系統功能的工具外，大多數工具都可以在我們的線上網站上找到。
 
 - 🇺🇸 海外版: [laftools.dev](https://laftools.dev)
-- 🇨🇳 國內版: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 國內版: [laftools.cn](https://laftools.cn)
 
 # 💡 介紹
 
@@ -61,7 +61,7 @@
 
 ## 1. 設定係統環境
 
-為了簡單起見，假設您已將此儲存庫克隆到 Windows 上的 `C:\Usersjerry\project\laftools-repo` 或 Linux/MacOS 上的 `/Users/jerry/projects/laftools-repo`，那麼您應該在檔案 **~/.bashrc* 中聲明 env 並在下方設定設定* ，或者只是在運行任何命令之前執行它們。
+為了簡單起見，假設您已將此儲存庫克隆到 Windows 上的 `C:\Usersjerry\project\laftools-repo` 或 Linux/MacOS 上的 `/Users/jerry/projects/laftools-repo`，那麼您應該在檔案 \*_~/.bashrc_ 中聲明 env 並在下方設定設定\* ，或者只是在運行任何命令之前執行它們。
 
 如果您使用的是 Windows 作業系統，請確保所有命令都在 git-bash 中執行，以了解更多資訊請參閱 [貢獻](/docs/zh_HK/CONTRIBUTION.md)。除此之外，建議避免在該項目所在的檔案路徑中使用任何空格或非英文字元。
 

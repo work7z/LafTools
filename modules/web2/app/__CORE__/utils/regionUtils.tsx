@@ -22,7 +22,8 @@
 
 let regionUtils = {
     getCNHosts(): string[] {
-        return ["laf-tools.com"]
+        // return ["laftools.cn"]
+        return ['laftools.cn']
     },
     getUSHosts(): string[] {
         return ["laftools.dev"]

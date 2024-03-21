@@ -420,15 +420,15 @@ export let fn_rightNav = (): LabelHrefType[] => {
     let rightNav: LabelHrefType[] = [
         {
             label: Dot("str.login", "Login"),
-            href: 'https://my.laf-tools.com/v2/zh-hans/nav/form/sign-in'
+            href: 'https://my.laftools.cn/v2/zh-hans/nav/form/sign-in'
         },
         {
             label: Dot("str.register", "Register"),
-            href: 'https://my.laf-tools.com/v2/zh-hans/nav/form/sign-up'
+            href: 'https://my.laftools.cn/v2/zh-hans/nav/form/sign-up'
         },
         {
             label: Dot("str.usercentre", "User Centre"),
-            href: 'https://my.laf-tools.com'
+            href: 'https://my.laftools.cn'
         },
     ].map(x => {
         x.href = 'https://codegen.cc'

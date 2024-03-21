@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">Tekintse meg a LafTools Insider verzióját</a>
+<a target="_blank" href="http://cloud.laftools.cn">Tekintse meg a LafTools Insider verzióját</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: Ezt az oldalt a LafTools belsőleg hozta létre.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Ezt az oldalt a LafTools belsőleg hozta létre.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 A funkciók gyors használatához stabil online webhelyet állítottunk be az Egyesült Államokban és a CN régióban. A legtöbb eszköz elérhető online webhelyeinken, kivéve néhány olyan eszközt, amelyek az operációs rendszer adott képességeire támaszkodnak.
 
 - 🇺🇸 Egyesült Államok: [laftools.dev](https://laftools.dev)
-- 🇨🇳 Csak Kína szárazföldi része: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 Csak Kína szárazföldi része: [laftools.cn](https://laftools.cn)
 
 # 💡 Bevezetés
 
@@ -61,7 +61,7 @@ A közelmúltban a LafTools next.js-en alapuló architektúráját átdolgoztuk,
 
 ## 1. Rendszerkörnyezet beállítása
 
-Az egyszerűség kedvéért tegyük fel, hogy klónozta ezt a tárolót a következőre: `C:\Usersjerry\project\laftools-repo` Windows rendszeren vagy `/Users/jerry/projects/laftools-repo` Linux/MacOS rendszeren, majd deklarálja az env-t, és állítsa be a konfigurációt alább a **~/.bashrc* fájlban. *, vagy egyszerűen futtassa őket, mielőtt bármilyen parancsot futtatna.
+Az egyszerűség kedvéért tegyük fel, hogy klónozta ezt a tárolót a következőre: `C:\Usersjerry\project\laftools-repo` Windows rendszeren vagy `/Users/jerry/projects/laftools-repo` Linux/MacOS rendszeren, majd deklarálja az env-t, és állítsa be a konfigurációt alább a \*_~/.bashrc_ fájlban. \*, vagy egyszerűen futtassa őket, mielőtt bármilyen parancsot futtatna.
 
 Ha Windows operációs rendszert használ, győződjön meg arról, hogy az összes parancsot a git-bash-ban hajtja végre. További információért olvassa el a [KÖZREHAJTÁS](/docs/hu/CONTRIBUTION.md) részt. Ezen kívül ajánlatos kerülni a szóközök vagy nem angol karakterek használatát a fájl elérési útjában, ahol a projekt található.
 

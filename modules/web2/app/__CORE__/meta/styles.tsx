@@ -21,6 +21,7 @@
 
 export let tw = (x) => x
 
+export let CSS_NAV_BP_TAB_HEIGHT = 51;
 export let CSS_BG_COLOR_WHITE = tw(` bg-white dark:bg-black `)
 
 export let row_pad_clz = tw`  app-minmax-size mx-auto `

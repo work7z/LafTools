@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">Náhled Insider verze LafTools</a>
+<a target="_blank" href="http://cloud.laftools.cn">Náhled Insider verze LafTools</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: Tato stránka je generována interně z LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Tato stránka je generována interně z LafTools.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 Pro rychlé použití těchto funkcí jsme pro vás nasadili stabilní online web v regionu USA a CN. Většina nástrojů je k dispozici na našich online webových stránkách s výjimkou některých nástrojů, které se spoléhají na konkrétní funkce operačního systému.
 
 - 🇺🇸 spojený stát: [laftools.dev](https://laftools.dev)
-- 🇨🇳 Pouze pevninská Čína: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 Pouze pevninská Čína: [laftools.cn](https://laftools.cn)
 
 # 💡 Úvod
 
@@ -61,7 +61,7 @@ Nedávno refaktorujeme architekturu LafTools založenou na next.js, níže uvede
 
 ## 1. Nastavení prostředí systému
 
-Pro zjednodušení řekněme, že jste toto úložiště naklonovali buď do `C:\Usersjerry\project\laftools-repo` na Windows nebo `/Users/jerry/projects/laftools-repo` na Linux/MacOS, pak byste měli deklarovat env a nastavit konfiguraci níže ve vašem souboru **~/.bashrc* *, nebo je jednoduše spusťte před spuštěním jakéhokoli příkazu.
+Pro zjednodušení řekněme, že jste toto úložiště naklonovali buď do `C:\Usersjerry\project\laftools-repo` na Windows nebo `/Users/jerry/projects/laftools-repo` na Linux/MacOS, pak byste měli deklarovat env a nastavit konfiguraci níže ve vašem souboru \*_~/.bashrc_ \*, nebo je jednoduše spusťte před spuštěním jakéhokoli příkazu.
 
 Pokud používáte operační systém Windows, ujistěte se, že jsou všechny příkazy prováděny v git-bash, další informace naleznete v [PŘÍSPĚVEK](/docs/cs/CONTRIBUTION.md). Kromě toho se doporučuje nepoužívat žádné mezery nebo neanglické znaky v cestě k souboru, kde je tento projekt umístěn.
 

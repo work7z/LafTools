@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">Pratonton Versi Insider LafTools</a>
+<a target="_blank" href="http://cloud.laftools.cn">Pratonton Versi Insider LafTools</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: Halaman ini dihasilkan daripada LafTools secara dalaman.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Halaman ini dihasilkan daripada LafTools secara dalaman.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 Untuk menggunakan fungsi ini dengan pantas, kami telah menggunakan tapak web dalam talian yang stabil di rantau AS dan CN untuk anda gunakan. Kebanyakan alat tersedia di tapak web dalam talian kami kecuali beberapa alat yang bergantung pada keupayaan OS tertentu.
 
 - 🇺🇸 Amerika Syarikat: [laftools.dev](https://laftools.dev)
-- 🇨🇳 Tanah Besar China Sahaja: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 Tanah Besar China Sahaja: [laftools.cn](https://laftools.cn)
 
 # 💡 pengenalan
 
@@ -61,7 +61,7 @@ Baru-baru ini, kami memfaktorkan semula seni bina LafTools berdasarkan next.js, 
 
 ## 1. Persediaan Persekitaran Sistem
 
-Demi kesederhanaan, katakan anda telah mengklon repositori ini sama ada `C:\Usersjerry\project\laftools-repo` pada Windows atau `/Users/jerry/projects/laftools-repo` pada Linux/MacOS, maka anda harus mengisytiharkan env dan tetapkan konfigurasi di bawah dalam fail anda **~/.bashrc* *, atau hanya laksanakannya sebelum menjalankan sebarang arahan.
+Demi kesederhanaan, katakan anda telah mengklon repositori ini sama ada `C:\Usersjerry\project\laftools-repo` pada Windows atau `/Users/jerry/projects/laftools-repo` pada Linux/MacOS, maka anda harus mengisytiharkan env dan tetapkan konfigurasi di bawah dalam fail anda \*_~/.bashrc_ \*, atau hanya laksanakannya sebelum menjalankan sebarang arahan.
 
 Jika anda menggunakan OS Windows, sila pastikan semua arahan dilaksanakan dalam git-bash, ketahui lebih lanjut sila rujuk [SUMBANGAN](/docs/ms/CONTRIBUTION.md). Selain daripada ini, adalah disyorkan untuk mengelak daripada menggunakan sebarang ruang putih atau aksara bukan bahasa Inggeris dalam laluan fail di mana projek ini terletak.
 

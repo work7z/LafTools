@@ -76,7 +76,7 @@ export default (props: PropFormGenPanel) => {
         {
             chunkItems.map((eachChunkItem, eachChunkItemIdx) => {
                 return <div key={eachChunkItemIdx} className={" mb-2  " + (
-                    props.fixSingleColumn ? " pure-u-24-24 " : " p-2 pure-u-xxl-6-24 pure-u-xl-8-24 pure-u-sm-24-24 pure-u-12-24  "
+                    props.fixSingleColumn ? " w-1/1 " : " p-2 w-1/1 md:w-1/2 lg:w-1/2"
                 )}>
                     {
                         eachChunkItem.map((x, d) => {
@@ -95,6 +95,6 @@ export default (props: PropFormGenPanel) => {
                 </div>
             })
         }
-        <div>{Dot("8MHkguRv3", "text translation is still under development...")}</div>
+        {/* <div>{Dot("8MHkguRv3", "text translation is still under development...")}</div> */}
     </div>
 }

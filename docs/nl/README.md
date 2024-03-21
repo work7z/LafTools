@@ -5,20 +5,20 @@
 </span>
 <!-- <center>
 <div style="text-align:center;">
-<a target="_blank" href="http://cloud.laf-tools.com">Bekijk een voorbeeld van de Insider-versie van LafTools</a>
+<a target="_blank" href="http://cloud.laftools.cn">Bekijk een voorbeeld van de Insider-versie van LafTools</a>
 </div>
 </center> -->
 <br><br>
 </p>
 
-<i>Note: Deze pagina wordt intern gegenereerd vanuit LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Deze pagina wordt intern gegenereerd vanuit LafTools.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
 Om deze functies snel te kunnen gebruiken, hebben we een stabiele online website in de VS en de CN-regio geïmplementeerd die u kunt gebruiken. De meeste tools zijn beschikbaar op onze online websites, met uitzondering van enkele tools die afhankelijk zijn van specifieke mogelijkheden van het besturingssysteem.
 
 - 🇺🇸 Verenigde staat: [laftools.dev](https://laftools.dev)
-- 🇨🇳 Alleen het vasteland van China: [laf-tools.com](https://laf-tools.com)
+- 🇨🇳 Alleen het vasteland van China: [laftools.cn](https://laftools.cn)
 
 # 💡 Invoering
 
@@ -61,7 +61,7 @@ Onlangs hebben we de architectuur van LafTools opnieuw ingericht op basis van ne
 
 ## 1. Systeemomgeving instellen
 
-Laten we voor de eenvoud zeggen dat je deze repository hebt gekloond naar `C:\Usersjerry\project\laftools-repo` op Windows of naar `/Users/jerry/projects/laftools-repo` op Linux/MacOS, dan moet je env declareren en config hieronder instellen in je bestand **~/.bashrc* *, of voer ze eenvoudigweg uit voordat u een opdracht uitvoert.
+Laten we voor de eenvoud zeggen dat je deze repository hebt gekloond naar `C:\Usersjerry\project\laftools-repo` op Windows of naar `/Users/jerry/projects/laftools-repo` op Linux/MacOS, dan moet je env declareren en config hieronder instellen in je bestand \*_~/.bashrc_ \*, of voer ze eenvoudigweg uit voordat u een opdracht uitvoert.
 
 Als je Windows OS gebruikt, zorg er dan voor dat alle opdrachten worden uitgevoerd in git-bash. Voor meer informatie raadpleeg je [CONTRIBUTION](/docs/nl/CONTRIBUTION.md). Daarnaast wordt aanbevolen om geen spaties of niet-Engelse tekens te gebruiken in het bestandspad waar dit project zich bevindt.
 
