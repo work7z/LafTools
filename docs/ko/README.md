@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: 이 페이지는 LafTools에서 내부적으로 생성됩니다.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | 한국어 | [More](/docs/) <br/>
+<i>Note: 이 페이지는 LafTools에서 내부적으로 생성됩니다.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  한국어 | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@
 
 # 🚀 시작하기
 
-## 0. 리팩토링
-
-최근에는 next.js를 기반으로 LafTools의 아키텍처를 리팩토링하고 있으며, 아래 단계는 필요에 따라 변경될 수 있습니다.
-
 ## 1. 시스템 환경 설정
 
-단순화를 위해 이 저장소를 Windows의 `C:\Usersjerry\project\laftools-repo` 또는 Linux/MacOS의 `/Users/jerry/projects/laftools-repo`에 복제했다고 가정하고 \*_~/.bashrc_ 파일에서 env를 선언하고 아래 구성을 설정해야 합니다. \* 또는 명령을 실행하기 전에 간단히 실행하십시오.
+단순화를 위해 이 저장소를 Windows의 `C:\Usersjerry\project\laftools-repo` 또는 Linux/MacOS의 `/Users/jerry/projects/laftools-repo`에 복제했다고 가정하고 **~/.bashrc* 파일에서 env를 선언하고 아래 구성을 설정해야 합니다. * 또는 명령을 실행하기 전에 간단히 실행하십시오.
 
 Windows OS를 사용하는 경우 모든 명령이 git-bash에서 실행되는지 확인하세요. 자세한 내용은 [CONTRIBUTION](/docs/ko/CONTRIBUTION.md)을 참조하세요. 이 외에도 이 프로젝트가 있는 파일 경로에는 공백이나 영어가 아닌 문자를 사용하지 않는 것이 좋습니다.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Go 서비스 출시(리팩토링)
-
-터미널에서 Go 서비스를 실행하려면 아래 명령을 실행할 수 있습니다.
-
-```shell
-go run ./core/app.go server
-```
-
-Go 서비스를 디버깅하려면 VSCode에서 구성했습니다. 아래 단계를 따르면 됩니다.
-
-1. Visual Studio Code을(를) 입력하세요
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. FrontEnd 모듈 실행(web2로 이동)
+## 2. Compile and Run
 
 ```bash
 # 필요한 전역 라이브러리 설치
 npm i -g pnpm ts-node typescript
 
 # 프로젝트 뎁스 설치
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Windows 전용이며 모든 터미널과 이전 프로세스를 닫습니다.
-
-# 터미널 1에서 웹 서비스 실행
+# run core service
 npm run fe-web
 
-# 터미널 2에서 CSS 프로세서 실행
-npm run fe-css
-
-# 터미널 3에서 추가 작업 실행
-npm run fe-extra
-
 ```
 
-별도의 터미널 인스턴스에서 이러한 명령을 실행하지 않으려는 경우 백그라운드 실행에 '&' 기호를 사용할 수 있습니다.
-
-## 4. 개발 시작
-
-Go 서비스가 실행되면 터미널에 링크가 인쇄되는 것을 볼 수 있습니다. 이제 이 URL을 복사하여 브라우저에 붙여넣고 개발을 시작하세요.
-
-예:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. 짓다
+## 3. 짓다
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 이름이 뭐예요?

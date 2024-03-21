@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Deze pagina wordt intern gegenereerd vanuit LafTools.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Deze pagina wordt intern gegenereerd vanuit LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Als het antwoord op een van de bovenstaande vragen ja is, kunt u overwegen onze 
 
 # 🚀 Aan de slag
 
-## 0. Refactoring
-
-Onlangs hebben we de architectuur van LafTools opnieuw ingericht op basis van next.js. De onderstaande stappen kunnen indien nodig worden gewijzigd.
-
 ## 1. Systeemomgeving instellen
 
-Laten we voor de eenvoud zeggen dat je deze repository hebt gekloond naar `C:\Usersjerry\project\laftools-repo` op Windows of naar `/Users/jerry/projects/laftools-repo` op Linux/MacOS, dan moet je env declareren en config hieronder instellen in je bestand \*_~/.bashrc_ \*, of voer ze eenvoudigweg uit voordat u een opdracht uitvoert.
+Laten we voor de eenvoud zeggen dat je deze repository hebt gekloond naar `C:\Usersjerry\project\laftools-repo` op Windows of naar `/Users/jerry/projects/laftools-repo` op Linux/MacOS, dan moet je env declareren en config hieronder instellen in je bestand **~/.bashrc* *, of voer ze eenvoudigweg uit voordat u een opdracht uitvoert.
 
 Als je Windows OS gebruikt, zorg er dan voor dat alle opdrachten worden uitgevoerd in git-bash. Voor meer informatie raadpleeg je [CONTRIBUTION](/docs/nl/CONTRIBUTION.md). Daarnaast wordt aanbevolen om geen spaties of niet-Engelse tekens te gebruiken in het bestandspad waar dit project zich bevindt.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Go-service starten (refactoring)
-
-Om de Go-service in de terminal uit te voeren, kunt u de onderstaande opdracht uitvoeren:
-
-```shell
-go run ./core/app.go server
-```
-
-Om de Go-service te debuggen, hebben we deze in VSCode geconfigureerd. U kunt gewoon de onderstaande stappen volgen:
-
-1. Voer Visual Studio Code in
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. FrontEnd-module starten (verplaatst naar web2)
+## 2. Compile and Run
 
 ```bash
 # installeer de vereiste globale bibliotheek
 npm i -g pnpm ts-node typescript
 
 # projectdepartementen installeren
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Het is alleen voor Windows, het sluit alle terminals en eerdere processen.
-
-# voer de webservice uit op terminal 1
+# run core service
 npm run fe-web
 
-# voer de CSS-processor uit op terminal 2
-npm run fe-css
-
-# voer extra taken uit op terminal 3
-npm run fe-extra
-
 ```
 
-Merk op dat u het '&'-symbool kunt gebruiken voor uitvoering op de achtergrond als u deze opdrachten niet alternatief in afzonderlijke terminalinstanties wilt uitvoeren.
-
-## 4. Begin met ontwikkelen
-
-Zodra de Go-service actief is, zou u een link moeten kunnen zien die in de terminal wordt afgedrukt. Kopieer nu deze URL en plak deze in uw browser om te beginnen met ontwikkelen, laten we gaan!
-
-Voorbeeld:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Bouwen
+## 3. Bouwen
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 Wat is er met de naam?

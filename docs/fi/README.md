@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Tämä sivu on luotu sisäisesti LafToolsista.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Tämä sivu on luotu sisäisesti LafToolsista.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Jos vastaus johonkin yllä olevista on kyllä, sinun kannattaa kokeilla työkalu
 
 # 🚀 Päästä alkuun
 
-## 0. Refaktorointi
-
-Olemme äskettäin muokkaamassa LafToolsin arkkitehtuuria next.js:n perusteella, alla olevia vaiheita voidaan muuttaa tarpeen mukaan.
-
 ## 1. Määritä järjestelmäympäristö
 
-Oletetaan yksinkertaisuuden vuoksi, että olet kloonannut tämän arkiston joko osoitteeseen `C:\Usersjerry\project\laftools-repo` Windowsissa tai `/Users/jerry/projects/laftools-repo` Linuxissa/MacOS:ssä, niin sinun tulee ilmoittaa env ja asettaa asetukset alla tiedostossasi \*_~/.bashrc_ \* tai yksinkertaisesti suorita ne ennen minkään komennon suorittamista.
+Oletetaan yksinkertaisuuden vuoksi, että olet kloonannut tämän arkiston joko osoitteeseen `C:\Usersjerry\project\laftools-repo` Windowsissa tai `/Users/jerry/projects/laftools-repo` Linuxissa/MacOS:ssä, niin sinun tulee ilmoittaa env ja asettaa asetukset alla tiedostossasi **~/.bashrc* * tai yksinkertaisesti suorita ne ennen minkään komennon suorittamista.
 
 Jos käytät Windows-käyttöjärjestelmää, varmista, että kaikki komennot suoritetaan git-bashissa. Lisätietoja on kohdassa [CONTRIBUTION](/docs/fi/CONTRIBUTION.md). Tämän lisäksi on suositeltavaa välttää välilyöntien tai muiden kuin englanninkielisten merkkien käyttöä tiedostopolussa, jossa tämä projekti sijaitsee.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Käynnistä Go-palvelu (refaktorointi)
-
-Suorittaaksesi Go-palvelun terminaalissa, voit suorittaa alla olevan komennon:
-
-```shell
-go run ./core/app.go server
-```
-
-Go-palvelun virheenkorjausta varten olemme määrittäneet sen VSCodessa, voit seurata alla olevia ohjeita:
-
-1. Kirjoita Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. Käynnistä FrontEnd-moduuli (siirretty web2:een)
+## 2. Compile and Run
 
 ```bash
 # asenna vaadittu globaali kirjasto
 npm i -g pnpm ts-node typescript
 
 # asenna projektideps
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Se on vain Windowsille, se sulkee kaikki päätteet ja aiemmat prosessit.
-
-# suorita verkkopalvelu terminaalissa 1
+# run core service
 npm run fe-web
 
-# Suorita CSS-prosessori terminaalissa 2
-npm run fe-css
-
-# suorittaa ylimääräisiä töitä terminaalissa 3
-npm run fe-extra
-
 ```
 
-Huomaa, että voit käyttää &-symbolia taustasuoritukseen, jos et halua vaihtoehtoisesti suorittaa näitä komentoja erillisissä pääte-esiintymissä.
-
-## 4. Aloita kehittäminen
-
-Kun Go-palvelu on käynnissä, sinun pitäisi nähdä linkki tulostettuna terminaaliin. Aloita kehittäminen kopioimalla tämä URL-osoite ja liittämällä se selaimeesi.
-
-Esimerkki:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Rakentaa
+## 3. Rakentaa
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 Mitä nimeä vaivaa?

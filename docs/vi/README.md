@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Trang này được tạo từ nội bộ LafTools.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Trang này được tạo từ nội bộ LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Nếu câu trả lời cho bất kỳ câu hỏi nào ở trên là có thì b�
 
 # 🚀 Bắt đầu
 
-## 0. Tái cấu trúc
-
-Gần đây, chúng tôi đang tái cấu trúc kiến ​​trúc của LafTools dựa trên next.js, các bước bên dưới có thể thay đổi nếu cần.
-
 ## 1. Thiết lập môi trường hệ thống
 
-Để đơn giản, giả sử bạn đã sao chép kho lưu trữ này sang `C:\Usersjerry\project\laftools-repo` trên Windows hoặc `/Users/jerry/projects/laftools-repo` trên Linux/MacOS, thì bạn nên khai báo env và đặt config bên dưới trong tệp của mình \*_~/.bashrc_ \* hoặc đơn giản là thực thi chúng trước khi chạy bất kỳ lệnh nào.
+Để đơn giản, giả sử bạn đã sao chép kho lưu trữ này sang `C:\Usersjerry\project\laftools-repo` trên Windows hoặc `/Users/jerry/projects/laftools-repo` trên Linux/MacOS, thì bạn nên khai báo env và đặt config bên dưới trong tệp của mình **~/.bashrc* * hoặc đơn giản là thực thi chúng trước khi chạy bất kỳ lệnh nào.
 
 Nếu bạn đang sử dụng HĐH Windows, vui lòng đảm bảo rằng tất cả các lệnh được thực thi trong git-bash, tìm hiểu thêm vui lòng tham khảo [ĐÓNG GÓP](/docs/vi/CONTRIBUTION.md). Ngoài ra, bạn nên tránh sử dụng bất kỳ khoảng trắng hoặc ký tự không phải tiếng Anh nào trong đường dẫn tệp chứa dự án này.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Khởi chạy dịch vụ Go (Tái cấu trúc)
-
-Để chạy dịch vụ Go trong terminal, bạn có thể thực hiện lệnh bên dưới:
-
-```shell
-go run ./core/app.go server
-```
-
-Để gỡ lỗi dịch vụ Go, chúng tôi đã định cấu hình nó trong VSCode, bạn chỉ cần làm theo các bước dưới đây:
-
-1. Nhập Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. Khởi chạy Mô-đun FrontEnd (Đã chuyển sang web2)
+## 2. Compile and Run
 
 ```bash
 # cài đặt thư viện toàn cầu cần thiết
 npm i -g pnpm ts-node typescript
 
 # cài đặt dự án
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Nó chỉ dành cho Windows, nó sẽ đóng tất cả các thiết bị đầu cuối và các quy trình trước đó.
-
-# chạy dịch vụ web trên terminal 1
+# run core service
 npm run fe-web
 
-# chạy bộ xử lý CSS trên thiết bị đầu cuối 2
-npm run fe-css
-
-# chạy thêm công việc trên terminal 3
-npm run fe-extra
-
 ```
 
-Lưu ý rằng bạn có thể sử dụng biểu tượng '&' để thực thi ở chế độ nền nếu bạn không muốn chạy các lệnh này trong các phiên bản đầu cuối riêng biệt.
-
-## 4. Bắt đầu phát triển
-
-Khi dịch vụ Go đang chạy, bạn sẽ có thể thấy một liên kết được in ra trong thiết bị đầu cuối. Bây giờ, hãy sao chép URL này và dán vào trình duyệt của bạn để bắt đầu phát triển, bắt đầu nào!
-
-Ví dụ:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Xây dựng
+## 3. Xây dựng
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 Có chuyện gì với cái tên vậy?

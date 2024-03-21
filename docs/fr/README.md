@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Cette page est générée à partir de LafTools en interne.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | Français | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Cette page est générée à partir de LafTools en interne.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  Français  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Si la réponse à l’une des questions ci-dessus est oui, vous devriez alors en
 
 # 🚀 Commencer
 
-## 0. Refactorisation
-
-Récemment, nous refactorisons l'architecture de LafTools basée sur next.js, les étapes ci-dessous peuvent être modifiées selon les besoins.
-
 ## 1. Configuration de l'environnement système
 
-Par souci de simplicité, disons que vous avez cloné ce référentiel sur `C:\Usersjerry\project\laftools-repo` sous Windows ou `/Users/jerry/projects/laftools-repo` sur Linux/MacOS, vous devez alors déclarer env et définir la configuration ci-dessous dans votre fichier \*_~/.bashrc_ \*, ou exécutez-les simplement avant d'exécuter une commande.
+Par souci de simplicité, disons que vous avez cloné ce référentiel sur `C:\Usersjerry\project\laftools-repo` sous Windows ou `/Users/jerry/projects/laftools-repo` sur Linux/MacOS, vous devez alors déclarer env et définir la configuration ci-dessous dans votre fichier **~/.bashrc* *, ou exécutez-les simplement avant d'exécuter une commande.
 
 Si vous utilisez le système d'exploitation Windows, assurez-vous que toutes les commandes sont exécutées dans git-bash. Pour en savoir plus, veuillez vous référer à [CONTRIBUTION](/docs/fr/CONTRIBUTION.md). En dehors de cela, il est recommandé d’éviter d’utiliser des espaces ou des caractères non anglais dans le chemin du fichier où se trouve ce projet.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Lancer le service Go (refactorisation)
-
-Pour exécuter le service Go dans le terminal, vous pouvez exécuter la commande ci-dessous :
-
-```shell
-go run ./core/app.go server
-```
-
-Pour déboguer le service Go, nous l'avons configuré dans VSCode, vous pouvez simplement suivre les étapes ci-dessous :
-
-1. Saisissez Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. Lancer le module FrontEnd (déplacé vers web2)
+## 2. Compile and Run
 
 ```bash
 # installer la bibliothèque globale requise
 npm i -g pnpm ts-node typescript
 
 # installer les départements du projet
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # C'est pour Windows uniquement, cela fermera tous les terminaux et processus précédents.
-
-# exécuter le service Web sur le terminal 1
+# run core service
 npm run fe-web
 
-# exécuter le processeur CSS sur le terminal 2
-npm run fe-css
-
-# exécuter des tâches supplémentaires sur le terminal 3
-npm run fe-extra
-
 ```
 
-Notez que vous pouvez utiliser le symbole « & » pour l'exécution en arrière-plan si vous ne souhaitez pas exécuter ces commandes dans des instances de terminal distinctes.
-
-## 4. Commencer à développer
-
-Une fois le service Go exécuté, vous devriez pouvoir voir un lien imprimé dans le terminal. Maintenant, copiez cette URL et collez-la dans votre navigateur pour commencer le développement, c'est parti !
-
-Exemple:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Construire
+## 3. Construire
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 C'est quoi ce nom ?

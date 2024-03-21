@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: 该页面是由LafTools工具箱内部生成的。</i> <br/> [English](/docs/en_US/README.md) | 简体中文 | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: 该页面是由LafTools工具箱内部生成的。</i> <br/> [English](/docs/en_US/README.md)  |  简体中文  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@
 
 # 🚀 入门
 
-## 0. 重构
-
-最近，我们正在基于next.js重构LafTools工具箱的架构，以下步骤可能会根据需要进行更改。
-
 ## 1. 设置系统环境
 
-为了简单起见，假设您已将此仓库克隆到 Windows 上的 `C:\Usersjerry\project\laftools-repo` 或 Linux/MacOS 上的 `/Users/jerry/projects/laftools-repo`，那么您应该在文件 \*_~/.bashrc_ 中声明 env 并在下面设置配置\*，或者只是在运行任何命令之前执行它们。
+为了简单起见，假设您已将此仓库克隆到 Windows 上的 `C:\Usersjerry\project\laftools-repo` 或 Linux/MacOS 上的 `/Users/jerry/projects/laftools-repo`，那么您应该在文件 **~/.bashrc* 中声明 env 并在下面设置配置*，或者只是在运行任何命令之前执行它们。
 
 如果您使用的是 Windows 操作系统，请确保所有命令都在 git-bash 中执行，了解更多信息请参阅 [贡献](/docs/zh_CN/CONTRIBUTION.md)。除此之外，建议避免在该项目所在的文件路径中使用任何空格或非英文字符。
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. 启动Go服务（重构）
-
-要在终端中运行 Go 服务，您可以执行以下命令：
-
-```shell
-go run ./core/app.go server
-```
-
-为了调试Go服务，我们已经在VSCode中配置了它，您可以按照以下步骤操作：
-
-1. 输入Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. 启动前端模块（移至 web2）
+## 2. 编译并运行
 
 ```bash
 # 安装所需的全局库
 npm i -g pnpm ts-node typescript
 
 # 安装项目依赖
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # 它仅适用于 Windows，它将关闭所有终端和以前的进程。
-
-# 在终端 1 上运行 Web 服务
+# 运行核心服务
 npm run fe-web
 
-# 在终端 2 上运行 CSS 处理器
-npm run fe-css
-
-# 在终端 3 上运行额外作业
-npm run fe-extra
-
 ```
 
-请注意，如果您不想在单独的终端实例中运行这些命令，则可以使用“&”符号进行后台执行。
-
-## 4. 开始开发
-
-Go 服务运行后，您应该能够看到终端中打印出一个链接。现在，复制此 URL 并将其粘贴到浏览器中开始开发，让我们开始吧！
-
-示例:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. 构建(Build)
+## 3. 构建(Build)
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 名字是怎么回事？

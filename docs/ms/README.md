@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Halaman ini dihasilkan daripada LafTools secara dalaman.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Halaman ini dihasilkan daripada LafTools secara dalaman.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Jika jawapan kepada mana-mana di atas adalah ya, maka anda harus mempertimbangka
 
 # 🚀 Bermula
 
-## 0. Pemfaktoran semula
-
-Baru-baru ini, kami memfaktorkan semula seni bina LafTools berdasarkan next.js, langkah di bawah mungkin berubah mengikut keperluan.
-
 ## 1. Persediaan Persekitaran Sistem
 
-Demi kesederhanaan, katakan anda telah mengklon repositori ini sama ada `C:\Usersjerry\project\laftools-repo` pada Windows atau `/Users/jerry/projects/laftools-repo` pada Linux/MacOS, maka anda harus mengisytiharkan env dan tetapkan konfigurasi di bawah dalam fail anda \*_~/.bashrc_ \*, atau hanya laksanakannya sebelum menjalankan sebarang arahan.
+Demi kesederhanaan, katakan anda telah mengklon repositori ini sama ada `C:\Usersjerry\project\laftools-repo` pada Windows atau `/Users/jerry/projects/laftools-repo` pada Linux/MacOS, maka anda harus mengisytiharkan env dan tetapkan konfigurasi di bawah dalam fail anda **~/.bashrc* *, atau hanya laksanakannya sebelum menjalankan sebarang arahan.
 
 Jika anda menggunakan OS Windows, sila pastikan semua arahan dilaksanakan dalam git-bash, ketahui lebih lanjut sila rujuk [SUMBANGAN](/docs/ms/CONTRIBUTION.md). Selain daripada ini, adalah disyorkan untuk mengelak daripada menggunakan sebarang ruang putih atau aksara bukan bahasa Inggeris dalam laluan fail di mana projek ini terletak.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Lancarkan Perkhidmatan Go (Pemfaktoran Semula)
-
-Untuk menjalankan perkhidmatan Go dalam terminal, anda boleh melaksanakan arahan di bawah:
-
-```shell
-go run ./core/app.go server
-```
-
-Untuk menyahpepijat perkhidmatan Go, kami telah mengkonfigurasinya dalam VSCode, anda hanya boleh mengikuti langkah-langkah di bawah:
-
-1. Masukkan Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. Lancarkan Modul FrontEnd (Berpindah ke web2)
+## 2. Compile and Run
 
 ```bash
 # pasang perpustakaan global yang diperlukan
 npm i -g pnpm ts-node typescript
 
 # pasang deps projek
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Ia untuk Windows Sahaja, ia akan menutup semua terminal dan proses sebelumnya.
-
-# jalankan perkhidmatan web pada terminal 1
+# run core service
 npm run fe-web
 
-# jalankan pemproses CSS pada terminal 2
-npm run fe-css
-
-# jalankan kerja tambahan pada terminal 3
-npm run fe-extra
-
 ```
 
-Ambil perhatian bahawa anda boleh menggunakan simbol '&' untuk pelaksanaan latar belakang jika anda tidak mahu menjalankan arahan ini secara alternatif dalam keadaan terminal yang berasingan.
-
-## 4. Mula Membangun
-
-Setelah perkhidmatan Go berjalan, anda sepatutnya dapat melihat pautan yang dicetak dalam terminal. Sekarang, salin URL ini dan tampalkannya ke dalam penyemak imbas anda untuk mula membangunkan, jom!
-
-Contoh:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. bina
+## 3. bina
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 Ada apa dengan nama?

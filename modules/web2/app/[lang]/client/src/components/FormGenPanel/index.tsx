@@ -65,7 +65,7 @@ import { LabelValuePair } from "../../types/constants";
 import { Dot } from "../../utils/cTranslationUtils";
 import FormGenElement, { FormGenType } from "../FormGenElement";
 
-export type FormGenItem = FormGroupProps & { genEleConfig: FormGenType }
+export type FormGenItem = FormGroupProps & { aid?: string, genEleConfig: FormGenType }
 type PropFormGenPanel = {
     list: (FormGenItem)[]
     fixSingleColumn?: boolean

@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Denne siden er generert fra LafTools internt.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Denne siden er generert fra LafTools internt.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Hvis svaret på noen av de ovennevnte er ja, bør du vurdere å prøve verktøyk
 
 # 🚀 Starter
 
-## 0. Refaktorering
-
-Nylig refaktoriserer vi arkitekturen til LafTools basert på next.js, trinnene nedenfor kan endres etter behov.
-
 ## 1. Sett opp systemmiljø
 
-For enkelhets skyld, la oss si at du har klonet dette depotet til enten `C:\Usersjerry\project\laftools-repo` på Windows eller `/Users/jerry/projects/laftools-repo` på Linux/MacOS, så bør du erklære env og angi config nedenfor i filen \*_~/.bashrc_ \*, eller bare kjør dem før du kjører en kommando.
+For enkelhets skyld, la oss si at du har klonet dette depotet til enten `C:\Usersjerry\project\laftools-repo` på Windows eller `/Users/jerry/projects/laftools-repo` på Linux/MacOS, så bør du erklære env og angi config nedenfor i filen **~/.bashrc* *, eller bare kjør dem før du kjører en kommando.
 
 Hvis du bruker Windows OS, sørg for at alle kommandoer utføres i git-bash, les mer, se [BIDRAG](/docs/no/CONTRIBUTION.md). Bortsett fra dette, anbefales det å unngå å bruke mellomrom eller ikke-engelske tegn i filbanen der dette prosjektet er plassert.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Start Go Service (Refactoring)
-
-For å kjøre Go-tjeneste i terminal, kan du utføre kommandoen nedenfor:
-
-```shell
-go run ./core/app.go server
-```
-
-For å feilsøke Go-tjenesten har vi konfigurert den i VSCode, du kan bare følge trinnene nedenfor:
-
-1. Skriv inn Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. Start FrontEnd-modulen (flyttet til web2)
+## 2. Compile and Run
 
 ```bash
 # installer det nødvendige globale biblioteket
 npm i -g pnpm ts-node typescript
 
 # installere prosjektdeps
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Det er kun for Windows, det vil lukke alle terminaler og tidligere prosesser.
-
-# kjøre webtjeneste på terminal 1
+# run core service
 npm run fe-web
 
-# kjør CSS-prosessor på terminal 2
-npm run fe-css
-
-# kjøre ekstrajobber på terminal 3
-npm run fe-extra
-
 ```
 
-Merk at du kan bruke '&'-symbolet for bakgrunnskjøring hvis du ikke ønsker å kjøre disse kommandoene alternativt i separate terminalforekomster.
-
-## 4. Begynn å utvikle
-
-Når Go-tjenesten kjører, skal du kunne se en lenke skrevet ut i terminalen. Nå, kopier denne URL-en og lim den inn i nettleseren din for å begynne å utvikle, la oss gå!
-
-Eksempel:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Bygge
+## 3. Bygge
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 Hva er det med navnet?

@@ -86,7 +86,7 @@ cd $LAFTOOLS_ROOT && npm install -S -D --force
 cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
 cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-# ${Dot("8Yv_neS0T","run web service on terminal 1")}
+# ${Dot("ypvuIXEcb","run core service")}
 npm run fe-web
 
 ```
@@ -95,7 +95,7 @@ npm run fe-web
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 ${Dot("I-Zaii3HZ","What's with the name?")}

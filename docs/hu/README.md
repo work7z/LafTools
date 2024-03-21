@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Ezt az oldalt a LafTools belsőleg hozta létre.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Ezt az oldalt a LafTools belsőleg hozta létre.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Ha a fentiek bármelyikére igen a válasz, akkor fontolja meg eszköztárunk ki
 
 # 🚀 Elkezdeni
 
-## 0. Refaktorálás
-
-A közelmúltban a LafTools next.js-en alapuló architektúráját átdolgoztuk, az alábbi lépések szükség szerint változhatnak.
-
 ## 1. Rendszerkörnyezet beállítása
 
-Az egyszerűség kedvéért tegyük fel, hogy klónozta ezt a tárolót a következőre: `C:\Usersjerry\project\laftools-repo` Windows rendszeren vagy `/Users/jerry/projects/laftools-repo` Linux/MacOS rendszeren, majd deklarálja az env-t, és állítsa be a konfigurációt alább a \*_~/.bashrc_ fájlban. \*, vagy egyszerűen futtassa őket, mielőtt bármilyen parancsot futtatna.
+Az egyszerűség kedvéért tegyük fel, hogy klónozta ezt a tárolót a következőre: `C:\Usersjerry\project\laftools-repo` Windows rendszeren vagy `/Users/jerry/projects/laftools-repo` Linux/MacOS rendszeren, majd deklarálja az env-t, és állítsa be a konfigurációt alább a **~/.bashrc* fájlban. *, vagy egyszerűen futtassa őket, mielőtt bármilyen parancsot futtatna.
 
 Ha Windows operációs rendszert használ, győződjön meg arról, hogy az összes parancsot a git-bash-ban hajtja végre. További információért olvassa el a [KÖZREHAJTÁS](/docs/hu/CONTRIBUTION.md) részt. Ezen kívül ajánlatos kerülni a szóközök vagy nem angol karakterek használatát a fájl elérési útjában, ahol a projekt található.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Go szolgáltatás indítása (újrafaktorálás)
-
-A Go szolgáltatás terminálban való futtatásához hajtsa végre az alábbi parancsot:
-
-```shell
-go run ./core/app.go server
-```
-
-A Go szolgáltatás hibakereséséhez a VSCode-ban konfiguráltuk, csak kövesse az alábbi lépéseket:
-
-1. Írja be a következőt: Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. FrontEnd Module indítása (áthelyezve a web2-be)
+## 2. Compile and Run
 
 ```bash
 # telepítse a szükséges globális könyvtárat
 npm i -g pnpm ts-node typescript
 
 # projekt deps telepítése
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Csak Windowshoz készült, bezárja az összes terminált és korábbi folyamatokat.
-
-# futtassa a webszolgáltatást az 1-es terminálon
+# run core service
 npm run fe-web
 
-# futtassa a CSS processzort a 2-es terminálon
-npm run fe-css
-
-# többletfeladatok futtatása a 3-as terminálon
-npm run fe-extra
-
 ```
 
-Ne feledje, hogy használhatja az '&' szimbólumot a háttérben történő végrehajtáshoz, ha nem kívánja ezeket a parancsokat különálló terminálpéldányokban futtatni.
-
-## 4. Kezdje el a fejlesztést
-
-Ha a Go szolgáltatás fut, látnia kell a terminálban kinyomtatott hivatkozást. Most másolja ki ezt az URL-t, és illessze be böngészőjébe a fejlesztés megkezdéséhez, gyerünk!
-
-Példa:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Épít
+## 3. Épít
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 Mi van a névvel?

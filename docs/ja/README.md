@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: このページは LafTools から内部的に生成されます。</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | 日本語 | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: このページは LafTools から内部的に生成されます。</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  日本語  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@
 
 # 🚀 はじめる
 
-## 0. リファクタリング
-
-最近、next.js に基づいて LafTools のアーキテクチャをリファクタリングしています。以下の手順は必要に応じて変更される可能性があります。
-
 ## 1. システム環境のセットアップ
 
-わかりやすくするために、このリポジトリを Windows の `C:\Usersjerry\project\laftools-repo` または Linux/MacOS の `/Users/jerry/projects/laftools-repo` にクローンしたとします。その後、ファイル \*_~/.bashrc_ で env を宣言し、以下の構成を設定する必要があります。 \*、またはコマンドを実行する前に単にそれらを実行します。
+わかりやすくするために、このリポジトリを Windows の `C:\Usersjerry\project\laftools-repo` または Linux/MacOS の `/Users/jerry/projects/laftools-repo` にクローンしたとします。その後、ファイル **~/.bashrc* で env を宣言し、以下の構成を設定する必要があります。 *、またはコマンドを実行する前に単にそれらを実行します。
 
 Windows OS を使用している場合は、すべてのコマンドが git-bash で実行されていることを確認してください。詳細については、[貢献](/docs/ja/CONTRIBUTION.md) を参照してください。これとは別に、このプロジェクトが配置されているファイル パスでは空白文字や英語以外の文字を使用しないことをお勧めします。
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Go サービスの起動 (リファクタリング)
-
-ターミナルで Go サービスを実行するには、以下のコマンドを実行できます。
-
-```shell
-go run ./core/app.go server
-```
-
-Go サービスをデバッグするには、VSCode で構成しました。次の手順に従うだけです。
-
-1. Visual Studio Codeを入力してください
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. フロントエンドモジュールの起動 (web2 に移動)
+## 2. Compile and Run
 
 ```bash
 # 必要なグローバル ライブラリをインストールする
 npm i -g pnpm ts-node typescript
 
 # プロジェクトdepsをインストールする
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # これは Windows 専用で、すべてのターミナルと以前のプロセスを閉じます。
-
-# ターミナル 1 で Web サービスを実行する
+# run core service
 npm run fe-web
 
-# 端末 2 で CSS プロセッサを実行する
-npm run fe-css
-
-# ターミナル 3 で追加のジョブを実行する
-npm run fe-extra
-
 ```
 
-これらのコマンドを別の端末インスタンスで実行したくない場合は、「&」記号を使用してバックグラウンドで実行できることに注意してください。
-
-## 4. 開発を開始する
-
-Go サービスが実行されると、ターミナルにリンクが印刷されるのが確認できるはずです。この URL をコピーしてブラウザに貼り付けて、開発を開始します。さあ、始めましょう。
-
-例:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. 建てる
+## 3. 建てる
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 名前は何ですか？

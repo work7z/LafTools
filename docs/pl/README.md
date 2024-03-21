@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Ta strona jest generowana wewnętrznie przez LafTools.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Ta strona jest generowana wewnętrznie przez LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Jeśli odpowiedź na którekolwiek z powyższych pytań brzmi „tak”, powinie
 
 # 🚀 Pierwsze kroki
 
-## 0. Refaktoryzacja
-
-Ostatnio refaktoryzujemy architekturę LafTools w oparciu o next.js, poniższe kroki mogą ulec zmianie w razie potrzeby.
-
 ## 1. Skonfiguruj środowisko systemowe
 
-Dla uproszczenia załóżmy, że sklonowałeś to repozytorium do `C:\Usersjerry\project\laftools-repo` w systemie Windows lub `/Users/jerry/projects/laftools-repo` w systemie Linux/MacOS, następnie powinieneś zadeklarować env i ustawić konfigurację poniżej w swoim pliku \*_~/.bashrc_ \* lub po prostu wykonaj je przed uruchomieniem dowolnego polecenia.
+Dla uproszczenia załóżmy, że sklonowałeś to repozytorium do `C:\Usersjerry\project\laftools-repo` w systemie Windows lub `/Users/jerry/projects/laftools-repo` w systemie Linux/MacOS, następnie powinieneś zadeklarować env i ustawić konfigurację poniżej w swoim pliku **~/.bashrc* * lub po prostu wykonaj je przed uruchomieniem dowolnego polecenia.
 
 Jeśli używasz systemu operacyjnego Windows, upewnij się, że wszystkie polecenia są wykonywane w git-bash. Więcej informacji znajdziesz w [WKŁAD](/docs/pl/CONTRIBUTION.md). Poza tym zaleca się unikanie używania spacji lub znaków innych niż angielskie w ścieżce pliku, w którym znajduje się ten projekt.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Uruchom usługę Go (refaktoryzacja)
-
-Aby uruchomić usługę Go w terminalu, możesz wykonać poniższe polecenie:
-
-```shell
-go run ./core/app.go server
-```
-
-Aby debugować usługę Go, skonfigurowaliśmy ją w VSCode, możesz po prostu wykonać poniższe kroki:
-
-1. Wpisz Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. Uruchom moduł FrontEnd (przeniesiony do web2)
+## 2. Compile and Run
 
 ```bash
 # zainstaluj wymaganą bibliotekę globalną
 npm i -g pnpm ts-node typescript
 
 # zainstaluj deps projektu
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Jest przeznaczony tylko dla systemu Windows. Zamknie wszystkie terminale i poprzednie procesy.
-
-# uruchom usługę internetową na terminalu 1
+# run core service
 npm run fe-web
 
-# uruchom procesor CSS na terminalu 2
-npm run fe-css
-
-# uruchom dodatkowe zadania na terminalu 3
-npm run fe-extra
-
 ```
 
-Pamiętaj, że możesz użyć symbolu „&” do wykonania w tle, jeśli nie chcesz alternatywnie uruchamiać tych poleceń w oddzielnych instancjach terminala.
-
-## 4. Zacznij się rozwijać
-
-Po uruchomieniu usługi Go powinieneś zobaczyć link wydrukowany w terminalu. Teraz skopiuj ten adres URL i wklej go do przeglądarki, aby rozpocząć programowanie, chodźmy!
-
-Przykład:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Zbudować
+## 3. Zbudować
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 O co chodzi z nazwą?

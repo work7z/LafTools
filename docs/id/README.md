@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Halaman ini dihasilkan dari LafTools secara internal.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Halaman ini dihasilkan dari LafTools secara internal.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Jika jawaban di atas adalah ya, Anda harus mempertimbangkan untuk mencoba kotak 
 
 # 🚀 Mulai
 
-## 0. Pemfaktoran ulang
-
-Baru-baru ini, kami melakukan refactoring arsitektur LafTools berdasarkan next.js, langkah-langkah di bawah ini dapat diubah sesuai kebutuhan.
-
 ## 1. Pengaturan Lingkungan Sistem
 
-Demi kesederhanaan, katakanlah Anda telah mengkloning repositori ini ke `C:\Usersjerry\project\laftools-repo` di Windows atau `/Users/jerry/projects/laftools-repo` di Linux/MacOS, maka Anda harus mendeklarasikan env dan menyetel config di bawah ini dalam file Anda \*_~/.bashrc_ \*, atau jalankan saja sebelum menjalankan perintah apa pun.
+Demi kesederhanaan, katakanlah Anda telah mengkloning repositori ini ke `C:\Usersjerry\project\laftools-repo` di Windows atau `/Users/jerry/projects/laftools-repo` di Linux/MacOS, maka Anda harus mendeklarasikan env dan menyetel config di bawah ini dalam file Anda **~/.bashrc* *, atau jalankan saja sebelum menjalankan perintah apa pun.
 
 Jika Anda menggunakan OS Windows, pastikan semua perintah dijalankan di git-bash, pelajari lebih lanjut silakan merujuk ke [KONTRIBUSI](/docs/id/CONTRIBUTION.md). Selain itu, disarankan untuk menghindari penggunaan spasi atau karakter non-Inggris di jalur file tempat proyek ini berada.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Luncurkan Layanan Go (Refactoring)
-
-Untuk menjalankan layanan Go di terminal, Anda dapat menjalankan perintah di bawah ini:
-
-```shell
-go run ./core/app.go server
-```
-
-Untuk men-debug layanan Go, kami telah mengkonfigurasinya di VSCode, Anda cukup mengikuti langkah-langkah di bawah ini:
-
-1. Masukkan Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. Luncurkan Modul FrontEnd (Dipindahkan ke web2)
+## 2. Compile and Run
 
 ```bash
 # instal perpustakaan global yang diperlukan
 npm i -g pnpm ts-node typescript
 
 # instal deps proyek
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Ini hanya untuk Windows, ini akan menutup semua terminal dan proses sebelumnya.
-
-# jalankan layanan web di terminal 1
+# run core service
 npm run fe-web
 
-# jalankan prosesor CSS di terminal 2
-npm run fe-css
-
-# menjalankan pekerjaan tambahan di terminal 3
-npm run fe-extra
-
 ```
 
-Perhatikan bahwa Anda dapat menggunakan simbol '&' untuk eksekusi latar belakang jika Anda tidak ingin menjalankan perintah ini di terminal terpisah.
-
-## 4. Mulai Berkembang
-
-Setelah layanan Go berjalan, Anda akan melihat tautan tercetak di terminal. Sekarang, salin URL ini dan tempel ke browser Anda untuk mulai mengembangkan, ayo!
-
-Contoh:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Membangun
+## 3. Membangun
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 Ada apa dengan namanya?

@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Tato stránka je generována interně z LafTools.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Tato stránka je generována interně z LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Pokud je odpověď na kteroukoli z výše uvedených otázek ano, měli byste zv
 
 # 🚀 Začínáme
 
-## 0. Refaktoring
-
-Nedávno refaktorujeme architekturu LafTools založenou na next.js, níže uvedené kroky se mohou podle potřeby změnit.
-
 ## 1. Nastavení prostředí systému
 
-Pro zjednodušení řekněme, že jste toto úložiště naklonovali buď do `C:\Usersjerry\project\laftools-repo` na Windows nebo `/Users/jerry/projects/laftools-repo` na Linux/MacOS, pak byste měli deklarovat env a nastavit konfiguraci níže ve vašem souboru \*_~/.bashrc_ \*, nebo je jednoduše spusťte před spuštěním jakéhokoli příkazu.
+Pro zjednodušení řekněme, že jste toto úložiště naklonovali buď do `C:\Usersjerry\project\laftools-repo` na Windows nebo `/Users/jerry/projects/laftools-repo` na Linux/MacOS, pak byste měli deklarovat env a nastavit konfiguraci níže ve vašem souboru **~/.bashrc* *, nebo je jednoduše spusťte před spuštěním jakéhokoli příkazu.
 
 Pokud používáte operační systém Windows, ujistěte se, že jsou všechny příkazy prováděny v git-bash, další informace naleznete v [PŘÍSPĚVEK](/docs/cs/CONTRIBUTION.md). Kromě toho se doporučuje nepoužívat žádné mezery nebo neanglické znaky v cestě k souboru, kde je tento projekt umístěn.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Spustit službu Go (refaktoring)
-
-Chcete-li spustit službu Go v terminálu, můžete provést následující příkaz:
-
-```shell
-go run ./core/app.go server
-```
-
-Chcete-li ladit službu Go, nakonfigurovali jsme ji ve VSCode, stačí postupovat podle následujících kroků:
-
-1. Zadejte Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. Spustit modul FrontEnd (přesunuto na web2)
+## 2. Compile and Run
 
 ```bash
 # nainstalovat požadovanou globální knihovnu
 npm i -g pnpm ts-node typescript
 
 # nainstalovat zast
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Je pouze pro Windows, zavře všechny terminály a předchozí procesy.
-
-# spustit webovou službu na terminálu 1
+# run core service
 npm run fe-web
 
-# spusťte CSS procesor na terminálu 2
-npm run fe-css
-
-# spustit další úlohy na terminálu 3
-npm run fe-extra
-
 ```
 
-Všimněte si, že můžete použít symbol '&' pro provádění na pozadí, pokud nechcete alternativně spouštět tyto příkazy v samostatných instancích terminálu.
-
-## 4. Začněte se vyvíjet
-
-Jakmile je služba Go spuštěna, měli byste být schopni vidět vytištěný odkaz v terminálu. Nyní zkopírujte tuto adresu URL a vložte ji do svého prohlížeče, abyste mohli začít vyvíjet, jdeme na to!
-
-Příklad:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Stavět
+## 3. Stavět
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 Jak je to se jménem?

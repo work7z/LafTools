@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Questa pagina è generata internamente da LafTools.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Questa pagina è generata internamente da LafTools.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Se la risposta a una qualsiasi delle domande precedenti è sì, allora dovresti 
 
 # 🚀 Iniziare
 
-## 0. Refactoring
-
-Recentemente, stiamo eseguendo il refactoring dell'architettura di LafTools basata su next.js, i passaggi seguenti potrebbero essere modificati in base alle necessità.
-
 ## 1. Imposta l'ambiente di sistema
 
-Per semplicità, supponiamo che tu abbia clonato questo repository su `C:\Usersjerry\project\laftools-repo` su Windows o `/Users/jerry/projects/laftools-repo` su Linux/MacOS, quindi dovresti dichiarare env e impostare config di seguito nel tuo file \*_~/.bashrc_ \*, o semplicemente eseguirli prima di eseguire qualsiasi comando.
+Per semplicità, supponiamo che tu abbia clonato questo repository su `C:\Usersjerry\project\laftools-repo` su Windows o `/Users/jerry/projects/laftools-repo` su Linux/MacOS, quindi dovresti dichiarare env e impostare config di seguito nel tuo file **~/.bashrc* *, o semplicemente eseguirli prima di eseguire qualsiasi comando.
 
 Se utilizzi il sistema operativo Windows, assicurati che tutti i comandi siano eseguiti in git-bash, per ulteriori informazioni fai riferimento a [CONTRIBUTO](/docs/it/CONTRIBUTION.md). Oltre a ciò, si consiglia di evitare di utilizzare spazi bianchi o caratteri non inglesi nel percorso del file in cui si trova questo progetto.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Avvia il servizio Go (Refactoring)
-
-Per eseguire il servizio Go nel terminale, puoi eseguire il comando seguente:
-
-```shell
-go run ./core/app.go server
-```
-
-Per eseguire il debug del servizio Go, lo abbiamo configurato in VSCode, puoi semplicemente seguire i passaggi seguenti:
-
-1. Inserisci Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. Avvia il modulo FrontEnd (spostato in web2)
+## 2. Compile and Run
 
 ```bash
 # installare la libreria globale richiesta
 npm i -g pnpm ts-node typescript
 
 # installa le dipendenze del progetto
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # È solo per Windows, chiuderà tutti i terminali e i processi precedenti.
-
-# eseguire il servizio Web sul terminale 1
+# run core service
 npm run fe-web
 
-# eseguire il processore CSS sul terminale 2
-npm run fe-css
-
-# eseguire lavori extra sul terminale 3
-npm run fe-extra
-
 ```
 
-Tieni presente che puoi utilizzare il simbolo "&" per l'esecuzione in background se non desideri eseguire in alternativa questi comandi in istanze di terminale separate.
-
-## 4. Inizia a sviluppare
-
-Una volta che il servizio Go è in esecuzione, dovresti essere in grado di vedere un collegamento stampato nel terminale. Ora copia questo URL e incollalo nel tuo browser per iniziare a sviluppare, andiamo!
-
-Esempio:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Costruire
+## 3. Costruire
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 Cosa significa il nome?

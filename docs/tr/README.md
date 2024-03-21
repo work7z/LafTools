@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Bu sayfa dahili olarak LafTools'tan oluşturulmuştur.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Bu sayfa dahili olarak LafTools'tan oluşturulmuştur.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Yukarıdakilerden herhangi birine cevabınız evet ise araç kutumuzu denemeyi d
 
 # 🚀 Başlarken
 
-## 0. Yeniden düzenleme
-
-Son zamanlarda LafTools'un mimarisini next.js'ye dayalı olarak yeniden düzenliyoruz, aşağıdaki adımlar gerektiği gibi değiştirilebilir.
-
 ## 1. Sistem Ortamını Kurma
 
-Basitlik adına, bu depoyu Windows'ta `C:\Usersjerry\project\laftools-repo`'a veya Linux/MacOS'ta `/Users/jerry/projects/laftools-repo`'e kopyaladığınızı varsayalım, ardından env'yi bildirmeli ve \*_~/.bashrc_ dosyanızda aşağıdaki config'i ayarlamalısınız. \* veya herhangi bir komutu çalıştırmadan önce bunları yürütün.
+Basitlik adına, bu depoyu Windows'ta `C:\Usersjerry\project\laftools-repo`'a veya Linux/MacOS'ta `/Users/jerry/projects/laftools-repo`'e kopyaladığınızı varsayalım, ardından env'yi bildirmeli ve **~/.bashrc* dosyanızda aşağıdaki config'i ayarlamalısınız. * veya herhangi bir komutu çalıştırmadan önce bunları yürütün.
 
 Windows işletim sistemi kullanıyorsanız lütfen tüm komutların git-bash'ta yürütüldüğünden emin olun, daha fazla bilgi için lütfen [CONTRIBUTION](/docs/tr/CONTRIBUTION.md) konusuna bakın. Bunun dışında bu projenin bulunduğu dosya yolunda boşluk veya İngilizce olmayan karakterlerin kullanılmaması tavsiye edilir.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Go Hizmetini Başlatın (Yeniden Düzenleme)
-
-Go hizmetini terminalde çalıştırmak için aşağıdaki komutu çalıştırabilirsiniz:
-
-```shell
-go run ./core/app.go server
-```
-
-Go hizmetinde hata ayıklamak için onu VSCode'da yapılandırdık, aşağıdaki adımları takip etmeniz yeterlidir:
-
-1. Visual Studio Code girin
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. FrontEnd Modülünü Başlatın (web2'ye taşındı)
+## 2. Compile and Run
 
 ```bash
 # gerekli global kütüphaneyi yükleyin
 npm i -g pnpm ts-node typescript
 
 # proje bölümlerini yükle
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Yalnızca Windows içindir, tüm terminalleri ve önceki işlemleri kapatacaktır.
-
-# terminal 1'de web hizmetini çalıştırın
+# run core service
 npm run fe-web
 
-# CSS işlemcisini terminal 2'de çalıştırın
-npm run fe-css
-
-# terminal 3'te ekstra işler çalıştırın
-npm run fe-extra
-
 ```
 
-Bu komutları alternatif olarak ayrı terminal örneklerinde çalıştırmak istemiyorsanız, arka planda çalıştırmak için '&' sembolünü kullanabileceğinizi unutmayın.
-
-## 4. Geliştirmeye Başlayın
-
-Go hizmeti çalışmaya başladığında terminalde bir bağlantının yazdırıldığını görebilmeniz gerekir. Şimdi bu URL'yi kopyalayıp tarayıcınıza yapıştırarak geliştirmeye başlayın, hadi başlayalım!
-
-Örnek:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. İnşa etmek
+## 3. İnşa etmek
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 İsmin nesi var?

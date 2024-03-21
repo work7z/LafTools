@@ -11,7 +11,7 @@
 <br><br>
 </p>
 
-<i>Note: Den här sidan är genererad från LafTools internt.</i> <br/> [English](/docs/en_US/README.md) | [简体中文](/docs/zh_CN/README.md) | [繁體中文](/docs/zh_HK/README.md) | [Deutsch](/docs/de/README.md) | [Español](/docs/es/README.md) | [Français](/docs/fr/README.md) | [日本語](/docs/ja/README.md) | [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
+<i>Note: Den här sidan är genererad från LafTools internt.</i> <br/> [English](/docs/en_US/README.md)  |  [简体中文](/docs/zh_CN/README.md)  |  [繁體中文](/docs/zh_HK/README.md)  |  [Deutsch](/docs/de/README.md)  |  [Español](/docs/es/README.md)  |  [Français](/docs/fr/README.md)  |  [日本語](/docs/ja/README.md)  |  [한국어](/docs/ko/README.md) | [More](/docs/) <br/>
 
 # 🪄 Quick View
 
@@ -55,13 +55,9 @@ Om svaret på något av ovanstående är ja, bör du överväga att prova vår v
 
 # 🚀 Komma igång
 
-## 0. Refaktorering
-
-Nyligen omarbetar vi arkitekturen för LafTools baserat på next.js, nedanstående steg kan ändras vid behov.
-
 ## 1. Konfigurera systemmiljön
 
-För enkelhetens skull, låt oss säga att du har klonat det här arkivet till antingen `C:\Usersjerry\project\laftools-repo` på Windows eller `/Users/jerry/projects/laftools-repo` på Linux/MacOS, då bör du deklarera env och ställa in config nedan i din fil \*_~/.bashrc_ \*, eller helt enkelt köra dem innan du kör något kommando.
+För enkelhetens skull, låt oss säga att du har klonat det här arkivet till antingen `C:\Usersjerry\project\laftools-repo` på Windows eller `/Users/jerry/projects/laftools-repo` på Linux/MacOS, då bör du deklarera env och ställa in config nedan i din fil **~/.bashrc* *, eller helt enkelt köra dem innan du kör något kommando.
 
 Om du använder Windows OS, se till att alla kommandon körs i git-bash, läs mer se [BIDRAG](/docs/sv/CONTRIBUTION.md). Bortsett från detta rekommenderas det att undvika att använda blanksteg eller icke-engelska tecken i filsökvägen där detta projekt finns.
 
@@ -79,67 +75,27 @@ export PATH=$PATH:$LAFTOOLS_ROOT\dev\source\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. Starta Go Service (refaktorering)
-
-För att köra Go-tjänst i terminal kan du köra följande kommando:
-
-```shell
-go run ./core/app.go server
-```
-
-För att felsöka Go-tjänsten har vi konfigurerat den i VSCode, du kan bara följa nedanstående steg:
-
-1. Ange Visual Studio Code
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. Starta FrontEnd-modul (Flyttad till web2)
+## 2. Compile and Run
 
 ```bash
 # installera det globala biblioteket
 npm i -g pnpm ts-node typescript
 
 # installera projektdeps
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
-npm run win-clean # Det är endast för Windows, det kommer att stänga alla terminaler och tidigare processer.
-
-# kör webbtjänst på terminal 1
+# run core service
 npm run fe-web
 
-# kör CSS-processor på terminal 2
-npm run fe-css
-
-# köra extrajobb på terminal 3
-npm run fe-extra
-
 ```
 
-Observera att du kan använda '&'-symbolen för bakgrundsexekvering om du inte vill köra dessa kommandon alternativt i separata terminalinstanser.
-
-## 4. Börja utveckla
-
-När Go-tjänsten körs bör du kunna se en länk utskriven i terminalen. Nu, kopiera denna URL och klistra in den i din webbläsare för att börja utveckla, låt oss köra!
-
-Exempel:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. Bygga
+## 3. Bygga
 
 ```bash
 cd pipeline
-./build-all.sh
+./build-all.sh "v1.9.9-beta"
 ```
 
 # 🌱 Vad är det med namnet?
