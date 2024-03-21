@@ -43,7 +43,7 @@ import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSl
 import { ClientPortalContext, CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType as ToolCurrentRuntimeStatus } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TransformerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
-import ControlBar from "./ControlBar/index.tsx";
+import ControlBar, { useHideBottomAndSettingHook } from "./ControlBar/index.tsx";
 import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
 import ProcessPanel from "./ProcessPanel/index.tsx";
@@ -306,7 +306,8 @@ export default (props: CommonTransformerProps) => {
       b
     )
   }, [sessionId])
-  let disableSeparateOutputMode = fn_coll_config(sessionId);
+  let { hideBottomPanel: hideBottomPanel, hideSettingPanel } = useHideBottomAndSettingHook()
+
   if (!crtRuntimeStatus) {
     return <div className="w-full h-full">
       <LoadingText></LoadingText>
@@ -337,11 +338,10 @@ export default (props: CommonTransformerProps) => {
       fn_notifyTextChange(true)
     }}
   ></GenCodeMirror>
-  let isCollapsed_config = disableSeparateOutputMode
 
-  let processPanelItem = isCollapsed_config ? '' :
+  let processPanelItem = hideBottomPanel ? '' :
     <Allotment.Pane>
-      <ProcessPanel disableSeparateOutputMode={false} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
+      <ProcessPanel hideSettingPanel={hideSettingPanel} disableSeparateOutputMode={false} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
     </Allotment.Pane>
   if (loadError) {
     return <ShowErrorPanel loadError={loadError}></ShowErrorPanel>
@@ -439,9 +439,6 @@ export default (props: CommonTransformerProps) => {
               <ToolTitlebar title={infoObj.LabelFn(Dot) || 'N/A'} />
               <div style={{
                 flex: '1',
-                // height: (clientPortalContext.appToolHeight - VAL_CSS_TAB_TITLE_PANEL) + 'px'
-                // height: clientPortalContext.appToolHeight ? clientPortalContext.appToolHeight : `calc(100vh - ${VAL_CSS_TAB_TITLE_PANEL}px)`
-                // height: `calc(100vh - ${VAL_CSS_TAB_TITLE_PANEL}px)`
               }}>
                 {app_right_jsx}
               </div>

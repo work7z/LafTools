@@ -45,7 +45,7 @@ import RuntimeStatusSlice from "../../../../../../../../../reducers/runtimeStatu
 
 import { CommonTransformerProps } from "../types";
 import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../../types/purejs-types-READ_ONLY";
-import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "../hooks";
+import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "../hooks";
 import FormGenPanel, { FormGenItem } from "../../../../../../../../../components/FormGenPanel";
 import Operation from "../../../../../../../../../impl/core/Operation.tsx";
 import { logutils } from "../../../../../../../../../utils/LogUtils";
@@ -53,25 +53,8 @@ import { useShouldVerticalModeOrNot } from "../index.tsx";
 export let ifnil = (v1: any, v2: any) => {
     return v1 === undefined || v1 === null ? v2 : v1
 }
-// {
-//     label: Dot("FQzhg", "Ignore Empty Input"),
-//     helperText: Dot("crD7I", "To configure whether the transformation should ignore the empty input text whose length is zero."),
-//     genEleConfig: {
-//         type: "switch",
-//         value: crtRuntimeStatus.ignoreEmptyStr,
-//         onChange(newVal) {
-//             FN_GetDispatch()(
-//                 RuntimeStatusSlice.actions.updateValueInStatusMap({
-//                     sessionId,
-//                     obj: {
-//                         ignoreEmptyStr: newVal
-//                     }
-//                 })
-//             )
-//         },
-//     }
-// },
-export default (props: { disableSeparateOutputMode: boolean } & CommonTransformerPassProp & TransformerWithRuntime) => {
+
+export default (props: { disableSeparateOutputMode: boolean, hideSettingPanel: boolean } & CommonTransformerPassProp & TransformerWithRuntime) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
     let shouldVert = useShouldVerticalModeOrNot()
 
@@ -223,13 +206,6 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
         </div>
     )
 
-    // useEffect(() => {
-    //     if (props.disableSeparateOutputMode) {
-    //         if (toolTabIndex == 'output') {
-    //             FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: "tools" }))
-    //         }
-    //     }
-    // }, [props.disableSeparateOutputMode, toolTabIndex])
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
     let shouldHideLeftTextInBar = !shouldVert // when bottom is not hide, then hide left text
@@ -344,75 +320,15 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
     )
     return <div key={props.sessionId} className="w-full h-full">
         <Allotment vertical={!shouldVert}>
-            <Allotment.Pane>
-                {jsx_left_setting_or_faq}
-            </Allotment.Pane>
+            {
+                props.hideSettingPanel ? '' : <Allotment.Pane>
+                    {jsx_left_setting_or_faq}
+                </Allotment.Pane>
+            }
             <Allotment.Pane>
                 {jsx_right_output_or_somethingelse}
             </Allotment.Pane>
         </Allotment>
     </div>
 
-    return <div key={props.sessionId} className="h-full overflow-auto relative" style={{
-        padding: '1px'
-    }}>
-        <Navbar>
-            <Navbar.Group>
-                {
-                    shouldHideLeftTextInBar ? <div className={
-                        "   " + (
-
-                            loadingStatic || crtRuntimeStatus.processOK ? "" + (
-                                "bg-lime-100 dark:bg-lime-800 "
-                            ) :
-                                crtRuntimeStatus.processError ? "bg-yellow-200 dark:bg-yellow-800 " : crtRuntimeStatus.processing ? " bg-sky-200 dark:bg-sky-800 " : "  bg-zinc-100 dark:bg-zinc-800"
-                        ) + ' ' + (
-                            "   text-black dark:text-white absolute top-0 right-0 p-1 text-xs flex justify-between items-center"
-                        )
-                    } style={{
-                    }}>{iconJSX}
-                        <span style={{
-                            fontSize: '9px',
-                            marginTop: '-1.5px'
-                        }}>
-                            {maintext_f}</span>
-                    </div> : <Navbar.Heading >
-                        {iconJSX}
-                        <span className={
-                            clz_f
-                        }>
-                            {maintext_f}
-                        </span>
-                    </Navbar.Heading>
-                }
-            </Navbar.Group>
-            <Navbar.Group align={shouldHideLeftTextInBar ? Alignment.LEFT : Alignment.RIGHT}>
-                <Tabs
-                    animate={true}
-                    fill={true}
-                    id="navbar"
-                    large={false}
-                    onChange={(v) => {
-                        FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: v as Val_ToolTabIndex }))
-                    }}
-                    selectedTabId={toolTabIndex}
-                >
-                    <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(generalList)} />
-
-                    <Tab id="faq" icon="manual" title={"FAQ"} />
-                    {
-                        !toolHandler || toolHanlder?.getMetaInfo()?.hideCodePanel ? '' : <Tab id="code" icon="code" title={Dot("JQEVK", "Code")} />
-                    }
-                    {
-                        props.disableSeparateOutputMode ? '' : <Tab id="output" icon={
-                            crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "tick"
-                        } title={Dot("FjYbR", "Output")} />
-                    }
-                </Tabs>
-            </Navbar.Group>
-        </Navbar>
-        <div style={{ height: `calc(100% - ${CSS_NAV_BP_TAB_HEIGHT})`, overflow: 'auto' }} className={pdValue}>
-            {finalShowContent_l}
-        </div>
-    </div>
 }

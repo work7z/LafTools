@@ -22,13 +22,21 @@ import RuntimeStatusSlice from "../../../../../../../../../reducers/runtimeStatu
 
 import { ClientPortalContext, CommonTransformerProps } from "../types";
 import { ExtensionAction, ToolDefaultOutputType } from "../../../../../../../../../types/purejs-types-READ_ONLY";
-import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_config, fn_coll_output, fn_format_button } from "../hooks";
+import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_output, fn_format_button } from "../hooks";
 import gutils from "../../../../../../../../../utils/GlobalUtils";
 import CopyButton from "../../../../../../../../../components/CopyButton";
 import { ActionButtonProps } from "../../../../../../../../../components/ActionButton";
 import ParamStateSlice, { TrueFalseType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
 import { useShouldVerticalModeOrNot } from "..";
+export let useHideBottomAndSettingHook = () => {
+    return exportUtils.useSelector((x) => {
+        return {
+            hideBottomPanel: x.paramState.hdbtpl == 'true',
+            hideSettingPanel: x.paramState.hdstpt == 'true',
+        };
+    })
 
+}
 
 let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransformerProps & TransformerWithRuntime & {
     onProcess: () => any;
@@ -44,17 +52,14 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
     let shouldVerticalMode = useShouldVerticalModeOrNot()
     let [loadExample, onLoadExample] = useState(false);
     let toolHandler = props.toolHandler
-    let extVM = props.extVM
     let crtRuntimeStatus = props.crtRuntimeStatus
     let parentTriggered = crtRuntimeStatus.processOK || crtRuntimeStatus.processing;
     let operaList = toolHandler?.getOperations() || []
     let crtDefaultOperaId = props.crtDefaultOperaId
     let leftActions: ActionButtonProps[] = [
         {
-            icon: hideSideBar == 'false' ? 'menu-closed' : 'menu-open',//'remove-column-left',
-            className: '',// "btn-green",
-            // outlined: true,
-            // intent: "success",
+            icon: hideSideBar == 'false' ? 'menu-closed' : 'menu-open',
+            className: '',
             intent: "none",
             minimal: true,
             title: hideSideBar == 'false' ?
@@ -180,39 +185,23 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
         })
     }
     let sessionId = props.sessionId;
-    let isCollapsed_config = fn_coll_config(sessionId);
-    let isCollapsed_output = fn_coll_output(sessionId);
-
-    let onColl_config = (v: boolean) => {
+    let { hideBottomPanel: hideBottomPanel, hideSettingPanel } = useHideBottomAndSettingHook()
+    let triggerBottomPanel = (v: boolean) => {
         FN_GetDispatch()(
-            RuntimeStatusSlice.actions.setCollapseConfig({
-                sessionId,
-                collapseConfig: v,
-            }),
+            ParamStateSlice.actions.updateOneOfParamState({
+                hdbtpl: v ? "true" : "false",
+            })
         );
     };
-    let onColl_output = (v: boolean) => {
+    let triggerSettingPanel = (v: boolean) => {
         FN_GetDispatch()(
-            RuntimeStatusSlice.actions.setCollapseOutput({
-                sessionId,
-                collapseOutput: v,
-            }),
+            ParamStateSlice.actions.updateOneOfParamState({
+                hdstpt: v ? "true" : "false",
+            })
         );
-    };
-    let isColl = isCollapsed_config
+    }
     let clientPortalContext = useContext(ClientPortalContext)
-    let portalMode = clientPortalContext.portalMode
     let rightActions: ActionButtonProps[] = [
-        // {
-        //     // icon: "duplicate",
-        //     intent: "success",
-        //     icon: copied ? "tick" : "duplicate",
-        //     text:,
-        //     minimal: copied,
-        //     title: ,
-        //     onClick: () => {
-        //     }
-        // },
         {
             // icon: "export",
             icon: "download",
@@ -224,27 +213,27 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                 AlertUtils.popNotSupport()
             }
         },
-        // {
-        //     icon: "gantt-chart",
-        //     intent: "none" as any,
-        //     className: "none",
-        //     text: "",
-        //     title: Dot("i8q8tb", "Configure WorkFlow for Input"),
-        //     onClick: () => {
-        //         AlertUtils.popNotSupport()
-        //     }
-        // },
+
         {
-            icon: "console",
-            intent: isColl ? "none" : "success",
-            className: isColl ? "" : "btn-lime",
-            // title: Dot("RzegarVx1", "Whether to show output results separately"),
-            title: isColl ? Dot("UTeZ46gI4", "Hide Output Panel") : Dot("7zlGIUGvj", "Show Output Panel"),
+            icon: "series-configuration",
+            intent: hideSettingPanel ? "none" : "success",
+            className: hideSettingPanel ? "" : "btn-lime",
+            title: hideSettingPanel ? Dot("CEB76UtFY", "Hide Settings") : Dot("vYU1HVe-C", "Show Settings"),
             onClick() {
-                onColl_output(!isCollapsed_output);
-                onColl_config(!isCollapsed_config);
+                triggerSettingPanel(!hideSettingPanel);
             }
         },
+        {
+            icon: "console",
+            intent: hideBottomPanel ? "none" : "success",
+            className: hideBottomPanel ? "" : "btn-lime",
+            title: hideBottomPanel ? Dot("1IrWC1qw", "Hide Bottom Panel") : Dot("pENGfAKuz", "Show Bottom Panel"),
+            onClick() {
+                triggerBottomPanel(!hideBottomPanel);
+            }
+        },
+
+
         {
             icon: "rect-width",
             intent: shouldVerticalMode ? "none" : "success",
@@ -257,7 +246,8 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                     })
                 );
             }
-        }, {
+        },
+        {
             icon: 'search',
             intent: 'none',
             title: Dot("6SypzjeRz", "Quickly search tools that you need"),
@@ -265,42 +255,6 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                 AlertUtils.popNotSupport()
             }
         }
-        // {
-        //     // icon: 'publish-function',
-        //     // icon: 'remove-row-top',
-        //     icon: 'page-layout',
-        //     intent: "none",
-        //     title: fullScreen ? Dot("QAJ1Y27b7", "Disable Full Screen Mode") : Dot("9O7RAAblf", "Enable Full Screen Mode"),
-        //     onClick: () => {
-        //         let newFullScreen = fullScreen == "true" ? "false" : "true";
-        //         FN_GetDispatch()(
-        //             ParamStateSlice.actions.updateOneOfParamState({
-        //                 fs: newFullScreen
-        //             })
-        //         );
-        //     }
-        // }
-        // {
-        //     icon: "export",
-        //     intent: isCollapsed_output ? "none" : "success",
-        //     // title: Dot("Fy217", "Configure Text Transformer"),
-        //     title: Dot("G3MJN", "Show Output Panel"),
-        //     className: isCollapsed_output ? "" : "btn-lime",
-        //     onClick: () => {
-        //         onColl_output(!isCollapsed_output);
-        //     },
-        // },
-        // {
-        //     icon: "cog",
-        //     intent: isCollapsed ? "none" : "success",
-        //     // title: Dot("Fy217", "Configure Text Transformer"),
-        //     title: Dot("Fy217", "Configure this Tool"),
-        //     className: isCollapsed ? "" : "btn-lime",
-        //     onClick: () => {
-        //         onColl(!isCollapsed);
-        //     },
-        // },
-
     ];
     return (
         <div
