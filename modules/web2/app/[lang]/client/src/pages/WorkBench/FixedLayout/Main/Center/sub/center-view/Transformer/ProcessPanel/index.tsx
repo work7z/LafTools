@@ -200,7 +200,6 @@ export default (props: { disableSeparateOutputMode: boolean } & CommonTransforme
         </div>
     } else if (toolTabIndex == "tools") {
         finalShowContent_l = <FormGenPanel fixSingleColumn={!shouldVert} list={generalList}></FormGenPanel >
-    } else if (toolTabIndex == "output") {
     } else if (toolTabIndex == "faq") {
         finalShowContent_l = <FaqPanel key={sessionId} {...props}></FaqPanel>
     } else if (toolTabIndex == 'code') {

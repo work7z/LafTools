@@ -55,10 +55,6 @@ ${Dot("U6zkVUPTq","If the answer to any of the above is yes, then you should con
 
 # 🚀 ${Dot("AOKa_f9CC","Getting Started")}
 
-## 0. ${Dot("71DMQ0cOr","Refactoring")}
-
-${Dot("5B9rXHCzi","Recently, we are refactoring the architecture of LafTools based on next.js, below steps may changed as needed.")}
-
 ## 1. ${Dot("lmVW9z9oh","Setup System Environment")}
 
 ${Dot("dcOe3U","For the sake of simplicity, let's say that you've cloned this repository to either {0} on Windows or {1} on Linux/MacOS, then you should declare env and set config below in your file **~/.bashrc**, or simply execute them before running any command.",'`C:\\Users\jerry\\project\\laftools-repo`','`/Users/jerry/projects/laftools-repo`')}
@@ -79,63 +75,23 @@ export PATH=$PATH:$LAFTOOLS_ROOT\\dev\\source\\windows-bin
 export LAFTOOLS_ROOT=/users/jerry/projects/laftools-repo
 ```
 
-## 2. ${Dot("RV6qQL8ox","Launch Go Service (Refactoring)")}
-
-${Dot("KFgTmafOWE4U","To run Go service in terminal, you can execute below command:")}
-
-```shell
-go run ./core/app.go server
-```
-
-${Dot("Yay3_x9EV","To debug Go service, we have configured it in VSCode, you can just follow below steps:")}
-
-1. ${Dot("qxRmL73lC","Enter {0}","Visual Studio Code")}
-2. Click "Run and Debug" on your sidebar
-3. Click "Run" button.
-
-## 3. ${Dot("Fuacz5atn","Launch FrontEnd Module (Moved to web2)")}
+## 2. ${Dot("Fuacdtn","Compile and Run")}
 
 ```bash
 # ${Dot("uh8JUYWzH","install required global library")}
 npm i -g pnpm ts-node typescript
 
 # ${Dot("YCteaVxTx","install project deps")}
-cd $LAFTOOLS_ROOT && pnpm install
-cd $LAFTOOLS_ROOT/modules/web && pnpm install
-cd $LAFTOOLS_ROOT/modules/purejs && pnpm install
-cd $LAFTOOLS_ROOT/devtools/scripts/scan && pnpm install
-
-npm run win-clean # ${Dot("0Guf1oGfh","It's for Windows Only, it will close all terminals and previous processes.")}
+cd $LAFTOOLS_ROOT && npm install -S -D --force
+cd $LAFTOOLS_ROOT/modules/web2 && npm install -S -D --force
+cd $LAFTOOLS_ROOT/devtools/scripts/scan && npm install -S -D --force
 
 # ${Dot("8Yv_neS0T","run web service on terminal 1")}
 npm run fe-web
 
-# ${Dot("XHqxsRy9v","run CSS processor on terminal 2")}
-npm run fe-css
-
-# ${Dot("fp-FSQcA-","run extra jobs on terminal 3")}
-npm run fe-extra
-
 ```
 
-${Dot("hO_WdaThV","Note that you can use the '&' symbol for background execution if you don't want to alternatively run these commands in separate terminal instances.")}
-
-## 4. ${Dot("mfVQaqTiZ","Start Developing")}
-
-${Dot("O3eQBXxwY","Once the Go service is running, you should be able to see a link printed out in the terminal. Now, copy this URL and paste it into your browser to start developing, let's go!")}
-
-${Dot("eNQDoICED","Example")}:
-
-```output
------------------------------------------------
-PLEASE ACCESS THE LINK BELOW IN BROWSER.
-请复制下方链接并在浏览器端打开(for zh-hans users)
-請復製下方鏈接並在瀏覽器端打開(for zh-hant users)
-http://127.0.0.1:35000/app/entry?t={YOUR_SECRET_ID}
------------------------------------------------
-```
-
-## 5. ${Dot("QYPc87A2j","Build")}
+## 3. ${Dot("QYPc87A2j","Build")}
 
 ```bash
 cd pipeline
