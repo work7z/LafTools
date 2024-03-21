@@ -60,7 +60,19 @@ const initialState: ParamStateState = {
     r: "ai"
 };
 
-// catch if any error occurs
+let localParamSaveKey = "wrixNBr"
+
+// firstly, merge the local storage
+try {
+    let localParamSaveValue = localStorage.getItem(localParamSaveKey)
+    if (localParamSaveValue) {
+        _.merge(initialState, JSON.parse(localParamSaveValue))
+    }
+} catch (e) {
+    console.error('error', e)
+}
+
+// secondly, merge the query
 try {
     let paramQ = queryString.parseUrl(location.href).query;
     if (!paramQ) {
@@ -77,7 +89,9 @@ export let syncStateToUrl = (state: ParamStateState) => {
     let newUrl = queryString.stringifyUrl({ url: location.href, query: state });
     window.history.pushState({}, '', newUrl);
 }
-
+export let syncStateToLocal = (state: ParamStateState) => {
+    localStorage.setItem(localParamSaveKey, JSON.stringify(state))
+}
 const ParamStateSlice = createSlice({
     name: "paramState",
     initialState,
@@ -85,6 +99,7 @@ const ParamStateSlice = createSlice({
         updateOneOfParamState: (state, action: PayloadAction<Partial<ParamStateState>>) => {
             _.merge(state, action.payload)
             syncStateToUrl(state)
+            syncStateToLocal(state)
         }
     },
 });
