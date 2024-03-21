@@ -41,6 +41,7 @@ export type AppInfoType = {
 let passInfo = (obj: AppInfoType): AppInfoType => {
     return obj;
 }
+// NOTE: do not add typing for appToolInfoObj, it will be inferred from the object
 let appToolInfoObj = {
     "bcd": passInfo({
         LabelFn: (Dot: DotType) => Dot("1Xe8x7qe", "BCD")

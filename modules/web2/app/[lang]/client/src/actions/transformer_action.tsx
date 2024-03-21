@@ -30,7 +30,6 @@ import moment from "moment";
 import { ToolHandler } from "@/app/[lang]/client/src/impl/tools/r_handler";
 import { CommonTransformerPassProp } from "../types/workbench-types";
 import { logutils } from "../utils/LogUtils";
-import MD5 from "../impl/tools/impl/conversion/MD5";
 import Operation from "../impl/core/Operation";
 window["moment"] = moment
 
