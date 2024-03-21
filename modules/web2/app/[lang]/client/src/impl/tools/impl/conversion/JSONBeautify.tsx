@@ -74,8 +74,8 @@ class JSONBeautify extends Operation {
                 "This operation formats JSON data to improve readability by adding proper indentation, line breaks, and sorting keys consistently.",
             ),
             infoURL: 'https://www.json.org/json-en.html',
-            exampleInput: '{"unformatted":true,"data":[{"key1":"value1"},{"key2":"value2"}]}',
-            exampleOutput: '{\n  "unformatted": true,\n  "data": [\n    {\n      "key1": "value1"\n    },\n    {\n      "key2": "value2"\n    }\n  ]\n}'
+            exampleInput: '{"unformatted":true,"data":[{"key2":"value2"}]}',
+            exampleOutput: '{\n  "unformatted": true,\n  "data": [\n    {\n      "key2": "value2"\n    }\n  ]\n}'
         }
     }
 

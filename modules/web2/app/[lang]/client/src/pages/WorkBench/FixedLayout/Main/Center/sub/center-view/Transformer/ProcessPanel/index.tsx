@@ -18,8 +18,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-import { Alignment, Button, ButtonProps, FormGroup, Icon, IconName, InputGroup, Intent, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
+import { type ItemRenderer, Suggest } from "@blueprintjs/select";
+import { Alignment, Button, ButtonProps, FormGroup, Icon, IconName, InputGroup, Intent, Menu, MenuItem, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import FaqPanel from './FaqPanel'
 import CodePanel from './CodePanel'
@@ -50,6 +50,7 @@ import FormGenPanel, { FormGenItem } from "../../../../../../../../../components
 import Operation from "../../../../../../../../../impl/core/Operation.tsx";
 import { logutils } from "../../../../../../../../../utils/LogUtils";
 import { useShouldVerticalModeOrNot } from "../index.tsx";
+import EditableOptions from "@/app/[lang]/client/src/components/EditableOptions/index.tsx";
 export let ifnil = (v1: any, v2: any) => {
     return v1 === undefined || v1 === null ? v2 : v1
 }
@@ -78,74 +79,126 @@ export default (props: { disableSeparateOutputMode: boolean, hideSettingPanel: b
             let checks = config.checks
             _.forEach(args, (eachArg) => {
                 let { type, name, value: _srcVal } = eachArg;
-                if (type == 'boolean') {
-                    let value = ifnil(crtRuntimeStatus[name], _srcVal)
-                    generalList.push({
-                        label: name,
-                        genEleConfig: {
-                            type: "switch",
-                            value: value,
-                            onChange(newVal) {
-                                FN_GetDispatch()(
-                                    RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                        sessionId,
-                                        obj: {
-                                            [name]: newVal
-                                        }
-                                    })
-                                )
-                            },
-                        }
-                    })
-                } else if (type == 'option') {
-                    let value = crtRuntimeStatus[name] || _srcVal[0]
-                    generalList.push({
-                        label: name,
-                        genEleConfig: {
-                            type: "select",
-                            value: value,
-                            selectList: _.map(_srcVal, (eachValue) => {
-                                return {
-                                    label: eachValue,
-                                    value: eachValue
-                                }
-                            }),
-                            onChange(newVal) {
-                                FN_GetDispatch()(
-                                    RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                        sessionId,
-                                        obj: {
-                                            [name]: newVal
-                                        }
-                                    })
-                                )
-                            },
-                        }
-                    })
-                } else if (type == 'binaryShortString') {
-                    let value = ifnil(crtRuntimeStatus[name], _srcVal)
-                    let onchg = (e) => {
-                        FN_GetDispatch()(
-                            RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                sessionId,
-                                obj: {
-                                    [name]: e.target.value
+                switch (type) {
+                    case 'boolean':
+                        {
+                            let value = ifnil(crtRuntimeStatus[name], _srcVal)
+                            generalList.push({
+                                label: name,
+                                genEleConfig: {
+                                    type: "switch",
+                                    value: value,
+                                    onChange(newVal) {
+                                        FN_GetDispatch()(
+                                            RuntimeStatusSlice.actions.updateValueInStatusMap({
+                                                sessionId,
+                                                obj: {
+                                                    [name]: newVal
+                                                }
+                                            })
+                                        )
+                                    },
                                 }
                             })
-                        )
-                    }
-                    generalList.push({
-                        label: name,
-                        genEleConfig: {
-                            type: "input",
-                            inputProps: {
-                                value: value,
-                                onChange: onchg
-                            },
-                            value: value,
-                            onChange: onchg
-                        },
-                    })
+                        }
+                        break;
+                    case 'option':
+                        {
+                            let value = crtRuntimeStatus[name] || _srcVal[0]
+                            generalList.push({
+                                label: name,
+                                genEleConfig: {
+                                    type: "select",
+                                    value: value,
+                                    selectList: _.map(_srcVal, (eachValue) => {
+                                        return {
+                                            label: eachValue,
+                                            value: eachValue
+                                        }
+                                    }),
+                                    onChange(newVal) {
+                                        FN_GetDispatch()(
+                                            RuntimeStatusSlice.actions.updateValueInStatusMap({
+                                                sessionId,
+                                                obj: {
+                                                    [name]: newVal
+                                                }
+                                            })
+                                        )
+                                    },
+                                }
+                            })
+                        }
+                        break;
+                    case "string":
+                    case "binaryString":
+                    case "byteArray":
+                    case "shortString":
+                    case 'binaryShortString':
+                    case "number":
+                        {
+                            let isNumber = type == "number"
+                            let hasShort = type.indexOf("short") > -1 || type.indexOf("Short") > -1
+                            let value = ifnil(crtRuntimeStatus[name], _srcVal)
+                            let onchg = (e) => {
+                                FN_GetDispatch()(
+                                    RuntimeStatusSlice.actions.updateValueInStatusMap({
+                                        sessionId,
+                                        obj: {
+                                            [name]: e.target.value
+                                        }
+                                    })
+                                )
+                            }
+                            generalList.push({
+                                label: name,
+                                genEleConfig: {
+                                    type: "input",
+                                    inputProps: {
+                                        type: isNumber ? "number" : "text",
+                                        value: value,
+                                        onChange: onchg,
+                                        fill: !hasShort
+                                    },
+                                    value: value,
+                                    onChange: onchg
+                                },
+                            })
+                        }
+                        break;
+                    case 'editableOption':
+                    case "editableOptionShort":
+                        {
+                            let value = ifnil(crtRuntimeStatus[name], _srcVal[0]['value'])
+                            let onchg = (val: string) => {
+                                FN_GetDispatch()(
+                                    RuntimeStatusSlice.actions.updateValueInStatusMap({
+                                        sessionId,
+                                        obj: {
+                                            [name]: val
+                                        }
+                                    })
+                                )
+                            }
+                            generalList.push({
+                                label: name,
+                                genEleConfig: {
+                                    type: "jsx",
+                                    jsxEle: <EditableOptions list={_srcVal} value={value} onChange={onchg} />
+                                },
+                            })
+                        }
+                        break;
+                    default:
+                        {
+                            generalList.push({
+                                label: name,
+                                genEleConfig: {
+                                    type: "jsx",
+                                    jsxEle: <div>Not yet supported, {name} missed {type}</div>
+                                },
+                            })
+                        }
                 }
             });
 

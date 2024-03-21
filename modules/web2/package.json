@@ -18,7 +18,7 @@
     "@blueprintjs/docs-theme": "5.0.10",
     "@blueprintjs/icons": "5.5.0",
     "@blueprintjs/popover2": "2.0.10",
-    "@blueprintjs/select": "5.0.10",
+    "@blueprintjs/select": "^5.0.10",
     "@blueprintjs/table": "5.0.10",
     "@blueprintjs/timezone": "4.5.43",
     "@codemirror/lang-javascript": "6.0.1",

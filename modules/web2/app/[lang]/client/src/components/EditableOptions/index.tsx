@@ -58,45 +58,39 @@ import {
     Button,
     FormGroupProps,
     InputGroupProps,
-    Switch,
+    Popover,
+    Menu,
 } from "@blueprintjs/core";
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { LabelValuePair } from "../../types/constants";
 import { Dot } from "../../utils/cTranslationUtils";
-import FormSwitch from "../FormSwitch";
+import FormGenElement, { FormGenType } from "../FormGenElement";
 
-export type FormGenType = {
-    type: "select" | "input" | "radio" | "switch" | "jsx";
-    jsxEle?: JSX.Element;
-    inputProps?: InputGroupProps;
-    selectList?: LabelValuePair[]
-    value?: string;
-    onChange?: (str: string) => any
+type PassProp = {
+    value: string,
+    onChange: (value: string) => any,
+    list: { name: string, value: string }[]
 }
-export default (props: { label?: string, config: FormGenType }) => {
-    let { config } = props;
-    if (config.type == "input") {
-        return <InputGroup {...config.inputProps}></InputGroup>
-    }
-    if (config.type == "select") {
-        return <HTMLSelect value={config.value} onChange={x => {
-            config.onChange && config.onChange(x.target.value)
-        }} options={config.selectList}></HTMLSelect>
-    }
-    if (config.type == "jsx") {
-        return config.jsxEle || <div>not yet defined</div>
-    }
-    if (config.type == "switch") {
-        let chk = (config.value || 'false') == 'true'
-        return (
-            <Checkbox checked={chk} onChange={x => {
-                // config.onChange
-                config.onChange && config.onChange(!chk ? 'true' : 'false')
-            }}>
-                {props.label || 'N/A'}
-            </Checkbox>
-        )
-    }
-    return <div>not yet defined</div>
+export default (props: PassProp) => {
+    return <InputGroup value={props.value} onChange={v => {
+        props.onChange(v.target.value)
+    }} rightElement={
+        <Popover content={
+            <Menu>
+                {
+                    props.list.map((eachItem, eachItemIdx) => {
+                        return <MenuItem active={
+                            eachItem.value == props.value
+                        } key={eachItemIdx} text={eachItem.name} onClick={() => {
+                            props.onChange(eachItem.value)
+                        }} />
+                    })
+                }
+            </Menu>
+        } minimal >
+            <Button minimal icon="caret-down"></Button>
+
+        </Popover>
+    }></InputGroup>
 }
