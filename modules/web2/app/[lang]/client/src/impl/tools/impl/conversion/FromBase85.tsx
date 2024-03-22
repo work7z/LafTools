@@ -101,8 +101,8 @@ class FromBase85 extends Operation {
 
             id: 'frombase85',
             infoURL: "https://en.wikipedia.org/wiki/Ascii85",
-            name: Dot("rVqlu", "Decode {0}", "Base85"),
-            description: Dot(
+            optName: Dot("rVqlu", "Decode {0}", "Base85"),
+            optDescription: Dot(
                 "wj3VS",
                 "This operation decodes data from an ASCII {0} string back into its raw format.",
                 "Base85"

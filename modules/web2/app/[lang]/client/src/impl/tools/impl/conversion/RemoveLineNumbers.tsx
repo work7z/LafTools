@@ -44,9 +44,9 @@ class RemoveLineNumbers extends Operation {
         "args": []
       },
       id: 'removelinenumbers',
-      name: Dot("OrCD8PqwH", "Remove line numbers"),
+      optName: Dot("OrCD8PqwH", "Remove line numbers"),
       infoURL: "https://en.wikipedia.org/wiki/Line_number",
-      description: Dot("Vc40-vfod", "Removes line numbers from the output if they can be trivially detected."),
+      optDescription: Dot("Vc40-vfod", "Removes line numbers from the output if they can be trivially detected."),
       exampleInput: "1. Hello\n2. World",
       exampleOutput: "Hello\nWorld",
     }

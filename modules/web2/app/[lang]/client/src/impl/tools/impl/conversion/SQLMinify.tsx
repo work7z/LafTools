@@ -49,8 +49,8 @@ class SQLMinify extends Operation {
         "args": []
       },
       id: "sql-minify",
-      name: Dot("6wdtJ4vmg.name.0912", "Minify {0}", "SQL"),
-      description: Dot(
+      optName: Dot("6wdtJ4vmg.name.0912", "Minify {0}", "SQL"),
+      optDescription: Dot(
         "LxaEFHbfa",
         "Minifies SQL code, reduce the bundle size of your SQL code.",
       ),

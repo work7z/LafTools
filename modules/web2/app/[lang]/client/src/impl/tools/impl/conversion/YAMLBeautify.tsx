@@ -56,9 +56,9 @@ class YamlBeautify extends Operation {
         ]
       },
       id: 'yaml-beautify',
-      name: Dot("yaml.format.btn", "Format YAML"),
+      optName: Dot("yaml.format.btn", "Format YAML"),
       infoURL: 'https://en.wikipedia.org/wiki/YAML',
-      description: Dot(
+      optDescription: Dot(
         "yaml-beautify.desc.2a5f9",
         "This operation formats YAML data to improve readability by adding proper indentation, line breaks, and ensuring well-formed structure.",
         ""

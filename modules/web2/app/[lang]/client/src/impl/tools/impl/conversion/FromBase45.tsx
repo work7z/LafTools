@@ -62,8 +62,8 @@ class FromBase45 extends Operation {
 
             infoURL: "https://datatracker.ietf.org/doc/draft-faltstrom-base45/",
             id: 'frombase45',
-            name: Dot("rVqlu", "Decode {0}", "Base45"),
-            description: Dot(
+            optName: Dot("rVqlu", "Decode {0}", "Base45"),
+            optDescription: Dot(
                 "JiUE8",
                 "This operation decodes data from an ASCII {0} string back into its raw format.",
                 "Base45"

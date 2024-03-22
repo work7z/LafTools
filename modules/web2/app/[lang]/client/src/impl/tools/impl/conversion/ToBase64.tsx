@@ -121,8 +121,8 @@ class ToBase64 extends Operation {
         ]
       },
       id: 'tobase64',
-      name: Dot("M3ytc", "Encode {0}", "Base64"),
-      description: Dot(
+      optName: Dot("M3ytc", "Encode {0}", "Base64"),
+      optDescription: Dot(
         "BGd7P9",
         "This operation encodes raw data into an ASCII Base64 string.",
       ),

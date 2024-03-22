@@ -14,15 +14,17 @@ import GenCodeMirror from '../../../../../../../../../components/GenCodeMirror'
 import exportUtils from '../../../../../../../../../utils/ExportUtils'
 import { SysTabPane } from '@/app/[lang]/client/src/components/SysTabPane'
 import { FN_GetDispatch } from '@/app/[lang]/client/src/nocycle'
-import { getAllOperationDetails } from '@/app/[lang]/client/src/impl/tools/s_tools'
+import { OpDetail, getAllOperationDetails } from '@/app/[lang]/client/src/impl/tools/s_tools'
 import { useInitFunctionOnceOnly } from '@/app/__CORE__/hooks/cache'
 
 export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) => {
     exportUtils.useLoadDotCountCpt()
     let [defaultTab, setDefaultTab] = useState<"workflow" | "actions">("workflow")
-    useInitFunctionOnceOnly(() => {
+    let [opDetails, setOpDetails] = useState<OpDetail[]>([])
+    useEffect(() => {
         setTimeout(async () => {
             let opds = await getAllOperationDetails()
+            setOpDetails(opds)
             console.log('opds', opds)
         }, 0)
     }, ['5AcBr-NNh'])
@@ -35,9 +37,14 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
                         label: Dot("workflow.label", "Workflow"),
                         value: "workflow",
                     },
+                    // {
+                    //     label: Dot("actions.list", "Actions"),
+                    //     value: "actions",
+                    // },
+                    // list all workflow that your user has created 
                     {
-                        label: Dot("actions.list", "Actions"),
-                        value: "actions",
+                        label: Dot("actions.favourites", "Favourites"),
+                        value: "favourites",
                     },
                 ]}
                 onValueChange={(value) => {
@@ -48,7 +55,9 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
             {
                 defaultTab === "workflow" && <div>
                     <div className='p-2'>
-                        {Dot("IZ8H4v6fF", "This tab is under construction. In short, it can provide a chain of operations to be performed on the input data. For example, you can compress the JSON, escape the JSON, convert the JSON to a model, convert the CSV to a model, and so on.")}
+                        {
+                            JSON.stringify(opDetails, null, 2)
+                        }
                     </div>
                 </div>
             }

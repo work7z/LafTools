@@ -84,10 +84,10 @@ class ToBCD extends Operation {
           }
         ]
       },
-      name: "To BCD",
+      optName: "To BCD",
       id: 'tobcd',
       infoURL: "https://wikipedia.org/wiki/Binary-coded_decimal",
-      description: Dot("98KcL", "Converts a decimal number to Binary-Coded Decimal (BCD)."),
+      optDescription: Dot("98KcL", "Converts a decimal number to Binary-Coded Decimal (BCD)."),
       exampleInput: "1234",
       exampleOutput: "0001 0010 0011 0100",
     }

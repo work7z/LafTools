@@ -97,8 +97,8 @@ class FromBCD extends Operation {
         ]
       },
       id: "frombcd",
-      name: "From BCD",
-      description: Dot("0YKce", "Converts a Binary-Coded Decimal (BCD) string to a decimal number."),
+      optName: "From BCD",
+      optDescription: Dot("0YKce", "Converts a Binary-Coded Decimal (BCD) string to a decimal number."),
       exampleInput: "0001 0010 0011 0100",
       exampleOutput: "1234",
       infoURL: "https://en.wikipedia.org/wiki/Binary-coded_decimal",

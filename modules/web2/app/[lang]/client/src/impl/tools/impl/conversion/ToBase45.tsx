@@ -54,8 +54,8 @@ class ToBase45 extends Operation {
             },
             infoURL: 'https://datatracker.ietf.org/doc/draft-faltstrom-base45/',
             id: 'base45',
-            name: Dot("M3ytc", "Encode {0}", "Base45"),
-            description: Dot(
+            optName: Dot("M3ytc", "Encode {0}", "Base45"),
+            optDescription: Dot(
                 "BGd7dP9",
                 "This operation encodes raw data into an ASCII {0} string.",
                 "Base45"

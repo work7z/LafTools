@@ -78,8 +78,8 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
         ).map(x => {
             let optDetail = x.getOptDetail()
             let crtId = optDetail?.id;
-            let crtDesc = optDetail?.description
-            let crtName = optDetail?.name || x.name
+            let crtDesc = optDetail?.optDescription
+            let crtName = optDetail?.optName || x.name
             let isHighlightOne = crtId == crtDefaultOperaId;
             return {
                 text: crtName,

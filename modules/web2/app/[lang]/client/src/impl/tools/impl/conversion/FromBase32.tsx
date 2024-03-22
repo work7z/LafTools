@@ -69,8 +69,8 @@ class FromBase32 extends Operation {
             infoURL: "https://en.wikipedia.org/wiki/Base32",
 
             id: 'frombase32',
-            name: Dot("rVdu", "Decode {0}", "Base32"),
-            description: Dot(
+            optName: Dot("rVdu", "Decode {0}", "Base32"),
+            optDescription: Dot(
                 "JiUE8",
                 "This operation decodes data from an ASCII {0} string back into its raw format.",
                 "Base32"

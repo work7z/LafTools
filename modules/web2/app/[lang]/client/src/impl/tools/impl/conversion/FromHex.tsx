@@ -39,8 +39,8 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
 class FromHex extends Operation {
   public getOptDetail(): OptDetail {
     return {
-      name: Dot("5RPdtVff3", "From Hex"),
-      description:
+      optName: Dot("5RPdtVff3", "From Hex"),
+      optDescription:
         Dot("gms7_9n5v", "Converts a hexadecimal byte string back into its raw value."),
       infoURL: "https://wikipedia.org/wiki/Hexadecimal",
       exampleInput: 'ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a',

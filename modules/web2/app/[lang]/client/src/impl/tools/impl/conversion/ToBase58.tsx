@@ -64,8 +64,8 @@ class ToBase58 extends Operation {
             },
             id: 'base58',
             infoURL: 'https://en.wikipedia.org/wiki/Base58',
-            name: Dot("M3qytc", "Encode {0}", "Base58"),
-            description: Dot(
+            optName: Dot("M3qytc", "Encode {0}", "Base58"),
+            optDescription: Dot(
                 "BGdd7dP9",
                 "This operation encodes raw data into an ASCII {0} string.",
                 "Base58"

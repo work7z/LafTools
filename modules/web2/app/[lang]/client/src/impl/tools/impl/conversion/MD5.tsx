@@ -47,8 +47,8 @@ class MD5 extends Operation {
       },
       infoURL: 'https://en.wikipedia.org/wiki/MD5',
       id: 'md5',
-      name: Dot("md5.textiDjMIo", "Generate {0} Hash", "MD5"),
-      description: Dot(
+      optName: Dot("md5.textiDjMIo", "Generate {0} Hash", "MD5"),
+      optDescription: Dot(
         "md5.desc.rxsHq",
         "This operation hashes data into an {0} hash.",
         "MD5"

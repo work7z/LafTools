@@ -173,12 +173,12 @@ export default (props: CommonTransformerProps) => {
         subTitle: Dot("rT34qnO", "Enter text for processing. The result will display in the output editor.")
       },
       {
-        title: Dot("8eeL1Kk", "About", optDetail?.name),
+        title: Dot("8eeL1Kk", "About", optDetail?.optName),
         subTitle: desc?.replace(/\\n/g, '\n') + ""
       },
       {
         title: Dot("SYSq1", "Example"),
-        subTitle: Dot("GR7jK", "Type") + ": " + optDetail?.name + "\n" + Dot("vh9j4", "Input") + ": " + (optDetail?.exampleInput) + "\n" + Dot("dGKMx", "Output") + ": " + optDetail?.exampleOutput + ""
+        subTitle: Dot("GR7jK", "Type") + ": " + optDetail?.optName + "\n" + Dot("vh9j4", "Input") + ": " + (optDetail?.exampleInput) + "\n" + Dot("dGKMx", "Output") + ": " + optDetail?.exampleOutput + ""
       }
     ]
     return arr.map(x => `[${x.title}]\n${x.subTitle}`).join("\n\n")

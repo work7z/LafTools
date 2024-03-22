@@ -54,9 +54,9 @@ class XMLBeautify extends Operation {
                 ]
             },
             id: 'html-beautify',
-            name: Dot("yMZW-figFKwrYO", "Format HTML"),
+            optName: Dot("yMZW-figFKwrYO", "Format HTML"),
             infoURL: 'https://en.wikipedia.org/wiki/HTML',
-            description: Dot(
+            optDescription: Dot(
                 "html-beautify.desc.2a5f9",
                 "Beautifies the input XML by adding indentation and line breaks to make it easier to read."
             ),

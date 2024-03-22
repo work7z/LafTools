@@ -73,8 +73,8 @@ class ToBase85 extends Operation {
             },
             id: 'tobase85',
             infoURL: 'https://en.wikipedia.org/wiki/Ascii85',
-            name: Dot("M3ytc", "Encode {0}", "Base85"),
-            description: Dot(
+            optName: Dot("M3ytc", "Encode {0}", "Base85"),
+            optDescription: Dot(
                 "nodBw",
                 "This operation encodes raw data into an ASCII {0} string.",
                 "Base85"

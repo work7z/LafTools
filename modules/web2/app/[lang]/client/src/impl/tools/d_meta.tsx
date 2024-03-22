@@ -24,6 +24,7 @@ import { ToolHandler, ToolHandlerClass } from "./r_handler";
 import { FAQItem } from './faq/types'
 import _ from "lodash";
 import { CodeImplMap } from "./code/types";
+import Operation from "../core/Operation.tsx";
 
 
 export type AppInfoType = {
@@ -124,7 +125,6 @@ let appToolInfoObj = {
         // }
         LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "Less")
     }),
-
     "md5": passInfo({
         LabelFn: (Dot: DotType) => "MD5"
     }),
@@ -195,6 +195,17 @@ _.forEach(appToolInfoObj, (x, d, n) => {
 })
 
 export type AppToolKeyType = keyof typeof appToolInfoObj;
+
+export type AppOpDetail = {
+    optName?: string
+}
+
+export type AppOpFnMapType = { [key: string]: (p: { Dot: DotType }) => AppOpDetail }
+
+export let loadConversionFileById = async (id: string): Promise<Operation> => {
+    let a = await import(`./impl/conversion/${id}.tsx`)
+    return a['default'] as any
+}
 
 // for app operation list
 export let AppOperationMap = {

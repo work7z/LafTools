@@ -49,8 +49,8 @@ class GenericCodeBeautify extends Operation {
             },
             infoURL: 'https://en.wikipedia.org/wiki/Code_beautification',
             id: 'generic-code-beautify',
-            name: Dot("generic-NI-UFPTe0", "Beautify Generic Code"),
-            description: Dot(
+            optName: Dot("generic-NI-UFPTe0", "Beautify Generic Code"),
+            optDescription: Dot(
                 "generic-code-beautify.desc.2b3c",
                 "This operation formats code in various programming languages to improve readability by applying consistent indentation, line breaks, and adhering to language-specific style guidelines.",
                 ""

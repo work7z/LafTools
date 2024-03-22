@@ -72,9 +72,9 @@ class ToHex extends Operation {
           }
         ]
       },
-      name: "To Hex",
+      optName: "To Hex",
       id: 'tohex',
-      description:
+      optDescription:
         "Converts the input string to hexadecimal bytes separated by the specified delimiter.<br><br>e.g. The UTF-8 encoded string <code>ÎÎµÎ¹Î¬ ÏÎ¿Ï</code> becomes <code>ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a</code>",
       infoURL: "https://wikipedia.org/wiki/Hexadecimal",
       exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,

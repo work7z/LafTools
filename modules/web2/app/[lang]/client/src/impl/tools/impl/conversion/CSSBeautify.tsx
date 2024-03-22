@@ -55,8 +55,8 @@ class CSSBeautify extends Operation {
                 ]
             },
             id: 'cssbeautify',
-            name: Dot("Ol1ZcWomT", "{0} Beautify", "CSS"),
-            description: Dot(
+            optName: Dot("Ol1ZcWomT", "{0} Beautify", "CSS"),
+            optDescription: Dot(
                 "md2aO2NaJITm",
                 "Indents and prettifies Cascading Style Sheets (CSS) code, making it easier to read and understand.",
             ),

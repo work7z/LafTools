@@ -52,11 +52,11 @@ class SHA1 extends Operation {
           }
         ]
       },
-      name: "SHA1",
+      optName: "SHA1",
       id: 'sha1',
       exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
       exampleOutput: "2ef7bde608ce5404e97d5f042f95f89f1c232871",
-      description:
+      optDescription:
         Dot("B_ekZSOiu", "The SHA (Secure Hash Algorithm) hash functions were designed by the NSA. SHA-1 is the most established of the existing SHA hash functions and it is used in a variety of security applications and protocols.<br><br>However, SHA-1's collision resistance has been weakening as new attacks are discovered or improved. The message digest algorithm consists, by default, of 80 rounds."),
       infoURL: "https://wikipedia.org/wiki/SHA-1"
     }

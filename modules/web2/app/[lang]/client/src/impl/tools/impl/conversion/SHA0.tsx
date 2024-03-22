@@ -52,9 +52,9 @@ class SHA0 extends Operation {
           }
         ]
       },
-      name: "SHA0",
+      optName: "SHA0",
       id: 'sha0',
-      description:
+      optDescription:
         Dot("LgJAz6Xwr", "SHA-0 is a retronym applied to the original version of the 160-bit hash function published in 1993 under the name 'SHA'. It was withdrawn shortly after publication due to an undisclosed 'significant flaw' and replaced by the slightly revised version SHA-1. The message digest algorithm consists, by default, of 80 rounds."),
       infoURL: "https://wikipedia.org/wiki/SHA-1#SHA-0",
       exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,

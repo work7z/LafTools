@@ -56,8 +56,8 @@ class FromBase62 extends Operation {
             infoURL: "https://en.wikipedia.org/wiki/Base62",
 
             id: 'frombase58',
-            name: Dot("L9bQku", "Decode {0}", "Base62"),
-            description: Dot(
+            optName: Dot("L9bQku", "Decode {0}", "Base62"),
+            optDescription: Dot(
                 "JdqiUE8",
                 "This operation decodes data from an ASCII string (with an alphabet of your choosing, presets included) back into its raw form.",
             ),

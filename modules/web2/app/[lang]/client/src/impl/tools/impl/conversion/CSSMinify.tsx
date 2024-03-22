@@ -56,8 +56,8 @@ class CSSMinify extends Operation {
       },
       infoURL: "https://www.w3.org/Style/CSS/",
       id: 'cssminify',
-      name: Dot("-nL_B5PoN", "Compresses {0}", "CSS"),
-      description: Dot(
+      optName: Dot("-nL_B5PoN", "Compresses {0}", "CSS"),
+      optDescription: Dot(
         "Y__Zb1_4Q",
         "Minifies Cascading Style Sheets (CSS) code, removing all unnecessary characters."
       ),

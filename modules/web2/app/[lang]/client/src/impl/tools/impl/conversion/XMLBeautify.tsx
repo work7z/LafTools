@@ -55,9 +55,9 @@ class XMLBeautify extends Operation {
                 ]
             },
             id: 'xml-beautify',
-            name: Dot("yMZW-GEgf", "Format XML"),
+            optName: Dot("yMZW-GEgf", "Format XML"),
             infoURL: 'https://en.wikipedia.org/wiki/XML',
-            description: Dot(
+            optDescription: Dot(
                 "xml-beautify.desc.2a5f9",
                 "This operation formats XML data to improve readability by adding proper indentation, line breaks, and ensuring well-formed structure.",
                 ""

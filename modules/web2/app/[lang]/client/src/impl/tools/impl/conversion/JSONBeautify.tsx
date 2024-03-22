@@ -68,8 +68,8 @@ class JSONBeautify extends Operation {
                 ]
             },
             id: 'json-beautify',
-            name: Dot("json-beautify.text.93kq", "Beautify JSON Data"),
-            description: Dot(
+            optName: Dot("json-beautify.text.93kq", "Beautify JSON Data"),
+            optDescription: Dot(
                 "json-beautify.desc.0912",
                 "This operation formats JSON data to improve readability by adding proper indentation, line breaks, and sorting keys consistently.",
             ),

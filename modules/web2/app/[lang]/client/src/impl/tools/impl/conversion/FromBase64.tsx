@@ -287,8 +287,8 @@ class FromBase64 extends Operation {
       },
       id: 'frombase64',
       infoURL: "https://en.wikipedia.org/wiki/Base64",
-      name: Dot("rVqlu", "Decode {0}", "Base64"),
-      description: Dot(
+      optName: Dot("rVqlu", "Decode {0}", "Base64"),
+      optDescription: Dot(
         "1k_44",
         "This operation decodes data from an ASCII Base64 string back into its raw format.",
       ),

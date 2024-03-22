@@ -46,8 +46,8 @@ class MD4 extends Operation {
         "args": []
       },
       id: 'md4',
-      name: Dot("md4.text.192d3", "Generate {0} Hash", "MD4"),
-      description: Dot(
+      optName: Dot("md4.text.192d3", "Generate {0} Hash", "MD4"),
+      optDescription: Dot(
         "md4.desc.1039",
         "This operation hashes data into an {0} hash.",
         "MD4"

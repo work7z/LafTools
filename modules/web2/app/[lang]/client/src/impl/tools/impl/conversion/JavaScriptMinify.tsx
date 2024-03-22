@@ -50,8 +50,8 @@ class JavaScriptMinify extends Operation {
         "args": []
       },
       id: 'jsminify',
-      name: Dot("e3WgQaZlb", "Compresses {0}", "JavaScript"),
-      description: Dot(
+      optName: Dot("e3WgQaZlb", "Compresses {0}", "JavaScript"),
+      optDescription: Dot(
         "ojCWEFdVe",
         "Compresses JavaScript code, removing all unnecessary characters.",
       ),

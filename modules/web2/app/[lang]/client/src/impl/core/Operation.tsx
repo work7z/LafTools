@@ -46,9 +46,9 @@ export type OptDetail = {
   exampleInput: string;
   exampleOutput: string;
   infoURL: string;
-  description: string;
+  optDescription: string;
   id: string;
-  name: string;
+  optName: string;
   config: ModuleConfig
 }
 export default abstract class Operation {

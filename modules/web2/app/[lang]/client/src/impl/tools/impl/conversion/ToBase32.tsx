@@ -53,8 +53,8 @@ class ToBase32 extends Operation {
             },
             id: 'tobase32',
             infoURL: "https://wikipedia.org/wiki/Base32",
-            name: Dot("M3ytc", "Encode {0}", "Base32"),
-            description: Dot(
+            optName: Dot("M3ytc", "Encode {0}", "Base32"),
+            optDescription: Dot(
                 "BGd7dP9",
                 "This operation encodes raw data into an ASCII {0} string.",
                 "Base32"

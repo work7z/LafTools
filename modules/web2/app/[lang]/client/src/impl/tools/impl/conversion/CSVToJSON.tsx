@@ -67,8 +67,8 @@ class CSVToJSON extends Operation {
         ]
       },
       id: "CSVToJSON",
-      name: Dot("tZINaUR4b", "CSV to JSON"),
-      description: Dot("raTAuBwBz", "Converts a CSV file to JSON format."),
+      optName: Dot("tZINaUR4b", "CSV to JSON"),
+      optDescription: Dot("raTAuBwBz", "Converts a CSV file to JSON format."),
       infoURL: "https://wikipedia.org/wiki/Comma-separated_values",
       exampleInput: '"Name, Age\\nJohn, 25\\nJane, 24"',
       exampleOutput: '[{"Name": "John", "Age": "25"}, {"Name": "Jane", "Age": "24"}]',

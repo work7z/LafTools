@@ -50,8 +50,8 @@ class JSONMinify extends Operation {
       },
       infoURL: 'https://www.json.org/',
       id: 'json-minify',
-      name: Dot("meeMC1Uk7.text.93kq", "Minify {0}", "JSON"),
-      description: Dot(
+      optName: Dot("meeMC1Uk7.text.93kq", "Minify {0}", "JSON"),
+      optDescription: Dot(
         "EO6Qv5dCA",
         "Minifies JSON code, reduce the bundle size of your JSON code."
       ),

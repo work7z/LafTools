@@ -54,8 +54,8 @@ class ToBase62 extends Operation {
                 ]
             },
             id: 'tobase62',
-            name: Dot("M3ytc", "Encode {0}", "Base62"),
-            description: Dot(
+            optName: Dot("M3ytc", "Encode {0}", "Base62"),
+            optDescription: Dot(
                 "BGd7dP9",
                 "This operation encodes raw data into an ASCII {0} string.",
                 "Base62"
