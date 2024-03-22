@@ -34,7 +34,18 @@ export type TabLeftType = "tools" | "notes" | "history" | "resources"
 export type TabBottomType = "terminal" | "dictionary" | "compute" | "help" | "overview" | "translation"
 export type TabRightType = "ai" | "todo" | "stopwatch"
 export type TrueFalseType = "true" | "false"
+export type ToolConfigMap = {
+    [sessionId: string]: { // key should starts with tlcfg
+        extId: string, // tool name, can be empty if not defined
+        recipe: string, // recipe string, can follow CyberChef's recipe format
+        // FIXME: for new fields added, please assume they're possibly undefined or null for the consideration of backward compatibility
+    }
+}
+export type ToolSideMenuTabIdType = "workflow" | "favourites" | "actions"
 export type ParamStateState = {
+    tlcfg: ToolConfigMap, // tool config, recipes...
+    tsdrsipt: string, // side menu search input 
+    tsdmid: ToolSideMenuTabIdType, // side menu
     hdstpt: TrueFalseType; // hide setting panel part or not
     hdbtpl: TrueFalseType; // hide bottom process panel or not 
     ltr: TrueFalseType; // left 2 right for editor
@@ -50,6 +61,9 @@ export type ParamStateState = {
     tid?: string; // tool tab id
 };
 const initialState: ParamStateState = {
+    tsdmid: 'workflow',
+    tsdrsipt: '',
+    tlcfg: {},
     hdstpt: 'false',
     hdbtpl: 'false',
     ltr: 'false',
@@ -61,12 +75,30 @@ const initialState: ParamStateState = {
 };
 
 let localParamSaveKey = "wrixNBr"
+export type ParamStateStateKeyType = keyof ParamStateState;
+
+let deepFields: {
+    [key in keyof Partial<ParamStateState>]: boolean
+} = {
+    "tlcfg": true
+}
+
+export function mergeTwoParamState(initialState: ParamStateState, newJSONStr: string): ParamStateState {
+    let objState2 = JSON.parse(newJSONStr)
+    _.forEach(deepFields, (x, fieldName) => {
+        let str = objState2[fieldName]
+        if (typeof str == 'string') {
+            objState2[fieldName] = JSON.parse(str)
+        }
+    });
+    return _.merge(initialState, objState2)
+}
 
 // firstly, merge the local storage
 try {
     let localParamSaveValue = localStorage.getItem(localParamSaveKey)
     if (localParamSaveValue) {
-        _.merge(initialState, JSON.parse(localParamSaveValue))
+        mergeTwoParamState(initialState, localParamSaveValue)
     }
 } catch (e) {
     console.error('error', e)
@@ -84,22 +116,37 @@ try {
     // TODO: report this error if it's possible
     console.error('error', e)
 }
-
-export let syncStateToUrl = (state: ParamStateState) => {
-    let newUrl = queryString.stringifyUrl({ url: location.href, query: state });
+let formatState = (state: ParamStateState) => {
+    let queryObj = {
+        ...state,
+    }
+    _.forEach(deepFields, (x, fieldName) => {
+        let v = queryObj[fieldName]
+        if (!_.isString(v)) {
+            queryObj[fieldName] = JSON.stringify(v)
+        }
+    })
+    return queryObj
+}
+export let DELAY_TIME = 190;
+export let syncStateToUrl = _.debounce((formatted: ParamStateState) => {
+    let newUrl = queryString.stringifyUrl({
+        url: location.href, query: formatted as any
+    });
     window.history.pushState({}, '', newUrl);
-}
-export let syncStateToLocal = (state: ParamStateState) => {
-    localStorage.setItem(localParamSaveKey, JSON.stringify(state))
-}
+}, DELAY_TIME)
+export let syncStateToLocal = _.debounce((formatted: ParamStateState) => {
+    localStorage.setItem(localParamSaveKey, JSON.stringify(formatted))
+}, DELAY_TIME)
 const ParamStateSlice = createSlice({
     name: "paramState",
     initialState,
     reducers: {
         updateOneOfParamState: (state, action: PayloadAction<Partial<ParamStateState>>) => {
             _.merge(state, action.payload)
-            syncStateToUrl(state)
-            syncStateToLocal(state)
+            let formatted = formatState(state)
+            syncStateToUrl(formatted)
+            syncStateToLocal(formatted)
         }
     },
 });

@@ -282,10 +282,8 @@ export default (props: CommonTransformerProps) => {
 
   let { fullScreen, hideSideBar } = exportUtils.useSelector(v => {
     return {
-      // fullScreen: v.paramState.fs
       hideSideBar: v.paramState.hsr,
-      fullScreen: false // v.paramState.fs 
-      // not yet implemented fullScreen 
+      fullScreen: false
     }
   })
 

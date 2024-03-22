@@ -27,8 +27,9 @@ export type OpDetail = {
     id: string,
     label: string,
 }
-export let getAllOperationDetails = async (): Promise<OpDetail[]> => {
+export let getAllOperationDetails = (): OpDetail[] => {
     let opDetails: OpDetail[] = []
+
     _.forEach(AppOptFnMap, (x, d, n) => {
         let xobj = x({ Dot: Dot })
         opDetails.push({
@@ -36,5 +37,5 @@ export let getAllOperationDetails = async (): Promise<OpDetail[]> => {
             label: xobj.optName || "N/A",
         })
     })
-    return opDetails
+    return _.sortBy(opDetails, x => x.label)
 }
