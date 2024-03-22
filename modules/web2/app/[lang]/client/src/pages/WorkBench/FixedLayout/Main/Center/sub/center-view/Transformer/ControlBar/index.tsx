@@ -101,7 +101,7 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                 minimal: !isHighlightOne,
                 onClick: () => {
                     props.fn_updateToolConfig({
-                        sideOpId: undefined,
+                        sideOpId: '',
                         dftOpId: crtId
                     })
                     // FN_GetDispatch()(

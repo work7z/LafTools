@@ -70,7 +70,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
                                 whatIntent = 'primary'
                             }
                         }
-                        return <Tooltip content={
+                        return <Tooltip placement='top' content={
                             <div style={{
                                 maxWidth: '400px'
                             }} dangerouslySetInnerHTML={{ __html: x.description }}></div>

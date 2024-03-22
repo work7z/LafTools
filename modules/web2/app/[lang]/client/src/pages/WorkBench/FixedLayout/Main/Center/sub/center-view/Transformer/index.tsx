@@ -159,8 +159,10 @@ export default (props: CommonTransformerProps) => {
   crtDefaultOpera = crtSideMenuOperaId && crtSideMenuOpera && !loadingExtraOpList ? crtSideMenuOpera : crtDefaultOpera
   // DEFAULT OPERA END
 
+  let [triggerProcessCtn, setTriggerProcessCtn] = useState(0)
+
   let onProcess = () => {
-    fn_notifyTextChange(false)
+    setTriggerProcessCtn(triggerProcessCtn + 1)
   }
 
 
@@ -288,6 +290,13 @@ export default (props: CommonTransformerProps) => {
       console.error("fn_notifyTextChange failed")
     }
   }
+
+  useEffect(() => {
+    if (triggerProcessCtn != 0) {
+      fn_notifyTextChange(false)
+    }
+  }, [triggerProcessCtn])
+
   let crtOptMode: AppOptViewMode = ((): AppOptViewMode => {
     return "float"
   })()
