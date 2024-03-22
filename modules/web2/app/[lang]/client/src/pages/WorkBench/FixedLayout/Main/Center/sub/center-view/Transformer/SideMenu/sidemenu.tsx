@@ -55,9 +55,9 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
             {
                 defaultTab === "workflow" && <div>
                     <div className='p-2'>
-                        {
+                        {/* {
                             JSON.stringify(opDetails, null, 2)
-                        }
+                        } */}
                     </div>
                 </div>
             }
