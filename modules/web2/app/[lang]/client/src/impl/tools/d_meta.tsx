@@ -205,7 +205,9 @@ export type AppOpFnMapType = { [key: string]: (p: { Dot: DotType }) => AppOpDeta
 
 export let loadConversionTSXById = async (id: string): Promise<Operation> => {
     let a = await import(`./impl/conversion/${id}.tsx`)
-    return new a['default']() as any
+    let o: Operation = new a['default']()
+    o.fileId = id;
+    return o
 }
 
 // for app operation list

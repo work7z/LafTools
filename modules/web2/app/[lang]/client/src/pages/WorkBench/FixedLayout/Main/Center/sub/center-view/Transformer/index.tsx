@@ -146,6 +146,7 @@ export default (props: CommonTransformerProps) => {
   let crtSideMenuOperaId = crtToolCfg && crtToolCfg.sideOpId
   let crtSideMenuOpera = useMemo(() => {
     return _.find((extraOpList || []), (x: Operation) =>
+      x.fileId == crtSideMenuOperaId ||
       x.constructor.name == crtSideMenuOperaId ||
       x.getOptDetail()?.id == crtSideMenuOperaId)
   }, [crtSideMenuOperaId, extraOpList])
