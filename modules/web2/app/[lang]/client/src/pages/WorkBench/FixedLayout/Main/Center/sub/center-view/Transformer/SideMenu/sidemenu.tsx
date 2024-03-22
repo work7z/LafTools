@@ -72,6 +72,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
             {
                 defaultTab === "pipeline" && <div>
                     <div className='p-2'>
+                        {Dot("9ElKDB5ix", "This part is still under development, will be released soon")}
                     </div>
                 </div>
             }

@@ -100,14 +100,18 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                 outlined: !isHighlightOne,
                 minimal: !isHighlightOne,
                 onClick: () => {
-                    FN_GetDispatch()(
-                        RuntimeStatusSlice.actions.updateValueInStatusMap({
-                            sessionId,
-                            obj: {
-                                defaultOperationId: crtId
-                            }
-                        })
-                    )
+                    props.fn_updateToolConfig({
+                        sideOpId: undefined,
+                        dftOpId: crtId
+                    })
+                    // FN_GetDispatch()(
+                    //     RuntimeStatusSlice.actions.updateValueInStatusMap({
+                    //         sessionId,
+                    //         obj: {
+                    //             defaultOperationId: crtId
+                    //         }
+                    //     })
+                    // )
                     setTimeout(() => {
                         props.onProcess()
                     }, 0)

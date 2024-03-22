@@ -22,14 +22,16 @@ import { Intent } from "@blueprintjs/core";
 import { ToolCategory, ExtensionVM } from "./purejs-types-READ_ONLY";
 import { ToolHandler, ToolMetaInfo } from "../impl/tools/r_handler.tsx";
 import Operation from "../impl/core/Operation.tsx";
-import { ParamStateState, TabBottomType, TabLeftType, TabRightType } from "../reducers/state/paramStateSlice.tsx";
+import { ParamStateState, TabBottomType, TabLeftType, TabRightType, ToolConfigMapVal } from "../reducers/state/paramStateSlice.tsx";
 import { OpDetail } from "../impl/tools/s_tools.tsx";
 
 export * from './constants';
 
 export type CommonTransformerPassProp = {
+  onProcess: () => any,
   loadingExtraOpList: boolean,
   crtSideMenuOperaId?: string,
+  fn_updateToolConfig: (arg: Partial<ToolConfigMapVal>) => any,
   fn_switchToSideMenuExtraOp: (id: string) => any,
   needFullPageSupport: boolean,
   extId?: string;

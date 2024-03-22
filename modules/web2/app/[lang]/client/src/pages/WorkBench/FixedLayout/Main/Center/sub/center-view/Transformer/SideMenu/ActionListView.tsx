@@ -50,18 +50,25 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
                         let whatIntent: Intent = 'none'
                         let startsWithTo = x.id.startsWith('To')
                         let twClz = ''
+                        let twBgClz = ''
                         if (startsWithTo) {
                             whatIntent = 'success'
                         } else if (x.id.startsWith('From')) {
                             whatIntent = 'warning'
                         } else if (x.id.indexOf("Beautify") != -1 || x.id.indexOf("Format") != -1) {
                             twClz = tw` !border-purple-400 dark:!border-purple-400 !text-purple-600 dark:!text-purple-300 `
+                            twBgClz = tw` !bg-purple-700 !text-white  `
                         }
                         let isCurrent = x.id == props.crtSideMenuOperaId
                         let isCurrentAndLoaded = isCurrent && !props.loadingExtraOpList
                         if (isCurrentAndLoaded) {
-                            twClz = ''
-                            whatIntent = 'primary'
+                            twClz = twBgClz
+                            if (twBgClz != '') {
+                                whatIntent = 'primary'
+                            }
+                            if (whatIntent == 'none') {
+                                whatIntent = 'primary'
+                            }
                         }
                         return <Tooltip content={
                             <div style={{
@@ -73,6 +80,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
                                 isCurrentAndLoaded ? ICON_BTN_TRIGGER_FN : undefined
                             } intent={whatIntent} key={d} onClick={async () => {
                                 await props.fn_switchToSideMenuExtraOp(x.id)
+                                await props.onProcess()
                             }}>{x.label}</Button>
                         </Tooltip>
                     })

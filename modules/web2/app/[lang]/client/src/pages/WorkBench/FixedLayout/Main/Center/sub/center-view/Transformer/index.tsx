@@ -143,17 +143,27 @@ export default (props: CommonTransformerProps) => {
   let [extraOpList, onExtraOpList] = useState<Operation[]>([])
   let [loadingExtraOpList, onLoadingExtraOpList] = useState(false)
   let crtDefaultOperaId = crtToolCfg && crtToolCfg.dftOpId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id)
-  let crtDefaultOpera = useMemo(() => {
-    return _.find((operaList || []), x => x.getOptDetail()?.id === crtDefaultOperaId) || (
-      _.first(operaList)
-    )
-  }, [crtDefaultOperaId, operaList])
   let crtSideMenuOperaId = crtToolCfg && crtToolCfg.sideOpId
   let crtSideMenuOpera = useMemo(() => {
     return _.find((extraOpList || []), (x: Operation) =>
       x.constructor.name == crtSideMenuOperaId ||
       x.getOptDetail()?.id == crtSideMenuOperaId)
   }, [crtSideMenuOperaId, extraOpList])
+
+  // DEFAULT OPERA BEGIN
+  let crtDefaultOpera = useMemo(() => {
+    return _.find((operaList || []), x => x.getOptDetail()?.id === crtDefaultOperaId) || (
+      _.first(operaList)
+    )
+  }, [crtDefaultOperaId, operaList])
+  crtDefaultOpera = crtSideMenuOperaId && crtSideMenuOpera && !loadingExtraOpList ? crtSideMenuOpera : crtDefaultOpera
+  // DEFAULT OPERA END
+
+  let onProcess = () => {
+    fn_notifyTextChange(false)
+  }
+
+
   let fn_updateToolConfig = (arg: Partial<ToolConfigMapVal>) => {
     FN_GetDispatch()(
       ParamStateSlice.actions.updateOneOfParamState({
@@ -194,11 +204,11 @@ export default (props: CommonTransformerProps) => {
       })
     }
   }, [crtSideMenuOperaId,])
-
   let commonPassProp: CommonTransformerPassProp = {
     ...props,
     opDetails,
     toolHandler: operaRef.current,
+    onProcess,
     operaList,
     metaInfo,
     crtDefaultOperaId,
@@ -206,6 +216,7 @@ export default (props: CommonTransformerProps) => {
     loadingExtraOpList,
     crtSideMenuOperaId,
     crtSideMenuOpera,
+    fn_updateToolConfig,
     fn_switchToSideMenuExtraOp
   }
   let extVM = props.extVM
@@ -408,9 +419,7 @@ export default (props: CommonTransformerProps) => {
   let app_right_jsx = <>
     <ControlBar
       loadingStatic={loadingStatic}
-      onProcess={() => {
-        fn_notifyTextChange(false)
-      }}
+      onProcess={onProcess}
       crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ControlBar>
     <div
       style={{
