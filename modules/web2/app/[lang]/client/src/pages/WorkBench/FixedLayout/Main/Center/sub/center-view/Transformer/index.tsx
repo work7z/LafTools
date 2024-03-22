@@ -60,7 +60,8 @@ import Sidemenu from "./SideMenu/sidemenu.tsx";
 import { CSS_BG_COLOR_WHITE, VAL_CSS_MENU_TITLE_PANEL, border_clz, border_clz_common, light_border_clz_all } from "@/app/__CORE__/meta/styles.tsx";
 import COMMON_FN_REF from "@/app/[lang]/client/src/impl/tools/common_ref.tsx";
 import { OpDetail, getAllOperationDetails } from "@/app/[lang]/client/src/impl/tools/s_tools.tsx";
-import { ToolConfigMap, ToolConfigMapVal } from "@/app/[lang]/client/src/reducers/state/paramStateSlice.tsx";
+import ParamStateSlice, { ToolConfigMap, ToolConfigMapVal } from "@/app/[lang]/client/src/reducers/state/paramStateSlice.tsx";
+import { sleep } from "@/app/[lang]/client/src/utils/SyncUtils.tsx";
 
 COMMON_FN_REF.Dot = Dot
 
@@ -139,35 +140,51 @@ export default (props: CommonTransformerProps) => {
   let opDetails = useMemo(() => {
     return getAllOperationDetails()
   }, [])
-
   let [extraOpList, onExtraOpList] = useState<Operation[]>([])
   let [loadingExtraOpList, onLoadingExtraOpList] = useState(false)
   let crtDefaultOperaId = crtToolCfg && crtToolCfg.dftOpId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id)
   let crtDefaultOpera = useMemo(() => {
-    return _.find([...extraOpList, ...(operaList || [])], x => x.getOptDetail()?.id === crtDefaultOperaId) || (
+    return _.find((operaList || []), x => x.getOptDetail()?.id === crtDefaultOperaId) || (
       _.first(operaList)
     )
   }, [crtDefaultOperaId, operaList])
   let crtSideMenuOperaId = crtToolCfg && crtToolCfg.sideOpId
   let crtSideMenuOpera = useMemo(() => {
-    return _.find((extraOpList || []), (x: Operation) => x.getOptDetail()?.id == crtSideMenuOperaId)
+    return _.find((extraOpList || []), (x: Operation) =>
+      x.constructor.name == crtSideMenuOperaId ||
+      x.getOptDetail()?.id == crtSideMenuOperaId)
   }, [crtSideMenuOperaId, extraOpList])
+  let fn_updateToolConfig = (arg: Partial<ToolConfigMapVal>) => {
+    FN_GetDispatch()(
+      ParamStateSlice.actions.updateOneOfParamState({
+        tlcfg: {
+          [sessionId]: {
+            ...(crtToolCfg || {}),
+            ...arg
+          }
+        }
+      })
+    )
+  }
   let fn_switchToSideMenuExtraOp = async function (id) {
     try {
+      fn_updateToolConfig({
+        sideOpId: id
+      })
       onLoadingExtraOpList(true)
       let conver = await loadConversionTSXById(id)
-      debugger;
       if (conver && conver.getOptDetail && conver.getOptDetail()) {
         onExtraOpList([conver])
+        onLoadingExtraOpList(false)
       } else {
         AlertUtils.popMsg("warning", {
           message: Dot("Kw7oVB8kp", "Unable to load this operation")
         })
       }
-      onLoadingExtraOpList(false)
     } catch (e: any) {
-      AlertUtils.popError(e)
-      onLoadingExtraOpList(false)
+      AlertUtils.popMsg("danger", {
+        message: Dot("gLs6rHJKT", "Failed to process due to an error: {0}", gutils.getErrMsg(e))
+      })
     }
   }
   useEffect(() => {
@@ -212,7 +229,7 @@ export default (props: CommonTransformerProps) => {
     return arr.map(x => `[${x.title}]\n${x.subTitle}`).join("\n\n")
   }
   let desc = fn_format_description(commonPassProp.toolHandler?.getMetaInfo().description)
-  logutils.debug("commonPassProp", commonPassProp)
+  logutils.debug("commonPassProp", commonPassProp, extraOpList)
   let fn_notifyTextChange = (fromTextInputEvent: boolean) => {
     if (fromTextInputEvent && crtRuntimeStatus?.autoRun != 'true') {
       return;

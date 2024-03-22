@@ -17,7 +17,7 @@ import { FN_GetDispatch } from '@/app/[lang]/client/src/nocycle'
 import { OpDetail, getAllOperationDetails } from '@/app/[lang]/client/src/impl/tools/s_tools'
 import { useInitFunctionOnceOnly } from '@/app/__CORE__/hooks/cache'
 import ParamStateSlice, { ToolSideMenuTabIdType } from '@/app/[lang]/client/src/reducers/state/paramStateSlice'
-import { TOOLTIP_OPEN_DELAY_BTN } from '@/app/__CORE__/meta/constants'
+import { ICON_BTN_TRIGGER_FN, TOOLTIP_OPEN_DELAY_BTN } from '@/app/__CORE__/meta/constants'
 
 export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & {
     opDetails: OpDetail[]
@@ -36,7 +36,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
     return (
         <div>
             <div className='p-1 space-y-1 space-x-1'>
-                <div className='w-full my-2'>
+                <div className='w-full my-1'>
                     <InputGroup defaultValue={searchText} onChange={e => {
                         setSearchText(e.target.value)
                     }} leftIcon='search' round fill small placeholder={Dot("uCTxxZbSG", "Search Operations by Name")} />
@@ -58,14 +58,21 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
                             twClz = tw` !border-purple-400 dark:!border-purple-400 !text-purple-600 dark:!text-purple-300 `
                         }
                         let isCurrent = x.id == props.crtSideMenuOperaId
+                        let isCurrentAndLoaded = isCurrent && !props.loadingExtraOpList
+                        if (isCurrentAndLoaded) {
+                            twClz = ''
+                            whatIntent = 'primary'
+                        }
                         return <Tooltip content={
                             <div style={{
                                 maxWidth: '400px'
                             }} dangerouslySetInnerHTML={{ __html: x.description }}></div>
                         } hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN} >
-                            <Button small loading={isCurrent && props.loadingExtraOpList} minimal={isCurrent ? false : true} className={twClz} style={{
-                            }} outlined intent={whatIntent} key={d} onClick={() => {
-                                props.fn_switchToSideMenuExtraOp(x.id)
+                            <Button small loading={isCurrent && props.loadingExtraOpList} minimal={!isCurrent} className={twClz} style={{
+                            }} outlined={!isCurrent} icon={
+                                isCurrentAndLoaded ? ICON_BTN_TRIGGER_FN : undefined
+                            } intent={whatIntent} key={d} onClick={async () => {
+                                await props.fn_switchToSideMenuExtraOp(x.id)
                             }}>{x.label}</Button>
                         </Tooltip>
                     })

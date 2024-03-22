@@ -29,6 +29,7 @@ import { ActionButtonProps } from "../../../../../../../../../components/ActionB
 import ParamStateSlice, { TrueFalseType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
 import { useShouldVerticalModeOrNot } from "..";
 import { js_export_trigger } from "@/app/[lang]/client/src/utils/FileExportUtils";
+import { ICON_BTN_TRIGGER_FN } from "@/app/__CORE__/meta/constants";
 export let useHideBottomAndSettingHook = () => {
     return exportUtils.useSelector((x) => {
         return {
@@ -81,10 +82,12 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             let crtId = optDetail?.id;
             let crtDesc = optDetail?.optDescription
             let crtName = optDetail?.optName || x.name
-            let isHighlightOne = crtId == crtDefaultOperaId;
+            let isHighlightOne = crtId == crtDefaultOperaId && !(
+                props.crtSideMenuOpera && props.crtSideMenuOperaId
+            ) && !props.loadingExtraOpList;
             return {
                 text: crtName,
-                icon: 'derive-column',
+                icon: ICON_BTN_TRIGGER_FN,
                 intent: "primary",
                 title: crtDesc,
                 afterTitle: crtDesc + "[" + Dot("gU1O2", "Triggerred") + "]",

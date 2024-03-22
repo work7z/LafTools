@@ -86,8 +86,7 @@ let deepFields: {
     "tlcfg": true
 }
 
-export function mergeTwoParamState(initialState: ParamStateState, newJSONStr: string): ParamStateState {
-    let objState2 = JSON.parse(newJSONStr)
+export function mergeTwoParamState(initialState: ParamStateState, objState2: any): ParamStateState {
     _.forEach(deepFields, (x, fieldName) => {
         let str = objState2[fieldName]
         if (typeof str == 'string') {
@@ -101,7 +100,8 @@ export function mergeTwoParamState(initialState: ParamStateState, newJSONStr: st
 try {
     let localParamSaveValue = localStorage.getItem(localParamSaveKey)
     if (localParamSaveValue) {
-        mergeTwoParamState(initialState, localParamSaveValue)
+        let objState2 = JSON.parse(localParamSaveValue)
+        mergeTwoParamState(initialState, objState2)
     }
 } catch (e) {
     console.error('error', e)
@@ -114,7 +114,7 @@ try {
         paramQ = {}
     }
     console.log('process', location.href)
-    _.merge(initialState, paramQ)
+    mergeTwoParamState(initialState, paramQ)
 } catch (e) {
     // TODO: report this error if it's possible
     console.error('error', e)
