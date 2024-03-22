@@ -288,7 +288,6 @@ export default (props: { disableSeparateOutputMode: boolean, hideSettingPanel: b
     let jsx_left_setting_or_faq = (
         <div className='h-full p-[1px]'>
             <Navbar>
-
                 <Navbar.Group align={Alignment.LEFT}>
                     <Tabs
                         animate={true}
@@ -314,60 +313,48 @@ export default (props: { disableSeparateOutputMode: boolean, hideSettingPanel: b
             </div>
         </div>
     )
+    let jsx_right_output_tab = (
+        <Navbar>
+            <Navbar.Group>
+                <Navbar.Heading >
+                    {iconJSX}
+                    <span className={
+                        clz_f
+                    }>
+                        {maintext_f}
+                    </span>
+                </Navbar.Heading>
+            </Navbar.Group>
+            <Navbar.Group align={Alignment.RIGHT}>
+                <Tabs
+                    animate={true}
+                    fill={true}
+                    // id="navbar"
+                    large={false}
+                    onChange={(v) => {
+                        // FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: v as Val_ToolTabIndex }))
+                    }}
+                    selectedTabId={'output'}
+                >
+                    {
+                        props.disableSeparateOutputMode ? '' : <Tab id="output" icon={
+                            crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "generate"
+                        } title={Dot("output.text.btn", "Output")} />
+                    }
+                </Tabs>
+            </Navbar.Group>
+        </Navbar>
+    )
+    let jsx_right_otput_ctn = (
+        <div style={{ height: `calc(100% - ${CSS_NAV_BP_TAB_HEIGHT})`, overflow: 'auto' }} className={'p-0'}>
+            {finalShowContent_r}
+        </div>
+    )
     let jsx_right_output_or_somethingelse = (
         <div className='h-full p-[1px]'>
-            <Navbar>
-                <Navbar.Group>
-                    <Navbar.Heading >
-                        {iconJSX}
-                        <span className={
-                            clz_f
-                        }>
-                            {maintext_f}
-                        </span>
-                    </Navbar.Heading>
-                    {/* <div className={
-                        "   " + (
-
-                            loadingStatic || crtRuntimeStatus.processOK ? "" + (
-                                "bg-lime-100 dark:bg-lime-800 "
-                            ) :
-                                crtRuntimeStatus.processError ? "bg-yellow-200 dark:bg-yellow-800 " : crtRuntimeStatus.processing ? " bg-sky-200 dark:bg-sky-800 " : "  bg-zinc-100 dark:bg-zinc-800"
-                        ) + ' ' + (
-                            "   text-black dark:text-white absolute top-0 right-0 p-1 text-xs flex justify-between items-center"
-                        )
-                    } style={{
-                    }}>{iconJSX}
-                        <span style={{
-                            fontSize: '9px',
-                            marginTop: '-1.5px'
-                        }}>
-                            {maintext_f}</span>
-                    </div> */}
-                </Navbar.Group>
-                <Navbar.Group align={Alignment.RIGHT}>
-                    <Tabs
-                        animate={true}
-                        fill={true}
-                        // id="navbar"
-                        large={false}
-                        onChange={(v) => {
-                            // FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: v as Val_ToolTabIndex }))
-                        }}
-                        selectedTabId={'output'}
-                    >
-                        {
-                            props.disableSeparateOutputMode ? '' : <Tab id="output" icon={
-                                crtRuntimeStatus.processError ? "warning-sign" : crtRuntimeStatus.processing ? "changes" : "generate"
-                            } title={Dot("output.text.btn", "Output")} />
-                        }
-                    </Tabs>
-                </Navbar.Group>
-            </Navbar>
-            <div style={{ height: `calc(100% - ${CSS_NAV_BP_TAB_HEIGHT})`, overflow: 'auto' }} className={'p-0'}>
-                {finalShowContent_r}
-            </div>
-
+            {
+                [jsx_right_output_tab, jsx_right_otput_ctn]
+            }
         </div>
 
     )

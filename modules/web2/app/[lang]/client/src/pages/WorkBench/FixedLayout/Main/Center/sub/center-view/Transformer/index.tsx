@@ -114,14 +114,7 @@ let ToolTitlebar = (props: { title: string }) => {
     height: VAL_CSS_MENU_TITLE_PANEL
   }}>
     {mainTitle}
-    {/* <div className={CSS_BG_COLOR_WHITE + ` w-full italic text-xs justify-center flex flex-row items-center ` + light_border_clz_all} style={{ borderRight: 'none', borderBottom: 'none', width: VAL_MENU_LEFT_PANEL_WIDTH + 'px' }}>
-      <span>
-        {Dot("ULpCU0JWm", "Manage My Tools")}
-      </span>
-    </div>
-    <div className='flex-1'>
-      {rightMainTitle}
-    </div> */}
+
   </div>
 }
 

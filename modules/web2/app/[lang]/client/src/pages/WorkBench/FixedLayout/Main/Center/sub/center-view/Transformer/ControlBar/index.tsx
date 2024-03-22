@@ -28,6 +28,7 @@ import CopyButton from "../../../../../../../../../components/CopyButton";
 import { ActionButtonProps } from "../../../../../../../../../components/ActionButton";
 import ParamStateSlice, { TrueFalseType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
 import { useShouldVerticalModeOrNot } from "..";
+import { js_export_trigger } from "@/app/[lang]/client/src/utils/FileExportUtils";
 export let useHideBottomAndSettingHook = () => {
     return exportUtils.useSelector((x) => {
         return {
@@ -210,7 +211,16 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             text: Dot("o52xW", "Export"),
             title: Dot("i88tb", "Export Result to File"),
             onClick: () => {
-                AlertUtils.popNotSupport()
+                let outputValue = FN_GetActualTextValueByBigTextId(props.outputBigTextId)
+                if (outputValue == '') {
+                    AlertUtils.popMsg('warning', {
+                        message: Dot("1h6jH", "Warning, the output is an empty value whose length is zero!")
+                    })
+                }
+                js_export_trigger({
+                    saveValue: outputValue,
+                    filename: `result-${Date.now()}.txt`
+                })
             }
         },
 

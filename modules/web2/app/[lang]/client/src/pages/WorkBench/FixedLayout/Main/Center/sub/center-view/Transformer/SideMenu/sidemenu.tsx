@@ -34,7 +34,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
                 // fill
                 options={[
                     {
-                        label: Dot("workflow.label", "Workflow"),
+                        label: Dot("workflow.label", "Action Flow"),
                         value: "workflow",
                     },
                     // {
@@ -55,9 +55,6 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
             {
                 defaultTab === "workflow" && <div>
                     <div className='p-2'>
-                        {/* {
-                            JSON.stringify(opDetails, null, 2)
-                        } */}
                     </div>
                 </div>
             }
