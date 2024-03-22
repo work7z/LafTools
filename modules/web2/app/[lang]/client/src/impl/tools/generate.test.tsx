@@ -29,6 +29,7 @@ test('generate-app-op-detail-list', async () => {
         let hasDOTForDesc = false
         let st_countBracketForOptDesc = 0;
         let ed_countBracketForOptDesc = 0;
+        x = x.replace(/\s+Dot/g, 'Dot')
         x.split('\n').filter(xx => {
             if (xx.indexOf("optName") != -1) {
                 currentArr.push(xx)

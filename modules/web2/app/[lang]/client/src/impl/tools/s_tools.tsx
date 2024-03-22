@@ -26,6 +26,7 @@ import { AppOptFnMap } from "./g_optlist"
 export type OpDetail = {
     id: string,
     label: string,
+    description: string
 }
 export let getAllOperationDetails = (): OpDetail[] => {
     let opDetails: OpDetail[] = []
@@ -35,6 +36,7 @@ export let getAllOperationDetails = (): OpDetail[] => {
         opDetails.push({
             id: d,
             label: xobj.optName || "N/A",
+            description: xobj.optDescription
         })
     })
     return _.sortBy(opDetails, x => x.label)

@@ -8,7 +8,7 @@ import gutils from '../../../../../../../../../utils/GlobalUtils'
 import { Dot } from '../../../../../../../../../utils/cTranslationUtils'
 import { usePromiseWait } from '../hooks'
 import _ from 'lodash'
-import { AnchorButton, Button, Callout, InputGroup, Intent, SegmentedControl, Tabs } from '@blueprintjs/core'
+import { AnchorButton, Button, Callout, InputGroup, Intent, SegmentedControl, Tabs, Tooltip } from '@blueprintjs/core'
 import { CodeImplDetail, CodeImplMap, program_languages } from '@/app/[lang]/client/src/impl/tools/code/types'
 import GenCodeMirror from '../../../../../../../../../components/GenCodeMirror'
 import exportUtils from '../../../../../../../../../utils/ExportUtils'
@@ -17,6 +17,7 @@ import { FN_GetDispatch } from '@/app/[lang]/client/src/nocycle'
 import { OpDetail, getAllOperationDetails } from '@/app/[lang]/client/src/impl/tools/s_tools'
 import { useInitFunctionOnceOnly } from '@/app/__CORE__/hooks/cache'
 import ParamStateSlice, { ToolSideMenuTabIdType } from '@/app/[lang]/client/src/reducers/state/paramStateSlice'
+import { TOOLTIP_OPEN_DELAY_BTN } from '@/app/__CORE__/meta/constants'
 
 export default (props: {
     opDetails: OpDetail[]
@@ -57,10 +58,16 @@ export default (props: {
                             twClz = tw` !border-purple-400 dark:!border-purple-400 !text-purple-600 dark:!text-purple-300 `
                         }
 
-                        return <Button small minimal={true} className={twClz} style={{
-                        }} outlined intent={whatIntent} key={d} onClick={() => {
-                            //
-                        }}>{x.label}</Button>
+                        return <Tooltip content={
+                            <div style={{
+                                maxWidth: '400px'
+                            }} dangerouslySetInnerHTML={{ __html: x.description }}></div>
+                        } hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN} >
+                            <Button small minimal={true} className={twClz} style={{
+                            }} outlined intent={whatIntent} key={d} onClick={() => {
+                                //
+                            }}>{x.label}</Button>
+                        </Tooltip>
                     })
                 }
             </div>

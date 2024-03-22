@@ -198,7 +198,7 @@ export type AppToolKeyType = keyof typeof appToolInfoObj;
 
 export type AppOpDetail = {
     optName: string
-    optDescription?: string
+    optDescription: string
 }
 
 export type AppOpFnMapType = { [key: string]: (p: { Dot: DotType }) => AppOpDetail }

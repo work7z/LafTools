@@ -21,6 +21,7 @@
 import { Button, ButtonProps, Intent, Placement, Tooltip } from "@blueprintjs/core"
 import { useRef, useState } from "react"
 import { Dot } from "../../utils/cTranslationUtils"
+import { TOOLTIP_OPEN_DELAY_BTN } from "@/app/__CORE__/meta/constants";
 
 export type ActionButtonProps = ButtonProps & {
     doNotBeMinimalWhenTrigger?: boolean;
@@ -86,6 +87,7 @@ export default (props: ActionButtonProps) => {
         ) : ''} intent={triggered && props.afterIntent ? props.afterIntent : props.intent || "success"} minimal={isMinimal} {...(props.extraButtonProps || {})} ></Button>
     return <Tooltip
         isOpen={isOpen}
+        // hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN}
         content={title} placement={props.placement || "bottom"} >
         {btn}
     </Tooltip>
