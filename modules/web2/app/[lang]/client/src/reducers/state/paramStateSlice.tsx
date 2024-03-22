@@ -34,12 +34,15 @@ export type TabLeftType = "tools" | "notes" | "history" | "resources"
 export type TabBottomType = "terminal" | "dictionary" | "compute" | "help" | "overview" | "translation"
 export type TabRightType = "ai" | "todo" | "stopwatch"
 export type TrueFalseType = "true" | "false"
+export type ToolConfigMapVal = {
+    extId: string, // tool name, can be empty if not defined
+    recipe: string, // recipe string, can follow CyberChef's recipe format
+    dftOpId?: string, // default opt id
+    sideOpId?: string, // sidemenu opt id
+    // FIXME: for new fields added, please assume they're possibly undefined or null for the consideration of backward compatibility
+}
 export type ToolConfigMap = {
-    [sessionId: string]: {
-        extId: string, // tool name, can be empty if not defined
-        recipe: string, // recipe string, can follow CyberChef's recipe format
-        // FIXME: for new fields added, please assume they're possibly undefined or null for the consideration of backward compatibility
-    }
+    [sessionId: string]: ToolConfigMapVal
 }
 export type ToolSideMenuTabIdType = "pipeline" | "favourites" | "allops"
 export type ParamStateState = {

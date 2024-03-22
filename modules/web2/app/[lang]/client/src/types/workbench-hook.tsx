@@ -279,7 +279,7 @@ export let useMergeParameter = (): any => {
     let mergeIt = {
       ...(searchQ || {}),
       ...(obj || {})
-    }
+    } as any
     return qs.stringify(mergeIt);
   };
 };

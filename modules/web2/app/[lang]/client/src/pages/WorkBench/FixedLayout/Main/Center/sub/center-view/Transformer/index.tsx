@@ -29,7 +29,7 @@ import { CommonTransformerPassProp } from "../../../../../../../../types/workben
 import { Dot } from "../../../../../../../../utils/cTranslationUtils";
 import { FN_GetDispatch } from "../../../../../../../../nocycle";
 import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
-import _ from "lodash";
+import _, { defer } from "lodash";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
@@ -41,7 +41,7 @@ import exportUtils from "../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSlice";
 
 import { ClientPortalContext, CommonTransformerProps } from "./types";
-import { ExtensionAction, ToolDefaultOutputType as ToolCurrentRuntimeStatus } from "../../../../../../../../types/purejs-types-READ_ONLY";
+import { ExtensionAction, ToolDefaultOutputType as ToolCurrentRuntimeStatus, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import { TransformerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
 import ControlBar, { useHideBottomAndSettingHook } from "./ControlBar/index.tsx";
 import LoadingText from "../../../../../../../../components/LoadingText";
@@ -50,7 +50,7 @@ import ProcessPanel from "./ProcessPanel/index.tsx";
 import { ACTION_Transformer_Process_Text, ACTION_Transformer_Process_Text_Delay } from "../../../../../../../../actions/transformer_action";
 import Operation from "../../../../../../../../impl/core/Operation.tsx";
 import gutils from "../../../../../../../../utils/GlobalUtils";
-import appToolInfoObj, { AppInfoType } from "../../../../../../../../impl/tools/d_meta.tsx";
+import appToolInfoObj, { AppInfoType, loadConversionTSXById } from "../../../../../../../../impl/tools/d_meta.tsx";
 import { getInitValueForRuntimeStatus } from './init.tsx'
 import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../impl/tools/r_handler.tsx";
 import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
@@ -59,6 +59,8 @@ import { useDispatch } from "react-redux";
 import Sidemenu from "./SideMenu/sidemenu.tsx";
 import { CSS_BG_COLOR_WHITE, VAL_CSS_MENU_TITLE_PANEL, border_clz, border_clz_common, light_border_clz_all } from "@/app/__CORE__/meta/styles.tsx";
 import COMMON_FN_REF from "@/app/[lang]/client/src/impl/tools/common_ref.tsx";
+import { OpDetail, getAllOperationDetails } from "@/app/[lang]/client/src/impl/tools/s_tools.tsx";
+import { ToolConfigMap, ToolConfigMapVal } from "@/app/[lang]/client/src/reducers/state/paramStateSlice.tsx";
 
 COMMON_FN_REF.Dot = Dot
 
@@ -127,34 +129,68 @@ export default (props: CommonTransformerProps) => {
   let operaRef = useRef<ToolHandler | undefined>(undefined)
   let metaInfo = operaRef.current?.getMetaInfo()
   let operaList = operaRef.current?.getOperations()
-  let crtRuntimeStatus = exportUtils.useSelector((x) => {
-    let v = x.runtimeStatus.toolOutputStatusMap[sessionId];
+  let { crtRuntimeStatus, crtToolCfg } = exportUtils.useSelector((x) => {
+    let v: ToolDefaultOutputType | null = x.runtimeStatus.toolOutputStatusMap[sessionId];
     return {
-      v
+      crtRuntimeStatus: v,
+      crtToolCfg: x.paramState.tlcfg[sessionId]
     }
-  }).v;
-  let fn_createCommonPassProp = (
-    obj: {
-      crtRuntimeStatus: ToolCurrentRuntimeStatus,
-      operaList: Operation[] | undefined,
-    }
-  ): CommonTransformerPassProp => {
-    let { crtRuntimeStatus, operaList } = obj;
-    let crtDefaultOperaId = crtRuntimeStatus && crtRuntimeStatus.defaultOperationId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id)
-    let crtDefaultOpera = _.find(operaList, x => x.getOptDetail()?.id === crtDefaultOperaId)
-    return {
-      ...props,
-      toolHandler: operaRef.current,
-      operaList,
-      metaInfo,
-      crtDefaultOperaId,
-      crtDefaultOpera
+  });
+  let opDetails = useMemo(() => {
+    return getAllOperationDetails()
+  }, [])
+
+  let [extraOpList, onExtraOpList] = useState<Operation[]>([])
+  let [loadingExtraOpList, onLoadingExtraOpList] = useState(false)
+  let crtDefaultOperaId = crtToolCfg && crtToolCfg.dftOpId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id)
+  let crtDefaultOpera = useMemo(() => {
+    return _.find([...extraOpList, ...(operaList || [])], x => x.getOptDetail()?.id === crtDefaultOperaId) || (
+      _.first(operaList)
+    )
+  }, [crtDefaultOperaId, operaList])
+  let crtSideMenuOperaId = crtToolCfg && crtToolCfg.sideOpId
+  let crtSideMenuOpera = useMemo(() => {
+    return _.find((extraOpList || []), (x: Operation) => x.getOptDetail()?.id == crtSideMenuOperaId)
+  }, [crtSideMenuOperaId, extraOpList])
+  let fn_switchToSideMenuExtraOp = async function (id) {
+    try {
+      onLoadingExtraOpList(true)
+      let conver = await loadConversionTSXById(id)
+      debugger;
+      if (conver && conver.getOptDetail && conver.getOptDetail()) {
+        onExtraOpList([conver])
+      } else {
+        AlertUtils.popMsg("warning", {
+          message: Dot("Kw7oVB8kp", "Unable to load this operation")
+        })
+      }
+      onLoadingExtraOpList(false)
+    } catch (e: any) {
+      AlertUtils.popError(e)
+      onLoadingExtraOpList(false)
     }
   }
-  let commonPassProp: CommonTransformerPassProp = fn_createCommonPassProp({
-    crtRuntimeStatus,
-    operaList
-  });
+  useEffect(() => {
+    if (crtSideMenuOperaId) {
+      defer(() => {
+        fn_switchToSideMenuExtraOp(crtSideMenuOperaId)
+      })
+    }
+  }, [crtSideMenuOperaId,])
+
+  let commonPassProp: CommonTransformerPassProp = {
+    ...props,
+    opDetails,
+    toolHandler: operaRef.current,
+    operaList,
+    metaInfo,
+    crtDefaultOperaId,
+    crtDefaultOpera,
+    loadingExtraOpList,
+    crtSideMenuOperaId,
+    crtSideMenuOpera,
+    fn_switchToSideMenuExtraOp
+  }
   let extVM = props.extVM
   let fn_format_description = (desc: string | undefined): string => {
     let optDetail = commonPassProp.crtDefaultOpera?.getOptDetail()
@@ -227,7 +263,6 @@ export default (props: CommonTransformerProps) => {
   let crtOptMode: AppOptViewMode = ((): AppOptViewMode => {
     return "float"
   })()
-  let isFixedMode = crtOptMode === "fixed"
   let [loadingStatic, setLoadingStatic] = useState(true)
   let [loadError, onLoadError] = useState<string | null>(null)
   let [loadingProgressRate, setLoadingProgressRate] = useState(0)

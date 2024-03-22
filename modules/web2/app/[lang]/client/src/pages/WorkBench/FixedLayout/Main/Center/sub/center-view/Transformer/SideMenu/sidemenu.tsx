@@ -32,10 +32,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
             tsdmid: v
         }))
     }
-    let opDetails: OpDetail[] = useMemo(() => {
-        let opds = getAllOperationDetails()
-        return opds;
-    }, [])
+    let opDetails: OpDetail[] = props.opDetails
     let filteredOpDetails: OpDetail[] = useMemo(() => {
         if (_.isEmpty(searchText)) {
             return opDetails;
@@ -79,7 +76,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
                 </div>
             }
             {
-                defaultTab === "allops" && <ActionListView opDetails={filteredOpDetails} />
+                defaultTab === "allops" && <ActionListView {...props} opDetails={filteredOpDetails} />
             }
         </div>)
     return <div className='w-full h-full'>

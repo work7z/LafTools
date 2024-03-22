@@ -19,7 +19,7 @@ import { useInitFunctionOnceOnly } from '@/app/__CORE__/hooks/cache'
 import ParamStateSlice, { ToolSideMenuTabIdType } from '@/app/[lang]/client/src/reducers/state/paramStateSlice'
 import { TOOLTIP_OPEN_DELAY_BTN } from '@/app/__CORE__/meta/constants'
 
-export default (props: {
+export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & {
     opDetails: OpDetail[]
 }) => {
     let filteredOpDetails = props.opDetails
@@ -57,15 +57,15 @@ export default (props: {
                         } else if (x.id.indexOf("Beautify") != -1 || x.id.indexOf("Format") != -1) {
                             twClz = tw` !border-purple-400 dark:!border-purple-400 !text-purple-600 dark:!text-purple-300 `
                         }
-
+                        let isCurrent = x.id == props.crtSideMenuOperaId
                         return <Tooltip content={
                             <div style={{
                                 maxWidth: '400px'
                             }} dangerouslySetInnerHTML={{ __html: x.description }}></div>
                         } hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN} >
-                            <Button small minimal={true} className={twClz} style={{
+                            <Button small loading={isCurrent && props.loadingExtraOpList} minimal={isCurrent ? false : true} className={twClz} style={{
                             }} outlined intent={whatIntent} key={d} onClick={() => {
-                                //
+                                props.fn_switchToSideMenuExtraOp(x.id)
                             }}>{x.label}</Button>
                         </Tooltip>
                     })
