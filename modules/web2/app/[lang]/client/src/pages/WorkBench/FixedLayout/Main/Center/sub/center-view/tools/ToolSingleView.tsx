@@ -158,7 +158,7 @@ export default (props: ToolSingleViewProps) => {
         return <UnknownPart {...p} reason={Dot("d-qPr", "Unknown layout: {0}", val_ExtensionVM.Layout)} />
     }
     let PickupPanel = layoutMappings[val_ExtensionVM.Layout || 'form'] || UnknownPartWrap
-    let commonPassProp: CommonTransformerPassProp = {
+    let commonPassProp: Partial<CommonTransformerPassProp> = {
         extId: extId,
         extVM: val_ExtensionVM,
         sessionId: props.extId,

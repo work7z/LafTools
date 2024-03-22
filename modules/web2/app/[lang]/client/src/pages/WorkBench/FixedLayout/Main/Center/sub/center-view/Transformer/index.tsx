@@ -419,7 +419,6 @@ export default (props: CommonTransformerProps) => {
   let app_right_jsx = <>
     <ControlBar
       loadingStatic={loadingStatic}
-      onProcess={onProcess}
       crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ControlBar>
     <div
       style={{
