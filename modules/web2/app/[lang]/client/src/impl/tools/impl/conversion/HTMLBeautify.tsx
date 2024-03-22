@@ -54,7 +54,7 @@ class XMLBeautify extends Operation {
                 ]
             },
             id: 'html-beautify',
-            optName: Dot("yMZW-figFKwrYO", "Format HTML"),
+            optName: Dot("yMZW-figFKwrYO", "Format {0}", "HTML"),
             infoURL: 'https://en.wikipedia.org/wiki/HTML',
             optDescription: Dot(
                 "html-beautify.desc.2a5f9",

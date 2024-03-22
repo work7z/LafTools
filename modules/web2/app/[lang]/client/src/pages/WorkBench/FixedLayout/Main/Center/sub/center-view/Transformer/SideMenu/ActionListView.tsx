@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { CommonTransformerProps } from '../types'
-import { CSS_BG_COLOR_WHITE, CSS_TW_LAYOUT_BORDER_LIGHTER, CommonTransformerPassProp, LabelValuePair, VAL_CSS_TAB_TITLE_PANEL, light_border_clz_all } from '../../../../../../../../../types/workbench-types'
+import { CSS_BG_COLOR_WHITE, CSS_TW_LAYOUT_BORDER_LIGHTER, CommonTransformerPassProp, LabelValuePair, VAL_CSS_TAB_TITLE_PANEL, light_border_clz_all, tw } from '../../../../../../../../../types/workbench-types'
 import { TransformerWithRuntime as TransformerWithRuntimeProp } from '../hooks'
 import gutils from '../../../../../../../../../utils/GlobalUtils'
 import { Dot } from '../../../../../../../../../utils/cTranslationUtils'
@@ -48,12 +48,17 @@ export default (props: {
                     _.map(filteredOpDetails, (x, d) => {
                         let whatIntent: Intent = 'none'
                         let startsWithTo = x.id.startsWith('To')
+                        let twClz = ''
                         if (startsWithTo) {
                             whatIntent = 'success'
                         } else if (x.id.startsWith('From')) {
                             whatIntent = 'warning'
+                        } else if (x.id.indexOf("Beautify") != -1 || x.id.indexOf("Format") != -1) {
+                            twClz = tw` !border-purple-400 dark:!border-purple-400 !text-purple-600 dark:!text-purple-300 `
                         }
-                        return <Button small minimal={true} outlined intent={whatIntent} key={d} onClick={() => {
+
+                        return <Button small minimal={true} className={twClz} style={{
+                        }} outlined intent={whatIntent} key={d} onClick={() => {
                             //
                         }}>{x.label}</Button>
                     })

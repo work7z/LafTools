@@ -126,7 +126,6 @@ export default (props: CommonTransformerProps) => {
   let extId = props.extId
   let operaRef = useRef<ToolHandler | undefined>(undefined)
   let metaInfo = operaRef.current?.getMetaInfo()
-
   let operaList = operaRef.current?.getOperations()
   let crtRuntimeStatus = exportUtils.useSelector((x) => {
     let v = x.runtimeStatus.toolOutputStatusMap[sessionId];

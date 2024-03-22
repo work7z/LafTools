@@ -31,6 +31,8 @@ import { ToolHandler } from "@/app/[lang]/client/src/impl/tools/r_handler";
 import { CommonTransformerPassProp } from "../types/workbench-types";
 import { logutils } from "../utils/LogUtils";
 import Operation from "../impl/core/Operation";
+import AlertUtils from "../utils/AlertUtils";
+import { Dot } from "../utils/cTranslationUtils";
 window["moment"] = moment
 
 type PassType = {
@@ -57,9 +59,8 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
         if (!crtRuntimeStatus) {
             logutils.warn("no available crtRuntimeStatus")
             return;
-        }; // no runtime status
-        let crtDefaultOperaId = crtRuntimeStatus && crtRuntimeStatus.defaultOperationId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id || '')
-        let crtDefaultOpera = _.find(operaList, x => x.getOptDetail()?.id === crtDefaultOperaId)
+        };
+        let crtDefaultOpera = obj.commonPassProp.crtDefaultOpera
         let beginTime = new Date().getTime()
         let checkId = _.uniqueId("")
         tmpLog[sessionId] = checkId
@@ -73,6 +74,9 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
         try {
             if (!crtDefaultOpera) {
                 logutils.warn("no available opera")
+                AlertUtils.popMsg("warning", {
+                    message: Dot("0mYyJJ6Ta", "Operation is unavailable at present, please try again later.")
+                })
                 return;
             }
             // processing

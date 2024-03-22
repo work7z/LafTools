@@ -57,7 +57,7 @@ class Reverse extends Operation {
         ]
       },
       id: 'reverse',
-      optName: "Reverse",
+      optName: Dot("f7Fp-L9V-", "Reverse"),
       infoURL: "https://en.wikipedia.org/wiki/Reverse_Polish_notation",
       optDescription: Dot("wmuD_KXJ2", "Reverses the input string."),
       exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,

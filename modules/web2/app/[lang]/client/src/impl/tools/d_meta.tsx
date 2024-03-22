@@ -197,7 +197,8 @@ _.forEach(appToolInfoObj, (x, d, n) => {
 export type AppToolKeyType = keyof typeof appToolInfoObj;
 
 export type AppOpDetail = {
-    optName?: string
+    optName: string
+    optDescription?: string
 }
 
 export type AppOpFnMapType = { [key: string]: (p: { Dot: DotType }) => AppOpDetail }

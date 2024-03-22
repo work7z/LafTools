@@ -53,18 +53,19 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
             <SegmentedControl
                 // fill
                 options={[
-                    {
-                        label: Dot("Rc_TrzJNm", "My Procedure"),
-                        value: "workflow",
-                    },
                     // {
                     //     label: Dot("actions.favourites", "Favourites"),
                     //     value: "favourites",
                     // },
                     {
-                        label: Dot("F7rRnQLHA", "More Operations"),
-                        value: "actions",
+                        label: Dot("alloperations", "Operations"),
+                        value: "allops",
                     },
+                    {
+                        label: Dot("Rc_TrzJNm", "Run Pipeline"),
+                        value: "pipeline",
+                    },
+
                 ]}
                 onValueChange={(value) => {
                     setDefaultTab(value as any)
@@ -72,13 +73,13 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
                 defaultValue={defaultTab}
             />
             {
-                defaultTab === "workflow" && <div>
+                defaultTab === "pipeline" && <div>
                     <div className='p-2'>
                     </div>
                 </div>
             }
             {
-                defaultTab === "actions" && <ActionListView opDetails={filteredOpDetails} />
+                defaultTab === "allops" && <ActionListView opDetails={filteredOpDetails} />
             }
         </div>)
     return <div className='w-full h-full'>
@@ -86,9 +87,9 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
             style={{ borderRight: 'none', borderTop: 'none', borderLeft: 'none', height: VAL_CSS_TAB_TITLE_PANEL }}>
             <span>
                 {
-                    defaultTab == "workflow" ?
+                    defaultTab == "pipeline" ?
                         Dot("H-W-_p", "Do the Conversion in One Go", _.size(toolsChain))
-                        : defaultTab == 'actions' ? Dot(
+                        : defaultTab == 'allops' ? Dot(
                             "uraDHtTJj", "Quickly Use Any Operation You Need"
                         ) :
                             Dot("XfKkqZuFU", "{0} Favourites", _.size(favourites))
