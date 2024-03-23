@@ -151,7 +151,6 @@ let RightPanelNoAvailablePanel = () => {
 };
 
 export let SidebarMenu = (props: TabNavProp): any => {
-  let dis = exportUtils.dispatch();
   let mp_with_ws = useMergeParamWithWorkSpace();
   let sq = useSearchQuery();
   let fn_format_menu = (x) => {

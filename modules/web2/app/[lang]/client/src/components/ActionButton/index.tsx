@@ -94,8 +94,8 @@ export default (props: ActionButtonProps) => {
     </Tooltip>
     if (props.popoverItem) {
         return <Popover
-            content={title} placement={props.placement || "bottom"} >
-            {props.popoverItem}
+            content={props.popoverItem} placement={props.placement || "bottom"} >
+            {tooltipCtn}
         </Popover>
     }
     return tooltipCtn

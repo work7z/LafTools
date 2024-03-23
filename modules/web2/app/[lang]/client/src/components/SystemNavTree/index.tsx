@@ -57,7 +57,7 @@ import {
   Button,
   TreeNode,
 } from "@blueprintjs/core";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import _ from "lodash";
 import { Dot } from "../../utils/cTranslationUtils";
 import moment from "moment";
@@ -73,11 +73,12 @@ import { UseQueryHookResult } from "@reduxjs/toolkit/dist/query/react/buildHooks
 import { ContextMenu, Tree, TreeNodeInfo } from "@blueprintjs/core";
 import { Example, ExampleProps } from "@blueprintjs/docs-theme";
 import { TreeWrapInfo } from "../../types/constants";
-import MottoLine from "../MottoLine";
+import MottoLineClient from "../MottoLine";
 import apiSlice from "../../reducers/apiSlice";
 import { useSearchQuery } from "../../types/workbench-hook";
 import { logutils } from "../../utils/LogUtils";
 import { useGetCategoryList } from "../../pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/hooks";
+import { ClientPortalContext } from "../../pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/types";
 export let TREE_ROOT_ID_PREFIX = "root_"
 let { cloneDeep } = _;
 
@@ -225,6 +226,8 @@ export default (props: PassProp) => {
 
   logutils.debug("s-nodes", nodes);
 
+  let clientCtx = useContext(ClientPortalContext)
+
   return (
     <div className="h-full ">
       <div className="pt-10">
@@ -237,6 +240,7 @@ export default (props: PassProp) => {
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
+          autoFocus
         // rightElement={
         //   <ButtonGroup>
         //     <Button small icon="plus" minimal></Button>
@@ -257,7 +261,7 @@ export default (props: PassProp) => {
         <div
           style={{
             // flexGrow: 1,
-            height: "calc(100% - 50px)",
+            height: clientCtx.portalMode ? '100%' : "calc(100% - 50px)",
             overflow: "auto",
           }}
         >
@@ -320,9 +324,12 @@ export default (props: PassProp) => {
             className={Classes.ELEVATION_0}
           />
         </div>
-        <div className="btm-top ">
-          <MottoLine />
-        </div>
+        {
+          clientCtx.portalMode ? '' :
+            <div className="btm-top ">
+              <MottoLineClient />
+            </div>
+        }
       </div>
     </div>
   );

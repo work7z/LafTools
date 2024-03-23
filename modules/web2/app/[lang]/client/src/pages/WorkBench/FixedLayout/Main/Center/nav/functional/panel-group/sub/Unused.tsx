@@ -110,21 +110,5 @@ export let InnerToolPanel = (): any => {
 
   return (
     <div></div>
-    // <FunctionalMenu_Panel
-    //   loading={res_toolCategory.isLoading || extsListQuery.isLoading}
-    //   crtLeftNavId={fc}
-    //   leftNavList={
-    //     _.map(categoryList, (x) => {
-    //       return {
-    //         label: x.Label,
-    //         value: x.Id,
-    //         pathname: m_ws({
-    //           fc: x.Id,
-    //         }),
-    //       };
-    //     }) || []
-    //   }
-    //   children={<ToolExtensionTree activeOne={activeOne} />}
-    // ></FunctionalMenu_Panel>
   );
 };

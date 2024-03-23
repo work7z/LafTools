@@ -27,7 +27,7 @@ export type LangDefinition = { [key: string]: string };
 export const SQ = "'";
 export const DQ = '"';
 export const AT = "`";
-export const TOOLTIP_OPEN_DELAY_BTN = 1000
+export const TOOLTIP_OPEN_DELAY_BTN = 100
 export const ICON_BTN_TRIGGER_FN = 'derive-column'
 // by default, the first user is working with root permission
 export const LAFTOOLS_DEFAULT_USERNAME = "root"

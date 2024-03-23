@@ -30,6 +30,7 @@ import ParamStateSlice, { TrueFalseType } from "@/app/[lang]/client/src/reducers
 import { useShouldVerticalModeOrNot } from "..";
 import { js_export_trigger } from "@/app/[lang]/client/src/utils/FileExportUtils";
 import { ICON_BTN_TRIGGER_FN } from "@/app/__CORE__/meta/constants";
+import { InnerToolPanel } from "../../../../nav/functional/panel-group/panels/ToolPanel";
 export let useHideBottomAndSettingHook = () => {
     return exportUtils.useSelector((x) => {
         return {
@@ -268,7 +269,9 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             icon: 'search',
             intent: 'none',
             title: Dot("6SypzjeRz", "Quickly search tools that you need"),
-            popoverItem: <div>this is popover</div>,
+            popoverItem: <div style={{ width: '300px', height: '580px', overflow: 'auto' }}>
+                <InnerToolPanel />
+            </div>,
         }
     ];
     return (

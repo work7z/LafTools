@@ -228,53 +228,14 @@ export let useLeftTabsList = (): EachTabPanelProp[] => {
 
 
 export let useSearchQuery = (): PageQueryType => {
-
   let ps = exportUtils.useSelector((v) => {
     return v.paramState
   })
   return ps;
-
-
-  // useSearchParams()
-  // const [searchParams] = useSearchParams(); // Re-render every time any search param changes
-  // const [page] = useSearchParams(); // Re-render only when `page` changes
-  // console.log('page', page)
-  // let location = useLocation()
-  // // let location = window['location']
-  // // let [count, setCount] = useState(0);
-  // // let m2 = exportUtils.useSelector(v => {
-  // //   return {
-  // //     a: v.settings.updatePathCount
-  // //   }
-  // // })
-  // // useEffect(() => {
-  // //   console.log('update', location.search)
-  // //   setCount(count + 1)
-  // //   FN_GetDispatch()(
-  // //     settingsSlice.actions.updatePathCount(m2.a + 1)
-  // //   )
-  // // }, [
-  // //   window.location.search
-  // // ])
-  // const query = new URLSearchParams(location.search);
-  // let obj = {};
-  // query &&
-  //   query.forEach((v, k) => {
-  //     if (k && v) {
-  //       obj[k] = v;
-  //     }
-  //   });
-  // _.defaultsDeep(obj, {
-  //   f: "tools",
-  //   b: "translation"
-  // });
-  // return obj as any;
 };
 
 export let useMergeParameter = (): any => {
   let searchQ = useSearchQuery();
-  // convert searchQ to object
-  // merge with obj
   return (obj: Partial<PageQueryType>) => {
     let mergeIt = {
       ...(searchQ || {}),
@@ -289,7 +250,5 @@ export let useMergeParamWithWorkSpace = (): (obj: Partial<ParamStateState>) => a
 
   return (obj: Partial<ParamStateState>) => {
     return "/" + "?" + mergeP(obj)
-    // return "/" + "?" + qs.stringify(obj)
-    // return "" + ;
   };
 };

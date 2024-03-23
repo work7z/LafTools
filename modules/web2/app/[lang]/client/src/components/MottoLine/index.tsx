@@ -77,7 +77,6 @@ interface BlinkProp {
 }
 export default (props: BlinkProp): any => {
   let singleLineMode = props.singleLineMode
-  let toolParam = useParams() as ToolParamType;
   let [mottoLine, onMottoLine] = useState<any>("")
   useEffect(() => {
     getOneMotto().then((x) => {
@@ -107,44 +106,18 @@ export default (props: BlinkProp): any => {
           </div>
         </span>
       );
-      // mottoLine = (
-      //   <div
-      //     style={{
-      //       // display: "flex",
-      //       // justifyContent: "space-between",
-      //       // flexWrap: "wrap",
-      //       display: "grid",
-      //       gridTemplateColumns: "1fr 1fr",
-      //       gap: "10px",
-      //     }}
-      //   >
-      //     {/* <div>"{mottoLine.substring(0, idx).trim()}"</div>
-      //     <div>-- {mottoLine.substring(idx + 2).trim()}</div> */}
-      //     <div style={{ textAlign: "left" }}>
-      //       "{mottoLine.substring(0, idx).trim()}"
-      //     </div>
-      //     <div style={{ textAlign: "right" }}>
-      //       -- {mottoLine.substring(idx + 2).trim()}
-      //     </div>
-      //   </div>
-      // );
     }
   }
   return (
     <div
       style={{
-        // textAlign: "center",
-        // padding: "10px 6px",
         margin: "0 auto",
         whiteSpace: "break-spaces",
         width: "100%",
-        // minWidth: "230px",
         fontSize: "11px",
       }}
       className="py-2 px-2 whitespace-break-spaces overflow-hidden bp5-text-muted bp5-text-small  h-full   "
-      // title={mottoLine}
       onDoubleClick={() => {
-        // mottoLineRes.refetch();
       }}
     >
       {mottoLine == '' ? "thinking..." : mottoLine}

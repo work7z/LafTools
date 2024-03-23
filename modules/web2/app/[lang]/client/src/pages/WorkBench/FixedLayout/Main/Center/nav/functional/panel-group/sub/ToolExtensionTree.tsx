@@ -115,9 +115,7 @@ import {
   useMergeParamWithWorkSpace,
   useSearchQuery,
 } from "../../../../../../../../../types/workbench-hook";
-import RouteUtils from "../../../../../../../../../utils/RouteUtils";
 import ToolSlice from "../../../../../../../../../reducers/toolSlice";
-import MottoLine from "../../../../../../../../../components/MottoLine";
 import GenTree, { TREE_ROOT_ID_PREFIX } from "../../../../../../../../../components/SystemNavTree";
 import { FnPureToolDefinition } from "../../../../../../../../../types/workbench-types";
 import WorkspaceSlice from "../../../../../../../../../reducers/workspaceSlice";
@@ -127,7 +125,6 @@ import AlertUtils from "../../../../../../../../../utils/AlertUtils";
 export default (props: {
   activeOne: FnPureToolDefinition | undefined;
 }): any => {
-  let category = useGetAppCategory()
   let sq = useSearchQuery();
   const [updateMemStatus, onUpdateMemStatus] = useState(0);
   let fc = sq.ls || "all";
@@ -135,7 +132,6 @@ export default (props: {
   let dis = exportUtils.dispatch();
 
   let treeNodeData = exportUtils.useSelector((x) => x.tool.subCategoryTreeInfo);
-  let hist = RouteUtils.useHistory();
   let extsList = useExtsList(fc)
 
   let selectExpandFavouriteObj = exportUtils.useSelector((v) => {

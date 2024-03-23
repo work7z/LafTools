@@ -1,6 +1,6 @@
 
 
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { CommonTransformerProps } from '../types'
 import { CSS_BG_COLOR_WHITE, CSS_TW_LAYOUT_BORDER_LIGHTER, CommonTransformerPassProp, LabelValuePair, VAL_CSS_TAB_TITLE_PANEL, light_border_clz_all, tw } from '../../../../../../../../../types/workbench-types'
 import { TransformerWithRuntime as TransformerWithRuntimeProp } from '../hooks'
@@ -28,16 +28,23 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
             searchText: v.paramState.tsdrsipt
         }
     })
+    let eleRef = useRef({
+        eleIpt: null as any,
+    })
     let setSearchText = useCallback(_.debounce((v: string) => {
         FN_GetDispatch()(ParamStateSlice.actions.updateOneOfParamState({
             tsdrsipt: v
         }))
     }, 200), [])
     return (
-        <div>
+        <div onClick={e => {
+            // eleRef.current.eleIpt && eleRef.current.eleIpt.focus()
+        }}>
             <div className='p-1 space-y-1 space-x-1'>
                 <div className='w-full my-1'>
-                    <InputGroup defaultValue={searchText} onChange={e => {
+                    <InputGroup autoFocus={false} ref={e => {
+                        // eleRef.current.eleIpt = e
+                    }} defaultValue={searchText} onChange={e => {
                         setSearchText(e.target.value)
                     }} leftIcon='search' round fill small placeholder={Dot("uCTxxZbSG", "Search Operations by Name")} />
                 </div>
