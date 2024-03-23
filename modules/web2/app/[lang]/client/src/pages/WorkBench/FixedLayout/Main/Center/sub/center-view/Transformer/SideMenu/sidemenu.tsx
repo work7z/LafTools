@@ -50,10 +50,6 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
             <SegmentedControl
                 // fill
                 options={[
-                    // {
-                    //     label: Dot("actions.favourites", "Favourites"),
-                    //     value: "favourites",
-                    // },
                     {
                         label: Dot("alloperations", "Operations"),
                         value: "allops",
@@ -62,7 +58,6 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp) =
                         label: Dot("Rc_TrzJNm", "Run Pipeline"),
                         value: "pipeline",
                     },
-
                 ]}
                 onValueChange={(value) => {
                     setDefaultTab(value as any)

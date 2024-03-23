@@ -51,7 +51,7 @@ class JSONBeautify extends Operation {
                 "manualBake": false,
                 "args": [
                     {
-                        "name": "Indent string",
+                        "name": Dot("isti", "Indent string"),
                         "type": "binaryShortString",
                         "value": "    "
                     },
@@ -91,7 +91,7 @@ class JSONBeautify extends Operation {
         this.presentType = "html";
         this.args = [
             {
-                name: "Indent string",
+                name: Dot("isti", "Indent string"),
                 type: "binaryShortString",
                 value: "    "
             },

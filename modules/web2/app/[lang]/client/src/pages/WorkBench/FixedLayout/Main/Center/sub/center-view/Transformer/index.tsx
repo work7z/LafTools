@@ -173,6 +173,7 @@ export default (props: CommonTransformerProps) => {
       })
     }
   }, [crtSideMenuOperaId,])
+
   let commonPassProp: CommonTransformerPassProp = {
     ...props,
     opDetails,
@@ -180,6 +181,7 @@ export default (props: CommonTransformerProps) => {
     onProcess,
     operaList,
     metaInfo,
+    crtToolCfg,
     crtDefaultOperaId,
     crtDefaultOpera,
     loadingExtraOpList,

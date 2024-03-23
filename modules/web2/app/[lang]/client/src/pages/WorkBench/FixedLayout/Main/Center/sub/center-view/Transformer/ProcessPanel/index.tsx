@@ -51,11 +51,9 @@ import Operation from "../../../../../../../../../impl/core/Operation.tsx";
 import { logutils } from "../../../../../../../../../utils/LogUtils";
 import { useShouldVerticalModeOrNot } from "../index.tsx";
 import EditableOptions from "@/app/[lang]/client/src/components/EditableOptions/index.tsx";
-export let ifnil = (v1: any, v2: any) => {
-    return v1 === undefined || v1 === null ? v2 : v1
-}
-
-export default (props: { disableSeparateOutputMode: boolean, hideSettingPanel: boolean } & CommonTransformerPassProp & TransformerWithRuntime) => {
+import { useGeneralListRead } from "./hooks.tsx";
+export type ProcessPanelProps = { disableSeparateOutputMode: boolean, hideSettingPanel: boolean } & CommonTransformerPassProp & TransformerWithRuntime
+export default (props: ProcessPanelProps) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
     let shouldVert = useShouldVerticalModeOrNot()
 
@@ -67,167 +65,9 @@ export default (props: { disableSeparateOutputMode: boolean, hideSettingPanel: b
     let extVM = props.extVM
     let actions = extVM?.Actions
     let toolHandler = props.toolHandler
-    let operList = toolHandler?.getOperations() || []
-    let { crtDefaultOpera } = props;
 
     logutils.debug("autorun-crtRuntimeStatus", crtRuntimeStatus)
-    let generalList: FormGenItem[] = useMemo(() => {
-        let generalList: FormGenItem[] = []
-        if (crtDefaultOpera) {
-            let config = crtDefaultOpera.getOptDetail().config
-            let args = config.args
-            let checks = config.checks
-            _.forEach(args, (eachArg) => {
-                let { type, name, value: _srcVal } = eachArg;
-                switch (type) {
-                    case 'boolean':
-                        {
-                            let value = ifnil(crtRuntimeStatus[name], _srcVal)
-                            generalList.push({
-                                label: name,
-                                genEleConfig: {
-                                    type: "switch",
-                                    value: value,
-                                    onChange(newVal) {
-                                        FN_GetDispatch()(
-                                            RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                                sessionId,
-                                                obj: {
-                                                    [name]: newVal
-                                                }
-                                            })
-                                        )
-                                    },
-                                }
-                            })
-                        }
-                        break;
-                    case 'option':
-                        {
-                            let value = crtRuntimeStatus[name] || _srcVal[0]
-                            generalList.push({
-                                label: name,
-                                genEleConfig: {
-                                    type: "select",
-                                    value: value,
-                                    selectList: _.map(_srcVal, (eachValue) => {
-                                        return {
-                                            label: eachValue,
-                                            value: eachValue
-                                        }
-                                    }),
-                                    onChange(newVal) {
-                                        FN_GetDispatch()(
-                                            RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                                sessionId,
-                                                obj: {
-                                                    [name]: newVal
-                                                }
-                                            })
-                                        )
-                                    },
-                                }
-                            })
-                        }
-                        break;
-                    case "string":
-                    case "binaryString":
-                    case "byteArray":
-                    case "shortString":
-                    case 'binaryShortString':
-                    case "number":
-                        {
-                            let isNumber = type == "number"
-                            let hasShort = type.indexOf("short") > -1 || type.indexOf("Short") > -1
-                            let value = ifnil(crtRuntimeStatus[name], _srcVal)
-                            let onchg = (e) => {
-                                FN_GetDispatch()(
-                                    RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                        sessionId,
-                                        obj: {
-                                            [name]: e.target.value
-                                        }
-                                    })
-                                )
-                            }
-                            generalList.push({
-                                label: name,
-                                genEleConfig: {
-                                    type: "input",
-                                    inputProps: {
-                                        type: isNumber ? "number" : "text",
-                                        value: value,
-                                        onChange: onchg,
-                                        fill: !hasShort
-                                    },
-                                    value: value,
-                                    onChange: onchg
-                                },
-                            })
-                        }
-                        break;
-                    case 'editableOption':
-                    case "editableOptionShort":
-                        {
-                            let value = ifnil(crtRuntimeStatus[name], _srcVal[0]['value'])
-                            let onchg = (val: string) => {
-                                FN_GetDispatch()(
-                                    RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                        sessionId,
-                                        obj: {
-                                            [name]: val
-                                        }
-                                    })
-                                )
-                            }
-                            generalList.push({
-                                label: name,
-                                genEleConfig: {
-                                    type: "jsx",
-                                    jsxEle: <EditableOptions list={_srcVal} value={value} onChange={onchg} />
-                                },
-                            })
-                        }
-                        break;
-                    default:
-                        {
-                            generalList.push({
-                                label: name,
-                                genEleConfig: {
-                                    type: "jsx",
-                                    jsxEle: <div>Not yet supported, {name} missed {type}</div>
-                                },
-                            })
-                        }
-                }
-            });
-
-        }
-        generalList = generalList.sort(x => x.genEleConfig.type == 'switch' ? -1 : 1)
-        generalList = [
-            {
-                aid: 'autorun',
-                label: Dot("wRuF9WpU6", "Auto Run"),
-                helperText: Dot("Ye3TXses", "To configure whether the transformation will be executed automatically when the input text is changed."),
-                genEleConfig: {
-                    type: "switch",
-                    value: crtRuntimeStatus.autoRun,
-                    onChange(newVal) {
-                        FN_GetDispatch()(
-                            RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                sessionId,
-                                obj: {
-                                    autoRun: newVal
-                                }
-                            })
-                        )
-                    },
-                }
-            },
-            ...generalList
-        ]
-        return generalList
-    }, [crtDefaultOpera])
+    let generalList = useGeneralListRead(props)
 
     let finalShowContent_l = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
     let finalShowContent_r = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>

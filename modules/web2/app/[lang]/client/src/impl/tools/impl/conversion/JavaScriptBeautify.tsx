@@ -49,7 +49,7 @@ class JavaScriptBeautify extends Operation {
                 "manualBake": false,
                 "args": [
                     {
-                        "name": "Indent string",
+                        "name": Dot("isti", "Indent string"),
                         "type": "binaryShortString",
                         "value": "\\t"
                     },
@@ -98,7 +98,7 @@ class JavaScriptBeautify extends Operation {
         this.outputType = "string";
         this.args = [
             {
-                "name": "Indent string",
+                "name": Dot("isti", "Indent string"),
                 "type": "binaryShortString",
                 "value": "\\t"
             },

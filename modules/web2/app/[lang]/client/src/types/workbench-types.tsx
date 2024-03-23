@@ -22,7 +22,7 @@ import { Intent } from "@blueprintjs/core";
 import { ToolCategory, ExtensionVM } from "./purejs-types-READ_ONLY";
 import { ToolHandler, ToolMetaInfo } from "../impl/tools/r_handler.tsx";
 import Operation from "../impl/core/Operation.tsx";
-import { ParamStateState, TabBottomType, TabLeftType, TabRightType, ToolConfigMapVal } from "../reducers/state/paramStateSlice.tsx";
+import { ParamStateState, TabBottomType, TabLeftType, TabRightType, ToolConfigMap, ToolConfigMapVal } from "../reducers/state/paramStateSlice.tsx";
 import { OpDetail } from "../impl/tools/s_tools.tsx";
 import { PopoverItemProps } from "../components/ActionButton/index.tsx";
 
@@ -37,6 +37,7 @@ export type CommonTransformerPassProp = {
   needFullPageSupport: boolean,
   extId?: string;
   extVM?: ExtensionVM;
+  crtToolCfg: ToolConfigMapVal | undefined;
   inputBigTextId: string;
   outputBigTextId: string;
   sessionId: string;
