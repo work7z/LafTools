@@ -66,7 +66,6 @@ export default abstract class Operation {
   public module: string = "";
 
   public abstract getOptDetail(): OptDetail;
-  public fileId: string = ''
 
   /**
    * Runs the operation.

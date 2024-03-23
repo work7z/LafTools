@@ -203,61 +203,16 @@ export type AppOpDetail = {
 
 export type AppOpFnMapType = { [key: string]: (p: { Dot: DotType }) => AppOpDetail }
 
+export const TOOL_CONVER_FILENAME_TO_ID_MAP: { [key: string]: string } = {}
+
 export let loadConversionTSXById = async (id: string): Promise<Operation> => {
     let a = await import(`./impl/conversion/${id}.tsx`)
     let o: Operation = new a['default']()
-    o.fileId = id;
+    TOOL_CONVER_FILENAME_TO_ID_MAP[id] = o.getOptDetail().id
     return o
 }
 
-// for app operation list
-export let AppOperationMap = {
-    'CSSBeautify': () => import('./impl/conversion/CSSBeautify.tsx'),
-    'CSSMinify': () => import('./impl/conversion/CSSMinify.tsx'),
-    'CSVToJSON': () => import('./impl/conversion/CSVToJSON.tsx'),
-    'FromBase32': () => import('./impl/conversion/FromBase32.tsx'),
-    'FromBase45': () => import('./impl/conversion/FromBase45.tsx'),
-    'FromBase58': () => import('./impl/conversion/FromBase58.tsx'),
-    'FromBase62': () => import('./impl/conversion/FromBase62.tsx'),
-    'FromBase64': () => import('./impl/conversion/FromBase64.tsx'),
-    'FromBase85': () => import('./impl/conversion/FromBase85.tsx'),
-    'FromBCD': () => import('./impl/conversion/FromBCD.tsx'),
-    'FromHex': () => import('./impl/conversion/FromHex.tsx'),
-    'GenericCodeBeautify': () => import('./impl/conversion/GenericCodeBeautify.tsx'),
-    'HTMLBeautify': () => import('./impl/conversion/HTMLBeautify.tsx'),
-    'JavaScriptBeautify': () => import('./impl/conversion/JavaScriptBeautify.tsx'),
-    'JavaScriptMinify': () => import('./impl/conversion/JavaScriptMinify.tsx'),
-    'JSONBeautify': () => import('./impl/conversion/JSONBeautify.tsx'),
-    'JSONMinify': () => import('./impl/conversion/JSONMinify.tsx'),
-    'MD2': () => import('./impl/conversion/MD2.tsx'),
-    'MD4': () => import('./impl/conversion/MD4.tsx'),
-    'MD5': () => import('./impl/conversion/MD5.tsx'),
-    'MD6': () => import('./impl/conversion/MD6.tsx'),
-    'RemoveLineNumbers': () => import('./impl/conversion/RemoveLineNumbers.tsx'),
-    'RemoveWhitespace': () => import('./impl/conversion/RemoveWhitespace.tsx'),
-    'Reverse': () => import('./impl/conversion/Reverse.tsx'),
-    'SHA0': () => import('./impl/conversion/SHA0.tsx'),
-    'SHA1': () => import('./impl/conversion/SHA1.tsx'),
-    'SHA2': () => import('./impl/conversion/SHA2.tsx'),
-    'SHA3': () => import('./impl/conversion/SHA3.tsx'),
-    'SQLBeautify': () => import('./impl/conversion/SQLBeautify.tsx'),
-    'SQLMinify': () => import('./impl/conversion/SQLMinify.tsx'),
-    'Tail': () => import('./impl/conversion/Tail.tsx'),
-    'ToBase32': () => import('./impl/conversion/ToBase32.tsx'),
-    'ToBase45': () => import('./impl/conversion/ToBase45.tsx'),
-    'ToBase58': () => import('./impl/conversion/ToBase58.tsx'),
-    'ToBase62': () => import('./impl/conversion/ToBase62.tsx'),
-    'ToBase64': () => import('./impl/conversion/ToBase64.tsx'),
-    'ToBase85': () => import('./impl/conversion/ToBase85.tsx'),
-    'ToBCD': () => import('./impl/conversion/ToBCD.tsx'),
-    'ToHex': () => import('./impl/conversion/ToHex.tsx'),
-    'XMLBeautify': () => import('./impl/conversion/XMLBeautify.tsx'),
-    'XMLMinify': () => import('./impl/conversion/XMLMinify.tsx'),
-    'YAMLBeautify': () => import('./impl/conversion/YAMLBeautify.tsx'),
 
-}
-
-export type AppOpMapKeyType = keyof typeof AppOperationMap;
 
 
 

@@ -52,6 +52,7 @@ import { logutils } from "../../../../../../../../../utils/LogUtils";
 import { useShouldVerticalModeOrNot } from "../index.tsx";
 import EditableOptions from "@/app/[lang]/client/src/components/EditableOptions/index.tsx";
 import { ProcessPanelProps } from "./index.tsx";
+import ParamStateSlice, { ToolPipeline } from "@/app/[lang]/client/src/reducers/state/paramStateSlice.tsx";
 export let ifnil = (v1: any, v2: any) => {
     return v1 === undefined || v1 === null ? v2 : v1
 }
@@ -65,33 +66,63 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
     let toolHandler = props.toolHandler
     let operList = toolHandler?.getOperations() || []
     let { crtDefaultOpera } = props;
+    let crtToolCfg = props.crtToolCfg
     let generalList: FormGenItem[] = useMemo(() => {
         let generalList: FormGenItem[] = []
-        let recipe = props.crtToolCfg?.recipe
         if (crtDefaultOpera) {
             let config = crtDefaultOpera.getOptDetail().config
+            let state_pipeobj = crtToolCfg?.pipemap;
+            if (!state_pipeobj) {
+                state_pipeobj = {}
+            }
+            let crtOpId = (props.fn_isSidebarMenuOpModeNow(props) ? props.crtSideMenuOperaId : props.crtDefaultOperaId) + "";
+            let state_crtPipeline = state_pipeobj[crtOpId + ""] || {}
             let args = config.args
             let checks = config.checks
+            let fn_defaultArgValues = () => args.map(x => x.value)
+            if (!state_crtPipeline) {
+                state_crtPipeline = {
+                    a: fn_defaultArgValues(),
+                    d: 'f'
+                }
+            }
+
+            if (!state_crtPipeline.a && _.size(state_crtPipeline.a) != _.size(args)) {
+                state_crtPipeline.a = fn_defaultArgValues()
+            }
+
+
+            let _eachArgIdx: number = -1
             _.forEach(args, (eachArg) => {
-                let { type, name, value: _srcVal } = eachArg;
+                _eachArgIdx++
+                let eachArgIdx = _eachArgIdx
+                let { type, name, value: _defaultValue } = eachArg;
+                let state_currentValue = state_crtPipeline.a[eachArgIdx]
+                let updateValueToState = (newVal) => {
+                    let newA = [...state_crtPipeline.a]
+                    newA[eachArgIdx] = newVal
+                    FN_GetDispatch()(
+                        ParamStateSlice.actions.updateCrtToolCfg({
+                            sessionId: props.sessionId,
+                            pipeMapKey: crtOpId,
+                            pipeMapValue: {
+                                a: newA,
+                                d: state_crtPipeline.d
+                            }
+                        })
+                    )
+                }
                 switch (type) {
                     case 'boolean':
                         {
-                            let value = ifnil(crtRuntimeStatus[name], _srcVal)
+                            let value = ifnil(state_currentValue, _defaultValue)
                             generalList.push({
                                 label: name,
                                 genEleConfig: {
                                     type: "switch",
                                     value: value,
                                     onChange(newVal) {
-                                        FN_GetDispatch()(
-                                            RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                                sessionId,
-                                                obj: {
-                                                    [name]: newVal
-                                                }
-                                            })
-                                        )
+                                        updateValueToState(newVal)
                                     },
                                 }
                             })
@@ -99,27 +130,20 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                         break;
                     case 'option':
                         {
-                            let value = crtRuntimeStatus[name] || _srcVal[0]
+                            let value = state_currentValue || _defaultValue[0]
                             generalList.push({
                                 label: name,
                                 genEleConfig: {
                                     type: "select",
                                     value: value,
-                                    selectList: _.map(_srcVal, (eachValue) => {
+                                    selectList: _.map(_defaultValue, (eachValue) => {
                                         return {
                                             label: eachValue,
                                             value: eachValue
                                         }
                                     }),
                                     onChange(newVal) {
-                                        FN_GetDispatch()(
-                                            RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                                sessionId,
-                                                obj: {
-                                                    [name]: newVal
-                                                }
-                                            })
-                                        )
+                                        updateValueToState(newVal)
                                     },
                                 }
                             })
@@ -134,16 +158,9 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                         {
                             let isNumber = type == "number"
                             let hasShort = type.indexOf("short") > -1 || type.indexOf("Short") > -1
-                            let value = ifnil(crtRuntimeStatus[name], _srcVal)
+                            let value = ifnil(state_currentValue, _defaultValue)
                             let onchg = (e) => {
-                                FN_GetDispatch()(
-                                    RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                        sessionId,
-                                        obj: {
-                                            [name]: e.target.value
-                                        }
-                                    })
-                                )
+                                updateValueToState(e.target.value)
                             }
                             generalList.push({
                                 label: name,
@@ -164,22 +181,15 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                     case 'editableOption':
                     case "editableOptionShort":
                         {
-                            let value = ifnil(crtRuntimeStatus[name], _srcVal[0]['value'])
+                            let value = ifnil(state_currentValue, _defaultValue[0]['value'])
                             let onchg = (val: string) => {
-                                FN_GetDispatch()(
-                                    RuntimeStatusSlice.actions.updateValueInStatusMap({
-                                        sessionId,
-                                        obj: {
-                                            [name]: val
-                                        }
-                                    })
-                                )
+                                updateValueToState(val)
                             }
                             generalList.push({
                                 label: name,
                                 genEleConfig: {
                                     type: "jsx",
-                                    jsxEle: <EditableOptions list={_srcVal} value={value} onChange={onchg} />
+                                    jsxEle: <EditableOptions list={_defaultValue} value={value} onChange={onchg} />
                                 },
                             })
                         }
@@ -222,6 +232,6 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
             ...generalList
         ]
         return generalList
-    }, [crtDefaultOpera, crtDefaultOpera])
+    }, [crtDefaultOpera, crtDefaultOpera, crtToolCfg, props.crtSideMenuOperaId])
     return generalList;
 }

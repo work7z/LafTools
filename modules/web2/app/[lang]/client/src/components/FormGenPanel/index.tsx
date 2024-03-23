@@ -67,34 +67,49 @@ import FormGenElement, { FormGenType } from "../FormGenElement";
 
 export type FormGenItem = FormGroupProps & { aid?: string, genEleConfig: FormGenType }
 type PropFormGenPanel = {
+    onReset: () => any,
     list: (FormGenItem)[]
     fixSingleColumn?: boolean
 }
 export default (props: PropFormGenPanel) => {
     let chunkItems = props.fixSingleColumn ? [props.list] : _.chunk(props.list, 3);
-    return <div className="flex  whitespace-break-spaces pure-g  ">
-        {
-            chunkItems.map((eachChunkItem, eachChunkItemIdx) => {
-                return <div key={eachChunkItemIdx} className={" mb-2  " + (
-                    props.fixSingleColumn ? " w-1/1 " : " p-2 w-1/1 md:w-1/2 lg:w-1/2"
-                )}>
-                    {
-                        eachChunkItem.map((x, d) => {
-                            let innerCtn = <FormGenElement label={x.label + ""} config={x.genEleConfig}></FormGenElement>
-                            if (x.genEleConfig.type == 'switch') {
-                                return <div>{innerCtn}</div>
-                            }
-                            return (
-                                <FormGroup key={d} {...x}>
-                                    {innerCtn}
-                                </FormGroup>
-                            )
-                        })
-                    }
-                    {/* <hr className="mb-2"/> */}
-                </div>
-            })
-        }
-        {/* <div>{Dot("8MHkguRv3", "text translation is still under development...")}</div> */}
+    let [ok, setOk] = useState(false)
+    return <div className="w-full">
+        <div className="flex  whitespace-break-spaces pure-g  ">
+            {
+                chunkItems.map((eachChunkItem, eachChunkItemIdx) => {
+                    return <div key={eachChunkItemIdx} className={" mb-2  " + (
+                        props.fixSingleColumn ? " w-1/1 " : " p-2 w-1/1 md:w-1/2 lg:w-1/2"
+                    )}>
+                        {
+                            eachChunkItem.map((x, d) => {
+                                let innerCtn = <FormGenElement label={x.label + ""} config={x.genEleConfig}></FormGenElement>
+                                if (x.genEleConfig.type == 'switch') {
+                                    return <div>{innerCtn}</div>
+                                }
+                                return (
+                                    <FormGroup key={d} {...x}>
+                                        {innerCtn}
+                                    </FormGroup>
+                                )
+                            })
+                        }
+                        {/* <hr className="mb-2"/> */}
+                    </div>
+                })
+            }
+        </div>
+        <div>
+            <Button minimal={ok} intent={ok ? 'success' : 'none'} text={ok ?
+                Dot('4BcBo4Q', "Okay, already reset.")
+                : Dot("vGomGgeTc", "Reset Form")
+            } onClick={() => {
+                props.onReset()
+                setOk(true)
+                setTimeout(() => {
+                    setOk(false)
+                }, 1000)
+            }}></Button>
+        </div>
     </div>
 }

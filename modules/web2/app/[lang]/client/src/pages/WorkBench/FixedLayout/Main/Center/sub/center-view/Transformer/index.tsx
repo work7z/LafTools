@@ -50,7 +50,7 @@ import ProcessPanel from "./ProcessPanel/index.tsx";
 import { ACTION_Transformer_Process_Text, ACTION_Transformer_Process_Text_Delay } from "../../../../../../../../actions/transformer_action";
 import Operation from "../../../../../../../../impl/core/Operation.tsx";
 import gutils from "../../../../../../../../utils/GlobalUtils";
-import appToolInfoObj, { AppInfoType, loadConversionTSXById } from "../../../../../../../../impl/tools/d_meta.tsx";
+import appToolInfoObj, { AppInfoType, TOOL_CONVER_FILENAME_TO_ID_MAP, loadConversionTSXById } from "../../../../../../../../impl/tools/d_meta.tsx";
 import { getInitValueForRuntimeStatus } from './init.tsx'
 import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../impl/tools/r_handler.tsx";
 import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
@@ -77,7 +77,7 @@ export let useShouldVerticalModeOrNot = () => {
   let v = exportUtils.useSelector((v) => {
     return {
       bottom_hide: v.layout.menuHide.bottom,
-      ltr: v.paramState.ltr == 'true',
+      ltr: v.paramState.ltr == 't',
     };
   });
   if (v.ltr) {
@@ -112,9 +112,7 @@ export default (props: CommonTransformerProps) => {
   let crtSideMenuOperaId = crtToolCfg && crtToolCfg.sideOpId
   let crtSideMenuOpera = useMemo(() => {
     return _.find((extraOpList || []), (x: Operation) =>
-      x.fileId == crtSideMenuOperaId ||
-      x.constructor.name == crtSideMenuOperaId ||
-      x.getOptDetail()?.id == crtSideMenuOperaId)
+      x.getOptDetail()?.id == TOOL_CONVER_FILENAME_TO_ID_MAP[crtSideMenuOperaId + ""] + "")
   }, [crtSideMenuOperaId, extraOpList])
 
   // DEFAULT OPERA BEGIN
@@ -173,7 +171,12 @@ export default (props: CommonTransformerProps) => {
       })
     }
   }, [crtSideMenuOperaId,])
-
+  let extVM = props.extVM
+  let fn_isSidebarMenuOpModeNow = (commonPassProp: CommonTransformerPassProp) => {
+    return (
+      commonPassProp && commonPassProp.crtSideMenuOperaId && commonPassProp.crtSideMenuOpera
+    )
+  }
   let commonPassProp: CommonTransformerPassProp = {
     ...props,
     opDetails,
@@ -182,6 +185,7 @@ export default (props: CommonTransformerProps) => {
     operaList,
     metaInfo,
     crtToolCfg,
+    fn_isSidebarMenuOpModeNow,
     crtDefaultOperaId,
     crtDefaultOpera,
     loadingExtraOpList,
@@ -189,10 +193,6 @@ export default (props: CommonTransformerProps) => {
     crtSideMenuOpera,
     fn_updateToolConfig,
     fn_switchToSideMenuExtraOp
-  }
-  let extVM = props.extVM
-  let fn_isSidebarMenuOpModeNow = (commonPassProp: CommonTransformerPassProp) => {
-    return commonPassProp && commonPassProp.crtSideMenuOperaId && commonPassProp.crtSideMenuOpera
   }
   let fn_format_description = (desc: string | undefined): string => {
     let optDetail = commonPassProp.crtDefaultOpera?.getOptDetail()
@@ -475,7 +475,7 @@ export default (props: CommonTransformerProps) => {
         }}>
 
           {
-            hideSideBar == 'true' ? '' : <Allotment.Pane preferredSize={280} >
+            hideSideBar == 't' ? '' : <Allotment.Pane preferredSize={280} >
               {app_left_jsx}
             </Allotment.Pane>
           }

@@ -31,7 +31,7 @@ export type MemoryStateState = {
 };
 const initialState: MemoryStateState = {
     // siteToolDialogOpen: 'false'
-    siteToolDialogOpen: 'false'
+    siteToolDialogOpen: 'f'
 };
 
 export type MemoryStateStateKeyType = keyof MemoryStateState;

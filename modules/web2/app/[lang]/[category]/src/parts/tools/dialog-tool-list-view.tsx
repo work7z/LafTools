@@ -30,7 +30,7 @@ export default (props: CrtToolProp) => {
             <DialogToolListView {...props} />
         </ClientWrapper> */}
     let { isOpen } = exportUtils.useSelector(v => ({
-        isOpen: v.memoryState.siteToolDialogOpen == 'true'
+        isOpen: v.memoryState.siteToolDialogOpen == 't'
     }))
     return <Dialog isOpen={isOpen} title={Dot("iAxHFt_gr", "Quick View")} icon="info-sign">
         <DialogBody>

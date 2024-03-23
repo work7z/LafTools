@@ -29,6 +29,7 @@ import { PopoverItemProps } from "../components/ActionButton/index.tsx";
 export * from './constants';
 
 export type CommonTransformerPassProp = {
+  fn_isSidebarMenuOpModeNow: (commonPassProp: CommonTransformerPassProp) => any,
   onProcess: () => any,
   loadingExtraOpList: boolean,
   crtSideMenuOperaId?: string,

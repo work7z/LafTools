@@ -37,14 +37,14 @@ import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
 export let useHideBottomAndSettingHook = () => {
     return exportUtils.useSelector((x) => {
         return {
-            hideBottomPanel: x.paramState.hdbtpl == 'true',
-            hideSettingPanel: x.paramState.hdstpt == 'true',
+            hideBottomPanel: x.paramState.hdbtpl == 't',
+            hideSettingPanel: x.paramState.hdstpt == 't',
         };
     })
 
 }
 
-let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransformerProps & TransformerWithRuntime & {
+let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic: boolean } & TextTransformerProps & TransformerWithRuntime & {
     onProcess: () => any;
 }) => {
     let { inputBigTextId } = props;
@@ -64,14 +64,14 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
     let crtDefaultOperaId = props.crtDefaultOperaId
     let leftActions: ActionButtonProps[] = [
         {
-            icon: hideSideBar == 'false' ? 'menu-closed' : 'menu-open',
+            icon: hideSideBar == 'f' ? 'menu-closed' : 'menu-open',
             className: '',
             intent: "none",
             minimal: true,
-            title: hideSideBar == 'false' ?
+            title: hideSideBar == 'f' ?
                 Dot("5_EPRncIx", "Hide Left Navigator") : Dot("qm6Fy9AB2", "Show Left Navigator"),
             onClick: () => {
-                let newVal: TrueFalseType = hideSideBar == "true" ? "false" : "true";
+                let newVal: TrueFalseType = hideSideBar == "t" ? "f" : "t";
                 FN_GetDispatch()(
                     ParamStateSlice.actions.updateOneOfParamState({
                         hsr: newVal
@@ -202,14 +202,14 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
     let triggerBottomPanel = (v: boolean) => {
         FN_GetDispatch()(
             ParamStateSlice.actions.updateOneOfParamState({
-                hdbtpl: v ? "true" : "false",
+                hdbtpl: v ? "t" : "f",
             })
         );
     };
     let triggerSettingPanel = (v: boolean) => {
         FN_GetDispatch()(
             ParamStateSlice.actions.updateOneOfParamState({
-                hdstpt: v ? "true" : "false",
+                hdstpt: v ? "t" : "f",
             })
         );
     }
@@ -264,11 +264,21 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             onClick() {
                 FN_GetDispatch()(
                     ParamStateSlice.actions.updateOneOfParamState({
-                        ltr: shouldVerticalMode ? 'true' : 'false',
+                        ltr: shouldVerticalMode ? 't' : 'f',
                     })
                 );
             }
         },
+        // {
+        //     icon: 'eraser',
+        //     intent: 'none',
+        //     title: Dot("IJjSINgO0", "Reset the tool to default state"),
+        //     onClick: () => {
+        //         if (!confirm(Dot("OjdV1-pMy", "Are you sure to reset the tool to default state?"))) {
+        //             return;
+        //         }
+        //     },
+        // },
         {
             icon: 'search',
             intent: 'none',

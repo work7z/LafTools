@@ -31,7 +31,7 @@ import DishError from "./errors/DishError.mjs";
 import log from "loglevel";
 import { isWorkerEnvironment } from "./Utils.mjs";
 import ToBase64 from "../tools/impl/conversion/ToBase64.tsx";
-import { AppOperationMap } from "../tools/d_meta.tsx";
+import { loadConversionTSXById } from "../tools/d_meta.tsx";
 
 // Cache container for modules
 let modules = null;
@@ -82,14 +82,6 @@ class Recipe {
    * @private
    */
   async _hydrateOpList() {
-    // if (!modules) {
-    //   // Using Webpack Magic Comments to force the dynamic import to be included in the main chunk
-    //   // https://webpack.js.org/api/module-methods/
-    //   modules = await import(
-    //     /* webpackMode: "eager" */ "./config/modules/OpModules.mjs"
-    //   );
-    //   modules = modules.default;
-    // }
     let newOpList = [];
     for (let item of this.opList) {
       let willPushItem = null;
@@ -98,10 +90,9 @@ class Recipe {
       } else if (item.name instanceof Operation) {
         willPushItem = item.name;
       } else {
-        let formattedName = item.name.replace(/ /g, "");
-        let clz = await AppOperationMap[formattedName]();
-        console.log("clz", clz["default"]);
-        const op = new clz["default"](); // new modules[o.module][o.name]();
+        let id = item.name.replace(/ /g, "");
+        let clz = await loadConversionTSXById(id);
+        let op = clz;
         willPushItem = op;
       }
       willPushItem.ingValues = item.ingValues;

@@ -52,6 +52,7 @@ import { logutils } from "../../../../../../../../../utils/LogUtils";
 import { useShouldVerticalModeOrNot } from "../index.tsx";
 import EditableOptions from "@/app/[lang]/client/src/components/EditableOptions/index.tsx";
 import { useGeneralListRead } from "./hooks.tsx";
+import ParamStateSlice from "@/app/[lang]/client/src/reducers/state/paramStateSlice.tsx";
 export type ProcessPanelProps = { disableSeparateOutputMode: boolean, hideSettingPanel: boolean } & CommonTransformerPassProp & TransformerWithRuntime
 export default (props: ProcessPanelProps) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
@@ -80,7 +81,20 @@ export default (props: ProcessPanelProps) => {
             <iframe src={toolHanlder?.getOperations()[0].getOptDetail()?.infoURL} className="w-full h-full border-none outline-none"></iframe>
         </div>
     } else if (toolTabIndex == "tools") {
-        finalShowContent_l = <FormGenPanel fixSingleColumn={!shouldVert} list={generalList}></FormGenPanel >
+        finalShowContent_l = <FormGenPanel onReset={() => {
+            FN_GetDispatch()(
+                ParamStateSlice.actions.updateCrtToolCfg({
+                    pipeMapKey: (props.fn_isSidebarMenuOpModeNow(props) ? props.crtSideMenuOperaId : props.crtDefaultOperaId + "") + "",
+                    pipeMapValue: {
+                        a: [],
+                    },
+                    sessionId
+                })
+            )
+            AlertUtils.popMsg('success', {
+                message: Dot("6T3dmF", "Reset Successfully!")
+            })
+        }} fixSingleColumn={!shouldVert} list={generalList}></FormGenPanel >
     } else if (toolTabIndex == "faq") {
         finalShowContent_l = <FaqPanel key={sessionId} {...props}></FaqPanel>
     } else if (toolTabIndex == 'code') {

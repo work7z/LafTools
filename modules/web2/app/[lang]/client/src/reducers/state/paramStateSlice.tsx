@@ -33,16 +33,22 @@ import _ from "lodash";
 export type TabLeftType = "tools" | "notes" | "history" | "resources"
 export type TabBottomType = "terminal" | "dictionary" | "compute" | "help" | "overview" | "translation"
 export type TabRightType = "ai" | "todo" | "stopwatch"
-export type TrueFalseType = "true" | "false"
+export type TrueFalseType = "t" | "f"
 export type ToolConfigMapVal = {
-    extId: string, // tool name, can be empty if not defined
-    recipe: string, // recipe string, can follow CyberChef's recipe format
+    alias: string, // tool name, can be empty if not defined
+    pipemap: {
+        [key: string]: ToolPipeline
+    }, // recipe string, can follow CyberChef's recipe format
     dftOpId?: string, // default opt id
     sideOpId?: string, // sidemenu opt id
     // FIXME: for new fields added, please assume they're possibly undefined or null for the consideration of backward compatibility
 }
 export type ToolConfigMap = {
     [sessionId: string]: ToolConfigMapVal
+}
+export type ToolPipeline = {
+    a: any[], // args value
+    d?: TrueFalseType, // disabled or not
 }
 export type ToolSideMenuTabIdType = "pipeline" | "favourites" | "allops"
 export type ParamStateState = {
@@ -65,15 +71,15 @@ export type ParamStateState = {
     tid?: string; // tool tab id
 };
 const initialState: ParamStateState = {
-    nqop: 'false',
+    nqop: 'f',
     tsdmid: 'allops',
     tsdrsipt: '',
     tlcfg: {},
-    hdstpt: 'false',
-    hdbtpl: 'false',
-    ltr: 'true',
-    hsr: 'false',
-    fs: 'false',
+    hdstpt: 'f',
+    hdbtpl: 'f',
+    ltr: 't',
+    hsr: 'f',
+    fs: 'f',
     l: "tools",
     b: "terminal",
     r: "ai"
@@ -148,16 +154,40 @@ export let syncStateToUrl = _.debounce((formatted: ParamStateState) => {
 export let syncStateToLocal = _.debounce((formatted: ParamStateState) => {
     localStorage.setItem(localParamSaveKey, JSON.stringify(formatted))
 }, DELAY_TIME)
+
+let handleStateSync = (state) => {
+    let formatted = formatState(state)
+    syncStateToUrl(formatted)
+    syncStateToLocal(formatted)
+}
 const ParamStateSlice = createSlice({
     name: "paramState",
     initialState,
     reducers: {
         updateOneOfParamState: (state, action: PayloadAction<Partial<ParamStateState>>) => {
             _.merge(state, action.payload)
-            let formatted = formatState(state)
-            syncStateToUrl(formatted)
-            syncStateToLocal(formatted)
-        }
+            handleStateSync(state)
+        },
+        updateCrtToolCfg: (state, action: PayloadAction<{
+            pipeMapKey: string,
+            pipeMapValue: ToolPipeline,
+            sessionId: string
+        }>) => {
+            if (!state.tlcfg[action.payload.sessionId]) {
+                state.tlcfg[action.payload.sessionId] = {
+                    alias: '',
+                    pipemap: {}
+                }
+            }
+            let sessionCfg = (
+                state.tlcfg[action.payload.sessionId]
+            )
+            if (!sessionCfg.pipemap) {
+                sessionCfg.pipemap = {}
+            }
+            state.tlcfg[action.payload.sessionId].pipemap[action.payload.pipeMapKey] = action.payload.pipeMapValue
+            handleStateSync(state)
+        },
     },
 });
 
