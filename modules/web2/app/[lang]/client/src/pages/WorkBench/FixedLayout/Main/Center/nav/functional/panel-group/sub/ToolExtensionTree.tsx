@@ -276,6 +276,44 @@ export default (props: PopoverItemProps & {
       ></NonIdealState>
     );
   }
+  let fn_trigger_node_click = (
+    (node) => {
+      if (node?.hasCaret) return;
+      let childId = node?.id;
+      if (clientCtx.portalMode) {
+        return;
+      }
+      // goWithChildId(childId);
+      let parentIcon: string | null = null;
+      let parentLabel: string | null = null;
+      _.every(treeNodeData.nodes, (x: TreeNodeInfo) => {
+        if (!x.childNodes || x.icon == "star") {
+          return true;
+        }
+        for (let item of x.childNodes) {
+          if (item.id == childId) {
+            parentIcon = x.icon + "";
+            parentLabel = x.label + "";
+            return false;
+          }
+        }
+        return true;
+      });
+      dis(
+        WorkspaceSlice.actions.addTab({
+          keyName: "tools",
+          newTab: {
+            id: _.toString(childId) || "Unknown Id",
+            label:
+              parentLabel + " - " + _.toString(node?.label) ||
+              "Unknown Label",
+            pageTitle: `${_.toString(node?.label)}`,
+            icon: (parentIcon || "application") as any,
+          },
+        })
+      );
+    }
+  )
 
   return (
     <div className=" select-none w100 h100 flex-parent whitespace-break-spaces overflow-auto">
@@ -288,39 +326,13 @@ export default (props: PopoverItemProps & {
         ) : (
           <GenTree
             cacheId="toolet"
-            onClick={(node) => {
-              if (node?.hasCaret) return;
-              let childId = node?.id;
-              // goWithChildId(childId);
-              let parentIcon: string | null = null;
-              let parentLabel: string | null = null;
-              _.every(treeNodeData.nodes, (x: TreeNodeInfo) => {
-                if (!x.childNodes || x.icon == "star") {
-                  return true;
-                }
-                for (let item of x.childNodes) {
-                  if (item.id == childId) {
-                    parentIcon = x.icon + "";
-                    parentLabel = x.label + "";
-                    return false;
-                  }
-                }
-                return true;
-              });
-              dis(
-                WorkspaceSlice.actions.addTab({
-                  keyName: "tools",
-                  newTab: {
-                    id: _.toString(childId) || "Unknown Id",
-                    label:
-                      parentLabel + " - " + _.toString(node?.label) ||
-                      "Unknown Label",
-                    pageTitle: `${_.toString(node?.label)}`,
-                    icon: (parentIcon || "application") as any,
-                  },
-                })
-              );
+            onDoubleClick={node => {
+              if (clientCtx.portalMode) {
+                let toolId = node?.id;
+                props.onPopRedirectPage(node as any, true)
+              }
             }}
+            onClick={fn_trigger_node_click}
             formatEachNode={(x) => {
               if (!x.hasCaret) {
                 let hasRemarkThisOne =
@@ -328,40 +340,12 @@ export default (props: PopoverItemProps & {
                     return _.toString(xx.Id + "") === x.id;
                   }) != null;
                 let fn_openItInNewTab = (
-                  async (e, newTab: boolean) => {
-                    gutils.stopE(e);
+                  async (xxxx, newTab: boolean) => {
                     if (clientCtx.portalMode) {
                       props.onPopRedirectPage(x, newTab)
                       return;
                     }
-                    if (hasRemarkThisOne) {
-                      dis(
-                        WorkspaceSlice.actions.mergeTabPart({
-                          name: 'tools',
-                          value: {
-                            favourites: _.filter(
-                              selectExpandFavouriteObj.favourites,
-                              (xx) => {
-                                return xx != x.id;
-                              }
-                            ),
-                          }
-                        })
-                      );
-                    } else {
-                      dis(
-                        WorkspaceSlice.actions.mergeTabPart({
-                          name: 'tools',
-                          value: {
-                            favourites: (_.uniq([
-                              ...(selectExpandFavouriteObj.favourites || []),
-                              x.id,
-                            ]) || []) as any,
-                          }
-                        })
-                      );
-                    }
-                    onUpdateMemStatus(updateMemStatus + 1);
+                    fn_trigger_node_click(x)
                   }
                 )
                 return {
@@ -425,7 +409,7 @@ export default (props: PopoverItemProps & {
                           onClick={(e) => {
                             gutils.stopE(e)
 
-                            fn_openItInNewTab(e, true)
+                            fn_openItInNewTab(x, true)
                           }}
                         />
                       </Tooltip>
