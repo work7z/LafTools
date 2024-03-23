@@ -56,7 +56,7 @@ class SQLBeautify extends Operation {
             },
             infoURL: "https://en.wikipedia.org/wiki/SQL",
             id: "sql-beautify",
-            optName: Dot("json-beautify.name.0912", "Format SQL"),
+            optName: Dot("json-beautify.name.0912", "Format {0}", 'SQL'),
             optDescription: Dot(
                 "rE6fUsSGl",
                 "Indents and prettifies Structured Query Language (SQL) code."
@@ -96,6 +96,12 @@ class SQLBeautify extends Operation {
         return vkbeautify.sql(input, indentStr);
     }
 
+    getInputOutputEditorLang(): InputOutputEditorLang | null {
+        return {
+            inputLang: 'mysql',
+            outputLang: 'mysql'
+        }
+    }
 }
 
 export default SQLBeautify;

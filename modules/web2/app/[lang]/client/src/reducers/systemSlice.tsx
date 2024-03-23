@@ -257,7 +257,7 @@ export const ACTION_getLangData = (scopeIdIfHave?: string): any => {
   return async (dispatch: Dispatch<AnyAction>) => {
     let currentLanguage = sysLocale.langIni18n; //ALL_NOCYCLE.store?.getState().forge.Language;
     // TranslationUtils.CurrentLanguage
-    // debugger;
+
     if (
       !currentLanguage
     ) {

@@ -76,7 +76,7 @@ class JavaScriptBeautify extends Operation {
             },
             id: 'jsbeautify',
             infoURL: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-            optName: Dot("6UICxHzVR.name", "Beautify {0}", "JavaScript"),
+            optName: Dot("6UICxHdzVR.name", "Format {0}", "JavaScript"),
             optDescription: Dot(
                 "WFUWzv_px",
                 "Parses and pretty prints valid JavaScript code. Also works with JavaScript Object Notation (JSON).",

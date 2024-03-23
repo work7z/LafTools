@@ -1,5 +1,5 @@
 
-import { Alignment, Button, ButtonProps, Navbar, Tab, Tabs, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, ButtonProps, Navbar, Popover, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import {
     VAL_CSS_TAB_TITLE_PANEL,
@@ -268,9 +268,7 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             icon: 'search',
             intent: 'none',
             title: Dot("6SypzjeRz", "Quickly search tools that you need"),
-            onClick: () => {
-                AlertUtils.popNotSupport()
-            }
+            popoverItem: <div>this is popover</div>,
         }
     ];
     return (

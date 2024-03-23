@@ -172,7 +172,7 @@ let SyncStateUtils = {
     if (action_type.indexOf("replaceWithLatestState") != -1) {
       return;
     }
-    // debugger;
+
     // if the user is initilizing his/her setup, then exit
     let userId = TokenUtils.getLocalUserId()
     if (!userId || userId == "") {
@@ -182,7 +182,7 @@ let SyncStateUtils = {
     // if (!hasUserSelectOption) {
     //   return;
     // }
-    // debugger;
+
     if (_.isEmpty(syncedReducerNameFnMap)) {
       _.forEach(syncedReducerNames, (eachReducerName) => {
         syncedReducerNameFnMap[eachReducerName] = _.debounce(

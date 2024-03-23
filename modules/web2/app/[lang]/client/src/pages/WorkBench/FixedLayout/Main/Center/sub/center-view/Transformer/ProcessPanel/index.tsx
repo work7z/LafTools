@@ -299,7 +299,9 @@ export default (props: { disableSeparateOutputMode: boolean, hideSettingPanel: b
                         }}
                         selectedTabId={toolTabIndex}
                     >
-                        <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")} tagContent={_.size(generalList)} />
+                        <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")}
+                        // tagContent={_.size(generalList)} 
+                        />
 
                         <Tab id="faq" icon="manual" title={"FAQ"} />
                         {
@@ -346,12 +348,12 @@ export default (props: { disableSeparateOutputMode: boolean, hideSettingPanel: b
         </Navbar>
     )
     let jsx_right_otput_ctn = (
-        <div style={{ height: `calc(100% - ${CSS_NAV_BP_TAB_HEIGHT})`, overflow: 'auto' }} className={'p-0'}>
+        <div style={{ height: `calc(100% - ${CSS_NAV_BP_TAB_HEIGHT})`, overflow: 'auto', flex: '1' }} className={'p-0'}>
             {finalShowContent_r}
         </div>
     )
     let jsx_right_output_or_somethingelse = (
-        <div className='h-full p-[1px]'>
+        <div className='h-full p-[1px] flex flex-col '>
             {
                 [jsx_right_output_tab, jsx_right_otput_ctn]
             }

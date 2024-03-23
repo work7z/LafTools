@@ -62,6 +62,7 @@ import COMMON_FN_REF from "@/app/[lang]/client/src/impl/tools/common_ref.tsx";
 import { OpDetail, getAllOperationDetails } from "@/app/[lang]/client/src/impl/tools/s_tools.tsx";
 import ParamStateSlice, { ToolConfigMap, ToolConfigMapVal } from "@/app/[lang]/client/src/reducers/state/paramStateSlice.tsx";
 import { sleep } from "@/app/[lang]/client/src/utils/SyncUtils.tsx";
+import { ToolTitlebar } from "./toolTitlebar.tsx";
 
 COMMON_FN_REF.Dot = Dot
 
@@ -84,42 +85,7 @@ export let useShouldVerticalModeOrNot = () => {
   }
   return v.bottom_hide;
 }
-let ToolTitlebar = (props: { title: string }) => {
-  let { fullScreen, hideSideBar } = exportUtils.useSelector(v => {
-    return {
-      // fullScreen: v.paramState.fs
-      hideSideBar: v.paramState.hsr,
-      fullScreen: false // v.paramState.fs 
-      // not yet implemented fullScreen 
-    }
-  })
-  let mainTitle = <div className={CSS_BG_COLOR_WHITE + ' relative w-full flex flex-row justify-between px-[2px] items-center text-sm ' + light_border_clz_all + " "} style={{
-    borderTop: 'none',
-    borderRight: 'none',
-    height: VAL_CSS_MENU_TITLE_PANEL
-  }}>
-    <div>
-      <a href="#">
-        {/* {Dot("crZZ_WXlw", "View Relevant")} */}
-      </a>
-    </div>
-    <div id="tool-current-title" className={`font-semibold top-[50%] translate-y-[-50%] absolute left-[50%] translate-x-[-50%]`}>
-      {props.title}
-    </div>
-    <div>
-      <a href="#">
-        {/* {Dot("438yFc2HZ", "Float this Tool")} */}
-      </a>
-    </div>
-  </div>
-  return <div className={' w-full flex flex-row'} style={{
-    borderBottom: 'none',
-    height: VAL_CSS_MENU_TITLE_PANEL
-  }}>
-    {mainTitle}
 
-  </div>
-}
 
 export default (props: CommonTransformerProps) => {
   let sessionId = props.sessionId;
@@ -470,6 +436,7 @@ export default (props: CommonTransformerProps) => {
   let defaultLeftWidth = VAL_MENU_LEFT_PANEL_WIDTH
 
   let infoObj: AppInfoType = appToolInfoObj[props.extId || '']
+  let toolTitle = infoObj.LabelFn(Dot) || 'N/A';
 
   let body = <div key={sessionId} className={
     " " + transformerFullScreenClzIfNeeded
@@ -496,7 +463,7 @@ export default (props: CommonTransformerProps) => {
           }
           <Allotment.Pane>
             <div className="w-full h-full flex flex-col">
-              <ToolTitlebar title={infoObj.LabelFn(Dot) || 'N/A'} />
+              <ToolTitlebar title={toolTitle} />
               <div style={{
                 flex: '1',
               }}>
@@ -511,7 +478,6 @@ export default (props: CommonTransformerProps) => {
   let constructedKey = 'xmGBxtFdi'
   return (
     <div className="w-full h-full">
-      {/* <ToolTitlebar title={extVM?.Info?.Label || 'N/A'} /> */}
       <div
         style={{
           height: '100% '

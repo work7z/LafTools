@@ -27,6 +27,7 @@ export type ActionButtonProps = ButtonProps & {
     doNotBeMinimalWhenTrigger?: boolean;
     highlightOne?: boolean;
     extraButtonProps?: ButtonProps,
+    popoverItem?: JSX.Element,
     parentTriggered?: boolean;
     placement?: Placement,
     enableActionMode?: boolean,

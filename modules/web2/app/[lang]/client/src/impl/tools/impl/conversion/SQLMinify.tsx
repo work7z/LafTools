@@ -82,6 +82,14 @@ class SQLMinify extends Operation {
   run(input, args) {
     return vkbeautify.sqlmin(input);
   }
+
+
+  getInputOutputEditorLang(): InputOutputEditorLang | null {
+    return {
+      inputLang: 'sql',
+      outputLang: 'sql'
+    }
+  }
 }
 
 export default SQLMinify;

@@ -171,7 +171,7 @@ export default (props: GenCodeMirrorProp) => {
   }, [verObj.ver])
   let value: string = props.directValue || bt.bigText;
   let setValue = (val: string) => {
-    // debugger;
+
     FN_GetDispatch()(FN_SetTextValueFromInsideByBigTextId___DONOTUSEIT__EXTERNALLY(bigTextId, val));
   };
   const onChange = React.useCallback((val, viewUpdate) => {

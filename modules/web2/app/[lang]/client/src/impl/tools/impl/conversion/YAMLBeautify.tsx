@@ -56,7 +56,7 @@ class YamlBeautify extends Operation {
         ]
       },
       id: 'yaml-beautify',
-      optName: Dot("yaml.format.btn", "Format YAML"),
+      optName: Dot("yaml.format.btn", "Format {0}", 'YAML'),
       infoURL: 'https://en.wikipedia.org/wiki/YAML',
       optDescription: Dot(
         "yaml-beautify.desc.2a5f9",
@@ -105,9 +105,15 @@ class YamlBeautify extends Operation {
       parser: "yaml",
       plugins: [parserYaml],
     }
-    debugger;
     let results = prettier.format(input, exts);
     return results;
+  }
+
+  getInputOutputEditorLang(): InputOutputEditorLang | null {
+    return {
+      inputLang: "yaml",
+      outputLang: "yaml",
+    }
   }
 
 }

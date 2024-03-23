@@ -99,6 +99,13 @@ class XMLMinify extends Operation {
     const preserveComments = args[0];
     return vkbeautify.xmlmin(input, preserveComments);
   }
+
+  getInputOutputEditorLang(): InputOutputEditorLang | null {
+    return {
+      inputLang: 'xml',
+      outputLang: 'xml'
+    }
+  }
 }
 
 export default XMLMinify;

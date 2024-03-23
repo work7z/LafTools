@@ -457,7 +457,7 @@ export let WB_MenuBar = (props: PassProp) => {
                         // location.replace(m.join("/") + "" + location.search)
                         location.href = "/" + getFormattedLang(x.value + "") + '/client'
                         // alert()
-                        // debugger;
+
                         // location.reload()
 
 
