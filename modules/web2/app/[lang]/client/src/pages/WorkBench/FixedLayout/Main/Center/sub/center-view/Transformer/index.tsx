@@ -189,16 +189,21 @@ export default (props: CommonTransformerProps) => {
     fn_switchToSideMenuExtraOp
   }
   let extVM = props.extVM
+  let fn_isSidebarMenuOpModeNow = (commonPassProp: CommonTransformerPassProp) => {
+    return commonPassProp && commonPassProp.crtSideMenuOperaId && commonPassProp.crtSideMenuOpera
+  }
   let fn_format_description = (desc: string | undefined): string => {
     let optDetail = commonPassProp.crtDefaultOpera?.getOptDetail()
-
+    let affix = (fn_isSidebarMenuOpModeNow(commonPassProp) ? ` - ${commonPassProp.crtSideMenuOpera?.getOptDetail()?.optName}` : (
+      ' - ' + commonPassProp.crtDefaultOpera?.getOptDetail()?.optName || 'N/A'
+    ))
     let arr: TitleSubPair[] = [
       {
-        title: Dot("wcl1K", "Usage"),
+        title: Dot("wcl1K", "Usage") + affix,
         subTitle: Dot("rT34qnO", "Enter text for processing. The result will display in the output editor.")
       },
       {
-        title: Dot("8eeL1Kk", "About", optDetail?.optName),
+        title: Dot("8eeL1Kk", "About", optDetail?.optName) + affix,
         subTitle: desc?.replace(/\\n/g, '\n') + ""
       },
       {
@@ -437,6 +442,13 @@ export default (props: CommonTransformerProps) => {
 
   let infoObj: AppInfoType = appToolInfoObj[props.extId || '']
   let toolTitle = infoObj.LabelFn(Dot) || 'N/A';
+  if (commonPassProp.loadingExtraOpList) {
+    toolTitle = Dot("3XstvdK", "Loading the selected quick operation...")
+  } else {
+    if (commonPassProp.crtSideMenuOpera && commonPassProp.crtSideMenuOperaId) {
+      toolTitle = Dot("rcVSYDdBN0", "Quick Operation: {0}", commonPassProp.crtSideMenuOpera.getOptDetail()?.optName || 'N/A')
+    }
+  }
 
   let body = <div key={sessionId} className={
     " " + transformerFullScreenClzIfNeeded

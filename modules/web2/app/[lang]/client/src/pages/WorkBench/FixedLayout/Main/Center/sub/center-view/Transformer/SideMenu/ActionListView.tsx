@@ -66,12 +66,14 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
                             }} dangerouslySetInnerHTML={{ __html: x.description }}></div>
                         } hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN} >
                             <Button small loading={isCurrent && props.loadingExtraOpList} minimal={!isCurrent} className={twClz} style={{
-                            }} outlined={!isCurrent} icon={
-                                isCurrentAndLoaded ? ICON_BTN_TRIGGER_FN : undefined
-                            } intent={whatIntent} key={d} onClick={async () => {
-                                await props.fn_switchToSideMenuExtraOp(x.id)
-                                await props.onProcess()
-                            }}>{x.label}</Button>
+                            }} outlined={!isCurrent}
+                                // icon={
+                                //     isCurrentAndLoaded ? ICON_BTN_TRIGGER_FN : undefined
+                                // }
+                                intent={whatIntent} key={d} onClick={async () => {
+                                    await props.fn_switchToSideMenuExtraOp(x.id)
+                                    await props.onProcess()
+                                }}>{x.label}</Button>
                         </Tooltip>
                     })
                 }
