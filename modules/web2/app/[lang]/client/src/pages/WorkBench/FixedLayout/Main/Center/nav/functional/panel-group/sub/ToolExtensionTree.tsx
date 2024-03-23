@@ -329,7 +329,7 @@ export default (props: PopoverItemProps & {
             onDoubleClick={node => {
               if (clientCtx.portalMode) {
                 let toolId = node?.id;
-                props.onPopRedirectPage(node as any, true)
+                props.onPopRedirectPage(node as any, false)
               }
             }}
             onClick={fn_trigger_node_click}

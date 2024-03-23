@@ -24,6 +24,7 @@ import { ToolHandler, ToolMetaInfo } from "../impl/tools/r_handler.tsx";
 import Operation from "../impl/core/Operation.tsx";
 import { ParamStateState, TabBottomType, TabLeftType, TabRightType, ToolConfigMapVal } from "../reducers/state/paramStateSlice.tsx";
 import { OpDetail } from "../impl/tools/s_tools.tsx";
+import { PopoverItemProps } from "../components/ActionButton/index.tsx";
 
 export * from './constants';
 
@@ -150,10 +151,11 @@ export type EachTabPanelProp = {
   desc: string;
   icon?: string;
   pathname?: string;
-  panel?: (prop: PropGenTabsPanel) => JSX.Element;
+  panel?: (prop: any) => JSX.Element;
+  // FIXME: above type should be PropGenTabsPanel
 };
 
-export type PropGenTabsPanel = {};
+export type PropGenTabsPanel = {} & PopoverItemProps;
 
 export type FixedMenuItem = {
   id: string;
