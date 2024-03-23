@@ -293,9 +293,14 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                                         URL_SUBCATEGORY_GO_PATH,
                                         ...pagePathArr,
                                     ])
-                                    window.open(
-                                        goLink
-                                    )
+                                    if (newTab) {
+                                        window.open(
+                                            goLink
+                                        )
+
+                                    } else {
+                                        location.href = goLink
+                                    }
                                 }
                             }
                         }} />
