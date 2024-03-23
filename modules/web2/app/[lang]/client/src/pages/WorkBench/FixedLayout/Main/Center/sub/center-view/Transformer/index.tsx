@@ -194,9 +194,13 @@ export default (props: CommonTransformerProps) => {
   }
   let fn_format_description = (desc: string | undefined): string => {
     let optDetail = commonPassProp.crtDefaultOpera?.getOptDetail()
-    let affix = (fn_isSidebarMenuOpModeNow(commonPassProp) ? ` - ${commonPassProp.crtSideMenuOpera?.getOptDetail()?.optName}` : (
+    let affix = (
       ' - ' + commonPassProp.crtDefaultOpera?.getOptDetail()?.optName || 'N/A'
-    ))
+    )
+    if (fn_isSidebarMenuOpModeNow(commonPassProp)) {
+      affix = ` - ${commonPassProp.crtSideMenuOpera?.getOptDetail()?.optName}`
+      desc = commonPassProp.crtSideMenuOpera?.getOptDetail().optDescription
+    }
     let arr: TitleSubPair[] = [
       {
         title: Dot("wcl1K", "Usage") + affix,
