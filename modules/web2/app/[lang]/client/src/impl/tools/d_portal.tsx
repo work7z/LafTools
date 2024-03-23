@@ -28,6 +28,7 @@ import { Metadata } from "next"
 import { cache } from "react"
 import appToolInfoObj, { AppToolKeyType } from "./d_meta"
 import COMMON_FN_REF from "./common_ref"
+import { GithubRepoLink } from "@/app/__CORE__/meta/constants"
 
 COMMON_FN_REF.Dot = Dot
 
@@ -445,7 +446,7 @@ export let fn_rightCategoryArr = () => {
     let rightCategoryArr: LabelHrefType[] = [
         {
             label: Dot("download-local", "Free Download"),
-            href: '/v2/'
+            href: GithubRepoLink
         },
         {
             label: Dot("str.remarks", "Favorites"),
