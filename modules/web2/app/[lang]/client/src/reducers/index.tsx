@@ -39,6 +39,7 @@ import SessionSlice from "./container/sessionSlice";
 import settingsSlice from "./settingsSlice";
 import LocalStateSlice from "./state/localStateSlice";
 import ParamStateSlice from "./state/paramStateSlice";
+import memoryStateSlice from "./state/memoryStateSlice";
 
 export default {
   settings: settingsSlice,
@@ -62,5 +63,6 @@ export default {
   dialog: DialogSlice,
   // for settings/status
   localState: LocalStateSlice,
-  paramState: ParamStateSlice
+  paramState: ParamStateSlice,
+  memoryState: memoryStateSlice,
 };

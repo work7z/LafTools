@@ -49,7 +49,9 @@ export let BannerWithText = (props: { link: string, text: string, onClick: any }
             <span className="font-semibold">
                 {props.text}
             </span>
-            <a href={'https://' + props.link}>Redirect</a>
+            <a href={'https://' + props.link}>{
+                regionUtils.isCurrentUserPossibleChinese() ? '重定向(Redirect)' : 'Redirect'
+            }</a>
             <a href="#" onClick={() => {
                 props.onClick()
             }}>Close</a>
