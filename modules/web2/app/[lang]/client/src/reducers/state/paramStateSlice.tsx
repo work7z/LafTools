@@ -69,7 +69,7 @@ const initialState: ParamStateState = {
     tlcfg: {},
     hdstpt: 'false',
     hdbtpl: 'false',
-    ltr: 'false',
+    ltr: 'true',
     hsr: 'false',
     fs: 'false',
     l: "tools",
