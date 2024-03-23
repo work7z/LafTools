@@ -36,6 +36,7 @@ import { notFound } from 'next/navigation';
 import { ToolSearchDetail } from '@/app/[lang]/page';
 import { Button, Dialog, DialogBody, DialogFooter } from '@blueprintjs/core';
 import DialogToolListView from './dialog-tool-list-view';
+import ClientWrapper from '../../common/clientWrapper';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -48,6 +49,5 @@ export default (props: CrtToolProp) => {
     return <Card {...getCardsProps()} className={light_border_clz_all} >
         <SubTabNav  {...props}></SubTabNav>
         <ToolView {...props} />
-        <DialogToolListView />
     </Card >
 }

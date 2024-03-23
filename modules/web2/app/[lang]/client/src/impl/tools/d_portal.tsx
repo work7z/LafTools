@@ -47,7 +47,7 @@ export type PortalDefinitionType = SEOMetaData & {
     id: string,
     subTabs?: PortalDefinitionTbabGroup[]
 }
-export let getToolSubCategory = cache((): PortalDefinitionType[] => {
+export let getToolSubCategory = ((): PortalDefinitionType[] => {
     let toolsPortalDefinitions: PortalDefinitionType[] = [
         {
             seoTitle: Dot("format.code.seo", "Format {0} Code", 'JSON/JS/YAML/CSS/C#/SQL'),
@@ -389,7 +389,7 @@ export let getToolSubCategory = cache((): PortalDefinitionType[] => {
     return toolsPortalDefinitions;
 })
 export type TopMainCategoryNavList = SEOMetaData & LabelHrefType
-export let getCategoryList = cache((): TopMainCategoryNavList[] => {
+export let getCategoryList = ((): TopMainCategoryNavList[] => {
     let leftNav: TopMainCategoryNavList[] = [
         {
             label: Dot("G2dvTUljF", "Tools"),

@@ -46,6 +46,7 @@ export type ToolConfigMap = {
 }
 export type ToolSideMenuTabIdType = "pipeline" | "favourites" | "allops"
 export type ParamStateState = {
+    nqop: TrueFalseType, // no quick operation. will process and flag it as false if it's true
     tlcfg: ToolConfigMap, // tool config, recipes...
     tsdrsipt: string, // side menu search input 
     tsdmid: ToolSideMenuTabIdType, // side menu
@@ -64,6 +65,7 @@ export type ParamStateState = {
     tid?: string; // tool tab id
 };
 const initialState: ParamStateState = {
+    nqop: 'false',
     tsdmid: 'allops',
     tsdrsipt: '',
     tlcfg: {},

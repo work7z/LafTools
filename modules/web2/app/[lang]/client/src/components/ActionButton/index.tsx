@@ -23,8 +23,8 @@ import { useRef, useState } from "react"
 import { Dot } from "../../utils/cTranslationUtils"
 import { TOOLTIP_OPEN_DELAY_BTN } from "@/app/__CORE__/meta/constants";
 export type PopoverItemProps = {
-    onClosePanel: () => void
-    handleSwitchToolReq: (x: TreeNodeInfo, newTab: boolean) => any
+    onPopClose: () => void
+    onPopRedirectPage: (x: TreeNodeInfo, newTab: boolean) => any
 }
 export type ActionButtonProps = ButtonProps & {
     doNotBeMinimalWhenTrigger?: boolean;
@@ -104,10 +104,10 @@ export default (props: ActionButtonProps) => {
         return <Popover
             isOpen={openPopover}
             content={props.popoverItem({
-                onClosePanel: () => {
+                onPopClose: () => {
                     setOpenPopover(false)
                 },
-                handleSwitchToolReq: () => {
+                onPopRedirectPage: () => {
                     alert('handleSwitchToolReq not implemented')
                 }
             })} placement={props.placement || "bottom"} >

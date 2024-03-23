@@ -119,9 +119,9 @@ const TranslationUtils = {
   },
   LangMap: crtNewLangMap,
   RealtimeObj: {},
+  disableLanguageCheck: false,
   Dot(id: string, enText: string, ...args: any[]): string {
-    let language = '';
-    language = getCurrentLang()
+    let language = TranslationUtils.disableLanguageCheck ? "en_US" : getCurrentLang()
 
     if (language != 'en_US') {
       let pmap = require("../../../public/static/lang/" + language + ".json")

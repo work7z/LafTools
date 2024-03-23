@@ -152,8 +152,8 @@ export default (props: PopoverItemProps & {
     <Button
       onClick={() => {
         if (clientCtx.portalMode) {
-          if (props.onClosePanel) {
-            props.onClosePanel()
+          if (props.onPopClose) {
+            props.onPopClose()
           }
           return;
         }

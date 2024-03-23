@@ -1,8 +1,8 @@
 {
     "JSON-Advantages-011": "JSON 通常比 XML 更小且解析速度更快，因此非常適合頻寬和速度至關重要的客戶端伺服器通訊。",
     "JSON-Basics-001": "什麼是 JSON？",
-    "JSON-Beautify-007": "什麼是 JSON 美化？",
-    "JSON-Beautify-Def-008": "JSON 美化是指將 JSON 資料格式化為更易於人類閱讀的形式並具有適當的縮排和換行符的過程，使其更易於分析和調試。",
+    "JSON-Beautify-007": "什麼是 JSON 格式化？",
+    "JSON-Beautify-Def-008": "JSON 格式化是指將 JSON 資料格式化為更易於人類閱讀的形式並具有適當的縮排和換行符的過程，使其更易於分析和調試。",
     "JSON-Beautify-Example-009": "前： '{\\\"key\\\":\\\"value\\\",\\\"array\\\":[1,2,3]}'，之後： '{\\n \\\"key\\\": \\\"value\\\", \\n \\\"數組\\\": [\\n 1,\\n 2,\\n 3\\n ]\\n}'",
     "JSON-Def-002": "JSON（JavaScript 物件表示法）是一種輕量級、基於文字的資料交換格式，易於人類閱讀和編寫，也易於機器解析和生成。",
     "JSON-JavaScript-Support-020": "JavaScript 透過全域物件「JSON.parse()」和「JSON.stringify()」原生支援 JSON。任何有效的 JSON 也是有效的 JavaScript 文字物件或數組，它允許兩種格式之間的無縫轉換。",

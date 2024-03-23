@@ -31,6 +31,9 @@ import { useShouldVerticalModeOrNot } from "..";
 import { js_export_trigger } from "@/app/[lang]/client/src/utils/FileExportUtils";
 import { ICON_BTN_TRIGGER_FN } from "@/app/__CORE__/meta/constants";
 import { InnerToolPanel } from "../../../../nav/functional/panel-group/panels/ToolPanel";
+import { appTool2PageMap } from "@/app/[lang]/client/src/impl/tools/g_optlist";
+import { fmtURL_ToolSubPageClient } from "@/app/__CORE__/meta/client";
+import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
 export let useHideBottomAndSettingHook = () => {
     return exportUtils.useSelector((x) => {
         return {
@@ -273,8 +276,25 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             popoverItem: (props) => {
                 return (
                     <div style={{ width: '300px', height: '580px', overflow: 'auto' }}>
-                        <InnerToolPanel onClosePanel={props.onClosePanel} handleSwitchToolReq={(x, newTab) => {
-                            //
+                        <InnerToolPanel onPopClose={props.onPopClose} onPopRedirectPage={(x, newTab) => {
+                            if (true) {
+                                let toolId = x.id
+                                let possibleRouteArr = appTool2PageMap[toolId]
+                                if (!possibleRouteArr) {
+                                    AlertUtils.popMsg('warning', {
+                                        message: Dot("srynotavai", "Sorry, the tool is not available now.")
+                                    })
+                                    return
+                                } else {
+                                    let goLink = fmtURL_ToolSubPageClient([
+                                        URL_SUBCATEGORY_GO_PATH,
+                                        ...possibleRouteArr[0].pagePath + "?nqop=true"
+                                    ])
+                                    window.open(
+                                        goLink
+                                    )
+                                }
+                            }
                         }} />
                     </div>
                 )

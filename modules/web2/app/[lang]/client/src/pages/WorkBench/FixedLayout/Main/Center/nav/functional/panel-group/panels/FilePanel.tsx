@@ -58,6 +58,7 @@ import {
   Popover,
   Menu,
   MenuDivider,
+  TreeNodeInfo,
 } from "@blueprintjs/core";
 import {
   ColumnHeaderCell,
@@ -109,7 +110,10 @@ export let InnerFilePanel = (): any => {
           value: "all",
         },
       ]}
-      children={<div>THIS IS LOCAL FILE2</div>}
-    ></FunctionalMenu_Panel>
+      children={<div>THIS IS LOCAL FILE2</div>} onPopClose={function (): void {
+        throw new Error("Function not implemented.");
+      }} onPopRedirectPage={function (x: TreeNodeInfo<{}>, newTab: boolean) {
+        throw new Error("Function not implemented.");
+      }}    ></FunctionalMenu_Panel>
   );
 };

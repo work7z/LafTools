@@ -27,10 +27,11 @@ import { TrueFalseType } from './paramStateSlice'
 
 
 export type MemoryStateState = {
-    stdlg: TrueFalseType,
+    siteToolDialogOpen: TrueFalseType,
 };
 const initialState: MemoryStateState = {
-    stdlg: 'false'
+    // siteToolDialogOpen: 'false'
+    siteToolDialogOpen: 'false'
 };
 
 export type MemoryStateStateKeyType = keyof MemoryStateState;

@@ -329,7 +329,7 @@ export default (props: PopoverItemProps & {
                   async (e, newTab: boolean) => {
                     gutils.stopE(e);
                     if (clientCtx.portalMode) {
-                      props.handleSwitchToolReq(x, newTab)
+                      props.onPopRedirectPage(x, newTab)
                       return;
                     }
                     if (hasRemarkThisOne) {
@@ -385,9 +385,17 @@ export default (props: PopoverItemProps & {
                             )
                           }
                           intent={hasRemarkThisOne ? "primary" : "none"}
-                          onClick={(e) => {
-                            fn_openItInNewTab(e, false)
-                          }}
+                          {
+                          ...clientCtx.portalMode ? {
+                            onDoubleClick: (e) => {
+                              fn_openItInNewTab(e, false)
+                            }
+                          } : {
+                            onClick: (e) => {
+                              fn_openItInNewTab(e, false)
+                            }
+                          }
+                          }
                         />
                       </Tooltip>
 
