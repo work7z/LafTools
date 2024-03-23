@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Button, ButtonProps, Intent, Placement, Tooltip } from "@blueprintjs/core"
+import { Button, ButtonProps, Intent, Placement, Popover, Tooltip } from "@blueprintjs/core"
 import { useRef, useState } from "react"
 import { Dot } from "../../utils/cTranslationUtils"
 import { TOOLTIP_OPEN_DELAY_BTN } from "@/app/__CORE__/meta/constants";
@@ -86,10 +86,17 @@ export default (props: ActionButtonProps) => {
         }} icon={triggered || (props.intent == 'primary' && props.highlightOne && parentTriggered) ? "tick" : props.icon} text={enableTextMode ? (
             triggered ? props.afterText : props.text
         ) : ''} intent={triggered && props.afterIntent ? props.afterIntent : props.intent || "success"} minimal={isMinimal} {...(props.extraButtonProps || {})} ></Button>
-    return <Tooltip
+    let tooltipCtn = <Tooltip
         isOpen={isOpen}
         // hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN}
         content={title} placement={props.placement || "bottom"} >
         {btn}
     </Tooltip>
+    if (props.popoverItem) {
+        return <Popover
+            content={title} placement={props.placement || "bottom"} >
+            {props.popoverItem}
+        </Popover>
+    }
+    return tooltipCtn
 }
