@@ -101,8 +101,8 @@ export default (props: PropFormGenPanel) => {
         </div>
         <div>
             <Button minimal={ok} intent={ok ? 'success' : 'none'} text={ok ?
-                Dot('4BcBo4Q', "Okay, already reset.")
-                : Dot("vGomGgeTc", "Reset Form")
+                Dot('4Bcqo4Q', "OK, Reset Done!")
+                : Dot("vGomqwTc", "Reset Config")
             } onClick={() => {
                 props.onReset()
                 setOk(true)
