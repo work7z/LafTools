@@ -125,6 +125,8 @@ import { ClientPortalContext } from "../../../../sub/center-view/Transformer/typ
 import { fmtURL_ToolSubPageClient } from "@/app/__CORE__/meta/client";
 import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
 import { PopoverItemProps } from "@/app/[lang]/client/src/components/ActionButton";
+import ParamStateSlice from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
+import LocalStateSlice from "@/app/[lang]/client/src/reducers/state/localStateSlice";
 
 export default (props: PopoverItemProps & {
   activeOne: FnPureToolDefinition | undefined;
@@ -143,7 +145,7 @@ export default (props: PopoverItemProps & {
       initialized: v.workspace.tools.initialized,
       expanded: v.workspace.tools.expanded,
       selected: v.workspace.tools.selected,
-      favourites: v.workspace.tools.favourites,
+      favourites: v.localState.tools_favourites.split(','),
     };
   });
   let extsList2 = extsList;
@@ -385,17 +387,28 @@ export default (props: PopoverItemProps & {
                             )
                           }
                           intent={hasRemarkThisOne ? "primary" : "none"}
-                          {
-                          ...clientCtx.portalMode ? {
-                            onDoubleClick: (e) => {
-                              fn_openItInNewTab(e, false)
+                          onClick={(e) => {
+                            gutils.stopE(e);
+                            let newFavouriteVal: string = ''
+                            if (hasRemarkThisOne) {
+                              newFavouriteVal = _.filter(
+                                selectExpandFavouriteObj.favourites,
+                                (xx) => {
+                                  return xx != x.id;
+                                }
+                              ).join(",")
+                            } else {
+                              newFavouriteVal = (_.uniq([
+                                ...(selectExpandFavouriteObj.favourites || []),
+                                x.id,
+                              ]) || [].join(",")) + ""
                             }
-                          } : {
-                            onClick: (e) => {
-                              fn_openItInNewTab(e, false)
-                            }
-                          }
-                          }
+                            FN_GetDispatch()(
+                              LocalStateSlice.actions.updateOneOfLocalState({
+                                tools_favourites: newFavouriteVal,
+                              })
+                            )
+                          }}
                         />
                       </Tooltip>
 

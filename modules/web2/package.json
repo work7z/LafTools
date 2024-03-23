@@ -177,6 +177,7 @@
     "redis": "^4.6.13",
     "redux": "4.2.1",
     "redux-saga": "1.2.3",
+    "redux-state-sync": "^3.1.4",
     "redux-thunk": "2.4.2",
     "reflect-metadata": "^0.1.13",
     "resolve": "1.20.0",

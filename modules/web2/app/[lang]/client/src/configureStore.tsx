@@ -35,6 +35,10 @@ import { logutils } from "./utils/LogUtils";
 import { saveIntoForge2 } from "./reducers/forgeSlice";
 import CacheUtils from "./utils/CacheUtils";
 import SyncStateUtils from "./utils/SyncStateUtils";
+import {
+  createStateSyncMiddleware,
+  initMessageListener,
+} from "redux-state-sync";
 import onlineAPISlice from "./reducers/onlineAPISlice";
 
 type RootObjType = typeof rootObj;
@@ -86,11 +90,20 @@ export default function configureAppStore() {
         .concat(onlineAPISlice.middleware)
         .concat(apiSlice.middleware)
         .concat(alwaysHappyMiddleware)
+        .concat(createStateSyncMiddleware({
+          predicate: (v) => {
+            console.log('predicate', v)
+            return v.type.startsWith("localState/");
+          }
+        }))
         .prepend(listenerMiddleware.middleware);
     },
     // preloadedState, // TODO: restore previous session
     enhancers: [],
   });
+
+
+  initMessageListener(store);
 
   return store;
 }

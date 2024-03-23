@@ -286,9 +286,12 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
                                     })
                                     return
                                 } else {
+                                    let pagePathArr = possibleRouteArr[0].pagePath
+                                    // TODO: we've reset sidebar op id curerntly, but wonder whether we should keep it and reset it by url parameter or not
+                                    // pagePathArr[pagePathArr.length - 1] = pagePathArr[pagePathArr.length - 1] + "?nqop=true"
                                     let goLink = fmtURL_ToolSubPageClient([
                                         URL_SUBCATEGORY_GO_PATH,
-                                        ...possibleRouteArr[0].pagePath + "?nqop=true"
+                                        ...pagePathArr,
                                     ])
                                     window.open(
                                         goLink
