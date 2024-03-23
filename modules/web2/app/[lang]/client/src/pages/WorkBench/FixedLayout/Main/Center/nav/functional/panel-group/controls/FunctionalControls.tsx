@@ -106,6 +106,8 @@ import {
   FN_ACTION_OpenMenu_ltr,
 } from "../../../../../../../../../actions/layout_action";
 import exportUtils from "../../../../../../../../../utils/ExportUtils";
+import { ClientPortalContext } from "../../../../sub/center-view/Transformer/types";
+import { PopoverItemProps } from "@/app/[lang]/client/src/components/ActionButton";
 
 export let FN_SHOW_LTR_MENU = (menuKey: string) => {
   let dis = FN_GetDispatch();
@@ -142,11 +144,19 @@ export let FN_TAB_ITEM_CLICKED_FN = (menuKey: string, isCurrentActive) => {
   }
 };
 
-export default () => {
+export default (props: PopoverItemProps & {
+}) => {
   let dis = exportUtils.dispatch();
+  let clientCtx = useContext(ClientPortalContext)
   return (
     <Button
       onClick={() => {
+        if (clientCtx.portalMode) {
+          if (props.onClosePanel) {
+            props.onClosePanel()
+          }
+          return;
+        }
         FN_CLOSE_LTR_MENU("left");
       }}
       small

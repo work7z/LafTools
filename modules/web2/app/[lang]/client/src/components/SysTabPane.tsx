@@ -107,6 +107,7 @@ import { SysTabPaneProp } from "../types/workbench-types";
 import Blink from "./Blink";
 import '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/index.scss'
 import { CSS_TEXT_ANCHOR_CSS } from "../types/constants";
+import { ClientPortalContext } from "../pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/types";
 
 export let SysTabPane = (props: {} & SysTabPaneProp) => {
   // let [clickFocus, onClickFocus] = useState<boolean>(false);
@@ -149,9 +150,7 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
       rightIcon={hasMultipleList ? "caret-down" : undefined}
     ></Button>
   )
-  // true || hasMultipleList ?  : (
-  //   <span className="p-2">{crtObjLabel}</span>
-  // );
+
 
   const [showPop, onShowPop] = useState(false);
 
@@ -189,6 +188,8 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
       document.body.removeEventListener("click", fn);
     };
   }, []);
+
+  let clientCtx = useContext(ClientPortalContext)
 
   return (
     <div
@@ -235,7 +236,7 @@ export let SysTabPane = (props: {} & SysTabPaneProp) => {
                     );
                     // tailwindcss remove anchor style
 
-                    return x.pathname ? (
+                    return x.pathname && !clientCtx.portalMode ? (
                       <Link
                         key={x.label}
                         onClick={(e) => {

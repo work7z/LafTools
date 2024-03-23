@@ -107,10 +107,11 @@ import {
 import ToolExtensionTree from "../sub/ToolExtensionTree";
 import { useGetCategoryList } from "../../../../sub/center-view/Transformer/hooks";
 import ParamStateSlice from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
+import { PopoverItemProps } from "@/app/[lang]/client/src/components/ActionButton";
 
 // console.log(Dot("1j62a","Do this in other time"))
 
-export let InnerToolPanel = (): any => {
+export let InnerToolPanel = (props: PopoverItemProps): any => {
   let sq = useSearchQuery();
   let categoryList = useGetCategoryList()
   let fc = sq.ls || _.get(categoryList, "[0].id", "all");
@@ -120,6 +121,7 @@ export let InnerToolPanel = (): any => {
     <FunctionalMenu_Panel
       loading={false}
       crtLeftNavId={fc}
+      {...props}
       leftNavList={
         _.map(categoryList, (x) => {
           return {
@@ -138,7 +140,7 @@ export let InnerToolPanel = (): any => {
           };
         }) || []
       }
-      children={<ToolExtensionTree activeOne={activeOne} />}
+      children={<ToolExtensionTree {...props} activeOne={activeOne} />}
     ></FunctionalMenu_Panel>
   );
 };

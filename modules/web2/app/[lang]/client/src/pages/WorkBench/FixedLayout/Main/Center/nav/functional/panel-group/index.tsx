@@ -107,19 +107,20 @@ import apiSlice from "../../../../../../../../reducers/apiSlice";
 import RightCtrlForFunctionalMenu from "./controls/FunctionalControls";
 import { MenuDropDownListItem } from "../../../../../../../../types/workbench-types";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
+import { PopoverItemProps } from "@/app/[lang]/client/src/components/ActionButton";
 
 export default (props: {
   loading: boolean;
   crtLeftNavId: string;
   leftNavList: MenuDropDownListItem[];
   children: any;
-}) => {
+} & PopoverItemProps) => {
   return (
     <SysTabPane
       loading={props.loading}
       crtLeftNavId={props.crtLeftNavId}
       leftNavList={props.leftNavList}
-      rightCtrls={<RightCtrlForFunctionalMenu />}
+      rightCtrls={<RightCtrlForFunctionalMenu {...props} />}
       children={props.children}
     ></SysTabPane>
   );

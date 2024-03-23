@@ -194,6 +194,7 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
         })
     }
     let sessionId = props.sessionId;
+    let [openSearchPanel, setOpenSearchPanel] = useState(false);
     let { hideBottomPanel: hideBottomPanel, hideSettingPanel } = useHideBottomAndSettingHook()
     let triggerBottomPanel = (v: boolean) => {
         FN_GetDispatch()(
@@ -269,9 +270,15 @@ let TextTransformerControl = (props: { loadingStatic: boolean } & TextTransforme
             icon: 'search',
             intent: 'none',
             title: Dot("6SypzjeRz", "Quickly search tools that you need"),
-            popoverItem: <div style={{ width: '300px', height: '580px', overflow: 'auto' }}>
-                <InnerToolPanel />
-            </div>,
+            popoverItem: (props) => {
+                return (
+                    <div style={{ width: '300px', height: '580px', overflow: 'auto' }}>
+                        <InnerToolPanel onClosePanel={props.onClosePanel} handleSwitchToolReq={(x, newTab) => {
+                            //
+                        }} />
+                    </div>
+                )
+            },
         }
     ];
     return (

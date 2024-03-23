@@ -121,8 +121,12 @@ import { FnPureToolDefinition } from "../../../../../../../../../types/workbench
 import WorkspaceSlice from "../../../../../../../../../reducers/workspaceSlice";
 import { useExtsList, useGetAppCategory, useGetCategoryList } from "../../../../sub/center-view/Transformer/hooks";
 import AlertUtils from "../../../../../../../../../utils/AlertUtils";
+import { ClientPortalContext } from "../../../../sub/center-view/Transformer/types";
+import { fmtURL_ToolSubPageClient } from "@/app/__CORE__/meta/client";
+import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
+import { PopoverItemProps } from "@/app/[lang]/client/src/components/ActionButton";
 
-export default (props: {
+export default (props: PopoverItemProps & {
   activeOne: FnPureToolDefinition | undefined;
 }): any => {
   let sq = useSearchQuery();
@@ -260,7 +264,7 @@ export default (props: {
 
   let activeOne = props.activeOne;
 
-
+  let clientCtx = useContext(ClientPortalContext)
   if (_.isNil(activeOne)) {
     return (
       <NonIdealState
@@ -270,6 +274,7 @@ export default (props: {
       ></NonIdealState>
     );
   }
+
   return (
     <div className=" select-none w100 h100 flex-parent whitespace-break-spaces overflow-auto">
       <div className="flex-main-body h-full">
@@ -320,6 +325,43 @@ export default (props: {
                   _.find(favoritesList, (xx) => {
                     return _.toString(xx.Id + "") === x.id;
                   }) != null;
+                let fn_openItInNewTab = (
+                  async (e, newTab: boolean) => {
+                    gutils.stopE(e);
+                    if (clientCtx.portalMode) {
+                      props.handleSwitchToolReq(x, newTab)
+                      return;
+                    }
+                    if (hasRemarkThisOne) {
+                      dis(
+                        WorkspaceSlice.actions.mergeTabPart({
+                          name: 'tools',
+                          value: {
+                            favourites: _.filter(
+                              selectExpandFavouriteObj.favourites,
+                              (xx) => {
+                                return xx != x.id;
+                              }
+                            ),
+                          }
+                        })
+                      );
+                    } else {
+                      dis(
+                        WorkspaceSlice.actions.mergeTabPart({
+                          name: 'tools',
+                          value: {
+                            favourites: (_.uniq([
+                              ...(selectExpandFavouriteObj.favourites || []),
+                              x.id,
+                            ]) || []) as any,
+                          }
+                        })
+                      );
+                    }
+                    onUpdateMemStatus(updateMemStatus + 1);
+                  }
+                )
                 return {
                   ...x,
                   secondaryLabel: (
@@ -344,40 +386,14 @@ export default (props: {
                           }
                           intent={hasRemarkThisOne ? "primary" : "none"}
                           onClick={(e) => {
-                            gutils.stopE(e);
-                            if (hasRemarkThisOne) {
-                              dis(
-                                WorkspaceSlice.actions.mergeTabPart({
-                                  name: 'tools',
-                                  value: {
-                                    favourites: _.filter(
-                                      selectExpandFavouriteObj.favourites,
-                                      (xx) => {
-                                        return xx != x.id;
-                                      }
-                                    ),
-                                  }
-                                })
-                              );
-                            } else {
-                              dis(
-                                WorkspaceSlice.actions.mergeTabPart({
-                                  name: 'tools',
-                                  value: {
-                                    favourites: (_.uniq([
-                                      ...(selectExpandFavouriteObj.favourites || []),
-                                      x.id,
-                                    ]) || []) as any,
-                                  }
-                                })
-                              );
-                            }
-                            onUpdateMemStatus(updateMemStatus + 1);
+                            fn_openItInNewTab(e, false)
                           }}
                         />
                       </Tooltip>
 
-                      <Tooltip content={Dot("E6F9B", "Add it into workflow")}>
+                      <Tooltip content={
+                        Dot("DhW0AdwRDi", "Open in new tab")
+                      }>
                         <Button
                           small
                           minimal
@@ -387,7 +403,8 @@ export default (props: {
                           // intent={hasRemarkThisOne ? "primary" : "none"}
                           onClick={(e) => {
                             gutils.stopE(e)
-                            AlertUtils.popNotSupport()
+
+                            fn_openItInNewTab(e, true)
                           }}
                         />
                       </Tooltip>

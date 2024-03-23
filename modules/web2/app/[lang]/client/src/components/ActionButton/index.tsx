@@ -18,16 +18,19 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Button, ButtonProps, Intent, Placement, Popover, Tooltip } from "@blueprintjs/core"
+import { Button, ButtonProps, Intent, Placement, Popover, Tooltip, TreeNodeInfo } from "@blueprintjs/core"
 import { useRef, useState } from "react"
 import { Dot } from "../../utils/cTranslationUtils"
 import { TOOLTIP_OPEN_DELAY_BTN } from "@/app/__CORE__/meta/constants";
-
+export type PopoverItemProps = {
+    onClosePanel: () => void
+    handleSwitchToolReq: (x: TreeNodeInfo, newTab: boolean) => any
+}
 export type ActionButtonProps = ButtonProps & {
     doNotBeMinimalWhenTrigger?: boolean;
     highlightOne?: boolean;
     extraButtonProps?: ButtonProps,
-    popoverItem?: JSX.Element,
+    popoverItem?: (props: PopoverItemProps) => JSX.Element,
     parentTriggered?: boolean;
     placement?: Placement,
     enableActionMode?: boolean,
@@ -52,6 +55,7 @@ export default (props: ActionButtonProps) => {
     let isMinimal = props.extraButtonProps?.minimal || props.doNotBeMinimalWhenTrigger ? false : enableTextMode ? (
         triggered ? true : false
     ) : true
+    let [openPopover, setOpenPopover] = useState(false)
     let btn = <Button
         {...props}
         title={''}
@@ -64,6 +68,10 @@ export default (props: ActionButtonProps) => {
             operaRef.current.releaseCopyEventFn()
         }}
         onClick={async (e) => {
+            if (props.popoverItem) {
+                setOpenPopover(!openPopover)
+                return;
+            }
             if (
                 props.onClick
             ) {
@@ -94,7 +102,15 @@ export default (props: ActionButtonProps) => {
     </Tooltip>
     if (props.popoverItem) {
         return <Popover
-            content={props.popoverItem} placement={props.placement || "bottom"} >
+            isOpen={openPopover}
+            content={props.popoverItem({
+                onClosePanel: () => {
+                    setOpenPopover(false)
+                },
+                handleSwitchToolReq: () => {
+                    alert('handleSwitchToolReq not implemented')
+                }
+            })} placement={props.placement || "bottom"} >
             {tooltipCtn}
         </Popover>
     }

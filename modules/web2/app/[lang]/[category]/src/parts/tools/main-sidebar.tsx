@@ -27,7 +27,6 @@ import { Dot, getHStr } from '@/app/__CORE__/utils/TranslationUtils';
 import Nav from '../nav/nav-sub-tab';
 import Link from 'next/link';
 import { fmtURL_Server } from '@/app/__CORE__/utils/routeUtils';
-import ToolView from './view-tools'
 import { useConstructedKeyAndInit } from '@/app/[lang]/client/src/initapp';
 import FundrasingPlanBtn from '../cpt/cpt-fundrasing-btn';
 import { ToolProp, getCardsProps } from '.';
