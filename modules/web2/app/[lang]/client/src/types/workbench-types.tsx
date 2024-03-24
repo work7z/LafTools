@@ -27,10 +27,10 @@ import { OpDetail } from "../impl/tools/s_tools.tsx";
 import { PopoverItemProps } from "../components/ActionButton/index.tsx";
 
 export * from './constants';
-
+export type OnProcessFnType = (throttledType?: boolean) => void
 export type CommonTransformerPassProp = {
   fn_isSidebarMenuOpModeNow: (commonPassProp: CommonTransformerPassProp) => any,
-  onProcess: () => any,
+  onProcess: OnProcessFnType,
   loadingExtraOpList: boolean,
   crtSideMenuOperaId?: string,
   fn_updateToolConfig: (arg: Partial<ToolConfigMapVal>) => any,

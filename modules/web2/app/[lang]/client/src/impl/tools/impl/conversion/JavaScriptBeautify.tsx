@@ -81,8 +81,8 @@ class JavaScriptBeautify extends Operation {
                 "WFUWzv_px",
                 "Parses and pretty prints valid JavaScript code. Also works with JavaScript Object Notation (JSON).",
             ),
-            exampleInput: "let a = 1; let b = 2; let obj = {a: 1, b: 2};",
-            exampleOutput: "let a = 1;\nlet b = 2; //\nlet obj = {\n    a: 1,\n    b: 2\n};\n",
+            exampleInput: "let a = 'test'; // just for fun\n let obj = {a: 1, b: 2};",
+            exampleOutput: "let a = 'test';\n// just for fun//\nlet obj = {\n    a: 1,\n    b: 2\n};\n",
         }
     }
 

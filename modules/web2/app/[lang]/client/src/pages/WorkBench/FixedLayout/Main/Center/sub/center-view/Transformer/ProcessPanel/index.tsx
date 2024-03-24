@@ -94,6 +94,7 @@ export default (props: ProcessPanelProps) => {
             AlertUtils.popMsg('success', {
                 message: Dot("6T3dmF", "Reset Successfully!")
             })
+            props.onProcess(true)
         }} fixSingleColumn={!shouldVert} list={generalList}></FormGenPanel >
     } else if (toolTabIndex == "faq") {
         finalShowContent_l = <FaqPanel key={sessionId} {...props}></FaqPanel>

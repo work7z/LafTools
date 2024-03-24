@@ -129,11 +129,10 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                             }
                         })
                     )
-                    // notifyTextChgFn(true)
-                    props.onProcess()
+                    props.onProcess(true)
                 }
-                // let currentCheck = checks[eachArgIdx]
                 // TODO: add check
+                // let currentCheck = checks[eachArgIdx]
                 switch (type) {
                     case 'boolean':
                         {
@@ -190,7 +189,6 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                                 genEleConfig: {
                                     type: "input",
                                     inputProps: {
-                                        intent: (value.length == 0) ? "danger" : "none",
                                         type: isNumber ? "number" : "text",
                                         value: value,
                                         onChange: onchg,

@@ -24,6 +24,7 @@ import {
   VAL_CSS_TAB_TITLE_PANEL,
   VAL_CSS_CONTROL_PANEL,
   VAL_MENU_LEFT_PANEL_WIDTH,
+  OnProcessFnType,
 } from "../../../../../../../../types/workbench-types";
 import { CommonTransformerPassProp } from "../../../../../../../../types/workbench-types";
 import { Dot } from "../../../../../../../../utils/cTranslationUtils";
@@ -32,7 +33,7 @@ import BigTextSlice from "../../../../../../../../reducers/bigTextSlice";
 import _, { defer } from "lodash";
 import { FN_GetActualTextValueByBigTextId, FN_SetTextValueFromOutSideByBigTextId } from "../../../../../../../../actions/bigtext_action";
 import { findLastIndex } from "lodash";
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import AjaxUtils from "../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../components/SysTabPane";
@@ -139,9 +140,16 @@ export default (props: CommonTransformerProps) => {
       })
     )
   }
+  let throlttedOnProcessCtn = (
+    useCallback(_.throttle(setTriggerProcessCtn, 1000), [])
+  )
 
-  let onProcess = () => {
-    setTriggerProcessCtn(Date.now())
+  let onProcess: OnProcessFnType = (throttledType?: boolean): void => {
+    if (throttledType) {
+      throlttedOnProcessCtn(Date.now())
+    } else {
+      setTriggerProcessCtn(Date.now())
+    }
   }
 
   let fn_updateToolConfig = (arg: Partial<ToolConfigMapVal>) => {
