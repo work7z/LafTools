@@ -44,12 +44,25 @@ import { CommonTransformerProps } from "./types";
 import { ExtensionAction, ExtensionInfo, ToolCategory, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import fn_AppCategory from "@/app/[lang]/client/src/impl/tools/d_category";
 import { ListExtForTheCategoryRes } from "../../../../../../../../reducers/apiSlice";
-import appToolInfoObj from "@/app/[lang]/client/src/impl/tools/d_meta";
+import appToolInfoObj, { loadConversionTSXById } from "@/app/[lang]/client/src/impl/tools/d_meta";
 import ActionButton from "../../../../../../../../components/ActionButton";
 import gutils from "../../../../../../../../utils/GlobalUtils";
 import COMMON_FN_REF from "@/app/[lang]/client/src/impl/tools/common_ref";
+import ParamStateSlice from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
 
 COMMON_FN_REF.Dot = Dot
+
+export let useRuntimeStatusAndToolConfig = ({ sessionId }) => {
+    let v = exportUtils.useSelector((x) => {
+        let v: ToolDefaultOutputType | null = x.runtimeStatus.toolOutputStatusMap[sessionId];
+        return {
+            crtRuntimeStatus: v,
+            crtToolCfg: x.paramState.tlcfg[sessionId]
+        }
+    });
+    return v
+}
+
 
 export let controlBarHeight = VAL_CSS_CONTROL_PANEL;
 export let controlClz = "space-x-1 flex  flex-coumn items-center justify-between";
@@ -128,6 +141,7 @@ export let usePromiseWait = (obj: {
         progressText
     }
 }
+
 
 export let useGetAppCategory = (): ToolCategory[] => {
     return useMemo(() => {

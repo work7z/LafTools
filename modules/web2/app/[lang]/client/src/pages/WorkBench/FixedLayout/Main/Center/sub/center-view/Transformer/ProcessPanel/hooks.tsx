@@ -57,7 +57,6 @@ export let ifnil = (v1: any, v2: any) => {
     return v1 === undefined || v1 === null ? v2 : v1
 }
 
-
 export let useGeneralListRead = (props: ProcessPanelProps) => {
     let sessionId = props.sessionId;
     let extVM = props.extVM
@@ -79,7 +78,9 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
             let state_crtPipeline = state_pipeobj[crtOpId + ""] || {}
             let args = config.args
             let checks = config.checks
-            let fn_defaultArgValues = () => args.map(x => x.value)
+            let fn_defaultArgValues = () => {
+                return args.map(x => x.value)
+            }
             if (!state_crtPipeline) {
                 state_crtPipeline = {
                     a: fn_defaultArgValues(),
@@ -112,6 +113,8 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                         })
                     )
                 }
+                // let currentCheck = checks[eachArgIdx]
+                // TODO: add check
                 switch (type) {
                     case 'boolean':
                         {
@@ -120,9 +123,9 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                                 label: name,
                                 genEleConfig: {
                                     type: "switch",
-                                    value: value,
+                                    value: value ? 'true' : 'false',
                                     onChange(newVal) {
-                                        updateValueToState(newVal)
+                                        updateValueToState(newVal ? 'true' : 'false')
                                     },
                                 }
                             })
@@ -161,12 +164,14 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                             let value = ifnil(state_currentValue, _defaultValue)
                             let onchg = (e) => {
                                 updateValueToState(e.target.value)
+                                // props.onProcess()
                             }
                             generalList.push({
                                 label: name,
                                 genEleConfig: {
                                     type: "input",
                                     inputProps: {
+                                        intent: (value.length == 0) ? "danger" : "none",
                                         type: isNumber ? "number" : "text",
                                         value: value,
                                         onChange: onchg,

@@ -42,7 +42,7 @@ import RuntimeStatusSlice from "../../../../../../../../reducers/runtimeStatusSl
 
 import { ClientPortalContext, CommonTransformerProps } from "./types";
 import { ExtensionAction, ToolDefaultOutputType as ToolCurrentRuntimeStatus, ToolDefaultOutputType } from "../../../../../../../../types/purejs-types-READ_ONLY";
-import { TransformerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle } from "./hooks";
+import { TransformerWithRuntime, controlBarHeight, fn_coll_config, fn_coll_output, useCurrentActiveStyle, useRuntimeStatusAndToolConfig } from "./hooks";
 import ControlBar, { useHideBottomAndSettingHook } from "./ControlBar/index.tsx";
 import LoadingText from "../../../../../../../../components/LoadingText";
 import { Allotment, AllotmentHandle } from "allotment";
@@ -63,6 +63,7 @@ import { OpDetail, getAllOperationDetails } from "@/app/[lang]/client/src/impl/t
 import ParamStateSlice, { ToolConfigMap, ToolConfigMapVal } from "@/app/[lang]/client/src/reducers/state/paramStateSlice.tsx";
 import { sleep } from "@/app/[lang]/client/src/utils/SyncUtils.tsx";
 import { ToolTitlebar } from "./toolTitlebar.tsx";
+import { getNotifyTextFunction } from "./fn.tsx";
 
 COMMON_FN_REF.Dot = Dot
 
@@ -86,6 +87,9 @@ export let useShouldVerticalModeOrNot = () => {
   return v.bottom_hide;
 }
 
+export type TransformerPassProps = CommonTransformerPassProp & {
+
+}
 
 export default (props: CommonTransformerProps) => {
   let sessionId = props.sessionId;
@@ -96,16 +100,13 @@ export default (props: CommonTransformerProps) => {
   let operaRef = useRef<ToolHandler | undefined>(undefined)
   let metaInfo = operaRef.current?.getMetaInfo()
   let operaList = operaRef.current?.getOperations()
-  let { crtRuntimeStatus, crtToolCfg } = exportUtils.useSelector((x) => {
-    let v: ToolDefaultOutputType | null = x.runtimeStatus.toolOutputStatusMap[sessionId];
-    return {
-      crtRuntimeStatus: v,
-      crtToolCfg: x.paramState.tlcfg[sessionId]
-    }
-  });
+
   let opDetails = useMemo(() => {
     return getAllOperationDetails()
   }, [])
+  let { crtToolCfg, crtRuntimeStatus } = useRuntimeStatusAndToolConfig({
+    sessionId
+  })
   let [extraOpList, onExtraOpList] = useState<Operation[]>([])
   let [loadingExtraOpList, onLoadingExtraOpList] = useState(false)
   let crtDefaultOperaId = crtToolCfg && crtToolCfg.dftOpId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id)
@@ -129,7 +130,6 @@ export default (props: CommonTransformerProps) => {
   let onProcess = () => {
     setTriggerProcessCtn(triggerProcessCtn + 1)
   }
-
 
   let fn_updateToolConfig = (arg: Partial<ToolConfigMapVal>) => {
     FN_GetDispatch()(
@@ -177,23 +177,6 @@ export default (props: CommonTransformerProps) => {
       commonPassProp && commonPassProp.crtSideMenuOperaId && commonPassProp.crtSideMenuOpera
     )
   }
-  let commonPassProp: CommonTransformerPassProp = {
-    ...props,
-    opDetails,
-    toolHandler: operaRef.current,
-    onProcess,
-    operaList,
-    metaInfo,
-    crtToolCfg,
-    fn_isSidebarMenuOpModeNow,
-    crtDefaultOperaId,
-    crtDefaultOpera,
-    loadingExtraOpList,
-    crtSideMenuOperaId,
-    crtSideMenuOpera,
-    fn_updateToolConfig,
-    fn_switchToSideMenuExtraOp
-  }
   let fn_format_description = (desc: string | undefined): string => {
     let optDetail = commonPassProp.crtDefaultOpera?.getOptDetail()
     let affix = (
@@ -219,56 +202,27 @@ export default (props: CommonTransformerProps) => {
     ]
     return arr.map(x => `[${x.title}]\n${x.subTitle}`).join("\n\n")
   }
+
+  let commonPassProp: CommonTransformerPassProp = {
+    ...props,
+    opDetails,
+    toolHandler: operaRef.current,
+    onProcess,
+    operaList,
+    metaInfo,
+    crtToolCfg,
+    fn_isSidebarMenuOpModeNow,
+    crtDefaultOperaId,
+    crtDefaultOpera,
+    loadingExtraOpList,
+    crtSideMenuOperaId,
+    crtSideMenuOpera,
+    fn_updateToolConfig,
+    fn_switchToSideMenuExtraOp
+  }
+  let fn_notifyTextChange = getNotifyTextFunction(commonPassProp)
   let desc = fn_format_description(commonPassProp.toolHandler?.getMetaInfo().description)
   logutils.debug("commonPassProp", commonPassProp, extraOpList)
-  let fn_notifyTextChange = (fromTextInputEvent: boolean) => {
-    if (fromTextInputEvent && crtRuntimeStatus?.autoRun != 'true') {
-      return;
-    }
-    if (extVM && extId && sessionId && outputBigTextId && operaRef.current) {
-      let originalValue = FN_GetActualTextValueByBigTextId(inputBigTextId)
-      if (originalValue == '' && crtRuntimeStatus.ignoreEmptyStr == 'true') {
-        FN_GetDispatch()(
-          RuntimeStatusSlice.actions.moveTabToToolsPart({
-            sessionId,
-          })
-        )
-      } else {
-
-        if (!fromTextInputEvent) {
-          FN_GetDispatch()(
-            ACTION_Transformer_Process_Text({
-              originalValue,
-              extVM,
-              extId,
-              sessionId,
-              outputBigTextId,
-              inputBigTextId,
-              toolHandler: operaRef.current,
-              fromChangeEvent: fromTextInputEvent,
-              commonPassProp: commonPassProp
-            })
-          )
-        } else {
-          ACTION_Transformer_Process_Text_Delay({
-            dispatch: FN_GetDispatch(),
-            originalValue,
-            extVM,
-            extId,
-            sessionId,
-            outputBigTextId,
-            inputBigTextId,
-            toolHandler: operaRef.current,
-            fromChangeEvent: fromTextInputEvent,
-            commonPassProp: commonPassProp
-          })
-        }
-      }
-    } else {
-      console.error("fn_notifyTextChange failed")
-    }
-  }
-
   useEffect(() => {
     if (triggerProcessCtn != 0) {
       fn_notifyTextChange(false)
@@ -362,8 +316,7 @@ export default (props: CommonTransformerProps) => {
     }
     desc = Dot("OqqGx2qg", "Loading the static resources, please wait...") + "\n" + (
       Dot("AkXgF", "In Progress: {0}%", pre)
-    ) + "\n" + (
-        '')
+    ) + "\n"
   }
   if (loadError) {
     desc = `${Dot("RO4ZP", "An Error Occurred")}: \n${loadError}`
@@ -387,11 +340,8 @@ export default (props: CommonTransformerProps) => {
     return <ShowErrorPanel loadError={loadError}></ShowErrorPanel>
   }
 
-  let clientPortalContext = useContext(ClientPortalContext) // TODO: in future, we will enable it
-
   let app_right_t_jsx = codeMirrorItem
   let app_right_b_jsx = processPanelItem
-
 
   if (props.needFullPageSupport) {
     app_right_t_jsx = <div className={

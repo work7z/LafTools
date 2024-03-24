@@ -94,7 +94,6 @@ export default (props: PropFormGenPanel) => {
                                 )
                             })
                         }
-                        {/* <hr className="mb-2"/> */}
                     </div>
                 })
             }

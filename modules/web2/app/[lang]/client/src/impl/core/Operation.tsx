@@ -25,7 +25,7 @@ type Argument = any & {
   value: any | string | string[];
 }
 
-type Check = any & {
+type Check = {
   pattern: string;
   flags: string;
   args: any[];
