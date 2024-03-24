@@ -34,6 +34,7 @@ import { InnerToolPanel } from "../../../../nav/functional/panel-group/panels/To
 import { appTool2PageMap } from "@/app/[lang]/client/src/impl/tools/g_optlist";
 import { fmtURL_ToolSubPageClient } from "@/app/__CORE__/meta/client";
 import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
+import { ActionListViewButton } from "../SideMenu/ActionListView";
 export let useHideBottomAndSettingHook = () => {
     return exportUtils.useSelector((x) => {
         return {
@@ -44,7 +45,7 @@ export let useHideBottomAndSettingHook = () => {
 
 }
 
-export const CommonButtonForOriginRelatedAndOthers = (props: {
+export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRuntime & CommonTransformerPassProp & {
     opBtns: OpButtonStyleProps[]
 }) => {
     return <>
@@ -53,8 +54,59 @@ export const CommonButtonForOriginRelatedAndOthers = (props: {
                 if (!x) {
                     return ''
                 }
+                if (x.type == 'origin') {
+                    let crtId = x.opId
+                    let crtDesc = x.desc
+                    let crtName = x.name
+                    let isHighlightOne = false;
+                    let obj = {
+                        text: crtName,
+                        icon: ICON_BTN_TRIGGER_FN,
+                        intent: "primary",
+                        title: crtDesc,
+                        afterTitle: crtDesc,
+                        enableActionMode: true,
+                        afterText: crtName,
+                        lastingTime: 800,
+                        doNotBeMinimalWhenTrigger: true,
+                        parentTriggered: x.isParentTrigger,
+                        highlightOne: isHighlightOne,
+                        outlined: !isHighlightOne,
+                        minimal: false,
+                        onClick: () => {
+                            props.fn_updateToolConfig({
+                                sideOpId: '',
+                                dftOpId: crtId
+                            })
+                            setTimeout(() => {
+                                props.onProcess()
+                            }, 0)
+                        },
+                    } satisfies ActionButtonProps
+                    return fn_format_button("bottom-start")({
+                        ...obj
+                    })
+                } else if (x.type == 'related' || x.type == 'sidebar') {
+                    return <ActionListViewButton
+                        {...props}
+                        noHighlightMode={false}
+                        placement="bottom-start"
+                        activeParentTrigger={x.isParentTrigger}
+                        x={
+                            {
+                                sortType: 0,
+                                description: x.desc,
+                                id: x.opId || 'XfXWUnI2v',
+                                intent: 'success',
+                                icon: ICON_BTN_TRIGGER_FN,
+                                label: x.name,
+                                twBgClz: '',
+                                twClz: '',
+                            }
+                        }
+                    />
+                }
                 return x.name;
-                // return fn_format_button("bottom-start")(x)
             })
         }
     </>
@@ -366,7 +418,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 {leftActions.map(fn_format_button("bottom-start"))}
                 {
                     props.activeOpBtn ?
-                        <CommonButtonForOriginRelatedAndOthers opBtns={[props.activeOpBtn]} />
+                        <CommonButtonForOriginRelatedAndOthers {...props} opBtns={[props.activeOpBtn]} />
                         : ''
                 }
                 {leftActions_2.map(fn_format_button("bottom-start"))}

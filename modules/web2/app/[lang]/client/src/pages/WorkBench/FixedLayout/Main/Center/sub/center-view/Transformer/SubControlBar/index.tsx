@@ -150,7 +150,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
             intent: "none",
             minimal: true,
             title: hideRelatedToolsBar == 'f' ?
-                Dot("l_mgrQPlq", "Hide Other Alternatives") : Dot("hZo9cqwX", "Show Other Alternatives"),
+                Dot("l_mqgrQPlq", "Hide Other Operations") : Dot("hZo9cdqwX", "Show Other Operations"),
             onClick: () => {
                 let newVal: TrueFalseType = hideRelatedToolsBar == "t" ? "f" : "t";
                 FN_GetDispatch()(
@@ -205,7 +205,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
             <div className={controlClz}>
                 {leftActions.map(fn_format_button("bottom-start"))}
                 {
-                    <CommonButtonForOriginRelatedAndOthers opBtns={props.otherOpBtns || []} />
+                    <CommonButtonForOriginRelatedAndOthers {...props} opBtns={props.otherOpBtns || []} />
                 }
                 {/* {
                     props.subControlbarTools.map(x => {

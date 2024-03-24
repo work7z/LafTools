@@ -266,7 +266,7 @@ export default (props: CommonTransformerProps) => {
   let parentTriggered = crtRuntimeStatus && (crtRuntimeStatus.processOK || crtRuntimeStatus.processing);
   (operaList || [])?.forEach((x: Operation) => {
     let optDetail = x.getOptDetail()
-    let crtId = optDetail?.id;
+    let crtId = x?.fileID;
     let crtDesc = optDetail?.optDescription
     let crtName = optDetail?.optName || x.name
     // let isHighlightOne = crtId == crtDefaultOperaId && !(
@@ -345,6 +345,8 @@ export default (props: CommonTransformerProps) => {
   let activeOpBtn = _.find(allOpBtns, x => x.opId == actualCrtDefaultOperaId)
   let otherOpBtns = _.filter(allOpBtns, x => formattedOpId(x.opId) != formattedOpId(actualCrtDefaultOperaId))
   console.log('otherOpBtns', {
+    allOpBtns,
+    actualCrtDefaultOperaId,
     otherOpBtns,
     activeOpBtn
   })
