@@ -66,7 +66,7 @@ export let useGetNotifyTextFunction = (commonPassProps: CommonTransformerPassPro
         }
         if (extVM && extId && sessionId && outputBigTextId && toolHandler) {
             let originalValue = FN_GetActualTextValueByBigTextId(inputBigTextId)
-            if (originalValue == '' && crtRuntimeStatus.ignoreEmptyStr == 'true') {
+            if (false && originalValue == '' && crtRuntimeStatus.ignoreEmptyStr == 'true') {
                 FN_GetDispatch()(
                     RuntimeStatusSlice.actions.moveTabToToolsPart({
                         sessionId,

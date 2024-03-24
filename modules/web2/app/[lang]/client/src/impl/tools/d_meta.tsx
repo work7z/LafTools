@@ -188,6 +188,13 @@ let appToolInfoObj = {
     "Example": passInfo({
         LabelFn: (Dot: DotType) => Dot("1X8x7", "Example")
     }),
+    // new 
+    JSONEscape: passInfo({
+        LabelFn: (Dot: DotType) => Dot("l3k11X8qw", "JSON Escape")
+    }),
+    JSONViewer: passInfo({
+        LabelFn: (Dot: DotType) => Dot("1Xdsqwqw", "JSON Viewer")
+    }),
 } satisfies Record<string, AppInfoType>
 
 _.forEach(appToolInfoObj, (x, d, n) => {

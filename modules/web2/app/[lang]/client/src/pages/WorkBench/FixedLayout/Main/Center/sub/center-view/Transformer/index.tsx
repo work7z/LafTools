@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Alignment, Button, ButtonProps, Intent, Navbar, OL, PortalContext, Tab, Tabs, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, ButtonProps, Icon, Intent, Navbar, OL, PortalContext, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
   VAL_CSS_TAB_TITLE_PANEL,
@@ -523,7 +523,51 @@ export default (props: CommonTransformerProps) => {
     return <ShowErrorPanel loadError={loadError}></ShowErrorPanel>
   }
 
-  let app_right_t_jsx = codeMirrorItem
+  let app_right_t_jsx = codeMirrorItem || (
+    <div className=" h-full p-[1px] flex flex-col  ">
+      <Navbar>
+        <Navbar.Group >
+          <Navbar.Heading >
+            <Icon icon="import"
+              iconSize={20} className={(
+                'mr-2'
+              )}
+            />
+            <span className={
+              '' + light_border_clz_all + ''
+            }>
+              {
+                Dot("rG_kxaJMH", "Pre-Process")
+              }
+            </span>
+          </Navbar.Heading>
+        </Navbar.Group>
+        <Navbar.Group align={Alignment.RIGHT}>
+          <Tabs
+            animate={true}
+            fill={true}
+            // id="navbar"
+            large={false}
+            onChange={(v) => {
+              // FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: v as Val_ToolTabIndex }))
+            }}
+            selectedTabId={'output'}
+          >
+            {
+              <Tab id="output" icon={
+                'new-text-box'
+              } title={Dot("input.text.btn", "Input")} />
+            }
+          </Tabs>
+        </Navbar.Group>
+      </Navbar>
+      <div className="flex-1 overflow-auto">
+        {codeMirrorItem}
+      </div>
+    </div>
+  )
+
+
   let app_right_b_jsx = processPanelItem
 
   if (props.needFullPageSupport) {

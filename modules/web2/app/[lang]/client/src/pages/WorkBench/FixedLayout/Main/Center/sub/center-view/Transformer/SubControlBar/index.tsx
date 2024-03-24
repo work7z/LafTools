@@ -16,7 +16,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import AjaxUtils from "../../../../../../../../../utils/AjaxUtils";
 import AlertUtils from "../../../../../../../../../utils/AlertUtils";
 import { SysTabPane } from "../../../../../../../../../components/SysTabPane";
-import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER } from "../../../../../../../../../types/constants";
+import { CSS_TRANSITION_WIDTH_HEIGHT_ONLY, CSS_TW_LAYOUT_BORDER, border_clz_common } from "../../../../../../../../../types/constants";
 import exportUtils from "../../../../../../../../../utils/ExportUtils";
 import RuntimeStatusSlice from "../../../../../../../../../reducers/runtimeStatusSlice";
 
@@ -192,8 +192,9 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
     return (
         <div
             className={
-                " w-full using-edge-ui-bg flex border-b-[1px] dark:border-gray-600 px-1  flex-column items-center justify-between "
+                " w-full using-edge-ui-bg  flex border-b-[1px] dark:border-gray-600 px-1  flex-column items-center justify-between "
                 +
+                border_clz_common + ' border-t-[1px]' +
                 (
                     ''
                 )
