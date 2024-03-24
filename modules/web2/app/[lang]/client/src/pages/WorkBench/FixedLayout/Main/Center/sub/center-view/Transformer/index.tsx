@@ -63,7 +63,7 @@ import { OpDetail, getAllOperationDetails } from "@/app/[lang]/client/src/impl/t
 import ParamStateSlice, { ToolConfigMap, ToolConfigMapVal } from "@/app/[lang]/client/src/reducers/state/paramStateSlice.tsx";
 import { sleep } from "@/app/[lang]/client/src/utils/SyncUtils.tsx";
 import { ToolTitlebar } from "./toolTitlebar.tsx";
-import { getNotifyTextFunction } from "./fn.tsx";
+import { useGetNotifyTextFunction } from "./hooks.tsx";
 
 COMMON_FN_REF.Dot = Dot
 
@@ -220,7 +220,7 @@ export default (props: CommonTransformerProps) => {
     fn_updateToolConfig,
     fn_switchToSideMenuExtraOp
   }
-  let fn_notifyTextChange = getNotifyTextFunction(commonPassProp)
+  let fn_notifyTextChange = useGetNotifyTextFunction(commonPassProp)
   let desc = fn_format_description(commonPassProp.toolHandler?.getMetaInfo().description)
   logutils.debug("commonPassProp", commonPassProp, extraOpList)
   useEffect(() => {

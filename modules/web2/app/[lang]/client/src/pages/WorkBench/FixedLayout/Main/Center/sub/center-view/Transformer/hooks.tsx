@@ -49,9 +49,64 @@ import ActionButton from "../../../../../../../../components/ActionButton";
 import gutils from "../../../../../../../../utils/GlobalUtils";
 import COMMON_FN_REF from "@/app/[lang]/client/src/impl/tools/common_ref";
 import ParamStateSlice from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
+import { FN_GetActualTextValueByBigTextId } from "@/app/[lang]/client/src/actions/bigtext_action";
+import { ACTION_Transformer_Process_Text, ACTION_Transformer_Process_Text_Delay } from "@/app/[lang]/client/src/actions/transformer_action";
 
 COMMON_FN_REF.Dot = Dot
 
+export let useGetNotifyTextFunction = (commonPassProps: CommonTransformerPassProp) => {
+    let { extVM, extId, sessionId, outputBigTextId, inputBigTextId, toolHandler } = commonPassProps
+    let { crtRuntimeStatus, } = useRuntimeStatusAndToolConfig({
+        sessionId
+    })
+
+    return (fromTextInputEvent: boolean) => {
+        if (fromTextInputEvent && crtRuntimeStatus?.autoRun != 'true') {
+            return;
+        }
+        if (extVM && extId && sessionId && outputBigTextId && toolHandler) {
+            let originalValue = FN_GetActualTextValueByBigTextId(inputBigTextId)
+            if (originalValue == '' && crtRuntimeStatus.ignoreEmptyStr == 'true') {
+                FN_GetDispatch()(
+                    RuntimeStatusSlice.actions.moveTabToToolsPart({
+                        sessionId,
+                    })
+                )
+            } else {
+                if (!fromTextInputEvent) {
+                    FN_GetDispatch()(
+                        ACTION_Transformer_Process_Text({
+                            originalValue,
+                            extVM,
+                            extId,
+                            sessionId,
+                            outputBigTextId,
+                            inputBigTextId,
+                            toolHandler: toolHandler,
+                            fromChangeEvent: fromTextInputEvent,
+                            commonPassProp: commonPassProps
+                        })
+                    )
+                } else {
+                    ACTION_Transformer_Process_Text_Delay({
+                        dispatch: FN_GetDispatch(),
+                        originalValue,
+                        extVM,
+                        extId,
+                        sessionId,
+                        outputBigTextId,
+                        inputBigTextId,
+                        toolHandler: toolHandler,
+                        fromChangeEvent: fromTextInputEvent,
+                        commonPassProp: commonPassProps
+                    })
+                }
+            }
+        } else {
+            AlertUtils.popError(new Error(Dot("6IHssvayw", "Unable to process with the error ID: {0}", "nkf1yJ6Gk")))
+        }
+    }
+}
 export let useRuntimeStatusAndToolConfig = ({ sessionId }) => {
     let v = exportUtils.useSelector((x) => {
         let v: ToolDefaultOutputType | null = x.runtimeStatus.toolOutputStatusMap[sessionId];
@@ -249,4 +304,6 @@ export let fn_format_button = (pmt: string) => {
     };
 };
 
-export type TextTransformerProps = CommonTransformerProps;
+export type TextTransformerProps = CommonTransformerProps & {
+
+}

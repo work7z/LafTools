@@ -45,7 +45,7 @@ import RuntimeStatusSlice from "../../../../../../../../../reducers/runtimeStatu
 
 import { CommonTransformerProps } from "../types";
 import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../../types/purejs-types-READ_ONLY";
-import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_output, fn_format_button, useCurrentActiveStyle } from "../hooks";
+import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_output, fn_format_button, useCurrentActiveStyle, useGetNotifyTextFunction } from "../hooks";
 import FormGenPanel, { FormGenItem } from "../../../../../../../../../components/FormGenPanel";
 import Operation from "../../../../../../../../../impl/core/Operation.tsx";
 import { logutils } from "../../../../../../../../../utils/LogUtils";
@@ -56,7 +56,9 @@ import ParamStateSlice, { ToolPipeline } from "@/app/[lang]/client/src/reducers/
 export let ifnil = (v1: any, v2: any) => {
     return v1 === undefined || v1 === null ? v2 : v1
 }
-
+export let fn_defaultArgValues = (args) => {
+    return args.map(x => x.value)
+}
 export let useGeneralListRead = (props: ProcessPanelProps) => {
     let sessionId = props.sessionId;
     let extVM = props.extVM
@@ -66,6 +68,7 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
     let operList = toolHandler?.getOperations() || []
     let { crtDefaultOpera } = props;
     let crtToolCfg = props.crtToolCfg
+    let notifyTextChgFn = useGetNotifyTextFunction(props)
     let generalList: FormGenItem[] = useMemo(() => {
         let generalList: FormGenItem[] = []
         if (crtDefaultOpera) {
@@ -76,25 +79,22 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
             }
             let crtOpId = (props.fn_isSidebarMenuOpModeNow(props) ? props.crtSideMenuOperaId : props.crtDefaultOperaId) + "";
             let state_crtPipeline = state_pipeobj[crtOpId + ""] || {}
-            let args = config.args
-            let checks = config.checks
-            let fn_defaultArgValues = () => {
-                return args.map(x => x.value)
-            }
+            let configArgs = config.args
+            let configChecks = config.checks
+
             if (!state_crtPipeline) {
                 state_crtPipeline = {
-                    a: fn_defaultArgValues(),
+                    a: fn_defaultArgValues(configArgs),
                     d: 'f'
                 }
             }
 
-            if (!state_crtPipeline.a && _.size(state_crtPipeline.a) != _.size(args)) {
-                state_crtPipeline.a = fn_defaultArgValues()
+            if (!state_crtPipeline.a && _.size(state_crtPipeline.a) != _.size(configArgs)) {
+                state_crtPipeline.a = fn_defaultArgValues(configArgs)
             }
 
-
             let _eachArgIdx: number = -1
-            _.forEach(args, (eachArg) => {
+            _.forEach(configArgs, (eachArg) => {
                 _eachArgIdx++
                 let eachArgIdx = _eachArgIdx
                 let { type, name, value: _defaultValue } = eachArg;
@@ -112,6 +112,7 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                             }
                         })
                     )
+                    notifyTextChgFn(true)
                 }
                 // let currentCheck = checks[eachArgIdx]
                 // TODO: add check
@@ -125,7 +126,7 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                                     type: "switch",
                                     value: value ? 'true' : 'false',
                                     onChange(newVal) {
-                                        updateValueToState(newVal ? 'true' : 'false')
+                                        updateValueToState(newVal == 'true')
                                     },
                                 }
                             })

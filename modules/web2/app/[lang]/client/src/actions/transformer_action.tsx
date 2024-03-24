@@ -33,6 +33,7 @@ import { logutils } from "../utils/LogUtils";
 import Operation from "../impl/core/Operation";
 import AlertUtils from "../utils/AlertUtils";
 import { Dot } from "../utils/cTranslationUtils";
+import { fn_defaultArgValues } from "../pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/ProcessPanel/hooks";
 window["moment"] = moment
 
 type PassType = {
@@ -84,20 +85,19 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
             // new MD5()
             let operaList: Operation[] = [crtDefaultOpera,]
             for (let eachOp of operaList) {
-                let argsValueArr = _.map(eachOp.args, (arg) => {
-                    let eachValue = _.get(arg, 'value')
-                    if (_.isString(eachValue)) {
-                        return eachValue
-                    }
-                    if (_.isArray(eachValue)) {
-                        let p = _.get(eachValue, [0]) // TODO: select type
-                        if (typeof p == 'string') {
-                            return p
+                let crtPipeMapItem = obj.commonPassProp.crtToolCfg?.pipemap[eachOp.getOptDetail().id]
+                let argsValueArr: any[] = []
+                let dftArgsValueArr = fn_defaultArgValues(eachOp.args)
+                if (!crtPipeMapItem) {
+                    argsValueArr = dftArgsValueArr
+                } else {
+                    argsValueArr = crtPipeMapItem.a
+                    _.forEach(dftArgsValueArr, (x, d, n) => {
+                        if (_.isNil(argsValueArr[d])) {
+                            argsValueArr[d] = x
                         }
-                        return _.get(eachValue, [0, 'value'])
-                    }
-                    return eachValue;
-                })
+                    })
+                }
                 if (_.isNil(argsValueArr)) {
                     argsValueArr = []
                 }

@@ -74,7 +74,7 @@ type PropFormGenPanel = {
 export default (props: PropFormGenPanel) => {
     let chunkItems = props.fixSingleColumn ? [props.list] : _.chunk(props.list, 3);
     let [ok, setOk] = useState(false)
-    return <div className="w-full">
+    return <div className="w-full select-none">
         <div className="flex  whitespace-break-spaces pure-g  ">
             {
                 chunkItems.map((eachChunkItem, eachChunkItemIdx) => {
