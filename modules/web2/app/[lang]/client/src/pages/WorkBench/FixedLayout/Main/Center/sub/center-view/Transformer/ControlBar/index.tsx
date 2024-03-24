@@ -49,10 +49,11 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
     opBtns: OpButtonStyleProps[],
     mainControlBarMode: boolean
 }) => {
-    let whatIntent: Intent = props.mainControlBarMode ? 'primary' : 'success'
+    // props.mainControlBarMode ? 'primary' : 'success'
     return <>
         {
             _.map(props.opBtns, x => {
+                let whatIntent: Intent = x.type == 'origin' || x.type == 'related' ? 'primary' : 'success'
                 if (!x) {
                     return ''
                 }
@@ -86,11 +87,13 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                         },
                     } satisfies ActionButtonProps
                     return fn_format_button("bottom-start")({
+                        key: x.opId,
                         ...obj
                     })
                 } else if (x.type == 'related' || x.type == 'sidebar') {
                     return <ActionListViewButton
                         {...props}
+                        key={x.opId}
                         noHighlightMode={false}
                         placement="bottom-start"
                         activeParentTrigger={x.isParentTrigger}

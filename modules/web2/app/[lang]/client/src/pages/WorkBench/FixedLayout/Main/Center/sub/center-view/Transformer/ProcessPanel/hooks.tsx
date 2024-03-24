@@ -243,7 +243,7 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                             RuntimeStatusSlice.actions.updateValueInStatusMap({
                                 sessionId,
                                 obj: {
-                                    autoRun: newVal
+                                    autoRun: newVal == 'true' ? 'true' : 'false'
                                 }
                             })
                         )
@@ -253,6 +253,6 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
             ...generalList
         ]
         return generalList
-    }, [crtDefaultOpera, crtDefaultOpera, crtToolCfg, props.crtSideMenuOperaId])
+    }, [crtDefaultOpera, crtDefaultOpera, crtToolCfg, props.crtSideMenuOperaId, crtRuntimeStatus.autoRun])
     return generalList;
 }
