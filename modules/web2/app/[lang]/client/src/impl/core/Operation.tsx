@@ -31,7 +31,7 @@ type Check = {
   args: any[];
 }
 
-type ModuleConfig = any & {
+type ModuleConfig = {
   module: string;
   description: string;
   infoURL: string | null;

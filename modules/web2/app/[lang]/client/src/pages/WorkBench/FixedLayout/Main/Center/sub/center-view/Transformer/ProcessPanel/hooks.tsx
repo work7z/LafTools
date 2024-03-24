@@ -45,7 +45,7 @@ import RuntimeStatusSlice from "../../../../../../../../../reducers/runtimeStatu
 
 import { CommonTransformerProps } from "../types";
 import { ExtensionAction, ToolDefaultOutputType, Val_ToolTabIndex } from "../../../../../../../../../types/purejs-types-READ_ONLY";
-import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_output, fn_format_button, useCurrentActiveStyle, useGetNotifyTextFunction } from "../hooks";
+import { TextTransformerProps, TransformerWithRuntime, controlBarHeight, controlClz, fn_coll_output, fn_format_button, useCurrentActiveStyle, useGetNotifyTextFunction as createGetNotifyTextFunction } from "../hooks";
 import FormGenPanel, { FormGenItem } from "../../../../../../../../../components/FormGenPanel";
 import Operation from "../../../../../../../../../impl/core/Operation.tsx";
 import { logutils } from "../../../../../../../../../utils/LogUtils";
@@ -56,8 +56,25 @@ import ParamStateSlice, { ToolPipeline } from "@/app/[lang]/client/src/reducers/
 export let ifnil = (v1: any, v2: any) => {
     return v1 === undefined || v1 === null ? v2 : v1
 }
-export let fn_defaultArgValues = (args) => {
-    return args.map(x => x.value)
+
+// note that you should use config from Operation not from user input
+export let fn_defaultArgValues_fromConfig = (args) => {
+    return args.map(x => {
+        let xValue = x.value
+        if (_.isObject(xValue)) {
+            if (xValue['value'] !== undefined) {
+                return xValue['value']
+            }
+        }
+        if (_.isArray(xValue)) {
+            let firstObject = xValue[0];
+            if (firstObject && firstObject['value'] !== undefined) {
+                return firstObject['value']
+            }
+            return firstObject
+        }
+        return xValue
+    })
 }
 export let useGeneralListRead = (props: ProcessPanelProps) => {
     let sessionId = props.sessionId;
@@ -68,7 +85,7 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
     let operList = toolHandler?.getOperations() || []
     let { crtDefaultOpera } = props;
     let crtToolCfg = props.crtToolCfg
-    let notifyTextChgFn = useGetNotifyTextFunction(props)
+    let notifyTextChgFn = createGetNotifyTextFunction(props)
     let generalList: FormGenItem[] = useMemo(() => {
         let generalList: FormGenItem[] = []
         if (crtDefaultOpera) {
@@ -84,13 +101,13 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
 
             if (!state_crtPipeline) {
                 state_crtPipeline = {
-                    a: fn_defaultArgValues(configArgs),
+                    a: fn_defaultArgValues_fromConfig(configArgs),
                     d: 'f'
                 }
             }
 
             if (!state_crtPipeline.a && _.size(state_crtPipeline.a) != _.size(configArgs)) {
-                state_crtPipeline.a = fn_defaultArgValues(configArgs)
+                state_crtPipeline.a = fn_defaultArgValues_fromConfig(configArgs)
             }
 
             let _eachArgIdx: number = -1
@@ -112,7 +129,8 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                             }
                         })
                     )
-                    notifyTextChgFn(true)
+                    // notifyTextChgFn(true)
+                    props.onProcess()
                 }
                 // let currentCheck = checks[eachArgIdx]
                 // TODO: add check

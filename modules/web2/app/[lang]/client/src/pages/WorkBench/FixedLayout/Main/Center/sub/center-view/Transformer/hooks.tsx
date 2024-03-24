@@ -54,13 +54,13 @@ import { ACTION_Transformer_Process_Text, ACTION_Transformer_Process_Text_Delay 
 
 COMMON_FN_REF.Dot = Dot
 
-export let useGetNotifyTextFunction = (commonPassProps: CommonTransformerPassProp) => {
+export let useGetNotifyTextFunction = (commonPassProps: CommonTransformerPassProp & {
+    crtRuntimeStatus: ToolDefaultOutputType
+}) => {
     let { extVM, extId, sessionId, outputBigTextId, inputBigTextId, toolHandler } = commonPassProps
-    let { crtRuntimeStatus, } = useRuntimeStatusAndToolConfig({
-        sessionId
-    })
 
     return (fromTextInputEvent: boolean) => {
+        let { crtRuntimeStatus } = commonPassProps;
         if (fromTextInputEvent && crtRuntimeStatus?.autoRun != 'true') {
             return;
         }

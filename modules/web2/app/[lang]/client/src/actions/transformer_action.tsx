@@ -33,7 +33,7 @@ import { logutils } from "../utils/LogUtils";
 import Operation from "../impl/core/Operation";
 import AlertUtils from "../utils/AlertUtils";
 import { Dot } from "../utils/cTranslationUtils";
-import { fn_defaultArgValues } from "../pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/ProcessPanel/hooks";
+import { fn_defaultArgValues_fromConfig } from "../pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/ProcessPanel/hooks";
 window["moment"] = moment
 
 type PassType = {
@@ -80,26 +80,25 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
                 })
                 return;
             }
-            // processing
             let recipeConfigs: RecipeConfig[] = []
-            // new MD5()
             let operaList: Operation[] = [crtDefaultOpera,]
             for (let eachOp of operaList) {
                 let crtPipeMapItem = obj.commonPassProp.crtToolCfg?.pipemap[eachOp.getOptDetail().id]
-                let argsValueArr: any[] = []
-                let dftArgsValueArr = fn_defaultArgValues(eachOp.args)
-                if (!crtPipeMapItem) {
-                    argsValueArr = dftArgsValueArr
-                } else {
-                    argsValueArr = crtPipeMapItem.a
-                    _.forEach(dftArgsValueArr, (x, d, n) => {
-                        if (_.isNil(argsValueArr[d])) {
-                            argsValueArr[d] = x
+                // we use default value from config first
+                let dftArgsValueArr_from_config = fn_defaultArgValues_fromConfig(eachOp.getOptDetail().config.args || [])
+                let argsValueArr: any[] = dftArgsValueArr_from_config
+                // overwrite the config from user if have
+                if (crtPipeMapItem && crtPipeMapItem.a) {
+                    let crtPipeMapItemsArgs = crtPipeMapItem.a
+                    _.forEach(argsValueArr, (x, d, n) => {
+                        let crtPipeArgVal = crtPipeMapItemsArgs[d]
+                        if (!_.isNil(crtPipeArgVal)) {
+                            _.set(argsValueArr, d + "", crtPipeArgVal)
                         }
                     })
                 }
                 if (_.isNil(argsValueArr)) {
-                    argsValueArr = []
+                    throw new Error("Error Code: hkmaMr7qP")
                 }
                 recipeConfigs.push({
                     op: eachOp,

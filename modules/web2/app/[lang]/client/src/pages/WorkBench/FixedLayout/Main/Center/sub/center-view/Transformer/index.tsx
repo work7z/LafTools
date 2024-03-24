@@ -64,6 +64,7 @@ import ParamStateSlice, { ToolConfigMap, ToolConfigMapVal } from "@/app/[lang]/c
 import { sleep } from "@/app/[lang]/client/src/utils/SyncUtils.tsx";
 import { ToolTitlebar } from "./toolTitlebar.tsx";
 import { useGetNotifyTextFunction } from "./hooks.tsx";
+import MemoryStateSlice from "@/app/[lang]/client/src/reducers/state/memoryStateSlice.tsx";
 
 COMMON_FN_REF.Dot = Dot
 
@@ -116,19 +117,31 @@ export default (props: CommonTransformerProps) => {
       x.getOptDetail()?.id == TOOL_CONVER_FILENAME_TO_ID_MAP[crtSideMenuOperaId + ""] + "")
   }, [crtSideMenuOperaId, extraOpList])
 
-  // DEFAULT OPERA BEGIN
   let crtDefaultOpera = useMemo(() => {
-    return _.find((operaList || []), x => x.getOptDetail()?.id === crtDefaultOperaId) || (
+    let r = _.find((operaList || []), x => x.getOptDetail()?.id === crtDefaultOperaId) || (
       _.first(operaList)
     )
-  }, [crtDefaultOperaId, operaList])
-  crtDefaultOpera = crtSideMenuOperaId && crtSideMenuOpera && !loadingExtraOpList ? crtSideMenuOpera : crtDefaultOpera
-  // DEFAULT OPERA END
+    r = crtSideMenuOperaId && crtSideMenuOpera && !loadingExtraOpList ? crtSideMenuOpera : r
+    return r;
+  }, [crtDefaultOperaId, operaList, crtSideMenuOperaId, crtSideMenuOpera, loadingExtraOpList])
 
-  let [triggerProcessCtn, setTriggerProcessCtn] = useState(0)
+  let { triggerProcessCtn } = exportUtils.useSelector(v => {
+    return {
+      triggerProcessCtn: v.memoryState.siteToolOptRenderMap[sessionId] || 0
+    }
+  })
+  let setTriggerProcessCtn = (newValue: number) => {
+    FN_GetDispatch()(
+      MemoryStateSlice.actions.updateOneOfParamState({
+        siteToolOptRenderMap: {
+          [sessionId]: newValue
+        }
+      })
+    )
+  }
 
   let onProcess = () => {
-    setTriggerProcessCtn(triggerProcessCtn + 1)
+    setTriggerProcessCtn(Date.now())
   }
 
   let fn_updateToolConfig = (arg: Partial<ToolConfigMapVal>) => {
@@ -220,7 +233,10 @@ export default (props: CommonTransformerProps) => {
     fn_updateToolConfig,
     fn_switchToSideMenuExtraOp
   }
-  let fn_notifyTextChange = useGetNotifyTextFunction(commonPassProp)
+  let fn_notifyTextChange = useGetNotifyTextFunction({
+    ...commonPassProp,
+    crtRuntimeStatus
+  })
   let desc = fn_format_description(commonPassProp.toolHandler?.getMetaInfo().description)
   logutils.debug("commonPassProp", commonPassProp, extraOpList)
   useEffect(() => {
