@@ -39,6 +39,7 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 class JavaScriptBeautify extends Operation {
     public getOptDetail(): OptDetail {
         return {
+            relatedID: 'javascript',
             config: {
                 "module": "Code",
                 "description": "Parses and pretty prints valid JavaScript code. Also works with JavaScript Object Notation (JSON).",

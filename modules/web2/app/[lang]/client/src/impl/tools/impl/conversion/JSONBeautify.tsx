@@ -41,6 +41,7 @@ import _ from "lodash";
 class JSONBeautify extends Operation {
     public getOptDetail(): OptDetail {
         return {
+            relatedID: 'json',
             config: {
                 "module": "Code",
                 "description": "Indents and pretty prints JavaScript Object Notation (JSON) code.<br><br>Tags: json viewer, prettify, syntax highlighting",

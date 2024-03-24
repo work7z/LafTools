@@ -38,6 +38,7 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 class YamlBeautify extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'yaml',
       config: {
         // provide yaml config 
         "module": "Code",

@@ -17,6 +17,7 @@
  */
 
 import { InputOutputEditorLang } from "../purejs-types";
+import { AppToolConversionIdCollectionSetType } from "../tools/d_meta";
 import Dish from "./Dish.mjs";
 import Ingredient from "./Ingredient.mjs";
 type Argument = any & {
@@ -26,9 +27,9 @@ type Argument = any & {
 }
 
 type Check = {
-  pattern: string;
-  flags: string;
-  args: any[];
+  pattern?: string;
+  flags?: string;
+  args?: any[];
 }
 
 type ModuleConfig = {
@@ -50,6 +51,8 @@ export type OptDetail = {
   id: string;
   optName: string;
   config: ModuleConfig
+  relatedID: AppToolConversionIdCollectionSetType
+  relatedIDs?: AppToolConversionIdCollectionSetType[]
 }
 export default abstract class Operation {
   private _inputType: number = -1;

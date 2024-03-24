@@ -37,6 +37,7 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 class XMLBeautify extends Operation {
     public getOptDetail(): OptDetail {
         return {
+            relatedID: 'xml',
             config: {
                 "module": "Code",
                 "description": "Indents and prettifies HTML code.",

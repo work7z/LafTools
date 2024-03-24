@@ -25,6 +25,8 @@ import { FAQItem } from './faq/types'
 import _ from "lodash";
 import { CodeImplMap } from "./code/types";
 import Operation from "../core/Operation.tsx";
+import { AppOpFnMapTypeKeys } from "./g_optlist.tsx";
+import { satisfies } from "semver";
 
 
 export type AppInfoType = {
@@ -194,7 +196,33 @@ _.forEach(appToolInfoObj, (x, d, n) => {
     x.ImportCode = () => import(`./code/${d}.tsx`)
 })
 
+// NOTE: key is the language type or just a prefered id
+// let us say we can show related tools for a given tool based on its lang type or prefered id
+export const AppToolConversionIdCollectionSet = {
+    json: ['JSONBeautify', 'JSONMinify', 'CSVToJSON'],
+    javascript: ['JavaScriptBeautify', 'JavaScriptMinify'],
+    css: ['CSSBeautify', 'CSSMinify'],
+    sql: ['SQLBeautify', 'SQLMinify'],
+    bcd: ['ToBCD', 'FromBCD'],
+    hex: ['ToHex', 'FromHex'],
+    text: ['RemoveWhitespace', 'Tail', 'Reverse', 'RemoveLineNumbers'],
+    beautify: ['JSONBeautify', 'JavaScriptBeautify', 'CSSBeautify', 'XMLBeautify', 'YAMLBeautify', 'SQLBeautify', 'HTMLBeautify'],
+    xml: ['XMLBeautify', 'XMLMinify'],
+    yaml: ['YAMLBeautify'],
+    // typescript: ['TypeScriptBeautify', 'JavaScriptBeautify', 'JavaScriptMinify'],
+    base32: ['FromBase32', 'ToBase32', 'MD5'],
+    base64: ['FromBase64', 'ToBase64', 'MD5'],
+    base45: ['FromBase45', 'ToBase45', 'MD5'],
+    base58: ['FromBase58', 'ToBase58', 'MD5'],
+    base62: ['FromBase62', 'ToBase62', 'MD5'],
+    base85: ['FromBase85', 'ToBase85', 'MD5'],
+    md5: ['MD2', 'MD4', 'MD6', 'SHA3', 'MD5'],
+    sha: ['SHA0', 'SHA1', 'SHA2', 'SHA3', 'MD5'],
+    nothing: [],
+} satisfies { [key: string]: AppOpFnMapTypeKeys[] }
 
+// using infer to get the type of the keys for AppToolConversionIdCollectionSet
+export type AppToolConversionIdCollectionSetType = keyof typeof AppToolConversionIdCollectionSet
 
 export type AppToolKeyType = keyof typeof appToolInfoObj;
 

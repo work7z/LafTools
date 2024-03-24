@@ -37,6 +37,7 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
 class ToBase62 extends Operation {
     public getOptDetail(): OptDetail {
         return {
+            relatedID: 'base62',
             config: {
                 "module": "Default",
                 "description": "Base62 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers. The high number base results in shorter strings than with the decimal or hexadecimal system.",

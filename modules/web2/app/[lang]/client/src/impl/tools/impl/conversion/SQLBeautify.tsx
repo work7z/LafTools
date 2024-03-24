@@ -38,7 +38,9 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 class SQLBeautify extends Operation {
     public getOptDetail(): OptDetail {
         return {
+            relatedID: 'sql',
             config: {
+
                 "module": "Code",
                 "description": "Indents and prettifies Structured Query Language (SQL) code.",
                 "infoURL": null,

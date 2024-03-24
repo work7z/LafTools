@@ -37,8 +37,8 @@ import { ALPHABET_OPTIONS } from "../../../core/lib/Base58.mjs";
 class FromBase58 extends Operation {
     public getOptDetail(): OptDetail {
         return {
+            relatedID: 'base58',
             infoURL: "https://en.wikipedia.org/wiki/Base58",
-
             id: 'frombase58',
             optName: Dot("L9qbQku", "Decode {0}", "Base58"),
             optDescription: Dot(

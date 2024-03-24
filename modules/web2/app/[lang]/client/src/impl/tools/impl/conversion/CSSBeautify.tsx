@@ -38,6 +38,7 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 class CSSBeautify extends Operation {
     public getOptDetail(): OptDetail {
         return {
+            relatedID: 'css',
             config: {
                 "module": "Code",
                 "description": "Indents and prettifies Cascading Style Sheets (CSS) code.",

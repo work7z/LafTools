@@ -38,6 +38,7 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 class XMLMinify extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'xml',
       config: {
         "module": "Code",
         "description": "Compresses eXtensible Markup Language (XML) code.",

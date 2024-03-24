@@ -35,6 +35,7 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./_constants.tsx";
 class Reverse extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'text',
       config: {
         "module": "Default",
         "description": "Reverses the input string.",

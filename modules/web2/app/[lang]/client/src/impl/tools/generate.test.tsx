@@ -86,9 +86,12 @@ test('generate-app-op-detail-list', async () => {
 //    Copyright
     import {AppOpFnMapType} from './d_meta';
     
-   export  const AppOptFnMap:AppOpFnMapType ={
+   export  const AppOptFnMap ={
 ${fullStr.join(',\n')}
-    }
+    } satisfies AppOpFnMapType
+    export let getAppOptFnMap=():AppOpFnMapType=>{
+        return AppOptFnMap
+    } 
 export type AppOpFnMapTypeKeys = keyof typeof AppOptFnMap;
     
     ` + ''

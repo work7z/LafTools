@@ -33,6 +33,7 @@ import Operation, { OptDetail } from "../../../core/Operation.tsx";
 class RemoveLineNumbers extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'text',
       config: {
         "module": "Default",
         "description": "Removes line numbers from the output if they can be trivially detected.",

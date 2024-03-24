@@ -39,6 +39,7 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
 class FromHex extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'hex',
       optName: Dot("5RPdtVff3", "From Hex"),
       optDescription: Dot("gms7_9n5v", "Converts a hexadecimal byte string back into its raw value."),
       infoURL: "https://wikipedia.org/wiki/Hexadecimal",

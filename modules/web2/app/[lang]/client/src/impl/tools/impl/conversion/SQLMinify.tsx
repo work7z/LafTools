@@ -38,6 +38,7 @@ import { InputOutputEditorLang } from "../../../purejs-types.tsx";
 class SQLMinify extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'sql',
       config: {
         "module": "Code",
         "description": "Compresses Structured Query Language (SQL) code.",

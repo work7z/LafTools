@@ -36,6 +36,7 @@ import NodeMD6 from "node-md6";
 class MD6 extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'md5',
       config: {
         "module": "Crypto",
         "description": "The MD6 (Message-Digest 6) algorithm is a cryptographic hash function. It uses a Merkle tree-like structure to allow for immense parallel computation of hashes for very long inputs.",

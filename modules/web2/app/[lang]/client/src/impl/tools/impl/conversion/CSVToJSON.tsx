@@ -37,6 +37,7 @@ class CSVToJSON extends Operation {
   public getOptDetail(): OptDetail {
 
     return {
+      relatedID: 'json',
       config: {
         "module": "Default",
         "description": "Converts a CSV file to JSON format.",

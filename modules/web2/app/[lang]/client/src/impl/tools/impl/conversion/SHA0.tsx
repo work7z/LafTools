@@ -35,6 +35,7 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./_constants.tsx";
 class SHA0 extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'sha',
       config: {
         "module": "Crypto",
         "description": "SHA-0 is a retronym applied to the original version of the 160-bit hash function published in 1993 under the name 'SHA'. It was withdrawn shortly after publication due to an undisclosed 'significant flaw' and replaced by the slightly revised version SHA-1. The message digest algorithm consists, by default, of 80 rounds.",

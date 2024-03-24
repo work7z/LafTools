@@ -35,6 +35,7 @@ import Utils from "../../../core/Utils.mjs";
 class ToBase32 extends Operation {
     public getOptDetail(): OptDetail {
         return {
+            relatedID: 'base32',
             config: {
                 "module": "Default",
                 "description": "Base32 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers. It uses a smaller set of characters than Base64, usually the uppercase alphabet and the numbers 2 to 7.",

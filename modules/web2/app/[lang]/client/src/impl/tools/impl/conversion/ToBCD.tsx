@@ -41,6 +41,7 @@ import BigNumber from "bignumber.js";
 class ToBCD extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'bcd',
       config: {
         "module": "Default",
         "description": "Binary-Coded Decimal (BCD) is a class of binary encodings of decimal numbers where each decimal digit is represented by a fixed number of bits, usually four or eight. Special bit patterns are sometimes used for a sign",

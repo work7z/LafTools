@@ -35,6 +35,7 @@ import { INPUT_DELIM_OPTIONS } from "../../../core/lib/Delim.mjs";
 class Tail extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'text',
       config: {
         "module": "Default",
         "description": "Like the UNIX tail utility.<br>Gets the last n lines.<br>Optionally you can select all lines after line n by entering a negative value for n.<br>The delimiter can be changed so that instead of lines, fields (i.e. commas) are selected instead.",

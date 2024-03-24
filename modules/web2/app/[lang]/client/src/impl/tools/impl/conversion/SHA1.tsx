@@ -35,6 +35,8 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from "./_constants.tsx";
 class SHA1 extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'sha',
+
       config: {
         "module": "Crypto",
         "description": "The SHA (Secure Hash Algorithm) hash functions were designed by the NSA. SHA-1 is the most established of the existing SHA hash functions and it is used in a variety of security applications and protocols.<br><br>However, SHA-1's collision resistance has been weakening as new attacks are discovered or improved. The message digest algorithm consists, by default, of 80 rounds.",

@@ -33,6 +33,7 @@ import Operation, { OptDetail } from "../../../core/Operation.tsx";
 class RemoveWhitespace extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'text',
       config: {
         "module": "Default",
         "description": "Optionally removes all spaces, carriage returns, line feeds, tabs and form feeds from the input data.<br><br>This operation also supports the removal of full stops which are sometimes used to represent non-printable bytes in ASCII output.",

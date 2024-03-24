@@ -39,6 +39,7 @@ import { TEXT_INPUT_EXAMPLE_HELLO_WORLD } from './_constants.tsx'
 class ToHex extends Operation {
   public getOptDetail(): OptDetail {
     return {
+      relatedID: 'hex',
       config: {
         "module": "Default",
         "description": "Converts the input string to hexadecimal bytes separated by the specified delimiter.<br><br>e.g. The UTF-8 encoded string <code>Γειά σου</code> becomes <code>ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a</code>",

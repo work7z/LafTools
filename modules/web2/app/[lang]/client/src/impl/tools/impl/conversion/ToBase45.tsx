@@ -36,6 +36,7 @@ import Utils from "../../../core/Utils.mjs";
 class ToBase45 extends Operation {
     public getOptDetail(): OptDetail {
         return {
+            relatedID: 'base45',
             config: {
                 "module": "Default",
                 "description": "Base45 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers. The high number base results in shorter strings than with the decimal or hexadecimal system. Base45 is optimized for usage with QR codes.",

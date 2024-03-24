@@ -35,6 +35,8 @@ import { ALPHABET_OPTIONS, fromBase64 } from "../../../core/lib/Base64.mjs";
 class FromBase64 extends Operation {
   public getOptDetail(): OptDetail {
     return {
+
+      relatedID: 'base64',
       config: {
         "module": "Default",
         "description": "Base64 is a notation for encoding arbitrary byte data using a restricted set of symbols that can be conveniently used by humans and processed by computers.<br><br>This operation decodes data from an ASCII Base64 string back into its raw format.<br><br>e.g. <code>aGVsbG8=</code> becomes <code>hello</code>",
