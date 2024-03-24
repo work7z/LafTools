@@ -4,6 +4,7 @@ import Operation from "../../core/Operation.tsx";
 import FromBase45 from "./conversion/FromBase45.tsx";
 import ToBase45 from "./conversion/ToBase45.tsx";
 import { ToolHandler, ToolMetaInfo } from "../r_handler.tsx";
+import { AppOpFnMapTypeKeys } from "../g_optlist.tsx";
 
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
@@ -15,11 +16,12 @@ export default class Base64Handler extends ToolHandler {
             ),
         }
     }
-    getOperations(): Operation[] {
+
+    getOperationsByName(): AppOpFnMapTypeKeys[] {
         return (
             [
-                new ToBase45(),
-                new FromBase45(),
+                "ToBase45",
+                "FromBase45",
             ]
         )
     }

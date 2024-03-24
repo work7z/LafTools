@@ -55,6 +55,7 @@ export type OptDetail = {
   relatedIDs?: AppToolConversionIdCollectionSetType[]
 }
 export default abstract class Operation {
+
   private _inputType: number = -1;
   private _outputType: number = -1;
   private _presentType: number = -1;
@@ -64,6 +65,7 @@ export default abstract class Operation {
   private _manualBake: boolean = false;
   private _ingList: Ingredient[] = [];
   checks: any[] = [];
+  fileID: string = 'CB_25k0dr';
 
   public name: string = "";
   public module: string = "";

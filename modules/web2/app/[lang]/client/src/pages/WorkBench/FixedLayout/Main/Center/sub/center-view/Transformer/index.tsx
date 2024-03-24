@@ -51,7 +51,7 @@ import ProcessPanel from "./ProcessPanel/index.tsx";
 import { ACTION_Transformer_Process_Text, ACTION_Transformer_Process_Text_Delay } from "../../../../../../../../actions/transformer_action";
 import Operation from "../../../../../../../../impl/core/Operation.tsx";
 import gutils from "../../../../../../../../utils/GlobalUtils";
-import appToolInfoObj, { AppInfoType, TOOL_CONVER_FILENAME_TO_ID_MAP, loadConversionTSXById } from "../../../../../../../../impl/tools/d_meta.tsx";
+import appToolInfoObj, { AppInfoType, AppOpDetail, AppToolConversionIdCollectionSet, loadConversionTSXById } from "../../../../../../../../impl/tools/d_meta.tsx";
 import { getInitValueForRuntimeStatus } from './init.tsx'
 import { ToolHandler as ToolHandler, ToolHandlerClass } from "../../../../../../../../impl/tools/r_handler.tsx";
 import { logutils } from "../../../../../../../../utils/LogUtils.tsx";
@@ -67,9 +67,13 @@ import { ToolTitlebar } from "./toolTitlebar.tsx";
 import { useGetNotifyTextFunction } from "./hooks.tsx";
 import MemoryStateSlice from "@/app/[lang]/client/src/reducers/state/memoryStateSlice.tsx";
 import SubControlBar, { useHideRelatedToolsbarAndRelatedSubControllbar } from "./SubControlBar/index.tsx";
+import { getAppOptFnMap } from "@/app/[lang]/client/src/impl/tools/g_optlist.tsx";
+import { satisfies } from "semver";
 
 COMMON_FN_REF.Dot = Dot
-
+export let formattedOpId = (id?: string) => {
+  return id || 'd3JaRZoky'
+}
 export type AppOptViewMode = "fixed" | "float"
 
 export type TitleSubPair = {
@@ -94,12 +98,14 @@ export type TransformerPassProps = CommonTransformerPassProp & {
 
 }
 
-export type ActionButtonCombinedProps = {
-  intent: Intent,
-  text: string,
+export type OpButtonStyleProps = {
+  type: 'origin' | 'related' | 'sidebar'
+  opId: string,
+  name: string,
+  desc: string,
   isParentTrigger: boolean,
-  isCurrent: boolean,
-  onClick: () => void
+  // isCurrent: boolean,
+  onClick?: () => void
 }
 
 export default (props: CommonTransformerProps) => {
@@ -121,22 +127,24 @@ export default (props: CommonTransformerProps) => {
   })
   let [extraOpList, onExtraOpList] = useState<Operation[]>([])
   let [loadingExtraOpList, onLoadingExtraOpList] = useState(false)
-  let crtDefaultOperaId = crtToolCfg && crtToolCfg.dftOpId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id)
+  let originalCrtDefaultOperaId = crtToolCfg && crtToolCfg.dftOpId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id)
   let crtSideMenuOperaId = crtToolCfg && crtToolCfg.sideOpId
   let crtSideMenuOpera = useMemo(() => {
     return _.find((extraOpList || []), (x: Operation) =>
-      x.getOptDetail()?.id == TOOL_CONVER_FILENAME_TO_ID_MAP[crtSideMenuOperaId + ""] + "")
+      x.getOptDetail()?.id == crtSideMenuOperaId + "")
   }, [crtSideMenuOperaId, extraOpList])
 
-  let { crtDefaultOpera, originalCrtDefaultOpera } = useMemo(() => {
-    let r = _.find((operaList || []), x => x.getOptDetail()?.id === crtDefaultOperaId) || (
+  let { crtDefaultOpera, originalCrtDefaultOpera, actualCrtDefaultOperaId } = useMemo(() => {
+    let r = _.find((operaList || []), x => x.getOptDetail()?.id === originalCrtDefaultOperaId) || (
       _.first(operaList)
     )
+    let isSideMenuOperaMode = crtSideMenuOperaId && crtSideMenuOpera && !loadingExtraOpList
     return {
-      crtDefaultOpera: crtSideMenuOperaId && crtSideMenuOpera && !loadingExtraOpList ? crtSideMenuOpera : r,
+      crtDefaultOpera: isSideMenuOperaMode ? crtSideMenuOpera : r,
+      actualCrtDefaultOperaId: isSideMenuOperaMode ? crtSideMenuOperaId : originalCrtDefaultOperaId,
       originalCrtDefaultOpera: r,
     }
-  }, [crtDefaultOperaId, operaList, crtSideMenuOperaId, crtSideMenuOpera, loadingExtraOpList])
+  }, [originalCrtDefaultOperaId, operaList, crtSideMenuOperaId, crtSideMenuOpera, loadingExtraOpList])
 
   let { triggerProcessCtn } = exportUtils.useSelector(v => {
     return {
@@ -216,10 +224,6 @@ export default (props: CommonTransformerProps) => {
   }, [crtSideMenuOperaId,])
   let extVM = props.extVM
 
-  // get active operation and other alternative operations
-  let activeOpBtn: ActionButtonCombinedProps[] = [];
-  let alternativeOpBtns: ActionButtonCombinedProps[] = []
-
 
   let fn_isSidebarMenuOpModeNow = (commonPassProp: CommonTransformerPassProp) => {
     return (
@@ -252,8 +256,105 @@ export default (props: CommonTransformerProps) => {
     return arr.map(x => `[${x.title}]\n${x.subTitle}`).join("\n\n")
   }
 
+
+  // START: get active operation and other alternative operations
+  // get active operation and other alternative operations
+  let allOpBtns: OpButtonStyleProps[] = [];
+  // operaList
+  // originalCrtDefaultOpera?.getOptDetail().relatedID
+  // op.crtSideMenuOpera && op.crtSideMenuOperaId
+  let parentTriggered = crtRuntimeStatus && (crtRuntimeStatus.processOK || crtRuntimeStatus.processing);
+  (operaList || [])?.forEach((x: Operation) => {
+    let optDetail = x.getOptDetail()
+    let crtId = optDetail?.id;
+    let crtDesc = optDetail?.optDescription
+    let crtName = optDetail?.optName || x.name
+    // let isHighlightOne = crtId == crtDefaultOperaId && !(
+    //   props.crtSideMenuOpera && props.crtSideMenuOperaId
+    // ) && !props.loadingExtraOpList;
+    allOpBtns.push({
+      type: 'origin',
+      name: crtName,
+      desc: crtDesc,
+      opId: crtId,
+      isParentTrigger: parentTriggered || false,
+      // isCurrent: isHighlightOne,
+      // onClick: () => {
+      //   props.fn_updateToolConfig({
+      //     sideOpId: '',
+      //     dftOpId: crtId
+      //   })
+      //   setTimeout(() => {
+      //     props.onProcess()
+      //   }, 0)
+      // }
+    })
+  })
+  let fnmap = getAppOptFnMap()
+  let relatedID = originalCrtDefaultOpera?.getOptDetail().relatedID
+  if (relatedID) {
+    let arr = AppToolConversionIdCollectionSet[relatedID]
+    arr.map(x => {
+      return {
+        ...fnmap[x]({ Dot }),
+        optOptionalId: x
+      } satisfies AppOpDetail
+    }).forEach((x: AppOpDetail) => {
+      allOpBtns.push({
+        opId: formattedOpId(x.optOptionalId),
+        type: 'related',
+        name: x.optName,
+        desc: x.optDescription,
+        isParentTrigger: parentTriggered || false,
+      })
+    });
+  }
+  let isCurrentMenuOperationMode = crtSideMenuOpera && crtSideMenuOperaId
+  if (isCurrentMenuOperationMode) {
+    let arr = [
+      {
+        ...fnmap[crtSideMenuOperaId + ""]({ Dot }),
+        optOptionalId: crtSideMenuOperaId,
+      },
+    ] satisfies AppOpDetail[]
+    arr.map(x => {
+      return {
+        ...fnmap[crtSideMenuOperaId + ""]({ Dot }),
+        optOptionalId: crtSideMenuOperaId + ""
+      } satisfies AppOpDetail
+    }).forEach((x: AppOpDetail) => {
+      allOpBtns.push({
+        opId: formattedOpId(crtSideMenuOperaId),
+        type: 'sidebar',
+        name: x.optName,
+        desc: x.optDescription,
+        isParentTrigger: parentTriggered || false,
+      })
+    });
+  }
+  // filter it
+  let duplicateObj = {}
+  allOpBtns = allOpBtns.filter(x => {
+    let crtOpId = formattedOpId(x.opId + "")
+    if (duplicateObj[crtOpId]) {
+      return false
+    }
+    duplicateObj[crtOpId + ""] = true
+    return true
+  })
+  let activeOpBtn = _.find(allOpBtns, x => x.opId == actualCrtDefaultOperaId)
+  let otherOpBtns = _.filter(allOpBtns, x => formattedOpId(x.opId) != formattedOpId(actualCrtDefaultOperaId))
+  console.log('otherOpBtns', {
+    otherOpBtns,
+    activeOpBtn
+  })
+  debugger;
+  // END: get active operation and other alternative operations
+
   let commonPassProp: CommonTransformerPassProp = {
     ...props,
+    activeOpBtn,
+    otherOpBtns,
     opDetails,
     hideRelatedToolsBar,
     toolHandler: operaRef.current,
@@ -264,7 +365,7 @@ export default (props: CommonTransformerProps) => {
     crtToolCfg,
     fn_isSidebarMenuOpModeNow,
     originalCrtDefaultOpera,
-    crtDefaultOperaId,
+    crtDefaultOperaId: originalCrtDefaultOperaId,
     crtDefaultOpera,
     loadingExtraOpList,
     crtSideMenuOperaId,
@@ -313,10 +414,19 @@ export default (props: CommonTransformerProps) => {
         let obj: AppInfoType = appToolInfoObj[props.extId as any]
         if (!obj.ImportImpl) {
           logutils.warn("no import impl")
+          alert("ERROR:2X1QQz-7s")
           return;
         }
         let opera: any = await obj.ImportImpl()
-        operaRef.current = new opera["default"]()
+        let newOpera: ToolHandler = new opera["default"]();
+        let names = newOpera.getOperationsByName()
+        for (let name of names) {
+          let nameFN = await loadConversionTSXById(name)
+          if (nameFN) {
+            newOpera.addOperation(name, nameFN)
+          }
+        }
+        operaRef.current = newOpera
         if (operaRef.current) {
           operaRef.current.id = props.extId + ""
         }

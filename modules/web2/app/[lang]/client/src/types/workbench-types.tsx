@@ -26,10 +26,13 @@ import { ParamStateState, TabBottomType, TabLeftType, TabRightType, ToolConfigMa
 import { OpDetail } from "../impl/tools/s_tools.tsx";
 import { PopoverItemProps } from "../components/ActionButton/index.tsx";
 import { AppOpDetail } from "../impl/tools/d_meta.tsx";
+import { OpButtonStyleProps } from "../pages/WorkBench/FixedLayout/Main/Center/sub/center-view/Transformer/index.tsx";
 
 export * from './constants';
 export type OnProcessFnType = (throttledType?: boolean) => void
 export type CommonTransformerPassProp = {
+  activeOpBtn: OpButtonStyleProps | undefined,
+  otherOpBtns: OpButtonStyleProps[],
   subControlbarTools: AppOpDetail[],
   hideRelatedToolsBar: TrueFalseType,
   fn_isSidebarMenuOpModeNow: (commonPassProp: CommonTransformerPassProp) => any,

@@ -3,6 +3,7 @@ import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils.tsx";
 import Operation from "../../core/Operation.tsx";
 import hashfn from "./conversion/MD4.tsx";
 import { ToolHandler, ToolMetaInfo } from "../r_handler.tsx";
+import { AppOpFnMapTypeKeys } from "../g_optlist.tsx";
 
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
@@ -14,10 +15,10 @@ export default class Base64Handler extends ToolHandler {
             ),
         }
     }
-    getOperations(): Operation[] {
+    getOperationsByName(): AppOpFnMapTypeKeys[] {
         return (
             [
-                new hashfn(),
+                "MD4",
             ]
         )
     }

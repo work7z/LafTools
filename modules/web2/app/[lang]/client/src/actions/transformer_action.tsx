@@ -83,7 +83,7 @@ export let ACTION_Transformer_Process_Text = (obj: PassType): any => {
             let recipeConfigs: RecipeConfig[] = []
             let operaList: Operation[] = [crtDefaultOpera,]
             for (let eachOp of operaList) {
-                let crtPipeMapItem = obj.commonPassProp.crtToolCfg?.pipemap[eachOp.getOptDetail().id]
+                let crtPipeMapItem = obj.commonPassProp.crtToolCfg?.pipemap[eachOp.fileID]
                 // we use default value from config first
                 let dftArgsValueArr_from_config = fn_defaultArgValues_fromConfig(eachOp.getOptDetail().config.args || [])
                 let argsValueArr: any[] = dftArgsValueArr_from_config

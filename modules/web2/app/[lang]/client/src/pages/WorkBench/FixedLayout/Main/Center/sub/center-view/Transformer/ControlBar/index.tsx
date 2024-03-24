@@ -27,7 +27,7 @@ import gutils from "../../../../../../../../../utils/GlobalUtils";
 import CopyButton from "../../../../../../../../../components/CopyButton";
 import { ActionButtonProps } from "../../../../../../../../../components/ActionButton";
 import ParamStateSlice, { TrueFalseType } from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
-import { useShouldVerticalModeOrNot } from "..";
+import { OpButtonStyleProps, useShouldVerticalModeOrNot } from "..";
 import { js_export_trigger } from "@/app/[lang]/client/src/utils/FileExportUtils";
 import { ICON_BTN_TRIGGER_FN } from "@/app/__CORE__/meta/constants";
 import { InnerToolPanel } from "../../../../nav/functional/panel-group/panels/ToolPanel";
@@ -42,6 +42,22 @@ export let useHideBottomAndSettingHook = () => {
         };
     })
 
+}
+
+export const CommonButtonForOriginRelatedAndOthers = (props: {
+    opBtns: OpButtonStyleProps[]
+}) => {
+    return <>
+        {
+            _.map(props.opBtns, x => {
+                if (!x) {
+                    return ''
+                }
+                return x.name;
+                // return fn_format_button("bottom-start")(x)
+            })
+        }
+    </>
 }
 
 let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic: boolean } & TextTransformerProps & TransformerWithRuntime & {
@@ -79,42 +95,45 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 );
             }
         },
-        ...(
-            operaList
-        ).map(x => {
-            let optDetail = x.getOptDetail()
-            let crtId = optDetail?.id;
-            let crtDesc = optDetail?.optDescription
-            let crtName = optDetail?.optName || x.name
-            let isHighlightOne = crtId == crtDefaultOperaId && !(
-                props.crtSideMenuOpera && props.crtSideMenuOperaId
-            ) && !props.loadingExtraOpList;
-            return {
-                text: crtName,
-                icon: ICON_BTN_TRIGGER_FN,
-                intent: "primary",
-                title: crtDesc,
-                afterTitle: crtDesc,
-                enableActionMode: true,
-                afterText: crtName,
-                lastingTime: 800,
-                doNotBeMinimalWhenTrigger: true,
-                parentTriggered: parentTriggered,
-                highlightOne: isHighlightOne,
-                outlined: !isHighlightOne,
-                // minimal: !isHighlightOne,
-                minimal: false,
-                onClick: () => {
-                    props.fn_updateToolConfig({
-                        sideOpId: '',
-                        dftOpId: crtId
-                    })
-                    setTimeout(() => {
-                        props.onProcess()
-                    }, 0)
-                },
-            } satisfies ActionButtonProps
-        }) satisfies ActionButtonProps[],
+        // ...(
+        //     operaList
+        // ).map(x => {
+        //     let optDetail = x.getOptDetail()
+        //     let crtId = optDetail?.id;
+        //     let crtDesc = optDetail?.optDescription
+        //     let crtName = optDetail?.optName || x.name
+        //     let isHighlightOne = crtId == crtDefaultOperaId && !(
+        //         props.crtSideMenuOpera && props.crtSideMenuOperaId
+        //     ) && !props.loadingExtraOpList;
+        //     return {
+        //         text: crtName,
+        //         icon: ICON_BTN_TRIGGER_FN,
+        //         intent: "primary",
+        //         title: crtDesc,
+        //         afterTitle: crtDesc,
+        //         enableActionMode: true,
+        //         afterText: crtName,
+        //         lastingTime: 800,
+        //         doNotBeMinimalWhenTrigger: true,
+        //         parentTriggered: parentTriggered,
+        //         highlightOne: isHighlightOne,
+        //         outlined: !isHighlightOne,
+        //         // minimal: !isHighlightOne,
+        //         minimal: false,
+        //         onClick: () => {
+        //             props.fn_updateToolConfig({
+        //                 sideOpId: '',
+        //                 dftOpId: crtId
+        //             })
+        //             setTimeout(() => {
+        //                 props.onProcess()
+        //             }, 0)
+        //         },
+        //     } satisfies ActionButtonProps
+        // }) satisfies ActionButtonProps[],
+
+    ];
+    let leftActions_2: ActionButtonProps[] = [
         {
             icon: shouldVerticalMode ? 'swap-vertical' : 'swap-horizontal',
             text: Dot("PkIRx3hFD", "Swap"),
@@ -198,9 +217,12 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 }
             }
         ] : []) satisfies ActionButtonProps[]
-    ];
+    ]
     if (props.loadingStatic) {
         leftActions.forEach(x => {
+            x.loading = true;
+        })
+        leftActions_2.forEach(x => {
             x.loading = true;
         })
     }
@@ -342,6 +364,12 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
         >
             <div className={controlClz}>
                 {leftActions.map(fn_format_button("bottom-start"))}
+                {
+                    props.activeOpBtn ?
+                        <CommonButtonForOriginRelatedAndOthers opBtns={[props.activeOpBtn]} />
+                        : ''
+                }
+                {leftActions_2.map(fn_format_button("bottom-start"))}
             </div>
             <div className={controlClz}>
                 <CopyButton

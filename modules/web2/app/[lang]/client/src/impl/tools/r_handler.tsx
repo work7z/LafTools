@@ -22,6 +22,8 @@ import Operation from "../core/Operation.tsx";
 import { CodeImplMap } from "./code/types.tsx";
 import { FAQItem } from "./faq/types.tsx";
 import appToolInfoObj from "./d_meta.tsx";
+import { AppOpFnMapTypeKeys } from "./g_optlist.tsx";
+import _ from "lodash";
 
 export type ShowExampleType = "text-short" | "text-medium" | "text-long" | "js-short" | "js-medium" | "css-short"
 
@@ -33,9 +35,17 @@ export type ToolMetaInfo = {
 }
 
 export abstract class ToolHandler {
+    loadedOps: { [key in AppOpFnMapTypeKeys]?: Operation } = {}
+
     id: string = "";
     abstract getMetaInfo(): ToolMetaInfo;
-    abstract getOperations(): Operation[];
+    abstract getOperationsByName(): AppOpFnMapTypeKeys[]
+    getOperations = (): Operation[] => {
+        return _.values(this.loadedOps)
+    }
+    addOperation(name: string, nameFN: Operation) {
+        this.loadedOps[name] = nameFN;
+    }
     getFAQ = async (): Promise<() => FAQItem[]> => {
         let o = appToolInfoObj[this.id]
         if (!o.ImportFAQ) {

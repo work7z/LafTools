@@ -234,12 +234,11 @@ export type AppOpDetail = {
 
 export type AppOpFnMapType = { [key: string]: (p: { Dot: DotType }) => AppOpDetail }
 
-export const TOOL_CONVER_FILENAME_TO_ID_MAP: { [key: string]: string } = {}
 
 export let loadConversionTSXById = async (id: string): Promise<Operation> => {
     let a = await import(`./impl/conversion/${id}.tsx`)
     let o: Operation = new a['default']()
-    TOOL_CONVER_FILENAME_TO_ID_MAP[id] = o.getOptDetail().id
+    o.fileID = id;
     return o
 }
 

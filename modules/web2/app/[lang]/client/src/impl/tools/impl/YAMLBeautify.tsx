@@ -3,6 +3,7 @@ import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils.tsx";
 import Operation from "../../core/Operation.tsx";
 import yaml from "./conversion/YAMLBeautify.tsx";
 import { ToolHandler, ToolMetaInfo } from "../r_handler.tsx";
+import { AppOpFnMapTypeKeys } from "../g_optlist.tsx";
 
 
 
@@ -18,10 +19,10 @@ export default class YamlHandler extends ToolHandler {
             hideCodePanel: true,
         }
     }
-    getOperations(): Operation[] {
+    getOperationsByName(): AppOpFnMapTypeKeys[] {
         return (
             [
-                new yaml(),
+                "YAMLBeautify",
             ]
         )
     }

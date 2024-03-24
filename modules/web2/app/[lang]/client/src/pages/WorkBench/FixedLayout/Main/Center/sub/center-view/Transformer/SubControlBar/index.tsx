@@ -35,8 +35,9 @@ import { AppOptFnMap, appTool2PageMap, getAppOptFnMap } from "@/app/[lang]/clien
 import { fmtURL_ToolSubPageClient } from "@/app/__CORE__/meta/client";
 import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
 import Operation from "@/app/[lang]/client/src/impl/core/Operation";
-import { AppOpDetail, AppOpFnMapType, AppToolConversionIdCollectionSet, TOOL_CONVER_FILENAME_TO_ID_MAP } from "@/app/[lang]/client/src/impl/tools/d_meta";
+import { AppOpDetail, AppOpFnMapType, AppToolConversionIdCollectionSet } from "@/app/[lang]/client/src/impl/tools/d_meta";
 import { ActionListViewButton } from "../SideMenu/ActionListView";
+import { CommonButtonForOriginRelatedAndOthers } from "../ControlBar";
 export let useHideBottomAndSettingHook = () => {
     return exportUtils.useSelector((x) => {
         return {
@@ -80,7 +81,6 @@ export let useHideRelatedToolsbarAndRelatedSubControllbar = (op: {
             },
             ...subControlbarTools
         ]
-
     }
     let duplicateId = {}
     subControlbarTools = subControlbarTools.filter(x => {
@@ -89,9 +89,9 @@ export let useHideRelatedToolsbarAndRelatedSubControllbar = (op: {
         }
         duplicateId[x.optOptionalId + ""] = true
         let f = op.operaList.find(xx => {
-            let optd = xx.getOptDetail().id;
+            let optd = xx.fileID;
             return optd == x.optOptionalId || (
-                optd == TOOL_CONVER_FILENAME_TO_ID_MAP[x.optOptionalId + ""] + ""
+                optd == x.optOptionalId + ""
             )
         })
         if (f) {
@@ -205,6 +205,9 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
             <div className={controlClz}>
                 {leftActions.map(fn_format_button("bottom-start"))}
                 {
+                    <CommonButtonForOriginRelatedAndOthers opBtns={props.otherOpBtns || []} />
+                }
+                {/* {
                     props.subControlbarTools.map(x => {
                         return <ActionListViewButton
                             {...props}
@@ -225,7 +228,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                             }
                         />
                     })
-                }
+                } */}
             </div>
             <div className={controlClz}>
                 {rightActions.map(fn_format_button("bottom-end"))}
