@@ -45,7 +45,7 @@ class FromHex extends Operation {
       infoURL: "https://wikipedia.org/wiki/Hexadecimal",
       exampleInput: 'ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a',
       exampleOutput: 'ÎÎµÎ¹Î¬ ÏÎ¿Ï',
-      id: 'fromhex',
+      nousenouseID: 'fromhex',
       config: {
         "module": "Default",
         "description": "Converts a hexadecimal byte string back into its raw value.<br><br>e.g. <code>ce 93 ce b5 ce b9 ce ac 20 cf 83 ce bf cf 85 0a</code> becomes the UTF-8 encoded string <code>Γειά σου</code>",

@@ -56,7 +56,7 @@ class YamlBeautify extends Operation {
           }
         ]
       },
-      id: 'yaml-beautify',
+      nousenouseID: 'yaml-beautify',
       optName: Dot("yaml.format.btn", "Format {0}", 'YAML'),
       infoURL: 'https://en.wikipedia.org/wiki/YAML',
       optDescription: Dot(

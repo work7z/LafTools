@@ -46,7 +46,7 @@ class MD4 extends Operation {
         "manualBake": false,
         "args": []
       },
-      id: 'md4',
+      nousenouseID: 'md4',
       optName: Dot("md4.text.192d3", "Generate {0} Hash", "MD4"),
       optDescription: Dot(
         "md4.desc.1039",

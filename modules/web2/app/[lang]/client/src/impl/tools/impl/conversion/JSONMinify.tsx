@@ -50,7 +50,7 @@ class JSONMinify extends Operation {
         "args": []
       },
       infoURL: 'https://www.json.org/',
-      id: 'json-minify',
+      nousenouseID: 'json-minify',
       optName: Dot("meeMC1Uk7.text.93kq", "Minify {0}", "JSON"),
       optDescription: Dot(
         "EO6Qv5dCA",

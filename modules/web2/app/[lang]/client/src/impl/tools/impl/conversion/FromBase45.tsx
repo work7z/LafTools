@@ -62,7 +62,7 @@ class FromBase45 extends Operation {
             },
 
             infoURL: "https://datatracker.ietf.org/doc/draft-faltstrom-base45/",
-            id: 'frombase45',
+            nousenouseID: 'frombase45',
             optName: Dot("rVqlu", "Decode {0}", "Base45"),
             optDescription: Dot(
                 "JiUE8",

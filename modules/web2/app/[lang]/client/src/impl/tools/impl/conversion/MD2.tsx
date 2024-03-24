@@ -55,7 +55,7 @@ class MD2 extends Operation {
         ]
       },
       infoURL: 'https://en.wikipedia.org/wiki/MD2_(cryptography)',
-      id: 'md2',
+      nousenouseID: 'md2',
       optName: Dot("md2.text.192d3", "Generate {0} Hash", "MD2"),
       optDescription: Dot(
         "md2.desc.1039",

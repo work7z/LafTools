@@ -56,7 +56,7 @@ class FromBase62 extends Operation {
             },
             infoURL: "https://en.wikipedia.org/wiki/Base62",
 
-            id: 'frombase58',
+            nousenouseID: 'frombase58',
             optName: Dot("L9bQku", "Decode {0}", "Base62"),
             optDescription: Dot(
                 "JdqiUE8",

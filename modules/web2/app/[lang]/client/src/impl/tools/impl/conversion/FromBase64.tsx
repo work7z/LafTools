@@ -286,7 +286,7 @@ class FromBase64 extends Operation {
           }
         ]
       },
-      id: 'frombase64',
+      nousenouseID: 'frombase64',
       infoURL: "https://en.wikipedia.org/wiki/Base64",
       optName: Dot("rVqlu", "Decode {0}", "Base64"),
       optDescription: Dot(

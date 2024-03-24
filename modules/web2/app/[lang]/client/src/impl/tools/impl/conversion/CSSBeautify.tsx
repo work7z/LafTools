@@ -55,7 +55,7 @@ class CSSBeautify extends Operation {
                     }
                 ]
             },
-            id: 'cssbeautify',
+            nousenouseID: 'cssbeautify',
             optName: Dot("3TMOUkhZl", "Format {0}", "CSS"),
             optDescription: Dot(
                 "md2aO2NaJITm",

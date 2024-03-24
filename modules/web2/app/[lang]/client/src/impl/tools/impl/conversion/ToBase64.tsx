@@ -121,7 +121,7 @@ class ToBase64 extends Operation {
           }
         ]
       },
-      id: 'tobase64',
+      nousenouseID: 'tobase64',
       optName: Dot("M3ytc", "Encode {0}", "Base64"),
       optDescription: Dot(
         "BGd7P9",

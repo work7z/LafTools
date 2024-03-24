@@ -69,7 +69,7 @@ class FromBase32 extends Operation {
             },
             infoURL: "https://en.wikipedia.org/wiki/Base32",
 
-            id: 'frombase32',
+            nousenouseID: 'frombase32',
             optName: Dot("rVdu", "Decode {0}", "Base32"),
             optDescription: Dot(
                 "JiUE8",

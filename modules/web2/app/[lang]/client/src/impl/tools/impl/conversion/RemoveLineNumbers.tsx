@@ -44,7 +44,7 @@ class RemoveLineNumbers extends Operation {
         "manualBake": false,
         "args": []
       },
-      id: 'removelinenumbers',
+      nousenouseID: 'removelinenumbers',
       optName: Dot("OrCD8PqwH", "Remove line numbers"),
       infoURL: "https://en.wikipedia.org/wiki/Line_number",
       optDescription: Dot("Vc40-vfod", "Removes line numbers from the output if they can be trivially detected."),

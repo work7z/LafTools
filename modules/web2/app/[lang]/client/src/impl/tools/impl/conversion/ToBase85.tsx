@@ -72,7 +72,7 @@ class ToBase85 extends Operation {
                     }
                 ]
             },
-            id: 'tobase85',
+            nousenouseID: 'tobase85',
             infoURL: 'https://en.wikipedia.org/wiki/Ascii85',
             optName: Dot("M3ytc", "Encode {0}", "Base85"),
             optDescription: Dot(

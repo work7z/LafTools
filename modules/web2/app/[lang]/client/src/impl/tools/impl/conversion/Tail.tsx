@@ -67,7 +67,7 @@ class Tail extends Operation {
       },
       optDescription: Dot("2Va7Txc-V", "Like the UNIX tail utility.<br>Gets the last n lines.<br>Optionally you can select all lines after line n by entering a negative value for n.<br>The delimiter can be changed so that instead of lines, fields (i.e. commas) are selected instead."),
       infoURL: "https://wikipedia.org/wiki/Tail_(Unix)",
-      id: 'tail',
+      nousenouseID: 'tail',
       optName: Dot("y46w7Q9TH", "Tail"),
       exampleInput: "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12",
       exampleOutput: "3\n4\n5\n6\n7\n8\n9\n10\n11\n12",

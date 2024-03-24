@@ -75,7 +75,7 @@ class RemoveWhitespace extends Operation {
           }
         ]
       },
-      id: 'removewhitespace',
+      nousenouseID: 'removewhitespace',
       optName: Dot("U-SKci0LP", "Remove whitespace"),
       infoURL: "https://en.wikipedia.org/wiki/Whitespace_character",
       optDescription: Dot("8hlgTVznY", "Optionally removes all spaces, carriage returns, line feeds, tabs and form feeds from the input data.<br><br>This operation also supports the removal of full stops which are sometimes used to represent non-printable bytes in ASCII output."),

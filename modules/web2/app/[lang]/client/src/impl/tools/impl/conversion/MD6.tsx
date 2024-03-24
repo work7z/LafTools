@@ -64,7 +64,7 @@ class MD6 extends Operation {
         ]
       },
       infoURL: 'https://en.wikipedia.org/wiki/MD6',
-      id: 'md6',
+      nousenouseID: 'md6',
       optName: Dot("md6.text.192d3", "Generate {0} Hash", "MD6"),
       optDescription: Dot(
         "md6.desc.1039",

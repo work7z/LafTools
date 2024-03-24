@@ -75,7 +75,7 @@ class JavaScriptBeautify extends Operation {
                     }
                 ]
             },
-            id: 'jsbeautify',
+            nousenouseID: 'jsbeautify',
             infoURL: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
             optName: Dot("6UICxHdzVR.name", "Format {0}", "JavaScript"),
             optDescription: Dot(

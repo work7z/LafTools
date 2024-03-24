@@ -39,7 +39,7 @@ class FromBase58 extends Operation {
         return {
             relatedID: 'base58',
             infoURL: "https://en.wikipedia.org/wiki/Base58",
-            id: 'frombase58',
+            nousenouseID: 'frombase58',
             optName: Dot("L9qbQku", "Decode {0}", "Base58"),
             optDescription: Dot(
                 "JdqidUE8",

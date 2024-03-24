@@ -57,7 +57,7 @@ class SQLBeautify extends Operation {
                 ]
             },
             infoURL: "https://en.wikipedia.org/wiki/SQL",
-            id: "sql-beautify",
+            nousenouseID: "sql-beautify",
             optName: Dot("json-beautify.name.0912", "Format {0}", 'SQL'),
             optDescription: Dot(
                 "rE6fUsSGl",

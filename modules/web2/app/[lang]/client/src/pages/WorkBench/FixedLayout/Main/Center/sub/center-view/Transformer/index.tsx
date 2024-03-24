@@ -127,15 +127,15 @@ export default (props: CommonTransformerProps) => {
   })
   let [extraOpList, onExtraOpList] = useState<Operation[]>([])
   let [loadingExtraOpList, onLoadingExtraOpList] = useState(false)
-  let originalCrtDefaultOperaId = crtToolCfg && crtToolCfg.dftOpId || (operaList && operaList[0] && operaList[0].getOptDetail()?.id)
+  let originalCrtDefaultOperaId = crtToolCfg && crtToolCfg.dftOpId || (operaList && operaList[0] && operaList[0].fileID)
   let crtSideMenuOperaId = crtToolCfg && crtToolCfg.sideOpId
   let crtSideMenuOpera = useMemo(() => {
     return _.find((extraOpList || []), (x: Operation) =>
-      x.getOptDetail()?.id == crtSideMenuOperaId + "")
+      x.fileID == crtSideMenuOperaId + "")
   }, [crtSideMenuOperaId, extraOpList])
 
   let { crtDefaultOpera, originalCrtDefaultOpera, actualCrtDefaultOperaId } = useMemo(() => {
-    let r = _.find((operaList || []), x => x.getOptDetail()?.id === originalCrtDefaultOperaId) || (
+    let r = _.find((operaList || []), x => x.fileID === originalCrtDefaultOperaId) || (
       _.first(operaList)
     )
     let isSideMenuOperaMode = crtSideMenuOperaId && crtSideMenuOpera && !loadingExtraOpList
@@ -259,98 +259,114 @@ export default (props: CommonTransformerProps) => {
 
   // START: get active operation and other alternative operations
   // get active operation and other alternative operations
-  let allOpBtns: OpButtonStyleProps[] = [];
-  // operaList
-  // originalCrtDefaultOpera?.getOptDetail().relatedID
-  // op.crtSideMenuOpera && op.crtSideMenuOperaId
-  let parentTriggered = crtRuntimeStatus && (crtRuntimeStatus.processOK || crtRuntimeStatus.processing);
-  (operaList || [])?.forEach((x: Operation) => {
-    let optDetail = x.getOptDetail()
-    let crtId = x?.fileID;
-    let crtDesc = optDetail?.optDescription
-    let crtName = optDetail?.optName || x.name
-    // let isHighlightOne = crtId == crtDefaultOperaId && !(
-    //   props.crtSideMenuOpera && props.crtSideMenuOperaId
-    // ) && !props.loadingExtraOpList;
-    allOpBtns.push({
-      type: 'origin',
-      name: crtName,
-      desc: crtDesc,
-      opId: crtId,
-      isParentTrigger: parentTriggered || false,
-      // isCurrent: isHighlightOne,
-      // onClick: () => {
-      //   props.fn_updateToolConfig({
-      //     sideOpId: '',
-      //     dftOpId: crtId
-      //   })
-      //   setTimeout(() => {
-      //     props.onProcess()
-      //   }, 0)
-      // }
-    })
-  })
-  let fnmap = getAppOptFnMap()
-  let relatedID = originalCrtDefaultOpera?.getOptDetail().relatedID
-  if (relatedID) {
-    let arr = AppToolConversionIdCollectionSet[relatedID]
-    arr.map(x => {
-      return {
-        ...fnmap[x]({ Dot }),
-        optOptionalId: x
-      } satisfies AppOpDetail
-    }).forEach((x: AppOpDetail) => {
-      allOpBtns.push({
-        opId: formattedOpId(x.optOptionalId),
-        type: 'related',
-        name: x.optName,
-        desc: x.optDescription,
-        isParentTrigger: parentTriggered || false,
-      })
-    });
-  }
-  let isCurrentMenuOperationMode = crtSideMenuOpera && crtSideMenuOperaId
-  if (isCurrentMenuOperationMode) {
-    let arr = [
-      {
-        ...fnmap[crtSideMenuOperaId + ""]({ Dot }),
-        optOptionalId: crtSideMenuOperaId,
-      },
-    ] satisfies AppOpDetail[]
-    arr.map(x => {
-      return {
-        ...fnmap[crtSideMenuOperaId + ""]({ Dot }),
-        optOptionalId: crtSideMenuOperaId + ""
-      } satisfies AppOpDetail
-    }).forEach((x: AppOpDetail) => {
-      allOpBtns.push({
-        opId: formattedOpId(crtSideMenuOperaId),
-        type: 'sidebar',
-        name: x.optName,
-        desc: x.optDescription,
-        isParentTrigger: parentTriggered || false,
-      })
-    });
-  }
-  // filter it
-  let duplicateObj = {}
-  allOpBtns = allOpBtns.filter(x => {
-    let crtOpId = formattedOpId(x.opId + "")
-    if (duplicateObj[crtOpId]) {
-      return false
-    }
-    duplicateObj[crtOpId + ""] = true
-    return true
-  })
-  let activeOpBtn = _.find(allOpBtns, x => x.opId == actualCrtDefaultOperaId)
-  let otherOpBtns = _.filter(allOpBtns, x => formattedOpId(x.opId) != formattedOpId(actualCrtDefaultOperaId))
-  console.log('otherOpBtns', {
-    allOpBtns,
-    actualCrtDefaultOperaId,
+  let {
     otherOpBtns,
     activeOpBtn
-  })
-  debugger;
+  } = useMemo(() => {
+    let allOpBtns: OpButtonStyleProps[] = [];
+    // operaList
+    // originalCrtDefaultOpera?.getOptDetail().relatedID
+    // op.crtSideMenuOpera && op.crtSideMenuOperaId
+    let parentTriggered = crtRuntimeStatus && (crtRuntimeStatus.processOK || crtRuntimeStatus.processing);
+    (operaList || [])?.forEach((x: Operation) => {
+      let optDetail = x.getOptDetail()
+      let crtId = x?.fileID;
+      let crtDesc = optDetail?.optDescription
+      let crtName = optDetail?.optName || x.name
+      // let isHighlightOne = crtId == crtDefaultOperaId && !(
+      //   props.crtSideMenuOpera && props.crtSideMenuOperaId
+      // ) && !props.loadingExtraOpList;
+      allOpBtns.push({
+        type: 'origin',
+        name: crtName,
+        desc: crtDesc,
+        opId: crtId,
+        isParentTrigger: parentTriggered || false,
+        // isCurrent: isHighlightOne,
+        // onClick: () => {
+        //   props.fn_updateToolConfig({
+        //     sideOpId: '',
+        //     dftOpId: crtId
+        //   })
+        //   setTimeout(() => {
+        //     props.onProcess()
+        //   }, 0)
+        // }
+      })
+    })
+    let fnmap = getAppOptFnMap()
+    let relatedID = originalCrtDefaultOpera?.getOptDetail().relatedID
+    if (relatedID) {
+      let arr = AppToolConversionIdCollectionSet[relatedID]
+      arr.map(x => {
+        return {
+          ...fnmap[x]({ Dot }),
+          optOptionalId: x
+        } satisfies AppOpDetail
+      }).forEach((x: AppOpDetail) => {
+        allOpBtns.push({
+          opId: formattedOpId(x.optOptionalId),
+          type: 'related',
+          name: x.optName,
+          desc: x.optDescription,
+          isParentTrigger: parentTriggered || false,
+        })
+      });
+    }
+    let isCurrentMenuOperationMode = crtSideMenuOpera && crtSideMenuOperaId
+    if (isCurrentMenuOperationMode) {
+      let arr = [
+        {
+          ...fnmap[crtSideMenuOperaId + ""]({ Dot }),
+          optOptionalId: crtSideMenuOperaId,
+        },
+      ] satisfies AppOpDetail[]
+      arr.map(x => {
+        return {
+          ...fnmap[crtSideMenuOperaId + ""]({ Dot }),
+          optOptionalId: crtSideMenuOperaId + ""
+        } satisfies AppOpDetail
+      }).forEach((x: AppOpDetail) => {
+        allOpBtns.push({
+          opId: formattedOpId(crtSideMenuOperaId),
+          type: 'sidebar',
+          name: x.optName,
+          desc: x.optDescription,
+          isParentTrigger: parentTriggered || false,
+        })
+      });
+    }
+    // filter it
+    let duplicateObj = {}
+    allOpBtns = allOpBtns.filter(x => {
+      let crtOpId = formattedOpId(x.opId + "")
+      if (duplicateObj[crtOpId]) {
+        return false
+      }
+      duplicateObj[crtOpId + ""] = true
+      return true
+    })
+    let activeOpBtn = _.find(allOpBtns, x => x.opId == actualCrtDefaultOperaId)
+    let otherOpBtns = _.filter(allOpBtns, x => formattedOpId(x.opId) != formattedOpId(actualCrtDefaultOperaId))
+    console.log('otherOpBtns', {
+      actualCrtDefaultOperaId,
+      otherOpBtns,
+      activeOpBtn
+    })
+    return {
+      otherOpBtns,
+      activeOpBtn
+    }
+  }, [
+    crtRuntimeStatus,
+    crtDefaultOpera,
+    crtSideMenuOpera,
+    crtSideMenuOperaId,
+    operaList,
+    loadingExtraOpList,
+    originalCrtDefaultOpera,
+    originalCrtDefaultOperaId,
+  ])
   // END: get active operation and other alternative operations
 
   let commonPassProp: CommonTransformerPassProp = {
@@ -386,7 +402,7 @@ export default (props: CommonTransformerProps) => {
       fn_notifyTextChange(false)
     }
   }, [triggerProcessCtn])
-
+  // TODO: keep last 5 operation for better usage
   let crtOptMode: AppOptViewMode = ((): AppOptViewMode => {
     return "float"
   })()

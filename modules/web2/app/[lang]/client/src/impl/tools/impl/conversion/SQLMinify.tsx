@@ -49,7 +49,7 @@ class SQLMinify extends Operation {
         "manualBake": false,
         "args": []
       },
-      id: "sql-minify",
+      nousenouseID: "sql-minify",
       optName: Dot("6wdtJ4vmg.name.0912", "Minify {0}", "SQL"),
       optDescription: Dot(
         "LxaEFHbfa",

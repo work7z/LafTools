@@ -100,7 +100,7 @@ class FromBase85 extends Operation {
             },
 
 
-            id: 'frombase85',
+            nousenouseID: 'frombase85',
             infoURL: "https://en.wikipedia.org/wiki/Ascii85",
             optName: Dot("rVqlu", "Decode {0}", "Base85"),
             optDescription: Dot(

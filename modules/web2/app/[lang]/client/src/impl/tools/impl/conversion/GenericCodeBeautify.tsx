@@ -49,7 +49,7 @@ class GenericCodeBeautify extends Operation {
                 "args": []
             },
             infoURL: 'https://en.wikipedia.org/wiki/Code_beautification',
-            id: 'generic-code-beautify',
+            nousenouseID: 'generic-code-beautify',
             optName: Dot("generic-NI-UFPTe0", "Beautify Generic Code"),
             optDescription: Dot(
                 "generic-code-beautify.desc.2b3c",

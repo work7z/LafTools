@@ -1,5 +1,5 @@
 
-import { Alignment, Button, ButtonProps, Navbar, Popover, Tab, Tabs, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, ButtonProps, Intent, Navbar, Popover, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../../components/GenCodeMirror";
 import {
     VAL_CSS_TAB_TITLE_PANEL,
@@ -46,8 +46,10 @@ export let useHideBottomAndSettingHook = () => {
 }
 
 export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRuntime & CommonTransformerPassProp & {
-    opBtns: OpButtonStyleProps[]
+    opBtns: OpButtonStyleProps[],
+    mainControlBarMode: boolean
 }) => {
+    let whatIntent: Intent = props.mainControlBarMode ? 'primary' : 'success'
     return <>
         {
             _.map(props.opBtns, x => {
@@ -58,11 +60,11 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                     let crtId = x.opId
                     let crtDesc = x.desc
                     let crtName = x.name
-                    let isHighlightOne = false;
+                    let isHighlightOne = props.mainControlBarMode;
                     let obj = {
                         text: crtName,
                         icon: ICON_BTN_TRIGGER_FN,
-                        intent: "primary",
+                        intent: whatIntent,
                         title: crtDesc,
                         afterTitle: crtDesc,
                         enableActionMode: true,
@@ -97,7 +99,7 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                                 sortType: 0,
                                 description: x.desc,
                                 id: x.opId || 'XfXWUnI2v',
-                                intent: 'success',
+                                intent: whatIntent,
                                 icon: ICON_BTN_TRIGGER_FN,
                                 label: x.name,
                                 twBgClz: '',
@@ -418,7 +420,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 {leftActions.map(fn_format_button("bottom-start"))}
                 {
                     props.activeOpBtn ?
-                        <CommonButtonForOriginRelatedAndOthers {...props} opBtns={[props.activeOpBtn]} />
+                        <CommonButtonForOriginRelatedAndOthers mainControlBarMode {...props} opBtns={[props.activeOpBtn]} />
                         : ''
                 }
                 {leftActions_2.map(fn_format_button("bottom-start"))}

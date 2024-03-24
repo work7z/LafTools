@@ -205,7 +205,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
             <div className={controlClz}>
                 {leftActions.map(fn_format_button("bottom-start"))}
                 {
-                    <CommonButtonForOriginRelatedAndOthers {...props} opBtns={props.otherOpBtns || []} />
+                    <CommonButtonForOriginRelatedAndOthers mainControlBarMode={false} {...props} opBtns={props.otherOpBtns || []} />
                 }
                 {/* {
                     props.subControlbarTools.map(x => {

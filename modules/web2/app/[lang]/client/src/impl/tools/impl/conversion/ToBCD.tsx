@@ -86,7 +86,7 @@ class ToBCD extends Operation {
         ]
       },
       optName: "To BCD",
-      id: 'tobcd',
+      nousenouseID: 'tobcd',
       infoURL: "https://wikipedia.org/wiki/Binary-coded_decimal",
       optDescription: Dot("98KcL", "Converts a decimal number to Binary-Coded Decimal (BCD)."),
       exampleInput: "1234",

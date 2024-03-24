@@ -50,7 +50,7 @@ class JavaScriptMinify extends Operation {
         "manualBake": false,
         "args": []
       },
-      id: 'jsminify',
+      nousenouseID: 'jsminify',
       optName: Dot("e3WgQaZlb", "Compresses {0}", "JavaScript"),
       optDescription: Dot(
         "ojCWEFdVe",

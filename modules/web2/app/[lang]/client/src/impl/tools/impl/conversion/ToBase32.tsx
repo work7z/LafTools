@@ -52,7 +52,7 @@ class ToBase32 extends Operation {
                     }
                 ]
             },
-            id: 'tobase32',
+            nousenouseID: 'tobase32',
             infoURL: "https://wikipedia.org/wiki/Base32",
             optName: Dot("M3ytc", "Encode {0}", "Base32"),
             optDescription: Dot(

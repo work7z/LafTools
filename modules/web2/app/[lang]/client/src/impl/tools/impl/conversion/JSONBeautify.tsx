@@ -68,7 +68,7 @@ class JSONBeautify extends Operation {
                     }
                 ]
             },
-            id: 'json-beautify',
+            nousenouseID: 'json-beautify',
             optName: Dot("json-beautify.text.93kq", "Format {0}", 'JSON'),
             optDescription: Dot(
                 "json-beautify.desc.0912",

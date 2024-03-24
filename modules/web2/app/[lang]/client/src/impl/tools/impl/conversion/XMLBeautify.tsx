@@ -55,7 +55,7 @@ class XMLBeautify extends Operation {
                     }
                 ]
             },
-            id: 'xml-beautify',
+            nousenouseID: 'xml-beautify',
             optName: Dot("yMZW-GEgf", "Format {0}", 'XML'),
             infoURL: 'https://en.wikipedia.org/wiki/XML',
             optDescription: Dot(

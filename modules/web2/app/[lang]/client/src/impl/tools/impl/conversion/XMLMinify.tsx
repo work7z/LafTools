@@ -55,7 +55,7 @@ class XMLMinify extends Operation {
           }
         ]
       },
-      id: 'xml-minify',
+      nousenouseID: 'xml-minify',
       optName: Dot("yMZW-GEgf", "Format XML"),
       infoURL: 'https://en.wikipedia.org/wiki/XML',
       optDescription: Dot(

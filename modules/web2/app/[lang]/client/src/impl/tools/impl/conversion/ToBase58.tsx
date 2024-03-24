@@ -63,7 +63,7 @@ class ToBase58 extends Operation {
                     }
                 ]
             },
-            id: 'base58',
+            nousenouseID: 'base58',
             infoURL: 'https://en.wikipedia.org/wiki/Base58',
             optName: Dot("M3qytc", "Encode {0}", "Base58"),
             optDescription: Dot(

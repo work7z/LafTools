@@ -54,7 +54,7 @@ class ToBase62 extends Operation {
                     }
                 ]
             },
-            id: 'tobase62',
+            nousenouseID: 'tobase62',
             optName: Dot("M3ytc", "Encode {0}", "Base62"),
             optDescription: Dot(
                 "BGd7dP9",

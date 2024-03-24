@@ -48,7 +48,7 @@ export type OptDetail = {
   exampleOutput: string;
   infoURL: string;
   optDescription: string;
-  id: string;
+  nousenouseID: string;
   optName: string;
   config: ModuleConfig
   relatedID: AppToolConversionIdCollectionSetType

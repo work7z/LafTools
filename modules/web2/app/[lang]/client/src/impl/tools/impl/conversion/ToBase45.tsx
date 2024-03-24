@@ -54,7 +54,7 @@ class ToBase45 extends Operation {
                 ]
             },
             infoURL: 'https://datatracker.ietf.org/doc/draft-faltstrom-base45/',
-            id: 'base45',
+            nousenouseID: 'base45',
             optName: Dot("M3ytc", "Encode {0}", "Base45"),
             optDescription: Dot(
                 "BGd7dP9",

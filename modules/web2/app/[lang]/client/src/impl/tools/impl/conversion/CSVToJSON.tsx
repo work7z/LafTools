@@ -67,7 +67,7 @@ class CSVToJSON extends Operation {
           }
         ]
       },
-      id: "CSVToJSON",
+      nousenouseID: "CSVToJSON",
       optName: Dot("tZINaUR4b", "CSV to JSON"),
       optDescription: Dot("raTAuBwBz", "Converts a CSV file to JSON format."),
       infoURL: "https://wikipedia.org/wiki/Comma-separated_values",

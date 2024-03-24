@@ -56,7 +56,7 @@ class CSSMinify extends Operation {
         ]
       },
       infoURL: "https://www.w3.org/Style/CSS/",
-      id: 'cssminify',
+      nousenouseID: 'cssminify',
       optName: Dot("-nL_B5PoN", "Compresses {0}", "CSS"),
       optDescription: Dot(
         "Y__Zb1_4Q",

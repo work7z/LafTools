@@ -47,7 +47,7 @@ class MD5 extends Operation {
         "args": []
       },
       infoURL: 'https://en.wikipedia.org/wiki/MD5',
-      id: 'md5',
+      nousenouseID: 'md5',
       optName: Dot("md5.textiDjMIo", "Generate {0} Hash", "MD5"),
       optDescription: Dot(
         "md5.desc.rxsHq",
