@@ -180,9 +180,8 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                             let isNumber = type == "number"
                             let hasShort = type.indexOf("short") > -1 || type.indexOf("Short") > -1
                             let value = ifnil(state_currentValue, _defaultValue)
-                            let onchg = (e) => {
+                            let onChange = (e) => {
                                 updateValueToState(e.target.value)
-                                // props.onProcess()
                             }
                             generalList.push({
                                 label: name,
@@ -191,11 +190,11 @@ export let useGeneralListRead = (props: ProcessPanelProps) => {
                                     inputProps: {
                                         type: isNumber ? "number" : "text",
                                         value: value,
-                                        onChange: onchg,
+                                        onChange: onChange,
                                         fill: !hasShort
                                     },
                                     value: value,
-                                    onChange: onchg
+                                    onChange: onChange
                                 },
                             })
                         }
