@@ -35,7 +35,6 @@ import { ALPHABET_OPTIONS, fromBase64 } from "../../../core/lib/Base64.mjs";
 class FromBase64 extends Operation {
   public getOptDetail(): OptDetail {
     return {
-
       relatedID: 'base64',
       config: {
         "module": "Default",

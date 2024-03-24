@@ -8,7 +8,7 @@ import gutils from '../../../../../../../../../utils/GlobalUtils'
 import { Dot } from '../../../../../../../../../utils/cTranslationUtils'
 import { usePromiseWait } from '../hooks'
 import _ from 'lodash'
-import { AnchorButton, Button, Callout, InputGroup, Intent, SegmentedControl, Tabs, Tooltip } from '@blueprintjs/core'
+import { AnchorButton, Button, Callout, InputGroup, Intent, Placement, SegmentedControl, Tabs, Tooltip } from '@blueprintjs/core'
 import { CodeImplDetail, CodeImplMap, program_languages } from '@/app/[lang]/client/src/impl/tools/code/types'
 import GenCodeMirror from '../../../../../../../../../components/GenCodeMirror'
 import exportUtils from '../../../../../../../../../utils/ExportUtils'
@@ -54,37 +54,47 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
                 }
                 {
                     _.map(filteredOpDetails, (x, d) => {
-                        let isCurrent = x.id == props.crtSideMenuOperaId
-                        let { twBgClz, twClz, intent } = x
-                        let whatIntent = intent;
-                        let isCurrentAndLoaded = isCurrent && !props.loadingExtraOpList
-                        if (isCurrentAndLoaded) {
-                            twClz = twBgClz
-                            if (twBgClz != '') {
-                                whatIntent = 'primary'
-                            }
-                            if (whatIntent == 'none') {
-                                whatIntent = 'primary'
-                            }
-                        }
-                        return <Tooltip content={
-                            <div style={{
-                                maxWidth: '400px'
-                            }} dangerouslySetInnerHTML={{ __html: x.description }}></div>
-                        } hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN} >
-                            <Button small loading={isCurrent && props.loadingExtraOpList} minimal={!isCurrent} className={twClz} style={{
-                            }} outlined={!isCurrent}
-                                // icon={
-                                //     isCurrentAndLoaded ? ICON_BTN_TRIGGER_FN : undefined
-                                // }
-                                intent={whatIntent} key={d} onClick={async () => {
-                                    await props.fn_switchToSideMenuExtraOp(x.id)
-                                    await props.onProcess()
-                                }}>{x.label}</Button>
-                        </Tooltip>
+                        return <ActionListViewButton noHighlightMode {...props} x={x} />
                     })
                 }
             </div>
         </div>
     )
+}
+
+export const ActionListViewButton = (props: CommonTransformerPassProp & TransformerWithRuntimeProp & {
+    x: OpDetail,
+    activeParentTrigger?: boolean,
+    noHighlightMode?: boolean,
+    placement?: Placement
+}) => {
+    let { x } = props;
+    let isCurrent = x.id == props.crtSideMenuOperaId
+    let { twBgClz, twClz, intent } = x
+    let whatIntent = intent;
+    let isCurrentAndLoaded = isCurrent && !props.loadingExtraOpList
+    if (isCurrentAndLoaded && !props.noHighlightMode) {
+        twClz = twBgClz
+        if (twBgClz != '') {
+            whatIntent = 'primary'
+        }
+        if (whatIntent == 'none') {
+            whatIntent = 'primary'
+        }
+    }
+
+    return <Tooltip placement={props.placement} content={
+        <div style={{
+            maxWidth: '400px'
+        }} dangerouslySetInnerHTML={{ __html: x.description }}></div>
+    } hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN} >
+        <Button icon={
+            props.activeParentTrigger ? 'tick' :
+                x.icon} small loading={isCurrent && props.loadingExtraOpList} minimal={props.noHighlightMode} className={twClz} style={{
+                }} outlined={!isCurrent}
+            intent={whatIntent} key={x.id} onClick={async () => {
+                await props.fn_switchToSideMenuExtraOp(x.id)
+                await props.onProcess()
+            }}>{x.label}</Button>
+    </Tooltip>
 }

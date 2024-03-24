@@ -37,7 +37,7 @@ import { ClientPortalContext } from '@/app/[lang]/client/src/pages/WorkBench/Fix
 
 let d = loadDOT("1RH8bdqw")
 export let getAppToolHeight = () => {
-    return 800
+    return 880
 }
 
 export default (props: { children: any }) => {

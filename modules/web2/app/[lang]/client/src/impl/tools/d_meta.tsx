@@ -227,6 +227,7 @@ export type AppToolConversionIdCollectionSetType = keyof typeof AppToolConversio
 export type AppToolKeyType = keyof typeof appToolInfoObj;
 
 export type AppOpDetail = {
+    optOptionalId?: string
     optName: string
     optDescription: string
 }

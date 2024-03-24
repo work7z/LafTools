@@ -60,6 +60,7 @@ export type ParamStateState = {
     hdbtpl: TrueFalseType; // hide bottom process panel or not 
     ltr: TrueFalseType; // left 2 right for editor
     hsr: TrueFalseType;// show sidebar or not
+    hrts: TrueFalseType // hide related tools or not 
     fs: TrueFalseType; // full screen or not, true or false
     // left
     l: TabLeftType, // tab left
@@ -71,6 +72,7 @@ export type ParamStateState = {
     tid?: string; // tool tab id
 };
 const initialState: ParamStateState = {
+    hrts: 'f',
     nqop: 'f',
     tsdmid: 'allops',
     tsdrsipt: '',

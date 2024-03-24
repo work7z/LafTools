@@ -22,13 +22,16 @@ import { Intent } from "@blueprintjs/core";
 import { ToolCategory, ExtensionVM } from "./purejs-types-READ_ONLY";
 import { ToolHandler, ToolMetaInfo } from "../impl/tools/r_handler.tsx";
 import Operation from "../impl/core/Operation.tsx";
-import { ParamStateState, TabBottomType, TabLeftType, TabRightType, ToolConfigMap, ToolConfigMapVal } from "../reducers/state/paramStateSlice.tsx";
+import { ParamStateState, TabBottomType, TabLeftType, TabRightType, ToolConfigMap, ToolConfigMapVal, TrueFalseType } from "../reducers/state/paramStateSlice.tsx";
 import { OpDetail } from "../impl/tools/s_tools.tsx";
 import { PopoverItemProps } from "../components/ActionButton/index.tsx";
+import { AppOpDetail } from "../impl/tools/d_meta.tsx";
 
 export * from './constants';
 export type OnProcessFnType = (throttledType?: boolean) => void
 export type CommonTransformerPassProp = {
+  subControlbarTools: AppOpDetail[],
+  hideRelatedToolsBar: TrueFalseType,
   fn_isSidebarMenuOpModeNow: (commonPassProp: CommonTransformerPassProp) => any,
   onProcess: OnProcessFnType,
   loadingExtraOpList: boolean,
@@ -46,6 +49,7 @@ export type CommonTransformerPassProp = {
   opDetails: OpDetail[]
   operaList?: Operation[],
   crtDefaultOpera?: Operation,
+  originalCrtDefaultOpera?: Operation,
   crtSideMenuOpera?: Operation,
   metaInfo?: ToolMetaInfo,
   crtDefaultOperaId?: string,

@@ -25,12 +25,14 @@ import { Dot } from "../../utils/cTranslationUtils"
 import { AppOptFnMap } from "./g_optlist"
 import { Intent } from "@blueprintjs/core"
 import { tw } from "../../types/styles"
+import { IconName } from "@blueprintjs/icons"
 export type OpDetail = {
     id: string,
     twBgClz: string,
     sortType: number,
     twClz: string,
     intent: Intent,
+    icon?: IconName,
     label: string,
     description: string
 }

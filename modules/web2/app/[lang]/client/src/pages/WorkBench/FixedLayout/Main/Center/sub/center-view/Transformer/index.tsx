@@ -66,6 +66,7 @@ import { sleep } from "@/app/[lang]/client/src/utils/SyncUtils.tsx";
 import { ToolTitlebar } from "./toolTitlebar.tsx";
 import { useGetNotifyTextFunction } from "./hooks.tsx";
 import MemoryStateSlice from "@/app/[lang]/client/src/reducers/state/memoryStateSlice.tsx";
+import SubControlBar, { useHideRelatedToolsbarAndRelatedSubControllbar } from "./SubControlBar/index.tsx";
 
 COMMON_FN_REF.Dot = Dot
 
@@ -95,9 +96,10 @@ export type TransformerPassProps = CommonTransformerPassProp & {
 
 export default (props: CommonTransformerProps) => {
   let sessionId = props.sessionId;
-  let bodyHeight = `calc(100% - ${controlBarHeight}px)`;
+
   let inputBigTextId = props.inputBigTextId;
   let outputBigTextId = props.outputBigTextId;
+
   let extId = props.extId
   let operaRef = useRef<ToolHandler | undefined>(undefined)
   let metaInfo = operaRef.current?.getMetaInfo()
@@ -118,12 +120,14 @@ export default (props: CommonTransformerProps) => {
       x.getOptDetail()?.id == TOOL_CONVER_FILENAME_TO_ID_MAP[crtSideMenuOperaId + ""] + "")
   }, [crtSideMenuOperaId, extraOpList])
 
-  let crtDefaultOpera = useMemo(() => {
+  let { crtDefaultOpera, originalCrtDefaultOpera } = useMemo(() => {
     let r = _.find((operaList || []), x => x.getOptDetail()?.id === crtDefaultOperaId) || (
       _.first(operaList)
     )
-    r = crtSideMenuOperaId && crtSideMenuOpera && !loadingExtraOpList ? crtSideMenuOpera : r
-    return r;
+    return {
+      crtDefaultOpera: crtSideMenuOperaId && crtSideMenuOpera && !loadingExtraOpList ? crtSideMenuOpera : r,
+      originalCrtDefaultOpera: r,
+    }
   }, [crtDefaultOperaId, operaList, crtSideMenuOperaId, crtSideMenuOpera, loadingExtraOpList])
 
   let { triggerProcessCtn } = exportUtils.useSelector(v => {
@@ -140,6 +144,16 @@ export default (props: CommonTransformerProps) => {
       })
     )
   }
+  let { hideRelatedToolsBar, subControlbarTools } = useHideRelatedToolsbarAndRelatedSubControllbar({
+    originalCrtDefaultOpera: originalCrtDefaultOpera,
+    crtSideMenuOpera: crtSideMenuOpera,
+    crtSideMenuOperaId: crtSideMenuOperaId,
+    operaList: operaList || [],
+  })
+  let bodyHeight = `calc(100% - ${controlBarHeight * (
+    hideRelatedToolsBar == 't' ? 1 : 2
+  )}px)`;
+
   let throlttedOnProcessCtn = (
     useCallback(_.throttle(setTriggerProcessCtn, 1000), [])
   )
@@ -227,12 +241,15 @@ export default (props: CommonTransformerProps) => {
   let commonPassProp: CommonTransformerPassProp = {
     ...props,
     opDetails,
+    hideRelatedToolsBar,
     toolHandler: operaRef.current,
     onProcess,
     operaList,
     metaInfo,
+    subControlbarTools,
     crtToolCfg,
     fn_isSidebarMenuOpModeNow,
+    originalCrtDefaultOpera,
     crtDefaultOperaId,
     crtDefaultOpera,
     loadingExtraOpList,
@@ -376,12 +393,18 @@ export default (props: CommonTransformerProps) => {
     }>{app_right_b_jsx}</div>
   }
 
+  let controlBarProps = {
+    loadingStatic,
+    crtOptMode,
+    crtRuntimeStatus,
+    ...commonPassProp
+  }
 
   let app_right_jsx = <>
-    <ControlBar
-      loadingStatic={loadingStatic}
-      crtOptMode={crtOptMode} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ControlBar>
-    <div
+    <ControlBar  {...controlBarProps}></ControlBar>
+    {
+      hideRelatedToolsBar == 't' ? '' : <SubControlBar {...controlBarProps}></SubControlBar>
+    } <div
       style={{
         height: bodyHeight,
       }}

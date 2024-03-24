@@ -34,6 +34,7 @@ import { InnerToolPanel } from "../../../../nav/functional/panel-group/panels/To
 import { appTool2PageMap } from "@/app/[lang]/client/src/impl/tools/g_optlist";
 import { fmtURL_ToolSubPageClient } from "@/app/__CORE__/meta/client";
 import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
+import { useHideRelatedToolsbarAndRelatedSubControllbar } from "../SubControlBar";
 export let useHideBottomAndSettingHook = () => {
     return exportUtils.useSelector((x) => {
         return {
@@ -48,13 +49,13 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
     onProcess: () => any;
 }) => {
     let { inputBigTextId } = props;
-
-    let { fullScreen, hideSideBar } = exportUtils.useSelector(v => {
+    let { fullScreen, hideSideBar, } = exportUtils.useSelector(v => {
         return {
             fullScreen: v.paramState.fs,
             hideSideBar: v.paramState.hsr,
         }
     })
+    let hideRelatedToolsBar = props.hideRelatedToolsBar
     let shouldVerticalMode = useShouldVerticalModeOrNot()
     let [loadExample, onLoadExample] = useState(false);
     let toolHandler = props.toolHandler
@@ -94,7 +95,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 icon: ICON_BTN_TRIGGER_FN,
                 intent: "primary",
                 title: crtDesc,
-                afterTitle: crtDesc + "[" + Dot("gU1O2", "Triggerred") + "]",
+                afterTitle: crtDesc,
                 enableActionMode: true,
                 afterText: crtName,
                 lastingTime: 800,
@@ -108,14 +109,6 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                         sideOpId: '',
                         dftOpId: crtId
                     })
-                    // FN_GetDispatch()(
-                    //     RuntimeStatusSlice.actions.updateValueInStatusMap({
-                    //         sessionId,
-                    //         obj: {
-                    //             defaultOperationId: crtId
-                    //         }
-                    //     })
-                    // )
                     setTimeout(() => {
                         props.onProcess()
                     }, 0)
@@ -189,7 +182,22 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 }
             },
         },
-
+        ...(hideRelatedToolsBar == 't' ? [
+            {
+                icon: 'folder-close',
+                intent: "none",
+                minimal: true,
+                title: Dot("hZo9cqwX", "Show Relevant Tools Bar"),
+                onClick: () => {
+                    let newVal: TrueFalseType = hideRelatedToolsBar == "t" ? "f" : "t";
+                    FN_GetDispatch()(
+                        ParamStateSlice.actions.updateOneOfParamState({
+                            hrts: newVal
+                        })
+                    );
+                }
+            }
+        ] : []) satisfies ActionButtonProps[]
     ];
     if (props.loadingStatic) {
         leftActions.forEach(x => {
