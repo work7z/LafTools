@@ -39,7 +39,7 @@ export default function RootLayout(props: {
             <head>
                 <meta name="baidu-site-verification" content="codeva-fgug77ENT9" />
                 {/** in online LafTools only */}
-                <script dangerouslySetInnerHTML={{
+                {/* <script dangerouslySetInnerHTML={{
                     __html: `
         
 var _hmt = _hmt || [];
@@ -51,7 +51,7 @@ var _hmt = _hmt || [];
 })();
 
 `
-                }}></script>
+                }}></script> */}
                 <Script
                     async
                     src="https://www.googletagmanager.com/gtag/js?id=G-C3NXGY8E7J"

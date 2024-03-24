@@ -35,7 +35,7 @@ import { AppOptFnMap, appTool2PageMap, getAppOptFnMap } from "@/app/[lang]/clien
 import { fmtURL_ToolSubPageClient } from "@/app/__CORE__/meta/client";
 import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
 import Operation from "@/app/[lang]/client/src/impl/core/Operation";
-import { AppOpDetail, AppOpFnMapType, AppToolConversionIdCollectionSet } from "@/app/[lang]/client/src/impl/tools/d_meta";
+import { AppOpDetail, AppOpFnMapType, AppToolConversionIdCollectionSet, TOOL_CONVER_FILENAME_TO_ID_MAP } from "@/app/[lang]/client/src/impl/tools/d_meta";
 import { ActionListViewButton } from "../SideMenu/ActionListView";
 export let useHideBottomAndSettingHook = () => {
     return exportUtils.useSelector((x) => {
@@ -44,7 +44,6 @@ export let useHideBottomAndSettingHook = () => {
             hideSettingPanel: x.paramState.hdstpt == 't',
         };
     })
-
 }
 
 export let useHideRelatedToolsbarAndRelatedSubControllbar = (op: {
@@ -72,7 +71,7 @@ export let useHideRelatedToolsbarAndRelatedSubControllbar = (op: {
         hideRelatedToolsBar = 't'
     }
 
-    let isCurrentMenuOperationMode = op.crtSideMenuOpera
+    let isCurrentMenuOperationMode = op.crtSideMenuOpera && op.crtSideMenuOperaId
     if (isCurrentMenuOperationMode) {
         subControlbarTools = [
             {
@@ -89,7 +88,12 @@ export let useHideRelatedToolsbarAndRelatedSubControllbar = (op: {
             return false
         }
         duplicateId[x.optOptionalId + ""] = true
-        let f = op.operaList.find(xx => xx.getOptDetail().id == x.optOptionalId)
+        let f = op.operaList.find(xx => {
+            let optd = xx.getOptDetail().id;
+            return optd == x.optOptionalId || (
+                optd == TOOL_CONVER_FILENAME_TO_ID_MAP[x.optOptionalId + ""] + ""
+            )
+        })
         if (f) {
             return false;
         }
@@ -146,7 +150,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
             intent: "none",
             minimal: true,
             title: hideRelatedToolsBar == 'f' ?
-                Dot("Yqud5YZY", "Hide Relevant Tools Bar") : Dot("hZo9cqwX", "Show Relevant Tools Bar"),
+                Dot("l_mgrQPlq", "Hide Other Alternatives") : Dot("hZo9cqwX", "Show Other Alternatives"),
             onClick: () => {
                 let newVal: TrueFalseType = hideRelatedToolsBar == "t" ? "f" : "t";
                 FN_GetDispatch()(
@@ -182,6 +186,8 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
     }
     let clientPortalContext = useContext(ClientPortalContext)
     let rightActions: ActionButtonProps[] = [
+
+
     ];
     return (
         <div
@@ -203,7 +209,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                         return <ActionListViewButton
                             {...props}
                             noHighlightMode={false}
-                            placement="bottom"
+                            placement="bottom-start"
                             activeParentTrigger={parentTriggered}
                             x={
                                 {
@@ -222,7 +228,6 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 }
             </div>
             <div className={controlClz}>
-                <div className="text-xs">{Dot("e9QYdCKZm", "{0} Relevant Tools", _.size(leftActions) - 1)}</div>
                 {rightActions.map(fn_format_button("bottom-end"))}
             </div>
         </div>

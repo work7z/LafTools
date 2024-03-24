@@ -89,9 +89,9 @@ export const ActionListViewButton = (props: CommonTransformerPassProp & Transfor
         }} dangerouslySetInnerHTML={{ __html: x.description }}></div>
     } hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN} >
         <Button icon={
-            props.activeParentTrigger ? 'tick' :
+            props.activeParentTrigger && isCurrent ? 'tick' :
                 x.icon} small loading={isCurrent && props.loadingExtraOpList} minimal={props.noHighlightMode} className={twClz} style={{
-                }} outlined={!isCurrent}
+                }} outlined={props.noHighlightMode || !isCurrentAndLoaded}
             intent={whatIntent} key={x.id} onClick={async () => {
                 await props.fn_switchToSideMenuExtraOp(x.id)
                 await props.onProcess()

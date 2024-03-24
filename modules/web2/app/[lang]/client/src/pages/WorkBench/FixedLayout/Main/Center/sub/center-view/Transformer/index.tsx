@@ -18,7 +18,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Alignment, Button, ButtonProps, Navbar, OL, PortalContext, Tab, Tabs, Tooltip } from "@blueprintjs/core";
+import { Alignment, Button, ButtonProps, Intent, Navbar, OL, PortalContext, Tab, Tabs, Tooltip } from "@blueprintjs/core";
 import GenCodeMirror from "../../../../../../../../components/GenCodeMirror";
 import {
   VAL_CSS_TAB_TITLE_PANEL,
@@ -92,6 +92,14 @@ export let useShouldVerticalModeOrNot = () => {
 
 export type TransformerPassProps = CommonTransformerPassProp & {
 
+}
+
+export type ActionButtonCombinedProps = {
+  intent: Intent,
+  text: string,
+  isParentTrigger: boolean,
+  isCurrent: boolean,
+  onClick: () => void
 }
 
 export default (props: CommonTransformerProps) => {
@@ -207,6 +215,12 @@ export default (props: CommonTransformerProps) => {
     }
   }, [crtSideMenuOperaId,])
   let extVM = props.extVM
+
+  // get active operation and other alternative operations
+  let activeOpBtn: ActionButtonCombinedProps[] = [];
+  let alternativeOpBtns: ActionButtonCombinedProps[] = []
+
+
   let fn_isSidebarMenuOpModeNow = (commonPassProp: CommonTransformerPassProp) => {
     return (
       commonPassProp && commonPassProp.crtSideMenuOperaId && commonPassProp.crtSideMenuOpera

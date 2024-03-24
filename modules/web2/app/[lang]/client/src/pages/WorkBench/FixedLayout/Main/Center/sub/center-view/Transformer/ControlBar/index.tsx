@@ -34,7 +34,6 @@ import { InnerToolPanel } from "../../../../nav/functional/panel-group/panels/To
 import { appTool2PageMap } from "@/app/[lang]/client/src/impl/tools/g_optlist";
 import { fmtURL_ToolSubPageClient } from "@/app/__CORE__/meta/client";
 import { URL_SUBCATEGORY_GO_PATH } from "@/app/__CORE__/meta/url";
-import { useHideRelatedToolsbarAndRelatedSubControllbar } from "../SubControlBar";
 export let useHideBottomAndSettingHook = () => {
     return exportUtils.useSelector((x) => {
         return {
@@ -103,7 +102,8 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 parentTriggered: parentTriggered,
                 highlightOne: isHighlightOne,
                 outlined: !isHighlightOne,
-                minimal: !isHighlightOne,
+                // minimal: !isHighlightOne,
+                minimal: false,
                 onClick: () => {
                     props.fn_updateToolConfig({
                         sideOpId: '',
@@ -187,7 +187,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 icon: 'folder-close',
                 intent: "none",
                 minimal: true,
-                title: Dot("hZo9cqwX", "Show Relevant Tools Bar"),
+                title: Dot("hZo9cqwX", "Show Other Alternatives"),
                 onClick: () => {
                     let newVal: TrueFalseType = hideRelatedToolsBar == "t" ? "f" : "t";
                     FN_GetDispatch()(
