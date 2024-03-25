@@ -17,7 +17,7 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+export const GOLD_RATE = 0.618;
 export const GithubRepoLink = 'https://github.com/work7z/LafTools'
 export const GitHubRepoIssueLink = 'https://github.com/work7z/LafTools/issues'
 export const AuthorEmail = 'work7z@outlook.com'

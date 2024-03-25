@@ -94,7 +94,7 @@ export default (props: ProcessPanelProps) => {
                 message: Dot("6T3dmF", "Reset Successfully!")
             })
             props.onProcess(true)
-        }} fixSingleColumn={!shouldVert} list={generalList}></FormGenPanel >
+        }} fixSingleColumn={shouldVert} list={generalList}></FormGenPanel >
     } else if (toolTabIndex == "faq") {
         finalShowContent_l = <FaqPanel key={sessionId} {...props}></FaqPanel>
     } else if (toolTabIndex == 'code') {

@@ -69,6 +69,7 @@ import MemoryStateSlice from "@/app/[lang]/client/src/reducers/state/memoryState
 import SubControlBar, { useHideRelatedToolsbarAndRelatedSubControllbar } from "./SubControlBar/index.tsx";
 import { getAppOptFnMap } from "@/app/[lang]/client/src/impl/tools/g_optlist.tsx";
 import { satisfies } from "semver";
+import { GOLD_RATE } from "@/app/__CORE__/meta/constants.tsx";
 
 COMMON_FN_REF.Dot = Dot
 export let formattedOpId = (id?: string) => {
@@ -557,7 +558,7 @@ export default (props: CommonTransformerProps) => {
     crtRuntimeStatus,
     ...commonPassProp
   }
-
+  let r_width_perc = !shouldVerticalMode ? 32 : 28
   let app_right_jsx = <>
     <ControlBar  {...controlBarProps}></ControlBar>
     {
@@ -575,10 +576,16 @@ export default (props: CommonTransformerProps) => {
             {app_right_b_jsx}
           </div>
         ) : (
-          <Allotment key={shouldVerticalMode + 'x'} vertical={shouldVerticalMode}>
-            <Allotment.Pane>
+          <Allotment
+            key={shouldVerticalMode + 'x1'} vertical={!shouldVerticalMode}>
+            <Allotment.Pane
+              preferredSize={(
+
+                100 - r_width_perc) + '%'}
+
+            >
               <Allotment
-                vertical={!shouldVerticalMode}
+                vertical={shouldVerticalMode}
                 key={shouldVerticalMode + "xxxs"}
               >
                 <Allotment.Pane>
@@ -589,7 +596,10 @@ export default (props: CommonTransformerProps) => {
                 </Allotment.Pane>
               </Allotment>
             </Allotment.Pane>
-            <Allotment.Pane preferredSize={250}>
+            <Allotment.Pane
+              preferredSize={(
+                r_width_perc) + '%'}
+            >
               {jsx_process_settings_panel}
             </Allotment.Pane>
           </Allotment>
