@@ -79,7 +79,7 @@ export default (props: PropFormGenPanel) => {
             {
                 chunkItems.map((eachChunkItem, eachChunkItemIdx) => {
                     return <div key={eachChunkItemIdx} className={" mb-2  " + (
-                        props.fixSingleColumn ? " w-1/1 " : " p-2 w-1/1 md:w-1/3 lg:w-1/3"
+                        props.fixSingleColumn ? " w-1/1 " : " p-2 w-1/1 md:w-1/3 lg:w-1/4"
                     )}>
                         {
                             eachChunkItem.map((x, d) => {

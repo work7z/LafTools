@@ -558,7 +558,7 @@ export default (props: CommonTransformerProps) => {
     crtRuntimeStatus,
     ...commonPassProp
   }
-  let r_width_perc = !shouldVerticalMode ? 32 : 28
+  let r_width_perc = !shouldVerticalMode ? 35 : 28
   let app_right_jsx = <>
     <ControlBar  {...controlBarProps}></ControlBar>
     {

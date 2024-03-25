@@ -49,11 +49,11 @@ class YamlBeautify extends Operation {
         "flowControl": false,
         "manualBake": false,
         "args": [
-          {
-            "name": Dot("isti", "Indent string"),
-            "type": "binaryShortString",
-            "value": "  "
-          }
+          // {
+          //   "name": Dot("isti", "Indent string"),
+          //   "type": "binaryShortString",
+          //   "value": "  "
+          // }
         ]
       },
       nousenouseID: 'yaml-beautify',
@@ -85,11 +85,11 @@ class YamlBeautify extends Operation {
     this.inputType = "string";
     this.outputType = "string";
     this.args = [
-      {
-        "name": Dot("isti", "Indent string"),
-        "type": "binaryShortString",
-        "value": "  "
-      }
+      // {
+      //   "name": Dot("isti", "Indent string"),
+      //   "type": "binaryShortString",
+      //   "value": "  "
+      // }
     ];
 
   }

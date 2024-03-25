@@ -92,10 +92,6 @@ let appToolInfoObj = {
         LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "HTML")
     }),
     "MarkdownBeautify": passInfo({
-        // {
-        //     parser: "markdown",
-        //     plugins: [parserMarkdown],
-        // },
         LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "Markdown")
     }),
     "TypeScriptBeautify": passInfo({

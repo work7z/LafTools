@@ -23,6 +23,9 @@ import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
+import parserMarkdown from "prettier/esm/parser-markdown.mjs";
+import prettier from "prettier/esm/standalone.mjs";
+
 
 // write a class for MarkdownBeautify like CSSBeautify
 export default class MarkdownBeautify extends Operation {
@@ -38,11 +41,11 @@ export default class MarkdownBeautify extends Operation {
                 "flowControl": false,
                 "manualBake": false,
                 "args": [
-                    {
-                        "name": Dot("istqwi", "Indent string"),
-                        "type": "binaryShortString",
-                        "value": "\\t"
-                    }
+                    // {
+                    //     "name": Dot("istqwi", "Indent string"),
+                    //     "type": "binaryShortString",
+                    //     "value": "\\t"
+                    // }
                 ]
             },
             nousenouseID: 'mdbeautify',
@@ -52,8 +55,8 @@ export default class MarkdownBeautify extends Operation {
                 "Indents and prettifies Markdown document.",
             ),
             infoURL: "https://www.markdownguide.org/",
-            exampleInput: TEXT_INPUT_EXAMPLE_HELLO_WORLD,
-            exampleOutput: "Hello, world!\n=============\n"
+            exampleInput: "# Hello, world!\n=============\n   ## Subtitle\n",
+            exampleOutput: "# Hello, world!\n=============\n## Subtitle\n",
         }
     }
 
@@ -67,17 +70,26 @@ export default class MarkdownBeautify extends Operation {
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
-            {
-                "name": Dot("isti", "Indent string"),
-                "type": "binaryShortString",
-                "value": "\\t"
-            }
+            // {
+            //     "name": Dot("isti", "Indent string"),
+            //     "type": "binaryShortString",
+            //     "value": "\\t"
+            // }
         ];
-
     }
 
-    run() {
-        // implement the run method
+    run(input, args) {
+        return prettier.format(input, {
+            parser: "markdown",
+            plugins: [parserMarkdown],
+        });
+    }
+
+    getInputOutputEditorLang(): InputOutputEditorLang | null {
+        return {
+            inputLang: "markdown",
+            outputLang: "markdown"
+        }
     }
 }
 
