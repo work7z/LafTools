@@ -36,6 +36,7 @@ import PkgToolExtra from './pkg-tool-extra'
 import PkgRecentUsedTool from './pkg-recent-used-tool';
 import { getSearchDetailBySearchProps } from '@/app/[lang]/page';
 import PkgQuickaccess from './pkg-quickaccess';
+import ClientWrapper from '../../common/clientWrapper';
 export let getCardsProps = (): CardProps => {
     return {
         radius: "none", shadow: "none", className: light_border_clz_all
@@ -49,6 +50,8 @@ export default (props: CrtToolProp) => {
         <PkgToolMain {...props} {...searchDetail} />
         <PkgRecentUsedTool {...props} />
         <PkgToolExtra {...props} />
-        <PkgQuickaccess {...props} />
+        <ClientWrapper>
+            <PkgQuickaccess {...props} />
+        </ClientWrapper>
     </div>
 }

@@ -19,27 +19,28 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+import { fn_Geti18n } from "@/app/[lang]/client/src/i18n-pure";
 import CardPanel from "../../components/CardPanel"
 import { Dot } from "../../utils/TranslationUtils"
 import React from 'react'
-import i18nItems from "../../config/i18n"
 
 
 
-export let translationLangs: {
-    "Label": string[],
-    "LabelByLang": string,
-    "Value": string,
-    "Href": string,
-    "LabelInEnglish": string
-}[] = i18nItems.map(x => {
-    return {
-        ...x,
-        Href: x.Value
-    }
-})
 
 export default (props: any) => {
+    let i18nItems = fn_Geti18n(Dot);
+    let translationLangs: {
+        "Label": string,
+        "LabelByLang": string,
+        "Value": string,
+        "Href": string,
+        "LabelInEnglish": string
+    }[] = i18nItems.map(x => {
+        return {
+            ...x,
+            Href: x.Value
+        }
+    })
     return (
         <CardPanel children={<div className='p-2 pl-4 text-xs'>
 

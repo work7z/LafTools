@@ -61,7 +61,7 @@ export default (props: CrtToolProp) => {
                         return (
                             <Tab key={x.id} title={x.label}>
                                 <Card>
-                                    <CardBody className='min-h-[500px]'>
+                                    <CardBody className='h-[500px] p-0 '>
                                         <ContentQuickaccess id={x.id} />
                                     </CardBody>
                                 </Card>

@@ -88,9 +88,9 @@ import PageUtils from "../../utils/PageUtils";
 import { EachLang } from "../../types/purejs-types-READ_ONLY";
 import IDUtils from "../../utils/IDUtils";
 import { useHistory } from "react-router-dom";
-import { getFormattedLang } from "../../i18n";
+import { fn_Geti18n, getFormattedLang } from "../../i18n";
 import i18n from "@/app/[lang]/client/src/impl/translation/i18n";
-import i18nItems from "@/app/__CORE__/config/i18n";
+// import i18nItems from "@/app/__CORE__/config/i18n";
 
 export interface MultistepDialogExampleState {
   autoFocus: boolean;
@@ -835,6 +835,8 @@ export let useGetI18nLangList = (): EachLang[] => {
 };
 
 const LanguagePanel: React.FC<SelectPanelProps> = (props) => {
+  let i18nItems = fn_Geti18n(Dot);
+
   let arr = i18nItems
   return (
     <DialogBody className="docs-multistep-dialog-example-step">

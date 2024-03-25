@@ -38,6 +38,7 @@ import { EachLang } from "../../../../../../../../types/purejs-types-READ_ONLY";
 import Blink from "../../../../../../../../components/Blink";
 import { ExportButtonByInputId } from "../../../../../../../../components/ExportButtonByInputId";
 import { translateText } from "@/app/[lang]/client/src/server/translateAction";
+import TranslationUtils from "@/app/__CORE__/utils/cTranslationUtils";
 
 type SrcTarget = "source" | "target";
 
@@ -80,7 +81,7 @@ let LanguageChooser = (props: { onSelectLanguage: (newVal: EachLang) => any, lan
     // return _.first(_.find(langList,x=>{
     //   return null;
     // }));
-  }, [props.lang, langList])
+  }, [props.lang, langList, Date.now()])
   return <Popover placement="bottom" minimal content={<Card className="w-[300px]" style={{
     padding: '15px'
   }} >

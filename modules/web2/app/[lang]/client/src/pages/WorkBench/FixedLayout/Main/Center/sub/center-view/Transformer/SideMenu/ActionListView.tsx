@@ -56,7 +56,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
                 }
                 {
                     _.map(filteredOpDetails, (x, d) => {
-                        return <ActionListViewButton noHighlightMode {...props} x={x} />
+                        return <ActionListViewButton animiateMode noHighlightMode {...props} x={x} />
                     })
                 }
             </div>
@@ -66,6 +66,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
 
 export const ActionListViewButton = (props: CommonTransformerPassProp & TransformerWithRuntimeProp & {
     bindid?: string,
+    animiateMode?: boolean,
     x: OpDetail,
     activeParentTrigger?: boolean,
     noHighlightMode?: boolean,
@@ -109,6 +110,7 @@ export const ActionListViewButton = (props: CommonTransformerPassProp & Transfor
                     await props.fn_switchToSideMenuExtraOp(x.id)
                     await props.onProcess()
                     onShowJump(true)
+                    if (!props.animiateMode) return;
 
 
                     let ball = document.createElement("div");
@@ -119,7 +121,6 @@ export const ActionListViewButton = (props: CommonTransformerPassProp & Transfor
                     ball.style.height = "8px";
                     ball.style.borderRadius = "4px";
                     ball.style.position = "fixed";
-
                     if (!currentRef.current.e) return;
                     let thisEle = currentRef.current.e as HTMLElement
                     let productRect = thisEle.getBoundingClientRect();

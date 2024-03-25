@@ -19,10 +19,13 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import i18nItems, { I18nItem } from "@/app/__CORE__/config/i18n";
+import { I18nItem } from "@/app/__CORE__/config/i18n";
 import { Dot } from "@/app/[lang]/client/src/utils/cTranslationUtils";
 import { EachLang, FileValueMatcher } from "../purejs-types";
+import { fn_Geti18n } from "../../i18n-pure";
 export default (): EachLang[] => {
+  let i18nItems = fn_Geti18n(Dot);
+
   let langList: EachLang[] = i18nItems.map((x: I18nItem) => {
     return {
       LabelInEnglish: x.LabelInEnglish,

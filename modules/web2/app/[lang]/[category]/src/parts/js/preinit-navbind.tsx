@@ -48,15 +48,12 @@ export default () => {
                     e.preventDefault()
                     let rect = x.getBoundingClientRect()
                     if (!overlap) return
-                    overlap.style.top = (rect.top + rect.height + 3) + "px"
-                    // overlap.style.left = rect.left + "px"
+                    overlap.style.top = (rect.y + rect.height + 3) + "px"
                     overlap.style.display = "block"
-                    overlap.style.left = rect.left + "px"
-                    // overlap.style.left = rect.left - (overlap.getBoundingClientRect().width / 2 + rect.width / 2) + "px"
+                    overlap.style.left = rect.x + "px"
                     window[isXHoving] = '1'
                     setTimeout(() => {
                         if (!overlap) return
-                        // overlap.style.opacity = "80"
                     }, 30)
                 },
                 x_mouseout: (e) => {

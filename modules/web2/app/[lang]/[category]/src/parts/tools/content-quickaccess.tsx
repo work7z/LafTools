@@ -33,6 +33,7 @@ import gutils from '@/app/[lang]/client/src/utils/GlobalUtils';
 import { loadDOT } from '@/app/__CORE__/utils/i18n-types';
 import { getQuickAccessList } from './sidebar-quickaccess';
 import ContentQuickaccess from './content-quickaccess';
+import MultipleTextTranslator from '@/app/[lang]/client/src/pages/WorkBench/FixedLayout/Main/Center/nav/bottom/Translator/MultipleTextTranslator';
 export type TitleLinkType = { title: string, link: string }
 let d = loadDOT("6ar89C-Fh")
 
@@ -40,7 +41,7 @@ export default (props: { id: string }) => {
     d()
     let { id } = props;
     if (id == 'translation') {
-        return 'this is translation'
+        return <MultipleTextTranslator />
     }
     if (id == 'todo') {
         return 'this is todo'

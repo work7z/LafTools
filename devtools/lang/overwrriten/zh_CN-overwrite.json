@@ -369,6 +369,7 @@
   "建表SQL转Model (Tips: 现在，LafTools支持将DML SQL解析为模型格式。)": "建表SQL转模型(提示：现在、代码生成支持将DML SQL解析为模型格式。)",
   "Chinese Han Tools": "简繁字体互转",
   "zh-CN to zh-HK": "简体转繁体",
+  "Hex": "十六进制",
   "zh-HK to zh-CN": "繁体转简体",
   "SDK Resources": "SDK资源下载",
   "ASCII <-> Text": "ASCII编码互转",

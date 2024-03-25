@@ -23,11 +23,13 @@
 import { expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { DataTypes, Model } from 'sequelize'
-import i18nItems from '../../../../__CORE__/config/i18n';
 import { translateText } from './translateAction';
+import { fn_Geti18n } from '../i18n-pure';
 
 
 test('Test Translation Utils', async () => {
+    let i18nItems = fn_Geti18n((a, ...b) => b[0]);
+
     for (let eachItem of i18nItems) {
         let v = await translateText('hello, this is a testing!', 'en', eachItem.Value)
         console.log('result', v)

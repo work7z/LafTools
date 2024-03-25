@@ -631,9 +631,9 @@ export default (props: CommonTransformerProps) => {
   if (commonPassProp.loadingExtraOpList) {
     toolTitle = Dot("3XstvdK", "Loading the selected quick operation...")
   } else {
-    if (commonPassProp.crtSideMenuOpera && commonPassProp.crtSideMenuOperaId) {
-      toolTitle = Dot("rcVSYDdBN0", "Quick Operation: {0}", commonPassProp.crtSideMenuOpera.getOptDetail()?.optName || 'N/A')
-    }
+    // if (commonPassProp.crtSideMenuOpera && commonPassProp.crtSideMenuOperaId) {
+    //   toolTitle = Dot("rcVSYDdBN0", "Quick Operation: {0}", commonPassProp.crtSideMenuOpera.getOptDetail()?.optName || 'N/A')
+    // }
   }
 
   let body = <div key={sessionId} className={

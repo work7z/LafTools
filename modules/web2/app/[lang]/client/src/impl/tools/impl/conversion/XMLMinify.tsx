@@ -56,7 +56,7 @@ class XMLMinify extends Operation {
         ]
       },
       nousenouseID: 'xml-minify',
-      optName: Dot("yMZW-GEgf", "Format XML"),
+      optName: Dot("yd-GEgf", "Minify {0}", 'XML'),
       infoURL: 'https://en.wikipedia.org/wiki/XML',
       optDescription: Dot(
         "xml-bdeautify.desc.2a5f9",

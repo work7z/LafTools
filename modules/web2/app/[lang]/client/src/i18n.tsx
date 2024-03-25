@@ -19,9 +19,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import _ from 'lodash'
-import TranslationUtils from './utils/cTranslationUtils'
-import i18nItems from '@/app/__CORE__/config/i18n'
-let appi18nJSON = i18nItems
+import TranslationUtils, { Dot } from './utils/cTranslationUtils'
+import { I18nItem } from '@/app/__CORE__/config/i18n'
+import { DotType } from './impl/tools/common_ref'
+import { fn_Geti18n } from './i18n-pure'
 
 export let getFormattedLang = function (crtLang: string) {
   if (crtLang == 'zh_CN') {
@@ -37,6 +38,7 @@ export let getFormattedLang = function (crtLang: string) {
   return crtLang;
 }
 
+
 let prevLangValue: string | null = null
 
 export let GetUserActualClientLang = function (): string {
@@ -48,6 +50,7 @@ export let GetUserActualClientLang = function (): string {
   if ((typeof location === 'undefined')) {
     return TranslationUtils.getCurrentLang();
   }
+  let appi18nJSON = fn_Geti18n(Dot);
   let matchResult = location.href.match(/\/app\/([^\/]+)/)
   if (matchResult) {
     let prevValue = matchResult[1]

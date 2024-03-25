@@ -4,7 +4,8 @@ import type { NextRequest } from "next/server";
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import queryString from "query-string";
-import i18nItems, { I18nItem } from "./app/__CORE__/config/i18n";
+import { I18nItem } from "./app/__CORE__/config/i18n";
+import { fn_Geti18n } from "./app/[lang]/client/src/i18n-pure";
 
 let DFTLOCALE = process.env.DFTLOCALE;
 if (!DFTLOCALE) {
@@ -28,6 +29,7 @@ export type LocaleType = {
   langInURL: string;
   langIni18n: string;
 };
+let i18nItems = fn_Geti18n((a, b) => b[1]);
 let zhCNI18nItem = i18nItems.find((x) => x.Value === "zh_CN");
 let enUSI18nItem = i18nItems.find((x) => x.Value === "en_US");
 let dftI18nItem = i18nItems.find((x) => x.Value === DFTLOCALE);
