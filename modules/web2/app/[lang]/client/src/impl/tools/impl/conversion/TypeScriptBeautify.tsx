@@ -23,40 +23,39 @@ import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
-import parserMarkdown from "prettier/esm/parser-markdown.mjs";
+import parserTypescript from "prettier/esm/parser-typescript.mjs";
 import prettier from "prettier/esm/standalone.mjs";
 
 
-// write a class for MarkdownBeautify like CSSBeautify
-export default class MarkdownBeautify extends Operation {
+export default class TypeScriptBeautify extends Operation {
     public getOptDetail(): OptDetail {
         return {
-            relatedID: 'text',
+            relatedID: 'javascript',
             config: {
                 "module": "Code",
-                "description": "Indents and prettifies Markdown document.",
+                "description": Dot("397ncs757", "Indents and prettifies TypeScript code."),
                 "infoURL": null,
                 "inputType": "string",
                 "outputType": "string",
                 "flowControl": false,
                 "manualBake": false,
                 "args": [
-                    // {
-                    //     "name": Dot("istqwi", "Indent string"),
+                    // {    
+                    //     "name": Dot("isti", "Indent string"),
                     //     "type": "binaryShortString",
                     //     "value": "\\t"
                     // }
                 ]
             },
-            nousenouseID: 'mdbeautify',
-            optName: Dot("3TMOUekhZl", "Format {0}", "Markdown"),
+            nousenouseID: 'typescript-beautify',
+            optName: Dot("typescript.format.btn", "Format {0}", 'TypeScript'),
             optDescription: Dot(
-                "md2aO2NaJqITm",
-                "Indents and prettifies Markdown document.",
+                "typescript.format.desc",
+                "Indents and prettifies TypeScript code.",
             ),
-            infoURL: "https://www.markdownguide.org/",
-            exampleInput: "# Hello, world!\n=============\n   ## Subtitle\n",
-            exampleOutput: "# Hello, world!\n=============\n## Subtitle\n",
+            infoURL: "https://www.typescriptlang.org/",
+            exampleInput: "function hello(name: string) {\n    console.log(   `Hello, ${name}!`);\n}",
+            exampleOutput: "function hello(name: string) {\n    console.log(`Hello, ${name}!`);\n}",
         }
     }
 
@@ -70,25 +69,20 @@ export default class MarkdownBeautify extends Operation {
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
-            // {
-            //     "name": Dot("isti", "Indent string"),
-            //     "type": "binaryShortString",
-            //     "value": "\\t"
-            // }
         ];
     }
 
     run(input, args) {
         return prettier.format(input, {
-            parser: "markdown",
-            plugins: [parserMarkdown],
+            parser: "typescript",
+            plugins: [parserTypescript],
         });
     }
 
     getInputOutputEditorLang(): InputOutputEditorLang | null {
         return {
-            inputLang: "markdown",
-            outputLang: "markdown"
+            inputLang: "typescript",
+            outputLang: "typescript"
         }
     }
 }

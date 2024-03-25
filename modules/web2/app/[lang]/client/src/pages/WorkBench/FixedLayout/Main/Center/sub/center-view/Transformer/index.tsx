@@ -518,7 +518,7 @@ export default (props: CommonTransformerProps) => {
       icon='generate'
       title={Dot("XdOYpbSeG", "Input")}
       placeholder={desc || Dot("xPHqP", "The description is not yet defined.")}
-      language="javascript"
+      language={commonPassProp.crtDefaultOpera?.getInputOutputEditorLang()?.inputLang}
       key={inputBigTextId}
       bigTextId={inputBigTextId}
       onTextChange={(val) => {
@@ -533,7 +533,7 @@ export default (props: CommonTransformerProps) => {
         readOnly
         title={Dot("XdOYpsdf", "Output")}
         lineWrap
-        language={props.crtDefaultOpera?.getInputOutputEditorLang()?.outputLang || "text"}
+        language={commonPassProp.crtDefaultOpera?.getInputOutputEditorLang()?.outputLang}
         placeholder={Dot("y_9YM", "Output will be displayed here.")}
         bigTextId={props.outputBigTextId}
       ></GenCodeMirror>

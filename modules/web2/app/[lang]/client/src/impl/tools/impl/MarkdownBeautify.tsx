@@ -7,6 +7,7 @@ export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
         return {
             hideCodePanel: true,
+            hideFAQPanel: true,
             exampleType: "css-short",
             description: Dot(
                 "formatmd",

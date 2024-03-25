@@ -6,6 +6,7 @@ import { AppOpFnMapTypeKeys } from "../g_optlist.tsx";
 export default class Base64Handler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
         return {
+            hideFAQPanel: true,
             hideCodePanel: true,
             exampleType: "css-short",
             description: Dot(

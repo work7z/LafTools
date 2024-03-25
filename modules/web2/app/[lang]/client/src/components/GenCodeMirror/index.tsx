@@ -101,6 +101,7 @@ type GenCodeMirrorProp = {
 };
 const langMap = {
   javascript: () => javascript({ jsx: true }),
+  typescript: () => javascript({ jsx: true }),
   shell: () => StreamLanguage.define(shell),
   css: () => StreamLanguage.define(css),
   html: () => StreamLanguage.define(html),
@@ -184,7 +185,13 @@ export default (props: GenCodeMirrorProp) => {
     setValue(val);
     propRef.current.fn_onTextChange && propRef.current.fn_onTextChange(val)
   }, []);
-  let langPack = props.language && langMap[props.language] ? (langMap[props.language])() : null
+  let targetLanguage = props.language
+  if (!targetLanguage || (
+    targetLanguage != 'text' && !langMap[targetLanguage]
+  )) {
+    targetLanguage = 'javascript'
+  }
+  let langPack = targetLanguage && langMap[targetLanguage] ? (langMap[targetLanguage])() : null
   return <div className="w-full h-full flex flex-col">
     <div className={border_clz_common + " border-b-[1px] using-edge-ui-bg flex justify-center items-center text-xs "} style={{
       height: VAL_CSS_TAB_TITLE_PANEL,

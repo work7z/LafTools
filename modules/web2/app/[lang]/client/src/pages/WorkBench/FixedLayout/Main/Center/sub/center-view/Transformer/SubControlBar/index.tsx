@@ -194,7 +194,8 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
             className={
                 " w-full using-edge-ui-bg  flex border-b-[1px] dark:border-gray-600 px-1  flex-column items-center justify-between "
                 +
-                border_clz_common + ' border-t-[1px]' +
+                // border_clz_common + ' border-t-[1px]' +
+                '' +
                 (
                     ''
                 )
@@ -206,7 +207,7 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
             <div className={controlClz}>
                 {leftActions.map(fn_format_button("bottom-start"))}
                 {
-                    <CommonButtonForOriginRelatedAndOthers mainControlBarMode={false} {...props} opBtns={props.otherOpBtns || []} />
+                    <CommonButtonForOriginRelatedAndOthers noIcon mainControlBarMode={false} {...props} opBtns={props.otherOpBtns || []} />
                 }
                 {/* {
                     props.subControlbarTools.map(x => {

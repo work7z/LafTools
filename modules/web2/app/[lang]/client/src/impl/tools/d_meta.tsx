@@ -95,10 +95,6 @@ let appToolInfoObj = {
         LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "Markdown")
     }),
     "TypeScriptBeautify": passInfo({
-        // ext: {
-        //     parser: "typescript",
-        //     plugins: [parserTypescript],
-        // },
         LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "TypeScript")
     }),
     // GraphqlBeautify
@@ -110,10 +106,7 @@ let appToolInfoObj = {
         LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "GraphQL")
     }),
     "SCSSBeautify": passInfo({
-        // {
-        //     parser: "scss"|"less"|"css",
-        //     plugins: [parserPostcss],
-        // }
+
         LabelFn: (Dot: DotType) => Dot("1Xe8x7", "{0} Beautify", "SCSS")
     }),
     "LessBeautify": passInfo({
@@ -184,13 +177,12 @@ let appToolInfoObj = {
     "Example": passInfo({
         LabelFn: (Dot: DotType) => Dot("1X8x7", "Example")
     }),
-    // new 
     JSONEscape: passInfo({
         LabelFn: (Dot: DotType) => Dot("l3k11X8qw", "JSON Escape")
     }),
-    JSONViewer: passInfo({
-        LabelFn: (Dot: DotType) => Dot("1Xdsqwqw", "JSON Viewer")
-    }),
+    // JSONViewer: passInfo({
+    //     LabelFn: (Dot: DotType) => Dot("1Xdsqwqw", "JSON Viewer")
+    // }),
 } satisfies Record<string, AppInfoType>
 
 _.forEach(appToolInfoObj, (x, d, n) => {

@@ -31,7 +31,10 @@ import { AnchorButton, Button } from '@blueprintjs/core'
 import { logutils } from '../../../../../../../../../utils/LogUtils'
 import exportUtils from '../../../../../../../../../utils/ExportUtils'
 
-export default (props: CommonTransformerPassProp & TransformerWithRuntime) => {
+export default (props: {
+    hideFAQ: boolean
+    onHideFAQ: (boolean) => any
+} & CommonTransformerPassProp & TransformerWithRuntime) => {
     let dotCount = exportUtils.useLoadDotCountCpt()
     logutils.debug("dotCount", dotCount)
     // props.toolHandler

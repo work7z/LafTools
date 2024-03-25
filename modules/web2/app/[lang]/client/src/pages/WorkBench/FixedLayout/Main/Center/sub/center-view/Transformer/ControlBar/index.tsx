@@ -46,6 +46,7 @@ export let useHideBottomAndSettingHook = () => {
 }
 
 export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRuntime & CommonTransformerPassProp & {
+    noIcon?: boolean,
     opBtns: OpButtonStyleProps[],
     mainControlBarMode: boolean
 }) => {
@@ -64,7 +65,7 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                     let isHighlightOne = props.mainControlBarMode;
                     let obj = {
                         text: crtName,
-                        icon: ICON_BTN_TRIGGER_FN,
+                        icon: props.noIcon ? undefined : ICON_BTN_TRIGGER_FN,
                         intent: whatIntent,
                         title: crtDesc,
                         afterTitle: crtDesc,
@@ -103,7 +104,7 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                                 description: x.desc,
                                 id: x.opId || 'XfXWUnI2v',
                                 intent: whatIntent,
-                                icon: ICON_BTN_TRIGGER_FN,
+                                icon: props.noIcon ? undefined : ICON_BTN_TRIGGER_FN,
                                 label: x.name,
                                 twBgClz: '',
                                 twClz: '',

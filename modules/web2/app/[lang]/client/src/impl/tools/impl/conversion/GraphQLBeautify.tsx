@@ -23,40 +23,34 @@ import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
-import parserMarkdown from "prettier/esm/parser-markdown.mjs";
+import parserGraphql from "prettier/esm/parser-graphql.mjs";
 import prettier from "prettier/esm/standalone.mjs";
 
 
-// write a class for MarkdownBeautify like CSSBeautify
-export default class MarkdownBeautify extends Operation {
+export default class GraphQLBeautify extends Operation {
     public getOptDetail(): OptDetail {
         return {
-            relatedID: 'text',
+            relatedID: 'sql',
             config: {
                 "module": "Code",
-                "description": "Indents and prettifies Markdown document.",
+                "description": "Indents and prettifies GraphQL code.",
                 "infoURL": null,
                 "inputType": "string",
                 "outputType": "string",
                 "flowControl": false,
                 "manualBake": false,
                 "args": [
-                    // {
-                    //     "name": Dot("istqwi", "Indent string"),
-                    //     "type": "binaryShortString",
-                    //     "value": "\\t"
-                    // }
                 ]
             },
-            nousenouseID: 'mdbeautify',
-            optName: Dot("3TMOUekhZl", "Format {0}", "Markdown"),
+            nousenouseID: 'graphql-beautify',
+            optName: Dot("graphql.format.btn", "Format {0}", 'GraphQL'),
             optDescription: Dot(
-                "md2aO2NaJqITm",
-                "Indents and prettifies Markdown document.",
+                "graphql.format.desc",
+                "Indents and prettifies GraphQL code.",
             ),
-            infoURL: "https://www.markdownguide.org/",
-            exampleInput: "# Hello, world!\n=============\n   ## Subtitle\n",
-            exampleOutput: "# Hello, world!\n=============\n## Subtitle\n",
+            infoURL: "https://graphql.org/",
+            exampleInput: "type Query {\n    hello: String\n}",
+            exampleOutput: "type Query {\n  hello: String\n}",
         }
     }
 
@@ -70,25 +64,20 @@ export default class MarkdownBeautify extends Operation {
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
-            // {
-            //     "name": Dot("isti", "Indent string"),
-            //     "type": "binaryShortString",
-            //     "value": "\\t"
-            // }
         ];
     }
 
     run(input, args) {
         return prettier.format(input, {
-            parser: "markdown",
-            plugins: [parserMarkdown],
+            parser: "graphql",
+            plugins: [parserGraphql],
         });
     }
 
     getInputOutputEditorLang(): InputOutputEditorLang | null {
         return {
-            inputLang: "markdown",
-            outputLang: "markdown"
+            inputLang: "graphql",
+            outputLang: "graphql"
         }
     }
 }

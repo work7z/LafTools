@@ -11,6 +11,7 @@ import { AppOpFnMapTypeKeys } from "../g_optlist.tsx";
 export default class YamlHandler extends ToolHandler {
     getMetaInfo(): ToolMetaInfo {
         return {
+            hideFAQPanel: true,
             exampleType: "text-short",
             description: Dot(
                 "0MO3jj.yaml",

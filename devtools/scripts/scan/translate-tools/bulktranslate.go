@@ -142,6 +142,8 @@ func main() {
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "CodeGen ToolBox", "CodeGen工具箱")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "压缩器", "压缩混淆")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "缩小器", "压缩混淆")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "逃脱", "转义")
+			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "取消转义", "反转义")
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "你", "您")       // 您们? 您们的? haha, it's too courtesy and full of etiquette in Chinese, but it's ok for this App at least.
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "生成器", "生成器")   // 您们? 您们的? haha, it's too courtesy and full of etiquette in Chinese, but it's ok for this App at least.
 			resultForCurrentLang = strings.ReplaceAll(resultForCurrentLang, "格式化程序", "格式化") // 您们? 您们的? haha, it's too courtesy and full of etiquette in Chinese, but it's ok for this App at least.

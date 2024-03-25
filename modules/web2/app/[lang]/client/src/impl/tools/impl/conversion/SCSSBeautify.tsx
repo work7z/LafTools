@@ -23,40 +23,34 @@ import Operation, { OptDetail } from "../../../core/Operation.tsx";
 import Utils from "../../../core/Utils.mjs";
 import gutils from "@/app/[lang]/client/src/utils//GlobalUtils.tsx";
 import { InputOutputEditorLang } from "../../../purejs-types.tsx";
-import parserMarkdown from "prettier/esm/parser-markdown.mjs";
+import parserPostcss from "prettier/esm/parser-postcss.mjs";
 import prettier from "prettier/esm/standalone.mjs";
 
 
-// write a class for MarkdownBeautify like CSSBeautify
-export default class MarkdownBeautify extends Operation {
+export default class SCSSBeautify extends Operation {
     public getOptDetail(): OptDetail {
         return {
-            relatedID: 'text',
+            relatedID: 'css',
             config: {
                 "module": "Code",
-                "description": "Indents and prettifies Markdown document.",
+                "description": Dot("desc.scss", "Indents and prettifies SCSS code."),
                 "infoURL": null,
                 "inputType": "string",
                 "outputType": "string",
                 "flowControl": false,
                 "manualBake": false,
                 "args": [
-                    // {
-                    //     "name": Dot("istqwi", "Indent string"),
-                    //     "type": "binaryShortString",
-                    //     "value": "\\t"
-                    // }
                 ]
             },
-            nousenouseID: 'mdbeautify',
-            optName: Dot("3TMOUekhZl", "Format {0}", "Markdown"),
+            nousenouseID: 'scss-beautify',
+            optName: Dot("scss.format.btn", "Format {0}", 'SCSS'),
             optDescription: Dot(
-                "md2aO2NaJqITm",
-                "Indents and prettifies Markdown document.",
+                "scss.format.desc",
+                "Indents and prettifies SCSS code.",
             ),
-            infoURL: "https://www.markdownguide.org/",
-            exampleInput: "# Hello, world!\n=============\n   ## Subtitle\n",
-            exampleOutput: "# Hello, world!\n=============\n## Subtitle\n",
+            infoURL: "https://sass-lang.com/",
+            exampleInput: ".foo {\n    color: red;\n}",
+            exampleOutput: ".foo {\n  color: red;\n}",
         }
     }
 
@@ -70,25 +64,20 @@ export default class MarkdownBeautify extends Operation {
         this.inputType = "string";
         this.outputType = "string";
         this.args = [
-            // {
-            //     "name": Dot("isti", "Indent string"),
-            //     "type": "binaryShortString",
-            //     "value": "\\t"
-            // }
         ];
     }
 
     run(input, args) {
         return prettier.format(input, {
-            parser: "markdown",
-            plugins: [parserMarkdown],
+            parser: "scss",
+            plugins: [parserPostcss],
         });
     }
 
     getInputOutputEditorLang(): InputOutputEditorLang | null {
         return {
-            inputLang: "markdown",
-            outputLang: "markdown"
+            inputLang: "css",
+            outputLang: "css"
         }
     }
 }

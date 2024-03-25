@@ -53,7 +53,11 @@ import { useShouldVerticalModeOrNot } from "../index.tsx";
 import EditableOptions from "@/app/[lang]/client/src/components/EditableOptions/index.tsx";
 import { useGeneralListRead } from "./hooks.tsx";
 import ParamStateSlice from "@/app/[lang]/client/src/reducers/state/paramStateSlice.tsx";
+import { FAQItem } from "@/app/[lang]/client/src/impl/tools/faq/types.tsx";
 export type ProcessPanelProps = { disableSeparateOutputMode: boolean, hideSettingPanel: boolean } & CommonTransformerPassProp & TransformerWithRuntime
+export type FaqFnType = {
+    fn: () => FAQItem[]
+}
 export default (props: ProcessPanelProps) => {
     let crtRuntimeStatus = props.crtRuntimeStatus
     let shouldVert = useShouldVerticalModeOrNot()
@@ -66,7 +70,7 @@ export default (props: ProcessPanelProps) => {
     let extVM = props.extVM
     let actions = extVM?.Actions
     let toolHandler = props.toolHandler
-
+    let [hideFAQ, onHideFAQ] = useState(false)
     logutils.debug("autorun-crtRuntimeStatus", crtRuntimeStatus)
     let generalList = useGeneralListRead(props)
 
@@ -96,7 +100,10 @@ export default (props: ProcessPanelProps) => {
             props.onProcess(true)
         }} fixSingleColumn={shouldVert} list={generalList}></FormGenPanel >
     } else if (toolTabIndex == "faq") {
-        finalShowContent_l = <FaqPanel key={sessionId} {...props}></FaqPanel>
+        finalShowContent_l = <FaqPanel
+            hideFAQ={hideFAQ}
+            onHideFAQ={onHideFAQ}
+            key={sessionId} {...props}></FaqPanel>
     } else if (toolTabIndex == 'code') {
         finalShowContent_l = <CodePanel {...props}></CodePanel>
     }
@@ -144,8 +151,9 @@ export default (props: ProcessPanelProps) => {
                     >
                         <Tab id="tools" icon="cog" title={Dot("XeXF77", "Settings")}
                         />
-
-                        <Tab id="faq" icon="manual" title={"FAQ"} />
+                        {
+                            !toolHandler || toolHanlder?.getMetaInfo()?.hideFAQPanel ? '' : <Tab id="faq" icon="manual" title={"FAQ"} />
+                        }
                         {
                             !toolHandler || toolHanlder?.getMetaInfo()?.hideCodePanel ? '' : <Tab id="code" icon="code" title={Dot("JQEVK", "Code")} />
                         }
