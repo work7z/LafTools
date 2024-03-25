@@ -333,16 +333,15 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 triggerSettingPanel(!hideSettingPanel);
             }
         },
-        {
-            icon: "console",
-            intent: hideBottomPanel ? "none" : "success",
-            className: hideBottomPanel ? "" : "btn-lime",
-            title: hideBottomPanel ? Dot("1IrWC1qw", "Hide Bottom Panel") : Dot("pENGfAKuz", "Show Bottom Panel"),
-            onClick() {
-                triggerBottomPanel(!hideBottomPanel);
-            }
-        },
-
+        // {
+        //     icon: "console",
+        //     intent: hideBottomPanel ? "none" : "success",
+        //     className: hideBottomPanel ? "" : "btn-lime",
+        //     title: hideBottomPanel ? Dot("1IrWC1qw", "Hide Bottom Panel") : Dot("pENGfAKuz", "Show Bottom Panel"),
+        //     onClick() {
+        //         triggerBottomPanel(!hideBottomPanel);
+        //     }
+        // },
 
         {
             icon: "rect-width",

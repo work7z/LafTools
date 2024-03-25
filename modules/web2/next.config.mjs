@@ -20,7 +20,6 @@
 
 /** @type {import('next').NextConfig} */
 
-// let API_URL = "https://api.laftools.dev"; // TODO: api subdomain should be implemented in the future
 let API_URL = "https://laftools.dev";
 
 const nextConfig = {

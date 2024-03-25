@@ -248,18 +248,18 @@ export let getToolSubCategory = ((): PortalDefinitionType[] => {
                 {
                     id: 'JSONUnescape',
                     toolId: 'JSONEscape',
-                    label: Dot("fPJhhtUX-", "JSON Unescape"),
+                    label: Dot("fdtdUX-", "JSON Unescape"),
                 },
-                {
-                    id: 'escape',
-                    // toolId: 'escape',
-                    label: Dot("2Y2Y2qY2Y2", "Escape"),
-                },
-                {
-                    id: 'unescape',
-                    // toolId: 'unescape',
-                    label: Dot("2Y2Y2wY2Y2", "Unescape"),
-                },
+                // {
+                //     id: 'escape',
+                //     // toolId: 'escape',
+                //     label: Dot("2Y2Y2qY2Y2", "Escape"),
+                // },
+                // {
+                //     id: 'unescape',
+                //     // toolId: 'unescape',
+                //     label: Dot("2Y2Y2wY2Y2", "Unescape"),
+                // },
                 {
                     id: 'encodeuri',
                     // toolId: 'encodeuri',

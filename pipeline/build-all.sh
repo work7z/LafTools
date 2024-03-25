@@ -144,9 +144,11 @@ import { AppInfoClz } from \"@/app/__CORE__/meta/ctypes\"
             [ ! -d node_modules ] && npm install --omit=dev --force 
             # [ ! -d node_modules ] && npm install -S -D --force 
             rm ./vite.config.ts
+            rm -rf .next
             npm run build
             cd .next
-            cp -a ../public/ ./standalone/public
+            mkdir -p ./standalone/public
+            cp -a ../public/* ./standalone/public/
             cp -a  ./static/ ./standalone/.next/static
             cd ..
             [ -d $LAFTOOLS_ROOT/dist/web2 ] && rm -rf $LAFTOOLS_ROOT/dist/web2
