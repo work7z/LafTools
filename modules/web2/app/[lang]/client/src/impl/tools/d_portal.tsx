@@ -241,6 +241,16 @@ export let getToolSubCategory = ((): PortalDefinitionType[] => {
                     label: Dot("2Y2Y2Yd2Y2", "Base64"),
                 },
                 {
+                    id: 'JSONEscape',
+                    toolId: 'JSONEscape',
+                    label: Dot("vlCxkKmI4", "JSON Escape"),
+                },
+                {
+                    id: 'JSONUnescape',
+                    toolId: 'JSONEscape',
+                    label: Dot("fPJhhtUX-", "JSON Unescape"),
+                },
+                {
                     id: 'escape',
                     // toolId: 'escape',
                     label: Dot("2Y2Y2qY2Y2", "Escape"),

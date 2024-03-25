@@ -47,7 +47,7 @@ export default (props: ToolProp) => {
                 <div className='space-y-2'>
                     <Link className='flex flex-row items-center justify-center ' href={fmtURL_Server(['client'])}>
                         <Button color='primary' fullWidth size='sm' variant='bordered'>
-                            <img src='/controls/program.png' className='w-5 h-5 mr-[2px] ' />
+                            <img src='/static/controls/program.png' className='w-5 h-5 mr-[2px] ' />
                             <span className=''>
                                 {Dot("kUSuP_S-Y", "Try with Client UI")}
                             </span>

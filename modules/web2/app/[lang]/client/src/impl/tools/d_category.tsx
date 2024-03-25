@@ -53,7 +53,8 @@ export default (): ToolCategory[] => {
             "edc_base64",
             "edc_base85",
             "hex",
-            "bcd"
+            "bcd",
+            "JSONEscape"
             // "edc_url",
             // "edc_hex",
             // "edc_unicode",
@@ -226,20 +227,11 @@ export default (): ToolCategory[] => {
             "SCSSBeautify",
             "MarkdownBeautify",
             "TypeScriptBeautify",
-            "GraphQLBeautify"
-            // "fmt_less",
-            // "fmt_sass",
-            // "fmt_markdown",
-            // "fmt_typescript",
-            // "fmt_graphql",
+            "GraphQLBeautify",
 
             //   {
             //     "name": "Code tidy",
             //     "ops": [
-            //         "Syntax highlighter",
-            //         "JavaScript Parser",
-            //         "JavaScript Minify",
-
             //         "XPath expression",
             //         "JPath expression",
             //         "CSS selector",
@@ -271,6 +263,7 @@ export default (): ToolCategory[] => {
             "XMLMinify",
             "SQLMinify",
             "CSSMinify",
+            "JSONEscape",
           ],
         }
       ],

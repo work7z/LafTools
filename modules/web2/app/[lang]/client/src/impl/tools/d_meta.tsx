@@ -194,7 +194,7 @@ _.forEach(appToolInfoObj, (x, d, n) => {
 // NOTE: key is the language type or just a prefered id
 // let us say we can show related tools for a given tool based on its lang type or prefered id
 export const AppToolConversionIdCollectionSet = {
-    json: ['JSONBeautify', 'JSONMinify', 'CSVToJSON'],
+    json: ['JSONBeautify', 'JSONMinify', 'JSONEscape', 'CSVToJSON'],
     javascript: ['JavaScriptBeautify', 'JavaScriptMinify'],
     css: ['CSSBeautify', 'CSSMinify'],
     sql: ['SQLBeautify', 'SQLMinify'],

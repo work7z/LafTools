@@ -667,6 +667,20 @@ export    type Tool2PageMap = {
             ]
         }
     ],
+    "JSONEscape": [
+        {
+            "pagePath": [
+                "encoding",
+                "JSONEscape"
+            ]
+        },
+        {
+            "pagePath": [
+                "encoding",
+                "JSONUnescape"
+            ]
+        }
+    ],
     "edc_base32": [
         {
             "pagePath": [

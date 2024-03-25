@@ -33,7 +33,7 @@ export let IconLabel = (props: { icon: string, label: string }) => {
     // javascript:void(0)
     return <a href=''>
         <div className="">
-            <img src={'/controls/' + props.icon} className="w-5 h-5 mr-2" />
+            <img src={'/static/controls/' + props.icon} className="w-5 h-5 mr-2" />
             {/* <span>{props.label}</span> */}
         </div>
     </a>

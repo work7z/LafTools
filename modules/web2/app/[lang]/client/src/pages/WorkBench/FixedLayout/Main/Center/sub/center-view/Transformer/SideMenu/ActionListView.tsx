@@ -18,6 +18,7 @@ import { OpDetail, getAllOperationDetails } from '@/app/[lang]/client/src/impl/t
 import { useInitFunctionOnceOnly } from '@/app/__CORE__/hooks/cache'
 import ParamStateSlice, { ToolSideMenuTabIdType } from '@/app/[lang]/client/src/reducers/state/paramStateSlice'
 import { ICON_BTN_TRIGGER_FN, TOOLTIP_OPEN_DELAY_BTN } from '@/app/__CORE__/meta/constants'
+import AlertUtils from '@/app/[lang]/client/src/utils/AlertUtils'
 
 export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & {
     opDetails: OpDetail[]
@@ -95,6 +96,7 @@ export const ActionListViewButton = (props: CommonTransformerPassProp & Transfor
             intent={whatIntent} key={x.id} onClick={async () => {
                 await props.fn_switchToSideMenuExtraOp(x.id)
                 await props.onProcess()
+                AlertUtils.popOK(Dot("WGrO5S5kU", "Switch to the quick operation {0}!", x.label))
             }}>{x.label}</Button>
     </Tooltip>
 }
