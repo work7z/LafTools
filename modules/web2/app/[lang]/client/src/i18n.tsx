@@ -37,7 +37,7 @@ export let getFormattedLang = function (crtLang: string) {
   }
   return crtLang;
 }
-
+export * from './i18n-pure'
 
 let prevLangValue: string | null = null
 
