@@ -113,7 +113,7 @@ export const ActionListViewButton = (props: CommonTransformerPassProp & Transfor
 
                     let ball = document.createElement("div");
                     ball.className = tw`  shadow-lg `;
-                    ball.style.backgroundColor = '#53c5db'
+                    ball.style.backgroundColor = 'green'
                     ball.style.opacity = '0.9'
                     ball.style.width = "8px";
                     ball.style.height = "8px";
