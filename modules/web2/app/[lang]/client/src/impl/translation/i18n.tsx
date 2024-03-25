@@ -29,7 +29,7 @@ export default (): EachLang[] => {
   let langList: EachLang[] = i18nItems.map((x: I18nItem) => {
     return {
       LabelInEnglish: x.LabelInEnglish,
-      Label: x.Label[1] + "",
+      Label: x.Label + "",
       LabelByLang: x.LabelByLang,
       Value: x.Value
     } satisfies EachLang

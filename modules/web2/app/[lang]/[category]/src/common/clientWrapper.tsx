@@ -40,9 +40,9 @@ export let getAppToolHeight = () => {
     return 880
 }
 
-export default (props: { children: any }) => {
+export default (props: { children: any, noFULL?: boolean }) => {
     d()
-    return <div className='w-full h-full'>
+    return <div className={props.noFULL ? '' : 'w-full h-full'}>
         <ClientPortalContext.Provider value={{
             appToolHeight: getAppToolHeight(),
             portalMode: true
