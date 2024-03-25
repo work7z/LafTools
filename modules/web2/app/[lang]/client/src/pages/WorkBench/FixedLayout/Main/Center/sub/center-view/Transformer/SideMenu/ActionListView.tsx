@@ -19,6 +19,7 @@ import { useInitFunctionOnceOnly } from '@/app/__CORE__/hooks/cache'
 import ParamStateSlice, { ToolSideMenuTabIdType } from '@/app/[lang]/client/src/reducers/state/paramStateSlice'
 import { ICON_BTN_TRIGGER_FN, TOOLTIP_OPEN_DELAY_BTN } from '@/app/__CORE__/meta/constants'
 import AlertUtils from '@/app/[lang]/client/src/utils/AlertUtils'
+import { MAIN_SYSTEM_ACTION_BTN_ID } from '../ControlBar'
 
 export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & {
     opDetails: OpDetail[]
@@ -64,6 +65,7 @@ export default (props: CommonTransformerPassProp & TransformerWithRuntimeProp & 
 }
 
 export const ActionListViewButton = (props: CommonTransformerPassProp & TransformerWithRuntimeProp & {
+    bindid?: string,
     x: OpDetail,
     activeParentTrigger?: boolean,
     noHighlightMode?: boolean,
@@ -84,19 +86,68 @@ export const ActionListViewButton = (props: CommonTransformerPassProp & Transfor
         }
     }
 
-    return <Tooltip placement={props.placement} content={
-        <div style={{
-            maxWidth: '400px'
-        }} dangerouslySetInnerHTML={{ __html: x.description }}></div>
-    } hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN} >
-        <Button icon={
-            props.activeParentTrigger && isCurrent ? 'tick' :
-                x.icon} small loading={isCurrent && props.loadingExtraOpList} minimal={props.noHighlightMode} className={twClz} style={{
-                }} outlined={props.noHighlightMode || !isCurrentAndLoaded}
-            intent={whatIntent} key={x.id} onClick={async () => {
-                await props.fn_switchToSideMenuExtraOp(x.id)
-                await props.onProcess()
-                AlertUtils.popOK(Dot("WGrO5S5kU", "Switch to the quick operation {0}!", x.label))
-            }}>{x.label}</Button>
-    </Tooltip>
+    let [showJump, onShowJump] = useState(false)
+    let currentRef = useRef({
+        e: null,
+    })
+
+    return <span className='inline-block'>
+        <Tooltip placement={props.placement} content={
+            <div style={{
+                maxWidth: '400px'
+            }} dangerouslySetInnerHTML={{ __html: x.description }}></div>
+        } hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN} >
+            <Button ref={ee => {
+                if (ee) {
+                    currentRef.current.e = ee as any
+                }
+            }} id={props.bindid} icon={
+                props.activeParentTrigger && isCurrent ? 'tick' :
+                    x.icon} small loading={isCurrent && props.loadingExtraOpList} minimal={props.noHighlightMode} className={twClz} style={{
+                    }} outlined={props.noHighlightMode || !isCurrentAndLoaded}
+                intent={whatIntent} key={x.id} onClick={async () => {
+                    await props.fn_switchToSideMenuExtraOp(x.id)
+                    await props.onProcess()
+                    onShowJump(true)
+
+
+                    let ball = document.createElement("div");
+                    ball.className = tw`  shadow-lg `;
+                    ball.style.backgroundColor = '#53c5db'
+                    ball.style.opacity = '0.9'
+                    ball.style.width = "8px";
+                    ball.style.height = "8px";
+                    ball.style.borderRadius = "4px";
+                    ball.style.position = "fixed";
+
+                    if (!currentRef.current.e) return;
+                    let thisEle = currentRef.current.e as HTMLElement
+                    let productRect = thisEle.getBoundingClientRect();
+                    let ballStartLeft = productRect.x;
+                    let ballStartTop = productRect.y;
+
+                    let d = document.getElementById(MAIN_SYSTEM_ACTION_BTN_ID)
+                    if (!d) {
+                        return;
+                    }
+                    let cartRect = d.getBoundingClientRect();
+                    let ballEndLeft = cartRect.x;
+                    let ballEndTop = cartRect.y;
+
+                    document.body.appendChild(ball);
+                    ball.style.left = ballStartLeft + (productRect.width / 2) + "px";
+                    ball.style.top = ballStartTop + (productRect.height / 2) + "px";
+                    ball.style.transition = "all 1s ease-in-out";
+
+                    setTimeout(() => {
+                        ball.style.left = ballEndLeft + (cartRect.width / 2) + "px";
+                        ball.style.top = ballEndTop + (cartRect.height / 2) + "px";
+                        setTimeout(() => {
+                            document.body.removeChild(ball)
+                        }, 1000)
+                    }, 300)
+                }}>{x.label}</Button>
+        </Tooltip>
+
+    </span >
 }

@@ -439,11 +439,17 @@ export default (props: CommonTransformerProps) => {
         let opera: any = await obj.ImportImpl()
         let newOpera: ToolHandler = new opera["default"]();
         let names = newOpera.getOperationsByName()
+        let waitArr: Promise<void>[] = []
         for (let name of names) {
-          let nameFN = await loadConversionTSXById(name)
-          if (nameFN) {
-            newOpera.addOperation(name, nameFN)
-          }
+          waitArr.push((async () => {
+            let nameFN = await loadConversionTSXById(name)
+            if (nameFN) {
+              newOpera.addOperation(name, nameFN)
+            }
+          })())
+        }
+        for (let waitItem of waitArr) {
+          await waitItem;
         }
         operaRef.current = newOpera
         if (operaRef.current) {

@@ -55,6 +55,9 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
         {
             _.map(props.opBtns, x => {
                 let whatIntent: Intent = x.type == 'origin' || x.type == 'related' ? 'primary' : 'success'
+                let crtIdObj = props.mainControlBarMode ? {
+                    id: MAIN_SYSTEM_ACTION_BTN_ID
+                } : {}
                 if (!x) {
                     return ''
                 }
@@ -64,7 +67,9 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                     let crtName = x.name
                     let isHighlightOne = props.mainControlBarMode;
                     let obj = {
+                        id: crtIdObj.id,
                         text: crtName,
+                        // id: isHighlightOne ?  : undefined,
                         icon: props.noIcon ? undefined : ICON_BTN_TRIGGER_FN,
                         intent: whatIntent,
                         title: crtDesc,
@@ -95,6 +100,7 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                     return <ActionListViewButton
                         {...props}
                         key={x.opId}
+                        bindid={crtIdObj.id}
                         noHighlightMode={false}
                         placement="bottom-start"
                         activeParentTrigger={x.isParentTrigger}
@@ -117,6 +123,8 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
         }
     </>
 }
+
+export const MAIN_SYSTEM_ACTION_BTN_ID = 'msabid'
 
 let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic: boolean } & TextTransformerProps & TransformerWithRuntime & {
     onProcess: () => any;

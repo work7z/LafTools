@@ -105,9 +105,9 @@ export function mergeTwoParamState(initialState: ParamStateState, objState2: any
     });
     // NOTE: the quick operation should be cleaned in every merge
     let r: ParamStateState = _.merge(initialState, objState2)
-    _.forEach(r.tlcfg, x => {
-        x.sideOpId = ''
-    })
+    // _.forEach(r.tlcfg, x => {
+    //     x.sideOpId = ''
+    // })
     return r;
 }
 
