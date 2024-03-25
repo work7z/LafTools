@@ -83,10 +83,14 @@ import { StreamLanguage } from '@codemirror/language';
 
 import { EditorView } from "codemirror"
 import { useTheme } from "next-themes";
+import { IconName } from "@blueprintjs/icons";
+import { CSS_NAV_BP_TAB_HEIGHT, VAL_CSS_TAB_TITLE_PANEL, border_clz_common } from "../../types/styles";
 // import { langs, langNames, loadLanguage } from '@uiw/codemirror-extensions-langs';
 // console.log('langNames', langs.mysql())
 
 type GenCodeMirrorProp = {
+  title?: string;
+  icon?: IconName;
   readOnly?: boolean;
   bigTextId: string;
   lineWrap?: boolean;
@@ -119,6 +123,7 @@ export let useForgeObj = () => {
   return forgeObj
 }
 export default (props: GenCodeMirrorProp) => {
+  let hasTitle = props.title;
   let forgeObj = useForgeObj()
   // exportUtils.useSelector((val) => ({
   //   dark: val.forge.DarkThemeMode,
@@ -180,29 +185,41 @@ export default (props: GenCodeMirrorProp) => {
     propRef.current.fn_onTextChange && propRef.current.fn_onTextChange(val)
   }, []);
   let langPack = props.language && langMap[props.language] ? (langMap[props.language])() : null
-  return (
-    <CodeMirror
-      key={verObj.ver}
-      onChange={(val) => {
-        onChange(val, true);
-      }}
-      placeholder={props.placeholder}
-      minHeight="100%"
-      style={{
-        height: "100%",
-      }}
-      readOnly={props.readOnly}
-      height="100%"
-      value={value}
-      basicSetup={{
-        foldGutter: true,
-        highlightActiveLineGutter: true
-      }}
-      extensions={[
-        langPack,
-        props.lineWrap ? EditorView.lineWrapping : null
-      ].filter(x => x != null) as any}
-      theme={forgeObj.dark ? githubDark : githubLight}
-    />
-  );
+  return <div className="w-full h-full flex flex-col">
+    <div className={border_clz_common + " border-b-[1px] using-edge-ui-bg flex justify-center items-center text-xs "} style={{
+      height: VAL_CSS_TAB_TITLE_PANEL,
+    }}>
+      <span className="space-x-2">
+        {props.icon ? <Icon size={12} icon={props.icon} /> : ''}
+        <span>
+          {props.title}
+        </span>
+      </span>
+    </div>
+    <div className='flex-1'>
+      <CodeMirror
+        key={verObj.ver}
+        onChange={(val) => {
+          onChange(val, true);
+        }}
+        placeholder={props.placeholder}
+        minHeight="100%"
+        style={{
+          height: "100%",
+        }}
+        readOnly={props.readOnly}
+        height="100%"
+        value={value}
+        basicSetup={{
+          foldGutter: true,
+          highlightActiveLineGutter: true
+        }}
+        extensions={[
+          langPack,
+          props.lineWrap ? EditorView.lineWrapping : null
+        ].filter(x => x != null) as any}
+        theme={forgeObj.dark ? githubDark : githubLight}
+      />
+    </div>
+  </div>;
 };

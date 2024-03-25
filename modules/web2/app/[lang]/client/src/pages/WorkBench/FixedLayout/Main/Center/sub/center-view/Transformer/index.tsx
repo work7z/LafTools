@@ -504,76 +504,48 @@ export default (props: CommonTransformerProps) => {
   if (loadError) {
     desc = `${Dot("RO4ZP", "An Error Occurred")}: \n${loadError}`
   }
-  let codeMirrorItem = <GenCodeMirror
-    lineWrap
-    placeholder={desc || Dot("xPHqP", "The description is not yet defined.")}
-    language="javascript"
-    key={inputBigTextId}
-    bigTextId={inputBigTextId}
-    onTextChange={(val) => {
-      fn_notifyTextChange(true)
-    }}
-  ></GenCodeMirror>
 
-  let processPanelItem = hideBottomPanel ? '' :
-    <Allotment.Pane>
-      <ProcessPanel hideSettingPanel={hideSettingPanel} disableSeparateOutputMode={false} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
-    </Allotment.Pane>
+  let jsx_process_settings_panel = hideBottomPanel ? '' :
+    <ProcessPanel hideSettingPanel={hideSettingPanel} disableSeparateOutputMode={false} crtRuntimeStatus={crtRuntimeStatus} {...commonPassProp}></ProcessPanel>
   if (loadError) {
     return <ShowErrorPanel loadError={loadError}></ShowErrorPanel>
   }
 
-  let app_right_t_jsx = codeMirrorItem || (
-    <div className=" h-full p-[1px] flex flex-col  ">
-      <Navbar>
-        <Navbar.Group >
-          <Navbar.Heading >
-            <Icon icon="import"
-              iconSize={20} className={(
-                'mr-2'
-              )}
-            />
-            <span className={
-              '' + light_border_clz_all + ''
-            }>
-              {
-                Dot("rG_kxaJMH", "Pre-Process")
-              }
-            </span>
-          </Navbar.Heading>
-        </Navbar.Group>
-        <Navbar.Group align={Alignment.RIGHT}>
-          <Tabs
-            animate={true}
-            fill={true}
-            // id="navbar"
-            large={false}
-            onChange={(v) => {
-              // FN_GetDispatch()(RuntimeStatusSlice.actions.setToolTabIndex({ sessionId, tabIndex: v as Val_ToolTabIndex }))
-            }}
-            selectedTabId={'output'}
-          >
-            {
-              <Tab id="output" icon={
-                'new-text-box'
-              } title={Dot("input.text.btn", "Input")} />
-            }
-          </Tabs>
-        </Navbar.Group>
-      </Navbar>
-      <div className="flex-1 overflow-auto">
-        {codeMirrorItem}
-      </div>
+  let app_right_input_jsx = (
+    <GenCodeMirror
+      lineWrap
+      icon='generate'
+      title={Dot("XdOYpbSeG", "Input")}
+      placeholder={desc || Dot("xPHqP", "The description is not yet defined.")}
+      language="javascript"
+      key={inputBigTextId}
+      bigTextId={inputBigTextId}
+      onTextChange={(val) => {
+        fn_notifyTextChange(true)
+      }}
+    ></GenCodeMirror>
+  )
+  let app_right_output_jsx = (
+    <div className="w-full h-full overflow-auto">
+      <GenCodeMirror
+        icon='export'
+        readOnly
+        title={Dot("XdOYpsdf", "Output")}
+        lineWrap
+        language={props.crtDefaultOpera?.getInputOutputEditorLang()?.outputLang || "text"}
+        placeholder={Dot("y_9YM", "Output will be displayed here.")}
+        bigTextId={props.outputBigTextId}
+      ></GenCodeMirror>
     </div>
   )
 
 
-  let app_right_b_jsx = processPanelItem
+  let app_right_b_jsx = jsx_process_settings_panel
 
   if (props.needFullPageSupport) {
-    app_right_t_jsx = <div className={
+    app_right_input_jsx = <div className={
       shouldVerticalMode ? 'h-[350px]' : ' h-[700px] ' + ' align-top w-1/2 inline-block ' + border_clz_common + ' border-r-[1px] '
-    }>{app_right_t_jsx}</div>
+    }>{app_right_input_jsx}</div>
     app_right_b_jsx = <div className={
       shouldVerticalMode ? 'min-h-[350px]' : ' min-h-[700px] ' + ' align-top w-1/2 inline-block '
     }>{app_right_b_jsx}</div>
@@ -599,18 +571,27 @@ export default (props: CommonTransformerProps) => {
       {
         props.needFullPageSupport ? (
           <div className="w-full">
-            {app_right_t_jsx}
+            {app_right_input_jsx}
             {app_right_b_jsx}
           </div>
         ) : (
-          <Allotment
-            vertical={shouldVerticalMode}
-            key={shouldVerticalMode + ""}
-          >
+          <Allotment key={shouldVerticalMode + 'x'} vertical={shouldVerticalMode}>
             <Allotment.Pane>
-              {app_right_t_jsx}
+              <Allotment
+                vertical={!shouldVerticalMode}
+                key={shouldVerticalMode + "xxxs"}
+              >
+                <Allotment.Pane>
+                  {app_right_input_jsx}
+                </Allotment.Pane>
+                <Allotment.Pane>
+                  {app_right_output_jsx}
+                </Allotment.Pane>
+              </Allotment>
             </Allotment.Pane>
-            {app_right_b_jsx}
+            <Allotment.Pane preferredSize={250}>
+              {jsx_process_settings_panel}
+            </Allotment.Pane>
           </Allotment>
         )
       }

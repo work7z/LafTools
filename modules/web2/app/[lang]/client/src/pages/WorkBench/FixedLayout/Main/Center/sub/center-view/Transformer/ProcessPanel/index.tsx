@@ -71,7 +71,6 @@ export default (props: ProcessPanelProps) => {
     let generalList = useGeneralListRead(props)
 
     let finalShowContent_l = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
-    let finalShowContent_r = <div>{Dot("zkqUFa", "{0} is not yet configured", toolTabIndex)}</div>
     let pdValue = 'p-2'
     let loadingStatic = false
     let toolHanlder = props.toolHandler
@@ -102,17 +101,6 @@ export default (props: ProcessPanelProps) => {
         finalShowContent_l = <CodePanel {...props}></CodePanel>
     }
 
-    finalShowContent_r = (
-        <div className="w-full h-full overflow-auto">
-            <GenCodeMirror
-                readOnly
-                lineWrap
-                language={props.crtDefaultOpera?.getInputOutputEditorLang()?.outputLang || "text"}
-                placeholder={Dot("y_9YM", "Output will be displayed here.")}
-                bigTextId={props.outputBigTextId}
-            ></GenCodeMirror>
-        </div>
-    )
 
     let loadingTextClz = "text-blue-500 dark:text-blue-300"
     let greenClz = "text-lime-700 dark:text-lime-500"
@@ -202,25 +190,8 @@ export default (props: ProcessPanelProps) => {
             </Navbar.Group>
         </Navbar>
     )
-    let jsx_right_output_ctn = (
-        <div style={{ height: `calc(100% - ${CSS_NAV_BP_TAB_HEIGHT})`, overflow: 'auto', flex: '1' }} className={'p-0'}>
-            {finalShowContent_r}
-        </div>
-    )
-    let jsx_right_output_or_somethingelse = (
-        <div className='h-full p-[1px] flex flex-col '>
-            {jsx_right_output_ctn}
-            {/* {
-                [jsx_right_output_tab, jsx_right_otput_ctn]
-            } */}
-        </div>
-
-    )
     return <div key={props.sessionId} className="w-full h-full">
         <Allotment vertical={!shouldVert}>
-            <Allotment.Pane>
-                {jsx_right_output_or_somethingelse}
-            </Allotment.Pane>
             {
                 props.hideSettingPanel ? '' : <Allotment.Pane>
                     {jsx_left_setting_or_faq}
