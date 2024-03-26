@@ -47,19 +47,22 @@ export let useHideBottomAndSettingHook = () => {
 
 export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRuntime & CommonTransformerPassProp & {
     noIcon?: boolean,
+    popoverItem?: any,
     opBtns: OpButtonStyleProps[],
     mainControlBarMode: boolean
 }) => {
     return <>
         {
             _.map(props.opBtns, x => {
-                let whatIntent: Intent = x.type == 'origin' || x.type == 'related' ? 'primary' : 'success'
+                let { mainControlBarMode } = props;
+                let whatIntent: Intent = !mainControlBarMode ? 'none' : x.type == 'origin' || x.type == 'related' ? 'primary' : 'success'
                 let crtIdObj = props.mainControlBarMode ? {
                     id: MAIN_SYSTEM_ACTION_BTN_ID
                 } : {}
                 if (!x) {
                     return ''
                 }
+                let returnObj: JSX.Element | string = `${x.name}`
                 if (x.type == 'origin') {
                     let crtId = x.opId
                     let crtDesc = x.desc
@@ -79,7 +82,7 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                         doNotBeMinimalWhenTrigger: true,
                         parentTriggered: x.isParentTrigger,
                         highlightOne: isHighlightOne,
-                        outlined: !isHighlightOne,
+                        outlined: false,//!isHighlightOne,
                         minimal: false,
                         onClick: () => {
                             props.fn_updateToolConfig({
@@ -91,12 +94,12 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                             }, 0)
                         },
                     } satisfies ActionButtonProps
-                    return fn_format_button("bottom-start")({
+                    returnObj = fn_format_button("bottom-start")({
                         key: x.opId,
                         ...buttonObject
                     })
                 } else if (x.type == 'related' || x.type == 'sidebar') {
-                    return <ActionListViewButton
+                    returnObj = <ActionListViewButton
                         {...props}
                         key={x.opId}
                         bindid={crtIdObj.id}
@@ -117,7 +120,14 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                         }
                     />
                 }
-                return x.name;
+                if (mainControlBarMode) {
+                    return <Popover placement="bottom-start" minimal interactionKind="hover" content={
+                        <div>
+                            <div className='p-2 space-x-1 item-all-sub-full max-w-[300px] justify-center items-end flex flex-col space-y-1'>{props.popoverItem}</div>
+                        </div>
+                    }>{returnObj}</Popover>
+                }
+                return returnObj
             })
         }
     </>
@@ -393,7 +403,9 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 {leftActions.map(fn_format_button("bottom-start"))}
                 {
                     props.activeOpBtn ?
-                        <CommonButtonForOriginRelatedAndOthers mainControlBarMode {...props} opBtns={[props.activeOpBtn]} />
+                        <CommonButtonForOriginRelatedAndOthers popoverItem={
+                            <CommonButtonForOriginRelatedAndOthers noIcon mainControlBarMode={false} {...props} opBtns={props.otherOpBtns || []} />
+                        } mainControlBarMode {...props} opBtns={[props.activeOpBtn]} />
                         : ''
                 }
                 {leftActions_2.map(fn_format_button("bottom-start"))}

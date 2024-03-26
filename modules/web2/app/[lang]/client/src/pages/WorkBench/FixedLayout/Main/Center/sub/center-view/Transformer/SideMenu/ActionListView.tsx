@@ -105,7 +105,8 @@ export const ActionListViewButton = (props: CommonTransformerPassProp & Transfor
             }} id={props.bindid} icon={
                 props.activeParentTrigger && isCurrent ? 'tick' :
                     x.icon} small loading={isCurrent && props.loadingExtraOpList} minimal={props.noHighlightMode} className={twClz} style={{
-                    }} outlined={props.noHighlightMode || !isCurrentAndLoaded}
+                    }} outlined={props.noHighlightMode}
+                //  || !isCurrentAndLoaded
                 intent={whatIntent} key={x.id} onClick={async () => {
                     await props.fn_switchToSideMenuExtraOp(x.id)
                     await props.onProcess()
