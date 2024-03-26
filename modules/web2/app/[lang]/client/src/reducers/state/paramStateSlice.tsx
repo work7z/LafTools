@@ -72,7 +72,7 @@ export type ParamStateState = {
     tid?: string; // tool tab id
 };
 const initialState: ParamStateState = {
-    hrts: 'f',
+    hrts: 't',
     nqop: 'f',
     tsdmid: 'allops',
     tsdrsipt: '',

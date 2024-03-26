@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "generate-files": "npx vitest run -t \"generate-app-op-detail-list\"",
-    "dev": "next dev",
+    "dev": "next dev -p 3020",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

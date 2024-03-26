@@ -93,12 +93,12 @@ export const ActionListViewButton = (props: CommonTransformerPassProp & Transfor
     })
 
     return <span className='inline-block'>
-        <Tooltip placement={props.placement} content={
+        <Tooltip isOpen={false} placement={props.placement} content={
             <div style={{
                 maxWidth: '400px'
             }} dangerouslySetInnerHTML={{ __html: x.description }}></div>
         } hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN} >
-            <Button ref={ee => {
+            <Button title={x.description} ref={ee => {
                 if (ee) {
                     currentRef.current.e = ee as any
                 }

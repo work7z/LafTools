@@ -74,7 +74,7 @@ export let QuickAccess = (props) => {
                 return <IconLabel key={x.id} icon={x.icon} label={x.label} />
             })}
         </div>
-        <div className='mt-4' style={{
+        <div className='mt-4 space-y-2' style={{
             marginTop: '14px'
         }}>
             <Button onClick={(e) => {
@@ -86,6 +86,12 @@ export let QuickAccess = (props) => {
                 });
             }} color="primary" variant='ghost' size='sm' fullWidth >
                 {Dot("mFsDijzjI", "Jump to Quick Access")}
+            </Button>
+            <Button onClick={(e) => {
+                localStorage.clear()
+                location.href = '/'
+            }} color="default" variant='ghost' size='sm' fullWidth >
+                {Dot("_8w6UsXTY", "Clear Local Storage")}
             </Button>
         </div>
     </div>

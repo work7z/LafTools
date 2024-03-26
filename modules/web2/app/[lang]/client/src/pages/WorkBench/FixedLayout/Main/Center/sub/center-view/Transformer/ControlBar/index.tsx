@@ -50,7 +50,6 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
     opBtns: OpButtonStyleProps[],
     mainControlBarMode: boolean
 }) => {
-    // props.mainControlBarMode ? 'primary' : 'success'
     return <>
         {
             _.map(props.opBtns, x => {
@@ -66,14 +65,14 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                     let crtDesc = x.desc
                     let crtName = x.name
                     let isHighlightOne = props.mainControlBarMode;
-                    let obj = {
+                    let buttonObject = {
                         id: crtIdObj.id,
                         text: crtName,
                         // id: isHighlightOne ?  : undefined,
                         icon: props.noIcon ? undefined : ICON_BTN_TRIGGER_FN,
                         intent: whatIntent,
-                        title: crtDesc,
-                        afterTitle: crtDesc,
+                        // title: '', // crtDesc,
+                        // afterTitle: crtDesc,
                         enableActionMode: true,
                         afterText: crtName,
                         lastingTime: 800,
@@ -94,7 +93,7 @@ export const CommonButtonForOriginRelatedAndOthers = (props: TransformerWithRunt
                     } satisfies ActionButtonProps
                     return fn_format_button("bottom-start")({
                         key: x.opId,
-                        ...obj
+                        ...buttonObject
                     })
                 } else if (x.type == 'related' || x.type == 'sidebar') {
                     return <ActionListViewButton
@@ -161,43 +160,6 @@ let TextTransformerControl = (props: CommonTransformerPassProp & { loadingStatic
                 );
             }
         },
-        // ...(
-        //     operaList
-        // ).map(x => {
-        //     let optDetail = x.getOptDetail()
-        //     let crtId = optDetail?.id;
-        //     let crtDesc = optDetail?.optDescription
-        //     let crtName = optDetail?.optName || x.name
-        //     let isHighlightOne = crtId == crtDefaultOperaId && !(
-        //         props.crtSideMenuOpera && props.crtSideMenuOperaId
-        //     ) && !props.loadingExtraOpList;
-        //     return {
-        //         text: crtName,
-        //         icon: ICON_BTN_TRIGGER_FN,
-        //         intent: "primary",
-        //         title: crtDesc,
-        //         afterTitle: crtDesc,
-        //         enableActionMode: true,
-        //         afterText: crtName,
-        //         lastingTime: 800,
-        //         doNotBeMinimalWhenTrigger: true,
-        //         parentTriggered: parentTriggered,
-        //         highlightOne: isHighlightOne,
-        //         outlined: !isHighlightOne,
-        //         // minimal: !isHighlightOne,
-        //         minimal: false,
-        //         onClick: () => {
-        //             props.fn_updateToolConfig({
-        //                 sideOpId: '',
-        //                 dftOpId: crtId
-        //             })
-        //             setTimeout(() => {
-        //                 props.onProcess()
-        //             }, 0)
-        //         },
-        //     } satisfies ActionButtonProps
-        // }) satisfies ActionButtonProps[],
-
     ];
     let leftActions_2: ActionButtonProps[] = [
         {

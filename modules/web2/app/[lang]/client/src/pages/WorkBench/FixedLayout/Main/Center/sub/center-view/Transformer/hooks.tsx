@@ -45,7 +45,7 @@ import { ExtensionAction, ExtensionInfo, ToolCategory, ToolDefaultOutputType } f
 import fn_AppCategory from "@/app/[lang]/client/src/impl/tools/d_category";
 import { ListExtForTheCategoryRes } from "../../../../../../../../reducers/apiSlice";
 import appToolInfoObj, { loadConversionTSXById } from "@/app/[lang]/client/src/impl/tools/d_meta";
-import ActionButton from "../../../../../../../../components/ActionButton";
+import ActionButton, { ActionButtonProps } from "../../../../../../../../components/ActionButton";
 import gutils from "../../../../../../../../utils/GlobalUtils";
 import COMMON_FN_REF from "@/app/[lang]/client/src/impl/tools/common_ref";
 import ParamStateSlice from "@/app/[lang]/client/src/reducers/state/paramStateSlice";
@@ -289,7 +289,7 @@ export let fn_coll_config = (sessionId) => {
 };
 
 export let fn_format_button = (pmt: string) => {
-    return (x: ButtonProps) => {
+    return (x: ActionButtonProps) => {
         return (
             <ActionButton
                 {...x}

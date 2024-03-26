@@ -22,6 +22,7 @@ import { Button, ButtonProps, Intent, Placement, Popover, Tooltip, TreeNodeInfo 
 import { useRef, useState } from "react"
 import { Dot } from "../../utils/cTranslationUtils"
 import { TOOLTIP_OPEN_DELAY_BTN } from "@/app/__CORE__/meta/constants";
+import _ from "lodash";
 export type PopoverItemProps = {
     onPopClose: () => void
     onPopRedirectPage: (x: TreeNodeInfo, newTab: boolean) => any
@@ -56,9 +57,10 @@ export default (props: ActionButtonProps) => {
         triggered ? true : false
     ) : true
     let [openPopover, setOpenPopover] = useState(false)
+    let hasNoTooltip = _.isEmpty(props.title)
     let btn = <Button
         {...props}
-        title={''}
+        title={hasNoTooltip ? props.title : ''}
         className={" transition-colors " + " " + props.className}
         onMouseEnter={() => {
             setIsOpen(true)
@@ -94,9 +96,9 @@ export default (props: ActionButtonProps) => {
         }} icon={triggered || (props.intent == 'primary' && props.highlightOne && parentTriggered) ? "tick" : props.icon} text={enableTextMode ? (
             triggered ? props.afterText : props.text
         ) : ''} intent={triggered && props.afterIntent ? props.afterIntent : props.intent || "success"} minimal={isMinimal} {...(props.extraButtonProps || {})} ></Button>
-    let tooltipCtn = <Tooltip
-        isOpen={isOpen}
-        // hoverOpenDelay={TOOLTIP_OPEN_DELAY_BTN}
+    let tooltipCtn = hasNoTooltip ? btn : <Tooltip
+        // isOpen={isOpen}
+        hoverOpenDelay={500}
         content={title} placement={props.placement || "bottom"} >
         {btn}
     </Tooltip>

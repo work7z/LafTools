@@ -88,7 +88,9 @@ export default (props: ToolProp) => {
             <CardBody>
                 <div className='text-xs'>
                     <p>{Dot("BP2jBlIE0", "Some links are still unavailable as LafTools is still under development, please give us a star to subsrible latest update on GitHub.")}</p>
-                    <a target="_blank" href={'https://github.com/work7z/LafTools'}>{Dot("wYsKTq7nK", "Click me to view the source code")}</a>
+                    <div className='space-x-2'>
+                        <a target="_blank" href={'https://github.com/work7z/LafTools'}>{Dot("wYsKTq7nK", "Click me to view the source code")}</a>
+                    </div>
                 </div>
                 {/* <div>Debug: {getHStr()}</div> */}
             </CardBody>
