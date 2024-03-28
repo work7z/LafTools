@@ -549,15 +549,6 @@ export default (props: CommonTransformerProps) => {
 
   let app_right_b_jsx = jsx_process_settings_panel
 
-  if (props.needFullPageSupport) {
-    app_right_input_jsx = <div className={
-      shouldVerticalMode ? 'h-[350px]' : ' h-[700px] ' + ' align-top w-1/2 inline-block ' + border_clz_common + ' border-r-[1px] '
-    }>{app_right_input_jsx}</div>
-    app_right_b_jsx = <div className={
-      shouldVerticalMode ? 'min-h-[350px]' : ' min-h-[700px] ' + ' align-top w-1/2 inline-block '
-    }>{app_right_b_jsx}</div>
-  }
-
   let controlBarProps = {
     loadingStatic,
     crtOptMode,

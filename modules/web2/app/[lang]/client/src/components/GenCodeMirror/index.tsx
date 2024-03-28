@@ -203,7 +203,7 @@ export default (props: GenCodeMirrorProp) => {
         </span>
       </span>
     </div>
-    <div className='flex-1'>
+    <div className='flex-1 overflow-auto'>
       <CodeMirror
         key={verObj.ver}
         onChange={(val) => {
