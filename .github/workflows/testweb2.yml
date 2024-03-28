@@ -1,4 +1,4 @@
-name: Test Web2
+name: Test Web2 and Server2
 
 on:
   push:
@@ -32,3 +32,14 @@ jobs:
         run: |
           cd $LAFTOOLS_ROOT/modules/web2
           npx vitest run
+
+      - name: server2 install
+        run: |
+          cd $LAFTOOLS_ROOT/modules/server2
+          npm i -g pnpm
+          npm i -S -D --force
+
+      - name: server2 build
+        run: |
+          cd $LAFTOOLS_ROOT/modules/server2
+          npm run build
