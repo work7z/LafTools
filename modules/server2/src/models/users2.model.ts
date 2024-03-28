@@ -3,7 +3,7 @@ import { User } from '@interfaces/users.interface';
 
 export type UserCreationAttributes = Optional<User, 'id' | 'email' | 'password'>;
 
-export class UserModel extends Model<User, UserCreationAttributes> implements User {
+export class User2Model extends Model<User, UserCreationAttributes> implements User {
   public id: number;
   public email: string;
   public password: string;
@@ -12,8 +12,8 @@ export class UserModel extends Model<User, UserCreationAttributes> implements Us
   public readonly updatedAt!: Date;
 }
 
-export default function (sequelize: Sequelize): typeof UserModel {
-  UserModel.init(
+export default function (sequelize: Sequelize): typeof User2Model {
+  User2Model.init(
     {
       id: {
         autoIncrement: true,
@@ -30,10 +30,10 @@ export default function (sequelize: Sequelize): typeof UserModel {
       },
     },
     {
-      tableName: 'users',
+      tableName: 'users2',
       sequelize,
     },
   );
 
-  return UserModel;
+  return User2Model;
 }

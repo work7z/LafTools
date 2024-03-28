@@ -2,6 +2,7 @@ var/log/
 *-audit.json
 web-nouse
 *.log
+typescript-express-starter
 b3333*
 corss-platform/**/*
 cross-platform/**/*

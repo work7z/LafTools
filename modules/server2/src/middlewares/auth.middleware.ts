@@ -5,7 +5,7 @@ import { DB } from '@database';
 import { HttpException } from '@exceptions/httpException';
 import { DataStoredInToken, RequestWithUser } from '@interfaces/auth.interface';
 
-const getAuthorization = (req) => {
+const getAuthorization = req => {
   const coockie = req.cookies['Authorization'];
   if (coockie) return coockie;
 
@@ -13,7 +13,7 @@ const getAuthorization = (req) => {
   if (header) return header.split('Bearer ')[1];
 
   return null;
-}
+};
 
 export const AuthMiddleware = async (req: RequestWithUser, res: Response, next: NextFunction) => {
   try {
@@ -21,7 +21,7 @@ export const AuthMiddleware = async (req: RequestWithUser, res: Response, next: 
 
     if (Authorization) {
       const { id } = verify(Authorization, SECRET_KEY) as DataStoredInToken;
-      const findUser = await DB.Users.findByPk(id);
+      const findUser = await DB.Users2.findByPk(id);
 
       if (findUser) {
         req.user = findUser;
