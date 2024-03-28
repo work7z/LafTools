@@ -1,5 +1,7 @@
 var/log/
+*-audit.json
 web-nouse
+*.log
 b3333*
 corss-platform/**/*
 cross-platform/**/*
