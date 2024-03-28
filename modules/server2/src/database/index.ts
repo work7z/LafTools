@@ -1,8 +1,8 @@
 import Sequelize from 'sequelize';
 import { NODE_ENV, DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_DATABASE } from '@config';
-import UserModelGenerator from '@/models/users2.model';
+import UserModelGenerator from '@/models/test.model';
 import { logger } from '@utils/logger';
-import TestFnModelGenerator, { TestFnModel } from '@/models/testfn.model';
+import { TestFnModelGenerator, TestFnModel } from '@/models/oldjava.model';
 
 const sequelize = new Sequelize.Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
   dialect: 'mysql',
@@ -27,6 +27,8 @@ const sequelize = new Sequelize.Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
 });
 
 sequelize.authenticate();
+
+sequelize.sync({ force: false, alter: false });
 
 export const DB = {
   Users2: UserModelGenerator(sequelize),
