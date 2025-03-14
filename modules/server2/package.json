@@ -33,7 +33,7 @@
     "hpp": "^0.2.3",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
-    "mysql2": "^3.9.4",
+    "mysql2": "^3.9.8",
     "nodemailer": "^6.9.13",
     "query-string": "^9.0.0",
     "redis": "^4.6.13",
